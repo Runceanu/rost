@@ -1,0 +1,384 @@
+{
+  "$comment": "The portfolio site local token names -> UI Kit v01 paths. NOTHING here is auto-applied. Matching is by value AND category, because value alone maps --gap-small onto spacing/radius/small (both 8px) - a wrong token that renders identically today and breaks the moment either is retuned. Every entry needs review before use.",
+  "proposed": {
+    "--button-primary-bg-hover": {
+      "kitPath": "actions/primary/hover/background",
+      "value": "#00b450",
+      "confidence": "value+category match, still needs a human"
+    },
+    "--button-primary-focus-ring": {
+      "kitPath": "actions/primary/focus/focus-ring",
+      "value": "#b6ffda",
+      "confidence": "value+category match, still needs a human"
+    },
+    "--button-secondary-bg-hover": {
+      "kitPath": "actions/secondary/regular/hover/background",
+      "value": "#747573",
+      "confidence": "value+category match, still needs a human"
+    },
+    "--color-fg-primary": {
+      "kitPath": "non-interactive/foreground/primary",
+      "value": "#ededed",
+      "confidence": "value+category match, still needs a human"
+    },
+    "--color-fg-quinary": {
+      "kitPath": "non-interactive/foreground/quinary",
+      "value": "#282828",
+      "confidence": "value+category match, still needs a human"
+    },
+    "--line-height-body": {
+      "kitPath": "typography/body/line-height",
+      "value": "22px",
+      "confidence": "value+category match, still needs a human"
+    },
+    "--non-interactive-foreground-primary": {
+      "kitPath": "non-interactive/foreground/primary",
+      "value": "#ededed",
+      "confidence": "value+category match, still needs a human"
+    },
+    "--opacity-faint": {
+      "kitPath": "opacity/faint",
+      "value": "0.04",
+      "confidence": "value+category match, still needs a human"
+    },
+    "--opacity-gentle": {
+      "kitPath": "opacity/gentle",
+      "value": "0.24",
+      "confidence": "value+category match, still needs a human"
+    },
+    "--outline-small": {
+      "kitPath": "spacing/outline/small",
+      "value": "1px",
+      "confidence": "value+category match, still needs a human"
+    },
+    "--project-hover-sub-label": {
+      "kitPath": "non-interactive/foreground/primary",
+      "value": "#ededed",
+      "confidence": "value+category match, still needs a human"
+    },
+    "--radius-2xlarge": {
+      "kitPath": "spacing/radius/2xlarge",
+      "value": "32px",
+      "confidence": "value+category match, still needs a human"
+    },
+    "--radius-large": {
+      "kitPath": "spacing/radius/large",
+      "value": "16px",
+      "confidence": "value+category match, still needs a human"
+    },
+    "--radius-small": {
+      "kitPath": "spacing/radius/small",
+      "value": "8px",
+      "confidence": "value+category match, still needs a human"
+    },
+    "--spacing-size-3xsmall": {
+      "kitPath": "typography/label/font-size",
+      "value": "12px",
+      "confidence": "value+category match, still needs a human"
+    },
+    "--spacing-size-xsmall": {
+      "kitPath": "typography/sub-title/font-size",
+      "value": "20px",
+      "confidence": "value+category match, still needs a human"
+    }
+  },
+  "ambiguous": {
+    "--button-primary-label": {
+      "value": "#060805",
+      "candidates": [
+        "non-interactive/background/primary",
+        "actions/primary/default/label",
+        "actions/tertiary/hover/background",
+        "input/regular/default/background",
+        "input/regular/focus/background"
+      ],
+      "expectedKind": "color"
+    },
+    "--button-secondary-label": {
+      "value": "#d3d9d5",
+      "candidates": [
+        "actions/secondary/regular/default/label",
+        "actions/tertiary/disabled/label",
+        "input/regular/hover/placeholder"
+      ],
+      "expectedKind": "color"
+    },
+    "--button-secondary-outline": {
+      "value": "#ededed",
+      "candidates": [
+        "actions/secondary/regular/hover/outline",
+        "actions/secondary/regular/focus/outline"
+      ],
+      "expectedKind": "outline"
+    },
+    "--button-tertiary-bg-hover": {
+      "value": "#060805",
+      "candidates": [
+        "non-interactive/background/primary",
+        "actions/primary/default/label",
+        "actions/tertiary/hover/background",
+        "input/regular/default/background",
+        "input/regular/focus/background"
+      ],
+      "expectedKind": "color"
+    },
+    "--button-tertiary-label": {
+      "value": "#d3d9d5",
+      "candidates": [
+        "actions/secondary/regular/default/label",
+        "actions/tertiary/disabled/label",
+        "input/regular/hover/placeholder"
+      ],
+      "expectedKind": "color"
+    },
+    "--color-bg-primary": {
+      "value": "#060805",
+      "candidates": [
+        "non-interactive/background/primary",
+        "actions/primary/default/label",
+        "actions/tertiary/hover/background",
+        "input/regular/default/background",
+        "input/regular/focus/background"
+      ],
+      "expectedKind": "color"
+    },
+    "--color-bg-tertiary": {
+      "value": "#3a3a3a",
+      "candidates": [
+        "non-interactive/background/tertiary",
+        "actions/secondary/regular/disabled/background",
+        "actions/secondary/regular/focus/background"
+      ],
+      "expectedKind": "color"
+    },
+    "--color-fg-tertiary": {
+      "value": "#999999",
+      "candidates": [
+        "non-interactive/foreground/tertiary",
+        "actions/secondary/regular/pressed/background",
+        "actions/secondary/regular/focus/focus-ring",
+        "input/regular/default/label",
+        "input/regular/focus/label",
+        "input/negative/default/placeholder"
+      ],
+      "expectedKind": "color"
+    },
+    "--non-interactive-foreground-tertiary": {
+      "value": "#999999",
+      "candidates": [
+        "non-interactive/foreground/tertiary",
+        "actions/secondary/regular/pressed/background",
+        "actions/secondary/regular/focus/focus-ring",
+        "input/regular/default/label",
+        "input/regular/focus/label",
+        "input/negative/default/placeholder"
+      ],
+      "expectedKind": "color"
+    },
+    "--project-default-label": {
+      "value": "#d3d9d5",
+      "candidates": [
+        "actions/secondary/regular/default/label",
+        "actions/tertiary/disabled/label",
+        "input/regular/hover/placeholder"
+      ],
+      "expectedKind": "color"
+    },
+    "--project-disabled-sub-label": {
+      "value": "#999999",
+      "candidates": [
+        "non-interactive/foreground/tertiary",
+        "actions/secondary/regular/pressed/background",
+        "actions/secondary/regular/focus/focus-ring",
+        "input/regular/default/label",
+        "input/regular/focus/label",
+        "input/negative/default/placeholder"
+      ],
+      "expectedKind": "color"
+    },
+    "--project-focus-label": {
+      "value": "#d3d9d5",
+      "candidates": [
+        "actions/secondary/regular/default/label",
+        "actions/tertiary/disabled/label",
+        "input/regular/hover/placeholder"
+      ],
+      "expectedKind": "color"
+    },
+    "--project-pressed-label": {
+      "value": "#00d669",
+      "candidates": [
+        "actions/primary/disabled/background",
+        "actions/primary/focus/background",
+        "input/negative/focus/focus-ring"
+      ],
+      "expectedKind": "color"
+    }
+  },
+  "sameValueWrongKind": {
+    "--gap-2xlarge": {
+      "value": "40px",
+      "sameValueButWrongKind": [
+        "typography/sub-headline/font-size",
+        "spacing/size/medium"
+      ],
+      "expectedKind": "gap"
+    },
+    "--gap-4xlarge": {
+      "value": "56px",
+      "sameValueButWrongKind": [
+        "spacing/size/large"
+      ],
+      "expectedKind": "gap"
+    },
+    "--gap-large": {
+      "value": "24px",
+      "sameValueButWrongKind": [
+        "typography/title/font-size",
+        "spacing/size/small"
+      ],
+      "expectedKind": "gap"
+    },
+    "--gap-medium": {
+      "value": "16px",
+      "sameValueButWrongKind": [
+        "typography/font-size/16",
+        "spacing/size/2xsmall",
+        "spacing/radius/large"
+      ],
+      "expectedKind": "gap"
+    },
+    "--gap-small": {
+      "value": "8px",
+      "sameValueButWrongKind": [
+        "spacing/radius/small"
+      ],
+      "expectedKind": "gap"
+    },
+    "--icon-button-project-default": {
+      "value": "#00d669",
+      "sameValueButWrongKind": [
+        "actions/primary/disabled/background",
+        "actions/primary/focus/background",
+        "input/negative/focus/focus-ring"
+      ],
+      "expectedKind": "other"
+    },
+    "--icon-button-project-pressed": {
+      "value": "#00d669",
+      "sameValueButWrongKind": [
+        "actions/primary/disabled/background",
+        "actions/primary/focus/background",
+        "input/negative/focus/focus-ring"
+      ],
+      "expectedKind": "other"
+    },
+    "--line-height-display": {
+      "value": "72px",
+      "sameValueButWrongKind": [
+        "spacing/size/2xlarge"
+      ],
+      "expectedKind": "type"
+    },
+    "--line-height-headline": {
+      "value": "64px",
+      "sameValueButWrongKind": [
+        "spacing/gap/5xlarge"
+      ],
+      "expectedKind": "type"
+    },
+    "--line-height-sub-headline": {
+      "value": "48px",
+      "sameValueButWrongKind": [
+        "spacing/gap/3xlarge"
+      ],
+      "expectedKind": "type"
+    },
+    "--line-height-title": {
+      "value": "32px",
+      "sameValueButWrongKind": [
+        "spacing/gap/xlarge",
+        "spacing/radius/2xlarge"
+      ],
+      "expectedKind": "type"
+    },
+    "--project-default-outline": {
+      "value": "#3a3a3a",
+      "sameValueButWrongKind": [
+        "non-interactive/background/tertiary",
+        "actions/secondary/regular/disabled/background",
+        "actions/secondary/regular/focus/background"
+      ],
+      "expectedKind": "outline"
+    },
+    "--project-focus-outline": {
+      "value": "#3a3a3a",
+      "sameValueButWrongKind": [
+        "non-interactive/background/tertiary",
+        "actions/secondary/regular/disabled/background",
+        "actions/secondary/regular/focus/background"
+      ],
+      "expectedKind": "outline"
+    },
+    "--spacing-size-medium-large": {
+      "value": "48px",
+      "sameValueButWrongKind": [
+        "spacing/gap/3xlarge"
+      ],
+      "expectedKind": "size"
+    },
+    "--spacing-size-small-medium": {
+      "value": "32px",
+      "sameValueButWrongKind": [
+        "spacing/gap/xlarge",
+        "spacing/radius/2xlarge"
+      ],
+      "expectedKind": "size"
+    },
+    "--spacing-size-xlarge": {
+      "value": "64px",
+      "sameValueButWrongKind": [
+        "spacing/gap/5xlarge"
+      ],
+      "expectedKind": "size"
+    }
+  },
+  "noKitEquivalent": [
+    {
+      "token": "--color-fg-warning-base",
+      "value": "#fda50d"
+    },
+    {
+      "token": "--font-family-base",
+      "value": "'General Sans', sans-serif"
+    },
+    {
+      "token": "--gap-2xsmall",
+      "value": "4px"
+    },
+    {
+      "token": "--home-bar-h",
+      "value": "44px"
+    },
+    {
+      "token": "--line-height-label",
+      "value": "14px"
+    },
+    {
+      "token": "--line-height-subtitle",
+      "value": "28px"
+    },
+    {
+      "token": "--opacity-strong",
+      "value": "0.64"
+    },
+    {
+      "token": "--project-pressed-outline",
+      "value": "#10ffa4"
+    },
+    {
+      "token": "--spacing-size-3xlarge",
+      "value": "80px"
+    }
+  ]
+}

@@ -1,0 +1,96 @@
+# yaml-language-server: $schema=../schema/component-contract.schema.json
+schemaVersion: 2
+id: menu
+name: Menu
+kind: component
+status: review
+summary: A navigation item, a label with an indicator line, used in the main nav.
+category: navigation
+related: [ effect-menu ]
+source:
+  tool: figma
+  fileKey: 1Zy0wiWKXQAvsfDBX3KR0d
+  nodeId: "41:259"
+  url: https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=41-259
+  extractedAt: "2026-08-18"
+  extractedBy: mcp
+states: [ Default, Hover, Pressed, Focus, Disabled ]
+elements:
+  root:
+    styles:
+      width:
+        value: 104px
+        assert: false
+        notes: No token behind it — the Figma frame size, not a spec.
+  line:
+    styles:
+      position: { value: absolute }
+  content:
+    styles:
+      gap: { token: spacing/gap/small-medium, value: 12px }
+      line-height: { token: typography/body/line-height, value: 22px }
+      font-size: { token: typography/body/font-size, value: 16px }
+      letter-spacing: { token: typography/body/letter-spacing, value: 0px }
+  label: {}
+  focus-ring: {}
+variants:
+  - when: { state: Default }
+    figmaNode: "41:147"
+    elements:
+      label:
+        font-family: { token: font-family/base, value: "'General Sans Variable'" }
+        font-weight: { token: typography/body/font-weight/medium, value: "500" }
+        color: { token: non-interactive/foreground/primary, value: "#ededed" }
+  - when: { state: Hover }
+    figmaNode: "41:260"
+    elements:
+      label:
+        font-family: { token: font-family/base, value: "'General Sans Variable'" }
+        font-weight: { token: typography/body/font-weight/medium, value: "500" }
+      content:
+        color: { token: non-interactive/foreground/primary, value: "#ededed" }
+  - when: { state: Focus }
+    figmaNode: "41:272"
+    elements:
+      label:
+        font-family: { token: font-family/base, value: "'General Sans Variable'" }
+        font-weight: { token: typography/body/font-weight/medium, value: "500" }
+        color: { token: non-interactive/foreground/primary, value: "#ededed" }
+      focus-ring:
+        border-sides: { value: all }
+        position: { value: absolute }
+        border-width: { token: spacing/outline/medium, value: 2px }
+        border-color: { token: actions/primary/focus/focus-ring, value: "#b6ffda" }
+  - when: { state: Pressed }
+    figmaNode: "41:286"
+    elements:
+      content:
+        color: { token: non-interactive/foreground/primary, value: "#ededed" }
+        font-family: { token: font-family/base, value: "'\"General Sans Variable'" }
+        font-weight: { token: typography/body/font-weight/medium, value: "500" }
+  - when: { state: Disabled }
+    figmaNode: "41:298"
+    elements:
+      label:
+        font-family: { token: font-family/base, value: "'General Sans Variable'" }
+        font-weight: { token: typography/body/font-weight/medium, value: "500" }
+      content:
+        color: { token: non-interactive/foreground/quadruple, value: "#3a3a3a" }
+guidance:
+  status: proposed
+  use:
+    - For top-level navigation between pages or sections.
+  avoid:
+    - For actions, use **Button**. Menu items go somewhere.
+    - |-
+      Not to be confused with the **Menu effect** (`effect-menu`), the frosted surface the nav sits on.
+  behaviour: |-
+    Five `state`s. The `line` part is the indicator. Mark the current page with it (`aria-current`), not with hover styling.
+  accessibility:
+    element: "`<a>` inside `<nav aria-label=\"Main\">` and a list."
+    currentPage: |-
+      `aria-current="page"`, which is also what the indicator line is styled from.
+    focus: "`focus-ring`, on `:focus-visible`."
+    mobile: |-
+      when collapsed behind a button, that button has `aria-expanded` and controls the list.
+  content: One word, the page's own title.

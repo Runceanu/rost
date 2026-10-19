@@ -1,0 +1,45 @@
+/* icon-button | type=Tertiary, state=Pressed | 93:623 | 48x48 */
+const imgUnion = "http://localhost:3845/assets/02da77ab2dae89c27f25b8014d3033d4b81bcbfc.svg";
+const imgUnion1 = "http://localhost:3845/assets/276c3011b734eca280302ffab3568e333b977e6b.svg";
+type IconButtonProps = {
+  className?: string;
+  icon?: React.ReactNode | null;
+  state?: "Default" | "Pressed";
+  type?: "Primary" | "Tertiary";
+};
+
+function IconButton({ className, icon = null, state = "Default", type = "Primary" }: IconButtonProps) {
+  const isTertiaryAndPressed = type === "Tertiary" && state === "Pressed";
+  return (
+    <div className={className || `${String.raw`content-stretch flex gap-[var(--spacing\/gap\/small,8px)] items-center justify-center px-[var(--spacing\/gap\/medium-large,20px)] py-[var(--spacing\/gap\/none,0px)] relative rounded-[var(--spacing\/radius\/full,10000px)] size-[var(--spacing\/size\/medium-large,48px)] `}${isTertiaryAndPressed ? "" : String.raw`bg-[var(--actions\/primary\/default\/background,#00d669)] border-[var(--actions\/primary\/default\/outline,rgba(237,237,237,0.64))] border-l border-solid border-t-[length:var(--spacing\/outline\/small,1px)]`}`} id={isTertiaryAndPressed ? "node-93_623" : "node-93_588"}>
+      {type === "Primary" &&
+        state === "Default" &&
+        (icon || (
+          <div className="overflow-clip relative shrink-0 size-[20px]" data-node-id="93:589" data-name="icons/arrow-left">
+            <div className="absolute inset-[20.84%_16.66%_20.83%_18.4%]" data-node-id="I93:589;93:861" data-name="Union">
+              <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgUnion} />
+            </div>
+          </div>
+        ))}
+      {isTertiaryAndPressed && <div className="absolute bg-[var(--actions\/tertiary\/pressed\/background,#454545)] inset-0 opacity-[var(--opacity\/mild,0.32)] rounded-[var(--spacing\/radius\/full,10000px)]" data-node-id="93:624" data-name="background" />}
+      {isTertiaryAndPressed &&
+        (icon || (
+          <div className="overflow-clip relative shrink-0 size-[20px]" data-node-id="93:625" data-name="icons/arrow-left">
+            <div className="absolute inset-[20.84%_16.66%_20.83%_18.4%]" data-node-id="I93:625;93:861" data-name="Union">
+              <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgUnion1} />
+            </div>
+          </div>
+        ))}
+    </div>
+  );
+}
+SUPER CRITICAL: The generated React+Tailwind code MUST be converted to match the target project's technology stack and styling system.
+1. Analyze the target codebase to identify: technology stack, styling approach, component patterns, and design tokens
+2. Convert React syntax to the target framework/library
+3. Transform all Tailwind classes to the target styling system while preserving exact visual design
+4. Follow the project's existing patterns and conventions
+DO NOT install any Tailwind as a dependency unless the user instructs you to do so.
+
+Node ids have been added to the code as data attributes, e.g. `data-node-id="1:2"`.
+Image assets are stored on a localhost server. Clients can use these images directly in code as a way to view the image assets the same way they would other remote servers. Images and SVGs will be stored as constants, e.g. const image = 'http://localhost:3845/assets/10c13ac1a228a365cb98a0064b1d5afbc84887b2.png' These constants will be used in the code as the source for the image, e.g. <img src={image} /> This is true for both images and SVGs, so you can use the same approach for both types of assets.
+IMPORTANT: After you call this tool, you MUST call get_screenshot to get a screenshot of the node for context.

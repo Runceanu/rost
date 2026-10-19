@@ -1,0 +1,1 @@
+{"non-interactive/foreground/quinary":"#282828"}

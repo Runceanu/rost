@@ -1,0 +1,193 @@
+# yaml-language-server: $schema=../schema/component-contract.schema.json
+schemaVersion: 2
+id: toggle
+name: Toggle
+kind: component
+status: review
+summary: A 40×40 icon toggle that holds a selected state, used alone or as one choice of a group.
+category: selection
+related: [ icon-button, chips ]
+source:
+  tool: figma
+  fileKey: 1Zy0wiWKXQAvsfDBX3KR0d
+  nodeId: "168:1149"
+  url: https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=168-1149
+  extractedAt: "2026-08-18"
+  extractedBy: mcp
+props:
+  selected:
+    type: boolean
+    default: false
+states: [ Default, Hover, Pressed, Focus, Disabled ]
+elements:
+  root:
+    styles:
+      justify-content: { value: center }
+      align-items: { value: center }
+      gap: { token: spacing/gap/small, value: 8px }
+      padding-left: { token: spacing/gap/medium-large, value: 20px }
+      padding-right: { token: spacing/gap/medium-large, value: 20px }
+      padding-top: { token: spacing/gap/none, value: 0px }
+      padding-bottom: { token: spacing/gap/none, value: 0px }
+      width: { token: spacing/size/medium, value: 40px }
+      height: { token: spacing/size/medium, value: 40px }
+  icons-arrow-left:
+    styles:
+      overflow: { value: clip }
+      width: { value: 20px, suggest: spacing/size/xsmall }
+      height: { value: 20px, suggest: spacing/size/xsmall }
+  union:
+    styles:
+      position: { value: absolute }
+      inset: { value: "0" }
+  background: {}
+  focus-ring: {}
+variants:
+  - when: { state: Default, selected: true }
+    figmaNode: "168:1150"
+    elements:
+      root:
+        border-sides: { value: left top }
+        background: { token: actions/primary/default/background, value: "#00d669" }
+        border-color: { token: actions/primary/default/outline, value: "rgba(237,237,237,0.64)" }
+        border-top-width: { token: spacing/outline/small, value: 1px }
+        border-radius: { token: spacing/radius/full, value: 10000px }
+  - when: { state: Default, selected: false }
+    figmaNode: "168:1152"
+    elements:
+      root:
+        border-radius: { token: spacing/radius/medium, value: 12px }
+      background:
+        border-sides: { value: left top }
+        position: { value: absolute }
+        inset: { value: "0" }
+        background: { token: actions/secondary/regular/default/background, value: "#3a3a3a" }
+        border-color: { token: actions/secondary/regular/default/outline, value: "#ededed" }
+        opacity: { token: opacity/gentle, value: "0.24" }
+        border-radius: { token: spacing/radius/medium, value: 12px }
+  - when: { state: Hover, selected: true }
+    figmaNode: "168:1159"
+    elements:
+      root:
+        border-sides: { value: left top }
+        background: { token: actions/primary/hover/background, value: "#00b450" }
+        border-color: { token: actions/primary/hover/outline, value: "rgba(237,237,237,0.64)" }
+        border-top-width: { token: spacing/outline/small, value: 1px }
+        border-radius: { token: spacing/radius/full, value: 10000px }
+  - when: { state: Hover, selected: false }
+    figmaNode: "168:1161"
+    elements:
+      root:
+        border-radius: { token: spacing/radius/medium, value: 12px }
+      background:
+        border-sides: { value: left top }
+        position: { value: absolute }
+        inset: { value: "0" }
+        background: { token: actions/secondary/regular/default/background, value: "#3a3a3a" }
+        border-color: { token: actions/secondary/regular/default/outline, value: "#ededed" }
+        opacity: { token: opacity/gentle, value: "0.24" }
+        border-radius: { token: spacing/radius/medium, value: 12px }
+  - when: { state: Pressed, selected: true }
+    figmaNode: "168:1170"
+    elements:
+      root:
+        border-sides: { value: left top }
+        background: { token: actions/primary/pressed/background, value: "#00913a" }
+        border-color: { token: actions/primary/pressed/outline, value: "rgba(237,237,237,0.64)" }
+        border-top-width: { token: spacing/outline/small, value: 1px }
+        border-radius: { token: spacing/radius/full, value: 10000px }
+  - when: { state: Pressed, selected: false }
+    figmaNode: "168:1172"
+    elements:
+      root:
+        border-radius: { token: spacing/radius/medium, value: 12px }
+      background:
+        border-sides: { value: left top }
+        position: { value: absolute }
+        inset: { value: "0" }
+        background: { token: actions/secondary/regular/default/background, value: "#3a3a3a" }
+        border-color: { token: actions/secondary/regular/default/outline, value: "#ededed" }
+        opacity: { token: opacity/gentle, value: "0.24" }
+        border-radius: { token: spacing/radius/medium, value: 12px }
+  - when: { state: Disabled, selected: true }
+    figmaNode: "168:1181"
+    elements:
+      root:
+        border-sides: { value: left top }
+        background: { token: actions/primary/disabled/background, value: "#00d669" }
+        border-color: { token: actions/primary/disabled/outline, value: "rgba(237,237,237,0.64)" }
+        border-top-width: { token: spacing/outline/small, value: 1px }
+        border-radius: { token: spacing/radius/full, value: 10000px }
+        opacity: { token: opacity/gentle, value: "0.24" }
+  - when: { state: Disabled, selected: false }
+    figmaNode: "168:1183"
+    elements:
+      root:
+        border-radius: { token: spacing/radius/medium, value: 12px }
+      background:
+        border-sides: { value: left top }
+        position: { value: absolute }
+        inset: { value: "0" }
+        background: { token: actions/secondary/regular/default/background, value: "#3a3a3a" }
+        border-color: { token: actions/secondary/regular/default/outline, value: "#ededed" }
+        opacity: { token: opacity/gentle, value: "0.24" }
+        border-radius: { token: spacing/radius/medium, value: 12px }
+  - when: { state: Focus, selected: true }
+    figmaNode: "168:1190"
+    elements:
+      root:
+        border-sides: { value: left top }
+        background: { token: actions/primary/focus/background, value: "#00d669" }
+        border-color: { token: actions/primary/focus/outline, value: "rgba(237,237,237,0.64)" }
+        border-top-width: { token: spacing/outline/small, value: 1px }
+        border-radius: { token: spacing/radius/full, value: 10000px }
+      focus-ring:
+        border-sides: { value: all }
+        position: { value: absolute }
+        border-width: { token: spacing/outline/medium, value: 2px }
+        border-color: { token: actions/primary/focus/focus-ring, value: "#b6ffda" }
+        border-radius: { token: spacing/radius/full, value: 10000px }
+  - when: { state: Focus, selected: false }
+    figmaNode: "168:1193"
+    elements:
+      root:
+        border-radius: { token: spacing/radius/medium, value: 12px }
+      background:
+        border-sides: { value: left top }
+        position: { value: absolute }
+        inset: { value: "0" }
+        background: { token: actions/secondary/regular/default/background, value: "#3a3a3a" }
+        border-color: { token: actions/secondary/regular/default/outline, value: "#ededed" }
+        opacity: { token: opacity/gentle, value: "0.24" }
+        border-radius: { token: spacing/radius/medium, value: 12px }
+guidance:
+  status: proposed
+  use:
+    - To switch a view or filter on and off, where the change applies immediately.
+    - In a group, to pick one option from a short set (in accounting-app, the year switcher).
+  avoid:
+    - To fire an action, use **IconButton**. A toggle remembers, a button doesn't.
+    - For a settings-style on/off with a text label, there is no switch in the kit yet. Raise it rather than restyling Toggle.
+  behaviour: |-
+    Two axes: `selected` (`True` / `False`) and `state`. Unselected is a 12px-radius plate on the secondary surface at low opacity. Selected becomes a full-radius primary pill. The shape change is part of the signal, not only the colour.
+  accessibility:
+    alone: "`<button aria-pressed=\"true|false\">`."
+    group: |-
+      `role="radio"` with `aria-checked`, inside a `role="radiogroup"` with a name. Arrow keys move between options, and Tab enters and leaves the group.
+    name: "`aria-label` when icon-only."
+    focus: |-
+      `focus-ring` (2px, `actions/primary/focus/focus-ring` when selected), on `:focus-visible`.
+    colour: selection is carried by shape (radius 12px → full) as well as colour.
+  content: Icon-only in the kit. accounting-app adds a text label as a declared deviation. Keep any label to one short word or a number.
+implementations:
+  accounting-app:
+    component: src/components/Toggle.tsx
+    root: .ak-toggle
+    deviations:
+      - what: |-
+          Accepts a text label; width grows past 40px to fit it, height stays 40px. Label colour follows the surface: secondary label unselected, primary label selected.
+        why: The year switcher needs text. The kit's toggle is icon-only and specifies no label colour.
+        raisedWithDesign: false
+      - what: Rendered as role=radio inside a ToggleGroup radio group, which has no surface of its own.
+        why: Toggles are used as a single-choice set; ToggleGroup is not a kit component.
+        raisedWithDesign: false

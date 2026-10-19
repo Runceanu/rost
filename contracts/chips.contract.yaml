@@ -1,0 +1,118 @@
+# yaml-language-server: $schema=../schema/component-contract.schema.json
+schemaVersion: 2
+id: chips
+name: Chip
+kind: component
+status: review
+summary: An outlined 24px interactive label, for filters and quick choices.
+category: selection
+related: [ tags, badge, toggle ]
+source:
+  tool: figma
+  fileKey: 1Zy0wiWKXQAvsfDBX3KR0d
+  nodeId: "139:317"
+  url: https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=139-317
+  extractedAt: "2026-08-18"
+  extractedBy: mcp
+props:
+  status:
+    type: enum
+    values: [ Default ]
+    default: Default
+states: [ Default, Hover, Pressed, Focus, Disabled ]
+elements:
+  root:
+    styles:
+      justify-content: { value: center }
+      align-items: { value: center }
+      gap: { token: spacing/gap/small, value: 8px }
+      height: { token: spacing/size/small, value: 24px }
+      padding-bottom: { token: spacing/gap/3xsmall, value: 2px }
+      padding-top: { token: spacing/gap/none, value: 0px }
+      padding-left: { token: spacing/gap/small, value: 8px }
+      padding-right: { token: spacing/gap/small, value: 8px }
+      border-radius: { token: spacing/radius/full, value: 10000px }
+  label:
+    styles:
+      font-family: { token: font-family/base, value: "'General Sans Variable'" }
+      font-weight: { token: typography/label/font-weight/medium, value: "500" }
+      line-height: { token: typography/label/line-height, value: 14px }
+      font-size: { token: typography/label/font-size, value: 12px }
+      letter-spacing: { token: typography/label/letter-spacing, value: 0px }
+  outline:
+    styles:
+      border-sides: { value: all }
+      position: { value: absolute }
+      inset: { value: "0" }
+      border-radius: { token: spacing/radius/full, value: 10000px }
+  focus-ring: {}
+variants:
+  - when: { status: Default, state: Default }
+    figmaNode: "139:318"
+    elements:
+      label:
+        color: { token: actions/secondary/regular/default/label, value: "#d3d9d5" }
+      outline:
+        border-color: { token: actions/secondary/regular/default/outline, value: "#ededed" }
+        opacity: { token: opacity/gentle, value: "0.24" }
+  - when: { status: Default, state: Hover }
+    figmaNode: "139:320"
+    elements:
+      label:
+        color: { token: actions/secondary/regular/hover/label, value: "#ededed" }
+      outline:
+        border-color: { token: actions/secondary/regular/hover/outline, value: "#ededed" }
+        opacity: { token: opacity/strong, value: "0.64" }
+  - when: { status: Default, state: Pressed }
+    figmaNode: "139:322"
+    elements:
+      label:
+        color: { token: actions/secondary/regular/pressed/label, value: "#d3d9d5" }
+      outline:
+        border-color: { token: actions/secondary/regular/pressed/outline, value: "#ededed" }
+        opacity: { token: opacity/solid, value: "1" }
+  - when: { status: Default, state: Disabled }
+    figmaNode: "139:324"
+    elements:
+      label:
+        color: { token: actions/secondary/regular/disabled/label, value: "#d3d9d5" }
+      outline:
+        border-color: { token: actions/secondary/regular/disabled/outline, value: "#ededed" }
+        opacity: { token: opacity/solid, value: "1" }
+      root:
+        opacity: { token: opacity/gentle, value: "0.24" }
+  - when: { status: Default, state: Focus }
+    figmaNode: "139:326"
+    elements:
+      label:
+        color: { token: actions/secondary/regular/focus/label, value: "#d3d9d5" }
+      outline:
+        border-color: { token: actions/secondary/regular/focus/outline, value: "#ededed" }
+        opacity: { token: opacity/gentle, value: "0.24" }
+      focus-ring:
+        border-sides: { value: all }
+        position: { value: absolute }
+        border-width: { token: spacing/outline/medium, value: 2px }
+        border-color: { token: actions/secondary/regular/focus/focus-ring, value: "#999" }
+        border-radius: { token: spacing/radius/full, value: 10000px }
+guidance:
+  status: proposed
+  use:
+    - |-
+      For filters and quick selections in a row: categories on the portfolio, period filters.
+  avoid:
+    - For a status nobody clicks, use **Badge**.
+    - For a topic label on content, use **Tag**.
+  behaviour: |-
+    One `status` (`Default`) × five `state`s. Hover, pressed and focus come from pseudo-classes. The kit doesn't draw a selected chip yet. Until it does, a selected chip needs design before it is built, not an improvised fill.
+  accessibility:
+    element: |-
+      `<button type="button">`, with `aria-pressed` when it filters.
+    group: |-
+      wrap a set in an element with a name (`role="group"` and `aria-label="Filter by category"`).
+    focus: "`focus-ring`, on `:focus-visible`."
+  content: One or two words, sentence case.
+implementations:
+  portfolio-site:
+    component: src/components/Chip.jsx
+    root: .chip

@@ -1,0 +1,34 @@
+{
+  "name": "rost",
+  "version": "0.1.0",
+  "description": "Rost: a design system run as its own product. Contracts, tokens and conformance for the portfolio site, the accounting app and what comes next.",
+  "type": "module",
+  "private": true,
+  "exports": {
+    "./tokens.css": "./tokens/tokens.css",
+    "./tokens.json": "./tokens/tokens.json",
+    "./contracts/*": "./contracts/*",
+    "./registry/*": "./registry/*",
+    "./conform": "./src/conform.ts",
+    "./schema/*": "./schema/*"
+  },
+  "bin": {
+    "rost-audit": "./bin/audit.mjs"
+  },
+  "scripts": {
+    "audit": "node bin/audit.mjs",
+    "docs": "node bin/validate.mjs && node bin/build-docs.mjs && node bin/build-reference.mjs",
+    "build:contracts": "node bin/build-contracts.mjs",
+    "validate": "node bin/validate.mjs",
+    "site": "npm run docs && rm -rf site && mkdir site && cp reference.html site/index.html",
+    "deploy": "npm run site && wrangler deploy",
+    "preview": "wrangler dev"
+  },
+  "dependencies": {
+    "ajv": "8.20.0",
+    "yaml": "2.9.1"
+  },
+  "devDependencies": {
+    "wrangler": "4.151.2"
+  }
+}

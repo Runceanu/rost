@@ -1,0 +1,126 @@
+const imgUnion = "http://localhost:3845/assets/02da77ab2dae89c27f25b8014d3033d4b81bcbfc.svg";
+const imgUnion1 = "http://localhost:3845/assets/21a86a92f08869f5946c04e13e80b8085e032956.svg";
+const imgUnion2 = "http://localhost:3845/assets/0008615b116a7ddb288e6430f65fbfa94e77781c.svg";
+const imgUnion3 = "http://localhost:3845/assets/3be06bc8ad299d8f6b2fdc9473faa63fff5143cb.svg";
+const imgUnion4 = "http://localhost:3845/assets/14ffd86ed4278293d9b7cf148600a352d1cfeaa4.svg";
+const imgUnion5 = "http://localhost:3845/assets/faba0d4d08c6c207e74f00ecf10752f8038b0267.svg";
+const imgUnion6 = "http://localhost:3845/assets/1cf4e3b52efd65ac8ace33126409c8ad1a84ea71.svg";
+const imgUnion7 = "http://localhost:3845/assets/e568ecc4ed72cbcc46bee3d0f758fd03c70fed61.svg";
+const imgUnion8 = "http://localhost:3845/assets/4661263925709f042cfcbf062e936d4c996571bd.svg";
+const imgUnion9 = "http://localhost:3845/assets/2a38ab93409e75ffbff38eb564db0a86b69e912a.svg";
+type ToggleProps = {
+  className?: string;
+  icon?: React.ReactNode | null;
+  selected?: boolean;
+  state?: "Default" | "Hover" | "Focus" | "Pressed" | "Disabled";
+};
+
+export default function Toggle({ className, icon = null, selected = false, state = "Default" }: ToggleProps) {
+  const isDefaultAndNotSelected = state === "Default" && !selected;
+  const isDisabledAndNotSelected = state === "Disabled" && !selected;
+  const isDisabledAndSelected = state === "Disabled" && selected;
+  const isFocusAndNotSelected = state === "Focus" && !selected;
+  const isFocusAndSelected = state === "Focus" && selected;
+  const isHoverAndNotSelected = state === "Hover" && !selected;
+  const isHoverAndSelected = state === "Hover" && selected;
+  const isPressedAndNotSelected = state === "Pressed" && !selected;
+  const isPressedAndSelected = state === "Pressed" && selected;
+  return (
+    <div className={className || `${String.raw`content-stretch flex gap-[var(--spacing\/gap\/small,8px)] items-center justify-center px-[var(--spacing\/gap\/medium-large,20px)] py-[var(--spacing\/gap\/none,0px)] relative size-[var(--spacing\/size\/medium,40px)] `}${isFocusAndSelected ? String.raw`bg-[var(--actions\/primary\/focus\/background,#00d669)] border-[var(--actions\/primary\/focus\/outline,rgba(237,237,237,0.64))] border-l border-solid border-t-[length:var(--spacing\/outline\/small,1px)] rounded-[var(--spacing\/radius\/full,10000px)]` : isDisabledAndNotSelected ? String.raw`opacity-[var(--opacity\/gentle,0.24)] rounded-[var(--spacing\/radius\/medium,12px)]` : isDisabledAndSelected ? String.raw`bg-[var(--actions\/primary\/disabled\/background,#00d669)] border-[var(--actions\/primary\/disabled\/outline,rgba(237,237,237,0.64))] border-l border-solid border-t-[length:var(--spacing\/outline\/small,1px)] opacity-[var(--opacity\/gentle,0.24)] rounded-[var(--spacing\/radius\/full,10000px)]` : isPressedAndSelected ? String.raw`bg-[var(--actions\/primary\/pressed\/background,#00913a)] border-[var(--actions\/primary\/pressed\/outline,rgba(237,237,237,0.64))] border-l border-solid border-t-[length:var(--spacing\/outline\/small,1px)] rounded-[var(--spacing\/radius\/full,10000px)]` : isHoverAndSelected ? String.raw`bg-[var(--actions\/primary\/hover\/background,#00b450)] border-[var(--actions\/primary\/hover\/outline,rgba(237,237,237,0.64))] border-l border-solid border-t-[length:var(--spacing\/outline\/small,1px)] rounded-[var(--spacing\/radius\/full,10000px)]` : !selected && ["Default", "Hover", "Pressed", "Focus"].includes(state) ? String.raw`rounded-[var(--spacing\/radius\/medium,12px)]` : String.raw`bg-[var(--actions\/primary\/default\/background,#00d669)] border-[var(--actions\/primary\/default\/outline,rgba(237,237,237,0.64))] border-l border-solid border-t-[length:var(--spacing\/outline\/small,1px)] rounded-[var(--spacing\/radius\/full,10000px)]`}`} id={isFocusAndNotSelected ? "node-168_1193" : isFocusAndSelected ? "node-168_1190" : isDisabledAndNotSelected ? "node-168_1183" : isDisabledAndSelected ? "node-168_1181" : isPressedAndNotSelected ? "node-168_1172" : isPressedAndSelected ? "node-168_1170" : isHoverAndNotSelected ? "node-168_1161" : isHoverAndSelected ? "node-168_1159" : isDefaultAndNotSelected ? "node-168_1152" : "node-168_1150"}>
+      {!selected && <div className={`${String.raw`absolute border-l border-solid border-t inset-0 rounded-[var(--spacing\/radius\/medium,12px)] `}${isFocusAndNotSelected ? String.raw`bg-[var(--actions\/secondary\/regular\/focus\/background,#3a3a3a)] border-[var(--actions\/secondary\/regular\/focus\/outline,#ededed)] opacity-[var(--opacity\/gentle,0.24)]` : isDisabledAndNotSelected ? String.raw`bg-[var(--actions\/secondary\/regular\/disabled\/background,#3a3a3a)] border-[var(--actions\/secondary\/regular\/disabled\/outline,#ededed)] opacity-[var(--opacity\/mild,0.32)]` : isPressedAndNotSelected ? String.raw`bg-[var(--actions\/secondary\/regular\/pressed\/background,#999)] border-[var(--actions\/secondary\/regular\/pressed\/outline,#ededed)] opacity-[var(--opacity\/mild,0.32)]` : isHoverAndNotSelected ? String.raw`bg-[var(--actions\/secondary\/regular\/hover\/background,#747573)] border-[var(--actions\/secondary\/regular\/hover\/outline,#ededed)] opacity-[var(--opacity\/mild,0.32)]` : String.raw`bg-[var(--actions\/secondary\/regular\/default\/background,#3a3a3a)] border-[var(--actions\/secondary\/regular\/default\/outline,#ededed)] opacity-[var(--opacity\/gentle,0.24)]`}`} id={isFocusAndNotSelected ? "node-168_1194" : isDisabledAndNotSelected ? "node-168_1184" : isPressedAndNotSelected ? "node-168_1173" : isHoverAndNotSelected ? "node-168_1162" : "node-168_1153"} data-name="background" />}
+      {state === "Default" &&
+        selected &&
+        (icon || (
+          <div className="overflow-clip relative shrink-0 size-[20px]" data-node-id="168:1151" data-name="icons/arrow-left">
+            <div className="absolute inset-[20.84%_16.66%_20.83%_18.4%]" data-node-id="I168:1151;93:861" data-name="Union">
+              <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgUnion} />
+            </div>
+          </div>
+        ))}
+      {isDefaultAndNotSelected &&
+        (icon || (
+          <div className="overflow-clip relative shrink-0 size-[20px]" data-node-id="168:1154" data-name="icons/arrow-left">
+            <div className="absolute inset-[20.84%_16.66%_20.83%_18.4%]" data-node-id="I168:1154;93:861" data-name="Union">
+              <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgUnion1} />
+            </div>
+          </div>
+        ))}
+      {isHoverAndSelected &&
+        (icon || (
+          <div className="overflow-clip relative shrink-0 size-[20px]" data-node-id="168:1160" data-name="icons/arrow-left">
+            <div className="absolute inset-[20.84%_16.66%_20.83%_18.4%]" data-node-id="I168:1160;93:861" data-name="Union">
+              <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgUnion2} />
+            </div>
+          </div>
+        ))}
+      {isHoverAndNotSelected &&
+        (icon || (
+          <div className="overflow-clip relative shrink-0 size-[20px]" data-node-id="168:1163" data-name="icons/arrow-left">
+            <div className="absolute inset-[20.84%_16.66%_20.83%_18.4%]" data-node-id="I168:1163;93:861" data-name="Union">
+              <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgUnion3} />
+            </div>
+          </div>
+        ))}
+      {isPressedAndSelected &&
+        (icon || (
+          <div className="overflow-clip relative shrink-0 size-[20px]" data-node-id="168:1171" data-name="icons/arrow-left">
+            <div className="absolute inset-[20.84%_16.66%_20.83%_18.4%]" data-node-id="I168:1171;93:861" data-name="Union">
+              <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgUnion4} />
+            </div>
+          </div>
+        ))}
+      {isPressedAndNotSelected &&
+        (icon || (
+          <div className="overflow-clip relative shrink-0 size-[20px]" data-node-id="168:1174" data-name="icons/arrow-left">
+            <div className="absolute inset-[20.84%_16.66%_20.83%_18.4%]" data-node-id="I168:1174;93:861" data-name="Union">
+              <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgUnion5} />
+            </div>
+          </div>
+        ))}
+      {isDisabledAndSelected &&
+        (icon || (
+          <div className="overflow-clip relative shrink-0 size-[20px]" data-node-id="168:1182" data-name="icons/arrow-left">
+            <div className="absolute inset-[20.84%_16.66%_20.83%_18.4%]" data-node-id="I168:1182;93:861" data-name="Union">
+              <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgUnion6} />
+            </div>
+          </div>
+        ))}
+      {isDisabledAndNotSelected &&
+        (icon || (
+          <div className="overflow-clip relative shrink-0 size-[20px]" data-node-id="168:1185" data-name="icons/arrow-left">
+            <div className="absolute inset-[20.84%_16.66%_20.83%_18.4%]" data-node-id="I168:1185;93:861" data-name="Union">
+              <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgUnion7} />
+            </div>
+          </div>
+        ))}
+      {isFocusAndSelected &&
+        (icon || (
+          <div className="overflow-clip relative shrink-0 size-[20px]" data-node-id="168:1191" data-name="icons/arrow-left">
+            <div className="absolute inset-[20.84%_16.66%_20.83%_18.4%]" data-node-id="I168:1191;93:861" data-name="Union">
+              <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgUnion8} />
+            </div>
+          </div>
+        ))}
+      {isFocusAndSelected && <div className="absolute border-[length:var(--spacing\/outline\/medium,2px)] border-[var(--actions\/primary\/focus\/focus-ring,#b6ffda)] border-solid inset-[-5px_-4px_-4px_-5px] rounded-[var(--spacing\/radius\/full,10000px)]" data-node-id="168:1192" data-name="focus-ring" />}
+      {isFocusAndNotSelected &&
+        (icon || (
+          <div className="overflow-clip relative shrink-0 size-[20px]" data-node-id="168:1195" data-name="icons/arrow-left">
+            <div className="absolute inset-[20.84%_16.66%_20.83%_18.4%]" data-node-id="I168:1195;93:861" data-name="Union">
+              <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgUnion9} />
+            </div>
+          </div>
+        ))}
+      {isFocusAndNotSelected && <div className="absolute border-[length:var(--spacing\/outline\/medium,2px)] border-[var(--actions\/secondary\/regular\/focus\/focus-ring,#999)] border-solid inset-[-4px] rounded-[var(--spacing\/radius\/large,16px)]" data-node-id="168:1196" data-name="focus-ring" />}
+    </div>
+  );
+}
+SUPER CRITICAL: The generated React+Tailwind code MUST be converted to match the target project's technology stack and styling system.
+1. Analyze the target codebase to identify: technology stack, styling approach, component patterns, and design tokens
+2. Convert React syntax to the target framework/library
+3. Transform all Tailwind classes to the target styling system while preserving exact visual design
+4. Follow the project's existing patterns and conventions
+DO NOT install any Tailwind as a dependency unless the user instructs you to do so.
+
+Node ids have been added to the code as data attributes, e.g. `data-node-id="1:2"`.
+Image assets are stored on a localhost server. Clients can use these images directly in code as a way to view the image assets the same way they would other remote servers. Images and SVGs will be stored as constants, e.g. const image = 'http://localhost:3845/assets/10c13ac1a228a365cb98a0064b1d5afbc84887b2.png' These constants will be used in the code as the source for the image, e.g. <img src={image} /> This is true for both images and SVGs, so you can use the same approach for both types of assets.
+IMPORTANT: After you call this tool, you MUST call get_screenshot to get a screenshot of the node for context.

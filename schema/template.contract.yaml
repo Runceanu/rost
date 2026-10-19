@@ -1,0 +1,57 @@
+# yaml-language-server: $schema=./component-contract.schema.json
+# Copy to contracts/<id>.contract.yaml. For a Figma component, run the read
+# instead (see docs/CONTRACT.md) and add only the authored sections by hand:
+# summary, category, related, guidance, implementations, deviations.
+schemaVersion: 2
+id: example-button                 # kebab-case, same as the file name
+name: ExampleButton                # as named in Figma
+kind: component                    # component | effect | pattern
+status: skeleton                   # skeleton | draft | review | stable | deprecated
+summary: One sentence on what this is for.
+category: actions
+related: [ button ]
+source:
+  tool: figma
+  fileKey: 1Zy0wiWKXQAvsfDBX3KR0d
+  nodeId: "0:0"                    # the component SET, not one variant
+props:
+  type: { type: enum, values: [ Primary, Secondary ], default: Primary }
+  selected: { type: boolean, default: false }
+states: [ Default, Hover, Pressed, Focus, Disabled ]
+elements:                          # every part, in DOM order
+  root:
+    styles:                        # only what holds in EVERY variant
+      height: { token: spacing/size/medium-large, value: 48px }
+  label: {}
+variants:
+  - when: { type: Secondary, state: Hover }
+    figmaNode: "0:1"
+    elements:                      # only what differs from `elements`
+      root:
+        background: { token: actions/secondary/regular/hover/background, value: "#3a3a3a" }
+guidance:
+  status: proposed                 # proposed | agreed
+  use:
+    - The job it does, in the reader's terms.
+  avoid:
+    - The near neighbour that is easy to confuse with it, and which to use instead.
+  behaviour: What each prop and state means, not just what it looks like.
+  accessibility:
+    element: What it renders as.
+    name: Where the accessible name comes from.
+    keyboard: Which keys do what.
+    focus: The focus ring, on :focus-visible.
+    colour: Anything carried by colour, and what else carries it.
+  content: Label length, case and tone.
+implementations:
+  accounting-app:
+    component: src/components/ExampleButton.tsx
+    root: .ak-example
+    parts: { label: .ak-example__label }
+    deviations:
+      - what: What this app does differently.
+        why: The reason it is a decision, not drift.
+        raisedWithDesign: false
+pending:
+  reason: Why this is not finished yet.
+  nodesToWalk: [ "0:0" ]

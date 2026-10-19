@@ -1,0 +1,45 @@
+/* toggle | state=Disabled, selected=True | 168:1181 | 40x40 */
+const imgUnion = "http://localhost:3845/assets/21a86a92f08869f5946c04e13e80b8085e032956.svg";
+const imgUnion1 = "http://localhost:3845/assets/1cf4e3b52efd65ac8ace33126409c8ad1a84ea71.svg";
+type ToggleProps = {
+  className?: string;
+  icon?: React.ReactNode | null;
+  selected?: boolean;
+  state?: "Default" | "Disabled";
+};
+
+function Toggle({ className, icon = null, selected = false, state = "Default" }: ToggleProps) {
+  const isDefaultAndNotSelected = state === "Default" && !selected;
+  const isDisabledAndSelected = state === "Disabled" && selected;
+  return (
+    <div className={className || `${String.raw`content-stretch flex gap-[var(--spacing\/gap\/small,8px)] items-center justify-center px-[var(--spacing\/gap\/medium-large,20px)] py-[var(--spacing\/gap\/none,0px)] relative size-[var(--spacing\/size\/medium,40px)] `}${isDisabledAndSelected ? String.raw`bg-[var(--actions\/primary\/disabled\/background,#00d669)] border-[var(--actions\/primary\/disabled\/outline,rgba(237,237,237,0.64))] border-l border-solid border-t-[length:var(--spacing\/outline\/small,1px)] opacity-[var(--opacity\/gentle,0.24)] rounded-[var(--spacing\/radius\/full,10000px)]` : String.raw`rounded-[var(--spacing\/radius\/medium,12px)]`}`} id={isDisabledAndSelected ? "node-168_1181" : "node-168_1152"}>
+      {isDefaultAndNotSelected && <div className="absolute bg-[var(--actions\/secondary\/regular\/default\/background,#3a3a3a)] border-[var(--actions\/secondary\/regular\/default\/outline,#ededed)] border-l border-solid border-t inset-0 opacity-[var(--opacity\/gentle,0.24)] rounded-[var(--spacing\/radius\/medium,12px)]" data-node-id="168:1153" data-name="background" />}
+      {isDefaultAndNotSelected &&
+        (icon || (
+          <div className="overflow-clip relative shrink-0 size-[20px]" data-node-id="168:1154" data-name="icons/arrow-left">
+            <div className="absolute inset-[20.84%_16.66%_20.83%_18.4%]" data-node-id="I168:1154;93:861" data-name="Union">
+              <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgUnion} />
+            </div>
+          </div>
+        ))}
+      {isDisabledAndSelected &&
+        (icon || (
+          <div className="overflow-clip relative shrink-0 size-[20px]" data-node-id="168:1182" data-name="icons/arrow-left">
+            <div className="absolute inset-[20.84%_16.66%_20.83%_18.4%]" data-node-id="I168:1182;93:861" data-name="Union">
+              <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgUnion1} />
+            </div>
+          </div>
+        ))}
+    </div>
+  );
+}
+SUPER CRITICAL: The generated React+Tailwind code MUST be converted to match the target project's technology stack and styling system.
+1. Analyze the target codebase to identify: technology stack, styling approach, component patterns, and design tokens
+2. Convert React syntax to the target framework/library
+3. Transform all Tailwind classes to the target styling system while preserving exact visual design
+4. Follow the project's existing patterns and conventions
+DO NOT install any Tailwind as a dependency unless the user instructs you to do so.
+
+Node ids have been added to the code as data attributes, e.g. `data-node-id="1:2"`.
+Image assets are stored on a localhost server. Clients can use these images directly in code as a way to view the image assets the same way they would other remote servers. Images and SVGs will be stored as constants, e.g. const image = 'http://localhost:3845/assets/10c13ac1a228a365cb98a0064b1d5afbc84887b2.png' These constants will be used in the code as the source for the image, e.g. <img src={image} /> This is true for both images and SVGs, so you can use the same approach for both types of assets.
+IMPORTANT: After you call this tool, you MUST call get_screenshot to get a screenshot of the node for context.

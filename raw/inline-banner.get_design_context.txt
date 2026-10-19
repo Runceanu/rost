@@ -1,0 +1,147 @@
+const imgUnion = "http://localhost:3845/assets/e4e044d06134080e52e6f814d5288f011ce8f864.svg";
+const imgUnion1 = "http://localhost:3845/assets/bf4202425bde4528cf6be0a3f4b661b6df931773.svg";
+const imgUnion2 = "http://localhost:3845/assets/bae22526bc8dcdeb8ab5d9dccefe84cc7558ccdf.svg";
+const imgUnion3 = "http://localhost:3845/assets/034a73fe960c8e010261c0e2d6037e1b87f393e5.svg";
+const imgUnion4 = "http://localhost:3845/assets/33fba0710b821bf40a57cdaac08892080f19b4ca.svg";
+const imgUnion5 = "http://localhost:3845/assets/d80c3d568e8790337a137b7702a35fff5cc8f4e7.svg";
+const imgUnion6 = "http://localhost:3845/assets/f5045e4cea3aaac59abc4723437347275a5f7b1c.svg";
+const imgUnion7 = "http://localhost:3845/assets/6899e57e95661c14bd6ac05ce581b58d36a30d09.svg";
+type InlineBannerProps = {
+  className?: string;
+  children?: React.ReactNode | null;
+  label?: string;
+  showSlot?: boolean;
+  size?: "Small" | "Medium";
+  status?: "Default" | "Negative" | "Warning" | "Positive";
+};
+
+export default function InlineBanner({ className, children = null, label = "label", showSlot = true, size = "Small", status = "Default" }: InlineBannerProps) {
+  const isDefaultAndMedium = status === "Default" && size === "Medium";
+  const isDefaultAndSmall = status === "Default" && size === "Small";
+  const isMedium = size === "Medium";
+  const isNegative = status === "Negative";
+  const isNegativeAndMedium = status === "Negative" && size === "Medium";
+  const isNegativeAndSmall = status === "Negative" && size === "Small";
+  const isPositive = status === "Positive";
+  const isPositiveAndMedium = status === "Positive" && size === "Medium";
+  const isPositiveAndSmall = status === "Positive" && size === "Small";
+  const isSmall = size === "Small";
+  const isWarning = status === "Warning";
+  const isWarningAndMedium = status === "Warning" && size === "Medium";
+  const isWarningAndSmall = status === "Warning" && size === "Small";
+  return (
+    <div className={className || `${String.raw`content-stretch flex items-center p-[var(--spacing\/gap\/small,8px)] relative rounded-[var(--spacing\/radius\/small,8px)] `}${size === "Medium" && ["Negative", "Positive", "Warning"].includes(status) ? String.raw`gap-[var(--spacing\/gap\/small,8px)] opacity-[var(--opacity\/solid,1)]` : size === "Small" && ["Negative", "Positive", "Warning"].includes(status) ? String.raw`gap-[var(--spacing\/gap\/2xsmall,4px)] opacity-[var(--opacity\/solid,1)]` : isDefaultAndMedium ? String.raw`gap-[var(--spacing\/gap\/small,8px)]` : String.raw`gap-[var(--spacing\/gap\/2xsmall,4px)]`}`} id={isWarningAndMedium ? "node-233_141" : isWarningAndSmall ? "node-207_48" : isPositiveAndMedium ? "node-233_136" : isPositiveAndSmall ? "node-207_32" : isNegativeAndMedium ? "node-233_131" : isNegativeAndSmall ? "node-205_722" : isDefaultAndMedium ? "node-233_126" : "node-205_615"}>
+      <div className="absolute bg-[var(--non-interactive\/background\/tertiary,#3a3a3a)] inset-0 opacity-[var(--opacity\/mild,0.32)] rounded-[var(--spacing\/radius\/small,8px)]" id={isWarningAndMedium ? "node-233_142" : isWarningAndSmall ? "node-207_49" : isPositiveAndMedium ? "node-233_137" : isPositiveAndSmall ? "node-207_33" : isNegativeAndMedium ? "node-233_132" : isNegativeAndSmall ? "node-207_21" : isDefaultAndMedium ? "node-233_127" : "node-207_20"} data-name="Background" />
+      {isNegative && (
+        <>
+          <div className={`overflow-clip relative shrink-0 ${isMedium ? "size-[20px]" : "size-[16px]"}`} id={isMedium ? "node-233_133" : "node-205_723"} data-name="icons/alarm">
+            <div className={`absolute ${isMedium ? "inset-[3.9%_3.91%_4.43%_4.42%]" : "inset-[3.9%_3.91%_4.43%_4.43%]"}`} id={isMedium ? "node-I233_133-205_699" : "node-I205_723-205_699"} data-name="Union">
+              <img alt="" className="absolute block inset-0 max-w-none size-full" src={isMedium ? imgUnion3 : imgUnion2} />
+            </div>
+          </div>
+          <div className={`content-stretch flex items-center justify-center overflow-clip relative shrink-0 ${isMedium ? String.raw`gap-[var(--spacing\/gap\/small,8px)] p-[var(--spacing\/gap\/none,0px)]` : String.raw`pb-[var(--spacing\/gap\/3xsmall,2px)]`}`} id={isMedium ? "node-233_134" : "node-205_724"} data-name="label">
+            {isSmall && (
+              <p className="[word-break:break-word] font-[family-name:var(--font-family\/base,'General_Sans_Variable:Medium')] font-[var(--typography\/label\/font-weight\/medium,500)] leading-[var(--typography\/label\/line-height,14px)] relative shrink-0 text-[color:var(--non-interactive\/foreground\/secondary,#d3d9d5)] text-[length:var(--typography\/label\/font-size,12px)] text-center tracking-[var(--typography\/label\/letter-spacing,0px)] whitespace-nowrap" data-node-id="205:725">
+                {label}
+              </p>
+            )}
+            {isMedium && (
+              <p className="[word-break:break-word] font-[family-name:var(--font-family\/base,'General_Sans_Variable:Medium')] font-[var(--typography\/body\/font-weight\/medium,500)] leading-[var(--typography\/body\/line-height,22px)] relative shrink-0 text-[color:var(--non-interactive\/foreground\/secondary,#d3d9d5)] text-[length:var(--typography\/body\/font-size,16px)] text-center tracking-[var(--typography\/body\/letter-spacing,0px)] whitespace-nowrap" data-node-id="233:135">
+                {label}
+              </p>
+            )}
+          </div>
+        </>
+      )}
+      {isPositive && (
+        <>
+          <div className={`overflow-clip relative shrink-0 ${isMedium ? "size-[20px]" : "size-[16px]"}`} id={isMedium ? "node-233_138" : "node-207_34"} data-name="icons/positive">
+            <div className="absolute inset-[3.9%_4.43%_4.43%_3.91%]" id={isMedium ? "node-I233_138-205_695" : "node-I207_34-205_695"} data-name="Union">
+              <img alt="" className="absolute block inset-0 max-w-none size-full" src={isMedium ? imgUnion5 : imgUnion4} />
+            </div>
+          </div>
+          <div className={`content-stretch flex items-center justify-center overflow-clip relative shrink-0 ${isMedium ? String.raw`gap-[var(--spacing\/gap\/small,8px)] p-[var(--spacing\/gap\/none,0px)]` : String.raw`pb-[var(--spacing\/gap\/3xsmall,2px)]`}`} id={isMedium ? "node-233_139" : "node-207_35"} data-name="label">
+            {isSmall && (
+              <p className="[word-break:break-word] font-[family-name:var(--font-family\/base,'General_Sans_Variable:Medium')] font-[var(--typography\/label\/font-weight\/medium,500)] leading-[var(--typography\/label\/line-height,14px)] relative shrink-0 text-[color:var(--non-interactive\/foreground\/secondary,#d3d9d5)] text-[length:var(--typography\/label\/font-size,12px)] text-center tracking-[var(--typography\/label\/letter-spacing,0px)] whitespace-nowrap" data-node-id="207:36">
+                {label}
+              </p>
+            )}
+            {isMedium && (
+              <p className="[word-break:break-word] font-[family-name:var(--font-family\/base,'General_Sans_Variable:Medium')] font-[var(--typography\/body\/font-weight\/medium,500)] leading-[var(--typography\/body\/line-height,22px)] relative shrink-0 text-[color:var(--non-interactive\/foreground\/secondary,#d3d9d5)] text-[length:var(--typography\/body\/font-size,16px)] text-center tracking-[var(--typography\/body\/letter-spacing,0px)] whitespace-nowrap" data-node-id="233:140">
+                {label}
+              </p>
+            )}
+          </div>
+        </>
+      )}
+      {isWarning && (
+        <>
+          <div className={`overflow-clip relative shrink-0 ${isMedium ? "size-[20px]" : "size-[16px]"}`} id={isMedium ? "node-233_143" : "node-207_50"} data-name="icons/warning">
+            <div className={`absolute ${isMedium ? "inset-[8.04%_6.88%_12.76%_5.32%]" : "inset-[8.04%_6.89%_12.76%_5.32%]"}`} id={isMedium ? "node-I233_143-205_689" : "node-I207_50-205_689"} data-name="Union">
+              <img alt="" className="absolute block inset-0 max-w-none size-full" src={isMedium ? imgUnion7 : imgUnion6} />
+            </div>
+          </div>
+          <div className={`content-stretch flex items-center justify-center overflow-clip relative shrink-0 ${isMedium ? String.raw`gap-[var(--spacing\/gap\/small,8px)] p-[var(--spacing\/gap\/none,0px)]` : String.raw`pb-[var(--spacing\/gap\/3xsmall,2px)]`}`} id={isMedium ? "node-233_144" : "node-207_51"} data-name="label">
+            {isSmall && (
+              <p className="[word-break:break-word] font-[family-name:var(--font-family\/base,'General_Sans_Variable:Medium')] font-[var(--typography\/label\/font-weight\/medium,500)] leading-[var(--typography\/label\/line-height,14px)] relative shrink-0 text-[color:var(--non-interactive\/foreground\/secondary,#d3d9d5)] text-[length:var(--typography\/label\/font-size,12px)] text-center tracking-[var(--typography\/label\/letter-spacing,0px)] whitespace-nowrap" data-node-id="207:52">
+                {label}
+              </p>
+            )}
+            {isMedium && (
+              <p className="[word-break:break-word] font-[family-name:var(--font-family\/base,'General_Sans_Variable:Medium')] font-[var(--typography\/body\/font-weight\/medium,500)] leading-[var(--typography\/body\/line-height,22px)] relative shrink-0 text-[color:var(--non-interactive\/foreground\/secondary,#d3d9d5)] text-[length:var(--typography\/body\/font-size,16px)] text-center tracking-[var(--typography\/body\/letter-spacing,0px)] whitespace-nowrap" data-node-id="233:145">
+                {label}
+              </p>
+            )}
+          </div>
+        </>
+      )}
+      {isDefaultAndSmall && showSlot && (
+        <div className="content-stretch flex gap-[var(--spacing\/gap\/none,0px)] items-center p-[var(--spacing\/gap\/none,0px)] relative shrink-0" data-node-id="269:18" data-name="-> Slot">
+          {children || (
+            <div className="overflow-clip relative shrink-0 size-[16px]" data-node-id="205:635" data-name="icons/plus">
+              <div className="absolute inset-[12.5%]" data-node-id="I205:635;205:684" data-name="Union">
+                <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgUnion} />
+              </div>
+            </div>
+          )}
+        </div>
+      )}
+      {isDefaultAndSmall && (
+        <div className="content-stretch flex items-center justify-center overflow-clip pb-[var(--spacing\/gap\/3xsmall,2px)] relative shrink-0" data-node-id="205:639" data-name="label">
+          <p className="[word-break:break-word] font-[family-name:var(--font-family\/base,'General_Sans_Variable:Medium')] font-[var(--typography\/label\/font-weight\/medium,500)] leading-[var(--typography\/label\/line-height,14px)] relative shrink-0 text-[color:var(--non-interactive\/foreground\/secondary,#d3d9d5)] text-[length:var(--typography\/label\/font-size,12px)] text-center tracking-[var(--typography\/label\/letter-spacing,0px)] whitespace-nowrap" data-node-id="205:616">
+            {label}
+          </p>
+        </div>
+      )}
+      {isDefaultAndMedium && showSlot && (
+        <div className="content-stretch flex gap-[var(--spacing\/gap\/none,0px)] items-center p-[var(--spacing\/gap\/none,0px)] relative shrink-0" data-node-id="269:19" data-name="-> Slot">
+          {children || (
+            <div className="overflow-clip relative shrink-0 size-[20px]" data-node-id="269:20" data-name="icons/plus">
+              <div className="absolute inset-[12.5%]" data-node-id="I269:20;205:684" data-name="Union">
+                <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgUnion1} />
+              </div>
+            </div>
+          )}
+        </div>
+      )}
+      {isDefaultAndMedium && (
+        <div className="content-stretch flex gap-[var(--spacing\/gap\/small,8px)] items-center justify-center overflow-clip p-[var(--spacing\/gap\/none,0px)] relative shrink-0" data-node-id="233:129" data-name="label">
+          <p className="[word-break:break-word] font-[family-name:var(--font-family\/base,'General_Sans_Variable:Medium')] font-[var(--typography\/body\/font-weight\/medium,500)] leading-[var(--typography\/body\/line-height,22px)] relative shrink-0 text-[color:var(--non-interactive\/foreground\/secondary,#d3d9d5)] text-[length:var(--typography\/body\/font-size,16px)] text-center tracking-[var(--typography\/body\/letter-spacing,0px)] whitespace-nowrap" data-node-id="233:130">
+            {label}
+          </p>
+        </div>
+      )}
+    </div>
+  );
+}
+SUPER CRITICAL: The generated React+Tailwind code MUST be converted to match the target project's technology stack and styling system.
+1. Analyze the target codebase to identify: technology stack, styling approach, component patterns, and design tokens
+2. Convert React syntax to the target framework/library
+3. Transform all Tailwind classes to the target styling system while preserving exact visual design
+4. Follow the project's existing patterns and conventions
+DO NOT install any Tailwind as a dependency unless the user instructs you to do so.
+
+Node ids have been added to the code as data attributes, e.g. `data-node-id="1:2"`.
+These styles are contained in the design: label/medium: Font(family: "font-family/base", style: Medium, size: typography/label/font-size, weight: typography/label/font-weight/medium, lineHeight: typography/label/line-height, letterSpacing: typography/label/letter-spacing), body/medium: Font(family: "font-family/base", style: Medium, size: typography/body/font-size, weight: typography/body/font-weight/medium, lineHeight: typography/body/line-height, letterSpacing: typography/body/letter-spacing).
+Image assets are stored on a localhost server. Clients can use these images directly in code as a way to view the image assets the same way they would other remote servers. Images and SVGs will be stored as constants, e.g. const image = 'http://localhost:3845/assets/10c13ac1a228a365cb98a0064b1d5afbc84887b2.png' These constants will be used in the code as the source for the image, e.g. <img src={image} /> This is true for both images and SVGs, so you can use the same approach for both types of assets.
+IMPORTANT: After you call this tool, you MUST call get_screenshot to get a screenshot of the node for context.

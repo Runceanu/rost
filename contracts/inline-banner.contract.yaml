@@ -1,0 +1,186 @@
+# yaml-language-server: $schema=../schema/component-contract.schema.json
+schemaVersion: 2
+id: inline-banner
+name: InlineBanner
+kind: component
+status: review
+summary: A filled status pill with a leading glyph and a label, in four statuses and two sizes.
+category: feedback
+related: [ badge, input ]
+source:
+  tool: figma
+  fileKey: 1Zy0wiWKXQAvsfDBX3KR0d
+  nodeId: "205:614"
+  url: https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=205-614
+  extractedAt: "2026-08-18"
+  extractedBy: mcp
+props:
+  status:
+    type: enum
+    values: [ Default, Negative, Positive, Warning ]
+    default: Default
+  size:
+    type: enum
+    values: [ Medium, Small ]
+    default: Medium
+elements:
+  root:
+    styles:
+      align-items: { value: center }
+      padding: { token: spacing/gap/small, value: 8px }
+      border-radius: { token: spacing/radius/small, value: 8px }
+  background:
+    styles:
+      position: { value: absolute }
+      inset: { value: "0" }
+      background: { token: non-interactive/background/tertiary, value: "#3a3a3a" }
+      opacity: { token: opacity/mild, value: "0.32" }
+      border-radius: { token: spacing/radius/small, value: 8px }
+  -slot: {}
+  icons-plus: {}
+  union:
+    styles:
+      position: { value: absolute }
+      inset: { value: "0" }
+  label:
+    styles:
+      overflow: { value: clip }
+      justify-content: { value: center }
+      align-items: { value: center }
+  icons-alarm: {}
+  icons-positive: {}
+  icons-warning: {}
+variants:
+  - when: { status: Default, size: Small }
+    figmaNode: "205:615"
+    elements:
+      root:
+        gap: { token: spacing/gap/2xsmall, value: 4px }
+      -slot:
+        align-items: { value: center }
+        gap: { token: spacing/gap/none, value: 0px }
+        padding: { token: spacing/gap/none, value: 0px }
+      icons-plus:
+        overflow: { value: clip }
+        width: { value: 16px, suggest: spacing/size/2xsmall }
+        height: { value: 16px, suggest: spacing/size/2xsmall }
+      label:
+        padding-bottom: { token: spacing/gap/3xsmall, value: 2px }
+  - when: { status: Negative, size: Small }
+    figmaNode: "205:722"
+    elements:
+      root:
+        gap: { token: spacing/gap/2xsmall, value: 4px }
+        opacity: { token: opacity/solid, value: "1" }
+      label:
+        padding-bottom: { token: spacing/gap/3xsmall, value: 2px }
+      icons-alarm:
+        overflow: { value: clip }
+        width: { value: 16px, suggest: spacing/size/2xsmall }
+        height: { value: 16px, suggest: spacing/size/2xsmall }
+  - when: { status: Positive, size: Small }
+    figmaNode: "207:32"
+    elements:
+      root:
+        gap: { token: spacing/gap/2xsmall, value: 4px }
+        opacity: { token: opacity/solid, value: "1" }
+      label:
+        padding-bottom: { token: spacing/gap/3xsmall, value: 2px }
+      icons-positive:
+        overflow: { value: clip }
+        width: { value: 16px, suggest: spacing/size/2xsmall }
+        height: { value: 16px, suggest: spacing/size/2xsmall }
+  - when: { status: Warning, size: Small }
+    figmaNode: "207:48"
+    elements:
+      root:
+        gap: { token: spacing/gap/2xsmall, value: 4px }
+        opacity: { token: opacity/solid, value: "1" }
+      label:
+        padding-bottom: { token: spacing/gap/3xsmall, value: 2px }
+      icons-warning:
+        overflow: { value: clip }
+        width: { value: 16px, suggest: spacing/size/2xsmall }
+        height: { value: 16px, suggest: spacing/size/2xsmall }
+  - when: { status: Default, size: Medium }
+    figmaNode: "233:126"
+    elements:
+      root:
+        gap: { token: spacing/gap/small, value: 8px }
+      -slot:
+        align-items: { value: center }
+        gap: { token: spacing/gap/none, value: 0px }
+        padding: { token: spacing/gap/none, value: 0px }
+      icons-plus:
+        overflow: { value: clip }
+        width: { value: 20px, suggest: spacing/size/xsmall }
+        height: { value: 20px, suggest: spacing/size/xsmall }
+      label:
+        gap: { token: spacing/gap/small, value: 8px }
+        padding: { token: spacing/gap/none, value: 0px }
+  - when: { status: Negative, size: Medium }
+    figmaNode: "233:131"
+    elements:
+      root:
+        gap: { token: spacing/gap/small, value: 8px }
+        opacity: { token: opacity/solid, value: "1" }
+      icons-alarm:
+        overflow: { value: clip }
+        width: { value: 20px, suggest: spacing/size/xsmall }
+        height: { value: 20px, suggest: spacing/size/xsmall }
+      label:
+        gap: { token: spacing/gap/small, value: 8px }
+        padding: { token: spacing/gap/none, value: 0px }
+  - when: { status: Positive, size: Medium }
+    figmaNode: "233:136"
+    elements:
+      root:
+        gap: { token: spacing/gap/small, value: 8px }
+        opacity: { token: opacity/solid, value: "1" }
+      icons-positive:
+        overflow: { value: clip }
+        width: { value: 20px, suggest: spacing/size/xsmall }
+        height: { value: 20px, suggest: spacing/size/xsmall }
+      label:
+        gap: { token: spacing/gap/small, value: 8px }
+        padding: { token: spacing/gap/none, value: 0px }
+  - when: { status: Warning, size: Medium }
+    figmaNode: "233:141"
+    elements:
+      root:
+        gap: { token: spacing/gap/small, value: 8px }
+        opacity: { token: opacity/solid, value: "1" }
+      icons-warning:
+        overflow: { value: clip }
+        width: { value: 20px, suggest: spacing/size/xsmall }
+        height: { value: 20px, suggest: spacing/size/xsmall }
+      label:
+        gap: { token: spacing/gap/small, value: 8px }
+        padding: { token: spacing/gap/none, value: 0px }
+guidance:
+  status: proposed
+  use:
+    - |-
+      To state something about the page or section the reader should notice: saved, offline, available for work, action needed.
+    - |-
+      `Small` inline with text, `Medium` on its own line or at the top of a section.
+  avoid:
+    - To label an item's status in a list or table, use **Badge**. It is outlined, smaller and quieter.
+    - For something that needs a decision, use a dialog. A banner informs, it doesn't ask.
+  behaviour: |-
+    `status` (`Default`, `Positive`, `Negative`, `Warning`) sets the fill and the glyph: plus, positive, alarm, warning. It is not interactive: no hover, no focus.
+  accessibility:
+    element: |-
+      a `<span>` or `<p>`. If it appears in response to something the user did, put it in a live region (`role="status"`, or `role="alert"` for `Negative`).
+    colour: the glyph carries the status as well as the fill. While glyphs are not exported (see accounting-app's deviation), the label must say the status in words.
+    glyph: "`aria-hidden=\"true\"`. The label carries the meaning."
+  content: |-
+    One short sentence, no full stop if it is a fragment. Lead with the state: "Saved just now", "Payment failed: card expired".
+implementations:
+  accounting-app:
+    component: src/components/InlineBanner.tsx
+    root: .ak-banner
+    deviations:
+      - what: Renders label-only; the per-status glyph (plus / alarm / positive / warning) is an optional slot.
+        why: The kit glyphs are not exported yet, and drawing substitutes would ship something the kit does not contain.
+        raisedWithDesign: false

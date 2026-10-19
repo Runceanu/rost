@@ -1,0 +1,319 @@
+# yaml-language-server: $schema=../schema/component-contract.schema.json
+schemaVersion: 2
+id: button
+name: Button
+kind: component
+status: review
+summary: A label-only action at 48px, in four levels of emphasis.
+category: actions
+related: [ pill-button, icon-button ]
+source:
+  tool: figma
+  fileKey: 1Zy0wiWKXQAvsfDBX3KR0d
+  nodeId: "39:38"
+  url: https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=39-38
+  extractedAt: "2026-08-18"
+  extractedBy: mcp
+props:
+  type:
+    type: enum
+    values: [ Borderless, Primary, Secondary, Tertiary ]
+    default: Borderless
+states: [ Default, Hover, Pressed, Focus, Disabled ]
+elements:
+  root:
+    styles:
+      justify-content: { value: center }
+      align-items: { value: center }
+      gap: { token: spacing/gap/small, value: 8px }
+      height: { token: spacing/size/medium-large, value: 48px }
+      border-radius: { token: spacing/radius/full, value: 10000px }
+  label:
+    styles:
+      font-family: { token: font-family/base, value: "'General Sans Variable'" }
+      font-weight: { token: typography/body/font-weight/medium, value: "500" }
+      line-height: { token: typography/body/line-height, value: 22px }
+      color: { token: actions/primary/default/label, value: "#060805" }
+      font-size: { token: typography/body/font-size, value: 16px }
+      letter-spacing: { token: typography/body/letter-spacing, value: 0px }
+  background: {}
+  focus-ring: {}
+variants:
+  - when: { type: Primary, state: Default }
+    figmaNode: "39:39"
+    elements:
+      root:
+        border-sides: { value: left top }
+        background: { token: actions/primary/default/background, value: "#00d669" }
+        border-color: { token: actions/primary/default/outline, value: "rgba(237,237,237,0.64)" }
+        border-top-width: { token: spacing/outline/small, value: 1px }
+        padding-left: { token: spacing/gap/medium-large, value: 20px }
+        padding-right: { token: spacing/gap/medium-large, value: 20px }
+        padding-top: { token: spacing/gap/none, value: 0px }
+        padding-bottom: { token: spacing/gap/none, value: 0px }
+  - when: { type: Secondary, state: Default }
+    figmaNode: "39:41"
+    elements:
+      root:
+        padding-left: { token: spacing/gap/medium-large, value: 20px }
+        padding-right: { token: spacing/gap/medium-large, value: 20px }
+        padding-top: { token: spacing/gap/none, value: 0px }
+        padding-bottom: { token: spacing/gap/none, value: 0px }
+      background:
+        border-sides: { value: left top }
+        position: { value: absolute }
+        inset: { value: "0" }
+        background: { token: actions/secondary/regular/default/background, value: "#3a3a3a" }
+        border-color: { token: actions/secondary/regular/default/outline, value: "#ededed" }
+        opacity: { token: opacity/gentle, value: "0.24" }
+        border-radius: { token: spacing/radius/full, value: 10000px }
+  - when: { type: Tertiary, state: Default }
+    figmaNode: "39:44"
+    elements:
+      root:
+        padding-left: { token: spacing/gap/medium-large, value: 20px }
+        padding-right: { token: spacing/gap/medium-large, value: 20px }
+        padding-top: { token: spacing/gap/none, value: 0px }
+        padding-bottom: { token: spacing/gap/none, value: 0px }
+  - when: { type: Borderless, state: Default }
+    figmaNode: "39:46"
+    elements:
+      root:
+        padding: { token: spacing/gap/none, value: 0px }
+  - when: { type: Primary, state: Hover }
+    figmaNode: "39:48"
+    elements:
+      root:
+        border-sides: { value: left top }
+        background: { token: actions/primary/hover/background, value: "#00b450" }
+        border-color: { token: actions/primary/hover/outline, value: "rgba(237,237,237,0.64)" }
+        border-top-width: { token: spacing/outline/small, value: 1px }
+        padding-left: { token: spacing/gap/medium-large, value: 20px }
+        padding-right: { token: spacing/gap/medium-large, value: 20px }
+        padding-top: { token: spacing/gap/none, value: 0px }
+        padding-bottom: { token: spacing/gap/none, value: 0px }
+  - when: { type: Secondary, state: Hover }
+    figmaNode: "39:50"
+    elements:
+      root:
+        padding-left: { token: spacing/gap/medium-large, value: 20px }
+        padding-right: { token: spacing/gap/medium-large, value: 20px }
+        padding-top: { token: spacing/gap/none, value: 0px }
+        padding-bottom: { token: spacing/gap/none, value: 0px }
+      background:
+        border-sides: { value: left top }
+        position: { value: absolute }
+        inset: { value: "0" }
+        background: { token: actions/secondary/regular/hover/background, value: "#747573" }
+        border-color: { token: actions/secondary/regular/hover/outline, value: "#ededed" }
+        opacity: { token: opacity/mild, value: "0.32" }
+        border-radius: { token: spacing/radius/full, value: 10000px }
+  - when: { type: Tertiary, state: Hover }
+    figmaNode: "39:53"
+    elements:
+      root:
+        padding-left: { token: spacing/gap/medium-large, value: 20px }
+        padding-right: { token: spacing/gap/medium-large, value: 20px }
+        padding-top: { token: spacing/gap/none, value: 0px }
+        padding-bottom: { token: spacing/gap/none, value: 0px }
+      background:
+        position: { value: absolute }
+        inset: { value: "0" }
+        background: { token: actions/tertiary/hover/background, value: "#060805" }
+        opacity: { token: opacity/mild, value: "0.32" }
+        border-radius: { token: spacing/radius/full, value: 10000px }
+  - when: { type: Borderless, state: Hover }
+    figmaNode: "39:56"
+    elements:
+      background:
+        position: { value: absolute }
+        inset: { value: "0" }
+        background: { token: actions/tertiary/hover/background, value: "#060805" }
+        opacity: { token: opacity/mild, value: "0.32" }
+      root:
+        padding: { token: spacing/gap/none, value: 0px }
+  - when: { type: Primary, state: Pressed }
+    figmaNode: "39:59"
+    elements:
+      root:
+        border-sides: { value: left top }
+        background: { token: actions/primary/pressed/background, value: "#00913a" }
+        border-color: { token: actions/primary/pressed/outline, value: "rgba(237,237,237,0.64)" }
+        border-top-width: { token: spacing/outline/small, value: 1px }
+        padding-left: { token: spacing/gap/medium-large, value: 20px }
+        padding-right: { token: spacing/gap/medium-large, value: 20px }
+        padding-top: { token: spacing/gap/none, value: 0px }
+        padding-bottom: { token: spacing/gap/none, value: 0px }
+  - when: { type: Secondary, state: Pressed }
+    figmaNode: "39:61"
+    elements:
+      root:
+        padding-left: { token: spacing/gap/medium-large, value: 20px }
+        padding-right: { token: spacing/gap/medium-large, value: 20px }
+        padding-top: { token: spacing/gap/none, value: 0px }
+        padding-bottom: { token: spacing/gap/none, value: 0px }
+      background:
+        border-sides: { value: left top }
+        position: { value: absolute }
+        inset: { value: "0" }
+        background: { token: actions/secondary/regular/pressed/background, value: "#999" }
+        border-color: { token: actions/secondary/regular/pressed/outline, value: "#ededed" }
+        opacity: { token: opacity/mild, value: "0.32" }
+        border-radius: { token: spacing/radius/full, value: 10000px }
+  - when: { type: Tertiary, state: Pressed }
+    figmaNode: "39:64"
+    elements:
+      root:
+        padding-left: { token: spacing/gap/medium-large, value: 20px }
+        padding-right: { token: spacing/gap/medium-large, value: 20px }
+        padding-top: { token: spacing/gap/none, value: 0px }
+        padding-bottom: { token: spacing/gap/none, value: 0px }
+      background:
+        position: { value: absolute }
+        inset: { value: "0" }
+        background: { token: actions/tertiary/pressed/background, value: "#454545" }
+        opacity: { token: opacity/mild, value: "0.32" }
+        border-radius: { token: spacing/radius/full, value: 10000px }
+  - when: { type: Borderless, state: Pressed }
+    figmaNode: "39:67"
+    elements:
+      background:
+        position: { value: absolute }
+        inset: { value: "0" }
+        background: { token: actions/tertiary/pressed/background, value: "#454545" }
+        opacity: { token: opacity/mild, value: "0.32" }
+      root:
+        padding: { token: spacing/gap/none, value: 0px }
+  - when: { type: Primary, state: Disabled }
+    figmaNode: "39:70"
+    elements:
+      root:
+        border-sides: { value: left top }
+        background: { token: actions/primary/disabled/background, value: "#00d669" }
+        border-color: { token: actions/primary/disabled/outline, value: "rgba(237,237,237,0.64)" }
+        border-top-width: { token: spacing/outline/small, value: 1px }
+        padding-left: { token: spacing/gap/medium-large, value: 20px }
+        padding-right: { token: spacing/gap/medium-large, value: 20px }
+        padding-top: { token: spacing/gap/none, value: 0px }
+        padding-bottom: { token: spacing/gap/none, value: 0px }
+        opacity: { token: opacity/gentle, value: "0.24" }
+  - when: { type: Secondary, state: Disabled }
+    figmaNode: "39:72"
+    elements:
+      root:
+        padding-left: { token: spacing/gap/medium-large, value: 20px }
+        padding-right: { token: spacing/gap/medium-large, value: 20px }
+        padding-top: { token: spacing/gap/none, value: 0px }
+        padding-bottom: { token: spacing/gap/none, value: 0px }
+        opacity: { token: opacity/gentle, value: "0.24" }
+      background:
+        border-sides: { value: left top }
+        position: { value: absolute }
+        inset: { value: "0" }
+        background: { token: actions/secondary/regular/disabled/background, value: "#3a3a3a" }
+        border-color: { token: actions/secondary/regular/disabled/outline, value: "#ededed" }
+        opacity: { token: opacity/mild, value: "0.32" }
+        border-radius: { token: spacing/radius/full, value: 10000px }
+  - when: { type: Tertiary, state: Disabled }
+    figmaNode: "39:75"
+    elements:
+      root:
+        padding-left: { token: spacing/gap/medium-large, value: 20px }
+        padding-right: { token: spacing/gap/medium-large, value: 20px }
+        padding-top: { token: spacing/gap/none, value: 0px }
+        padding-bottom: { token: spacing/gap/none, value: 0px }
+        opacity: { token: opacity/gentle, value: "0.24" }
+  - when: { type: Borderless, state: Disabled }
+    figmaNode: "39:77"
+    elements:
+      root:
+        padding: { token: spacing/gap/none, value: 0px }
+        opacity: { token: opacity/gentle, value: "0.24" }
+  - when: { type: Primary, state: Focus }
+    figmaNode: "39:79"
+    elements:
+      root:
+        border-sides: { value: left top }
+        background: { token: actions/primary/focus/background, value: "#00d669" }
+        border-color: { token: actions/primary/focus/outline, value: "rgba(237,237,237,0.64)" }
+        border-top-width: { token: spacing/outline/small, value: 1px }
+        padding-left: { token: spacing/gap/medium-large, value: 20px }
+        padding-right: { token: spacing/gap/medium-large, value: 20px }
+        padding-top: { token: spacing/gap/none, value: 0px }
+        padding-bottom: { token: spacing/gap/none, value: 0px }
+      focus-ring:
+        border-sides: { value: all }
+        position: { value: absolute }
+        border-width: { token: spacing/outline/medium, value: 2px }
+        border-color: { token: actions/primary/focus/focus-ring, value: "#b6ffda" }
+        border-radius: { token: spacing/radius/full, value: 10000px }
+  - when: { type: Secondary, state: Focus }
+    figmaNode: "39:82"
+    elements:
+      root:
+        padding-left: { token: spacing/gap/medium-large, value: 20px }
+        padding-right: { token: spacing/gap/medium-large, value: 20px }
+        padding-top: { token: spacing/gap/none, value: 0px }
+        padding-bottom: { token: spacing/gap/none, value: 0px }
+      background:
+        border-sides: { value: left top }
+        position: { value: absolute }
+        inset: { value: "0" }
+        background: { token: actions/secondary/regular/focus/background, value: "#3a3a3a" }
+        border-color: { token: actions/secondary/regular/focus/outline, value: "#ededed" }
+        opacity: { token: opacity/gentle, value: "0.24" }
+        border-radius: { token: spacing/radius/full, value: 10000px }
+      focus-ring:
+        border-sides: { value: all }
+        position: { value: absolute }
+        border-width: { token: spacing/outline/medium, value: 2px }
+        border-color: { token: actions/secondary/regular/focus/focus-ring, value: "#999" }
+        border-radius: { token: spacing/radius/full, value: 10000px }
+  - when: { type: Tertiary, state: Focus }
+    figmaNode: "39:86"
+    elements:
+      root:
+        padding-left: { token: spacing/gap/medium-large, value: 20px }
+        padding-right: { token: spacing/gap/medium-large, value: 20px }
+        padding-top: { token: spacing/gap/none, value: 0px }
+        padding-bottom: { token: spacing/gap/none, value: 0px }
+      focus-ring:
+        border-sides: { value: all }
+        position: { value: absolute }
+        border-width: { token: spacing/outline/medium, value: 2px }
+        border-color: { token: actions/secondary/regular/focus/focus-ring, value: "#999" }
+        border-radius: { token: spacing/radius/full, value: 10000px }
+  - when: { type: Borderless, state: Focus }
+    figmaNode: "39:89"
+    elements:
+      root:
+        padding: { token: spacing/gap/none, value: 0px }
+      focus-ring:
+        border-sides: { value: all }
+        position: { value: absolute }
+        border-width: { token: spacing/outline/medium, value: 2px }
+        border-color: { token: actions/secondary/regular/focus/focus-ring, value: "#999" }
+guidance:
+  status: proposed
+  use:
+    - "To start an action: submit, save, continue, open."
+    - |-
+      `Primary` for the one action a view is built around. One per view, at most.
+    - |-
+      `Secondary` for alternatives next to it, `Tertiary` for low-stakes actions, `Borderless` inside dense surfaces where an outline would be noise.
+  avoid:
+    - If the action needs an icon to read, use **PillButton**. If it is icon-only, use **IconButton**.
+    - To go somewhere, use a link. A button that navigates loses open-in-new-tab and history semantics.
+    - To choose one of several options, use **Toggle** or **Chip**.
+  behaviour: |-
+    `type` sets emphasis. `state` is never a prop in code: `Hover`, `Pressed` and `Focus` come from `:hover`, `:active` and `:focus-visible`. `Disabled` is the only state the caller sets. The background drops to `opacity/gentle` while the label stays legible.
+  accessibility:
+    element: "`<button type=\"button\">` (or `type=\"submit\"` inside a form)."
+    name: |-
+      the visible label. Never replace it with `aria-label` text that differs.
+    keyboard: Enter and Space activate.
+    focus: the `focus-ring` part, 2px, drawn on `:focus-visible` only.
+    disabled: |-
+      prefer `aria-disabled="true"` with an explanation nearby over `disabled`, which removes the button from the tab order and hides why it can't be used.
+  content: |-
+    A verb, sentence case, two or three words: "Save changes", not "OK" or "SUBMIT". The label states the outcome.

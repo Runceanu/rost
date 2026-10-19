@@ -1,0 +1,127 @@
+type ButtonProps = {
+  className?: string;
+  label?: string;
+  state?: "Default" | "Hover" | "Focus" | "Pressed" | "Disabled";
+  type?: "Primary" | "Secondary" | "Tertiary" | "Borderless";
+};
+
+export default function Button({ className, label = "label", state = "Default", type = "Primary" }: ButtonProps) {
+  const isBorderless = type === "Borderless";
+  const isBorderlessAndDisabled = type === "Borderless" && state === "Disabled";
+  const isBorderlessAndHover = type === "Borderless" && state === "Hover";
+  const isBorderlessAndPressed = type === "Borderless" && state === "Pressed";
+  const isFocusAndIsTertiaryOrBorderless = state === "Focus" && ["Tertiary", "Borderless"].includes(type);
+  const isPrimaryAndDisabled = type === "Primary" && state === "Disabled";
+  const isPrimaryAndFocus = type === "Primary" && state === "Focus";
+  const isPrimaryAndHover = type === "Primary" && state === "Hover";
+  const isPrimaryAndPressed = type === "Primary" && state === "Pressed";
+  const isSecondaryAndDefault = type === "Secondary" && state === "Default";
+  const isSecondaryAndDisabled = type === "Secondary" && state === "Disabled";
+  const isSecondaryAndFocus = type === "Secondary" && state === "Focus";
+  const isSecondaryAndHover = type === "Secondary" && state === "Hover";
+  const isSecondaryAndPressed = type === "Secondary" && state === "Pressed";
+  const isTertiaryAndDefault = type === "Tertiary" && state === "Default";
+  const isTertiaryAndFocus = type === "Tertiary" && state === "Focus";
+  const isTertiaryAndHover = type === "Tertiary" && state === "Hover";
+  const isTertiaryAndPressed = type === "Tertiary" && state === "Pressed";
+  return (
+    <div className={className || `${String.raw`content-stretch flex gap-[var(--spacing\/gap\/small,8px)] h-[var(--spacing\/size\/medium-large,48px)] items-center justify-center relative rounded-[var(--spacing\/radius\/full,10000px)] `}${isPrimaryAndFocus ? String.raw`bg-[var(--actions\/primary\/focus\/background,#00d669)] border-[var(--actions\/primary\/focus\/outline,rgba(237,237,237,0.64))] border-l border-solid border-t-[length:var(--spacing\/outline\/small,1px)] px-[var(--spacing\/gap\/medium-large,20px)] py-[var(--spacing\/gap\/none,0px)]` : isBorderlessAndDisabled ? String.raw`opacity-[var(--opacity\/gentle,0.24)] p-[var(--spacing\/gap\/none,0px)]` : state === "Disabled" && ["Secondary", "Tertiary"].includes(type) ? String.raw`opacity-[var(--opacity\/gentle,0.24)] px-[var(--spacing\/gap\/medium-large,20px)] py-[var(--spacing\/gap\/none,0px)]` : isPrimaryAndDisabled ? String.raw`bg-[var(--actions\/primary\/disabled\/background,#00d669)] border-[var(--actions\/primary\/disabled\/outline,rgba(237,237,237,0.64))] border-l border-solid border-t-[length:var(--spacing\/outline\/small,1px)] opacity-[var(--opacity\/gentle,0.24)] px-[var(--spacing\/gap\/medium-large,20px)] py-[var(--spacing\/gap\/none,0px)]` : isPrimaryAndPressed ? String.raw`bg-[var(--actions\/primary\/pressed\/background,#00913a)] border-[var(--actions\/primary\/pressed\/outline,rgba(237,237,237,0.64))] border-l border-solid border-t-[length:var(--spacing\/outline\/small,1px)] px-[var(--spacing\/gap\/medium-large,20px)] py-[var(--spacing\/gap\/none,0px)]` : isPrimaryAndHover ? String.raw`bg-[var(--actions\/primary\/hover\/background,#00b450)] border-[var(--actions\/primary\/hover\/outline,rgba(237,237,237,0.64))] border-l border-solid border-t-[length:var(--spacing\/outline\/small,1px)] px-[var(--spacing\/gap\/medium-large,20px)] py-[var(--spacing\/gap\/none,0px)]` : type === "Borderless" && ["Default", "Hover", "Pressed", "Focus"].includes(state) ? String.raw`p-[var(--spacing\/gap\/none,0px)]` : isSecondaryAndDefault || isTertiaryAndDefault || isSecondaryAndHover || isTertiaryAndHover || isSecondaryAndPressed || isTertiaryAndPressed || isSecondaryAndFocus || isTertiaryAndFocus ? String.raw`px-[var(--spacing\/gap\/medium-large,20px)] py-[var(--spacing\/gap\/none,0px)]` : String.raw`bg-[var(--actions\/primary\/default\/background,#00d669)] border-[var(--actions\/primary\/default\/outline,rgba(237,237,237,0.64))] border-l border-solid border-t-[length:var(--spacing\/outline\/small,1px)] px-[var(--spacing\/gap\/medium-large,20px)] py-[var(--spacing\/gap\/none,0px)]`}`} id={type === "Borderless" && state === "Focus" ? "node-39_89" : isTertiaryAndFocus ? "node-39_86" : isSecondaryAndFocus ? "node-39_82" : isPrimaryAndFocus ? "node-39_79" : isBorderlessAndDisabled ? "node-39_77" : type === "Tertiary" && state === "Disabled" ? "node-39_75" : isSecondaryAndDisabled ? "node-39_72" : isPrimaryAndDisabled ? "node-39_70" : isBorderlessAndPressed ? "node-39_67" : isTertiaryAndPressed ? "node-39_64" : isSecondaryAndPressed ? "node-39_61" : isPrimaryAndPressed ? "node-39_59" : isBorderlessAndHover ? "node-39_56" : isTertiaryAndHover ? "node-39_53" : isSecondaryAndHover ? "node-39_50" : isPrimaryAndHover ? "node-39_48" : type === "Borderless" && state === "Default" ? "node-39_46" : isTertiaryAndDefault ? "node-39_44" : isSecondaryAndDefault ? "node-39_41" : "node-39_39"}>
+      {(type === "Secondary" || isTertiaryAndHover || isBorderlessAndHover || isTertiaryAndPressed || isBorderlessAndPressed) && <div className={`absolute inset-0 ${isSecondaryAndFocus ? String.raw`bg-[var(--actions\/secondary\/regular\/focus\/background,#3a3a3a)] border-[var(--actions\/secondary\/regular\/focus\/outline,#ededed)] border-l border-solid border-t opacity-[var(--opacity\/gentle,0.24)] rounded-[var(--spacing\/radius\/full,10000px)]` : isSecondaryAndDisabled ? String.raw`bg-[var(--actions\/secondary\/regular\/disabled\/background,#3a3a3a)] border-[var(--actions\/secondary\/regular\/disabled\/outline,#ededed)] border-l border-solid border-t opacity-[var(--opacity\/mild,0.32)] rounded-[var(--spacing\/radius\/full,10000px)]` : isBorderlessAndPressed ? String.raw`bg-[var(--actions\/tertiary\/pressed\/background,#454545)] opacity-[var(--opacity\/mild,0.32)]` : isTertiaryAndPressed ? String.raw`bg-[var(--actions\/tertiary\/pressed\/background,#454545)] opacity-[var(--opacity\/mild,0.32)] rounded-[var(--spacing\/radius\/full,10000px)]` : isSecondaryAndPressed ? String.raw`bg-[var(--actions\/secondary\/regular\/pressed\/background,#999)] border-[var(--actions\/secondary\/regular\/pressed\/outline,#ededed)] border-l border-solid border-t opacity-[var(--opacity\/mild,0.32)] rounded-[var(--spacing\/radius\/full,10000px)]` : isBorderlessAndHover ? String.raw`bg-[var(--actions\/tertiary\/hover\/background,#060805)] opacity-[var(--opacity\/mild,0.32)]` : isTertiaryAndHover ? String.raw`bg-[var(--actions\/tertiary\/hover\/background,#060805)] opacity-[var(--opacity\/mild,0.32)] rounded-[var(--spacing\/radius\/full,10000px)]` : isSecondaryAndHover ? String.raw`bg-[var(--actions\/secondary\/regular\/hover\/background,#747573)] border-[var(--actions\/secondary\/regular\/hover\/outline,#ededed)] border-l border-solid border-t opacity-[var(--opacity\/mild,0.32)] rounded-[var(--spacing\/radius\/full,10000px)]` : String.raw`bg-[var(--actions\/secondary\/regular\/default\/background,#3a3a3a)] border-[var(--actions\/secondary\/regular\/default\/outline,#ededed)] border-l border-solid border-t opacity-[var(--opacity\/gentle,0.24)] rounded-[var(--spacing\/radius\/full,10000px)]`}`} id={isSecondaryAndFocus ? "node-39_83" : isSecondaryAndDisabled ? "node-39_73" : isBorderlessAndPressed ? "node-39_68" : isTertiaryAndPressed ? "node-39_65" : isSecondaryAndPressed ? "node-39_62" : isBorderlessAndHover ? "node-39_57" : isTertiaryAndHover ? "node-39_54" : isSecondaryAndHover ? "node-39_51" : "node-39_42"} data-name="background" />}
+      {state === "Default" && ["Tertiary", "Borderless"].includes(type) && (
+        <p className="[word-break:break-word] font-[family-name:var(--font-family\/base,'General_Sans_Variable:Medium')] font-[var(--typography\/body\/font-weight\/medium,500)] leading-[var(--typography\/body\/line-height,22px)] relative shrink-0 text-[color:var(--actions\/tertiary\/default\/label,#d3d9d5)] text-[length:var(--typography\/body\/font-size,16px)] text-center tracking-[var(--typography\/body\/letter-spacing,0px)] whitespace-nowrap" data-node-id="39:45">
+          {label}
+        </p>
+      )}
+      {state === "Hover" && ["Tertiary", "Borderless"].includes(type) && (
+        <p className="[word-break:break-word] font-[family-name:var(--font-family\/base,'General_Sans_Variable:Medium')] font-[var(--typography\/body\/font-weight\/medium,500)] leading-[var(--typography\/body\/line-height,22px)] relative shrink-0 text-[color:var(--actions\/tertiary\/hover\/label,#ededed)] text-[length:var(--typography\/body\/font-size,16px)] text-center tracking-[var(--typography\/body\/letter-spacing,0px)] whitespace-nowrap" data-node-id="39:55">
+          {label}
+        </p>
+      )}
+      {state === "Pressed" && ["Tertiary", "Borderless"].includes(type) && (
+        <p className="[word-break:break-word] font-[family-name:var(--font-family\/base,'General_Sans_Variable:Medium')] font-[var(--typography\/body\/font-weight\/medium,500)] leading-[var(--typography\/body\/line-height,22px)] relative shrink-0 text-[color:var(--actions\/tertiary\/pressed\/label,#d3d9d5)] text-[length:var(--typography\/body\/font-size,16px)] text-center tracking-[var(--typography\/body\/letter-spacing,0px)] whitespace-nowrap" data-node-id="39:66">
+          {label}
+        </p>
+      )}
+      {state === "Disabled" && ["Tertiary", "Borderless"].includes(type) && (
+        <p className="[word-break:break-word] font-[family-name:var(--font-family\/base,'General_Sans_Variable:Medium')] font-[var(--typography\/body\/font-weight\/medium,500)] leading-[var(--typography\/body\/line-height,22px)] relative shrink-0 text-[color:var(--actions\/tertiary\/disabled\/label,#d3d9d5)] text-[length:var(--typography\/body\/font-size,16px)] text-center tracking-[var(--typography\/body\/letter-spacing,0px)] whitespace-nowrap" data-node-id="39:76">
+          {label}
+        </p>
+      )}
+      {isFocusAndIsTertiaryOrBorderless && (
+        <>
+          <p className="[word-break:break-word] font-[family-name:var(--font-family\/base,'General_Sans_Variable:Medium')] font-[var(--typography\/body\/font-weight\/medium,500)] leading-[var(--typography\/body\/line-height,22px)] relative shrink-0 text-[color:var(--actions\/tertiary\/focus\/label,#d3d9d5)] text-[length:var(--typography\/body\/font-size,16px)] text-center tracking-[var(--typography\/body\/letter-spacing,0px)] whitespace-nowrap" data-node-id="39:87">
+            {label}
+          </p>
+          <div className={`${String.raw`absolute border-[length:var(--spacing\/outline\/medium,2px)] border-[var(--actions\/secondary\/regular\/focus\/focus-ring,#999)] border-solid inset-[-4px] `}${isBorderless ? "" : String.raw`rounded-[var(--spacing\/radius\/full,10000px)]`}`} id={isBorderless ? "node-39_91" : "node-39_88"} data-name="focus-ring" />
+        </>
+      )}
+      {type === "Primary" && state === "Default" && (
+        <p className="[word-break:break-word] font-[family-name:var(--font-family\/base,'General_Sans_Variable:Medium')] font-[var(--typography\/body\/font-weight\/medium,500)] leading-[var(--typography\/body\/line-height,22px)] relative shrink-0 text-[color:var(--actions\/primary\/default\/label,#060805)] text-[length:var(--typography\/body\/font-size,16px)] text-center tracking-[var(--typography\/body\/letter-spacing,0px)] whitespace-nowrap" data-node-id="39:40">
+          {label}
+        </p>
+      )}
+      {isSecondaryAndDefault && (
+        <p className="[word-break:break-word] font-[family-name:var(--font-family\/base,'General_Sans_Variable:Medium')] font-[var(--typography\/body\/font-weight\/medium,500)] leading-[var(--typography\/body\/line-height,22px)] relative shrink-0 text-[color:var(--actions\/secondary\/regular\/default\/label,#d3d9d5)] text-[length:var(--typography\/body\/font-size,16px)] text-center tracking-[var(--typography\/body\/letter-spacing,0px)] whitespace-nowrap" data-node-id="39:43">
+          {label}
+        </p>
+      )}
+      {isPrimaryAndHover && (
+        <p className="[word-break:break-word] font-[family-name:var(--font-family\/base,'General_Sans_Variable:Medium')] font-[var(--typography\/body\/font-weight\/medium,500)] leading-[var(--typography\/body\/line-height,22px)] relative shrink-0 text-[color:var(--actions\/primary\/hover\/label,#060805)] text-[length:var(--typography\/body\/font-size,16px)] text-center tracking-[var(--typography\/body\/letter-spacing,0px)] whitespace-nowrap" data-node-id="39:49">
+          {label}
+        </p>
+      )}
+      {isSecondaryAndHover && (
+        <p className="[word-break:break-word] font-[family-name:var(--font-family\/base,'General_Sans_Variable:Medium')] font-[var(--typography\/body\/font-weight\/medium,500)] leading-[var(--typography\/body\/line-height,22px)] relative shrink-0 text-[color:var(--actions\/secondary\/regular\/hover\/label,#ededed)] text-[length:var(--typography\/body\/font-size,16px)] text-center tracking-[var(--typography\/body\/letter-spacing,0px)] whitespace-nowrap" data-node-id="39:52">
+          {label}
+        </p>
+      )}
+      {isPrimaryAndPressed && (
+        <p className="[word-break:break-word] font-[family-name:var(--font-family\/base,'General_Sans_Variable:Medium')] font-[var(--typography\/body\/font-weight\/medium,500)] leading-[var(--typography\/body\/line-height,22px)] relative shrink-0 text-[color:var(--actions\/primary\/pressed\/label,#060805)] text-[length:var(--typography\/body\/font-size,16px)] text-center tracking-[var(--typography\/body\/letter-spacing,0px)] whitespace-nowrap" data-node-id="39:60">
+          {label}
+        </p>
+      )}
+      {isSecondaryAndPressed && (
+        <p className="[word-break:break-word] font-[family-name:var(--font-family\/base,'General_Sans_Variable:Medium')] font-[var(--typography\/body\/font-weight\/medium,500)] leading-[var(--typography\/body\/line-height,22px)] relative shrink-0 text-[color:var(--actions\/secondary\/regular\/pressed\/label,#d3d9d5)] text-[length:var(--typography\/body\/font-size,16px)] text-center tracking-[var(--typography\/body\/letter-spacing,0px)] whitespace-nowrap" data-node-id="39:63">
+          {label}
+        </p>
+      )}
+      {isPrimaryAndDisabled && (
+        <p className="[word-break:break-word] font-[family-name:var(--font-family\/base,'General_Sans_Variable:Medium')] font-[var(--typography\/body\/font-weight\/medium,500)] leading-[var(--typography\/body\/line-height,22px)] relative shrink-0 text-[color:var(--actions\/primary\/disabled\/label,#060805)] text-[length:var(--typography\/body\/font-size,16px)] text-center tracking-[var(--typography\/body\/letter-spacing,0px)] whitespace-nowrap" data-node-id="39:71">
+          {label}
+        </p>
+      )}
+      {isSecondaryAndDisabled && (
+        <p className="[word-break:break-word] font-[family-name:var(--font-family\/base,'General_Sans_Variable:Medium')] font-[var(--typography\/body\/font-weight\/medium,500)] leading-[var(--typography\/body\/line-height,22px)] relative shrink-0 text-[color:var(--actions\/secondary\/regular\/disabled\/label,#d3d9d5)] text-[length:var(--typography\/body\/font-size,16px)] text-center tracking-[var(--typography\/body\/letter-spacing,0px)] whitespace-nowrap" data-node-id="39:74">
+          {label}
+        </p>
+      )}
+      {isPrimaryAndFocus && (
+        <>
+          <p className="[word-break:break-word] font-[family-name:var(--font-family\/base,'General_Sans_Variable:Medium')] font-[var(--typography\/body\/font-weight\/medium,500)] leading-[var(--typography\/body\/line-height,22px)] relative shrink-0 text-[color:var(--actions\/primary\/focus\/label,#060805)] text-[length:var(--typography\/body\/font-size,16px)] text-center tracking-[var(--typography\/body\/letter-spacing,0px)] whitespace-nowrap" data-node-id="39:80">
+            {label}
+          </p>
+          <div className="absolute border-[length:var(--spacing\/outline\/medium,2px)] border-[var(--actions\/primary\/focus\/focus-ring,#b6ffda)] border-solid inset-[-5px_-4px_-4px_-5px] rounded-[var(--spacing\/radius\/full,10000px)]" data-node-id="39:81" data-name="focus-ring" />
+        </>
+      )}
+      {isSecondaryAndFocus && (
+        <>
+          <p className="[word-break:break-word] font-[family-name:var(--font-family\/base,'General_Sans_Variable:Medium')] font-[var(--typography\/body\/font-weight\/medium,500)] leading-[var(--typography\/body\/line-height,22px)] relative shrink-0 text-[color:var(--actions\/secondary\/regular\/focus\/label,#d3d9d5)] text-[length:var(--typography\/body\/font-size,16px)] text-center tracking-[var(--typography\/body\/letter-spacing,0px)] whitespace-nowrap" data-node-id="39:84">
+            {label}
+          </p>
+          <div className="absolute border-[length:var(--spacing\/outline\/medium,2px)] border-[var(--actions\/secondary\/regular\/focus\/focus-ring,#999)] border-solid inset-[-4px] rounded-[var(--spacing\/radius\/full,10000px)]" data-node-id="39:85" data-name="focus-ring" />
+        </>
+      )}
+    </div>
+  );
+}
+SUPER CRITICAL: The generated React+Tailwind code MUST be converted to match the target project's technology stack and styling system.
+1. Analyze the target codebase to identify: technology stack, styling approach, component patterns, and design tokens
+2. Convert React syntax to the target framework/library
+3. Transform all Tailwind classes to the target styling system while preserving exact visual design
+4. Follow the project's existing patterns and conventions
+DO NOT install any Tailwind as a dependency unless the user instructs you to do so.
+
+Node ids have been added to the code as data attributes, e.g. `data-node-id="1:2"`.
+These styles are contained in the design: body/medium: Font(family: "font-family/base", style: Medium, size: typography/body/font-size, weight: typography/body/font-weight/medium, lineHeight: typography/body/line-height, letterSpacing: typography/body/letter-spacing).
+Image assets are stored on a localhost server. Clients can use these images directly in code as a way to view the image assets the same way they would other remote servers. Images and SVGs will be stored as constants, e.g. const image = 'http://localhost:3845/assets/10c13ac1a228a365cb98a0064b1d5afbc84887b2.png' These constants will be used in the code as the source for the image, e.g. <img src={image} /> This is true for both images and SVGs, so you can use the same approach for both types of assets.
+IMPORTANT: After you call this tool, you MUST call get_screenshot to get a screenshot of the node for context.

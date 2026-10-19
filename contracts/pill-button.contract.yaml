@@ -1,0 +1,366 @@
+# yaml-language-server: $schema=../schema/component-contract.schema.json
+schemaVersion: 2
+id: pill-button
+name: PillButton
+kind: component
+status: review
+summary: A 48px action with a leading icon and a label. The kit's main call to action.
+category: actions
+related: [ button, icon-button ]
+source:
+  tool: figma
+  fileKey: 1Zy0wiWKXQAvsfDBX3KR0d
+  nodeId: "20:14"
+  url: https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=20-14
+  extractedAt: "2026-08-18"
+  extractedBy: mcp
+props:
+  type:
+    type: enum
+    values: [ Borderless, Primary, Secondary, Tertiary ]
+    default: Borderless
+states: [ Default, Hover, Pressed, Focus, Disabled ]
+elements:
+  root:
+    styles:
+      justify-content: { value: center }
+      align-items: { value: center }
+      gap: { token: spacing/gap/small, value: 8px }
+      height: { token: spacing/size/medium-large, value: 48px }
+      border-radius: { token: spacing/radius/full, value: 10000px }
+  icons-arrow-left:
+    styles:
+      overflow: { value: clip }
+      width: { value: 20px, suggest: spacing/size/xsmall }
+      height: { value: 20px, suggest: spacing/size/xsmall }
+  union:
+    styles:
+      position: { value: absolute }
+      inset: { value: "0" }
+  label:
+    styles:
+      font-family: { token: font-family/base, value: "'General Sans Variable'" }
+      font-weight: { token: typography/body/font-weight/medium, value: "500" }
+      line-height: { token: typography/body/line-height, value: 22px }
+      font-size: { token: typography/body/font-size, value: 16px }
+      letter-spacing: { token: typography/body/letter-spacing, value: 0px }
+  focus-ring: {}
+  background: {}
+variants:
+  - when: { type: Primary, state: Default }
+    figmaNode: "20:13"
+    elements:
+      root:
+        border-sides: { value: left top }
+        background: { token: actions/primary/default/background, value: "#00d669" }
+        border-color: { token: actions/primary/default/outline, value: "rgba(237,237,237,0.64)" }
+        border-top-width: { token: spacing/outline/small, value: 1px }
+        padding-left: { token: spacing/gap/medium-large, value: 20px }
+        padding-right: { token: spacing/gap/medium-large, value: 20px }
+        padding-top: { token: spacing/gap/none, value: 0px }
+        padding-bottom: { token: spacing/gap/none, value: 0px }
+      label:
+        color: { token: actions/primary/default/label, value: "#060805" }
+  - when: { type: Primary, state: Hover }
+    figmaNode: "20:15"
+    elements:
+      root:
+        border-sides: { value: left top }
+        background: { token: actions/primary/hover/background, value: "#00b450" }
+        border-color: { token: actions/primary/hover/outline, value: "rgba(237,237,237,0.64)" }
+        border-top-width: { token: spacing/outline/small, value: 1px }
+        padding-left: { token: spacing/gap/medium-large, value: 20px }
+        padding-right: { token: spacing/gap/medium-large, value: 20px }
+        padding-top: { token: spacing/gap/none, value: 0px }
+        padding-bottom: { token: spacing/gap/none, value: 0px }
+      label:
+        color: { token: actions/primary/hover/label, value: "#060805" }
+  - when: { type: Primary, state: Focus }
+    figmaNode: "20:17"
+    elements:
+      root:
+        border-sides: { value: left top }
+        background: { token: actions/primary/focus/background, value: "#00d669" }
+        border-color: { token: actions/primary/focus/outline, value: "rgba(237,237,237,0.64)" }
+        border-top-width: { token: spacing/outline/small, value: 1px }
+        padding-left: { token: spacing/gap/medium-large, value: 20px }
+        padding-right: { token: spacing/gap/medium-large, value: 20px }
+        padding-top: { token: spacing/gap/none, value: 0px }
+        padding-bottom: { token: spacing/gap/none, value: 0px }
+      label:
+        color: { token: actions/primary/focus/label, value: "#060805" }
+      focus-ring:
+        border-sides: { value: all }
+        position: { value: absolute }
+        border-width: { token: spacing/outline/medium, value: 2px }
+        border-color: { token: actions/primary/focus/focus-ring, value: "#b6ffda" }
+        border-radius: { token: spacing/radius/full, value: 10000px }
+  - when: { type: Primary, state: Pressed }
+    figmaNode: "20:20"
+    elements:
+      root:
+        border-sides: { value: left top }
+        background: { token: actions/primary/pressed/background, value: "#00913a" }
+        border-color: { token: actions/primary/pressed/outline, value: "rgba(237,237,237,0.64)" }
+        border-top-width: { token: spacing/outline/small, value: 1px }
+        padding-left: { token: spacing/gap/medium-large, value: 20px }
+        padding-right: { token: spacing/gap/medium-large, value: 20px }
+        padding-top: { token: spacing/gap/none, value: 0px }
+        padding-bottom: { token: spacing/gap/none, value: 0px }
+      label:
+        color: { token: actions/primary/pressed/label, value: "#060805" }
+  - when: { type: Primary, state: Disabled }
+    figmaNode: "20:22"
+    elements:
+      root:
+        border-sides: { value: left top }
+        background: { token: actions/primary/disabled/background, value: "#00d669" }
+        border-color: { token: actions/primary/disabled/outline, value: "rgba(237,237,237,0.64)" }
+        border-top-width: { token: spacing/outline/small, value: 1px }
+        padding-left: { token: spacing/gap/medium-large, value: 20px }
+        padding-right: { token: spacing/gap/medium-large, value: 20px }
+        padding-top: { token: spacing/gap/none, value: 0px }
+        padding-bottom: { token: spacing/gap/none, value: 0px }
+        opacity: { token: opacity/gentle, value: "0.24" }
+      label:
+        color: { token: actions/primary/disabled/label, value: "#060805" }
+  - when: { type: Tertiary, state: Default }
+    figmaNode: "25:191"
+    elements:
+      root:
+        padding-left: { token: spacing/gap/medium-large, value: 20px }
+        padding-right: { token: spacing/gap/medium-large, value: 20px }
+        padding-top: { token: spacing/gap/none, value: 0px }
+        padding-bottom: { token: spacing/gap/none, value: 0px }
+      label:
+        color: { token: actions/tertiary/default/label, value: "#d3d9d5" }
+  - when: { type: Tertiary, state: Hover }
+    figmaNode: "25:194"
+    elements:
+      root:
+        padding-left: { token: spacing/gap/medium-large, value: 20px }
+        padding-right: { token: spacing/gap/medium-large, value: 20px }
+        padding-top: { token: spacing/gap/none, value: 0px }
+        padding-bottom: { token: spacing/gap/none, value: 0px }
+      label:
+        color: { token: actions/tertiary/hover/label, value: "#ededed" }
+      background:
+        position: { value: absolute }
+        inset: { value: "0" }
+        background: { token: actions/tertiary/hover/background, value: "#060805" }
+        opacity: { token: opacity/mild, value: "0.32" }
+        border-radius: { token: spacing/radius/full, value: 10000px }
+  - when: { type: Tertiary, state: Pressed }
+    figmaNode: "25:197"
+    elements:
+      root:
+        padding-left: { token: spacing/gap/medium-large, value: 20px }
+        padding-right: { token: spacing/gap/medium-large, value: 20px }
+        padding-top: { token: spacing/gap/none, value: 0px }
+        padding-bottom: { token: spacing/gap/none, value: 0px }
+      label:
+        color: { token: actions/tertiary/pressed/label, value: "#d3d9d5" }
+      background:
+        position: { value: absolute }
+        inset: { value: "0" }
+        background: { token: actions/tertiary/pressed/background, value: "#454545" }
+        opacity: { token: opacity/mild, value: "0.32" }
+        border-radius: { token: spacing/radius/full, value: 10000px }
+  - when: { type: Tertiary, state: Disabled }
+    figmaNode: "25:200"
+    elements:
+      root:
+        padding-left: { token: spacing/gap/medium-large, value: 20px }
+        padding-right: { token: spacing/gap/medium-large, value: 20px }
+        padding-top: { token: spacing/gap/none, value: 0px }
+        padding-bottom: { token: spacing/gap/none, value: 0px }
+        opacity: { token: opacity/gentle, value: "0.24" }
+      label:
+        color: { token: actions/tertiary/disabled/label, value: "#d3d9d5" }
+  - when: { type: Tertiary, state: Focus }
+    figmaNode: "25:203"
+    elements:
+      root:
+        padding-left: { token: spacing/gap/medium-large, value: 20px }
+        padding-right: { token: spacing/gap/medium-large, value: 20px }
+        padding-top: { token: spacing/gap/none, value: 0px }
+        padding-bottom: { token: spacing/gap/none, value: 0px }
+      label:
+        color: { token: actions/tertiary/focus/label, value: "#d3d9d5" }
+      focus-ring:
+        border-sides: { value: all }
+        position: { value: absolute }
+        border-width: { token: spacing/outline/medium, value: 2px }
+        border-color: { token: actions/secondary/regular/focus/focus-ring, value: "#999" }
+        border-radius: { token: spacing/radius/full, value: 10000px }
+  - when: { type: Borderless, state: Default }
+    figmaNode: "25:249"
+    elements:
+      label:
+        color: { token: actions/tertiary/default/label, value: "#d3d9d5" }
+      root:
+        padding: { token: spacing/gap/none, value: 0px }
+  - when: { type: Borderless, state: Hover }
+    figmaNode: "25:251"
+    elements:
+      label:
+        color: { token: actions/tertiary/hover/label, value: "#ededed" }
+      background:
+        position: { value: absolute }
+        inset: { value: "0" }
+        background: { token: actions/tertiary/hover/background, value: "#060805" }
+        opacity: { token: opacity/mild, value: "0.32" }
+      root:
+        padding: { token: spacing/gap/none, value: 0px }
+  - when: { type: Borderless, state: Pressed }
+    figmaNode: "25:254"
+    elements:
+      label:
+        color: { token: actions/tertiary/pressed/label, value: "#d3d9d5" }
+      background:
+        position: { value: absolute }
+        inset: { value: "0" }
+        background: { token: actions/tertiary/pressed/background, value: "#454545" }
+        opacity: { token: opacity/mild, value: "0.32" }
+      root:
+        padding: { token: spacing/gap/none, value: 0px }
+  - when: { type: Borderless, state: Disabled }
+    figmaNode: "25:257"
+    elements:
+      label:
+        color: { token: actions/tertiary/disabled/label, value: "#d3d9d5" }
+      root:
+        opacity: { token: opacity/gentle, value: "0.24" }
+        padding: { token: spacing/gap/none, value: 0px }
+  - when: { type: Borderless, state: Focus }
+    figmaNode: "25:260"
+    elements:
+      label:
+        color: { token: actions/tertiary/focus/label, value: "#d3d9d5" }
+      focus-ring:
+        border-sides: { value: all }
+        position: { value: absolute }
+        border-width: { token: spacing/outline/medium, value: 2px }
+        border-color: { token: actions/secondary/regular/focus/focus-ring, value: "#999" }
+      root:
+        padding: { token: spacing/gap/none, value: 0px }
+  - when: { type: Secondary, state: Default }
+    figmaNode: "25:80"
+    elements:
+      root:
+        padding-left: { token: spacing/gap/medium-large, value: 20px }
+        padding-right: { token: spacing/gap/medium-large, value: 20px }
+        padding-top: { token: spacing/gap/none, value: 0px }
+        padding-bottom: { token: spacing/gap/none, value: 0px }
+      label:
+        color: { token: actions/secondary/regular/default/label, value: "#d3d9d5" }
+      background:
+        position: { value: absolute }
+        inset: { value: "0" }
+        background: { token: actions/secondary/regular/default/background, value: "#3a3a3a" }
+        opacity: { token: opacity/gentle, value: "0.24" }
+        border-radius: { token: spacing/radius/full, value: 10000px }
+        border-sides: { value: left top }
+        border-color: { token: actions/secondary/regular/default/outline, value: "#ededed" }
+  - when: { type: Secondary, state: Hover }
+    figmaNode: "25:82"
+    elements:
+      root:
+        padding-left: { token: spacing/gap/medium-large, value: 20px }
+        padding-right: { token: spacing/gap/medium-large, value: 20px }
+        padding-top: { token: spacing/gap/none, value: 0px }
+        padding-bottom: { token: spacing/gap/none, value: 0px }
+      label:
+        color: { token: actions/secondary/regular/hover/label, value: "#ededed" }
+      background:
+        position: { value: absolute }
+        inset: { value: "0" }
+        background: { token: actions/secondary/regular/hover/background, value: "#747573" }
+        opacity: { token: opacity/mild, value: "0.32" }
+        border-radius: { token: spacing/radius/full, value: 10000px }
+        border-sides: { value: left top }
+        border-color: { token: actions/secondary/regular/hover/outline, value: "#ededed" }
+  - when: { type: Secondary, state: Pressed }
+    figmaNode: "25:84"
+    elements:
+      root:
+        padding-left: { token: spacing/gap/medium-large, value: 20px }
+        padding-right: { token: spacing/gap/medium-large, value: 20px }
+        padding-top: { token: spacing/gap/none, value: 0px }
+        padding-bottom: { token: spacing/gap/none, value: 0px }
+      label:
+        color: { token: actions/secondary/regular/pressed/label, value: "#d3d9d5" }
+      background:
+        position: { value: absolute }
+        inset: { value: "0" }
+        background: { token: actions/secondary/regular/pressed/background, value: "#999" }
+        opacity: { token: opacity/mild, value: "0.32" }
+        border-radius: { token: spacing/radius/full, value: 10000px }
+        border-sides: { value: left top }
+        border-color: { token: actions/secondary/regular/pressed/outline, value: "#ededed" }
+  - when: { type: Secondary, state: Disabled }
+    figmaNode: "25:86"
+    elements:
+      root:
+        padding-left: { token: spacing/gap/medium-large, value: 20px }
+        padding-right: { token: spacing/gap/medium-large, value: 20px }
+        padding-top: { token: spacing/gap/none, value: 0px }
+        padding-bottom: { token: spacing/gap/none, value: 0px }
+        opacity: { token: opacity/gentle, value: "0.24" }
+      label:
+        color: { token: actions/secondary/regular/disabled/label, value: "#d3d9d5" }
+      background:
+        position: { value: absolute }
+        inset: { value: "0" }
+        background: { token: actions/secondary/regular/disabled/background, value: "#3a3a3a" }
+        opacity: { token: opacity/mild, value: "0.32" }
+        border-radius: { token: spacing/radius/full, value: 10000px }
+        border-sides: { value: left top }
+        border-color: { token: actions/secondary/regular/disabled/outline, value: "#ededed" }
+  - when: { type: Secondary, state: Focus }
+    figmaNode: "25:88"
+    elements:
+      root:
+        padding-left: { token: spacing/gap/medium-large, value: 20px }
+        padding-right: { token: spacing/gap/medium-large, value: 20px }
+        padding-top: { token: spacing/gap/none, value: 0px }
+        padding-bottom: { token: spacing/gap/none, value: 0px }
+      label:
+        color: { token: actions/secondary/regular/focus/label, value: "#d3d9d5" }
+      focus-ring:
+        border-sides: { value: all }
+        position: { value: absolute }
+        border-width: { token: spacing/outline/medium, value: 2px }
+        border-color: { token: actions/secondary/regular/focus/focus-ring, value: "#999" }
+        border-radius: { token: spacing/radius/full, value: 10000px }
+      background:
+        position: { value: absolute }
+        inset: { value: "0" }
+        background: { token: actions/secondary/regular/focus/background, value: "#3a3a3a" }
+        opacity: { token: opacity/gentle, value: "0.24" }
+        border-radius: { token: spacing/radius/full, value: 10000px }
+        border-sides: { value: left top }
+        border-color: { token: actions/secondary/regular/focus/outline, value: "#ededed" }
+guidance:
+  status: proposed
+  use:
+    - |-
+      When an icon makes the action faster to recognise: a back arrow, an external link, a download.
+    - For hero and section CTAs on the portfolio site, where it is the primary call to action.
+  avoid:
+    - If the icon only decorates, drop it and use **Button**.
+    - If there is no room for a label, use **IconButton**, never a PillButton with the label hidden.
+  behaviour: |-
+    Same `type` × `state` matrix as Button: `Primary`, `Secondary`, `Tertiary`, `Borderless`. Interaction states come from CSS pseudo-classes, not props. The icon sits in a 20px slot (`icons-arrow-left` in Figma) and takes the label colour.
+  accessibility:
+    element: |-
+      `<button>`, or `<a>` when it navigates. A pill that navigates is still a link.
+    name: the label. The icon is `aria-hidden="true"`.
+    keyboard: Enter (and Space for buttons) activates.
+    focus: "`focus-ring`, on `:focus-visible`."
+  content: |-
+    A verb phrase in sentence case. The icon must agree with the words: an arrow-left only on "Back".
+implementations:
+  accounting-app:
+    component: src/components/Button.tsx
+    root: .ak-btn

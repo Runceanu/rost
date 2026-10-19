@@ -1,0 +1,38 @@
+# yaml-language-server: $schema=../schema/component-contract.schema.json
+schemaVersion: 2
+id: effect-lock-frame
+name: Lock frame
+kind: effect
+status: review
+summary: An 8px layer blur over a locked project's thumbnail, the blurred-out state behind the lock.
+category: effects
+related: [ effect-thumb, input ]
+source:
+  tool: figma
+  fileKey: 1Zy0wiWKXQAvsfDBX3KR0d
+  nodeId: "224:2"
+  url: https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=224-2
+  extractedAt: "2026-08-19"
+  extractedBy: mcp
+elements:
+  root:
+    notes: The element the effect style is applied to — the locked project thumbnail's frame (the blurred-out state behind the lock).
+    styles:
+      filter:
+        token: effect/lock-frame
+        value: blur(8px)
+        notes: |-
+          Effect style 'Lock frame', type LAYER_BLUR — a layer blur (CSS `filter: blur()`), NOT a backdrop blur: it blurs the element's OWN content, unlike Thumb. Radius bound to spacing/base-8 (8). Like Thumb, the radius borrows a spacing primitive rather than a dedicated blur token. Code binds the whole effect as --effect-lock-frame, which is the token asserted here; spacing/base-8 is not exported to tokens.css.
+guidance:
+  status: proposed
+  use:
+    - On a locked (NDA, password-protected) project's thumbnail, together with the lock glyph.
+  avoid:
+    - |-
+      As a loading or disabled state. Blur says "hidden", not "wait".
+  behaviour: |-
+    `filter: blur(8px)` blurs the element's *own* content, unlike Thumb, which blurs what is behind it. Figma binds the radius to `spacing/base-8`, a spacing primitive that isn't exported to `tokens.css`, which is why the docs flag it.
+  accessibility:
+    name: |-
+      the locked state must be said in text ("Locked case study"), not shown only by blur and icon.
+    content: blurred text is still in the DOM. Don't render confidential copy and blur it; render a placeholder.

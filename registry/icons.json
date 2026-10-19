@@ -1,0 +1,110 @@
+{
+  "$comment": "Every icon in UI Kit v01 (page 41:372), 24x24. Only 'lock' has been exported to code so far.",
+  "size": "24x24",
+  "icons": {
+    "alarm": {
+      "nodeId": "205:713",
+      "url": "https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=205-713"
+    },
+    "arrow-down": {
+      "nodeId": "93:461",
+      "url": "https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=93-461"
+    },
+    "arrow-down-left": {
+      "nodeId": "93:786",
+      "url": "https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=93-786"
+    },
+    "arrow-left": {
+      "nodeId": "93:462",
+      "url": "https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=93-462"
+    },
+    "arrow-right": {
+      "nodeId": "93:464",
+      "url": "https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=93-464"
+    },
+    "arrow-up": {
+      "nodeId": "93:460",
+      "url": "https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=93-460"
+    },
+    "chevron-down": {
+      "nodeId": "93:458",
+      "url": "https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=93-458"
+    },
+    "chevron-left": {
+      "nodeId": "93:463",
+      "url": "https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=93-463"
+    },
+    "chevron-right": {
+      "nodeId": "93:459",
+      "url": "https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=93-459"
+    },
+    "chevron-up": {
+      "nodeId": "93:457",
+      "url": "https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=93-457"
+    },
+    "clear": {
+      "nodeId": "241:625",
+      "url": "https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=241-625"
+    },
+    "desktop": {
+      "nodeId": "168:1333",
+      "url": "https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=168-1333"
+    },
+    "dot": {
+      "nodeId": "93:718",
+      "url": "https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=93-718"
+    },
+    "down-right": {
+      "nodeId": "93:782",
+      "url": "https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=93-782"
+    },
+    "drag": {
+      "nodeId": "201:13",
+      "url": "https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=201-13"
+    },
+    "hide": {
+      "nodeId": "241:606",
+      "url": "https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=241-606"
+    },
+    "lock": {
+      "nodeId": "208:84",
+      "url": "https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=208-84"
+    },
+    "mobile": {
+      "nodeId": "168:1334",
+      "url": "https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=168-1334"
+    },
+    "plus": {
+      "nodeId": "205:710",
+      "url": "https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=205-710"
+    },
+    "positive": {
+      "nodeId": "205:712",
+      "url": "https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=205-712"
+    },
+    "scroll": {
+      "nodeId": "136:68",
+      "url": "https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=136-68"
+    },
+    "show": {
+      "nodeId": "241:611",
+      "url": "https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=241-611"
+    },
+    "up-left": {
+      "nodeId": "93:784",
+      "url": "https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=93-784"
+    },
+    "up-right": {
+      "nodeId": "93:780",
+      "url": "https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=93-780"
+    },
+    "user": {
+      "nodeId": "238:169",
+      "url": "https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=238-169"
+    },
+    "warning": {
+      "nodeId": "205:711",
+      "url": "https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=205-711"
+    }
+  }
+}

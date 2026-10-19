@@ -1,0 +1,91 @@
+# yaml-language-server: $schema=../schema/component-contract.schema.json
+schemaVersion: 2
+id: effect-paper
+name: Paper
+kind: effect
+status: review
+summary: The dot-lattice sheet behind the the portfolio site hero, which responds to the cursor, the CTAs and presses but never moves on its own.
+category: effects
+related: [ hero-media ]
+source:
+  tool: code
+  repo: portfolio-site
+  path: src/components/HeroBackdrop.jsx
+  extractedAt: "2026-10-19"
+elements:
+  sheet:
+    notes: A canvas of dots behind hero content. Shaped by a CSS mask — on the portfolio site a 1104px disc centred on the hero content block (radial-gradient circle 552px, solid to 40%, dissolved by 92%) — and sized so the lattice is anchored to the content, not the container. Idle cost is a single static frame; prefers-reduced-motion gets the still sheet and none of the behaviours below.
+    styles:
+      pitch:
+        token: spacing/gap/medium
+        value: 16px
+        notes: |-
+          The lattice rhythm. Everything in the effect is a multiple of it: sketch dimensions, extents, fades.
+      dot-opacity: { token: opacity/soft, value: "0.16" }
+      background: { token: non-interactive/background/primary, value: "#060805" }
+  dot:
+    notes: |-
+      One lattice point. Never animates on its own: it only RESPONDS (lens, ripple, pen). The paper must never twinkle.
+    styles:
+      radius:
+        value: 1px
+        notes: Constant at rest. Under the lens it grows to at most 1 + 1.3 x field (~2.3px at the crest) — proportional growth only, never new dots.
+        untokenised: Dot geometry, tuned to the 16px pitch; not a reusable decision.
+  lens:
+    notes: |-
+      The dome field all behaviours share. Three sources: the cursor (the magnifier), the CTA halo (hovering a hero button raises a lens under the button's centre - the control presses into the paper), and press ink (pointer down dents the sheet, deepening fast and relaxing slowly on release). Sources sampled per dot, the strongest wins - lenses never stack. Dots inside grow proportionally and are pushed outward; they never multiply and never change character.
+    styles:
+      radius:
+        value: 210px
+        untokenised: Motion tuning parameter of the lens field.
+      push:
+        value: 9px
+        notes: Max outward displacement per unit of field at the crest; the dome is smoothstep-eased to zero at the rim. Displacement and growth scale with the source's power.
+        untokenised: Motion tuning parameter of the lens field.
+      accent:
+        token: actions/primary/default/background
+        value: "#00d669"
+        notes: |-
+          A hint of green only at the very crest of the strongest field (threshold 0.78). Green is rationed: the crest, the availability dot and the logo dot are the same atom.
+      cursor:
+        value: radius 210px, power 1.0
+        notes: Eased follow (lag), first contact starts at the pointer.
+        untokenised: Motion tuning parameter (radius and falloff power).
+      halo:
+        value: radius 240px, power 1.3
+        notes: Anchored to the hovered CTA's centre. Wider and stronger than the cursor lens, which always coincides with it and would otherwise mask it entirely.
+        untokenised: Motion tuning parameter (radius and falloff power).
+      press:
+        value: radius 330px, power 1.7
+        notes: The strongest lens in the system; attack ~3x faster than release. Field capped at 1.7.
+        untokenised: Motion tuning parameter (radius and falloff power).
+  ripple:
+    notes: A ring (gaussian band, ~1.8s) crossing the sheet from its centre. Fired by the availability dot's own pulse animation (animationiteration on the banner dot) every SECOND ping — 8s, phase-locked, never a free-running timer. Runs only while the hero is on screen.
+  pen:
+    notes: |-
+      Every 7-8s one kit component is sketched in 2px strokes (stroke colour = non-interactive/foreground/secondary at the ink opacity): drawn stroke by stroke (~1.6s), held (~3s), faded. THE LATTICE LAW: outer shapes run exactly along dot rows/columns — origin snapped to the lattice, dimensions in whole cells, corners arcing between lattice points. Inner elements (check, x, knob, bars, caret) keep natural proportions instead. Strokes are polylines whose every vertex rides the lens field, so ink bulges under the blurb like the dots do. One sketch at a time.
+    styles:
+      ink-opacity:
+        token: opacity/mild
+        value: "0.32"
+        notes: Was a literal 0.3; bound to opacity/mild on 2026-10-19 (0.02 stronger). HeroBackdrop.jsx reads --opacity-mild.
+      stroke-width: { token: spacing/outline/medium, value: 2px }
+      cadence:
+        value: 7-8s between sketches
+        notes: Randomised inside the window so it never reads as a metronome.
+        untokenised: Timing of the sketch loop; a motion token group does not exist yet.
+guidance:
+  status: proposed
+  use:
+    - Behind the home hero only. It is the site's signature, and repeating it dilutes it.
+  avoid:
+    - |-
+      Behind dense content or forms: the lattice competes with text at small sizes.
+  behaviour: The dots only respond, through the lens, ripple and pen behaviours described in the anatomy. They never animate on their own. Everything snaps to the 16px lattice pitch. It is idle at one static frame, and runs only while the hero is on screen.
+  accessibility:
+    decorative: the canvas is `aria-hidden="true"` and takes no focus.
+    motion: |-
+      `prefers-reduced-motion` gets the still sheet and none of the behaviours.
+implementations:
+  portfolio-site:
+    component: src/components/HeroBackdrop.jsx

@@ -1,0 +1,114 @@
+# yaml-language-server: $schema=../schema/component-contract.schema.json
+schemaVersion: 2
+id: badge
+name: Badge
+kind: component
+status: review
+summary: An outlined 24px status label; the status shows in the outline and dot, never in the label colour.
+category: feedback
+related: [ inline-banner, tags ]
+source:
+  tool: figma
+  fileKey: 1Zy0wiWKXQAvsfDBX3KR0d
+  nodeId: "139:395"
+  url: https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=139-395
+  extractedAt: "2026-08-18"
+  extractedBy: mcp
+props:
+  status:
+    type: enum
+    values: [ Default, Negative, Positive, Warning ]
+    default: Default
+elements:
+  root:
+    styles:
+      align-items: { value: center }
+      gap: { token: spacing/gap/3xsmall, value: 2px }
+      height: { token: spacing/size/small, value: 24px }
+      padding-bottom: { token: spacing/gap/3xsmall, value: 2px }
+      padding-top: { token: spacing/gap/none, value: 0px }
+      padding-left: { token: spacing/gap/small, value: 8px }
+      padding-right: { token: spacing/gap/small, value: 8px }
+      border-radius: { token: spacing/radius/full, value: 10000px }
+  icon:
+    styles:
+      align-items: { value: center }
+      padding-top: { token: spacing/gap/3xsmall, value: 2px }
+  icons-dot:
+    styles:
+      overflow: { value: clip }
+      width: { value: 16px, suggest: spacing/size/2xsmall }
+      height: { value: 16px, suggest: spacing/size/2xsmall }
+  union:
+    styles:
+      position: { value: absolute }
+      inset: { value: "0" }
+  label:
+    styles:
+      font-family: { token: font-family/base, value: "'General Sans Variable'" }
+      font-weight: { token: typography/label/font-weight/medium, value: "500" }
+      line-height: { token: typography/label/line-height, value: 14px }
+      color: { token: non-interactive/foreground/tertiary, value: "#999" }
+      font-size: { token: typography/label/font-size, value: 12px }
+      letter-spacing: { token: typography/label/letter-spacing, value: 0px }
+  outline:
+    styles:
+      border-sides: { value: all }
+      position: { value: absolute }
+      inset: { value: "0" }
+      opacity: { token: opacity/solid, value: "1" }
+      border-radius: { token: spacing/radius/full, value: 10000px }
+variants:
+  - when: { status: Default }
+    figmaNode: "139:396"
+    elements:
+      outline:
+        border-color: { token: non-interactive/foreground/quadruple, value: "#3a3a3a" }
+  - when: { status: Negative }
+    figmaNode: "139:433"
+    elements:
+      outline:
+        border-color: { token: non-interactive/background/negative/light, value: "#48050c" }
+      root:
+        justify-content: { value: center }
+  - when: { status: Positive }
+    figmaNode: "139:439"
+    elements:
+      outline:
+        border-color: { token: non-interactive/background/positive/light, value: "#004c19" }
+      root:
+        justify-content: { value: center }
+  - when: { status: Warning }
+    figmaNode: "139:445"
+    elements:
+      outline:
+        border-color: { token: non-interactive/background/warning/light, value: "#492604" }
+      root:
+        justify-content: { value: center }
+guidance:
+  status: proposed
+  use:
+    - |-
+      To tag an item with a status in a list, card or table row: Paid, Overdue, Draft.
+  avoid:
+    - To announce something about the page, use **InlineBanner**.
+    - To categorise (topic, type) rather than report a status, use **Tag**.
+    - If it should be clickable, use **Chip**. Badge has no interactive states.
+  behaviour: |-
+    `status` sets only the outline (`non-interactive/background/<status>/light`) and the leading dot. The label stays `non-interactive/foreground/tertiary` in every status, on purpose: the kit keeps badges quiet. There is no background fill. Those are the three things the first accounting-app Badge got wrong.
+  accessibility:
+    element: a `<span>`, not interactive.
+    colour: |-
+      the outline alone is not enough. The label must name the status ("Overdue", not "!").
+    dot: "`aria-hidden=\"true\"`."
+  content: One or two words, sentence case, no punctuation.
+implementations:
+  portfolio-site:
+    component: src/components/Badge.jsx
+    root: .badge
+  accounting-app:
+    component: src/components/Badge.tsx
+    root: .ak-badge
+    parts:
+      label: .ak-badge__label
+      icon: .ak-badge__icon

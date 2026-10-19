@@ -1,0 +1,45 @@
+# yaml-language-server: $schema=../schema/component-contract.schema.json
+schemaVersion: 2
+id: effect-menu
+name: Menu
+kind: effect
+status: draft
+summary: The frosted-glass surface behind the main nav and case-study info cards, a 12px backdrop blur.
+category: effects
+related: [ menu, effect-thumb ]
+source:
+  tool: figma
+  fileKey: 1Zy0wiWKXQAvsfDBX3KR0d
+  nodeId: "29:5"
+  url: https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=29-5
+  extractedAt: "2026-08-19"
+  extractedBy: mcp
+elements:
+  root:
+    notes: |-
+      The frosted surface behind the main menu / nav panel. Figma effect style name: 'Menu'.
+    styles:
+      backdrop-filter:
+        value: blur(12px)
+        notes: |-
+          BACKGROUND_BLUR effect style 'Menu' — the app's frosted-glass surface. Standard radius = 12px (CSS var --effect-menu): main-menu/nav + the case-study hero info cards. The Figma style's exact radius does NOT export via Dev Mode (background-blur nodes drop from the code export), so 12px is taken from its confirmed usage (the portfolio site nav, Figma node 179:595 — 'rgba(0,0,0,0.48) + 12px blur'). A large variant --effect-menu-lg = blur(24px) carries the same 'Menu' frosted-glass role on the bigger case-study hero + island BACKGROUNDS (an app decision by design to treat all frosted glass as one effect at its existing radius; the 24px is not from a separate Figma style). Distinct from Thumb, which is its own named style for project thumbnails.
+        token: effect/menu
+guidance:
+  status: proposed
+  use:
+    - |-
+      For surfaces that float over content and must stay readable while it scrolls beneath: the nav, hero info cards.
+  avoid:
+    - On project thumbnails, which have their own style (**Thumb effect**).
+    - "Stacked on another frosted surface: two blurs read as mud."
+  behaviour: |-
+    `backdrop-filter: blur(12px)`, with a 24px large variant for the bigger case-study surfaces. The 12px is inferred from use, not yet read from the style itself (see Open issues).
+  accessibility:
+    contrast: check text against the busiest content that can scroll beneath, not against a flat colour.
+    fallback: |-
+      where `backdrop-filter` is unsupported, use an opaque surface, never an unreadable transparent one.
+pending:
+  reason: 12px is inferred from the confirmed nav usage, NOT read directly from the 'Menu' effect style on node 29:5 (Dev Mode returned only the swatch fill). Verify against the Figma effect-style panel; if design intends a different radius, update --effect-menu and this value.
+  propertiesToRead:
+    - exact blur radius of the 'Menu' effect style and any token/variable binding
+  nodesToWalk: [ "29:5" ]
