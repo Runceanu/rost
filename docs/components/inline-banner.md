@@ -8,7 +8,7 @@
 |---|---|
 | Kind | component |
 | Contract | `review` · [inline-banner.contract.yaml](../../contracts/inline-banner.contract.yaml) |
-| Guidance | `proposed` |
+| Guidance | `agreed` |
 | Source | [Figma 205:614](https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=205-614) · read 2026-08-18 |
 | Implemented in | akount.ing (`src/components/InlineBanner.tsx`, `.ak-banner`) |
 

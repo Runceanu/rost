@@ -8,7 +8,7 @@
 |---|---|
 | Kind | effect |
 | Contract | `review` · [effect-paper.contract.yaml](../../contracts/effect-paper.contract.yaml) |
-| Guidance | `proposed` |
+| Guidance | `agreed` |
 | Source | `runceanu-portfolio/src/components/HeroBackdrop.jsx` · read 2026-10-19 |
 | Implemented in | runceanu.com (`src/components/HeroBackdrop.jsx`) |
 

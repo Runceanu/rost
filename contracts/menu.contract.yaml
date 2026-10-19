@@ -78,7 +78,7 @@ variants:
       content:
         color: { token: non-interactive/foreground/quadruple, value: "#3a3a3a" }
 guidance:
-  status: proposed
+  status: agreed
   use:
     - Moving between the main pages or sections.
   avoid:

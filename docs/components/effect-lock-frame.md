@@ -8,7 +8,7 @@
 |---|---|
 | Kind | effect |
 | Contract | `review` · [effect-lock-frame.contract.yaml](../../contracts/effect-lock-frame.contract.yaml) |
-| Guidance | `proposed` |
+| Guidance | `agreed` |
 | Source | [Figma 224:2](https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=224-2) · read 2026-08-19 |
 | Implemented in | nowhere yet |
 

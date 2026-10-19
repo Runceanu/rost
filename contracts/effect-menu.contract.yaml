@@ -25,7 +25,7 @@ elements:
           Frosted glass: it blurs whatever is behind it. 12px is the standard (`--effect-menu`), used on the nav and on the case-study info cards. Figma doesn't hand over this style's blur size through Dev Mode, so I took 12px from where it's really used (the runceanu.com nav, Figma node 179:595: black at 0.48 with a 12px blur). There's also a 24px version, `--effect-menu-lg`, for the bigger case-study surfaces. That one's my choice in code, not a separate Figma style: I treat all frosted glass as one effect. Thumb is a different style, only for project thumbnails.
         token: effect/menu
 guidance:
-  status: proposed
+  status: agreed
   use:
     - |-
       Things that float over content and have to stay readable while it scrolls underneath: the nav, the hero info cards.

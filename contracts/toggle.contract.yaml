@@ -161,7 +161,7 @@ variants:
         opacity: { token: opacity/gentle, value: "0.24" }
         border-radius: { token: spacing/radius/medium, value: 12px }
 guidance:
-  status: proposed
+  status: agreed
   use:
     - Switching a view or a filter on and off, when the change happens straight away.
     - Picking one option from a short set, as a group. The year switcher in akount.ing works like this.

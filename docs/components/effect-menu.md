@@ -8,7 +8,7 @@
 |---|---|
 | Kind | effect |
 | Contract | `draft` · [effect-menu.contract.yaml](../../contracts/effect-menu.contract.yaml) |
-| Guidance | `proposed` |
+| Guidance | `agreed` |
 | Source | [Figma 29:5](https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=29-5) · read 2026-08-19 |
 | Implemented in | nowhere yet |
 

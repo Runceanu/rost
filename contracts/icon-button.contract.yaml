@@ -337,7 +337,7 @@ variants:
         border-color: { token: actions/secondary/regular/focus/focus-ring, value: "#999" }
         border-radius: { token: spacing/radius/full, value: 10000px }
 guidance:
-  status: proposed
+  status: agreed
   use:
     - |-
       Actions everyone knows where a label would crowd things: close, back, next, previous.

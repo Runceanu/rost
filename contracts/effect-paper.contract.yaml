@@ -77,7 +77,7 @@ elements:
         notes: Picked at random inside the window, so it never feels like a metronome.
         untokenised: Timing of the sketch loop; a motion token group does not exist yet.
 guidance:
-  status: proposed
+  status: agreed
   use:
     - Behind the home hero, and only there. It's the site's signature, and using it twice waters it down.
   avoid:

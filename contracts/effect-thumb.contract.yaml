@@ -25,7 +25,7 @@ elements:
         notes: |-
           The Figma effect style "Thumb": frosted glass, so it blurs what's behind the element. In Figma its blur is tied to `opacity/gentle` (24), and CSS draws it at 12px because a Figma background blur is about twice its CSS size. One thing I don't love: `opacity/gentle` is an opacity token (0.24) borrowed here as a blur size. Its own blur token would be cleaner. In code the whole effect is `--effect-thumb`, and that's the token the contract checks.
 guidance:
-  status: proposed
+  status: agreed
   use:
     - The text panel on a project thumbnail, in Thumbs and Carousel.
   avoid:

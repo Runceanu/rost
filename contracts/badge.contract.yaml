@@ -3,7 +3,7 @@ schemaVersion: 2
 id: badge
 name: Badge
 kind: component
-status: review
+status: stable
 summary: A small outlined label for status. The colour sits in the outline and the dot, never in the text.
 category: feedback
 related: [ inline-banner, tags ]
@@ -86,7 +86,7 @@ variants:
       root:
         justify-content: { value: center }
 guidance:
-  status: proposed
+  status: agreed
   use:
     - |-
       Marking the status of something in a list, a card or a table row: Paid, Overdue, Draft.

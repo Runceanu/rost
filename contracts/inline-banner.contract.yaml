@@ -158,7 +158,7 @@ variants:
         gap: { token: spacing/gap/small, value: 8px }
         padding: { token: spacing/gap/none, value: 0px }
 guidance:
-  status: proposed
+  status: agreed
   use:
     - |-
       Telling people something about the page or a section they should notice: saved, offline, open for work, needs your attention.

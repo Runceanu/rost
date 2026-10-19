@@ -12,7 +12,7 @@ My design system, behind **runceanu.com**, **akount.ing** and whatever I build n
 | [Token coverage](TOKENS.md) | Why each value has a token or doesn't |
 | [Roadmap](ROADMAP.md) | What I'm doing next |
 
-**22** contracts, **0** stable. **16** have guidance, and I've signed off **0** of those.
+**22** contracts, **1** stable. **16** have guidance, and I've signed off **16** of those.
 
 ## Catalogue
 
@@ -20,38 +20,38 @@ My design system, behind **runceanu.com**, **akount.ing** and whatever I build n
 
 | | Summary | Contract | Guidance | Used in |
 |---|---|---|---|---|
-| [Badge](components/badge.md) | A small outlined label for status. The colour sits in the outline and the dot, never in the text. | `review` | `proposed` | runceanu.com, akount.ing |
-| [Button](components/button.md) | A 48px button with just a label, in four levels of emphasis. | `review` | `proposed` | · |
+| [Badge](components/badge.md) | A small outlined label for status. The colour sits in the outline and the dot, never in the text. | `stable` | `agreed` | runceanu.com, akount.ing |
+| [Button](components/button.md) | A 48px button with just a label, in four levels of emphasis. | `review` | `agreed` | · |
 | [Carousel](components/carousel.md) | A card in the home page carousel: a number, a title and a short description. | `review` | · | · |
-| [Chip](components/chips.md) | A small outlined label you can click, for filters and quick choices. | `review` | `proposed` | runceanu.com |
+| [Chip](components/chips.md) | A small outlined label you can click, for filters and quick choices. | `review` | `agreed` | runceanu.com |
 | [Divider](components/divider.md) | A thin line between things. | `review` | · | · |
-| [IconButton](components/icon-button.md) | A round button with only an icon, including the Project type used on case-study thumbnails. | `review` | `proposed` | · |
-| [InlineBanner](components/inline-banner.md) | A filled status pill with an icon and a label, in four statuses and two sizes. | `review` | `proposed` | akount.ing |
-| [Input](components/input.md) | A 56px text field with a floating label, an optional lock icon, a line of help text and an error state. | `review` | `proposed` | runceanu.com, akount.ing |
-| [Menu](components/menu.md) | A navigation item: a label with a line underneath, used in the main nav. | `review` | `proposed` | · |
-| [PillButton](components/pill-button.md) | A 48px button with an icon in front of the label. My main call to action. | `review` | `proposed` | akount.ing |
+| [IconButton](components/icon-button.md) | A round button with only an icon, including the Project type used on case-study thumbnails. | `review` | `agreed` | · |
+| [InlineBanner](components/inline-banner.md) | A filled status pill with an icon and a label, in four statuses and two sizes. | `review` | `agreed` | akount.ing |
+| [Input](components/input.md) | A 56px text field with a floating label, an optional lock icon, a line of help text and an error state. | `review` | `agreed` | runceanu.com, akount.ing |
+| [Menu](components/menu.md) | A navigation item: a label with a line underneath, used in the main nav. | `review` | `agreed` | · |
+| [PillButton](components/pill-button.md) | A 48px button with an icon in front of the label. My main call to action. | `review` | `agreed` | akount.ing |
 | [Projects](components/projects.md) | One row in the project list: number, name, and industry, type and period on the right. | `review` | · | · |
-| [Tag](components/tags.md) | A compact 20px label with small corners, for what a piece of content is about. | `review` | `proposed` | · |
+| [Tag](components/tags.md) | A compact 20px label with small corners, for what a piece of content is about. | `review` | `agreed` | · |
 | [TestimonialPicture](components/testimonials-pics.md) | The photo of the person behind a testimonial. | `review` | · | · |
 | [Testimonials](components/testimonials.md) | A testimonial you can open and close: name and role, with the quote underneath. | `review` | · | · |
 | [Thumbs](components/thumbs.md) | A project thumbnail card, with the project name and details on a frosted panel at the bottom. | `review` | · | · |
-| [Toggle](components/toggle.md) | A 40×40 icon button that stays on or off, alone or as one choice in a group. | `review` | `proposed` | akount.ing |
+| [Toggle](components/toggle.md) | A 40×40 icon button that stays on or off, alone or as one choice in a group. | `review` | `agreed` | akount.ing |
 
 ### Patterns
 
 | | Summary | Contract | Guidance | Used in |
 |---|---|---|---|---|
-| [Hero Media](components/hero-media.md) | The full-width hero on every case study: artwork pinned behind a 16px frame and dimmed to the same level everywhere. | `review` | `proposed` | · |
+| [Hero Media](components/hero-media.md) | The full-width hero on every case study: artwork pinned behind a 16px frame and dimmed to the same level everywhere. | `review` | `agreed` | · |
 
 ### Effects
 
 | | Summary | Contract | Guidance | Used in |
 |---|---|---|---|---|
-| [Floating effect](components/effect-floating.md) | The only drop shadow in the kit, for things that float above the page. | `review` | `proposed` | · |
-| [Lock frame effect](components/effect-lock-frame.md) | An 8px blur over a locked project's thumbnail, the blurred view behind the lock. | `review` | `proposed` | · |
-| [Menu effect](components/effect-menu.md) | Frosted glass behind the main nav and the case-study info cards, a 12px backdrop blur. | `draft` | `proposed` | · |
-| [Paper effect](components/effect-paper.md) | The sheet of dots behind runceanu.com's hero. It reacts to the cursor, the buttons and clicks, and never moves by itself. | `review` | `proposed` | runceanu.com |
-| [Thumb effect](components/effect-thumb.md) | The frosted panel on project thumbnails, a backdrop blur. | `review` | `proposed` | · |
+| [Floating effect](components/effect-floating.md) | The only drop shadow in the kit, for things that float above the page. | `review` | `agreed` | · |
+| [Lock frame effect](components/effect-lock-frame.md) | An 8px blur over a locked project's thumbnail, the blurred view behind the lock. | `review` | `agreed` | · |
+| [Menu effect](components/effect-menu.md) | Frosted glass behind the main nav and the case-study info cards, a 12px backdrop blur. | `draft` | `agreed` | · |
+| [Paper effect](components/effect-paper.md) | The sheet of dots behind runceanu.com's hero. It reacts to the cursor, the buttons and clicks, and never moves by itself. | `review` | `agreed` | runceanu.com |
+| [Thumb effect](components/effect-thumb.md) | The frosted panel on project thumbnails, a backdrop blur. | `review` | `agreed` | · |
 
 ## Health
 
