@@ -1,0 +1,81 @@
+/* carousel | state=Pressed | 157:331 | 312x102 */
+type CarouselProps = {
+  className?: string;
+  description?: string;
+  number?: string;
+  showDescription?: boolean;
+  showNumber?: boolean;
+  showTitle?: boolean;
+  state?: "Default" | "Pressed";
+  title?: string;
+};
+
+function Carousel({ className, description = "Description", number = "00", showDescription = true, showNumber = true, showTitle = true, state = "Default", title = "Title" }: CarouselProps) {
+  const isDefault = state === "Default";
+  const isPressed = state === "Pressed";
+  return (
+    <div className={className || "content-stretch flex flex-col gap-[var(--spacing\\/gap\\/none,0px)] items-start p-[var(--spacing\\/gap\\/large,24px)] relative rounded-[var(--spacing\\/radius\\/xlarge,24px)] w-[312px]"} id={isPressed ? "node-157_331" : "node-157_303"}>
+      {isDefault && (
+        <>
+          <div className="content-stretch flex gap-[var(--spacing\/gap\/medium,16px)] items-center relative shrink-0 w-full" data-node-id="157:307" data-name="Title">
+            <div className="content-stretch flex flex-col items-center justify-center relative shrink-0 w-[16px]" data-node-id="157:308" data-name="Number">
+              {showNumber && (
+                <p className="[word-break:break-word] font-[family-name:var(--font-family\/base,'General_Sans_Variable:Regular')] font-[var(--typography\/label\/font-weight\/regular,400)] leading-[var(--typography\/label\/line-height,14px)] relative shrink-0 text-[color:var(--project\/default\/sub-label,#999)] text-[length:var(--typography\/label\/font-size,12px)] tracking-[var(--typography\/label\/letter-spacing,0px)] w-full" data-node-id="157:309">
+                  {number}
+                </p>
+              )}
+            </div>
+            {showTitle && (
+              <p className="[word-break:break-word] flex-[1_0_0] font-[family-name:var(--font-family\/base,'General_Sans_Variable:Medium')] font-[var(--typography\/title\/font-weight\/medium,500)] leading-[var(--typography\/title\/line-height,32px)] min-w-px relative text-[color:var(--project\/default\/label,#d3d9d5)] text-[length:var(--typography\/title\/font-size,24px)] tracking-[var(--typography\/title\/letter-spacing,0px)]" data-node-id="157:310">
+                {title}
+              </p>
+            )}
+          </div>
+          <div className="content-stretch flex gap-[var(--spacing\/gap\/medium,16px)] items-center justify-end pl-[var(--spacing\/gap\/xlarge,32px)] relative shrink-0 w-full" data-node-id="157:311" data-name="Bottom">
+            {showDescription && (
+              <p className="[word-break:break-word] flex-[1_0_0] font-[family-name:var(--font-family\/base,'General_Sans_Variable:Regular')] font-[var(--typography\/paragraph\/font-weight\/regular,400)] leading-[var(--typography\/paragraph\/line-height,20px)] min-w-px relative text-[color:var(--project\/default\/sub-label,#999)] text-[length:var(--typography\/paragraph\/font-size,14px)] tracking-[var(--typography\/paragraph\/letter-spacing,0px)]" data-node-id="157:316">
+                {description}
+              </p>
+            )}
+          </div>
+        </>
+      )}
+      {isPressed && (
+        <>
+          <div className="absolute backdrop-blur-[calc(var(--opacity\/gentle,24px)/2)] bg-[rgba(58,58,58,0.48)] inset-0 opacity-[calc(var(--opacity\/strong,64)/100)] rounded-[var(--spacing\/radius\/xlarge,24px)]" data-node-id="161:404" data-name="background" />
+          <div className="content-stretch flex gap-[var(--spacing\/gap\/medium,16px)] items-center relative shrink-0 w-full" data-node-id="157:335" data-name="Title">
+            <div className="content-stretch flex flex-col items-center justify-center relative shrink-0 w-[16px]" data-node-id="157:336" data-name="Number">
+              {showNumber && (
+                <p className="[word-break:break-word] font-[family-name:var(--font-family\/base,'General_Sans_Variable:Regular')] font-[var(--typography\/label\/font-weight\/regular,400)] leading-[var(--typography\/label\/line-height,14px)] relative shrink-0 text-[color:var(--project\/pressed\/label,#00d669)] text-[length:var(--typography\/label\/font-size,12px)] tracking-[var(--typography\/label\/letter-spacing,0px)] w-full" data-node-id="157:337">
+                  {number}
+                </p>
+              )}
+            </div>
+            {showTitle && (
+              <p className="[word-break:break-word] font-[family-name:var(--font-family\/base,'General_Sans_Variable:Medium')] font-[var(--typography\/title\/font-weight\/medium,500)] leading-[var(--typography\/title\/line-height,32px)] relative shrink-0 text-[color:var(--project\/pressed\/label,#00d669)] text-[length:var(--typography\/title\/font-size,24px)] tracking-[var(--typography\/title\/letter-spacing,0px)] whitespace-nowrap" data-node-id="157:338">
+                {title}
+              </p>
+            )}
+          </div>
+          <div className="content-stretch flex gap-[var(--spacing\/gap\/medium,16px)] items-center justify-end pl-[var(--spacing\/gap\/xlarge,32px)] relative shrink-0 w-full" data-node-id="157:339" data-name="Bottom">
+            {showDescription && (
+              <p className="[word-break:break-word] flex-[1_0_0] font-[family-name:var(--font-family\/base,'General_Sans_Variable:Regular')] font-[var(--typography\/paragraph\/font-weight\/regular,400)] leading-[var(--typography\/paragraph\/line-height,20px)] min-w-px relative text-[color:var(--project\/pressed\/sub-label,#c2c7c3)] text-[length:var(--typography\/paragraph\/font-size,14px)] tracking-[var(--typography\/paragraph\/letter-spacing,0px)]" data-node-id="161:400">
+                {description}
+              </p>
+            )}
+          </div>
+        </>
+      )}
+    </div>
+  );
+}
+SUPER CRITICAL: The generated React+Tailwind code MUST be converted to match the target project's technology stack and styling system.
+1. Analyze the target codebase to identify: technology stack, styling approach, component patterns, and design tokens
+2. Convert React syntax to the target framework/library
+3. Transform all Tailwind classes to the target styling system while preserving exact visual design
+4. Follow the project's existing patterns and conventions
+DO NOT install any Tailwind as a dependency unless the user instructs you to do so.
+
+Node ids have been added to the code as data attributes, e.g. `data-node-id="1:2"`.
+These styles are contained in the design: Thumb: Effect(type: BACKGROUND_BLUR, radius: opacity/gentle), label/regular: Font(family: "font-family/base", style: Regular, size: typography/label/font-size, weight: typography/label/font-weight/regular, lineHeight: typography/label/line-height, letterSpacing: typography/label/letter-spacing), title/medium: Font(family: "font-family/base", style: Medium, size: typography/title/font-size, weight: typography/title/font-weight/medium, lineHeight: typography/title/line-height, letterSpacing: typography/title/letter-spacing), paragraph/regular: Font(family: "font-family/base", style: Regular, size: typography/paragraph/font-size, weight: typography/paragraph/font-weight/regular, lineHeight: typography/paragraph/line-height, letterSpacing: typography/paragraph/letter-spacing).
+Image assets are stored on a localhost server. Clients can use these images directly in code as a way to view the image assets the same way they would other remote servers. Images and SVGs will be stored as constants, e.g. const image = 'http://localhost:3845/assets/10c13ac1a228a365cb98a0064b1d5afbc84887b2.png' These constants will be used in the code as the source for the image, e.g. <img src={image} /> This is true for both images and SVGs, so you can use the same approach for both types of assets.

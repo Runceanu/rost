@@ -23,6 +23,14 @@ Baseline from `npm run audit` against both apps on 2026-10-19:
 6. **Sync accounting-app's contract copies.** accounting-app still tests against its own JSON copies of Badge and Button. Point its test at these YAML contracts through `forApp`, so there is one copy.
 7. **Review the guidance with design.** All 16 pages are `proposed`. Take the four undeclared-to-design deviations (Docs Health lists them) into the same review.
 
+## Finish the Figma import
+
+Started 2026-10-19 and stopped by Figma's daily limit on Dev Mode reads ("try again tomorrow"). Done: six new contracts, 156 of 188 variant screenshots in `baseline/`, 75 icon and vector SVGs in `assets/figma/`. Still to do:
+
+- Screenshots of the 24 illustrations and Divider: `node bin/capture-baseline.mjs illustrations divider`.
+- SVG exports of the 17 icons and 24 illustrations, as files in `assets/`.
+- Change the Thumbs sample client name in Figma to "Client" and recapture, so its baseline can be published. Until then `baseline/thumbs/` stays local, as does `baseline/testimonials-pics/` (real people's photos).
+
 ## Next: grow the kit
 
 Ordered by how much duplicated code each one removes.
@@ -31,9 +39,9 @@ Ordered by how much duplicated code each one removes.
 |---|---|---|
 | **Hero Media** as a shared component | The same hero CSS is repeated in 7 case-study stylesheets | contract exists |
 | **Icons** | 26 in Figma, 1 exported. InlineBanner can't ship its glyphs without them | `92:15`, raw pulled |
-| **Divider** | accounting-app already has `Divider.tsx` with no contract | `39:111`, raw pulled |
-| **Thumbs, Carousel, Projects** | The portfolio site's home page; most of its raw hex lives in `CarouselCard.css` | `109:79`, `157:302`, `100:185`, raw pulled |
-| **Testimonials** | The portfolio site | `144:67`, raw pulled |
+| **Divider** | accounting-app already has `Divider.tsx` | **Contract read 2026-10-19** |
+| **Thumbs, Carousel, Projects** | The portfolio site's home page; most of its raw hex lives in `CarouselCard.css` | **Contracts read 2026-10-19** |
+| **Testimonials, TestimonialPicture** | The portfolio site | **Contracts read 2026-10-19** |
 | **ListRow** | accounting-app builds it outside the kit with undeclared slots | needs a Figma component first |
 | **Tooltip** | IconButton guidance depends on it | needs a Figma read |
 | **Switch, Textarea, selected Chip** | Gaps the guidance already points at | need design first |

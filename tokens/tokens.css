@@ -220,4 +220,26 @@
   --effect-menu-lg:    blur(24px);                        /* "Menu" frosted glass, large radius (case-study hero + island backgrounds) */
   --effect-lock-frame: blur(8px);                         /* LAYER_BLUR "Lock frame" — locked thumbnail (spacing/base-8) */
   --shadow-floating:   0 16px 24px 0 rgba(0, 0, 0, 0.16); /* DROP_SHADOW "Shadow/Floating" (alpha = opacity/soft) */
+
+  /* Read from Figma 2026-10-19 (get_design_context fallbacks, confirmed by get_variable_defs) for Projects, Thumbs and Testimonials. */
+  --non-interactive-background-positive-base: #00d669;
+  --project-default-label: #d3d9d5;
+  --project-default-outline: #3a3a3a;
+  --project-default-sub-label: #999999;
+  --project-hover-label: #00d669;
+  --project-hover-outline: #00d669;
+  --project-pressed-label: #00d669;
+  --project-pressed-outline: #10ffa4;
+  --project-focus-label: #d3d9d5;
+  --project-focus-outline: #3a3a3a;
+  --project-focus-sub-label: #999999;
+  --project-focus-focus-ring: #999999;
+  --project-disabled-label: #d3d9d5;
+  --project-disabled-outline: #3a3a3a;
+  --project-disabled-sub-label: #999999;
+  --project-lock-outline: #3a3a3a;
+  --project-lock-sub-label: #999999;
+  --typography-title-font-weight-medium: 500;
+  --typography-title-letter-spacing: 0px;
+
 }

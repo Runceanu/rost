@@ -6,12 +6,12 @@ Every value in every contract, by why it does or does not carry a token. Run `np
 
 | | Values | Share | Meaning |
 |---|---|---|---|
-| Bound to a token | 721 | 73% | The source binds a token, and conformance checks it. |
-| Token suggested | 37 | 4% | A literal where a token fits. Bind it in Figma, then re-read. |
-| Layout keyword | 225 | 23% | How the layer is built (position, inset, which sides get a stroke). Not a token decision. |
-| Figma frame size | 2 | 0% | A root size that is only the Figma frame. Recorded, not asserted. |
-| Untokenised on purpose | 8 | 1% | Deliberately literal, with the reason in the contract. |
-| Open gap | 0 | 0% | No token and no reason. Each one needs a decision. |
+| Bound to a token | 973 | 66% | The source binds a token, and conformance checks it. |
+| Token suggested | 106 | 7% | A literal where a token fits. Bind it in Figma, then re-read. |
+| Layout keyword | 361 | 24% | How the layer is built (position, inset, which sides get a stroke). Not a token decision. |
+| Figma frame size | 21 | 1% | A root size that is only the Figma frame. Recorded, not asserted. |
+| Untokenised on purpose | 10 | 1% | Deliberately literal, with the reason in the contract. |
+| Open gap | 4 | 0% | No token and no reason. Each one needs a decision. |
 
 ## By contract
 
@@ -19,7 +19,9 @@ Every value in every contract, by why it does or does not carry a token. Run `np
 |---|---:|---:|---:|---:|---:|---:|
 | [Badge](components/badge.md) | 20 | 2 | 11 | · | · | · |
 | [Button](components/button.md) | 134 | · | 38 | · | · | · |
+| [Carousel](components/carousel.md) | 53 | 4 | 20 | 4 | 1 | 1 |
 | [Chip](components/chips.md) | 32 | · | 7 | · | · | · |
+| [Divider](components/divider.md) | · | · | · | 1 | · | · |
 | [Floating effect](components/effect-floating.md) | 1 | · | · | · | · | · |
 | [Hero Media](components/hero-media.md) | 6 | · | 1 | · | 1 | · |
 | [IconButton](components/icon-button.md) | 170 | 2 | 41 | · | · | · |
@@ -30,8 +32,12 @@ Every value in every contract, by why it does or does not carry a token. Run `np
 | [Menu](components/menu.md) | 21 | · | 3 | 1 | · | · |
 | [Paper effect](components/effect-paper.md) | 6 | · | · | · | 7 | · |
 | [PillButton](components/pill-button.md) | 153 | 2 | 41 | · | · | · |
+| [Projects](components/projects.md) | 43 | 11 | 15 | 1 | · | · |
 | [Tag](components/tags.md) | 22 | · | 4 | · | · | · |
+| [TestimonialPicture](components/testimonials-pics.md) | · | · | 2 | 2 | · | · |
+| [Testimonials](components/testimonials.md) | 112 | 49 | 80 | 9 | · | 1 |
 | [Thumb effect](components/effect-thumb.md) | 1 | · | · | · | · | · |
+| [Thumbs](components/thumbs.md) | 44 | 5 | 19 | 2 | 1 | 2 |
 | [Toggle](components/toggle.md) | 56 | 2 | 27 | · | · | · |
 
 ## Suggested bindings
@@ -40,13 +46,19 @@ Bind these in Figma (or create the token first, where it is new). The next Figma
 
 | Suggest | Value | Exists | Uses | Where |
 |---|---|---|---:|---|
+| `spacing/size/2xsmall` | `16px` | yes | 33 | [Badge](components/badge.md) `icons-dot.width`, [Badge](components/badge.md) `icons-dot.height`, [Carousel](components/carousel.md) `number.width`, [InlineBanner](components/inline-banner.md) `icons-plus.width` +12 |
 | `spacing/size/xsmall` | `20px` | yes | 22 | [IconButton](components/icon-button.md) `icons-arrow-left.width`, [IconButton](components/icon-button.md) `icons-arrow-left.height`, [InlineBanner](components/inline-banner.md) `icons-plus.width`, [InlineBanner](components/inline-banner.md) `icons-plus.height` +12 |
-| `spacing/size/2xsmall` | `16px` | yes | 10 | [Badge](components/badge.md) `icons-dot.width`, [Badge](components/badge.md) `icons-dot.height`, [InlineBanner](components/inline-banner.md) `icons-plus.width`, [InlineBanner](components/inline-banner.md) `icons-plus.height` +6 |
-| `spacing/size/small` | `24px` | yes | 4 | [Input](components/input.md) `icons-alarm.width`, [Input](components/input.md) `icons-alarm.height` |
+| `spacing/size/small-medium` | `32px` | yes | 18 | [Projects](components/projects.md) `-actions.width`, [Projects](components/projects.md) `-actions.height`, [Testimonials](components/testimonials.md) `-actions.width`, [Testimonials](components/testimonials.md) `-actions.height` |
+| `spacing/size/large` | `56px` | yes | 16 | [Testimonials](components/testimonials.md) `slot.width`, [Testimonials](components/testimonials.md) `slot.height` |
+| `spacing/size/small` | `24px` | yes | 9 | [Input](components/input.md) `icons-alarm.width`, [Input](components/input.md) `icons-alarm.height`, [Projects](components/projects.md) `badge.height`, [Projects](components/projects.md) `icons-lock.width` +3 |
+| `spacing/size/3xsmall` | `12px` | yes | 4 | [Projects](components/projects.md) `icons-dot.width`, [Projects](components/projects.md) `icons-dot.height`, [Thumbs](components/thumbs.md) `icons-dot.width`, [Thumbs](components/thumbs.md) `icons-dot.height` |
+| `spacing/outline/medium` | `2px` | yes | 2 | [Projects](components/projects.md) `outline.height`, [Testimonials](components/testimonials.md) `outline.height` |
 | `spacing/gap/small` | `8px` | yes | 1 | [Input](components/input.md) `left.gap` |
+| `spacing/gap/2xlarge` | `40px` | yes | 1 | [Projects](components/projects.md) `left.gap` |
 
 ## Untokenised on purpose
 
+- [Carousel](components/carousel.md) `focus-ring.border-radius` = `28px`: Derived: the element radius plus the focus ring offset.
 - [Hero Media](components/hero-media.md) `media.background-size` = `explicit px (asset-native, e.g. 2336px 1196px)`: Each artwork's native pixel size.
 - [Paper effect](components/effect-paper.md) `dot.radius` = `1px`: Dot geometry, tuned to the 16px pitch; not a reusable decision.
 - [Paper effect](components/effect-paper.md) `lens.radius` = `210px`: Motion tuning parameter of the lens field.
@@ -55,14 +67,18 @@ Bind these in Figma (or create the token first, where it is new). The next Figma
 - [Paper effect](components/effect-paper.md) `lens.halo` = `radius 240px, power 1.3`: Motion tuning parameter (radius and falloff power).
 - [Paper effect](components/effect-paper.md) `lens.press` = `radius 330px, power 1.7`: Motion tuning parameter (radius and falloff power).
 - [Paper effect](components/effect-paper.md) `pen.cadence` = `7-8s between sketches`: Timing of the sketch loop; a motion token group does not exist yet.
+- [Thumbs](components/thumbs.md) `focus-ring.border-radius` = `28px`: Derived: the element radius plus the focus ring offset.
 
 ## Open gaps
 
-None. Every value is bound, suggested, layout, a frame sample, or explained.
+- [Carousel](components/carousel.md) `background.background` = `rgba(58,58,58,0.48)`
+- [Testimonials](components/testimonials.md) `bottom.width` = `976px`
+- [Thumbs](components/thumbs.md) `shadow.height` = `167px`
+- [Thumbs](components/thumbs.md) `content.background` = `rgba(0,0,0,0.48)`
 
 ## Figma variables missing from tokens.css
 
-The Figma file defines **582** variables (`registry/figma-variables.json`); `tokens/tokens.css` exports **153**. No contract uses the other 429 yet, but every component added from here will hit them, as Chip did with `opacity/strong`.
+The Figma file defines **582** variables (`registry/figma-variables.json`); `tokens/tokens.css` exports **172**. No contract uses the other 410 yet, but every component added from here will hit them, as Chip did with `opacity/strong`.
 
 | Family | Missing |
 |---|---:|
@@ -75,24 +91,23 @@ The Figma file defines **582** variables (`registry/figma-variables.json`); `tok
 | `typography/font-size` | 17 |
 | `actions/primary` | 13 |
 | `actions/tertiary` | 12 |
-| `non-interactive/background` | 7 |
 | `non-interactive/foreground` | 7 |
 | `input/regular` | 6 |
-| `project/focus` | 6 |
+| `non-interactive/background` | 6 |
 | `typography/display` | 6 |
-| `project/default` | 5 |
-| `project/disabled` | 5 |
-| `project/hover` | 5 |
-| `project/lock` | 5 |
-| `project/pressed` | 5 |
 | `typography/headline` | 5 |
 | `typography/sub-title` | 5 |
 | `input/negative` | 4 |
 | `project/loading` | 4 |
 | `typography/font-weight` | 4 |
+| `project/hover` | 3 |
+| `project/lock` | 3 |
+| `project/pressed` | 3 |
 | `spacing/outline` | 3 |
 | `typography/sub-headline` | 3 |
-| `typography/title` | 3 |
+| `project/default` | 2 |
+| `project/disabled` | 2 |
+| `project/focus` | 2 |
 | `spacing/gap` | 2 |
 | `typography/placeholder` | 2 |
 | `Base/Black` | 1 |
@@ -108,3 +123,4 @@ The Figma file defines **582** variables (`registry/figma-variables.json`); `tok
 | `spacing/size` | 1 |
 | `sub-label` | 1 |
 | `typography/letter-spacing` | 1 |
+| `typography/title` | 1 |

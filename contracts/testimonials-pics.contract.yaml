@@ -1,0 +1,48 @@
+# yaml-language-server: $schema=../schema/component-contract.schema.json
+schemaVersion: 2
+id: testimonials-pics
+name: TestimonialPicture
+kind: component
+status: review
+source:
+  tool: figma
+  fileKey: 1Zy0wiWKXQAvsfDBX3KR0d
+  nodeId: "144:493"
+  url: https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=144-493
+  extractedAt: "2026-08-18"
+  extractedBy: mcp
+props:
+  people:
+    type: enum
+    values: [ Person 1, Person 2, Person 3, Person 4, Person 5, Person 6, Person 7, Person 8 ]
+    default: Person 1
+elements:
+  root:
+    styles:
+      position: { value: absolute }
+      inset: { value: "0" }
+      width:
+        value: 56px
+        assert: false
+        notes: No token behind it — the Figma frame size, not a spec.
+      height:
+        value: 56px
+        assert: false
+        notes: No token behind it — the Figma frame size, not a spec.
+variants:
+  - when: { people: Person 7 }
+    figmaNode: "144:486"
+  - when: { people: Person 6 }
+    figmaNode: "144:487"
+  - when: { people: Person 5 }
+    figmaNode: "144:488"
+  - when: { people: Person 2 }
+    figmaNode: "144:489"
+  - when: { people: Person 4 }
+    figmaNode: "144:490"
+  - when: { people: Person 3 }
+    figmaNode: "144:491"
+  - when: { people: Person 1 }
+    figmaNode: "144:492"
+  - when: { people: Person 8 }
+    figmaNode: "164:1082"

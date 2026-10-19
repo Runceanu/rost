@@ -1,0 +1,150 @@
+/* thumbs | state=Disabled | 109:206 | 384x334 */
+const imgIconsDot = "http://localhost:3845/assets/df819254b2be6cb49b208077f24c4379c0890ac4.svg";
+const imgIconsDot1 = "http://localhost:3845/assets/05130defc16e1f338395f07cd887d12adb984d52.svg";
+const imgIconsDot2 = "http://localhost:3845/assets/fefd012df5163631ac7e645c573ee737237b22ce.svg";
+const imgIconsDot3 = "http://localhost:3845/assets/21f711ddae89f552b2a94a982d179278426d8892.svg";
+type ThumbsProps = {
+  className?: string;
+  children?: React.ReactNode | null;
+  industry?: string;
+  name?: string;
+  number?: string;
+  period?: string;
+  showBadge?: boolean;
+  showIndustry?: boolean;
+  showName?: boolean;
+  showNumber?: boolean;
+  showPeriod?: boolean;
+  showType?: boolean;
+  state?: "Default" | "Disabled";
+  type?: string;
+};
+
+function Thumbs({ className, children = null, industry = "Industry", name = "Client", number = "00", period = "Period", showBadge = true, showIndustry = true, showName = true, showNumber = true, showPeriod = true, showType = true, state = "Default", type = "Type" }: ThumbsProps) {
+  const isDefault = state === "Default";
+  const isDisabled = state === "Disabled";
+  return (
+    <div className={className || `${String.raw`content-stretch flex flex-col gap-[var(--spacing\/gap\/none,0px)] h-[334px] items-start relative rounded-[var(--spacing\/radius\/xlarge,24px)] w-[384px] `}${isDisabled ? String.raw`opacity-[calc(var(--opacity\/solid,100)/100)]` : ""}`} id={isDisabled ? "node-109_206" : "node-109_78"}>
+      {isDefault && (
+        <>
+          <div className="bg-[var(--non-interactive\/background\/secondary,#171717)] flex-[1_0_0] min-h-px relative rounded-[var(--spacing\/radius\/xlarge,24px)] w-full" data-node-id="109:56" data-name="slot">
+            {children}
+          </div>
+          <div className="absolute bg-gradient-to-b bottom-0 from-[rgba(6,8,5,0)] h-[167px] left-0 opacity-[calc(var(--opacity\/medium,48)/100)] right-0 to-[var(--non-interactive\/background\/primary,#060805)]" data-node-id="125:26791" data-name="shadow" />
+          <div className="absolute backdrop-blur-[calc(var(--opacity\/gentle,24px)/2)] bg-[rgba(0,0,0,0.48)] bottom-[8px] content-stretch flex flex-col gap-[var(--spacing\/gap\/small,8px)] items-start left-[8px] pb-[var(--spacing\/gap\/large,24px)] pt-[var(--spacing\/gap\/medium,16px)] px-[var(--spacing\/gap\/medium,16px)] right-[8px] rounded-[var(--spacing\/radius\/large,16px)]" data-node-id="108:206" data-name="Content">
+            <div className="content-stretch flex gap-[var(--spacing\/gap\/medium,16px)] items-center relative shrink-0 w-full" data-node-id="108:205" data-name="Title">
+              <div className="content-stretch flex flex-col items-center justify-center relative shrink-0 w-[16px]" data-node-id="108:207" data-name="Number">
+                {showNumber && (
+                  <p className="[word-break:break-word] font-[family-name:var(--font-family\/base,'General_Sans_Variable:Regular')] font-[var(--typography\/label\/font-weight\/regular,400)] leading-[var(--typography\/label\/line-height,14px)] relative shrink-0 text-[color:var(--project\/default\/sub-label,#999)] text-[length:var(--typography\/label\/font-size,12px)] tracking-[var(--typography\/label\/letter-spacing,0px)] w-full" data-node-id="108:189">
+                    {number}
+                  </p>
+                )}
+              </div>
+              {showName && (
+                <p className="[word-break:break-word] font-[family-name:var(--font-family\/base,'General_Sans_Variable:Medium')] font-[var(--typography\/title\/font-weight\/medium,500)] leading-[var(--typography\/title\/line-height,32px)] relative shrink-0 text-[color:var(--project\/default\/label,#d3d9d5)] text-[length:var(--typography\/title\/font-size,24px)] tracking-[var(--typography\/title\/letter-spacing,0px)] whitespace-nowrap" data-node-id="108:190">
+                  {name}
+                </p>
+              )}
+            </div>
+            <div className="content-stretch flex gap-[var(--spacing\/gap\/medium,16px)] items-center justify-end pl-[var(--spacing\/gap\/xlarge,32px)] relative shrink-0" data-node-id="108:191" data-name="Bottom">
+              {showIndustry && (
+                <>
+                  <p className="[word-break:break-word] font-[family-name:var(--font-family\/base,'General_Sans_Variable:Regular')] font-[var(--typography\/label\/font-weight\/regular,400)] leading-[var(--typography\/label\/line-height,14px)] relative shrink-0 text-[color:var(--project\/default\/sub-label,#999)] text-[length:var(--typography\/label\/font-size,12px)] tracking-[var(--typography\/label\/letter-spacing,0px)] whitespace-nowrap" data-node-id="108:231">
+                    {industry}
+                  </p>
+                  <div className="relative shrink-0 size-[12px]" data-node-id="108:232" data-name="icons/dot">
+                    <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgIconsDot} />
+                  </div>
+                </>
+              )}
+              {showType && (
+                <>
+                  <p className="[word-break:break-word] font-[family-name:var(--font-family\/base,'General_Sans_Variable:Regular')] font-[var(--typography\/label\/font-weight\/regular,400)] leading-[var(--typography\/label\/line-height,14px)] relative shrink-0 text-[color:var(--project\/default\/sub-label,#999)] text-[length:var(--typography\/label\/font-size,12px)] tracking-[var(--typography\/label\/letter-spacing,0px)] whitespace-nowrap" data-node-id="108:233">
+                    {type}
+                  </p>
+                  <div className="relative shrink-0 size-[12px]" data-node-id="108:234" data-name="icons/dot">
+                    <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgIconsDot1} />
+                  </div>
+                </>
+              )}
+              {showPeriod && (
+                <p className="[word-break:break-word] font-[family-name:var(--font-family\/base,'General_Sans_Variable:Regular')] font-[var(--typography\/label\/font-weight\/regular,400)] leading-[var(--typography\/label\/line-height,14px)] relative shrink-0 text-[color:var(--project\/default\/sub-label,#999)] text-[length:var(--typography\/label\/font-size,12px)] tracking-[var(--typography\/label\/letter-spacing,0px)] whitespace-nowrap" data-node-id="108:235">
+                  {period}
+                </p>
+              )}
+            </div>
+          </div>
+        </>
+      )}
+      {isDisabled && (
+        <>
+          <div className="bg-[var(--non-interactive\/background\/secondary,#171717)] flex-[1_0_0] min-h-px opacity-[calc(var(--opacity\/mild,32)/100)] relative rounded-[var(--spacing\/radius\/xlarge,24px)] w-full" data-node-id="109:207" data-name="slot">
+            {children}
+          </div>
+          <div className="absolute bg-gradient-to-b bottom-0 from-[rgba(6,8,5,0)] h-[167px] left-0 opacity-[calc(var(--opacity\/medium,48)/100)] right-0 to-[var(--non-interactive\/background\/primary,#060805)]" data-node-id="126:26798" data-name="shadow" />
+          <div className="absolute backdrop-blur-[calc(var(--opacity\/gentle,24px)/2)] bg-[rgba(0,0,0,0.48)] bottom-[8px] content-stretch flex flex-col gap-[var(--spacing\/gap\/small,8px)] items-start left-[8px] opacity-[calc(var(--opacity\/mild,32)/100)] pb-[var(--spacing\/gap\/large,24px)] pt-[var(--spacing\/gap\/medium,16px)] px-[var(--spacing\/gap\/medium,16px)] right-[8px] rounded-[var(--spacing\/radius\/large,16px)]" data-node-id="109:208" data-name="Content">
+            <div className="content-stretch flex gap-[var(--spacing\/gap\/medium,16px)] items-center relative shrink-0 w-full" data-node-id="109:209" data-name="Title">
+              <div className="content-stretch flex flex-col items-center justify-center relative shrink-0 w-[16px]" data-node-id="109:210" data-name="Number">
+                {showNumber && (
+                  <p className="[word-break:break-word] font-[family-name:var(--font-family\/base,'General_Sans_Variable:Regular')] font-[var(--typography\/label\/font-weight\/regular,400)] leading-[var(--typography\/label\/line-height,14px)] relative shrink-0 text-[color:var(--project\/disabled\/sub-label,#999)] text-[length:var(--typography\/label\/font-size,12px)] tracking-[var(--typography\/label\/letter-spacing,0px)] w-full" data-node-id="109:211">
+                    {number}
+                  </p>
+                )}
+              </div>
+              {showName && (
+                <p className="[word-break:break-word] font-[family-name:var(--font-family\/base,'General_Sans_Variable:Medium')] font-[var(--typography\/title\/font-weight\/medium,500)] leading-[var(--typography\/title\/line-height,32px)] relative shrink-0 text-[color:var(--project\/disabled\/label,#d3d9d5)] text-[length:var(--typography\/title\/font-size,24px)] tracking-[var(--typography\/title\/letter-spacing,0px)] whitespace-nowrap" data-node-id="109:212">
+                  {name}
+                </p>
+              )}
+            </div>
+            <div className="content-stretch flex gap-[var(--spacing\/gap\/medium,16px)] items-center justify-end pl-[var(--spacing\/gap\/xlarge,32px)] relative shrink-0" data-node-id="109:213" data-name="Bottom">
+              {showIndustry && (
+                <>
+                  <p className="[word-break:break-word] font-[family-name:var(--font-family\/base,'General_Sans_Variable:Regular')] font-[var(--typography\/label\/font-weight\/regular,400)] leading-[var(--typography\/label\/line-height,14px)] relative shrink-0 text-[color:var(--project\/disabled\/sub-label,#999)] text-[length:var(--typography\/label\/font-size,12px)] tracking-[var(--typography\/label\/letter-spacing,0px)] whitespace-nowrap" data-node-id="109:214">
+                    {industry}
+                  </p>
+                  <div className="relative shrink-0 size-[12px]" data-node-id="109:215" data-name="icons/dot">
+                    <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgIconsDot2} />
+                  </div>
+                </>
+              )}
+              {showType && (
+                <>
+                  <p className="[word-break:break-word] font-[family-name:var(--font-family\/base,'General_Sans_Variable:Regular')] font-[var(--typography\/label\/font-weight\/regular,400)] leading-[var(--typography\/label\/line-height,14px)] relative shrink-0 text-[color:var(--project\/disabled\/sub-label,#999)] text-[length:var(--typography\/label\/font-size,12px)] tracking-[var(--typography\/label\/letter-spacing,0px)] whitespace-nowrap" data-node-id="109:216">
+                    {type}
+                  </p>
+                  <div className="relative shrink-0 size-[12px]" data-node-id="109:217" data-name="icons/dot">
+                    <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgIconsDot3} />
+                  </div>
+                </>
+              )}
+              {showPeriod && (
+                <p className="[word-break:break-word] font-[family-name:var(--font-family\/base,'General_Sans_Variable:Regular')] font-[var(--typography\/label\/font-weight\/regular,400)] leading-[var(--typography\/label\/line-height,14px)] relative shrink-0 text-[color:var(--project\/disabled\/sub-label,#999)] text-[length:var(--typography\/label\/font-size,12px)] tracking-[var(--typography\/label\/letter-spacing,0px)] whitespace-nowrap" data-node-id="109:218">
+                  {period}
+                </p>
+              )}
+            </div>
+          </div>
+        </>
+      )}
+      {isDisabled && showBadge && (
+        <div className="absolute content-stretch flex gap-[var(--spacing\/gap\/3xsmall,2px)] h-[var(--spacing\/size\/small,24px)] items-center min-w-[24px] pb-[var(--spacing\/gap\/3xsmall,2px)] pt-[var(--spacing\/gap\/none,0px)] px-[var(--spacing\/gap\/small,8px)] right-[16px] rounded-[var(--spacing\/radius\/full,10000px)] top-[16px]" data-node-id="173:1407" data-name="badge">
+          <p className="[word-break:break-word] font-[family-name:var(--font-family\/base,'General_Sans_Variable:Medium')] font-[var(--typography\/label\/font-weight\/medium,500)] leading-[var(--typography\/label\/line-height,14px)] relative shrink-0 text-[color:var(--non-interactive\/foreground\/tertiary,#999)] text-[length:var(--typography\/label\/font-size,12px)] text-center tracking-[var(--typography\/label\/letter-spacing,0px)] whitespace-nowrap" data-node-id="I173:1407;346:3997">
+            Coming soon
+          </p>
+          <div className="absolute border border-[var(--non-interactive\/foreground\/quadruple,#3a3a3a)] border-solid inset-0 opacity-[calc(var(--opacity\/solid,100)/100)] rounded-[var(--spacing\/radius\/full,10000px)]" data-node-id="I173:1407;346:3998" data-name="outline" />
+        </div>
+      )}
+    </div>
+  );
+}
+SUPER CRITICAL: The generated React+Tailwind code MUST be converted to match the target project's technology stack and styling system.
+1. Analyze the target codebase to identify: technology stack, styling approach, component patterns, and design tokens
+2. Convert React syntax to the target framework/library
+3. Transform all Tailwind classes to the target styling system while preserving exact visual design
+4. Follow the project's existing patterns and conventions
+DO NOT install any Tailwind as a dependency unless the user instructs you to do so.
+
+Node ids have been added to the code as data attributes, e.g. `data-node-id="1:2"`.
+These styles are contained in the design: label/regular: Font(family: "font-family/base", style: Regular, size: typography/label/font-size, weight: typography/label/font-weight/regular, lineHeight: typography/label/line-height, letterSpacing: typography/label/letter-spacing), title/medium: Font(family: "font-family/base", style: Medium, size: typography/title/font-size, weight: typography/title/font-weight/medium, lineHeight: typography/title/line-height, letterSpacing: typography/title/letter-spacing), Thumb: Effect(type: BACKGROUND_BLUR, radius: opacity/gentle), label/medium: Font(family: "font-family/base", style: Medium, size: typography/label/font-size, weight: typography/label/font-weight/medium, lineHeight: typography/label/line-height, letterSpacing: typography/label/letter-spacing).
+Image assets are stored on a localhost server. Clients can use these images directly in code as a way to view the image assets the same way they would other remote servers. Images and SVGs will be stored as constants, e.g. const image = 'http://localhost:3845/assets/10c13ac1a228a365cb98a0064b1d5afbc84887b2.png' These constants will be used in the code as the source for the image, e.g. <img src={image} /> This is true for both images and SVGs, so you can use the same approach for both types of assets.

@@ -1,0 +1,1354 @@
+{
+  "badge": [
+    {
+      "nodeId": "139:396",
+      "name": "status=Default",
+      "file": "139-396.png",
+      "width": 43,
+      "height": 24
+    },
+    {
+      "nodeId": "139:433",
+      "name": "status=Negative",
+      "file": "139-433.png",
+      "width": 43,
+      "height": 24
+    },
+    {
+      "nodeId": "139:439",
+      "name": "status=Positive",
+      "file": "139-439.png",
+      "width": 43,
+      "height": 24
+    },
+    {
+      "nodeId": "139:445",
+      "name": "status=Warning",
+      "file": "139-445.png",
+      "width": 43,
+      "height": 24
+    }
+  ],
+  "pill-button": [
+    {
+      "nodeId": "20:13",
+      "name": "type=Primary, state=Default",
+      "file": "20-13.png",
+      "width": 76,
+      "height": 48
+    },
+    {
+      "nodeId": "25:80",
+      "name": "type=Secondary, state=Default",
+      "file": "25-80.png",
+      "width": 76,
+      "height": 48
+    },
+    {
+      "nodeId": "25:191",
+      "name": "type=Tertiary, state=Default",
+      "file": "25-191.png",
+      "width": 76,
+      "height": 48
+    },
+    {
+      "nodeId": "25:249",
+      "name": "type=Borderless, state=Default",
+      "file": "25-249.png",
+      "width": 36,
+      "height": 48
+    },
+    {
+      "nodeId": "20:15",
+      "name": "type=Primary, state=Hover",
+      "file": "20-15.png",
+      "width": 76,
+      "height": 48
+    },
+    {
+      "nodeId": "25:82",
+      "name": "type=Secondary, state=Hover",
+      "file": "25-82.png",
+      "width": 76,
+      "height": 48
+    },
+    {
+      "nodeId": "25:194",
+      "name": "type=Tertiary, state=Hover",
+      "file": "25-194.png",
+      "width": 76,
+      "height": 48
+    },
+    {
+      "nodeId": "25:251",
+      "name": "type=Borderless, state=Hover",
+      "file": "25-251.png",
+      "width": 36,
+      "height": 48
+    },
+    {
+      "nodeId": "20:20",
+      "name": "type=Primary, state=Pressed",
+      "file": "20-20.png",
+      "width": 76,
+      "height": 48
+    },
+    {
+      "nodeId": "25:84",
+      "name": "type=Secondary, state=Pressed",
+      "file": "25-84.png",
+      "width": 76,
+      "height": 48
+    },
+    {
+      "nodeId": "25:197",
+      "name": "type=Tertiary, state=Pressed",
+      "file": "25-197.png",
+      "width": 76,
+      "height": 48
+    },
+    {
+      "nodeId": "25:254",
+      "name": "type=Borderless, state=Pressed",
+      "file": "25-254.png",
+      "width": 36,
+      "height": 48
+    },
+    {
+      "nodeId": "20:22",
+      "name": "type=Primary, state=Disabled",
+      "file": "20-22.png",
+      "width": 76,
+      "height": 48
+    },
+    {
+      "nodeId": "25:86",
+      "name": "type=Secondary, state=Disabled",
+      "file": "25-86.png",
+      "width": 76,
+      "height": 48
+    },
+    {
+      "nodeId": "25:200",
+      "name": "type=Tertiary, state=Disabled",
+      "file": "25-200.png",
+      "width": 76,
+      "height": 48
+    },
+    {
+      "nodeId": "25:257",
+      "name": "type=Borderless, state=Disabled",
+      "file": "25-257.png",
+      "width": 36,
+      "height": 48
+    },
+    {
+      "nodeId": "20:17",
+      "name": "type=Primary, state=Focus",
+      "file": "20-17.png",
+      "width": 76,
+      "height": 48
+    },
+    {
+      "nodeId": "25:88",
+      "name": "type=Secondary, state=Focus",
+      "file": "25-88.png",
+      "width": 76,
+      "height": 48
+    },
+    {
+      "nodeId": "25:203",
+      "name": "type=Tertiary, state=Focus",
+      "file": "25-203.png",
+      "width": 76,
+      "height": 48
+    },
+    {
+      "nodeId": "25:260",
+      "name": "type=Borderless, state=Focus",
+      "file": "25-260.png",
+      "width": 36,
+      "height": 48
+    }
+  ],
+  "button": [
+    {
+      "nodeId": "39:39",
+      "name": "type=Primary, state=Default",
+      "file": "39-39.png",
+      "width": 76,
+      "height": 48
+    },
+    {
+      "nodeId": "39:41",
+      "name": "type=Secondary, state=Default",
+      "file": "39-41.png",
+      "width": 76,
+      "height": 48
+    },
+    {
+      "nodeId": "39:44",
+      "name": "type=Tertiary, state=Default",
+      "file": "39-44.png",
+      "width": 76,
+      "height": 48
+    },
+    {
+      "nodeId": "39:46",
+      "name": "type=Borderless, state=Default",
+      "file": "39-46.png",
+      "width": 36,
+      "height": 48
+    },
+    {
+      "nodeId": "39:48",
+      "name": "type=Primary, state=Hover",
+      "file": "39-48.png",
+      "width": 76,
+      "height": 48
+    },
+    {
+      "nodeId": "39:50",
+      "name": "type=Secondary, state=Hover",
+      "file": "39-50.png",
+      "width": 76,
+      "height": 48
+    },
+    {
+      "nodeId": "39:53",
+      "name": "type=Tertiary, state=Hover",
+      "file": "39-53.png",
+      "width": 76,
+      "height": 48
+    },
+    {
+      "nodeId": "39:56",
+      "name": "type=Borderless, state=Hover",
+      "file": "39-56.png",
+      "width": 36,
+      "height": 48
+    },
+    {
+      "nodeId": "39:59",
+      "name": "type=Primary, state=Pressed",
+      "file": "39-59.png",
+      "width": 76,
+      "height": 48
+    },
+    {
+      "nodeId": "39:61",
+      "name": "type=Secondary, state=Pressed",
+      "file": "39-61.png",
+      "width": 76,
+      "height": 48
+    },
+    {
+      "nodeId": "39:64",
+      "name": "type=Tertiary, state=Pressed",
+      "file": "39-64.png",
+      "width": 76,
+      "height": 48
+    },
+    {
+      "nodeId": "39:67",
+      "name": "type=Borderless, state=Pressed",
+      "file": "39-67.png",
+      "width": 36,
+      "height": 48
+    },
+    {
+      "nodeId": "39:70",
+      "name": "type=Primary, state=Disabled",
+      "file": "39-70.png",
+      "width": 76,
+      "height": 48
+    },
+    {
+      "nodeId": "39:72",
+      "name": "type=Secondary, state=Disabled",
+      "file": "39-72.png",
+      "width": 76,
+      "height": 48
+    },
+    {
+      "nodeId": "39:75",
+      "name": "type=Tertiary, state=Disabled",
+      "file": "39-75.png",
+      "width": 76,
+      "height": 48
+    },
+    {
+      "nodeId": "39:77",
+      "name": "type=Borderless, state=Disabled",
+      "file": "39-77.png",
+      "width": 36,
+      "height": 48
+    },
+    {
+      "nodeId": "39:79",
+      "name": "type=Primary, state=Focus",
+      "file": "39-79.png",
+      "width": 76,
+      "height": 48
+    },
+    {
+      "nodeId": "39:82",
+      "name": "type=Secondary, state=Focus",
+      "file": "39-82.png",
+      "width": 76,
+      "height": 48
+    },
+    {
+      "nodeId": "39:86",
+      "name": "type=Tertiary, state=Focus",
+      "file": "39-86.png",
+      "width": 76,
+      "height": 48
+    },
+    {
+      "nodeId": "39:89",
+      "name": "type=Borderless, state=Focus",
+      "file": "39-89.png",
+      "width": 36,
+      "height": 48
+    }
+  ],
+  "icon-button": [
+    {
+      "nodeId": "93:588",
+      "name": "type=Primary, state=Default",
+      "file": "93-588.png",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "nodeId": "93:591",
+      "name": "type=Secondary, state=Default",
+      "file": "93-591.png",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "nodeId": "93:595",
+      "name": "type=Tertiary, state=Default",
+      "file": "93-595.png",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "nodeId": "93:740",
+      "name": "type=Project, state=Default",
+      "file": "93-740.png",
+      "width": 32,
+      "height": 32
+    },
+    {
+      "nodeId": "93:601",
+      "name": "type=Primary, state=Hover",
+      "file": "93-601.png",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "nodeId": "93:604",
+      "name": "type=Secondary, state=Hover",
+      "file": "93-604.png",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "nodeId": "93:608",
+      "name": "type=Tertiary, state=Hover",
+      "file": "93-608.png",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "nodeId": "93:742",
+      "name": "type=Project, state=Hover",
+      "file": "93-742.png",
+      "width": 32,
+      "height": 32
+    },
+    {
+      "nodeId": "93:616",
+      "name": "type=Primary, state=Pressed",
+      "file": "93-616.png",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "nodeId": "93:619",
+      "name": "type=Secondary, state=Pressed",
+      "file": "93-619.png",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "nodeId": "93:623",
+      "name": "type=Tertiary, state=Pressed",
+      "file": "93-623.png",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "nodeId": "93:745",
+      "name": "type=Project, state=Pressed",
+      "file": "93-745.png",
+      "width": 32,
+      "height": 32
+    },
+    {
+      "nodeId": "93:631",
+      "name": "type=Primary, state=Disabled",
+      "file": "93-631.png",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "nodeId": "93:634",
+      "name": "type=Secondary, state=Disabled",
+      "file": "93-634.png",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "nodeId": "93:638",
+      "name": "type=Tertiary, state=Disabled",
+      "file": "93-638.png",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "nodeId": "93:748",
+      "name": "type=Project, state=Disabled",
+      "file": "93-748.png",
+      "width": 32,
+      "height": 32
+    },
+    {
+      "nodeId": "93:644",
+      "name": "type=Primary, state=Focus",
+      "file": "93-644.png",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "nodeId": "93:648",
+      "name": "type=Secondary, state=Focus",
+      "file": "93-648.png",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "nodeId": "93:653",
+      "name": "type=Tertiary, state=Focus",
+      "file": "93-653.png",
+      "width": 48,
+      "height": 48
+    },
+    {
+      "nodeId": "93:750",
+      "name": "type=Project, state=Focus",
+      "file": "93-750.png",
+      "width": 32,
+      "height": 32
+    }
+  ],
+  "input": [
+    {
+      "nodeId": "240:274",
+      "name": "state=Default, configuration=Empty, selected=False, error=False",
+      "file": "240-274.png",
+      "width": 208,
+      "height": 56
+    },
+    {
+      "nodeId": "252:1014",
+      "name": "state=Default, configuration=Empty, selected=False, error=True",
+      "file": "252-1014.png",
+      "width": 208,
+      "height": 56
+    },
+    {
+      "nodeId": "252:836",
+      "name": "state=Default, configuration=Filled, selected=False, error=False",
+      "file": "252-836.png",
+      "width": 208,
+      "height": 56
+    },
+    {
+      "nodeId": "252:1024",
+      "name": "state=Default, configuration=Filled, selected=False, error=True",
+      "file": "252-1024.png",
+      "width": 208,
+      "height": 56
+    },
+    {
+      "nodeId": "244:760",
+      "name": "state=Disabled, configuration=Empty, selected=False, error=False",
+      "file": "244-760.png",
+      "width": 208,
+      "height": 56
+    },
+    {
+      "nodeId": "252:847",
+      "name": "state=Disabled, configuration=Filled, selected=False, error=False",
+      "file": "252-847.png",
+      "width": 208,
+      "height": 56
+    },
+    {
+      "nodeId": "244:726",
+      "name": "state=Default, configuration=Empty, selected=True, error=False",
+      "file": "244-726.png",
+      "width": 208,
+      "height": 56
+    },
+    {
+      "nodeId": "252:1052",
+      "name": "state=Default, configuration=Empty, selected=True, error=True",
+      "file": "252-1052.png",
+      "width": 208,
+      "height": 56
+    },
+    {
+      "nodeId": "252:856",
+      "name": "state=Default, configuration=Filled, selected=True, error=False",
+      "file": "252-856.png",
+      "width": 208,
+      "height": 56
+    },
+    {
+      "nodeId": "252:1064",
+      "name": "state=Default, configuration=Filled, selected=True, error=True",
+      "file": "252-1064.png",
+      "width": 208,
+      "height": 56
+    },
+    {
+      "nodeId": "240:277",
+      "name": "state=Hover, configuration=Empty, selected=False, error=False",
+      "file": "240-277.png",
+      "width": 208,
+      "height": 56
+    },
+    {
+      "nodeId": "252:1076",
+      "name": "state=Hover, configuration=Empty, selected=False, error=True",
+      "file": "252-1076.png",
+      "width": 208,
+      "height": 56
+    },
+    {
+      "nodeId": "252:868",
+      "name": "state=Hover, configuration=Filled, selected=False, error=False",
+      "file": "252-868.png",
+      "width": 208,
+      "height": 56
+    },
+    {
+      "nodeId": "252:1086",
+      "name": "state=Hover, configuration=Filled, selected=False, error=True",
+      "file": "252-1086.png",
+      "width": 208,
+      "height": 56
+    }
+  ],
+  "toggle": [
+    {
+      "nodeId": "168:1150",
+      "name": "state=Default, selected=True",
+      "file": "168-1150.png",
+      "width": 40,
+      "height": 40
+    },
+    {
+      "nodeId": "168:1152",
+      "name": "state=Default, selected=False",
+      "file": "168-1152.png",
+      "width": 40,
+      "height": 40
+    },
+    {
+      "nodeId": "168:1159",
+      "name": "state=Hover, selected=True",
+      "file": "168-1159.png",
+      "width": 40,
+      "height": 40
+    },
+    {
+      "nodeId": "168:1161",
+      "name": "state=Hover, selected=False",
+      "file": "168-1161.png",
+      "width": 40,
+      "height": 40
+    },
+    {
+      "nodeId": "168:1170",
+      "name": "state=Pressed, selected=True",
+      "file": "168-1170.png",
+      "width": 40,
+      "height": 40
+    },
+    {
+      "nodeId": "168:1172",
+      "name": "state=Pressed, selected=False",
+      "file": "168-1172.png",
+      "width": 40,
+      "height": 40
+    },
+    {
+      "nodeId": "168:1181",
+      "name": "state=Disabled, selected=True",
+      "file": "168-1181.png",
+      "width": 40,
+      "height": 40
+    },
+    {
+      "nodeId": "168:1183",
+      "name": "state=Disabled, selected=False",
+      "file": "168-1183.png",
+      "width": 40,
+      "height": 40
+    },
+    {
+      "nodeId": "168:1190",
+      "name": "state=Focus, selected=True",
+      "file": "168-1190.png",
+      "width": 40,
+      "height": 40
+    },
+    {
+      "nodeId": "168:1193",
+      "name": "state=Focus, selected=False",
+      "file": "168-1193.png",
+      "width": 40,
+      "height": 40
+    }
+  ],
+  "inline-banner": [
+    {
+      "nodeId": "205:615",
+      "name": "status=Default, size=Small",
+      "file": "205-615.png",
+      "width": 63,
+      "height": 32
+    },
+    {
+      "nodeId": "233:126",
+      "name": "status=Default, size=Medium",
+      "file": "233-126.png",
+      "width": 80,
+      "height": 38
+    },
+    {
+      "nodeId": "205:722",
+      "name": "status=Negative, size=Small",
+      "file": "205-722.png",
+      "width": 63,
+      "height": 32
+    },
+    {
+      "nodeId": "233:131",
+      "name": "status=Negative, size=Medium",
+      "file": "233-131.png",
+      "width": 80,
+      "height": 38
+    },
+    {
+      "nodeId": "207:32",
+      "name": "status=Positive, size=Small",
+      "file": "207-32.png",
+      "width": 63,
+      "height": 32
+    },
+    {
+      "nodeId": "233:136",
+      "name": "status=Positive, size=Medium",
+      "file": "233-136.png",
+      "width": 80,
+      "height": 38
+    },
+    {
+      "nodeId": "207:48",
+      "name": "status=Warning, size=Small",
+      "file": "207-48.png",
+      "width": 63,
+      "height": 32
+    },
+    {
+      "nodeId": "233:141",
+      "name": "status=Warning, size=Medium",
+      "file": "233-141.png",
+      "width": 80,
+      "height": 38
+    }
+  ],
+  "chips": [
+    {
+      "nodeId": "139:318",
+      "name": "status=Default, state=Default",
+      "file": "139-318.png",
+      "width": 43,
+      "height": 24
+    },
+    {
+      "nodeId": "139:320",
+      "name": "status=Default, state=Hover",
+      "file": "139-320.png",
+      "width": 43,
+      "height": 24
+    },
+    {
+      "nodeId": "139:322",
+      "name": "status=Default, state=Pressed",
+      "file": "139-322.png",
+      "width": 43,
+      "height": 24
+    },
+    {
+      "nodeId": "139:324",
+      "name": "status=Default, state=Disabled",
+      "file": "139-324.png",
+      "width": 43,
+      "height": 24
+    },
+    {
+      "nodeId": "139:326",
+      "name": "status=Default, state=Focus",
+      "file": "139-326.png",
+      "width": 43,
+      "height": 24
+    }
+  ],
+  "tags": [
+    {
+      "nodeId": "91:363",
+      "name": "type=Primary, state=Default",
+      "file": "91-363.png",
+      "width": 43,
+      "height": 20
+    },
+    {
+      "nodeId": "91:372",
+      "name": "type=Primary, state=Hover",
+      "file": "91-372.png",
+      "width": 43,
+      "height": 20
+    },
+    {
+      "nodeId": "91:383",
+      "name": "type=Primary, state=Pressed",
+      "file": "91-383.png",
+      "width": 43,
+      "height": 20
+    },
+    {
+      "nodeId": "91:394",
+      "name": "type=Primary, state=Disabled",
+      "file": "91-394.png",
+      "width": 43,
+      "height": 20
+    },
+    {
+      "nodeId": "91:403",
+      "name": "type=Primary, state=Focus",
+      "file": "91-403.png",
+      "width": 43,
+      "height": 20
+    }
+  ],
+  "menu": [
+    {
+      "nodeId": "41:298",
+      "name": "state=Disabled",
+      "file": "41-298.png",
+      "width": 324,
+      "height": 104
+    },
+    {
+      "nodeId": "41:286",
+      "name": "state=Pressed",
+      "file": "41-286.png",
+      "width": 324,
+      "height": 104
+    },
+    {
+      "nodeId": "41:272",
+      "name": "state=Focus",
+      "file": "41-272.png",
+      "width": 324,
+      "height": 104
+    },
+    {
+      "nodeId": "41:260",
+      "name": "state=Hover",
+      "file": "41-260.png",
+      "width": 324,
+      "height": 104
+    },
+    {
+      "nodeId": "41:147",
+      "name": "state=Default",
+      "file": "41-147.png",
+      "width": 324,
+      "height": 104
+    }
+  ],
+  "carousel": [
+    {
+      "nodeId": "157:303",
+      "name": "state=Default",
+      "file": "157-303.png",
+      "width": 312,
+      "height": 102
+    },
+    {
+      "nodeId": "157:317",
+      "name": "state=Disabled",
+      "file": "157-317.png",
+      "width": 312,
+      "height": 102
+    },
+    {
+      "nodeId": "157:331",
+      "name": "state=Pressed",
+      "file": "157-331.png",
+      "width": 312,
+      "height": 102
+    },
+    {
+      "nodeId": "157:345",
+      "name": "state=Focus",
+      "file": "157-345.png",
+      "width": 312,
+      "height": 102
+    },
+    {
+      "nodeId": "157:360",
+      "name": "state=Hover",
+      "file": "157-360.png",
+      "width": 312,
+      "height": 102
+    }
+  ],
+  "projects": [
+    {
+      "nodeId": "100:184",
+      "name": "state=Default",
+      "file": "100-184.png",
+      "width": 976,
+      "height": 96
+    },
+    {
+      "nodeId": "238:140",
+      "name": "state=Locked",
+      "file": "238-140.png",
+      "width": 976,
+      "height": 96
+    },
+    {
+      "nodeId": "100:183",
+      "name": "state=Disabled",
+      "file": "100-183.png",
+      "width": 976,
+      "height": 96
+    },
+    {
+      "nodeId": "100:182",
+      "name": "state=Pressed",
+      "file": "100-182.png",
+      "width": 976,
+      "height": 96
+    },
+    {
+      "nodeId": "100:181",
+      "name": "state=Focus",
+      "file": "100-181.png",
+      "width": 976,
+      "height": 96
+    },
+    {
+      "nodeId": "100:180",
+      "name": "state=Hover",
+      "file": "100-180.png",
+      "width": 976,
+      "height": 96
+    }
+  ],
+  "thumbs": [
+    {
+      "nodeId": "109:78",
+      "name": "state=Default",
+      "file": "109-78.png",
+      "width": 384,
+      "height": 334
+    },
+    {
+      "nodeId": "261:1232",
+      "name": "state=Locked",
+      "file": "261-1232.png",
+      "width": 384,
+      "height": 334
+    },
+    {
+      "nodeId": "109:206",
+      "name": "state=Disabled",
+      "file": "109-206.png",
+      "width": 384,
+      "height": 334
+    },
+    {
+      "nodeId": "109:168",
+      "name": "state=Pressed",
+      "file": "109-168.png",
+      "width": 384,
+      "height": 334
+    },
+    {
+      "nodeId": "109:118",
+      "name": "state=Focus",
+      "file": "109-118.png",
+      "width": 384,
+      "height": 334
+    },
+    {
+      "nodeId": "109:77",
+      "name": "state=Hover",
+      "file": "109-77.png",
+      "width": 384,
+      "height": 334
+    }
+  ],
+  "testimonials": [
+    {
+      "nodeId": "144:68",
+      "name": "state=Default, expanded=False",
+      "file": "144-68.png",
+      "width": 976,
+      "height": 106
+    },
+    {
+      "nodeId": "144:347",
+      "name": "state=Default, expanded=True",
+      "file": "144-347.png",
+      "width": 992,
+      "height": 174
+    },
+    {
+      "nodeId": "144:80",
+      "name": "state=Disabled, expanded=False",
+      "file": "144-80.png",
+      "width": 976,
+      "height": 106
+    },
+    {
+      "nodeId": "144:355",
+      "name": "state=Disabled, expanded=True",
+      "file": "144-355.png",
+      "width": 976,
+      "height": 174
+    },
+    {
+      "nodeId": "144:92",
+      "name": "state=Pressed, expanded=False",
+      "file": "144-92.png",
+      "width": 976,
+      "height": 106
+    },
+    {
+      "nodeId": "144:363",
+      "name": "state=Pressed, expanded=True",
+      "file": "144-363.png",
+      "width": 976,
+      "height": 174
+    },
+    {
+      "nodeId": "144:104",
+      "name": "state=Focus, expanded=False",
+      "file": "144-104.png",
+      "width": 976,
+      "height": 106
+    },
+    {
+      "nodeId": "144:371",
+      "name": "state=Focus, expanded=True",
+      "file": "144-371.png",
+      "width": 976,
+      "height": 174
+    },
+    {
+      "nodeId": "144:117",
+      "name": "state=Hover, expanded=False",
+      "file": "144-117.png",
+      "width": 976,
+      "height": 106
+    },
+    {
+      "nodeId": "144:380",
+      "name": "state=Hover, expanded=True",
+      "file": "144-380.png",
+      "width": 976,
+      "height": 174
+    }
+  ],
+  "icons": [
+    {
+      "nodeId": "93:464",
+      "name": "icons/arrow-right",
+      "file": "93-464.png",
+      "width": 24,
+      "height": 24
+    },
+    {
+      "nodeId": "93:462",
+      "name": "icons/arrow-left",
+      "file": "93-462.png",
+      "width": 24,
+      "height": 24
+    },
+    {
+      "nodeId": "93:718",
+      "name": "icons/dot",
+      "file": "93-718.png",
+      "width": 24,
+      "height": 24
+    },
+    {
+      "nodeId": "93:461",
+      "name": "icons/arrow-down",
+      "file": "93-461.png",
+      "width": 24,
+      "height": 24
+    },
+    {
+      "nodeId": "93:460",
+      "name": "icons/arrow-up",
+      "file": "93-460.png",
+      "width": 24,
+      "height": 24
+    },
+    {
+      "nodeId": "93:459",
+      "name": "icons/chevron-right",
+      "file": "93-459.png",
+      "width": 24,
+      "height": 24
+    },
+    {
+      "nodeId": "93:463",
+      "name": "icons/chevron-left",
+      "file": "93-463.png",
+      "width": 24,
+      "height": 24
+    },
+    {
+      "nodeId": "93:458",
+      "name": "icons/chevron-down",
+      "file": "93-458.png",
+      "width": 24,
+      "height": 24
+    },
+    {
+      "nodeId": "93:457",
+      "name": "icons/chevron-up",
+      "file": "93-457.png",
+      "width": 24,
+      "height": 24
+    },
+    {
+      "nodeId": "93:780",
+      "name": "icons/up-right",
+      "file": "93-780.png",
+      "width": 24,
+      "height": 24
+    },
+    {
+      "nodeId": "136:68",
+      "name": "icons/scroll",
+      "file": "136-68.png",
+      "width": 24,
+      "height": 24
+    },
+    {
+      "nodeId": "168:1334",
+      "name": "icons/mobile",
+      "file": "168-1334.png",
+      "width": 24,
+      "height": 24
+    },
+    {
+      "nodeId": "168:1333",
+      "name": "icons/desktop",
+      "file": "168-1333.png",
+      "width": 24,
+      "height": 24
+    },
+    {
+      "nodeId": "93:782",
+      "name": "icons/down-right",
+      "file": "93-782.png",
+      "width": 24,
+      "height": 24
+    },
+    {
+      "nodeId": "93:784",
+      "name": "icons/up-left",
+      "file": "93-784.png",
+      "width": 24,
+      "height": 24
+    },
+    {
+      "nodeId": "93:786",
+      "name": "icons/arrow-down-left",
+      "file": "93-786.png",
+      "width": 24,
+      "height": 24
+    },
+    {
+      "nodeId": "201:13",
+      "name": "icons/drag",
+      "file": "201-13.png",
+      "width": 24,
+      "height": 24
+    }
+  ],
+  "testimonials-pics": [
+    {
+      "nodeId": "144:492",
+      "name": "people=Person 1",
+      "file": "144-492.png",
+      "width": 56,
+      "height": 56
+    },
+    {
+      "nodeId": "144:489",
+      "name": "people=Person 2",
+      "file": "144-489.png",
+      "width": 56,
+      "height": 56
+    },
+    {
+      "nodeId": "144:491",
+      "name": "people=Person 3",
+      "file": "144-491.png",
+      "width": 56,
+      "height": 56
+    },
+    {
+      "nodeId": "144:490",
+      "name": "people=Person 4",
+      "file": "144-490.png",
+      "width": 56,
+      "height": 56
+    },
+    {
+      "nodeId": "144:488",
+      "name": "people=Person 5",
+      "file": "144-488.png",
+      "width": 56,
+      "height": 56
+    },
+    {
+      "nodeId": "144:487",
+      "name": "people=Person 6",
+      "file": "144-487.png",
+      "width": 56,
+      "height": 56
+    },
+    {
+      "nodeId": "144:486",
+      "name": "people=Person 7",
+      "file": "144-486.png",
+      "width": 56,
+      "height": 56
+    },
+    {
+      "nodeId": "164:1082",
+      "name": "people=Person 8",
+      "file": "164-1082.png",
+      "width": 56,
+      "height": 56
+    }
+  ],
+  "illustrations": [
+    {
+      "nodeId": "41:569",
+      "name": "type=Alignment",
+      "file": "41-569.png",
+      "width": 72,
+      "height": 72
+    },
+    {
+      "nodeId": "41:566",
+      "name": "type=Audit & Strategy",
+      "file": "41-566.png",
+      "width": 72,
+      "height": 72
+    },
+    {
+      "nodeId": "41:564",
+      "name": "type=Bridging the gaps",
+      "file": "41-564.png",
+      "width": 72,
+      "height": 72
+    },
+    {
+      "nodeId": "41:562",
+      "name": "type=Design partner",
+      "file": "41-562.png",
+      "width": 72,
+      "height": 72
+    },
+    {
+      "nodeId": "41:559",
+      "name": "type=Design system leadership",
+      "file": "41-559.png",
+      "width": 72,
+      "height": 72
+    },
+    {
+      "nodeId": "215:516",
+      "name": "type=Ship best",
+      "file": "215-516.png",
+      "width": 72,
+      "height": 72
+    },
+    {
+      "nodeId": "215:558",
+      "name": "type=Art",
+      "file": "215-558.png",
+      "width": 72,
+      "height": 72
+    },
+    {
+      "nodeId": "233:49",
+      "name": "type=Activation & conversion",
+      "file": "233-49.png",
+      "width": 72,
+      "height": 72
+    },
+    {
+      "nodeId": "233:55",
+      "name": "type=Retention",
+      "file": "233-55.png",
+      "width": 72,
+      "height": 72
+    },
+    {
+      "nodeId": "233:61",
+      "name": "type=Efficiency",
+      "file": "233-61.png",
+      "width": 72,
+      "height": 72
+    },
+    {
+      "nodeId": "41:567",
+      "name": "type=Design system",
+      "file": "41-567.png",
+      "width": 72,
+      "height": 72
+    },
+    {
+      "nodeId": "41:565",
+      "name": "type=Goal focused",
+      "file": "41-565.png",
+      "width": 72,
+      "height": 72
+    },
+    {
+      "nodeId": "41:563",
+      "name": "type=Implementing",
+      "file": "41-563.png",
+      "width": 72,
+      "height": 72
+    },
+    {
+      "nodeId": "41:560",
+      "name": "type=Interactive showcase",
+      "file": "41-560.png",
+      "width": 72,
+      "height": 72
+    },
+    {
+      "nodeId": "215:524",
+      "name": "type=UI",
+      "file": "215-524.png",
+      "width": 72,
+      "height": 72
+    },
+    {
+      "nodeId": "215:531",
+      "name": "type=Best idea",
+      "file": "215-531.png",
+      "width": 72,
+      "height": 72
+    },
+    {
+      "nodeId": "215:543",
+      "name": "type=Simplicity v Complexity",
+      "file": "215-543.png",
+      "width": 72,
+      "height": 72
+    },
+    {
+      "nodeId": "41:558",
+      "name": "type=Long term projects",
+      "file": "41-558.png",
+      "width": 72,
+      "height": 72
+    },
+    {
+      "nodeId": "41:557",
+      "name": "type=Mentoring",
+      "file": "41-557.png",
+      "width": 72,
+      "height": 72
+    },
+    {
+      "nodeId": "41:568",
+      "name": "type=Part of the team",
+      "file": "41-568.png",
+      "width": 72,
+      "height": 72
+    },
+    {
+      "nodeId": "41:555",
+      "name": "type=Product design",
+      "file": "41-555.png",
+      "width": 72,
+      "height": 72
+    },
+    {
+      "nodeId": "41:554",
+      "name": "type=Scale team",
+      "file": "41-554.png",
+      "width": 72,
+      "height": 72
+    },
+    {
+      "nodeId": "41:561",
+      "name": "type=Structured system",
+      "file": "41-561.png",
+      "width": 72,
+      "height": 72
+    },
+    {
+      "nodeId": "41:556",
+      "name": "type=Timezones",
+      "file": "41-556.png",
+      "width": 72,
+      "height": 72
+    }
+  ],
+  "divider": [
+    {
+      "nodeId": "39:111",
+      "name": "divider",
+      "file": "39-111.png",
+      "width": 104,
+      "height": 0
+    }
+  ]
+}

@@ -1,0 +1,156 @@
+# yaml-language-server: $schema=../schema/component-contract.schema.json
+schemaVersion: 2
+id: carousel
+name: Carousel
+kind: component
+status: review
+source:
+  tool: figma
+  fileKey: 1Zy0wiWKXQAvsfDBX3KR0d
+  nodeId: "157:302"
+  url: https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=157-302
+  extractedAt: "2026-08-18"
+  extractedBy: mcp
+states: [ Default, Hover, Pressed, Focus, Disabled ]
+elements:
+  root: {}
+  title: {}
+  number: {}
+  label: {}
+  bottom: {}
+  background: {}
+  focus-ring: {}
+variants:
+  - when: { state: Default }
+    figmaNode: "157:303"
+  - when: { state: Disabled }
+    figmaNode: "157:317"
+    elements:
+      root:
+        gap: { token: spacing/gap/none, value: 0px }
+        padding: { token: spacing/gap/large, value: 24px }
+        border-radius: { token: spacing/radius/xlarge, value: 24px }
+        width:
+          value: 312px
+          assert: false
+          notes: No token behind it — the Figma frame size, not a spec.
+        opacity: { token: opacity/mild, value: "0.32" }
+      title:
+        align-items: { value: center }
+        gap: { token: spacing/gap/medium, value: 16px }
+      number:
+        justify-content: { value: center }
+        align-items: { value: center }
+        width: { value: 16px, suggest: spacing/size/2xsmall }
+      label:
+        font-family: { token: font-family/base, value: "'General Sans Variable'" }
+        font-weight: { token: typography/label/font-weight/regular, value: "400" }
+        line-height: { token: typography/label/line-height, value: 14px }
+        color: { token: project/disabled/sub-label, value: "#999" }
+        font-size: { token: typography/label/font-size, value: 12px }
+        letter-spacing: { token: typography/label/letter-spacing, value: 0px }
+      bottom:
+        align-items: { value: center }
+        gap: { token: spacing/gap/medium, value: 16px }
+        padding-left: { token: spacing/gap/xlarge, value: 32px }
+  - when: { state: Pressed }
+    figmaNode: "157:331"
+    elements:
+      root:
+        gap: { token: spacing/gap/none, value: 0px }
+        padding: { token: spacing/gap/large, value: 24px }
+        border-radius: { token: spacing/radius/xlarge, value: 24px }
+        width:
+          value: 312px
+          assert: false
+          notes: No token behind it — the Figma frame size, not a spec.
+      title:
+        align-items: { value: center }
+        gap: { token: spacing/gap/medium, value: 16px }
+      number:
+        justify-content: { value: center }
+        align-items: { value: center }
+        width: { value: 16px, suggest: spacing/size/2xsmall }
+      label:
+        font-family: { token: font-family/base, value: "'General Sans Variable'" }
+        font-weight: { token: typography/label/font-weight/regular, value: "400" }
+        line-height: { token: typography/label/line-height, value: 14px }
+        color: { token: project/pressed/label, value: "#00d669" }
+        font-size: { token: typography/label/font-size, value: 12px }
+        letter-spacing: { token: typography/label/letter-spacing, value: 0px }
+      bottom:
+        align-items: { value: center }
+        gap: { token: spacing/gap/medium, value: 16px }
+        padding-left: { token: spacing/gap/xlarge, value: 32px }
+      background:
+        position: { value: absolute }
+        inset: { value: "0" }
+        background: { value: "rgba(58,58,58,0.48)" }
+        opacity: { token: opacity/strong, value: "0.64" }
+        border-radius: { token: spacing/radius/xlarge, value: 24px }
+  - when: { state: Focus }
+    figmaNode: "157:345"
+    elements:
+      root:
+        gap: { token: spacing/gap/none, value: 0px }
+        padding: { token: spacing/gap/large, value: 24px }
+        border-radius: { token: spacing/radius/xlarge, value: 24px }
+        width:
+          value: 312px
+          assert: false
+          notes: No token behind it — the Figma frame size, not a spec.
+      title:
+        align-items: { value: center }
+        gap: { token: spacing/gap/medium, value: 16px }
+      number:
+        justify-content: { value: center }
+        align-items: { value: center }
+        width: { value: 16px, suggest: spacing/size/2xsmall }
+      label:
+        font-family: { token: font-family/base, value: "'General Sans Variable'" }
+        font-weight: { token: typography/label/font-weight/regular, value: "400" }
+        line-height: { token: typography/label/line-height, value: 14px }
+        color: { token: project/focus/sub-label, value: "#999" }
+        font-size: { token: typography/label/font-size, value: 12px }
+        letter-spacing: { token: typography/label/letter-spacing, value: 0px }
+      bottom:
+        align-items: { value: center }
+        gap: { token: spacing/gap/medium, value: 16px }
+        padding-left: { token: spacing/gap/xlarge, value: 32px }
+      focus-ring:
+        border-sides: { value: all }
+        position: { value: absolute }
+        border-width: { token: spacing/outline/medium, value: 2px }
+        border-color: { token: project/focus/focus-ring, value: "#999" }
+        border-radius:
+          value: 28px
+          untokenised: "Derived: the element radius plus the focus ring offset."
+  - when: { state: Hover }
+    figmaNode: "157:360"
+    elements:
+      root:
+        gap: { token: spacing/gap/none, value: 0px }
+        padding: { token: spacing/gap/large, value: 24px }
+        border-radius: { token: spacing/radius/xlarge, value: 24px }
+        width:
+          value: 312px
+          assert: false
+          notes: No token behind it — the Figma frame size, not a spec.
+      title:
+        align-items: { value: center }
+        gap: { token: spacing/gap/medium, value: 16px }
+      number:
+        justify-content: { value: center }
+        align-items: { value: center }
+        width: { value: 16px, suggest: spacing/size/2xsmall }
+      label:
+        font-family: { token: font-family/base, value: "'General Sans Variable'" }
+        font-weight: { token: typography/label/font-weight/regular, value: "400" }
+        line-height: { token: typography/label/line-height, value: 14px }
+        color: { token: project/hover/label, value: "#00d669" }
+        font-size: { token: typography/label/font-size, value: 12px }
+        letter-spacing: { token: typography/label/letter-spacing, value: 0px }
+      bottom:
+        align-items: { value: center }
+        gap: { token: spacing/gap/medium, value: 16px }
+        padding-left: { token: spacing/gap/xlarge, value: 32px }

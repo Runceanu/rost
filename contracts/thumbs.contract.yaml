@@ -1,0 +1,152 @@
+# yaml-language-server: $schema=../schema/component-contract.schema.json
+schemaVersion: 2
+id: thumbs
+name: Thumbs
+kind: component
+status: review
+source:
+  tool: figma
+  fileKey: 1Zy0wiWKXQAvsfDBX3KR0d
+  nodeId: "109:79"
+  url: https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=109-79
+  extractedAt: "2026-08-18"
+  extractedBy: mcp
+states: [ Default, Hover, Pressed, Focus, Disabled, Locked ]
+elements:
+  root:
+    styles:
+      gap: { token: spacing/gap/none, value: 0px }
+      height:
+        value: 334px
+        assert: false
+        notes: No token behind it — the Figma frame size, not a spec.
+      border-radius: { token: spacing/radius/xlarge, value: 24px }
+      width:
+        value: 384px
+        assert: false
+        notes: No token behind it — the Figma frame size, not a spec.
+  slot:
+    styles:
+      background: { token: non-interactive/background/secondary, value: "#171717" }
+      border-radius: { token: spacing/radius/xlarge, value: 24px }
+  shadow:
+    styles:
+      position: { value: absolute }
+      height: { value: 167px }
+      opacity: { token: opacity/medium, value: "0.48" }
+  content:
+    styles:
+      position: { value: absolute }
+      background: { value: "rgba(0,0,0,0.48)" }
+      gap: { token: spacing/gap/small, value: 8px }
+      padding-bottom: { token: spacing/gap/large, value: 24px }
+      padding-top: { token: spacing/gap/medium, value: 16px }
+      padding-left: { token: spacing/gap/medium, value: 16px }
+      padding-right: { token: spacing/gap/medium, value: 16px }
+      border-radius: { token: spacing/radius/large, value: 16px }
+  title:
+    styles:
+      align-items: { value: center }
+      gap: { token: spacing/gap/medium, value: 16px }
+  number:
+    styles:
+      justify-content: { value: center }
+      align-items: { value: center }
+      width: { value: 16px, suggest: spacing/size/2xsmall }
+  label:
+    styles:
+      font-family: { token: font-family/base, value: "'General Sans Variable'" }
+      font-weight: { token: typography/label/font-weight/regular, value: "400" }
+      line-height: { token: typography/label/line-height, value: 14px }
+      font-size: { token: typography/label/font-size, value: 12px }
+      letter-spacing: { token: typography/label/letter-spacing, value: 0px }
+  bottom:
+    styles:
+      align-items: { value: center }
+      gap: { token: spacing/gap/medium, value: 16px }
+      padding-left: { token: spacing/gap/xlarge, value: 32px }
+  icons-dot:
+    styles:
+      position: { value: absolute }
+      inset: { value: "0" }
+      width: { value: 12px, suggest: spacing/size/3xsmall }
+      height: { value: 12px, suggest: spacing/size/3xsmall }
+  focus-ring: {}
+  badge: {}
+  outline: {}
+  locked: {}
+  icons-lock: {}
+variants:
+  - when: { state: Focus }
+    figmaNode: "109:118"
+    elements:
+      label:
+        color: { token: project/default/sub-label, value: "#999" }
+      focus-ring:
+        border-sides: { value: all }
+        position: { value: absolute }
+        border-width: { token: spacing/outline/medium, value: 2px }
+        border-color: { token: project/focus/focus-ring, value: "#999" }
+        border-radius:
+          value: 28px
+          untokenised: "Derived: the element radius plus the focus ring offset."
+  - when: { state: Pressed }
+    figmaNode: "109:168"
+    elements:
+      label:
+        color: { token: project/pressed/label, value: "#00d669" }
+  - when: { state: Disabled }
+    figmaNode: "109:206"
+    elements:
+      label:
+        color: { token: project/disabled/sub-label, value: "#999" }
+      root:
+        opacity: { token: opacity/solid, value: "1" }
+      slot:
+        opacity: { token: opacity/mild, value: "0.32" }
+      content:
+        opacity: { token: opacity/mild, value: "0.32" }
+      badge:
+        position: { value: absolute }
+        align-items: { value: center }
+        gap: { token: spacing/gap/3xsmall, value: 2px }
+        height: { token: spacing/size/small, value: 24px }
+        padding-bottom: { token: spacing/gap/3xsmall, value: 2px }
+        padding-top: { token: spacing/gap/none, value: 0px }
+        padding-left: { token: spacing/gap/small, value: 8px }
+        padding-right: { token: spacing/gap/small, value: 8px }
+        border-radius: { token: spacing/radius/full, value: 10000px }
+      outline:
+        border-sides: { value: all }
+        position: { value: absolute }
+        inset: { value: "0" }
+        border-color: { token: non-interactive/foreground/quadruple, value: "#3a3a3a" }
+        opacity: { token: opacity/solid, value: "1" }
+        border-radius: { token: spacing/radius/full, value: 10000px }
+  - when: { state: Hover }
+    figmaNode: "109:77"
+    elements:
+      label:
+        color: { token: project/hover/label, value: "#00d669" }
+  - when: { state: Default }
+    figmaNode: "109:78"
+    elements:
+      label:
+        color: { token: project/default/sub-label, value: "#999" }
+  - when: { state: Locked }
+    figmaNode: "261:1232"
+    elements:
+      label:
+        color: { token: project/default/sub-label, value: "#999" }
+      locked:
+        position: { value: absolute }
+        align-items: { value: center }
+        background: { token: non-interactive/background/positive/base, value: "#00d669" }
+        gap: { token: spacing/gap/none, value: 0px }
+        padding: { token: spacing/gap/small, value: 8px }
+        border-radius: { token: spacing/radius/medium, value: 12px }
+      icons-lock:
+        position: { value: absolute }
+        inset: { value: "0" }
+        width: { value: 24px, suggest: spacing/size/small }
+        height: { value: 24px, suggest: spacing/size/small }

@@ -27,6 +27,13 @@ const unescape = (s) => s.replace(/\\+/g, '')
 
 /** `h-[var(--spacing\/size\/small,24px)]` -> {property, token, value} */
 function parseClass(cls) {
+  // Opacity arrives as a percentage variable divided down:
+  // `opacity-[calc(var(--opacity/mild,32)/100)]`. The token is in there.
+  const pct = cls.match(/^([a-z-]+)-\[calc\(var\(--([^,]+),\s*([\d.]+)\)\/100\)\]$/)
+  if (pct) {
+    const hit = PROPS.find(([p]) => pct[1] === p)
+    if (hit) return { property: hit[1], token: unescape(pct[2]).replace(/\\/g, ''), value: String(Number(pct[3]) / 100) }
+  }
   // The fallback may itself hold parentheses — `rgba(237,237,237,0.64)` — so it
   // is read as "anything up to the var's own closing paren", one level deep.
   // Stopping at the first `)` dropped the token from every rgba border.

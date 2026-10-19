@@ -3,960 +3,1164 @@
     {
       "nodeId": "139:396",
       "name": "status=Default",
-      "width": 43.0,
-      "height": 24.0
+      "width": 43,
+      "height": 24
     },
     {
       "nodeId": "139:433",
       "name": "status=Negative",
-      "width": 43.0,
-      "height": 24.0
+      "width": 43,
+      "height": 24
     },
     {
       "nodeId": "139:439",
       "name": "status=Positive",
-      "width": 43.0,
-      "height": 24.0
+      "width": 43,
+      "height": 24
     },
     {
       "nodeId": "139:445",
       "name": "status=Warning",
-      "width": 43.0,
-      "height": 24.0
+      "width": 43,
+      "height": 24
     }
   ],
   "pill-button": [
     {
       "nodeId": "20:13",
       "name": "type=Primary, state=Default",
-      "width": 76.0,
-      "height": 48.0
+      "width": 76,
+      "height": 48
     },
     {
       "nodeId": "25:80",
       "name": "type=Secondary, state=Default",
-      "width": 76.0,
-      "height": 48.0
+      "width": 76,
+      "height": 48
     },
     {
       "nodeId": "25:191",
       "name": "type=Tertiary, state=Default",
-      "width": 76.0,
-      "height": 48.0
+      "width": 76,
+      "height": 48
     },
     {
       "nodeId": "25:249",
       "name": "type=Borderless, state=Default",
-      "width": 36.0,
-      "height": 48.0
+      "width": 36,
+      "height": 48
     },
     {
       "nodeId": "20:15",
       "name": "type=Primary, state=Hover",
-      "width": 76.0,
-      "height": 48.0
+      "width": 76,
+      "height": 48
     },
     {
       "nodeId": "25:82",
       "name": "type=Secondary, state=Hover",
-      "width": 76.0,
-      "height": 48.0
+      "width": 76,
+      "height": 48
     },
     {
       "nodeId": "25:194",
       "name": "type=Tertiary, state=Hover",
-      "width": 76.0,
-      "height": 48.0
+      "width": 76,
+      "height": 48
     },
     {
       "nodeId": "25:251",
       "name": "type=Borderless, state=Hover",
-      "width": 36.0,
-      "height": 48.0
+      "width": 36,
+      "height": 48
     },
     {
       "nodeId": "20:20",
       "name": "type=Primary, state=Pressed",
-      "width": 76.0,
-      "height": 48.0
+      "width": 76,
+      "height": 48
     },
     {
       "nodeId": "25:84",
       "name": "type=Secondary, state=Pressed",
-      "width": 76.0,
-      "height": 48.0
+      "width": 76,
+      "height": 48
     },
     {
       "nodeId": "25:197",
       "name": "type=Tertiary, state=Pressed",
-      "width": 76.0,
-      "height": 48.0
+      "width": 76,
+      "height": 48
     },
     {
       "nodeId": "25:254",
       "name": "type=Borderless, state=Pressed",
-      "width": 36.0,
-      "height": 48.0
+      "width": 36,
+      "height": 48
     },
     {
       "nodeId": "20:22",
       "name": "type=Primary, state=Disabled",
-      "width": 76.0,
-      "height": 48.0
+      "width": 76,
+      "height": 48
     },
     {
       "nodeId": "25:86",
       "name": "type=Secondary, state=Disabled",
-      "width": 76.0,
-      "height": 48.0
+      "width": 76,
+      "height": 48
     },
     {
       "nodeId": "25:200",
       "name": "type=Tertiary, state=Disabled",
-      "width": 76.0,
-      "height": 48.0
+      "width": 76,
+      "height": 48
     },
     {
       "nodeId": "25:257",
       "name": "type=Borderless, state=Disabled",
-      "width": 36.0,
-      "height": 48.0
+      "width": 36,
+      "height": 48
     },
     {
       "nodeId": "20:17",
       "name": "type=Primary, state=Focus",
-      "width": 76.0,
-      "height": 48.0
+      "width": 76,
+      "height": 48
     },
     {
       "nodeId": "25:88",
       "name": "type=Secondary, state=Focus",
-      "width": 76.0,
-      "height": 48.0
+      "width": 76,
+      "height": 48
     },
     {
       "nodeId": "25:203",
       "name": "type=Tertiary, state=Focus",
-      "width": 76.0,
-      "height": 48.0
+      "width": 76,
+      "height": 48
     },
     {
       "nodeId": "25:260",
       "name": "type=Borderless, state=Focus",
-      "width": 36.0,
-      "height": 48.0
+      "width": 36,
+      "height": 48
     }
   ],
   "button": [
     {
       "nodeId": "39:39",
       "name": "type=Primary, state=Default",
-      "width": 76.0,
-      "height": 48.0
+      "width": 76,
+      "height": 48
     },
     {
       "nodeId": "39:41",
       "name": "type=Secondary, state=Default",
-      "width": 76.0,
-      "height": 48.0
+      "width": 76,
+      "height": 48
     },
     {
       "nodeId": "39:44",
       "name": "type=Tertiary, state=Default",
-      "width": 76.0,
-      "height": 48.0
+      "width": 76,
+      "height": 48
     },
     {
       "nodeId": "39:46",
       "name": "type=Borderless, state=Default",
-      "width": 36.0,
-      "height": 48.0
+      "width": 36,
+      "height": 48
     },
     {
       "nodeId": "39:48",
       "name": "type=Primary, state=Hover",
-      "width": 76.0,
-      "height": 48.0
+      "width": 76,
+      "height": 48
     },
     {
       "nodeId": "39:50",
       "name": "type=Secondary, state=Hover",
-      "width": 76.0,
-      "height": 48.0
+      "width": 76,
+      "height": 48
     },
     {
       "nodeId": "39:53",
       "name": "type=Tertiary, state=Hover",
-      "width": 76.0,
-      "height": 48.0
+      "width": 76,
+      "height": 48
     },
     {
       "nodeId": "39:56",
       "name": "type=Borderless, state=Hover",
-      "width": 36.0,
-      "height": 48.0
+      "width": 36,
+      "height": 48
     },
     {
       "nodeId": "39:59",
       "name": "type=Primary, state=Pressed",
-      "width": 76.0,
-      "height": 48.0
+      "width": 76,
+      "height": 48
     },
     {
       "nodeId": "39:61",
       "name": "type=Secondary, state=Pressed",
-      "width": 76.0,
-      "height": 48.0
+      "width": 76,
+      "height": 48
     },
     {
       "nodeId": "39:64",
       "name": "type=Tertiary, state=Pressed",
-      "width": 76.0,
-      "height": 48.0
+      "width": 76,
+      "height": 48
     },
     {
       "nodeId": "39:67",
       "name": "type=Borderless, state=Pressed",
-      "width": 36.0,
-      "height": 48.0
+      "width": 36,
+      "height": 48
     },
     {
       "nodeId": "39:70",
       "name": "type=Primary, state=Disabled",
-      "width": 76.0,
-      "height": 48.0
+      "width": 76,
+      "height": 48
     },
     {
       "nodeId": "39:72",
       "name": "type=Secondary, state=Disabled",
-      "width": 76.0,
-      "height": 48.0
+      "width": 76,
+      "height": 48
     },
     {
       "nodeId": "39:75",
       "name": "type=Tertiary, state=Disabled",
-      "width": 76.0,
-      "height": 48.0
+      "width": 76,
+      "height": 48
     },
     {
       "nodeId": "39:77",
       "name": "type=Borderless, state=Disabled",
-      "width": 36.0,
-      "height": 48.0
+      "width": 36,
+      "height": 48
     },
     {
       "nodeId": "39:79",
       "name": "type=Primary, state=Focus",
-      "width": 76.0,
-      "height": 48.0
+      "width": 76,
+      "height": 48
     },
     {
       "nodeId": "39:82",
       "name": "type=Secondary, state=Focus",
-      "width": 76.0,
-      "height": 48.0
+      "width": 76,
+      "height": 48
     },
     {
       "nodeId": "39:86",
       "name": "type=Tertiary, state=Focus",
-      "width": 76.0,
-      "height": 48.0
+      "width": 76,
+      "height": 48
     },
     {
       "nodeId": "39:89",
       "name": "type=Borderless, state=Focus",
-      "width": 36.0,
-      "height": 48.0
+      "width": 36,
+      "height": 48
     }
   ],
   "icon-button": [
     {
       "nodeId": "93:588",
       "name": "type=Primary, state=Default",
-      "width": 48.0,
-      "height": 48.0
+      "width": 48,
+      "height": 48
     },
     {
       "nodeId": "93:591",
       "name": "type=Secondary, state=Default",
-      "width": 48.0,
-      "height": 48.0
+      "width": 48,
+      "height": 48
     },
     {
       "nodeId": "93:595",
       "name": "type=Tertiary, state=Default",
-      "width": 48.0,
-      "height": 48.0
+      "width": 48,
+      "height": 48
     },
     {
       "nodeId": "93:740",
       "name": "type=Project, state=Default",
-      "width": 32.0,
-      "height": 32.0
+      "width": 32,
+      "height": 32
     },
     {
       "nodeId": "93:601",
       "name": "type=Primary, state=Hover",
-      "width": 48.0,
-      "height": 48.0
+      "width": 48,
+      "height": 48
     },
     {
       "nodeId": "93:604",
       "name": "type=Secondary, state=Hover",
-      "width": 48.0,
-      "height": 48.0
+      "width": 48,
+      "height": 48
     },
     {
       "nodeId": "93:608",
       "name": "type=Tertiary, state=Hover",
-      "width": 48.0,
-      "height": 48.0
+      "width": 48,
+      "height": 48
     },
     {
       "nodeId": "93:742",
       "name": "type=Project, state=Hover",
-      "width": 32.0,
-      "height": 32.0
+      "width": 32,
+      "height": 32
     },
     {
       "nodeId": "93:616",
       "name": "type=Primary, state=Pressed",
-      "width": 48.0,
-      "height": 48.0
+      "width": 48,
+      "height": 48
     },
     {
       "nodeId": "93:619",
       "name": "type=Secondary, state=Pressed",
-      "width": 48.0,
-      "height": 48.0
+      "width": 48,
+      "height": 48
     },
     {
       "nodeId": "93:623",
       "name": "type=Tertiary, state=Pressed",
-      "width": 48.0,
-      "height": 48.0
+      "width": 48,
+      "height": 48
     },
     {
       "nodeId": "93:745",
       "name": "type=Project, state=Pressed",
-      "width": 32.0,
-      "height": 32.0
+      "width": 32,
+      "height": 32
     },
     {
       "nodeId": "93:631",
       "name": "type=Primary, state=Disabled",
-      "width": 48.0,
-      "height": 48.0
+      "width": 48,
+      "height": 48
     },
     {
       "nodeId": "93:634",
       "name": "type=Secondary, state=Disabled",
-      "width": 48.0,
-      "height": 48.0
+      "width": 48,
+      "height": 48
     },
     {
       "nodeId": "93:638",
       "name": "type=Tertiary, state=Disabled",
-      "width": 48.0,
-      "height": 48.0
+      "width": 48,
+      "height": 48
     },
     {
       "nodeId": "93:748",
       "name": "type=Project, state=Disabled",
-      "width": 32.0,
-      "height": 32.0
+      "width": 32,
+      "height": 32
     },
     {
       "nodeId": "93:644",
       "name": "type=Primary, state=Focus",
-      "width": 48.0,
-      "height": 48.0
+      "width": 48,
+      "height": 48
     },
     {
       "nodeId": "93:648",
       "name": "type=Secondary, state=Focus",
-      "width": 48.0,
-      "height": 48.0
+      "width": 48,
+      "height": 48
     },
     {
       "nodeId": "93:653",
       "name": "type=Tertiary, state=Focus",
-      "width": 48.0,
-      "height": 48.0
+      "width": 48,
+      "height": 48
     },
     {
       "nodeId": "93:750",
       "name": "type=Project, state=Focus",
-      "width": 32.0,
-      "height": 32.0
+      "width": 32,
+      "height": 32
     }
   ],
   "input": [
     {
       "nodeId": "240:274",
       "name": "state=Default, configuration=Empty, selected=False, error=False",
-      "width": 208.0,
-      "height": 56.0
+      "width": 208,
+      "height": 56
     },
     {
       "nodeId": "252:1014",
       "name": "state=Default, configuration=Empty, selected=False, error=True",
-      "width": 208.0,
-      "height": 56.0
+      "width": 208,
+      "height": 56
     },
     {
       "nodeId": "252:836",
       "name": "state=Default, configuration=Filled, selected=False, error=False",
-      "width": 208.0,
-      "height": 56.0
+      "width": 208,
+      "height": 56
     },
     {
       "nodeId": "252:1024",
       "name": "state=Default, configuration=Filled, selected=False, error=True",
-      "width": 208.0,
-      "height": 56.0
+      "width": 208,
+      "height": 56
     },
     {
       "nodeId": "244:760",
       "name": "state=Disabled, configuration=Empty, selected=False, error=False",
-      "width": 208.0,
-      "height": 56.0
+      "width": 208,
+      "height": 56
     },
     {
       "nodeId": "252:847",
       "name": "state=Disabled, configuration=Filled, selected=False, error=False",
-      "width": 208.0,
-      "height": 56.0
+      "width": 208,
+      "height": 56
     },
     {
       "nodeId": "244:726",
       "name": "state=Default, configuration=Empty, selected=True, error=False",
-      "width": 208.0,
-      "height": 56.0
+      "width": 208,
+      "height": 56
     },
     {
       "nodeId": "252:1052",
       "name": "state=Default, configuration=Empty, selected=True, error=True",
-      "width": 208.0,
-      "height": 56.0
+      "width": 208,
+      "height": 56
     },
     {
       "nodeId": "252:856",
       "name": "state=Default, configuration=Filled, selected=True, error=False",
-      "width": 208.0,
-      "height": 56.0
+      "width": 208,
+      "height": 56
     },
     {
       "nodeId": "252:1064",
       "name": "state=Default, configuration=Filled, selected=True, error=True",
-      "width": 208.0,
-      "height": 56.0
+      "width": 208,
+      "height": 56
     },
     {
       "nodeId": "240:277",
       "name": "state=Hover, configuration=Empty, selected=False, error=False",
-      "width": 208.0,
-      "height": 56.0
+      "width": 208,
+      "height": 56
     },
     {
       "nodeId": "252:1076",
       "name": "state=Hover, configuration=Empty, selected=False, error=True",
-      "width": 208.0,
-      "height": 56.0
+      "width": 208,
+      "height": 56
     },
     {
       "nodeId": "252:868",
       "name": "state=Hover, configuration=Filled, selected=False, error=False",
-      "width": 208.0,
-      "height": 56.0
+      "width": 208,
+      "height": 56
     },
     {
       "nodeId": "252:1086",
       "name": "state=Hover, configuration=Filled, selected=False, error=True",
-      "width": 208.0,
-      "height": 56.0
+      "width": 208,
+      "height": 56
     }
   ],
   "toggle": [
     {
       "nodeId": "168:1150",
       "name": "state=Default, selected=True",
-      "width": 40.0,
-      "height": 40.0
+      "width": 40,
+      "height": 40
     },
     {
       "nodeId": "168:1152",
       "name": "state=Default, selected=False",
-      "width": 40.0,
-      "height": 40.0
+      "width": 40,
+      "height": 40
     },
     {
       "nodeId": "168:1159",
       "name": "state=Hover, selected=True",
-      "width": 40.0,
-      "height": 40.0
+      "width": 40,
+      "height": 40
     },
     {
       "nodeId": "168:1161",
       "name": "state=Hover, selected=False",
-      "width": 40.0,
-      "height": 40.0
+      "width": 40,
+      "height": 40
     },
     {
       "nodeId": "168:1170",
       "name": "state=Pressed, selected=True",
-      "width": 40.0,
-      "height": 40.0
+      "width": 40,
+      "height": 40
     },
     {
       "nodeId": "168:1172",
       "name": "state=Pressed, selected=False",
-      "width": 40.0,
-      "height": 40.0
+      "width": 40,
+      "height": 40
     },
     {
       "nodeId": "168:1181",
       "name": "state=Disabled, selected=True",
-      "width": 40.0,
-      "height": 40.0
+      "width": 40,
+      "height": 40
     },
     {
       "nodeId": "168:1183",
       "name": "state=Disabled, selected=False",
-      "width": 40.0,
-      "height": 40.0
+      "width": 40,
+      "height": 40
     },
     {
       "nodeId": "168:1190",
       "name": "state=Focus, selected=True",
-      "width": 40.0,
-      "height": 40.0
+      "width": 40,
+      "height": 40
     },
     {
       "nodeId": "168:1193",
       "name": "state=Focus, selected=False",
-      "width": 40.0,
-      "height": 40.0
+      "width": 40,
+      "height": 40
     }
   ],
   "inline-banner": [
     {
       "nodeId": "205:615",
       "name": "status=Default, size=Small",
-      "width": 63.0,
-      "height": 32.0
+      "width": 63,
+      "height": 32
     },
     {
       "nodeId": "233:126",
       "name": "status=Default, size=Medium",
-      "width": 80.0,
-      "height": 38.0
+      "width": 80,
+      "height": 38
     },
     {
       "nodeId": "205:722",
       "name": "status=Negative, size=Small",
-      "width": 63.0,
-      "height": 32.0
+      "width": 63,
+      "height": 32
     },
     {
       "nodeId": "233:131",
       "name": "status=Negative, size=Medium",
-      "width": 80.0,
-      "height": 38.0
+      "width": 80,
+      "height": 38
     },
     {
       "nodeId": "207:32",
       "name": "status=Positive, size=Small",
-      "width": 63.0,
-      "height": 32.0
+      "width": 63,
+      "height": 32
     },
     {
       "nodeId": "233:136",
       "name": "status=Positive, size=Medium",
-      "width": 80.0,
-      "height": 38.0
+      "width": 80,
+      "height": 38
     },
     {
       "nodeId": "207:48",
       "name": "status=Warning, size=Small",
-      "width": 63.0,
-      "height": 32.0
+      "width": 63,
+      "height": 32
     },
     {
       "nodeId": "233:141",
       "name": "status=Warning, size=Medium",
-      "width": 80.0,
-      "height": 38.0
+      "width": 80,
+      "height": 38
     }
   ],
   "chips": [
     {
       "nodeId": "139:318",
       "name": "status=Default, state=Default",
-      "width": 43.0,
-      "height": 24.0
+      "width": 43,
+      "height": 24
     },
     {
       "nodeId": "139:320",
       "name": "status=Default, state=Hover",
-      "width": 43.0,
-      "height": 24.0
+      "width": 43,
+      "height": 24
     },
     {
       "nodeId": "139:322",
       "name": "status=Default, state=Pressed",
-      "width": 43.0,
-      "height": 24.0
+      "width": 43,
+      "height": 24
     },
     {
       "nodeId": "139:324",
       "name": "status=Default, state=Disabled",
-      "width": 43.0,
-      "height": 24.0
+      "width": 43,
+      "height": 24
     },
     {
       "nodeId": "139:326",
       "name": "status=Default, state=Focus",
-      "width": 43.0,
-      "height": 24.0
+      "width": 43,
+      "height": 24
     }
   ],
   "tags": [
     {
       "nodeId": "91:363",
       "name": "type=Primary, state=Default",
-      "width": 43.0,
-      "height": 20.0
+      "width": 43,
+      "height": 20
     },
     {
       "nodeId": "91:372",
       "name": "type=Primary, state=Hover",
-      "width": 43.0,
-      "height": 20.0
+      "width": 43,
+      "height": 20
     },
     {
       "nodeId": "91:383",
       "name": "type=Primary, state=Pressed",
-      "width": 43.0,
-      "height": 20.0
+      "width": 43,
+      "height": 20
     },
     {
       "nodeId": "91:394",
       "name": "type=Primary, state=Disabled",
-      "width": 43.0,
-      "height": 20.0
+      "width": 43,
+      "height": 20
     },
     {
       "nodeId": "91:403",
       "name": "type=Primary, state=Focus",
-      "width": 43.0,
-      "height": 20.0
+      "width": 43,
+      "height": 20
     }
   ],
   "menu": [
     {
       "nodeId": "41:298",
       "name": "state=Disabled",
-      "width": 324.0,
-      "height": 104.0
+      "width": 324,
+      "height": 104
     },
     {
       "nodeId": "41:286",
       "name": "state=Pressed",
-      "width": 324.0,
-      "height": 104.0
+      "width": 324,
+      "height": 104
     },
     {
       "nodeId": "41:272",
       "name": "state=Focus",
-      "width": 324.0,
-      "height": 104.0
+      "width": 324,
+      "height": 104
     },
     {
       "nodeId": "41:260",
       "name": "state=Hover",
-      "width": 324.0,
-      "height": 104.0
+      "width": 324,
+      "height": 104
     },
     {
       "nodeId": "41:147",
       "name": "state=Default",
-      "width": 324.0,
-      "height": 104.0
+      "width": 324,
+      "height": 104
     }
   ],
   "carousel": [
     {
       "nodeId": "157:303",
       "name": "state=Default",
-      "width": 312.0,
-      "height": 102.0
+      "width": 312,
+      "height": 102
     },
     {
       "nodeId": "157:317",
       "name": "state=Disabled",
-      "width": 312.0,
-      "height": 102.0
+      "width": 312,
+      "height": 102
     },
     {
       "nodeId": "157:331",
       "name": "state=Pressed",
-      "width": 312.0,
-      "height": 102.0
+      "width": 312,
+      "height": 102
     },
     {
       "nodeId": "157:345",
       "name": "state=Focus",
-      "width": 312.0,
-      "height": 102.0
+      "width": 312,
+      "height": 102
     },
     {
       "nodeId": "157:360",
       "name": "state=Hover",
-      "width": 312.0,
-      "height": 102.0
+      "width": 312,
+      "height": 102
     }
   ],
   "projects": [
     {
       "nodeId": "100:184",
       "name": "state=Default",
-      "width": 976.0,
-      "height": 96.0
+      "width": 976,
+      "height": 96
     },
     {
       "nodeId": "238:140",
       "name": "state=Locked",
-      "width": 976.0,
-      "height": 96.0
+      "width": 976,
+      "height": 96
     },
     {
       "nodeId": "100:183",
       "name": "state=Disabled",
-      "width": 976.0,
-      "height": 96.0
+      "width": 976,
+      "height": 96
     },
     {
       "nodeId": "100:182",
       "name": "state=Pressed",
-      "width": 976.0,
-      "height": 96.0
+      "width": 976,
+      "height": 96
     },
     {
       "nodeId": "100:181",
       "name": "state=Focus",
-      "width": 976.0,
-      "height": 96.0
+      "width": 976,
+      "height": 96
     },
     {
       "nodeId": "100:180",
       "name": "state=Hover",
-      "width": 976.0,
-      "height": 96.0
+      "width": 976,
+      "height": 96
     }
   ],
   "thumbs": [
     {
       "nodeId": "109:78",
       "name": "state=Default",
-      "width": 384.0,
-      "height": 334.0
+      "width": 384,
+      "height": 334
     },
     {
       "nodeId": "261:1232",
       "name": "state=Locked",
-      "width": 384.0,
-      "height": 334.0
+      "width": 384,
+      "height": 334
     },
     {
       "nodeId": "109:206",
       "name": "state=Disabled",
-      "width": 384.0,
-      "height": 334.0
+      "width": 384,
+      "height": 334
     },
     {
       "nodeId": "109:168",
       "name": "state=Pressed",
-      "width": 384.0,
-      "height": 334.0
+      "width": 384,
+      "height": 334
     },
     {
       "nodeId": "109:118",
       "name": "state=Focus",
-      "width": 384.0,
-      "height": 334.0
+      "width": 384,
+      "height": 334
     },
     {
       "nodeId": "109:77",
       "name": "state=Hover",
-      "width": 384.0,
-      "height": 334.0
+      "width": 384,
+      "height": 334
     }
   ],
   "testimonials": [
     {
       "nodeId": "144:68",
       "name": "state=Default, expanded=False",
-      "width": 976.0,
-      "height": 106.0
+      "width": 976,
+      "height": 106
     },
     {
       "nodeId": "144:347",
       "name": "state=Default, expanded=True",
-      "width": 992.0,
-      "height": 174.0
+      "width": 992,
+      "height": 174
     },
     {
       "nodeId": "144:80",
       "name": "state=Disabled, expanded=False",
-      "width": 976.0,
-      "height": 106.0
+      "width": 976,
+      "height": 106
     },
     {
       "nodeId": "144:355",
       "name": "state=Disabled, expanded=True",
-      "width": 976.0,
-      "height": 174.0
+      "width": 976,
+      "height": 174
     },
     {
       "nodeId": "144:92",
       "name": "state=Pressed, expanded=False",
-      "width": 976.0,
-      "height": 106.0
+      "width": 976,
+      "height": 106
     },
     {
       "nodeId": "144:363",
       "name": "state=Pressed, expanded=True",
-      "width": 976.0,
-      "height": 174.0
+      "width": 976,
+      "height": 174
     },
     {
       "nodeId": "144:104",
       "name": "state=Focus, expanded=False",
-      "width": 976.0,
-      "height": 106.0
+      "width": 976,
+      "height": 106
     },
     {
       "nodeId": "144:371",
       "name": "state=Focus, expanded=True",
-      "width": 976.0,
-      "height": 174.0
+      "width": 976,
+      "height": 174
     },
     {
       "nodeId": "144:117",
       "name": "state=Hover, expanded=False",
-      "width": 976.0,
-      "height": 106.0
+      "width": 976,
+      "height": 106
     },
     {
       "nodeId": "144:380",
       "name": "state=Hover, expanded=True",
-      "width": 976.0,
-      "height": 174.0
+      "width": 976,
+      "height": 174
     }
   ],
   "icons": [
     {
       "nodeId": "93:464",
       "name": "icons/arrow-right",
-      "width": 24.0,
-      "height": 24.0
+      "width": 24,
+      "height": 24
     },
     {
       "nodeId": "93:462",
       "name": "icons/arrow-left",
-      "width": 24.0,
-      "height": 24.0
+      "width": 24,
+      "height": 24
     },
     {
       "nodeId": "93:718",
       "name": "icons/dot",
-      "width": 24.0,
-      "height": 24.0
+      "width": 24,
+      "height": 24
     },
     {
       "nodeId": "93:461",
       "name": "icons/arrow-down",
-      "width": 24.0,
-      "height": 24.0
+      "width": 24,
+      "height": 24
     },
     {
       "nodeId": "93:460",
       "name": "icons/arrow-up",
-      "width": 24.0,
-      "height": 24.0
+      "width": 24,
+      "height": 24
     },
     {
       "nodeId": "93:459",
       "name": "icons/chevron-right",
-      "width": 24.0,
-      "height": 24.0
+      "width": 24,
+      "height": 24
     },
     {
       "nodeId": "93:463",
       "name": "icons/chevron-left",
-      "width": 24.0,
-      "height": 24.0
+      "width": 24,
+      "height": 24
     },
     {
       "nodeId": "93:458",
       "name": "icons/chevron-down",
-      "width": 24.0,
-      "height": 24.0
+      "width": 24,
+      "height": 24
     },
     {
       "nodeId": "93:457",
       "name": "icons/chevron-up",
-      "width": 24.0,
-      "height": 24.0
+      "width": 24,
+      "height": 24
     },
     {
       "nodeId": "93:780",
       "name": "icons/up-right",
-      "width": 24.0,
-      "height": 24.0
+      "width": 24,
+      "height": 24
     },
     {
       "nodeId": "136:68",
       "name": "icons/scroll",
-      "width": 24.0,
-      "height": 24.0
+      "width": 24,
+      "height": 24
     },
     {
       "nodeId": "168:1334",
       "name": "icons/mobile",
-      "width": 24.0,
-      "height": 24.0
+      "width": 24,
+      "height": 24
     },
     {
       "nodeId": "168:1333",
       "name": "icons/desktop",
-      "width": 24.0,
-      "height": 24.0
+      "width": 24,
+      "height": 24
     },
     {
       "nodeId": "93:782",
       "name": "icons/down-right",
-      "width": 24.0,
-      "height": 24.0
+      "width": 24,
+      "height": 24
     },
     {
       "nodeId": "93:784",
       "name": "icons/up-left",
-      "width": 24.0,
-      "height": 24.0
+      "width": 24,
+      "height": 24
     },
     {
       "nodeId": "93:786",
       "name": "icons/arrow-down-left",
-      "width": 24.0,
-      "height": 24.0
+      "width": 24,
+      "height": 24
     },
     {
       "nodeId": "201:13",
       "name": "icons/drag",
-      "width": 24.0,
-      "height": 24.0
+      "width": 24,
+      "height": 24
+    }
+  ],
+  "testimonials-pics": [
+    {
+      "nodeId": "144:492",
+      "name": "people=Person 1",
+      "width": 56,
+      "height": 56
+    },
+    {
+      "nodeId": "144:489",
+      "name": "people=Person 2",
+      "width": 56,
+      "height": 56
+    },
+    {
+      "nodeId": "144:491",
+      "name": "people=Person 3",
+      "width": 56,
+      "height": 56
+    },
+    {
+      "nodeId": "144:490",
+      "name": "people=Person 4",
+      "width": 56,
+      "height": 56
+    },
+    {
+      "nodeId": "144:488",
+      "name": "people=Person 5",
+      "width": 56,
+      "height": 56
+    },
+    {
+      "nodeId": "144:487",
+      "name": "people=Person 6",
+      "width": 56,
+      "height": 56
+    },
+    {
+      "nodeId": "144:486",
+      "name": "people=Person 7",
+      "width": 56,
+      "height": 56
+    },
+    {
+      "nodeId": "164:1082",
+      "name": "people=Person 8",
+      "width": 56,
+      "height": 56
+    }
+  ],
+  "illustrations": [
+    {
+      "nodeId": "41:569",
+      "name": "type=Alignment",
+      "width": 72,
+      "height": 72
+    },
+    {
+      "nodeId": "41:566",
+      "name": "type=Audit & Strategy",
+      "width": 72,
+      "height": 72
+    },
+    {
+      "nodeId": "41:564",
+      "name": "type=Bridging the gaps",
+      "width": 72,
+      "height": 72
+    },
+    {
+      "nodeId": "41:562",
+      "name": "type=Design partner",
+      "width": 72,
+      "height": 72
+    },
+    {
+      "nodeId": "41:559",
+      "name": "type=Design system leadership",
+      "width": 72,
+      "height": 72
+    },
+    {
+      "nodeId": "215:516",
+      "name": "type=Ship best",
+      "width": 72,
+      "height": 72
+    },
+    {
+      "nodeId": "215:558",
+      "name": "type=Art",
+      "width": 72,
+      "height": 72
+    },
+    {
+      "nodeId": "233:49",
+      "name": "type=Activation & conversion",
+      "width": 72,
+      "height": 72
+    },
+    {
+      "nodeId": "233:55",
+      "name": "type=Retention",
+      "width": 72,
+      "height": 72
+    },
+    {
+      "nodeId": "233:61",
+      "name": "type=Efficiency",
+      "width": 72,
+      "height": 72
+    },
+    {
+      "nodeId": "41:567",
+      "name": "type=Design system",
+      "width": 72,
+      "height": 72
+    },
+    {
+      "nodeId": "41:565",
+      "name": "type=Goal focused",
+      "width": 72,
+      "height": 72
+    },
+    {
+      "nodeId": "41:563",
+      "name": "type=Implementing",
+      "width": 72,
+      "height": 72
+    },
+    {
+      "nodeId": "41:560",
+      "name": "type=Interactive showcase",
+      "width": 72,
+      "height": 72
+    },
+    {
+      "nodeId": "215:524",
+      "name": "type=UI",
+      "width": 72,
+      "height": 72
+    },
+    {
+      "nodeId": "215:531",
+      "name": "type=Best idea",
+      "width": 72,
+      "height": 72
+    },
+    {
+      "nodeId": "215:543",
+      "name": "type=Simplicity v Complexity",
+      "width": 72,
+      "height": 72
+    },
+    {
+      "nodeId": "41:558",
+      "name": "type=Long term projects",
+      "width": 72,
+      "height": 72
+    },
+    {
+      "nodeId": "41:557",
+      "name": "type=Mentoring",
+      "width": 72,
+      "height": 72
+    },
+    {
+      "nodeId": "41:568",
+      "name": "type=Part of the team",
+      "width": 72,
+      "height": 72
+    },
+    {
+      "nodeId": "41:555",
+      "name": "type=Product design",
+      "width": 72,
+      "height": 72
+    },
+    {
+      "nodeId": "41:554",
+      "name": "type=Scale team",
+      "width": 72,
+      "height": 72
+    },
+    {
+      "nodeId": "41:561",
+      "name": "type=Structured system",
+      "width": 72,
+      "height": 72
+    },
+    {
+      "nodeId": "41:556",
+      "name": "type=Timezones",
+      "width": 72,
+      "height": 72
+    }
+  ],
+  "divider": [
+    {
+      "nodeId": "39:111",
+      "name": "divider",
+      "width": 104,
+      "height": 0
     }
   ]
 }
