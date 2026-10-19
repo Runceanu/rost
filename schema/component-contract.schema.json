@@ -102,6 +102,11 @@
                 "plugin",
                 "hand"
               ]
+            },
+            "frozenAt": {
+              "type": "string",
+              "format": "date",
+              "description": "From this date the contract, not this source, is the source of truth. The values were imported from here once; bin/build-contracts.mjs refuses to overwrite a frozen contract."
             }
           }
         },
@@ -126,6 +131,11 @@
             "extractedAt": {
               "type": "string",
               "format": "date"
+            },
+            "frozenAt": {
+              "type": "string",
+              "format": "date",
+              "description": "From this date the contract, not this source, is the source of truth. The values were imported from here once; bin/build-contracts.mjs refuses to overwrite a frozen contract."
             }
           }
         }

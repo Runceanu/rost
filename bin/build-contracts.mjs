@@ -128,6 +128,12 @@ for (const [comp, variants] of Object.entries(parsed)) {
    */
   const id = comp
   const prev = existsSync(new URL(`${id}.contract.yaml`, CONTRACTS)) ? read(id) : {}
+  // A frozen contract is the source now; Figma is history. Re-reading it would
+  // quietly undo every decision taken in the contract since the freeze.
+  if (prev.source?.frozenAt && !process.argv.includes('--unfreeze')) {
+    console.log(`  ${(NAMES[comp] || comp).padEnd(13)} frozen ${prev.source.frozenAt}, skipped (pass --unfreeze to overwrite)`)
+    continue
+  }
   const parts = [...new Set(variants.flatMap((v) => Object.keys(v.values)))]
   const elements = Object.fromEntries(parts.map((p) => {
     const { styles: _, ...authored } = prev.elements?.[p] ?? {}
