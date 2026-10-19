@@ -4,7 +4,7 @@ id: icon-button
 name: IconButton
 kind: component
 status: review
-summary: An icon-only round action, including the Project type used on case-study thumbnails.
+summary: A round button with only an icon, including the Project type used on case-study thumbnails.
 category: actions
 related: [ button, pill-button, toggle ]
 source:
@@ -340,19 +340,19 @@ guidance:
   status: proposed
   use:
     - |-
-      For universally understood actions where a label would crowd the layout: close, back, next, previous.
+      Actions everyone knows where a label would crowd things: close, back, next, previous.
     - |-
-      `Project` on project thumbnails and case-study cards, where it sits on imagery.
+      `Project` on project thumbnails and case-study cards, sitting on top of imagery.
   avoid:
-    - If the icon is not instantly unambiguous, use **PillButton**. An icon is not a label.
-    - For an on/off or one-of-many choice, use **Toggle**. IconButton fires an action, it does not hold state.
+    - Any icon that isn't instantly obvious. Use **PillButton**, an icon isn't a label.
+    - On/off or one-of-many choices. That's **Toggle**. IconButton does something, it doesn't remember anything.
   behaviour: |-
-    `type` is `Primary`, `Secondary`, `Tertiary` or `Project`. `state` comes from pseudo-classes, as with every action. The touch target is never smaller than the rendered size; don't shrink it below 40px.
+    `type` is `Primary`, `Secondary`, `Tertiary` or `Project`. States come from the browser like every other action. Don't shrink it below 40px, fingers need the room.
   accessibility:
     element: "`<button type=\"button\">`."
     name: |-
-      `aria-label` is required, because there is no visible text. Say what it does ("Close dialog"), not what it shows ("X").
+      `aria-label` is a must, there's no visible text. Say what it does ("Close dialog"), not what it shows ("X").
     keyboard: Enter and Space.
     focus: "`focus-ring`, on `:focus-visible`."
-    tooltip: pair it with a tooltip carrying the same text once **Tooltip** is contracted.
-  content: No text. The `aria-label` follows the Button content rules.
+    tooltip: give it a tooltip with the same words, once there's a **Tooltip** in the kit.
+  content: No text. The `aria-label` follows the same rules as Button.

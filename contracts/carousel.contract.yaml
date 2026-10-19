@@ -4,6 +4,8 @@ id: carousel
 name: Carousel
 kind: component
 status: review
+summary: |-
+  A card in the home page carousel: a number, a title and a short description.
 source:
   tool: figma
   fileKey: 1Zy0wiWKXQAvsfDBX3KR0d
@@ -33,7 +35,7 @@ variants:
         width:
           value: 312px
           assert: false
-          notes: No token behind it — the Figma frame size, not a spec.
+          notes: Just the size of the Figma frame. No token, and not something to copy.
         opacity: { token: opacity/mild, value: "0.32" }
       title:
         align-items: { value: center }
@@ -63,7 +65,7 @@ variants:
         width:
           value: 312px
           assert: false
-          notes: No token behind it — the Figma frame size, not a spec.
+          notes: Just the size of the Figma frame. No token, and not something to copy.
       title:
         align-items: { value: center }
         gap: { token: spacing/gap/medium, value: 16px }
@@ -98,7 +100,7 @@ variants:
         width:
           value: 312px
           assert: false
-          notes: No token behind it — the Figma frame size, not a spec.
+          notes: Just the size of the Figma frame. No token, and not something to copy.
       title:
         align-items: { value: center }
         gap: { token: spacing/gap/medium, value: 16px }
@@ -135,7 +137,7 @@ variants:
         width:
           value: 312px
           assert: false
-          notes: No token behind it — the Figma frame size, not a spec.
+          notes: Just the size of the Figma frame. No token, and not something to copy.
       title:
         align-items: { value: center }
         gap: { token: spacing/gap/medium, value: 16px }

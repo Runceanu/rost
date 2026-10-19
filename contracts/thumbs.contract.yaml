@@ -4,6 +4,7 @@ id: thumbs
 name: Thumbs
 kind: component
 status: review
+summary: A project thumbnail card, with the project name and details on a frosted panel at the bottom.
 source:
   tool: figma
   fileKey: 1Zy0wiWKXQAvsfDBX3KR0d
@@ -19,12 +20,12 @@ elements:
       height:
         value: 334px
         assert: false
-        notes: No token behind it — the Figma frame size, not a spec.
+        notes: Just the size of the Figma frame. No token, and not something to copy.
       border-radius: { token: spacing/radius/xlarge, value: 24px }
       width:
         value: 384px
         assert: false
-        notes: No token behind it — the Figma frame size, not a spec.
+        notes: Just the size of the Figma frame. No token, and not something to copy.
   slot:
     styles:
       background: { token: non-interactive/background/secondary, value: "#171717" }

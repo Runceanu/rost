@@ -4,6 +4,7 @@ id: divider
 name: Divider
 kind: component
 status: review
+summary: A thin line between things.
 source:
   tool: figma
   fileKey: 1Zy0wiWKXQAvsfDBX3KR0d
@@ -17,4 +18,4 @@ elements:
       width:
         value: 104px
         assert: false
-        notes: No token behind it — the Figma frame size, not a spec.
+        notes: Just the size of the Figma frame. No token, and not something to copy.

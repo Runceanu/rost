@@ -2,7 +2,7 @@
 
 # PillButton
 
-> A 48px action with a leading icon and a label. The kit's main call to action.
+> A 48px button with an icon in front of the label. My main call to action.
 
 | | |
 |---|---|
@@ -33,32 +33,32 @@
 
 ## When to use
 
-- When an icon makes the action faster to recognise: a back arrow, an external link, a download.
-- For hero and section CTAs on runceanu.com, where it is the primary call to action.
+- When an icon helps people get it faster: a back arrow, an external link, a download.
+- The calls to action in heroes and sections on runceanu.com.
 
 ## When not to use
 
-- If the icon only decorates, drop it and use **Button**.
-- If there is no room for a label, use **IconButton**, never a PillButton with the label hidden.
+- When the icon is just decoration. Drop it and use **Button**.
+- When there's no room for the label. Use **IconButton**, never a PillButton with its label hidden.
 
 ## Behaviour
 
-Same `type` × `state` matrix as Button: `Primary`, `Secondary`, `Tertiary`, `Borderless`. Interaction states come from CSS pseudo-classes, not props. The icon sits in a 20px slot (`icons-arrow-left` in Figma) and takes the label colour.
+Same types and states as Button: `Primary`, `Secondary`, `Tertiary`, `Borderless`. States come from the browser, not from props. The icon sits in a 20px slot (`icons-arrow-left` in Figma) and takes the label's colour.
 
 ## Accessibility
 
-- **Element**: `<button>`, or `<a>` when it navigates. A pill that navigates is still a link.
+- **Element**: `<button>`, or `<a>` when it takes you somewhere. A pill that navigates is still a link.
 - **Name**: the label. The icon is `aria-hidden="true"`.
-- **Keyboard**: Enter (and Space for buttons) activates.
+- **Keyboard**: Enter, and Space for buttons.
 - **Focus**: `focus-ring`, on `:focus-visible`.
 
 ## Content
 
-A verb phrase in sentence case. The icon must agree with the words: an arrow-left only on "Back".
+A short verb phrase, sentence case. The icon has to match the words: an arrow pointing left only on "Back".
 
 ## Tokens
 
-Every token this contract asserts, in any variant.
+Every token this component uses, across all its variants.
 
 | Token | Resolves to |
 |---|---|
@@ -116,13 +116,13 @@ Every token this contract asserts, in any variant.
 | `typography/body/letter-spacing` | `0px` |
 | `typography/body/line-height` | `22px` |
 
-## Suggested bindings
+## Tokens that should be there
 
-Values Figma or code states as a literal although a token matches. Bind them at the source.
+Plain numbers where a token fits exactly. They become tokens when I freeze the contracts.
 
 | Part | Property | Value | Suggest | |
 |---|---|---|---|---|
 | `icons-arrow-left` | `width` | `20px` | `spacing/size/xsmall` | exists |
 | `icons-arrow-left` | `height` | `20px` | `spacing/size/xsmall` | exists |
 
-Full values per variant: [reference.html#pill-button](../../reference.html#pill-button)
+Every value of every variant: [reference.html#pill-button](../../reference.html#pill-button)

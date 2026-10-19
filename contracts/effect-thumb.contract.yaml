@@ -4,7 +4,7 @@ id: effect-thumb
 name: Thumb
 kind: effect
 status: review
-summary: The frosted content panel on project thumbnails, a backdrop blur.
+summary: The frosted panel on project thumbnails, a backdrop blur.
 category: effects
 related: [ effect-menu, effect-lock-frame ]
 source:
@@ -16,20 +16,21 @@ source:
   extractedBy: mcp
 elements:
   root:
-    notes: The element the effect style is applied to. Used on the project thumbnail's frosted content panel (see the Thumbs/Carousel components, which both reference this style).
+    notes: |-
+      Whatever the style is applied to: the frosted text panel on a project thumbnail. Thumbs and Carousel both use it.
     styles:
       backdrop-filter:
         token: effect/thumb
         value: blur(12px)
         notes: |-
-          Effect style 'Thumb', type BACKGROUND_BLUR (frosted glass — blurs what is BEHIND the element). In Figma the style binds its blur radius to the opacity/gentle variable (raw 24); the CSS backdrop-filter renders at 12px because a Figma background-blur radius is ~2x its CSS pixel value. SEMANTIC MISMATCH worth noting: opacity/gentle resolves to 0.24 as an opacity token yet is reused here as a blur radius — a dedicated blur/radius token would be more correct. Code binds the whole effect as --effect-thumb, which is the token asserted here.
+          The Figma effect style "Thumb": frosted glass, so it blurs what's behind the element. In Figma its blur is tied to `opacity/gentle` (24), and CSS draws it at 12px because a Figma background blur is about twice its CSS size. One thing I don't love: `opacity/gentle` is an opacity token (0.24) borrowed here as a blur size. Its own blur token would be cleaner. In code the whole effect is `--effect-thumb`, and that's the token the contract checks.
 guidance:
   status: proposed
   use:
-    - On the content panel of a project thumbnail, in Thumbs and Carousel.
+    - The text panel on a project thumbnail, in Thumbs and Carousel.
   avoid:
-    - For navigation surfaces, use the **Menu effect**.
+    - Navigation. That's the **Menu effect**.
   behaviour: |-
-    It blurs what is *behind* the panel. Figma binds the radius to `opacity/gentle`, an opacity token reused as a blur radius. That works, but it means retuning an opacity would move this blur. A dedicated blur token would fix it.
+    It blurs what's behind the panel. In Figma the blur is tied to `opacity/gentle`, an opacity token borrowed as a blur size. It works, but changing that opacity would also move this blur. Its own blur token would fix it.
   accessibility:
-    contrast: check the panel text against the thumbnail's busiest region.
+    contrast: check the panel text against the busiest part of the thumbnail.

@@ -2,20 +2,20 @@
 
 # Token coverage
 
-Every value in every contract, by why it does or does not carry a token. Run `npm run docs` to refresh.
+Every value in every contract, sorted by why it has a token or doesn't. `npm run docs` refreshes it.
 
 | | Values | Share | Meaning |
 |---|---|---|---|
-| Bound to a token | 973 | 66% | The source binds a token, and conformance checks it. |
-| Token suggested | 106 | 7% | A literal where a token fits. Bind it in Figma, then re-read. |
-| Layout keyword | 361 | 24% | How the layer is built (position, inset, which sides get a stroke). Not a token decision. |
-| Figma frame size | 21 | 1% | A root size that is only the Figma frame. Recorded, not asserted. |
-| Untokenised on purpose | 10 | 1% | Deliberately literal, with the reason in the contract. |
-| Open gap | 4 | 0% | No token and no reason. Each one needs a decision. |
+| Has a token | 973 | 66% | Uses a token, and the check tests it. |
+| Token suggested | 106 | 7% | A plain number where a token fits. It becomes a token at the freeze. |
+| How Figma builds it | 361 | 24% | How Figma builds the layer (position, inset, which sides get a stroke). Nothing to tokenise. |
+| Figma frame size | 21 | 1% | A root size that is just the Figma frame. Written down, not checked. |
+| No token, on purpose | 10 | 1% | Plain on purpose, and the contract says why. |
+| Open gap | 4 | 0% | No token and no reason. Each one needs a decision from me. |
 
 ## By contract
 
-| | Bound to a token | Token suggested | Layout keyword | Figma frame size | Untokenised on purpose | Open gap |
+| | Has a token | Token suggested | How Figma builds it | Figma frame size | No token, on purpose | Open gap |
 |---|---:|---:|---:|---:|---:|---:|
 | [Badge](components/badge.md) | 20 | 2 | 11 | · | · | · |
 | [Button](components/button.md) | 134 | · | 38 | · | · | · |
@@ -40,9 +40,9 @@ Every value in every contract, by why it does or does not carry a token. Run `np
 | [Thumbs](components/thumbs.md) | 44 | 5 | 19 | 2 | 1 | 2 |
 | [Toggle](components/toggle.md) | 56 | 2 | 27 | · | · | · |
 
-## Suggested bindings
+## Tokens that should be there
 
-Bind these in Figma (or create the token first, where it is new). The next Figma read then records them as `token` and the suggestion disappears.
+When I freeze the contracts, every one of these becomes the token. Anything marked **new** needs creating first.
 
 | Suggest | Value | Exists | Uses | Where |
 |---|---|---|---:|---|
@@ -56,7 +56,7 @@ Bind these in Figma (or create the token first, where it is new). The next Figma
 | `spacing/gap/small` | `8px` | yes | 1 | [Input](components/input.md) `left.gap` |
 | `spacing/gap/2xlarge` | `40px` | yes | 1 | [Projects](components/projects.md) `left.gap` |
 
-## Untokenised on purpose
+## No token, on purpose
 
 - [Carousel](components/carousel.md) `focus-ring.border-radius` = `28px`: Derived: the element radius plus the focus ring offset.
 - [Hero Media](components/hero-media.md) `media.background-size` = `explicit px (asset-native, e.g. 2336px 1196px)`: Each artwork's native pixel size.
@@ -78,7 +78,7 @@ Bind these in Figma (or create the token first, where it is new). The next Figma
 
 ## Figma variables missing from tokens.css
 
-The Figma file defines **582** variables (`registry/figma-variables.json`); `tokens/tokens.css` exports **172**. No contract uses the other 410 yet, but every component added from here will hit them, as Chip did with `opacity/strong`.
+The Figma file has **582** variables (`registry/figma-variables.json`) and `tokens/tokens.css` has **172** of them. No contract needs the other 410 today, but new components will, the way Chip needed `opacity/strong`.
 
 | Family | Missing |
 |---|---:|

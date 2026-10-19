@@ -2,7 +2,7 @@
 
 # Button
 
-> A label-only action at 48px, in four levels of emphasis.
+> A 48px button with just a label, in four levels of emphasis.
 
 | | |
 |---|---|
@@ -31,35 +31,35 @@
 
 ## When to use
 
-- To start an action: submit, save, continue, open.
-- `Primary` for the one action a view is built around. One per view, at most.
-- `Secondary` for alternatives next to it, `Tertiary` for low-stakes actions, `Borderless` inside dense surfaces where an outline would be noise.
+- Doing something: save, send, continue, open.
+- `Primary` for the one thing a screen is really about. One per screen, no more.
+- `Secondary` for the options next to it, `Tertiary` when little is at stake, `Borderless` in busy places where an outline would just be noise.
 
 ## When not to use
 
-- If the action needs an icon to read, use **PillButton**. If it is icon-only, use **IconButton**.
-- To go somewhere, use a link. A button that navigates loses open-in-new-tab and history semantics.
-- To choose one of several options, use **Toggle** or **Chip**.
+- Actions that need an icon to make sense: use **PillButton**. Icon only: **IconButton**.
+- Going somewhere. That's a link. A button that navigates breaks open-in-new-tab and the back button.
+- Picking between options. That's **Toggle** or **Chip**.
 
 ## Behaviour
 
-`type` sets emphasis. `state` is never a prop in code: `Hover`, `Pressed` and `Focus` come from `:hover`, `:active` and `:focus-visible`. `Disabled` is the only state the caller sets. The background drops to `opacity/gentle` while the label stays legible.
+`type` sets how loud it is. `state` is never something you pass in code: hover, pressed and focus come from `:hover`, `:active` and `:focus-visible`. Disabled is the only one you set yourself. The background fades to `opacity/gentle` and the label stays readable.
 
 ## Accessibility
 
-- **Element**: `<button type="button">` (or `type="submit"` inside a form).
-- **Name**: the visible label. Never replace it with `aria-label` text that differs.
-- **Keyboard**: Enter and Space activate.
-- **Focus**: the `focus-ring` part, 2px, drawn on `:focus-visible` only.
-- **Disabled**: prefer `aria-disabled="true"` with an explanation nearby over `disabled`, which removes the button from the tab order and hides why it can't be used.
+- **Element**: `<button type="button">`, or `type="submit"` inside a form.
+- **Name**: the label people see. Don't swap it for an `aria-label` that says something else.
+- **Keyboard**: Enter and Space.
+- **Focus**: the `focus-ring` part, 2px, only on `:focus-visible`.
+- **Disabled**: I'd rather use `aria-disabled="true"` with a short reason nearby than `disabled`. `disabled` drops the button out of the tab order and nobody can find out why it doesn't work.
 
 ## Content
 
-A verb, sentence case, two or three words: "Save changes", not "OK" or "SUBMIT". The label states the outcome.
+A verb, sentence case, two or three words. "Save changes", not "OK" or "SUBMIT". Say what will happen.
 
 ## Tokens
 
-Every token this contract asserts, in any variant.
+Every token this component uses, across all its variants.
 
 | Token | Resolves to |
 |---|---|
@@ -103,4 +103,4 @@ Every token this contract asserts, in any variant.
 | `typography/body/letter-spacing` | `0px` |
 | `typography/body/line-height` | `22px` |
 
-Full values per variant: [reference.html#button](../../reference.html#button)
+Every value of every variant: [reference.html#button](../../reference.html#button)

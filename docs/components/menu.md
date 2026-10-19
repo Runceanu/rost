@@ -2,7 +2,7 @@
 
 # Menu
 
-> A navigation item, a label with an indicator line, used in the main nav.
+> A navigation item: a label with a line underneath, used in the main nav.
 
 | | |
 |---|---|
@@ -26,31 +26,31 @@
 
 ## When to use
 
-- For top-level navigation between pages or sections.
+- Moving between the main pages or sections.
 
 ## When not to use
 
-- For actions, use **Button**. Menu items go somewhere.
-- Not to be confused with the **Menu effect** (`effect-menu`), the frosted surface the nav sits on.
+- Actions. That's **Button**, menu items take you somewhere.
+- Mixing it up with the **Menu effect** (`effect-menu`), which is the frosted surface the nav sits on.
 
 ## Behaviour
 
-Five `state`s. The `line` part is the indicator. Mark the current page with it (`aria-current`), not with hover styling.
+Five states. The `line` part is the indicator. It marks the page you're on (`aria-current`), not where the mouse is.
 
 ## Accessibility
 
-- **Element**: `<a>` inside `<nav aria-label="Main">` and a list.
-- **Current Page**: `aria-current="page"`, which is also what the indicator line is styled from.
+- **Element**: `<a>`, inside `<nav aria-label="Main">` and a list.
+- **Current Page**: `aria-current="page"`. That's also what the line is styled from.
 - **Focus**: `focus-ring`, on `:focus-visible`.
-- **Mobile**: when collapsed behind a button, that button has `aria-expanded` and controls the list.
+- **Mobile**: when it folds behind a button, that button gets `aria-expanded` and controls the list.
 
 ## Content
 
-One word, the page's own title.
+One word: the page's own title.
 
 ## Tokens
 
-Every token this contract asserts, in any variant.
+Every token this component uses, across all its variants.
 
 | Token | Resolves to |
 |---|---|
@@ -65,4 +65,4 @@ Every token this contract asserts, in any variant.
 | `typography/body/letter-spacing` | `0px` |
 | `typography/body/line-height` | `22px` |
 
-Full values per variant: [reference.html#menu](../../reference.html#menu)
+Every value of every variant: [reference.html#menu](../../reference.html#menu)

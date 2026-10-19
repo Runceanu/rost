@@ -4,7 +4,7 @@ id: button
 name: Button
 kind: component
 status: review
-summary: A label-only action at 48px, in four levels of emphasis.
+summary: A 48px button with just a label, in four levels of emphasis.
 category: actions
 related: [ pill-button, icon-button ]
 source:
@@ -296,24 +296,25 @@ variants:
 guidance:
   status: proposed
   use:
-    - "To start an action: submit, save, continue, open."
+    - "Doing something: save, send, continue, open."
     - |-
-      `Primary` for the one action a view is built around. One per view, at most.
+      `Primary` for the one thing a screen is really about. One per screen, no more.
     - |-
-      `Secondary` for alternatives next to it, `Tertiary` for low-stakes actions, `Borderless` inside dense surfaces where an outline would be noise.
+      `Secondary` for the options next to it, `Tertiary` when little is at stake, `Borderless` in busy places where an outline would just be noise.
   avoid:
-    - If the action needs an icon to read, use **PillButton**. If it is icon-only, use **IconButton**.
-    - To go somewhere, use a link. A button that navigates loses open-in-new-tab and history semantics.
-    - To choose one of several options, use **Toggle** or **Chip**.
+    - |-
+      Actions that need an icon to make sense: use **PillButton**. Icon only: **IconButton**.
+    - Going somewhere. That's a link. A button that navigates breaks open-in-new-tab and the back button.
+    - Picking between options. That's **Toggle** or **Chip**.
   behaviour: |-
-    `type` sets emphasis. `state` is never a prop in code: `Hover`, `Pressed` and `Focus` come from `:hover`, `:active` and `:focus-visible`. `Disabled` is the only state the caller sets. The background drops to `opacity/gentle` while the label stays legible.
+    `type` sets how loud it is. `state` is never something you pass in code: hover, pressed and focus come from `:hover`, `:active` and `:focus-visible`. Disabled is the only one you set yourself. The background fades to `opacity/gentle` and the label stays readable.
   accessibility:
-    element: "`<button type=\"button\">` (or `type=\"submit\"` inside a form)."
+    element: "`<button type=\"button\">`, or `type=\"submit\"` inside a form."
     name: |-
-      the visible label. Never replace it with `aria-label` text that differs.
-    keyboard: Enter and Space activate.
-    focus: the `focus-ring` part, 2px, drawn on `:focus-visible` only.
+      the label people see. Don't swap it for an `aria-label` that says something else.
+    keyboard: Enter and Space.
+    focus: the `focus-ring` part, 2px, only on `:focus-visible`.
     disabled: |-
-      prefer `aria-disabled="true"` with an explanation nearby over `disabled`, which removes the button from the tab order and hides why it can't be used.
+      I'd rather use `aria-disabled="true"` with a short reason nearby than `disabled`. `disabled` drops the button out of the tab order and nobody can find out why it doesn't work.
   content: |-
-    A verb, sentence case, two or three words: "Save changes", not "OK" or "SUBMIT". The label states the outcome.
+    A verb, sentence case, two or three words. "Save changes", not "OK" or "SUBMIT". Say what will happen.

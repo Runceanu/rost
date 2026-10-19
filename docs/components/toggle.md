@@ -2,7 +2,7 @@
 
 # Toggle
 
-> A 40×40 icon toggle that holds a selected state, used alone or as one choice of a group.
+> A 40×40 icon button that stays on or off, alone or as one choice in a group.
 
 | | |
 |---|---|
@@ -32,40 +32,40 @@
 
 ## When to use
 
-- To switch a view or filter on and off, where the change applies immediately.
-- In a group, to pick one option from a short set (in A-kaunt, the year switcher).
+- Switching a view or a filter on and off, when the change happens straight away.
+- Picking one option from a short set, as a group. The year switcher in akount.ing works like this.
 
 ## When not to use
 
-- To fire an action, use **IconButton**. A toggle remembers, a button doesn't.
-- For a settings-style on/off with a text label, there is no switch in the kit yet. Raise it rather than restyling Toggle.
+- Doing something. That's **IconButton**. A toggle remembers, a button doesn't.
+- A settings-style switch with a label. There isn't one in the kit yet, so ask for one rather than stretching Toggle.
 
 ## Behaviour
 
-Two axes: `selected` (`True` / `False`) and `state`. Unselected is a 12px-radius plate on the secondary surface at low opacity. Selected becomes a full-radius primary pill. The shape change is part of the signal, not only the colour.
+It changes with `selected` and `state`. Off, it's a plate with 12px corners on the secondary surface, faded down. On, it becomes a fully round primary pill. The change of shape is part of the signal, not just the colour.
 
 ## Accessibility
 
 - **Alone**: `<button aria-pressed="true|false">`.
-- **Group**: `role="radio"` with `aria-checked`, inside a `role="radiogroup"` with a name. Arrow keys move between options, and Tab enters and leaves the group.
-- **Name**: `aria-label` when icon-only.
-- **Focus**: `focus-ring` (2px, `actions/primary/focus/focus-ring` when selected), on `:focus-visible`.
-- **Colour**: selection is carried by shape (radius 12px → full) as well as colour.
+- **Group**: `role="radio"` with `aria-checked`, inside a `role="radiogroup"` that has a name. Arrow keys move between options, Tab gets you in and out.
+- **Name**: `aria-label` when it's icon only.
+- **Focus**: `focus-ring` (2px, `actions/primary/focus/focus-ring` when it's on), on `:focus-visible`.
+- **Colour**: on and off show in the shape (12px corners to fully round) as well as the colour.
 
 ## Content
 
-Icon-only in the kit. A-kaunt adds a text label as a declared deviation. Keep any label to one short word or a number.
+Icon only in the kit. akount.ing adds a text label, and that's a declared deviation. If you add one, keep it to a short word or a number.
 
-## Declared deviations
+## Where code differs on purpose
 
-| App | What | Why | Raised with design |
+| App | What | Why | Taken to design |
 |---|---|---|---|
 | akount.ing | Accepts a text label; width grows past 40px to fit it, height stays 40px. Label colour follows the surface: secondary label unselected, primary label selected. | The year switcher needs text. The kit's toggle is icon-only and specifies no label colour. | not yet |
 | akount.ing | Rendered as role=radio inside a ToggleGroup radio group, which has no surface of its own. | Toggles are used as a single-choice set; ToggleGroup is not a kit component. | not yet |
 
 ## Tokens
 
-Every token this contract asserts, in any variant.
+Every token this component uses, across all its variants.
 
 | Token | Resolves to |
 |---|---|
@@ -92,13 +92,13 @@ Every token this contract asserts, in any variant.
 | `spacing/radius/medium` | `12px` |
 | `spacing/size/medium` | `40px` |
 
-## Suggested bindings
+## Tokens that should be there
 
-Values Figma or code states as a literal although a token matches. Bind them at the source.
+Plain numbers where a token fits exactly. They become tokens when I freeze the contracts.
 
 | Part | Property | Value | Suggest | |
 |---|---|---|---|---|
 | `icons-arrow-left` | `width` | `20px` | `spacing/size/xsmall` | exists |
 | `icons-arrow-left` | `height` | `20px` | `spacing/size/xsmall` | exists |
 
-Full values per variant: [reference.html#toggle](../../reference.html#toggle)
+Every value of every variant: [reference.html#toggle](../../reference.html#toggle)

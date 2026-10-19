@@ -2,6 +2,8 @@
 
 # Testimonials
 
+> A testimonial you can open and close: name and role, with the quote underneath.
+
 | | |
 |---|---|
 | Kind | component |
@@ -10,9 +12,9 @@
 | Source | [Figma 144:67](https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=144-67) · read 2026-08-18 |
 | Implemented in | nowhere yet |
 
-## Open issues
+## Not right yet
 
-- No guidance yet. Add a `guidance` block to the contract (see `contracts/_template.contract.yaml`).
+- No guidance yet. It needs a `guidance` block (there's one to copy in `schema/template.contract.yaml`).
 
 ## Props
 
@@ -40,7 +42,7 @@
 
 ## Tokens
 
-Every token this contract asserts, in any variant.
+Every token this component uses, across all its variants.
 
 | Token | Resolves to |
 |---|---|
@@ -70,9 +72,9 @@ Every token this contract asserts, in any variant.
 | `typography/title/letter-spacing` | `0px` |
 | `typography/title/line-height` | `32px` |
 
-## Suggested bindings
+## Tokens that should be there
 
-Values Figma or code states as a literal although a token matches. Bind them at the source.
+Plain numbers where a token fits exactly. They become tokens when I freeze the contracts.
 
 | Part | Property | Value | Suggest | |
 |---|---|---|---|---|
@@ -84,4 +86,4 @@ Values Figma or code states as a literal although a token matches. Bind them at 
 | `icons-arrow-left` | `height` | `16px` | `spacing/size/2xsmall` | exists |
 | `outline` | `height` | `2px` | `spacing/outline/medium` | exists |
 
-Full values per variant: [reference.html#testimonials](../../reference.html#testimonials)
+Every value of every variant: [reference.html#testimonials](../../reference.html#testimonials)

@@ -4,7 +4,7 @@ id: chips
 name: Chip
 kind: component
 status: review
-summary: An outlined 24px interactive label, for filters and quick choices.
+summary: A small outlined label you can click, for filters and quick choices.
 category: selection
 related: [ tags, badge, toggle ]
 source:
@@ -99,17 +99,17 @@ guidance:
   status: proposed
   use:
     - |-
-      For filters and quick selections in a row: categories on the portfolio, period filters.
+      Filters and quick picks in a row: categories on my portfolio, date ranges.
   avoid:
-    - For a status nobody clicks, use **Badge**.
-    - For a topic label on content, use **Tag**.
+    - "A status nobody clicks: **Badge**."
+    - "A topic on a piece of content: **Tag**."
   behaviour: |-
-    One `status` (`Default`) × five `state`s. Hover, pressed and focus come from pseudo-classes. The kit doesn't draw a selected chip yet. Until it does, a selected chip needs design before it is built, not an improvised fill.
+    One `status` (`Default`) and five states. Hover, pressed and focus come from the browser. There's no selected chip in the kit yet, so a selected chip needs designing before anyone builds one. Not an improvised fill.
   accessibility:
     element: |-
       `<button type="button">`, with `aria-pressed` when it filters.
     group: |-
-      wrap a set in an element with a name (`role="group"` and `aria-label="Filter by category"`).
+      wrap the set in something with a name (`role="group"` and `aria-label="Filter by category"`).
     focus: "`focus-ring`, on `:focus-visible`."
   content: One or two words, sentence case.
 implementations:

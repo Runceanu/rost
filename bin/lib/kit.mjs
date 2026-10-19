@@ -62,11 +62,11 @@ export function loadKit() {
  */
 const LAYOUT = new Set(['position', 'inset', 'border-sides', 'align-items', 'justify-content', 'overflow', 'background-attachment'])
 export const COVERAGE = [
-  ['token', 'Bound to a token'],
+  ['token', 'Has a token'],
   ['suggested', 'Token suggested'],
-  ['layout', 'Layout keyword'],
+  ['layout', 'How Figma builds it'],
   ['sample', 'Figma frame size'],
-  ['reasoned', 'Untokenised on purpose'],
+  ['reasoned', 'No token, on purpose'],
   ['gap', 'Open gap'],
 ]
 export function classify(prop, v) {

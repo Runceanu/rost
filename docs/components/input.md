@@ -2,7 +2,7 @@
 
 # Input
 
-> A 56px text field with a floating label, optional leading lock icon, supportive text and an error state.
+> A 56px text field with a floating label, an optional lock icon, a line of help text and an error state.
 
 | | |
 |---|---|
@@ -40,40 +40,40 @@
 
 ## When to use
 
-- For any single-line text entry: email, name, amount, search.
+- Any single line of text: email, name, an amount, search.
 
 ## When not to use
 
-- For a choice from a known set, use **Chip** or **Toggle**. Free text invites typos.
-- For multi-line text, there is no textarea in the kit yet.
+- Picking from a known list. That's **Chip** or **Toggle**, free text just invites typos.
+- Several lines of text. There's no textarea in the kit yet.
 
 ## Behaviour
 
-Four axes:
+Four things change it:
 
-- **`configuration`**: `Empty` shows the label as the placeholder. `Filled` floats it up and shows the value.
-- **`selected`**: the focused field, which shows the focus ring.
-- **`error`**: the outline, label, supportive text and icons turn negative, and the alarm icon appears on the right.
+- **`configuration`**: `Empty` shows the label where you'll type. `Filled` moves it up and shows the value.
+- **`selected`**: it has focus, so the focus ring shows.
+- **`error`**: the outline, label, help text and icons go red, and the alarm icon shows up on the right.
 - **`state`**: `Default`, `Hover` and `Disabled`.
 
-Validate on blur or submit, not on every keystroke.
+Check what people typed when they leave the field or submit, not on every key.
 
 ## Accessibility
 
-- **Element**: a real `<input>` with a `<label for>`. The floating label is the label, never a `placeholder`.
-- **Supportive Text**: linked with `aria-describedby`.
-- **Error**: `aria-invalid="true"`, and the message in the supportive text says how to fix it.
-- **Colour**: an error is carried by the alarm icon and the message as well as red.
-- **Focus**: the ring shows on `:focus-visible` and on focus with the keyboard. Never remove the outline without the ring.
-- **Lock Icon**: decorative unless it means "read-only". If it does, set `readonly` and say so in the supportive text.
+- **Element**: a real `<input>` with a `<label for>`. The floating label is the label. Never a `placeholder`.
+- **Supportive Text**: connected with `aria-describedby`.
+- **Error**: `aria-invalid="true"`, and the help text says how to fix it.
+- **Colour**: an error shows as the alarm icon and the message, not only red.
+- **Focus**: the ring shows on `:focus-visible` and when you arrive by keyboard. Never remove the outline without the ring.
+- **Lock Icon**: just decoration, unless it means read-only. If it does, set `readonly` and say so in the help text.
 
 ## Content
 
-Label: a noun in sentence case ("Email address"). Supportive text: one line, the hint before an error and the fix after one ("Use at least 8 characters", not "Invalid input").
+Label: a noun, sentence case ("Email address"). Help text: one line. Before an error it's a hint, after it it's the fix ("Use at least 8 characters", not "Invalid input").
 
 ## Tokens
 
-Every token this contract asserts, in any variant.
+Every token this component uses, across all its variants.
 
 | Token | Resolves to |
 |---|---|
@@ -103,9 +103,9 @@ Every token this contract asserts, in any variant.
 | `typography/placeholder/letter-spacing` | `0px` |
 | `typography/placeholder/line-height` | `12px` |
 
-## Suggested bindings
+## Tokens that should be there
 
-Values Figma or code states as a literal although a token matches. Bind them at the source.
+Plain numbers where a token fits exactly. They become tokens when I freeze the contracts.
 
 | Part | Property | Value | Suggest | |
 |---|---|---|---|---|
@@ -115,4 +115,4 @@ Values Figma or code states as a literal although a token matches. Bind them at 
 | `icons-alarm` | `width` | `24px` | `spacing/size/small` | exists |
 | `icons-alarm` | `height` | `24px` | `spacing/size/small` | exists |
 
-Full values per variant: [reference.html#input](../../reference.html#input)
+Every value of every variant: [reference.html#input](../../reference.html#input)

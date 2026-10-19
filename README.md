@@ -1,41 +1,45 @@
 # Rost
 
-A design system run as its own product. runceanu.com, akount.ing and every product after them build on it; none of them owns it. *Rost* is Romanian for purpose, or order: the sense that something belongs where it is.
+This is my design system, and I run it like its own product. runceanu.com and akount.ing are built on it, and so will whatever I make next. None of them owns it.
 
-UI Kit v01 as a **contract**, so apps and plugins build against one source instead of each keeping its own copy.
+*Rost* is Romanian. It means purpose, or order: the sense that something is where it belongs. That's the whole job here.
 
-**Documentation starts at [docs/README.md](docs/README.md)**: the component catalogue, [what a contract is](docs/CONTRACT.md), and the [roadmap](docs/ROADMAP.md). `reference.html` is the same content with every value of every variant, for browsing.
+Each component is a **contract**: one YAML file that says what the component is, which values it uses, how to use it, and where each of my apps implements it. Apps build against that one file instead of keeping their own copy.
+
+**Start with the docs: [docs/README.md](docs/README.md).** That's the catalogue, plus [how a contract works](docs/CONTRACT.md) and [what's next](docs/ROADMAP.md). If you'd rather browse, the same content with every value of every variant lives at [rost.silviu-runceanu.workers.dev](https://rost.silviu-runceanu.workers.dev).
 
 ```
-schema/     the contract format (JSON Schema v2) and a template contract
-registry/   what actually exists in Figma — components, variants, node ids, token paths, icons
+contracts/  one YAML contract per component
+schema/     the contract format (JSON Schema v2) and a template
 tokens/     tokens.css and tokens.json
-contracts/  one YAML contract per component: values read from Figma, plus guidance and implementations
-docs/       CONTRACT.md and ROADMAP.md by hand; README.md and components/ generated
-src/        conformance checking
-bin/        repo auditing
+registry/   what exists in the Figma file: components, variants, node ids, icons
+baseline/   Figma's own render of each variant, the target for the coded versions
+assets/     icons and vector parts exported from Figma
+docs/       written by hand: CONTRACT.md, ROADMAP.md. Generated: the rest
+src/        the conformance check
+bin/        reading Figma, building docs, auditing apps
 ```
 
-## Why a contract and not just tokens
+## Why contracts, not just tokens
 
-Tokens alone did not stop the drift. The Badge in A-kaunt was built by inferring a component from its tokens rather than reading the node, and it was wrong three ways at once: a background fill the kit does not have, a status-coloured label the kit keeps tertiary, and an outline drawn from the wrong token family.
+Tokens alone didn't stop the drift. I built the first Badge in akount.ing by guessing the component from its tokens instead of reading the actual Figma node. It came out wrong in three places at once: a background fill the kit doesn't have, a coloured label where the kit keeps it grey, and an outline from the wrong token family.
 
-A contract states what was read and from which node. Conformance then fails the build when code stops matching. Crucially it compares **token paths**, not only pixels — six tokens in this kit resolve to `#3a3a3a`, so a screenshot diff cannot tell a right one from a wrong one, and nothing notices until someone retunes a token and the wrong thing moves.
+A contract writes down what was read, and from which node. The conformance check then fails the build when code stops matching. It compares token names, not just pixels, and that matters: six tokens in this kit come out as `#3a3a3a`. A screenshot can't tell the right one from the wrong one. Nobody notices until someone changes a token and the wrong thing moves.
 
-## Use
+## Using it
 
 ```bash
-node bin/audit.mjs <app-dir> [<app-dir>...]   # undefined vars, raw hex, unknown tokens
+npm run validate    # schema, links between files, token names
+npm run docs        # validate, then rebuild docs/ and reference.html
+npm run deploy      # publish the reference site
 ```
 
 ```bash
-npm run validate    # schema, cross-references, token paths
-npm run docs        # validate, then docs/README.md, docs/components/*.md and reference.html
-npm run deploy      # publish the reference to https://rost.silviu-runceanu.workers.dev (Cloudflare)
+node bin/audit.mjs <app-dir> [<app-dir>...]   # undefined vars, raw hex, tokens the kit doesn't have
 ```
 
-Import `src/conform.ts` in a test to check a stylesheet against the contracts. See A-kaunt's `src/contracts/__tests__/contract.test.ts`.
+To check an app, import `src/conform.ts` in one of its tests. akount.ing's `src/contracts/__tests__/contract.test.ts` shows how.
 
-## Status
+## Where it stands
 
-Most contracts are skeletons pending a Figma read; each states its own gaps in `pending`.
+22 contracts, all read from Figma, and validation is clean. The guidance in them is still a first draft I haven't signed off. Next up: finish the last Figma import, then the contracts become the source and Figma retires. The [roadmap](docs/ROADMAP.md) has the details.

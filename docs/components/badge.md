@@ -2,7 +2,7 @@
 
 # Badge
 
-> An outlined 24px status label; the status shows in the outline and dot, never in the label colour.
+> A small outlined label for status. The colour sits in the outline and the dot, never in the text.
 
 | | |
 |---|---|
@@ -29,31 +29,31 @@
 
 ## When to use
 
-- To tag an item with a status in a list, card or table row: Paid, Overdue, Draft.
+- Marking the status of something in a list, a card or a table row: Paid, Overdue, Draft.
 
 ## When not to use
 
-- To announce something about the page, use **InlineBanner**.
-- To categorise (topic, type) rather than report a status, use **Tag**.
-- If it should be clickable, use **Chip**. Badge has no interactive states.
+- Telling people something about the whole page. That's **InlineBanner**.
+- Describing what something is about rather than its status. That's **Tag**.
+- Anything clickable. Badge doesn't do hover or focus, **Chip** does.
 
 ## Behaviour
 
-`status` sets only the outline (`non-interactive/background/<status>/light`) and the leading dot. The label stays `non-interactive/foreground/tertiary` in every status, on purpose: the kit keeps badges quiet. There is no background fill. Those are the three things the first A-kaunt Badge got wrong.
+`status` only changes the outline (`non-interactive/background/<status>/light`) and the little dot. The text stays `non-interactive/foreground/tertiary` whatever the status, and that's on purpose: I keep badges quiet. There's no background fill either. My first Badge in akount.ing got exactly these three things wrong.
 
 ## Accessibility
 
-- **Element**: a `<span>`, not interactive.
-- **Colour**: the outline alone is not enough. The label must name the status ("Overdue", not "!").
+- **Element**: a `<span>`. Nothing to click.
+- **Colour**: the outline alone isn't enough. The text has to say the status ("Overdue", not "!").
 - **Dot**: `aria-hidden="true"`.
 
 ## Content
 
-One or two words, sentence case, no punctuation.
+One or two words. Sentence case, no punctuation.
 
 ## Tokens
 
-Every token this contract asserts, in any variant.
+Every token this component uses, across all its variants.
 
 | Token | Resolves to |
 |---|---|
@@ -74,13 +74,13 @@ Every token this contract asserts, in any variant.
 | `typography/label/letter-spacing` | `0px` |
 | `typography/label/line-height` | `14px` |
 
-## Suggested bindings
+## Tokens that should be there
 
-Values Figma or code states as a literal although a token matches. Bind them at the source.
+Plain numbers where a token fits exactly. They become tokens when I freeze the contracts.
 
 | Part | Property | Value | Suggest | |
 |---|---|---|---|---|
 | `icons-dot` | `width` | `16px` | `spacing/size/2xsmall` | exists |
 | `icons-dot` | `height` | `16px` | `spacing/size/2xsmall` | exists |
 
-Full values per variant: [reference.html#badge](../../reference.html#badge)
+Every value of every variant: [reference.html#badge](../../reference.html#badge)

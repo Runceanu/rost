@@ -1,136 +1,137 @@
-# The component contract
+# How a contract works
 
-Each component in this kit is **one YAML file**: `contracts/<id>.contract.yaml`. It states once, in one place:
-- where the component was read from
+Every component in Rost is one YAML file, `contracts/<id>.contract.yaml`. Everything about the component lives there, once:
+
+- where it came from
 - its props and states
-- every part and the values it holds
+- every part, and the values it holds
 - what each variant changes
 - how to use it
-- where each app implements it
+- where each of my apps implements it
 
-Figma is the source the values are read from. Code is checked against the contract. Docs are generated from it. The contract is the arbiter between them, and none of them gets edited to match another directly.
+Figma is where the values were first read. Code gets checked against the contract, and the docs are built from it. The contract sits in the middle, and nothing gets edited just to match something else.
 
-The schema is [`schema/component-contract.schema.json`](../schema/component-contract.schema.json) (v2). A filled-in example is [`schema/template.contract.yaml`](../schema/template.contract.yaml). This page is the human version of both.
+The format itself is [`schema/component-contract.schema.json`](../schema/component-contract.schema.json). If you'd rather see a filled-in one, start from [`schema/template.contract.yaml`](../schema/template.contract.yaml). This page is the plain-language version of both.
 
-## Principles
+## What I follow
 
-Taken from the writing this format follows: Nathan Curtis, [Component contracts and schemas](https://nathanacurtis.substack.com/p/component-contracts-and-schemas) and [Design system conventions in Figma](https://nathanacurtis.substack.com/p/design-system-conventions-in-figma), and Christine Vallaure, [Design system contracts](https://christinevallaure.substack.com/p/design-system-contracts-the-component).
+Most of this comes from Nathan Curtis ([component contracts and schemas](https://nathanacurtis.substack.com/p/component-contracts-and-schemas), [conventions in Figma](https://nathanacurtis.substack.com/p/design-system-conventions-in-figma)) and Christine Vallaure ([design system contracts](https://christinevallaure.substack.com/p/design-system-contracts-the-component)). What I took from them:
 
-1. **State each decision once.** The variant list and its Figma nodes used to sit in two places that could disagree, and the guidance and implementations in two more. Now they are all in one file.
-2. **Author only what can't be generated, and keep it in the contract.** A side file is a second truth that drifts. Authored sections live next to the generated ones, and the generator leaves them alone.
-3. **Regenerate deterministically.** Re-reading Figma when nothing changed produces an empty diff, and that is checked. A diff that isn't empty is a real change to review.
-4. **States are not props.** Hover, Pressed and Focus come from the browser, not from a caller. They have their own `states` list.
-5. **Verifiable over descriptive.** Every value carries its token *and* its resolved value, because six tokens in this kit resolve to `#3a3a3a`. `npm run validate` checks the schema and the cross-references, and conformance checks the CSS.
-6. **Version the schema.** `schemaVersion: 2`. A change to the shape is a new version, never a silent edit.
+1. **Say each thing once.** The variant list and its Figma nodes used to live in two places that could disagree. The guidance and the app implementations lived in two more. Now it's one file.
+2. **Write by hand only what can't be generated, and keep it in the same file.** A side file is a second truth, and second truths drift.
+3. **Same input, same output.** Reading Figma again when nothing changed gives an empty diff. If the diff isn't empty, something really changed.
+4. **States aren't props.** Hover, pressed and focus come from the browser, not from whoever uses the component. They get their own list.
+5. **Check it, don't describe it.** Every value carries its token name *and* what it resolves to, because six tokens here all come out as `#3a3a3a`. `npm run validate` checks the files, the conformance check reads the CSS.
+6. **Version the format.** It's `schemaVersion: 2`. If the shape changes, the version changes with it.
 
-## Anatomy of a contract
+## What's in one
 
 ```yaml
 schemaVersion: 2
-id: toggle                  # kebab-case and the file name; unique even when names are not
-name: Toggle                # as named in Figma
+id: toggle                  # the file name, kebab-case. Unique, even when names repeat
+name: Toggle                # as it's named in Figma
 kind: component             # component | effect | pattern
-status: review              # lifecycle, below
-summary: …                  # one sentence, shown in the catalogue
+status: review              # see "Where a contract is in its life" below
+summary: …                  # one sentence for the catalogue
 category: selection
 related: [ icon-button, chips ]
 
-source:                     # where the values were READ from
+source:                     # where the values were read from
   tool: figma
-  nodeId: "168:1149"        # the component set
+  nodeId: "168:1149"        # the component set, not one variant
   …
 
-props:                      # the API
+props:                      # what a caller can set
   selected: { type: boolean, default: false }
 states: [ Default, Hover, Pressed, Focus, Disabled ]
 
-elements:                   # every part, in DOM order, with what NEVER varies
+elements:                   # every part, in DOM order, and what never changes
   root:
     styles:
       gap: { token: spacing/gap/small, value: 8px }
   focus-ring: {}
 
-variants:                   # one per Figma variant: its configuration, node, and differences only
+variants:                   # one per Figma variant: when it applies, its node, and only what differs
   - when: { state: Hover, selected: true }
     figmaNode: "168:1159"
     elements:
       root:
         background: { token: actions/primary/hover/background, value: "#00b450" }
 
-guidance: …                 # authored: use, avoid, behaviour, accessibility, content
-implementations:            # authored: per app, selectors and that app's deviations
+guidance: …                 # by hand: when to use it, when not, behaviour, accessibility, content
+implementations:            # by hand: where each app builds it, and where it knowingly differs
   a-kaunt: { component: src/components/Toggle.tsx, root: .ak-toggle, deviations: […] }
-deviations: […]             # authored: departures that apply to every app
-pending: …                  # what still has to be read
+deviations: […]             # by hand: differences that apply to every app
+pending: …                  # what still needs reading
 ```
 
-### Generated or authored
+### What's generated, what's written by hand
 
 | Section | Who writes it |
 |---|---|
-| `source`, `props`, `states`, `elements.*.styles`, `variants` | **Generated** by the Figma read (`bin/build-contracts.mjs`). Don't hand-edit for Figma-sourced components; change Figma and re-read |
-| `summary`, `category`, `related`, `guidance`, `implementations`, `deviations`, `elements.*.notes`, `props.*.notes`, `status` | **Authored**. A re-read never touches them |
+| `source`, `props`, `states`, `elements.*.styles`, `variants` | **Generated** by the Figma read (`bin/build-contracts.mjs`). Until the freeze, change Figma and read it again rather than editing these |
+| `summary`, `category`, `related`, `guidance`, `implementations`, `deviations`, `elements.*.notes`, `props.*.notes`, `status` | **By hand.** A new read never touches them |
 
-Effects (`kind: effect`) and patterns (`kind: pattern`) have no variant matrix, so their contracts are authored throughout. So is a code-born contract (`source.tool: code`), where the implementation is the source until Figma catches up.
+Effects (`kind: effect`) and patterns (`kind: pattern`) have no variant grid, so I write those by hand from top to bottom. Same for anything that started in code (`source.tool: code`). There, the code is the source until Figma catches up.
 
 ### Values
 
 ```yaml
-gap:      { token: spacing/gap/small, value: 8px }       # the source binds a token
-width:    { value: 20px, suggest: spacing/size/xsmall }  # a literal where a token fits
-cadence:  { value: 7-8s, untokenised: Motion timing… }   # deliberately literal, and why
+gap:      { token: spacing/gap/small, value: 8px }       # the source uses a token
+width:    { value: 20px, suggest: spacing/size/xsmall }  # a plain number where a token fits
+cadence:  { value: 7-8s, untokenised: Motion timing… }   # plain on purpose, and why
 ```
 
-- **`token`**: the path the source *actually* binds. Never filled in by hand for a Figma-read component. Conformance checks it.
-- **`value`**: what CSS resolves to.
-- **`suggest`**: a token that *should* be bound. It can be an existing one (bind it in Figma) or a new one (create it first; `npm run validate` lists these as `new`). The Figma read adds suggestions automatically where a literal exactly matches a step of the size or gap scale. Conformance ignores them.
-- **`untokenised`**: why a value deliberately has no token. Without one of these fields, an untokenised value counts as an open gap.
-- **`assert: false`**: recorded, not checked, as with a root width that is only the Figma frame size.
-- **`notes`**: anything surprising.
+- **`token`** is the token the source actually uses. I never fill it in by hand for something read from Figma. The conformance check tests it.
+- **`value`** is what CSS ends up with.
+- **`suggest`** is a token that *should* be there. Either it exists and Figma just isn't using it, or it doesn't exist yet and needs creating (`npm run validate` lists those as `new`). The Figma read adds these by itself when a plain number matches a step on the size or gap scale exactly. The conformance check ignores them.
+- **`untokenised`** says why a value has no token on purpose. Without it, a value with no token shows up as an open gap.
+- **`assert: false`** means it's written down but not checked, like a root width that's only the size of the Figma frame.
+- **`notes`** is for anything that would surprise you.
 
-Layout keywords (`position`, `inset`, `border-sides`, `align-items`, `justify-content`, `overflow`) describe how Figma builds the layer and are never tokenised. [Token coverage](TOKENS.md) classifies every value this way.
+Some properties are just how Figma builds a layer: `position`, `inset`, `border-sides`, `align-items`, `justify-content`, `overflow`. Nobody tokenises those, so they're never counted as gaps. [Token coverage](TOKENS.md) sorts every value this way.
 
 ### Deviations
 
-A difference nobody declared is **drift**. A declared one is a **decision**. An app's deviation goes under `implementations.<app>.deviations`. A deviation that applies everywhere, such as a design decision Figma hasn't caught up with, goes under top-level `deviations`. Each one has a `why` and says whether it has been `raisedWithDesign`.
+If code differs from the contract and nobody wrote it down, that's drift. If it's written down, it's a decision. An app's own difference goes under `implementations.<app>.deviations`. A difference that applies everywhere, like a choice Figma hasn't caught up with yet, goes under the top-level `deviations`. Each one needs a `why`, and `raisedWithDesign` says whether it's been taken back to the design side yet.
 
 ### After the freeze
 
-Figma was the source while the kit was imported. `node bin/freeze.mjs --apply` ends that. It accepts every `suggest` as the `token` and stamps `source.frozenAt` on each contract. A frozen contract is the source of truth: the Figma read leaves it alone (`--unfreeze` overrides, deliberately), every section becomes authored, and a change is a reviewed edit to the YAML. `source` stays as a record of where the values first came from.
+Figma was the source while I imported the kit. `node bin/freeze.mjs --apply` ends that. It turns every `suggest` into the `token` and stamps `source.frozenAt` on each contract. From then on the contract is the source: the Figma read leaves it alone (unless I pass `--unfreeze`, on purpose), every section counts as written by hand, and a change is an edit to the YAML. `source` stays as a note of where the values came from first.
 
-## Lifecycle
+## Where a contract is in its life
 
 | Status | Means | To move on |
 |---|---|---|
-| `skeleton` | Named, node known, nothing read | Read every variant from Figma |
-| `draft` | Values read, but some inferred, or `pending` is non-empty | Clear `pending`; every token resolves |
-| `review` | Read in full | `guidance.status: agreed`; one implementation conforms with zero undeclared findings |
-| `stable` | Safe to build against in any app | Breaking changes need a new major and a migration note |
-| `deprecated` | Kept so old builds still resolve | Remove once no implementation references it |
+| `skeleton` | Named, node known, nothing read yet | Read every variant |
+| `draft` | Read, but some values are guessed or `pending` isn't empty | Clear `pending`, make every token resolve |
+| `review` | Read in full | Guidance signed off (`agreed`), and one app passes the check with nothing undeclared |
+| `stable` | Safe to build on in any app | Breaking changes need a new major version and a note on how to move over |
+| `deprecated` | Kept so old builds still work | Delete once nothing uses it |
 
-`guidance.status` is either `proposed` (drafted from the contract and common practice, not yet checked by design) or `agreed`. **Proposed guidance is a starting point, not a rule.** Validation refuses `status: stable` while the guidance is only `proposed`.
+`guidance.status` is `proposed` (a first draft from the contract and common practice) or `agreed` (I've read it and I stand by it). Proposed guidance is somewhere to start, not a rule. Validation won't let a contract be `stable` while its guidance is still `proposed`.
 
-## Definition of done
+## When it's done
 
 A component is `stable` when:
 
 - [ ] `npm run validate` passes with no errors and no token warnings for it
 - [ ] `pending` is gone
-- [ ] `guidance.status: agreed`, with accessibility covering element, name, keyboard and focus
-- [ ] At least one app is listed under `implementations` and conforms with zero undeclared findings
-- [ ] Every intentional difference is a deviation with a `why`
+- [ ] the guidance is `agreed`, and its accessibility part covers element, name, keyboard and focus
+- [ ] at least one app is listed under `implementations` and passes the check with nothing undeclared
+- [ ] every difference I mean to keep is a deviation with a `why`
 
 ## Adding a component
 
-1. **Read it.** With Figma's Dev Mode MCP server running, add the set's node id to `SETS` in `bin/extract.mjs`, its variants to `registry/variant-nodes.json` and its id to `CORE` in `bin/extract-variants.mjs`. Then run `extract-variants.mjs` → `parse.mjs` → `build-contracts.mjs` (add it to `sets` and `NAMES` there too). This writes `contracts/<id>.contract.yaml`. The list is hardcoded in four places for now; collapsing it is on the [roadmap](ROADMAP.md). For an effect or pattern, copy `schema/template.contract.yaml` instead.
-2. **Describe it.** Add `summary`, `category`, `related` and `guidance` to the YAML. Leave `guidance.status: proposed` until design has read it.
+1. **Read it.** With the Figma desktop app open on the UI Kit, add the component's variants to `registry/variant-nodes.json`. Then run `node bin/extract-variants.mjs <id>`, `node bin/parse.mjs` and `node bin/build-contracts.mjs` (add the id to `sets` and `NAMES` in that last one). That writes `contracts/<id>.contract.yaml`. The list still lives in a few places, and fixing that is on the [roadmap](ROADMAP.md). For an effect or a pattern, copy `schema/template.contract.yaml` instead.
+2. **Describe it.** Add `summary`, `category`, `related` and `guidance`. Leave the guidance `proposed` until I've signed it off.
 3. **Register it.** Add each app under `implementations`, with its selectors.
-4. **Check it.** Run `npm run validate`, conformance in the app's test suite, and `npm run audit <app-dir>…`. Declare anything you mean to keep as a deviation.
-5. **Publish it.** `npm run docs` and commit the contract with the generated docs.
+4. **Check it.** `npm run validate`, the conformance test in the app, and `npm run audit <app-dir>`. Anything that's different on purpose becomes a deviation.
+5. **Publish it.** `npm run docs`, then commit the contract and the rebuilt docs together.
 
 ## Checking an app
 
-`src/conform.ts` exports `forApp(contract, app)`, which turns a YAML contract into that app's checkable view: its selectors, every invariant, and the variants keyed as Figma names them. Pass the result to `conform()`.
+`src/conform.ts` has `forApp(contract, app)`. It turns a YAML contract into what one app should look like: that app's selectors, every fixed value, and the variants named the way Figma names them. Hand the result to `conform()`.
 
 ```ts
 import YAML from 'yaml'

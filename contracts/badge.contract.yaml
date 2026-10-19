@@ -4,7 +4,7 @@ id: badge
 name: Badge
 kind: component
 status: review
-summary: An outlined 24px status label; the status shows in the outline and dot, never in the label colour.
+summary: A small outlined label for status. The colour sits in the outline and the dot, never in the text.
 category: feedback
 related: [ inline-banner, tags ]
 source:
@@ -89,19 +89,19 @@ guidance:
   status: proposed
   use:
     - |-
-      To tag an item with a status in a list, card or table row: Paid, Overdue, Draft.
+      Marking the status of something in a list, a card or a table row: Paid, Overdue, Draft.
   avoid:
-    - To announce something about the page, use **InlineBanner**.
-    - To categorise (topic, type) rather than report a status, use **Tag**.
-    - If it should be clickable, use **Chip**. Badge has no interactive states.
+    - Telling people something about the whole page. That's **InlineBanner**.
+    - Describing what something is about rather than its status. That's **Tag**.
+    - Anything clickable. Badge doesn't do hover or focus, **Chip** does.
   behaviour: |-
-    `status` sets only the outline (`non-interactive/background/<status>/light`) and the leading dot. The label stays `non-interactive/foreground/tertiary` in every status, on purpose: the kit keeps badges quiet. There is no background fill. Those are the three things the first A-kaunt Badge got wrong.
+    `status` only changes the outline (`non-interactive/background/<status>/light`) and the little dot. The text stays `non-interactive/foreground/tertiary` whatever the status, and that's on purpose: I keep badges quiet. There's no background fill either. My first Badge in akount.ing got exactly these three things wrong.
   accessibility:
-    element: a `<span>`, not interactive.
+    element: a `<span>`. Nothing to click.
     colour: |-
-      the outline alone is not enough. The label must name the status ("Overdue", not "!").
+      the outline alone isn't enough. The text has to say the status ("Overdue", not "!").
     dot: "`aria-hidden=\"true\"`."
-  content: One or two words, sentence case, no punctuation.
+  content: One or two words. Sentence case, no punctuation.
 implementations:
   runceanu-portfolio:
     component: src/components/Badge.jsx

@@ -4,7 +4,7 @@ id: pill-button
 name: PillButton
 kind: component
 status: review
-summary: A 48px action with a leading icon and a label. The kit's main call to action.
+summary: A 48px button with an icon in front of the label. My main call to action.
 category: actions
 related: [ button, icon-button ]
 source:
@@ -345,21 +345,21 @@ guidance:
   status: proposed
   use:
     - |-
-      When an icon makes the action faster to recognise: a back arrow, an external link, a download.
-    - For hero and section CTAs on runceanu.com, where it is the primary call to action.
+      When an icon helps people get it faster: a back arrow, an external link, a download.
+    - The calls to action in heroes and sections on runceanu.com.
   avoid:
-    - If the icon only decorates, drop it and use **Button**.
-    - If there is no room for a label, use **IconButton**, never a PillButton with the label hidden.
+    - When the icon is just decoration. Drop it and use **Button**.
+    - When there's no room for the label. Use **IconButton**, never a PillButton with its label hidden.
   behaviour: |-
-    Same `type` × `state` matrix as Button: `Primary`, `Secondary`, `Tertiary`, `Borderless`. Interaction states come from CSS pseudo-classes, not props. The icon sits in a 20px slot (`icons-arrow-left` in Figma) and takes the label colour.
+    Same types and states as Button: `Primary`, `Secondary`, `Tertiary`, `Borderless`. States come from the browser, not from props. The icon sits in a 20px slot (`icons-arrow-left` in Figma) and takes the label's colour.
   accessibility:
     element: |-
-      `<button>`, or `<a>` when it navigates. A pill that navigates is still a link.
+      `<button>`, or `<a>` when it takes you somewhere. A pill that navigates is still a link.
     name: the label. The icon is `aria-hidden="true"`.
-    keyboard: Enter (and Space for buttons) activates.
+    keyboard: Enter, and Space for buttons.
     focus: "`focus-ring`, on `:focus-visible`."
   content: |-
-    A verb phrase in sentence case. The icon must agree with the words: an arrow-left only on "Back".
+    A short verb phrase, sentence case. The icon has to match the words: an arrow pointing left only on "Back".
 implementations:
   a-kaunt:
     component: src/components/Button.tsx

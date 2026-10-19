@@ -29,9 +29,9 @@ function tokenCell(v, prop) {
   if (kind === 'token') return `<span class="tk">${esc(v.token)}</span>`
   if (kind === 'suggested') return `<span class="tk tk--suggest" title="Not bound at the source; this token fits">suggest ${esc(v.suggest)}</span>`
   if (kind === 'layout') return `<span class="tk tk--none">layout</span>`
-  if (kind === 'sample') return `<span class="tk tk--none">frame size, not asserted</span>`
+  if (kind === 'sample') return `<span class="tk tk--none">just the Figma frame size</span>`
   if (kind === 'reasoned') return `<span class="tk tk--none" title="${esc(v.untokenised)}">on purpose: ${esc(v.untokenised)}</span>`
-  return `<span class="tk tk--gap">no token</span>`
+  return `<span class="tk tk--gap">no token yet</span>`
 }
 
 function invariantRows(inv) {
@@ -69,7 +69,7 @@ const sections = kit.map((e) => {
   const src = sourceLink(c)
   const impl = e.implementations.length
     ? e.implementations.map((i) => `<code class="impl">${esc(APP_LABEL[i.app] ?? i.app)}${i.root ? ' ' + esc(i.root) : ''}</code>`).join('')
-    : `<span class="impl impl--none">not implemented yet</span>`
+    : `<span class="impl impl--none">not built yet</span>`
   const issues = [
     ...e.unresolved.map((t) => `<li>Token <code>${esc(t)}</code> does not resolve in tokens.css</li>`),
     ...(c.pending?.reason ? [`<li>Pending: ${esc(c.pending.reason)}</li>`] : []),
@@ -96,15 +96,15 @@ const sections = kit.map((e) => {
       ${notes.length ? `<dl class="notes">${notes.map((a) => `<dt>${esc(a.part)}</dt><dd>${esc(a.notes)}</dd>`).join('')}</dl>` : ''}
 
       ${g ? `<div class="guide">${md(guidanceMarkdown(g))}</div>` : ''}
-      ${devs.length ? `<h3>Declared deviations</h3><ul class="devs">${devs.join('')}</ul>` : ''}
+      ${devs.length ? `<h3>Where code differs on purpose</h3><ul class="devs">${devs.join('')}</ul>` : ''}
 
-      <h3>Constant across every variant <span class="cnt">${nInv}</span></h3>
+      <h3>Never changes <span class="cnt">${nInv}</span></h3>
       <div class="scroll"><table class="t t--inv">
         <thead><tr><th>Part</th><th>Property</th><th>Value</th><th>Token</th></tr></thead>
         <tbody>${invariantRows(e.invariants)}</tbody>
       </table></div>
 
-      ${nVar ? `<h3>Varies by variant <span class="cnt">${nVar}</span></h3>${variesBlocks(e.variantMap)}` : ''}
+      ${nVar ? `<h3>Changes by variant <span class="cnt">${nVar}</span></h3>${variesBlocks(e.variantMap)}` : ''}
     </section>`
 }).join('')
 
@@ -242,10 +242,10 @@ a:focus-visible,.node:focus-visible{outline:2px solid var(--accent);outline-offs
   <main>
     <div class="hero">
       <h1>Rost Reference</h1>
-      <p class="sub">Every value read from the Figma file itself, node by node and state by state, split into
-      what holds across all variants and what distinguishes each one. Each value carries its token path as well
-      as its resolved value &mdash; six tokens in this kit resolve to <code style="font-family:var(--mono)">#3a3a3a</code>,
-      so the value alone cannot tell a right token from a wrong one.</p>
+      <p class="sub">Every value in my design system, read straight from Figma, one variant at a time. For each
+      component you'll see what never changes, then what each variant changes. I keep the token name next to every
+      value on purpose: six tokens here all come out as <code style="font-family:var(--mono)">#3a3a3a</code>,
+      and the colour alone can't tell you which one is right.</p>
       <div class="counts">
         <div><b>${contracts.length}</b><span>contracts</span></div>
         <div><b>${kit.filter((e) => e.guidance).length}</b><span>with guidance</span></div>

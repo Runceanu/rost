@@ -2,7 +2,7 @@
 
 # Tag
 
-> A compact 20px label with a small radius, for topics and categories on content.
+> A compact 20px label with small corners, for what a piece of content is about.
 
 | | |
 |---|---|
@@ -30,29 +30,29 @@
 
 ## When to use
 
-- To label content with what it is about: a case study's discipline, a project's platform.
+- Saying what something is about: a case study's discipline, a project's platform.
 
 ## When not to use
 
-- For a status, use **Badge**. For a filter control, use **Chip**.
+- A status: **Badge**. A filter: **Chip**.
 
 ## Behaviour
 
-One `type` (`Primary`) × five `state`s. The interactive states exist for tags that link to a filtered view. A tag that goes nowhere should render without them.
+One `type` (`Primary`) and five states. The hover and press states are there for tags that link to a filtered list. A tag that doesn't go anywhere shouldn't have them.
 
 ## Accessibility
 
-- **Static**: a `<span>`, or a `<li>` in a `<ul>` when there are several.
-- **Linking**: an `<a>` with a name that includes the context ("Projects tagged Fintech").
-- **Focus**: `focus-ring` on linked tags only.
+- **Static**: a `<span>`, or `<li>` items in a `<ul>` when there are a few.
+- **Linking**: an `<a>` whose name gives the context ("Projects tagged Fintech").
+- **Focus**: `focus-ring`, only on tags that link.
 
 ## Content
 
-One word where possible, title case for proper nouns only.
+One word if you can. Capitals only for proper nouns.
 
 ## Tokens
 
-Every token this contract asserts, in any variant.
+Every token this component uses, across all its variants.
 
 | Token | Resolves to |
 |---|---|
@@ -77,4 +77,4 @@ Every token this contract asserts, in any variant.
 | `typography/label/letter-spacing` | `0px` |
 | `typography/label/line-height` | `14px` |
 
-Full values per variant: [reference.html#tags](../../reference.html#tags)
+Every value of every variant: [reference.html#tags](../../reference.html#tags)

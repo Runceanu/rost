@@ -4,7 +4,7 @@ id: toggle
 name: Toggle
 kind: component
 status: review
-summary: A 40×40 icon toggle that holds a selected state, used alone or as one choice of a group.
+summary: A 40×40 icon button that stays on or off, alone or as one choice in a group.
 category: selection
 related: [ icon-button, chips ]
 source:
@@ -163,22 +163,22 @@ variants:
 guidance:
   status: proposed
   use:
-    - To switch a view or filter on and off, where the change applies immediately.
-    - In a group, to pick one option from a short set (in A-kaunt, the year switcher).
+    - Switching a view or a filter on and off, when the change happens straight away.
+    - Picking one option from a short set, as a group. The year switcher in akount.ing works like this.
   avoid:
-    - To fire an action, use **IconButton**. A toggle remembers, a button doesn't.
-    - For a settings-style on/off with a text label, there is no switch in the kit yet. Raise it rather than restyling Toggle.
+    - Doing something. That's **IconButton**. A toggle remembers, a button doesn't.
+    - A settings-style switch with a label. There isn't one in the kit yet, so ask for one rather than stretching Toggle.
   behaviour: |-
-    Two axes: `selected` (`True` / `False`) and `state`. Unselected is a 12px-radius plate on the secondary surface at low opacity. Selected becomes a full-radius primary pill. The shape change is part of the signal, not only the colour.
+    It changes with `selected` and `state`. Off, it's a plate with 12px corners on the secondary surface, faded down. On, it becomes a fully round primary pill. The change of shape is part of the signal, not just the colour.
   accessibility:
     alone: "`<button aria-pressed=\"true|false\">`."
     group: |-
-      `role="radio"` with `aria-checked`, inside a `role="radiogroup"` with a name. Arrow keys move between options, and Tab enters and leaves the group.
-    name: "`aria-label` when icon-only."
+      `role="radio"` with `aria-checked`, inside a `role="radiogroup"` that has a name. Arrow keys move between options, Tab gets you in and out.
+    name: "`aria-label` when it's icon only."
     focus: |-
-      `focus-ring` (2px, `actions/primary/focus/focus-ring` when selected), on `:focus-visible`.
-    colour: selection is carried by shape (radius 12px → full) as well as colour.
-  content: Icon-only in the kit. A-kaunt adds a text label as a declared deviation. Keep any label to one short word or a number.
+      `focus-ring` (2px, `actions/primary/focus/focus-ring` when it's on), on `:focus-visible`.
+    colour: on and off show in the shape (12px corners to fully round) as well as the colour.
+  content: Icon only in the kit. akount.ing adds a text label, and that's a declared deviation. If you add one, keep it to a short word or a number.
 implementations:
   a-kaunt:
     component: src/components/Toggle.tsx

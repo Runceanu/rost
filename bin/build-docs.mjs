@@ -35,10 +35,10 @@ function page(e) {
 
   // Problems first: a reader building on this should see them before the spec.
   const problems = []
-  if (e.unresolved.length) problems.push(`Token paths that do not resolve in \`tokens/tokens.css\`: ${e.unresolved.map((t) => `\`${t}\``).join(', ')}.`)
-  if (c.pending?.reason) problems.push(`Pending: ${c.pending.reason}`)
-  if (!g) problems.push(`No guidance yet. Add a \`guidance\` block to the contract (see \`contracts/_template.contract.yaml\`).`)
-  if (problems.length) lines.push('## Open issues', '', ...problems.map((p) => `- ${p}`), '')
+  if (e.unresolved.length) problems.push(`These tokens aren't in \`tokens/tokens.css\` yet: ${e.unresolved.map((t) => `\`${t}\``).join(', ')}.`)
+  if (c.pending?.reason) problems.push(`Still to read: ${c.pending.reason}`)
+  if (!g) problems.push(`No guidance yet. It needs a \`guidance\` block (there's one to copy in \`schema/template.contract.yaml\`).`)
+  if (problems.length) lines.push('## Not right yet', '', ...problems.map((p) => `- ${p}`), '')
 
   const props = Object.entries(c.props ?? {})
   if (props.length) {
@@ -58,31 +58,31 @@ function page(e) {
   if (g) lines.push(guidanceMarkdown(g), '')
 
   if (e.deviations.length) {
-    lines.push('## Declared deviations', '', '| App | What | Why | Raised with design |', '|---|---|---|---|')
+    lines.push('## Where code differs on purpose', '', '| App | What | Why | Taken to design |', '|---|---|---|---|')
     for (const d of e.deviations) lines.push(`| ${APP_LABEL[d.app] ?? d.app ?? 'all'} | ${cell(d.what)} | ${cell(d.why)} | ${d.raisedWithDesign ? 'yes' : 'not yet'} |`)
     lines.push('')
   }
 
   if (e.tokens.size) {
-    lines.push('## Tokens', '', 'Every token this contract asserts, in any variant.', '', '| Token | Resolves to |', '|---|---|')
+    lines.push('## Tokens', '', 'Every token this component uses, across all its variants.', '', '| Token | Resolves to |', '|---|---|')
     for (const [t, v] of [...e.tokens].sort()) lines.push(`| \`${t}\`${e.unresolved.includes(t) ? ' ⚠︎' : ''} | \`${cell(v)}\` |`)
     lines.push('')
   }
 
   const suggested = [...new Map(e.values.filter((x) => x.v.suggest).map((x) => [`${x.part}.${x.prop}=${x.v.suggest}`, x])).values()]
   if (suggested.length) {
-    lines.push('## Suggested bindings', '', 'Values Figma or code states as a literal although a token matches. Bind them at the source.', '', '| Part | Property | Value | Suggest | |', '|---|---|---|---|---|')
+    lines.push('## Tokens that should be there', '', 'Plain numbers where a token fits exactly. They become tokens when I freeze the contracts.', '', '| Part | Property | Value | Suggest | |', '|---|---|---|---|---|')
     for (const x of suggested) lines.push(`| \`${x.part}\` | \`${x.prop}\` | \`${cell(x.v.value)}\` | \`${x.v.suggest}\` | ${e.resolves(x.v.suggest) ? 'exists' : '**new token**'} |`)
     lines.push('')
   }
   const reasoned = e.values.filter((x) => x.v.untokenised)
   if (reasoned.length) {
-    lines.push('## Untokenised on purpose', '', '| Part | Property | Value | Why |', '|---|---|---|---|')
+    lines.push('## No token, on purpose', '', '| Part | Property | Value | Why |', '|---|---|---|---|')
     for (const x of reasoned) lines.push(`| \`${x.part}\` | \`${x.prop}\` | \`${cell(x.v.value)}\` | ${cell(x.v.untokenised)} |`)
     lines.push('')
   }
 
-  lines.push(`Full values per variant: [reference.html#${e.id}](../../reference.html#${e.id})`, '')
+  lines.push(`Every value of every variant: [reference.html#${e.id}](../../reference.html#${e.id})`, '')
   return lines.join('\n')
 }
 
@@ -93,15 +93,15 @@ const by = (k) => kit.filter((e) => e.kind === k)
 const catalogue = KINDS.filter(([k]) => by(k).length).map(([k, label]) => [
   `### ${label}`, '',
   '| | Summary | Contract | Guidance | Used in |', '|---|---|---|---|---|',
-  ...by(k).map((e) => `| [${title(e)}](components/${e.id}.md) | ${cell(e.c.summary ?? '')} | \`${e.c.status}\` | ${e.guidance ? `\`${e.guidance.status}\`` : '—'} | ${apps(e) || '—'} |`),
+  ...by(k).map((e) => `| [${title(e)}](components/${e.id}.md) | ${cell(e.c.summary ?? '')} | \`${e.c.status}\` | ${e.guidance ? `\`${e.guidance.status}\`` : '·'} | ${apps(e) || '·'} |`),
   '',
 ].join('\n')).join('\n')
 
 const health = [
-  ['Token paths that do not resolve', kit.filter((e) => e.unresolved.length).map((e) => `[${title(e)}](components/${e.id}.md): ${e.unresolved.map((t) => `\`${t}\``).join(', ')}`)],
-  ['Pending a Figma read', kit.filter((e) => e.c.pending).map((e) => `[${title(e)}](components/${e.id}.md)`)],
-  ['Components without guidance', by('component').filter((e) => !e.guidance).map((e) => `[${title(e)}](components/${e.id}.md)`)],
-  ['Deviations not yet raised with design', kit.flatMap((e) => e.deviations.filter((d) => !d.raisedWithDesign).map((d) => `[${title(e)}](components/${e.id}.md)${d.app ? ` in ${APP_LABEL[d.app] ?? d.app}` : ''}: ${cell(d.what).split('. ')[0].replace(/\.$/, '')}`))],
+  ['Tokens missing from tokens.css', kit.filter((e) => e.unresolved.length).map((e) => `[${title(e)}](components/${e.id}.md): ${e.unresolved.map((t) => `\`${t}\``).join(', ')}`)],
+  ['Still waiting on a Figma read', kit.filter((e) => e.c.pending).map((e) => `[${title(e)}](components/${e.id}.md)`)],
+  ['No guidance yet', by('component').filter((e) => !e.guidance).map((e) => `[${title(e)}](components/${e.id}.md)`)],
+  ['Differences nobody has taken to design yet', kit.flatMap((e) => e.deviations.filter((d) => !d.raisedWithDesign).map((d) => `[${title(e)}](components/${e.id}.md)${d.app ? ` in ${APP_LABEL[d.app] ?? d.app}` : ''}: ${cell(d.what).split('. ')[0].replace(/\.$/, '')}`))],
 ].filter(([, items]) => items.length)
 
 const counts = {
@@ -115,26 +115,26 @@ writeFileSync(new URL('../docs/README.md', import.meta.url), `${GENERATED('*').r
 
 # Rost: documentation
 
-The design system behind **runceanu.com**, **akount.ing** and the products that follow. Start here.
+My design system, behind **runceanu.com**, **akount.ing** and whatever I build next. Start here.
 
 | Read | For |
 |---|---|
-| [The component contract](CONTRACT.md) | What a contract is, the lifecycle, the definition of done, how to add a component |
-| [Components](#catalogue) | One page per component: guidance, props, anatomy, tokens, deviations |
-| [reference.html](../reference.html) | Every value of every variant, browsable |
-| [Token coverage](TOKENS.md) | Why each value does or doesn't carry a token, and what to bind |
-| [Roadmap](ROADMAP.md) | What gets built next, and why |
+| [How a contract works](CONTRACT.md) | What's in one, how it grows up, when it's done, how to add one |
+| [Components](#catalogue) | A page per component: how to use it, props, parts, tokens, where code differs |
+| [reference.html](../reference.html) | Every value of every variant, to browse |
+| [Token coverage](TOKENS.md) | Why each value has a token or doesn't |
+| [Roadmap](ROADMAP.md) | What I'm doing next |
 
-**${counts.total}** contracts · **${counts.stable}** stable · guidance for **${counts.guided}**, of which **${counts.agreed}** agreed with design.
+**${counts.total}** contracts, **${counts.stable}** stable. **${counts.guided}** have guidance, and I've signed off **${counts.agreed}** of those.
 
 ## Catalogue
 
 ${catalogue}
 ## Health
 
-Generated from the contracts, so it is only as current as the last \`npm run docs\`.
+What needs attention. It's built from the contracts, so it's only as fresh as the last \`npm run docs\`.
 
-${health.map(([h, items]) => `### ${h}\n\n${items.map((i) => `- ${i}`).join('\n')}\n`).join('\n') || 'Nothing to report.\n'}`)
+${health.map(([h, items]) => `### ${h}\n\n${items.map((i) => `- ${i}`).join('\n')}\n`).join('\n') || 'Nothing needs attention right now.\n'}`)
 
 // ─── Token coverage ──────────────────────────────────────────────────────────
 const total = Object.fromEntries(COVERAGE.map(([k]) => [k, kit.reduce((n, e) => n + e.coverage[k], 0)]))
@@ -158,17 +158,17 @@ writeFileSync(new URL('../docs/TOKENS.md', import.meta.url), `${GENERATED('*')}
 
 # Token coverage
 
-Every value in every contract, by why it does or does not carry a token. Run \`npm run docs\` to refresh.
+Every value in every contract, sorted by why it has a token or doesn't. \`npm run docs\` refreshes it.
 
 | | Values | Share | Meaning |
 |---|---|---|---|
 ${COVERAGE.map(([k, label]) => `| ${label} | ${total[k]} | ${pct(total[k])} | ${{
-  token: 'The source binds a token, and conformance checks it.',
-  suggested: 'A literal where a token fits. Bind it in Figma, then re-read.',
-  layout: 'How the layer is built (position, inset, which sides get a stroke). Not a token decision.',
-  sample: 'A root size that is only the Figma frame. Recorded, not asserted.',
-  reasoned: 'Deliberately literal, with the reason in the contract.',
-  gap: 'No token and no reason. Each one needs a decision.',
+  token: 'Uses a token, and the check tests it.',
+  suggested: 'A plain number where a token fits. It becomes a token at the freeze.',
+  layout: 'How Figma builds the layer (position, inset, which sides get a stroke). Nothing to tokenise.',
+  sample: 'A root size that is just the Figma frame. Written down, not checked.',
+  reasoned: 'Plain on purpose, and the contract says why.',
+  gap: 'No token and no reason. Each one needs a decision from me.',
 }[k]} |`).join('\n')}
 
 ## By contract
@@ -177,25 +177,25 @@ ${COVERAGE.map(([k, label]) => `| ${label} | ${total[k]} | ${pct(total[k])} | ${
 |---|${COVERAGE.map(() => '---:').join('|')}|
 ${kit.map((e) => `| [${title(e)}](components/${e.id}.md) | ${COVERAGE.map(([k]) => e.coverage[k] || '·').join(' | ')} |`).join('\n')}
 
-## Suggested bindings
+## Tokens that should be there
 
-Bind these in Figma (or create the token first, where it is new). The next Figma read then records them as \`token\` and the suggestion disappears.
+When I freeze the contracts, every one of these becomes the token. Anything marked **new** needs creating first.
 
 | Suggest | Value | Exists | Uses | Where |
 |---|---|---|---:|---|
 ${[...suggestions.values()].sort((a, b) => b.n - a.n).map((r) => `| \`${r.token}\` | \`${r.value}\` | ${r.exists ? 'yes' : '**new**'} | ${r.n} | ${[...r.where].slice(0, 4).join(', ')}${r.where.size > 4 ? ` +${r.where.size - 4}` : ''} |`).join('\n')}
 
-## Untokenised on purpose
+## No token, on purpose
 
 ${kit.flatMap((e) => e.values.filter((x) => x.v.untokenised).map((x) => `- [${title(e)}](components/${e.id}.md) \`${x.part}.${x.prop}\` = \`${x.v.value}\`: ${x.v.untokenised}`)).join('\n') || 'None.'}
 
 ## Open gaps
 
-${kit.flatMap((e) => e.values.filter((x) => classify(x.prop, x.v) === 'gap').map((x) => `- [${title(e)}](components/${e.id}.md) \`${x.part}.${x.prop}\` = \`${x.v.value}\``)).join('\n') || 'None. Every value is bound, suggested, layout, a frame sample, or explained.'}
+${kit.flatMap((e) => e.values.filter((x) => classify(x.prop, x.v) === 'gap').map((x) => `- [${title(e)}](components/${e.id}.md) \`${x.part}.${x.prop}\` = \`${x.v.value}\``)).join('\n') || 'None. Every value has a token, a suggestion, or a reason.'}
 
 ## Figma variables missing from tokens.css
 
-The Figma file defines **${figmaVars.length}** variables (\`registry/figma-variables.json\`); \`tokens/tokens.css\` exports **${figmaVars.length - unexported.length}**. No contract uses the other ${unexported.length} yet, but every component added from here will hit them, as Chip did with \`opacity/strong\`.
+The Figma file has **${figmaVars.length}** variables (\`registry/figma-variables.json\`) and \`tokens/tokens.css\` has **${figmaVars.length - unexported.length}** of them. No contract needs the other ${unexported.length} today, but new components will, the way Chip needed \`opacity/strong\`.
 
 | Family | Missing |
 |---|---:|

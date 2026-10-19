@@ -4,6 +4,7 @@ id: testimonials-pics
 name: TestimonialPicture
 kind: component
 status: review
+summary: The photo of the person behind a testimonial.
 source:
   tool: figma
   fileKey: 1Zy0wiWKXQAvsfDBX3KR0d
@@ -24,11 +25,11 @@ elements:
       width:
         value: 56px
         assert: false
-        notes: No token behind it — the Figma frame size, not a spec.
+        notes: Just the size of the Figma frame. No token, and not something to copy.
       height:
         value: 56px
         assert: false
-        notes: No token behind it — the Figma frame size, not a spec.
+        notes: Just the size of the Figma frame. No token, and not something to copy.
 variants:
   - when: { people: Person 7 }
     figmaNode: "144:486"
