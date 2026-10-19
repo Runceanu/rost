@@ -15,6 +15,7 @@ The last read stopped on 2026-10-19, when Figma hit its daily limit on reads fro
 
 - Screenshots of the 24 illustrations and the Divider: `node bin/capture-baseline.mjs illustrations divider`.
 - SVG files for the 17 icons and 24 illustrations, in `assets/`.
+- Read the ten August components again (`node bin/extract-variants.mjs <id>`, then `node bin/fetch-assets.mjs`). Their icon SVGs couldn't be saved: Figma only serves an asset for a while after the read, and the August ones had expired. Badge needs this anyway, since Figma gave it a `size` property after August.
 - **Then the freeze.** I decided this on 2026-10-19: once the import is done, the contracts become the source and Figma retires. `node bin/freeze.mjs --apply` turns every suggestion into a token (106 in the dry run, all of them tokens that already exist) and stamps each contract with the date. After that the Figma read skips them, and changes happen in the YAML. I won't go back and edit Figma to match.
 - Before the freeze, if I can: rename the sample client in the Thumbs component in Figma to "Client" and capture it again. Until then `baseline/thumbs/` stays on my machine, and so does `baseline/testimonials-pics/` (real people's photos).
 

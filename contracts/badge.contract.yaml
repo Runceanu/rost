@@ -3,7 +3,7 @@ schemaVersion: 2
 id: badge
 name: Badge
 kind: component
-status: stable
+status: review
 summary: A small outlined label for status. The colour sits in the outline and the dot, never in the text.
 category: feedback
 related: [ inline-banner, tags ]
@@ -112,3 +112,8 @@ implementations:
     parts:
       label: .ak-badge__label
       icon: .ak-badge__icon
+pending:
+  reason: Figma changed after the August read. The set now has a size property, and the four nodes this contract points at (139:396, 139:433, 139:439, 139:445) are now the small, dot-only badges at 24x24. The labelled badge described here is probably a bigger size, at node ids I haven't read yet. Read the set again before building it.
+  propertiesToRead:
+    - the new size property and every variant it adds
+  nodesToWalk: [ "139:395" ]
