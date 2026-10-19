@@ -1,0 +1,451 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:rost:schema:component-contract:2",
+  "title": "Component contract (v2)",
+  "description": "One design-system component, stated once: where it was read from, its props and states, every element and the values it holds, each variant's differences, how to use it, and where each app implements it. Every value carries BOTH its token path and its resolved value, so a wrong token is detectable even when the pixels happen to be right. Written as YAML in contracts/<id>.contract.yaml.",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "id",
+    "name",
+    "kind",
+    "status",
+    "source",
+    "elements"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "schemaVersion": {
+      "const": 2
+    },
+    "id": {
+      "description": "Unique, kebab-case, and the file stem. Names may repeat (the Menu component and the Menu effect style); ids may not.",
+      "type": "string",
+      "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$"
+    },
+    "name": {
+      "description": "The name in Figma.",
+      "type": "string"
+    },
+    "kind": {
+      "description": "component: has props, elements and variants. effect: a named Figma effect style applied to other surfaces. pattern: a composed section built from components.",
+      "enum": [
+        "component",
+        "effect",
+        "pattern"
+      ]
+    },
+    "status": {
+      "enum": [
+        "skeleton",
+        "draft",
+        "review",
+        "stable",
+        "deprecated"
+      ]
+    },
+    "summary": {
+      "description": "One sentence on what it is for. Shown in the catalogue.",
+      "type": "string"
+    },
+    "category": {
+      "enum": [
+        "actions",
+        "inputs",
+        "selection",
+        "feedback",
+        "navigation",
+        "display",
+        "surfaces",
+        "effects"
+      ]
+    },
+    "related": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/id"
+      },
+      "uniqueItems": true
+    },
+    "source": {
+      "description": "Where the values were READ from: a Figma component set (the normal case) or, for code-born patterns awaiting a Figma counterpart, the implementing file.",
+      "oneOf": [
+        {
+          "type": "object",
+          "required": [
+            "tool",
+            "fileKey",
+            "nodeId"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "tool": {
+              "const": "figma"
+            },
+            "fileKey": {
+              "type": "string"
+            },
+            "nodeId": {
+              "$ref": "#/$defs/nodeId"
+            },
+            "url": {
+              "type": "string",
+              "format": "uri"
+            },
+            "extractedAt": {
+              "type": "string",
+              "format": "date"
+            },
+            "extractedBy": {
+              "enum": [
+                "mcp",
+                "plugin",
+                "hand"
+              ]
+            }
+          }
+        },
+        {
+          "type": "object",
+          "required": [
+            "tool",
+            "repo",
+            "path"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "tool": {
+              "const": "code"
+            },
+            "repo": {
+              "type": "string"
+            },
+            "path": {
+              "type": "string"
+            },
+            "extractedAt": {
+              "type": "string",
+              "format": "date"
+            }
+          }
+        }
+      ]
+    },
+    "props": {
+      "description": "The API. Interaction states are NOT props: they live in `states`.",
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "required": [
+          "type"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "type": {
+            "enum": [
+              "enum",
+              "boolean",
+              "string",
+              "number",
+              "node",
+              "slot"
+            ]
+          },
+          "values": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "minItems": 1
+          },
+          "default": {},
+          "required": {
+            "type": "boolean"
+          },
+          "figmaProperty": {
+            "description": "The Figma property, when its name differs from the prop's.",
+            "type": "string"
+          },
+          "notes": {
+            "type": "string"
+          }
+        },
+        "if": {
+          "properties": {
+            "type": {
+              "const": "enum"
+            }
+          }
+        },
+        "then": {
+          "required": [
+            "values"
+          ]
+        }
+      }
+    },
+    "states": {
+      "description": "Interaction states, from Figma's `state` property. Code derives them from pseudo-classes (Hover \u2192 :hover, Pressed \u2192 :active, Focus \u2192 :focus-visible, Disabled \u2192 :disabled); only Disabled is ever set by a caller.",
+      "type": "array",
+      "items": {
+        "enum": [
+          "Default",
+          "Hover",
+          "Pressed",
+          "Focus",
+          "Disabled"
+        ]
+      },
+      "uniqueItems": true
+    },
+    "elements": {
+      "description": "Every part, in DOM order, with the styles that hold in EVERY variant and state. A part absent here may not appear in an implementation; a style here that in fact varies is a contract bug.",
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "optional": {
+            "type": "boolean"
+          },
+          "figmaNodeId": {
+            "$ref": "#/$defs/nodeId"
+          },
+          "notes": {
+            "type": "string"
+          },
+          "styles": {
+            "$ref": "#/$defs/styles"
+          }
+        }
+      }
+    },
+    "variants": {
+      "description": "One entry per Figma variant: the configuration that selects it, its node, and only the values that differ from `elements`.",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "when"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "when": {
+            "description": "Prop and state values, e.g. { type: Primary, state: Hover, selected: true }.",
+            "type": "object",
+            "minProperties": 1,
+            "additionalProperties": {
+              "type": [
+                "string",
+                "boolean"
+              ]
+            }
+          },
+          "figmaNode": {
+            "$ref": "#/$defs/nodeId"
+          },
+          "size": {
+            "type": "string"
+          },
+          "elements": {
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/$defs/styles"
+            }
+          }
+        }
+      }
+    },
+    "guidance": {
+      "description": "Authored, never generated. Survives every re-read of Figma.",
+      "type": "object",
+      "required": [
+        "status"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "status": {
+          "description": "proposed: drafted, not yet checked by design. agreed: design has read and accepted it. A contract cannot be stable until this is agreed.",
+          "enum": [
+            "proposed",
+            "agreed"
+          ]
+        },
+        "use": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "avoid": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "behaviour": {
+          "type": "string"
+        },
+        "accessibility": {
+          "description": "Keyed by concern: element, name, keyboard, focus, colour, motion\u2026 Markdown inline code allowed.",
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "content": {
+          "type": "string"
+        },
+        "openQuestions": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "implementations": {
+      "description": "Where each app honours the contract, keyed by the app's repo name. Conformance reads selectors from here.",
+      "type": "object",
+      "propertyNames": {
+        "enum": [
+          "a-kaunt",
+          "runceanu-portfolio"
+        ]
+      },
+      "additionalProperties": {
+        "type": "object",
+        "required": [
+          "component"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "component": {
+            "type": "string"
+          },
+          "root": {
+            "description": "CSS selector of the root element.",
+            "type": "string"
+          },
+          "parts": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            }
+          },
+          "deviations": {
+            "$ref": "#/$defs/deviations"
+          }
+        }
+      }
+    },
+    "deviations": {
+      "description": "Departures from Figma that apply to every app (e.g. a design decision Figma has not caught up with). App-specific ones go under that app's implementation.",
+      "$ref": "#/$defs/deviations"
+    },
+    "pending": {
+      "description": "What still has to be read before this contract is trustworthy. A skeleton states its own gaps instead of looking finished.",
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "reason": {
+          "type": "string"
+        },
+        "propertiesToRead": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "nodesToWalk": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/nodeId"
+          }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$"
+    },
+    "nodeId": {
+      "type": "string",
+      "pattern": "^\\d+:\\d+$"
+    },
+    "value": {
+      "type": "object",
+      "required": [
+        "value"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "token": {
+          "description": "Token PATH, slash-separated as in Figma, that the source ACTUALLY binds. Omit when it binds none; see `suggest` and `untokenised`.",
+          "$ref": "#/$defs/tokenPath"
+        },
+        "value": {
+          "description": "The resolved value, as CSS would report it.",
+          "type": "string"
+        },
+        "assert": {
+          "description": "false: recorded, but not checked by conformance (e.g. a root size that is only the Figma frame size).",
+          "type": "boolean"
+        },
+        "notes": {
+          "type": "string"
+        },
+        "suggest": {
+          "description": "A token this value SHOULD be bound to but is not, in Figma or code. An existing token (bind it in Figma) or a proposed new one (create it). Never asserted by conformance; `token` stays what the source actually binds.",
+          "$ref": "#/$defs/tokenPath"
+        },
+        "untokenised": {
+          "description": "Why this value deliberately has no token: an asset's native size, a motion tuning parameter, a one-off. Without this, an untokenised value is reported as an open gap.",
+          "type": "string"
+        }
+      },
+      "not": {
+        "required": [
+          "token",
+          "untokenised"
+        ]
+      }
+    },
+    "styles": {
+      "description": "CSS property \u2192 value, for one element.",
+      "type": "object",
+      "additionalProperties": {
+        "$ref": "#/$defs/value"
+      }
+    },
+    "deviations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "what",
+          "why"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "what": {
+            "type": "string"
+          },
+          "why": {
+            "type": "string"
+          },
+          "raisedWithDesign": {
+            "type": "boolean"
+          }
+        }
+      }
+    },
+    "tokenPath": {
+      "type": "string",
+      "pattern": "^[a-z0-9-]+(/[a-z0-9-]+)+$"
+    }
+  }
+}

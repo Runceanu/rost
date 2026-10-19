@@ -1,0 +1,37 @@
+# yaml-language-server: $schema=../schema/component-contract.schema.json
+schemaVersion: 2
+id: effect-floating
+name: Floating
+kind: effect
+status: review
+summary: The kit's only drop shadow, for elements that float above the page.
+category: effects
+related: [ effect-menu ]
+source:
+  tool: figma
+  fileKey: 1Zy0wiWKXQAvsfDBX3KR0d
+  nodeId: "231:2"
+  url: https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=231-2
+  extractedAt: "2026-08-19"
+  extractedBy: mcp
+elements:
+  root:
+    notes: |-
+      The element the effect style is applied to. Figma style name: 'Shadow/Floating'.
+    styles:
+      box-shadow:
+        value: 0px 16px 24px 0px rgba(0, 0, 0, 0.16)
+        notes: |-
+          Effect style 'Shadow/Floating', type DROP_SHADOW: offset-y 16px, blur 24px, spread 0, #000 at 16% (= opacity/soft). Exported as --shadow-floating, the kit's only elevation token; add a shadow/* scale if a second shadow is ever needed.
+        token: shadow/floating
+guidance:
+  status: proposed
+  use:
+    - |-
+      For elements lifted above the content: menus, popovers, a dragged card.
+  avoid:
+    - For cards at rest. The dark kit separates surfaces with tone, not shadow.
+  behaviour: |-
+    `0 16px 24px rgba(0,0,0,0.16)`, not tokenised: the kit has no elevation token group yet. If a second shadow is ever needed, that is the moment to add one.
+  accessibility:
+    separation: a shadow does not separate surfaces for low-vision readers on a dark background. Pair it with a surface tone or outline.

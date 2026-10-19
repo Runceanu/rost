@@ -1,0 +1,58 @@
+/* input | state=Default, configuration=Empty, selected=False, error=False | 240:274 | 208x56 */
+const imgUnion = "http://localhost:3845/assets/9ce209ca6d2ec275e25d7bf06a45ba4aad91351c.svg";
+type InputProps = {
+  className?: string;
+  configuration?: "Empty";
+  error?: boolean;
+  label?: string;
+  selected?: boolean;
+  showLabel?: boolean;
+  showSupportiveText?: boolean;
+  showTrailing?: boolean;
+  state?: "Default";
+  supportive?: string;
+  trailing?: React.ReactNode | null;
+};
+
+function Input({ className, configuration = "Empty", error = false, label = "label", selected = false, showLabel = true, showSupportiveText = true, showTrailing = true, state = "Default", supportive = "Supportive", trailing = null }: InputProps) {
+  return (
+    <div className={className || "content-stretch flex gap-[var(--spacing\\/gap\\/small,8px)] h-[var(--spacing\\/size\\/large,56px)] items-center px-[var(--spacing\\/gap\\/small-medium,12px)] py-[var(--spacing\\/gap\\/none,0px)] relative rounded-[var(--spacing\\/radius\\/medium,12px)] w-[208px]"} data-node-id="240:274">
+      <div className="absolute bg-[var(--input\/regular\/default\/background,#060805)] border-[length:var(--spacing\/outline\/small,1px)] border-[var(--input\/regular\/default\/outline,#555)] border-solid inset-0 opacity-[var(--opacity\/solid,1)] rounded-[var(--spacing\/radius\/medium,12px)]" data-node-id="240:276" data-name="outline" />
+      <div className="content-stretch flex flex-[1_0_0] gap-[8px] items-center min-w-px relative" data-node-id="240:575" data-name="Left">
+        {showTrailing &&
+          (trailing || (
+            <div className="overflow-clip relative shrink-0 size-[20px]" data-node-id="240:572" data-name="icons/lock">
+              <div className="absolute inset-[8.33%_16.67%]" data-node-id="I240:572;208:68" data-name="Union">
+                <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgUnion} />
+              </div>
+            </div>
+          ))}
+        <div className="content-stretch flex flex-col items-start relative shrink-0" data-node-id="240:571" data-name="content">
+          {showLabel && (
+            <p className="[word-break:break-word] font-[family-name:var(--font-family\/base,'General_Sans_Variable:Regular')] font-[var(--typography\/body\/font-weight\/regular,400)] leading-[var(--typography\/body\/line-height,22px)] relative shrink-0 text-[color:var(--input\/regular\/default\/label,#999)] text-[length:var(--typography\/body\/font-size,16px)] text-center tracking-[var(--typography\/body\/letter-spacing,0px)] whitespace-nowrap" data-node-id="240:308">
+              {label}
+            </p>
+          )}
+        </div>
+      </div>
+      {showSupportiveText && (
+        <div className="absolute content-stretch flex items-center justify-center left-[12px] top-[60px]" data-node-id="242:631" data-name="Supportive text">
+          <p className="[word-break:break-word] font-[family-name:var(--font-family\/base,'General_Sans_Variable:Medium')] font-[var(--typography\/label\/font-weight\/medium,500)] leading-[var(--typography\/placeholder\/line-height,12px)] relative shrink-0 text-[color:var(--input\/regular\/default\/supportive,#999)] text-[length:var(--typography\/placeholder\/font-size,10px)] text-center tracking-[var(--typography\/placeholder\/letter-spacing,0px)] whitespace-nowrap" data-node-id="242:629">
+            {supportive}
+          </p>
+        </div>
+      )}
+    </div>
+  );
+}
+SUPER CRITICAL: The generated React+Tailwind code MUST be converted to match the target project's technology stack and styling system.
+1. Analyze the target codebase to identify: technology stack, styling approach, component patterns, and design tokens
+2. Convert React syntax to the target framework/library
+3. Transform all Tailwind classes to the target styling system while preserving exact visual design
+4. Follow the project's existing patterns and conventions
+DO NOT install any Tailwind as a dependency unless the user instructs you to do so.
+
+Node ids have been added to the code as data attributes, e.g. `data-node-id="1:2"`.
+These styles are contained in the design: Base / Black: #000000, body/regular: Font(family: "font-family/base", style: Regular, size: typography/body/font-size, weight: typography/body/font-weight/regular, lineHeight: typography/body/line-height, letterSpacing: typography/body/letter-spacing), placeholder/medium: Font(family: "font-family/base", style: Medium, size: typography/placeholder/font-size, weight: typography/label/font-weight/medium, lineHeight: typography/placeholder/line-height, letterSpacing: typography/placeholder/letter-spacing).
+Image assets are stored on a localhost server. Clients can use these images directly in code as a way to view the image assets the same way they would other remote servers. Images and SVGs will be stored as constants, e.g. const image = 'http://localhost:3845/assets/10c13ac1a228a365cb98a0064b1d5afbc84887b2.png' These constants will be used in the code as the source for the image, e.g. <img src={image} /> This is true for both images and SVGs, so you can use the same approach for both types of assets.
+IMPORTANT: After you call this tool, you MUST call get_screenshot to get a screenshot of the node for context.

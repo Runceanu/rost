@@ -1,0 +1,120 @@
+<section id="92:15" name="Icons" x="1010" y="0" width="880" height="790">
+  <frame id="92:16" name=" " x="72" y="72" width="736" height="646">
+    <frame id="92:17" name="Row 1" x="0" y="0" width="736" height="81.625">
+      <frame id="92:18" name="1" x="0" y="0" width="92.875" height="81.625" />
+      <frame id="92:19" name="2" x="91.875" y="0" width="92.875" height="81.625" />
+      <frame id="92:20" name="3" x="183.75" y="0" width="92.875" height="81.625" />
+      <frame id="92:21" name="4" x="275.625" y="0" width="92.875" height="81.625" />
+      <frame id="92:300" name="5" x="367.5" y="0" width="92.875" height="81.625" />
+      <frame id="92:301" name="6" x="459.375" y="0" width="92.875" height="81.625" />
+      <frame id="92:302" name="7" x="551.25" y="0" width="92.875" height="81.625" />
+      <frame id="92:303" name="8" x="643.125" y="0" width="92.875" height="81.625" />
+    </frame>
+    <frame id="92:22" name="Row 2" x="0" y="80.625" width="736" height="81.625">
+      <frame id="92:23" name="1" x="0" y="0" width="92.875" height="81.625" />
+      <frame id="92:24" name="2" x="91.875" y="0" width="92.875" height="81.625" />
+      <frame id="92:25" name="3" x="183.75" y="0" width="92.875" height="81.625" />
+      <frame id="92:26" name="4" x="275.625" y="0" width="92.875" height="81.625" />
+      <frame id="92:327" name="5" x="367.5" y="0" width="92.875" height="81.625" />
+      <frame id="92:330" name="6" x="459.375" y="0" width="92.875" height="81.625" />
+      <frame id="92:333" name="7" x="551.25" y="0" width="92.875" height="81.625" />
+      <frame id="92:336" name="8" x="643.125" y="0" width="92.875" height="81.625" />
+    </frame>
+    <frame id="92:27" name="Row 3" x="0" y="161.25" width="736" height="81.625">
+      <frame id="92:28" name="1" x="0" y="0" width="92.875" height="81.625" />
+      <frame id="92:29" name="2" x="91.875" y="0" width="92.875" height="81.625">
+        <symbol id="205:710" name="icons/plus" x="34.4375" y="28.8125" width="24" height="24" />
+      </frame>
+      <frame id="92:30" name="3" x="183.75" y="0" width="92.875" height="81.625">
+        <symbol id="205:711" name="icons/warning" x="34.4375" y="28.8125" width="24" height="24" />
+      </frame>
+      <frame id="92:31" name="4" x="275.625" y="0" width="92.875" height="81.625">
+        <symbol id="205:712" name="icons/positive" x="34.4375" y="28.8125" width="24" height="24" />
+      </frame>
+      <frame id="92:325" name="5" x="367.5" y="0" width="92.875" height="81.625">
+        <symbol id="205:713" name="icons/alarm" x="34.4375" y="28.8125" width="24" height="24" />
+      </frame>
+      <frame id="92:328" name="6" x="459.375" y="0" width="92.875" height="81.625">
+        <symbol id="208:84" name="icons/lock" x="34.4375" y="28.8125" width="24" height="24" />
+      </frame>
+      <frame id="92:331" name="7" x="551.25" y="0" width="92.875" height="81.625">
+        <symbol id="238:169" name="icons/user" x="34.4375" y="28.8125" width="24" height="24" />
+      </frame>
+      <frame id="92:334" name="8" x="643.125" y="0" width="92.875" height="81.625">
+        <symbol id="241:606" name="icons/hide" x="34.4375" y="28.8125" width="24" height="24" />
+      </frame>
+    </frame>
+    <frame id="92:32" name="Row 4" x="0" y="241.875" width="736" height="81.625">
+      <frame id="92:33" name="1" x="0" y="0" width="92.875" height="81.625">
+        <symbol id="241:611" name="icons/show" x="34.4375" y="28.8125" width="24" height="24" />
+      </frame>
+      <frame id="92:34" name="2" x="91.875" y="0" width="92.875" height="81.625">
+        <symbol id="241:625" name="icons/clear" x="34.4375" y="28.8125" width="24" height="24" />
+      </frame>
+      <frame id="92:35" name="3" x="183.75" y="0" width="92.875" height="81.625" />
+      <frame id="92:36" name="4" x="275.625" y="0" width="92.875" height="81.625" />
+      <frame id="92:326" name="5" x="367.5" y="0" width="92.875" height="81.625" />
+      <frame id="92:329" name="6" x="459.375" y="0" width="92.875" height="81.625" />
+      <frame id="92:332" name="7" x="551.25" y="0" width="92.875" height="81.625" />
+      <frame id="92:335" name="8" x="643.125" y="0" width="92.875" height="81.625" />
+    </frame>
+    <frame id="92:340" name="Row 5" x="0" y="322.5" width="736" height="81.625">
+      <frame id="92:341" name="1" x="0" y="0" width="92.875" height="81.625" />
+      <frame id="92:342" name="2" x="91.875" y="0" width="92.875" height="81.625" />
+      <frame id="92:343" name="3" x="183.75" y="0" width="92.875" height="81.625" />
+      <frame id="92:344" name="4" x="275.625" y="0" width="92.875" height="81.625" />
+      <frame id="92:345" name="5" x="367.5" y="0" width="92.875" height="81.625" />
+      <frame id="92:346" name="6" x="459.375" y="0" width="92.875" height="81.625" />
+      <frame id="92:347" name="7" x="551.25" y="0" width="92.875" height="81.625" />
+      <frame id="92:348" name="8" x="643.125" y="0" width="92.875" height="81.625" />
+    </frame>
+    <frame id="92:349" name="Row 6" x="0" y="403.125" width="736" height="81.625">
+      <frame id="92:350" name="1" x="0" y="0" width="92.875" height="81.625" />
+      <frame id="92:351" name="2" x="91.875" y="0" width="92.875" height="81.625" />
+      <frame id="92:352" name="3" x="183.75" y="0" width="92.875" height="81.625" />
+      <frame id="92:353" name="4" x="275.625" y="0" width="92.875" height="81.625" />
+      <frame id="92:354" name="5" x="367.5" y="0" width="92.875" height="81.625" />
+      <frame id="92:355" name="6" x="459.375" y="0" width="92.875" height="81.625" />
+      <frame id="92:356" name="7" x="551.25" y="0" width="92.875" height="81.625" />
+      <frame id="92:357" name="8" x="643.125" y="0" width="92.875" height="81.625" />
+    </frame>
+    <frame id="92:358" name="Row 7" x="0" y="483.75" width="736" height="81.625">
+      <frame id="92:359" name="1" x="0" y="0" width="92.875" height="81.625" />
+      <frame id="92:360" name="2" x="91.875" y="0" width="92.875" height="81.625" />
+      <frame id="92:361" name="3" x="183.75" y="0" width="92.875" height="81.625" />
+      <frame id="92:362" name="4" x="275.625" y="0" width="92.875" height="81.625" />
+      <frame id="92:363" name="5" x="367.5" y="0" width="92.875" height="81.625" />
+      <frame id="92:364" name="6" x="459.375" y="0" width="92.875" height="81.625" />
+      <frame id="92:365" name="7" x="551.25" y="0" width="92.875" height="81.625" />
+      <frame id="92:366" name="8" x="643.125" y="0" width="92.875" height="81.625" />
+    </frame>
+    <frame id="92:367" name="Row 8" x="0" y="564.375" width="736" height="81.625">
+      <frame id="92:368" name="1" x="0" y="0" width="92.875" height="81.625" />
+      <frame id="92:369" name="2" x="91.875" y="0" width="92.875" height="81.625" />
+      <frame id="92:370" name="3" x="183.75" y="0" width="92.875" height="81.625" />
+      <frame id="92:371" name="4" x="275.625" y="0" width="92.875" height="81.625" />
+      <frame id="92:372" name="5" x="367.5" y="0" width="92.875" height="81.625" />
+      <frame id="92:373" name="6" x="459.375" y="0" width="92.875" height="81.625" />
+      <frame id="92:374" name="7" x="551.25" y="0" width="92.875" height="81.625" />
+      <frame id="92:375" name="8" x="643.125" y="0" width="92.875" height="81.625" />
+    </frame>
+  </frame>
+  <symbol id="93:464" name="icons/arrow-right" x="198" y="101" width="24" height="24" />
+  <symbol id="93:462" name="icons/arrow-left" x="106" y="101" width="24" height="24" />
+  <symbol id="93:718" name="icons/dot" x="750" y="181" width="24" height="24" />
+  <symbol id="93:461" name="icons/arrow-down" x="290" y="101" width="24" height="24" />
+  <symbol id="93:460" name="icons/arrow-up" x="376" y="101" width="24" height="24" />
+  <symbol id="93:459" name="icons/chevron-right" x="566" y="101" width="24" height="24" />
+  <symbol id="93:463" name="icons/chevron-left" x="474" y="101" width="24" height="24" />
+  <symbol id="93:458" name="icons/chevron-down" x="658" y="101" width="24" height="24" />
+  <symbol id="93:457" name="icons/chevron-up" x="750" y="101" width="24" height="24" />
+  <symbol id="93:780" name="icons/up-right" x="382" y="181" width="24" height="24" />
+  <symbol id="136:68" name="icons/scroll" x="474" y="181" width="24" height="24" />
+  <symbol id="168:1334" name="icons/mobile" x="566" y="181" width="24" height="24" />
+  <symbol id="168:1333" name="icons/desktop" x="658" y="181" width="24" height="24" />
+  <symbol id="93:782" name="icons/down-right" x="290" y="181" width="24" height="24" />
+  <symbol id="93:784" name="icons/up-left" x="198" y="181" width="24" height="24" />
+  <symbol id="93:786" name="icons/arrow-down-left" x="106" y="181" width="24" height="24" />
+  <symbol id="201:13" name="icons/drag" x="106" y="261" width="24" height="24" />
+</section>
+IMPORTANT: The user has selected a section node, so you have received a sparse metadata response. You MUST call get_design_context on the nodes or their sublayers individually based on their IDs to implement the design.

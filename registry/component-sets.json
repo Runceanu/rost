@@ -1,0 +1,74 @@
+{
+  "Working Canvas": {
+    "setNodeId": "0:2",
+    "variantCount": 46
+  },
+  "menu": {
+    "setNodeId": "41:259",
+    "variantCount": 5
+  },
+  "button": {
+    "setNodeId": "39:38",
+    "variantCount": 20
+  },
+  "illustrations": {
+    "setNodeId": "41:570",
+    "variantCount": 24
+  },
+  "Icons": {
+    "setNodeId": "92:15",
+    "variantCount": 17
+  },
+  "pill-button": {
+    "setNodeId": "20:14",
+    "variantCount": 20
+  },
+  "icon-button": {
+    "setNodeId": "93:587",
+    "variantCount": 20
+  },
+  "badge": {
+    "setNodeId": "139:395",
+    "variantCount": 4
+  },
+  "carousel": {
+    "setNodeId": "157:302",
+    "variantCount": 5
+  },
+  "chips": {
+    "setNodeId": "139:317",
+    "variantCount": 5
+  },
+  "input": {
+    "setNodeId": "240:273",
+    "variantCount": 14
+  },
+  "inline-banner": {
+    "setNodeId": "205:614",
+    "variantCount": 8
+  },
+  "projects": {
+    "setNodeId": "100:185",
+    "variantCount": 6
+  },
+  "tags": {
+    "setNodeId": "91:362",
+    "variantCount": 5
+  },
+  "testimonials": {
+    "setNodeId": "144:67",
+    "variantCount": 10
+  },
+  "testimonials-pics": {
+    "setNodeId": "144:493",
+    "variantCount": 8
+  },
+  "toggle": {
+    "setNodeId": "168:1149",
+    "variantCount": 10
+  },
+  "thumbs": {
+    "setNodeId": "109:79",
+    "variantCount": 6
+  }
+}

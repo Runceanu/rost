@@ -1,0 +1,91 @@
+# yaml-language-server: $schema=../schema/component-contract.schema.json
+schemaVersion: 2
+id: tags
+name: Tag
+kind: component
+status: review
+summary: A compact 20px label with a small radius, for topics and categories on content.
+category: display
+related: [ chips, badge ]
+source:
+  tool: figma
+  fileKey: 1Zy0wiWKXQAvsfDBX3KR0d
+  nodeId: "91:362"
+  url: https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=91-362
+  extractedAt: "2026-08-18"
+  extractedBy: mcp
+props:
+  type:
+    type: enum
+    values: [ Primary ]
+    default: Primary
+states: [ Default, Hover, Pressed, Focus, Disabled ]
+elements:
+  root:
+    styles:
+      justify-content: { value: center }
+      align-items: { value: center }
+      gap: { token: spacing/gap/small, value: 8px }
+      height: { token: spacing/size/xsmall, value: 20px }
+      padding-bottom: { token: spacing/gap/3xsmall, value: 2px }
+      padding-top: { token: spacing/gap/none, value: 0px }
+      padding-left: { token: spacing/gap/small, value: 8px }
+      padding-right: { token: spacing/gap/small, value: 8px }
+      border-radius: { token: spacing/radius/xsmall, value: 4px }
+  label:
+    styles:
+      font-family: { token: font-family/base, value: "'General Sans Variable'" }
+      font-weight: { token: typography/label/font-weight/medium, value: "500" }
+      line-height: { token: typography/label/line-height, value: 14px }
+      color: { token: actions/secondary/regular/default/label, value: "#d3d9d5" }
+      font-size: { token: typography/label/font-size, value: 12px }
+      letter-spacing: { token: typography/label/letter-spacing, value: 0px }
+  focus-ring: {}
+variants:
+  - when: { type: Primary, state: Default }
+    figmaNode: "91:363"
+    elements:
+      root:
+        background: { token: actions/secondary/regular/default/background, value: "#3a3a3a" }
+  - when: { type: Primary, state: Hover }
+    figmaNode: "91:372"
+    elements:
+      root:
+        background: { token: actions/secondary/regular/hover/background, value: "#747573" }
+  - when: { type: Primary, state: Pressed }
+    figmaNode: "91:383"
+    elements:
+      root:
+        background: { token: actions/secondary/regular/pressed/background, value: "#999" }
+  - when: { type: Primary, state: Disabled }
+    figmaNode: "91:394"
+    elements:
+      root:
+        background: { token: actions/secondary/regular/disabled/background, value: "#3a3a3a" }
+        opacity: { token: opacity/gentle, value: "0.24" }
+  - when: { type: Primary, state: Focus }
+    figmaNode: "91:403"
+    elements:
+      root:
+        background: { token: actions/secondary/regular/focus/background, value: "#3a3a3a" }
+      focus-ring:
+        border-sides: { value: all }
+        position: { value: absolute }
+        border-width: { token: spacing/outline/medium, value: 2px }
+        border-color: { token: actions/secondary/regular/focus/focus-ring, value: "#999" }
+        border-radius: { token: spacing/radius/small, value: 8px }
+guidance:
+  status: proposed
+  use:
+    - |-
+      To label content with what it is about: a case study's discipline, a project's platform.
+  avoid:
+    - For a status, use **Badge**. For a filter control, use **Chip**.
+  behaviour: |-
+    One `type` (`Primary`) × five `state`s. The interactive states exist for tags that link to a filtered view. A tag that goes nowhere should render without them.
+  accessibility:
+    static: a `<span>`, or a `<li>` in a `<ul>` when there are several.
+    linking: |-
+      an `<a>` with a name that includes the context ("Projects tagged Fintech").
+    focus: "`focus-ring` on linked tags only."
+  content: One word where possible, title case for proper nouns only.

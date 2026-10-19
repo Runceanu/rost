@@ -1,0 +1,35 @@
+# yaml-language-server: $schema=../schema/component-contract.schema.json
+schemaVersion: 2
+id: effect-thumb
+name: Thumb
+kind: effect
+status: review
+summary: The frosted content panel on project thumbnails, a backdrop blur.
+category: effects
+related: [ effect-menu, effect-lock-frame ]
+source:
+  tool: figma
+  fileKey: 1Zy0wiWKXQAvsfDBX3KR0d
+  nodeId: "124:26634"
+  url: https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=124-26634
+  extractedAt: "2026-08-19"
+  extractedBy: mcp
+elements:
+  root:
+    notes: The element the effect style is applied to. Used on the project thumbnail's frosted content panel (see the Thumbs/Carousel components, which both reference this style).
+    styles:
+      backdrop-filter:
+        token: effect/thumb
+        value: blur(12px)
+        notes: |-
+          Effect style 'Thumb', type BACKGROUND_BLUR (frosted glass — blurs what is BEHIND the element). In Figma the style binds its blur radius to the opacity/gentle variable (raw 24); the CSS backdrop-filter renders at 12px because a Figma background-blur radius is ~2x its CSS pixel value. SEMANTIC MISMATCH worth noting: opacity/gentle resolves to 0.24 as an opacity token yet is reused here as a blur radius — a dedicated blur/radius token would be more correct. Code binds the whole effect as --effect-thumb, which is the token asserted here.
+guidance:
+  status: proposed
+  use:
+    - On the content panel of a project thumbnail, in Thumbs and Carousel.
+  avoid:
+    - For navigation surfaces, use the **Menu effect**.
+  behaviour: |-
+    It blurs what is *behind* the panel. Figma binds the radius to `opacity/gentle`, an opacity token reused as a blur radius. That works, but it means retuning an opacity would move this blur. A dedicated blur token would fix it.
+  accessibility:
+    contrast: check the panel text against the thumbnail's busiest region.

@@ -1,0 +1,1 @@
+{"spacing/outline/small":"1","non-interactive/background/primary":"#060805","non-interactive/foreground/quadruple":"#3a3a3a","non-interactive/foreground/tertiary":"#999999","Base/Black":"#000000","Base / Black":"#000000"}

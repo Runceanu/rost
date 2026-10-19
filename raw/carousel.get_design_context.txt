@@ -1,0 +1,141 @@
+type CarouselProps = {
+  className?: string;
+  description?: string;
+  number?: string;
+  showDescription?: boolean;
+  showNumber?: boolean;
+  showTitle?: boolean;
+  state?: "Default" | "Hover" | "Focus" | "Pressed" | "Disabled";
+  title?: string;
+};
+
+export default function Carousel({ className, description = "Description", number = "00", showDescription = true, showNumber = true, showTitle = true, state = "Default", title = "Title" }: CarouselProps) {
+  const isDefault = state === "Default";
+  const isDefaultOrDisabledOrHover = ["Default", "Disabled", "Hover"].includes(state);
+  const isDisabled = state === "Disabled";
+  const isFocus = state === "Focus";
+  const isHover = state === "Hover";
+  const isPressed = state === "Pressed";
+  return (
+    <div className={className || `${String.raw`content-stretch flex flex-col gap-[var(--spacing\/gap\/none,0px)] items-start p-[var(--spacing\/gap\/large,24px)] relative rounded-[var(--spacing\/radius\/xlarge,24px)] w-[312px] `}${isDisabled ? String.raw`opacity-[var(--opacity\/mild,0.32)]` : ""}`} id={isHover ? "node-157_360" : isFocus ? "node-157_345" : isPressed ? "node-157_331" : isDisabled ? "node-157_317" : "node-157_303"}>
+      {isDefaultOrDisabledOrHover && (
+        <>
+          <div className="content-stretch flex gap-[var(--spacing\/gap\/medium,16px)] items-center relative shrink-0 w-full" id={isHover ? "node-157_364" : isDisabled ? "node-157_321" : "node-157_307"} data-name="Title">
+            <div className="content-stretch flex flex-col items-center justify-center relative shrink-0 w-[16px]" id={isHover ? "node-157_365" : isDisabled ? "node-157_322" : "node-157_308"} data-name="Number">
+              {isDefault && showNumber && (
+                <p className="[word-break:break-word] font-[family-name:var(--font-family\/base,'General_Sans_Variable:Regular')] font-[var(--typography\/label\/font-weight\/regular,400)] leading-[var(--typography\/label\/line-height,14px)] relative shrink-0 text-[color:var(--project\/default\/sub-label,#999)] text-[length:var(--typography\/label\/font-size,12px)] tracking-[var(--typography\/label\/letter-spacing,0px)] w-full" data-node-id="157:309">
+                  {number}
+                </p>
+              )}
+              {isDisabled && showNumber && (
+                <p className="[word-break:break-word] font-[family-name:var(--font-family\/base,'General_Sans_Variable:Regular')] font-[var(--typography\/label\/font-weight\/regular,400)] leading-[var(--typography\/label\/line-height,14px)] relative shrink-0 text-[color:var(--project\/disabled\/sub-label,#999)] text-[length:var(--typography\/label\/font-size,12px)] tracking-[var(--typography\/label\/letter-spacing,0px)] w-full" data-node-id="157:323">
+                  {number}
+                </p>
+              )}
+              {isHover && showNumber && (
+                <p className="[word-break:break-word] font-[family-name:var(--font-family\/base,'General_Sans_Variable:Regular')] font-[var(--typography\/label\/font-weight\/regular,400)] leading-[var(--typography\/label\/line-height,14px)] relative shrink-0 text-[color:var(--project\/hover\/label,#00d669)] text-[length:var(--typography\/label\/font-size,12px)] tracking-[var(--typography\/label\/letter-spacing,0px)] w-full" data-node-id="157:366">
+                  {number}
+                </p>
+              )}
+            </div>
+            {isDefault && showTitle && (
+              <p className="[word-break:break-word] flex-[1_0_0] font-[family-name:var(--font-family\/base,'General_Sans_Variable:Medium')] font-[var(--typography\/title\/font-weight\/medium,500)] leading-[var(--typography\/title\/line-height,32px)] min-w-px relative text-[color:var(--project\/default\/label,#d3d9d5)] text-[length:var(--typography\/title\/font-size,24px)] tracking-[var(--typography\/title\/letter-spacing,0px)]" data-node-id="157:310">
+                {title}
+              </p>
+            )}
+            {isDisabled && showTitle && (
+              <p className="[word-break:break-word] font-[family-name:var(--font-family\/base,'General_Sans_Variable:Medium')] font-[var(--typography\/title\/font-weight\/medium,500)] leading-[var(--typography\/title\/line-height,32px)] relative shrink-0 text-[color:var(--project\/disabled\/label,#d3d9d5)] text-[length:var(--typography\/title\/font-size,24px)] tracking-[var(--typography\/title\/letter-spacing,0px)] whitespace-nowrap" data-node-id="157:324">
+                {title}
+              </p>
+            )}
+            {isHover && showTitle && (
+              <p className="[word-break:break-word] font-[family-name:var(--font-family\/base,'General_Sans_Variable:Medium')] font-[var(--typography\/title\/font-weight\/medium,500)] leading-[var(--typography\/title\/line-height,32px)] relative shrink-0 text-[color:var(--project\/hover\/label,#00d669)] text-[length:var(--typography\/title\/font-size,24px)] tracking-[var(--typography\/title\/letter-spacing,0px)] whitespace-nowrap" data-node-id="157:367">
+                {title}
+              </p>
+            )}
+          </div>
+          <div className="content-stretch flex gap-[var(--spacing\/gap\/medium,16px)] items-center justify-end pl-[var(--spacing\/gap\/xlarge,32px)] relative shrink-0 w-full" id={isHover ? "node-157_368" : isDisabled ? "node-157_325" : "node-157_311"} data-name="Bottom">
+            {isDefault && showDescription && (
+              <p className="[word-break:break-word] flex-[1_0_0] font-[family-name:var(--font-family\/base,'General_Sans_Variable:Regular')] font-[var(--typography\/body\/font-weight\/regular,400)] leading-[var(--typography\/body\/line-height,22px)] min-w-px relative text-[color:var(--project\/default\/sub-label,#999)] text-[length:var(--typography\/body\/font-size,16px)] tracking-[var(--typography\/body\/letter-spacing,0px)]" data-node-id="157:316">
+                {description}
+              </p>
+            )}
+            {isDisabled && showDescription && (
+              <p className="[word-break:break-word] flex-[1_0_0] font-[family-name:var(--font-family\/base,'General_Sans_Variable:Regular')] font-[var(--typography\/body\/font-weight\/regular,400)] leading-[var(--typography\/body\/line-height,22px)] min-w-px relative text-[color:var(--project\/disabled\/sub-label,#999)] text-[length:var(--typography\/body\/font-size,16px)] tracking-[var(--typography\/body\/letter-spacing,0px)]" data-node-id="161:402">
+                {description}
+              </p>
+            )}
+            {isHover && showDescription && (
+              <p className="[word-break:break-word] flex-[1_0_0] font-[family-name:var(--font-family\/base,'General_Sans_Variable:Regular')] font-[var(--typography\/body\/font-weight\/regular,400)] leading-[var(--typography\/body\/line-height,22px)] min-w-px relative text-[color:var(--project\/hover\/sub-label,#ededed)] text-[length:var(--typography\/body\/font-size,16px)] tracking-[var(--typography\/body\/letter-spacing,0px)]" data-node-id="160:396">
+                {description}
+              </p>
+            )}
+          </div>
+        </>
+      )}
+      {isPressed && (
+        <>
+          <div className="absolute backdrop-blur-[var(--opacity\/gentle,12px)] bg-[rgba(58,58,58,0.48)] inset-0 opacity-[var(--opacity\/strong,0.64)] rounded-[var(--spacing\/radius\/xlarge,24px)]" data-node-id="161:404" data-name="background" />
+          <div className="content-stretch flex gap-[var(--spacing\/gap\/medium,16px)] items-center relative shrink-0 w-full" data-node-id="157:335" data-name="Title">
+            <div className="content-stretch flex flex-col items-center justify-center relative shrink-0 w-[16px]" data-node-id="157:336" data-name="Number">
+              {showNumber && (
+                <p className="[word-break:break-word] font-[family-name:var(--font-family\/base,'General_Sans_Variable:Regular')] font-[var(--typography\/label\/font-weight\/regular,400)] leading-[var(--typography\/label\/line-height,14px)] relative shrink-0 text-[color:var(--project\/pressed\/label,#00d669)] text-[length:var(--typography\/label\/font-size,12px)] tracking-[var(--typography\/label\/letter-spacing,0px)] w-full" data-node-id="157:337">
+                  {number}
+                </p>
+              )}
+            </div>
+            {showTitle && (
+              <p className="[word-break:break-word] font-[family-name:var(--font-family\/base,'General_Sans_Variable:Medium')] font-[var(--typography\/title\/font-weight\/medium,500)] leading-[var(--typography\/title\/line-height,32px)] relative shrink-0 text-[color:var(--project\/pressed\/label,#00d669)] text-[length:var(--typography\/title\/font-size,24px)] tracking-[var(--typography\/title\/letter-spacing,0px)] whitespace-nowrap" data-node-id="157:338">
+                {title}
+              </p>
+            )}
+          </div>
+          <div className="content-stretch flex gap-[var(--spacing\/gap\/medium,16px)] items-center justify-end pl-[var(--spacing\/gap\/xlarge,32px)] relative shrink-0 w-full" data-node-id="157:339" data-name="Bottom">
+            {showDescription && (
+              <p className="[word-break:break-word] flex-[1_0_0] font-[family-name:var(--font-family\/base,'General_Sans_Variable:Regular')] font-[var(--typography\/body\/font-weight\/regular,400)] leading-[var(--typography\/body\/line-height,22px)] min-w-px relative text-[color:var(--project\/pressed\/sub-label,#c2c7c3)] text-[length:var(--typography\/body\/font-size,16px)] tracking-[var(--typography\/body\/letter-spacing,0px)]" data-node-id="161:400">
+                {description}
+              </p>
+            )}
+          </div>
+        </>
+      )}
+      {isFocus && (
+        <>
+          <div className="absolute border-[length:var(--spacing\/outline\/medium,2px)] border-[var(--project\/focus\/focus-ring,#999)] border-solid inset-[-4px] rounded-[28px]" data-node-id="157:348" data-name="focus-ring" />
+          <div className="content-stretch flex gap-[var(--spacing\/gap\/medium,16px)] items-center relative shrink-0 w-full" data-node-id="157:350" data-name="Title">
+            <div className="content-stretch flex flex-col items-center justify-center relative shrink-0 w-[16px]" data-node-id="157:351" data-name="Number">
+              {showNumber && (
+                <p className="[word-break:break-word] font-[family-name:var(--font-family\/base,'General_Sans_Variable:Regular')] font-[var(--typography\/label\/font-weight\/regular,400)] leading-[var(--typography\/label\/line-height,14px)] relative shrink-0 text-[color:var(--project\/focus\/sub-label,#999)] text-[length:var(--typography\/label\/font-size,12px)] tracking-[var(--typography\/label\/letter-spacing,0px)] w-full" data-node-id="157:352">
+                  {number}
+                </p>
+              )}
+            </div>
+            {showTitle && (
+              <p className="[word-break:break-word] font-[family-name:var(--font-family\/base,'General_Sans_Variable:Medium')] font-[var(--typography\/title\/font-weight\/medium,500)] leading-[var(--typography\/title\/line-height,32px)] relative shrink-0 text-[color:var(--project\/focus\/label,#d3d9d5)] text-[length:var(--typography\/title\/font-size,24px)] tracking-[var(--typography\/title\/letter-spacing,0px)] whitespace-nowrap" data-node-id="157:353">
+                {title}
+              </p>
+            )}
+          </div>
+          <div className="content-stretch flex gap-[var(--spacing\/gap\/medium,16px)] items-center justify-end pl-[var(--spacing\/gap\/xlarge,32px)] relative shrink-0 w-full" data-node-id="157:354" data-name="Bottom">
+            {showDescription && (
+              <p className="[word-break:break-word] flex-[1_0_0] font-[family-name:var(--font-family\/base,'General_Sans_Variable:Regular')] font-[var(--typography\/body\/font-weight\/regular,400)] leading-[var(--typography\/body\/line-height,22px)] min-w-px relative text-[color:var(--project\/focus\/sub-label,#999)] text-[length:var(--typography\/body\/font-size,16px)] tracking-[var(--typography\/body\/letter-spacing,0px)]" data-node-id="161:398">
+                {description}
+              </p>
+            )}
+          </div>
+        </>
+      )}
+    </div>
+  );
+}
+SUPER CRITICAL: The generated React+Tailwind code MUST be converted to match the target project's technology stack and styling system.
+1. Analyze the target codebase to identify: technology stack, styling approach, component patterns, and design tokens
+2. Convert React syntax to the target framework/library
+3. Transform all Tailwind classes to the target styling system while preserving exact visual design
+4. Follow the project's existing patterns and conventions
+DO NOT install any Tailwind as a dependency unless the user instructs you to do so.
+
+Node ids have been added to the code as data attributes, e.g. `data-node-id="1:2"`.
+These styles are contained in the design: label/regular: Font(family: "font-family/base", style: Regular, size: typography/label/font-size, weight: typography/label/font-weight/regular, lineHeight: typography/label/line-height, letterSpacing: typography/label/letter-spacing), title/medium: Font(family: "font-family/base", style: Medium, size: typography/title/font-size, weight: typography/title/font-weight/medium, lineHeight: typography/title/line-height, letterSpacing: typography/title/letter-spacing), body/regular: Font(family: "font-family/base", style: Regular, size: typography/body/font-size, weight: typography/body/font-weight/regular, lineHeight: typography/body/line-height, letterSpacing: typography/body/letter-spacing), Thumb: Effect(type: BACKGROUND_BLUR, radius: opacity/gentle).
+Image assets are stored on a localhost server. Clients can use these images directly in code as a way to view the image assets the same way they would other remote servers. Images and SVGs will be stored as constants, e.g. const image = 'http://localhost:3845/assets/10c13ac1a228a365cb98a0064b1d5afbc84887b2.png' These constants will be used in the code as the source for the image, e.g. <img src={image} /> This is true for both images and SVGs, so you can use the same approach for both types of assets.
+IMPORTANT: After you call this tool, you MUST call get_screenshot to get a screenshot of the node for context.

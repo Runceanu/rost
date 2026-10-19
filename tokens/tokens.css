@@ -1,0 +1,223 @@
+/* ─────────────────────────────────────────────────────────────────────────────
+ * Design tokens — UI Kit v01
+ * https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01
+ *
+ * Read from the Figma file's own variables via `get_variable_defs`, page by
+ * page: buttons (20:5), input (240:245), badge (139:367), inline banner
+ * (205:606), divider (39:5).
+ *
+ * Custom property names mirror the Figma variable paths, with `/` → `-`. That
+ * is deliberate: when a designer changes `actions/primary/hover/background` in
+ * Figma, there is exactly one place to change here, and the name matches.
+ *
+ * DO NOT invent values. If something is missing, read it from the file.
+ * ───────────────────────────────────────────────────────────────────────────── */
+
+:root {
+  /* ── Typography ───────────────────────────────────────────────────────── */
+  --font-family-base: 'General Sans Variable', 'General Sans', sans-serif;
+
+  --typography-body-font-size: 16px;
+  --typography-body-line-height: 22px;
+  --typography-body-letter-spacing: 0;
+  --typography-body-font-weight-regular: 400;
+  --typography-body-font-weight-medium: 500;
+
+  --typography-label-font-size: 12px;
+  --typography-label-line-height: 14px;
+  --typography-label-letter-spacing: 0;
+  --typography-label-font-weight-regular: 400;
+  --typography-label-font-weight-medium: 500;
+
+  --typography-placeholder-font-size: 10px;
+  --typography-placeholder-line-height: 12px;
+  --typography-placeholder-letter-spacing: 0;
+
+  --typography-font-size-16: 16px;
+  --typography-font-size-24: 24px;
+
+  /* Display sizes are not variables in the kit; they come from the text styles
+     used on the marketing pages. Kept here so headings have a scale to sit on. */
+  --typography-title-font-size: 24px;
+  --typography-title-line-height: 32px;
+  --typography-subtitle-font-size: 20px;
+  --typography-subtitle-line-height: 28px;
+  --typography-sub-headline-font-size: 40px;
+  --typography-sub-headline-line-height: 48px;
+
+  /* ── Non-interactive ──────────────────────────────────────────────────── */
+  --non-interactive-background-primary: #060805;
+  --non-interactive-background-secondary: #171717;
+  --non-interactive-background-tertiary: #3a3a3a;
+  --non-interactive-background-contrast: #ededed;
+
+  --non-interactive-foreground-primary: #ededed;
+  --non-interactive-foreground-secondary: #d3d9d5;
+  --non-interactive-foreground-tertiary: #999999;
+  --non-interactive-foreground-quadruple: #3a3a3a;
+  --non-interactive-foreground-quinary: #282828;
+
+  --non-interactive-foreground-positive-base: #00d669;
+  --non-interactive-foreground-negative-base: #e93120;
+  --non-interactive-foreground-warning-base: #fda50d;
+
+  --non-interactive-background-positive-light: #004c19;
+  --non-interactive-background-negative-light: #48050c;
+  --non-interactive-background-warning-light: #492604;
+
+  /* ── Actions / primary ────────────────────────────────────────────────── */
+  --actions-primary-default-background: #00d669;
+  --actions-primary-default-label: #060805;
+  --actions-primary-default-outline: #edededa3;
+  --actions-primary-hover-background: #00b450;
+  --actions-primary-hover-label: #060805;
+  --actions-primary-pressed-background: #00913a;
+  --actions-primary-pressed-label: #060805;
+  --actions-primary-disabled-background: #00d669;
+  --actions-primary-disabled-label: #060805;
+  --actions-primary-focus-background: #00d669;
+  --actions-primary-focus-label: #060805;
+  --actions-primary-focus-focus-ring: #b6ffda;
+
+  /* ── Actions / secondary ──────────────────────────────────────────────── */
+  --actions-secondary-regular-default-background: #3a3a3a;
+  --actions-secondary-regular-default-label: #d3d9d5;
+  --actions-secondary-regular-default-outline: #ededed;
+  /*
+   * Read from the kit's toggle (168:1149) and confirmed against the variable
+   * registry. These existed in Figma but had never been ported, so every rule
+   * referencing them resolved to nothing and silently did not apply.
+   */
+  --actions-secondary-regular-hover-outline: #ededed;
+  --actions-secondary-regular-pressed-outline: #ededed;
+  --actions-secondary-regular-focus-outline: #ededed;
+  --actions-secondary-regular-disabled-outline: #ededed;
+  --actions-primary-hover-outline: #edededa3;
+  --actions-primary-pressed-outline: #edededa3;
+  --actions-primary-focus-outline: #edededa3;
+  --actions-primary-disabled-outline: #edededa3;
+  --actions-secondary-regular-hover-background: #747573;
+  --actions-secondary-regular-hover-label: #ededed;
+  --actions-secondary-regular-pressed-background: #999999;
+  --actions-secondary-regular-pressed-label: #d3d9d5;
+  --actions-secondary-regular-disabled-background: #3a3a3a;
+  --actions-secondary-regular-disabled-label: #d3d9d5;
+  --actions-secondary-regular-focus-background: #3a3a3a;
+  --actions-secondary-regular-focus-label: #d3d9d5;
+  --actions-secondary-regular-focus-focus-ring: #999999;
+
+  /* ── Actions / tertiary ───────────────────────────────────────────────── */
+  --actions-tertiary-default-label: #d3d9d5;
+  --actions-tertiary-hover-background: #060805;
+  --actions-tertiary-hover-label: #ededed;
+  --actions-tertiary-pressed-background: #454545;
+  --actions-tertiary-pressed-label: #d3d9d5;
+  --actions-tertiary-disabled-label: #d3d9d5;
+  --actions-tertiary-focus-label: #d3d9d5;
+
+  /* ── Input / regular ──────────────────────────────────────────────────── */
+  --input-regular-default-background: #060805;
+  --input-regular-default-outline: #555555;
+  --input-regular-default-label: #999999;
+  --input-regular-default-placeholder: #c2c7c3;
+  --input-regular-default-supportive: #999999;
+
+  --input-regular-hover-background: #171717;
+  --input-regular-hover-outline: #999999;
+  --input-regular-hover-label: #d3d9d5;
+  --input-regular-hover-placeholder: #d3d9d5;
+  --input-regular-hover-supportive: #d3d9d5;
+
+  --input-regular-focus-background: #060805;
+  --input-regular-focus-outline: #555555;
+  --input-regular-focus-label: #999999;
+  --input-regular-focus-placeholder: #c2c7c3;
+  --input-regular-focus-supportive: #999999;
+  --input-regular-focus-focus-ring: #00d669;
+
+  --input-regular-disabled-background: #171717;
+  --input-regular-disabled-outline: #3a3a3a;
+  --input-regular-disabled-label: #555555;
+  --input-regular-disabled-placeholder: #555555;
+  --input-regular-disabled-supportive: #555555;
+
+  /* ── Input / negative ─────────────────────────────────────────────────── */
+  --input-negative-default-background: #060805;
+  --input-negative-default-outline: #f2705f;
+  --input-negative-default-label: #e93120;
+  --input-negative-default-placeholder: #999999;
+  --input-negative-default-supportive: #e93120;
+
+  --input-negative-hover-background: #171717;
+  --input-negative-hover-outline: #e93120;
+  --input-negative-hover-label: #e93120;
+  --input-negative-hover-placeholder: #555555;
+  --input-negative-hover-supportive: #ae1b13;
+
+  --input-negative-focus-background: #060805;
+  --input-negative-focus-outline: #f2705f;
+  --input-negative-focus-label: #e93120;
+  --input-negative-focus-value: #ededed;
+  --input-negative-focus-supportive: #e93120;
+  --input-negative-focus-focus-ring: #00d669;
+
+  /* ── Spacing / gap ────────────────────────────────────────────────────── */
+  --spacing-gap-none: 0px;
+  --spacing-gap-3xsmall: 2px;
+  --spacing-gap-2xsmall: 4px;
+  --spacing-gap-xsmall: 6px;
+  --spacing-gap-small: 8px;
+  --spacing-gap-small-medium: 12px;
+  --spacing-gap-medium: 16px;
+  --spacing-gap-medium-large: 20px;
+  --spacing-gap-large: 24px;
+  --spacing-gap-xlarge: 32px;
+  --spacing-gap-2xlarge: 40px;
+  --spacing-gap-3xlarge: 48px;
+  --spacing-gap-4xlarge: 56px;
+  --spacing-gap-5xlarge: 64px;
+
+  /* ── Spacing / size ───────────────────────────────────────────────────── */
+  --spacing-size-3xsmall: 12px;
+  --spacing-size-2xsmall: 16px;
+  --spacing-size-xsmall: 20px;
+  --spacing-size-small: 24px;
+  --spacing-size-small-medium: 32px;
+  --spacing-size-medium: 40px;
+  --spacing-size-medium-large: 48px;
+  --spacing-size-large: 56px;
+  --spacing-size-xlarge: 64px;
+  --spacing-size-2xlarge: 72px;
+  --spacing-size-3xlarge: 80px;
+  --spacing-layout-hero-height: 630px; /* case-study hero (Hero Media). Created in code 2026-10-19; no Figma variable yet */
+
+  /* ── Spacing / radius ─────────────────────────────────────────────────── */
+  --spacing-radius-none: 0px;
+  --spacing-radius-xsmall: 4px;
+  --spacing-radius-small: 8px;
+  --spacing-radius-medium: 12px;
+  --spacing-radius-large: 16px;
+  --spacing-radius-xlarge: 24px;
+  --spacing-radius-2xlarge: 32px;
+  --spacing-radius-full: 10000px;
+
+  /* ── Spacing / outline ────────────────────────────────────────────────── */
+  --spacing-outline-small: 1px;
+  --spacing-outline-medium: 2px;
+
+  /* ── Opacity ──────────────────────────────────────────────────────────── */
+  --opacity-faint: 0.04;
+  --opacity-soft: 0.16;
+  --opacity-gentle: 0.24;
+  --opacity-mild: 0.32;
+  --opacity-strong: 0.64; /* read from Figma (opacity/strong = 64); Chip hover outline, primary outlines rgba(237,237,237,0.64) */
+  --opacity-medium: 0.48; /* hero media dim; also the alpha of the frosted glass surfaces rgba(0,0,0,0.48) */
+  --opacity-solid: 1;
+
+  /* ── Effects (Figma effect styles — not variables) ─────────────────────── */
+  --effect-thumb:      blur(12px);                        /* BACKGROUND_BLUR "Thumb" — frosted project-thumbnail panel */
+  --effect-menu:       blur(12px);                        /* BACKGROUND_BLUR "Menu" — frosted glass, standard radius (nav, hero cards) */
+  --effect-menu-lg:    blur(24px);                        /* "Menu" frosted glass, large radius (case-study hero + island backgrounds) */
+  --effect-lock-frame: blur(8px);                         /* LAYER_BLUR "Lock frame" — locked thumbnail (spacing/base-8) */
+  --shadow-floating:   0 16px 24px 0 rgba(0, 0, 0, 0.16); /* DROP_SHADOW "Shadow/Floating" (alpha = opacity/soft) */
+}

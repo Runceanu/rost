@@ -1,0 +1,306 @@
+const imgUnion = "http://localhost:3845/assets/bcda48db4924db6a5cf8c5e5f8d027dbfe9c871e.svg";
+const imgUnion1 = "http://localhost:3845/assets/77443368102be1251780df724a036e9918111eec.svg";
+const imgUnion2 = "http://localhost:3845/assets/af0e476c8999154d9f18063baf0428685233fdcb.svg";
+const imgUnion3 = "http://localhost:3845/assets/b89433152071161d7db6e515aef169ba5a3d2eb8.svg";
+const imgUnion4 = "http://localhost:3845/assets/e6af593dd8575044ed5f5c76cf72078d11959296.svg";
+const imgUnion5 = "http://localhost:3845/assets/61a5e13283f7becca43a6e0052d376c02be9c29f.svg";
+type ThumbsProps = {
+  className?: string;
+  children?: React.ReactNode | null;
+  industry?: string;
+  name?: string;
+  number?: string;
+  period?: string;
+  showBadge?: boolean;
+  showIndustry?: boolean;
+  showName?: boolean;
+  showNumber?: boolean;
+  showPeriod?: boolean;
+  showType?: boolean;
+  state?: "Default" | "Hover" | "Focus" | "Pressed" | "Disabled" | "Locked";
+  type?: string;
+};
+
+export default function Thumbs({ className, children = null, industry = "Industry", name = "Client", number = "00", period = "Period", showBadge = true, showIndustry = true, showName = true, showNumber = true, showPeriod = true, showType = true, state = "Default", type = "Type" }: ThumbsProps) {
+  const isDefaultOrLocked = ["Default", "Locked"].includes(state);
+  const isDefaultOrLockedOrPressedOrFocusOrHover = ["Default", "Locked", "Pressed", "Focus", "Hover"].includes(state);
+  const isDisabled = state === "Disabled";
+  const isFocus = state === "Focus";
+  const isHover = state === "Hover";
+  const isLocked = state === "Locked";
+  const isPressed = state === "Pressed";
+  return (
+    <div className={className || `${String.raw`content-stretch flex flex-col gap-[var(--spacing\/gap\/none,0px)] h-[334px] items-start relative rounded-[var(--spacing\/radius\/xlarge,24px)] w-[384px] `}${isDisabled ? String.raw`opacity-[var(--opacity\/solid,1)]` : ""}`} id={isHover ? "node-109_77" : isFocus ? "node-109_118" : isPressed ? "node-109_168" : isDisabled ? "node-109_206" : isLocked ? "node-261_1232" : "node-109_78"}>
+      {isDefaultOrLockedOrPressedOrFocusOrHover && (
+        <>
+          <div className="bg-[var(--non-interactive\/background\/secondary,#171717)] flex-[1_0_0] min-h-px relative rounded-[var(--spacing\/radius\/xlarge,24px)] w-full" data-node-id="109:56" data-name="slot">
+            {children}
+          </div>
+          <div className="absolute bg-gradient-to-b bottom-0 from-[rgba(6,8,5,0)] h-[167px] left-0 opacity-[var(--opacity\/medium,0.48)] right-0 to-[var(--non-interactive\/background\/primary,#060805)]" id={isHover ? "node-126_26792" : isFocus ? "node-126_26794" : isPressed ? "node-126_26796" : isLocked ? "node-261_1234" : "node-125_26791"} data-name="shadow" />
+        </>
+      )}
+      {["Default", "Locked", "Pressed", "Hover"].includes(state) && (
+        <div className="absolute backdrop-blur-[var(--opacity\/gentle,12px)] bg-[rgba(0,0,0,0.48)] bottom-[8px] content-stretch flex flex-col gap-[var(--spacing\/gap\/small,8px)] items-start left-[8px] pb-[var(--spacing\/gap\/large,24px)] pt-[var(--spacing\/gap\/medium,16px)] px-[var(--spacing\/gap\/medium,16px)] right-[8px] rounded-[var(--spacing\/radius\/large,16px)]" id={isHover ? "node-109_60" : isPressed ? "node-109_170" : isLocked ? "node-261_1235" : "node-108_206"} data-name="Content">
+          <div className="content-stretch flex gap-[var(--spacing\/gap\/medium,16px)] items-center relative shrink-0 w-full" id={isHover ? "node-109_61" : isPressed ? "node-109_171" : isLocked ? "node-261_1236" : "node-108_205"} data-name="Title">
+            <div className="content-stretch flex flex-col items-center justify-center relative shrink-0 w-[16px]" id={isHover ? "node-109_62" : isPressed ? "node-109_172" : isLocked ? "node-261_1237" : "node-108_207"} data-name="Number">
+              {isDefaultOrLocked && showNumber && (
+                <p className="[word-break:break-word] font-[family-name:var(--font-family\/base,'General_Sans_Variable:Regular')] font-[var(--typography\/label\/font-weight\/regular,400)] leading-[var(--typography\/label\/line-height,14px)] relative shrink-0 text-[color:var(--project\/default\/sub-label,#999)] text-[length:var(--typography\/label\/font-size,12px)] tracking-[var(--typography\/label\/letter-spacing,0px)] w-full" data-node-id="108:189">
+                  {number}
+                </p>
+              )}
+              {isPressed && showNumber && (
+                <p className="[word-break:break-word] font-[family-name:var(--font-family\/base,'General_Sans_Variable:Regular')] font-[var(--typography\/label\/font-weight\/regular,400)] leading-[var(--typography\/label\/line-height,14px)] relative shrink-0 text-[color:var(--project\/pressed\/label,#00d669)] text-[length:var(--typography\/label\/font-size,12px)] tracking-[var(--typography\/label\/letter-spacing,0px)] w-full" data-node-id="109:173">
+                  {number}
+                </p>
+              )}
+              {isHover && showNumber && (
+                <p className="[word-break:break-word] font-[family-name:var(--font-family\/base,'General_Sans_Variable:Regular')] font-[var(--typography\/label\/font-weight\/regular,400)] leading-[var(--typography\/label\/line-height,14px)] relative shrink-0 text-[color:var(--project\/hover\/label,#00d669)] text-[length:var(--typography\/label\/font-size,12px)] tracking-[var(--typography\/label\/letter-spacing,0px)] w-full" data-node-id="109:63">
+                  {number}
+                </p>
+              )}
+            </div>
+            {isDefaultOrLocked && showName && (
+              <p className="[word-break:break-word] font-[family-name:var(--font-family\/base,'General_Sans_Variable:Medium')] font-[var(--typography\/title\/font-weight\/medium,500)] leading-[var(--typography\/title\/line-height,32px)] relative shrink-0 text-[color:var(--project\/default\/label,#d3d9d5)] text-[length:var(--typography\/title\/font-size,24px)] tracking-[var(--typography\/title\/letter-spacing,0px)] whitespace-nowrap" data-node-id="108:190">
+                {name}
+              </p>
+            )}
+            {isPressed && showName && (
+              <p className="[word-break:break-word] font-[family-name:var(--font-family\/base,'General_Sans_Variable:Medium')] font-[var(--typography\/title\/font-weight\/medium,500)] leading-[var(--typography\/title\/line-height,32px)] relative shrink-0 text-[color:var(--project\/pressed\/label,#00d669)] text-[length:var(--typography\/title\/font-size,24px)] tracking-[var(--typography\/title\/letter-spacing,0px)] whitespace-nowrap" data-node-id="109:174">
+                {name}
+              </p>
+            )}
+            {isHover && showName && (
+              <p className="[word-break:break-word] font-[family-name:var(--font-family\/base,'General_Sans_Variable:Medium')] font-[var(--typography\/title\/font-weight\/medium,500)] leading-[var(--typography\/title\/line-height,32px)] relative shrink-0 text-[color:var(--project\/hover\/label,#00d669)] text-[length:var(--typography\/title\/font-size,24px)] tracking-[var(--typography\/title\/letter-spacing,0px)] whitespace-nowrap" data-node-id="109:64">
+                {name}
+              </p>
+            )}
+          </div>
+          <div className="content-stretch flex gap-[var(--spacing\/gap\/medium,16px)] items-center justify-end pl-[var(--spacing\/gap\/xlarge,32px)] relative shrink-0" id={isHover ? "node-109_65" : isPressed ? "node-109_175" : isLocked ? "node-261_1240" : "node-108_191"} data-name="Bottom">
+            {isDefaultOrLocked && showIndustry && (
+              <p className="[word-break:break-word] font-[family-name:var(--font-family\/base,'General_Sans_Variable:Regular')] font-[var(--typography\/label\/font-weight\/regular,400)] leading-[var(--typography\/label\/line-height,14px)] relative shrink-0 text-[color:var(--project\/default\/sub-label,#999)] text-[length:var(--typography\/label\/font-size,12px)] tracking-[var(--typography\/label\/letter-spacing,0px)] whitespace-nowrap" data-node-id="108:231">
+                {industry}
+              </p>
+            )}
+            {isDefaultOrLocked && showIndustry && (
+              <div className="overflow-clip relative shrink-0 size-[12px]" data-node-id="108:232" data-name="icons/dot">
+                <div className="absolute inset-[37.5%]" data-node-id="I108:232;93:992" data-name="Union">
+                  <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgUnion} />
+                </div>
+              </div>
+            )}
+            {isDefaultOrLocked && showType && (
+              <p className="[word-break:break-word] font-[family-name:var(--font-family\/base,'General_Sans_Variable:Regular')] font-[var(--typography\/label\/font-weight\/regular,400)] leading-[var(--typography\/label\/line-height,14px)] relative shrink-0 text-[color:var(--project\/default\/sub-label,#999)] text-[length:var(--typography\/label\/font-size,12px)] tracking-[var(--typography\/label\/letter-spacing,0px)] whitespace-nowrap" data-node-id="108:233">
+                {type}
+              </p>
+            )}
+            {isDefaultOrLocked && showType && (
+              <div className="overflow-clip relative shrink-0 size-[12px]" data-node-id="108:234" data-name="icons/dot">
+                <div className="absolute inset-[37.5%]" data-node-id="I108:234;93:992" data-name="Union">
+                  <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgUnion} />
+                </div>
+              </div>
+            )}
+            {isDefaultOrLocked && showPeriod && (
+              <p className="[word-break:break-word] font-[family-name:var(--font-family\/base,'General_Sans_Variable:Regular')] font-[var(--typography\/label\/font-weight\/regular,400)] leading-[var(--typography\/label\/line-height,14px)] relative shrink-0 text-[color:var(--project\/default\/sub-label,#999)] text-[length:var(--typography\/label\/font-size,12px)] tracking-[var(--typography\/label\/letter-spacing,0px)] whitespace-nowrap" data-node-id="108:235">
+                {period}
+              </p>
+            )}
+            {isPressed && showIndustry && (
+              <p className="[word-break:break-word] font-[family-name:var(--font-family\/base,'General_Sans_Variable:Regular')] font-[var(--typography\/label\/font-weight\/regular,400)] leading-[var(--typography\/label\/line-height,14px)] relative shrink-0 text-[color:var(--project\/pressed\/sub-label,#c2c7c3)] text-[length:var(--typography\/label\/font-size,12px)] tracking-[var(--typography\/label\/letter-spacing,0px)] whitespace-nowrap" data-node-id="109:176">
+                {industry}
+              </p>
+            )}
+            {isPressed && showIndustry && (
+              <div className="overflow-clip relative shrink-0 size-[12px]" data-node-id="109:177" data-name="icons/dot">
+                <div className="absolute inset-[37.5%]" data-node-id="I109:177;93:992" data-name="Union">
+                  <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgUnion3} />
+                </div>
+              </div>
+            )}
+            {isPressed && showType && (
+              <p className="[word-break:break-word] font-[family-name:var(--font-family\/base,'General_Sans_Variable:Regular')] font-[var(--typography\/label\/font-weight\/regular,400)] leading-[var(--typography\/label\/line-height,14px)] relative shrink-0 text-[color:var(--project\/pressed\/sub-label,#c2c7c3)] text-[length:var(--typography\/label\/font-size,12px)] tracking-[var(--typography\/label\/letter-spacing,0px)] whitespace-nowrap" data-node-id="109:178">
+                {type}
+              </p>
+            )}
+            {isPressed && showType && (
+              <div className="overflow-clip relative shrink-0 size-[12px]" data-node-id="109:179" data-name="icons/dot">
+                <div className="absolute inset-[37.5%]" data-node-id="I109:179;93:992" data-name="Union">
+                  <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgUnion3} />
+                </div>
+              </div>
+            )}
+            {isPressed && showPeriod && (
+              <p className="[word-break:break-word] font-[family-name:var(--font-family\/base,'General_Sans_Variable:Regular')] font-[var(--typography\/label\/font-weight\/regular,400)] leading-[var(--typography\/label\/line-height,14px)] relative shrink-0 text-[color:var(--project\/pressed\/sub-label,#c2c7c3)] text-[length:var(--typography\/label\/font-size,12px)] tracking-[var(--typography\/label\/letter-spacing,0px)] whitespace-nowrap" data-node-id="109:180">
+                {period}
+              </p>
+            )}
+            {isHover && showIndustry && (
+              <p className="[word-break:break-word] font-[family-name:var(--font-family\/base,'General_Sans_Variable:Regular')] font-[var(--typography\/label\/font-weight\/regular,400)] leading-[var(--typography\/label\/line-height,14px)] relative shrink-0 text-[color:var(--project\/hover\/sub-label,#ededed)] text-[length:var(--typography\/label\/font-size,12px)] tracking-[var(--typography\/label\/letter-spacing,0px)] whitespace-nowrap" data-node-id="109:66">
+                {industry}
+              </p>
+            )}
+            {isHover && showIndustry && (
+              <div className="overflow-clip relative shrink-0 size-[12px]" data-node-id="109:67" data-name="icons/dot">
+                <div className="absolute inset-[37.5%]" data-node-id="I109:67;93:992" data-name="Union">
+                  <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgUnion5} />
+                </div>
+              </div>
+            )}
+            {isHover && showType && (
+              <p className="[word-break:break-word] font-[family-name:var(--font-family\/base,'General_Sans_Variable:Regular')] font-[var(--typography\/label\/font-weight\/regular,400)] leading-[var(--typography\/label\/line-height,14px)] relative shrink-0 text-[color:var(--project\/hover\/sub-label,#ededed)] text-[length:var(--typography\/label\/font-size,12px)] tracking-[var(--typography\/label\/letter-spacing,0px)] whitespace-nowrap" data-node-id="109:68">
+                {type}
+              </p>
+            )}
+            {isHover && showType && (
+              <div className="overflow-clip relative shrink-0 size-[12px]" data-node-id="109:69" data-name="icons/dot">
+                <div className="absolute inset-[37.5%]" data-node-id="I109:69;93:992" data-name="Union">
+                  <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgUnion5} />
+                </div>
+              </div>
+            )}
+            {isHover && showPeriod && (
+              <p className="[word-break:break-word] font-[family-name:var(--font-family\/base,'General_Sans_Variable:Regular')] font-[var(--typography\/label\/font-weight\/regular,400)] leading-[var(--typography\/label\/line-height,14px)] relative shrink-0 text-[color:var(--project\/hover\/sub-label,#ededed)] text-[length:var(--typography\/label\/font-size,12px)] tracking-[var(--typography\/label\/letter-spacing,0px)] whitespace-nowrap" data-node-id="109:70">
+                {period}
+              </p>
+            )}
+          </div>
+        </div>
+      )}
+      {isLocked && (
+        <div className="absolute bg-[var(--non-interactive\/background\/positive\/base,#00d669)] content-stretch flex gap-[var(--spacing\/gap\/none,0px)] items-center p-[var(--spacing\/gap\/small,8px)] right-[16px] rounded-[var(--spacing\/radius\/medium,12px)] top-[16px]" data-node-id="261:1254" data-name="Locked">
+          <div className="overflow-clip relative shrink-0 size-[24px]" data-node-id="261:1250" data-name="icons/lock">
+            <div className="absolute inset-[8.33%_16.67%_8.34%_16.67%]" data-node-id="I261:1250;208:68" data-name="Union">
+              <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgUnion1} />
+            </div>
+          </div>
+        </div>
+      )}
+      {isDisabled && (
+        <>
+          <div className="bg-[var(--non-interactive\/background\/secondary,#171717)] flex-[1_0_0] min-h-px opacity-[var(--opacity\/mild,0.32)] relative rounded-[var(--spacing\/radius\/xlarge,24px)] w-full" data-node-id="109:207" data-name="slot">
+            {children}
+          </div>
+          <div className="absolute bg-gradient-to-b bottom-0 from-[rgba(6,8,5,0)] h-[167px] left-0 opacity-[var(--opacity\/medium,0.48)] right-0 to-[var(--non-interactive\/background\/primary,#060805)]" data-node-id="126:26798" data-name="shadow" />
+          <div className="absolute backdrop-blur-[var(--opacity\/gentle,12px)] bg-[rgba(0,0,0,0.48)] bottom-[8px] content-stretch flex flex-col gap-[var(--spacing\/gap\/small,8px)] items-start left-[8px] opacity-[var(--opacity\/mild,0.32)] pb-[var(--spacing\/gap\/large,24px)] pt-[var(--spacing\/gap\/medium,16px)] px-[var(--spacing\/gap\/medium,16px)] right-[8px] rounded-[var(--spacing\/radius\/large,16px)]" data-node-id="109:208" data-name="Content">
+            <div className="content-stretch flex gap-[var(--spacing\/gap\/medium,16px)] items-center relative shrink-0 w-full" data-node-id="109:209" data-name="Title">
+              <div className="content-stretch flex flex-col items-center justify-center relative shrink-0 w-[16px]" data-node-id="109:210" data-name="Number">
+                {showNumber && (
+                  <p className="[word-break:break-word] font-[family-name:var(--font-family\/base,'General_Sans_Variable:Regular')] font-[var(--typography\/label\/font-weight\/regular,400)] leading-[var(--typography\/label\/line-height,14px)] relative shrink-0 text-[color:var(--project\/disabled\/sub-label,#999)] text-[length:var(--typography\/label\/font-size,12px)] tracking-[var(--typography\/label\/letter-spacing,0px)] w-full" data-node-id="109:211">
+                    {number}
+                  </p>
+                )}
+              </div>
+              {showName && (
+                <p className="[word-break:break-word] font-[family-name:var(--font-family\/base,'General_Sans_Variable:Medium')] font-[var(--typography\/title\/font-weight\/medium,500)] leading-[var(--typography\/title\/line-height,32px)] relative shrink-0 text-[color:var(--project\/disabled\/label,#d3d9d5)] text-[length:var(--typography\/title\/font-size,24px)] tracking-[var(--typography\/title\/letter-spacing,0px)] whitespace-nowrap" data-node-id="109:212">
+                  {name}
+                </p>
+              )}
+            </div>
+            <div className="content-stretch flex gap-[var(--spacing\/gap\/medium,16px)] items-center justify-end pl-[var(--spacing\/gap\/xlarge,32px)] relative shrink-0" data-node-id="109:213" data-name="Bottom">
+              {showIndustry && (
+                <>
+                  <p className="[word-break:break-word] font-[family-name:var(--font-family\/base,'General_Sans_Variable:Regular')] font-[var(--typography\/label\/font-weight\/regular,400)] leading-[var(--typography\/label\/line-height,14px)] relative shrink-0 text-[color:var(--project\/disabled\/sub-label,#999)] text-[length:var(--typography\/label\/font-size,12px)] tracking-[var(--typography\/label\/letter-spacing,0px)] whitespace-nowrap" data-node-id="109:214">
+                    {industry}
+                  </p>
+                  <div className="overflow-clip relative shrink-0 size-[12px]" data-node-id="109:215" data-name="icons/dot">
+                    <div className="absolute inset-[37.5%]" data-node-id="I109:215;93:992" data-name="Union">
+                      <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgUnion2} />
+                    </div>
+                  </div>
+                </>
+              )}
+              {showType && (
+                <>
+                  <p className="[word-break:break-word] font-[family-name:var(--font-family\/base,'General_Sans_Variable:Regular')] font-[var(--typography\/label\/font-weight\/regular,400)] leading-[var(--typography\/label\/line-height,14px)] relative shrink-0 text-[color:var(--project\/disabled\/sub-label,#999)] text-[length:var(--typography\/label\/font-size,12px)] tracking-[var(--typography\/label\/letter-spacing,0px)] whitespace-nowrap" data-node-id="109:216">
+                    {type}
+                  </p>
+                  <div className="overflow-clip relative shrink-0 size-[12px]" data-node-id="109:217" data-name="icons/dot">
+                    <div className="absolute inset-[37.5%]" data-node-id="I109:217;93:992" data-name="Union">
+                      <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgUnion2} />
+                    </div>
+                  </div>
+                </>
+              )}
+              {showPeriod && (
+                <p className="[word-break:break-word] font-[family-name:var(--font-family\/base,'General_Sans_Variable:Regular')] font-[var(--typography\/label\/font-weight\/regular,400)] leading-[var(--typography\/label\/line-height,14px)] relative shrink-0 text-[color:var(--project\/disabled\/sub-label,#999)] text-[length:var(--typography\/label\/font-size,12px)] tracking-[var(--typography\/label\/letter-spacing,0px)] whitespace-nowrap" data-node-id="109:218">
+                  {period}
+                </p>
+              )}
+            </div>
+          </div>
+        </>
+      )}
+      {isDisabled && showBadge && (
+        <div className="absolute content-stretch flex gap-[var(--spacing\/gap\/3xsmall,2px)] h-[var(--spacing\/size\/small,24px)] items-center pb-[var(--spacing\/gap\/3xsmall,2px)] pt-[var(--spacing\/gap\/none,0px)] px-[var(--spacing\/gap\/small,8px)] right-[16px] rounded-[var(--spacing\/radius\/full,10000px)] top-[16px]" data-node-id="173:1407" data-name="badge">
+          <p className="[word-break:break-word] font-[family-name:var(--font-family\/base,'General_Sans_Variable:Medium')] font-[var(--typography\/label\/font-weight\/medium,500)] leading-[var(--typography\/label\/line-height,14px)] relative shrink-0 text-[color:var(--non-interactive\/foreground\/tertiary,#999)] text-[length:var(--typography\/label\/font-size,12px)] text-center tracking-[var(--typography\/label\/letter-spacing,0px)] whitespace-nowrap" data-node-id="I173:1407;139:397">
+            Coming soon
+          </p>
+          <div className="absolute border border-[var(--non-interactive\/foreground\/quadruple,#3a3a3a)] border-solid inset-0 opacity-[var(--opacity\/solid,1)] rounded-[var(--spacing\/radius\/full,10000px)]" data-node-id="I173:1407;139:398" data-name="outline" />
+        </div>
+      )}
+      {isFocus && (
+        <>
+          <div className="absolute border-[length:var(--spacing\/outline\/medium,2px)] border-[var(--project\/focus\/focus-ring,#999)] border-solid inset-[-4px] rounded-[28px]" data-node-id="109:147" data-name="focus-ring" />
+          <div className="absolute backdrop-blur-[var(--opacity\/gentle,12px)] bg-[rgba(0,0,0,0.48)] bottom-[8px] content-stretch flex flex-col gap-[var(--spacing\/gap\/small,8px)] items-start left-[8px] pb-[var(--spacing\/gap\/large,24px)] pt-[var(--spacing\/gap\/medium,16px)] px-[var(--spacing\/gap\/medium,16px)] right-[8px] rounded-[var(--spacing\/radius\/large,16px)]" data-node-id="109:120" data-name="Content">
+            <div className="content-stretch flex gap-[var(--spacing\/gap\/medium,16px)] items-center relative shrink-0 w-full" data-node-id="109:121" data-name="Title">
+              <div className="content-stretch flex flex-col items-center justify-center relative shrink-0 w-[16px]" data-node-id="109:122" data-name="Number">
+                {showNumber && (
+                  <p className="[word-break:break-word] font-[family-name:var(--font-family\/base,'General_Sans_Variable:Regular')] font-[var(--typography\/label\/font-weight\/regular,400)] leading-[var(--typography\/label\/line-height,14px)] relative shrink-0 text-[color:var(--project\/focus\/sub-label,#999)] text-[length:var(--typography\/label\/font-size,12px)] tracking-[var(--typography\/label\/letter-spacing,0px)] w-full" data-node-id="109:123">
+                    {number}
+                  </p>
+                )}
+              </div>
+              {showName && (
+                <p className="[word-break:break-word] font-[family-name:var(--font-family\/base,'General_Sans_Variable:Medium')] font-[var(--typography\/title\/font-weight\/medium,500)] leading-[var(--typography\/title\/line-height,32px)] relative shrink-0 text-[color:var(--project\/focus\/label,#d3d9d5)] text-[length:var(--typography\/title\/font-size,24px)] tracking-[var(--typography\/title\/letter-spacing,0px)] whitespace-nowrap" data-node-id="109:124">
+                  {name}
+                </p>
+              )}
+            </div>
+            <div className="content-stretch flex gap-[var(--spacing\/gap\/medium,16px)] items-center justify-end pl-[var(--spacing\/gap\/xlarge,32px)] relative shrink-0" data-node-id="109:125" data-name="Bottom">
+              {showIndustry && (
+                <>
+                  <p className="[word-break:break-word] font-[family-name:var(--font-family\/base,'General_Sans_Variable:Regular')] font-[var(--typography\/label\/font-weight\/regular,400)] leading-[var(--typography\/label\/line-height,14px)] relative shrink-0 text-[color:var(--project\/focus\/sub-label,#999)] text-[length:var(--typography\/label\/font-size,12px)] tracking-[var(--typography\/label\/letter-spacing,0px)] whitespace-nowrap" data-node-id="109:126">
+                    {industry}
+                  </p>
+                  <div className="overflow-clip relative shrink-0 size-[12px]" data-node-id="109:127" data-name="icons/dot">
+                    <div className="absolute inset-[37.5%]" data-node-id="I109:127;93:992" data-name="Union">
+                      <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgUnion4} />
+                    </div>
+                  </div>
+                </>
+              )}
+              {showType && (
+                <>
+                  <p className="[word-break:break-word] font-[family-name:var(--font-family\/base,'General_Sans_Variable:Regular')] font-[var(--typography\/label\/font-weight\/regular,400)] leading-[var(--typography\/label\/line-height,14px)] relative shrink-0 text-[color:var(--project\/focus\/sub-label,#999)] text-[length:var(--typography\/label\/font-size,12px)] tracking-[var(--typography\/label\/letter-spacing,0px)] whitespace-nowrap" data-node-id="109:128">
+                    {type}
+                  </p>
+                  <div className="overflow-clip relative shrink-0 size-[12px]" data-node-id="109:129" data-name="icons/dot">
+                    <div className="absolute inset-[37.5%]" data-node-id="I109:129;93:992" data-name="Union">
+                      <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgUnion4} />
+                    </div>
+                  </div>
+                </>
+              )}
+              {showPeriod && (
+                <p className="[word-break:break-word] font-[family-name:var(--font-family\/base,'General_Sans_Variable:Regular')] font-[var(--typography\/label\/font-weight\/regular,400)] leading-[var(--typography\/label\/line-height,14px)] relative shrink-0 text-[color:var(--project\/focus\/sub-label,#999)] text-[length:var(--typography\/label\/font-size,12px)] tracking-[var(--typography\/label\/letter-spacing,0px)] whitespace-nowrap" data-node-id="109:130">
+                  {period}
+                </p>
+              )}
+            </div>
+          </div>
+        </>
+      )}
+    </div>
+  );
+}
+SUPER CRITICAL: The generated React+Tailwind code MUST be converted to match the target project's technology stack and styling system.
+1. Analyze the target codebase to identify: technology stack, styling approach, component patterns, and design tokens
+2. Convert React syntax to the target framework/library
+3. Transform all Tailwind classes to the target styling system while preserving exact visual design
+4. Follow the project's existing patterns and conventions
+DO NOT install any Tailwind as a dependency unless the user instructs you to do so.
+
+Node ids have been added to the code as data attributes, e.g. `data-node-id="1:2"`.
+These styles are contained in the design: label/regular: Font(family: "font-family/base", style: Regular, size: typography/label/font-size, weight: typography/label/font-weight/regular, lineHeight: typography/label/line-height, letterSpacing: typography/label/letter-spacing), title/medium: Font(family: "font-family/base", style: Medium, size: typography/title/font-size, weight: typography/title/font-weight/medium, lineHeight: typography/title/line-height, letterSpacing: typography/title/letter-spacing), Thumb: Effect(type: BACKGROUND_BLUR, radius: opacity/gentle), Base / Black: #000000, label/medium: Font(family: "font-family/base", style: Medium, size: typography/label/font-size, weight: typography/label/font-weight/medium, lineHeight: typography/label/line-height, letterSpacing: typography/label/letter-spacing).
+Image assets are stored on a localhost server. Clients can use these images directly in code as a way to view the image assets the same way they would other remote servers. Images and SVGs will be stored as constants, e.g. const image = 'http://localhost:3845/assets/10c13ac1a228a365cb98a0064b1d5afbc84887b2.png' These constants will be used in the code as the source for the image, e.g. <img src={image} /> This is true for both images and SVGs, so you can use the same approach for both types of assets.
+IMPORTANT: After you call this tool, you MUST call get_screenshot to get a screenshot of the node for context.

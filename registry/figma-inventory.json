@@ -1,0 +1,3191 @@
+{
+  "fileKey": "1Zy0wiWKXQAvsfDBX3KR0d",
+  "extractedFrom": "get_metadata 0:0",
+  "components": [
+    {
+      "variants": [
+        {
+          "nodeId": "184:18",
+          "name": "Client: Client 1",
+          "properties": {},
+          "width": 57.0,
+          "height": 11.0
+        }
+      ],
+      "component": "Client: Client 1",
+      "page": "clients logo",
+      "pageId": "156:44",
+      "axes": {},
+      "variantCount": 1,
+      "sizes": [
+        "57x11"
+      ],
+      "figmaUrl": "https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=184-18"
+    },
+    {
+      "variants": [
+        {
+          "nodeId": "166:1095",
+          "name": "Client: Client 2",
+          "properties": {},
+          "width": 52.7874755859375,
+          "height": 13.0
+        }
+      ],
+      "component": "Client: Client 2",
+      "page": "clients logo",
+      "pageId": "156:44",
+      "axes": {},
+      "variantCount": 1,
+      "sizes": [
+        "52.7875x13"
+      ],
+      "figmaUrl": "https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=166-1095"
+    },
+    {
+      "variants": [
+        {
+          "nodeId": "193:495",
+          "name": "Client: Client 3",
+          "properties": {},
+          "width": 56.0,
+          "height": 15.0
+        }
+      ],
+      "component": "Client: Client 3",
+      "page": "clients logo",
+      "pageId": "156:44",
+      "axes": {},
+      "variantCount": 1,
+      "sizes": [
+        "56x15"
+      ],
+      "figmaUrl": "https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=193-495"
+    },
+    {
+      "variants": [
+        {
+          "nodeId": "156:175",
+          "name": "Client: Client 4",
+          "properties": {},
+          "width": 46.00000762939453,
+          "height": 13.01311206817627
+        }
+      ],
+      "component": "Client: Client 4",
+      "page": "clients logo",
+      "pageId": "156:44",
+      "axes": {},
+      "variantCount": 1,
+      "sizes": [
+        "46x13.0131"
+      ],
+      "figmaUrl": "https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=156-175"
+    },
+    {
+      "variants": [
+        {
+          "nodeId": "208:96",
+          "name": "Client: Client 5",
+          "properties": {},
+          "width": 31.0,
+          "height": 16.0
+        }
+      ],
+      "component": "Client: Client 5",
+      "page": "clients logo",
+      "pageId": "156:44",
+      "axes": {},
+      "variantCount": 1,
+      "sizes": [
+        "31x16"
+      ],
+      "figmaUrl": "https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=208-96"
+    },
+    {
+      "variants": [
+        {
+          "nodeId": "210:72",
+          "name": "Client: Client 6",
+          "properties": {},
+          "width": 71.62759399414062,
+          "height": 20.0
+        }
+      ],
+      "component": "Client: Client 6",
+      "page": "clients logo",
+      "pageId": "156:44",
+      "axes": {},
+      "variantCount": 1,
+      "sizes": [
+        "71.6276x20"
+      ],
+      "figmaUrl": "https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=210-72"
+    },
+    {
+      "variants": [
+        {
+          "nodeId": "264:1273",
+          "name": "Client: Client 7",
+          "properties": {},
+          "width": 62.0,
+          "height": 9.0
+        }
+      ],
+      "component": "Client: Client 7",
+      "page": "clients logo",
+      "pageId": "156:44",
+      "axes": {},
+      "variantCount": 1,
+      "sizes": [
+        "62x9"
+      ],
+      "figmaUrl": "https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=264-1273"
+    },
+    {
+      "variants": [
+        {
+          "nodeId": "210:67",
+          "name": "Client: Client 8",
+          "properties": {},
+          "width": 62.08333206176758,
+          "height": 20.0
+        }
+      ],
+      "component": "Client: Client 8",
+      "page": "clients logo",
+      "pageId": "156:44",
+      "axes": {},
+      "variantCount": 1,
+      "sizes": [
+        "62.0833x20"
+      ],
+      "figmaUrl": "https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=210-67"
+    },
+    {
+      "variants": [
+        {
+          "nodeId": "138:243",
+          "name": "Component",
+          "properties": {},
+          "width": 43.0,
+          "height": 20.0
+        }
+      ],
+      "component": "Component",
+      "page": "Working Canvas",
+      "pageId": "0:2",
+      "axes": {},
+      "variantCount": 1,
+      "sizes": [
+        "43x20"
+      ],
+      "figmaUrl": "https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=138-243"
+    },
+    {
+      "variants": [
+        {
+          "nodeId": "108:158",
+          "name": "state=Disabled",
+          "properties": {
+            "state": "Disabled"
+          },
+          "width": 324.0,
+          "height": 104.0
+        },
+        {
+          "nodeId": "108:163",
+          "name": "state=Pressed",
+          "properties": {
+            "state": "Pressed"
+          },
+          "width": 324.0,
+          "height": 104.0
+        },
+        {
+          "nodeId": "108:168",
+          "name": "state=Focus",
+          "properties": {
+            "state": "Focus"
+          },
+          "width": 324.0,
+          "height": 104.0
+        },
+        {
+          "nodeId": "108:174",
+          "name": "state=Hover",
+          "properties": {
+            "state": "Hover"
+          },
+          "width": 324.0,
+          "height": 104.0
+        },
+        {
+          "nodeId": "108:179",
+          "name": "state=Default",
+          "properties": {
+            "state": "Default"
+          },
+          "width": 324.0,
+          "height": 104.0
+        },
+        {
+          "nodeId": "39:39",
+          "name": "type=Primary, state=Default",
+          "properties": {
+            "type": "Primary",
+            "state": "Default"
+          },
+          "width": 76.0,
+          "height": 48.0
+        },
+        {
+          "nodeId": "39:41",
+          "name": "type=Secondary, state=Default",
+          "properties": {
+            "type": "Secondary",
+            "state": "Default"
+          },
+          "width": 76.0,
+          "height": 48.0
+        },
+        {
+          "nodeId": "39:44",
+          "name": "type=Tertiary, state=Default",
+          "properties": {
+            "type": "Tertiary",
+            "state": "Default"
+          },
+          "width": 76.0,
+          "height": 48.0
+        },
+        {
+          "nodeId": "39:46",
+          "name": "type=Borderless, state=Default",
+          "properties": {
+            "type": "Borderless",
+            "state": "Default"
+          },
+          "width": 36.0,
+          "height": 48.0
+        },
+        {
+          "nodeId": "39:48",
+          "name": "type=Primary, state=Hover",
+          "properties": {
+            "type": "Primary",
+            "state": "Hover"
+          },
+          "width": 76.0,
+          "height": 48.0
+        },
+        {
+          "nodeId": "39:50",
+          "name": "type=Secondary, state=Hover",
+          "properties": {
+            "type": "Secondary",
+            "state": "Hover"
+          },
+          "width": 76.0,
+          "height": 48.0
+        },
+        {
+          "nodeId": "39:53",
+          "name": "type=Tertiary, state=Hover",
+          "properties": {
+            "type": "Tertiary",
+            "state": "Hover"
+          },
+          "width": 76.0,
+          "height": 48.0
+        },
+        {
+          "nodeId": "39:56",
+          "name": "type=Borderless, state=Hover",
+          "properties": {
+            "type": "Borderless",
+            "state": "Hover"
+          },
+          "width": 36.0,
+          "height": 48.0
+        },
+        {
+          "nodeId": "39:59",
+          "name": "type=Primary, state=Pressed",
+          "properties": {
+            "type": "Primary",
+            "state": "Pressed"
+          },
+          "width": 76.0,
+          "height": 48.0
+        },
+        {
+          "nodeId": "39:61",
+          "name": "type=Secondary, state=Pressed",
+          "properties": {
+            "type": "Secondary",
+            "state": "Pressed"
+          },
+          "width": 76.0,
+          "height": 48.0
+        },
+        {
+          "nodeId": "39:64",
+          "name": "type=Tertiary, state=Pressed",
+          "properties": {
+            "type": "Tertiary",
+            "state": "Pressed"
+          },
+          "width": 76.0,
+          "height": 48.0
+        },
+        {
+          "nodeId": "39:67",
+          "name": "type=Borderless, state=Pressed",
+          "properties": {
+            "type": "Borderless",
+            "state": "Pressed"
+          },
+          "width": 36.0,
+          "height": 48.0
+        },
+        {
+          "nodeId": "39:70",
+          "name": "type=Primary, state=Disabled",
+          "properties": {
+            "type": "Primary",
+            "state": "Disabled"
+          },
+          "width": 76.0,
+          "height": 48.0
+        },
+        {
+          "nodeId": "39:72",
+          "name": "type=Secondary, state=Disabled",
+          "properties": {
+            "type": "Secondary",
+            "state": "Disabled"
+          },
+          "width": 76.0,
+          "height": 48.0
+        },
+        {
+          "nodeId": "39:75",
+          "name": "type=Tertiary, state=Disabled",
+          "properties": {
+            "type": "Tertiary",
+            "state": "Disabled"
+          },
+          "width": 76.0,
+          "height": 48.0
+        },
+        {
+          "nodeId": "39:77",
+          "name": "type=Borderless, state=Disabled",
+          "properties": {
+            "type": "Borderless",
+            "state": "Disabled"
+          },
+          "width": 36.0,
+          "height": 48.0
+        },
+        {
+          "nodeId": "39:79",
+          "name": "type=Primary, state=Focus",
+          "properties": {
+            "type": "Primary",
+            "state": "Focus"
+          },
+          "width": 76.0,
+          "height": 48.0
+        },
+        {
+          "nodeId": "39:82",
+          "name": "type=Secondary, state=Focus",
+          "properties": {
+            "type": "Secondary",
+            "state": "Focus"
+          },
+          "width": 76.0,
+          "height": 48.0
+        },
+        {
+          "nodeId": "39:86",
+          "name": "type=Tertiary, state=Focus",
+          "properties": {
+            "type": "Tertiary",
+            "state": "Focus"
+          },
+          "width": 76.0,
+          "height": 48.0
+        },
+        {
+          "nodeId": "39:89",
+          "name": "type=Borderless, state=Focus",
+          "properties": {
+            "type": "Borderless",
+            "state": "Focus"
+          },
+          "width": 36.0,
+          "height": 48.0
+        }
+      ],
+      "component": "Working Canvas",
+      "page": "Working Canvas",
+      "pageId": "0:2",
+      "axes": {
+        "state": [
+          "Default",
+          "Disabled",
+          "Focus",
+          "Hover",
+          "Pressed"
+        ],
+        "type": [
+          "Borderless",
+          "Primary",
+          "Secondary",
+          "Tertiary"
+        ]
+      },
+      "variantCount": 25,
+      "sizes": [
+        "324x104",
+        "36x48",
+        "76x48"
+      ],
+      "figmaUrl": "https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=108-158"
+    },
+    {
+      "variants": [
+        {
+          "nodeId": "139:408",
+          "name": "badge/Default/Focus",
+          "properties": {
+            "level0": "Default",
+            "level1": "Focus"
+          },
+          "width": 43.0,
+          "height": 24.0
+        },
+        {
+          "nodeId": "139:405",
+          "name": "badge/Default/Disabled",
+          "properties": {
+            "level0": "Default",
+            "level1": "Disabled"
+          },
+          "width": 43.0,
+          "height": 24.0
+        },
+        {
+          "nodeId": "139:402",
+          "name": "badge/Default/Pressed",
+          "properties": {
+            "level0": "Default",
+            "level1": "Pressed"
+          },
+          "width": 43.0,
+          "height": 24.0
+        },
+        {
+          "nodeId": "139:399",
+          "name": "badge/Default/Hover",
+          "properties": {
+            "level0": "Default",
+            "level1": "Hover"
+          },
+          "width": 43.0,
+          "height": 24.0
+        },
+        {
+          "nodeId": "139:396",
+          "name": "status=Default",
+          "properties": {
+            "status": "Default"
+          },
+          "width": 43.0,
+          "height": 24.0
+        },
+        {
+          "nodeId": "139:433",
+          "name": "status=Negative",
+          "properties": {
+            "status": "Negative"
+          },
+          "width": 43.0,
+          "height": 24.0
+        },
+        {
+          "nodeId": "139:439",
+          "name": "status=Positive",
+          "properties": {
+            "status": "Positive"
+          },
+          "width": 43.0,
+          "height": 24.0
+        },
+        {
+          "nodeId": "139:445",
+          "name": "status=Warning",
+          "properties": {
+            "status": "Warning"
+          },
+          "width": 43.0,
+          "height": 24.0
+        }
+      ],
+      "component": "badge",
+      "page": "badge",
+      "pageId": "139:367",
+      "axes": {
+        "level0": [
+          "Default"
+        ],
+        "level1": [
+          "Disabled",
+          "Focus",
+          "Hover",
+          "Pressed"
+        ],
+        "status": [
+          "Default",
+          "Negative",
+          "Positive",
+          "Warning"
+        ]
+      },
+      "variantCount": 8,
+      "sizes": [
+        "43x24"
+      ],
+      "figmaUrl": "https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=139-408"
+    },
+    {
+      "variants": [
+        {
+          "nodeId": "91:413",
+          "name": "button/Borderless/Focus",
+          "properties": {
+            "level0": "Borderless",
+            "level1": "Focus"
+          },
+          "width": 26.0,
+          "height": 48.0
+        },
+        {
+          "nodeId": "91:410",
+          "name": "button/Tertiary/Focus",
+          "properties": {
+            "level0": "Tertiary",
+            "level1": "Focus"
+          },
+          "width": 66.0,
+          "height": 48.0
+        },
+        {
+          "nodeId": "91:406",
+          "name": "button/Secondary/Focus",
+          "properties": {
+            "level0": "Secondary",
+            "level1": "Focus"
+          },
+          "width": 66.0,
+          "height": 48.0
+        },
+        {
+          "nodeId": "91:401",
+          "name": "button/Borderless/Disabled",
+          "properties": {
+            "level0": "Borderless",
+            "level1": "Disabled"
+          },
+          "width": 26.0,
+          "height": 48.0
+        },
+        {
+          "nodeId": "91:399",
+          "name": "button/Tertiary/Disabled",
+          "properties": {
+            "level0": "Tertiary",
+            "level1": "Disabled"
+          },
+          "width": 66.0,
+          "height": 48.0
+        },
+        {
+          "nodeId": "91:396",
+          "name": "button/Secondary/Disabled",
+          "properties": {
+            "level0": "Secondary",
+            "level1": "Disabled"
+          },
+          "width": 66.0,
+          "height": 48.0
+        },
+        {
+          "nodeId": "91:391",
+          "name": "button/Borderless/Pressed",
+          "properties": {
+            "level0": "Borderless",
+            "level1": "Pressed"
+          },
+          "width": 26.0,
+          "height": 48.0
+        },
+        {
+          "nodeId": "91:388",
+          "name": "button/Tertiary/Pressed",
+          "properties": {
+            "level0": "Tertiary",
+            "level1": "Pressed"
+          },
+          "width": 66.0,
+          "height": 48.0
+        },
+        {
+          "nodeId": "91:385",
+          "name": "button/Secondary/Pressed",
+          "properties": {
+            "level0": "Secondary",
+            "level1": "Pressed"
+          },
+          "width": 66.0,
+          "height": 48.0
+        },
+        {
+          "nodeId": "91:380",
+          "name": "button/Borderless/Hover",
+          "properties": {
+            "level0": "Borderless",
+            "level1": "Hover"
+          },
+          "width": 26.0,
+          "height": 48.0
+        },
+        {
+          "nodeId": "91:377",
+          "name": "button/Tertiary/Hover",
+          "properties": {
+            "level0": "Tertiary",
+            "level1": "Hover"
+          },
+          "width": 66.0,
+          "height": 48.0
+        },
+        {
+          "nodeId": "91:374",
+          "name": "button/Secondary/Hover",
+          "properties": {
+            "level0": "Secondary",
+            "level1": "Hover"
+          },
+          "width": 66.0,
+          "height": 48.0
+        },
+        {
+          "nodeId": "91:370",
+          "name": "button/Borderless/Default",
+          "properties": {
+            "level0": "Borderless",
+            "level1": "Default"
+          },
+          "width": 26.0,
+          "height": 48.0
+        },
+        {
+          "nodeId": "91:368",
+          "name": "button/Tertiary/Default",
+          "properties": {
+            "level0": "Tertiary",
+            "level1": "Default"
+          },
+          "width": 66.0,
+          "height": 48.0
+        },
+        {
+          "nodeId": "91:365",
+          "name": "button/Secondary/Default",
+          "properties": {
+            "level0": "Secondary",
+            "level1": "Default"
+          },
+          "width": 66.0,
+          "height": 48.0
+        }
+      ],
+      "component": "button",
+      "page": "Working Canvas",
+      "pageId": "0:2",
+      "axes": {
+        "level0": [
+          "Borderless",
+          "Secondary",
+          "Tertiary"
+        ],
+        "level1": [
+          "Default",
+          "Disabled",
+          "Focus",
+          "Hover",
+          "Pressed"
+        ]
+      },
+      "variantCount": 15,
+      "sizes": [
+        "26x48",
+        "66x48"
+      ],
+      "figmaUrl": "https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=91-413"
+    },
+    {
+      "variants": [
+        {
+          "nodeId": "20:13",
+          "name": "type=Primary, state=Default",
+          "properties": {
+            "type": "Primary",
+            "state": "Default"
+          },
+          "width": 76.0,
+          "height": 48.0
+        },
+        {
+          "nodeId": "25:80",
+          "name": "type=Secondary, state=Default",
+          "properties": {
+            "type": "Secondary",
+            "state": "Default"
+          },
+          "width": 76.0,
+          "height": 48.0
+        },
+        {
+          "nodeId": "25:191",
+          "name": "type=Tertiary, state=Default",
+          "properties": {
+            "type": "Tertiary",
+            "state": "Default"
+          },
+          "width": 76.0,
+          "height": 48.0
+        },
+        {
+          "nodeId": "25:249",
+          "name": "type=Borderless, state=Default",
+          "properties": {
+            "type": "Borderless",
+            "state": "Default"
+          },
+          "width": 36.0,
+          "height": 48.0
+        },
+        {
+          "nodeId": "20:15",
+          "name": "type=Primary, state=Hover",
+          "properties": {
+            "type": "Primary",
+            "state": "Hover"
+          },
+          "width": 76.0,
+          "height": 48.0
+        },
+        {
+          "nodeId": "25:82",
+          "name": "type=Secondary, state=Hover",
+          "properties": {
+            "type": "Secondary",
+            "state": "Hover"
+          },
+          "width": 76.0,
+          "height": 48.0
+        },
+        {
+          "nodeId": "25:194",
+          "name": "type=Tertiary, state=Hover",
+          "properties": {
+            "type": "Tertiary",
+            "state": "Hover"
+          },
+          "width": 76.0,
+          "height": 48.0
+        },
+        {
+          "nodeId": "25:251",
+          "name": "type=Borderless, state=Hover",
+          "properties": {
+            "type": "Borderless",
+            "state": "Hover"
+          },
+          "width": 36.0,
+          "height": 48.0
+        },
+        {
+          "nodeId": "20:20",
+          "name": "type=Primary, state=Pressed",
+          "properties": {
+            "type": "Primary",
+            "state": "Pressed"
+          },
+          "width": 76.0,
+          "height": 48.0
+        },
+        {
+          "nodeId": "25:84",
+          "name": "type=Secondary, state=Pressed",
+          "properties": {
+            "type": "Secondary",
+            "state": "Pressed"
+          },
+          "width": 76.0,
+          "height": 48.0
+        },
+        {
+          "nodeId": "25:197",
+          "name": "type=Tertiary, state=Pressed",
+          "properties": {
+            "type": "Tertiary",
+            "state": "Pressed"
+          },
+          "width": 76.0,
+          "height": 48.0
+        },
+        {
+          "nodeId": "25:254",
+          "name": "type=Borderless, state=Pressed",
+          "properties": {
+            "type": "Borderless",
+            "state": "Pressed"
+          },
+          "width": 36.0,
+          "height": 48.0
+        },
+        {
+          "nodeId": "20:22",
+          "name": "type=Primary, state=Disabled",
+          "properties": {
+            "type": "Primary",
+            "state": "Disabled"
+          },
+          "width": 76.0,
+          "height": 48.0
+        },
+        {
+          "nodeId": "25:86",
+          "name": "type=Secondary, state=Disabled",
+          "properties": {
+            "type": "Secondary",
+            "state": "Disabled"
+          },
+          "width": 76.0,
+          "height": 48.0
+        },
+        {
+          "nodeId": "25:200",
+          "name": "type=Tertiary, state=Disabled",
+          "properties": {
+            "type": "Tertiary",
+            "state": "Disabled"
+          },
+          "width": 76.0,
+          "height": 48.0
+        },
+        {
+          "nodeId": "25:257",
+          "name": "type=Borderless, state=Disabled",
+          "properties": {
+            "type": "Borderless",
+            "state": "Disabled"
+          },
+          "width": 36.0,
+          "height": 48.0
+        },
+        {
+          "nodeId": "20:17",
+          "name": "type=Primary, state=Focus",
+          "properties": {
+            "type": "Primary",
+            "state": "Focus"
+          },
+          "width": 76.0,
+          "height": 48.0
+        },
+        {
+          "nodeId": "25:88",
+          "name": "type=Secondary, state=Focus",
+          "properties": {
+            "type": "Secondary",
+            "state": "Focus"
+          },
+          "width": 76.0,
+          "height": 48.0
+        },
+        {
+          "nodeId": "25:203",
+          "name": "type=Tertiary, state=Focus",
+          "properties": {
+            "type": "Tertiary",
+            "state": "Focus"
+          },
+          "width": 76.0,
+          "height": 48.0
+        },
+        {
+          "nodeId": "25:260",
+          "name": "type=Borderless, state=Focus",
+          "properties": {
+            "type": "Borderless",
+            "state": "Focus"
+          },
+          "width": 36.0,
+          "height": 48.0
+        },
+        {
+          "nodeId": "93:588",
+          "name": "type=Primary, state=Default",
+          "properties": {
+            "type": "Primary",
+            "state": "Default"
+          },
+          "width": 48.0,
+          "height": 48.0
+        },
+        {
+          "nodeId": "93:591",
+          "name": "type=Secondary, state=Default",
+          "properties": {
+            "type": "Secondary",
+            "state": "Default"
+          },
+          "width": 48.0,
+          "height": 48.0
+        },
+        {
+          "nodeId": "93:595",
+          "name": "type=Tertiary, state=Default",
+          "properties": {
+            "type": "Tertiary",
+            "state": "Default"
+          },
+          "width": 48.0,
+          "height": 48.0
+        },
+        {
+          "nodeId": "93:740",
+          "name": "type=Project, state=Default",
+          "properties": {
+            "type": "Project",
+            "state": "Default"
+          },
+          "width": 32.0,
+          "height": 32.0
+        },
+        {
+          "nodeId": "93:601",
+          "name": "type=Primary, state=Hover",
+          "properties": {
+            "type": "Primary",
+            "state": "Hover"
+          },
+          "width": 48.0,
+          "height": 48.0
+        },
+        {
+          "nodeId": "93:604",
+          "name": "type=Secondary, state=Hover",
+          "properties": {
+            "type": "Secondary",
+            "state": "Hover"
+          },
+          "width": 48.0,
+          "height": 48.0
+        },
+        {
+          "nodeId": "93:608",
+          "name": "type=Tertiary, state=Hover",
+          "properties": {
+            "type": "Tertiary",
+            "state": "Hover"
+          },
+          "width": 48.0,
+          "height": 48.0
+        },
+        {
+          "nodeId": "93:742",
+          "name": "type=Project, state=Hover",
+          "properties": {
+            "type": "Project",
+            "state": "Hover"
+          },
+          "width": 32.0,
+          "height": 32.0
+        },
+        {
+          "nodeId": "93:616",
+          "name": "type=Primary, state=Pressed",
+          "properties": {
+            "type": "Primary",
+            "state": "Pressed"
+          },
+          "width": 48.0,
+          "height": 48.0
+        },
+        {
+          "nodeId": "93:619",
+          "name": "type=Secondary, state=Pressed",
+          "properties": {
+            "type": "Secondary",
+            "state": "Pressed"
+          },
+          "width": 48.0,
+          "height": 48.0
+        },
+        {
+          "nodeId": "93:623",
+          "name": "type=Tertiary, state=Pressed",
+          "properties": {
+            "type": "Tertiary",
+            "state": "Pressed"
+          },
+          "width": 48.0,
+          "height": 48.0
+        },
+        {
+          "nodeId": "93:745",
+          "name": "type=Project, state=Pressed",
+          "properties": {
+            "type": "Project",
+            "state": "Pressed"
+          },
+          "width": 32.0,
+          "height": 32.0
+        },
+        {
+          "nodeId": "93:631",
+          "name": "type=Primary, state=Disabled",
+          "properties": {
+            "type": "Primary",
+            "state": "Disabled"
+          },
+          "width": 48.0,
+          "height": 48.0
+        },
+        {
+          "nodeId": "93:634",
+          "name": "type=Secondary, state=Disabled",
+          "properties": {
+            "type": "Secondary",
+            "state": "Disabled"
+          },
+          "width": 48.0,
+          "height": 48.0
+        },
+        {
+          "nodeId": "93:638",
+          "name": "type=Tertiary, state=Disabled",
+          "properties": {
+            "type": "Tertiary",
+            "state": "Disabled"
+          },
+          "width": 48.0,
+          "height": 48.0
+        },
+        {
+          "nodeId": "93:748",
+          "name": "type=Project, state=Disabled",
+          "properties": {
+            "type": "Project",
+            "state": "Disabled"
+          },
+          "width": 32.0,
+          "height": 32.0
+        },
+        {
+          "nodeId": "93:644",
+          "name": "type=Primary, state=Focus",
+          "properties": {
+            "type": "Primary",
+            "state": "Focus"
+          },
+          "width": 48.0,
+          "height": 48.0
+        },
+        {
+          "nodeId": "93:648",
+          "name": "type=Secondary, state=Focus",
+          "properties": {
+            "type": "Secondary",
+            "state": "Focus"
+          },
+          "width": 48.0,
+          "height": 48.0
+        },
+        {
+          "nodeId": "93:653",
+          "name": "type=Tertiary, state=Focus",
+          "properties": {
+            "type": "Tertiary",
+            "state": "Focus"
+          },
+          "width": 48.0,
+          "height": 48.0
+        },
+        {
+          "nodeId": "93:750",
+          "name": "type=Project, state=Focus",
+          "properties": {
+            "type": "Project",
+            "state": "Focus"
+          },
+          "width": 32.0,
+          "height": 32.0
+        }
+      ],
+      "component": "buttons",
+      "page": "buttons",
+      "pageId": "20:5",
+      "axes": {
+        "state": [
+          "Default",
+          "Disabled",
+          "Focus",
+          "Hover",
+          "Pressed"
+        ],
+        "type": [
+          "Borderless",
+          "Primary",
+          "Project",
+          "Secondary",
+          "Tertiary"
+        ]
+      },
+      "variantCount": 40,
+      "sizes": [
+        "32x32",
+        "36x48",
+        "48x48",
+        "76x48"
+      ],
+      "figmaUrl": "https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=20-13"
+    },
+    {
+      "variants": [
+        {
+          "nodeId": "157:303",
+          "name": "state=Default",
+          "properties": {
+            "state": "Default"
+          },
+          "width": 312.0,
+          "height": 102.0
+        },
+        {
+          "nodeId": "157:317",
+          "name": "state=Disabled",
+          "properties": {
+            "state": "Disabled"
+          },
+          "width": 312.0,
+          "height": 102.0
+        },
+        {
+          "nodeId": "157:331",
+          "name": "state=Pressed",
+          "properties": {
+            "state": "Pressed"
+          },
+          "width": 312.0,
+          "height": 102.0
+        },
+        {
+          "nodeId": "157:345",
+          "name": "state=Focus",
+          "properties": {
+            "state": "Focus"
+          },
+          "width": 312.0,
+          "height": 102.0
+        },
+        {
+          "nodeId": "157:360",
+          "name": "state=Hover",
+          "properties": {
+            "state": "Hover"
+          },
+          "width": 312.0,
+          "height": 102.0
+        }
+      ],
+      "component": "carousel",
+      "page": "carousel",
+      "pageId": "157:279",
+      "axes": {
+        "state": [
+          "Default",
+          "Disabled",
+          "Focus",
+          "Hover",
+          "Pressed"
+        ]
+      },
+      "variantCount": 5,
+      "sizes": [
+        "312x102"
+      ],
+      "figmaUrl": "https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=157-303"
+    },
+    {
+      "variants": [
+        {
+          "nodeId": "139:318",
+          "name": "status=Default, state=Default",
+          "properties": {
+            "status": "Default",
+            "state": "Default"
+          },
+          "width": 43.0,
+          "height": 24.0
+        },
+        {
+          "nodeId": "139:320",
+          "name": "status=Default, state=Hover",
+          "properties": {
+            "status": "Default",
+            "state": "Hover"
+          },
+          "width": 43.0,
+          "height": 24.0
+        },
+        {
+          "nodeId": "139:322",
+          "name": "status=Default, state=Pressed",
+          "properties": {
+            "status": "Default",
+            "state": "Pressed"
+          },
+          "width": 43.0,
+          "height": 24.0
+        },
+        {
+          "nodeId": "139:324",
+          "name": "status=Default, state=Disabled",
+          "properties": {
+            "status": "Default",
+            "state": "Disabled"
+          },
+          "width": 43.0,
+          "height": 24.0
+        },
+        {
+          "nodeId": "139:326",
+          "name": "status=Default, state=Focus",
+          "properties": {
+            "status": "Default",
+            "state": "Focus"
+          },
+          "width": 43.0,
+          "height": 24.0
+        }
+      ],
+      "component": "chip",
+      "page": "chip",
+      "pageId": "139:284",
+      "axes": {
+        "state": [
+          "Default",
+          "Disabled",
+          "Focus",
+          "Hover",
+          "Pressed"
+        ],
+        "status": [
+          "Default"
+        ]
+      },
+      "variantCount": 5,
+      "sizes": [
+        "43x24"
+      ],
+      "figmaUrl": "https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=139-318"
+    },
+    {
+      "variants": [
+        {
+          "nodeId": "39:111",
+          "name": "divider",
+          "properties": {},
+          "width": 104.0,
+          "height": 0.0
+        }
+      ],
+      "component": "divider",
+      "page": "divider",
+      "pageId": "39:5",
+      "axes": {},
+      "variantCount": 1,
+      "sizes": [
+        "104x0"
+      ],
+      "figmaUrl": "https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=39-111"
+    },
+    {
+      "variants": [
+        {
+          "nodeId": "93:657",
+          "name": "icon-button/Borderless/Focus",
+          "properties": {
+            "level0": "Borderless",
+            "level1": "Focus"
+          },
+          "width": 48.0,
+          "height": 48.0
+        },
+        {
+          "nodeId": "93:641",
+          "name": "icon-button/Borderless/Disabled",
+          "properties": {
+            "level0": "Borderless",
+            "level1": "Disabled"
+          },
+          "width": 48.0,
+          "height": 48.0
+        },
+        {
+          "nodeId": "93:627",
+          "name": "icon-button/Borderless/Pressed",
+          "properties": {
+            "level0": "Borderless",
+            "level1": "Pressed"
+          },
+          "width": 48.0,
+          "height": 48.0
+        },
+        {
+          "nodeId": "93:612",
+          "name": "icon-button/Borderless/Hover",
+          "properties": {
+            "level0": "Borderless",
+            "level1": "Hover"
+          },
+          "width": 48.0,
+          "height": 48.0
+        },
+        {
+          "nodeId": "93:598",
+          "name": "icon-button/Borderless/Default",
+          "properties": {
+            "level0": "Borderless",
+            "level1": "Default"
+          },
+          "width": 48.0,
+          "height": 48.0
+        }
+      ],
+      "component": "icon-button",
+      "page": "Working Canvas",
+      "pageId": "0:2",
+      "axes": {
+        "level0": [
+          "Borderless"
+        ],
+        "level1": [
+          "Default",
+          "Disabled",
+          "Focus",
+          "Hover",
+          "Pressed"
+        ]
+      },
+      "variantCount": 5,
+      "sizes": [
+        "48x48"
+      ],
+      "figmaUrl": "https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=93-657"
+    },
+    {
+      "variants": [
+        {
+          "nodeId": "205:710",
+          "name": "icons/plus",
+          "properties": {
+            "level0": "plus"
+          },
+          "width": 24.0,
+          "height": 24.0
+        },
+        {
+          "nodeId": "205:711",
+          "name": "icons/warning",
+          "properties": {
+            "level0": "warning"
+          },
+          "width": 24.0,
+          "height": 24.0
+        },
+        {
+          "nodeId": "205:712",
+          "name": "icons/positive",
+          "properties": {
+            "level0": "positive"
+          },
+          "width": 24.0,
+          "height": 24.0
+        },
+        {
+          "nodeId": "205:713",
+          "name": "icons/alarm",
+          "properties": {
+            "level0": "alarm"
+          },
+          "width": 24.0,
+          "height": 24.0
+        },
+        {
+          "nodeId": "208:84",
+          "name": "icons/lock",
+          "properties": {
+            "level0": "lock"
+          },
+          "width": 24.0,
+          "height": 24.0
+        },
+        {
+          "nodeId": "238:169",
+          "name": "icons/user",
+          "properties": {
+            "level0": "user"
+          },
+          "width": 24.0,
+          "height": 24.0
+        },
+        {
+          "nodeId": "241:606",
+          "name": "icons/hide",
+          "properties": {
+            "level0": "hide"
+          },
+          "width": 24.0,
+          "height": 24.0
+        },
+        {
+          "nodeId": "241:611",
+          "name": "icons/show",
+          "properties": {
+            "level0": "show"
+          },
+          "width": 24.0,
+          "height": 24.0
+        },
+        {
+          "nodeId": "241:625",
+          "name": "icons/clear",
+          "properties": {
+            "level0": "clear"
+          },
+          "width": 24.0,
+          "height": 24.0
+        },
+        {
+          "nodeId": "93:464",
+          "name": "icons/arrow-right",
+          "properties": {
+            "level0": "arrow-right"
+          },
+          "width": 24.0,
+          "height": 24.0
+        },
+        {
+          "nodeId": "93:462",
+          "name": "icons/arrow-left",
+          "properties": {
+            "level0": "arrow-left"
+          },
+          "width": 24.0,
+          "height": 24.0
+        },
+        {
+          "nodeId": "93:718",
+          "name": "icons/dot",
+          "properties": {
+            "level0": "dot"
+          },
+          "width": 24.0,
+          "height": 24.0
+        },
+        {
+          "nodeId": "93:461",
+          "name": "icons/arrow-down",
+          "properties": {
+            "level0": "arrow-down"
+          },
+          "width": 24.0,
+          "height": 24.0
+        },
+        {
+          "nodeId": "93:460",
+          "name": "icons/arrow-up",
+          "properties": {
+            "level0": "arrow-up"
+          },
+          "width": 24.0,
+          "height": 24.0
+        },
+        {
+          "nodeId": "93:459",
+          "name": "icons/chevron-right",
+          "properties": {
+            "level0": "chevron-right"
+          },
+          "width": 24.0,
+          "height": 24.0
+        },
+        {
+          "nodeId": "93:463",
+          "name": "icons/chevron-left",
+          "properties": {
+            "level0": "chevron-left"
+          },
+          "width": 24.0,
+          "height": 24.0
+        },
+        {
+          "nodeId": "93:458",
+          "name": "icons/chevron-down",
+          "properties": {
+            "level0": "chevron-down"
+          },
+          "width": 24.0,
+          "height": 24.0
+        },
+        {
+          "nodeId": "93:457",
+          "name": "icons/chevron-up",
+          "properties": {
+            "level0": "chevron-up"
+          },
+          "width": 24.0,
+          "height": 24.0
+        },
+        {
+          "nodeId": "93:780",
+          "name": "icons/up-right",
+          "properties": {
+            "level0": "up-right"
+          },
+          "width": 24.0,
+          "height": 24.0
+        },
+        {
+          "nodeId": "136:68",
+          "name": "icons/scroll",
+          "properties": {
+            "level0": "scroll"
+          },
+          "width": 24.0,
+          "height": 24.0
+        },
+        {
+          "nodeId": "168:1334",
+          "name": "icons/mobile",
+          "properties": {
+            "level0": "mobile"
+          },
+          "width": 24.0,
+          "height": 24.0
+        },
+        {
+          "nodeId": "168:1333",
+          "name": "icons/desktop",
+          "properties": {
+            "level0": "desktop"
+          },
+          "width": 24.0,
+          "height": 24.0
+        },
+        {
+          "nodeId": "93:782",
+          "name": "icons/down-right",
+          "properties": {
+            "level0": "down-right"
+          },
+          "width": 24.0,
+          "height": 24.0
+        },
+        {
+          "nodeId": "93:784",
+          "name": "icons/up-left",
+          "properties": {
+            "level0": "up-left"
+          },
+          "width": 24.0,
+          "height": 24.0
+        },
+        {
+          "nodeId": "93:786",
+          "name": "icons/arrow-down-left",
+          "properties": {
+            "level0": "arrow-down-left"
+          },
+          "width": 24.0,
+          "height": 24.0
+        },
+        {
+          "nodeId": "201:13",
+          "name": "icons/drag",
+          "properties": {
+            "level0": "drag"
+          },
+          "width": 24.0,
+          "height": 24.0
+        }
+      ],
+      "component": "icons",
+      "page": "iconography",
+      "pageId": "41:372",
+      "axes": {
+        "level0": [
+          "alarm",
+          "arrow-down",
+          "arrow-down-left",
+          "arrow-left",
+          "arrow-right",
+          "arrow-up",
+          "chevron-down",
+          "chevron-left",
+          "chevron-right",
+          "chevron-up",
+          "clear",
+          "desktop",
+          "dot",
+          "down-right",
+          "drag",
+          "hide",
+          "lock",
+          "mobile",
+          "plus",
+          "positive",
+          "scroll",
+          "show",
+          "up-left",
+          "up-right",
+          "user",
+          "warning"
+        ]
+      },
+      "variantCount": 26,
+      "sizes": [
+        "24x24"
+      ],
+      "figmaUrl": "https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=205-710"
+    },
+    {
+      "variants": [
+        {
+          "nodeId": "41:569",
+          "name": "type=Alignment",
+          "properties": {
+            "type": "Alignment"
+          },
+          "width": 72.0,
+          "height": 72.0
+        },
+        {
+          "nodeId": "41:566",
+          "name": "type=Audit &amp; Strategy",
+          "properties": {
+            "type": "Audit &amp; Strategy"
+          },
+          "width": 72.0,
+          "height": 72.0
+        },
+        {
+          "nodeId": "41:564",
+          "name": "type=Bridging the gaps",
+          "properties": {
+            "type": "Bridging the gaps"
+          },
+          "width": 72.0,
+          "height": 72.0
+        },
+        {
+          "nodeId": "41:562",
+          "name": "type=Design partner",
+          "properties": {
+            "type": "Design partner"
+          },
+          "width": 72.0,
+          "height": 72.0
+        },
+        {
+          "nodeId": "41:559",
+          "name": "type=Design system leadership",
+          "properties": {
+            "type": "Design system leadership"
+          },
+          "width": 72.0,
+          "height": 72.0
+        },
+        {
+          "nodeId": "215:516",
+          "name": "type=Ship best",
+          "properties": {
+            "type": "Ship best"
+          },
+          "width": 72.0,
+          "height": 72.0
+        },
+        {
+          "nodeId": "215:558",
+          "name": "type=Art",
+          "properties": {
+            "type": "Art"
+          },
+          "width": 72.0,
+          "height": 72.0
+        },
+        {
+          "nodeId": "233:49",
+          "name": "type=Activation &amp; conversion",
+          "properties": {
+            "type": "Activation &amp; conversion"
+          },
+          "width": 72.0,
+          "height": 72.0
+        },
+        {
+          "nodeId": "233:55",
+          "name": "type=Retention",
+          "properties": {
+            "type": "Retention"
+          },
+          "width": 72.0,
+          "height": 72.0
+        },
+        {
+          "nodeId": "233:61",
+          "name": "type=Efficiency",
+          "properties": {
+            "type": "Efficiency"
+          },
+          "width": 72.0,
+          "height": 72.0
+        },
+        {
+          "nodeId": "41:567",
+          "name": "type=Design system",
+          "properties": {
+            "type": "Design system"
+          },
+          "width": 72.0,
+          "height": 72.0
+        },
+        {
+          "nodeId": "41:565",
+          "name": "type=Goal focused",
+          "properties": {
+            "type": "Goal focused"
+          },
+          "width": 72.0,
+          "height": 72.0
+        },
+        {
+          "nodeId": "41:563",
+          "name": "type=Implementing",
+          "properties": {
+            "type": "Implementing"
+          },
+          "width": 72.0,
+          "height": 72.0
+        },
+        {
+          "nodeId": "41:560",
+          "name": "type=Interactive showcase",
+          "properties": {
+            "type": "Interactive showcase"
+          },
+          "width": 72.0,
+          "height": 72.0
+        },
+        {
+          "nodeId": "215:524",
+          "name": "type=UI",
+          "properties": {
+            "type": "UI"
+          },
+          "width": 72.0,
+          "height": 72.0
+        },
+        {
+          "nodeId": "215:531",
+          "name": "type=Best idea",
+          "properties": {
+            "type": "Best idea"
+          },
+          "width": 72.0,
+          "height": 72.0
+        },
+        {
+          "nodeId": "215:543",
+          "name": "type=Simplicity v Complexity",
+          "properties": {
+            "type": "Simplicity v Complexity"
+          },
+          "width": 72.0,
+          "height": 72.0
+        },
+        {
+          "nodeId": "41:558",
+          "name": "type=Long term projects",
+          "properties": {
+            "type": "Long term projects"
+          },
+          "width": 72.0,
+          "height": 72.0
+        },
+        {
+          "nodeId": "41:557",
+          "name": "type=Mentoring",
+          "properties": {
+            "type": "Mentoring"
+          },
+          "width": 72.0,
+          "height": 72.0
+        },
+        {
+          "nodeId": "41:568",
+          "name": "type=Part of the team",
+          "properties": {
+            "type": "Part of the team"
+          },
+          "width": 72.0,
+          "height": 72.0
+        },
+        {
+          "nodeId": "41:555",
+          "name": "type=Product design",
+          "properties": {
+            "type": "Product design"
+          },
+          "width": 72.0,
+          "height": 72.0
+        },
+        {
+          "nodeId": "41:554",
+          "name": "type=Scale team",
+          "properties": {
+            "type": "Scale team"
+          },
+          "width": 72.0,
+          "height": 72.0
+        },
+        {
+          "nodeId": "41:561",
+          "name": "type=Structured system",
+          "properties": {
+            "type": "Structured system"
+          },
+          "width": 72.0,
+          "height": 72.0
+        },
+        {
+          "nodeId": "41:556",
+          "name": "type=Timezones",
+          "properties": {
+            "type": "Timezones"
+          },
+          "width": 72.0,
+          "height": 72.0
+        }
+      ],
+      "component": "illustrations",
+      "page": "illustrations",
+      "pageId": "92:118",
+      "axes": {
+        "type": [
+          "Activation &amp; conversion",
+          "Alignment",
+          "Art",
+          "Audit &amp; Strategy",
+          "Best idea",
+          "Bridging the gaps",
+          "Design partner",
+          "Design system",
+          "Design system leadership",
+          "Efficiency",
+          "Goal focused",
+          "Implementing",
+          "Interactive showcase",
+          "Long term projects",
+          "Mentoring",
+          "Part of the team",
+          "Product design",
+          "Retention",
+          "Scale team",
+          "Ship best",
+          "Simplicity v Complexity",
+          "Structured system",
+          "Timezones",
+          "UI"
+        ]
+      },
+      "variantCount": 24,
+      "sizes": [
+        "72x72"
+      ],
+      "figmaUrl": "https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=41-569"
+    },
+    {
+      "variants": [
+        {
+          "nodeId": "205:615",
+          "name": "status=Default, size=Small",
+          "properties": {
+            "status": "Default",
+            "size": "Small"
+          },
+          "width": 63.0,
+          "height": 32.0
+        },
+        {
+          "nodeId": "233:126",
+          "name": "status=Default, size=Medium",
+          "properties": {
+            "status": "Default",
+            "size": "Medium"
+          },
+          "width": 80.0,
+          "height": 38.0
+        },
+        {
+          "nodeId": "205:722",
+          "name": "status=Negative, size=Small",
+          "properties": {
+            "status": "Negative",
+            "size": "Small"
+          },
+          "width": 63.0,
+          "height": 32.0
+        },
+        {
+          "nodeId": "233:131",
+          "name": "status=Negative, size=Medium",
+          "properties": {
+            "status": "Negative",
+            "size": "Medium"
+          },
+          "width": 80.0,
+          "height": 38.0
+        },
+        {
+          "nodeId": "207:32",
+          "name": "status=Positive, size=Small",
+          "properties": {
+            "status": "Positive",
+            "size": "Small"
+          },
+          "width": 63.0,
+          "height": 32.0
+        },
+        {
+          "nodeId": "233:136",
+          "name": "status=Positive, size=Medium",
+          "properties": {
+            "status": "Positive",
+            "size": "Medium"
+          },
+          "width": 80.0,
+          "height": 38.0
+        },
+        {
+          "nodeId": "207:48",
+          "name": "status=Warning, size=Small",
+          "properties": {
+            "status": "Warning",
+            "size": "Small"
+          },
+          "width": 63.0,
+          "height": 32.0
+        },
+        {
+          "nodeId": "233:141",
+          "name": "status=Warning, size=Medium",
+          "properties": {
+            "status": "Warning",
+            "size": "Medium"
+          },
+          "width": 80.0,
+          "height": 38.0
+        }
+      ],
+      "component": "inline banner",
+      "page": "inline banner",
+      "pageId": "205:606",
+      "axes": {
+        "size": [
+          "Medium",
+          "Small"
+        ],
+        "status": [
+          "Default",
+          "Negative",
+          "Positive",
+          "Warning"
+        ]
+      },
+      "variantCount": 8,
+      "sizes": [
+        "63x32",
+        "80x38"
+      ],
+      "figmaUrl": "https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=205-615"
+    },
+    {
+      "variants": [
+        {
+          "nodeId": "205:624",
+          "name": "inline-banner/Warning",
+          "properties": {
+            "level0": "Warning"
+          },
+          "width": 43.0,
+          "height": 24.0
+        },
+        {
+          "nodeId": "205:621",
+          "name": "inline-banner/Positive",
+          "properties": {
+            "level0": "Positive"
+          },
+          "width": 43.0,
+          "height": 24.0
+        },
+        {
+          "nodeId": "205:618",
+          "name": "inline-banner/Negative",
+          "properties": {
+            "level0": "Negative"
+          },
+          "width": 43.0,
+          "height": 24.0
+        }
+      ],
+      "component": "inline-banner",
+      "page": "Working Canvas",
+      "pageId": "0:2",
+      "axes": {
+        "level0": [
+          "Negative",
+          "Positive",
+          "Warning"
+        ]
+      },
+      "variantCount": 3,
+      "sizes": [
+        "43x24"
+      ],
+      "figmaUrl": "https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=205-624"
+    },
+    {
+      "variants": [
+        {
+          "nodeId": "252:1043",
+          "name": "input/Disabled/Filled/False/True",
+          "properties": {
+            "level0": "Disabled",
+            "level1": "Filled",
+            "level2": "False",
+            "level3": "True"
+          },
+          "width": 208.0,
+          "height": 48.0
+        },
+        {
+          "nodeId": "252:1035",
+          "name": "input/Disabled/Empty/False/True",
+          "properties": {
+            "level0": "Disabled",
+            "level1": "Empty",
+            "level2": "False",
+            "level3": "True"
+          },
+          "width": 208.0,
+          "height": 48.0
+        },
+        {
+          "nodeId": "240:280",
+          "name": "input/Default/Pressed",
+          "properties": {
+            "level0": "Default",
+            "level1": "Pressed"
+          },
+          "width": 208.0,
+          "height": 48.0
+        },
+        {
+          "nodeId": "240:283",
+          "name": "input/Default/Disabled",
+          "properties": {
+            "level0": "Default",
+            "level1": "Disabled"
+          },
+          "width": 208.0,
+          "height": 48.0
+        },
+        {
+          "nodeId": "240:286",
+          "name": "input/Default/Focus",
+          "properties": {
+            "level0": "Default",
+            "level1": "Focus"
+          },
+          "width": 208.0,
+          "height": 48.0
+        },
+        {
+          "nodeId": "240:274",
+          "name": "state=Default, configuration=Empty, selected=False, error=False",
+          "properties": {
+            "state": "Default",
+            "configuration": "Empty",
+            "selected": "False",
+            "error": "False"
+          },
+          "width": 208.0,
+          "height": 56.0
+        },
+        {
+          "nodeId": "252:1014",
+          "name": "state=Default, configuration=Empty, selected=False, error=True",
+          "properties": {
+            "state": "Default",
+            "configuration": "Empty",
+            "selected": "False",
+            "error": "True"
+          },
+          "width": 208.0,
+          "height": 56.0
+        },
+        {
+          "nodeId": "252:836",
+          "name": "state=Default, configuration=Filled, selected=False, error=False",
+          "properties": {
+            "state": "Default",
+            "configuration": "Filled",
+            "selected": "False",
+            "error": "False"
+          },
+          "width": 208.0,
+          "height": 56.0
+        },
+        {
+          "nodeId": "252:1024",
+          "name": "state=Default, configuration=Filled, selected=False, error=True",
+          "properties": {
+            "state": "Default",
+            "configuration": "Filled",
+            "selected": "False",
+            "error": "True"
+          },
+          "width": 208.0,
+          "height": 56.0
+        },
+        {
+          "nodeId": "244:760",
+          "name": "state=Disabled, configuration=Empty, selected=False, error=False",
+          "properties": {
+            "state": "Disabled",
+            "configuration": "Empty",
+            "selected": "False",
+            "error": "False"
+          },
+          "width": 208.0,
+          "height": 56.0
+        },
+        {
+          "nodeId": "252:847",
+          "name": "state=Disabled, configuration=Filled, selected=False, error=False",
+          "properties": {
+            "state": "Disabled",
+            "configuration": "Filled",
+            "selected": "False",
+            "error": "False"
+          },
+          "width": 208.0,
+          "height": 56.0
+        },
+        {
+          "nodeId": "244:726",
+          "name": "state=Default, configuration=Empty, selected=True, error=False",
+          "properties": {
+            "state": "Default",
+            "configuration": "Empty",
+            "selected": "True",
+            "error": "False"
+          },
+          "width": 208.0,
+          "height": 56.0
+        },
+        {
+          "nodeId": "252:1052",
+          "name": "state=Default, configuration=Empty, selected=True, error=True",
+          "properties": {
+            "state": "Default",
+            "configuration": "Empty",
+            "selected": "True",
+            "error": "True"
+          },
+          "width": 208.0,
+          "height": 56.0
+        },
+        {
+          "nodeId": "252:856",
+          "name": "state=Default, configuration=Filled, selected=True, error=False",
+          "properties": {
+            "state": "Default",
+            "configuration": "Filled",
+            "selected": "True",
+            "error": "False"
+          },
+          "width": 208.0,
+          "height": 56.0
+        },
+        {
+          "nodeId": "252:1064",
+          "name": "state=Default, configuration=Filled, selected=True, error=True",
+          "properties": {
+            "state": "Default",
+            "configuration": "Filled",
+            "selected": "True",
+            "error": "True"
+          },
+          "width": 208.0,
+          "height": 56.0
+        },
+        {
+          "nodeId": "240:277",
+          "name": "state=Hover, configuration=Empty, selected=False, error=False",
+          "properties": {
+            "state": "Hover",
+            "configuration": "Empty",
+            "selected": "False",
+            "error": "False"
+          },
+          "width": 208.0,
+          "height": 56.0
+        },
+        {
+          "nodeId": "252:1076",
+          "name": "state=Hover, configuration=Empty, selected=False, error=True",
+          "properties": {
+            "state": "Hover",
+            "configuration": "Empty",
+            "selected": "False",
+            "error": "True"
+          },
+          "width": 208.0,
+          "height": 56.0
+        },
+        {
+          "nodeId": "252:868",
+          "name": "state=Hover, configuration=Filled, selected=False, error=False",
+          "properties": {
+            "state": "Hover",
+            "configuration": "Filled",
+            "selected": "False",
+            "error": "False"
+          },
+          "width": 208.0,
+          "height": 56.0
+        },
+        {
+          "nodeId": "252:1086",
+          "name": "state=Hover, configuration=Filled, selected=False, error=True",
+          "properties": {
+            "state": "Hover",
+            "configuration": "Filled",
+            "selected": "False",
+            "error": "True"
+          },
+          "width": 208.0,
+          "height": 56.0
+        }
+      ],
+      "component": "input",
+      "page": "input",
+      "pageId": "240:245",
+      "axes": {
+        "configuration": [
+          "Empty",
+          "Filled"
+        ],
+        "error": [
+          "False",
+          "True"
+        ],
+        "level0": [
+          "Default",
+          "Disabled"
+        ],
+        "level1": [
+          "Disabled",
+          "Empty",
+          "Filled",
+          "Focus",
+          "Pressed"
+        ],
+        "level2": [
+          "False"
+        ],
+        "level3": [
+          "True"
+        ],
+        "selected": [
+          "False",
+          "True"
+        ],
+        "state": [
+          "Default",
+          "Disabled",
+          "Hover"
+        ]
+      },
+      "variantCount": 19,
+      "sizes": [
+        "208x48",
+        "208x56"
+      ],
+      "figmaUrl": "https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=252-1043"
+    },
+    {
+      "variants": [
+        {
+          "nodeId": "129:28945",
+          "name": "logo",
+          "properties": {},
+          "width": 360.0,
+          "height": 360.0
+        }
+      ],
+      "component": "logo",
+      "page": "logo",
+      "pageId": "85:131",
+      "axes": {},
+      "variantCount": 1,
+      "sizes": [
+        "360x360"
+      ],
+      "figmaUrl": "https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=129-28945"
+    },
+    {
+      "variants": [
+        {
+          "nodeId": "41:298",
+          "name": "state=Disabled",
+          "properties": {
+            "state": "Disabled"
+          },
+          "width": 324.0,
+          "height": 104.0
+        },
+        {
+          "nodeId": "41:286",
+          "name": "state=Pressed",
+          "properties": {
+            "state": "Pressed"
+          },
+          "width": 324.0,
+          "height": 104.0
+        },
+        {
+          "nodeId": "41:272",
+          "name": "state=Focus",
+          "properties": {
+            "state": "Focus"
+          },
+          "width": 324.0,
+          "height": 104.0
+        },
+        {
+          "nodeId": "41:260",
+          "name": "state=Hover",
+          "properties": {
+            "state": "Hover"
+          },
+          "width": 324.0,
+          "height": 104.0
+        },
+        {
+          "nodeId": "41:147",
+          "name": "state=Default",
+          "properties": {
+            "state": "Default"
+          },
+          "width": 324.0,
+          "height": 104.0
+        }
+      ],
+      "component": "menu",
+      "page": "menu",
+      "pageId": "41:112",
+      "axes": {
+        "state": [
+          "Default",
+          "Disabled",
+          "Focus",
+          "Hover",
+          "Pressed"
+        ]
+      },
+      "variantCount": 5,
+      "sizes": [
+        "324x104"
+      ],
+      "figmaUrl": "https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=41-298"
+    },
+    {
+      "variants": [
+        {
+          "nodeId": "100:184",
+          "name": "state=Default",
+          "properties": {
+            "state": "Default"
+          },
+          "width": 976.0,
+          "height": 96.0
+        },
+        {
+          "nodeId": "238:140",
+          "name": "state=Locked",
+          "properties": {
+            "state": "Locked"
+          },
+          "width": 976.0,
+          "height": 96.0
+        },
+        {
+          "nodeId": "100:183",
+          "name": "state=Disabled",
+          "properties": {
+            "state": "Disabled"
+          },
+          "width": 976.0,
+          "height": 96.0
+        },
+        {
+          "nodeId": "100:182",
+          "name": "state=Pressed",
+          "properties": {
+            "state": "Pressed"
+          },
+          "width": 976.0,
+          "height": 96.0
+        },
+        {
+          "nodeId": "100:181",
+          "name": "state=Focus",
+          "properties": {
+            "state": "Focus"
+          },
+          "width": 976.0,
+          "height": 96.0
+        },
+        {
+          "nodeId": "100:180",
+          "name": "state=Hover",
+          "properties": {
+            "state": "Hover"
+          },
+          "width": 976.0,
+          "height": 96.0
+        }
+      ],
+      "component": "projects",
+      "page": "projects",
+      "pageId": "91:244",
+      "axes": {
+        "state": [
+          "Default",
+          "Disabled",
+          "Focus",
+          "Hover",
+          "Locked",
+          "Pressed"
+        ]
+      },
+      "variantCount": 6,
+      "sizes": [
+        "976x96"
+      ],
+      "figmaUrl": "https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=100-184"
+    },
+    {
+      "variants": [
+        {
+          "nodeId": "91:363",
+          "name": "type=Primary, state=Default",
+          "properties": {
+            "type": "Primary",
+            "state": "Default"
+          },
+          "width": 43.0,
+          "height": 20.0
+        },
+        {
+          "nodeId": "91:372",
+          "name": "type=Primary, state=Hover",
+          "properties": {
+            "type": "Primary",
+            "state": "Hover"
+          },
+          "width": 43.0,
+          "height": 20.0
+        },
+        {
+          "nodeId": "91:383",
+          "name": "type=Primary, state=Pressed",
+          "properties": {
+            "type": "Primary",
+            "state": "Pressed"
+          },
+          "width": 43.0,
+          "height": 20.0
+        },
+        {
+          "nodeId": "91:394",
+          "name": "type=Primary, state=Disabled",
+          "properties": {
+            "type": "Primary",
+            "state": "Disabled"
+          },
+          "width": 43.0,
+          "height": 20.0
+        },
+        {
+          "nodeId": "91:403",
+          "name": "type=Primary, state=Focus",
+          "properties": {
+            "type": "Primary",
+            "state": "Focus"
+          },
+          "width": 43.0,
+          "height": 20.0
+        }
+      ],
+      "component": "tags",
+      "page": "tags",
+      "pageId": "91:329",
+      "axes": {
+        "state": [
+          "Default",
+          "Disabled",
+          "Focus",
+          "Hover",
+          "Pressed"
+        ],
+        "type": [
+          "Primary"
+        ]
+      },
+      "variantCount": 5,
+      "sizes": [
+        "43x20"
+      ],
+      "figmaUrl": "https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=91-363"
+    },
+    {
+      "variants": [
+        {
+          "nodeId": "144:68",
+          "name": "state=Default, expanded=False",
+          "properties": {
+            "state": "Default",
+            "expanded": "False"
+          },
+          "width": 976.0,
+          "height": 106.0
+        },
+        {
+          "nodeId": "144:347",
+          "name": "state=Default, expanded=True",
+          "properties": {
+            "state": "Default",
+            "expanded": "True"
+          },
+          "width": 992.0,
+          "height": 174.0
+        },
+        {
+          "nodeId": "144:80",
+          "name": "state=Disabled, expanded=False",
+          "properties": {
+            "state": "Disabled",
+            "expanded": "False"
+          },
+          "width": 976.0,
+          "height": 106.0
+        },
+        {
+          "nodeId": "144:355",
+          "name": "state=Disabled, expanded=True",
+          "properties": {
+            "state": "Disabled",
+            "expanded": "True"
+          },
+          "width": 976.0,
+          "height": 174.0
+        },
+        {
+          "nodeId": "144:92",
+          "name": "state=Pressed, expanded=False",
+          "properties": {
+            "state": "Pressed",
+            "expanded": "False"
+          },
+          "width": 976.0,
+          "height": 106.0
+        },
+        {
+          "nodeId": "144:363",
+          "name": "state=Pressed, expanded=True",
+          "properties": {
+            "state": "Pressed",
+            "expanded": "True"
+          },
+          "width": 976.0,
+          "height": 174.0
+        },
+        {
+          "nodeId": "144:104",
+          "name": "state=Focus, expanded=False",
+          "properties": {
+            "state": "Focus",
+            "expanded": "False"
+          },
+          "width": 976.0,
+          "height": 106.0
+        },
+        {
+          "nodeId": "144:371",
+          "name": "state=Focus, expanded=True",
+          "properties": {
+            "state": "Focus",
+            "expanded": "True"
+          },
+          "width": 976.0,
+          "height": 174.0
+        },
+        {
+          "nodeId": "144:117",
+          "name": "state=Hover, expanded=False",
+          "properties": {
+            "state": "Hover",
+            "expanded": "False"
+          },
+          "width": 976.0,
+          "height": 106.0
+        },
+        {
+          "nodeId": "144:380",
+          "name": "state=Hover, expanded=True",
+          "properties": {
+            "state": "Hover",
+            "expanded": "True"
+          },
+          "width": 976.0,
+          "height": 174.0
+        },
+        {
+          "nodeId": "144:492",
+          "name": "people=Person 5",
+          "properties": {
+            "people": "Person 5"
+          },
+          "width": 56.0,
+          "height": 56.0
+        },
+        {
+          "nodeId": "144:489",
+          "name": "people=Person 3",
+          "properties": {
+            "people": "Person 3"
+          },
+          "width": 56.0,
+          "height": 56.0
+        },
+        {
+          "nodeId": "144:491",
+          "name": "people=Person 4",
+          "properties": {
+            "people": "Person 4"
+          },
+          "width": 56.0,
+          "height": 56.0
+        },
+        {
+          "nodeId": "144:490",
+          "name": "people=Person 8",
+          "properties": {
+            "people": "Person 8"
+          },
+          "width": 56.0,
+          "height": 56.0
+        },
+        {
+          "nodeId": "144:488",
+          "name": "people=Person 2",
+          "properties": {
+            "people": "Person 2"
+          },
+          "width": 56.0,
+          "height": 56.0
+        },
+        {
+          "nodeId": "144:487",
+          "name": "people=Person 6",
+          "properties": {
+            "people": "Person 6"
+          },
+          "width": 56.0,
+          "height": 56.0
+        },
+        {
+          "nodeId": "144:486",
+          "name": "people=Person 1",
+          "properties": {
+            "people": "Person 1"
+          },
+          "width": 56.0,
+          "height": 56.0
+        },
+        {
+          "nodeId": "164:1082",
+          "name": "people=Person 7",
+          "properties": {
+            "people": "Person 7"
+          },
+          "width": 56.0,
+          "height": 56.0
+        }
+      ],
+      "component": "testimonials",
+      "page": "testimonials",
+      "pageId": "144:44",
+      "axes": {
+        "expanded": [
+          "False",
+          "True"
+        ],
+        "people": [
+          "Person 1",
+          "Person 2",
+          "Person 3",
+          "Person 4",
+          "Person 5",
+          "Person 6",
+          "Person 7",
+          "Person 8"
+        ],
+        "state": [
+          "Default",
+          "Disabled",
+          "Focus",
+          "Hover",
+          "Pressed"
+        ]
+      },
+      "variantCount": 18,
+      "sizes": [
+        "56x56",
+        "976x106",
+        "976x174",
+        "992x174"
+      ],
+      "figmaUrl": "https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=144-68"
+    },
+    {
+      "variants": [
+        {
+          "nodeId": "109:78",
+          "name": "state=Default",
+          "properties": {
+            "state": "Default"
+          },
+          "width": 384.0,
+          "height": 334.0
+        },
+        {
+          "nodeId": "261:1232",
+          "name": "state=Locked",
+          "properties": {
+            "state": "Locked"
+          },
+          "width": 384.0,
+          "height": 334.0
+        },
+        {
+          "nodeId": "109:206",
+          "name": "state=Disabled",
+          "properties": {
+            "state": "Disabled"
+          },
+          "width": 384.0,
+          "height": 334.0
+        },
+        {
+          "nodeId": "109:168",
+          "name": "state=Pressed",
+          "properties": {
+            "state": "Pressed"
+          },
+          "width": 384.0,
+          "height": 334.0
+        },
+        {
+          "nodeId": "109:118",
+          "name": "state=Focus",
+          "properties": {
+            "state": "Focus"
+          },
+          "width": 384.0,
+          "height": 334.0
+        },
+        {
+          "nodeId": "109:77",
+          "name": "state=Hover",
+          "properties": {
+            "state": "Hover"
+          },
+          "width": 384.0,
+          "height": 334.0
+        }
+      ],
+      "component": "thumbs",
+      "page": "thumbs",
+      "pageId": "108:134",
+      "axes": {
+        "state": [
+          "Default",
+          "Disabled",
+          "Focus",
+          "Hover",
+          "Locked",
+          "Pressed"
+        ]
+      },
+      "variantCount": 6,
+      "sizes": [
+        "384x334"
+      ],
+      "figmaUrl": "https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=109-78"
+    },
+    {
+      "variants": [
+        {
+          "nodeId": "168:1200",
+          "name": "toggle/Project/Focus",
+          "properties": {
+            "level0": "Project",
+            "level1": "Focus"
+          },
+          "width": 32.0,
+          "height": 32.0
+        },
+        {
+          "nodeId": "168:1197",
+          "name": "toggle/Tertiary/Focus",
+          "properties": {
+            "level0": "Tertiary",
+            "level1": "Focus"
+          },
+          "width": 48.0,
+          "height": 48.0
+        },
+        {
+          "nodeId": "168:1188",
+          "name": "toggle/Project/Disabled",
+          "properties": {
+            "level0": "Project",
+            "level1": "Disabled"
+          },
+          "width": 32.0,
+          "height": 32.0
+        },
+        {
+          "nodeId": "168:1186",
+          "name": "toggle/Tertiary/Disabled",
+          "properties": {
+            "level0": "Tertiary",
+            "level1": "Disabled"
+          },
+          "width": 48.0,
+          "height": 48.0
+        },
+        {
+          "nodeId": "168:1178",
+          "name": "toggle/Project/Pressed",
+          "properties": {
+            "level0": "Project",
+            "level1": "Pressed"
+          },
+          "width": 32.0,
+          "height": 32.0
+        },
+        {
+          "nodeId": "168:1175",
+          "name": "toggle/Tertiary/Pressed",
+          "properties": {
+            "level0": "Tertiary",
+            "level1": "Pressed"
+          },
+          "width": 48.0,
+          "height": 48.0
+        },
+        {
+          "nodeId": "168:1167",
+          "name": "toggle/Project/Hover",
+          "properties": {
+            "level0": "Project",
+            "level1": "Hover"
+          },
+          "width": 32.0,
+          "height": 32.0
+        },
+        {
+          "nodeId": "168:1164",
+          "name": "toggle/Tertiary/Hover",
+          "properties": {
+            "level0": "Tertiary",
+            "level1": "Hover"
+          },
+          "width": 48.0,
+          "height": 48.0
+        },
+        {
+          "nodeId": "168:1157",
+          "name": "toggle/Project/Default",
+          "properties": {
+            "level0": "Project",
+            "level1": "Default"
+          },
+          "width": 32.0,
+          "height": 32.0
+        },
+        {
+          "nodeId": "168:1155",
+          "name": "toggle/Tertiary/Default",
+          "properties": {
+            "level0": "Tertiary",
+            "level1": "Default"
+          },
+          "width": 48.0,
+          "height": 48.0
+        },
+        {
+          "nodeId": "168:1150",
+          "name": "state=Default, selected=True",
+          "properties": {
+            "state": "Default",
+            "selected": "True"
+          },
+          "width": 40.0,
+          "height": 40.0
+        },
+        {
+          "nodeId": "168:1152",
+          "name": "state=Default, selected=False",
+          "properties": {
+            "state": "Default",
+            "selected": "False"
+          },
+          "width": 40.0,
+          "height": 40.0
+        },
+        {
+          "nodeId": "168:1159",
+          "name": "state=Hover, selected=True",
+          "properties": {
+            "state": "Hover",
+            "selected": "True"
+          },
+          "width": 40.0,
+          "height": 40.0
+        },
+        {
+          "nodeId": "168:1161",
+          "name": "state=Hover, selected=False",
+          "properties": {
+            "state": "Hover",
+            "selected": "False"
+          },
+          "width": 40.0,
+          "height": 40.0
+        },
+        {
+          "nodeId": "168:1170",
+          "name": "state=Pressed, selected=True",
+          "properties": {
+            "state": "Pressed",
+            "selected": "True"
+          },
+          "width": 40.0,
+          "height": 40.0
+        },
+        {
+          "nodeId": "168:1172",
+          "name": "state=Pressed, selected=False",
+          "properties": {
+            "state": "Pressed",
+            "selected": "False"
+          },
+          "width": 40.0,
+          "height": 40.0
+        },
+        {
+          "nodeId": "168:1181",
+          "name": "state=Disabled, selected=True",
+          "properties": {
+            "state": "Disabled",
+            "selected": "True"
+          },
+          "width": 40.0,
+          "height": 40.0
+        },
+        {
+          "nodeId": "168:1183",
+          "name": "state=Disabled, selected=False",
+          "properties": {
+            "state": "Disabled",
+            "selected": "False"
+          },
+          "width": 40.0,
+          "height": 40.0
+        },
+        {
+          "nodeId": "168:1190",
+          "name": "state=Focus, selected=True",
+          "properties": {
+            "state": "Focus",
+            "selected": "True"
+          },
+          "width": 40.0,
+          "height": 40.0
+        },
+        {
+          "nodeId": "168:1193",
+          "name": "state=Focus, selected=False",
+          "properties": {
+            "state": "Focus",
+            "selected": "False"
+          },
+          "width": 40.0,
+          "height": 40.0
+        }
+      ],
+      "component": "toggle",
+      "page": "toggle",
+      "pageId": "168:1301",
+      "axes": {
+        "level0": [
+          "Project",
+          "Tertiary"
+        ],
+        "level1": [
+          "Default",
+          "Disabled",
+          "Focus",
+          "Hover",
+          "Pressed"
+        ],
+        "selected": [
+          "False",
+          "True"
+        ],
+        "state": [
+          "Default",
+          "Disabled",
+          "Focus",
+          "Hover",
+          "Pressed"
+        ]
+      },
+      "variantCount": 20,
+      "sizes": [
+        "32x32",
+        "40x40",
+        "48x48"
+      ],
+      "figmaUrl": "https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=168-1200"
+    },
+    {
+      "variants": [
+        {
+          "nodeId": "138:249",
+          "name": "tooltip/Primary/Disabled",
+          "properties": {
+            "level0": "Primary",
+            "level1": "Disabled"
+          },
+          "width": 43.0,
+          "height": 20.0
+        },
+        {
+          "nodeId": "138:247",
+          "name": "tooltip/Primary/Pressed",
+          "properties": {
+            "level0": "Primary",
+            "level1": "Pressed"
+          },
+          "width": 43.0,
+          "height": 20.0
+        },
+        {
+          "nodeId": "138:251",
+          "name": "tooltip/Primary/Focus",
+          "properties": {
+            "level0": "Primary",
+            "level1": "Focus"
+          },
+          "width": 43.0,
+          "height": 20.0
+        },
+        {
+          "nodeId": "138:245",
+          "name": "tooltip/Primary/Hover",
+          "properties": {
+            "level0": "Primary",
+            "level1": "Hover"
+          },
+          "width": 43.0,
+          "height": 20.0
+        },
+        {
+          "nodeId": "138:276",
+          "name": "tooltip",
+          "properties": {},
+          "width": 43.0,
+          "height": 20.0
+        }
+      ],
+      "component": "tooltip",
+      "page": "tooltip",
+      "pageId": "138:209",
+      "axes": {
+        "level0": [
+          "Primary"
+        ],
+        "level1": [
+          "Disabled",
+          "Focus",
+          "Hover",
+          "Pressed"
+        ]
+      },
+      "variantCount": 5,
+      "sizes": [
+        "43x20"
+      ],
+      "figmaUrl": "https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=138-249"
+    }
+  ]
+}

@@ -1,0 +1,352 @@
+const imgUnion = "http://localhost:3845/assets/02da77ab2dae89c27f25b8014d3033d4b81bcbfc.svg";
+const imgUnion1 = "http://localhost:3845/assets/21a86a92f08869f5946c04e13e80b8085e032956.svg";
+const imgUnion2 = "http://localhost:3845/assets/70bcbeb4a00cc1dca1231afb16911ddd86bc34ba.svg";
+const imgUnion3 = "http://localhost:3845/assets/9be59cdd614962b22561b05fefc7635e6b51eef8.svg";
+const imgUnion4 = "http://localhost:3845/assets/0008615b116a7ddb288e6430f65fbfa94e77781c.svg";
+const imgUnion5 = "http://localhost:3845/assets/3be06bc8ad299d8f6b2fdc9473faa63fff5143cb.svg";
+const imgUnion6 = "http://localhost:3845/assets/fad9b491157efacd7c929510abd1cfa51e614173.svg";
+const imgUnion7 = "http://localhost:3845/assets/b2d1fb6c8a506a74922438262ac959189bfab18a.svg";
+const imgUnion8 = "http://localhost:3845/assets/14ffd86ed4278293d9b7cf148600a352d1cfeaa4.svg";
+const imgUnion9 = "http://localhost:3845/assets/faba0d4d08c6c207e74f00ecf10752f8038b0267.svg";
+const imgUnion10 = "http://localhost:3845/assets/276c3011b734eca280302ffab3568e333b977e6b.svg";
+const imgUnion11 = "http://localhost:3845/assets/67ed5a3b39168f29be57484944286670e82f0ff9.svg";
+const imgUnion12 = "http://localhost:3845/assets/1cf4e3b52efd65ac8ace33126409c8ad1a84ea71.svg";
+const imgUnion13 = "http://localhost:3845/assets/e568ecc4ed72cbcc46bee3d0f758fd03c70fed61.svg";
+const imgUnion14 = "http://localhost:3845/assets/30013931219ea0ef8a3abeddeda79c0badd7a7db.svg";
+const imgUnion15 = "http://localhost:3845/assets/9c71822685832d85baafc2125e0816e36da77af5.svg";
+const imgUnion16 = "http://localhost:3845/assets/4661263925709f042cfcbf062e936d4c996571bd.svg";
+const imgUnion17 = "http://localhost:3845/assets/2a38ab93409e75ffbff38eb564db0a86b69e912a.svg";
+const imgUnion18 = "http://localhost:3845/assets/cb79893b969d4ff12c989da937cc13764cfddd0f.svg";
+const imgUnion19 = "http://localhost:3845/assets/1a93d01acb8d91e84aeb80bc62fa56a2426d18b7.svg";
+type PillButtonProps = {
+  className?: string;
+  label?: string;
+  leading?: React.ReactNode | null;
+  showLabel?: boolean;
+  showLeading?: boolean;
+  state?: "Default" | "Hover" | "Focus" | "Pressed" | "Disabled";
+  type?: "Primary" | "Secondary" | "Tertiary" | "Borderless";
+};
+
+export default function PillButton({ className, label = "label", leading = null, showLabel = true, showLeading = false, state = "Default", type = "Primary" }: PillButtonProps) {
+  const isBorderlessAndDefault = type === "Borderless" && state === "Default";
+  const isBorderlessAndDisabled = type === "Borderless" && state === "Disabled";
+  const isBorderlessAndFocus = type === "Borderless" && state === "Focus";
+  const isBorderlessAndHover = type === "Borderless" && state === "Hover";
+  const isBorderlessAndPressed = type === "Borderless" && state === "Pressed";
+  const isPrimaryAndDefault = type === "Primary" && state === "Default";
+  const isPrimaryAndDisabled = type === "Primary" && state === "Disabled";
+  const isPrimaryAndFocus = type === "Primary" && state === "Focus";
+  const isPrimaryAndHover = type === "Primary" && state === "Hover";
+  const isPrimaryAndPressed = type === "Primary" && state === "Pressed";
+  const isSecondaryAndDefault = type === "Secondary" && state === "Default";
+  const isSecondaryAndDisabled = type === "Secondary" && state === "Disabled";
+  const isSecondaryAndFocus = type === "Secondary" && state === "Focus";
+  const isSecondaryAndHover = type === "Secondary" && state === "Hover";
+  const isSecondaryAndPressed = type === "Secondary" && state === "Pressed";
+  const isTertiaryAndDefault = type === "Tertiary" && state === "Default";
+  const isTertiaryAndDisabled = type === "Tertiary" && state === "Disabled";
+  const isTertiaryAndFocus = type === "Tertiary" && state === "Focus";
+  const isTertiaryAndHover = type === "Tertiary" && state === "Hover";
+  const isTertiaryAndPressed = type === "Tertiary" && state === "Pressed";
+  return (
+    <div className={className || `${String.raw`content-stretch flex gap-[var(--spacing\/gap\/small,8px)] h-[var(--spacing\/size\/medium-large,48px)] items-center justify-center relative rounded-[var(--spacing\/radius\/full,10000px)] `}${isPrimaryAndFocus ? String.raw`bg-[var(--actions\/primary\/focus\/background,#00d669)] border-[var(--actions\/primary\/focus\/outline,rgba(237,237,237,0.64))] border-l border-solid border-t-[length:var(--spacing\/outline\/small,1px)] px-[var(--spacing\/gap\/medium-large,20px)] py-[var(--spacing\/gap\/none,0px)]` : isBorderlessAndDisabled ? String.raw`opacity-[var(--opacity\/gentle,0.24)] p-[var(--spacing\/gap\/none,0px)]` : state === "Disabled" && ["Secondary", "Tertiary"].includes(type) ? String.raw`opacity-[var(--opacity\/gentle,0.24)] px-[var(--spacing\/gap\/medium-large,20px)] py-[var(--spacing\/gap\/none,0px)]` : isPrimaryAndDisabled ? String.raw`bg-[var(--actions\/primary\/disabled\/background,#00d669)] border-[var(--actions\/primary\/disabled\/outline,rgba(237,237,237,0.64))] border-l border-solid border-t-[length:var(--spacing\/outline\/small,1px)] opacity-[var(--opacity\/gentle,0.24)] px-[var(--spacing\/gap\/medium-large,20px)] py-[var(--spacing\/gap\/none,0px)]` : isPrimaryAndPressed ? String.raw`bg-[var(--actions\/primary\/pressed\/background,#00913a)] border-[var(--actions\/primary\/pressed\/outline,rgba(237,237,237,0.64))] border-l border-solid border-t-[length:var(--spacing\/outline\/small,1px)] px-[var(--spacing\/gap\/medium-large,20px)] py-[var(--spacing\/gap\/none,0px)]` : isPrimaryAndHover ? String.raw`bg-[var(--actions\/primary\/hover\/background,#00b450)] border-[var(--actions\/primary\/hover\/outline,rgba(237,237,237,0.64))] border-l border-solid border-t-[length:var(--spacing\/outline\/small,1px)] px-[var(--spacing\/gap\/medium-large,20px)] py-[var(--spacing\/gap\/none,0px)]` : type === "Borderless" && ["Default", "Hover", "Pressed", "Focus"].includes(state) ? String.raw`p-[var(--spacing\/gap\/none,0px)]` : isSecondaryAndDefault || isTertiaryAndDefault || isSecondaryAndHover || isTertiaryAndHover || isSecondaryAndPressed || isTertiaryAndPressed || isSecondaryAndFocus || isTertiaryAndFocus ? String.raw`px-[var(--spacing\/gap\/medium-large,20px)] py-[var(--spacing\/gap\/none,0px)]` : String.raw`bg-[var(--actions\/primary\/default\/background,#00d669)] border-[var(--actions\/primary\/default\/outline,rgba(237,237,237,0.64))] border-l border-solid border-t-[length:var(--spacing\/outline\/small,1px)] px-[var(--spacing\/gap\/medium-large,20px)] py-[var(--spacing\/gap\/none,0px)]`}`} id={isBorderlessAndFocus ? "node-25_260" : isTertiaryAndFocus ? "node-25_203" : isSecondaryAndFocus ? "node-25_88" : isPrimaryAndFocus ? "node-20_17" : isBorderlessAndDisabled ? "node-25_257" : isTertiaryAndDisabled ? "node-25_200" : isSecondaryAndDisabled ? "node-25_86" : isPrimaryAndDisabled ? "node-20_22" : isBorderlessAndPressed ? "node-25_254" : isTertiaryAndPressed ? "node-25_197" : isSecondaryAndPressed ? "node-25_84" : isPrimaryAndPressed ? "node-20_20" : isBorderlessAndHover ? "node-25_251" : isTertiaryAndHover ? "node-25_194" : isSecondaryAndHover ? "node-25_82" : isPrimaryAndHover ? "node-20_15" : isBorderlessAndDefault ? "node-25_249" : isTertiaryAndDefault ? "node-25_191" : isSecondaryAndDefault ? "node-25_80" : "node-20_13"}>
+      {(type === "Secondary" || isTertiaryAndHover || isBorderlessAndHover || isTertiaryAndPressed || isBorderlessAndPressed) && <div className={`absolute inset-0 ${isSecondaryAndFocus ? String.raw`bg-[var(--actions\/secondary\/regular\/focus\/background,#3a3a3a)] border-[var(--actions\/secondary\/regular\/focus\/outline,#ededed)] border-l border-solid border-t opacity-[var(--opacity\/gentle,0.24)] rounded-[var(--spacing\/radius\/full,10000px)]` : isSecondaryAndDisabled ? String.raw`bg-[var(--actions\/secondary\/regular\/disabled\/background,#3a3a3a)] border-[var(--actions\/secondary\/regular\/disabled\/outline,#ededed)] border-l border-solid border-t opacity-[var(--opacity\/mild,0.32)] rounded-[var(--spacing\/radius\/full,10000px)]` : isBorderlessAndPressed ? String.raw`bg-[var(--actions\/tertiary\/pressed\/background,#454545)] opacity-[var(--opacity\/mild,0.32)]` : isTertiaryAndPressed ? String.raw`bg-[var(--actions\/tertiary\/pressed\/background,#454545)] opacity-[var(--opacity\/mild,0.32)] rounded-[var(--spacing\/radius\/full,10000px)]` : isSecondaryAndPressed ? String.raw`bg-[var(--actions\/secondary\/regular\/pressed\/background,#999)] border-[var(--actions\/secondary\/regular\/pressed\/outline,#ededed)] border-l border-solid border-t opacity-[var(--opacity\/mild,0.32)] rounded-[var(--spacing\/radius\/full,10000px)]` : isBorderlessAndHover ? String.raw`bg-[var(--actions\/tertiary\/hover\/background,#060805)] opacity-[var(--opacity\/mild,0.32)]` : isTertiaryAndHover ? String.raw`bg-[var(--actions\/tertiary\/hover\/background,#060805)] opacity-[var(--opacity\/mild,0.32)] rounded-[var(--spacing\/radius\/full,10000px)]` : isSecondaryAndHover ? String.raw`bg-[var(--actions\/secondary\/regular\/hover\/background,#747573)] border-[var(--actions\/secondary\/regular\/hover\/outline,#ededed)] border-l border-solid border-t opacity-[var(--opacity\/mild,0.32)] rounded-[var(--spacing\/radius\/full,10000px)]` : String.raw`bg-[var(--actions\/secondary\/regular\/default\/background,#3a3a3a)] border-[var(--actions\/secondary\/regular\/default\/outline,#ededed)] border-l border-solid border-t opacity-[var(--opacity\/gentle,0.24)] rounded-[var(--spacing\/radius\/full,10000px)]`}`} id={isSecondaryAndFocus ? "node-25_147" : isSecondaryAndDisabled ? "node-25_151" : isBorderlessAndPressed ? "node-25_255" : isTertiaryAndPressed ? "node-25_198" : isSecondaryAndPressed ? "node-25_149" : isBorderlessAndHover ? "node-25_252" : isTertiaryAndHover ? "node-25_195" : isSecondaryAndHover ? "node-25_145" : "node-25_91"} data-name="background" />}
+      {isPrimaryAndDefault &&
+        showLeading &&
+        (leading || (
+          <div className="overflow-clip relative shrink-0 size-[20px]" data-node-id="93:465" data-name="icons/arrow-left">
+            <div className="absolute inset-[20.84%_16.66%_20.83%_18.4%]" data-node-id="I93:465;93:861" data-name="Union">
+              <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgUnion} />
+            </div>
+          </div>
+        ))}
+      {isPrimaryAndDefault && showLabel && (
+        <p className="[word-break:break-word] font-[family-name:var(--font-family\/base,'General_Sans_Variable:Medium')] font-[var(--typography\/body\/font-weight\/medium,500)] leading-[var(--typography\/body\/line-height,22px)] relative shrink-0 text-[color:var(--actions\/primary\/default\/label,#060805)] text-[length:var(--typography\/body\/font-size,16px)] text-center tracking-[var(--typography\/body\/letter-spacing,0px)] whitespace-nowrap" data-node-id="20:11">
+          {label}
+        </p>
+      )}
+      {isSecondaryAndDefault &&
+        showLeading &&
+        (leading || (
+          <div className="overflow-clip relative shrink-0 size-[20px]" data-node-id="93:480" data-name="icons/arrow-left">
+            <div className="absolute inset-[20.84%_16.66%_20.83%_18.4%]" data-node-id="I93:480;93:861" data-name="Union">
+              <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgUnion1} />
+            </div>
+          </div>
+        ))}
+      {isSecondaryAndDefault && showLabel && (
+        <p className="[word-break:break-word] font-[family-name:var(--font-family\/base,'General_Sans_Variable:Medium')] font-[var(--typography\/body\/font-weight\/medium,500)] leading-[var(--typography\/body\/line-height,22px)] relative shrink-0 text-[color:var(--actions\/secondary\/regular\/default\/label,#d3d9d5)] text-[length:var(--typography\/body\/font-size,16px)] text-center tracking-[var(--typography\/body\/letter-spacing,0px)] whitespace-nowrap" data-node-id="25:81">
+          {label}
+        </p>
+      )}
+      {isTertiaryAndDefault &&
+        showLeading &&
+        (leading || (
+          <div className="overflow-clip relative shrink-0 size-[20px]" data-node-id="93:481" data-name="icons/arrow-left">
+            <div className="absolute inset-[20.84%_16.66%_20.83%_18.4%]" data-node-id="I93:481;93:861" data-name="Union">
+              <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgUnion2} />
+            </div>
+          </div>
+        ))}
+      {isTertiaryAndDefault && showLabel && (
+        <p className="[word-break:break-word] font-[family-name:var(--font-family\/base,'General_Sans_Variable:Medium')] font-[var(--typography\/body\/font-weight\/medium,500)] leading-[var(--typography\/body\/line-height,22px)] relative shrink-0 text-[color:var(--actions\/tertiary\/default\/label,#d3d9d5)] text-[length:var(--typography\/body\/font-size,16px)] text-center tracking-[var(--typography\/body\/letter-spacing,0px)] whitespace-nowrap" data-node-id="25:193">
+          {label}
+        </p>
+      )}
+      {isBorderlessAndDefault &&
+        showLeading &&
+        (leading || (
+          <div className="overflow-clip relative shrink-0 size-[20px]" data-node-id="93:482" data-name="icons/arrow-left">
+            <div className="absolute inset-[20.84%_16.66%_20.83%_18.4%]" data-node-id="I93:482;93:861" data-name="Union">
+              <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgUnion3} />
+            </div>
+          </div>
+        ))}
+      {isBorderlessAndDefault && showLabel && (
+        <p className="[word-break:break-word] font-[family-name:var(--font-family\/base,'General_Sans_Variable:Medium')] font-[var(--typography\/body\/font-weight\/medium,500)] leading-[var(--typography\/body\/line-height,22px)] relative shrink-0 text-[color:var(--actions\/tertiary\/default\/label,#d3d9d5)] text-[length:var(--typography\/body\/font-size,16px)] text-center tracking-[var(--typography\/body\/letter-spacing,0px)] whitespace-nowrap" data-node-id="25:250">
+          {label}
+        </p>
+      )}
+      {isPrimaryAndHover &&
+        showLeading &&
+        (leading || (
+          <div className="overflow-clip relative shrink-0 size-[20px]" data-node-id="93:468" data-name="icons/arrow-left">
+            <div className="absolute inset-[20.84%_16.66%_20.83%_18.4%]" data-node-id="I93:468;93:861" data-name="Union">
+              <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgUnion4} />
+            </div>
+          </div>
+        ))}
+      {isPrimaryAndHover && showLabel && (
+        <p className="[word-break:break-word] font-[family-name:var(--font-family\/base,'General_Sans_Variable:Medium')] font-[var(--typography\/body\/font-weight\/medium,500)] leading-[var(--typography\/body\/line-height,22px)] relative shrink-0 text-[color:var(--actions\/primary\/hover\/label,#060805)] text-[length:var(--typography\/body\/font-size,16px)] text-center tracking-[var(--typography\/body\/letter-spacing,0px)] whitespace-nowrap" data-node-id="20:16">
+          {label}
+        </p>
+      )}
+      {isSecondaryAndHover &&
+        showLeading &&
+        (leading || (
+          <div className="overflow-clip relative shrink-0 size-[20px]" data-node-id="93:483" data-name="icons/arrow-left">
+            <div className="absolute inset-[20.84%_16.66%_20.83%_18.4%]" data-node-id="I93:483;93:861" data-name="Union">
+              <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgUnion5} />
+            </div>
+          </div>
+        ))}
+      {isSecondaryAndHover && showLabel && (
+        <p className="[word-break:break-word] font-[family-name:var(--font-family\/base,'General_Sans_Variable:Medium')] font-[var(--typography\/body\/font-weight\/medium,500)] leading-[var(--typography\/body\/line-height,22px)] relative shrink-0 text-[color:var(--actions\/secondary\/regular\/hover\/label,#ededed)] text-[length:var(--typography\/body\/font-size,16px)] text-center tracking-[var(--typography\/body\/letter-spacing,0px)] whitespace-nowrap" data-node-id="25:83">
+          {label}
+        </p>
+      )}
+      {isTertiaryAndHover &&
+        showLeading &&
+        (leading || (
+          <div className="overflow-clip relative shrink-0 size-[20px]" data-node-id="93:484" data-name="icons/arrow-left">
+            <div className="absolute inset-[20.84%_16.66%_20.83%_18.4%]" data-node-id="I93:484;93:861" data-name="Union">
+              <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgUnion6} />
+            </div>
+          </div>
+        ))}
+      {isTertiaryAndHover && showLabel && (
+        <p className="[word-break:break-word] font-[family-name:var(--font-family\/base,'General_Sans_Variable:Medium')] font-[var(--typography\/body\/font-weight\/medium,500)] leading-[var(--typography\/body\/line-height,22px)] relative shrink-0 text-[color:var(--actions\/tertiary\/hover\/label,#ededed)] text-[length:var(--typography\/body\/font-size,16px)] text-center tracking-[var(--typography\/body\/letter-spacing,0px)] whitespace-nowrap" data-node-id="25:196">
+          {label}
+        </p>
+      )}
+      {isBorderlessAndHover &&
+        showLeading &&
+        (leading || (
+          <div className="overflow-clip relative shrink-0 size-[20px]" data-node-id="93:485" data-name="icons/arrow-left">
+            <div className="absolute inset-[20.84%_16.66%_20.83%_18.4%]" data-node-id="I93:485;93:861" data-name="Union">
+              <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgUnion7} />
+            </div>
+          </div>
+        ))}
+      {isBorderlessAndHover && showLabel && (
+        <p className="[word-break:break-word] font-[family-name:var(--font-family\/base,'General_Sans_Variable:Medium')] font-[var(--typography\/body\/font-weight\/medium,500)] leading-[var(--typography\/body\/line-height,22px)] relative shrink-0 text-[color:var(--actions\/tertiary\/hover\/label,#ededed)] text-[length:var(--typography\/body\/font-size,16px)] text-center tracking-[var(--typography\/body\/letter-spacing,0px)] whitespace-nowrap" data-node-id="25:253">
+          {label}
+        </p>
+      )}
+      {isPrimaryAndPressed &&
+        showLeading &&
+        (leading || (
+          <div className="overflow-clip relative shrink-0 size-[20px]" data-node-id="93:470" data-name="icons/arrow-left">
+            <div className="absolute inset-[20.84%_16.66%_20.83%_18.4%]" data-node-id="I93:470;93:861" data-name="Union">
+              <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgUnion8} />
+            </div>
+          </div>
+        ))}
+      {isPrimaryAndPressed && showLabel && (
+        <p className="[word-break:break-word] font-[family-name:var(--font-family\/base,'General_Sans_Variable:Medium')] font-[var(--typography\/body\/font-weight\/medium,500)] leading-[var(--typography\/body\/line-height,22px)] relative shrink-0 text-[color:var(--actions\/primary\/pressed\/label,#060805)] text-[length:var(--typography\/body\/font-size,16px)] text-center tracking-[var(--typography\/body\/letter-spacing,0px)] whitespace-nowrap" data-node-id="20:21">
+          {label}
+        </p>
+      )}
+      {isSecondaryAndPressed &&
+        showLeading &&
+        (leading || (
+          <div className="overflow-clip relative shrink-0 size-[20px]" data-node-id="93:486" data-name="icons/arrow-left">
+            <div className="absolute inset-[20.84%_16.66%_20.83%_18.4%]" data-node-id="I93:486;93:861" data-name="Union">
+              <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgUnion9} />
+            </div>
+          </div>
+        ))}
+      {isSecondaryAndPressed && showLabel && (
+        <p className="[word-break:break-word] font-[family-name:var(--font-family\/base,'General_Sans_Variable:Medium')] font-[var(--typography\/body\/font-weight\/medium,500)] leading-[var(--typography\/body\/line-height,22px)] relative shrink-0 text-[color:var(--actions\/secondary\/regular\/pressed\/label,#d3d9d5)] text-[length:var(--typography\/body\/font-size,16px)] text-center tracking-[var(--typography\/body\/letter-spacing,0px)] whitespace-nowrap" data-node-id="25:85">
+          {label}
+        </p>
+      )}
+      {isTertiaryAndPressed &&
+        showLeading &&
+        (leading || (
+          <div className="overflow-clip relative shrink-0 size-[20px]" data-node-id="93:487" data-name="icons/arrow-left">
+            <div className="absolute inset-[20.84%_16.66%_20.83%_18.4%]" data-node-id="I93:487;93:861" data-name="Union">
+              <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgUnion10} />
+            </div>
+          </div>
+        ))}
+      {isTertiaryAndPressed && showLabel && (
+        <p className="[word-break:break-word] font-[family-name:var(--font-family\/base,'General_Sans_Variable:Medium')] font-[var(--typography\/body\/font-weight\/medium,500)] leading-[var(--typography\/body\/line-height,22px)] relative shrink-0 text-[color:var(--actions\/tertiary\/pressed\/label,#d3d9d5)] text-[length:var(--typography\/body\/font-size,16px)] text-center tracking-[var(--typography\/body\/letter-spacing,0px)] whitespace-nowrap" data-node-id="25:199">
+          {label}
+        </p>
+      )}
+      {isBorderlessAndPressed &&
+        showLeading &&
+        (leading || (
+          <div className="overflow-clip relative shrink-0 size-[20px]" data-node-id="93:488" data-name="icons/arrow-left">
+            <div className="absolute inset-[20.84%_16.66%_20.83%_18.4%]" data-node-id="I93:488;93:861" data-name="Union">
+              <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgUnion11} />
+            </div>
+          </div>
+        ))}
+      {isBorderlessAndPressed && showLabel && (
+        <p className="[word-break:break-word] font-[family-name:var(--font-family\/base,'General_Sans_Variable:Medium')] font-[var(--typography\/body\/font-weight\/medium,500)] leading-[var(--typography\/body\/line-height,22px)] relative shrink-0 text-[color:var(--actions\/tertiary\/pressed\/label,#d3d9d5)] text-[length:var(--typography\/body\/font-size,16px)] text-center tracking-[var(--typography\/body\/letter-spacing,0px)] whitespace-nowrap" data-node-id="25:256">
+          {label}
+        </p>
+      )}
+      {isPrimaryAndDisabled &&
+        showLeading &&
+        (leading || (
+          <div className="overflow-clip relative shrink-0 size-[20px]" data-node-id="93:471" data-name="icons/arrow-left">
+            <div className="absolute inset-[20.84%_16.66%_20.83%_18.4%]" data-node-id="I93:471;93:861" data-name="Union">
+              <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgUnion12} />
+            </div>
+          </div>
+        ))}
+      {isPrimaryAndDisabled && showLabel && (
+        <p className="[word-break:break-word] font-[family-name:var(--font-family\/base,'General_Sans_Variable:Medium')] font-[var(--typography\/body\/font-weight\/medium,500)] leading-[var(--typography\/body\/line-height,22px)] relative shrink-0 text-[color:var(--actions\/primary\/disabled\/label,#060805)] text-[length:var(--typography\/body\/font-size,16px)] text-center tracking-[var(--typography\/body\/letter-spacing,0px)] whitespace-nowrap" data-node-id="20:23">
+          {label}
+        </p>
+      )}
+      {isSecondaryAndDisabled &&
+        showLeading &&
+        (leading || (
+          <div className="overflow-clip relative shrink-0 size-[20px]" data-node-id="93:489" data-name="icons/arrow-left">
+            <div className="absolute inset-[20.84%_16.66%_20.83%_18.4%]" data-node-id="I93:489;93:861" data-name="Union">
+              <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgUnion13} />
+            </div>
+          </div>
+        ))}
+      {isSecondaryAndDisabled && showLabel && (
+        <p className="[word-break:break-word] font-[family-name:var(--font-family\/base,'General_Sans_Variable:Medium')] font-[var(--typography\/body\/font-weight\/medium,500)] leading-[var(--typography\/body\/line-height,22px)] relative shrink-0 text-[color:var(--actions\/secondary\/regular\/disabled\/label,#d3d9d5)] text-[length:var(--typography\/body\/font-size,16px)] text-center tracking-[var(--typography\/body\/letter-spacing,0px)] whitespace-nowrap" data-node-id="25:87">
+          {label}
+        </p>
+      )}
+      {isTertiaryAndDisabled &&
+        showLeading &&
+        (leading || (
+          <div className="overflow-clip relative shrink-0 size-[20px]" data-node-id="93:490" data-name="icons/arrow-left">
+            <div className="absolute inset-[20.84%_16.66%_20.83%_18.4%]" data-node-id="I93:490;93:861" data-name="Union">
+              <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgUnion14} />
+            </div>
+          </div>
+        ))}
+      {isTertiaryAndDisabled && showLabel && (
+        <p className="[word-break:break-word] font-[family-name:var(--font-family\/base,'General_Sans_Variable:Medium')] font-[var(--typography\/body\/font-weight\/medium,500)] leading-[var(--typography\/body\/line-height,22px)] relative shrink-0 text-[color:var(--actions\/tertiary\/disabled\/label,#d3d9d5)] text-[length:var(--typography\/body\/font-size,16px)] text-center tracking-[var(--typography\/body\/letter-spacing,0px)] whitespace-nowrap" data-node-id="25:202">
+          {label}
+        </p>
+      )}
+      {isBorderlessAndDisabled &&
+        showLeading &&
+        (leading || (
+          <div className="overflow-clip relative shrink-0 size-[20px]" data-node-id="93:491" data-name="icons/arrow-left">
+            <div className="absolute inset-[20.84%_16.66%_20.83%_18.4%]" data-node-id="I93:491;93:861" data-name="Union">
+              <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgUnion15} />
+            </div>
+          </div>
+        ))}
+      {isBorderlessAndDisabled && showLabel && (
+        <p className="[word-break:break-word] font-[family-name:var(--font-family\/base,'General_Sans_Variable:Medium')] font-[var(--typography\/body\/font-weight\/medium,500)] leading-[var(--typography\/body\/line-height,22px)] relative shrink-0 text-[color:var(--actions\/tertiary\/disabled\/label,#d3d9d5)] text-[length:var(--typography\/body\/font-size,16px)] text-center tracking-[var(--typography\/body\/letter-spacing,0px)] whitespace-nowrap" data-node-id="25:259">
+          {label}
+        </p>
+      )}
+      {isPrimaryAndFocus &&
+        showLeading &&
+        (leading || (
+          <div className="overflow-clip relative shrink-0 size-[20px]" data-node-id="93:469" data-name="icons/arrow-left">
+            <div className="absolute inset-[20.84%_16.66%_20.83%_18.4%]" data-node-id="I93:469;93:861" data-name="Union">
+              <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgUnion16} />
+            </div>
+          </div>
+        ))}
+      {isPrimaryAndFocus && showLabel && (
+        <p className="[word-break:break-word] font-[family-name:var(--font-family\/base,'General_Sans_Variable:Medium')] font-[var(--typography\/body\/font-weight\/medium,500)] leading-[var(--typography\/body\/line-height,22px)] relative shrink-0 text-[color:var(--actions\/primary\/focus\/label,#060805)] text-[length:var(--typography\/body\/font-size,16px)] text-center tracking-[var(--typography\/body\/letter-spacing,0px)] whitespace-nowrap" data-node-id="20:18">
+          {label}
+        </p>
+      )}
+      {isPrimaryAndFocus && <div className="absolute border-[length:var(--spacing\/outline\/medium,2px)] border-[var(--actions\/primary\/focus\/focus-ring,#b6ffda)] border-solid inset-[-5px_-4px_-4px_-5px] rounded-[var(--spacing\/radius\/full,10000px)]" data-node-id="20:19" data-name="focus-ring" />}
+      {isSecondaryAndFocus &&
+        showLeading &&
+        (leading || (
+          <div className="overflow-clip relative shrink-0 size-[20px]" data-node-id="93:492" data-name="icons/arrow-left">
+            <div className="absolute inset-[20.84%_16.66%_20.83%_18.4%]" data-node-id="I93:492;93:861" data-name="Union">
+              <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgUnion17} />
+            </div>
+          </div>
+        ))}
+      {isSecondaryAndFocus && showLabel && (
+        <p className="[word-break:break-word] font-[family-name:var(--font-family\/base,'General_Sans_Variable:Medium')] font-[var(--typography\/body\/font-weight\/medium,500)] leading-[var(--typography\/body\/line-height,22px)] relative shrink-0 text-[color:var(--actions\/secondary\/regular\/focus\/label,#d3d9d5)] text-[length:var(--typography\/body\/font-size,16px)] text-center tracking-[var(--typography\/body\/letter-spacing,0px)] whitespace-nowrap" data-node-id="25:89">
+          {label}
+        </p>
+      )}
+      {isSecondaryAndFocus && <div className="absolute border-[length:var(--spacing\/outline\/medium,2px)] border-[var(--actions\/secondary\/regular\/focus\/focus-ring,#999)] border-solid inset-[-4px] rounded-[var(--spacing\/radius\/full,10000px)]" data-node-id="25:90" data-name="focus-ring" />}
+      {isTertiaryAndFocus &&
+        showLeading &&
+        (leading || (
+          <div className="overflow-clip relative shrink-0 size-[20px]" data-node-id="93:493" data-name="icons/arrow-left">
+            <div className="absolute inset-[20.84%_16.66%_20.83%_18.4%]" data-node-id="I93:493;93:861" data-name="Union">
+              <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgUnion18} />
+            </div>
+          </div>
+        ))}
+      {isTertiaryAndFocus && showLabel && (
+        <p className="[word-break:break-word] font-[family-name:var(--font-family\/base,'General_Sans_Variable:Medium')] font-[var(--typography\/body\/font-weight\/medium,500)] leading-[var(--typography\/body\/line-height,22px)] relative shrink-0 text-[color:var(--actions\/tertiary\/focus\/label,#d3d9d5)] text-[length:var(--typography\/body\/font-size,16px)] text-center tracking-[var(--typography\/body\/letter-spacing,0px)] whitespace-nowrap" data-node-id="25:205">
+          {label}
+        </p>
+      )}
+      {isTertiaryAndFocus && <div className="absolute border-[length:var(--spacing\/outline\/medium,2px)] border-[var(--actions\/secondary\/regular\/focus\/focus-ring,#999)] border-solid inset-[-4px] rounded-[var(--spacing\/radius\/full,10000px)]" data-node-id="25:206" data-name="focus-ring" />}
+      {isBorderlessAndFocus &&
+        showLeading &&
+        (leading || (
+          <div className="overflow-clip relative shrink-0 size-[20px]" data-node-id="93:494" data-name="icons/arrow-left">
+            <div className="absolute inset-[20.84%_16.66%_20.83%_18.4%]" data-node-id="I93:494;93:861" data-name="Union">
+              <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgUnion19} />
+            </div>
+          </div>
+        ))}
+      {isBorderlessAndFocus && showLabel && (
+        <p className="[word-break:break-word] font-[family-name:var(--font-family\/base,'General_Sans_Variable:Medium')] font-[var(--typography\/body\/font-weight\/medium,500)] leading-[var(--typography\/body\/line-height,22px)] relative shrink-0 text-[color:var(--actions\/tertiary\/focus\/label,#d3d9d5)] text-[length:var(--typography\/body\/font-size,16px)] text-center tracking-[var(--typography\/body\/letter-spacing,0px)] whitespace-nowrap" data-node-id="25:261">
+          {label}
+        </p>
+      )}
+      {isBorderlessAndFocus && <div className="absolute border-[length:var(--spacing\/outline\/medium,2px)] border-[var(--actions\/secondary\/regular\/focus\/focus-ring,#999)] border-solid inset-[-4px]" data-node-id="25:262" data-name="focus-ring" />}
+    </div>
+  );
+}
+SUPER CRITICAL: The generated React+Tailwind code MUST be converted to match the target project's technology stack and styling system.
+1. Analyze the target codebase to identify: technology stack, styling approach, component patterns, and design tokens
+2. Convert React syntax to the target framework/library
+3. Transform all Tailwind classes to the target styling system while preserving exact visual design
+4. Follow the project's existing patterns and conventions
+DO NOT install any Tailwind as a dependency unless the user instructs you to do so.
+
+Node ids have been added to the code as data attributes, e.g. `data-node-id="1:2"`.
+These styles are contained in the design: body/medium: Font(family: "font-family/base", style: Medium, size: typography/body/font-size, weight: typography/body/font-weight/medium, lineHeight: typography/body/line-height, letterSpacing: typography/body/letter-spacing).
+Image assets are stored on a localhost server. Clients can use these images directly in code as a way to view the image assets the same way they would other remote servers. Images and SVGs will be stored as constants, e.g. const image = 'http://localhost:3845/assets/10c13ac1a228a365cb98a0064b1d5afbc84887b2.png' These constants will be used in the code as the source for the image, e.g. <img src={image} /> This is true for both images and SVGs, so you can use the same approach for both types of assets.
+IMPORTANT: After you call this tool, you MUST call get_screenshot to get a screenshot of the node for context.
