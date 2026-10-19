@@ -59,6 +59,11 @@ for (const [comp, variants] of Object.entries(parsed)) {
     '24px': 'spacing/size/small', '32px': 'spacing/size/small-medium', '40px': 'spacing/size/medium',
     '48px': 'spacing/size/medium-large', '56px': 'spacing/size/large', '64px': 'spacing/size/xlarge' }
   const markSamples = (part, prop, val) => {
+    // Layout the box needs, stated so code can be generated from it, but not
+    // something to fail an app over: it can reach the same layout other ways.
+    if (['display', 'flex-direction', 'flex-shrink', 'flex', 'white-space', 'align-self'].includes(prop) ||
+        (prop === 'position' && val.value === 'relative'))
+      return { ...val, assert: false }
     if (part === 'root' && (prop === 'width' || prop === 'height') && !val.token)
       return { ...val, assert: false, notes: 'Just the size of the Figma frame. No token, and not something to copy.' }
     // Any part below the root sized on the scale: icon frames, action slots, avatars.

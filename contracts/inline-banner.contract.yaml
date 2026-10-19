@@ -27,6 +27,8 @@ elements:
   root:
     styles:
       align-items: { value: center }
+      display: { value: flex, assert: false }
+      position: { value: relative, assert: false }
       padding: { token: spacing/gap/small, value: 8px }
       border-radius: { token: spacing/radius/small, value: 8px }
   background:
@@ -41,12 +43,22 @@ elements:
   union:
     styles:
       position: { value: absolute }
-      inset: { value: "0" }
   label:
     styles:
       overflow: { value: clip }
       justify-content: { value: center }
       align-items: { value: center }
+      display: { value: flex, assert: false }
+      flex-shrink: { value: "0", assert: false }
+      position: { value: relative, assert: false }
+  text:
+    styles:
+      flex-shrink: { value: "0", assert: false }
+      white-space: { value: nowrap, assert: false }
+      text-align: { value: center }
+      position: { value: relative, assert: false }
+      font-family: { token: font-family/base, value: "'General Sans Variable'" }
+      color: { token: non-interactive/foreground/secondary, value: "#d3d9d5" }
   icons-alarm: {}
   icons-positive: {}
   icons-warning: {}
@@ -58,24 +70,45 @@ variants:
         gap: { token: spacing/gap/2xsmall, value: 4px }
       -slot:
         align-items: { value: center }
+        display: { value: flex, assert: false }
+        flex-shrink: { value: "0", assert: false }
+        position: { value: relative, assert: false }
         gap: { token: spacing/gap/none, value: 0px }
         padding: { token: spacing/gap/none, value: 0px }
       icons-plus:
         overflow: { value: clip }
+        flex-shrink: { value: "0", assert: false }
+        position: { value: relative, assert: false }
         width: { value: 16px, suggest: spacing/size/2xsmall }
         height: { value: 16px, suggest: spacing/size/2xsmall }
+      union:
+        inset: { value: 12.5% }
       label:
         padding-bottom: { token: spacing/gap/3xsmall, value: 2px }
+      text:
+        font-weight: { token: typography/label/font-weight/medium, value: "500" }
+        line-height: { token: typography/label/line-height, value: 14px }
+        font-size: { token: typography/label/font-size, value: 12px }
+        letter-spacing: { token: typography/label/letter-spacing, value: 0px }
   - when: { status: Negative, size: Small }
     figmaNode: "205:722"
     elements:
       root:
         gap: { token: spacing/gap/2xsmall, value: 4px }
         opacity: { token: opacity/solid, value: "1" }
+      union:
+        inset: { value: 3.9% 3.91% 4.43% 4.43% }
       label:
         padding-bottom: { token: spacing/gap/3xsmall, value: 2px }
+      text:
+        font-weight: { token: typography/label/font-weight/medium, value: "500" }
+        line-height: { token: typography/label/line-height, value: 14px }
+        font-size: { token: typography/label/font-size, value: 12px }
+        letter-spacing: { token: typography/label/letter-spacing, value: 0px }
       icons-alarm:
         overflow: { value: clip }
+        flex-shrink: { value: "0", assert: false }
+        position: { value: relative, assert: false }
         width: { value: 16px, suggest: spacing/size/2xsmall }
         height: { value: 16px, suggest: spacing/size/2xsmall }
   - when: { status: Positive, size: Small }
@@ -84,10 +117,19 @@ variants:
       root:
         gap: { token: spacing/gap/2xsmall, value: 4px }
         opacity: { token: opacity/solid, value: "1" }
+      union:
+        inset: { value: 3.9% 4.43% 4.43% 3.91% }
       label:
         padding-bottom: { token: spacing/gap/3xsmall, value: 2px }
+      text:
+        font-weight: { token: typography/label/font-weight/medium, value: "500" }
+        line-height: { token: typography/label/line-height, value: 14px }
+        font-size: { token: typography/label/font-size, value: 12px }
+        letter-spacing: { token: typography/label/letter-spacing, value: 0px }
       icons-positive:
         overflow: { value: clip }
+        flex-shrink: { value: "0", assert: false }
+        position: { value: relative, assert: false }
         width: { value: 16px, suggest: spacing/size/2xsmall }
         height: { value: 16px, suggest: spacing/size/2xsmall }
   - when: { status: Warning, size: Small }
@@ -96,10 +138,19 @@ variants:
       root:
         gap: { token: spacing/gap/2xsmall, value: 4px }
         opacity: { token: opacity/solid, value: "1" }
+      union:
+        inset: { value: 8.04% 6.89% 12.76% 5.32% }
       label:
         padding-bottom: { token: spacing/gap/3xsmall, value: 2px }
+      text:
+        font-weight: { token: typography/label/font-weight/medium, value: "500" }
+        line-height: { token: typography/label/line-height, value: 14px }
+        font-size: { token: typography/label/font-size, value: 12px }
+        letter-spacing: { token: typography/label/letter-spacing, value: 0px }
       icons-warning:
         overflow: { value: clip }
+        flex-shrink: { value: "0", assert: false }
+        position: { value: relative, assert: false }
         width: { value: 16px, suggest: spacing/size/2xsmall }
         height: { value: 16px, suggest: spacing/size/2xsmall }
   - when: { status: Default, size: Medium }
@@ -109,12 +160,24 @@ variants:
         gap: { token: spacing/gap/small, value: 8px }
       -slot:
         align-items: { value: center }
+        display: { value: flex, assert: false }
+        flex-shrink: { value: "0", assert: false }
+        position: { value: relative, assert: false }
         gap: { token: spacing/gap/none, value: 0px }
         padding: { token: spacing/gap/none, value: 0px }
       icons-plus:
         overflow: { value: clip }
+        flex-shrink: { value: "0", assert: false }
+        position: { value: relative, assert: false }
         width: { value: 20px, suggest: spacing/size/xsmall }
         height: { value: 20px, suggest: spacing/size/xsmall }
+      union:
+        inset: { value: 12.5% }
+      text:
+        font-weight: { token: typography/body/font-weight/medium, value: "500" }
+        line-height: { token: typography/body/line-height, value: 22px }
+        font-size: { token: typography/body/font-size, value: 16px }
+        letter-spacing: { token: typography/body/letter-spacing, value: 0px }
       label:
         gap: { token: spacing/gap/small, value: 8px }
         padding: { token: spacing/gap/none, value: 0px }
@@ -124,8 +187,17 @@ variants:
       root:
         gap: { token: spacing/gap/small, value: 8px }
         opacity: { token: opacity/solid, value: "1" }
+      union:
+        inset: { value: 3.9% 3.91% 4.43% 4.42% }
+      text:
+        font-weight: { token: typography/body/font-weight/medium, value: "500" }
+        line-height: { token: typography/body/line-height, value: 22px }
+        font-size: { token: typography/body/font-size, value: 16px }
+        letter-spacing: { token: typography/body/letter-spacing, value: 0px }
       icons-alarm:
         overflow: { value: clip }
+        flex-shrink: { value: "0", assert: false }
+        position: { value: relative, assert: false }
         width: { value: 20px, suggest: spacing/size/xsmall }
         height: { value: 20px, suggest: spacing/size/xsmall }
       label:
@@ -137,8 +209,17 @@ variants:
       root:
         gap: { token: spacing/gap/small, value: 8px }
         opacity: { token: opacity/solid, value: "1" }
+      union:
+        inset: { value: 3.9% 4.43% 4.43% 3.91% }
+      text:
+        font-weight: { token: typography/body/font-weight/medium, value: "500" }
+        line-height: { token: typography/body/line-height, value: 22px }
+        font-size: { token: typography/body/font-size, value: 16px }
+        letter-spacing: { token: typography/body/letter-spacing, value: 0px }
       icons-positive:
         overflow: { value: clip }
+        flex-shrink: { value: "0", assert: false }
+        position: { value: relative, assert: false }
         width: { value: 20px, suggest: spacing/size/xsmall }
         height: { value: 20px, suggest: spacing/size/xsmall }
       label:
@@ -150,8 +231,17 @@ variants:
       root:
         gap: { token: spacing/gap/small, value: 8px }
         opacity: { token: opacity/solid, value: "1" }
+      union:
+        inset: { value: 8.04% 6.88% 12.76% 5.32% }
+      text:
+        font-weight: { token: typography/body/font-weight/medium, value: "500" }
+        line-height: { token: typography/body/line-height, value: 22px }
+        font-size: { token: typography/body/font-size, value: 16px }
+        letter-spacing: { token: typography/body/letter-spacing, value: 0px }
       icons-warning:
         overflow: { value: clip }
+        flex-shrink: { value: "0", assert: false }
+        position: { value: relative, assert: false }
         width: { value: 20px, suggest: spacing/size/xsmall }
         height: { value: 20px, suggest: spacing/size/xsmall }
       label:

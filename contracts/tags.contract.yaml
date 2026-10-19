@@ -25,6 +25,8 @@ elements:
     styles:
       justify-content: { value: center }
       align-items: { value: center }
+      display: { value: flex, assert: false }
+      position: { value: relative, assert: false }
       gap: { token: spacing/gap/small, value: 8px }
       height: { token: spacing/size/xsmall, value: 20px }
       padding-bottom: { token: spacing/gap/3xsmall, value: 2px }
@@ -34,12 +36,17 @@ elements:
       border-radius: { token: spacing/radius/xsmall, value: 4px }
   label:
     styles:
+      flex-shrink: { value: "0", assert: false }
+      white-space: { value: nowrap, assert: false }
+      text-align: { value: center }
+      position: { value: relative, assert: false }
       font-family: { token: font-family/base, value: "'General Sans Variable'" }
       font-weight: { token: typography/label/font-weight/medium, value: "500" }
       line-height: { token: typography/label/line-height, value: 14px }
       color: { token: actions/secondary/regular/default/label, value: "#d3d9d5" }
       font-size: { token: typography/label/font-size, value: 12px }
       letter-spacing: { token: typography/label/letter-spacing, value: 0px }
+  text: {}
   focus-ring: {}
 variants:
   - when: { type: Primary, state: Default }
@@ -52,27 +59,72 @@ variants:
     elements:
       root:
         background: { token: actions/secondary/regular/hover/background, value: "#747573" }
+      text:
+        flex-shrink: { value: "0", assert: false }
+        white-space: { value: nowrap, assert: false }
+        text-align: { value: center }
+        position: { value: relative, assert: false }
+        font-family: { token: font-family/base, value: "'General Sans Variable'" }
+        font-weight: { token: typography/label/font-weight/medium, value: "500" }
+        line-height: { token: typography/label/line-height, value: 14px }
+        color: { token: actions/secondary/regular/hover/label, value: "#ededed" }
+        font-size: { token: typography/label/font-size, value: 12px }
+        letter-spacing: { token: typography/label/letter-spacing, value: 0px }
   - when: { type: Primary, state: Pressed }
     figmaNode: "91:383"
     elements:
       root:
         background: { token: actions/secondary/regular/pressed/background, value: "#999" }
+      text:
+        flex-shrink: { value: "0", assert: false }
+        white-space: { value: nowrap, assert: false }
+        text-align: { value: center }
+        position: { value: relative, assert: false }
+        font-family: { token: font-family/base, value: "'General Sans Variable'" }
+        font-weight: { token: typography/label/font-weight/medium, value: "500" }
+        line-height: { token: typography/label/line-height, value: 14px }
+        color: { token: actions/secondary/regular/pressed/label, value: "#d3d9d5" }
+        font-size: { token: typography/label/font-size, value: 12px }
+        letter-spacing: { token: typography/label/letter-spacing, value: 0px }
   - when: { type: Primary, state: Disabled }
     figmaNode: "91:394"
     elements:
       root:
         background: { token: actions/secondary/regular/disabled/background, value: "#3a3a3a" }
         opacity: { token: opacity/gentle, value: "0.24" }
+      text:
+        flex-shrink: { value: "0", assert: false }
+        white-space: { value: nowrap, assert: false }
+        text-align: { value: center }
+        position: { value: relative, assert: false }
+        font-family: { token: font-family/base, value: "'General Sans Variable'" }
+        font-weight: { token: typography/label/font-weight/medium, value: "500" }
+        line-height: { token: typography/label/line-height, value: 14px }
+        color: { token: actions/secondary/regular/disabled/label, value: "#d3d9d5" }
+        font-size: { token: typography/label/font-size, value: 12px }
+        letter-spacing: { token: typography/label/letter-spacing, value: 0px }
   - when: { type: Primary, state: Focus }
     figmaNode: "91:403"
     elements:
       root:
         background: { token: actions/secondary/regular/focus/background, value: "#3a3a3a" }
+      text:
+        flex-shrink: { value: "0", assert: false }
+        white-space: { value: nowrap, assert: false }
+        text-align: { value: center }
+        position: { value: relative, assert: false }
+        font-family: { token: font-family/base, value: "'General Sans Variable'" }
+        font-weight: { token: typography/label/font-weight/medium, value: "500" }
+        line-height: { token: typography/label/line-height, value: 14px }
+        color: { token: actions/secondary/regular/focus/label, value: "#d3d9d5" }
+        font-size: { token: typography/label/font-size, value: 12px }
+        letter-spacing: { token: typography/label/letter-spacing, value: 0px }
       focus-ring:
         border-sides: { value: all }
         position: { value: absolute }
         border-width: { token: spacing/outline/medium, value: 2px }
         border-color: { token: actions/secondary/regular/focus/focus-ring, value: "#999" }
+        inset: { value: -4px }
         border-radius: { token: spacing/radius/small, value: 8px }
 guidance:
   status: agreed

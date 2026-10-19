@@ -27,6 +27,7 @@
 - `root`
 - `label`
 - `background`
+- `text`
 - `focus-ring`
 
 ## When to use
@@ -67,27 +68,41 @@ Every token this component uses, across all its variants.
 | `actions/primary/default/label` | `#060805` |
 | `actions/primary/default/outline` | `rgba(237,237,237,0.64)` |
 | `actions/primary/disabled/background` | `#00d669` |
+| `actions/primary/disabled/label` | `#060805` |
 | `actions/primary/disabled/outline` | `rgba(237,237,237,0.64)` |
 | `actions/primary/focus/background` | `#00d669` |
 | `actions/primary/focus/focus-ring` | `#b6ffda` |
+| `actions/primary/focus/label` | `#060805` |
 | `actions/primary/focus/outline` | `rgba(237,237,237,0.64)` |
 | `actions/primary/hover/background` | `#00b450` |
+| `actions/primary/hover/label` | `#060805` |
 | `actions/primary/hover/outline` | `rgba(237,237,237,0.64)` |
 | `actions/primary/pressed/background` | `#00913a` |
+| `actions/primary/pressed/label` | `#060805` |
 | `actions/primary/pressed/outline` | `rgba(237,237,237,0.64)` |
 | `actions/secondary/regular/default/background` | `#3a3a3a` |
+| `actions/secondary/regular/default/label` | `#d3d9d5` |
 | `actions/secondary/regular/default/outline` | `#ededed` |
 | `actions/secondary/regular/disabled/background` | `#3a3a3a` |
+| `actions/secondary/regular/disabled/label` | `#d3d9d5` |
 | `actions/secondary/regular/disabled/outline` | `#ededed` |
 | `actions/secondary/regular/focus/background` | `#3a3a3a` |
 | `actions/secondary/regular/focus/focus-ring` | `#999` |
+| `actions/secondary/regular/focus/label` | `#d3d9d5` |
 | `actions/secondary/regular/focus/outline` | `#ededed` |
 | `actions/secondary/regular/hover/background` | `#747573` |
+| `actions/secondary/regular/hover/label` | `#ededed` |
 | `actions/secondary/regular/hover/outline` | `#ededed` |
 | `actions/secondary/regular/pressed/background` | `#999` |
+| `actions/secondary/regular/pressed/label` | `#d3d9d5` |
 | `actions/secondary/regular/pressed/outline` | `#ededed` |
+| `actions/tertiary/default/label` | `#d3d9d5` |
+| `actions/tertiary/disabled/label` | `#d3d9d5` |
+| `actions/tertiary/focus/label` | `#d3d9d5` |
 | `actions/tertiary/hover/background` | `#060805` |
+| `actions/tertiary/hover/label` | `#ededed` |
 | `actions/tertiary/pressed/background` | `#454545` |
+| `actions/tertiary/pressed/label` | `#d3d9d5` |
 | `font-family/base` | `'General Sans Variable'` |
 | `opacity/gentle` | `0.24` |
 | `opacity/mild` | `0.32` |

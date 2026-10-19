@@ -25,11 +25,17 @@ elements:
     styles:
       justify-content: { value: center }
       align-items: { value: center }
+      display: { value: flex, assert: false }
+      position: { value: relative, assert: false }
       gap: { token: spacing/gap/small, value: 8px }
       height: { token: spacing/size/medium-large, value: 48px }
       border-radius: { token: spacing/radius/full, value: 10000px }
   label:
     styles:
+      flex-shrink: { value: "0", assert: false }
+      white-space: { value: nowrap, assert: false }
+      text-align: { value: center }
+      position: { value: relative, assert: false }
       font-family: { token: font-family/base, value: "'General Sans Variable'" }
       font-weight: { token: typography/body/font-weight/medium, value: "500" }
       line-height: { token: typography/body/line-height, value: 22px }
@@ -37,6 +43,7 @@ elements:
       font-size: { token: typography/body/font-size, value: 16px }
       letter-spacing: { token: typography/body/letter-spacing, value: 0px }
   background: {}
+  text: {}
   focus-ring: {}
 variants:
   - when: { type: Primary, state: Default }
@@ -67,6 +74,17 @@ variants:
         border-color: { token: actions/secondary/regular/default/outline, value: "#ededed" }
         opacity: { token: opacity/gentle, value: "0.24" }
         border-radius: { token: spacing/radius/full, value: 10000px }
+      text:
+        flex-shrink: { value: "0", assert: false }
+        white-space: { value: nowrap, assert: false }
+        text-align: { value: center }
+        position: { value: relative, assert: false }
+        font-family: { token: font-family/base, value: "'General Sans Variable'" }
+        font-weight: { token: typography/body/font-weight/medium, value: "500" }
+        line-height: { token: typography/body/line-height, value: 22px }
+        color: { token: actions/secondary/regular/default/label, value: "#d3d9d5" }
+        font-size: { token: typography/body/font-size, value: 16px }
+        letter-spacing: { token: typography/body/letter-spacing, value: 0px }
   - when: { type: Tertiary, state: Default }
     figmaNode: "39:44"
     elements:
@@ -75,9 +93,31 @@ variants:
         padding-right: { token: spacing/gap/medium-large, value: 20px }
         padding-top: { token: spacing/gap/none, value: 0px }
         padding-bottom: { token: spacing/gap/none, value: 0px }
+      text:
+        flex-shrink: { value: "0", assert: false }
+        white-space: { value: nowrap, assert: false }
+        text-align: { value: center }
+        position: { value: relative, assert: false }
+        font-family: { token: font-family/base, value: "'General Sans Variable'" }
+        font-weight: { token: typography/body/font-weight/medium, value: "500" }
+        line-height: { token: typography/body/line-height, value: 22px }
+        color: { token: actions/tertiary/default/label, value: "#d3d9d5" }
+        font-size: { token: typography/body/font-size, value: 16px }
+        letter-spacing: { token: typography/body/letter-spacing, value: 0px }
   - when: { type: Borderless, state: Default }
     figmaNode: "39:46"
     elements:
+      text:
+        flex-shrink: { value: "0", assert: false }
+        white-space: { value: nowrap, assert: false }
+        text-align: { value: center }
+        position: { value: relative, assert: false }
+        font-family: { token: font-family/base, value: "'General Sans Variable'" }
+        font-weight: { token: typography/body/font-weight/medium, value: "500" }
+        line-height: { token: typography/body/line-height, value: 22px }
+        color: { token: actions/tertiary/default/label, value: "#d3d9d5" }
+        font-size: { token: typography/body/font-size, value: 16px }
+        letter-spacing: { token: typography/body/letter-spacing, value: 0px }
       root:
         padding: { token: spacing/gap/none, value: 0px }
   - when: { type: Primary, state: Hover }
@@ -92,6 +132,17 @@ variants:
         padding-right: { token: spacing/gap/medium-large, value: 20px }
         padding-top: { token: spacing/gap/none, value: 0px }
         padding-bottom: { token: spacing/gap/none, value: 0px }
+      text:
+        flex-shrink: { value: "0", assert: false }
+        white-space: { value: nowrap, assert: false }
+        text-align: { value: center }
+        position: { value: relative, assert: false }
+        font-family: { token: font-family/base, value: "'General Sans Variable'" }
+        font-weight: { token: typography/body/font-weight/medium, value: "500" }
+        line-height: { token: typography/body/line-height, value: 22px }
+        color: { token: actions/primary/hover/label, value: "#060805" }
+        font-size: { token: typography/body/font-size, value: 16px }
+        letter-spacing: { token: typography/body/letter-spacing, value: 0px }
   - when: { type: Secondary, state: Hover }
     figmaNode: "39:50"
     elements:
@@ -108,6 +159,17 @@ variants:
         border-color: { token: actions/secondary/regular/hover/outline, value: "#ededed" }
         opacity: { token: opacity/mild, value: "0.32" }
         border-radius: { token: spacing/radius/full, value: 10000px }
+      text:
+        flex-shrink: { value: "0", assert: false }
+        white-space: { value: nowrap, assert: false }
+        text-align: { value: center }
+        position: { value: relative, assert: false }
+        font-family: { token: font-family/base, value: "'General Sans Variable'" }
+        font-weight: { token: typography/body/font-weight/medium, value: "500" }
+        line-height: { token: typography/body/line-height, value: 22px }
+        color: { token: actions/secondary/regular/hover/label, value: "#ededed" }
+        font-size: { token: typography/body/font-size, value: 16px }
+        letter-spacing: { token: typography/body/letter-spacing, value: 0px }
   - when: { type: Tertiary, state: Hover }
     figmaNode: "39:53"
     elements:
@@ -122,6 +184,17 @@ variants:
         background: { token: actions/tertiary/hover/background, value: "#060805" }
         opacity: { token: opacity/mild, value: "0.32" }
         border-radius: { token: spacing/radius/full, value: 10000px }
+      text:
+        flex-shrink: { value: "0", assert: false }
+        white-space: { value: nowrap, assert: false }
+        text-align: { value: center }
+        position: { value: relative, assert: false }
+        font-family: { token: font-family/base, value: "'General Sans Variable'" }
+        font-weight: { token: typography/body/font-weight/medium, value: "500" }
+        line-height: { token: typography/body/line-height, value: 22px }
+        color: { token: actions/tertiary/hover/label, value: "#ededed" }
+        font-size: { token: typography/body/font-size, value: 16px }
+        letter-spacing: { token: typography/body/letter-spacing, value: 0px }
   - when: { type: Borderless, state: Hover }
     figmaNode: "39:56"
     elements:
@@ -130,6 +203,17 @@ variants:
         inset: { value: "0" }
         background: { token: actions/tertiary/hover/background, value: "#060805" }
         opacity: { token: opacity/mild, value: "0.32" }
+      text:
+        flex-shrink: { value: "0", assert: false }
+        white-space: { value: nowrap, assert: false }
+        text-align: { value: center }
+        position: { value: relative, assert: false }
+        font-family: { token: font-family/base, value: "'General Sans Variable'" }
+        font-weight: { token: typography/body/font-weight/medium, value: "500" }
+        line-height: { token: typography/body/line-height, value: 22px }
+        color: { token: actions/tertiary/hover/label, value: "#ededed" }
+        font-size: { token: typography/body/font-size, value: 16px }
+        letter-spacing: { token: typography/body/letter-spacing, value: 0px }
       root:
         padding: { token: spacing/gap/none, value: 0px }
   - when: { type: Primary, state: Pressed }
@@ -144,6 +228,17 @@ variants:
         padding-right: { token: spacing/gap/medium-large, value: 20px }
         padding-top: { token: spacing/gap/none, value: 0px }
         padding-bottom: { token: spacing/gap/none, value: 0px }
+      text:
+        flex-shrink: { value: "0", assert: false }
+        white-space: { value: nowrap, assert: false }
+        text-align: { value: center }
+        position: { value: relative, assert: false }
+        font-family: { token: font-family/base, value: "'General Sans Variable'" }
+        font-weight: { token: typography/body/font-weight/medium, value: "500" }
+        line-height: { token: typography/body/line-height, value: 22px }
+        color: { token: actions/primary/pressed/label, value: "#060805" }
+        font-size: { token: typography/body/font-size, value: 16px }
+        letter-spacing: { token: typography/body/letter-spacing, value: 0px }
   - when: { type: Secondary, state: Pressed }
     figmaNode: "39:61"
     elements:
@@ -160,6 +255,17 @@ variants:
         border-color: { token: actions/secondary/regular/pressed/outline, value: "#ededed" }
         opacity: { token: opacity/mild, value: "0.32" }
         border-radius: { token: spacing/radius/full, value: 10000px }
+      text:
+        flex-shrink: { value: "0", assert: false }
+        white-space: { value: nowrap, assert: false }
+        text-align: { value: center }
+        position: { value: relative, assert: false }
+        font-family: { token: font-family/base, value: "'General Sans Variable'" }
+        font-weight: { token: typography/body/font-weight/medium, value: "500" }
+        line-height: { token: typography/body/line-height, value: 22px }
+        color: { token: actions/secondary/regular/pressed/label, value: "#d3d9d5" }
+        font-size: { token: typography/body/font-size, value: 16px }
+        letter-spacing: { token: typography/body/letter-spacing, value: 0px }
   - when: { type: Tertiary, state: Pressed }
     figmaNode: "39:64"
     elements:
@@ -174,6 +280,17 @@ variants:
         background: { token: actions/tertiary/pressed/background, value: "#454545" }
         opacity: { token: opacity/mild, value: "0.32" }
         border-radius: { token: spacing/radius/full, value: 10000px }
+      text:
+        flex-shrink: { value: "0", assert: false }
+        white-space: { value: nowrap, assert: false }
+        text-align: { value: center }
+        position: { value: relative, assert: false }
+        font-family: { token: font-family/base, value: "'General Sans Variable'" }
+        font-weight: { token: typography/body/font-weight/medium, value: "500" }
+        line-height: { token: typography/body/line-height, value: 22px }
+        color: { token: actions/tertiary/pressed/label, value: "#d3d9d5" }
+        font-size: { token: typography/body/font-size, value: 16px }
+        letter-spacing: { token: typography/body/letter-spacing, value: 0px }
   - when: { type: Borderless, state: Pressed }
     figmaNode: "39:67"
     elements:
@@ -182,6 +299,17 @@ variants:
         inset: { value: "0" }
         background: { token: actions/tertiary/pressed/background, value: "#454545" }
         opacity: { token: opacity/mild, value: "0.32" }
+      text:
+        flex-shrink: { value: "0", assert: false }
+        white-space: { value: nowrap, assert: false }
+        text-align: { value: center }
+        position: { value: relative, assert: false }
+        font-family: { token: font-family/base, value: "'General Sans Variable'" }
+        font-weight: { token: typography/body/font-weight/medium, value: "500" }
+        line-height: { token: typography/body/line-height, value: 22px }
+        color: { token: actions/tertiary/pressed/label, value: "#d3d9d5" }
+        font-size: { token: typography/body/font-size, value: 16px }
+        letter-spacing: { token: typography/body/letter-spacing, value: 0px }
       root:
         padding: { token: spacing/gap/none, value: 0px }
   - when: { type: Primary, state: Disabled }
@@ -197,6 +325,17 @@ variants:
         padding-top: { token: spacing/gap/none, value: 0px }
         padding-bottom: { token: spacing/gap/none, value: 0px }
         opacity: { token: opacity/gentle, value: "0.24" }
+      text:
+        flex-shrink: { value: "0", assert: false }
+        white-space: { value: nowrap, assert: false }
+        text-align: { value: center }
+        position: { value: relative, assert: false }
+        font-family: { token: font-family/base, value: "'General Sans Variable'" }
+        font-weight: { token: typography/body/font-weight/medium, value: "500" }
+        line-height: { token: typography/body/line-height, value: 22px }
+        color: { token: actions/primary/disabled/label, value: "#060805" }
+        font-size: { token: typography/body/font-size, value: 16px }
+        letter-spacing: { token: typography/body/letter-spacing, value: 0px }
   - when: { type: Secondary, state: Disabled }
     figmaNode: "39:72"
     elements:
@@ -214,6 +353,17 @@ variants:
         border-color: { token: actions/secondary/regular/disabled/outline, value: "#ededed" }
         opacity: { token: opacity/mild, value: "0.32" }
         border-radius: { token: spacing/radius/full, value: 10000px }
+      text:
+        flex-shrink: { value: "0", assert: false }
+        white-space: { value: nowrap, assert: false }
+        text-align: { value: center }
+        position: { value: relative, assert: false }
+        font-family: { token: font-family/base, value: "'General Sans Variable'" }
+        font-weight: { token: typography/body/font-weight/medium, value: "500" }
+        line-height: { token: typography/body/line-height, value: 22px }
+        color: { token: actions/secondary/regular/disabled/label, value: "#d3d9d5" }
+        font-size: { token: typography/body/font-size, value: 16px }
+        letter-spacing: { token: typography/body/letter-spacing, value: 0px }
   - when: { type: Tertiary, state: Disabled }
     figmaNode: "39:75"
     elements:
@@ -223,9 +373,31 @@ variants:
         padding-top: { token: spacing/gap/none, value: 0px }
         padding-bottom: { token: spacing/gap/none, value: 0px }
         opacity: { token: opacity/gentle, value: "0.24" }
+      text:
+        flex-shrink: { value: "0", assert: false }
+        white-space: { value: nowrap, assert: false }
+        text-align: { value: center }
+        position: { value: relative, assert: false }
+        font-family: { token: font-family/base, value: "'General Sans Variable'" }
+        font-weight: { token: typography/body/font-weight/medium, value: "500" }
+        line-height: { token: typography/body/line-height, value: 22px }
+        color: { token: actions/tertiary/disabled/label, value: "#d3d9d5" }
+        font-size: { token: typography/body/font-size, value: 16px }
+        letter-spacing: { token: typography/body/letter-spacing, value: 0px }
   - when: { type: Borderless, state: Disabled }
     figmaNode: "39:77"
     elements:
+      text:
+        flex-shrink: { value: "0", assert: false }
+        white-space: { value: nowrap, assert: false }
+        text-align: { value: center }
+        position: { value: relative, assert: false }
+        font-family: { token: font-family/base, value: "'General Sans Variable'" }
+        font-weight: { token: typography/body/font-weight/medium, value: "500" }
+        line-height: { token: typography/body/line-height, value: 22px }
+        color: { token: actions/tertiary/disabled/label, value: "#d3d9d5" }
+        font-size: { token: typography/body/font-size, value: 16px }
+        letter-spacing: { token: typography/body/letter-spacing, value: 0px }
       root:
         padding: { token: spacing/gap/none, value: 0px }
         opacity: { token: opacity/gentle, value: "0.24" }
@@ -241,11 +413,23 @@ variants:
         padding-right: { token: spacing/gap/medium-large, value: 20px }
         padding-top: { token: spacing/gap/none, value: 0px }
         padding-bottom: { token: spacing/gap/none, value: 0px }
+      text:
+        flex-shrink: { value: "0", assert: false }
+        white-space: { value: nowrap, assert: false }
+        text-align: { value: center }
+        position: { value: relative, assert: false }
+        font-family: { token: font-family/base, value: "'General Sans Variable'" }
+        font-weight: { token: typography/body/font-weight/medium, value: "500" }
+        line-height: { token: typography/body/line-height, value: 22px }
+        color: { token: actions/primary/focus/label, value: "#060805" }
+        font-size: { token: typography/body/font-size, value: 16px }
+        letter-spacing: { token: typography/body/letter-spacing, value: 0px }
       focus-ring:
         border-sides: { value: all }
         position: { value: absolute }
         border-width: { token: spacing/outline/medium, value: 2px }
         border-color: { token: actions/primary/focus/focus-ring, value: "#b6ffda" }
+        inset: { value: -5px -4px -4px -5px }
         border-radius: { token: spacing/radius/full, value: 10000px }
   - when: { type: Secondary, state: Focus }
     figmaNode: "39:82"
@@ -263,11 +447,23 @@ variants:
         border-color: { token: actions/secondary/regular/focus/outline, value: "#ededed" }
         opacity: { token: opacity/gentle, value: "0.24" }
         border-radius: { token: spacing/radius/full, value: 10000px }
+      text:
+        flex-shrink: { value: "0", assert: false }
+        white-space: { value: nowrap, assert: false }
+        text-align: { value: center }
+        position: { value: relative, assert: false }
+        font-family: { token: font-family/base, value: "'General Sans Variable'" }
+        font-weight: { token: typography/body/font-weight/medium, value: "500" }
+        line-height: { token: typography/body/line-height, value: 22px }
+        color: { token: actions/secondary/regular/focus/label, value: "#d3d9d5" }
+        font-size: { token: typography/body/font-size, value: 16px }
+        letter-spacing: { token: typography/body/letter-spacing, value: 0px }
       focus-ring:
         border-sides: { value: all }
         position: { value: absolute }
         border-width: { token: spacing/outline/medium, value: 2px }
         border-color: { token: actions/secondary/regular/focus/focus-ring, value: "#999" }
+        inset: { value: -4px }
         border-radius: { token: spacing/radius/full, value: 10000px }
   - when: { type: Tertiary, state: Focus }
     figmaNode: "39:86"
@@ -277,15 +473,38 @@ variants:
         padding-right: { token: spacing/gap/medium-large, value: 20px }
         padding-top: { token: spacing/gap/none, value: 0px }
         padding-bottom: { token: spacing/gap/none, value: 0px }
+      text:
+        flex-shrink: { value: "0", assert: false }
+        white-space: { value: nowrap, assert: false }
+        text-align: { value: center }
+        position: { value: relative, assert: false }
+        font-family: { token: font-family/base, value: "'General Sans Variable'" }
+        font-weight: { token: typography/body/font-weight/medium, value: "500" }
+        line-height: { token: typography/body/line-height, value: 22px }
+        color: { token: actions/tertiary/focus/label, value: "#d3d9d5" }
+        font-size: { token: typography/body/font-size, value: 16px }
+        letter-spacing: { token: typography/body/letter-spacing, value: 0px }
       focus-ring:
         border-sides: { value: all }
         position: { value: absolute }
         border-width: { token: spacing/outline/medium, value: 2px }
         border-color: { token: actions/secondary/regular/focus/focus-ring, value: "#999" }
+        inset: { value: -4px }
         border-radius: { token: spacing/radius/full, value: 10000px }
   - when: { type: Borderless, state: Focus }
     figmaNode: "39:89"
     elements:
+      text:
+        flex-shrink: { value: "0", assert: false }
+        white-space: { value: nowrap, assert: false }
+        text-align: { value: center }
+        position: { value: relative, assert: false }
+        font-family: { token: font-family/base, value: "'General Sans Variable'" }
+        font-weight: { token: typography/body/font-weight/medium, value: "500" }
+        line-height: { token: typography/body/line-height, value: 22px }
+        color: { token: actions/tertiary/focus/label, value: "#d3d9d5" }
+        font-size: { token: typography/body/font-size, value: 16px }
+        letter-spacing: { token: typography/body/letter-spacing, value: 0px }
       root:
         padding: { token: spacing/gap/none, value: 0px }
       focus-ring:
@@ -293,6 +512,7 @@ variants:
         position: { value: absolute }
         border-width: { token: spacing/outline/medium, value: 2px }
         border-color: { token: actions/secondary/regular/focus/focus-ring, value: "#999" }
+        inset: { value: -4px }
 guidance:
   status: agreed
   use:

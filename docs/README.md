@@ -12,7 +12,7 @@ My design system, behind **The portfolio site**, **The accounting app** and what
 | [Token coverage](TOKENS.md) | Why each value has a token or doesn't |
 | [Roadmap](ROADMAP.md) | What I'm doing next |
 
-**22** contracts, **1** stable. **16** have guidance, and I've signed off **16** of those.
+**22** contracts, **0** stable. **16** have guidance, and I've signed off **16** of those.
 
 ## Catalogue
 
@@ -20,7 +20,7 @@ My design system, behind **The portfolio site**, **The accounting app** and what
 
 | | Summary | Contract | Guidance | Used in |
 |---|---|---|---|---|
-| [Badge](components/badge.md) | A small outlined label for status. The colour sits in the outline and the dot, never in the text. | `stable` | `agreed` | The portfolio site, the accounting app |
+| [Badge](components/badge.md) | A small outlined label for status. The colour sits in the outline and the dot, never in the text. | `review` | `agreed` | The portfolio site, the accounting app |
 | [Button](components/button.md) | A 48px button with just a label, in four levels of emphasis. | `review` | `agreed` | · |
 | [Carousel](components/carousel.md) | A card in the home page carousel: a number, a title and a short description. | `review` | · | · |
 | [Chip](components/chips.md) | A small outlined label you can click, for filters and quick choices. | `review` | `agreed` | The portfolio site |
@@ -59,6 +59,7 @@ What needs attention. It's built from the contracts, so it's only as fresh as th
 
 ### Still waiting on a Figma read
 
+- [Badge](components/badge.md)
 - [Menu effect](components/effect-menu.md)
 
 ### No guidance yet

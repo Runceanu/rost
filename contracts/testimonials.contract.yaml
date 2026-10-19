@@ -21,6 +21,8 @@ states: [ Default, Hover, Pressed, Focus, Disabled ]
 elements:
   root:
     styles:
+      display: { value: flex, assert: false }
+      position: { value: relative, assert: false }
       gap: { token: spacing/gap/2xlarge, value: 40px }
       padding-top: { token: spacing/gap/large, value: 24px }
       padding-bottom: { token: spacing/gap/large, value: 24px }
@@ -32,6 +34,7 @@ elements:
   outline: {}
   top: {}
   label: {}
+  text: {}
   bottom: {}
   focus-ring: {}
 variants:
@@ -55,17 +58,31 @@ variants:
           notes: Just the size of the Figma frame. No token, and not something to copy.
       left:
         align-items: { value: center }
+        display: { value: flex, assert: false }
+        flex: { value: 1 0 0, assert: false }
+        position: { value: relative, assert: false }
         gap: { token: spacing/gap/large, value: 24px }
       slot:
+        flex-shrink: { value: "0", assert: false }
+        position: { value: relative, assert: false }
         border-radius: { token: spacing/radius/full, value: 10000px }
         width: { value: 56px, suggest: spacing/size/large }
         height: { value: 56px, suggest: spacing/size/large }
       content:
         justify-content: { value: center }
+        display: { value: flex, assert: false }
+        flex-direction: { value: column, assert: false }
+        flex-shrink: { value: "0", assert: false }
+        white-space: { value: nowrap, assert: false }
+        align-items: { value: flex-start }
+        position: { value: relative, assert: false }
         gap: { token: spacing/gap/2xsmall, value: 4px }
       -actions:
         justify-content: { value: center }
         align-items: { value: center }
+        display: { value: flex, assert: false }
+        flex-shrink: { value: "0", assert: false }
+        position: { value: relative, assert: false }
         gap: { token: spacing/gap/small, value: 8px }
         padding: { token: spacing/gap/none, value: 0px }
         border-radius: { token: spacing/radius/full, value: 10000px }
@@ -74,24 +91,44 @@ variants:
       icons-arrow-left:
         position: { value: absolute }
         inset: { value: "0" }
+        flex-shrink: { value: "0", assert: false }
         width: { value: 16px, suggest: spacing/size/2xsmall }
         height: { value: 16px, suggest: spacing/size/2xsmall }
   - when: { state: Default, expanded: true }
     figmaNode: "144:347"
     elements:
+      root:
+        align-items: { value: flex-start }
+        justify-content: { value: center }
+        flex-direction: { value: column, assert: false }
+        padding-left: { token: spacing/gap/medium, value: 16px }
       left:
         align-items: { value: center }
+        display: { value: flex, assert: false }
+        flex: { value: 1 0 0, assert: false }
+        position: { value: relative, assert: false }
         gap: { token: spacing/gap/large, value: 24px }
       slot:
+        flex-shrink: { value: "0", assert: false }
+        position: { value: relative, assert: false }
         border-radius: { token: spacing/radius/full, value: 10000px }
         width: { value: 56px, suggest: spacing/size/large }
         height: { value: 56px, suggest: spacing/size/large }
       content:
         justify-content: { value: center }
+        display: { value: flex, assert: false }
+        flex-direction: { value: column, assert: false }
+        flex-shrink: { value: "0", assert: false }
+        white-space: { value: nowrap, assert: false }
+        align-items: { value: flex-start }
+        position: { value: relative, assert: false }
         gap: { token: spacing/gap/2xsmall, value: 4px }
       -actions:
         justify-content: { value: center }
         align-items: { value: center }
+        display: { value: flex, assert: false }
+        flex-shrink: { value: "0", assert: false }
+        position: { value: relative, assert: false }
         gap: { token: spacing/gap/small, value: 8px }
         padding: { token: spacing/gap/none, value: 0px }
         border-radius: { token: spacing/radius/full, value: 10000px }
@@ -100,53 +137,86 @@ variants:
       icons-arrow-left:
         position: { value: absolute }
         inset: { value: "0" }
+        flex-shrink: { value: "0", assert: false }
         width: { value: 16px, suggest: spacing/size/2xsmall }
         height: { value: 16px, suggest: spacing/size/2xsmall }
-      root:
-        justify-content: { value: center }
-        padding-left: { token: spacing/gap/medium, value: 16px }
       outline:
         position: { value: absolute }
         background: { token: project/default/outline, value: "#3a3a3a" }
       top:
         align-items: { value: center }
+        display: { value: flex, assert: false }
+        flex-shrink: { value: "0", assert: false }
+        width: { value: 100% }
+        justify-content: { value: space-between }
+        position: { value: relative, assert: false }
         gap: { token: spacing/gap/large, value: 24px }
       label:
+        flex-shrink: { value: "0", assert: false }
+        position: { value: relative, assert: false }
         font-family: { token: font-family/base, value: "'General Sans Variable'" }
         font-weight: { token: typography/title/font-weight/medium, value: "500" }
         line-height: { token: typography/title/line-height, value: 32px }
         color: { token: project/default/label, value: "#d3d9d5" }
         font-size: { token: typography/title/font-size, value: 24px }
         letter-spacing: { token: typography/title/letter-spacing, value: 0px }
+      text:
+        flex-shrink: { value: "0", assert: false }
+        position: { value: relative, assert: false }
+        font-family: { token: font-family/base, value: "'General Sans Variable'" }
+        font-weight: { token: typography/paragraph/font-weight/regular, value: "400" }
+        line-height: { token: typography/paragraph/line-height, value: 20px }
+        color: { token: project/default/sub-label, value: "#999" }
+        font-size: { token: typography/paragraph/font-size, value: 14px }
+        letter-spacing: { token: typography/paragraph/letter-spacing, value: 0px }
       bottom:
         justify-content: { value: center }
         align-items: { value: center }
+        display: { value: flex, assert: false }
+        flex-shrink: { value: "0", assert: false }
+        position: { value: relative, assert: false }
         width: { value: 976px }
   - when: { state: Disabled, expanded: true }
     figmaNode: "144:355"
     elements:
       root:
+        align-items: { value: flex-start }
         width:
           value: 976px
           assert: false
           notes: Just the size of the Figma frame. No token, and not something to copy.
         justify-content: { value: center }
+        flex-direction: { value: column, assert: false }
         padding-left: { token: spacing/gap/medium, value: 16px }
         opacity: { token: opacity/gentle, value: "0.24" }
       left:
         align-items: { value: center }
+        display: { value: flex, assert: false }
+        flex: { value: 1 0 0, assert: false }
+        position: { value: relative, assert: false }
         gap: { token: spacing/gap/large, value: 24px }
         padding: { token: spacing/gap/none, value: 0px }
       slot:
+        flex-shrink: { value: "0", assert: false }
+        position: { value: relative, assert: false }
         border-radius: { token: spacing/radius/full, value: 10000px }
         width: { value: 56px, suggest: spacing/size/large }
         height: { value: 56px, suggest: spacing/size/large }
       content:
         justify-content: { value: center }
+        display: { value: flex, assert: false }
+        flex-direction: { value: column, assert: false }
+        flex-shrink: { value: "0", assert: false }
+        white-space: { value: nowrap, assert: false }
+        align-items: { value: flex-start }
+        position: { value: relative, assert: false }
         gap: { token: spacing/gap/2xsmall, value: 4px }
       -actions:
         justify-content: { value: center }
         align-items: { value: center }
+        display: { value: flex, assert: false }
+        flex-shrink: { value: "0", assert: false }
+        position: { value: relative, assert: false }
         gap: { token: spacing/gap/small, value: 8px }
         padding: { token: spacing/gap/none, value: 0px }
         border-radius: { token: spacing/radius/full, value: 10000px }
@@ -155,6 +225,7 @@ variants:
       icons-arrow-left:
         position: { value: absolute }
         inset: { value: "0" }
+        flex-shrink: { value: "0", assert: false }
         width: { value: 16px, suggest: spacing/size/2xsmall }
         height: { value: 16px, suggest: spacing/size/2xsmall }
       outline:
@@ -162,42 +233,78 @@ variants:
         background: { token: project/disabled/outline, value: "#3a3a3a" }
       top:
         align-items: { value: center }
+        display: { value: flex, assert: false }
+        flex-shrink: { value: "0", assert: false }
+        width: { value: 100% }
+        justify-content: { value: space-between }
+        position: { value: relative, assert: false }
         gap: { token: spacing/gap/large, value: 24px }
       label:
+        flex-shrink: { value: "0", assert: false }
+        position: { value: relative, assert: false }
         font-family: { token: font-family/base, value: "'General Sans Variable'" }
         font-weight: { token: typography/title/font-weight/medium, value: "500" }
         line-height: { token: typography/title/line-height, value: 32px }
         color: { token: project/disabled/label, value: "#d3d9d5" }
         font-size: { token: typography/title/font-size, value: 24px }
         letter-spacing: { token: typography/title/letter-spacing, value: 0px }
+      text:
+        flex-shrink: { value: "0", assert: false }
+        position: { value: relative, assert: false }
+        font-family: { token: font-family/base, value: "'General Sans Variable'" }
+        font-weight: { token: typography/paragraph/font-weight/regular, value: "400" }
+        line-height: { token: typography/paragraph/line-height, value: 20px }
+        color: { token: project/disabled/sub-label, value: "#999" }
+        font-size: { token: typography/paragraph/font-size, value: 14px }
+        letter-spacing: { token: typography/paragraph/letter-spacing, value: 0px }
       bottom:
         justify-content: { value: center }
         align-items: { value: center }
+        display: { value: flex, assert: false }
+        flex-shrink: { value: "0", assert: false }
+        position: { value: relative, assert: false }
+        width: { value: 100% }
   - when: { state: Pressed, expanded: true }
     figmaNode: "144:363"
     elements:
       root:
+        align-items: { value: flex-start }
         width:
           value: 976px
           assert: false
           notes: Just the size of the Figma frame. No token, and not something to copy.
         justify-content: { value: center }
+        flex-direction: { value: column, assert: false }
         padding-left: { token: spacing/gap/medium, value: 16px }
         padding-right: { token: spacing/gap/none, value: 0px }
       left:
         align-items: { value: center }
+        display: { value: flex, assert: false }
+        flex: { value: 1 0 0, assert: false }
+        position: { value: relative, assert: false }
         gap: { token: spacing/gap/large, value: 24px }
         padding: { token: spacing/gap/none, value: 0px }
       slot:
+        flex-shrink: { value: "0", assert: false }
+        position: { value: relative, assert: false }
         border-radius: { token: spacing/radius/full, value: 10000px }
         width: { value: 56px, suggest: spacing/size/large }
         height: { value: 56px, suggest: spacing/size/large }
       content:
         justify-content: { value: center }
+        display: { value: flex, assert: false }
+        flex-direction: { value: column, assert: false }
+        flex-shrink: { value: "0", assert: false }
+        white-space: { value: nowrap, assert: false }
+        align-items: { value: flex-start }
+        position: { value: relative, assert: false }
         gap: { token: spacing/gap/2xsmall, value: 4px }
       -actions:
         justify-content: { value: center }
         align-items: { value: center }
+        display: { value: flex, assert: false }
+        flex-shrink: { value: "0", assert: false }
+        position: { value: relative, assert: false }
         gap: { token: spacing/gap/small, value: 8px }
         padding: { token: spacing/gap/none, value: 0px }
         border-radius: { token: spacing/radius/full, value: 10000px }
@@ -206,6 +313,7 @@ variants:
       icons-arrow-left:
         position: { value: absolute }
         inset: { value: "0" }
+        flex-shrink: { value: "0", assert: false }
         width: { value: 16px, suggest: spacing/size/2xsmall }
         height: { value: 16px, suggest: spacing/size/2xsmall }
       outline:
@@ -213,39 +321,68 @@ variants:
         background: { token: project/pressed/outline, value: "#10ffa4" }
       top:
         align-items: { value: center }
+        display: { value: flex, assert: false }
+        flex-shrink: { value: "0", assert: false }
+        width: { value: 100% }
+        position: { value: relative, assert: false }
         gap: { token: spacing/gap/large, value: 24px }
       label:
+        flex-shrink: { value: "0", assert: false }
+        position: { value: relative, assert: false }
         font-family: { token: font-family/base, value: "'General Sans Variable'" }
         font-weight: { token: typography/title/font-weight/medium, value: "500" }
         line-height: { token: typography/title/line-height, value: 32px }
         color: { token: project/pressed/label, value: "#00d669" }
         font-size: { token: typography/title/font-size, value: 24px }
         letter-spacing: { token: typography/title/letter-spacing, value: 0px }
+      text:
+        flex-shrink: { value: "0", assert: false }
+        position: { value: relative, assert: false }
+        font-family: { token: font-family/base, value: "'General Sans Variable'" }
+        font-weight: { token: typography/paragraph/font-weight/regular, value: "400" }
+        line-height: { token: typography/paragraph/line-height, value: 20px }
+        color: { token: project/pressed/sub-label, value: "#c2c7c3" }
+        font-size: { token: typography/paragraph/font-size, value: 14px }
+        letter-spacing: { token: typography/paragraph/letter-spacing, value: 0px }
       bottom:
         justify-content: { value: center }
         align-items: { value: center }
+        display: { value: flex, assert: false }
+        flex-shrink: { value: "0", assert: false }
+        position: { value: relative, assert: false }
+        width: { value: 100% }
   - when: { state: Focus, expanded: true }
     figmaNode: "144:371"
     elements:
       root:
+        align-items: { value: flex-start }
         width:
           value: 976px
           assert: false
           notes: Just the size of the Figma frame. No token, and not something to copy.
         justify-content: { value: center }
+        flex-direction: { value: column, assert: false }
         padding-left: { token: spacing/gap/medium, value: 16px }
         padding-right: { token: spacing/gap/none, value: 0px }
       left:
         align-items: { value: center }
+        display: { value: flex, assert: false }
+        flex: { value: 1 0 0, assert: false }
+        position: { value: relative, assert: false }
         gap: { token: spacing/gap/large, value: 24px }
         padding: { token: spacing/gap/none, value: 0px }
       slot:
+        flex-shrink: { value: "0", assert: false }
+        position: { value: relative, assert: false }
         border-radius: { token: spacing/radius/full, value: 10000px }
         width: { value: 56px, suggest: spacing/size/large }
         height: { value: 56px, suggest: spacing/size/large }
       -actions:
         justify-content: { value: center }
         align-items: { value: center }
+        display: { value: flex, assert: false }
+        flex-shrink: { value: "0", assert: false }
+        position: { value: relative, assert: false }
         gap: { token: spacing/gap/small, value: 8px }
         padding: { token: spacing/gap/none, value: 0px }
         border-radius: { token: spacing/radius/full, value: 10000px }
@@ -254,6 +391,7 @@ variants:
       icons-arrow-left:
         position: { value: absolute }
         inset: { value: "0" }
+        flex-shrink: { value: "0", assert: false }
         width: { value: 16px, suggest: spacing/size/2xsmall }
         height: { value: 16px, suggest: spacing/size/2xsmall }
       outline:
@@ -261,47 +399,83 @@ variants:
         background: { token: project/focus/outline, value: "#3a3a3a" }
       top:
         align-items: { value: center }
+        display: { value: flex, assert: false }
+        flex-shrink: { value: "0", assert: false }
+        width: { value: 100% }
+        position: { value: relative, assert: false }
         gap: { token: spacing/gap/large, value: 24px }
       label:
+        flex-shrink: { value: "0", assert: false }
+        position: { value: relative, assert: false }
         font-family: { token: font-family/base, value: "'General Sans Variable'" }
         font-weight: { token: typography/title/font-weight/medium, value: "500" }
         line-height: { token: typography/title/line-height, value: 32px }
         color: { token: project/focus/label, value: "#d3d9d5" }
         font-size: { token: typography/title/font-size, value: 24px }
         letter-spacing: { token: typography/title/letter-spacing, value: 0px }
+      text:
+        flex-shrink: { value: "0", assert: false }
+        position: { value: relative, assert: false }
+        font-family: { token: font-family/base, value: "'General Sans Variable'" }
+        font-weight: { token: typography/paragraph/font-weight/regular, value: "400" }
+        line-height: { token: typography/paragraph/line-height, value: 20px }
+        color: { token: project/focus/sub-label, value: "#999" }
+        font-size: { token: typography/paragraph/font-size, value: 14px }
+        letter-spacing: { token: typography/paragraph/letter-spacing, value: 0px }
       bottom:
         justify-content: { value: center }
         align-items: { value: center }
+        display: { value: flex, assert: false }
+        flex-shrink: { value: "0", assert: false }
+        position: { value: relative, assert: false }
+        width: { value: 100% }
       focus-ring:
         border-sides: { value: all }
         position: { value: absolute }
         border-width: { token: spacing/outline/medium, value: 2px }
         border-color: { token: project/focus/focus-ring, value: "#999" }
+        inset: { value: -4px }
   - when: { state: Hover, expanded: true }
     figmaNode: "144:380"
     elements:
       root:
+        align-items: { value: flex-start }
         width:
           value: 976px
           assert: false
           notes: Just the size of the Figma frame. No token, and not something to copy.
         justify-content: { value: center }
+        flex-direction: { value: column, assert: false }
         padding-left: { token: spacing/gap/medium, value: 16px }
         padding-right: { token: spacing/gap/none, value: 0px }
       left:
         align-items: { value: center }
+        display: { value: flex, assert: false }
+        flex: { value: 1 0 0, assert: false }
+        position: { value: relative, assert: false }
         gap: { token: spacing/gap/large, value: 24px }
         padding: { token: spacing/gap/none, value: 0px }
       slot:
+        flex-shrink: { value: "0", assert: false }
+        position: { value: relative, assert: false }
         border-radius: { token: spacing/radius/full, value: 10000px }
         width: { value: 56px, suggest: spacing/size/large }
         height: { value: 56px, suggest: spacing/size/large }
       content:
         justify-content: { value: center }
+        display: { value: flex, assert: false }
+        flex-direction: { value: column, assert: false }
+        flex-shrink: { value: "0", assert: false }
+        white-space: { value: nowrap, assert: false }
+        align-items: { value: flex-start }
+        position: { value: relative, assert: false }
         gap: { token: spacing/gap/2xsmall, value: 4px }
       -actions:
         justify-content: { value: center }
         align-items: { value: center }
+        display: { value: flex, assert: false }
+        flex-shrink: { value: "0", assert: false }
+        position: { value: relative, assert: false }
         gap: { token: spacing/gap/small, value: 8px }
         padding: { token: spacing/gap/none, value: 0px }
         border-radius: { token: spacing/radius/full, value: 10000px }
@@ -310,6 +484,7 @@ variants:
       icons-arrow-left:
         position: { value: absolute }
         inset: { value: "0" }
+        flex-shrink: { value: "0", assert: false }
         width: { value: 16px, suggest: spacing/size/2xsmall }
         height: { value: 16px, suggest: spacing/size/2xsmall }
       outline:
@@ -318,17 +493,36 @@ variants:
         height: { value: 2px, suggest: spacing/outline/medium }
       top:
         align-items: { value: center }
+        display: { value: flex, assert: false }
+        flex-shrink: { value: "0", assert: false }
+        width: { value: 100% }
+        position: { value: relative, assert: false }
         gap: { token: spacing/gap/large, value: 24px }
       label:
+        flex-shrink: { value: "0", assert: false }
+        position: { value: relative, assert: false }
         font-family: { token: font-family/base, value: "'General Sans Variable'" }
         font-weight: { token: typography/title/font-weight/medium, value: "500" }
         line-height: { token: typography/title/line-height, value: 32px }
         color: { token: project/hover/label, value: "#00d669" }
         font-size: { token: typography/title/font-size, value: 24px }
         letter-spacing: { token: typography/title/letter-spacing, value: 0px }
+      text:
+        flex-shrink: { value: "0", assert: false }
+        position: { value: relative, assert: false }
+        font-family: { token: font-family/base, value: "'General Sans Variable'" }
+        font-weight: { token: typography/paragraph/font-weight/regular, value: "400" }
+        line-height: { token: typography/paragraph/line-height, value: 20px }
+        color: { token: project/hover/sub-label, value: "#ededed" }
+        font-size: { token: typography/paragraph/font-size, value: 14px }
+        letter-spacing: { token: typography/paragraph/letter-spacing, value: 0px }
       bottom:
         justify-content: { value: center }
         align-items: { value: center }
+        display: { value: flex, assert: false }
+        flex-shrink: { value: "0", assert: false }
+        position: { value: relative, assert: false }
+        width: { value: 100% }
   - when: { state: Default, expanded: false }
     figmaNode: "144:68"
     elements:
@@ -340,17 +534,31 @@ variants:
           notes: Just the size of the Figma frame. No token, and not something to copy.
       left:
         align-items: { value: center }
+        display: { value: flex, assert: false }
+        flex: { value: 1 0 0, assert: false }
+        position: { value: relative, assert: false }
         gap: { token: spacing/gap/large, value: 24px }
       slot:
+        flex-shrink: { value: "0", assert: false }
+        position: { value: relative, assert: false }
         border-radius: { token: spacing/radius/full, value: 10000px }
         width: { value: 56px, suggest: spacing/size/large }
         height: { value: 56px, suggest: spacing/size/large }
       content:
         justify-content: { value: center }
+        display: { value: flex, assert: false }
+        flex-direction: { value: column, assert: false }
+        flex-shrink: { value: "0", assert: false }
+        white-space: { value: nowrap, assert: false }
+        align-items: { value: flex-start }
+        position: { value: relative, assert: false }
         gap: { token: spacing/gap/2xsmall, value: 4px }
       -actions:
         justify-content: { value: center }
         align-items: { value: center }
+        display: { value: flex, assert: false }
+        flex-shrink: { value: "0", assert: false }
+        position: { value: relative, assert: false }
         gap: { token: spacing/gap/small, value: 8px }
         padding: { token: spacing/gap/none, value: 0px }
         border-radius: { token: spacing/radius/full, value: 10000px }
@@ -359,18 +567,30 @@ variants:
       icons-arrow-left:
         position: { value: absolute }
         inset: { value: "0" }
+        flex-shrink: { value: "0", assert: false }
         width: { value: 16px, suggest: spacing/size/2xsmall }
         height: { value: 16px, suggest: spacing/size/2xsmall }
       outline:
         position: { value: absolute }
         background: { token: project/default/outline, value: "#3a3a3a" }
       label:
+        flex-shrink: { value: "0", assert: false }
+        position: { value: relative, assert: false }
         font-family: { token: font-family/base, value: "'General Sans Variable'" }
         font-weight: { token: typography/title/font-weight/medium, value: "500" }
         line-height: { token: typography/title/line-height, value: 32px }
         color: { token: project/default/label, value: "#d3d9d5" }
         font-size: { token: typography/title/font-size, value: 24px }
         letter-spacing: { token: typography/title/letter-spacing, value: 0px }
+      text:
+        flex-shrink: { value: "0", assert: false }
+        position: { value: relative, assert: false }
+        font-family: { token: font-family/base, value: "'General Sans Variable'" }
+        font-weight: { token: typography/paragraph/font-weight/regular, value: "400" }
+        line-height: { token: typography/paragraph/line-height, value: 20px }
+        color: { token: project/default/sub-label, value: "#999" }
+        font-size: { token: typography/paragraph/font-size, value: 14px }
+        letter-spacing: { token: typography/paragraph/letter-spacing, value: 0px }
   - when: { state: Disabled, expanded: false }
     figmaNode: "144:80"
     elements:
@@ -391,17 +611,31 @@ variants:
           notes: Just the size of the Figma frame. No token, and not something to copy.
       left:
         align-items: { value: center }
+        display: { value: flex, assert: false }
+        flex: { value: 1 0 0, assert: false }
+        position: { value: relative, assert: false }
         gap: { token: spacing/gap/large, value: 24px }
       slot:
+        flex-shrink: { value: "0", assert: false }
+        position: { value: relative, assert: false }
         border-radius: { token: spacing/radius/full, value: 10000px }
         width: { value: 56px, suggest: spacing/size/large }
         height: { value: 56px, suggest: spacing/size/large }
       content:
         justify-content: { value: center }
+        display: { value: flex, assert: false }
+        flex-direction: { value: column, assert: false }
+        flex-shrink: { value: "0", assert: false }
+        white-space: { value: nowrap, assert: false }
+        align-items: { value: flex-start }
+        position: { value: relative, assert: false }
         gap: { token: spacing/gap/2xsmall, value: 4px }
       -actions:
         justify-content: { value: center }
         align-items: { value: center }
+        display: { value: flex, assert: false }
+        flex-shrink: { value: "0", assert: false }
+        position: { value: relative, assert: false }
         gap: { token: spacing/gap/small, value: 8px }
         padding: { token: spacing/gap/none, value: 0px }
         border-radius: { token: spacing/radius/full, value: 10000px }
@@ -410,5 +644,6 @@ variants:
       icons-arrow-left:
         position: { value: absolute }
         inset: { value: "0" }
+        flex-shrink: { value: "0", assert: false }
         width: { value: 16px, suggest: spacing/size/2xsmall }
         height: { value: 16px, suggest: spacing/size/2xsmall }

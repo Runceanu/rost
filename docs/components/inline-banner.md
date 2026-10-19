@@ -27,6 +27,7 @@
 - `icons-plus`
 - `union`
 - `label`
+- `text`
 - `icons-alarm`
 - `icons-positive`
 - `icons-warning`
@@ -67,7 +68,9 @@ Every token this component uses, across all its variants.
 
 | Token | Resolves to |
 |---|---|
+| `font-family/base` | `'General Sans Variable'` |
 | `non-interactive/background/tertiary` | `#3a3a3a` |
+| `non-interactive/foreground/secondary` | `#d3d9d5` |
 | `opacity/mild` | `0.32` |
 | `opacity/solid` | `1` |
 | `spacing/gap/2xsmall` | `4px` |
@@ -75,6 +78,14 @@ Every token this component uses, across all its variants.
 | `spacing/gap/none` | `0px` |
 | `spacing/gap/small` | `8px` |
 | `spacing/radius/small` | `8px` |
+| `typography/body/font-size` | `16px` |
+| `typography/body/font-weight/medium` | `500` |
+| `typography/body/letter-spacing` | `0px` |
+| `typography/body/line-height` | `22px` |
+| `typography/label/font-size` | `12px` |
+| `typography/label/font-weight/medium` | `500` |
+| `typography/label/letter-spacing` | `0px` |
+| `typography/label/line-height` | `14px` |
 
 ## Tokens that should be there
 

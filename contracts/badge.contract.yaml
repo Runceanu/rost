@@ -23,6 +23,8 @@ elements:
   root:
     styles:
       align-items: { value: center }
+      display: { value: flex, assert: false }
+      position: { value: relative, assert: false }
       gap: { token: spacing/gap/3xsmall, value: 2px }
       height: { token: spacing/size/small, value: 24px }
       padding-bottom: { token: spacing/gap/3xsmall, value: 2px }
@@ -33,18 +35,27 @@ elements:
   icon:
     styles:
       align-items: { value: center }
+      display: { value: flex, assert: false }
+      flex-shrink: { value: "0", assert: false }
+      position: { value: relative, assert: false }
       padding-top: { token: spacing/gap/3xsmall, value: 2px }
   icons-dot:
     styles:
       overflow: { value: clip }
+      flex-shrink: { value: "0", assert: false }
+      position: { value: relative, assert: false }
       width: { value: 16px, suggest: spacing/size/2xsmall }
       height: { value: 16px, suggest: spacing/size/2xsmall }
   union:
     styles:
       position: { value: absolute }
-      inset: { value: "0" }
+      inset: { value: 37.5% }
   label:
     styles:
+      flex-shrink: { value: "0", assert: false }
+      white-space: { value: nowrap, assert: false }
+      text-align: { value: center }
+      position: { value: relative, assert: false }
       font-family: { token: font-family/base, value: "'General Sans Variable'" }
       font-weight: { token: typography/label/font-weight/medium, value: "500" }
       line-height: { token: typography/label/line-height, value: 14px }

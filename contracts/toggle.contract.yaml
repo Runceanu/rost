@@ -24,6 +24,8 @@ elements:
     styles:
       justify-content: { value: center }
       align-items: { value: center }
+      display: { value: flex, assert: false }
+      position: { value: relative, assert: false }
       gap: { token: spacing/gap/small, value: 8px }
       padding-left: { token: spacing/gap/medium-large, value: 20px }
       padding-right: { token: spacing/gap/medium-large, value: 20px }
@@ -34,12 +36,14 @@ elements:
   icons-arrow-left:
     styles:
       overflow: { value: clip }
+      flex-shrink: { value: "0", assert: false }
+      position: { value: relative, assert: false }
       width: { value: 20px, suggest: spacing/size/xsmall }
       height: { value: 20px, suggest: spacing/size/xsmall }
   union:
     styles:
       position: { value: absolute }
-      inset: { value: "0" }
+      inset: { value: 20.84% 16.66% 20.83% 18.4% }
   background: {}
   focus-ring: {}
 variants:
@@ -146,6 +150,7 @@ variants:
         position: { value: absolute }
         border-width: { token: spacing/outline/medium, value: 2px }
         border-color: { token: actions/primary/focus/focus-ring, value: "#b6ffda" }
+        inset: { value: -5px -4px -4px -5px }
         border-radius: { token: spacing/radius/full, value: 10000px }
   - when: { state: Focus, selected: false }
     figmaNode: "168:1193"

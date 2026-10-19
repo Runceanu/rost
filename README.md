@@ -32,6 +32,8 @@ A contract writes down what was read, and from which node. The conformance check
 npm run validate    # schema, links between files, token names
 npm run docs        # validate, then rebuild docs/ and reference.html
 npm run deploy      # publish the reference site
+npm run css -- inline-banner           # write a component's CSS from its contract
+npm run test:visual -- inline-banner   # render it and compare with Figma, pixel by pixel
 ```
 
 ```bash
@@ -42,4 +44,4 @@ To check an app, import `src/conform.ts` in one of its tests. The accounting app
 
 ## Where it stands
 
-22 contracts, all read from Figma, and validation is clean. I signed off the guidance on 16 of them on 2026-10-19, and Badge is the first one that's stable. Next up: finish the last Figma import, then the contracts become the source and Figma retires. The [roadmap](docs/ROADMAP.md) has the details.
+22 contracts, all read from Figma, and validation is clean. I signed off the guidance on 16 of them on 2026-10-19. InlineBanner is the first component built in code from its contract, and it matches Figma everywhere except its icons, which come with the next Figma read. Badge went back to review: Figma changed it after I first read it. Next up: finish the last Figma import, then the contracts become the source and Figma retires. The [roadmap](docs/ROADMAP.md) has the details.

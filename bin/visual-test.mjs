@@ -1,0 +1,141 @@
+#!/usr/bin/env node
+/**
+ * Renders every fixture of a component in Chromium and compares it, pixel by
+ * pixel, with Figma's own screenshot of the same node (baseline/).
+ *
+ *   node bin/visual-test.mjs <id> [<id> ...]
+ *
+ * Diffs land in test-results/visual/<id>/ (red = different). Two numbers per
+ * variant: the exact share of pixels that differ, and the share that still
+ * differ when each pixel may match its Figma neighbour up to 1px away. Figma
+ * and Chrome place a line of text up to a pixel apart and never anti-alias it
+ * the same, so the second number is the one that decides. A variant passes when
+ * its size is exact and at most MAX_DIFF of its pixels differ beyond 1px.
+ *
+ * Figma renders each component on the page background (#060805,
+ * non-interactive/background/primary), so the test does too.
+ *
+ * Font: the same General Sans Variable that Figma renders with, from
+ * ROST_FONT (default ~/Library/Fonts/GeneralSans-Variable.ttf). Smoothing
+ * matches both apps (-webkit-font-smoothing: antialiased).
+ */
+import { build } from 'esbuild'
+import { chromium } from 'playwright'
+import pixelmatch from 'pixelmatch'
+import { PNG } from 'pngjs'
+import { mkdirSync, readFileSync, writeFileSync, existsSync, rmSync } from 'node:fs'
+import { homedir } from 'node:os'
+import { join } from 'node:path'
+
+// Measured on InlineBanner (2026-10-19): with everything else exact, Figma and
+// Chrome still disagree on 2.0-2.4% of pixels at letter edges, beyond 1px.
+// A missing icon or a wrong colour lands well above this line.
+const MAX_DIFF = 0.025
+const root = new URL('../', import.meta.url).pathname
+const font = process.env.ROST_FONT ?? join(homedir(), 'Library/Fonts/GeneralSans-Variable.ttf')
+if (!existsSync(font)) { console.log(`General Sans Variable not found at ${font}. Set ROST_FONT.`); process.exit(1) }
+const manifest = JSON.parse(readFileSync(join(root, 'baseline/manifest.json'), 'utf8'))
+const ids = process.argv.slice(2)
+if (!ids.length) { console.log('Usage: node bin/visual-test.mjs <id> [<id> ...]'); process.exit(1) }
+
+/**
+ * Pixels with no close match on the other side within one pixel, counted in
+ * both directions (Figma against ours, ours against Figma), so a missing part
+ * shows up as well as an extra one. "Close" allows for anti-aliasing: a wrong
+ * colour (say #999 instead of #d3d9d5) is far outside it.
+ */
+function beyondOnePixel(a, b) {
+  const close = (p, i, q, j) => Math.abs(p.data[i] - q.data[j]) + Math.abs(p.data[i + 1] - q.data[j + 1]) + Math.abs(p.data[i + 2] - q.data[j + 2]) <= 96
+  const oneWay = (p, q) => {
+    let n = 0
+    for (let y = 0; y < p.height; y++) for (let x = 0; x < p.width; x++) {
+      const j = (y * p.width + x) * 4
+      let hit = false
+      for (let dy = -1; dy <= 1 && !hit; dy++) for (let dx = -1; dx <= 1 && !hit; dx++) {
+        const yy = y + dy, xx = x + dx
+        if (yy >= 0 && yy < p.height && xx >= 0 && xx < p.width && close(q, (yy * p.width + xx) * 4, p, j)) hit = true
+      }
+      if (!hit) n++
+    }
+    return n
+  }
+  return Math.max(oneWay(a, b), oneWay(b, a))
+}
+
+/** Figma | ours | difference, scaled up with hard pixels so you can see them. */
+function sideBySide(images, scale) {
+  const gap = 4 * scale, w = images.reduce((s, i) => s + i.width * scale, 0) + gap * (images.length - 1)
+  const h = Math.max(...images.map((i) => i.height)) * scale
+  const out = new PNG({ width: w, height: h, fill: true })
+  out.data.fill(255)
+  let ox = 0
+  for (const img of images) {
+    for (let y = 0; y < img.height * scale; y++) for (let x = 0; x < img.width * scale; x++) {
+      const s = ((Math.floor(y / scale) * img.width) + Math.floor(x / scale)) * 4, d = (y * w + ox + x) * 4
+      out.data[d] = img.data[s]; out.data[d + 1] = img.data[s + 1]; out.data[d + 2] = img.data[s + 2]; out.data[d + 3] = 255
+    }
+    ox += img.width * scale + gap
+  }
+  return out
+}
+
+const browser = await chromium.launch()
+let failed = 0
+
+for (const id of ids) {
+  const work = join(root, 'test-results/visual', id)
+  rmSync(work, { recursive: true, force: true })
+  mkdirSync(work, { recursive: true })
+
+  // A tiny page: every fixture in its own box, nothing else.
+  writeFileSync(join(work, 'entry.tsx'), `
+    import { createRoot } from 'react-dom/client'
+    import { fixtures } from '${join(root, 'src/components', id, `${id}.fixtures.tsx`)}'
+    createRoot(document.getElementById('root')).render(
+      <>{fixtures.map((f) => <div key={f.node} data-node={f.node} style={{ display: 'flex', margin: 8 }}>{f.element}</div>)}</>
+    )`)
+  await build({ entryPoints: [join(work, 'entry.tsx')], bundle: true, outdir: work, jsx: 'automatic', logLevel: 'error', loader: { '.svg': 'file' } })
+  const face = `@font-face { font-family: 'General Sans Variable'; font-weight: 200 700; src: url('file://${font}') format('truetype'); }`
+  writeFileSync(join(work, 'index.html'), `<!doctype html><meta charset="utf-8">
+    <link rel="stylesheet" href="file://${root}tokens/tokens.css">
+    <style>${face} body { margin: 0; background: var(--non-interactive-background-primary); -webkit-font-smoothing: antialiased; }</style>
+    <link rel="stylesheet" href="entry.css"><div id="root"></div><script src="entry.js"></script>`)
+
+  const page = await browser.newPage({ deviceScaleFactor: 1 })
+  await page.goto('file://' + join(work, 'index.html'))
+  await page.evaluate(() => document.fonts.ready)
+  await page.waitForTimeout(100)
+
+  console.log(`\n${id}`)
+  const byNode = Object.fromEntries((manifest[id] ?? []).map((v) => [v.nodeId, v]))
+  for (const node of await page.$$eval('[data-node]', (els) => els.map((e) => e.dataset.node))) {
+    const target = byNode[node]
+    const basePath = target && join(root, 'baseline', id, target.file)
+    if (!basePath || !existsSync(basePath)) { console.log(`  ?    ${node}  no Figma screenshot to compare with`); continue }
+    const el = await page.$(`[data-node="${node}"] > *`)
+    const shot = PNG.sync.read(await el.screenshot())
+    const base = PNG.sync.read(readFileSync(basePath))
+    const label = target.name.padEnd(30)
+    if (shot.width !== base.width || shot.height !== base.height) {
+      failed++
+      console.log(`  FAIL ${label} size ${shot.width}x${shot.height}, Figma ${base.width}x${base.height}`)
+      writeFileSync(join(work, `${node.replace(':', '-')}.actual.png`), PNG.sync.write(shot))
+      continue
+    }
+    const diff = new PNG({ width: base.width, height: base.height })
+    const n = pixelmatch(base.data, shot.data, diff.data, base.width, base.height, { threshold: 0.1, includeAA: false })
+    const share = n / (base.width * base.height)
+    const near = beyondOnePixel(base, shot) / (base.width * base.height)
+    const ok = near <= MAX_DIFF
+    if (!ok) failed++
+    writeFileSync(join(work, `${node.replace(':', '-')}.actual.png`), PNG.sync.write(shot))
+    writeFileSync(join(work, `${node.replace(':', '-')}.diff.png`), PNG.sync.write(diff))
+    writeFileSync(join(work, `${node.replace(':', '-')}.compare.png`), PNG.sync.write(sideBySide([base, shot, diff], 6)))
+    console.log(`  ${ok ? 'ok  ' : 'FAIL'} ${label} ${(near * 100).toFixed(2)}% differ beyond 1px  (${(share * 100).toFixed(2)}% exactly)`)
+  }
+  await page.close()
+}
+
+await browser.close()
+console.log(failed ? `\n${failed} variant(s) don't match Figma yet` : '\nEverything matches Figma')
+process.exitCode = failed ? 1 : 0

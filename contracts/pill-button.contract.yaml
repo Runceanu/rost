@@ -25,20 +25,28 @@ elements:
     styles:
       justify-content: { value: center }
       align-items: { value: center }
+      display: { value: flex, assert: false }
+      position: { value: relative, assert: false }
       gap: { token: spacing/gap/small, value: 8px }
       height: { token: spacing/size/medium-large, value: 48px }
       border-radius: { token: spacing/radius/full, value: 10000px }
   icons-arrow-left:
     styles:
       overflow: { value: clip }
+      flex-shrink: { value: "0", assert: false }
+      position: { value: relative, assert: false }
       width: { value: 20px, suggest: spacing/size/xsmall }
       height: { value: 20px, suggest: spacing/size/xsmall }
   union:
     styles:
       position: { value: absolute }
-      inset: { value: "0" }
+      inset: { value: 20.84% 16.66% 20.83% 18.4% }
   label:
     styles:
+      flex-shrink: { value: "0", assert: false }
+      white-space: { value: nowrap, assert: false }
+      text-align: { value: center }
+      position: { value: relative, assert: false }
       font-family: { token: font-family/base, value: "'General Sans Variable'" }
       font-weight: { token: typography/body/font-weight/medium, value: "500" }
       line-height: { token: typography/body/line-height, value: 22px }
@@ -94,6 +102,7 @@ variants:
         position: { value: absolute }
         border-width: { token: spacing/outline/medium, value: 2px }
         border-color: { token: actions/primary/focus/focus-ring, value: "#b6ffda" }
+        inset: { value: -5px -4px -4px -5px }
         border-radius: { token: spacing/radius/full, value: 10000px }
   - when: { type: Primary, state: Pressed }
     figmaNode: "20:20"
@@ -192,6 +201,7 @@ variants:
         position: { value: absolute }
         border-width: { token: spacing/outline/medium, value: 2px }
         border-color: { token: actions/secondary/regular/focus/focus-ring, value: "#999" }
+        inset: { value: -4px }
         border-radius: { token: spacing/radius/full, value: 10000px }
   - when: { type: Borderless, state: Default }
     figmaNode: "25:249"
@@ -242,6 +252,7 @@ variants:
         position: { value: absolute }
         border-width: { token: spacing/outline/medium, value: 2px }
         border-color: { token: actions/secondary/regular/focus/focus-ring, value: "#999" }
+        inset: { value: -4px }
       root:
         padding: { token: spacing/gap/none, value: 0px }
   - when: { type: Secondary, state: Default }
@@ -332,6 +343,7 @@ variants:
         position: { value: absolute }
         border-width: { token: spacing/outline/medium, value: 2px }
         border-color: { token: actions/secondary/regular/focus/focus-ring, value: "#999" }
+        inset: { value: -4px }
         border-radius: { token: spacing/radius/full, value: 10000px }
       background:
         position: { value: absolute }

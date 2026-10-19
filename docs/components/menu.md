@@ -22,6 +22,7 @@
 - `line`
 - `content`
 - `label`
+- `text`
 - `focus-ring`
 
 ## When to use
@@ -58,10 +59,12 @@ Every token this component uses, across all its variants.
 | `font-family/base` | `'General Sans Variable'` |
 | `non-interactive/foreground/primary` | `#ededed` |
 | `non-interactive/foreground/quadruple` | `#3a3a3a` |
+| `non-interactive/foreground/tertiary` | `#999` |
 | `spacing/gap/small-medium` | `12px` |
 | `spacing/outline/medium` | `2px` |
 | `typography/body/font-size` | `16px` |
 | `typography/body/font-weight/medium` | `500` |
+| `typography/body/font-weight/regular` | `400` |
 | `typography/body/letter-spacing` | `0px` |
 | `typography/body/line-height` | `22px` |
 

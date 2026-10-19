@@ -18,6 +18,8 @@ elements:
   root:
     styles:
       align-items: { value: center }
+      display: { value: flex, assert: false }
+      position: { value: relative, assert: false }
       gap: { token: spacing/gap/2xlarge, value: 40px }
       padding-top: { token: spacing/gap/large, value: 24px }
       padding-bottom: { token: spacing/gap/large, value: 24px }
@@ -28,28 +30,51 @@ elements:
   left:
     styles:
       align-items: { value: center }
+      display: { value: flex, assert: false }
+      flex: { value: 1 0 0, assert: false }
+      position: { value: relative, assert: false }
       gap: { value: 40px, suggest: spacing/gap/2xlarge }
   label:
     styles:
+      flex-shrink: { value: "0", assert: false }
+      position: { value: relative, assert: false }
       font-family: { token: font-family/base, value: "'General Sans Variable'" }
       font-weight: { token: typography/label/font-weight/regular, value: "400" }
       line-height: { token: typography/label/line-height, value: 14px }
       font-size: { token: typography/label/font-size, value: 12px }
       letter-spacing: { token: typography/label/letter-spacing, value: 0px }
+  text:
+    styles:
+      flex-shrink: { value: "0", assert: false }
+      position: { value: relative, assert: false }
+      font-family: { token: font-family/base, value: "'General Sans Variable'" }
+      font-weight: { token: typography/sub-headline/font-weight/medium, value: "500" }
+      line-height: { token: typography/sub-headline/line-height, value: 48px }
+      font-size: { token: typography/sub-headline/font-size, value: 40px }
+      letter-spacing: { token: typography/sub-headline/letter-spacing, value: 0px }
   right:
     styles:
       align-items: { value: center }
+      display: { value: flex, assert: false }
+      flex-shrink: { value: "0", assert: false }
+      height: { value: 100% }
+      justify-content: { value: flex-end }
+      position: { value: relative, assert: false }
       gap: { token: spacing/gap/medium, value: 16px }
   icons-dot:
     styles:
       position: { value: absolute }
       inset: { value: "0" }
+      flex-shrink: { value: "0", assert: false }
       width: { value: 12px, suggest: spacing/size/3xsmall }
       height: { value: 12px, suggest: spacing/size/3xsmall }
   -actions:
     styles:
       justify-content: { value: center }
       align-items: { value: center }
+      display: { value: flex, assert: false }
+      flex-shrink: { value: "0", assert: false }
+      position: { value: relative, assert: false }
       gap: { token: spacing/gap/small, value: 8px }
       padding: { token: spacing/gap/none, value: 0px }
       border-radius: { token: spacing/radius/full, value: 10000px }
@@ -59,6 +84,7 @@ elements:
     styles:
       position: { value: absolute }
       inset: { value: "0" }
+      flex-shrink: { value: "0", assert: false }
       width: { value: 16px, suggest: spacing/size/2xsmall }
       height: { value: 16px, suggest: spacing/size/2xsmall }
   outline:
@@ -75,6 +101,7 @@ variants:
         padding-left: { token: spacing/gap/medium, value: 16px }
         padding-right: { token: spacing/gap/none, value: 0px }
       left:
+        white-space: { value: nowrap, assert: false }
         color: { token: project/hover/label, value: "#00d669" }
       outline:
         background: { token: project/hover/outline, value: "#00d669" }
@@ -85,6 +112,8 @@ variants:
       root:
         padding-left: { token: spacing/gap/none, value: 0px }
         padding-right: { token: spacing/gap/none, value: 0px }
+      left:
+        white-space: { value: nowrap, assert: false }
       outline:
         background: { token: project/focus/outline, value: "#3a3a3a" }
       focus-ring:
@@ -92,8 +121,11 @@ variants:
         position: { value: absolute }
         border-width: { token: spacing/outline/medium, value: 2px }
         border-color: { token: project/focus/focus-ring, value: "#999" }
+        inset: { value: -4px }
       label:
         color: { token: project/default/sub-label, value: "#999" }
+      text:
+        color: { token: project/default/label, value: "#d3d9d5" }
   - when: { state: Pressed }
     figmaNode: "100:182"
     elements:
@@ -101,6 +133,7 @@ variants:
         padding-left: { token: spacing/gap/medium, value: 16px }
         padding-right: { token: spacing/gap/none, value: 0px }
       left:
+        white-space: { value: nowrap, assert: false }
         color: { token: project/pressed/label, value: "#00d669" }
       outline:
         background: { token: project/pressed/outline, value: "#10ffa4" }
@@ -112,11 +145,19 @@ variants:
         opacity: { token: opacity/gentle, value: "0.24" }
       label:
         color: { token: project/default/sub-label, value: "#999" }
+        white-space: { value: nowrap, assert: false }
+        opacity: { token: opacity/gentle, value: "0.24" }
+      text:
+        color: { token: project/default/label, value: "#d3d9d5" }
+        white-space: { value: nowrap, assert: false }
         opacity: { token: opacity/gentle, value: "0.24" }
       root:
         opacity: { token: opacity/solid, value: "1" }
       badge:
         align-items: { value: center }
+        display: { value: flex, assert: false }
+        flex-shrink: { value: "0", assert: false }
+        position: { value: relative, assert: false }
         gap: { token: spacing/gap/3xsmall, value: 2px }
         height: { value: 24px, suggest: spacing/size/small }
         padding-bottom: { token: spacing/gap/3xsmall, value: 2px }
@@ -131,10 +172,14 @@ variants:
   - when: { state: Default }
     figmaNode: "100:184"
     elements:
+      left:
+        white-space: { value: nowrap, assert: false }
       outline:
         background: { token: project/default/outline, value: "#3a3a3a" }
       label:
         color: { token: project/default/sub-label, value: "#999" }
+      text:
+        color: { token: project/default/label, value: "#d3d9d5" }
   - when: { state: Locked }
     figmaNode: "238:140"
     elements:
@@ -142,8 +187,13 @@ variants:
         background: { token: project/lock/outline, value: "#3a3a3a" }
       label:
         color: { token: project/lock/sub-label, value: "#999" }
+        white-space: { value: nowrap, assert: false }
+      text:
+        color: { token: project/lock/label, value: "#d3d9d5" }
+        white-space: { value: nowrap, assert: false }
       icons-lock:
         position: { value: absolute }
         inset: { value: "0" }
+        flex-shrink: { value: "0", assert: false }
         width: { value: 24px, suggest: spacing/size/small }
         height: { value: 24px, suggest: spacing/size/small }

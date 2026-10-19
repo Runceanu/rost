@@ -37,6 +37,7 @@
 - `outline`
 - `top`
 - `label`
+- `text`
 - `bottom`
 - `focus-ring`
 
@@ -50,15 +51,20 @@ Every token this component uses, across all its variants.
 | `opacity/gentle` | `0.24` |
 | `project/default/label` | `#d3d9d5` |
 | `project/default/outline` | `#3a3a3a` |
+| `project/default/sub-label` | `#999` |
 | `project/disabled/label` | `#d3d9d5` |
 | `project/disabled/outline` | `#3a3a3a` |
+| `project/disabled/sub-label` | `#999` |
 | `project/focus/focus-ring` | `#999` |
 | `project/focus/label` | `#d3d9d5` |
 | `project/focus/outline` | `#3a3a3a` |
+| `project/focus/sub-label` | `#999` |
 | `project/hover/label` | `#00d669` |
 | `project/hover/outline` | `#00d669` |
+| `project/hover/sub-label` | `#ededed` |
 | `project/pressed/label` | `#00d669` |
 | `project/pressed/outline` | `#10ffa4` |
+| `project/pressed/sub-label` | `#c2c7c3` |
 | `spacing/gap/2xlarge` | `40px` |
 | `spacing/gap/2xsmall` | `4px` |
 | `spacing/gap/large` | `24px` |
@@ -67,6 +73,10 @@ Every token this component uses, across all its variants.
 | `spacing/gap/small` | `8px` |
 | `spacing/outline/medium` | `2px` |
 | `spacing/radius/full` | `10000px` |
+| `typography/paragraph/font-size` | `14px` |
+| `typography/paragraph/font-weight/regular` | `400` |
+| `typography/paragraph/letter-spacing` | `0px` |
+| `typography/paragraph/line-height` | `20px` |
 | `typography/title/font-size` | `24px` |
 | `typography/title/font-weight/medium` | `500` |
 | `typography/title/letter-spacing` | `0px` |

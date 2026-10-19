@@ -6,39 +6,39 @@ Every value in every contract, sorted by why it has a token or doesn't. `npm run
 
 | | Values | Share | Meaning |
 |---|---|---|---|
-| Has a token | 973 | 66% | Uses a token, and the check tests it. |
-| Token suggested | 106 | 7% | A plain number where a token fits. It becomes a token at the freeze. |
-| How Figma builds it | 361 | 24% | How Figma builds the layer (position, inset, which sides get a stroke). Nothing to tokenise. |
+| Has a token | 1252 | 53% | Uses a token, and the check tests it. |
+| Token suggested | 106 | 4% | A plain number where a token fits. It becomes a token at the freeze. |
+| How Figma builds it | 984 | 41% | How Figma builds the layer (position, inset, which sides get a stroke). Nothing to tokenise. |
 | Figma frame size | 21 | 1% | A root size that is just the Figma frame. Written down, not checked. |
-| No token, on purpose | 10 | 1% | Plain on purpose, and the contract says why. |
+| No token, on purpose | 10 | 0% | Plain on purpose, and the contract says why. |
 | Open gap | 4 | 0% | No token and no reason. Each one needs a decision from me. |
 
 ## By contract
 
 | | Has a token | Token suggested | How Figma builds it | Figma frame size | No token, on purpose | Open gap |
 |---|---:|---:|---:|---:|---:|---:|
-| [Badge](components/badge.md) | 20 | 2 | 11 | · | · | · |
-| [Button](components/button.md) | 134 | · | 38 | · | · | · |
-| [Carousel](components/carousel.md) | 53 | 4 | 20 | 4 | 1 | 1 |
-| [Chip](components/chips.md) | 32 | · | 7 | · | · | · |
-| [Divider](components/divider.md) | · | · | · | 1 | · | · |
+| [Badge](components/badge.md) | 20 | 2 | 22 | · | · | · |
+| [Button](components/button.md) | 248 | · | 124 | · | · | · |
+| [Carousel](components/carousel.md) | 77 | 4 | 113 | 4 | 1 | 1 |
+| [Chip](components/chips.md) | 32 | · | 14 | · | · | · |
+| [Divider](components/divider.md) | · | · | 1 | 1 | · | · |
 | [Floating effect](components/effect-floating.md) | 1 | · | · | · | · | · |
 | [Hero Media](components/hero-media.md) | 6 | · | 1 | · | 1 | · |
-| [IconButton](components/icon-button.md) | 170 | 2 | 41 | · | · | · |
-| [InlineBanner](components/inline-banner.md) | 35 | 16 | 18 | · | · | · |
-| [Input](components/input.md) | 62 | 13 | 34 | 1 | · | · |
+| [IconButton](components/icon-button.md) | 170 | 2 | 49 | · | · | · |
+| [InlineBanner](components/inline-banner.md) | 69 | 16 | 56 | · | · | · |
+| [Input](components/input.md) | 78 | 13 | 102 | 1 | · | · |
 | [Lock frame effect](components/effect-lock-frame.md) | 1 | · | · | · | · | · |
 | [Menu effect](components/effect-menu.md) | 1 | · | · | · | · | · |
-| [Menu](components/menu.md) | 21 | · | 3 | 1 | · | · |
+| [Menu](components/menu.md) | 31 | · | 17 | 1 | · | · |
 | [Paper effect](components/effect-paper.md) | 6 | · | · | · | 7 | · |
-| [PillButton](components/pill-button.md) | 153 | 2 | 41 | · | · | · |
-| [Projects](components/projects.md) | 43 | 11 | 15 | 1 | · | · |
-| [Tag](components/tags.md) | 22 | · | 4 | · | · | · |
+| [PillButton](components/pill-button.md) | 153 | 2 | 53 | · | · | · |
+| [Projects](components/projects.md) | 53 | 11 | 47 | 1 | · | · |
+| [Tag](components/tags.md) | 46 | · | 27 | · | · | · |
 | [TestimonialPicture](components/testimonials-pics.md) | · | · | 2 | 2 | · | · |
-| [Testimonials](components/testimonials.md) | 112 | 49 | 80 | 9 | · | 1 |
+| [Testimonials](components/testimonials.md) | 148 | 49 | 272 | 9 | · | 1 |
 | [Thumb effect](components/effect-thumb.md) | 1 | · | · | · | · | · |
-| [Thumbs](components/thumbs.md) | 44 | 5 | 19 | 2 | 1 | 2 |
-| [Toggle](components/toggle.md) | 56 | 2 | 27 | · | · | · |
+| [Thumbs](components/thumbs.md) | 55 | 5 | 52 | 2 | 1 | 2 |
+| [Toggle](components/toggle.md) | 56 | 2 | 32 | · | · | · |
 
 ## Tokens that should be there
 
@@ -78,7 +78,7 @@ When I freeze the contracts, every one of these becomes the token. Anything mark
 
 ## Figma variables missing from tokens.css
 
-The Figma file has **582** variables (`registry/figma-variables.json`) and `tokens/tokens.css` has **172** of them. No contract needs the other 410 today, but new components will, the way Chip needed `opacity/strong`.
+The Figma file has **582** variables (`registry/figma-variables.json`) and `tokens/tokens.css` has **177** of them. No contract needs the other 405 today, but new components will, the way Chip needed `opacity/strong`.
 
 | Family | Missing |
 |---|---:|
@@ -100,14 +100,13 @@ The Figma file has **582** variables (`registry/figma-variables.json`) and `toke
 | `input/negative` | 4 |
 | `project/loading` | 4 |
 | `typography/font-weight` | 4 |
-| `project/hover` | 3 |
-| `project/lock` | 3 |
-| `project/pressed` | 3 |
 | `spacing/outline` | 3 |
-| `typography/sub-headline` | 3 |
 | `project/default` | 2 |
 | `project/disabled` | 2 |
 | `project/focus` | 2 |
+| `project/hover` | 2 |
+| `project/lock` | 2 |
+| `project/pressed` | 2 |
 | `spacing/gap` | 2 |
 | `typography/placeholder` | 2 |
 | `Base/Black` | 1 |
@@ -123,4 +122,5 @@ The Figma file has **582** variables (`registry/figma-variables.json`) and `toke
 | `spacing/size` | 1 |
 | `sub-label` | 1 |
 | `typography/letter-spacing` | 1 |
+| `typography/sub-headline` | 1 |
 | `typography/title` | 1 |
