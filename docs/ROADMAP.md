@@ -29,6 +29,7 @@ Started 2026-10-19 and stopped by Figma's daily limit on Dev Mode reads ("try ag
 
 - Screenshots of the 24 illustrations and Divider: `node bin/capture-baseline.mjs illustrations divider`.
 - SVG exports of the 17 icons and 24 illustrations, as files in `assets/`.
+- **Then freeze: the contracts become the source** (decided 2026-10-19). Run `node bin/freeze.mjs --apply`. Every suggestion becomes a token (106 in the dry run, all of them existing tokens), and every contract gets `source.frozenAt`. From then on Figma is history: the Figma read skips frozen contracts, and changes are made in the YAML, reviewed, and checked against code. Figma is not edited to match.
 - Change the Thumbs sample client name in Figma to "Client" and recapture, so its baseline can be published. Until then `baseline/thumbs/` stays local, as does `baseline/testimonials-pics/` (real people's photos).
 
 ## Next: grow the kit

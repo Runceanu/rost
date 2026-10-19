@@ -94,6 +94,10 @@ Layout keywords (`position`, `inset`, `border-sides`, `align-items`, `justify-co
 
 A difference nobody declared is **drift**. A declared one is a **decision**. An app's deviation goes under `implementations.<app>.deviations`. A deviation that applies everywhere, such as a design decision Figma hasn't caught up with, goes under top-level `deviations`. Each one has a `why` and says whether it has been `raisedWithDesign`.
 
+### After the freeze
+
+Figma was the source while the kit was imported. `node bin/freeze.mjs --apply` ends that. It accepts every `suggest` as the `token` and stamps `source.frozenAt` on each contract. A frozen contract is the source of truth: the Figma read leaves it alone (`--unfreeze` overrides, deliberately), every section becomes authored, and a change is a reviewed edit to the YAML. `source` stays as a record of where the values first came from.
+
 ## Lifecycle
 
 | Status | Means | To move on |
