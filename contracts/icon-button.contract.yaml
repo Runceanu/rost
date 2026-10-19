@@ -25,17 +25,21 @@ elements:
     styles:
       justify-content: { value: center }
       align-items: { value: center }
+      display: { value: flex, assert: false }
+      position: { value: relative, assert: false }
       gap: { token: spacing/gap/small, value: 8px }
       border-radius: { token: spacing/radius/full, value: 10000px }
   icons-arrow-left:
     styles:
       overflow: { value: clip }
+      flex-shrink: { value: "0", assert: false }
+      position: { value: relative, assert: false }
       width: { value: 20px, suggest: spacing/size/xsmall }
       height: { value: 20px, suggest: spacing/size/xsmall }
   union:
     styles:
       position: { value: absolute }
-      inset: { value: "0" }
+      inset: { value: 20.84% 16.66% 20.83% 18.4% }
   background: {}
   focus-ring: {}
 variants:
@@ -241,6 +245,7 @@ variants:
         position: { value: absolute }
         border-width: { token: spacing/outline/medium, value: 2px }
         border-color: { token: actions/primary/focus/focus-ring, value: "#b6ffda" }
+        inset: { value: -5px -4px -4px -5px }
         border-radius: { token: spacing/radius/full, value: 10000px }
   - when: { type: Secondary, state: Focus }
     figmaNode: "93:648"
@@ -265,6 +270,7 @@ variants:
         position: { value: absolute }
         border-width: { token: spacing/outline/medium, value: 2px }
         border-color: { token: actions/secondary/regular/focus/focus-ring, value: "#999" }
+        inset: { value: -4px }
         border-radius: { token: spacing/radius/full, value: 10000px }
   - when: { type: Tertiary, state: Focus }
     figmaNode: "93:653"
@@ -281,6 +287,7 @@ variants:
         position: { value: absolute }
         border-width: { token: spacing/outline/medium, value: 2px }
         border-color: { token: actions/secondary/regular/focus/focus-ring, value: "#999" }
+        inset: { value: -4px }
         border-radius: { token: spacing/radius/full, value: 10000px }
   - when: { type: Project, state: Default }
     figmaNode: "93:740"
@@ -335,6 +342,7 @@ variants:
         position: { value: absolute }
         border-width: { token: spacing/outline/medium, value: 2px }
         border-color: { token: actions/secondary/regular/focus/focus-ring, value: "#999" }
+        inset: { value: -4px }
         border-radius: { token: spacing/radius/full, value: 10000px }
 guidance:
   status: agreed

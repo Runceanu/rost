@@ -21,6 +21,8 @@ const PROPS = [
   // Both carry tokens in every read and were silently dropped: no contract
   // stated a font family or weight, nor the 1px width of the top/left edge.
   ['font', 'font'], ['border-t', 'border-top-width'],
+  // Where a vector sits inside its icon frame: `inset-[3.9%_3.91%_4.43%_4.42%]`.
+  ['inset', 'inset'],
 ]
 
 const unescape = (s) => s.replace(/\\+/g, '')
@@ -42,7 +44,7 @@ function parseClass(cls) {
     const plain = cls.match(/^([a-z-]+)-\[([^\]]+)\]$/)
     if (!plain) return null
     const hit = PROPS.find(([p]) => plain[1] === p)
-    return hit ? { property: hit[1], value: plain[2], token: null } : null
+    return hit ? { property: hit[1], value: plain[2].replace(/_/g, ' '), token: null } : null
   }
   const [, prefix, hint, rawToken, rawValue] = m
   const hit = PROPS.find(([p]) => prefix === p)
@@ -193,13 +195,16 @@ function partsOf(src, scope) {
     // Scanned on the resolved slice, not on a re-extracted className: that
     // extraction truncated at the first `}` inside a nested ${String.raw`...`},
     // which is exactly where the selected toggle declares its two-sided border.
-    const bare = [...slice.matchAll(/(?<![\w-])(border-[lrtb]|border|absolute|relative|inset-0|overflow-clip|justify-center|items-center)(?![\w-[])/g)]
+    const bare = [...slice.matchAll(/(?<![\w-])(border-[lrtb]|border|absolute|relative|inset-0|overflow-clip|justify-center|items-center|flex|flex-col|flex-row|shrink-0|flex-\[1_0_0\]|whitespace-nowrap|text-center|w-full|h-full|items-start|justify-end|justify-between|self-stretch)(?![\w-[])/g)]
       .map((m) => m[1])
     const classes = [...arbitrary, ...bare].join(' ')
     const name = slice.match(/data-name="([^"]+)"/)?.[1]
     // A text node with no data-name is the component's label.
     const isText = /^<p\b/.test(slice)
-    const key = i === 0 ? 'root' : isText ? 'label' : name ? name.toLowerCase().replace(/[^\w]+/g, '-') : null
+    // When the text sits inside a frame Figma calls "label", that frame takes
+    // the name and the text becomes `text`. Before, both wanted `label` and
+    // the text lost, taking the font, size and colour with it.
+    const key = i === 0 ? 'root' : isText ? (parts.label ? 'text' : 'label') : name ? name.toLowerCase().replace(/[^\w]+/g, '-') : null
     if (!key || !classes || parts[key]) return
     parts[key] = classes
   })
@@ -240,6 +245,17 @@ function structuralOf(classes) {
   if (list.includes('overflow-clip')) out['overflow'] = { value: 'clip' }
   if (list.includes('justify-center')) out['justify-content'] = { value: 'center' }
   if (list.includes('items-center')) out['align-items'] = { value: 'center' }
+  // How the box lays out its children. Without these the contract could not
+  // say whether a part is a row or a column, or which parts may shrink.
+  const LAYOUT = {
+    'flex': ['display', 'flex'], 'flex-col': ['flex-direction', 'column'], 'flex-row': ['flex-direction', 'row'],
+    'shrink-0': ['flex-shrink', '0'], 'flex-[1_0_0]': ['flex', '1 0 0'], 'whitespace-nowrap': ['white-space', 'nowrap'],
+    'text-center': ['text-align', 'center'], 'w-full': ['width', '100%'], 'h-full': ['height', '100%'],
+    'items-start': ['align-items', 'flex-start'], 'justify-end': ['justify-content', 'flex-end'],
+    'justify-between': ['justify-content', 'space-between'], 'self-stretch': ['align-self', 'stretch'],
+  }
+  for (const [cls, [prop, value]] of Object.entries(LAYOUT)) if (list.includes(cls) && !out[prop]) out[prop] = { value }
+  if (list.includes('relative') && !list.includes('absolute')) out['position'] = { value: 'relative' }
   return out
 }
 

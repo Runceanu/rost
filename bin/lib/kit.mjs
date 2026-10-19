@@ -60,7 +60,8 @@ export function loadKit() {
  * layer — absolute icon unions, centring, clipping, which sides get a stroke —
  * and no design system tokenises them, so they are not gaps.
  */
-const LAYOUT = new Set(['position', 'inset', 'border-sides', 'align-items', 'justify-content', 'overflow', 'background-attachment'])
+const LAYOUT = new Set(['position', 'inset', 'border-sides', 'align-items', 'justify-content', 'overflow', 'background-attachment',
+  'display', 'flex-direction', 'flex-shrink', 'flex', 'white-space', 'text-align', 'align-self'])
 export const COVERAGE = [
   ['token', 'Has a token'],
   ['suggested', 'Token suggested'],
@@ -72,7 +73,7 @@ export const COVERAGE = [
 export function classify(prop, v) {
   if (v.token) return 'token'
   if (v.suggest) return 'suggested'
-  if (LAYOUT.has(prop)) return 'layout'
+  if (LAYOUT.has(prop) || (prop.match(/^(width|height)$/) && v.value === '100%')) return 'layout'
   if (v.assert === false) return 'sample'
   if (v.untokenised) return 'reasoned'
   return 'gap'

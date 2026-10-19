@@ -1,0 +1,285 @@
+/* Generated from contracts/inline-banner.contract.yaml by bin/build-css.mjs. Don't edit: change the contract and rebuild. */
+
+.rost-inline-banner, .rost-inline-banner * { box-sizing: border-box; margin: 0; }
+
+.rost-inline-banner {
+  align-items: center;
+  display: flex;
+  position: relative;
+  padding: var(--spacing-gap-small);
+  border-radius: var(--spacing-radius-small);
+}
+
+.rost-inline-banner__background {
+  position: absolute;
+  inset: 0;
+  background: var(--non-interactive-background-tertiary);
+  opacity: var(--opacity-mild);
+  border-radius: var(--spacing-radius-small);
+}
+
+.rost-inline-banner__union {
+  position: absolute;
+}
+
+.rost-inline-banner__label {
+  overflow: clip;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.rost-inline-banner__text {
+  flex-shrink: 0;
+  white-space: nowrap;
+  text-align: center;
+  position: relative;
+  font-family: var(--font-family-base);
+  color: var(--non-interactive-foreground-secondary);
+}
+
+.rost-inline-banner.rost-inline-banner--status-default.rost-inline-banner--size-small {
+  gap: var(--spacing-gap-2xsmall);
+}
+
+.rost-inline-banner.rost-inline-banner--status-default.rost-inline-banner--size-small .rost-inline-banner__slot {
+  align-items: center;
+  display: flex;
+  flex-shrink: 0;
+  position: relative;
+  gap: var(--spacing-gap-none);
+  padding: var(--spacing-gap-none);
+}
+
+.rost-inline-banner.rost-inline-banner--status-default.rost-inline-banner--size-small .rost-inline-banner__icons-plus {
+  overflow: clip;
+  flex-shrink: 0;
+  position: relative;
+  width: var(--spacing-size-2xsmall);
+  height: var(--spacing-size-2xsmall);
+}
+
+.rost-inline-banner.rost-inline-banner--status-default.rost-inline-banner--size-small .rost-inline-banner__union {
+  inset: 12.5%;
+}
+
+.rost-inline-banner.rost-inline-banner--status-default.rost-inline-banner--size-small .rost-inline-banner__label {
+  padding-bottom: var(--spacing-gap-3xsmall);
+}
+
+.rost-inline-banner.rost-inline-banner--status-default.rost-inline-banner--size-small .rost-inline-banner__text {
+  font-weight: var(--typography-label-font-weight-medium);
+  line-height: var(--typography-label-line-height);
+  font-size: var(--typography-label-font-size);
+  letter-spacing: var(--typography-label-letter-spacing);
+}
+
+.rost-inline-banner.rost-inline-banner--status-negative.rost-inline-banner--size-small {
+  gap: var(--spacing-gap-2xsmall);
+  opacity: var(--opacity-solid);
+}
+
+.rost-inline-banner.rost-inline-banner--status-negative.rost-inline-banner--size-small .rost-inline-banner__union {
+  inset: 3.9% 3.91% 4.43% 4.43%;
+}
+
+.rost-inline-banner.rost-inline-banner--status-negative.rost-inline-banner--size-small .rost-inline-banner__label {
+  padding-bottom: var(--spacing-gap-3xsmall);
+}
+
+.rost-inline-banner.rost-inline-banner--status-negative.rost-inline-banner--size-small .rost-inline-banner__text {
+  font-weight: var(--typography-label-font-weight-medium);
+  line-height: var(--typography-label-line-height);
+  font-size: var(--typography-label-font-size);
+  letter-spacing: var(--typography-label-letter-spacing);
+}
+
+.rost-inline-banner.rost-inline-banner--status-negative.rost-inline-banner--size-small .rost-inline-banner__icons-alarm {
+  overflow: clip;
+  flex-shrink: 0;
+  position: relative;
+  width: var(--spacing-size-2xsmall);
+  height: var(--spacing-size-2xsmall);
+}
+
+.rost-inline-banner.rost-inline-banner--status-positive.rost-inline-banner--size-small {
+  gap: var(--spacing-gap-2xsmall);
+  opacity: var(--opacity-solid);
+}
+
+.rost-inline-banner.rost-inline-banner--status-positive.rost-inline-banner--size-small .rost-inline-banner__union {
+  inset: 3.9% 4.43% 4.43% 3.91%;
+}
+
+.rost-inline-banner.rost-inline-banner--status-positive.rost-inline-banner--size-small .rost-inline-banner__label {
+  padding-bottom: var(--spacing-gap-3xsmall);
+}
+
+.rost-inline-banner.rost-inline-banner--status-positive.rost-inline-banner--size-small .rost-inline-banner__text {
+  font-weight: var(--typography-label-font-weight-medium);
+  line-height: var(--typography-label-line-height);
+  font-size: var(--typography-label-font-size);
+  letter-spacing: var(--typography-label-letter-spacing);
+}
+
+.rost-inline-banner.rost-inline-banner--status-positive.rost-inline-banner--size-small .rost-inline-banner__icons-positive {
+  overflow: clip;
+  flex-shrink: 0;
+  position: relative;
+  width: var(--spacing-size-2xsmall);
+  height: var(--spacing-size-2xsmall);
+}
+
+.rost-inline-banner.rost-inline-banner--status-warning.rost-inline-banner--size-small {
+  gap: var(--spacing-gap-2xsmall);
+  opacity: var(--opacity-solid);
+}
+
+.rost-inline-banner.rost-inline-banner--status-warning.rost-inline-banner--size-small .rost-inline-banner__union {
+  inset: 8.04% 6.89% 12.76% 5.32%;
+}
+
+.rost-inline-banner.rost-inline-banner--status-warning.rost-inline-banner--size-small .rost-inline-banner__label {
+  padding-bottom: var(--spacing-gap-3xsmall);
+}
+
+.rost-inline-banner.rost-inline-banner--status-warning.rost-inline-banner--size-small .rost-inline-banner__text {
+  font-weight: var(--typography-label-font-weight-medium);
+  line-height: var(--typography-label-line-height);
+  font-size: var(--typography-label-font-size);
+  letter-spacing: var(--typography-label-letter-spacing);
+}
+
+.rost-inline-banner.rost-inline-banner--status-warning.rost-inline-banner--size-small .rost-inline-banner__icons-warning {
+  overflow: clip;
+  flex-shrink: 0;
+  position: relative;
+  width: var(--spacing-size-2xsmall);
+  height: var(--spacing-size-2xsmall);
+}
+
+.rost-inline-banner.rost-inline-banner--status-default.rost-inline-banner--size-medium {
+  gap: var(--spacing-gap-small);
+}
+
+.rost-inline-banner.rost-inline-banner--status-default.rost-inline-banner--size-medium .rost-inline-banner__slot {
+  align-items: center;
+  display: flex;
+  flex-shrink: 0;
+  position: relative;
+  gap: var(--spacing-gap-none);
+  padding: var(--spacing-gap-none);
+}
+
+.rost-inline-banner.rost-inline-banner--status-default.rost-inline-banner--size-medium .rost-inline-banner__icons-plus {
+  overflow: clip;
+  flex-shrink: 0;
+  position: relative;
+  width: var(--spacing-size-xsmall);
+  height: var(--spacing-size-xsmall);
+}
+
+.rost-inline-banner.rost-inline-banner--status-default.rost-inline-banner--size-medium .rost-inline-banner__union {
+  inset: 12.5%;
+}
+
+.rost-inline-banner.rost-inline-banner--status-default.rost-inline-banner--size-medium .rost-inline-banner__text {
+  font-weight: var(--typography-body-font-weight-medium);
+  line-height: var(--typography-body-line-height);
+  font-size: var(--typography-body-font-size);
+  letter-spacing: var(--typography-body-letter-spacing);
+}
+
+.rost-inline-banner.rost-inline-banner--status-default.rost-inline-banner--size-medium .rost-inline-banner__label {
+  gap: var(--spacing-gap-small);
+  padding: var(--spacing-gap-none);
+}
+
+.rost-inline-banner.rost-inline-banner--status-negative.rost-inline-banner--size-medium {
+  gap: var(--spacing-gap-small);
+  opacity: var(--opacity-solid);
+}
+
+.rost-inline-banner.rost-inline-banner--status-negative.rost-inline-banner--size-medium .rost-inline-banner__union {
+  inset: 3.9% 3.91% 4.43% 4.42%;
+}
+
+.rost-inline-banner.rost-inline-banner--status-negative.rost-inline-banner--size-medium .rost-inline-banner__text {
+  font-weight: var(--typography-body-font-weight-medium);
+  line-height: var(--typography-body-line-height);
+  font-size: var(--typography-body-font-size);
+  letter-spacing: var(--typography-body-letter-spacing);
+}
+
+.rost-inline-banner.rost-inline-banner--status-negative.rost-inline-banner--size-medium .rost-inline-banner__icons-alarm {
+  overflow: clip;
+  flex-shrink: 0;
+  position: relative;
+  width: var(--spacing-size-xsmall);
+  height: var(--spacing-size-xsmall);
+}
+
+.rost-inline-banner.rost-inline-banner--status-negative.rost-inline-banner--size-medium .rost-inline-banner__label {
+  gap: var(--spacing-gap-small);
+  padding: var(--spacing-gap-none);
+}
+
+.rost-inline-banner.rost-inline-banner--status-positive.rost-inline-banner--size-medium {
+  gap: var(--spacing-gap-small);
+  opacity: var(--opacity-solid);
+}
+
+.rost-inline-banner.rost-inline-banner--status-positive.rost-inline-banner--size-medium .rost-inline-banner__union {
+  inset: 3.9% 4.43% 4.43% 3.91%;
+}
+
+.rost-inline-banner.rost-inline-banner--status-positive.rost-inline-banner--size-medium .rost-inline-banner__text {
+  font-weight: var(--typography-body-font-weight-medium);
+  line-height: var(--typography-body-line-height);
+  font-size: var(--typography-body-font-size);
+  letter-spacing: var(--typography-body-letter-spacing);
+}
+
+.rost-inline-banner.rost-inline-banner--status-positive.rost-inline-banner--size-medium .rost-inline-banner__icons-positive {
+  overflow: clip;
+  flex-shrink: 0;
+  position: relative;
+  width: var(--spacing-size-xsmall);
+  height: var(--spacing-size-xsmall);
+}
+
+.rost-inline-banner.rost-inline-banner--status-positive.rost-inline-banner--size-medium .rost-inline-banner__label {
+  gap: var(--spacing-gap-small);
+  padding: var(--spacing-gap-none);
+}
+
+.rost-inline-banner.rost-inline-banner--status-warning.rost-inline-banner--size-medium {
+  gap: var(--spacing-gap-small);
+  opacity: var(--opacity-solid);
+}
+
+.rost-inline-banner.rost-inline-banner--status-warning.rost-inline-banner--size-medium .rost-inline-banner__union {
+  inset: 8.04% 6.88% 12.76% 5.32%;
+}
+
+.rost-inline-banner.rost-inline-banner--status-warning.rost-inline-banner--size-medium .rost-inline-banner__text {
+  font-weight: var(--typography-body-font-weight-medium);
+  line-height: var(--typography-body-line-height);
+  font-size: var(--typography-body-font-size);
+  letter-spacing: var(--typography-body-letter-spacing);
+}
+
+.rost-inline-banner.rost-inline-banner--status-warning.rost-inline-banner--size-medium .rost-inline-banner__icons-warning {
+  overflow: clip;
+  flex-shrink: 0;
+  position: relative;
+  width: var(--spacing-size-xsmall);
+  height: var(--spacing-size-xsmall);
+}
+
+.rost-inline-banner.rost-inline-banner--status-warning.rost-inline-banner--size-medium .rost-inline-banner__label {
+  gap: var(--spacing-gap-small);
+  padding: var(--spacing-gap-none);
+}

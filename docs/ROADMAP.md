@@ -19,6 +19,15 @@ The last read stopped on 2026-10-19, when Figma hit its daily limit on reads fro
 - **Then the freeze.** I decided this on 2026-10-19: once the import is done, the contracts become the source and Figma retires. `node bin/freeze.mjs --apply` turns every suggestion into a token (106 in the dry run, all of them tokens that already exist) and stamps each contract with the date. After that the Figma read skips them, and changes happen in the YAML. I won't go back and edit Figma to match.
 - Before the freeze, if I can: rename the sample client in the Thumbs component in Figma to "Client" and capture it again. Until then `baseline/thumbs/` stays on my machine, and so does `baseline/testimonials-pics/` (real people's photos).
 
+## Now: Rost in code
+
+InlineBanner is the first one, built on 2026-10-19: CSS written from the contract, a React component, and a visual test against Figma. Size, corners, fill, spacing and text all match. The icons are the gap: their SVGs expired on Figma's side, so they come with the next read. Then:
+
+- **Icons for InlineBanner**, from tomorrow's read, and the visual test goes green.
+- **Badge**, once it's read again (Figma gave it a `size` property after August).
+- **Then the rest**, one at a time on the same setup: CSS from the contract, the component, fixtures, the visual test. The ones with hover, press and focus need the test to trigger those states.
+- **Publish it as a package** that akount.ing and runceanu.com install, instead of keeping their own copies.
+
 ## Now: make the contracts something I can trust
 
 1. **Go through akount.ing's conformance findings.** Against the YAML contracts on 2026-10-19: Badge 0, InlineBanner 10, Input 15, Toggle 36, PillButton 47. I know two of the causes:

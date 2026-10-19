@@ -26,6 +26,7 @@
 - `title`
 - `number`
 - `label`
+- `text`
 - `bottom`
 - `background`
 - `focus-ring`
@@ -39,8 +40,10 @@ Every token this component uses, across all its variants.
 | `font-family/base` | `'General Sans Variable'` |
 | `opacity/mild` | `0.32` |
 | `opacity/strong` | `0.64` |
+| `project/disabled/label` | `#d3d9d5` |
 | `project/disabled/sub-label` | `#999` |
 | `project/focus/focus-ring` | `#999` |
+| `project/focus/label` | `#d3d9d5` |
 | `project/focus/sub-label` | `#999` |
 | `project/hover/label` | `#00d669` |
 | `project/pressed/label` | `#00d669` |
@@ -54,6 +57,10 @@ Every token this component uses, across all its variants.
 | `typography/label/font-weight/regular` | `400` |
 | `typography/label/letter-spacing` | `0px` |
 | `typography/label/line-height` | `14px` |
+| `typography/title/font-size` | `24px` |
+| `typography/title/font-weight/medium` | `500` |
+| `typography/title/letter-spacing` | `0px` |
+| `typography/title/line-height` | `32px` |
 
 ## Tokens that should be there
 

@@ -15,6 +15,7 @@ source:
 elements:
   root:
     styles:
+      position: { value: relative, assert: false }
       width:
         value: 104px
         assert: false

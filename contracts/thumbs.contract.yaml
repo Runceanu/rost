@@ -16,6 +16,10 @@ states: [ Default, Hover, Pressed, Focus, Disabled, Locked ]
 elements:
   root:
     styles:
+      display: { value: flex, assert: false }
+      flex-direction: { value: column, assert: false }
+      align-items: { value: flex-start }
+      position: { value: relative, assert: false }
       gap: { token: spacing/gap/none, value: 0px }
       height:
         value: 334px
@@ -28,6 +32,9 @@ elements:
         notes: Just the size of the Figma frame. No token, and not something to copy.
   slot:
     styles:
+      flex: { value: 1 0 0, assert: false }
+      width: { value: 100% }
+      position: { value: relative, assert: false }
       background: { token: non-interactive/background/secondary, value: "#171717" }
       border-radius: { token: spacing/radius/xlarge, value: 24px }
   shadow:
@@ -38,6 +45,9 @@ elements:
   content:
     styles:
       position: { value: absolute }
+      display: { value: flex, assert: false }
+      flex-direction: { value: column, assert: false }
+      align-items: { value: flex-start }
       background: { value: "rgba(0,0,0,0.48)" }
       gap: { token: spacing/gap/small, value: 8px }
       padding-bottom: { token: spacing/gap/large, value: 24px }
@@ -48,28 +58,54 @@ elements:
   title:
     styles:
       align-items: { value: center }
+      display: { value: flex, assert: false }
+      flex-shrink: { value: "0", assert: false }
+      width: { value: 100% }
+      position: { value: relative, assert: false }
       gap: { token: spacing/gap/medium, value: 16px }
   number:
     styles:
       justify-content: { value: center }
       align-items: { value: center }
+      display: { value: flex, assert: false }
+      flex-direction: { value: column, assert: false }
+      flex-shrink: { value: "0", assert: false }
+      position: { value: relative, assert: false }
       width: { value: 16px, suggest: spacing/size/2xsmall }
   label:
     styles:
+      flex-shrink: { value: "0", assert: false }
+      width: { value: 100% }
+      position: { value: relative, assert: false }
       font-family: { token: font-family/base, value: "'General Sans Variable'" }
       font-weight: { token: typography/label/font-weight/regular, value: "400" }
       line-height: { token: typography/label/line-height, value: 14px }
       font-size: { token: typography/label/font-size, value: 12px }
       letter-spacing: { token: typography/label/letter-spacing, value: 0px }
+  text:
+    styles:
+      flex-shrink: { value: "0", assert: false }
+      white-space: { value: nowrap, assert: false }
+      position: { value: relative, assert: false }
+      font-family: { token: font-family/base, value: "'General Sans Variable'" }
+      font-weight: { token: typography/title/font-weight/medium, value: "500" }
+      line-height: { token: typography/title/line-height, value: 32px }
+      font-size: { token: typography/title/font-size, value: 24px }
+      letter-spacing: { token: typography/title/letter-spacing, value: 0px }
   bottom:
     styles:
       align-items: { value: center }
+      display: { value: flex, assert: false }
+      flex-shrink: { value: "0", assert: false }
+      justify-content: { value: flex-end }
+      position: { value: relative, assert: false }
       gap: { token: spacing/gap/medium, value: 16px }
       padding-left: { token: spacing/gap/xlarge, value: 32px }
   icons-dot:
     styles:
       position: { value: absolute }
       inset: { value: "0" }
+      flex-shrink: { value: "0", assert: false }
       width: { value: 12px, suggest: spacing/size/3xsmall }
       height: { value: 12px, suggest: spacing/size/3xsmall }
   focus-ring: {}
@@ -83,11 +119,14 @@ variants:
     elements:
       label:
         color: { token: project/default/sub-label, value: "#999" }
+      text:
+        color: { token: project/default/label, value: "#d3d9d5" }
       focus-ring:
         border-sides: { value: all }
         position: { value: absolute }
         border-width: { token: spacing/outline/medium, value: 2px }
         border-color: { token: project/focus/focus-ring, value: "#999" }
+        inset: { value: -4px }
         border-radius:
           value: 28px
           untokenised: "Derived: the element radius plus the focus ring offset."
@@ -96,11 +135,15 @@ variants:
     elements:
       label:
         color: { token: project/pressed/label, value: "#00d669" }
+      text:
+        color: { token: project/pressed/label, value: "#00d669" }
   - when: { state: Disabled }
     figmaNode: "109:206"
     elements:
       label:
         color: { token: project/disabled/sub-label, value: "#999" }
+      text:
+        color: { token: project/disabled/label, value: "#d3d9d5" }
       root:
         opacity: { token: opacity/solid, value: "1" }
       slot:
@@ -110,6 +153,7 @@ variants:
       badge:
         position: { value: absolute }
         align-items: { value: center }
+        display: { value: flex, assert: false }
         gap: { token: spacing/gap/3xsmall, value: 2px }
         height: { token: spacing/size/small, value: 24px }
         padding-bottom: { token: spacing/gap/3xsmall, value: 2px }
@@ -129,19 +173,26 @@ variants:
     elements:
       label:
         color: { token: project/hover/label, value: "#00d669" }
+      text:
+        color: { token: project/hover/label, value: "#00d669" }
   - when: { state: Default }
     figmaNode: "109:78"
     elements:
       label:
         color: { token: project/default/sub-label, value: "#999" }
+      text:
+        color: { token: project/default/label, value: "#d3d9d5" }
   - when: { state: Locked }
     figmaNode: "261:1232"
     elements:
       label:
         color: { token: project/default/sub-label, value: "#999" }
+      text:
+        color: { token: project/default/label, value: "#d3d9d5" }
       locked:
         position: { value: absolute }
         align-items: { value: center }
+        display: { value: flex, assert: false }
         background: { token: non-interactive/background/positive/base, value: "#00d669" }
         gap: { token: spacing/gap/none, value: 0px }
         padding: { token: spacing/gap/small, value: 8px }
@@ -149,5 +200,6 @@ variants:
       icons-lock:
         position: { value: absolute }
         inset: { value: "0" }
+        flex-shrink: { value: "0", assert: false }
         width: { value: 24px, suggest: spacing/size/small }
         height: { value: 24px, suggest: spacing/size/small }

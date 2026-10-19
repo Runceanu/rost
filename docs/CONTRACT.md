@@ -129,6 +129,17 @@ A component is `stable` when:
 4. **Check it.** `npm run validate`, the conformance test in the app, and `npm run audit <app-dir>`. Anything that's different on purpose becomes a deviation.
 5. **Publish it.** `npm run docs`, then commit the contract and the rebuilt docs together.
 
+## From contract to code
+
+A component in code is built from its contract, not from memory.
+
+1. `npm run css -- <id>` writes `src/components/<id>/<id>.css` straight from the contract. Every part gets a class, every prop value a modifier, every value its token. I don't edit that file. If the CSS is wrong, the contract is wrong, and that's where I fix it.
+2. The React component sits next to it and follows the Figma layers one to one, so the classes land on the same parts.
+3. `<id>.fixtures.tsx` lists one example per Figma variant.
+4. `npm run test:visual -- <id>` renders each one in Chrome, on the same dark background Figma uses, with the same General Sans Variable font, and compares it with Figma's own screenshot from `baseline/`. It saves a side by side for each variant in `test-results/visual/<id>/`: Figma, mine, and the difference in red.
+
+A variant passes when its size is exact and almost nothing differs. Figma and Chrome never draw letter edges quite the same way: on InlineBanner, with everything else exact, about 2 to 2.4% of pixels still differ at the edges of the text, even allowing a pixel either way. So the line is 2.5%. A missing icon or a wrong colour goes well over it.
+
 ## Checking an app
 
 `src/conform.ts` has `forApp(contract, app)`. It turns a YAML contract into what one app should look like: that app's selectors, every fixed value, and the variants named the way Figma names them. Hand the result to `conform()`.

@@ -19,6 +19,7 @@ states: [ Default, Hover, Pressed, Focus, Disabled ]
 elements:
   root:
     styles:
+      position: { value: relative, assert: false }
       width:
         value: 104px
         assert: false
@@ -28,11 +29,26 @@ elements:
       position: { value: absolute }
   content:
     styles:
+      display: { value: flex, assert: false }
+      flex-direction: { value: column, assert: false }
+      flex-shrink: { value: "0", assert: false }
+      width: { value: 100% }
+      align-items: { value: flex-start }
+      position: { value: relative, assert: false }
       gap: { token: spacing/gap/small-medium, value: 12px }
       line-height: { token: typography/body/line-height, value: 22px }
       font-size: { token: typography/body/font-size, value: 16px }
       letter-spacing: { token: typography/body/letter-spacing, value: 0px }
-  label: {}
+  label:
+    styles:
+      flex-shrink: { value: "0", assert: false }
+      width: { value: 100% }
+      position: { value: relative, assert: false }
+  text:
+    styles:
+      flex-shrink: { value: "0", assert: false }
+      width: { value: 100% }
+      position: { value: relative, assert: false }
   focus-ring: {}
 variants:
   - when: { state: Default }
@@ -42,12 +58,19 @@ variants:
         font-family: { token: font-family/base, value: "'General Sans Variable'" }
         font-weight: { token: typography/body/font-weight/medium, value: "500" }
         color: { token: non-interactive/foreground/primary, value: "#ededed" }
+      text:
+        font-family: { token: font-family/base, value: "'General Sans Variable'" }
+        font-weight: { token: typography/body/font-weight/regular, value: "400" }
+        color: { token: non-interactive/foreground/tertiary, value: "#999" }
   - when: { state: Hover }
     figmaNode: "41:260"
     elements:
       label:
         font-family: { token: font-family/base, value: "'General Sans Variable'" }
         font-weight: { token: typography/body/font-weight/medium, value: "500" }
+      text:
+        font-family: { token: font-family/base, value: "'General Sans Variable'" }
+        font-weight: { token: typography/body/font-weight/regular, value: "400" }
       content:
         color: { token: non-interactive/foreground/primary, value: "#ededed" }
   - when: { state: Focus }
@@ -57,11 +80,16 @@ variants:
         font-family: { token: font-family/base, value: "'General Sans Variable'" }
         font-weight: { token: typography/body/font-weight/medium, value: "500" }
         color: { token: non-interactive/foreground/primary, value: "#ededed" }
+      text:
+        font-family: { token: font-family/base, value: "'General Sans Variable'" }
+        font-weight: { token: typography/body/font-weight/regular, value: "400" }
+        color: { token: non-interactive/foreground/tertiary, value: "#999" }
       focus-ring:
         border-sides: { value: all }
         position: { value: absolute }
         border-width: { token: spacing/outline/medium, value: 2px }
         border-color: { token: actions/primary/focus/focus-ring, value: "#b6ffda" }
+        inset: { value: 20px -4px }
   - when: { state: Pressed }
     figmaNode: "41:286"
     elements:
@@ -75,6 +103,9 @@ variants:
       label:
         font-family: { token: font-family/base, value: "'General Sans Variable'" }
         font-weight: { token: typography/body/font-weight/medium, value: "500" }
+      text:
+        font-family: { token: font-family/base, value: "'General Sans Variable'" }
+        font-weight: { token: typography/body/font-weight/regular, value: "400" }
       content:
         color: { token: non-interactive/foreground/quadruple, value: "#3a3a3a" }
 guidance:

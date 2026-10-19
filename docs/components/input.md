@@ -31,9 +31,10 @@
 - `left`
 - `icons-lock`
 - `union`
+- `content`
 - `label`
 - `supportive-text`
-- `content`
+- `text`
 - `right`
 - `icons-alarm`
 - `focus-ring`
@@ -82,9 +83,11 @@ Every token this component uses, across all its variants.
 | `input/negative/focus/focus-ring` | `#00d669` |
 | `input/negative/focus/label` | `#e93120` |
 | `input/negative/focus/outline` | `#f2705f` |
+| `input/negative/focus/value` | `#ededed` |
 | `input/regular/default/background` | `#060805` |
 | `input/regular/default/label` | `#999` |
 | `input/regular/default/outline` | `#555` |
+| `input/regular/default/supportive` | `#999` |
 | `opacity/solid` | `1` |
 | `spacing/gap/none` | `0px` |
 | `spacing/gap/small` | `8px` |
@@ -98,6 +101,7 @@ Every token this component uses, across all its variants.
 | `typography/body/font-weight/regular` | `400` |
 | `typography/body/letter-spacing` | `0px` |
 | `typography/body/line-height` | `22px` |
+| `typography/label/font-weight/medium` | `500` |
 | `typography/label/font-weight/regular` | `400` |
 | `typography/placeholder/font-size` | `10px` |
 | `typography/placeholder/letter-spacing` | `0px` |

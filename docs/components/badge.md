@@ -7,10 +7,14 @@
 | | |
 |---|---|
 | Kind | component |
-| Contract | `stable` · [badge.contract.yaml](../../contracts/badge.contract.yaml) |
+| Contract | `review` · [badge.contract.yaml](../../contracts/badge.contract.yaml) |
 | Guidance | `agreed` |
 | Source | [Figma 139:395](https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=139-395) · read 2026-08-18 |
 | Implemented in | runceanu.com (`src/components/Badge.jsx`, `.badge`)<br>akount.ing (`src/components/Badge.tsx`, `.ak-badge`) |
+
+## Not right yet
+
+- Still to read: Figma changed after the August read. The set now has a size property, and the four nodes this contract points at (139:396, 139:433, 139:439, 139:445) are now the small, dot-only badges at 24x24. The labelled badge described here is probably a bigger size, at node ids I haven't read yet. Read the set again before building it.
 
 ## Props
 

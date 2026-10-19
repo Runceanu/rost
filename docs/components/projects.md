@@ -25,6 +25,7 @@
 - `root`
 - `left`
 - `label`
+- `text`
 - `right`
 - `icons-dot`
 - `-actions`
@@ -43,6 +44,7 @@ Every token this component uses, across all its variants.
 | `font-family/base` | `'General Sans Variable'` |
 | `opacity/gentle` | `0.24` |
 | `opacity/solid` | `1` |
+| `project/default/label` | `#d3d9d5` |
 | `project/default/outline` | `#3a3a3a` |
 | `project/default/sub-label` | `#999` |
 | `project/disabled/outline` | `#3a3a3a` |
@@ -50,6 +52,7 @@ Every token this component uses, across all its variants.
 | `project/focus/outline` | `#3a3a3a` |
 | `project/hover/label` | `#00d669` |
 | `project/hover/outline` | `#00d669` |
+| `project/lock/label` | `#d3d9d5` |
 | `project/lock/outline` | `#3a3a3a` |
 | `project/lock/sub-label` | `#999` |
 | `project/pressed/label` | `#00d669` |
@@ -66,6 +69,10 @@ Every token this component uses, across all its variants.
 | `typography/label/font-weight/regular` | `400` |
 | `typography/label/letter-spacing` | `0px` |
 | `typography/label/line-height` | `14px` |
+| `typography/sub-headline/font-size` | `40px` |
+| `typography/sub-headline/font-weight/medium` | `500` |
+| `typography/sub-headline/letter-spacing` | `0px` |
+| `typography/sub-headline/line-height` | `48px` |
 
 ## Tokens that should be there
 

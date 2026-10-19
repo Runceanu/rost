@@ -25,6 +25,8 @@ elements:
     styles:
       justify-content: { value: center }
       align-items: { value: center }
+      display: { value: flex, assert: false }
+      position: { value: relative, assert: false }
       gap: { token: spacing/gap/small, value: 8px }
       height: { token: spacing/size/small, value: 24px }
       padding-bottom: { token: spacing/gap/3xsmall, value: 2px }
@@ -34,6 +36,10 @@ elements:
       border-radius: { token: spacing/radius/full, value: 10000px }
   label:
     styles:
+      flex-shrink: { value: "0", assert: false }
+      white-space: { value: nowrap, assert: false }
+      text-align: { value: center }
+      position: { value: relative, assert: false }
       font-family: { token: font-family/base, value: "'General Sans Variable'" }
       font-weight: { token: typography/label/font-weight/medium, value: "500" }
       line-height: { token: typography/label/line-height, value: 14px }
@@ -94,6 +100,7 @@ variants:
         position: { value: absolute }
         border-width: { token: spacing/outline/medium, value: 2px }
         border-color: { token: actions/secondary/regular/focus/focus-ring, value: "#999" }
+        inset: { value: -4px }
         border-radius: { token: spacing/radius/full, value: 10000px }
 guidance:
   status: agreed
