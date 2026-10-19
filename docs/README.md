@@ -12,7 +12,7 @@ The design system behind **runceanu.com**, **akount.ing** and the products that 
 | [Token coverage](TOKENS.md) | Why each value does or doesn't carry a token, and what to bind |
 | [Roadmap](ROADMAP.md) | What gets built next, and why |
 
-**16** contracts · **0** stable · guidance for **16**, of which **0** agreed with design.
+**22** contracts · **0** stable · guidance for **16**, of which **0** agreed with design.
 
 ## Catalogue
 
@@ -22,13 +22,19 @@ The design system behind **runceanu.com**, **akount.ing** and the products that 
 |---|---|---|---|---|
 | [Badge](components/badge.md) | An outlined 24px status label; the status shows in the outline and dot, never in the label colour. | `review` | `proposed` | runceanu.com, akount.ing |
 | [Button](components/button.md) | A label-only action at 48px, in four levels of emphasis. | `review` | `proposed` | — |
+| [Carousel](components/carousel.md) |  | `review` | — | — |
 | [Chip](components/chips.md) | An outlined 24px interactive label, for filters and quick choices. | `review` | `proposed` | runceanu.com |
+| [Divider](components/divider.md) |  | `review` | — | — |
 | [IconButton](components/icon-button.md) | An icon-only round action, including the Project type used on case-study thumbnails. | `review` | `proposed` | — |
 | [InlineBanner](components/inline-banner.md) | A filled status pill with a leading glyph and a label, in four statuses and two sizes. | `review` | `proposed` | akount.ing |
 | [Input](components/input.md) | A 56px text field with a floating label, optional leading lock icon, supportive text and an error state. | `review` | `proposed` | runceanu.com, akount.ing |
 | [Menu](components/menu.md) | A navigation item, a label with an indicator line, used in the main nav. | `review` | `proposed` | — |
 | [PillButton](components/pill-button.md) | A 48px action with a leading icon and a label. The kit's main call to action. | `review` | `proposed` | akount.ing |
+| [Projects](components/projects.md) |  | `review` | — | — |
 | [Tag](components/tags.md) | A compact 20px label with a small radius, for topics and categories on content. | `review` | `proposed` | — |
+| [TestimonialPicture](components/testimonials-pics.md) |  | `review` | — | — |
+| [Testimonials](components/testimonials.md) |  | `review` | — | — |
+| [Thumbs](components/thumbs.md) |  | `review` | — | — |
 | [Toggle](components/toggle.md) | A 40×40 icon toggle that holds a selected state, used alone or as one choice of a group. | `review` | `proposed` | akount.ing |
 
 ### Patterns
@@ -54,6 +60,15 @@ Generated from the contracts, so it is only as current as the last `npm run docs
 ### Pending a Figma read
 
 - [Menu effect](components/effect-menu.md)
+
+### Components without guidance
+
+- [Carousel](components/carousel.md)
+- [Divider](components/divider.md)
+- [Projects](components/projects.md)
+- [TestimonialPicture](components/testimonials-pics.md)
+- [Testimonials](components/testimonials.md)
+- [Thumbs](components/thumbs.md)
 
 ### Deviations not yet raised with design
 

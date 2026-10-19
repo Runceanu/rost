@@ -1,0 +1,101 @@
+/* testimonials | state=Focus, expanded=True | 144:371 | 976x174 */
+const imgIconsChevronDown = "http://localhost:3845/assets/fecfc7ad75779f0b0045962ddbe7cc2f11ffe5bf.svg";
+const imgIconsChevronUp = "http://localhost:3845/assets/04ba9d9c45eb993f8ff9e23e369fc449806cfa5a.svg";
+type TestimonialsProps = {
+  className?: string;
+  children?: React.ReactNode | null;
+  expanded?: boolean;
+  jobDescription?: string;
+  name?: string;
+  showAction?: boolean;
+  showDivider?: boolean;
+  showJobDescription?: boolean;
+  showName?: boolean;
+  state?: "Default" | "Focus";
+  testimonial?: string;
+};
+
+function Testimonials({ className, children = null, expanded = false, jobDescription = "Job description", name = "Name", showAction = true, showDivider = true, showJobDescription = true, showName = true, state = "Default", testimonial = "This is where the testimonials comes" }: TestimonialsProps) {
+  const isDefaultAndNotExpanded = state === "Default" && !expanded;
+  const isFocusAndExpanded = state === "Focus" && expanded;
+  return (
+    <div className={className || `${String.raw`content-stretch flex gap-[var(--spacing\/gap\/2xlarge,40px)] py-[var(--spacing\/gap\/large,24px)] relative w-[976px] `}${isFocusAndExpanded ? String.raw`flex-col items-start justify-center pl-[var(--spacing\/gap\/medium,16px)] pr-[var(--spacing\/gap\/none,0px)]` : "items-center"}`} id={isFocusAndExpanded ? "node-144_371" : "node-144_68"}>
+      {isDefaultAndNotExpanded && showDivider && <div className="absolute bg-[var(--project\/default\/outline,#3a3a3a)] bottom-0 h-px left-0 right-0" data-node-id="144:69" data-name="outline" />}
+      {isDefaultAndNotExpanded && (
+        <div className="content-stretch flex flex-[1_0_0] gap-[var(--spacing\/gap\/large,24px)] items-center min-w-px relative" data-node-id="144:70" data-name="Left">
+          <div className="relative rounded-[var(--spacing\/radius\/full,10000px)] shrink-0 size-[56px]" data-node-id="144:169" data-name="slot">
+            {children}
+          </div>
+          <div className="[word-break:break-word] content-stretch flex flex-col gap-[var(--spacing\/gap\/2xsmall,4px)] items-start justify-center relative shrink-0 whitespace-nowrap" data-node-id="144:172" data-name="Content">
+            {showName && (
+              <p className="font-[family-name:var(--font-family\/base,'General_Sans_Variable:Medium')] font-[var(--typography\/title\/font-weight\/medium,500)] leading-[var(--typography\/title\/line-height,32px)] relative shrink-0 text-[color:var(--project\/default\/label,#d3d9d5)] text-[length:var(--typography\/title\/font-size,24px)] tracking-[var(--typography\/title\/letter-spacing,0px)]" data-node-id="144:72">
+                {name}
+              </p>
+            )}
+            {showJobDescription && (
+              <p className="font-[family-name:var(--font-family\/base,'General_Sans_Variable:Regular')] font-[var(--typography\/paragraph\/font-weight\/regular,400)] leading-[var(--typography\/paragraph\/line-height,20px)] relative shrink-0 text-[color:var(--project\/default\/sub-label,#999)] text-[length:var(--typography\/paragraph\/font-size,14px)] tracking-[var(--typography\/paragraph\/letter-spacing,0px)]" data-node-id="144:170">
+                {jobDescription}
+              </p>
+            )}
+          </div>
+        </div>
+      )}
+      {isDefaultAndNotExpanded && showAction && (
+        <div className="content-stretch flex gap-[var(--spacing\/gap\/small,8px)] items-center justify-center p-[var(--spacing\/gap\/none,0px)] relative rounded-[var(--spacing\/radius\/full,10000px)] shrink-0 size-[32px]" data-node-id="144:79" data-name="-> Actions">
+          <div className="relative shrink-0 size-[16px]" data-node-id="I144:79;93:741" data-name="icons/arrow-left">
+            <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgIconsChevronDown} />
+          </div>
+        </div>
+      )}
+      {isFocusAndExpanded && (
+        <>
+          <div className="absolute border-[length:var(--spacing\/outline\/medium,2px)] border-[var(--project\/focus\/focus-ring,#999)] border-solid inset-[-4px]" data-node-id="144:372" data-name="focus-ring" />
+          <div className="content-stretch flex gap-[var(--spacing\/gap\/large,24px)] items-center relative shrink-0 w-full" data-node-id="144:436" data-name="top">
+            <div className="content-stretch flex flex-[1_0_0] gap-[var(--spacing\/gap\/large,24px)] items-center min-w-px p-[var(--spacing\/gap\/none,0px)] relative" data-node-id="144:373" data-name="Left">
+              <div className="relative rounded-[var(--spacing\/radius\/full,10000px)] shrink-0 size-[56px]" data-node-id="144:374" data-name="slot">
+                {children}
+              </div>
+              <div className="[word-break:break-word] content-stretch flex flex-col gap-[var(--spacing\/gap\/2xsmall,4px)] items-start justify-center p-[var(--spacing\/gap\/none,0px)] relative shrink-0 whitespace-nowrap" data-node-id="144:375">
+                {showName && (
+                  <p className="font-[family-name:var(--font-family\/base,'General_Sans_Variable:Medium')] font-[var(--typography\/title\/font-weight\/medium,500)] leading-[var(--typography\/title\/line-height,32px)] relative shrink-0 text-[color:var(--project\/focus\/label,#d3d9d5)] text-[length:var(--typography\/title\/font-size,24px)] tracking-[var(--typography\/title\/letter-spacing,0px)]" data-node-id="144:376">
+                    {name}
+                  </p>
+                )}
+                {showJobDescription && (
+                  <p className="font-[family-name:var(--font-family\/base,'General_Sans_Variable:Regular')] font-[var(--typography\/paragraph\/font-weight\/regular,400)] leading-[var(--typography\/paragraph\/line-height,20px)] relative shrink-0 text-[color:var(--project\/focus\/sub-label,#999)] text-[length:var(--typography\/paragraph\/font-size,14px)] tracking-[var(--typography\/paragraph\/letter-spacing,0px)]" data-node-id="144:377">
+                    {jobDescription}
+                  </p>
+                )}
+              </div>
+            </div>
+            {showAction && (
+              <div className="content-stretch flex gap-[var(--spacing\/gap\/small,8px)] items-center justify-center p-[var(--spacing\/gap\/none,0px)] relative rounded-[var(--spacing\/radius\/full,10000px)] shrink-0 size-[32px]" data-node-id="144:378" data-name="-> Actions">
+                <div className="relative shrink-0 size-[16px]" data-node-id="I144:378;93:741" data-name="icons/arrow-left">
+                  <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgIconsChevronUp} />
+                </div>
+              </div>
+            )}
+          </div>
+        </>
+      )}
+      {isFocusAndExpanded && showDivider && <div className="absolute bg-[var(--project\/focus\/outline,#3a3a3a)] bottom-0 h-px left-0 right-0" data-node-id="144:379" data-name="outline" />}
+      {isFocusAndExpanded && (
+        <div className="content-stretch flex items-center justify-center relative shrink-0 w-full" data-node-id="144:439" data-name="bottom">
+          <p className="[word-break:break-word] flex-[1_0_0] font-[family-name:var(--font-family\/base,'General_Sans_Variable:Regular')] font-[var(--typography\/sub-title\/font-weight\/regular,400)] leading-[var(--typography\/sub-title\/line-height,28px)] min-w-px relative text-[color:var(--non-interactive\/foreground\/secondary,#d3d9d5)] text-[length:var(--typography\/sub-title\/font-size,20px)] tracking-[var(--typography\/sub-title\/letter-spacing,0px)]" data-node-id="144:440">
+            {testimonial}
+          </p>
+        </div>
+      )}
+    </div>
+  );
+}
+SUPER CRITICAL: The generated React+Tailwind code MUST be converted to match the target project's technology stack and styling system.
+1. Analyze the target codebase to identify: technology stack, styling approach, component patterns, and design tokens
+2. Convert React syntax to the target framework/library
+3. Transform all Tailwind classes to the target styling system while preserving exact visual design
+4. Follow the project's existing patterns and conventions
+DO NOT install any Tailwind as a dependency unless the user instructs you to do so.
+
+Node ids have been added to the code as data attributes, e.g. `data-node-id="1:2"`.
+These styles are contained in the design: title/medium: Font(family: "font-family/base", style: Medium, size: typography/title/font-size, weight: typography/title/font-weight/medium, lineHeight: typography/title/line-height, letterSpacing: typography/title/letter-spacing), paragraph/regular: Font(family: "font-family/base", style: Regular, size: typography/paragraph/font-size, weight: typography/paragraph/font-weight/regular, lineHeight: typography/paragraph/line-height, letterSpacing: typography/paragraph/letter-spacing), sub-title/regular: Font(family: "font-family/base", style: Regular, size: typography/sub-title/font-size, weight: typography/sub-title/font-weight/regular, lineHeight: typography/sub-title/line-height, letterSpacing: typography/sub-title/letter-spacing).
+Image assets are stored on a localhost server. Clients can use these images directly in code as a way to view the image assets the same way they would other remote servers. Images and SVGs will be stored as constants, e.g. const image = 'http://localhost:3845/assets/10c13ac1a228a365cb98a0064b1d5afbc84887b2.png' These constants will be used in the code as the source for the image, e.g. <img src={image} /> This is true for both images and SVGs, so you can use the same approach for both types of assets.

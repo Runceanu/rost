@@ -14,9 +14,12 @@ const parsed = JSON.parse(readFileSync(new URL('../raw/parsed.json', import.meta
 const inv = JSON.parse(readFileSync(new URL('../registry/figma-inventory.json', import.meta.url), 'utf8'))
 const sets = { badge: '139:395', 'pill-button': '20:14', button: '39:38', 'icon-button': '93:587',
   input: '240:273', toggle: '168:1149', 'inline-banner': '205:614', chips: '139:317',
-  tags: '91:362', menu: '41:259' }
+  tags: '91:362', menu: '41:259', carousel: '157:302', projects: '100:185', thumbs: '109:79',
+  testimonials: '144:67', 'testimonials-pics': '144:493', divider: '39:111' }
 const NAMES = { badge: 'Badge', 'pill-button': 'PillButton', button: 'Button', 'icon-button': 'IconButton',
-  input: 'Input', toggle: 'Toggle', 'inline-banner': 'InlineBanner', chips: 'Chip', tags: 'Tag', menu: 'Menu' }
+  input: 'Input', toggle: 'Toggle', 'inline-banner': 'InlineBanner', chips: 'Chip', tags: 'Tag', menu: 'Menu',
+  carousel: 'Carousel', projects: 'Projects', thumbs: 'Thumbs', testimonials: 'Testimonials',
+  'testimonials-pics': 'TestimonialPicture', divider: 'Divider' }
 const FK = inv.fileKey
 const url = (n) => `https://www.figma.com/design/${FK}/UI-Kit-v01?node-id=${String(n).replace(':', '-')}`
 const same = (a, b) => a?.value === b?.value && (a?.token ?? null) === (b?.token ?? null)
@@ -47,15 +50,26 @@ for (const [comp, variants] of Object.entries(parsed)) {
    * binding that is missing, so suggest the scale step rather than leave it
    * reading as a gap. `token` stays what Figma actually binds.
    */
+  const OUTLINES = { '1px': 'spacing/outline/small', '2px': 'spacing/outline/medium' }
   const GAPS = { '2px': 'spacing/gap/3xsmall', '4px': 'spacing/gap/2xsmall', '6px': 'spacing/gap/xsmall',
     '8px': 'spacing/gap/small', '12px': 'spacing/gap/small-medium', '16px': 'spacing/gap/medium',
-    '20px': 'spacing/gap/medium-large', '24px': 'spacing/gap/large', '32px': 'spacing/gap/xlarge' }
-  const ICON_SIZES = { '16px': 'spacing/size/2xsmall', '20px': 'spacing/size/xsmall', '24px': 'spacing/size/small' }
+    '20px': 'spacing/gap/medium-large', '24px': 'spacing/gap/large', '32px': 'spacing/gap/xlarge',
+    '40px': 'spacing/gap/2xlarge', '48px': 'spacing/gap/3xlarge', '56px': 'spacing/gap/4xlarge', '64px': 'spacing/gap/5xlarge' }
+  const SIZES = { '12px': 'spacing/size/3xsmall', '16px': 'spacing/size/2xsmall', '20px': 'spacing/size/xsmall',
+    '24px': 'spacing/size/small', '32px': 'spacing/size/small-medium', '40px': 'spacing/size/medium',
+    '48px': 'spacing/size/medium-large', '56px': 'spacing/size/large', '64px': 'spacing/size/xlarge' }
   const markSamples = (part, prop, val) => {
     if (part === 'root' && (prop === 'width' || prop === 'height') && !val.token)
       return { ...val, assert: false, notes: 'No token behind it — the Figma frame size, not a spec.' }
-    if (part.startsWith('icons-') && (prop === 'width' || prop === 'height') && !val.token && ICON_SIZES[val.value])
-      return { ...val, suggest: ICON_SIZES[val.value] }
+    // Any part below the root sized on the scale: icon frames, action slots, avatars.
+    if (part !== 'root' && (prop === 'width' || prop === 'height') && !val.token && SIZES[val.value])
+      return { ...val, suggest: SIZES[val.value] }
+    // An `outline` part drawn as a 1-2px rectangle is a stroke on the outline scale.
+    if (part === 'outline' && prop === 'height' && !val.token && OUTLINES[val.value])
+      return { ...val, suggest: OUTLINES[val.value] }
+    // The focus ring's radius is the element's radius plus the ring's offset: derived, not a token.
+    if (part === 'focus-ring' && prop === 'border-radius' && !val.token)
+      return { ...val, untokenised: 'Derived: the element radius plus the focus ring offset.' }
     // Same for spacing: Input's leading group is `gap-[8px]` in all 14 variants
     // while every other gap in the kit binds spacing/gap/small.
     if ((prop === 'gap' || prop.startsWith('padding')) && !val.token && GAPS[val.value])
@@ -131,10 +145,12 @@ for (const [comp, variants] of Object.entries(parsed)) {
     source: { tool: 'figma', fileKey: FK, nodeId: sets[comp], url: url(sets[comp]),
       extractedAt: '2026-08-18', extractedBy: 'mcp' },
     props: Object.keys(props).length ? props : undefined,
-    states: axes.state ? STATES.filter((s) => axes.state.has(s)) : undefined,
+    // Interaction states first, in a fixed order; content states (Locked) after, as Figma lists them.
+    states: axes.state ? [...STATES.filter((s) => axes.state.has(s)), ...[...axes.state].filter((s) => !STATES.includes(s))] : undefined,
     elements,
-    variants: variants.map((v) => ({ when: when(v.variant), figmaNode: v.nodeId,
-      ...(perVariant[v.variant] ? { elements: perVariant[v.variant] } : {}) })),
+    // A lone symbol with no properties (Divider) has no variants, only elements.
+    variants: Object.keys(axes).length ? variants.map((v) => ({ when: when(v.variant), figmaNode: v.nodeId,
+      ...(perVariant[v.variant] ? { elements: perVariant[v.variant] } : {}) })) : undefined,
   })
   const nInv = Object.values(invariants).reduce((s, o) => s + Object.keys(o).length, 0)
   const nVar = Object.values(perVariant).reduce((s, o) => s + Object.values(o).reduce((t, x) => t + Object.keys(x).length, 0), 0)

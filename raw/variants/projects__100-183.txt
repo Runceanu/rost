@@ -1,0 +1,156 @@
+/* projects | state=Disabled | 100:183 | 976x96 */
+const imgIconsDot = "http://localhost:3845/assets/6815e3047d4f494d47c977fcb5cd287ed5358d51.svg";
+const imgIconsDot1 = "http://localhost:3845/assets/909ecbddfd48cee7fcf2bd3243e750d058927d77.svg";
+const imgIconsUpRight = "http://localhost:3845/assets/823384e8924ec6b0ec10f5c845a0130c6e4cad87.svg";
+const imgIconsDot2 = "http://localhost:3845/assets/35a20df44b1f977ce1539074847555ba8f6e9a1b.svg";
+const imgIconsDot3 = "http://localhost:3845/assets/87cf977be7227f9ccb039627d2ea0095ad42eb9a.svg";
+type ProjectsProps = {
+  className?: string;
+  industry?: string;
+  name?: string;
+  number?: string;
+  period?: string;
+  showAction?: boolean;
+  showBadge?: boolean;
+  showDivider?: boolean;
+  showIndustry?: boolean;
+  showName?: boolean;
+  showNumber?: boolean;
+  showPeriod?: boolean;
+  showType?: boolean;
+  state?: "Default" | "Disabled";
+  type?: string;
+};
+
+function Projects({ className, industry = "Industry", name = "Name", number = "00", period = "Period", showAction = true, showBadge = true, showDivider = true, showIndustry = true, showName = true, showNumber = true, showPeriod = true, showType = true, state = "Default", type = "Type" }: ProjectsProps) {
+  const isDefault = state === "Default";
+  const isDisabled = state === "Disabled";
+  return (
+    <div className={className || `${String.raw`content-stretch flex gap-[var(--spacing\/gap\/2xlarge,40px)] items-center py-[var(--spacing\/gap\/large,24px)] relative w-[976px] `}${isDisabled ? String.raw`opacity-[calc(var(--opacity\/solid,100)/100)]` : ""}`} id={isDisabled ? "node-100_183" : "node-100_184"}>
+      {isDefault && showDivider && <div className="absolute bg-[var(--project\/default\/outline,#3a3a3a)] bottom-0 h-px left-0 right-0" data-node-id="100:137" data-name="outline" />}
+      {isDefault && (
+        <>
+          <div className="[word-break:break-word] content-stretch flex flex-[1_0_0] gap-[40px] items-center min-w-px relative whitespace-nowrap" data-node-id="91:325" data-name="Left">
+            {showNumber && (
+              <p className="font-[family-name:var(--font-family\/base,'General_Sans_Variable:Regular')] font-[var(--typography\/label\/font-weight\/regular,400)] leading-[var(--typography\/label\/line-height,14px)] relative shrink-0 text-[color:var(--project\/default\/sub-label,#999)] text-[length:var(--typography\/label\/font-size,12px)] tracking-[var(--typography\/label\/letter-spacing,0px)]" data-node-id="91:326">
+                {number}
+              </p>
+            )}
+            {showName && (
+              <p className="font-[family-name:var(--font-family\/base,'General_Sans_Variable:Medium')] font-[var(--typography\/sub-headline\/font-weight\/medium,500)] leading-[var(--typography\/sub-headline\/line-height,48px)] relative shrink-0 text-[color:var(--project\/default\/label,#d3d9d5)] text-[length:var(--typography\/sub-headline\/font-size,40px)] tracking-[var(--typography\/sub-headline\/letter-spacing,0px)]" data-node-id="91:327">
+                {name}
+              </p>
+            )}
+          </div>
+          <div className="flex flex-row items-center self-stretch" data-node-id="92:7">
+            <div className="content-stretch flex gap-[var(--spacing\/gap\/medium,16px)] h-full items-center justify-end relative shrink-0" data-name="Right">
+              {showIndustry && (
+                <>
+                  <p className="[word-break:break-word] font-[family-name:var(--font-family\/base,'General_Sans_Variable:Regular')] font-[var(--typography\/label\/font-weight\/regular,400)] leading-[var(--typography\/label\/line-height,14px)] relative shrink-0 text-[color:var(--project\/default\/sub-label,#999)] text-[length:var(--typography\/label\/font-size,12px)] tracking-[var(--typography\/label\/letter-spacing,0px)] whitespace-nowrap" data-node-id="92:8">
+                    {industry}
+                  </p>
+                  <div className="relative shrink-0 size-[12px]" data-node-id="93:719" data-name="icons/dot">
+                    <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgIconsDot} />
+                  </div>
+                </>
+              )}
+              {showType && (
+                <>
+                  <p className="[word-break:break-word] font-[family-name:var(--font-family\/base,'General_Sans_Variable:Regular')] font-[var(--typography\/label\/font-weight\/regular,400)] leading-[var(--typography\/label\/line-height,14px)] relative shrink-0 text-[color:var(--project\/default\/sub-label,#999)] text-[length:var(--typography\/label\/font-size,12px)] tracking-[var(--typography\/label\/letter-spacing,0px)] whitespace-nowrap" data-node-id="92:11">
+                    {type}
+                  </p>
+                  <div className="relative shrink-0 size-[12px]" data-node-id="93:762" data-name="icons/dot">
+                    <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgIconsDot1} />
+                  </div>
+                </>
+              )}
+              {showPeriod && (
+                <p className="[word-break:break-word] font-[family-name:var(--font-family\/base,'General_Sans_Variable:Regular')] font-[var(--typography\/label\/font-weight\/regular,400)] leading-[var(--typography\/label\/line-height,14px)] relative shrink-0 text-[color:var(--project\/default\/sub-label,#999)] text-[length:var(--typography\/label\/font-size,12px)] tracking-[var(--typography\/label\/letter-spacing,0px)] whitespace-nowrap" data-node-id="92:13">
+                  {period}
+                </p>
+              )}
+            </div>
+          </div>
+        </>
+      )}
+      {isDefault && showAction && (
+        <div className="content-stretch flex gap-[var(--spacing\/gap\/small,8px)] items-center justify-center p-[var(--spacing\/gap\/none,0px)] relative rounded-[var(--spacing\/radius\/full,10000px)] shrink-0 size-[32px]" data-node-id="93:699" data-name="-> Actions">
+          <div className="relative shrink-0 size-[16px]" data-node-id="I93:699;93:741" data-name="icons/arrow-left">
+            <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgIconsUpRight} />
+          </div>
+        </div>
+      )}
+      {isDisabled && showDivider && <div className="absolute bg-[var(--project\/disabled\/outline,#3a3a3a)] bottom-0 h-px left-0 opacity-[calc(var(--opacity\/gentle,24)/100)] right-0" data-node-id="100:149" data-name="outline" />}
+      {isDisabled && (
+        <>
+          <div className="content-stretch flex flex-[1_0_0] gap-[40px] items-center min-w-px relative" data-node-id="100:150" data-name="Left">
+            {showNumber && (
+              <p className="[word-break:break-word] font-[family-name:var(--font-family\/base,'General_Sans_Variable:Regular')] font-[var(--typography\/label\/font-weight\/regular,400)] leading-[var(--typography\/label\/line-height,14px)] opacity-[calc(var(--opacity\/gentle,24)/100)] relative shrink-0 text-[color:var(--project\/default\/sub-label,#999)] text-[length:var(--typography\/label\/font-size,12px)] tracking-[var(--typography\/label\/letter-spacing,0px)] whitespace-nowrap" data-node-id="100:151">
+                {number}
+              </p>
+            )}
+            {showName && (
+              <p className="[word-break:break-word] font-[family-name:var(--font-family\/base,'General_Sans_Variable:Medium')] font-[var(--typography\/sub-headline\/font-weight\/medium,500)] leading-[var(--typography\/sub-headline\/line-height,48px)] opacity-[calc(var(--opacity\/gentle,24)/100)] relative shrink-0 text-[color:var(--project\/default\/label,#d3d9d5)] text-[length:var(--typography\/sub-headline\/font-size,40px)] tracking-[var(--typography\/sub-headline\/letter-spacing,0px)] whitespace-nowrap" data-node-id="100:152">
+                {name}
+              </p>
+            )}
+            {showBadge && (
+              <div className="content-stretch flex gap-[var(--spacing\/gap\/3xsmall,2px)] h-[24px] items-center min-w-[24px] pb-[var(--spacing\/gap\/3xsmall,2px)] pt-[var(--spacing\/gap\/none,0px)] px-[var(--spacing\/gap\/small,8px)] relative rounded-[var(--spacing\/radius\/full,10000px)] shrink-0" data-node-id="172:1403" data-name="badge">
+                <p className="[word-break:break-word] font-[family-name:var(--font-family\/base,'General_Sans_Variable:Medium')] font-[var(--typography\/label\/font-weight\/medium,500)] leading-[var(--typography\/label\/line-height,14px)] relative shrink-0 text-[color:var(--non-interactive\/foreground\/tertiary,#999)] text-[length:var(--typography\/label\/font-size,12px)] text-center tracking-[var(--typography\/label\/letter-spacing,0px)] whitespace-nowrap" data-node-id="I172:1403;346:3997">
+                  Coming soon
+                </p>
+                <div className="absolute border border-[var(--non-interactive\/foreground\/quadruple,#3a3a3a)] border-solid inset-0 opacity-[calc(var(--opacity\/solid,100)/100)] rounded-[var(--spacing\/radius\/full,10000px)]" data-node-id="I172:1403;346:3998" data-name="outline" />
+              </div>
+            )}
+          </div>
+          <div className="flex flex-row items-center self-stretch" data-node-id="100:153">
+            <div className="content-stretch flex gap-[var(--spacing\/gap\/medium,16px)] h-full items-center justify-end opacity-[calc(var(--opacity\/gentle,24)/100)] relative shrink-0" data-name="Right">
+              {showIndustry && (
+                <>
+                  <p className="[word-break:break-word] font-[family-name:var(--font-family\/base,'General_Sans_Variable:Regular')] font-[var(--typography\/label\/font-weight\/regular,400)] leading-[var(--typography\/label\/line-height,14px)] relative shrink-0 text-[color:var(--project\/disabled\/sub-label,#999)] text-[length:var(--typography\/label\/font-size,12px)] tracking-[var(--typography\/label\/letter-spacing,0px)] whitespace-nowrap" data-node-id="100:154">
+                    {industry}
+                  </p>
+                  <div className="relative shrink-0 size-[12px]" data-node-id="100:155" data-name="icons/dot">
+                    <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgIconsDot2} />
+                  </div>
+                </>
+              )}
+              {showType && (
+                <>
+                  <p className="[word-break:break-word] font-[family-name:var(--font-family\/base,'General_Sans_Variable:Regular')] font-[var(--typography\/label\/font-weight\/regular,400)] leading-[var(--typography\/label\/line-height,14px)] relative shrink-0 text-[color:var(--project\/disabled\/sub-label,#999)] text-[length:var(--typography\/label\/font-size,12px)] tracking-[var(--typography\/label\/letter-spacing,0px)] whitespace-nowrap" data-node-id="100:156">
+                    {type}
+                  </p>
+                  <div className="relative shrink-0 size-[12px]" data-node-id="100:157" data-name="icons/dot">
+                    <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgIconsDot3} />
+                  </div>
+                </>
+              )}
+              {showPeriod && (
+                <p className="[word-break:break-word] font-[family-name:var(--font-family\/base,'General_Sans_Variable:Regular')] font-[var(--typography\/label\/font-weight\/regular,400)] leading-[var(--typography\/label\/line-height,14px)] relative shrink-0 text-[color:var(--project\/disabled\/sub-label,#999)] text-[length:var(--typography\/label\/font-size,12px)] tracking-[var(--typography\/label\/letter-spacing,0px)] whitespace-nowrap" data-node-id="100:158">
+                  {period}
+                </p>
+              )}
+            </div>
+          </div>
+        </>
+      )}
+      {isDisabled && showAction && (
+        <div className="content-stretch flex gap-[var(--spacing\/gap\/small,8px)] items-center justify-center opacity-[calc(var(--opacity\/gentle,24)/100)] p-[var(--spacing\/gap\/none,0px)] relative rounded-[var(--spacing\/radius\/full,10000px)] shrink-0 size-[32px]" data-node-id="100:159" data-name="-> Actions">
+          <div className="relative shrink-0 size-[16px]" data-node-id="I100:159;93:741" data-name="icons/arrow-left">
+            <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgIconsUpRight} />
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+SUPER CRITICAL: The generated React+Tailwind code MUST be converted to match the target project's technology stack and styling system.
+1. Analyze the target codebase to identify: technology stack, styling approach, component patterns, and design tokens
+2. Convert React syntax to the target framework/library
+3. Transform all Tailwind classes to the target styling system while preserving exact visual design
+4. Follow the project's existing patterns and conventions
+DO NOT install any Tailwind as a dependency unless the user instructs you to do so.
+
+Node ids have been added to the code as data attributes, e.g. `data-node-id="1:2"`.
+These styles are contained in the design: label/regular: Font(family: "font-family/base", style: Regular, size: typography/label/font-size, weight: typography/label/font-weight/regular, lineHeight: typography/label/line-height, letterSpacing: typography/label/letter-spacing), sub-headline/medium: Font(family: "font-family/base", style: Medium, size: typography/sub-headline/font-size, weight: typography/sub-headline/font-weight/medium, lineHeight: typography/sub-headline/line-height, letterSpacing: typography/sub-headline/letter-spacing), label/medium: Font(family: "font-family/base", style: Medium, size: typography/label/font-size, weight: typography/label/font-weight/medium, lineHeight: typography/label/line-height, letterSpacing: typography/label/letter-spacing).
+Image assets are stored on a localhost server. Clients can use these images directly in code as a way to view the image assets the same way they would other remote servers. Images and SVGs will be stored as constants, e.g. const image = 'http://localhost:3845/assets/10c13ac1a228a365cb98a0064b1d5afbc84887b2.png' These constants will be used in the code as the source for the image, e.g. <img src={image} /> This is true for both images and SVGs, so you can use the same approach for both types of assets.

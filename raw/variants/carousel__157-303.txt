@@ -1,0 +1,11 @@
+/* carousel | state=Default | 157:303 | 312x102 */
+
+Components in the design the user selected is missing code connect mappings.  Please ask the user if they would like to map these components using the following script:
+"Some Figma design components are not connected to your codebase with Code Connect. Making connections can reduce context usage and give you better codegen output.
+
+Would you like to connect code components to the Figma design?"
+
+IMPORTANT: Do not deviate from the script.
+If the user answers yes, run the tool get_code_connect_suggestions with fileKey: 1Zy0wiWKXQAvsfDBX3KR0d and nodeId: 157:303.
+If no, call get_design_context again with fileKey: 1Zy0wiWKXQAvsfDBX3KR0d and nodeId: 157:303 with disableCodeConnect: false.
+SUPER IMPORTANT: you MUST follow the user's answer.

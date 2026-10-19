@@ -185,16 +185,11 @@
       }
     },
     "states": {
-      "description": "Interaction states, from Figma's `state` property. Code derives them from pseudo-classes (Hover \u2192 :hover, Pressed \u2192 :active, Focus \u2192 :focus-visible, Disabled \u2192 :disabled); only Disabled is ever set by a caller.",
+      "description": "Values of Figma's `state` property. The five interaction states map to pseudo-classes (Hover \u2192 :hover, Pressed \u2192 :active, Focus \u2192 :focus-visible, Disabled \u2192 :disabled); any other (e.g. Locked) is a content state the caller sets, like a prop.",
       "type": "array",
       "items": {
-        "enum": [
-          "Default",
-          "Hover",
-          "Pressed",
-          "Focus",
-          "Disabled"
-        ]
+        "type": "string",
+        "pattern": "^[A-Z][A-Za-z]*$"
       },
       "uniqueItems": true
     },
