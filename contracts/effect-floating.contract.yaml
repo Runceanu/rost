@@ -4,7 +4,7 @@ id: effect-floating
 name: Floating
 kind: effect
 status: review
-summary: The kit's only drop shadow, for elements that float above the page.
+summary: The only drop shadow in the kit, for things that float above the page.
 category: effects
 related: [ effect-menu ]
 source:
@@ -17,21 +17,21 @@ source:
 elements:
   root:
     notes: |-
-      The element the effect style is applied to. Figma style name: 'Shadow/Floating'.
+      Whatever the style is applied to. In Figma it's called "Shadow/Floating".
     styles:
       box-shadow:
         value: 0px 16px 24px 0px rgba(0, 0, 0, 0.16)
         notes: |-
-          Effect style 'Shadow/Floating', type DROP_SHADOW: offset-y 16px, blur 24px, spread 0, #000 at 16% (= opacity/soft). Exported as --shadow-floating, the kit's only elevation token; add a shadow/* scale if a second shadow is ever needed.
+          A drop shadow: 16px down, 24px blur, no spread, black at 16% (the same as `opacity/soft`). In code it's `--shadow-floating`, the only elevation token in the kit. If I ever need a second shadow, I'll make a proper `shadow/*` scale.
         token: shadow/floating
 guidance:
   status: proposed
   use:
     - |-
-      For elements lifted above the content: menus, popovers, a dragged card.
+      Anything lifted above the content: menus, popovers, a card being dragged.
   avoid:
-    - For cards at rest. The dark kit separates surfaces with tone, not shadow.
+    - Cards just sitting there. This kit is dark, so surfaces are told apart by tone, not shadow.
   behaviour: |-
-    `0 16px 24px rgba(0,0,0,0.16)`, not tokenised: the kit has no elevation token group yet. If a second shadow is ever needed, that is the moment to add one.
+    `0 16px 24px rgba(0,0,0,0.16)`, as `--shadow-floating`. There's no family of elevation tokens yet. If I ever need a second shadow, that's when I add one.
   accessibility:
-    separation: a shadow does not separate surfaces for low-vision readers on a dark background. Pair it with a surface tone or outline.
+    separation: on a dark background, a shadow doesn't separate anything for someone with low vision. Pair it with a different surface tone or an outline.

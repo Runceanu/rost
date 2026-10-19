@@ -2,7 +2,7 @@
 
 # Floating effect
 
-> The kit's only drop shadow, for elements that float above the page.
+> The only drop shadow in the kit, for things that float above the page.
 
 | | |
 |---|---|
@@ -14,30 +14,30 @@
 
 ## Anatomy
 
-- `root`: The element the effect style is applied to. Figma style name: 'Shadow/Floating'.
+- `root`: Whatever the style is applied to. In Figma it's called "Shadow/Floating".
 
 ## When to use
 
-- For elements lifted above the content: menus, popovers, a dragged card.
+- Anything lifted above the content: menus, popovers, a card being dragged.
 
 ## When not to use
 
-- For cards at rest. The dark kit separates surfaces with tone, not shadow.
+- Cards just sitting there. This kit is dark, so surfaces are told apart by tone, not shadow.
 
 ## Behaviour
 
-`0 16px 24px rgba(0,0,0,0.16)`, not tokenised: the kit has no elevation token group yet. If a second shadow is ever needed, that is the moment to add one.
+`0 16px 24px rgba(0,0,0,0.16)`, as `--shadow-floating`. There's no family of elevation tokens yet. If I ever need a second shadow, that's when I add one.
 
 ## Accessibility
 
-- **Separation**: a shadow does not separate surfaces for low-vision readers on a dark background. Pair it with a surface tone or outline.
+- **Separation**: on a dark background, a shadow doesn't separate anything for someone with low vision. Pair it with a different surface tone or an outline.
 
 ## Tokens
 
-Every token this contract asserts, in any variant.
+Every token this component uses, across all its variants.
 
 | Token | Resolves to |
 |---|---|
 | `shadow/floating` | `0px 16px 24px 0px rgba(0, 0, 0, 0.16)` |
 
-Full values per variant: [reference.html#effect-floating](../../reference.html#effect-floating)
+Every value of every variant: [reference.html#effect-floating](../../reference.html#effect-floating)

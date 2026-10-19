@@ -2,7 +2,7 @@
 
 # Lock frame effect
 
-> An 8px layer blur over a locked project's thumbnail, the blurred-out state behind the lock.
+> An 8px blur over a locked project's thumbnail, the blurred view behind the lock.
 
 | | |
 |---|---|
@@ -14,31 +14,31 @@
 
 ## Anatomy
 
-- `root`: The element the effect style is applied to — the locked project thumbnail's frame (the blurred-out state behind the lock).
+- `root`: Whatever the style is applied to: the frame of a locked project thumbnail, the blurred view behind the lock.
 
 ## When to use
 
-- On a locked (NDA, password-protected) project's thumbnail, together with the lock glyph.
+- On the thumbnail of a locked project (NDA, password), together with the lock icon.
 
 ## When not to use
 
-- As a loading or disabled state. Blur says "hidden", not "wait".
+- Loading or disabled states. Blur says "hidden", not "wait".
 
 ## Behaviour
 
-`filter: blur(8px)` blurs the element's *own* content, unlike Thumb, which blurs what is behind it. Figma binds the radius to `spacing/base-8`, a spacing primitive that isn't exported to `tokens.css`, which is why the docs flag it.
+`filter: blur(8px)` blurs the element's own content. Thumb is the opposite: it blurs what's behind it. In Figma the blur is tied to `spacing/base-8`, which isn't in `tokens.css`, so the code uses `--effect-lock-frame` instead.
 
 ## Accessibility
 
-- **Name**: the locked state must be said in text ("Locked case study"), not shown only by blur and icon.
-- **Content**: blurred text is still in the DOM. Don't render confidential copy and blur it; render a placeholder.
+- **Name**: say it's locked in words ("Locked case study"). Blur and an icon aren't enough.
+- **Content**: blurred text is still in the page for anyone who looks. Don't blur confidential copy, show a placeholder.
 
 ## Tokens
 
-Every token this contract asserts, in any variant.
+Every token this component uses, across all its variants.
 
 | Token | Resolves to |
 |---|---|
 | `effect/lock-frame` | `blur(8px)` |
 
-Full values per variant: [reference.html#effect-lock-frame](../../reference.html#effect-lock-frame)
+Every value of every variant: [reference.html#effect-lock-frame](../../reference.html#effect-lock-frame)

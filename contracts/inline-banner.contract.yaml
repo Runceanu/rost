@@ -4,7 +4,7 @@ id: inline-banner
 name: InlineBanner
 kind: component
 status: review
-summary: A filled status pill with a leading glyph and a label, in four statuses and two sizes.
+summary: A filled status pill with an icon and a label, in four statuses and two sizes.
 category: feedback
 related: [ badge, input ]
 source:
@@ -161,21 +161,21 @@ guidance:
   status: proposed
   use:
     - |-
-      To state something about the page or section the reader should notice: saved, offline, available for work, action needed.
+      Telling people something about the page or a section they should notice: saved, offline, open for work, needs your attention.
     - |-
-      `Small` inline with text, `Medium` on its own line or at the top of a section.
+      `Small` in a line of text, `Medium` on its own line or at the top of a section.
   avoid:
-    - To label an item's status in a list or table, use **Badge**. It is outlined, smaller and quieter.
-    - For something that needs a decision, use a dialog. A banner informs, it doesn't ask.
+    - The status of one item in a list or table. That's **Badge**, smaller and quieter.
+    - Anything that needs a decision. That's a dialog. A banner tells, it doesn't ask.
   behaviour: |-
-    `status` (`Default`, `Positive`, `Negative`, `Warning`) sets the fill and the glyph: plus, positive, alarm, warning. It is not interactive: no hover, no focus.
+    `status` (`Default`, `Positive`, `Negative`, `Warning`) sets the fill and the icon: plus, check, alarm, warning. You can't interact with it: no hover, no focus.
   accessibility:
     element: |-
-      a `<span>` or `<p>`. If it appears in response to something the user did, put it in a live region (`role="status"`, or `role="alert"` for `Negative`).
-    colour: the glyph carries the status as well as the fill. While glyphs are not exported (see accounting-app's deviation), the label must say the status in words.
+      a `<span>` or a `<p>`. If it shows up because of something the person just did, put it in a live region (`role="status"`, or `role="alert"` for `Negative`).
+    colour: the icon carries the status as well as the fill. Until the icons are exported (the accounting app has a deviation for this), the words have to say the status.
     glyph: "`aria-hidden=\"true\"`. The label carries the meaning."
   content: |-
-    One short sentence, no full stop if it is a fragment. Lead with the state: "Saved just now", "Payment failed: card expired".
+    One short sentence, no full stop if it's a fragment. Lead with what happened: "Saved just now", "Payment failed: card expired".
 implementations:
   accounting-app:
     component: src/components/InlineBanner.tsx

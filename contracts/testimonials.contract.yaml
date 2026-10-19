@@ -4,6 +4,8 @@ id: testimonials
 name: Testimonials
 kind: component
 status: review
+summary: |-
+  A testimonial you can open and close: name and role, with the quote underneath.
 source:
   tool: figma
   fileKey: 1Zy0wiWKXQAvsfDBX3KR0d
@@ -41,7 +43,7 @@ variants:
         width:
           value: 976px
           assert: false
-          notes: No token behind it — the Figma frame size, not a spec.
+          notes: Just the size of the Figma frame. No token, and not something to copy.
   - when: { state: Hover, expanded: false }
     figmaNode: "144:117"
     elements:
@@ -50,7 +52,7 @@ variants:
         width:
           value: 976px
           assert: false
-          notes: No token behind it — the Figma frame size, not a spec.
+          notes: Just the size of the Figma frame. No token, and not something to copy.
       left:
         align-items: { value: center }
         gap: { token: spacing/gap/large, value: 24px }
@@ -127,7 +129,7 @@ variants:
         width:
           value: 976px
           assert: false
-          notes: No token behind it — the Figma frame size, not a spec.
+          notes: Just the size of the Figma frame. No token, and not something to copy.
         justify-content: { value: center }
         padding-left: { token: spacing/gap/medium, value: 16px }
         opacity: { token: opacity/gentle, value: "0.24" }
@@ -178,7 +180,7 @@ variants:
         width:
           value: 976px
           assert: false
-          notes: No token behind it — the Figma frame size, not a spec.
+          notes: Just the size of the Figma frame. No token, and not something to copy.
         justify-content: { value: center }
         padding-left: { token: spacing/gap/medium, value: 16px }
         padding-right: { token: spacing/gap/none, value: 0px }
@@ -229,7 +231,7 @@ variants:
         width:
           value: 976px
           assert: false
-          notes: No token behind it — the Figma frame size, not a spec.
+          notes: Just the size of the Figma frame. No token, and not something to copy.
         justify-content: { value: center }
         padding-left: { token: spacing/gap/medium, value: 16px }
         padding-right: { token: spacing/gap/none, value: 0px }
@@ -282,7 +284,7 @@ variants:
         width:
           value: 976px
           assert: false
-          notes: No token behind it — the Figma frame size, not a spec.
+          notes: Just the size of the Figma frame. No token, and not something to copy.
         justify-content: { value: center }
         padding-left: { token: spacing/gap/medium, value: 16px }
         padding-right: { token: spacing/gap/none, value: 0px }
@@ -335,7 +337,7 @@ variants:
         width:
           value: 976px
           assert: false
-          notes: No token behind it — the Figma frame size, not a spec.
+          notes: Just the size of the Figma frame. No token, and not something to copy.
       left:
         align-items: { value: center }
         gap: { token: spacing/gap/large, value: 24px }
@@ -377,7 +379,7 @@ variants:
         width:
           value: 976px
           assert: false
-          notes: No token behind it — the Figma frame size, not a spec.
+          notes: Just the size of the Figma frame. No token, and not something to copy.
   - when: { state: Pressed, expanded: false }
     figmaNode: "144:92"
     elements:
@@ -386,7 +388,7 @@ variants:
         width:
           value: 976px
           assert: false
-          notes: No token behind it — the Figma frame size, not a spec.
+          notes: Just the size of the Figma frame. No token, and not something to copy.
       left:
         align-items: { value: center }
         gap: { token: spacing/gap/large, value: 24px }

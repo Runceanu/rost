@@ -4,7 +4,8 @@ id: hero-media
 name: Hero Media
 kind: pattern
 status: review
-summary: The full-bleed case-study hero, artwork pinned behind a 16px inset frame and dimmed to one shared level.
+summary: |-
+  The full-width hero on every case study: artwork pinned behind a 16px frame and dimmed to the same level everywhere.
 category: surfaces
 related: [ effect-paper ]
 source:
@@ -16,56 +17,59 @@ source:
   extractedBy: mcp
 elements:
   hero:
-    notes: Full-bleed section, 630px tall, background colour non-interactive/background/primary. Its padding is the 16px inset frame that shows the page background around the framed image. The width must subtract the real scrollbar width (100vw includes it), or the visible left/right inset reads ~8px while the top reads 16.
+    notes: |-
+      The full-width section, 630px tall, on `non-interactive/background/primary`. Its 16px padding is the frame that shows the page around the image. The width has to take off the real scrollbar (100vw includes it), otherwise the sides look about 8px while the top is 16.
     styles:
       height:
         token: spacing/layout/hero-height
         value: 630px
-        notes: Token created in code on 2026-10-19 (tokens.css); the Figma file has no variable for it yet, so create spacing/layout/hero-height there and bind node 245:2900. The case-study pages still state 630px as a literal.
+        notes: |-
+          I created this token in code on 2026-10-19 (`tokens.css`). Figma has no variable for it, and since the contracts are taking over from Figma, that's fine. The case-study pages still write 630px directly.
       padding: { token: spacing/gap/medium, value: 16px }
       background: { token: non-interactive/background/primary, value: "#060805" }
   frame:
     notes: |-
-      The window onto the artwork: fills the hero inside the 16px inset, radius/xlarge corners, overflow hidden (clip-path inset round when the media uses position:fixed descendants).
+      The window onto the artwork. It fills the hero inside the 16px frame, with `radius/xlarge` corners, and hides anything that spills out (a rounded `clip-path` when the artwork uses fixed positioning).
     styles:
       border-radius: { token: spacing/radius/xlarge, value: 24px }
       background:
         token: non-interactive/background/secondary
         value: "#171717"
         notes: |-
-          The underlay the dimmed artwork composites onto. MUST be the same on every case study: the same media opacity reads darker on a darker surface (this is exactly the bug unified on 2026-10-18 — three heroes sat on #060805 and looked darker at identical opacity).
+          What the dimmed artwork sits on. It has to be the same on every case study. The same opacity looks darker on a darker surface, and that was exactly the bug I fixed on 2026-10-18: three heroes sat on #060805 and looked darker than the rest.
   media:
     notes: |-
-      The artwork layer: a background-image div, never an <img> (background-attachment needs a background).
+      The artwork itself: a div with a background image, never an `<img>` (the pinned effect needs a background).
     styles:
       opacity:
         token: opacity/medium
         value: "0.48"
-        notes: "Unified hero dim, decided 2026-10-18. DIVERGES from the Figma node, which specifies 32% (opacity/mild) — Figma not yet updated. The perceived dim is opacity x underlay, so this value only holds together with the frame's #171717."
+        notes: |-
+          The one dim for every hero, decided on 2026-10-18. Figma still says 32% (`opacity/mild`), I went with 0.48. What you see is opacity times the colour underneath, so this only works together with the frame's #171717.
       background-attachment:
         value: fixed
         notes: |-
-          Pinned parallax: the artwork is pinned to the viewport and the page scrolls over it (the Paper pattern). Touch devices and prefers-reduced-motion fall back to background-attachment: scroll with background-size: cover and center position — static, element-anchored.
+          The artwork stays pinned to the window while the page scrolls over it, the same idea as Paper. Phones, tablets and reduced motion get a normal background instead (`scroll`, `cover`, centred).
       background-size:
         value: explicit px (asset-native, e.g. 2336px 1196px)
         notes: |-
-          NEVER `cover` together with `fixed`: a fixed background sizes against the viewport, not the frame, which magnifies the artwork (the bug that got `fixed` removed from one case-study hero the first time). Vector artwork may be sized at 2x its natural box for crispness.
+          Never `cover` together with `fixed`. A fixed background sizes itself against the window, not the frame, and blows the artwork up. That bug is why one case study lost the pinned effect the first time. Vector artwork can go at twice its natural size, so it stays sharp.
         untokenised: Each artwork's native pixel size.
 guidance:
   status: proposed
   use:
-    - At the top of every case study on the portfolio site. One per page.
+    - The top of every case study on the portfolio site. One per page.
   avoid:
-    - For the home page hero, which uses the **Paper effect** instead of artwork.
+    - The home page. That one has the **Paper effect** instead of artwork.
   behaviour: |-
-    The artwork is pinned to the viewport (`background-attachment: fixed`) and the page scrolls over it. Touch devices and `prefers-reduced-motion` get a static, element-anchored background instead. The dim only holds as opacity *and* underlay together: never change one without the other.
+    The artwork stays put and the page scrolls over it (`background-attachment: fixed`). Phones, tablets and `prefers-reduced-motion` get a normal static background instead. The dim only works as opacity *and* the colour underneath together. Never change one without the other.
   accessibility:
-    artwork: a background image, so it is decorative by construction. Anything the reader needs from it goes in the text.
-    contrast: text over the hero is checked against the dimmed artwork, not the underlay colour.
+    artwork: it's a background image, so it's decoration by definition. Anything people need from it goes in the text.
+    contrast: check the text against the dimmed artwork, not the colour underneath.
     motion: |-
-      pinned parallax is turned off under `prefers-reduced-motion`.
+      the pinned effect switches off with `prefers-reduced-motion`.
 deviations:
-  - what: "Media opacity is opacity/medium (0.48) on a #171717 frame underlay; the Figma node specifies 32% (opacity/mild)."
-    why: |-
-      Unified hero dim decided 2026-10-18 across all case studies: perceived dim is opacity × underlay, and three heroes read darker at the same opacity. Figma not yet updated.
+  - what: |-
+      The artwork is dimmed with `opacity/medium` (0.48) on a #171717 frame. Figma's node says 32% (`opacity/mild`).
+    why: I set one dim for every case study on 2026-10-18. What you see is opacity times what's underneath, and three heroes looked darker at the same opacity. Figma never caught up.
     raisedWithDesign: false

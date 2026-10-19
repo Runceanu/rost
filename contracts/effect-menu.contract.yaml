@@ -4,7 +4,7 @@ id: effect-menu
 name: Menu
 kind: effect
 status: draft
-summary: The frosted-glass surface behind the main nav and case-study info cards, a 12px backdrop blur.
+summary: Frosted glass behind the main nav and the case-study info cards, a 12px backdrop blur.
 category: effects
 related: [ menu, effect-thumb ]
 source:
@@ -17,29 +17,30 @@ source:
 elements:
   root:
     notes: |-
-      The frosted surface behind the main menu / nav panel. Figma effect style name: 'Menu'.
+      The frosted surface behind the main nav. In Figma it's the effect style called "Menu".
     styles:
       backdrop-filter:
         value: blur(12px)
         notes: |-
-          BACKGROUND_BLUR effect style 'Menu' — the app's frosted-glass surface. Standard radius = 12px (CSS var --effect-menu): main-menu/nav + the case-study hero info cards. The Figma style's exact radius does NOT export via Dev Mode (background-blur nodes drop from the code export), so 12px is taken from its confirmed usage (the portfolio site nav, Figma node 179:595 — 'rgba(0,0,0,0.48) + 12px blur'). A large variant --effect-menu-lg = blur(24px) carries the same 'Menu' frosted-glass role on the bigger case-study hero + island BACKGROUNDS (an app decision by design to treat all frosted glass as one effect at its existing radius; the 24px is not from a separate Figma style). Distinct from Thumb, which is its own named style for project thumbnails.
+          Frosted glass: it blurs whatever is behind it. 12px is the standard (`--effect-menu`), used on the nav and on the case-study info cards. Figma doesn't hand over this style's blur size through Dev Mode, so I took 12px from where it's really used (the the portfolio site nav, Figma node 179:595: black at 0.48 with a 12px blur). There's also a 24px version, `--effect-menu-lg`, for the bigger case-study surfaces. That one's my choice in code, not a separate Figma style: I treat all frosted glass as one effect. Thumb is a different style, only for project thumbnails.
         token: effect/menu
 guidance:
   status: proposed
   use:
     - |-
-      For surfaces that float over content and must stay readable while it scrolls beneath: the nav, hero info cards.
+      Things that float over content and have to stay readable while it scrolls underneath: the nav, the hero info cards.
   avoid:
-    - On project thumbnails, which have their own style (**Thumb effect**).
-    - "Stacked on another frosted surface: two blurs read as mud."
+    - Project thumbnails, they have their own (**Thumb effect**).
+    - On top of another frosted surface. Two blurs just turn to mud.
   behaviour: |-
-    `backdrop-filter: blur(12px)`, with a 24px large variant for the bigger case-study surfaces. The 12px is inferred from use, not yet read from the style itself (see Open issues).
+    `backdrop-filter: blur(12px)`, and a 24px version for the bigger case-study surfaces. I took the 12px from how it's used, I haven't read it from the style itself yet (it's in "Not right yet").
   accessibility:
-    contrast: check text against the busiest content that can scroll beneath, not against a flat colour.
+    contrast: check text against the busiest thing that can scroll under it, not a flat colour.
     fallback: |-
-      where `backdrop-filter` is unsupported, use an opaque surface, never an unreadable transparent one.
+      where `backdrop-filter` doesn't work, use a solid surface. Never a see-through one you can't read.
 pending:
-  reason: 12px is inferred from the confirmed nav usage, NOT read directly from the 'Menu' effect style on node 29:5 (Dev Mode returned only the swatch fill). Verify against the Figma effect-style panel; if design intends a different radius, update --effect-menu and this value.
+  reason: |-
+    The 12px comes from how the nav uses it, not from the "Menu" style itself (Dev Mode only gave back the swatch for node 29:5). Worth checking in Figma's effect panel. If the real size is different, update `--effect-menu` and this value.
   propertiesToRead:
     - exact blur radius of the 'Menu' effect style and any token/variable binding
   nodesToWalk: [ "29:5" ]

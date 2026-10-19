@@ -2,7 +2,7 @@
 
 # InlineBanner
 
-> A filled status pill with a leading glyph and a label, in four statuses and two sizes.
+> A filled status pill with an icon and a label, in four statuses and two sizes.
 
 | | |
 |---|---|
@@ -33,37 +33,37 @@
 
 ## When to use
 
-- To state something about the page or section the reader should notice: saved, offline, available for work, action needed.
-- `Small` inline with text, `Medium` on its own line or at the top of a section.
+- Telling people something about the page or a section they should notice: saved, offline, open for work, needs your attention.
+- `Small` in a line of text, `Medium` on its own line or at the top of a section.
 
 ## When not to use
 
-- To label an item's status in a list or table, use **Badge**. It is outlined, smaller and quieter.
-- For something that needs a decision, use a dialog. A banner informs, it doesn't ask.
+- The status of one item in a list or table. That's **Badge**, smaller and quieter.
+- Anything that needs a decision. That's a dialog. A banner tells, it doesn't ask.
 
 ## Behaviour
 
-`status` (`Default`, `Positive`, `Negative`, `Warning`) sets the fill and the glyph: plus, positive, alarm, warning. It is not interactive: no hover, no focus.
+`status` (`Default`, `Positive`, `Negative`, `Warning`) sets the fill and the icon: plus, check, alarm, warning. You can't interact with it: no hover, no focus.
 
 ## Accessibility
 
-- **Element**: a `<span>` or `<p>`. If it appears in response to something the user did, put it in a live region (`role="status"`, or `role="alert"` for `Negative`).
-- **Colour**: the glyph carries the status as well as the fill. While glyphs are not exported (see accounting-app's deviation), the label must say the status in words.
+- **Element**: a `<span>` or a `<p>`. If it shows up because of something the person just did, put it in a live region (`role="status"`, or `role="alert"` for `Negative`).
+- **Colour**: the icon carries the status as well as the fill. Until the icons are exported (the accounting app has a deviation for this), the words have to say the status.
 - **Glyph**: `aria-hidden="true"`. The label carries the meaning.
 
 ## Content
 
-One short sentence, no full stop if it is a fragment. Lead with the state: "Saved just now", "Payment failed: card expired".
+One short sentence, no full stop if it's a fragment. Lead with what happened: "Saved just now", "Payment failed: card expired".
 
-## Declared deviations
+## Where code differs on purpose
 
-| App | What | Why | Raised with design |
+| App | What | Why | Taken to design |
 |---|---|---|---|
 | The accounting app | Renders label-only; the per-status glyph (plus / alarm / positive / warning) is an optional slot. | The kit glyphs are not exported yet, and drawing substitutes would ship something the kit does not contain. | not yet |
 
 ## Tokens
 
-Every token this contract asserts, in any variant.
+Every token this component uses, across all its variants.
 
 | Token | Resolves to |
 |---|---|
@@ -76,9 +76,9 @@ Every token this contract asserts, in any variant.
 | `spacing/gap/small` | `8px` |
 | `spacing/radius/small` | `8px` |
 
-## Suggested bindings
+## Tokens that should be there
 
-Values Figma or code states as a literal although a token matches. Bind them at the source.
+Plain numbers where a token fits exactly. They become tokens when I freeze the contracts.
 
 | Part | Property | Value | Suggest | |
 |---|---|---|---|---|
@@ -99,4 +99,4 @@ Values Figma or code states as a literal although a token matches. Bind them at 
 | `icons-warning` | `width` | `20px` | `spacing/size/xsmall` | exists |
 | `icons-warning` | `height` | `20px` | `spacing/size/xsmall` | exists |
 
-Full values per variant: [reference.html#inline-banner](../../reference.html#inline-banner)
+Every value of every variant: [reference.html#inline-banner](../../reference.html#inline-banner)

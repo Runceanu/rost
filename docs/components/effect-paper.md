@@ -2,7 +2,7 @@
 
 # Paper effect
 
-> The dot-lattice sheet behind the the portfolio site hero, which responds to the cursor, the CTAs and presses but never moves on its own.
+> The sheet of dots behind the portfolio site's hero. It reacts to the cursor, the buttons and clicks, and never moves by itself.
 
 | | |
 |---|---|
@@ -14,32 +14,32 @@
 
 ## Anatomy
 
-- `sheet`: A canvas of dots behind hero content. Shaped by a CSS mask — on the portfolio site a 1104px disc centred on the hero content block (radial-gradient circle 552px, solid to 40%, dissolved by 92%) — and sized so the lattice is anchored to the content, not the container. Idle cost is a single static frame; prefers-reduced-motion gets the still sheet and none of the behaviours below.
-- `dot`: One lattice point. Never animates on its own: it only RESPONDS (lens, ripple, pen). The paper must never twinkle.
-- `lens`: The dome field all behaviours share. Three sources: the cursor (the magnifier), the CTA halo (hovering a hero button raises a lens under the button's centre - the control presses into the paper), and press ink (pointer down dents the sheet, deepening fast and relaxing slowly on release). Sources sampled per dot, the strongest wins - lenses never stack. Dots inside grow proportionally and are pushed outward; they never multiply and never change character.
-- `ripple`: A ring (gaussian band, ~1.8s) crossing the sheet from its centre. Fired by the availability dot's own pulse animation (animationiteration on the banner dot) every SECOND ping — 8s, phase-locked, never a free-running timer. Runs only while the hero is on screen.
-- `pen`: Every 7-8s one kit component is sketched in 2px strokes (stroke colour = non-interactive/foreground/secondary at the ink opacity): drawn stroke by stroke (~1.6s), held (~3s), faded. THE LATTICE LAW: outer shapes run exactly along dot rows/columns — origin snapped to the lattice, dimensions in whole cells, corners arcing between lattice points. Inner elements (check, x, knob, bars, caret) keep natural proportions instead. Strokes are polylines whose every vertex rides the lens field, so ink bulges under the blurb like the dots do. One sketch at a time.
+- `sheet`: A canvas of dots behind the hero. A CSS mask shapes it: on the portfolio site that's a 1104px circle centred on the hero text (a 552px radial gradient, solid to 40%, gone by 92%). It's sized so the dot grid lines up with the content, not the container. When nothing's happening it costs one still frame, and with reduced motion you get the still sheet and none of what's below.
+- `dot`: One point on the grid. It never moves by itself, it only reacts (to the lens, the ripple, the pen). The paper should never twinkle.
+- `lens`: The dome every behaviour shares. It has three sources: the cursor (the magnifier), the button halo (hover a hero button and a lens rises under its centre, as if the button presses into the paper), and press ink (press down and the sheet dents, fast going in and slow coming back). Each dot looks at all three and the strongest wins, so lenses never add up. Dots inside grow and get pushed outward. They never multiply and never change shape.
+- `ripple`: A ring (a soft band, about 1.8s) that crosses the sheet from the middle. It's triggered by the availability dot's own pulse, every second beat: so every 8s, in step with it, never on a timer of its own. It only runs while the hero is on screen.
+- `pen`: Every 7 to 8 seconds the pen sketches one kit component in 2px lines (colour `non-interactive/foreground/secondary` at the ink opacity). It draws line by line (about 1.6s), holds (about 3s), then fades. The rule of the grid: outer shapes follow the dot rows and columns exactly, start on a dot, measure in whole cells, and round their corners between dots. Small inner details (a check, an x, a knob, bars, a caret) keep their natural shape. Every point of a line moves with the lens, so the ink bulges like the dots do. One sketch at a time.
 
 ## When to use
 
-- Behind the home hero only. It is the site's signature, and repeating it dilutes it.
+- Behind the home hero, and only there. It's the site's signature, and using it twice waters it down.
 
 ## When not to use
 
-- Behind dense content or forms: the lattice competes with text at small sizes.
+- Behind dense content or forms. At small sizes the dots fight with the text.
 
 ## Behaviour
 
-The dots only respond, through the lens, ripple and pen behaviours described in the anatomy. They never animate on their own. Everything snaps to the 16px lattice pitch. It is idle at one static frame, and runs only while the hero is on screen.
+The dots only ever react, through the lens, the ripple and the pen described in the parts. They never animate on their own. Everything snaps to the 16px grid. When nothing happens it's one still frame, and it only runs while the hero is on screen.
 
 ## Accessibility
 
-- **Decorative**: the canvas is `aria-hidden="true"` and takes no focus.
-- **Motion**: `prefers-reduced-motion` gets the still sheet and none of the behaviours.
+- **Decorative**: the canvas is `aria-hidden="true"` and never takes focus.
+- **Motion**: with `prefers-reduced-motion` you get the still sheet, and none of the movement.
 
 ## Tokens
 
-Every token this contract asserts, in any variant.
+Every token this component uses, across all its variants.
 
 | Token | Resolves to |
 |---|---|
@@ -50,7 +50,7 @@ Every token this contract asserts, in any variant.
 | `spacing/gap/medium` | `16px` |
 | `spacing/outline/medium` | `2px` |
 
-## Untokenised on purpose
+## No token, on purpose
 
 | Part | Property | Value | Why |
 |---|---|---|---|
@@ -62,4 +62,4 @@ Every token this contract asserts, in any variant.
 | `lens` | `press` | `radius 330px, power 1.7` | Motion tuning parameter (radius and falloff power). |
 | `pen` | `cadence` | `7-8s between sketches` | Timing of the sketch loop; a motion token group does not exist yet. |
 
-Full values per variant: [reference.html#effect-paper](../../reference.html#effect-paper)
+Every value of every variant: [reference.html#effect-paper](../../reference.html#effect-paper)

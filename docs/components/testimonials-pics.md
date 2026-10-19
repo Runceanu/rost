@@ -2,6 +2,8 @@
 
 # TestimonialPicture
 
+> The photo of the person behind a testimonial.
+
 | | |
 |---|---|
 | Kind | component |
@@ -10,9 +12,9 @@
 | Source | [Figma 144:493](https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=144-493) · read 2026-08-18 |
 | Implemented in | nowhere yet |
 
-## Open issues
+## Not right yet
 
-- No guidance yet. Add a `guidance` block to the contract (see `contracts/_template.contract.yaml`).
+- No guidance yet. It needs a `guidance` block (there's one to copy in `schema/template.contract.yaml`).
 
 ## Props
 
@@ -24,4 +26,4 @@
 
 - `root`
 
-Full values per variant: [reference.html#testimonials-pics](../../reference.html#testimonials-pics)
+Every value of every variant: [reference.html#testimonials-pics](../../reference.html#testimonials-pics)

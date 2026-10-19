@@ -2,7 +2,7 @@
 
 # Hero Media
 
-> The full-bleed case-study hero, artwork pinned behind a 16px inset frame and dimmed to one shared level.
+> The full-width hero on every case study: artwork pinned behind a 16px frame and dimmed to the same level everywhere.
 
 | | |
 |---|---|
@@ -14,37 +14,37 @@
 
 ## Anatomy
 
-- `hero`: Full-bleed section, 630px tall, background colour non-interactive/background/primary. Its padding is the 16px inset frame that shows the page background around the framed image. The width must subtract the real scrollbar width (100vw includes it), or the visible left/right inset reads ~8px while the top reads 16.
-- `frame`: The window onto the artwork: fills the hero inside the 16px inset, radius/xlarge corners, overflow hidden (clip-path inset round when the media uses position:fixed descendants).
-- `media`: The artwork layer: a background-image div, never an <img> (background-attachment needs a background).
+- `hero`: The full-width section, 630px tall, on `non-interactive/background/primary`. Its 16px padding is the frame that shows the page around the image. The width has to take off the real scrollbar (100vw includes it), otherwise the sides look about 8px while the top is 16.
+- `frame`: The window onto the artwork. It fills the hero inside the 16px frame, with `radius/xlarge` corners, and hides anything that spills out (a rounded `clip-path` when the artwork uses fixed positioning).
+- `media`: The artwork itself: a div with a background image, never an `<img>` (the pinned effect needs a background).
 
 ## When to use
 
-- At the top of every case study on the portfolio site. One per page.
+- The top of every case study on the portfolio site. One per page.
 
 ## When not to use
 
-- For the home page hero, which uses the **Paper effect** instead of artwork.
+- The home page. That one has the **Paper effect** instead of artwork.
 
 ## Behaviour
 
-The artwork is pinned to the viewport (`background-attachment: fixed`) and the page scrolls over it. Touch devices and `prefers-reduced-motion` get a static, element-anchored background instead. The dim only holds as opacity *and* underlay together: never change one without the other.
+The artwork stays put and the page scrolls over it (`background-attachment: fixed`). Phones, tablets and `prefers-reduced-motion` get a normal static background instead. The dim only works as opacity *and* the colour underneath together. Never change one without the other.
 
 ## Accessibility
 
-- **Artwork**: a background image, so it is decorative by construction. Anything the reader needs from it goes in the text.
-- **Contrast**: text over the hero is checked against the dimmed artwork, not the underlay colour.
-- **Motion**: pinned parallax is turned off under `prefers-reduced-motion`.
+- **Artwork**: it's a background image, so it's decoration by definition. Anything people need from it goes in the text.
+- **Contrast**: check the text against the dimmed artwork, not the colour underneath.
+- **Motion**: the pinned effect switches off with `prefers-reduced-motion`.
 
-## Declared deviations
+## Where code differs on purpose
 
-| App | What | Why | Raised with design |
+| App | What | Why | Taken to design |
 |---|---|---|---|
-| all | Media opacity is opacity/medium (0.48) on a #171717 frame underlay; the Figma node specifies 32% (opacity/mild). | Unified hero dim decided 2026-10-18 across all case studies: perceived dim is opacity × underlay, and three heroes read darker at the same opacity. Figma not yet updated. | not yet |
+| all | The artwork is dimmed with `opacity/medium` (0.48) on a #171717 frame. Figma's node says 32% (`opacity/mild`). | I set one dim for every case study on 2026-10-18. What you see is opacity times what's underneath, and three heroes looked darker at the same opacity. Figma never caught up. | not yet |
 
 ## Tokens
 
-Every token this contract asserts, in any variant.
+Every token this component uses, across all its variants.
 
 | Token | Resolves to |
 |---|---|
@@ -55,10 +55,10 @@ Every token this contract asserts, in any variant.
 | `spacing/layout/hero-height` | `630px` |
 | `spacing/radius/xlarge` | `24px` |
 
-## Untokenised on purpose
+## No token, on purpose
 
 | Part | Property | Value | Why |
 |---|---|---|---|
 | `media` | `background-size` | `explicit px (asset-native, e.g. 2336px 1196px)` | Each artwork's native pixel size. |
 
-Full values per variant: [reference.html#hero-media](../../reference.html#hero-media)
+Every value of every variant: [reference.html#hero-media](../../reference.html#hero-media)

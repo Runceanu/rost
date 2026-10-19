@@ -2,7 +2,7 @@
 
 # Thumb effect
 
-> The frosted content panel on project thumbnails, a backdrop blur.
+> The frosted panel on project thumbnails, a backdrop blur.
 
 | | |
 |---|---|
@@ -14,30 +14,30 @@
 
 ## Anatomy
 
-- `root`: The element the effect style is applied to. Used on the project thumbnail's frosted content panel (see the Thumbs/Carousel components, which both reference this style).
+- `root`: Whatever the style is applied to: the frosted text panel on a project thumbnail. Thumbs and Carousel both use it.
 
 ## When to use
 
-- On the content panel of a project thumbnail, in Thumbs and Carousel.
+- The text panel on a project thumbnail, in Thumbs and Carousel.
 
 ## When not to use
 
-- For navigation surfaces, use the **Menu effect**.
+- Navigation. That's the **Menu effect**.
 
 ## Behaviour
 
-It blurs what is *behind* the panel. Figma binds the radius to `opacity/gentle`, an opacity token reused as a blur radius. That works, but it means retuning an opacity would move this blur. A dedicated blur token would fix it.
+It blurs what's behind the panel. In Figma the blur is tied to `opacity/gentle`, an opacity token borrowed as a blur size. It works, but changing that opacity would also move this blur. Its own blur token would fix it.
 
 ## Accessibility
 
-- **Contrast**: check the panel text against the thumbnail's busiest region.
+- **Contrast**: check the panel text against the busiest part of the thumbnail.
 
 ## Tokens
 
-Every token this contract asserts, in any variant.
+Every token this component uses, across all its variants.
 
 | Token | Resolves to |
 |---|---|
 | `effect/thumb` | `blur(12px)` |
 
-Full values per variant: [reference.html#effect-thumb](../../reference.html#effect-thumb)
+Every value of every variant: [reference.html#effect-thumb](../../reference.html#effect-thumb)

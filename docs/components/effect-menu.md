@@ -2,7 +2,7 @@
 
 # Menu effect
 
-> The frosted-glass surface behind the main nav and case-study info cards, a 12px backdrop blur.
+> Frosted glass behind the main nav and the case-study info cards, a 12px backdrop blur.
 
 | | |
 |---|---|
@@ -12,38 +12,38 @@
 | Source | [Figma 29:5](https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=29-5) · read 2026-08-19 |
 | Implemented in | nowhere yet |
 
-## Open issues
+## Not right yet
 
-- Pending: 12px is inferred from the confirmed nav usage, NOT read directly from the 'Menu' effect style on node 29:5 (Dev Mode returned only the swatch fill). Verify against the Figma effect-style panel; if design intends a different radius, update --effect-menu and this value.
+- Still to read: The 12px comes from how the nav uses it, not from the "Menu" style itself (Dev Mode only gave back the swatch for node 29:5). Worth checking in Figma's effect panel. If the real size is different, update `--effect-menu` and this value.
 
 ## Anatomy
 
-- `root`: The frosted surface behind the main menu / nav panel. Figma effect style name: 'Menu'.
+- `root`: The frosted surface behind the main nav. In Figma it's the effect style called "Menu".
 
 ## When to use
 
-- For surfaces that float over content and must stay readable while it scrolls beneath: the nav, hero info cards.
+- Things that float over content and have to stay readable while it scrolls underneath: the nav, the hero info cards.
 
 ## When not to use
 
-- On project thumbnails, which have their own style (**Thumb effect**).
-- Stacked on another frosted surface: two blurs read as mud.
+- Project thumbnails, they have their own (**Thumb effect**).
+- On top of another frosted surface. Two blurs just turn to mud.
 
 ## Behaviour
 
-`backdrop-filter: blur(12px)`, with a 24px large variant for the bigger case-study surfaces. The 12px is inferred from use, not yet read from the style itself (see Open issues).
+`backdrop-filter: blur(12px)`, and a 24px version for the bigger case-study surfaces. I took the 12px from how it's used, I haven't read it from the style itself yet (it's in "Not right yet").
 
 ## Accessibility
 
-- **Contrast**: check text against the busiest content that can scroll beneath, not against a flat colour.
-- **Fallback**: where `backdrop-filter` is unsupported, use an opaque surface, never an unreadable transparent one.
+- **Contrast**: check text against the busiest thing that can scroll under it, not a flat colour.
+- **Fallback**: where `backdrop-filter` doesn't work, use a solid surface. Never a see-through one you can't read.
 
 ## Tokens
 
-Every token this contract asserts, in any variant.
+Every token this component uses, across all its variants.
 
 | Token | Resolves to |
 |---|---|
 | `effect/menu` | `blur(12px)` |
 
-Full values per variant: [reference.html#effect-menu](../../reference.html#effect-menu)
+Every value of every variant: [reference.html#effect-menu](../../reference.html#effect-menu)

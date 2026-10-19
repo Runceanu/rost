@@ -4,6 +4,8 @@ id: projects
 name: Projects
 kind: component
 status: review
+summary: |-
+  One row in the project list: number, name, and industry, type and period on the right.
 source:
   tool: figma
   fileKey: 1Zy0wiWKXQAvsfDBX3KR0d
@@ -22,7 +24,7 @@ elements:
       width:
         value: 976px
         assert: false
-        notes: No token behind it — the Figma frame size, not a spec.
+        notes: Just the size of the Figma frame. No token, and not something to copy.
   left:
     styles:
       align-items: { value: center }

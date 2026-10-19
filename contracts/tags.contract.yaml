@@ -4,7 +4,7 @@ id: tags
 name: Tag
 kind: component
 status: review
-summary: A compact 20px label with a small radius, for topics and categories on content.
+summary: A compact 20px label with small corners, for what a piece of content is about.
 category: display
 related: [ chips, badge ]
 source:
@@ -78,14 +78,15 @@ guidance:
   status: proposed
   use:
     - |-
-      To label content with what it is about: a case study's discipline, a project's platform.
+      Saying what something is about: a case study's discipline, a project's platform.
   avoid:
-    - For a status, use **Badge**. For a filter control, use **Chip**.
+    - "A status: **Badge**. A filter: **Chip**."
   behaviour: |-
-    One `type` (`Primary`) × five `state`s. The interactive states exist for tags that link to a filtered view. A tag that goes nowhere should render without them.
+    One `type` (`Primary`) and five states. The hover and press states are there for tags that link to a filtered list. A tag that doesn't go anywhere shouldn't have them.
   accessibility:
-    static: a `<span>`, or a `<li>` in a `<ul>` when there are several.
+    static: |-
+      a `<span>`, or `<li>` items in a `<ul>` when there are a few.
     linking: |-
-      an `<a>` with a name that includes the context ("Projects tagged Fintech").
-    focus: "`focus-ring` on linked tags only."
-  content: One word where possible, title case for proper nouns only.
+      an `<a>` whose name gives the context ("Projects tagged Fintech").
+    focus: "`focus-ring`, only on tags that link."
+  content: One word if you can. Capitals only for proper nouns.

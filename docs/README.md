@@ -2,17 +2,17 @@
 
 # Rost: documentation
 
-The design system behind **The portfolio site**, **The accounting app** and the products that follow. Start here.
+My design system, behind **The portfolio site**, **The accounting app** and whatever I build next. Start here.
 
 | Read | For |
 |---|---|
-| [The component contract](CONTRACT.md) | What a contract is, the lifecycle, the definition of done, how to add a component |
-| [Components](#catalogue) | One page per component: guidance, props, anatomy, tokens, deviations |
-| [reference.html](../reference.html) | Every value of every variant, browsable |
-| [Token coverage](TOKENS.md) | Why each value does or doesn't carry a token, and what to bind |
-| [Roadmap](ROADMAP.md) | What gets built next, and why |
+| [How a contract works](CONTRACT.md) | What's in one, how it grows up, when it's done, how to add one |
+| [Components](#catalogue) | A page per component: how to use it, props, parts, tokens, where code differs |
+| [reference.html](../reference.html) | Every value of every variant, to browse |
+| [Token coverage](TOKENS.md) | Why each value has a token or doesn't |
+| [Roadmap](ROADMAP.md) | What I'm doing next |
 
-**22** contracts · **0** stable · guidance for **16**, of which **0** agreed with design.
+**22** contracts, **0** stable. **16** have guidance, and I've signed off **0** of those.
 
 ## Catalogue
 
@@ -20,48 +20,48 @@ The design system behind **The portfolio site**, **The accounting app** and the 
 
 | | Summary | Contract | Guidance | Used in |
 |---|---|---|---|---|
-| [Badge](components/badge.md) | An outlined 24px status label; the status shows in the outline and dot, never in the label colour. | `review` | `proposed` | The portfolio site, the accounting app |
-| [Button](components/button.md) | A label-only action at 48px, in four levels of emphasis. | `review` | `proposed` | — |
-| [Carousel](components/carousel.md) |  | `review` | — | — |
-| [Chip](components/chips.md) | An outlined 24px interactive label, for filters and quick choices. | `review` | `proposed` | The portfolio site |
-| [Divider](components/divider.md) |  | `review` | — | — |
-| [IconButton](components/icon-button.md) | An icon-only round action, including the Project type used on case-study thumbnails. | `review` | `proposed` | — |
-| [InlineBanner](components/inline-banner.md) | A filled status pill with a leading glyph and a label, in four statuses and two sizes. | `review` | `proposed` | The accounting app |
-| [Input](components/input.md) | A 56px text field with a floating label, optional leading lock icon, supportive text and an error state. | `review` | `proposed` | The portfolio site, the accounting app |
-| [Menu](components/menu.md) | A navigation item, a label with an indicator line, used in the main nav. | `review` | `proposed` | — |
-| [PillButton](components/pill-button.md) | A 48px action with a leading icon and a label. The kit's main call to action. | `review` | `proposed` | The accounting app |
-| [Projects](components/projects.md) |  | `review` | — | — |
-| [Tag](components/tags.md) | A compact 20px label with a small radius, for topics and categories on content. | `review` | `proposed` | — |
-| [TestimonialPicture](components/testimonials-pics.md) |  | `review` | — | — |
-| [Testimonials](components/testimonials.md) |  | `review` | — | — |
-| [Thumbs](components/thumbs.md) |  | `review` | — | — |
-| [Toggle](components/toggle.md) | A 40×40 icon toggle that holds a selected state, used alone or as one choice of a group. | `review` | `proposed` | The accounting app |
+| [Badge](components/badge.md) | A small outlined label for status. The colour sits in the outline and the dot, never in the text. | `review` | `proposed` | The portfolio site, the accounting app |
+| [Button](components/button.md) | A 48px button with just a label, in four levels of emphasis. | `review` | `proposed` | · |
+| [Carousel](components/carousel.md) | A card in the home page carousel: a number, a title and a short description. | `review` | · | · |
+| [Chip](components/chips.md) | A small outlined label you can click, for filters and quick choices. | `review` | `proposed` | The portfolio site |
+| [Divider](components/divider.md) | A thin line between things. | `review` | · | · |
+| [IconButton](components/icon-button.md) | A round button with only an icon, including the Project type used on case-study thumbnails. | `review` | `proposed` | · |
+| [InlineBanner](components/inline-banner.md) | A filled status pill with an icon and a label, in four statuses and two sizes. | `review` | `proposed` | The accounting app |
+| [Input](components/input.md) | A 56px text field with a floating label, an optional lock icon, a line of help text and an error state. | `review` | `proposed` | The portfolio site, the accounting app |
+| [Menu](components/menu.md) | A navigation item: a label with a line underneath, used in the main nav. | `review` | `proposed` | · |
+| [PillButton](components/pill-button.md) | A 48px button with an icon in front of the label. My main call to action. | `review` | `proposed` | The accounting app |
+| [Projects](components/projects.md) | One row in the project list: number, name, and industry, type and period on the right. | `review` | · | · |
+| [Tag](components/tags.md) | A compact 20px label with small corners, for what a piece of content is about. | `review` | `proposed` | · |
+| [TestimonialPicture](components/testimonials-pics.md) | The photo of the person behind a testimonial. | `review` | · | · |
+| [Testimonials](components/testimonials.md) | A testimonial you can open and close: name and role, with the quote underneath. | `review` | · | · |
+| [Thumbs](components/thumbs.md) | A project thumbnail card, with the project name and details on a frosted panel at the bottom. | `review` | · | · |
+| [Toggle](components/toggle.md) | A 40×40 icon button that stays on or off, alone or as one choice in a group. | `review` | `proposed` | The accounting app |
 
 ### Patterns
 
 | | Summary | Contract | Guidance | Used in |
 |---|---|---|---|---|
-| [Hero Media](components/hero-media.md) | The full-bleed case-study hero, artwork pinned behind a 16px inset frame and dimmed to one shared level. | `review` | `proposed` | — |
+| [Hero Media](components/hero-media.md) | The full-width hero on every case study: artwork pinned behind a 16px frame and dimmed to the same level everywhere. | `review` | `proposed` | · |
 
 ### Effects
 
 | | Summary | Contract | Guidance | Used in |
 |---|---|---|---|---|
-| [Floating effect](components/effect-floating.md) | The kit's only drop shadow, for elements that float above the page. | `review` | `proposed` | — |
-| [Lock frame effect](components/effect-lock-frame.md) | An 8px layer blur over a locked project's thumbnail, the blurred-out state behind the lock. | `review` | `proposed` | — |
-| [Menu effect](components/effect-menu.md) | The frosted-glass surface behind the main nav and case-study info cards, a 12px backdrop blur. | `draft` | `proposed` | — |
-| [Paper effect](components/effect-paper.md) | The dot-lattice sheet behind the the portfolio site hero, which responds to the cursor, the CTAs and presses but never moves on its own. | `review` | `proposed` | The portfolio site |
-| [Thumb effect](components/effect-thumb.md) | The frosted content panel on project thumbnails, a backdrop blur. | `review` | `proposed` | — |
+| [Floating effect](components/effect-floating.md) | The only drop shadow in the kit, for things that float above the page. | `review` | `proposed` | · |
+| [Lock frame effect](components/effect-lock-frame.md) | An 8px blur over a locked project's thumbnail, the blurred view behind the lock. | `review` | `proposed` | · |
+| [Menu effect](components/effect-menu.md) | Frosted glass behind the main nav and the case-study info cards, a 12px backdrop blur. | `draft` | `proposed` | · |
+| [Paper effect](components/effect-paper.md) | The sheet of dots behind the portfolio site's hero. It reacts to the cursor, the buttons and clicks, and never moves by itself. | `review` | `proposed` | The portfolio site |
+| [Thumb effect](components/effect-thumb.md) | The frosted panel on project thumbnails, a backdrop blur. | `review` | `proposed` | · |
 
 ## Health
 
-Generated from the contracts, so it is only as current as the last `npm run docs`.
+What needs attention. It's built from the contracts, so it's only as fresh as the last `npm run docs`.
 
-### Pending a Figma read
+### Still waiting on a Figma read
 
 - [Menu effect](components/effect-menu.md)
 
-### Components without guidance
+### No guidance yet
 
 - [Carousel](components/carousel.md)
 - [Divider](components/divider.md)
@@ -70,9 +70,9 @@ Generated from the contracts, so it is only as current as the last `npm run docs
 - [Testimonials](components/testimonials.md)
 - [Thumbs](components/thumbs.md)
 
-### Deviations not yet raised with design
+### Differences nobody has taken to design yet
 
-- [Hero Media](components/hero-media.md): Media opacity is opacity/medium (0.48) on a #171717 frame underlay; the Figma node specifies 32% (opacity/mild)
+- [Hero Media](components/hero-media.md): The artwork is dimmed with `opacity/medium` (0.48) on a #171717 frame
 - [InlineBanner](components/inline-banner.md) in the accounting app: Renders label-only; the per-status glyph (plus / alarm / positive / warning) is an optional slot
 - [Toggle](components/toggle.md) in the accounting app: Accepts a text label; width grows past 40px to fit it, height stays 40px
 - [Toggle](components/toggle.md) in the accounting app: Rendered as role=radio inside a ToggleGroup radio group, which has no surface of its own

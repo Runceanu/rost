@@ -2,7 +2,7 @@
 
 # IconButton
 
-> An icon-only round action, including the Project type used on case-study thumbnails.
+> A round button with only an icon, including the Project type used on case-study thumbnails.
 
 | | |
 |---|---|
@@ -32,33 +32,33 @@
 
 ## When to use
 
-- For universally understood actions where a label would crowd the layout: close, back, next, previous.
-- `Project` on project thumbnails and case-study cards, where it sits on imagery.
+- Actions everyone knows where a label would crowd things: close, back, next, previous.
+- `Project` on project thumbnails and case-study cards, sitting on top of imagery.
 
 ## When not to use
 
-- If the icon is not instantly unambiguous, use **PillButton**. An icon is not a label.
-- For an on/off or one-of-many choice, use **Toggle**. IconButton fires an action, it does not hold state.
+- Any icon that isn't instantly obvious. Use **PillButton**, an icon isn't a label.
+- On/off or one-of-many choices. That's **Toggle**. IconButton does something, it doesn't remember anything.
 
 ## Behaviour
 
-`type` is `Primary`, `Secondary`, `Tertiary` or `Project`. `state` comes from pseudo-classes, as with every action. The touch target is never smaller than the rendered size; don't shrink it below 40px.
+`type` is `Primary`, `Secondary`, `Tertiary` or `Project`. States come from the browser like every other action. Don't shrink it below 40px, fingers need the room.
 
 ## Accessibility
 
 - **Element**: `<button type="button">`.
-- **Name**: `aria-label` is required, because there is no visible text. Say what it does ("Close dialog"), not what it shows ("X").
+- **Name**: `aria-label` is a must, there's no visible text. Say what it does ("Close dialog"), not what it shows ("X").
 - **Keyboard**: Enter and Space.
 - **Focus**: `focus-ring`, on `:focus-visible`.
-- **Tooltip**: pair it with a tooltip carrying the same text once **Tooltip** is contracted.
+- **Tooltip**: give it a tooltip with the same words, once there's a **Tooltip** in the kit.
 
 ## Content
 
-No text. The `aria-label` follows the Button content rules.
+No text. The `aria-label` follows the same rules as Button.
 
 ## Tokens
 
-Every token this contract asserts, in any variant.
+Every token this component uses, across all its variants.
 
 | Token | Resolves to |
 |---|---|
@@ -97,13 +97,13 @@ Every token this contract asserts, in any variant.
 | `spacing/size/medium-large` | `48px` |
 | `spacing/size/small-medium` | `32px` |
 
-## Suggested bindings
+## Tokens that should be there
 
-Values Figma or code states as a literal although a token matches. Bind them at the source.
+Plain numbers where a token fits exactly. They become tokens when I freeze the contracts.
 
 | Part | Property | Value | Suggest | |
 |---|---|---|---|---|
 | `icons-arrow-left` | `width` | `20px` | `spacing/size/xsmall` | exists |
 | `icons-arrow-left` | `height` | `20px` | `spacing/size/xsmall` | exists |
 
-Full values per variant: [reference.html#icon-button](../../reference.html#icon-button)
+Every value of every variant: [reference.html#icon-button](../../reference.html#icon-button)

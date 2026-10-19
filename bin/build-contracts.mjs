@@ -60,7 +60,7 @@ for (const [comp, variants] of Object.entries(parsed)) {
     '48px': 'spacing/size/medium-large', '56px': 'spacing/size/large', '64px': 'spacing/size/xlarge' }
   const markSamples = (part, prop, val) => {
     if (part === 'root' && (prop === 'width' || prop === 'height') && !val.token)
-      return { ...val, assert: false, notes: 'No token behind it — the Figma frame size, not a spec.' }
+      return { ...val, assert: false, notes: 'Just the size of the Figma frame. No token, and not something to copy.' }
     // Any part below the root sized on the scale: icon frames, action slots, avatars.
     if (part !== 'root' && (prop === 'width' || prop === 'height') && !val.token && SIZES[val.value])
       return { ...val, suggest: SIZES[val.value] }

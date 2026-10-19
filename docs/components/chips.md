@@ -2,7 +2,7 @@
 
 # Chip
 
-> An outlined 24px interactive label, for filters and quick choices.
+> A small outlined label you can click, for filters and quick choices.
 
 | | |
 |---|---|
@@ -31,21 +31,21 @@
 
 ## When to use
 
-- For filters and quick selections in a row: categories on the portfolio, period filters.
+- Filters and quick picks in a row: categories on my portfolio, date ranges.
 
 ## When not to use
 
-- For a status nobody clicks, use **Badge**.
-- For a topic label on content, use **Tag**.
+- A status nobody clicks: **Badge**.
+- A topic on a piece of content: **Tag**.
 
 ## Behaviour
 
-One `status` (`Default`) × five `state`s. Hover, pressed and focus come from pseudo-classes. The kit doesn't draw a selected chip yet. Until it does, a selected chip needs design before it is built, not an improvised fill.
+One `status` (`Default`) and five states. Hover, pressed and focus come from the browser. There's no selected chip in the kit yet, so a selected chip needs designing before anyone builds one. Not an improvised fill.
 
 ## Accessibility
 
 - **Element**: `<button type="button">`, with `aria-pressed` when it filters.
-- **Group**: wrap a set in an element with a name (`role="group"` and `aria-label="Filter by category"`).
+- **Group**: wrap the set in something with a name (`role="group"` and `aria-label="Filter by category"`).
 - **Focus**: `focus-ring`, on `:focus-visible`.
 
 ## Content
@@ -54,7 +54,7 @@ One or two words, sentence case.
 
 ## Tokens
 
-Every token this contract asserts, in any variant.
+Every token this component uses, across all its variants.
 
 | Token | Resolves to |
 |---|---|
@@ -84,4 +84,4 @@ Every token this contract asserts, in any variant.
 | `typography/label/letter-spacing` | `0px` |
 | `typography/label/line-height` | `14px` |
 
-Full values per variant: [reference.html#chips](../../reference.html#chips)
+Every value of every variant: [reference.html#chips](../../reference.html#chips)

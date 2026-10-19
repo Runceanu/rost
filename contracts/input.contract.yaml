@@ -4,7 +4,7 @@ id: input
 name: Input
 kind: component
 status: review
-summary: A 56px text field with a floating label, optional leading lock icon, supportive text and an error state.
+summary: A 56px text field with a floating label, an optional lock icon, a line of help text and an error state.
 category: inputs
 related: [ inline-banner ]
 source:
@@ -40,7 +40,7 @@ elements:
       width:
         value: 208px
         assert: false
-        notes: No token behind it — the Figma frame size, not a spec.
+        notes: Just the size of the Figma frame. No token, and not something to copy.
   outline:
     styles:
       border-sides: { value: all }
@@ -236,32 +236,31 @@ variants:
 guidance:
   status: proposed
   use:
-    - "For any single-line text entry: email, name, amount, search."
+    - "Any single line of text: email, name, an amount, search."
   avoid:
-    - For a choice from a known set, use **Chip** or **Toggle**. Free text invites typos.
-    - For multi-line text, there is no textarea in the kit yet.
+    - Picking from a known list. That's **Chip** or **Toggle**, free text just invites typos.
+    - Several lines of text. There's no textarea in the kit yet.
   behaviour: |-
-    Four axes:
+    Four things change it:
 
-    - **`configuration`**: `Empty` shows the label as the placeholder. `Filled` floats it up and shows the value.
-    - **`selected`**: the focused field, which shows the focus ring.
-    - **`error`**: the outline, label, supportive text and icons turn negative, and the alarm icon appears on the right.
+    - **`configuration`**: `Empty` shows the label where you'll type. `Filled` moves it up and shows the value.
+    - **`selected`**: it has focus, so the focus ring shows.
+    - **`error`**: the outline, label, help text and icons go red, and the alarm icon shows up on the right.
     - **`state`**: `Default`, `Hover` and `Disabled`.
 
-    Validate on blur or submit, not on every keystroke.
+    Check what people typed when they leave the field or submit, not on every key.
   accessibility:
     element: |-
-      a real `<input>` with a `<label for>`. The floating label is the label, never a `placeholder`.
-    supportiveText: linked with `aria-describedby`.
-    error: |-
-      `aria-invalid="true"`, and the message in the supportive text says how to fix it.
-    colour: an error is carried by the alarm icon and the message as well as red.
+      a real `<input>` with a `<label for>`. The floating label is the label. Never a `placeholder`.
+    supportiveText: connected with `aria-describedby`.
+    error: "`aria-invalid=\"true\"`, and the help text says how to fix it."
+    colour: an error shows as the alarm icon and the message, not only red.
     focus: |-
-      the ring shows on `:focus-visible` and on focus with the keyboard. Never remove the outline without the ring.
+      the ring shows on `:focus-visible` and when you arrive by keyboard. Never remove the outline without the ring.
     lockIcon: |-
-      decorative unless it means "read-only". If it does, set `readonly` and say so in the supportive text.
+      just decoration, unless it means read-only. If it does, set `readonly` and say so in the help text.
   content: |-
-    Label: a noun in sentence case ("Email address"). Supportive text: one line, the hint before an error and the fix after one ("Use at least 8 characters", not "Invalid input").
+    Label: a noun, sentence case ("Email address"). Help text: one line. Before an error it's a hint, after it it's the fix ("Use at least 8 characters", not "Invalid input").
 implementations:
   portfolio-site:
     component: src/components/Input.jsx

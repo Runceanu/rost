@@ -2,6 +2,8 @@
 
 # Projects
 
+> One row in the project list: number, name, and industry, type and period on the right.
+
 | | |
 |---|---|
 | Kind | component |
@@ -10,9 +12,9 @@
 | Source | [Figma 100:185](https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=100-185) · read 2026-08-18 |
 | Implemented in | nowhere yet |
 
-## Open issues
+## Not right yet
 
-- No guidance yet. Add a `guidance` block to the contract (see `contracts/_template.contract.yaml`).
+- No guidance yet. It needs a `guidance` block (there's one to copy in `schema/template.contract.yaml`).
 
 ## States
 
@@ -34,7 +36,7 @@
 
 ## Tokens
 
-Every token this contract asserts, in any variant.
+Every token this component uses, across all its variants.
 
 | Token | Resolves to |
 |---|---|
@@ -65,9 +67,9 @@ Every token this contract asserts, in any variant.
 | `typography/label/letter-spacing` | `0px` |
 | `typography/label/line-height` | `14px` |
 
-## Suggested bindings
+## Tokens that should be there
 
-Values Figma or code states as a literal although a token matches. Bind them at the source.
+Plain numbers where a token fits exactly. They become tokens when I freeze the contracts.
 
 | Part | Property | Value | Suggest | |
 |---|---|---|---|---|
@@ -83,4 +85,4 @@ Values Figma or code states as a literal although a token matches. Bind them at 
 | `icons-lock` | `width` | `24px` | `spacing/size/small` | exists |
 | `icons-lock` | `height` | `24px` | `spacing/size/small` | exists |
 
-Full values per variant: [reference.html#projects](../../reference.html#projects)
+Every value of every variant: [reference.html#projects](../../reference.html#projects)
