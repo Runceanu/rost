@@ -96,7 +96,7 @@ variants:
         border-color: { token: actions/secondary/regular/focus/focus-ring, value: "#999" }
         border-radius: { token: spacing/radius/full, value: 10000px }
 guidance:
-  status: proposed
+  status: agreed
   use:
     - |-
       Filters and quick picks in a row: categories on my portfolio, date ranges.

@@ -8,7 +8,7 @@
 |---|---|
 | Kind | component |
 | Contract | `review` · [input.contract.yaml](../../contracts/input.contract.yaml) |
-| Guidance | `proposed` |
+| Guidance | `agreed` |
 | Source | [Figma 240:273](https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=240-273) · read 2026-08-18 |
 | Implemented in | The portfolio site (`src/components/Input.jsx`, `.dsinput__box`)<br>the accounting app (`src/components/TextField.tsx`, `.ak-field__box`) |
 

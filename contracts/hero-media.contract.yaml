@@ -56,7 +56,7 @@ elements:
           Never `cover` together with `fixed`. A fixed background sizes itself against the window, not the frame, and blows the artwork up. That bug is why one case study lost the pinned effect the first time. Vector artwork can go at twice its natural size, so it stays sharp.
         untokenised: Each artwork's native pixel size.
 guidance:
-  status: proposed
+  status: agreed
   use:
     - The top of every case study on the portfolio site. One per page.
   avoid:

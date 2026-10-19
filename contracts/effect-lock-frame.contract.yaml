@@ -25,7 +25,7 @@ elements:
         notes: |-
           The Figma effect style "Lock frame", a layer blur (`filter: blur()`). It blurs the element's own content, not what's behind it, which is the opposite of Thumb. In Figma its size is tied to `spacing/base-8`, a spacing token borrowed as a blur, and that one isn't in `tokens.css`. In code the whole effect is `--effect-lock-frame`, and that's the token the contract checks.
 guidance:
-  status: proposed
+  status: agreed
   use:
     - On the thumbnail of a locked project (NDA, password), together with the lock icon.
   avoid:

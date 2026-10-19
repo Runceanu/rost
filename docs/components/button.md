@@ -8,7 +8,7 @@
 |---|---|
 | Kind | component |
 | Contract | `review` · [button.contract.yaml](../../contracts/button.contract.yaml) |
-| Guidance | `proposed` |
+| Guidance | `agreed` |
 | Source | [Figma 39:38](https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=39-38) · read 2026-08-18 |
 | Implemented in | nowhere yet |
 

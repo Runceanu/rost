@@ -294,7 +294,7 @@ variants:
         border-width: { token: spacing/outline/medium, value: 2px }
         border-color: { token: actions/secondary/regular/focus/focus-ring, value: "#999" }
 guidance:
-  status: proposed
+  status: agreed
   use:
     - "Doing something: save, send, continue, open."
     - |-

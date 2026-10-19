@@ -8,7 +8,7 @@
 |---|---|
 | Kind | effect |
 | Contract | `review` · [effect-thumb.contract.yaml](../../contracts/effect-thumb.contract.yaml) |
-| Guidance | `proposed` |
+| Guidance | `agreed` |
 | Source | [Figma 124:26634](https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=124-26634) · read 2026-08-19 |
 | Implemented in | nowhere yet |
 

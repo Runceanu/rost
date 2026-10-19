@@ -8,7 +8,7 @@
 |---|---|
 | Kind | effect |
 | Contract | `review` · [effect-paper.contract.yaml](../../contracts/effect-paper.contract.yaml) |
-| Guidance | `proposed` |
+| Guidance | `agreed` |
 | Source | `portfolio-site/src/components/HeroBackdrop.jsx` · read 2026-10-19 |
 | Implemented in | The portfolio site (`src/components/HeroBackdrop.jsx`) |
 

@@ -42,4 +42,4 @@ To check an app, import `src/conform.ts` in one of its tests. The accounting app
 
 ## Where it stands
 
-22 contracts, all read from Figma, and validation is clean. The guidance in them is still a first draft I haven't signed off. Next up: finish the last Figma import, then the contracts become the source and Figma retires. The [roadmap](docs/ROADMAP.md) has the details.
+22 contracts, all read from Figma, and validation is clean. I signed off the guidance on 16 of them on 2026-10-19, and Badge is the first one that's stable. Next up: finish the last Figma import, then the contracts become the source and Figma retires. The [roadmap](docs/ROADMAP.md) has the details.

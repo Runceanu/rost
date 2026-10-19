@@ -342,7 +342,7 @@ variants:
         border-sides: { value: left top }
         border-color: { token: actions/secondary/regular/focus/outline, value: "#ededed" }
 guidance:
-  status: proposed
+  status: agreed
   use:
     - |-
       When an icon helps people get it faster: a back arrow, an external link, a download.

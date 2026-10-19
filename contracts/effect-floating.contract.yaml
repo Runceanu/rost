@@ -25,7 +25,7 @@ elements:
           A drop shadow: 16px down, 24px blur, no spread, black at 16% (the same as `opacity/soft`). In code it's `--shadow-floating`, the only elevation token in the kit. If I ever need a second shadow, I'll make a proper `shadow/*` scale.
         token: shadow/floating
 guidance:
-  status: proposed
+  status: agreed
   use:
     - |-
       Anything lifted above the content: menus, popovers, a card being dragged.

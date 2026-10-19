@@ -24,12 +24,12 @@ The last read stopped on 2026-10-19, when Figma hit its daily limit on reads fro
    - **Real drift.** The primary PillButton has no 1px top and left edge (`border-top-width: spacing/outline/small`, `border-color: actions/primary/*/outline`). Only the secondary one shipped. The contracts couldn't show it until the parser stopped dropping `border-t` and rgba borders.
    - **A limit of the check.** the accounting app draws the selected Toggle's edge on `::before`, and the check only reads the root selector. `implementations.*.parts` needs a way to point a root property at a pseudo-element.
 
-   *Done when* every finding left is either fixed or written down as a deviation.
+   *Done when* every finding left is either fixed or written down as a deviation. Each component that gets to zero can go stable, the way Badge did.
 2. **Export every Figma variable.** `tokens.css` has 180 of the file's 582. I added the ones the contracts needed by hand (`opacity/strong`, the `project/*` set, title typography). The colour primitives, the rest of the typography scale and more are still missing. That needs a proper `bin/build-tokens.mjs`, keyed on the Figma names so hyphens survive (`non-interactive`, not `non/interactive`). Worth doing before the freeze, while Figma is still the source.
 3. **One list of components.** Node ids live in `extract.mjs`, `build-contracts.mjs` and `variant-nodes.json`. One file should drive all of it.
 4. **Variants as layers.** Right now a variant list repeats what one axis decides: Toggle's unselected background shows up five times, once per state. Curtis's layered approach (`when: { selected: false }` once, then `when: { state: Disabled }` on top) says it once and would cut most of Button's 156 variant values. The check needs to apply layers in order first.
 5. **One copy of the contracts.** the accounting app still tests against its own old JSON copies of Badge and Button. Its test should read these YAML files through `forApp` instead.
-6. **Sign off the guidance.** Everything is still `proposed`. While I'm at it, decide on the four deviations nobody has taken back to the design side yet (the Health section in the docs lists them).
+6. **Guidance for the six new components.** I signed off the other 16 on 2026-10-19. Carousel, Projects, Thumbs, Testimonials, TestimonialPicture and Divider still need theirs. While I'm at it, decide on the four deviations nobody has taken back to the design side yet (the Health section lists them).
 
 ## Next: grow the kit
 

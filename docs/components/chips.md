@@ -8,7 +8,7 @@
 |---|---|
 | Kind | component |
 | Contract | `review` · [chips.contract.yaml](../../contracts/chips.contract.yaml) |
-| Guidance | `proposed` |
+| Guidance | `agreed` |
 | Source | [Figma 139:317](https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=139-317) · read 2026-08-18 |
 | Implemented in | The portfolio site (`src/components/Chip.jsx`, `.chip`) |
 

@@ -8,7 +8,7 @@
 |---|---|
 | Kind | effect |
 | Contract | `review` · [effect-floating.contract.yaml](../../contracts/effect-floating.contract.yaml) |
-| Guidance | `proposed` |
+| Guidance | `agreed` |
 | Source | [Figma 231:2](https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=231-2) · read 2026-08-19 |
 | Implemented in | nowhere yet |
 

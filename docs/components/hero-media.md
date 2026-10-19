@@ -8,7 +8,7 @@
 |---|---|
 | Kind | pattern |
 | Contract | `review` · [hero-media.contract.yaml](../../contracts/hero-media.contract.yaml) |
-| Guidance | `proposed` |
+| Guidance | `agreed` |
 | Source | [Figma 245:2900](https://www.figma.com/design/pg02BcqlCQCVt6LzTAiPhD/?node-id=245-2900) · read 2026-10-18 |
 | Implemented in | nowhere yet |
 

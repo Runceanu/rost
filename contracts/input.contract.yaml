@@ -234,7 +234,7 @@ variants:
         background: { token: input/regular/default/background, value: "#060805" }
         border-color: { token: input/regular/default/outline, value: "#555" }
 guidance:
-  status: proposed
+  status: agreed
   use:
     - "Any single line of text: email, name, an amount, search."
   avoid:
