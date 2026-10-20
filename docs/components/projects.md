@@ -65,6 +65,10 @@ Every token this component uses, across all its variants.
 | `spacing/gap/small` | `8px` |
 | `spacing/outline/medium` | `2px` |
 | `spacing/radius/full` | `10000px` |
+| `spacing/size/2xsmall` | `16px` |
+| `spacing/size/3xsmall` | `12px` |
+| `spacing/size/small` | `24px` |
+| `spacing/size/small-medium` | `32px` |
 | `typography/label/font-size` | `12px` |
 | `typography/label/font-weight/regular` | `400` |
 | `typography/label/letter-spacing` | `0px` |
@@ -73,23 +77,5 @@ Every token this component uses, across all its variants.
 | `typography/sub-headline/font-weight/medium` | `500` |
 | `typography/sub-headline/letter-spacing` | `0px` |
 | `typography/sub-headline/line-height` | `48px` |
-
-## Tokens that should be there
-
-Plain numbers where a token fits exactly. They become tokens when I freeze the contracts.
-
-| Part | Property | Value | Suggest | |
-|---|---|---|---|---|
-| `left` | `gap` | `40px` | `spacing/gap/2xlarge` | exists |
-| `icons-dot` | `width` | `12px` | `spacing/size/3xsmall` | exists |
-| `icons-dot` | `height` | `12px` | `spacing/size/3xsmall` | exists |
-| `-actions` | `width` | `32px` | `spacing/size/small-medium` | exists |
-| `-actions` | `height` | `32px` | `spacing/size/small-medium` | exists |
-| `icons-arrow-left` | `width` | `16px` | `spacing/size/2xsmall` | exists |
-| `icons-arrow-left` | `height` | `16px` | `spacing/size/2xsmall` | exists |
-| `outline` | `height` | `2px` | `spacing/outline/medium` | exists |
-| `badge` | `height` | `24px` | `spacing/size/small` | exists |
-| `icons-lock` | `width` | `24px` | `spacing/size/small` | exists |
-| `icons-lock` | `height` | `24px` | `spacing/size/small` | exists |
 
 Every value of every variant: [reference.html#projects](../../reference.html#projects)

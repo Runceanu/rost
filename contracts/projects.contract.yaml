@@ -13,6 +13,7 @@ source:
   url: https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=100-185
   extractedAt: "2026-08-18"
   extractedBy: mcp
+  frozenAt: "2026-10-20"
 states: [ Default, Hover, Pressed, Focus, Disabled, Locked ]
 elements:
   root:
@@ -33,7 +34,7 @@ elements:
       display: { value: flex, assert: false }
       flex: { value: 1 0 0, assert: false }
       position: { value: relative, assert: false }
-      gap: { value: 40px, suggest: spacing/gap/2xlarge }
+      gap: { value: 40px, token: spacing/gap/2xlarge }
   label:
     styles:
       flex-shrink: { value: "0", assert: false }
@@ -65,8 +66,8 @@ elements:
     styles:
       flex-shrink: { value: "0", assert: false }
       position: { value: relative, assert: false }
-      width: { value: 12px, suggest: spacing/size/3xsmall }
-      height: { value: 12px, suggest: spacing/size/3xsmall }
+      width: { value: 12px, token: spacing/size/3xsmall }
+      height: { value: 12px, token: spacing/size/3xsmall }
   -actions:
     styles:
       justify-content: { value: center }
@@ -77,14 +78,14 @@ elements:
       gap: { token: spacing/gap/small, value: 8px }
       padding: { token: spacing/gap/none, value: 0px }
       border-radius: { token: spacing/radius/full, value: 10000px }
-      width: { value: 32px, suggest: spacing/size/small-medium }
-      height: { value: 32px, suggest: spacing/size/small-medium }
+      width: { value: 32px, token: spacing/size/small-medium }
+      height: { value: 32px, token: spacing/size/small-medium }
   icons-arrow-left:
     styles:
       flex-shrink: { value: "0", assert: false }
       position: { value: relative, assert: false }
-      width: { value: 16px, suggest: spacing/size/2xsmall }
-      height: { value: 16px, suggest: spacing/size/2xsmall }
+      width: { value: 16px, token: spacing/size/2xsmall }
+      height: { value: 16px, token: spacing/size/2xsmall }
   outline:
     styles:
       position: { value: absolute }
@@ -103,7 +104,7 @@ variants:
         color: { token: project/hover/label, value: "#00d669" }
       outline:
         background: { token: project/hover/outline, value: "#00d669" }
-        height: { value: 2px, suggest: spacing/outline/medium }
+        height: { value: 2px, token: spacing/outline/medium }
   - when: { state: Focus }
     figmaNode: "100:181"
     elements:
@@ -157,7 +158,7 @@ variants:
         flex-shrink: { value: "0", assert: false }
         position: { value: relative, assert: false }
         gap: { token: spacing/gap/3xsmall, value: 2px }
-        height: { value: 24px, suggest: spacing/size/small }
+        height: { value: 24px, token: spacing/size/small }
         min-width: { value: 24px }
         padding-bottom: { token: spacing/gap/3xsmall, value: 2px }
         padding-top: { token: spacing/gap/none, value: 0px }
@@ -193,5 +194,5 @@ variants:
       icons-lock:
         flex-shrink: { value: "0", assert: false }
         position: { value: relative, assert: false }
-        width: { value: 24px, suggest: spacing/size/small }
-        height: { value: 24px, suggest: spacing/size/small }
+        width: { value: 24px, token: spacing/size/small }
+        height: { value: 24px, token: spacing/size/small }

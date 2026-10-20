@@ -14,6 +14,7 @@ source:
   url: https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=93-587
   extractedAt: "2026-08-18"
   extractedBy: mcp
+  frozenAt: "2026-10-20"
 props:
   type:
     type: enum
@@ -34,8 +35,8 @@ elements:
       overflow: { value: clip }
       flex-shrink: { value: "0", assert: false }
       position: { value: relative, assert: false }
-      width: { value: 20px, suggest: spacing/size/xsmall }
-      height: { value: 20px, suggest: spacing/size/xsmall }
+      width: { value: 20px, token: spacing/size/xsmall }
+      height: { value: 20px, token: spacing/size/xsmall }
   union:
     styles:
       position: { value: absolute }

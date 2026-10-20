@@ -69,7 +69,7 @@ pending: …                  # what still needs reading
 
 | Section | Who writes it |
 |---|---|
-| `source`, `props`, `states`, `elements.*.styles`, `variants` | **Generated** by the Figma read (`bin/build-contracts.mjs`). Until the freeze, change Figma and read it again rather than editing these |
+| `source`, `props`, `states`, `elements.*.styles`, `variants` | **Generated** by the Figma read (`bin/build-contracts.mjs`) until the freeze. Every contract was frozen on 2026-10-20, so these are edited by hand now too |
 | `summary`, `category`, `related`, `guidance`, `implementations`, `deviations`, `elements.*.notes`, `props.*.notes`, `status` | **By hand.** A new read never touches them |
 
 Effects (`kind: effect`) and patterns (`kind: pattern`) have no variant grid, so I write those by hand from top to bottom. Same for anything that started in code (`source.tool: code`). There, the code is the source until Figma catches up.

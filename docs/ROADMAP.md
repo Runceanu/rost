@@ -9,13 +9,14 @@ Where the apps stood on 2026-10-19 (`npm run audit` on both):
 | The accounting app | 0 | 0 | 5 |
 | The portfolio site | 230 | 2 | 83 |
 
-## First: the freeze
+## Done: the freeze
 
-The Figma import is done, as of 2026-10-20: 22 contracts, all 192 variant screenshots in `baseline/`, the 17 icons in `assets/icons/` and the 24 illustrations in `assets/illustrations/`. What's left before the contracts take over:
+On 2026-10-20 the contracts became the source. The import was finished: 22 contracts, all 192 variant screenshots, the 17 icons and the 24 illustrations. `bin/freeze.mjs` turned all 122 suggestions into tokens (every one of them a token that already existed) and stamped each contract with the date. The Figma read skips them now, and I won't edit Figma to match. If I ever need Figma again for one component, `--unfreeze` is there, on purpose.
 
-- **Maybe, the eight other August components.** Badge had changed since August and I only found out by building it. Today's screenshots say the others haven't (same sizes), but a fresh read would confirm it and bring their icons along. It's about 100 reads, a day's Figma allowance.
-- **The freeze itself.** I decided this on 2026-10-19: `node bin/freeze.mjs --apply` turns every suggestion into a token and stamps each contract with the date. After that the Figma read skips them, and changes happen in the YAML. I won't go back and edit Figma to match.
-- If I can, before that: rename the sample client in Thumbs in Figma to "Client" and capture it again. Until then `baseline/thumbs/` stays on my machine, and so does `baseline/testimonials-pics/` (real people's photos).
+Still open from Figma:
+
+- Rename the sample client in Thumbs to "Client" and capture it again, so `baseline/thumbs/` can be public. `baseline/testimonials-pics/` stays private for good (real people's photos).
+- Seven values have no token and no reason yet. They're at the bottom of [Token coverage](TOKENS.md).
 
 ## Now: Rost in code
 

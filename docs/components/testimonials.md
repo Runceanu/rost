@@ -73,6 +73,9 @@ Every token this component uses, across all its variants.
 | `spacing/gap/small` | `8px` |
 | `spacing/outline/medium` | `2px` |
 | `spacing/radius/full` | `10000px` |
+| `spacing/size/2xsmall` | `16px` |
+| `spacing/size/large` | `56px` |
+| `spacing/size/small-medium` | `32px` |
 | `typography/paragraph/font-size` | `14px` |
 | `typography/paragraph/font-weight/regular` | `400` |
 | `typography/paragraph/letter-spacing` | `0px` |
@@ -81,19 +84,5 @@ Every token this component uses, across all its variants.
 | `typography/title/font-weight/medium` | `500` |
 | `typography/title/letter-spacing` | `0px` |
 | `typography/title/line-height` | `32px` |
-
-## Tokens that should be there
-
-Plain numbers where a token fits exactly. They become tokens when I freeze the contracts.
-
-| Part | Property | Value | Suggest | |
-|---|---|---|---|---|
-| `slot` | `width` | `56px` | `spacing/size/large` | exists |
-| `slot` | `height` | `56px` | `spacing/size/large` | exists |
-| `-actions` | `width` | `32px` | `spacing/size/small-medium` | exists |
-| `-actions` | `height` | `32px` | `spacing/size/small-medium` | exists |
-| `icons-arrow-left` | `width` | `16px` | `spacing/size/2xsmall` | exists |
-| `icons-arrow-left` | `height` | `16px` | `spacing/size/2xsmall` | exists |
-| `outline` | `height` | `2px` | `spacing/outline/medium` | exists |
 
 Every value of every variant: [reference.html#testimonials](../../reference.html#testimonials)

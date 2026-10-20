@@ -77,6 +77,8 @@ Every token this component uses, across all its variants.
 | `spacing/gap/none` | `0px` |
 | `spacing/gap/small` | `8px` |
 | `spacing/radius/small` | `8px` |
+| `spacing/size/2xsmall` | `16px` |
+| `spacing/size/xsmall` | `20px` |
 | `typography/body/font-size` | `16px` |
 | `typography/body/font-weight/medium` | `500` |
 | `typography/body/letter-spacing` | `0px` |
@@ -85,28 +87,5 @@ Every token this component uses, across all its variants.
 | `typography/label/font-weight/medium` | `500` |
 | `typography/label/letter-spacing` | `0px` |
 | `typography/label/line-height` | `14px` |
-
-## Tokens that should be there
-
-Plain numbers where a token fits exactly. They become tokens when I freeze the contracts.
-
-| Part | Property | Value | Suggest | |
-|---|---|---|---|---|
-| `icons-plus` | `width` | `16px` | `spacing/size/2xsmall` | exists |
-| `icons-plus` | `height` | `16px` | `spacing/size/2xsmall` | exists |
-| `icons-alarm` | `width` | `16px` | `spacing/size/2xsmall` | exists |
-| `icons-alarm` | `height` | `16px` | `spacing/size/2xsmall` | exists |
-| `icons-positive` | `width` | `16px` | `spacing/size/2xsmall` | exists |
-| `icons-positive` | `height` | `16px` | `spacing/size/2xsmall` | exists |
-| `icons-warning` | `width` | `16px` | `spacing/size/2xsmall` | exists |
-| `icons-warning` | `height` | `16px` | `spacing/size/2xsmall` | exists |
-| `icons-plus` | `width` | `20px` | `spacing/size/xsmall` | exists |
-| `icons-plus` | `height` | `20px` | `spacing/size/xsmall` | exists |
-| `icons-alarm` | `width` | `20px` | `spacing/size/xsmall` | exists |
-| `icons-alarm` | `height` | `20px` | `spacing/size/xsmall` | exists |
-| `icons-positive` | `width` | `20px` | `spacing/size/xsmall` | exists |
-| `icons-positive` | `height` | `20px` | `spacing/size/xsmall` | exists |
-| `icons-warning` | `width` | `20px` | `spacing/size/xsmall` | exists |
-| `icons-warning` | `height` | `20px` | `spacing/size/xsmall` | exists |
 
 Every value of every variant: [reference.html#inline-banner](../../reference.html#inline-banner)

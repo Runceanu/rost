@@ -13,6 +13,7 @@ source:
   url: https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=157-302
   extractedAt: "2026-08-18"
   extractedBy: mcp
+  frozenAt: "2026-10-20"
 states: [ Default, Hover, Pressed, Focus, Disabled ]
 elements:
   root: {}
@@ -56,7 +57,7 @@ variants:
         flex-direction: { value: column, assert: false }
         flex-shrink: { value: "0", assert: false }
         position: { value: relative, assert: false }
-        width: { value: 16px, suggest: spacing/size/2xsmall }
+        width: { value: 16px, token: spacing/size/2xsmall }
       label:
         flex-shrink: { value: "0", assert: false }
         width: { value: 100% }
@@ -115,7 +116,7 @@ variants:
         flex-direction: { value: column, assert: false }
         flex-shrink: { value: "0", assert: false }
         position: { value: relative, assert: false }
-        width: { value: 16px, suggest: spacing/size/2xsmall }
+        width: { value: 16px, token: spacing/size/2xsmall }
       label:
         flex-shrink: { value: "0", assert: false }
         width: { value: 100% }
@@ -180,7 +181,7 @@ variants:
         flex-direction: { value: column, assert: false }
         flex-shrink: { value: "0", assert: false }
         position: { value: relative, assert: false }
-        width: { value: 16px, suggest: spacing/size/2xsmall }
+        width: { value: 16px, token: spacing/size/2xsmall }
       label:
         flex-shrink: { value: "0", assert: false }
         width: { value: 100% }
@@ -248,7 +249,7 @@ variants:
         flex-direction: { value: column, assert: false }
         flex-shrink: { value: "0", assert: false }
         position: { value: relative, assert: false }
-        width: { value: 16px, suggest: spacing/size/2xsmall }
+        width: { value: 16px, token: spacing/size/2xsmall }
       label:
         flex-shrink: { value: "0", assert: false }
         width: { value: 100% }

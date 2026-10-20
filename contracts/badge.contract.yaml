@@ -15,6 +15,7 @@ source:
   url: https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=139-395
   extractedAt: "2026-08-18"
   extractedBy: mcp
+  frozenAt: "2026-10-20"
 props:
   status:
     type: enum
@@ -47,26 +48,26 @@ variants:
     figmaNode: "139:396"
     elements:
       root:
-        width: { value: 24px, suggest: spacing/size/small }
-        height: { value: 24px, suggest: spacing/size/small }
+        width: { value: 24px, token: spacing/size/small }
+        height: { value: 24px, token: spacing/size/small }
   - when: { status: Negative, size: Small }
     figmaNode: "139:433"
     elements:
       root:
-        width: { value: 24px, suggest: spacing/size/small }
-        height: { value: 24px, suggest: spacing/size/small }
+        width: { value: 24px, token: spacing/size/small }
+        height: { value: 24px, token: spacing/size/small }
   - when: { status: Positive, size: Small }
     figmaNode: "139:439"
     elements:
       root:
-        width: { value: 24px, suggest: spacing/size/small }
-        height: { value: 24px, suggest: spacing/size/small }
+        width: { value: 24px, token: spacing/size/small }
+        height: { value: 24px, token: spacing/size/small }
   - when: { status: Warning, size: Small }
     figmaNode: "139:445"
     elements:
       root:
-        width: { value: 24px, suggest: spacing/size/small }
-        height: { value: 24px, suggest: spacing/size/small }
+        width: { value: 24px, token: spacing/size/small }
+        height: { value: 24px, token: spacing/size/small }
   - when: { status: Default, size: Medium }
     figmaNode: "346:3994"
     elements:
@@ -107,8 +108,8 @@ variants:
       icons-dot:
         flex-shrink: { value: "0", assert: false }
         position: { value: relative, assert: false }
-        width: { value: 16px, suggest: spacing/size/2xsmall }
-        height: { value: 16px, suggest: spacing/size/2xsmall }
+        width: { value: 16px, token: spacing/size/2xsmall }
+        height: { value: 16px, token: spacing/size/2xsmall }
   - when: { status: Negative, size: Medium }
     figmaNode: "346:3999"
     elements:
@@ -150,8 +151,8 @@ variants:
       icons-dot:
         flex-shrink: { value: "0", assert: false }
         position: { value: relative, assert: false }
-        width: { value: 16px, suggest: spacing/size/2xsmall }
-        height: { value: 16px, suggest: spacing/size/2xsmall }
+        width: { value: 16px, token: spacing/size/2xsmall }
+        height: { value: 16px, token: spacing/size/2xsmall }
   - when: { status: Positive, size: Medium }
     figmaNode: "346:4004"
     elements:
@@ -193,8 +194,8 @@ variants:
       icons-dot:
         flex-shrink: { value: "0", assert: false }
         position: { value: relative, assert: false }
-        width: { value: 16px, suggest: spacing/size/2xsmall }
-        height: { value: 16px, suggest: spacing/size/2xsmall }
+        width: { value: 16px, token: spacing/size/2xsmall }
+        height: { value: 16px, token: spacing/size/2xsmall }
   - when: { status: Warning, size: Medium }
     figmaNode: "346:4009"
     elements:
@@ -236,8 +237,8 @@ variants:
       icons-dot:
         flex-shrink: { value: "0", assert: false }
         position: { value: relative, assert: false }
-        width: { value: 16px, suggest: spacing/size/2xsmall }
-        height: { value: 16px, suggest: spacing/size/2xsmall }
+        width: { value: 16px, token: spacing/size/2xsmall }
+        height: { value: 16px, token: spacing/size/2xsmall }
 guidance:
   status: proposed
   use:

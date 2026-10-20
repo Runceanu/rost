@@ -111,18 +111,10 @@ Every token this component uses, across all its variants.
 | `spacing/outline/small` | `1px` |
 | `spacing/radius/full` | `10000px` |
 | `spacing/size/medium-large` | `48px` |
+| `spacing/size/xsmall` | `20px` |
 | `typography/body/font-size` | `16px` |
 | `typography/body/font-weight/medium` | `500` |
 | `typography/body/letter-spacing` | `0px` |
 | `typography/body/line-height` | `22px` |
-
-## Tokens that should be there
-
-Plain numbers where a token fits exactly. They become tokens when I freeze the contracts.
-
-| Part | Property | Value | Suggest | |
-|---|---|---|---|---|
-| `icons-arrow-left` | `width` | `20px` | `spacing/size/xsmall` | exists |
-| `icons-arrow-left` | `height` | `20px` | `spacing/size/xsmall` | exists |
 
 Every value of every variant: [reference.html#pill-button](../../reference.html#pill-button)
