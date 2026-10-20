@@ -9,7 +9,7 @@
 | Kind | component |
 | Contract | `review` · [inline-banner.contract.yaml](../../contracts/inline-banner.contract.yaml) |
 | Guidance | `agreed` |
-| Source | [Figma 205:614](https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=205-614) · read 2026-08-18 |
+| Source | [Figma 205:614](https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=205-614) · read 2026-10-20 · frozen 2026-10-20 |
 | Implemented in | akount.ing (`src/components/InlineBanner.tsx`, `.ak-banner`) |
 
 ## Props
@@ -17,13 +17,16 @@
 | Prop | Type | Values | Default |
 |---|---|---|---|
 | `status` | enum | `Default` `Negative` `Positive` `Warning` | `Default` |
-| `size` | enum | `Medium` `Small` | `Medium` |
+| `size` | enum | `Medium` `Small` | `Small` |
+| `label` | slot |  |  |
+| `icon` | slot |  |  |
+| `showSlot` | boolean |  | `true` |
 
 ## Anatomy
 
 - `root`
 - `background`
-- `-slot`
+- `slot`
 - `icons-plus`
 - `label`
 - `text`
@@ -88,4 +91,4 @@ Every token this component uses, across all its variants.
 | `typography/label/letter-spacing` | `0px` |
 | `typography/label/line-height` | `14px` |
 
-Every value of every variant: [reference.html#inline-banner](../../reference.html#inline-banner)
+See it live, with every value of every variant: [rost.build/components/inline-banner](https://rost.build/components/inline-banner/)

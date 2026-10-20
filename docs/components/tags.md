@@ -9,7 +9,7 @@
 | Kind | component |
 | Contract | `review` · [tags.contract.yaml](../../contracts/tags.contract.yaml) |
 | Guidance | `agreed` |
-| Source | [Figma 91:362](https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=91-362) · read 2026-08-18 |
+| Source | [Figma 91:362](https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=91-362) · read 2026-08-19 · frozen 2026-10-20 |
 | Implemented in | nowhere yet |
 
 ## Props
@@ -82,4 +82,4 @@ Every token this component uses, across all its variants.
 | `typography/label/letter-spacing` | `0px` |
 | `typography/label/line-height` | `14px` |
 
-Every value of every variant: [reference.html#tags](../../reference.html#tags)
+See it live, with every value of every variant: [rost.build/components/tags](https://rost.build/components/tags/)

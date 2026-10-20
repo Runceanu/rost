@@ -9,7 +9,7 @@
 | Kind | component |
 | Contract | `review` · [toggle.contract.yaml](../../contracts/toggle.contract.yaml) |
 | Guidance | `agreed` |
-| Source | [Figma 168:1149](https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=168-1149) · read 2026-08-18 |
+| Source | [Figma 168:1149](https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=168-1149) · read 2026-08-19 · frozen 2026-10-20 |
 | Implemented in | akount.ing (`src/components/Toggle.tsx`, `.ak-toggle`) |
 
 ## Props
@@ -93,4 +93,4 @@ Every token this component uses, across all its variants.
 | `spacing/size/medium` | `40px` |
 | `spacing/size/xsmall` | `20px` |
 
-Every value of every variant: [reference.html#toggle](../../reference.html#toggle)
+See it live, with every value of every variant: [rost.build/components/toggle](https://rost.build/components/toggle/)

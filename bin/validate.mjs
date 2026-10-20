@@ -1,20 +1,18 @@
 #!/usr/bin/env node
 /**
- * Validates every contract: the schema, then what a schema cannot see —
+ * Validates every contract: the schema, then what a schema can't see:
  * references between files, variant conditions against declared props, and
  * token paths against tokens.css. Exits 1 on any error, so CI can gate on it.
  */
 import { readFileSync } from 'node:fs'
 import Ajv from 'ajv/dist/2020.js'
 import { read, ids } from './lib/contract-io.mjs'
+import { loadTokens, valuesOf } from './lib/kit.mjs'
 
 const schema = JSON.parse(readFileSync(new URL('../schema/component-contract.schema.json', import.meta.url), 'utf8'))
 const validate = new Ajv({ allErrors: true, validateFormats: false, allowUnionTypes: true }).compile(schema)
 
-// tokens.json keys lost their hyphens (`non-interactive` → `non/interactive`);
-// the CSS variable did not, so compare on that.
-const cssVars = new Set(Object.values(JSON.parse(readFileSync(new URL('../tokens/tokens.json', import.meta.url), 'utf8')).tokens).map((t) => t.cssVar))
-const resolves = (path) => cssVars.has('--' + path.replace(/\//g, '-'))
+const { resolves } = loadTokens()
 
 const all = ids()
 const errors = []
@@ -40,16 +38,14 @@ for (const id of all) {
     for (const part of Object.keys(v.elements ?? {})) if (!c.elements?.[part]) err(`variants[${i}] styles "${part}", which is not in elements`)
   }
 
-  const tokens = new Set()
-  for (const e of Object.values(c.elements ?? {})) for (const v of Object.values(e.styles ?? {})) if (v.token) tokens.add(v.token)
-  for (const v of c.variants ?? []) for (const s of Object.values(v.elements ?? {})) for (const x of Object.values(s)) if (x.token) tokens.add(x.token)
-  for (const t of tokens) if (!resolves(t)) warnings.push(`${id}: token ${t} does not resolve in tokens.css`)
+  const values = valuesOf(c)
+  for (const t of new Set(values.map(({ v }) => v.token).filter(Boolean))) if (!resolves(t)) warnings.push(`${id}: token ${t} isn't in tokens.css`)
+  // A suggestion of a token that doesn't exist is a proposal for a new one.
+  for (const t of new Set(values.map(({ v }) => v.suggest).filter(Boolean))) if (!resolves(t)) proposals.push(`${id}: proposes new token ${t}`)
 
-  // A suggestion of a token that does not exist is a proposal for a new one.
-  const suggests = new Set()
-  for (const e of Object.values(c.elements ?? {})) for (const v of Object.values(e.styles ?? {})) if (v.suggest) suggests.add(v.suggest)
-  for (const v of c.variants ?? []) for (const s of Object.values(v.elements ?? {})) for (const x of Object.values(s)) if (x.suggest) suggests.add(x.suggest)
-  for (const t of suggests) if (!resolves(t)) proposals.push(`${id}: proposes new token ${t}`)
+  // The checker finds an app's parts by these names, so they have to exist.
+  for (const [app, impl] of Object.entries(c.implementations ?? {}))
+    for (const part of Object.keys(impl.parts ?? {})) if (!c.elements?.[part]) err(`implementations.${app}.parts names "${part}", which is not in elements`)
 
   if (c.status === 'stable' && c.guidance?.status !== 'agreed') err('is stable, but its guidance is not agreed')
   if (c.status === 'stable' && c.pending) err('is stable, but still has pending reads')

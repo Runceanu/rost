@@ -18,14 +18,15 @@
   },
   "scripts": {
     "audit": "node bin/audit.mjs",
-    "docs": "node bin/validate.mjs && node bin/build-docs.mjs && node bin/build-reference.mjs",
+    "docs": "node bin/validate.mjs && node bin/build-docs.mjs",
     "build:contracts": "node bin/build-contracts.mjs",
     "validate": "node bin/validate.mjs",
-    "site": "npm run docs && cp assets/brand/favicon.svg web/public/favicon.svg && astro build --root web",
+    "site": "npm run docs && astro build --root web",
     "deploy": "npm run site && wrangler deploy",
     "preview": "wrangler dev",
     "css": "node bin/build-css.mjs",
     "test:visual": "node bin/visual-test.mjs",
+    "site:dev": "astro dev --root web --port 4321",
     "site:preview": "astro preview --root web --port 4321"
   },
   "dependencies": {

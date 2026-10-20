@@ -9,7 +9,7 @@
 | Kind | component |
 | Contract | `review` · [testimonials.contract.yaml](../../contracts/testimonials.contract.yaml) |
 | Guidance | **missing** |
-| Source | [Figma 144:67](https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=144-67) · read 2026-08-18 |
+| Source | [Figma 144:67](https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=144-67) · read 2026-10-19 · frozen 2026-10-20 |
 | Implemented in | nowhere yet |
 
 ## Not right yet
@@ -85,4 +85,4 @@ Every token this component uses, across all its variants.
 | `typography/title/letter-spacing` | `0px` |
 | `typography/title/line-height` | `32px` |
 
-Every value of every variant: [reference.html#testimonials](../../reference.html#testimonials)
+See it live, with every value of every variant: [rost.build/components/testimonials](https://rost.build/components/testimonials/)

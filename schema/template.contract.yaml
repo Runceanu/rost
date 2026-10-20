@@ -1,7 +1,8 @@
 # yaml-language-server: $schema=./component-contract.schema.json
-# Copy to contracts/<id>.contract.yaml. For a Figma component, run the read
-# instead (see docs/CONTRACT.md) and add only the authored sections by hand:
-# summary, category, related, guidance, implementations, deviations.
+# Copy to contracts/<id>.contract.yaml. The contracts are the source since the
+# freeze, so a new component can start here, by hand. If it starts in Figma,
+# read it instead (see docs/CONTRACT.md), then add what only a person can
+# write: summary, category, related, guidance, implementations, deviations.
 schemaVersion: 2
 id: example-button                 # kebab-case, same as the file name
 name: ExampleButton                # as named in Figma
@@ -14,6 +15,7 @@ source:
   tool: figma
   fileKey: 1Zy0wiWKXQAvsfDBX3KR0d
   nodeId: "0:0"                    # the component SET, not one variant
+  frozenAt: 2026-10-20             # from here on the contract wins over Figma
 props:
   type: { type: enum, values: [ Primary, Secondary ], default: Primary }
   selected: { type: boolean, default: false }
@@ -22,6 +24,10 @@ elements:                          # every part, in DOM order
   root:
     styles:                        # only what holds in EVERY variant
       height: { token: spacing/size/medium-large, value: 48px }
+      gap: { suggest: spacing/gap/medium, value: 12px }   # the token doesn't exist yet
+  icon:
+    styles:
+      width: { value: 18px, untokenised: "The icon's own size, drawn at 18." }
   label: {}
 variants:
   - when: { type: Secondary, state: Hover }

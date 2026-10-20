@@ -31,9 +31,10 @@ A contract writes down what was read, and from which node. The conformance check
 
 ```bash
 npm run validate    # schema, links between files, token names
-npm run docs        # validate, then rebuild docs/ and reference.html
+npm run docs        # validate, then rebuild docs/
 npm run site        # build the website (web/) from the contracts, components and docs
-npm run site:preview   # look at it locally on http://localhost:4321
+npm run site:dev    # work on the website, live, on http://localhost:4321
+npm run site:preview   # look at the built site on the same port
 npm run deploy      # build it and publish it to rost.build
 npm run css -- inline-banner           # write a component's CSS from its contract
 npm run test:visual -- inline-banner   # render it and compare with Figma, pixel by pixel

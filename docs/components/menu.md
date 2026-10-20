@@ -9,7 +9,7 @@
 | Kind | component |
 | Contract | `review` · [menu.contract.yaml](../../contracts/menu.contract.yaml) |
 | Guidance | `agreed` |
-| Source | [Figma 41:259](https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=41-259) · read 2026-08-18 |
+| Source | [Figma 41:259](https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=41-259) · read 2026-08-19 · frozen 2026-10-20 |
 | Implemented in | nowhere yet |
 
 ## States
@@ -68,4 +68,4 @@ Every token this component uses, across all its variants.
 | `typography/body/letter-spacing` | `0px` |
 | `typography/body/line-height` | `22px` |
 
-Every value of every variant: [reference.html#menu](../../reference.html#menu)
+See it live, with every value of every variant: [rost.build/components/menu](https://rost.build/components/menu/)

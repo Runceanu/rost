@@ -9,7 +9,7 @@
 | Kind | effect |
 | Contract | `review` · [effect-paper.contract.yaml](../../contracts/effect-paper.contract.yaml) |
 | Guidance | `agreed` |
-| Source | `runceanu-portfolio/src/components/HeroBackdrop.jsx` · read 2026-10-19 |
+| Source | `runceanu-portfolio/src/components/HeroBackdrop.jsx` · read 2026-10-19 · frozen 2026-10-20 |
 | Implemented in | runceanu.com (`src/components/HeroBackdrop.jsx`) |
 
 ## Anatomy
@@ -62,4 +62,4 @@ Every token this component uses, across all its variants.
 | `lens` | `press` | `radius 330px, power 1.7` | Motion tuning parameter (radius and falloff power). |
 | `pen` | `cadence` | `7-8s between sketches` | Timing of the sketch loop; a motion token group does not exist yet. |
 
-Every value of every variant: [reference.html#effect-paper](../../reference.html#effect-paper)
+See it live, with every value of every variant: [rost.build/components/effect-paper](https://rost.build/components/effect-paper/)

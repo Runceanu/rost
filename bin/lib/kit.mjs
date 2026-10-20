@@ -1,38 +1,110 @@
 /**
- * Loads the kit as one model: each YAML contract plus what is derived from it —
- * the apps that implement it, every token it asserts, and which of those fail
- * to resolve in tokens.css.
+ * The kit as one model: each YAML contract plus what follows from it (the apps
+ * that build it, every token it uses, and which of those tokens.css lacks).
  *
- * Both doc outputs read from here, so the markdown pages and reference.html
- * cannot disagree about what a component is.
+ * The markdown docs and the web/ site both read from here, so they can't
+ * disagree about what a component is. Helpers that more than one script
+ * needs live here too, so there's one copy of each.
  */
 import { readFileSync } from 'node:fs'
 import { read, ids } from './contract-io.mjs'
+
+// ── Tokens ──────────────────────────────────────────────────────────────────
+
+/**
+ * tokens.json lost its hyphens in the keys (`non-interactive` became
+ * `non/interactive`), so tokens are matched on the CSS variable, which is
+ * exact: `spacing/gap/small` is there when `--spacing-gap-small` is.
+ */
+export function loadTokens() {
+  const tokens = JSON.parse(readFileSync(new URL('../../tokens/tokens.json', import.meta.url), 'utf8')).tokens
+  const vars = new Set(Object.values(tokens).map((t) => t.cssVar))
+  return { tokens, vars, resolves: (path) => vars.has('--' + path.replace(/\//g, '-')) }
+}
+
+/** A scale, value to token path, read from tokens.json: `scale('spacing-gap')` gives `{ '8px': 'spacing/gap/small', … }`. */
+export function scale(prefix) {
+  const out = {}
+  for (const { cssVar, value } of Object.values(loadTokens().tokens))
+    if (cssVar.startsWith(`--${prefix}-`) && !(value in out)) out[value] = `${prefix.replace(/-/g, '/')}/${cssVar.slice(prefix.length + 3)}`
+  return out
+}
+
+export const isColour = (v) => /^(#[0-9a-f]{3,8}|rgba?\()/i.test(String(v).trim())
+
+// ── States ──────────────────────────────────────────────────────────────────
+
+/**
+ * Figma's interaction states, in order, and the CSS that triggers each. Any
+ * other value of `state` (Locked) is a content state the caller sets.
+ * src/conform.ts keeps its own copy, since it can't import this file.
+ */
+export const STATE_PSEUDO = { Default: '', Hover: ':hover', Pressed: ':active', Focus: ':focus-visible', Disabled: ':is(:disabled, [aria-disabled="true"])' }
+export const STATES = Object.keys(STATE_PSEUDO)
 
 /** `{ state: Hover, selected: true }` -> `state=Hover, selected=True`, as in Figma. */
 export const variantKey = (when) =>
   Object.entries(when).map(([k, v]) => `${k}=${v === true ? 'True' : v === false ? 'False' : v}`).join(', ')
 
-/** Every token path the contract asserts, with the value it resolves to. */
-function tokensOf(c) {
-  const out = new Map()
-  const add = (styles) => { for (const v of Object.values(styles ?? {})) if (v.token && !out.has(v.token)) out.set(v.token, v.value) }
-  for (const e of Object.values(c.elements ?? {})) add(e.styles)
-  for (const v of c.variants ?? []) for (const s of Object.values(v.elements ?? {})) add(s)
+// ── Values ──────────────────────────────────────────────────────────────────
+
+/** Every value in a contract, with where it sits. */
+export function valuesOf(c) {
+  const out = []
+  for (const [p, e] of Object.entries(c.elements ?? {})) for (const [k, v] of Object.entries(e.styles ?? {})) out.push({ part: p, prop: k, v })
+  for (const x of c.variants ?? []) for (const [p, s] of Object.entries(x.elements ?? {})) for (const [k, v] of Object.entries(s)) out.push({ part: p, prop: k, v, variant: variantKey(x.when) })
   return out
 }
 
-export function loadKit() {
-  // tokens.json keys were derived from CSS names, so `non-interactive` became
-  // `non/interactive`. Compare on the CSS variable, which is unambiguous.
-  const cssVars = new Set(Object.values(JSON.parse(readFileSync(new URL('../../tokens/tokens.json', import.meta.url), 'utf8')).tokens).map((t) => t.cssVar))
-  const resolves = (path) => cssVars.has('--' + path.replace(/\//g, '-'))
+/*
+ * How Figma builds a layer: positioning, centring, clipping, flex layout,
+ * which sides get a stroke. Nobody tokenises these, so they're never gaps.
+ * Of these, build-contracts marks display, flex-*, white-space, align-self
+ * and position: relative as not asserted; the rest the check still tests.
+ */
+const LAYOUT = new Set(['position', 'inset', 'border-sides', 'align-items', 'justify-content', 'overflow', 'background-attachment',
+  'display', 'flex-direction', 'flex-shrink', 'flex', 'white-space', 'text-align', 'align-self', 'vertical-align'])
 
+export const COVERAGE = [
+  ['token', 'Has a token'],
+  ['suggested', 'Token suggested'],
+  ['layout', 'How Figma builds it'],
+  ['sample', 'Figma frame size'],
+  ['reasoned', 'No token, on purpose'],
+  ['gap', 'Open gap'],
+]
+
+/** Why a value has a token, or doesn't. */
+export function classify(prop, v) {
+  if (v.token) return 'token'
+  if (v.suggest) return 'suggested'
+  if (LAYOUT.has(prop) || (/^(width|height)$/.test(prop) && v.value === '100%')) return 'layout'
+  if (v.assert === false) return 'sample'
+  if (v.untokenised) return 'reasoned'
+  return 'gap'
+}
+
+/** What the token column says for a value, the same on every page. */
+export function tokenCell(prop, v) {
+  const kind = classify(prop, v)
+  if (kind === 'token') return { kind, text: v.token }
+  if (kind === 'suggested') return { kind, text: `suggest ${v.suggest}` }
+  if (kind === 'layout') return { kind, text: 'layout' }
+  if (kind === 'sample') return { kind, text: 'Figma frame size' }
+  if (kind === 'reasoned') return { kind, text: `on purpose: ${v.untokenised}` }
+  return { kind, text: 'no token yet' }
+}
+
+// ── The kit ─────────────────────────────────────────────────────────────────
+
+export function loadKit() {
+  const { resolves } = loadTokens()
   return ids().map((id) => {
     const c = read(id)
     const implementations = Object.entries(c.implementations ?? {}).map(([app, i]) => ({ app, ...i }))
-    const tokens = tokensOf(c)
     const values = valuesOf(c)
+    const tokens = new Map()
+    for (const { v } of values) if (v.token && !tokens.has(v.token)) tokens.set(v.token, v.value)
     const coverage = Object.fromEntries(COVERAGE.map(([k]) => [k, 0]))
     for (const { prop, v } of values) coverage[classify(prop, v)]++
     return {
@@ -55,39 +127,8 @@ export function loadKit() {
   }).sort((a, b) => a.c.name.localeCompare(b.c.name) || a.id.localeCompare(b.id))
 }
 
-/*
- * Why a value has (or lacks) a token. Layout keywords are how Figma builds the
- * layer — absolute icon unions, centring, clipping, which sides get a stroke —
- * and no design system tokenises them, so they are not gaps.
- */
-const LAYOUT = new Set(['position', 'inset', 'border-sides', 'align-items', 'justify-content', 'overflow', 'background-attachment',
-  'display', 'flex-direction', 'flex-shrink', 'flex', 'white-space', 'text-align', 'align-self'])
-export const COVERAGE = [
-  ['token', 'Has a token'],
-  ['suggested', 'Token suggested'],
-  ['layout', 'How Figma builds it'],
-  ['sample', 'Figma frame size'],
-  ['reasoned', 'No token, on purpose'],
-  ['gap', 'Open gap'],
-]
-export function classify(prop, v) {
-  if (v.token) return 'token'
-  if (v.suggest) return 'suggested'
-  if (LAYOUT.has(prop) || (prop.match(/^(width|height)$/) && v.value === '100%')) return 'layout'
-  if (v.assert === false) return 'sample'
-  if (v.untokenised) return 'reasoned'
-  return 'gap'
-}
-
-/** Every value in a contract with where it sits: [part, prop, value, variant?]. */
-export function valuesOf(c) {
-  const out = []
-  for (const [p, e] of Object.entries(c.elements ?? {})) for (const [k, v] of Object.entries(e.styles ?? {})) out.push({ part: p, prop: k, v })
-  for (const x of c.variants ?? []) for (const [p, s] of Object.entries(x.elements ?? {})) for (const [k, v] of Object.entries(s)) out.push({ part: p, prop: k, v, variant: variantKey(x.when) })
-  return out
-}
-
 export const KINDS = [['component', 'Components'], ['pattern', 'Patterns'], ['effect', 'Effects']]
+// The app ids are also listed in the schema (implementations.propertyNames). Keep both in step.
 export const APP_LABEL = { 'a-kaunt': 'akount.ing', 'runceanu-portfolio': 'runceanu.com' }
 
 /** Display name: the Menu component and the Menu effect style share a Figma name. */
@@ -98,7 +139,7 @@ export const sourceLink = (c) =>
     ? { label: `Figma ${c.source.nodeId}`, href: c.source.url }
     : { label: `${c.source.repo}/${c.source.path}`, href: null }
 
-/** The `guidance` block as markdown — the one rendering both outputs share. */
+/** The `guidance` block as markdown, the one rendering every output shares. */
 export function guidanceMarkdown(g) {
   if (!g) return ''
   const label = (k) => k.replace(/([A-Z])/g, ' $1').replace(/^./, (s) => s.toUpperCase())

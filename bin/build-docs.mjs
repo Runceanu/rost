@@ -2,10 +2,10 @@
 /**
  * Writes docs/components/<id>.md for every contract and docs/README.md, the
  * catalogue. Markdown so it reads in the repo and in an agent's context alike;
- * reference.html is the same model rendered for browsing.
+ * rost.build (web/) renders the same model for browsing.
  */
 import { mkdirSync, writeFileSync, readdirSync, rmSync, readFileSync } from 'node:fs'
-import { loadKit, KINDS, APP_LABEL, title, sourceLink, guidanceMarkdown, COVERAGE, classify } from './lib/kit.mjs'
+import { loadKit, loadTokens, KINDS, APP_LABEL, title, sourceLink, guidanceMarkdown, COVERAGE, classify } from './lib/kit.mjs'
 
 const kit = loadKit()
 const out = new URL('../docs/components/', import.meta.url)
@@ -28,7 +28,7 @@ function page(e) {
     `| Kind | ${e.kind} |`,
     `| Contract | \`${c.status}\` · [${e.file}](../../contracts/${e.file}) |`,
     `| Guidance | ${g ? `\`${g.status}\`` : '**missing**'} |`,
-    `| Source | ${src.href ? `[${src.label}](${src.href})` : `\`${src.label}\``}${c.source.extractedAt ? ` · read ${c.source.extractedAt}` : ''} |`,
+    `| Source | ${src.href ? `[${src.label}](${src.href})` : `\`${src.label}\``}${c.source.extractedAt ? ` · read ${c.source.extractedAt}` : ''}${c.source.frozenAt ? ` · frozen ${c.source.frozenAt}` : ''} |`,
     `| Implemented in | ${e.implementations.length ? e.implementations.map((i) => `${APP_LABEL[i.app] ?? i.app} (\`${i.component}\`${i.root ? `, \`${i.root}\`` : ''})`).join('<br>') : 'nowhere yet'} |`,
     '',
   )
@@ -71,7 +71,7 @@ function page(e) {
 
   const suggested = [...new Map(e.values.filter((x) => x.v.suggest).map((x) => [`${x.part}.${x.prop}=${x.v.suggest}`, x])).values()]
   if (suggested.length) {
-    lines.push('## Tokens that should be there', '', 'Plain numbers where a token fits exactly. They become tokens when I freeze the contracts.', '', '| Part | Property | Value | Suggest | |', '|---|---|---|---|---|')
+    lines.push('## Tokens that should be there', '', 'A token I want here that `tokens.css` doesn\'t have yet. Creating it is the next step.', '', '| Part | Property | Value | Suggest | |', '|---|---|---|---|---|')
     for (const x of suggested) lines.push(`| \`${x.part}\` | \`${x.prop}\` | \`${cell(x.v.value)}\` | \`${x.v.suggest}\` | ${e.resolves(x.v.suggest) ? 'exists' : '**new token**'} |`)
     lines.push('')
   }
@@ -82,7 +82,7 @@ function page(e) {
     lines.push('')
   }
 
-  lines.push(`Every value of every variant: [reference.html#${e.id}](../../reference.html#${e.id})`, '')
+  lines.push(`See it live, with every value of every variant: [rost.build/components/${e.id}](https://rost.build/components/${e.id}/)`, '')
   return lines.join('\n')
 }
 
@@ -99,7 +99,7 @@ const catalogue = KINDS.filter(([k]) => by(k).length).map(([k, label]) => [
 
 const health = [
   ['Tokens missing from tokens.css', kit.filter((e) => e.unresolved.length).map((e) => `[${title(e)}](components/${e.id}.md): ${e.unresolved.map((t) => `\`${t}\``).join(', ')}`)],
-  ['Still waiting on a Figma read', kit.filter((e) => e.c.pending).map((e) => `[${title(e)}](components/${e.id}.md)`)],
+  ['Still open from Figma', kit.filter((e) => e.c.pending).map((e) => `[${title(e)}](components/${e.id}.md)`)],
   ['No guidance yet', by('component').filter((e) => !e.guidance).map((e) => `[${title(e)}](components/${e.id}.md)`)],
   ['Differences nobody has taken to design yet', kit.flatMap((e) => e.deviations.filter((d) => !d.raisedWithDesign).map((d) => `[${title(e)}](components/${e.id}.md)${d.app ? ` in ${APP_LABEL[d.app] ?? d.app}` : ''}: ${cell(d.what).split('. ')[0].replace(/\.$/, '')}`))],
 ].filter(([, items]) => items.length)
@@ -111,7 +111,7 @@ const counts = {
   guided: kit.filter((e) => e.guidance).length,
 }
 
-writeFileSync(new URL('../docs/README.md', import.meta.url), `${GENERATED('*').replace('contracts/*.contract.yaml', 'contracts/*.contract.yaml')}
+writeFileSync(new URL('../docs/README.md', import.meta.url), `${GENERATED('*')}
 
 # Rost: documentation
 
@@ -121,7 +121,7 @@ Rost started as a design system for my own needs and grew into a product of its 
 |---|---|
 | [How a contract works](CONTRACT.md) | What's in one, how it grows up, when it's done, how to add one |
 | [Components](#catalogue) | A page per component: how to use it, props, parts, tokens, where code differs |
-| [reference.html](../reference.html) | Every value of every variant, to browse |
+| [rost.build](https://rost.build) | Every component, live where it's built, with every value of every variant |
 | [Token coverage](TOKENS.md) | Why each value has a token or doesn't |
 | [Roadmap](ROADMAP.md) | What I'm doing next |
 
@@ -148,9 +148,8 @@ for (const e of kit) for (const x of e.values) if (x.v.suggest) {
   suggestions.set(k, row)
 }
 const figmaVars = JSON.parse(readFileSync(new URL('../registry/figma-variables.json', import.meta.url), 'utf8')).paths
-const cssText = readFileSync(new URL('../tokens/tokens.css', import.meta.url), 'utf8')
-const cssVars = new Set([...cssText.matchAll(/(--[\w-]+)\s*:/g)].map((m) => m[1]))
-const unexported = figmaVars.filter((p) => !cssVars.has('--' + p.replace(/[/ ]/g, '-')))
+const { vars } = loadTokens()
+const unexported = figmaVars.filter((p) => !vars.has('--' + p.replace(/[/ ]/g, '-')))
 const families = {}
 for (const p of unexported) { const f = p.split('/').slice(0, p.startsWith('spacing/base') ? 1 : 2).join('/'); families[f] = (families[f] ?? 0) + 1 }
 
@@ -164,7 +163,7 @@ Every value in every contract, sorted by why it has a token or doesn't. \`npm ru
 |---|---|---|---|
 ${COVERAGE.map(([k, label]) => `| ${label} | ${total[k]} | ${pct(total[k])} | ${{
   token: 'Uses a token, and the check tests it.',
-  suggested: 'A plain number where a token fits. It becomes a token at the freeze.',
+  suggested: 'A token I want that doesn\'t exist yet. The freeze turned every other suggestion into a token.',
   layout: 'How Figma builds the layer (position, inset, which sides get a stroke). Nothing to tokenise.',
   sample: 'A root size that is just the Figma frame. Written down, not checked.',
   reasoned: 'Plain on purpose, and the contract says why.',
@@ -179,11 +178,11 @@ ${kit.map((e) => `| [${title(e)}](components/${e.id}.md) | ${COVERAGE.map(([k]) 
 
 ## Tokens that should be there
 
-When I freeze the contracts, every one of these becomes the token. Anything marked **new** needs creating first.
+${suggestions.size ? `Tokens I want that \`tokens.css\` doesn't have yet. Anything marked **new** needs creating first.
 
 | Suggest | Value | Exists | Uses | Where |
 |---|---|---|---:|---|
-${[...suggestions.values()].sort((a, b) => b.n - a.n).map((r) => `| \`${r.token}\` | \`${r.value}\` | ${r.exists ? 'yes' : '**new**'} | ${r.n} | ${[...r.where].slice(0, 4).join(', ')}${r.where.size > 4 ? ` +${r.where.size - 4}` : ''} |`).join('\n')}
+${[...suggestions.values()].sort((a, b) => b.n - a.n).map((r) => `| \`${r.token}\` | \`${r.value}\` | ${r.exists ? 'yes' : '**new**'} | ${r.n} | ${[...r.where].slice(0, 4).join(', ')}${r.where.size > 4 ? ` +${r.where.size - 4}` : ''} |`).join('\n')}` : 'None. The freeze on 2026-10-20 turned all 122 suggestions into tokens.'}
 
 ## No token, on purpose
 

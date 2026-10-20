@@ -9,7 +9,7 @@
 | Kind | component |
 | Contract | `review` · [input.contract.yaml](../../contracts/input.contract.yaml) |
 | Guidance | `agreed` |
-| Source | [Figma 240:273](https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=240-273) · read 2026-08-18 |
+| Source | [Figma 240:273](https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=240-273) · read 2026-08-19 · frozen 2026-10-20 |
 | Implemented in | runceanu.com (`src/components/Input.jsx`, `.dsinput__box`)<br>akount.ing (`src/components/TextField.tsx`, `.ak-field__box`) |
 
 ## Props
@@ -109,4 +109,4 @@ Every token this component uses, across all its variants.
 | `typography/placeholder/letter-spacing` | `0px` |
 | `typography/placeholder/line-height` | `12px` |
 
-Every value of every variant: [reference.html#input](../../reference.html#input)
+See it live, with every value of every variant: [rost.build/components/input](https://rost.build/components/input/)

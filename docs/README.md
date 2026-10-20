@@ -2,13 +2,13 @@
 
 # Rost: documentation
 
-My design system, behind **runceanu.com**, **akount.ing** and whatever I build next. Start here.
+Rost started as a design system for my own needs and grew into a product of its own. Today it serves products across different industries. Start here.
 
 | Read | For |
 |---|---|
 | [How a contract works](CONTRACT.md) | What's in one, how it grows up, when it's done, how to add one |
 | [Components](#catalogue) | A page per component: how to use it, props, parts, tokens, where code differs |
-| [reference.html](../reference.html) | Every value of every variant, to browse |
+| [rost.build](https://rost.build) | Every component, live where it's built, with every value of every variant |
 | [Token coverage](TOKENS.md) | Why each value has a token or doesn't |
 | [Roadmap](ROADMAP.md) | What I'm doing next |
 
@@ -57,7 +57,7 @@ My design system, behind **runceanu.com**, **akount.ing** and whatever I build n
 
 What needs attention. It's built from the contracts, so it's only as fresh as the last `npm run docs`.
 
-### Still waiting on a Figma read
+### Still open from Figma
 
 - [Menu effect](components/effect-menu.md)
 

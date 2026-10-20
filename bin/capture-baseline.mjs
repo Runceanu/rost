@@ -17,6 +17,7 @@ const manifest = existsSync(manifestPath) ? JSON.parse(readFileSync(manifestPath
 let ok = 0, fail = 0, skipped = 0
 
 for (const comp of comps) {
+  if (!nodes[comp]) { console.log(`  unknown component "${comp}", skipped`); continue }
   const dir = new URL(`../baseline/${comp}/`, import.meta.url)
   mkdirSync(dir, { recursive: true })
   manifest[comp] = []

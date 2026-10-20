@@ -9,7 +9,7 @@
 | Kind | component |
 | Contract | `review` · [projects.contract.yaml](../../contracts/projects.contract.yaml) |
 | Guidance | **missing** |
-| Source | [Figma 100:185](https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=100-185) · read 2026-08-18 |
+| Source | [Figma 100:185](https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=100-185) · read 2026-10-19 · frozen 2026-10-20 |
 | Implemented in | nowhere yet |
 
 ## Not right yet
@@ -78,4 +78,4 @@ Every token this component uses, across all its variants.
 | `typography/sub-headline/letter-spacing` | `0px` |
 | `typography/sub-headline/line-height` | `48px` |
 
-Every value of every variant: [reference.html#projects](../../reference.html#projects)
+See it live, with every value of every variant: [rost.build/components/projects](https://rost.build/components/projects/)

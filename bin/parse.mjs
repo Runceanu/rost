@@ -3,15 +3,16 @@
  * Turns a variant's design context into contract values.
  *
  * The context is React + Tailwind arbitrary values, each carrying its token and
- * a fallback: `h-[var(--spacing\/size\/small,24px)]`. Both halves matter — the
+ * a fallback: `h-[var(--spacing\/size\/small,24px)]`. Both halves matter: the
  * path is what a contract asserts, the value is what conformance measures.
  */
 import { readFileSync, readdirSync, writeFileSync } from 'node:fs'
 import { join } from 'node:path'
+import { fileURLToPath, pathToFileURL } from 'node:url'
 
-const RAW = new URL('../raw/variants/', import.meta.url).pathname
+const RAW = fileURLToPath(new URL('../raw/variants/', import.meta.url))
 
-// Tailwind prefix -> CSS property. Order matters: longest prefix first.
+// Tailwind prefix -> CSS property, matched exactly.
 const PROPS = [
   ['rounded', 'border-radius'], ['leading', 'line-height'], ['tracking', 'letter-spacing'],
   ['opacity', 'opacity'], ['gap', 'gap'], ['size', 'size'],
@@ -24,6 +25,8 @@ const PROPS = [
   // Where a vector sits inside its icon frame: `inset-[3.9%_3.91%_4.43%_4.42%]`.
   ['inset', 'inset'],
   ['min-w', 'min-width'], ['min-h', 'min-height'],
+  // Offsets of an absolutely placed part, like Thumbs' panel: `bottom-[8px]`.
+  ['top', 'top'], ['right', 'right'], ['bottom', 'bottom'], ['left', 'left'],
 ]
 
 const unescape = (s) => s.replace(/\\+/g, '')
@@ -35,9 +38,9 @@ function parseClass(cls) {
   const pct = cls.match(/^([a-z-]+)-\[calc\(var\(--([^,]+),\s*([\d.]+)\)\/100\)\]$/)
   if (pct) {
     const hit = PROPS.find(([p]) => pct[1] === p)
-    if (hit) return { property: hit[1], token: unescape(pct[2]).replace(/\\/g, ''), value: String(Number(pct[3]) / 100) }
+    if (hit) return { property: hit[1], token: unescape(pct[2]), value: String(Number(pct[3]) / 100) }
   }
-  // The fallback may itself hold parentheses — `rgba(237,237,237,0.64)` — so it
+  // The fallback may itself hold parentheses (`rgba(237,237,237,0.64)`), so it
   // is read as "anything up to the var's own closing paren", one level deep.
   // Stopping at the first `)` dropped the token from every rgba border.
   const m = cls.match(/^([a-z-]+)-\[(?:(color|length|family-name):)?var\(--([^,]+),\s*((?:[^()]|\([^()]*\))+)\)\]$/)
@@ -56,9 +59,10 @@ function parseClass(cls) {
   if (property === 'border' && hint === 'length') property = 'border-width'
   else if (property === 'border') property = 'border-color'
   let value = unescape(rawValue).trim()
-  // Figma names the font file, `'General_Sans_Variable:Medium'`; CSS names the family.
-  if (property === 'font-family') value = `'${value.replace(/^'|'$/g, '').split(':')[0].replace(/_/g, ' ')}'`
-  return { property, token: unescape(rawToken).replace(/\\/g, ''), value }
+  // Figma names the font file, `'General_Sans_Variable:Medium'` (single or
+  // double quotes); CSS names the family.
+  if (property === 'font-family') value = `'${value.replace(/^['"]|['"]$/g, '').split(':')[0].replace(/_/g, ' ')}'`
+  return { property, token: unescape(rawToken), value }
 }
 
 function expand(entry) {
@@ -72,25 +76,11 @@ function expand(entry) {
   return out
 }
 
-/** The root element's class list, plus each named sub-part's. */
-/**
- * Each element is read as the slice of source from its `<div` to the next one.
- *
- * Scanning a className expression in place fights nested templates:
- * `${String.raw`...`}` flips quoting state twice, so brace counting truncates
- * the expression and drops the conditional tail — which is exactly where a
- * variant's distinguishing values live (a Badge's status colour appears there
- * and nowhere else). Slicing between elements sidesteps the nesting entirely:
- * whatever is in the slice belongs to that element.
- *
- * Ternaries inside a slice keep their TRUE branch, which in a per-variant read
- * is always that variant's own.
- */
 /**
  * Builds the scope a variant's conditionals are evaluated in.
  *
  * The generated code's own default props CANNOT be trusted to identify the
- * variant — reading node 25:80 (type=Secondary) still emits
+ * variant. Reading node 25:80 (type=Secondary) still emits
  * `type = "Primary"` in the signature. The variant name in the header is the
  * only reliable statement of what was read, so predicates are evaluated
  * against that.
@@ -108,7 +98,7 @@ function scopeFor(src, variantName) {
     const [k, v] = pair.split('=').map((x) => x?.trim())
     if (k && v !== undefined) scope[k] = v
   }
-  // `const isSecondary = type === "Secondary";` — evaluated in declaration order.
+  // `const isSecondary = type === "Secondary";`, evaluated in declaration order.
   for (const m of src.matchAll(/const\s+(\w+)\s*=\s*([^;]+);/g)) {
     const [, name, expr] = m
     try {
@@ -126,15 +116,20 @@ function scopeFor(src, variantName) {
  * component (Badge's only predicate is its own status) and quietly wrong for
  * every multi-axis one: a Secondary button's file contains BOTH
  * actions/primary/default/label and actions/secondary/regular/default/label,
- * and taking the first gave every button type the primary label colour — a
+ * and taking the first gave every button type the primary label colour, a
  * contract that looked complete and was wrong in the one place it mattered.
  */
-function resolveConditionals(text, scope) {
+/** true or false for a condition in the variant's scope, or null when it can't be told. */
+function evaluator(scope) {
   const keys = Object.keys(scope)
-  const evaluate = (cond) => {
+  return (cond) => {
     try { return !!new Function(...keys, `return (${cond})`)(...keys.map((k) => scope[k])) }
     catch { return null }
   }
+}
+
+function resolveConditionals(text, scope) {
+  const evaluate = evaluator(scope)
   let e = text
   for (let i = 0; i < 20; i++) {
     const next = e.replace(
@@ -157,15 +152,11 @@ function resolveConditionals(text, scope) {
  * A multi-axis component emits every type's markup side by side, each wrapped
  * in `{isPrimary && ...}`. Nothing about the elements themselves says which
  * applies, so reading the first `<p>` gave every button type the PRIMARY
- * label colour — the contract looked complete and was wrong exactly where the
+ * label colour. The contract looked complete and was wrong exactly where the
  * types differ. Evaluating the guard is the only thing that distinguishes them.
  */
 function stripFalseGuards(src, scope) {
-  const keys = Object.keys(scope)
-  const evaluate = (cond) => {
-    try { return !!new Function(...keys, `return (${cond})`)(...keys.map((k) => scope[k])) }
-    catch { return null }
-  }
+  const evaluate = evaluator(scope)
   let out = src
   for (let pass = 0; pass < 30; pass++) {
     const m = out.match(/\{\s*([A-Za-z_$][\w$]*(?:\s*&&\s*[A-Za-z_$][\w$]*)*)\s*&&/)
@@ -188,8 +179,17 @@ function stripFalseGuards(src, scope) {
   return out
 }
 
+/**
+ * Each element is read as the slice of source from its tag to the next one.
+ *
+ * Scanning a className expression in place fights nested templates:
+ * `${String.raw`...`}` flips quoting state twice, so brace counting truncates
+ * the expression and drops the conditional tail, which is exactly where a
+ * variant's own values live. Slicing between elements sidesteps the nesting:
+ * whatever is in the slice belongs to that element.
+ */
 function partsOf(src, scope) {
-  // <p> and <span> are elements too — the label is a <p>, and slicing only on
+  // <p> and <span> are elements too: the label is a <p>, and slicing only on
   // <div> folded its typography into whichever div preceded it (the icon's
   // vector node), which then failed conformance against a part that has no
   // counterpart in code at all.
@@ -226,7 +226,7 @@ function partsOf(src, scope) {
  * Bare utility classes that carry design decisions.
  *
  * Only arbitrary values (`border-[var(...)]`) were being read, so `border-l`
- * and `border-t` were dropped on the floor — and with them the fact that the
+ * and `border-t` were dropped on the floor, and with them the fact that the
  * toggle's outline is drawn on TWO sides, not four. The contract looked
  * complete and described a component the kit does not contain. A property that
  * is expressed as a bare class is still a property.
@@ -245,8 +245,6 @@ function structuralOf(classes) {
     const m = c.match(/^(border-[lrtb])-\[/)
     return m && SIDES[m[1]] ? [SIDES[m[1]]] : []
   }))]
-  // An explicit side list means the border is partial; no sides with a border
-  // colour set means all four.
   if (sides.length) out['border-sides'] = { value: sides.sort().join(' ') }
   // No side named, but a border colour or width set, means all four.
   else if (list.includes('border') || list.some((c) => /^border-\[/.test(c)))
@@ -303,7 +301,7 @@ export function parseVariant(file) {
   }
 }
 
-if (import.meta.url === `file://${process.argv[1]}`) {
+if (import.meta.url === pathToFileURL(process.argv[1]).href) {
   const byComp = {}
   for (const f of readdirSync(RAW).filter((f) => f.endsWith('.txt'))) {
     const v = parseVariant(join(RAW, f))
