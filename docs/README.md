@@ -12,7 +12,7 @@ Rost started as a design system for my own needs and grew into a product of its 
 | [Token coverage](TOKENS.md) | Why each value has a token or doesn't |
 | [Roadmap](ROADMAP.md) | What I'm doing next |
 
-**22** contracts, **0** stable. **17** have guidance, and I've signed off **15** of those.
+**22** contracts, **0** stable. **18** have guidance, and I've signed off **15** of those.
 
 ## Catalogue
 
@@ -24,7 +24,7 @@ Rost started as a design system for my own needs and grew into a product of its 
 | [Button](components/button.md) | A 48px button with just a label, in four levels of emphasis. | `review` | `agreed` | · |
 | [Carousel](components/carousel.md) | A card in the home page carousel: a number, a title and a short description. | `review` | · | · |
 | [Chip](components/chips.md) | A small outlined label you can click, for filters and quick choices. | `review` | `agreed` | runceanu.com |
-| [Divider](components/divider.md) | A thin line between things. | `review` | · | · |
+| [Divider](components/divider.md) | A thin line between things. | `review` | `proposed` | · |
 | [IconButton](components/icon-button.md) | A round button with only an icon, including the Project type used on case-study thumbnails. | `review` | `agreed` | · |
 | [InlineBanner](components/inline-banner.md) | A filled status pill with an icon and a label, in four statuses and two sizes. | `review` | `agreed` | akount.ing |
 | [Input](components/input.md) | A 56px text field with a floating label, an optional lock icon, a line of help text and an error state. | `review` | `agreed` | runceanu.com, akount.ing |
@@ -64,7 +64,6 @@ What needs attention. It's built from the contracts, so it's only as fresh as th
 ### No guidance yet
 
 - [Carousel](components/carousel.md)
-- [Divider](components/divider.md)
 - [Projects](components/projects.md)
 - [TestimonialPicture](components/testimonials-pics.md)
 - [Testimonials](components/testimonials.md)

@@ -18,8 +18,24 @@ source:
 elements:
   root:
     styles:
+      display: { value: block, assert: false }
       position: { value: relative, assert: false }
+      border: { value: none, assert: false, notes: "It's an `<hr>`, and browsers draw one with a border. The line is the background." }
+      height: { token: spacing/outline/small, value: 1px }
+      background: { token: non-interactive/foreground/quinary, value: "#282828" }
       width:
         value: 104px
         assert: false
-        notes: Just the size of the Figma frame. No token, and not something to copy.
+        notes: Just the size of the Figma frame. A divider is as wide as what it divides.
+guidance:
+  status: proposed
+  use:
+    - Between groups in a list or a menu, when space alone doesn't separate them.
+  avoid:
+    - Between every item. Space does that better.
+    - Holding up a layout. If the line goes, the layout should still read.
+  behaviour: |-
+    One 1px line in `non-interactive/foreground/quinary`, as wide as its container. Figma only has the horizontal one.
+  accessibility:
+    element: an `<hr>`, so screen readers hear a break. Pass `aria-hidden="true"` when it's only decoration.
+  content: None. It's a line.

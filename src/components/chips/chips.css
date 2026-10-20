@@ -1,0 +1,110 @@
+/* Generated from contracts/chips.contract.yaml by bin/build-css.mjs. Don't edit: change the contract and rebuild. */
+
+.rost-chips, .rost-chips * { box-sizing: border-box; margin: 0; }
+.rost-chips > img, .rost-chips [class*="__icons-"] > img { display: block; position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; }
+
+.rost-chips {
+  justify-content: center;
+  align-items: center;
+  display: inline-flex;
+  vertical-align: middle;
+  position: relative;
+  background: none;
+  border: none;
+  font: inherit;
+  cursor: pointer;
+  outline: none;
+  gap: var(--spacing-gap-small);
+  height: var(--spacing-size-small);
+  padding-bottom: var(--spacing-gap-3xsmall);
+  padding-top: var(--spacing-gap-none);
+  padding-left: var(--spacing-gap-small);
+  padding-right: var(--spacing-gap-small);
+  border-radius: var(--spacing-radius-full);
+}
+
+.rost-chips__label {
+  flex-shrink: 0;
+  white-space: nowrap;
+  text-align: center;
+  position: relative;
+  font-family: var(--font-family-base);
+  font-weight: var(--typography-label-font-weight-medium);
+  line-height: var(--typography-label-line-height);
+  font-size: var(--typography-label-font-size);
+  letter-spacing: var(--typography-label-letter-spacing);
+}
+
+.rost-chips__outline {
+  position: absolute;
+  inset: 0;
+  border-radius: var(--spacing-radius-full);
+  pointer-events: none;
+  border-style: solid;
+  border-width: var(--spacing-outline-small);
+}
+
+.rost-chips__focus-ring {
+  display: none;
+  position: absolute;
+  inset: -4px;
+  border-style: solid;
+  border-width: var(--spacing-outline-medium);
+  border-color: var(--actions-secondary-regular-focus-focus-ring);
+  border-radius: var(--spacing-radius-full);
+  pointer-events: none;
+}
+
+.rost-chips.rost-chips--status-default .rost-chips__label {
+  color: var(--actions-secondary-regular-default-label);
+}
+
+.rost-chips.rost-chips--status-default .rost-chips__outline {
+  border-color: var(--actions-secondary-regular-default-outline);
+  opacity: var(--opacity-gentle);
+}
+
+.rost-chips.rost-chips--status-default:hover .rost-chips__label {
+  color: var(--actions-secondary-regular-hover-label);
+}
+
+.rost-chips.rost-chips--status-default:hover .rost-chips__outline {
+  border-color: var(--actions-secondary-regular-hover-outline);
+  opacity: var(--opacity-strong);
+}
+
+.rost-chips.rost-chips--status-default:active .rost-chips__label {
+  color: var(--actions-secondary-regular-pressed-label);
+}
+
+.rost-chips.rost-chips--status-default:active .rost-chips__outline {
+  border-color: var(--actions-secondary-regular-pressed-outline);
+  opacity: var(--opacity-solid);
+}
+
+.rost-chips.rost-chips--status-default:is(:disabled, [aria-disabled="true"]) .rost-chips__label {
+  color: var(--actions-secondary-regular-disabled-label);
+}
+
+.rost-chips.rost-chips--status-default:is(:disabled, [aria-disabled="true"]) .rost-chips__outline {
+  border-color: var(--actions-secondary-regular-disabled-outline);
+  opacity: var(--opacity-solid);
+}
+
+.rost-chips.rost-chips--status-default:is(:disabled, [aria-disabled="true"]) {
+  opacity: var(--opacity-gentle);
+  cursor: default;
+}
+
+.rost-chips.rost-chips--status-default:focus-visible .rost-chips__label {
+  color: var(--actions-secondary-regular-focus-label);
+}
+
+.rost-chips.rost-chips--status-default:focus-visible .rost-chips__outline {
+  border-color: var(--actions-secondary-regular-focus-outline);
+  opacity: var(--opacity-gentle);
+}
+
+.rost-chips.rost-chips--status-default:focus-visible .rost-chips__focus-ring {
+  display: block;
+}

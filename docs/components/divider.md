@@ -8,16 +8,42 @@
 |---|---|
 | Kind | component |
 | Contract | `review` · [divider.contract.yaml](../../contracts/divider.contract.yaml) |
-| Guidance | **missing** |
+| Guidance | `proposed` |
 | Source | [Figma 39:111](https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=39-111) · read 2026-10-19 · frozen 2026-10-20 |
 | Implemented in | nowhere yet |
-
-## Not right yet
-
-- No guidance yet. It needs a `guidance` block (there's one to copy in `schema/template.contract.yaml`).
 
 ## Anatomy
 
 - `root`
+
+## When to use
+
+- Between groups in a list or a menu, when space alone doesn't separate them.
+
+## When not to use
+
+- Between every item. Space does that better.
+- Holding up a layout. If the line goes, the layout should still read.
+
+## Behaviour
+
+One 1px line in `non-interactive/foreground/quinary`, as wide as its container. Figma only has the horizontal one.
+
+## Accessibility
+
+- **Element**: an `<hr>`, so screen readers hear a break. Pass `aria-hidden="true"` when it's only decoration.
+
+## Content
+
+None. It's a line.
+
+## Tokens
+
+Every token this component uses, across all its variants.
+
+| Token | Resolves to |
+|---|---|
+| `non-interactive/foreground/quinary` | `#282828` |
+| `spacing/outline/small` | `1px` |
 
 See it live, with every value of every variant: [rost.build/components/divider](https://rost.build/components/divider/)

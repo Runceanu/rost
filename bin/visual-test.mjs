@@ -124,6 +124,16 @@ for (const id of ids) {
   const page = await browser.newPage({ deviceScaleFactor: 1 })
   await page.goto('file://' + join(work, 'index.html'))
   await page.evaluate(() => document.fonts.ready)
+  // Figma rounds a component that hugs its content up to whole pixels: Chip
+  // is 43px there and 42.4px in Chrome, with its text centred in the extra.
+  // Do the same here, on the component's own root, before comparing.
+  await page.evaluate((cls) => {
+    for (const el of document.querySelectorAll(`[data-node] .${cls}, [data-node] > .${cls}`)) {
+      const r = el.getBoundingClientRect()
+      if (!Number.isInteger(r.width)) el.style.width = `${Math.ceil(r.width)}px`
+      if (!Number.isInteger(r.height)) el.style.height = `${Math.ceil(r.height)}px`
+    }
+  }, `rost-${id}`)
   await page.waitForTimeout(SETTLE_MS)
 
   // Forced states go through the DevTools protocol, on the component's root.

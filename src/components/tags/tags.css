@@ -1,0 +1,83 @@
+/* Generated from contracts/tags.contract.yaml by bin/build-css.mjs. Don't edit: change the contract and rebuild. */
+
+.rost-tags, .rost-tags * { box-sizing: border-box; margin: 0; }
+.rost-tags > img, .rost-tags [class*="__icons-"] > img { display: block; position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; }
+
+.rost-tags {
+  justify-content: center;
+  align-items: center;
+  display: inline-flex;
+  vertical-align: middle;
+  position: relative;
+  text-decoration: none;
+  gap: var(--spacing-gap-small);
+  height: var(--spacing-size-xsmall);
+  padding-bottom: var(--spacing-gap-3xsmall);
+  padding-top: var(--spacing-gap-none);
+  padding-left: var(--spacing-gap-small);
+  padding-right: var(--spacing-gap-small);
+  border-radius: var(--spacing-radius-xsmall);
+  background: var(--actions-secondary-regular-default-background);
+  outline: none;
+}
+
+.rost-tags__label {
+  flex-shrink: 0;
+  white-space: nowrap;
+  text-align: center;
+  position: relative;
+  font-family: var(--font-family-base);
+  font-weight: var(--typography-label-font-weight-medium);
+  line-height: var(--typography-label-line-height);
+  color: var(--actions-secondary-regular-default-label);
+  font-size: var(--typography-label-font-size);
+  letter-spacing: var(--typography-label-letter-spacing);
+}
+
+.rost-tags__focus-ring {
+  display: none;
+  position: absolute;
+  inset: -4px;
+  border-style: solid;
+  border-width: var(--spacing-outline-medium);
+  border-color: var(--actions-secondary-regular-focus-focus-ring);
+  border-radius: var(--spacing-radius-small);
+  pointer-events: none;
+}
+
+:is(a[href], button).rost-tags.rost-tags--type-primary:hover {
+  background: var(--actions-secondary-regular-hover-background);
+}
+
+:is(a[href], button).rost-tags.rost-tags--type-primary:hover .rost-tags__label {
+  color: var(--actions-secondary-regular-hover-label);
+}
+
+:is(a[href], button).rost-tags.rost-tags--type-primary:active {
+  background: var(--actions-secondary-regular-pressed-background);
+}
+
+:is(a[href], button).rost-tags.rost-tags--type-primary:active .rost-tags__label {
+  color: var(--actions-secondary-regular-pressed-label);
+}
+
+:is(a[href], button).rost-tags.rost-tags--type-primary:focus-visible {
+  background: var(--actions-secondary-regular-focus-background);
+}
+
+:is(a[href], button).rost-tags.rost-tags--type-primary:focus-visible .rost-tags__label {
+  color: var(--actions-secondary-regular-focus-label);
+}
+
+:is(a[href], button).rost-tags.rost-tags--type-primary:focus-visible .rost-tags__focus-ring {
+  display: block;
+}
+
+.rost-tags.rost-tags--type-primary:is(:disabled, [aria-disabled="true"]) {
+  background: var(--actions-secondary-regular-disabled-background);
+  opacity: var(--opacity-gentle);
+}
+
+.rost-tags.rost-tags--type-primary:is(:disabled, [aria-disabled="true"]) .rost-tags__label {
+  color: var(--actions-secondary-regular-disabled-label);
+}

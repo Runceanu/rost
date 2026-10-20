@@ -25,8 +25,7 @@
 ## Anatomy
 
 - `root`
-- `label`
-- `text`
+- `label`: Figma calls it `text` in every state but Default. It's the same layer.
 - `focus-ring`
 
 ## When to use
