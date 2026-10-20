@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /** Renders every contract, with its guidance, as one browsable reference page. */
-import { writeFileSync } from 'node:fs'
+import { writeFileSync, existsSync } from 'node:fs'
 import { loadKit, KINDS, APP_LABEL, title, sourceLink, guidanceMarkdown, classify } from './lib/kit.mjs'
 
 const kit = loadKit()
@@ -85,6 +85,7 @@ const sections = kit.map((e) => {
         <div class="meta">
           ${src.href ? `<a class="node" href="${esc(src.href)}" target="_blank" rel="noreferrer">${esc(src.label)}</a>` : `<code class="node node--code">${esc(src.label)}</code>`}
           <span class="stat stat--${esc(c.status)}">contract: ${esc(c.status)}</span>
+          ${existsSync(new URL(`../src/components/${e.id}/`, import.meta.url)) ? '<span class="stat stat--stable">in code</span>' : ''}
           <span class="stat">guidance: ${esc(g?.status ?? 'missing')}</span>
           ${impl}
           ${nVar ? `<span class="stat">${(c.variants ?? []).length} variants</span>` : ''}
@@ -108,7 +109,8 @@ const sections = kit.map((e) => {
     </section>`
 }).join('')
 
-const nav = KINDS.filter(([k]) => kit.some((e) => e.kind === k)).map(([k, label]) =>
+const built = kit.filter((e) => existsSync(new URL(`../src/components/${e.id}/`, import.meta.url)))
+const nav = `<div class="nt">Rost</div><a href="#home">Home</a>` + KINDS.filter(([k]) => kit.some((e) => e.kind === k)).map(([k, label]) =>
   `<div class="nt">${label}</div>` + kit.filter((e) => e.kind === k)
     .map((e) => `<a href="#${e.id}">${esc(title(e))}<span>${e.unresolved.length || e.c.pending ? '!' : (e.c.variants ?? []).length || ''}</span></a>`).join('')).join('')
 const totalVariants = contracts.reduce((s, { c }) => s + (c.variants ?? []).length, 0)
@@ -118,7 +120,7 @@ const totalValues = contracts.reduce((s, e) =>
 
 writeFileSync(new URL('../reference.html', import.meta.url), `<meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Rost Reference</title>
+<title>Rost Design System</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
@@ -161,7 +163,15 @@ nav a:hover{background:var(--surface);color:var(--fg)}
 nav a span{font-family:var(--mono);font-size:11px;color:var(--fg-3);font-variant-numeric:tabular-nums}
 main{padding:32px 24px 96px;max-width:980px}
 @media (min-width:1000px){main{padding:56px 40px 120px}}
-.hero{border-bottom:1px solid var(--line);padding-bottom:32px;margin-bottom:8px}
+.home{border-bottom:1px solid var(--line);padding-bottom:36px;margin-bottom:8px;scroll-margin-top:24px}
+.lede{font-size:clamp(18px,2.4vw,21px);line-height:1.45;color:var(--fg);max-width:46ch;margin:0 0 14px;text-wrap:pretty}
+.home .sub{max-width:64ch}
+.home .sub a{color:var(--accent)}
+.home code{font-family:var(--mono);font-size:.9em}
+.links{display:flex;flex-wrap:wrap;gap:8px;margin:4px 0 28px}
+.links a{font-size:13.5px;padding:6px 12px;border-radius:999px;border:1px solid var(--line);color:var(--fg-2);text-decoration:none}
+.links a:hover{border-color:color-mix(in srgb,var(--accent) 40%,transparent);color:var(--fg)}
+.links a:first-child{background:var(--accent);border-color:var(--accent);color:#060805}
 h1{font-family:var(--disp);font-weight:700;letter-spacing:-.035em;line-height:1.02;
   font-size:clamp(34px,6vw,54px);margin:0 0 14px;text-wrap:balance}
 .sub{color:var(--fg-2);max-width:62ch;margin:0 0 22px}
@@ -240,19 +250,28 @@ a:focus-visible,.node:focus-visible{outline:2px solid var(--accent);outline-offs
     ${nav}
   </nav>
   <main>
-    <div class="hero">
-      <h1>Rost Reference</h1>
-      <p class="sub">Every value in my design system, read straight from Figma, one variant at a time. For each
-      component you'll see what never changes, then what each variant changes. I keep the token name next to every
-      value on purpose: six tokens here all come out as <code style="font-family:var(--mono)">#3a3a3a</code>,
-      and the colour alone can't tell you which one is right.</p>
+    <section class="home" id="home">
+      <div class="kind">Design system</div>
+      <h1>Rost</h1>
+      <p class="lede">My design system, run as its own product. runceanu.com and akount.ing are built on it, and so will whatever I make next.</p>
+      <p class="sub"><i>Rost</i> is Romanian. It means purpose, or order: the sense that something is where it belongs. Every component here is a contract, one file that says what the component is, which tokens it uses, how to use it, and where my apps build it. The contracts are the source now. Figma was where it started.</p>
+      <div class="links">
+        <a href="https://github.com/Runceanu/rost" target="_blank" rel="noreferrer">GitHub</a>
+        <a href="https://github.com/Runceanu/rost/blob/master/docs/CONTRACT.md" target="_blank" rel="noreferrer">How a contract works</a>
+        <a href="https://github.com/Runceanu/rost/blob/master/docs/TOKENS.md" target="_blank" rel="noreferrer">Token coverage</a>
+        <a href="https://github.com/Runceanu/rost/blob/master/docs/ROADMAP.md" target="_blank" rel="noreferrer">What's next</a>
+      </div>
       <div class="counts">
         <div><b>${contracts.length}</b><span>contracts</span></div>
-        <div><b>${kit.filter((e) => e.guidance).length}</b><span>with guidance</span></div>
-        <div><b>${totalVariants}</b><span>variants read</span></div>
-        <div><b>${totalValues}</b><span>values captured</span></div>
+        <div><b>${built.length}</b><span>built in code</span></div>
+        <div><b>${totalVariants}</b><span>variants</span></div>
+        <div><b>${totalValues}</b><span>values</span></div>
       </div>
-    </div>
+      <h3>In code so far</h3>
+      <p class="sub">${built.length ? built.map((e) => `<a href="#${e.id}">${esc(title(e))}</a>`).join(', ') + '. Built from their contracts, and checked pixel by pixel against Figma.' : 'Nothing yet.'} The rest are contracts for now, and they come next, one at a time.</p>
+      <h3>Reading this page</h3>
+      <p class="sub">Each component starts with how to use it. Then the values: what never changes, then what each variant changes. I keep the token name next to every value on purpose: six tokens here all come out as <code>#3a3a3a</code>, and the colour alone can't tell you which one is right.</p>
+    </section>
     ${sections}
   </main>
 </div>`)

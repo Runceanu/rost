@@ -6,7 +6,7 @@ This is my design system, and I run it like its own product. runceanu.com and ak
 
 Each component is a **contract**: one YAML file that says what the component is, which values it uses, how to use it, and where each of my apps implements it. Apps build against that one file instead of keeping their own copy.
 
-**Start with the docs: [docs/README.md](docs/README.md).** That's the catalogue, plus [how a contract works](docs/CONTRACT.md) and [what's next](docs/ROADMAP.md). If you'd rather browse, the same content with every value of every variant lives at [rost.silviu-runceanu.workers.dev](https://rost.silviu-runceanu.workers.dev).
+**Start with the docs: [docs/README.md](docs/README.md).** That's the catalogue, plus [how a contract works](docs/CONTRACT.md) and [what's next](docs/ROADMAP.md). If you'd rather browse, the same content with every value of every variant lives at [rost.build](https://rost.build).
 
 ```
 contracts/  one YAML contract per component

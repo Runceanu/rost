@@ -42,5 +42,10 @@
   },
   "peerDependencies": {
     "react": ">=19"
+  },
+  "homepage": "https://rost.build",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Runceanu/rost.git"
   }
 }

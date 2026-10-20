@@ -1,6 +1,6 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Rost Reference</title>
+<title>Rost Design System</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
@@ -43,7 +43,15 @@ nav a:hover{background:var(--surface);color:var(--fg)}
 nav a span{font-family:var(--mono);font-size:11px;color:var(--fg-3);font-variant-numeric:tabular-nums}
 main{padding:32px 24px 96px;max-width:980px}
 @media (min-width:1000px){main{padding:56px 40px 120px}}
-.hero{border-bottom:1px solid var(--line);padding-bottom:32px;margin-bottom:8px}
+.home{border-bottom:1px solid var(--line);padding-bottom:36px;margin-bottom:8px;scroll-margin-top:24px}
+.lede{font-size:clamp(18px,2.4vw,21px);line-height:1.45;color:var(--fg);max-width:46ch;margin:0 0 14px;text-wrap:pretty}
+.home .sub{max-width:64ch}
+.home .sub a{color:var(--accent)}
+.home code{font-family:var(--mono);font-size:.9em}
+.links{display:flex;flex-wrap:wrap;gap:8px;margin:4px 0 28px}
+.links a{font-size:13.5px;padding:6px 12px;border-radius:999px;border:1px solid var(--line);color:var(--fg-2);text-decoration:none}
+.links a:hover{border-color:color-mix(in srgb,var(--accent) 40%,transparent);color:var(--fg)}
+.links a:first-child{background:var(--accent);border-color:var(--accent);color:#060805}
 h1{font-family:var(--disp);font-weight:700;letter-spacing:-.035em;line-height:1.02;
   font-size:clamp(34px,6vw,54px);margin:0 0 14px;text-wrap:balance}
 .sub{color:var(--fg-2);max-width:62ch;margin:0 0 22px}
@@ -119,22 +127,31 @@ a:focus-visible,.node:focus-visible{outline:2px solid var(--accent);outline-offs
 </style>
 <div class="wrap">
   <nav>
-    <div class="nt">Components</div><a href="#badge">Badge<span>8</span></a><a href="#button">Button<span>20</span></a><a href="#carousel">Carousel<span>5</span></a><a href="#chips">Chip<span>5</span></a><a href="#divider">Divider<span></span></a><a href="#icon-button">IconButton<span>20</span></a><a href="#inline-banner">InlineBanner<span>8</span></a><a href="#input">Input<span>14</span></a><a href="#menu">Menu<span>5</span></a><a href="#pill-button">PillButton<span>20</span></a><a href="#projects">Projects<span>6</span></a><a href="#tags">Tag<span>5</span></a><a href="#testimonials-pics">TestimonialPicture<span>8</span></a><a href="#testimonials">Testimonials<span>10</span></a><a href="#thumbs">Thumbs<span>6</span></a><a href="#toggle">Toggle<span>10</span></a><div class="nt">Patterns</div><a href="#hero-media">Hero Media<span></span></a><div class="nt">Effects</div><a href="#effect-floating">Floating effect<span></span></a><a href="#effect-lock-frame">Lock frame effect<span></span></a><a href="#effect-menu">Menu effect<span>!</span></a><a href="#effect-paper">Paper effect<span></span></a><a href="#effect-thumb">Thumb effect<span></span></a>
+    <div class="nt">Rost</div><a href="#home">Home</a><div class="nt">Components</div><a href="#badge">Badge<span>8</span></a><a href="#button">Button<span>20</span></a><a href="#carousel">Carousel<span>5</span></a><a href="#chips">Chip<span>5</span></a><a href="#divider">Divider<span></span></a><a href="#icon-button">IconButton<span>20</span></a><a href="#inline-banner">InlineBanner<span>8</span></a><a href="#input">Input<span>14</span></a><a href="#menu">Menu<span>5</span></a><a href="#pill-button">PillButton<span>20</span></a><a href="#projects">Projects<span>6</span></a><a href="#tags">Tag<span>5</span></a><a href="#testimonials-pics">TestimonialPicture<span>8</span></a><a href="#testimonials">Testimonials<span>10</span></a><a href="#thumbs">Thumbs<span>6</span></a><a href="#toggle">Toggle<span>10</span></a><div class="nt">Patterns</div><a href="#hero-media">Hero Media<span></span></a><div class="nt">Effects</div><a href="#effect-floating">Floating effect<span></span></a><a href="#effect-lock-frame">Lock frame effect<span></span></a><a href="#effect-menu">Menu effect<span>!</span></a><a href="#effect-paper">Paper effect<span></span></a><a href="#effect-thumb">Thumb effect<span></span></a>
   </nav>
   <main>
-    <div class="hero">
-      <h1>Rost Reference</h1>
-      <p class="sub">Every value in my design system, read straight from Figma, one variant at a time. For each
-      component you'll see what never changes, then what each variant changes. I keep the token name next to every
-      value on purpose: six tokens here all come out as <code style="font-family:var(--mono)">#3a3a3a</code>,
-      and the colour alone can't tell you which one is right.</p>
+    <section class="home" id="home">
+      <div class="kind">Design system</div>
+      <h1>Rost</h1>
+      <p class="lede">My design system, run as its own product. runceanu.com and akount.ing are built on it, and so will whatever I make next.</p>
+      <p class="sub"><i>Rost</i> is Romanian. It means purpose, or order: the sense that something is where it belongs. Every component here is a contract, one file that says what the component is, which tokens it uses, how to use it, and where my apps build it. The contracts are the source now. Figma was where it started.</p>
+      <div class="links">
+        <a href="https://github.com/Runceanu/rost" target="_blank" rel="noreferrer">GitHub</a>
+        <a href="https://github.com/Runceanu/rost/blob/master/docs/CONTRACT.md" target="_blank" rel="noreferrer">How a contract works</a>
+        <a href="https://github.com/Runceanu/rost/blob/master/docs/TOKENS.md" target="_blank" rel="noreferrer">Token coverage</a>
+        <a href="https://github.com/Runceanu/rost/blob/master/docs/ROADMAP.md" target="_blank" rel="noreferrer">What's next</a>
+      </div>
       <div class="counts">
         <div><b>22</b><span>contracts</span></div>
-        <div><b>16</b><span>with guidance</span></div>
-        <div><b>150</b><span>variants read</span></div>
-        <div><b>2453</b><span>values captured</span></div>
+        <div><b>2</b><span>built in code</span></div>
+        <div><b>150</b><span>variants</span></div>
+        <div><b>2453</b><span>values</span></div>
       </div>
-    </div>
+      <h3>In code so far</h3>
+      <p class="sub"><a href="#badge">Badge</a>, <a href="#inline-banner">InlineBanner</a>. Built from their contracts, and checked pixel by pixel against Figma. The rest are contracts for now, and they come next, one at a time.</p>
+      <h3>Reading this page</h3>
+      <p class="sub">Each component starts with how to use it. Then the values: what never changes, then what each variant changes. I keep the token name next to every value on purpose: six tokens here all come out as <code>#3a3a3a</code>, and the colour alone can't tell you which one is right.</p>
+    </section>
     
     <section class="comp" id="badge">
       <header class="ch">
@@ -144,6 +161,7 @@ a:focus-visible,.node:focus-visible{outline:2px solid var(--accent);outline-offs
         <div class="meta">
           <a class="node" href="https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=139-395" target="_blank" rel="noreferrer">Figma 139:395</a>
           <span class="stat stat--review">contract: review</span>
+          <span class="stat stat--stable">in code</span>
           <span class="stat">guidance: proposed</span>
           <code class="impl">runceanu.com .badge</code><code class="impl">akount.ing .ak-badge</code>
           <span class="stat">8 variants</span>
@@ -389,6 +407,7 @@ a:focus-visible,.node:focus-visible{outline:2px solid var(--accent);outline-offs
         <div class="meta">
           <a class="node" href="https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=39-38" target="_blank" rel="noreferrer">Figma 39:38</a>
           <span class="stat stat--review">contract: review</span>
+          
           <span class="stat">guidance: agreed</span>
           <span class="impl impl--none">not built yet</span>
           <span class="stat">20 variants</span>
@@ -616,6 +635,7 @@ a:focus-visible,.node:focus-visible{outline:2px solid var(--accent);outline-offs
         <div class="meta">
           <a class="node" href="https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=157-302" target="_blank" rel="noreferrer">Figma 157:302</a>
           <span class="stat stat--review">contract: review</span>
+          
           <span class="stat">guidance: missing</span>
           <span class="impl impl--none">not built yet</span>
           <span class="stat">5 variants</span>
@@ -999,6 +1019,7 @@ a:focus-visible,.node:focus-visible{outline:2px solid var(--accent);outline-offs
         <div class="meta">
           <a class="node" href="https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=139-317" target="_blank" rel="noreferrer">Figma 139:317</a>
           <span class="stat stat--review">contract: review</span>
+          
           <span class="stat">guidance: agreed</span>
           <code class="impl">runceanu.com .chip</code>
           <span class="stat">5 variants</span>
@@ -1088,6 +1109,7 @@ a:focus-visible,.node:focus-visible{outline:2px solid var(--accent);outline-offs
         <div class="meta">
           <a class="node" href="https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=39-111" target="_blank" rel="noreferrer">Figma 39:111</a>
           <span class="stat stat--review">contract: review</span>
+          
           <span class="stat">guidance: missing</span>
           <span class="impl impl--none">not built yet</span>
           
@@ -1117,6 +1139,7 @@ a:focus-visible,.node:focus-visible{outline:2px solid var(--accent);outline-offs
         <div class="meta">
           <a class="node" href="https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=231-2" target="_blank" rel="noreferrer">Figma 231:2</a>
           <span class="stat stat--review">contract: review</span>
+          
           <span class="stat">guidance: agreed</span>
           <span class="impl impl--none">not built yet</span>
           
@@ -1146,6 +1169,7 @@ a:focus-visible,.node:focus-visible{outline:2px solid var(--accent);outline-offs
         <div class="meta">
           <a class="node" href="https://www.figma.com/design/pg02BcqlCQCVt6LzTAiPhD/?node-id=245-2900" target="_blank" rel="noreferrer">Figma 245:2900</a>
           <span class="stat stat--review">contract: review</span>
+          
           <span class="stat">guidance: agreed</span>
           <span class="impl impl--none">not built yet</span>
           
@@ -1175,6 +1199,7 @@ a:focus-visible,.node:focus-visible{outline:2px solid var(--accent);outline-offs
         <div class="meta">
           <a class="node" href="https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=93-587" target="_blank" rel="noreferrer">Figma 93:587</a>
           <span class="stat stat--review">contract: review</span>
+          
           <span class="stat">guidance: agreed</span>
           <span class="impl impl--none">not built yet</span>
           <span class="stat">20 variants</span>
@@ -1354,6 +1379,7 @@ a:focus-visible,.node:focus-visible{outline:2px solid var(--accent);outline-offs
         <div class="meta">
           <a class="node" href="https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=205-614" target="_blank" rel="noreferrer">Figma 205:614</a>
           <span class="stat stat--review">contract: review</span>
+          <span class="stat stat--stable">in code</span>
           <span class="stat">guidance: agreed</span>
           <code class="impl">akount.ing .ak-banner</code>
           <span class="stat">8 variants</span>
@@ -1569,6 +1595,7 @@ a:focus-visible,.node:focus-visible{outline:2px solid var(--accent);outline-offs
         <div class="meta">
           <a class="node" href="https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=240-273" target="_blank" rel="noreferrer">Figma 240:273</a>
           <span class="stat stat--review">contract: review</span>
+          
           <span class="stat">guidance: agreed</span>
           <code class="impl">runceanu.com .dsinput__box</code><code class="impl">akount.ing .ak-field__box</code>
           <span class="stat">14 variants</span>
@@ -1934,6 +1961,7 @@ a:focus-visible,.node:focus-visible{outline:2px solid var(--accent);outline-offs
         <div class="meta">
           <a class="node" href="https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=224-2" target="_blank" rel="noreferrer">Figma 224:2</a>
           <span class="stat stat--review">contract: review</span>
+          
           <span class="stat">guidance: agreed</span>
           <span class="impl impl--none">not built yet</span>
           
@@ -1963,6 +1991,7 @@ a:focus-visible,.node:focus-visible{outline:2px solid var(--accent);outline-offs
         <div class="meta">
           <a class="node" href="https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=29-5" target="_blank" rel="noreferrer">Figma 29:5</a>
           <span class="stat stat--draft">contract: draft</span>
+          
           <span class="stat">guidance: agreed</span>
           <span class="impl impl--none">not built yet</span>
           
@@ -1992,6 +2021,7 @@ a:focus-visible,.node:focus-visible{outline:2px solid var(--accent);outline-offs
         <div class="meta">
           <a class="node" href="https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=41-259" target="_blank" rel="noreferrer">Figma 41:259</a>
           <span class="stat stat--review">contract: review</span>
+          
           <span class="stat">guidance: agreed</span>
           <span class="impl impl--none">not built yet</span>
           <span class="stat">5 variants</span>
@@ -2105,6 +2135,7 @@ a:focus-visible,.node:focus-visible{outline:2px solid var(--accent);outline-offs
         <div class="meta">
           <code class="node node--code">runceanu-portfolio/src/components/HeroBackdrop.jsx</code>
           <span class="stat stat--review">contract: review</span>
+          
           <span class="stat">guidance: agreed</span>
           <code class="impl">runceanu.com</code>
           
@@ -2134,6 +2165,7 @@ a:focus-visible,.node:focus-visible{outline:2px solid var(--accent);outline-offs
         <div class="meta">
           <a class="node" href="https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=20-14" target="_blank" rel="noreferrer">Figma 20:14</a>
           <span class="stat stat--review">contract: review</span>
+          
           <span class="stat">guidance: agreed</span>
           <code class="impl">akount.ing .ak-btn</code>
           <span class="stat">20 variants</span>
@@ -2307,6 +2339,7 @@ a:focus-visible,.node:focus-visible{outline:2px solid var(--accent);outline-offs
         <div class="meta">
           <a class="node" href="https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=100-185" target="_blank" rel="noreferrer">Figma 100:185</a>
           <span class="stat stat--review">contract: review</span>
+          
           <span class="stat">guidance: missing</span>
           <span class="impl impl--none">not built yet</span>
           <span class="stat">6 variants</span>
@@ -2558,6 +2591,7 @@ a:focus-visible,.node:focus-visible{outline:2px solid var(--accent);outline-offs
         <div class="meta">
           <a class="node" href="https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=91-362" target="_blank" rel="noreferrer">Figma 91:362</a>
           <span class="stat stat--review">contract: review</span>
+          
           <span class="stat">guidance: agreed</span>
           <span class="impl impl--none">not built yet</span>
           <span class="stat">5 variants</span>
@@ -2695,6 +2729,7 @@ a:focus-visible,.node:focus-visible{outline:2px solid var(--accent);outline-offs
         <div class="meta">
           <a class="node" href="https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=144-493" target="_blank" rel="noreferrer">Figma 144:493</a>
           <span class="stat stat--review">contract: review</span>
+          
           <span class="stat">guidance: missing</span>
           <span class="impl impl--none">not built yet</span>
           
@@ -2724,6 +2759,7 @@ a:focus-visible,.node:focus-visible{outline:2px solid var(--accent);outline-offs
         <div class="meta">
           <a class="node" href="https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=144-67" target="_blank" rel="noreferrer">Figma 144:67</a>
           <span class="stat stat--review">contract: review</span>
+          
           <span class="stat">guidance: missing</span>
           <span class="impl impl--none">not built yet</span>
           <span class="stat">10 variants</span>
@@ -3215,6 +3251,7 @@ a:focus-visible,.node:focus-visible{outline:2px solid var(--accent);outline-offs
         <div class="meta">
           <a class="node" href="https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=124-26634" target="_blank" rel="noreferrer">Figma 124:26634</a>
           <span class="stat stat--review">contract: review</span>
+          
           <span class="stat">guidance: agreed</span>
           <span class="impl impl--none">not built yet</span>
           
@@ -3244,6 +3281,7 @@ a:focus-visible,.node:focus-visible{outline:2px solid var(--accent);outline-offs
         <div class="meta">
           <a class="node" href="https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=109-79" target="_blank" rel="noreferrer">Figma 109:79</a>
           <span class="stat stat--review">contract: review</span>
+          
           <span class="stat">guidance: missing</span>
           <span class="impl impl--none">not built yet</span>
           <span class="stat">6 variants</span>
@@ -3507,6 +3545,7 @@ a:focus-visible,.node:focus-visible{outline:2px solid var(--accent);outline-offs
         <div class="meta">
           <a class="node" href="https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=168-1149" target="_blank" rel="noreferrer">Figma 168:1149</a>
           <span class="stat stat--review">contract: review</span>
+          
           <span class="stat">guidance: agreed</span>
           <code class="impl">akount.ing .ak-toggle</code>
           <span class="stat">10 variants</span>
