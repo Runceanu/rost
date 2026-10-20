@@ -26,8 +26,14 @@ elements:
     styles:
       justify-content: { value: center }
       align-items: { value: center }
-      display: { value: flex, assert: false }
+      display: { value: inline-flex, assert: false }
+      vertical-align: { value: middle, assert: false }
       position: { value: relative, assert: false }
+      background: { value: none, assert: false, notes: "It's a `<button>`. The browser's own fill and border go; the outline part draws the edge." }
+      border: { value: none, assert: false }
+      font: { value: inherit, assert: false }
+      cursor: { value: pointer, assert: false }
+      outline: { value: none, assert: false }
       gap: { token: spacing/gap/small, value: 8px }
       height: { token: spacing/size/small, value: 24px }
       padding-bottom: { token: spacing/gap/3xsmall, value: 2px }
@@ -52,7 +58,17 @@ elements:
       position: { value: absolute }
       inset: { value: "0" }
       border-radius: { token: spacing/radius/full, value: 10000px }
-  focus-ring: {}
+      pointer-events: { value: none, assert: false }
+  focus-ring:
+    styles:
+      display: { value: none, assert: false }
+      position: { value: absolute }
+      inset: { value: -4px }
+      border-style: { value: solid }
+      border-width: { token: spacing/outline/medium, value: 2px }
+      border-color: { token: actions/secondary/regular/focus/focus-ring, value: "#999" }
+      border-radius: { token: spacing/radius/full, value: 10000px }
+      pointer-events: { value: none, assert: false }
 variants:
   - when: { status: Default, state: Default }
     figmaNode: "139:318"
@@ -88,6 +104,7 @@ variants:
         opacity: { token: opacity/solid, value: "1" }
       root:
         opacity: { token: opacity/gentle, value: "0.24" }
+        cursor: { value: default, assert: false }
   - when: { status: Default, state: Focus }
     figmaNode: "139:326"
     elements:
@@ -97,12 +114,7 @@ variants:
         border-color: { token: actions/secondary/regular/focus/outline, value: "#ededed" }
         opacity: { token: opacity/gentle, value: "0.24" }
       focus-ring:
-        border-sides: { value: all }
-        position: { value: absolute }
-        border-width: { token: spacing/outline/medium, value: 2px }
-        border-color: { token: actions/secondary/regular/focus/focus-ring, value: "#999" }
-        inset: { value: -4px }
-        border-radius: { token: spacing/radius/full, value: 10000px }
+        display: { value: block, assert: false }
 guidance:
   status: agreed
   use:

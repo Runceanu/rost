@@ -198,6 +198,10 @@
         }
       }
     },
+    "statesOn": {
+      "description": "The element the interaction states need, as a selector, e.g. `:is(a[href], button)`. Without it, Hover and the rest apply to the root whatever it is. With it, a static one (a `<span>` tag) never reacts.",
+      "type": "string"
+    },
     "states": {
       "description": "Values of Figma's `state` property. The five interaction states map to pseudo-classes (Hover \u2192 :hover, Pressed \u2192 :active, Focus \u2192 :focus-visible, Disabled \u2192 :disabled); any other (e.g. Locked) is a content state the caller sets, like a prop.",
       "type": "array",

@@ -6,12 +6,12 @@ Every value in every contract, sorted by why it has a token or doesn't. `npm run
 
 | | Values | Share | Meaning |
 |---|---|---|---|
-| Has a token | 1435 | 58% | Uses a token, and the check tests it. |
+| Has a token | 1417 | 57% | Uses a token, and the check tests it. |
 | Token suggested | 0 | 0% | A token I want that doesn't exist yet. The freeze turned every other suggestion into a token. |
-| How Figma builds it | 995 | 40% | How Figma builds the layer (position, inset, which sides get a stroke). Nothing to tokenise. |
-| Figma frame size | 26 | 1% | A root size that is just the Figma frame. Written down, not checked. |
+| How Figma builds it | 984 | 40% | How Figma builds the layer (position, inset, which sides get a stroke). Nothing to tokenise. |
+| Figma frame size | 38 | 2% | A root size that is just the Figma frame. Written down, not checked. |
 | No token, on purpose | 14 | 1% | Plain on purpose, and the contract says why. |
-| Open gap | 11 | 0% | No token and no reason. Each one needs a decision from me. |
+| Open gap | 13 | 1% | No token and no reason. Each one needs a decision from me. |
 
 ## By contract
 
@@ -20,8 +20,8 @@ Every value in every contract, sorted by why it has a token or doesn't. `npm run
 | [Badge](components/badge.md) | 84 | · | 63 | · | · | 1 |
 | [Button](components/button.md) | 248 | · | 124 | · | · | · |
 | [Carousel](components/carousel.md) | 81 | · | 113 | 4 | 1 | 1 |
-| [Chip](components/chips.md) | 32 | · | 14 | · | · | · |
-| [Divider](components/divider.md) | · | · | 1 | 1 | · | · |
+| [Chip](components/chips.md) | 32 | · | 16 | 8 | · | 1 |
+| [Divider](components/divider.md) | 2 | · | 2 | 2 | · | · |
 | [Floating effect](components/effect-floating.md) | 1 | · | · | · | · | · |
 | [Hero Media](components/hero-media.md) | 6 | · | 1 | · | 1 | · |
 | [IconButton](components/icon-button.md) | 172 | · | 49 | · | · | · |
@@ -33,7 +33,7 @@ Every value in every contract, sorted by why it has a token or doesn't. `npm run
 | [Paper effect](components/effect-paper.md) | 6 | · | · | · | 7 | · |
 | [PillButton](components/pill-button.md) | 155 | · | 53 | · | · | · |
 | [Projects](components/projects.md) | 64 | · | 44 | 1 | · | 1 |
-| [Tag](components/tags.md) | 46 | · | 27 | · | · | · |
+| [Tag](components/tags.md) | 26 | · | 13 | 3 | · | 1 |
 | [TestimonialPicture](components/testimonials-pics.md) | 2 | · | 1 | · | · | · |
 | [Testimonials](components/testimonials.md) | 197 | · | 264 | 9 | · | 1 |
 | [Thumb effect](components/effect-thumb.md) | 1 | · | · | · | · | · |
@@ -65,7 +65,9 @@ None. The freeze on 2026-10-20 turned all 122 suggestions into tokens.
 
 - [Badge](components/badge.md) `root.min-width` = `24px`
 - [Carousel](components/carousel.md) `background.background` = `rgba(58,58,58,0.48)`
+- [Chip](components/chips.md) `focus-ring.border-style` = `solid`
 - [Projects](components/projects.md) `badge.min-width` = `24px`
+- [Tag](components/tags.md) `focus-ring.border-style` = `solid`
 - [Testimonials](components/testimonials.md) `bottom.width` = `976px`
 - [Thumbs](components/thumbs.md) `shadow.left` = `0`
 - [Thumbs](components/thumbs.md) `shadow.right` = `0`
