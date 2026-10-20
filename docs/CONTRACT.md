@@ -138,7 +138,7 @@ A component in code is built from its contract, not from memory.
 3. `<id>.fixtures.tsx` lists one example per Figma variant.
 4. `npm run test:visual -- <id>` renders each one in Chrome, on the same dark background Figma uses, with the same General Sans Variable font, and compares it with Figma's own screenshot from `baseline/`. It saves a side by side for each variant in `test-results/visual/<id>/`: Figma, mine, and the difference in red.
 
-A variant passes when its size is exact and almost nothing differs. Figma and Chrome never draw letter edges quite the same way: on InlineBanner, with everything else exact, about 2 to 2.4% of pixels still differ at the edges of the text, even allowing a pixel either way. So the line is 2.5%. A missing icon or a wrong colour goes well over it.
+A variant passes when its size is exact and almost nothing differs. Figma and Chrome never draw letter edges quite the same way: on InlineBanner, with everything else exact, about 2 to 2.4% of pixels still differ at the edges of the text, even allowing a pixel either way. So the line is 2.5%. A missing icon or a wrong colour goes well over it. One more thing Figma does that CSS can't: it rounds a component that hugs its text up to a whole pixel (Badge is 43px in Figma, 42.4px in the browser), so a right edge can sit a fraction of a pixel in. That's inside the line too.
 
 ## Checking an app
 

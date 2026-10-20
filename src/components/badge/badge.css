@@ -1,0 +1,232 @@
+/* Generated from contracts/badge.contract.yaml by bin/build-css.mjs. Don't edit: change the contract and rebuild. */
+
+.rost-badge, .rost-badge * { box-sizing: border-box; margin: 0; }
+.rost-badge img { display: block; position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; }
+
+.rost-badge {
+  position: relative;
+  min-width: 24px;
+}
+
+.rost-badge.rost-badge--status-default.rost-badge--size-small {
+  width: var(--spacing-size-small);
+  height: var(--spacing-size-small);
+}
+
+.rost-badge.rost-badge--status-negative.rost-badge--size-small {
+  width: var(--spacing-size-small);
+  height: var(--spacing-size-small);
+}
+
+.rost-badge.rost-badge--status-positive.rost-badge--size-small {
+  width: var(--spacing-size-small);
+  height: var(--spacing-size-small);
+}
+
+.rost-badge.rost-badge--status-warning.rost-badge--size-small {
+  width: var(--spacing-size-small);
+  height: var(--spacing-size-small);
+}
+
+.rost-badge.rost-badge--status-default.rost-badge--size-medium {
+  height: var(--spacing-size-small);
+  align-items: center;
+  display: flex;
+  gap: var(--spacing-gap-3xsmall);
+  padding-bottom: var(--spacing-gap-3xsmall);
+  padding-top: var(--spacing-gap-none);
+  padding-left: var(--spacing-gap-small);
+  padding-right: var(--spacing-gap-small);
+  border-radius: var(--spacing-radius-full);
+}
+
+.rost-badge.rost-badge--status-default.rost-badge--size-medium .rost-badge__label {
+  flex-shrink: 0;
+  white-space: nowrap;
+  text-align: center;
+  position: relative;
+  font-family: var(--font-family-base);
+  font-weight: var(--typography-label-font-weight-medium);
+  line-height: var(--typography-label-line-height);
+  color: var(--non-interactive-foreground-tertiary);
+  font-size: var(--typography-label-font-size);
+  letter-spacing: var(--typography-label-letter-spacing);
+}
+
+.rost-badge.rost-badge--status-default.rost-badge--size-medium .rost-badge__outline {
+  position: absolute;
+  inset: 0;
+  border-color: var(--non-interactive-foreground-quadruple);
+  opacity: var(--opacity-solid);
+  border-radius: var(--spacing-radius-full);
+  border-style: solid;
+  border-width: 1px;
+}
+
+.rost-badge.rost-badge--status-default.rost-badge--size-medium .rost-badge__icon {
+  align-items: center;
+  display: flex;
+  flex-shrink: 0;
+  position: relative;
+  padding-top: var(--spacing-gap-3xsmall);
+}
+
+.rost-badge.rost-badge--status-default.rost-badge--size-medium .rost-badge__icons-dot {
+  flex-shrink: 0;
+  position: relative;
+  width: var(--spacing-size-2xsmall);
+  height: var(--spacing-size-2xsmall);
+}
+
+.rost-badge.rost-badge--status-negative.rost-badge--size-medium {
+  height: var(--spacing-size-small);
+  align-items: center;
+  display: flex;
+  gap: var(--spacing-gap-3xsmall);
+  padding-bottom: var(--spacing-gap-3xsmall);
+  padding-top: var(--spacing-gap-none);
+  padding-left: var(--spacing-gap-small);
+  padding-right: var(--spacing-gap-small);
+  border-radius: var(--spacing-radius-full);
+  justify-content: center;
+}
+
+.rost-badge.rost-badge--status-negative.rost-badge--size-medium .rost-badge__label {
+  flex-shrink: 0;
+  white-space: nowrap;
+  text-align: center;
+  position: relative;
+  font-family: var(--font-family-base);
+  font-weight: var(--typography-label-font-weight-medium);
+  line-height: var(--typography-label-line-height);
+  color: var(--non-interactive-foreground-tertiary);
+  font-size: var(--typography-label-font-size);
+  letter-spacing: var(--typography-label-letter-spacing);
+}
+
+.rost-badge.rost-badge--status-negative.rost-badge--size-medium .rost-badge__outline {
+  position: absolute;
+  inset: 0;
+  border-color: var(--non-interactive-background-negative-light);
+  opacity: var(--opacity-solid);
+  border-radius: var(--spacing-radius-full);
+  border-style: solid;
+  border-width: 1px;
+}
+
+.rost-badge.rost-badge--status-negative.rost-badge--size-medium .rost-badge__icon {
+  align-items: center;
+  display: flex;
+  flex-shrink: 0;
+  position: relative;
+  padding-top: var(--spacing-gap-3xsmall);
+}
+
+.rost-badge.rost-badge--status-negative.rost-badge--size-medium .rost-badge__icons-dot {
+  flex-shrink: 0;
+  position: relative;
+  width: var(--spacing-size-2xsmall);
+  height: var(--spacing-size-2xsmall);
+}
+
+.rost-badge.rost-badge--status-positive.rost-badge--size-medium {
+  height: var(--spacing-size-small);
+  align-items: center;
+  display: flex;
+  gap: var(--spacing-gap-3xsmall);
+  padding-bottom: var(--spacing-gap-3xsmall);
+  padding-top: var(--spacing-gap-none);
+  padding-left: var(--spacing-gap-small);
+  padding-right: var(--spacing-gap-small);
+  border-radius: var(--spacing-radius-full);
+  justify-content: center;
+}
+
+.rost-badge.rost-badge--status-positive.rost-badge--size-medium .rost-badge__label {
+  flex-shrink: 0;
+  white-space: nowrap;
+  text-align: center;
+  position: relative;
+  font-family: var(--font-family-base);
+  font-weight: var(--typography-label-font-weight-medium);
+  line-height: var(--typography-label-line-height);
+  color: var(--non-interactive-foreground-tertiary);
+  font-size: var(--typography-label-font-size);
+  letter-spacing: var(--typography-label-letter-spacing);
+}
+
+.rost-badge.rost-badge--status-positive.rost-badge--size-medium .rost-badge__outline {
+  position: absolute;
+  inset: 0;
+  border-color: var(--non-interactive-background-positive-light);
+  opacity: var(--opacity-solid);
+  border-radius: var(--spacing-radius-full);
+  border-style: solid;
+  border-width: 1px;
+}
+
+.rost-badge.rost-badge--status-positive.rost-badge--size-medium .rost-badge__icon {
+  align-items: center;
+  display: flex;
+  flex-shrink: 0;
+  position: relative;
+  padding-top: var(--spacing-gap-3xsmall);
+}
+
+.rost-badge.rost-badge--status-positive.rost-badge--size-medium .rost-badge__icons-dot {
+  flex-shrink: 0;
+  position: relative;
+  width: var(--spacing-size-2xsmall);
+  height: var(--spacing-size-2xsmall);
+}
+
+.rost-badge.rost-badge--status-warning.rost-badge--size-medium {
+  height: var(--spacing-size-small);
+  align-items: center;
+  display: flex;
+  gap: var(--spacing-gap-3xsmall);
+  padding-bottom: var(--spacing-gap-3xsmall);
+  padding-top: var(--spacing-gap-none);
+  padding-left: var(--spacing-gap-small);
+  padding-right: var(--spacing-gap-small);
+  border-radius: var(--spacing-radius-full);
+  justify-content: center;
+}
+
+.rost-badge.rost-badge--status-warning.rost-badge--size-medium .rost-badge__label {
+  flex-shrink: 0;
+  white-space: nowrap;
+  text-align: center;
+  position: relative;
+  font-family: var(--font-family-base);
+  font-weight: var(--typography-label-font-weight-medium);
+  line-height: var(--typography-label-line-height);
+  color: var(--non-interactive-foreground-tertiary);
+  font-size: var(--typography-label-font-size);
+  letter-spacing: var(--typography-label-letter-spacing);
+}
+
+.rost-badge.rost-badge--status-warning.rost-badge--size-medium .rost-badge__outline {
+  position: absolute;
+  inset: 0;
+  border-color: var(--non-interactive-background-warning-light);
+  opacity: var(--opacity-solid);
+  border-radius: var(--spacing-radius-full);
+  border-style: solid;
+  border-width: 1px;
+}
+
+.rost-badge.rost-badge--status-warning.rost-badge--size-medium .rost-badge__icon {
+  align-items: center;
+  display: flex;
+  flex-shrink: 0;
+  position: relative;
+  padding-top: var(--spacing-gap-3xsmall);
+}
+
+.rost-badge.rost-badge--status-warning.rost-badge--size-medium .rost-badge__icons-dot {
+  flex-shrink: 0;
+  position: relative;
+  width: var(--spacing-size-2xsmall);
+  height: var(--spacing-size-2xsmall);
+}

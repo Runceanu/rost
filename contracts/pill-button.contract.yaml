@@ -30,17 +30,6 @@ elements:
       gap: { token: spacing/gap/small, value: 8px }
       height: { token: spacing/size/medium-large, value: 48px }
       border-radius: { token: spacing/radius/full, value: 10000px }
-  icons-arrow-left:
-    styles:
-      overflow: { value: clip }
-      flex-shrink: { value: "0", assert: false }
-      position: { value: relative, assert: false }
-      width: { value: 20px, suggest: spacing/size/xsmall }
-      height: { value: 20px, suggest: spacing/size/xsmall }
-  union:
-    styles:
-      position: { value: absolute }
-      inset: { value: 20.84% 16.66% 20.83% 18.4% }
   label:
     styles:
       flex-shrink: { value: "0", assert: false }
@@ -52,6 +41,19 @@ elements:
       line-height: { token: typography/body/line-height, value: 22px }
       font-size: { token: typography/body/font-size, value: 16px }
       letter-spacing: { token: typography/body/letter-spacing, value: 0px }
+  icons-arrow-left:
+    optional: true
+    styles:
+      overflow: { value: clip }
+      flex-shrink: { value: "0", assert: false }
+      position: { value: relative, assert: false }
+      width: { value: 20px, suggest: spacing/size/xsmall }
+      height: { value: 20px, suggest: spacing/size/xsmall }
+  union:
+    optional: true
+    styles:
+      position: { value: absolute }
+      inset: { value: 20.84% 16.66% 20.83% 18.4% }
   focus-ring: {}
   background: {}
 variants:

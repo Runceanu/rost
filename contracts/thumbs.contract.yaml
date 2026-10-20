@@ -103,9 +103,8 @@ elements:
       padding-left: { token: spacing/gap/xlarge, value: 32px }
   icons-dot:
     styles:
-      position: { value: absolute }
-      inset: { value: "0" }
       flex-shrink: { value: "0", assert: false }
+      position: { value: relative, assert: false }
       width: { value: 12px, suggest: spacing/size/3xsmall }
       height: { value: 12px, suggest: spacing/size/3xsmall }
   focus-ring: {}
@@ -156,6 +155,7 @@ variants:
         display: { value: flex, assert: false }
         gap: { token: spacing/gap/3xsmall, value: 2px }
         height: { token: spacing/size/small, value: 24px }
+        min-width: { value: 24px }
         padding-bottom: { token: spacing/gap/3xsmall, value: 2px }
         padding-top: { token: spacing/gap/none, value: 0px }
         padding-left: { token: spacing/gap/small, value: 8px }
@@ -198,8 +198,7 @@ variants:
         padding: { token: spacing/gap/small, value: 8px }
         border-radius: { token: spacing/radius/medium, value: 12px }
       icons-lock:
-        position: { value: absolute }
-        inset: { value: "0" }
         flex-shrink: { value: "0", assert: false }
+        position: { value: relative, assert: false }
         width: { value: 24px, suggest: spacing/size/small }
         height: { value: 24px, suggest: spacing/size/small }

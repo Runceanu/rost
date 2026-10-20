@@ -2,38 +2,37 @@
 
 # Badge
 
-> A small outlined label for status. The colour sits in the outline and the dot, never in the text.
+> A small status marker: a coloured dot on its own, or an outlined label. The colour sits in the dot and the outline, never in the text.
 
 | | |
 |---|---|
 | Kind | component |
 | Contract | `review` · [badge.contract.yaml](../../contracts/badge.contract.yaml) |
-| Guidance | `agreed` |
+| Guidance | `proposed` |
 | Source | [Figma 139:395](https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=139-395) · read 2026-08-18 |
 | Implemented in | runceanu.com (`src/components/Badge.jsx`, `.badge`)<br>akount.ing (`src/components/Badge.tsx`, `.ak-badge`) |
-
-## Not right yet
-
-- Still to read: Figma changed after the August read. The set now has a size property, and the four nodes this contract points at (139:396, 139:433, 139:439, 139:445) are now the small, dot-only badges at 24x24. The labelled badge described here is probably a bigger size, at node ids I haven't read yet. Read the set again before building it.
 
 ## Props
 
 | Prop | Type | Values | Default |
 |---|---|---|---|
 | `status` | enum | `Default` `Negative` `Positive` `Warning` | `Default` |
+| `size` | enum | `Medium` `Small` | `Medium` |
+| `showIcon` | boolean |  | `false` |
+| `icon` | slot |  |  |
 
 ## Anatomy
 
 - `root`
-- `icon`
-- `icons-dot`
-- `union`
 - `label`
 - `outline`
+- `icon` (optional)
+- `icons-dot` (optional)
 
 ## When to use
 
 - Marking the status of something in a list, a card or a table row: Paid, Overdue, Draft.
+- `Small` when there's no room for words, or the status is obvious from where it sits. Just the coloured dot.
 
 ## When not to use
 
@@ -43,13 +42,13 @@
 
 ## Behaviour
 
-`status` only changes the outline (`non-interactive/background/<status>/light`) and the little dot. The text stays `non-interactive/foreground/tertiary` whatever the status, and that's on purpose: I keep badges quiet. There's no background fill either. My first Badge in akount.ing got exactly these three things wrong.
+Two sizes now. `Small` is only the dot, 24 by 24, coloured by `status`. `Medium` is the label with an outline, and `status` changes only the outline (`non-interactive/background/<status>/light`). The text stays `non-interactive/foreground/tertiary` whatever the status, on purpose: I keep badges quiet. There's no background fill either. My first Badge in akount.ing got exactly that wrong. The dot in front of the label is optional now (`showIcon`), and off unless you ask for it.
 
 ## Accessibility
 
 - **Element**: a `<span>`. Nothing to click.
-- **Colour**: the outline alone isn't enough. The text has to say the status ("Overdue", not "!").
-- **Dot**: `aria-hidden="true"`.
+- **Colour**: the colour alone isn't enough. On `Medium` the text says the status. On `Small` there's no text, so give it an `aria-label` ("Overdue") or put the status in words right next to it.
+- **Dot**: `aria-hidden="true"` when there's a label next to it.
 
 ## Content
 
@@ -84,6 +83,8 @@ Plain numbers where a token fits exactly. They become tokens when I freeze the c
 
 | Part | Property | Value | Suggest | |
 |---|---|---|---|---|
+| `root` | `width` | `24px` | `spacing/size/small` | exists |
+| `root` | `height` | `24px` | `spacing/size/small` | exists |
 | `icons-dot` | `width` | `16px` | `spacing/size/2xsmall` | exists |
 | `icons-dot` | `height` | `16px` | `spacing/size/2xsmall` | exists |
 

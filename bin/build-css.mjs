@@ -47,6 +47,8 @@ function build(id) {
     `/* Generated from contracts/${id}.contract.yaml by bin/build-css.mjs. Don't edit: change the contract and rebuild. */`,
     '',
     `.${base}, .${base} * { box-sizing: border-box; margin: 0; }`,
+    // Figma exports every icon and image as one picture filling its frame.
+    `.${base} img { display: block; position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; }`,
   ]
   const rule = (selector, decls) => { if (decls.length) rules.push('', `${selector} {`, ...decls.map((d) => `  ${d}`), '}') }
 

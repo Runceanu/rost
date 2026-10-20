@@ -9,23 +9,25 @@ Where the apps stood on 2026-10-19 (`npm run audit` on both):
 | akount.ing | 0 | 0 | 5 |
 | runceanu.com | 230 | 2 | 83 |
 
-## First: finish the Figma import, then freeze
+## First: the freeze
 
-The last read stopped on 2026-10-19, when Figma hit its daily limit on reads from the desktop app. What's in: six new contracts, 156 of 188 variant screenshots in `baseline/`, 75 icon and vector SVGs in `assets/figma/`. What's left:
+The Figma import is done, as of 2026-10-20: 22 contracts, all 192 variant screenshots in `baseline/`, the 17 icons in `assets/icons/` and the 24 illustrations in `assets/illustrations/`. What's left before the contracts take over:
 
-- Screenshots of the 24 illustrations and the Divider: `node bin/capture-baseline.mjs illustrations divider`.
-- SVG files for the 17 icons and 24 illustrations, in `assets/`.
-- Read the ten August components again (`node bin/extract-variants.mjs <id>`, then `node bin/fetch-assets.mjs`). Their icon SVGs couldn't be saved: Figma only serves an asset for a while after the read, and the August ones had expired. Badge needs this anyway, since Figma gave it a `size` property after August.
-- **Then the freeze.** I decided this on 2026-10-19: once the import is done, the contracts become the source and Figma retires. `node bin/freeze.mjs --apply` turns every suggestion into a token (106 in the dry run, all of them tokens that already exist) and stamps each contract with the date. After that the Figma read skips them, and changes happen in the YAML. I won't go back and edit Figma to match.
-- Before the freeze, if I can: rename the sample client in the Thumbs component in Figma to "Client" and capture it again. Until then `baseline/thumbs/` stays on my machine, and so does `baseline/testimonials-pics/` (real people's photos).
+- **Maybe, the eight other August components.** Badge had changed since August and I only found out by building it. Today's screenshots say the others haven't (same sizes), but a fresh read would confirm it and bring their icons along. It's about 100 reads, a day's Figma allowance.
+- **The freeze itself.** I decided this on 2026-10-19: `node bin/freeze.mjs --apply` turns every suggestion into a token and stamps each contract with the date. After that the Figma read skips them, and changes happen in the YAML. I won't go back and edit Figma to match.
+- If I can, before that: rename the sample client in Thumbs in Figma to "Client" and capture it again. Until then `baseline/thumbs/` stays on my machine, and so does `baseline/testimonials-pics/` (real people's photos).
 
 ## Now: Rost in code
 
-InlineBanner is the first one, built on 2026-10-19: CSS written from the contract, a React component, and a visual test against Figma. Size, corners, fill, spacing and text all match. The icons are the gap: their SVGs expired on Figma's side, so they come with the next read. Then:
+Two components so far, both built from their contracts and both matching Figma in the visual test:
 
-- **Icons for InlineBanner**, from tomorrow's read, and the visual test goes green.
-- **Badge**, once it's read again (Figma gave it a `size` property after August).
-- **Then the rest**, one at a time on the same setup: CSS from the contract, the component, fixtures, the visual test. The ones with hover, press and focus need the test to trigger those states.
+- **InlineBanner**, all 8 variants, with Figma's own icons.
+- **Badge**, all 8 variants. Figma gave it a small size since August: just the coloured dot. The dot in front of the label on the medium size is optional now.
+
+Next, one at a time on the same setup (CSS from the contract, the component, fixtures, the visual test):
+
+- **Button, PillButton, IconButton, Toggle, Chip, Tag.** These have hover, press and focus, so the test needs to trigger those states first.
+- **Input, Menu, and the runceanu.com ones** (Carousel, Projects, Thumbs, Testimonials).
 - **Publish it as a package** that akount.ing and runceanu.com install, instead of keeping their own copies.
 
 ## Now: make the contracts something I can trust

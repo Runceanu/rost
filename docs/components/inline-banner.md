@@ -25,7 +25,6 @@
 - `background`
 - `-slot`
 - `icons-plus`
-- `union`
 - `label`
 - `text`
 - `icons-alarm`

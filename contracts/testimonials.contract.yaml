@@ -89,9 +89,8 @@ variants:
         width: { value: 32px, suggest: spacing/size/small-medium }
         height: { value: 32px, suggest: spacing/size/small-medium }
       icons-arrow-left:
-        position: { value: absolute }
-        inset: { value: "0" }
         flex-shrink: { value: "0", assert: false }
+        position: { value: relative, assert: false }
         width: { value: 16px, suggest: spacing/size/2xsmall }
         height: { value: 16px, suggest: spacing/size/2xsmall }
   - when: { state: Default, expanded: true }
@@ -135,9 +134,8 @@ variants:
         width: { value: 32px, suggest: spacing/size/small-medium }
         height: { value: 32px, suggest: spacing/size/small-medium }
       icons-arrow-left:
-        position: { value: absolute }
-        inset: { value: "0" }
         flex-shrink: { value: "0", assert: false }
+        position: { value: relative, assert: false }
         width: { value: 16px, suggest: spacing/size/2xsmall }
         height: { value: 16px, suggest: spacing/size/2xsmall }
       outline:
@@ -223,9 +221,8 @@ variants:
         width: { value: 32px, suggest: spacing/size/small-medium }
         height: { value: 32px, suggest: spacing/size/small-medium }
       icons-arrow-left:
-        position: { value: absolute }
-        inset: { value: "0" }
         flex-shrink: { value: "0", assert: false }
+        position: { value: relative, assert: false }
         width: { value: 16px, suggest: spacing/size/2xsmall }
         height: { value: 16px, suggest: spacing/size/2xsmall }
       outline:
@@ -311,9 +308,8 @@ variants:
         width: { value: 32px, suggest: spacing/size/small-medium }
         height: { value: 32px, suggest: spacing/size/small-medium }
       icons-arrow-left:
-        position: { value: absolute }
-        inset: { value: "0" }
         flex-shrink: { value: "0", assert: false }
+        position: { value: relative, assert: false }
         width: { value: 16px, suggest: spacing/size/2xsmall }
         height: { value: 16px, suggest: spacing/size/2xsmall }
       outline:
@@ -389,9 +385,8 @@ variants:
         width: { value: 32px, suggest: spacing/size/small-medium }
         height: { value: 32px, suggest: spacing/size/small-medium }
       icons-arrow-left:
-        position: { value: absolute }
-        inset: { value: "0" }
         flex-shrink: { value: "0", assert: false }
+        position: { value: relative, assert: false }
         width: { value: 16px, suggest: spacing/size/2xsmall }
         height: { value: 16px, suggest: spacing/size/2xsmall }
       outline:
@@ -482,9 +477,8 @@ variants:
         width: { value: 32px, suggest: spacing/size/small-medium }
         height: { value: 32px, suggest: spacing/size/small-medium }
       icons-arrow-left:
-        position: { value: absolute }
-        inset: { value: "0" }
         flex-shrink: { value: "0", assert: false }
+        position: { value: relative, assert: false }
         width: { value: 16px, suggest: spacing/size/2xsmall }
         height: { value: 16px, suggest: spacing/size/2xsmall }
       outline:
@@ -565,9 +559,8 @@ variants:
         width: { value: 32px, suggest: spacing/size/small-medium }
         height: { value: 32px, suggest: spacing/size/small-medium }
       icons-arrow-left:
-        position: { value: absolute }
-        inset: { value: "0" }
         flex-shrink: { value: "0", assert: false }
+        position: { value: relative, assert: false }
         width: { value: 16px, suggest: spacing/size/2xsmall }
         height: { value: 16px, suggest: spacing/size/2xsmall }
       outline:
@@ -642,8 +635,7 @@ variants:
         width: { value: 32px, suggest: spacing/size/small-medium }
         height: { value: 32px, suggest: spacing/size/small-medium }
       icons-arrow-left:
-        position: { value: absolute }
-        inset: { value: "0" }
         flex-shrink: { value: "0", assert: false }
+        position: { value: relative, assert: false }
         width: { value: 16px, suggest: spacing/size/2xsmall }
         height: { value: 16px, suggest: spacing/size/2xsmall }

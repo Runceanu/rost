@@ -20,16 +20,9 @@ props:
 elements:
   root:
     styles:
-      position: { value: absolute }
-      inset: { value: "0" }
-      width:
-        value: 56px
-        assert: false
-        notes: Just the size of the Figma frame. No token, and not something to copy.
-      height:
-        value: 56px
-        assert: false
-        notes: Just the size of the Figma frame. No token, and not something to copy.
+      position: { value: relative, assert: false }
+      width: { value: 56px, suggest: spacing/size/large }
+      height: { value: 56px, suggest: spacing/size/large }
 variants:
   - when: { people: Person 7 }
     figmaNode: "144:486"

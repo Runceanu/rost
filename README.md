@@ -44,4 +44,4 @@ To check an app, import `src/conform.ts` in one of its tests. akount.ing's `src/
 
 ## Where it stands
 
-22 contracts, all read from Figma, and validation is clean. I signed off the guidance on 16 of them on 2026-10-19. InlineBanner is the first component built in code from its contract, and it matches Figma everywhere except its icons, which come with the next Figma read. Badge went back to review: Figma changed it after I first read it. Next up: finish the last Figma import, then the contracts become the source and Figma retires. The [roadmap](docs/ROADMAP.md) has the details.
+22 contracts, all read from Figma, and validation is clean. I signed off the guidance on 16 of them on 2026-10-19. Badge and InlineBanner are built in code from their contracts, and every one of their 16 variants matches Figma in the visual test. Badge changed in Figma since August (it has a small dot-only size now), so its guidance is waiting for me to sign it off again. Next up: finish the last Figma import, then the contracts become the source and Figma retires. The [roadmap](docs/ROADMAP.md) has the details.

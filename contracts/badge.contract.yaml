@@ -4,7 +4,8 @@ id: badge
 name: Badge
 kind: component
 status: review
-summary: A small outlined label for status. The colour sits in the outline and the dot, never in the text.
+summary: |-
+  A small status marker: a coloured dot on its own, or an outlined label. The colour sits in the dot and the outline, never in the text.
 category: feedback
 related: [ inline-banner, tags ]
 source:
@@ -19,99 +20,242 @@ props:
     type: enum
     values: [ Default, Negative, Positive, Warning ]
     default: Default
+  size:
+    type: enum
+    values: [ Medium, Small ]
+    default: Medium
+  showIcon:
+    type: boolean
+    default: false
+    notes: Shows the dot in front of the label on the medium size. Off by default, as in Figma.
+  icon:
+    type: slot
+    notes: Replaces the dot when showIcon is on.
 elements:
   root:
     styles:
-      align-items: { value: center }
-      display: { value: flex, assert: false }
       position: { value: relative, assert: false }
-      gap: { token: spacing/gap/3xsmall, value: 2px }
-      height: { token: spacing/size/small, value: 24px }
-      padding-bottom: { token: spacing/gap/3xsmall, value: 2px }
-      padding-top: { token: spacing/gap/none, value: 0px }
-      padding-left: { token: spacing/gap/small, value: 8px }
-      padding-right: { token: spacing/gap/small, value: 8px }
-      border-radius: { token: spacing/radius/full, value: 10000px }
+      min-width: { value: 24px }
+  label: {}
+  outline: {}
   icon:
-    styles:
-      align-items: { value: center }
-      display: { value: flex, assert: false }
-      flex-shrink: { value: "0", assert: false }
-      position: { value: relative, assert: false }
-      padding-top: { token: spacing/gap/3xsmall, value: 2px }
+    optional: true
   icons-dot:
-    styles:
-      overflow: { value: clip }
-      flex-shrink: { value: "0", assert: false }
-      position: { value: relative, assert: false }
-      width: { value: 16px, suggest: spacing/size/2xsmall }
-      height: { value: 16px, suggest: spacing/size/2xsmall }
-  union:
-    styles:
-      position: { value: absolute }
-      inset: { value: 37.5% }
-  label:
-    styles:
-      flex-shrink: { value: "0", assert: false }
-      white-space: { value: nowrap, assert: false }
-      text-align: { value: center }
-      position: { value: relative, assert: false }
-      font-family: { token: font-family/base, value: "'General Sans Variable'" }
-      font-weight: { token: typography/label/font-weight/medium, value: "500" }
-      line-height: { token: typography/label/line-height, value: 14px }
-      color: { token: non-interactive/foreground/tertiary, value: "#999" }
-      font-size: { token: typography/label/font-size, value: 12px }
-      letter-spacing: { token: typography/label/letter-spacing, value: 0px }
-  outline:
-    styles:
-      border-sides: { value: all }
-      position: { value: absolute }
-      inset: { value: "0" }
-      opacity: { token: opacity/solid, value: "1" }
-      border-radius: { token: spacing/radius/full, value: 10000px }
+    optional: true
 variants:
-  - when: { status: Default }
+  - when: { status: Default, size: Small }
     figmaNode: "139:396"
     elements:
-      outline:
-        border-color: { token: non-interactive/foreground/quadruple, value: "#3a3a3a" }
-  - when: { status: Negative }
+      root:
+        width: { value: 24px, suggest: spacing/size/small }
+        height: { value: 24px, suggest: spacing/size/small }
+  - when: { status: Negative, size: Small }
     figmaNode: "139:433"
     elements:
-      outline:
-        border-color: { token: non-interactive/background/negative/light, value: "#48050c" }
       root:
-        justify-content: { value: center }
-  - when: { status: Positive }
+        width: { value: 24px, suggest: spacing/size/small }
+        height: { value: 24px, suggest: spacing/size/small }
+  - when: { status: Positive, size: Small }
     figmaNode: "139:439"
     elements:
-      outline:
-        border-color: { token: non-interactive/background/positive/light, value: "#004c19" }
       root:
-        justify-content: { value: center }
-  - when: { status: Warning }
+        width: { value: 24px, suggest: spacing/size/small }
+        height: { value: 24px, suggest: spacing/size/small }
+  - when: { status: Warning, size: Small }
     figmaNode: "139:445"
     elements:
-      outline:
-        border-color: { token: non-interactive/background/warning/light, value: "#492604" }
       root:
+        width: { value: 24px, suggest: spacing/size/small }
+        height: { value: 24px, suggest: spacing/size/small }
+  - when: { status: Default, size: Medium }
+    figmaNode: "346:3994"
+    elements:
+      root:
+        height: { token: spacing/size/small, value: 24px }
+        align-items: { value: center }
+        display: { value: flex, assert: false }
+        gap: { token: spacing/gap/3xsmall, value: 2px }
+        padding-bottom: { token: spacing/gap/3xsmall, value: 2px }
+        padding-top: { token: spacing/gap/none, value: 0px }
+        padding-left: { token: spacing/gap/small, value: 8px }
+        padding-right: { token: spacing/gap/small, value: 8px }
+        border-radius: { token: spacing/radius/full, value: 10000px }
+      label:
+        flex-shrink: { value: "0", assert: false }
+        white-space: { value: nowrap, assert: false }
+        text-align: { value: center }
+        position: { value: relative, assert: false }
+        font-family: { token: font-family/base, value: "'General Sans Variable'" }
+        font-weight: { token: typography/label/font-weight/medium, value: "500" }
+        line-height: { token: typography/label/line-height, value: 14px }
+        color: { token: non-interactive/foreground/tertiary, value: "#999" }
+        font-size: { token: typography/label/font-size, value: 12px }
+        letter-spacing: { token: typography/label/letter-spacing, value: 0px }
+      outline:
+        border-sides: { value: all }
+        position: { value: absolute }
+        inset: { value: "0" }
+        border-color: { token: non-interactive/foreground/quadruple, value: "#3a3a3a" }
+        opacity: { token: opacity/solid, value: "1" }
+        border-radius: { token: spacing/radius/full, value: 10000px }
+      icon:
+        align-items: { value: center }
+        display: { value: flex, assert: false }
+        flex-shrink: { value: "0", assert: false }
+        position: { value: relative, assert: false }
+        padding-top: { token: spacing/gap/3xsmall, value: 2px }
+      icons-dot:
+        flex-shrink: { value: "0", assert: false }
+        position: { value: relative, assert: false }
+        width: { value: 16px, suggest: spacing/size/2xsmall }
+        height: { value: 16px, suggest: spacing/size/2xsmall }
+  - when: { status: Negative, size: Medium }
+    figmaNode: "346:3999"
+    elements:
+      root:
+        height: { token: spacing/size/small, value: 24px }
+        align-items: { value: center }
+        display: { value: flex, assert: false }
+        gap: { token: spacing/gap/3xsmall, value: 2px }
+        padding-bottom: { token: spacing/gap/3xsmall, value: 2px }
+        padding-top: { token: spacing/gap/none, value: 0px }
+        padding-left: { token: spacing/gap/small, value: 8px }
+        padding-right: { token: spacing/gap/small, value: 8px }
+        border-radius: { token: spacing/radius/full, value: 10000px }
         justify-content: { value: center }
+      label:
+        flex-shrink: { value: "0", assert: false }
+        white-space: { value: nowrap, assert: false }
+        text-align: { value: center }
+        position: { value: relative, assert: false }
+        font-family: { token: font-family/base, value: "'General Sans Variable'" }
+        font-weight: { token: typography/label/font-weight/medium, value: "500" }
+        line-height: { token: typography/label/line-height, value: 14px }
+        color: { token: non-interactive/foreground/tertiary, value: "#999" }
+        font-size: { token: typography/label/font-size, value: 12px }
+        letter-spacing: { token: typography/label/letter-spacing, value: 0px }
+      outline:
+        border-sides: { value: all }
+        position: { value: absolute }
+        inset: { value: "0" }
+        border-color: { token: non-interactive/background/negative/light, value: "#48050c" }
+        opacity: { token: opacity/solid, value: "1" }
+        border-radius: { token: spacing/radius/full, value: 10000px }
+      icon:
+        align-items: { value: center }
+        display: { value: flex, assert: false }
+        flex-shrink: { value: "0", assert: false }
+        position: { value: relative, assert: false }
+        padding-top: { token: spacing/gap/3xsmall, value: 2px }
+      icons-dot:
+        flex-shrink: { value: "0", assert: false }
+        position: { value: relative, assert: false }
+        width: { value: 16px, suggest: spacing/size/2xsmall }
+        height: { value: 16px, suggest: spacing/size/2xsmall }
+  - when: { status: Positive, size: Medium }
+    figmaNode: "346:4004"
+    elements:
+      root:
+        height: { token: spacing/size/small, value: 24px }
+        align-items: { value: center }
+        display: { value: flex, assert: false }
+        gap: { token: spacing/gap/3xsmall, value: 2px }
+        padding-bottom: { token: spacing/gap/3xsmall, value: 2px }
+        padding-top: { token: spacing/gap/none, value: 0px }
+        padding-left: { token: spacing/gap/small, value: 8px }
+        padding-right: { token: spacing/gap/small, value: 8px }
+        border-radius: { token: spacing/radius/full, value: 10000px }
+        justify-content: { value: center }
+      label:
+        flex-shrink: { value: "0", assert: false }
+        white-space: { value: nowrap, assert: false }
+        text-align: { value: center }
+        position: { value: relative, assert: false }
+        font-family: { token: font-family/base, value: "'General Sans Variable'" }
+        font-weight: { token: typography/label/font-weight/medium, value: "500" }
+        line-height: { token: typography/label/line-height, value: 14px }
+        color: { token: non-interactive/foreground/tertiary, value: "#999" }
+        font-size: { token: typography/label/font-size, value: 12px }
+        letter-spacing: { token: typography/label/letter-spacing, value: 0px }
+      outline:
+        border-sides: { value: all }
+        position: { value: absolute }
+        inset: { value: "0" }
+        border-color: { token: non-interactive/background/positive/light, value: "#004c19" }
+        opacity: { token: opacity/solid, value: "1" }
+        border-radius: { token: spacing/radius/full, value: 10000px }
+      icon:
+        align-items: { value: center }
+        display: { value: flex, assert: false }
+        flex-shrink: { value: "0", assert: false }
+        position: { value: relative, assert: false }
+        padding-top: { token: spacing/gap/3xsmall, value: 2px }
+      icons-dot:
+        flex-shrink: { value: "0", assert: false }
+        position: { value: relative, assert: false }
+        width: { value: 16px, suggest: spacing/size/2xsmall }
+        height: { value: 16px, suggest: spacing/size/2xsmall }
+  - when: { status: Warning, size: Medium }
+    figmaNode: "346:4009"
+    elements:
+      root:
+        height: { token: spacing/size/small, value: 24px }
+        align-items: { value: center }
+        display: { value: flex, assert: false }
+        gap: { token: spacing/gap/3xsmall, value: 2px }
+        padding-bottom: { token: spacing/gap/3xsmall, value: 2px }
+        padding-top: { token: spacing/gap/none, value: 0px }
+        padding-left: { token: spacing/gap/small, value: 8px }
+        padding-right: { token: spacing/gap/small, value: 8px }
+        border-radius: { token: spacing/radius/full, value: 10000px }
+        justify-content: { value: center }
+      label:
+        flex-shrink: { value: "0", assert: false }
+        white-space: { value: nowrap, assert: false }
+        text-align: { value: center }
+        position: { value: relative, assert: false }
+        font-family: { token: font-family/base, value: "'General Sans Variable'" }
+        font-weight: { token: typography/label/font-weight/medium, value: "500" }
+        line-height: { token: typography/label/line-height, value: 14px }
+        color: { token: non-interactive/foreground/tertiary, value: "#999" }
+        font-size: { token: typography/label/font-size, value: 12px }
+        letter-spacing: { token: typography/label/letter-spacing, value: 0px }
+      outline:
+        border-sides: { value: all }
+        position: { value: absolute }
+        inset: { value: "0" }
+        border-color: { token: non-interactive/background/warning/light, value: "#492604" }
+        opacity: { token: opacity/solid, value: "1" }
+        border-radius: { token: spacing/radius/full, value: 10000px }
+      icon:
+        align-items: { value: center }
+        display: { value: flex, assert: false }
+        flex-shrink: { value: "0", assert: false }
+        position: { value: relative, assert: false }
+        padding-top: { token: spacing/gap/3xsmall, value: 2px }
+      icons-dot:
+        flex-shrink: { value: "0", assert: false }
+        position: { value: relative, assert: false }
+        width: { value: 16px, suggest: spacing/size/2xsmall }
+        height: { value: 16px, suggest: spacing/size/2xsmall }
 guidance:
-  status: agreed
+  status: proposed
   use:
     - |-
       Marking the status of something in a list, a card or a table row: Paid, Overdue, Draft.
+    - |-
+      `Small` when there's no room for words, or the status is obvious from where it sits. Just the coloured dot.
   avoid:
     - Telling people something about the whole page. That's **InlineBanner**.
     - Describing what something is about rather than its status. That's **Tag**.
     - Anything clickable. Badge doesn't do hover or focus, **Chip** does.
   behaviour: |-
-    `status` only changes the outline (`non-interactive/background/<status>/light`) and the little dot. The text stays `non-interactive/foreground/tertiary` whatever the status, and that's on purpose: I keep badges quiet. There's no background fill either. My first Badge in akount.ing got exactly these three things wrong.
+    Two sizes now. `Small` is only the dot, 24 by 24, coloured by `status`. `Medium` is the label with an outline, and `status` changes only the outline (`non-interactive/background/<status>/light`). The text stays `non-interactive/foreground/tertiary` whatever the status, on purpose: I keep badges quiet. There's no background fill either. My first Badge in akount.ing got exactly that wrong. The dot in front of the label is optional now (`showIcon`), and off unless you ask for it.
   accessibility:
     element: a `<span>`. Nothing to click.
     colour: |-
-      the outline alone isn't enough. The text has to say the status ("Overdue", not "!").
-    dot: "`aria-hidden=\"true\"`."
+      the colour alone isn't enough. On `Medium` the text says the status. On `Small` there's no text, so give it an `aria-label` ("Overdue") or put the status in words right next to it.
+    dot: "`aria-hidden=\"true\"` when there's a label next to it."
   content: One or two words. Sentence case, no punctuation.
 implementations:
   runceanu-portfolio:
@@ -123,8 +267,3 @@ implementations:
     parts:
       label: .ak-badge__label
       icon: .ak-badge__icon
-pending:
-  reason: Figma changed after the August read. The set now has a size property, and the four nodes this contract points at (139:396, 139:433, 139:439, 139:445) are now the small, dot-only badges at 24x24. The labelled badge described here is probably a bigger size, at node ids I haven't read yet. Read the set again before building it.
-  propertiesToRead:
-    - the new size property and every variant it adds
-  nodesToWalk: [ "139:395" ]

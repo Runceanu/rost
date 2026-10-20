@@ -25,9 +25,9 @@
 ## Anatomy
 
 - `root`
-- `icons-arrow-left`
-- `union`
 - `label`
+- `icons-arrow-left` (optional)
+- `union` (optional)
 - `focus-ring`
 - `background`
 
