@@ -2,7 +2,8 @@
 import Base from '../../layouts/Base.astro'
 import { Code } from 'astro:components'
 import { Fixtures, fixturesFor } from '../../components/Fixtures'
-import { kit, byId, title, inCode, guidanceHtml, componentSource, sourceLink, tokenCell, isColour, APP_LABEL, GITHUB, blankShot } from '../../lib/kit'
+import { kit, byId, title, inCode, guidanceHtml, componentSource, sourceLink, tokenCell, isColour, APP_LABEL, GITHUB } from '../../lib/kit'
+import { shotsFor } from '../../lib/shots'
 
 export function getStaticPaths() {
   return kit.map((e) => ({ params: { id: e.id } }))
@@ -17,15 +18,7 @@ const src = sourceLink(c)
 const source = componentSource(id)
 const usage = fixturesFor(id)?.usage
 
-// Figma's own screenshots, for components that aren't in code yet. Only a
-// component's own folder, one level down. Two of those hold private things (a
-// client's name, real people's photos) and never ship; icons and
-// illustrations have their own page.
-const shots = import.meta.glob(['../../../../baseline/*/*.png', '!../../../../baseline/thumbs/*', '!../../../../baseline/testimonials-pics/*', '!../../../../baseline/icons/*', '!../../../../baseline/illustrations/*'], { query: '?url', import: 'default', eager: true }) as Record<string, string>
-const manifest = (await import('../../../../baseline/manifest.json')).default as Record<string, { nodeId: string; name: string; file: string }[]>
-const withUrl = (manifest[id] ?? []).map((v) => ({ ...v, url: Object.entries(shots).find(([p]) => p.endsWith(`/baseline/${id}/${v.file}`))?.[1] })).filter((v) => v.url)
-const figma = withUrl.filter((v) => !blankShot(`baseline/${id}/${v.file}`))
-const blanks = withUrl.length - figma.length
+const { shots: figma, blanks } = shotsFor(id)
 
 // The same words the markdown docs use, with a colour for each kind.
 const CELL: Record<string, string> = { token: 'tk', suggested: 'tk--warn', layout: 'tk--none', sample: 'tk--none', reasoned: 'tk--none', gap: 'tk--gap' }
@@ -181,5 +174,6 @@ const props = Object.entries(c.props ?? {}) as [string, any][]
   :global(.fixture) { margin: 0; display: flex; flex-direction: column; gap: var(--spacing-gap-small); align-items: flex-start; }
   :global(.fixture-stage) { min-height: var(--spacing-size-small); }
   :global(.shot) { display: block; max-width: 100%; height: auto; }
+  :global(.fixture-note) { margin: var(--spacing-gap-medium-large) 0 0; color: var(--fg-3); font-size: 13.5px; }
   :global(.fixture figcaption) { font-family: var(--mono); font-size: 11px; color: var(--fg-3); }
 </style>

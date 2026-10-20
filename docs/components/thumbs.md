@@ -8,13 +8,26 @@
 |---|---|
 | Kind | component |
 | Contract | `review` · [thumbs.contract.yaml](../../contracts/thumbs.contract.yaml) |
-| Guidance | **missing** |
+| Guidance | `proposed` |
 | Source | [Figma 109:79](https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=109-79) · read 2026-10-19 · frozen 2026-10-20 |
 | Implemented in | nowhere yet |
 
-## Not right yet
+## Props
 
-- No guidance yet. It needs a `guidance` block (there's one to copy in `schema/template.contract.yaml`).
+| Prop | Type | Values | Default |
+|---|---|---|---|
+| `name` | slot |  |  |
+| `number` | slot |  |  |
+| `industry` | slot |  |  |
+| `type` | slot |  |  |
+| `period` | slot |  |  |
+| `showNumber` | boolean |  | `true` |
+| `showName` | boolean |  | `true` |
+| `showIndustry` | boolean |  | `true` |
+| `showType` | boolean |  | `true` |
+| `showPeriod` | boolean |  | `true` |
+| `image` | slot |  |  |
+| `badge` | slot |  |  |
 
 ## States
 
@@ -28,15 +41,41 @@
 - `content`
 - `title`
 - `number`
-- `label`
 - `text`
 - `bottom`
-- `icons-dot`
+- `detail`: Industry, type and period. Figma calls each one a label; the number's label is styled apart, because on hover the two go different colours.
+- `icons-dot`: Figma's 12px `icons/dot`, a 3px dot in the middle. Drawn in CSS so its colour can follow the state.
+- `dot`
 - `focus-ring`
-- `badge`
-- `outline`
-- `locked`
-- `icons-lock`
+- `badge` (optional): Places the Badge in the corner. The pill itself is the Badge component.
+- `locked` (optional)
+- `icons-lock` (optional)
+
+## When to use
+
+- One project in a grid or a carousel of work. The whole card links to the case study.
+- A list of things that each want a picture and a short line of facts under a name.
+
+## When not to use
+
+- A card that isn't a link. Thumbs has hover, pressed and focus because it's meant to be clicked.
+- Long names. The title doesn't wrap, by design. Two or three words.
+
+## Behaviour
+
+The picture fills the card, and the frosted panel sits on its bottom edge with the number, the name and three details. On hover and pressed the name and number go green, and the details lighten. `Disabled` dims the picture and the panel and shows the badge ("Coming soon"). `Locked` keeps the card as it is and puts a green lock in the corner, for work I can't show without a password.
+
+## Accessibility
+
+- **Element**: an `<a>`. Disabled drops the `href` and sets `aria-disabled="true"`.
+- **Name**: the link's text, which is the number, the name and the details read in order. Pass `aria-label` if that reads badly.
+- **Keyboard**: Tab to it, Enter opens it.
+- **Focus**: a 2px ring, 2px outside the card, on `:focus-visible` only.
+- **Colour**: Locked says it with the lock icon, which has its own text ("Locked") for screen readers.
+
+## Content
+
+The name is the client or the product, as people know it. Details are a word or two each, the period like "2024" or "2023 to 2025".
 
 ## Tokens
 
@@ -44,21 +83,25 @@ Every token this component uses, across all its variants.
 
 | Token | Resolves to |
 |---|---|
+| `effect/thumb` | `blur(12px)` |
 | `font-family/base` | `'General Sans Variable'` |
 | `non-interactive/background/positive/base` | `#00d669` |
 | `non-interactive/background/secondary` | `#171717` |
-| `non-interactive/foreground/quadruple` | `#3a3a3a` |
 | `opacity/medium` | `0.48` |
 | `opacity/mild` | `0.32` |
-| `opacity/solid` | `1` |
 | `project/default/label` | `#d3d9d5` |
 | `project/default/sub-label` | `#999` |
 | `project/disabled/label` | `#d3d9d5` |
 | `project/disabled/sub-label` | `#999` |
 | `project/focus/focus-ring` | `#999` |
+| `project/focus/label` | `#d3d9d5` |
+| `project/focus/sub-label` | `#999` |
 | `project/hover/label` | `#00d669` |
+| `project/hover/sub-label` | `#ededed` |
+| `project/lock/label` | `#d3d9d5` |
+| `project/lock/sub-label` | `#999` |
 | `project/pressed/label` | `#00d669` |
-| `spacing/gap/3xsmall` | `2px` |
+| `project/pressed/sub-label` | `#c2c7c3` |
 | `spacing/gap/large` | `24px` |
 | `spacing/gap/medium` | `16px` |
 | `spacing/gap/none` | `0px` |
@@ -85,6 +128,10 @@ Every token this component uses, across all its variants.
 
 | Part | Property | Value | Why |
 |---|---|---|---|
+| `shadow` | `background` | `linear-gradient(to bottom, rgba(6,8,5,0), var(--non-interactive-background-primary))` | A gradient from the page background, transparent, to the page background. The colour is the token; the ramp is the effect. |
+| `content` | `background` | `rgba(0,0,0,0.48)` | Black at opacity/medium. The kit has no colour token with alpha for it. |
+| `dot` | `width` | `3px` | The dot's own size inside the icon. |
+| `dot` | `height` | `3px` | The dot's own size inside the icon. |
 | `focus-ring` | `border-radius` | `28px` | Derived: the element radius plus the focus ring offset. |
 
 See it live, with every value of every variant: [rost.build/components/thumbs](https://rost.build/components/thumbs/)

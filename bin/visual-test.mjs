@@ -15,6 +15,12 @@
  * Figma renders each component on the page background (#060805,
  * non-interactive/background/primary), so the test does too.
  *
+ * A fixture can ask for two more things. `force` holds pseudo-classes
+ * (hover, active, focus-visible) put on the component's root through the
+ * DevTools protocol, the way DevTools' own :hov panel does: interaction states
+ * are the browser's, not props. `mask` lists boxes, in Figma's pixels, that
+ * aren't compared, for a sample text that can't be published.
+ *
  * Font: the same General Sans Variable that Figma renders with, from
  * ROST_FONT (default ~/Library/Fonts/GeneralSans-Variable.ttf). Smoothing
  * matches both apps (-webkit-font-smoothing: antialiased).
@@ -106,7 +112,7 @@ for (const id of ids) {
     import { createRoot } from 'react-dom/client'
     import { fixtures } from '${join(root, 'src/components', id, `${id}.fixtures.tsx`)}'
     createRoot(document.getElementById('root')).render(
-      <>{fixtures.map((f) => <div key={f.node} data-node={f.node} style={{ margin: 8 }}>{f.element}</div>)}</>
+      <>{fixtures.map((f) => <div key={f.node} data-node={f.node} data-force={(f.force ?? []).join(' ')} data-mask={JSON.stringify(f.mask ?? [])} style={{ margin: 8 }}>{f.element}</div>)}</>
     )`)
   await build({ entryPoints: [join(work, 'entry.tsx')], bundle: true, outdir: work, jsx: 'automatic', logLevel: 'error', loader: { '.svg': 'file' }, plugins: [svgUrl] })
   const face = `@font-face { font-family: 'General Sans Variable'; font-weight: 200 700; src: url('file://${font}') format('truetype'); }`
@@ -120,6 +126,17 @@ for (const id of ids) {
   await page.evaluate(() => document.fonts.ready)
   await page.waitForTimeout(SETTLE_MS)
 
+  // Forced states go through the DevTools protocol, on the component's root.
+  const cdp = await page.context().newCDPSession(page)
+  await cdp.send('DOM.enable')
+  await cdp.send('CSS.enable')
+  const force = async (node, classes) => {
+    const { root: doc } = await cdp.send('DOM.getDocument', { depth: -1 })
+    const { nodeId } = await cdp.send('DOM.querySelector', { nodeId: doc.nodeId, selector: `[data-node="${node}"] .rost-${id}` })
+    if (nodeId) await cdp.send('CSS.forcePseudoState', { nodeId, forcedPseudoClasses: classes })
+    return nodeId
+  }
+
   console.log(`\n${id}`)
   const byNode = Object.fromEntries((manifest[id] ?? []).map((v) => [v.nodeId, v]))
   for (const node of await page.$$eval('[data-node]', (els) => els.map((e) => e.dataset.node))) {
@@ -128,7 +145,11 @@ for (const id of ids) {
     if (!basePath || !existsSync(basePath)) { console.log(`  ?    ${node}  no Figma screenshot to compare with`); continue }
     const el = await page.$(`[data-node="${node}"] > *`)
     if (!el) { failed++; console.log(`  FAIL ${target.name.padEnd(30)} rendered nothing`); continue }
+    const forced = await page.$eval(`[data-node="${node}"]`, (e) => e.dataset.force.split(' ').filter(Boolean))
+    const forcedOn = forced.length ? await force(node, forced) : 0
+    if (forced.length) await page.waitForTimeout(SETTLE_MS)
     const shot = PNG.sync.read(await el.screenshot())
+    if (forcedOn) await cdp.send('CSS.forcePseudoState', { nodeId: forcedOn, forcedPseudoClasses: [] })
     const base = PNG.sync.read(readFileSync(basePath))
     const label = target.name.padEnd(30)
     if (shot.width !== base.width || shot.height !== base.height) {
@@ -137,6 +158,13 @@ for (const id of ids) {
       writeFileSync(join(work, `${node.replace(':', '-')}.actual.png`), PNG.sync.write(shot))
       continue
     }
+    // A masked box takes Figma's pixels on both sides, so it can't differ.
+    for (const m of JSON.parse(await page.$eval(`[data-node="${node}"]`, (e) => e.dataset.mask)))
+      for (let y = m.y; y < Math.min(m.y + m.height, base.height); y++)
+        for (let x = m.x; x < Math.min(m.x + m.width, base.width); x++) {
+          const i = (y * base.width + x) * 4
+          for (let k = 0; k < 4; k++) shot.data[i + k] = base.data[i + k]
+        }
     const diff = new PNG({ width: base.width, height: base.height })
     const n = pixelmatch(base.data, shot.data, diff.data, base.width, base.height, { threshold: 0.1, includeAA: false })
     const share = n / (base.width * base.height)

@@ -5,6 +5,8 @@ name: Thumbs
 kind: component
 status: review
 summary: A project thumbnail card, with the project name and details on a frosted panel at the bottom.
+category: display
+related: [ projects, carousel, badge ]
 source:
   tool: figma
   fileKey: 1Zy0wiWKXQAvsfDBX3KR0d
@@ -13,6 +15,27 @@ source:
   extractedAt: "2026-10-19"
   extractedBy: mcp
   frozenAt: "2026-10-20"
+props:
+  name:
+    type: slot
+    notes: The project's name, in the title. In React, `name`.
+  number:
+    type: slot
+    notes: A two-digit index in front of the name.
+  industry: { type: slot }
+  type: { type: slot }
+  period: { type: slot }
+  showNumber: { type: boolean, default: true }
+  showName: { type: boolean, default: true }
+  showIndustry: { type: boolean, default: true }
+  showType: { type: boolean, default: true }
+  showPeriod: { type: boolean, default: true }
+  image:
+    type: slot
+    notes: What fills the card. In Figma, the empty `slot` frame. In React, the children.
+  badge:
+    type: slot
+    notes: The pill on a disabled card, "Coming soon" in Figma. It's Rost's Badge, Medium, Default.
 states: [ Default, Hover, Pressed, Focus, Disabled, Locked ]
 elements:
   root:
@@ -22,11 +45,14 @@ elements:
       align-items: { value: flex-start }
       position: { value: relative, assert: false }
       gap: { token: spacing/gap/none, value: 0px }
+      border-radius: { token: spacing/radius/xlarge, value: 24px }
+      text-decoration: { value: none, assert: false, notes: "It's a link. The whole card is the target." }
+      color: { value: inherit, assert: false }
+      outline: { value: none, assert: false, notes: "The focus ring is its own part, drawn as Figma draws it." }
       height:
         value: 334px
         assert: false
         notes: Just the size of the Figma frame. No token, and not something to copy.
-      border-radius: { token: spacing/radius/xlarge, value: 24px }
       width:
         value: 384px
         assert: false
@@ -34,22 +60,39 @@ elements:
   slot:
     styles:
       flex: { value: 1 0 0, assert: false }
+      min-height: { value: 1px, assert: false }
       width: { value: 100% }
       position: { value: relative, assert: false }
+      overflow: { value: hidden, assert: false, notes: An image inside keeps the card's corners. }
       background: { token: non-interactive/background/secondary, value: "#171717" }
       border-radius: { token: spacing/radius/xlarge, value: 24px }
   shadow:
     styles:
       position: { value: absolute }
-      height: { value: 167px }
+      left: { value: "0" }
+      right: { value: "0" }
+      bottom: { value: "0" }
+      height:
+        value: 50%
+        notes: 167px in Figma, half of the 334px frame. Half is the decision, so it holds at any size.
+      background:
+        value: linear-gradient(to bottom, rgba(6,8,5,0), var(--non-interactive-background-primary))
+        untokenised: A gradient from the page background, transparent, to the page background. The colour is the token; the ramp is the effect.
       opacity: { token: opacity/medium, value: "0.48" }
+      border-bottom-left-radius: { token: spacing/radius/xlarge, value: 24px }
+      border-bottom-right-radius: { token: spacing/radius/xlarge, value: 24px }
+      pointer-events: { value: none, assert: false }
   content:
     styles:
       position: { value: absolute }
+      left: { token: spacing/gap/small, value: 8px }
+      right: { token: spacing/gap/small, value: 8px }
+      bottom: { token: spacing/gap/small, value: 8px }
       display: { value: flex, assert: false }
       flex-direction: { value: column, assert: false }
       align-items: { value: flex-start }
-      background: { value: "rgba(0,0,0,0.48)" }
+      background: { value: "rgba(0,0,0,0.48)", untokenised: "Black at opacity/medium. The kit has no colour token with alpha for it." }
+      backdrop-filter: { token: effect/thumb, value: blur(12px) }
       gap: { token: spacing/gap/small, value: 8px }
       padding-bottom: { token: spacing/gap/large, value: 24px }
       padding-top: { token: spacing/gap/medium, value: 16px }
@@ -69,15 +112,9 @@ elements:
       justify-content: { value: center }
       align-items: { value: center }
       display: { value: flex, assert: false }
-      flex-direction: { value: column, assert: false }
       flex-shrink: { value: "0", assert: false }
       position: { value: relative, assert: false }
       width: { value: 16px, token: spacing/size/2xsmall }
-  label:
-    styles:
-      flex-shrink: { value: "0", assert: false }
-      width: { value: 100% }
-      position: { value: relative, assert: false }
       font-family: { token: font-family/base, value: "'General Sans Variable'" }
       font-weight: { token: typography/label/font-weight/regular, value: "400" }
       line-height: { token: typography/label/line-height, value: 14px }
@@ -102,104 +139,156 @@ elements:
       position: { value: relative, assert: false }
       gap: { token: spacing/gap/medium, value: 16px }
       padding-left: { token: spacing/gap/xlarge, value: 32px }
-  icons-dot:
+  detail:
+    notes: Industry, type and period. Figma calls each one a label; the number's label is styled apart, because on hover the two go different colours.
     styles:
+      flex-shrink: { value: "0", assert: false }
+      white-space: { value: nowrap, assert: false }
+      position: { value: relative, assert: false }
+      font-family: { token: font-family/base, value: "'General Sans Variable'" }
+      font-weight: { token: typography/label/font-weight/regular, value: "400" }
+      line-height: { token: typography/label/line-height, value: 14px }
+      font-size: { token: typography/label/font-size, value: 12px }
+      letter-spacing: { token: typography/label/letter-spacing, value: 0px }
+  icons-dot:
+    notes: Figma's 12px `icons/dot`, a 3px dot in the middle. Drawn in CSS so its colour can follow the state.
+    styles:
+      display: { value: flex, assert: false }
+      align-items: { value: center }
+      justify-content: { value: center }
       flex-shrink: { value: "0", assert: false }
       position: { value: relative, assert: false }
       width: { value: 12px, token: spacing/size/3xsmall }
       height: { value: 12px, token: spacing/size/3xsmall }
-  focus-ring: {}
-  badge: {}
-  outline: {}
-  locked: {}
-  icons-lock: {}
+  dot:
+    styles:
+      width: { value: 3px, untokenised: "The dot's own size inside the icon." }
+      height: { value: 3px, untokenised: "The dot's own size inside the icon." }
+      border-radius: { token: spacing/radius/full, value: 10000px }
+  focus-ring:
+    styles:
+      display: { value: none, assert: false }
+      position: { value: absolute }
+      inset: { value: -4px }
+      border-style: { value: solid }
+      border-width: { token: spacing/outline/medium, value: 2px }
+      border-color: { token: project/focus/focus-ring, value: "#999" }
+      border-radius:
+        value: 28px
+        untokenised: "Derived: the element radius plus the focus ring offset."
+      pointer-events: { value: none, assert: false }
+  badge:
+    optional: true
+    notes: Places the Badge in the corner. The pill itself is the Badge component.
+    styles:
+      position: { value: absolute }
+      top: { token: spacing/gap/medium, value: 16px }
+      right: { token: spacing/gap/medium, value: 16px }
+      display: { value: flex, assert: false }
+  locked:
+    optional: true
+    styles:
+      position: { value: absolute }
+      top: { token: spacing/gap/medium, value: 16px }
+      right: { token: spacing/gap/medium, value: 16px }
+      align-items: { value: center }
+      display: { value: flex, assert: false }
+      background: { token: non-interactive/background/positive/base, value: "#00d669" }
+      gap: { token: spacing/gap/none, value: 0px }
+      padding: { token: spacing/gap/small, value: 8px }
+      border-radius: { token: spacing/radius/medium, value: 12px }
+  icons-lock:
+    optional: true
+    styles:
+      flex-shrink: { value: "0", assert: false }
+      position: { value: relative, assert: false }
+      width: { value: 24px, token: spacing/size/small }
+      height: { value: 24px, token: spacing/size/small }
 variants:
-  - when: { state: Focus }
-    figmaNode: "109:118"
+  - when: { state: Default }
+    figmaNode: "109:78"
     elements:
-      label:
+      number:
         color: { token: project/default/sub-label, value: "#999" }
       text:
         color: { token: project/default/label, value: "#d3d9d5" }
-      focus-ring:
-        border-sides: { value: all }
-        position: { value: absolute }
-        border-width: { token: spacing/outline/medium, value: 2px }
-        border-color: { token: project/focus/focus-ring, value: "#999" }
-        inset: { value: -4px }
-        border-radius:
-          value: 28px
-          untokenised: "Derived: the element radius plus the focus ring offset."
+      detail:
+        color: { token: project/default/sub-label, value: "#999" }
+      dot:
+        background: { value: "#747573", notes: "Figma's dot SVG is filled #747573, and no token holds it. Open." }
+  - when: { state: Hover }
+    figmaNode: "109:77"
+    elements:
+      number:
+        color: { token: project/hover/label, value: "#00d669" }
+      text:
+        color: { token: project/hover/label, value: "#00d669" }
+      detail:
+        color: { token: project/hover/sub-label, value: "#ededed" }
+      dot:
+        background: { token: project/hover/sub-label, value: "#ededed" }
   - when: { state: Pressed }
     figmaNode: "109:168"
     elements:
-      label:
+      number:
         color: { token: project/pressed/label, value: "#00d669" }
       text:
         color: { token: project/pressed/label, value: "#00d669" }
+      detail:
+        color: { token: project/pressed/sub-label, value: "#c2c7c3" }
+      dot:
+        background: { token: project/pressed/sub-label, value: "#c2c7c3" }
+  - when: { state: Focus }
+    figmaNode: "109:118"
+    elements:
+      number:
+        color: { token: project/focus/sub-label, value: "#999" }
+      text:
+        color: { token: project/focus/label, value: "#d3d9d5" }
+      detail:
+        color: { token: project/focus/sub-label, value: "#999" }
+      focus-ring:
+        display: { value: block, assert: false }
   - when: { state: Disabled }
     figmaNode: "109:206"
     elements:
-      label:
+      root:
+        cursor: { value: default, assert: false }
+      number:
         color: { token: project/disabled/sub-label, value: "#999" }
       text:
         color: { token: project/disabled/label, value: "#d3d9d5" }
-      root:
-        opacity: { token: opacity/solid, value: "1" }
+      detail:
+        color: { token: project/disabled/sub-label, value: "#999" }
+      dot:
+        background: { value: "#747573", notes: Same as Default. }
       slot:
         opacity: { token: opacity/mild, value: "0.32" }
       content:
         opacity: { token: opacity/mild, value: "0.32" }
-      badge:
-        position: { value: absolute }
-        align-items: { value: center }
-        display: { value: flex, assert: false }
-        gap: { token: spacing/gap/3xsmall, value: 2px }
-        height: { token: spacing/size/small, value: 24px }
-        min-width: { value: 24px }
-        padding-bottom: { token: spacing/gap/3xsmall, value: 2px }
-        padding-top: { token: spacing/gap/none, value: 0px }
-        padding-left: { token: spacing/gap/small, value: 8px }
-        padding-right: { token: spacing/gap/small, value: 8px }
-        border-radius: { token: spacing/radius/full, value: 10000px }
-      outline:
-        border-sides: { value: all }
-        position: { value: absolute }
-        inset: { value: "0" }
-        border-color: { token: non-interactive/foreground/quadruple, value: "#3a3a3a" }
-        opacity: { token: opacity/solid, value: "1" }
-        border-radius: { token: spacing/radius/full, value: 10000px }
-  - when: { state: Hover }
-    figmaNode: "109:77"
-    elements:
-      label:
-        color: { token: project/hover/label, value: "#00d669" }
-      text:
-        color: { token: project/hover/label, value: "#00d669" }
-  - when: { state: Default }
-    figmaNode: "109:78"
-    elements:
-      label:
-        color: { token: project/default/sub-label, value: "#999" }
-      text:
-        color: { token: project/default/label, value: "#d3d9d5" }
   - when: { state: Locked }
     figmaNode: "261:1232"
     elements:
-      label:
-        color: { token: project/default/sub-label, value: "#999" }
+      number:
+        color: { token: project/lock/sub-label, value: "#999" }
       text:
-        color: { token: project/default/label, value: "#d3d9d5" }
-      locked:
-        position: { value: absolute }
-        align-items: { value: center }
-        display: { value: flex, assert: false }
-        background: { token: non-interactive/background/positive/base, value: "#00d669" }
-        gap: { token: spacing/gap/none, value: 0px }
-        padding: { token: spacing/gap/small, value: 8px }
-        border-radius: { token: spacing/radius/medium, value: 12px }
-      icons-lock:
-        flex-shrink: { value: "0", assert: false }
-        position: { value: relative, assert: false }
-        width: { value: 24px, token: spacing/size/small }
-        height: { value: 24px, token: spacing/size/small }
+        color: { token: project/lock/label, value: "#d3d9d5" }
+      detail:
+        color: { token: project/lock/sub-label, value: "#999" }
+guidance:
+  status: proposed
+  use:
+    - One project in a grid or a carousel of work. The whole card links to the case study.
+    - A list of things that each want a picture and a short line of facts under a name.
+  avoid:
+    - A card that isn't a link. Thumbs has hover, pressed and focus because it's meant to be clicked.
+    - Long names. The title doesn't wrap, by design. Two or three words.
+  behaviour: |-
+    The picture fills the card, and the frosted panel sits on its bottom edge with the number, the name and three details. On hover and pressed the name and number go green, and the details lighten. `Disabled` dims the picture and the panel and shows the badge ("Coming soon"). `Locked` keeps the card as it is and puts a green lock in the corner, for work I can't show without a password.
+  accessibility:
+    element: an `<a>`. Disabled drops the `href` and sets `aria-disabled="true"`.
+    name: the link's text, which is the number, the name and the details read in order. Pass `aria-label` if that reads badly.
+    keyboard: Tab to it, Enter opens it.
+    focus: a 2px ring, 2px outside the card, on `:focus-visible` only.
+    colour: Locked says it with the lock icon, which has its own text ("Locked") for screen readers.
+  content: The name is the client or the product, as people know it. Details are a word or two each, the period like "2024" or "2023 to 2025".
