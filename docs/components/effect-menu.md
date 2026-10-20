@@ -9,7 +9,7 @@
 | Kind | effect |
 | Contract | `draft` · [effect-menu.contract.yaml](../../contracts/effect-menu.contract.yaml) |
 | Guidance | `agreed` |
-| Source | [Figma 29:5](https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=29-5) · read 2026-08-19 |
+| Source | [Figma 29:5](https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=29-5) · read 2026-08-19 · frozen 2026-10-20 |
 | Implemented in | nowhere yet |
 
 ## Not right yet
@@ -46,4 +46,4 @@ Every token this component uses, across all its variants.
 |---|---|
 | `effect/menu` | `blur(12px)` |
 
-Every value of every variant: [reference.html#effect-menu](../../reference.html#effect-menu)
+See it live, with every value of every variant: [rost.build/components/effect-menu](https://rost.build/components/effect-menu/)

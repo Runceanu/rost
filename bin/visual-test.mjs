@@ -26,12 +26,19 @@ import { PNG } from 'pngjs'
 import { mkdirSync, readFileSync, writeFileSync, existsSync, rmSync } from 'node:fs'
 import { homedir } from 'node:os'
 import { join } from 'node:path'
+import { fileURLToPath } from 'node:url'
 
 // Measured on InlineBanner (2026-10-19): with everything else exact, Figma and
 // Chrome still disagree on 2.0-2.4% of pixels at letter edges, beyond 1px.
 // A missing icon or a wrong colour lands well above this line.
 const MAX_DIFF = 0.025
-const root = new URL('../', import.meta.url).pathname
+// How close two pixels' colours must be (sum of RGB differences) to count as
+// the same: room for anti-aliasing, far below a wrong colour.
+const CLOSE = 96
+// Time for the page to settle after fonts load, and how much the side by sides are zoomed.
+const SETTLE_MS = 100
+const ZOOM = 6
+const root = fileURLToPath(new URL('../', import.meta.url))
 const font = process.env.ROST_FONT ?? join(homedir(), 'Library/Fonts/GeneralSans-Variable.ttf')
 if (!existsSync(font)) { console.log(`General Sans Variable not found at ${font}. Set ROST_FONT.`); process.exit(1) }
 const manifest = JSON.parse(readFileSync(join(root, 'baseline/manifest.json'), 'utf8'))
@@ -45,7 +52,7 @@ if (!ids.length) { console.log('Usage: node bin/visual-test.mjs <id> [<id> ...]'
  * colour (say #999 instead of #d3d9d5) is far outside it.
  */
 function beyondOnePixel(a, b) {
-  const close = (p, i, q, j) => Math.abs(p.data[i] - q.data[j]) + Math.abs(p.data[i + 1] - q.data[j + 1]) + Math.abs(p.data[i + 2] - q.data[j + 2]) <= 96
+  const close = (p, i, q, j) => Math.abs(p.data[i] - q.data[j]) + Math.abs(p.data[i + 1] - q.data[j + 1]) + Math.abs(p.data[i + 2] - q.data[j + 2]) <= CLOSE
   const oneWay = (p, q) => {
     let n = 0
     for (let y = 0; y < p.height; y++) for (let x = 0; x < p.width; x++) {
@@ -111,7 +118,7 @@ for (const id of ids) {
   const page = await browser.newPage({ deviceScaleFactor: 1 })
   await page.goto('file://' + join(work, 'index.html'))
   await page.evaluate(() => document.fonts.ready)
-  await page.waitForTimeout(100)
+  await page.waitForTimeout(SETTLE_MS)
 
   console.log(`\n${id}`)
   const byNode = Object.fromEntries((manifest[id] ?? []).map((v) => [v.nodeId, v]))
@@ -138,7 +145,7 @@ for (const id of ids) {
     if (!ok) failed++
     writeFileSync(join(work, `${node.replace(':', '-')}.actual.png`), PNG.sync.write(shot))
     writeFileSync(join(work, `${node.replace(':', '-')}.diff.png`), PNG.sync.write(diff))
-    writeFileSync(join(work, `${node.replace(':', '-')}.compare.png`), PNG.sync.write(sideBySide([base, shot, diff], 6)))
+    writeFileSync(join(work, `${node.replace(':', '-')}.compare.png`), PNG.sync.write(sideBySide([base, shot, diff], ZOOM)))
     console.log(`  ${ok ? 'ok  ' : 'FAIL'} ${label} ${(near * 100).toFixed(2)}% differ beyond 1px  (${(share * 100).toFixed(2)}% exactly)`)
   }
   await page.close()

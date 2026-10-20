@@ -9,7 +9,7 @@
 | Kind | component |
 | Contract | `review` · [pill-button.contract.yaml](../../contracts/pill-button.contract.yaml) |
 | Guidance | `agreed` |
-| Source | [Figma 20:14](https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=20-14) · read 2026-08-18 |
+| Source | [Figma 20:14](https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=20-14) · read 2026-08-19 · frozen 2026-10-20 |
 | Implemented in | The accounting app (`src/components/Button.tsx`, `.ak-btn`) |
 
 ## Props
@@ -117,4 +117,4 @@ Every token this component uses, across all its variants.
 | `typography/body/letter-spacing` | `0px` |
 | `typography/body/line-height` | `22px` |
 
-Every value of every variant: [reference.html#pill-button](../../reference.html#pill-button)
+See it live, with every value of every variant: [rost.build/components/pill-button](https://rost.build/components/pill-button/)

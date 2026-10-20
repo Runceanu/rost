@@ -9,7 +9,7 @@
 | Kind | component |
 | Contract | `review` · [carousel.contract.yaml](../../contracts/carousel.contract.yaml) |
 | Guidance | **missing** |
-| Source | [Figma 157:302](https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=157-302) · read 2026-08-18 |
+| Source | [Figma 157:302](https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=157-302) · read 2026-10-19 · frozen 2026-10-20 |
 | Implemented in | nowhere yet |
 
 ## Not right yet
@@ -69,4 +69,4 @@ Every token this component uses, across all its variants.
 |---|---|---|---|
 | `focus-ring` | `border-radius` | `28px` | Derived: the element radius plus the focus ring offset. |
 
-Every value of every variant: [reference.html#carousel](../../reference.html#carousel)
+See it live, with every value of every variant: [rost.build/components/carousel](https://rost.build/components/carousel/)

@@ -9,7 +9,7 @@
 | Kind | effect |
 | Contract | `review` · [effect-thumb.contract.yaml](../../contracts/effect-thumb.contract.yaml) |
 | Guidance | `agreed` |
-| Source | [Figma 124:26634](https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=124-26634) · read 2026-08-19 |
+| Source | [Figma 124:26634](https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=124-26634) · read 2026-08-19 · frozen 2026-10-20 |
 | Implemented in | nowhere yet |
 
 ## Anatomy
@@ -40,4 +40,4 @@ Every token this component uses, across all its variants.
 |---|---|
 | `effect/thumb` | `blur(12px)` |
 
-Every value of every variant: [reference.html#effect-thumb](../../reference.html#effect-thumb)
+See it live, with every value of every variant: [rost.build/components/effect-thumb](https://rost.build/components/effect-thumb/)

@@ -7,7 +7,7 @@ Every value in every contract, sorted by why it has a token or doesn't. `npm run
 | | Values | Share | Meaning |
 |---|---|---|---|
 | Has a token | 1422 | 58% | Uses a token, and the check tests it. |
-| Token suggested | 0 | 0% | A plain number where a token fits. It becomes a token at the freeze. |
+| Token suggested | 0 | 0% | A token I want that doesn't exist yet. The freeze turned every other suggestion into a token. |
 | How Figma builds it | 995 | 41% | How Figma builds the layer (position, inset, which sides get a stroke). Nothing to tokenise. |
 | Figma frame size | 19 | 1% | A root size that is just the Figma frame. Written down, not checked. |
 | No token, on purpose | 10 | 0% | Plain on purpose, and the contract says why. |
@@ -17,7 +17,7 @@ Every value in every contract, sorted by why it has a token or doesn't. `npm run
 
 | | Has a token | Token suggested | How Figma builds it | Figma frame size | No token, on purpose | Open gap |
 |---|---:|---:|---:|---:|---:|---:|
-| [Badge](components/badge.md) | 84 | · | 64 | · | · | 1 |
+| [Badge](components/badge.md) | 84 | · | 63 | · | · | 1 |
 | [Button](components/button.md) | 248 | · | 124 | · | · | · |
 | [Carousel](components/carousel.md) | 81 | · | 113 | 4 | 1 | 1 |
 | [Chip](components/chips.md) | 32 | · | 14 | · | · | · |
@@ -25,7 +25,7 @@ Every value in every contract, sorted by why it has a token or doesn't. `npm run
 | [Floating effect](components/effect-floating.md) | 1 | · | · | · | · | · |
 | [Hero Media](components/hero-media.md) | 6 | · | 1 | · | 1 | · |
 | [IconButton](components/icon-button.md) | 172 | · | 49 | · | · | · |
-| [InlineBanner](components/inline-banner.md) | 85 | · | 39 | · | · | · |
+| [InlineBanner](components/inline-banner.md) | 85 | · | 40 | · | · | · |
 | [Input](components/input.md) | 91 | · | 102 | 1 | · | · |
 | [Lock frame effect](components/effect-lock-frame.md) | 1 | · | · | · | · | · |
 | [Menu effect](components/effect-menu.md) | 1 | · | · | · | · | · |
@@ -42,11 +42,7 @@ Every value in every contract, sorted by why it has a token or doesn't. `npm run
 
 ## Tokens that should be there
 
-When I freeze the contracts, every one of these becomes the token. Anything marked **new** needs creating first.
-
-| Suggest | Value | Exists | Uses | Where |
-|---|---|---|---:|---|
-
+None. The freeze on 2026-10-20 turned all 122 suggestions into tokens.
 
 ## No token, on purpose
 

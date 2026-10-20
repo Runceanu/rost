@@ -1,11 +1,16 @@
 #!/usr/bin/env node
-/** One read per variant: unconditional code, no ternaries to misparse. */
+/**
+ * Reads every variant of the named components from Figma, one read per
+ * variant, so the variant name says which branch of the code applies.
+ * A file that's already there is skipped; delete it to read it again.
+ *
+ *   node bin/extract-variants.mjs [component ...]   (default: every set in the registry)
+ */
 import { call } from './figma.mjs'
 import { readFileSync, writeFileSync, existsSync } from 'node:fs'
 
 const nodes = JSON.parse(readFileSync(new URL('../registry/variant-nodes.json', import.meta.url), 'utf8'))
-const CORE = process.argv.slice(2).length ? process.argv.slice(2)
-  : ['badge','pill-button','button','icon-button','input','toggle','inline-banner','chips','tags','menu']
+const CORE = process.argv.slice(2).length ? process.argv.slice(2) : Object.keys(nodes)
 let ok = 0, fail = 0
 for (const comp of CORE) {
   for (const v of nodes[comp] ?? []) {

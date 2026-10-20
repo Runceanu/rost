@@ -20,16 +20,22 @@ const files = readdirSync(RAW).filter((f) => f.endsWith('.txt') && (!only.length
 
 // Figma's own instructions quote an example asset URL; it isn't a real image.
 const EXAMPLE = '10c13ac1a228a365cb98a0064b1d5afbc84887b2'
-const urls = new Set()
+// These sets show real people and a client's work. Their pictures (PNGs) go
+// to assets/private/ (gitignored), never into the public repo. Their SVG
+// icons are ordinary and stay with the rest.
+const PRIVATE = ['testimonials-pics', 'thumbs']
+const urls = new Map()
 for (const f of files) for (const m of readFileSync(new URL(f, RAW), 'utf8').matchAll(/http:\/\/localhost:3845\/assets\/([a-f0-9]+)\.(svg|png)/g))
-  if (m[1] !== EXAMPLE) urls.add(m[0])
+  if (m[1] !== EXAMPLE) urls.set(m[0], urls.get(m[0]) || (m[2] === 'png' && PRIVATE.includes(f.split('__')[0])))
+const PRIVATE_OUT = new URL('../assets/private/figma/', import.meta.url)
+mkdirSync(PRIVATE_OUT, { recursive: true })
 
 const valid = (buf, ext) => ext === 'svg' ? buf.toString('utf8', 0, 2048).includes('<svg') : buf.subarray(0, 8).equals(Buffer.from([0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a]))
 let saved = 0, kept = 0, bad = []
-for (const url of urls) {
+for (const [url, isPrivate] of urls) {
   const name = url.split('/').pop()
   const ext = name.split('.').pop()
-  const dest = new URL(name, OUT)
+  const dest = new URL(name, isPrivate ? PRIVATE_OUT : OUT)
   if (existsSync(dest) && valid(readFileSync(dest), ext)) { kept++; continue }
   try {
     const buf = Buffer.from(await (await fetch(url)).arrayBuffer())

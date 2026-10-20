@@ -12,11 +12,10 @@
  */
 import { mkdirSync, writeFileSync } from 'node:fs'
 import { read } from './lib/contract-io.mjs'
+import { STATE_PSEUDO as PSEUDO } from './lib/kit.mjs'
 
 const kebab = (s) => String(s).replace(/([a-z0-9])([A-Z])/g, '$1-$2').replace(/[^a-zA-Z0-9]+/g, '-').replace(/^-+|-+$/g, '').toLowerCase()
 const cssVar = (path) => `var(--${path.replace(/\//g, '-')})`
-// Disabled covers both: a native control and a span with aria-disabled.
-const PSEUDO = { Default: '', Hover: ':hover', Pressed: ':active', Focus: ':focus-visible', Disabled: ':is(:disabled, [aria-disabled="true"])' }
 
 function declarations(styles, { root }) {
   const out = []

@@ -9,7 +9,7 @@
 | Kind | component |
 | Contract | `review` · [divider.contract.yaml](../../contracts/divider.contract.yaml) |
 | Guidance | **missing** |
-| Source | [Figma 39:111](https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=39-111) · read 2026-08-18 |
+| Source | [Figma 39:111](https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=39-111) · read 2026-10-19 · frozen 2026-10-20 |
 | Implemented in | nowhere yet |
 
 ## Not right yet
@@ -20,4 +20,4 @@
 
 - `root`
 
-Every value of every variant: [reference.html#divider](../../reference.html#divider)
+See it live, with every value of every variant: [rost.build/components/divider](https://rost.build/components/divider/)

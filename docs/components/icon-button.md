@@ -9,7 +9,7 @@
 | Kind | component |
 | Contract | `review` · [icon-button.contract.yaml](../../contracts/icon-button.contract.yaml) |
 | Guidance | `agreed` |
-| Source | [Figma 93:587](https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=93-587) · read 2026-08-18 |
+| Source | [Figma 93:587](https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=93-587) · read 2026-08-19 · frozen 2026-10-20 |
 | Implemented in | nowhere yet |
 
 ## Props
@@ -98,4 +98,4 @@ Every token this component uses, across all its variants.
 | `spacing/size/small-medium` | `32px` |
 | `spacing/size/xsmall` | `20px` |
 
-Every value of every variant: [reference.html#icon-button](../../reference.html#icon-button)
+See it live, with every value of every variant: [rost.build/components/icon-button](https://rost.build/components/icon-button/)

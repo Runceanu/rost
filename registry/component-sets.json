@@ -1,13 +1,16 @@
 {
+  "$comment": "Every Figma component set. Entries with a name are components and get a contract; the rest (icons, illustrations, the working canvas) are assets or scratch.",
   "Working Canvas": {
     "setNodeId": "0:2",
     "variantCount": 46
   },
   "menu": {
+    "name": "Menu",
     "setNodeId": "41:259",
     "variantCount": 5
   },
   "button": {
+    "name": "Button",
     "setNodeId": "39:38",
     "variantCount": 20
   },
@@ -20,55 +23,73 @@
     "variantCount": 17
   },
   "pill-button": {
+    "name": "PillButton",
     "setNodeId": "20:14",
     "variantCount": 20
   },
   "icon-button": {
+    "name": "IconButton",
     "setNodeId": "93:587",
     "variantCount": 20
   },
   "badge": {
+    "name": "Badge",
     "setNodeId": "139:395",
     "variantCount": 4
   },
   "carousel": {
+    "name": "Carousel",
     "setNodeId": "157:302",
     "variantCount": 5
   },
   "chips": {
+    "name": "Chip",
     "setNodeId": "139:317",
     "variantCount": 5
   },
   "input": {
+    "name": "Input",
     "setNodeId": "240:273",
     "variantCount": 14
   },
   "inline-banner": {
+    "name": "InlineBanner",
     "setNodeId": "205:614",
     "variantCount": 8
   },
   "projects": {
+    "name": "Projects",
     "setNodeId": "100:185",
     "variantCount": 6
   },
   "tags": {
+    "name": "Tag",
     "setNodeId": "91:362",
     "variantCount": 5
   },
   "testimonials": {
+    "name": "Testimonials",
     "setNodeId": "144:67",
     "variantCount": 10
   },
   "testimonials-pics": {
+    "name": "TestimonialPicture",
     "setNodeId": "144:493",
     "variantCount": 8
   },
   "toggle": {
+    "name": "Toggle",
     "setNodeId": "168:1149",
     "variantCount": 10
   },
   "thumbs": {
+    "name": "Thumbs",
     "setNodeId": "109:79",
     "variantCount": 6
+  },
+  "divider": {
+    "name": "Divider",
+    "setNodeId": "39:111",
+    "variantCount": 1
   }
 }

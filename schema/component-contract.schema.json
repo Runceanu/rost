@@ -94,7 +94,8 @@
             },
             "extractedAt": {
               "type": "string",
-              "format": "date"
+              "format": "date",
+              "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
             },
             "extractedBy": {
               "enum": [
@@ -106,6 +107,7 @@
             "frozenAt": {
               "type": "string",
               "format": "date",
+              "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
               "description": "From this date the contract, not this source, is the source of truth. The values were imported from here once; bin/build-contracts.mjs refuses to overwrite a frozen contract."
             }
           }
@@ -130,11 +132,13 @@
             },
             "extractedAt": {
               "type": "string",
-              "format": "date"
+              "format": "date",
+              "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
             },
             "frozenAt": {
               "type": "string",
               "format": "date",
+              "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
               "description": "From this date the contract, not this source, is the source of truth. The values were imported from here once; bin/build-contracts.mjs refuses to overwrite a frozen contract."
             }
           }
@@ -214,9 +218,6 @@
           "optional": {
             "type": "boolean"
           },
-          "figmaNodeId": {
-            "$ref": "#/$defs/nodeId"
-          },
           "notes": {
             "type": "string"
           },
@@ -249,9 +250,6 @@
           },
           "figmaNode": {
             "$ref": "#/$defs/nodeId"
-          },
-          "size": {
-            "type": "string"
           },
           "elements": {
             "type": "object",
@@ -389,7 +387,7 @@
       "additionalProperties": false,
       "properties": {
         "token": {
-          "description": "Token PATH, slash-separated as in Figma, that the source ACTUALLY binds. Omit when it binds none; see `suggest` and `untokenised`.",
+          "description": "Token path, slash-separated as in Figma. Before the freeze, what Figma actually bound. Since then, the decision: code must use this token. Omit when there is none, and say why in `untokenised` or propose one in `suggest`.",
           "$ref": "#/$defs/tokenPath"
         },
         "value": {
@@ -404,7 +402,7 @@
           "type": "string"
         },
         "suggest": {
-          "description": "A token this value SHOULD be bound to but is not, in Figma or code. An existing token (bind it in Figma) or a proposed new one (create it). Never asserted by conformance; `token` stays what the source actually binds.",
+          "description": "A token this value should use but doesn't yet, because the token isn't in tokens.css. Create the token, then move it to `token`. Never checked by conformance.",
           "$ref": "#/$defs/tokenPath"
         },
         "untokenised": {

@@ -2,12 +2,14 @@
 
 What I'm doing next with Rost, in order. Each item says what "done" looks like, so I can tick it off instead of arguing with myself about it.
 
-Where the apps stood on 2026-10-19 (`npm run audit` on both):
+Where the apps stood on 2026-10-20 (`npm run audit` on both):
 
 | | Raw hex | Undefined vars | Token names the kit doesn't have |
 |---|---|---|---|
 | The accounting app | 0 | 0 | 5 |
-| The portfolio site | 230 | 2 | 83 |
+| The portfolio site | 99 | 2 | 88 |
+
+The portfolio site's raw hex dropped from 230 to 99 without me touching the site. The audit used to count hex inside comments and `transparent`; now it doesn't. The 99 are real.
 
 ## Done: the freeze
 

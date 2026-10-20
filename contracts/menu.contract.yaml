@@ -13,7 +13,7 @@ source:
   fileKey: 1Zy0wiWKXQAvsfDBX3KR0d
   nodeId: "41:259"
   url: https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=41-259
-  extractedAt: "2026-08-18"
+  extractedAt: "2026-08-19"
   extractedBy: mcp
   frozenAt: "2026-10-20"
 states: [ Default, Hover, Pressed, Focus, Disabled ]
@@ -96,7 +96,7 @@ variants:
     elements:
       content:
         color: { token: non-interactive/foreground/primary, value: "#ededed" }
-        font-family: { token: font-family/base, value: "'\"General Sans Variable'" }
+        font-family: { token: font-family/base, value: "'General Sans Variable'" }
         font-weight: { token: typography/body/font-weight/medium, value: "500" }
   - when: { state: Disabled }
     figmaNode: "41:298"

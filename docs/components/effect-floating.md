@@ -9,7 +9,7 @@
 | Kind | effect |
 | Contract | `review` · [effect-floating.contract.yaml](../../contracts/effect-floating.contract.yaml) |
 | Guidance | `agreed` |
-| Source | [Figma 231:2](https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=231-2) · read 2026-08-19 |
+| Source | [Figma 231:2](https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=231-2) · read 2026-08-19 · frozen 2026-10-20 |
 | Implemented in | nowhere yet |
 
 ## Anatomy
@@ -40,4 +40,4 @@ Every token this component uses, across all its variants.
 |---|---|
 | `shadow/floating` | `0px 16px 24px 0px rgba(0, 0, 0, 0.16)` |
 
-Every value of every variant: [reference.html#effect-floating](../../reference.html#effect-floating)
+See it live, with every value of every variant: [rost.build/components/effect-floating](https://rost.build/components/effect-floating/)

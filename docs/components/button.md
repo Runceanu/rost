@@ -9,7 +9,7 @@
 | Kind | component |
 | Contract | `review` · [button.contract.yaml](../../contracts/button.contract.yaml) |
 | Guidance | `agreed` |
-| Source | [Figma 39:38](https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=39-38) · read 2026-08-18 |
+| Source | [Figma 39:38](https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=39-38) · read 2026-08-19 · frozen 2026-10-20 |
 | Implemented in | nowhere yet |
 
 ## Props
@@ -118,4 +118,4 @@ Every token this component uses, across all its variants.
 | `typography/body/letter-spacing` | `0px` |
 | `typography/body/line-height` | `22px` |
 
-Every value of every variant: [reference.html#button](../../reference.html#button)
+See it live, with every value of every variant: [rost.build/components/button](https://rost.build/components/button/)

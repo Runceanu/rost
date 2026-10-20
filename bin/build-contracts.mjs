@@ -1,182 +1,168 @@
 #!/usr/bin/env node
 /**
- * Splits parsed variants into invariants and per-variant differences.
+ * Turns parsed Figma reads (raw/parsed.json) into contracts.
  *
- * A value holding across EVERY variant is an invariant; anything else is keyed
- * by variant. Getting this split right is the useful part: it says out loud
- * which properties the design intends to stay fixed, so a change to one reads
- * as a change to the component rather than to a single state.
+ * A value that holds in every variant goes in `elements`; anything else is
+ * written per variant. Getting that split right is the useful part: it says
+ * out loud which values the design means to keep fixed, so a change to one
+ * reads as a change to the component, not to one state.
+ *
+ * Every contract was frozen on 2026-10-20, so this skips them all. Pass
+ * --unfreeze to read one from Figma again on purpose; the values come back
+ * from Figma, while everything written by hand is kept (see `keep`).
+ *
+ *   node bin/build-contracts.mjs [--unfreeze]
  */
-import { readFileSync, existsSync } from 'node:fs'
+import { readFileSync, existsSync, readdirSync, statSync } from 'node:fs'
 import { read, write, CONTRACTS, SCHEMA_VERSION } from './lib/contract-io.mjs'
+import { STATES, scale } from './lib/kit.mjs'
 
-const parsed = JSON.parse(readFileSync(new URL('../raw/parsed.json', import.meta.url), 'utf8'))
-const inv = JSON.parse(readFileSync(new URL('../registry/figma-inventory.json', import.meta.url), 'utf8'))
-const sets = { badge: '139:395', 'pill-button': '20:14', button: '39:38', 'icon-button': '93:587',
-  input: '240:273', toggle: '168:1149', 'inline-banner': '205:614', chips: '139:317',
-  tags: '91:362', menu: '41:259', carousel: '157:302', projects: '100:185', thumbs: '109:79',
-  testimonials: '144:67', 'testimonials-pics': '144:493', divider: '39:111' }
-const NAMES = { badge: 'Badge', 'pill-button': 'PillButton', button: 'Button', 'icon-button': 'IconButton',
-  input: 'Input', toggle: 'Toggle', 'inline-banner': 'InlineBanner', chips: 'Chip', tags: 'Tag', menu: 'Menu',
-  carousel: 'Carousel', projects: 'Projects', thumbs: 'Thumbs', testimonials: 'Testimonials',
-  'testimonials-pics': 'TestimonialPicture', divider: 'Divider' }
-const FK = inv.fileKey
-const url = (n) => `https://www.figma.com/design/${FK}/UI-Kit-v01?node-id=${String(n).replace(':', '-')}`
+const json = (path) => JSON.parse(readFileSync(new URL(path, import.meta.url), 'utf8'))
+const parsed = json('../raw/parsed.json')
+const { fileKey } = json('../registry/figma-inventory.json')
+// The one list of components: every Figma set with a name in the registry.
+const COMPONENTS = Object.fromEntries(Object.entries(json('../registry/component-sets.json')).filter(([, v]) => v.name).map(([id, v]) => [id, v]))
+const FILE = 'UI-Kit-v01'
+const url = (n) => `https://www.figma.com/design/${fileKey}/${FILE}?node-id=${String(n).replace(':', '-')}`
 const same = (a, b) => a?.value === b?.value && (a?.token ?? null) === (b?.token ?? null)
 
-for (const [comp, variants] of Object.entries(parsed)) {
-  // Only component sets get a contract. Icons and illustrations are assets.
-  if (!sets[comp]) continue
+// The scales a plain number gets matched against, straight from tokens.json.
+const SIZES = scale('spacing-size')
+const GAPS = scale('spacing-gap')
+const OUTLINES = scale('spacing-outline')
+const NOT_ASSERTED = ['display', 'flex-direction', 'flex-shrink', 'flex', 'white-space', 'align-self']
+
+/** When a component was really read: the newest of its raw files, in local time. */
+function readOn(id) {
+  const dir = new URL('../raw/variants/', import.meta.url)
+  const times = readdirSync(dir).filter((f) => f.startsWith(`${id}__`)).map((f) => statSync(new URL(f, dir)).mtime)
+  if (!times.length) return undefined
+  const d = new Date(Math.max(...times))
+  return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`
+}
+
+/** What a value means, beyond the number Figma gave. */
+function annotate(part, prop, val) {
+  // Layout the box needs, written down so code can be generated from it, but
+  // nothing to fail an app over: an app can reach the same layout other ways.
+  if (NOT_ASSERTED.includes(prop) || (prop === 'position' && val.value === 'relative')) return { ...val, assert: false }
+  const isSize = prop === 'width' || prop === 'height'
+  if (!val.token && isSize && SIZES[val.value]) {
+    // A fixed size right on the scale is a decision, root or not: Badge's
+    // small dot is 24x24, icon frames are 16 or 20, avatars 56.
+    return { ...val, suggest: SIZES[val.value] }
+  }
+  if (!val.token && isSize && part === 'root') {
+    // Any other root size is how big the Figma frame was, not a spec. Input's
+    // root is h-[var(--spacing/size/large)] and w-[208px]: the height is
+    // meant, the width was the sample's.
+    return { ...val, assert: false, notes: 'Just the size of the Figma frame. No token, and not something to copy.' }
+  }
+  // An `outline` part drawn as a 1 or 2px rectangle is a stroke on the outline scale.
+  if (!val.token && part === 'outline' && prop === 'height' && OUTLINES[val.value]) return { ...val, suggest: OUTLINES[val.value] }
+  // A focus ring's radius is the element's radius plus the ring's offset.
+  if (!val.token && part === 'focus-ring' && prop === 'border-radius') return { ...val, untokenised: "The element's radius plus the ring's offset, so it follows from those two." }
+  // A plain gap or padding on the scale, like Input's `gap-[8px]` where every
+  // other gap in the kit uses spacing/gap/small.
+  if (!val.token && (prop === 'gap' || prop.startsWith('padding')) && GAPS[val.value]) return { ...val, suggest: GAPS[val.value] }
+  return val
+}
+
+/**
+ * Keep what was decided by hand on a value Figma still agrees with: an
+ * accepted token, a note, a reason it has no token.
+ */
+function keep(next, prev) {
+  if (!prev || prev.value !== next.value) return next
+  const out = { ...next }
+  if (prev.token && (!next.token || next.suggest === prev.token)) { out.token = prev.token; delete out.suggest }
+  if (prev.notes) out.notes = prev.notes
+  if (prev.untokenised && !out.token) out.untokenised = prev.untokenised
+  return out
+}
+const keepAll = (next, prev) => Object.fromEntries(Object.entries(next).map(([prop, v]) => [prop, keep(v, prev?.[prop])]))
+
+for (const [id, variants] of Object.entries(parsed)) {
+  // Only named component sets get a contract. Icons and illustrations are assets.
+  const set = COMPONENTS[id]
+  if (!set) continue
+
+  const prev = existsSync(new URL(`${id}.contract.yaml`, CONTRACTS)) ? read(id) : {}
+  // A frozen contract is the source now. Re-reading Figma would undo every
+  // decision taken in it since the freeze, so that only happens on purpose.
+  if (prev.source?.frozenAt && !process.argv.includes('--unfreeze')) {
+    console.log(`  ${set.name.padEnd(18)} frozen ${prev.source.frozenAt}, skipped`)
+    continue
+  }
+
   const seen = new Map()
-  for (const v of variants) {
-    for (const [part, props] of Object.entries(v.values)) {
+  for (const v of variants)
+    for (const [part, props] of Object.entries(v.values))
       for (const [prop, val] of Object.entries(props)) {
-        const k = part + ' ' + prop
+        const k = `${part} ${prop}`
         if (!seen.has(k)) seen.set(k, [])
         seen.get(k).push({ variant: v.variant, val })
       }
-    }
-  }
-
-  /*
-   * A root width or height with no token behind it is the frame's size in
-   * Figma, not a specification. Input's root carries h-[var(--spacing/size/
-   * large,56px)] AND w-[208px]: the height is a decision, the width is how wide
-   * the sample happened to be. Both are recorded; only the tokenised one is
-   * asserted, so conformance stops reporting a component as wrong for not
-   * hardcoding a canvas measurement.
-   */
-  /*
-   * Icon frames are sized with literals (`size-[20px]`) although the size scale
-   * holds exactly those values. The value is a real decision; it is only the
-   * binding that is missing, so suggest the scale step rather than leave it
-   * reading as a gap. `token` stays what Figma actually binds.
-   */
-  const OUTLINES = { '1px': 'spacing/outline/small', '2px': 'spacing/outline/medium' }
-  const GAPS = { '2px': 'spacing/gap/3xsmall', '4px': 'spacing/gap/2xsmall', '6px': 'spacing/gap/xsmall',
-    '8px': 'spacing/gap/small', '12px': 'spacing/gap/small-medium', '16px': 'spacing/gap/medium',
-    '20px': 'spacing/gap/medium-large', '24px': 'spacing/gap/large', '32px': 'spacing/gap/xlarge',
-    '40px': 'spacing/gap/2xlarge', '48px': 'spacing/gap/3xlarge', '56px': 'spacing/gap/4xlarge', '64px': 'spacing/gap/5xlarge' }
-  const SIZES = { '12px': 'spacing/size/3xsmall', '16px': 'spacing/size/2xsmall', '20px': 'spacing/size/xsmall',
-    '24px': 'spacing/size/small', '32px': 'spacing/size/small-medium', '40px': 'spacing/size/medium',
-    '48px': 'spacing/size/medium-large', '56px': 'spacing/size/large', '64px': 'spacing/size/xlarge' }
-  const markSamples = (part, prop, val) => {
-    // Layout the box needs, stated so code can be generated from it, but not
-    // something to fail an app over: it can reach the same layout other ways.
-    if (['display', 'flex-direction', 'flex-shrink', 'flex', 'white-space', 'align-self'].includes(prop) ||
-        (prop === 'position' && val.value === 'relative'))
-      return { ...val, assert: false }
-    // A fixed root size right on the size scale is a decision (Badge's small
-    // dot is 24x24). Anything else is just how big the Figma frame was.
-    if (part === 'root' && (prop === 'width' || prop === 'height') && !val.token && SIZES[val.value])
-      return { ...val, suggest: SIZES[val.value] }
-    if (part === 'root' && (prop === 'width' || prop === 'height') && !val.token)
-      return { ...val, assert: false, notes: 'Just the size of the Figma frame. No token, and not something to copy.' }
-    // Any part below the root sized on the scale: icon frames, action slots, avatars.
-    if (part !== 'root' && (prop === 'width' || prop === 'height') && !val.token && SIZES[val.value])
-      return { ...val, suggest: SIZES[val.value] }
-    // An `outline` part drawn as a 1-2px rectangle is a stroke on the outline scale.
-    if (part === 'outline' && prop === 'height' && !val.token && OUTLINES[val.value])
-      return { ...val, suggest: OUTLINES[val.value] }
-    // The focus ring's radius is the element's radius plus the ring's offset: derived, not a token.
-    if (part === 'focus-ring' && prop === 'border-radius' && !val.token)
-      return { ...val, untokenised: 'Derived: the element radius plus the focus ring offset.' }
-    // Same for spacing: Input's leading group is `gap-[8px]` in all 14 variants
-    // while every other gap in the kit binds spacing/gap/small.
-    if ((prop === 'gap' || prop.startsWith('padding')) && !val.token && GAPS[val.value])
-      return { ...val, suggest: GAPS[val.value] }
-    return val
-  }
 
   const invariants = {}
   const perVariant = {}
   for (const [k, entries] of seen) {
-    const sp = k.indexOf(' ')
-    const part = k.slice(0, sp)
-    const prop = k.slice(sp + 1)
+    const [part, prop] = [k.slice(0, k.indexOf(' ')), k.slice(k.indexOf(' ') + 1)]
     const constant = entries.length === variants.length && entries.every((e) => same(e.val, entries[0].val))
-    if (constant) {
-      if (!invariants[part]) invariants[part] = {}
-      invariants[part][prop] = markSamples(part, prop, entries[0].val)
-    } else {
-      for (const e of entries) {
-        if (!perVariant[e.variant]) perVariant[e.variant] = {}
-        if (!perVariant[e.variant][part]) perVariant[e.variant][part] = {}
-        perVariant[e.variant][part][prop] = markSamples(part, prop, e.val)
-      }
-    }
+    if (constant) (invariants[part] ??= {})[prop] = annotate(part, prop, entries[0].val)
+    else for (const e of entries) ((perVariant[e.variant] ??= {})[part] ??= {})[prop] = annotate(part, prop, e.val)
   }
 
   const axes = {}
-  for (const v of variants) {
-    for (const pair of (v.variant || '').split(',').map((s) => s.trim())) {
-      if (pair.includes('=')) {
-        const [a, val] = pair.split('=')
-        if (!axes[a]) axes[a] = new Set()
-        axes[a].add(val)
-      }
-    }
-  }
+  for (const v of variants)
+    for (const pair of (v.variant || '').split(',').map((s) => s.trim()))
+      if (pair.includes('=')) { const [a, val] = pair.split('='); (axes[a] ??= new Set()).add(val) }
 
-  /*
-   * The `state` axis is not a prop: code reaches it through pseudo-classes, and
-   * only Disabled is ever set by a caller. A False/True axis is a boolean.
-   */
-  const STATES = ['Default', 'Hover', 'Pressed', 'Focus', 'Disabled']
+  // `state` isn't a prop: code reaches it through pseudo-classes. A False/True axis is a boolean.
   const booleans = new Set(Object.entries(axes).filter(([, v]) => v.size === 2 && v.has('True') && v.has('False')).map(([a]) => a))
   const props = Object.fromEntries(Object.entries(axes).filter(([a]) => a !== 'state').map(([a, vals]) => {
     if (booleans.has(a)) return [a, { type: 'boolean', default: false }]
     const sorted = [...vals].sort()
     return [a, { type: 'enum', values: sorted, default: sorted[0] }]
   }))
-  const when = (name) => Object.fromEntries(name.split(',').map((p) => p.trim().split('='))
-    .map(([k, v]) => [k, booleans.has(k) ? v === 'True' : v]))
+  for (const [k, p] of Object.entries(props)) if (prev.props?.[k]?.notes) p.notes = prev.props[k].notes
+  // Props that aren't variant axes (showIcon, a slot) are Figma component
+  // properties the read doesn't see. They're written by hand, and kept.
+  for (const [k, p] of Object.entries(prev.props ?? {})) if (!props[k] && !(k in axes)) props[k] = p
+  const when = (name) => Object.fromEntries(name.split(',').map((p) => p.trim().split('=')).map(([k, v]) => [k, booleans.has(k) ? v === 'True' : v]))
 
-  /*
-   * Only the extracted sections are rewritten. Everything authored — summary,
-   * guidance, implementations, deviations, element notes, prop notes, status
-   * once it has moved past review — survives a re-read of Figma untouched.
-   */
-  const id = comp
-  const prev = existsSync(new URL(`${id}.contract.yaml`, CONTRACTS)) ? read(id) : {}
-  // A frozen contract is the source now; Figma is history. Re-reading it would
-  // quietly undo every decision taken in the contract since the freeze.
-  if (prev.source?.frozenAt && !process.argv.includes('--unfreeze')) {
-    console.log(`  ${(NAMES[comp] || comp).padEnd(13)} frozen ${prev.source.frozenAt}, skipped (pass --unfreeze to overwrite)`)
-    continue
-  }
   const parts = [...new Set(variants.flatMap((v) => Object.keys(v.values)))]
   const elements = Object.fromEntries(parts.map((p) => {
-    const { styles: _, ...authored } = prev.elements?.[p] ?? {}
+    const { styles: before, ...authored } = prev.elements?.[p] ?? {}
     // A part that only shows up when a show* switch is on is optional.
     const optional = variants.every((v) => !v.values[p] || v.optional?.includes(p))
-    return [p, { ...authored, ...(optional ? { optional: true } : {}), ...(invariants[p] ? { styles: invariants[p] } : {}) }]
+    return [p, { ...authored, ...(optional ? { optional: true } : {}), ...(invariants[p] ? { styles: keepAll(invariants[p], before) } : {}) }]
   }))
-  for (const [k, p] of Object.entries(props)) if (prev.props?.[k]?.notes) p.notes = prev.props[k].notes
-  // Props that aren't variant axes (a boolean like showIcon, a slot) are
-  // Figma component properties the read doesn't see. They're written by hand
-  // and kept.
-  for (const [k, p] of Object.entries(prev.props ?? {})) if (!props[k] && !(k in axes)) props[k] = p
+  const prevVariant = (name) => prev.variants?.find((x) => Object.entries(when(name)).every(([k, v]) => x.when?.[k] === v))
 
   write({
     ...prev,
     schemaVersion: SCHEMA_VERSION,
     id,
-    name: NAMES[comp] || comp,
+    name: set.name,
     kind: 'component',
     status: prev.status ?? 'review',
-    source: { tool: 'figma', fileKey: FK, nodeId: sets[comp], url: url(sets[comp]),
-      extractedAt: '2026-08-18', extractedBy: 'mcp' },
+    // A re-read makes Figma the source again; freeze it again when it's settled.
+    source: { tool: 'figma', fileKey, nodeId: set.setNodeId, url: url(set.setNodeId), extractedAt: readOn(id), extractedBy: 'mcp' },
     props: Object.keys(props).length ? props : undefined,
     // Interaction states first, in a fixed order; content states (Locked) after, as Figma lists them.
     states: axes.state ? [...STATES.filter((s) => axes.state.has(s)), ...[...axes.state].filter((s) => !STATES.includes(s))] : undefined,
     elements,
     // A lone symbol with no properties (Divider) has no variants, only elements.
-    variants: Object.keys(axes).length ? variants.map((v) => ({ when: when(v.variant), figmaNode: v.nodeId,
-      ...(perVariant[v.variant] ? { elements: perVariant[v.variant] } : {}) })) : undefined,
+    variants: Object.keys(axes).length
+      ? variants.map((v) => {
+        const before = prevVariant(v.variant)?.elements
+        const diff = perVariant[v.variant] && Object.fromEntries(Object.entries(perVariant[v.variant]).map(([p, s]) => [p, keepAll(s, before?.[p])]))
+        return { when: when(v.variant), figmaNode: v.nodeId, ...(diff ? { elements: diff } : {}) }
+      })
+      : undefined,
   })
   const nInv = Object.values(invariants).reduce((s, o) => s + Object.keys(o).length, 0)
   const nVar = Object.values(perVariant).reduce((s, o) => s + Object.values(o).reduce((t, x) => t + Object.keys(x).length, 0), 0)
-  console.log('  ' + (NAMES[comp] || comp).padEnd(13) + String(variants.length).padStart(3) + ' variants  ' +
-    String(nInv).padStart(2) + ' invariants  ' + String(nVar).padStart(3) + ' variant values  ' + parts.length + ' parts')
+  console.log(`  ${set.name.padEnd(18)}${String(variants.length).padStart(3)} variants  ${String(nInv).padStart(2)} fixed  ${String(nVar).padStart(3)} per variant  ${parts.length} parts`)
 }

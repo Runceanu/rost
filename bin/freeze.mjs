@@ -9,13 +9,12 @@
  *   node bin/freeze.mjs           dry run: report what would change
  *   node bin/freeze.mjs --apply   write it
  */
-import { readFileSync } from 'node:fs'
 import { read, write, ids } from './lib/contract-io.mjs'
+import { loadTokens } from './lib/kit.mjs'
 
 const apply = process.argv.includes('--apply')
 const today = new Date().toISOString().slice(0, 10)
-const cssVars = new Set(Object.values(JSON.parse(readFileSync(new URL('../tokens/tokens.json', import.meta.url), 'utf8')).tokens).map((t) => t.cssVar))
-const resolves = (path) => cssVars.has('--' + path.replace(/\//g, '-'))
+const { resolves } = loadTokens()
 
 let accepted = 0, missing = 0, frozen = 0
 const accept = (styles, id, where) => {

@@ -9,7 +9,7 @@
 | Kind | pattern |
 | Contract | `review` · [hero-media.contract.yaml](../../contracts/hero-media.contract.yaml) |
 | Guidance | `agreed` |
-| Source | [Figma 245:2900](https://www.figma.com/design/pg02BcqlCQCVt6LzTAiPhD/?node-id=245-2900) · read 2026-10-18 |
+| Source | [Figma 245:2900](https://www.figma.com/design/pg02BcqlCQCVt6LzTAiPhD/?node-id=245-2900) · read 2026-10-18 · frozen 2026-10-20 |
 | Implemented in | nowhere yet |
 
 ## Anatomy
@@ -61,4 +61,4 @@ Every token this component uses, across all its variants.
 |---|---|---|---|
 | `media` | `background-size` | `explicit px (asset-native, e.g. 2336px 1196px)` | Each artwork's native pixel size. |
 
-Every value of every variant: [reference.html#hero-media](../../reference.html#hero-media)
+See it live, with every value of every variant: [rost.build/components/hero-media](https://rost.build/components/hero-media/)

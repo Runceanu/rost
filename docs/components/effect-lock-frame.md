@@ -9,7 +9,7 @@
 | Kind | effect |
 | Contract | `review` · [effect-lock-frame.contract.yaml](../../contracts/effect-lock-frame.contract.yaml) |
 | Guidance | `agreed` |
-| Source | [Figma 224:2](https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=224-2) · read 2026-08-19 |
+| Source | [Figma 224:2](https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=224-2) · read 2026-08-19 · frozen 2026-10-20 |
 | Implemented in | nowhere yet |
 
 ## Anatomy
@@ -41,4 +41,4 @@ Every token this component uses, across all its variants.
 |---|---|
 | `effect/lock-frame` | `blur(8px)` |
 
-Every value of every variant: [reference.html#effect-lock-frame](../../reference.html#effect-lock-frame)
+See it live, with every value of every variant: [rost.build/components/effect-lock-frame](https://rost.build/components/effect-lock-frame/)

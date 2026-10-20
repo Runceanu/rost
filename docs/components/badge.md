@@ -9,7 +9,7 @@
 | Kind | component |
 | Contract | `review` · [badge.contract.yaml](../../contracts/badge.contract.yaml) |
 | Guidance | `proposed` |
-| Source | [Figma 139:395](https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=139-395) · read 2026-08-18 |
+| Source | [Figma 139:395](https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=139-395) · read 2026-10-20 · frozen 2026-10-20 |
 | Implemented in | The portfolio site (`src/components/Badge.jsx`, `.badge`)<br>the accounting app (`src/components/Badge.tsx`, `.ak-badge`) |
 
 ## Props
@@ -18,6 +18,7 @@
 |---|---|---|---|
 | `status` | enum | `Default` `Negative` `Positive` `Warning` | `Default` |
 | `size` | enum | `Medium` `Small` | `Medium` |
+| `label` | slot |  |  |
 | `showIcon` | boolean |  | `false` |
 | `icon` | slot |  |  |
 
@@ -46,7 +47,9 @@ Two sizes now. `Small` is only the dot, 24 by 24, coloured by `status`. `Medium`
 
 ## Accessibility
 
-- **Element**: a `<span>`. Nothing to click.
+- **Element**: a `<span>`. Nothing to click, nothing to focus.
+- **Name**: on `Medium`, the label. On `Small` there is no text, so pass `aria-label` and it becomes the dot's alt text.
+- **Keyboard**: none. It isn't interactive.
 - **Colour**: the colour alone isn't enough. On `Medium` the text says the status. On `Small` there's no text, so give it an `aria-label` ("Overdue") or put the status in words right next to it.
 - **Dot**: `aria-hidden="true"` when there's a label next to it.
 
@@ -78,4 +81,4 @@ Every token this component uses, across all its variants.
 | `typography/label/letter-spacing` | `0px` |
 | `typography/label/line-height` | `14px` |
 
-Every value of every variant: [reference.html#badge](../../reference.html#badge)
+See it live, with every value of every variant: [rost.build/components/badge](https://rost.build/components/badge/)

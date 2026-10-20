@@ -9,7 +9,7 @@
 | Kind | component |
 | Contract | `review` · [testimonials-pics.contract.yaml](../../contracts/testimonials-pics.contract.yaml) |
 | Guidance | **missing** |
-| Source | [Figma 144:493](https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=144-493) · read 2026-08-18 |
+| Source | [Figma 144:493](https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=144-493) · read 2026-10-19 · frozen 2026-10-20 |
 | Implemented in | nowhere yet |
 
 ## Not right yet
@@ -34,4 +34,4 @@ Every token this component uses, across all its variants.
 |---|---|
 | `spacing/size/large` | `56px` |
 
-Every value of every variant: [reference.html#testimonials-pics](../../reference.html#testimonials-pics)
+See it live, with every value of every variant: [rost.build/components/testimonials-pics](https://rost.build/components/testimonials-pics/)
