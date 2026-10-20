@@ -21,7 +21,7 @@
     "docs": "node bin/validate.mjs && node bin/build-docs.mjs && node bin/build-reference.mjs",
     "build:contracts": "node bin/build-contracts.mjs",
     "validate": "node bin/validate.mjs",
-    "site": "npm run docs && rm -rf site && mkdir site && cp reference.html site/index.html",
+    "site": "npm run docs && rm -rf site && mkdir site && cp reference.html site/index.html && cp assets/brand/favicon.svg site/favicon.svg",
     "deploy": "npm run site && wrangler deploy",
     "preview": "wrangler dev",
     "css": "node bin/build-css.mjs",
