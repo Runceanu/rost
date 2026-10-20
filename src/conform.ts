@@ -284,7 +284,8 @@ export function conform(contract: Contract, css: string, tokensCss: string, vari
         let actual = resolve(raw, tokens)
         // Figma names one family; CSS adds fallbacks after it. The first is the decision.
         if (property === 'font-family') actual = actual.split(',')[0]!.trim()
-        if (norm(actual) !== norm(expected.value)) {
+        // A composite value (a gradient) can name a token inside it; compare what both resolve to.
+        if (norm(actual) !== norm(resolve(expected.value, tokens))) {
           findings.push({ part, property, expected: expected.value, actual, kind: 'value' })
           continue
         }

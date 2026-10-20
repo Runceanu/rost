@@ -6,12 +6,12 @@ Every value in every contract, sorted by why it has a token or doesn't. `npm run
 
 | | Values | Share | Meaning |
 |---|---|---|---|
-| Has a token | 1422 | 58% | Uses a token, and the check tests it. |
+| Has a token | 1435 | 58% | Uses a token, and the check tests it. |
 | Token suggested | 0 | 0% | A token I want that doesn't exist yet. The freeze turned every other suggestion into a token. |
-| How Figma builds it | 995 | 41% | How Figma builds the layer (position, inset, which sides get a stroke). Nothing to tokenise. |
-| Figma frame size | 19 | 1% | A root size that is just the Figma frame. Written down, not checked. |
-| No token, on purpose | 10 | 0% | Plain on purpose, and the contract says why. |
-| Open gap | 7 | 0% | No token and no reason. Each one needs a decision from me. |
+| How Figma builds it | 995 | 40% | How Figma builds the layer (position, inset, which sides get a stroke). Nothing to tokenise. |
+| Figma frame size | 26 | 1% | A root size that is just the Figma frame. Written down, not checked. |
+| No token, on purpose | 14 | 1% | Plain on purpose, and the contract says why. |
+| Open gap | 11 | 0% | No token and no reason. Each one needs a decision from me. |
 
 ## By contract
 
@@ -37,7 +37,7 @@ Every value in every contract, sorted by why it has a token or doesn't. `npm run
 | [TestimonialPicture](components/testimonials-pics.md) | 2 | · | 1 | · | · | · |
 | [Testimonials](components/testimonials.md) | 197 | · | 264 | 9 | · | 1 |
 | [Thumb effect](components/effect-thumb.md) | 1 | · | · | · | · | · |
-| [Thumbs](components/thumbs.md) | 60 | · | 50 | 2 | 1 | 3 |
+| [Thumbs](components/thumbs.md) | 73 | · | 50 | 9 | 5 | 7 |
 | [Toggle](components/toggle.md) | 58 | · | 32 | · | · | · |
 
 ## Tokens that should be there
@@ -55,6 +55,10 @@ None. The freeze on 2026-10-20 turned all 122 suggestions into tokens.
 - [Paper effect](components/effect-paper.md) `lens.halo` = `radius 240px, power 1.3`: Motion tuning parameter (radius and falloff power).
 - [Paper effect](components/effect-paper.md) `lens.press` = `radius 330px, power 1.7`: Motion tuning parameter (radius and falloff power).
 - [Paper effect](components/effect-paper.md) `pen.cadence` = `7-8s between sketches`: Timing of the sketch loop; a motion token group does not exist yet.
+- [Thumbs](components/thumbs.md) `shadow.background` = `linear-gradient(to bottom, rgba(6,8,5,0), var(--non-interactive-background-primary))`: A gradient from the page background, transparent, to the page background. The colour is the token; the ramp is the effect.
+- [Thumbs](components/thumbs.md) `content.background` = `rgba(0,0,0,0.48)`: Black at opacity/medium. The kit has no colour token with alpha for it.
+- [Thumbs](components/thumbs.md) `dot.width` = `3px`: The dot's own size inside the icon.
+- [Thumbs](components/thumbs.md) `dot.height` = `3px`: The dot's own size inside the icon.
 - [Thumbs](components/thumbs.md) `focus-ring.border-radius` = `28px`: Derived: the element radius plus the focus ring offset.
 
 ## Open gaps
@@ -63,9 +67,13 @@ None. The freeze on 2026-10-20 turned all 122 suggestions into tokens.
 - [Carousel](components/carousel.md) `background.background` = `rgba(58,58,58,0.48)`
 - [Projects](components/projects.md) `badge.min-width` = `24px`
 - [Testimonials](components/testimonials.md) `bottom.width` = `976px`
-- [Thumbs](components/thumbs.md) `shadow.height` = `167px`
-- [Thumbs](components/thumbs.md) `content.background` = `rgba(0,0,0,0.48)`
-- [Thumbs](components/thumbs.md) `badge.min-width` = `24px`
+- [Thumbs](components/thumbs.md) `shadow.left` = `0`
+- [Thumbs](components/thumbs.md) `shadow.right` = `0`
+- [Thumbs](components/thumbs.md) `shadow.bottom` = `0`
+- [Thumbs](components/thumbs.md) `shadow.height` = `50%`
+- [Thumbs](components/thumbs.md) `focus-ring.border-style` = `solid`
+- [Thumbs](components/thumbs.md) `dot.background` = `#747573`
+- [Thumbs](components/thumbs.md) `dot.background` = `#747573`
 
 ## Figma variables missing from tokens.css
 

@@ -12,7 +12,7 @@ Rost started as a design system for my own needs and grew into a product of its 
 | [Token coverage](TOKENS.md) | Why each value has a token or doesn't |
 | [Roadmap](ROADMAP.md) | What I'm doing next |
 
-**22** contracts, **0** stable. **16** have guidance, and I've signed off **15** of those.
+**22** contracts, **0** stable. **17** have guidance, and I've signed off **15** of those.
 
 ## Catalogue
 
@@ -34,7 +34,7 @@ Rost started as a design system for my own needs and grew into a product of its 
 | [Tag](components/tags.md) | A compact 20px label with small corners, for what a piece of content is about. | `review` | `agreed` | · |
 | [TestimonialPicture](components/testimonials-pics.md) | The photo of the person behind a testimonial. | `review` | · | · |
 | [Testimonials](components/testimonials.md) | A testimonial you can open and close: name and role, with the quote underneath. | `review` | · | · |
-| [Thumbs](components/thumbs.md) | A project thumbnail card, with the project name and details on a frosted panel at the bottom. | `review` | · | · |
+| [Thumbs](components/thumbs.md) | A project thumbnail card, with the project name and details on a frosted panel at the bottom. | `review` | `proposed` | · |
 | [Toggle](components/toggle.md) | A 40×40 icon button that stays on or off, alone or as one choice in a group. | `review` | `agreed` | akount.ing |
 
 ### Patterns
@@ -68,7 +68,6 @@ What needs attention. It's built from the contracts, so it's only as fresh as th
 - [Projects](components/projects.md)
 - [TestimonialPicture](components/testimonials-pics.md)
 - [Testimonials](components/testimonials.md)
-- [Thumbs](components/thumbs.md)
 
 ### Differences nobody has taken to design yet
 
