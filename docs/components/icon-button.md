@@ -96,14 +96,6 @@ Every token this component uses, across all its variants.
 | `spacing/radius/full` | `10000px` |
 | `spacing/size/medium-large` | `48px` |
 | `spacing/size/small-medium` | `32px` |
-
-## Tokens that should be there
-
-Plain numbers where a token fits exactly. They become tokens when I freeze the contracts.
-
-| Part | Property | Value | Suggest | |
-|---|---|---|---|---|
-| `icons-arrow-left` | `width` | `20px` | `spacing/size/xsmall` | exists |
-| `icons-arrow-left` | `height` | `20px` | `spacing/size/xsmall` | exists |
+| `spacing/size/xsmall` | `20px` |
 
 Every value of every variant: [reference.html#icon-button](../../reference.html#icon-button)

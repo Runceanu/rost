@@ -13,6 +13,7 @@ source:
   url: https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=144-67
   extractedAt: "2026-08-18"
   extractedBy: mcp
+  frozenAt: "2026-10-20"
 props:
   expanded:
     type: boolean
@@ -66,8 +67,8 @@ variants:
         flex-shrink: { value: "0", assert: false }
         position: { value: relative, assert: false }
         border-radius: { token: spacing/radius/full, value: 10000px }
-        width: { value: 56px, suggest: spacing/size/large }
-        height: { value: 56px, suggest: spacing/size/large }
+        width: { value: 56px, token: spacing/size/large }
+        height: { value: 56px, token: spacing/size/large }
       content:
         justify-content: { value: center }
         display: { value: flex, assert: false }
@@ -86,13 +87,13 @@ variants:
         gap: { token: spacing/gap/small, value: 8px }
         padding: { token: spacing/gap/none, value: 0px }
         border-radius: { token: spacing/radius/full, value: 10000px }
-        width: { value: 32px, suggest: spacing/size/small-medium }
-        height: { value: 32px, suggest: spacing/size/small-medium }
+        width: { value: 32px, token: spacing/size/small-medium }
+        height: { value: 32px, token: spacing/size/small-medium }
       icons-arrow-left:
         flex-shrink: { value: "0", assert: false }
         position: { value: relative, assert: false }
-        width: { value: 16px, suggest: spacing/size/2xsmall }
-        height: { value: 16px, suggest: spacing/size/2xsmall }
+        width: { value: 16px, token: spacing/size/2xsmall }
+        height: { value: 16px, token: spacing/size/2xsmall }
   - when: { state: Default, expanded: true }
     figmaNode: "144:347"
     elements:
@@ -111,8 +112,8 @@ variants:
         flex-shrink: { value: "0", assert: false }
         position: { value: relative, assert: false }
         border-radius: { token: spacing/radius/full, value: 10000px }
-        width: { value: 56px, suggest: spacing/size/large }
-        height: { value: 56px, suggest: spacing/size/large }
+        width: { value: 56px, token: spacing/size/large }
+        height: { value: 56px, token: spacing/size/large }
       content:
         justify-content: { value: center }
         display: { value: flex, assert: false }
@@ -131,13 +132,13 @@ variants:
         gap: { token: spacing/gap/small, value: 8px }
         padding: { token: spacing/gap/none, value: 0px }
         border-radius: { token: spacing/radius/full, value: 10000px }
-        width: { value: 32px, suggest: spacing/size/small-medium }
-        height: { value: 32px, suggest: spacing/size/small-medium }
+        width: { value: 32px, token: spacing/size/small-medium }
+        height: { value: 32px, token: spacing/size/small-medium }
       icons-arrow-left:
         flex-shrink: { value: "0", assert: false }
         position: { value: relative, assert: false }
-        width: { value: 16px, suggest: spacing/size/2xsmall }
-        height: { value: 16px, suggest: spacing/size/2xsmall }
+        width: { value: 16px, token: spacing/size/2xsmall }
+        height: { value: 16px, token: spacing/size/2xsmall }
       outline:
         position: { value: absolute }
         background: { token: project/default/outline, value: "#3a3a3a" }
@@ -198,8 +199,8 @@ variants:
         flex-shrink: { value: "0", assert: false }
         position: { value: relative, assert: false }
         border-radius: { token: spacing/radius/full, value: 10000px }
-        width: { value: 56px, suggest: spacing/size/large }
-        height: { value: 56px, suggest: spacing/size/large }
+        width: { value: 56px, token: spacing/size/large }
+        height: { value: 56px, token: spacing/size/large }
       content:
         justify-content: { value: center }
         display: { value: flex, assert: false }
@@ -218,13 +219,13 @@ variants:
         gap: { token: spacing/gap/small, value: 8px }
         padding: { token: spacing/gap/none, value: 0px }
         border-radius: { token: spacing/radius/full, value: 10000px }
-        width: { value: 32px, suggest: spacing/size/small-medium }
-        height: { value: 32px, suggest: spacing/size/small-medium }
+        width: { value: 32px, token: spacing/size/small-medium }
+        height: { value: 32px, token: spacing/size/small-medium }
       icons-arrow-left:
         flex-shrink: { value: "0", assert: false }
         position: { value: relative, assert: false }
-        width: { value: 16px, suggest: spacing/size/2xsmall }
-        height: { value: 16px, suggest: spacing/size/2xsmall }
+        width: { value: 16px, token: spacing/size/2xsmall }
+        height: { value: 16px, token: spacing/size/2xsmall }
       outline:
         position: { value: absolute }
         background: { token: project/disabled/outline, value: "#3a3a3a" }
@@ -285,8 +286,8 @@ variants:
         flex-shrink: { value: "0", assert: false }
         position: { value: relative, assert: false }
         border-radius: { token: spacing/radius/full, value: 10000px }
-        width: { value: 56px, suggest: spacing/size/large }
-        height: { value: 56px, suggest: spacing/size/large }
+        width: { value: 56px, token: spacing/size/large }
+        height: { value: 56px, token: spacing/size/large }
       content:
         justify-content: { value: center }
         display: { value: flex, assert: false }
@@ -305,13 +306,13 @@ variants:
         gap: { token: spacing/gap/small, value: 8px }
         padding: { token: spacing/gap/none, value: 0px }
         border-radius: { token: spacing/radius/full, value: 10000px }
-        width: { value: 32px, suggest: spacing/size/small-medium }
-        height: { value: 32px, suggest: spacing/size/small-medium }
+        width: { value: 32px, token: spacing/size/small-medium }
+        height: { value: 32px, token: spacing/size/small-medium }
       icons-arrow-left:
         flex-shrink: { value: "0", assert: false }
         position: { value: relative, assert: false }
-        width: { value: 16px, suggest: spacing/size/2xsmall }
-        height: { value: 16px, suggest: spacing/size/2xsmall }
+        width: { value: 16px, token: spacing/size/2xsmall }
+        height: { value: 16px, token: spacing/size/2xsmall }
       outline:
         position: { value: absolute }
         background: { token: project/pressed/outline, value: "#10ffa4" }
@@ -371,8 +372,8 @@ variants:
         flex-shrink: { value: "0", assert: false }
         position: { value: relative, assert: false }
         border-radius: { token: spacing/radius/full, value: 10000px }
-        width: { value: 56px, suggest: spacing/size/large }
-        height: { value: 56px, suggest: spacing/size/large }
+        width: { value: 56px, token: spacing/size/large }
+        height: { value: 56px, token: spacing/size/large }
       -actions:
         justify-content: { value: center }
         align-items: { value: center }
@@ -382,13 +383,13 @@ variants:
         gap: { token: spacing/gap/small, value: 8px }
         padding: { token: spacing/gap/none, value: 0px }
         border-radius: { token: spacing/radius/full, value: 10000px }
-        width: { value: 32px, suggest: spacing/size/small-medium }
-        height: { value: 32px, suggest: spacing/size/small-medium }
+        width: { value: 32px, token: spacing/size/small-medium }
+        height: { value: 32px, token: spacing/size/small-medium }
       icons-arrow-left:
         flex-shrink: { value: "0", assert: false }
         position: { value: relative, assert: false }
-        width: { value: 16px, suggest: spacing/size/2xsmall }
-        height: { value: 16px, suggest: spacing/size/2xsmall }
+        width: { value: 16px, token: spacing/size/2xsmall }
+        height: { value: 16px, token: spacing/size/2xsmall }
       outline:
         position: { value: absolute }
         background: { token: project/focus/outline, value: "#3a3a3a" }
@@ -454,8 +455,8 @@ variants:
         flex-shrink: { value: "0", assert: false }
         position: { value: relative, assert: false }
         border-radius: { token: spacing/radius/full, value: 10000px }
-        width: { value: 56px, suggest: spacing/size/large }
-        height: { value: 56px, suggest: spacing/size/large }
+        width: { value: 56px, token: spacing/size/large }
+        height: { value: 56px, token: spacing/size/large }
       content:
         justify-content: { value: center }
         display: { value: flex, assert: false }
@@ -474,17 +475,17 @@ variants:
         gap: { token: spacing/gap/small, value: 8px }
         padding: { token: spacing/gap/none, value: 0px }
         border-radius: { token: spacing/radius/full, value: 10000px }
-        width: { value: 32px, suggest: spacing/size/small-medium }
-        height: { value: 32px, suggest: spacing/size/small-medium }
+        width: { value: 32px, token: spacing/size/small-medium }
+        height: { value: 32px, token: spacing/size/small-medium }
       icons-arrow-left:
         flex-shrink: { value: "0", assert: false }
         position: { value: relative, assert: false }
-        width: { value: 16px, suggest: spacing/size/2xsmall }
-        height: { value: 16px, suggest: spacing/size/2xsmall }
+        width: { value: 16px, token: spacing/size/2xsmall }
+        height: { value: 16px, token: spacing/size/2xsmall }
       outline:
         position: { value: absolute }
         background: { token: project/hover/outline, value: "#00d669" }
-        height: { value: 2px, suggest: spacing/outline/medium }
+        height: { value: 2px, token: spacing/outline/medium }
       top:
         align-items: { value: center }
         display: { value: flex, assert: false }
@@ -536,8 +537,8 @@ variants:
         flex-shrink: { value: "0", assert: false }
         position: { value: relative, assert: false }
         border-radius: { token: spacing/radius/full, value: 10000px }
-        width: { value: 56px, suggest: spacing/size/large }
-        height: { value: 56px, suggest: spacing/size/large }
+        width: { value: 56px, token: spacing/size/large }
+        height: { value: 56px, token: spacing/size/large }
       content:
         justify-content: { value: center }
         display: { value: flex, assert: false }
@@ -556,13 +557,13 @@ variants:
         gap: { token: spacing/gap/small, value: 8px }
         padding: { token: spacing/gap/none, value: 0px }
         border-radius: { token: spacing/radius/full, value: 10000px }
-        width: { value: 32px, suggest: spacing/size/small-medium }
-        height: { value: 32px, suggest: spacing/size/small-medium }
+        width: { value: 32px, token: spacing/size/small-medium }
+        height: { value: 32px, token: spacing/size/small-medium }
       icons-arrow-left:
         flex-shrink: { value: "0", assert: false }
         position: { value: relative, assert: false }
-        width: { value: 16px, suggest: spacing/size/2xsmall }
-        height: { value: 16px, suggest: spacing/size/2xsmall }
+        width: { value: 16px, token: spacing/size/2xsmall }
+        height: { value: 16px, token: spacing/size/2xsmall }
       outline:
         position: { value: absolute }
         background: { token: project/default/outline, value: "#3a3a3a" }
@@ -612,8 +613,8 @@ variants:
         flex-shrink: { value: "0", assert: false }
         position: { value: relative, assert: false }
         border-radius: { token: spacing/radius/full, value: 10000px }
-        width: { value: 56px, suggest: spacing/size/large }
-        height: { value: 56px, suggest: spacing/size/large }
+        width: { value: 56px, token: spacing/size/large }
+        height: { value: 56px, token: spacing/size/large }
       content:
         justify-content: { value: center }
         display: { value: flex, assert: false }
@@ -632,10 +633,10 @@ variants:
         gap: { token: spacing/gap/small, value: 8px }
         padding: { token: spacing/gap/none, value: 0px }
         border-radius: { token: spacing/radius/full, value: 10000px }
-        width: { value: 32px, suggest: spacing/size/small-medium }
-        height: { value: 32px, suggest: spacing/size/small-medium }
+        width: { value: 32px, token: spacing/size/small-medium }
+        height: { value: 32px, token: spacing/size/small-medium }
       icons-arrow-left:
         flex-shrink: { value: "0", assert: false }
         position: { value: relative, assert: false }
-        width: { value: 16px, suggest: spacing/size/2xsmall }
-        height: { value: 16px, suggest: spacing/size/2xsmall }
+        width: { value: 16px, token: spacing/size/2xsmall }
+        height: { value: 16px, token: spacing/size/2xsmall }

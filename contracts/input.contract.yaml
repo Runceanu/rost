@@ -14,6 +14,7 @@ source:
   url: https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=240-273
   extractedAt: "2026-08-18"
   extractedBy: mcp
+  frozenAt: "2026-10-20"
 props:
   configuration:
     type: enum
@@ -57,7 +58,7 @@ elements:
       display: { value: flex, assert: false }
       flex: { value: 1 0 0, assert: false }
       position: { value: relative, assert: false }
-      gap: { value: 8px, suggest: spacing/gap/small }
+      gap: { value: 8px, token: spacing/gap/small }
   icons-lock: {}
   union: {}
   content: {}
@@ -78,8 +79,8 @@ variants:
         overflow: { value: clip }
         flex-shrink: { value: "0", assert: false }
         position: { value: relative, assert: false }
-        width: { value: 20px, suggest: spacing/size/xsmall }
-        height: { value: 20px, suggest: spacing/size/xsmall }
+        width: { value: 20px, token: spacing/size/xsmall }
+        height: { value: 20px, token: spacing/size/xsmall }
       union:
         position: { value: absolute }
         inset: { value: 8.33% 16.67% }
@@ -156,8 +157,8 @@ variants:
         overflow: { value: clip }
         flex-shrink: { value: "0", assert: false }
         position: { value: relative, assert: false }
-        width: { value: 20px, suggest: spacing/size/xsmall }
-        height: { value: 20px, suggest: spacing/size/xsmall }
+        width: { value: 20px, token: spacing/size/xsmall }
+        height: { value: 20px, token: spacing/size/xsmall }
       union:
         position: { value: absolute }
         inset: { value: 8.33% 16.67% }
@@ -200,8 +201,8 @@ variants:
         overflow: { value: clip }
         flex-shrink: { value: "0", assert: false }
         position: { value: relative, assert: false }
-        width: { value: 24px, suggest: spacing/size/small }
-        height: { value: 24px, suggest: spacing/size/small }
+        width: { value: 24px, token: spacing/size/small }
+        height: { value: 24px, token: spacing/size/small }
       focus-ring:
         border-sides: { value: all }
         position: { value: absolute }
@@ -219,8 +220,8 @@ variants:
         overflow: { value: clip }
         flex-shrink: { value: "0", assert: false }
         position: { value: relative, assert: false }
-        width: { value: 20px, suggest: spacing/size/xsmall }
-        height: { value: 20px, suggest: spacing/size/xsmall }
+        width: { value: 20px, token: spacing/size/xsmall }
+        height: { value: 20px, token: spacing/size/xsmall }
       union:
         position: { value: absolute }
         inset: { value: 8.33% 16.67% }
@@ -263,8 +264,8 @@ variants:
         overflow: { value: clip }
         flex-shrink: { value: "0", assert: false }
         position: { value: relative, assert: false }
-        width: { value: 24px, suggest: spacing/size/small }
-        height: { value: 24px, suggest: spacing/size/small }
+        width: { value: 24px, token: spacing/size/small }
+        height: { value: 24px, token: spacing/size/small }
       focus-ring:
         border-sides: { value: all }
         position: { value: absolute }
@@ -294,8 +295,8 @@ variants:
         overflow: { value: clip }
         flex-shrink: { value: "0", assert: false }
         position: { value: relative, assert: false }
-        width: { value: 20px, suggest: spacing/size/xsmall }
-        height: { value: 20px, suggest: spacing/size/xsmall }
+        width: { value: 20px, token: spacing/size/xsmall }
+        height: { value: 20px, token: spacing/size/xsmall }
       union:
         position: { value: absolute }
         inset: { value: 8.33% 16.67% }

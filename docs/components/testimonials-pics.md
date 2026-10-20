@@ -26,13 +26,12 @@
 
 - `root`
 
-## Tokens that should be there
+## Tokens
 
-Plain numbers where a token fits exactly. They become tokens when I freeze the contracts.
+Every token this component uses, across all its variants.
 
-| Part | Property | Value | Suggest | |
-|---|---|---|---|---|
-| `root` | `width` | `56px` | `spacing/size/large` | exists |
-| `root` | `height` | `56px` | `spacing/size/large` | exists |
+| Token | Resolves to |
+|---|---|
+| `spacing/size/large` | `56px` |
 
 Every value of every variant: [reference.html#testimonials-pics](../../reference.html#testimonials-pics)

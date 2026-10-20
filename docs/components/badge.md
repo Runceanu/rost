@@ -71,21 +71,11 @@ Every token this component uses, across all its variants.
 | `spacing/gap/none` | `0px` |
 | `spacing/gap/small` | `8px` |
 | `spacing/radius/full` | `10000px` |
+| `spacing/size/2xsmall` | `16px` |
 | `spacing/size/small` | `24px` |
 | `typography/label/font-size` | `12px` |
 | `typography/label/font-weight/medium` | `500` |
 | `typography/label/letter-spacing` | `0px` |
 | `typography/label/line-height` | `14px` |
-
-## Tokens that should be there
-
-Plain numbers where a token fits exactly. They become tokens when I freeze the contracts.
-
-| Part | Property | Value | Suggest | |
-|---|---|---|---|---|
-| `root` | `width` | `24px` | `spacing/size/small` | exists |
-| `root` | `height` | `24px` | `spacing/size/small` | exists |
-| `icons-dot` | `width` | `16px` | `spacing/size/2xsmall` | exists |
-| `icons-dot` | `height` | `16px` | `spacing/size/2xsmall` | exists |
 
 Every value of every variant: [reference.html#badge](../../reference.html#badge)

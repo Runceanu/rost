@@ -14,6 +14,7 @@ source:
   url: https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=205-614
   extractedAt: "2026-08-18"
   extractedBy: mcp
+  frozenAt: "2026-10-20"
 props:
   status:
     type: enum
@@ -75,8 +76,8 @@ variants:
       icons-plus:
         flex-shrink: { value: "0", assert: false }
         position: { value: relative, assert: false }
-        width: { value: 16px, suggest: spacing/size/2xsmall }
-        height: { value: 16px, suggest: spacing/size/2xsmall }
+        width: { value: 16px, token: spacing/size/2xsmall }
+        height: { value: 16px, token: spacing/size/2xsmall }
       label:
         padding-bottom: { token: spacing/gap/3xsmall, value: 2px }
       text:
@@ -100,8 +101,8 @@ variants:
       icons-alarm:
         flex-shrink: { value: "0", assert: false }
         position: { value: relative, assert: false }
-        width: { value: 16px, suggest: spacing/size/2xsmall }
-        height: { value: 16px, suggest: spacing/size/2xsmall }
+        width: { value: 16px, token: spacing/size/2xsmall }
+        height: { value: 16px, token: spacing/size/2xsmall }
   - when: { status: Positive, size: Small }
     figmaNode: "207:32"
     elements:
@@ -118,8 +119,8 @@ variants:
       icons-positive:
         flex-shrink: { value: "0", assert: false }
         position: { value: relative, assert: false }
-        width: { value: 16px, suggest: spacing/size/2xsmall }
-        height: { value: 16px, suggest: spacing/size/2xsmall }
+        width: { value: 16px, token: spacing/size/2xsmall }
+        height: { value: 16px, token: spacing/size/2xsmall }
   - when: { status: Warning, size: Small }
     figmaNode: "207:48"
     elements:
@@ -136,8 +137,8 @@ variants:
       icons-warning:
         flex-shrink: { value: "0", assert: false }
         position: { value: relative, assert: false }
-        width: { value: 16px, suggest: spacing/size/2xsmall }
-        height: { value: 16px, suggest: spacing/size/2xsmall }
+        width: { value: 16px, token: spacing/size/2xsmall }
+        height: { value: 16px, token: spacing/size/2xsmall }
   - when: { status: Default, size: Medium }
     figmaNode: "233:126"
     elements:
@@ -153,8 +154,8 @@ variants:
       icons-plus:
         flex-shrink: { value: "0", assert: false }
         position: { value: relative, assert: false }
-        width: { value: 20px, suggest: spacing/size/xsmall }
-        height: { value: 20px, suggest: spacing/size/xsmall }
+        width: { value: 20px, token: spacing/size/xsmall }
+        height: { value: 20px, token: spacing/size/xsmall }
       text:
         font-weight: { token: typography/body/font-weight/medium, value: "500" }
         line-height: { token: typography/body/line-height, value: 22px }
@@ -177,8 +178,8 @@ variants:
       icons-alarm:
         flex-shrink: { value: "0", assert: false }
         position: { value: relative, assert: false }
-        width: { value: 20px, suggest: spacing/size/xsmall }
-        height: { value: 20px, suggest: spacing/size/xsmall }
+        width: { value: 20px, token: spacing/size/xsmall }
+        height: { value: 20px, token: spacing/size/xsmall }
       label:
         gap: { token: spacing/gap/small, value: 8px }
         padding: { token: spacing/gap/none, value: 0px }
@@ -196,8 +197,8 @@ variants:
       icons-positive:
         flex-shrink: { value: "0", assert: false }
         position: { value: relative, assert: false }
-        width: { value: 20px, suggest: spacing/size/xsmall }
-        height: { value: 20px, suggest: spacing/size/xsmall }
+        width: { value: 20px, token: spacing/size/xsmall }
+        height: { value: 20px, token: spacing/size/xsmall }
       label:
         gap: { token: spacing/gap/small, value: 8px }
         padding: { token: spacing/gap/none, value: 0px }
@@ -215,8 +216,8 @@ variants:
       icons-warning:
         flex-shrink: { value: "0", assert: false }
         position: { value: relative, assert: false }
-        width: { value: 20px, suggest: spacing/size/xsmall }
-        height: { value: 20px, suggest: spacing/size/xsmall }
+        width: { value: 20px, token: spacing/size/xsmall }
+        height: { value: 20px, token: spacing/size/xsmall }
       label:
         gap: { token: spacing/gap/small, value: 8px }
         padding: { token: spacing/gap/none, value: 0px }

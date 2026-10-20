@@ -69,6 +69,8 @@ Every token this component uses, across all its variants.
 | `spacing/radius/large` | `16px` |
 | `spacing/radius/medium` | `12px` |
 | `spacing/radius/xlarge` | `24px` |
+| `spacing/size/2xsmall` | `16px` |
+| `spacing/size/3xsmall` | `12px` |
 | `spacing/size/small` | `24px` |
 | `typography/label/font-size` | `12px` |
 | `typography/label/font-weight/regular` | `400` |
@@ -78,18 +80,6 @@ Every token this component uses, across all its variants.
 | `typography/title/font-weight/medium` | `500` |
 | `typography/title/letter-spacing` | `0px` |
 | `typography/title/line-height` | `32px` |
-
-## Tokens that should be there
-
-Plain numbers where a token fits exactly. They become tokens when I freeze the contracts.
-
-| Part | Property | Value | Suggest | |
-|---|---|---|---|---|
-| `number` | `width` | `16px` | `spacing/size/2xsmall` | exists |
-| `icons-dot` | `width` | `12px` | `spacing/size/3xsmall` | exists |
-| `icons-dot` | `height` | `12px` | `spacing/size/3xsmall` | exists |
-| `icons-lock` | `width` | `24px` | `spacing/size/small` | exists |
-| `icons-lock` | `height` | `24px` | `spacing/size/small` | exists |
 
 ## No token, on purpose
 

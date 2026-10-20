@@ -12,6 +12,7 @@ source:
   repo: runceanu-portfolio
   path: src/components/HeroBackdrop.jsx
   extractedAt: "2026-10-19"
+  frozenAt: "2026-10-20"
 elements:
   sheet:
     notes: |-

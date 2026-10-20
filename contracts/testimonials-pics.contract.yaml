@@ -12,6 +12,7 @@ source:
   url: https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=144-493
   extractedAt: "2026-08-18"
   extractedBy: mcp
+  frozenAt: "2026-10-20"
 props:
   people:
     type: enum
@@ -21,8 +22,8 @@ elements:
   root:
     styles:
       position: { value: relative, assert: false }
-      width: { value: 56px, suggest: spacing/size/large }
-      height: { value: 56px, suggest: spacing/size/large }
+      width: { value: 56px, token: spacing/size/large }
+      height: { value: 56px, token: spacing/size/large }
 variants:
   - when: { people: Person 7 }
     figmaNode: "144:486"

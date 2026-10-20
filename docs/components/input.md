@@ -97,6 +97,8 @@ Every token this component uses, across all its variants.
 | `spacing/radius/large` | `16px` |
 | `spacing/radius/medium` | `12px` |
 | `spacing/size/large` | `56px` |
+| `spacing/size/small` | `24px` |
+| `spacing/size/xsmall` | `20px` |
 | `typography/body/font-size` | `16px` |
 | `typography/body/font-weight/regular` | `400` |
 | `typography/body/letter-spacing` | `0px` |
@@ -106,17 +108,5 @@ Every token this component uses, across all its variants.
 | `typography/placeholder/font-size` | `10px` |
 | `typography/placeholder/letter-spacing` | `0px` |
 | `typography/placeholder/line-height` | `12px` |
-
-## Tokens that should be there
-
-Plain numbers where a token fits exactly. They become tokens when I freeze the contracts.
-
-| Part | Property | Value | Suggest | |
-|---|---|---|---|---|
-| `left` | `gap` | `8px` | `spacing/gap/small` | exists |
-| `icons-lock` | `width` | `20px` | `spacing/size/xsmall` | exists |
-| `icons-lock` | `height` | `20px` | `spacing/size/xsmall` | exists |
-| `icons-alarm` | `width` | `24px` | `spacing/size/small` | exists |
-| `icons-alarm` | `height` | `24px` | `spacing/size/small` | exists |
 
 Every value of every variant: [reference.html#input](../../reference.html#input)

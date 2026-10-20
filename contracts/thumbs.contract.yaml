@@ -12,6 +12,7 @@ source:
   url: https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=109-79
   extractedAt: "2026-08-18"
   extractedBy: mcp
+  frozenAt: "2026-10-20"
 states: [ Default, Hover, Pressed, Focus, Disabled, Locked ]
 elements:
   root:
@@ -71,7 +72,7 @@ elements:
       flex-direction: { value: column, assert: false }
       flex-shrink: { value: "0", assert: false }
       position: { value: relative, assert: false }
-      width: { value: 16px, suggest: spacing/size/2xsmall }
+      width: { value: 16px, token: spacing/size/2xsmall }
   label:
     styles:
       flex-shrink: { value: "0", assert: false }
@@ -105,8 +106,8 @@ elements:
     styles:
       flex-shrink: { value: "0", assert: false }
       position: { value: relative, assert: false }
-      width: { value: 12px, suggest: spacing/size/3xsmall }
-      height: { value: 12px, suggest: spacing/size/3xsmall }
+      width: { value: 12px, token: spacing/size/3xsmall }
+      height: { value: 12px, token: spacing/size/3xsmall }
   focus-ring: {}
   badge: {}
   outline: {}
@@ -200,5 +201,5 @@ variants:
       icons-lock:
         flex-shrink: { value: "0", assert: false }
         position: { value: relative, assert: false }
-        width: { value: 24px, suggest: spacing/size/small }
-        height: { value: 24px, suggest: spacing/size/small }
+        width: { value: 24px, token: spacing/size/small }
+        height: { value: 24px, token: spacing/size/small }
