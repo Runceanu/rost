@@ -5,6 +5,8 @@ name: Divider
 kind: component
 status: review
 summary: A thin line between things.
+category: display
+related: [ menu ]
 source:
   tool: figma
   fileKey: 1Zy0wiWKXQAvsfDBX3KR0d

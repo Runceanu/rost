@@ -1,7 +1,7 @@
 // Every variant of a built component, rendered from the same fixtures the
 // visual test uses. What you see on the site is what gets compared with Figma.
 type Fixture = { node: string; name: string; element: React.ReactNode; force?: string[] }
-const modules = import.meta.glob('../../../src/components/*/*.fixtures.tsx', { eager: true }) as Record<string, { fixtures: Fixture[]; usage?: string }>
+const modules = import.meta.glob('../../../src/components/*/*.fixtures.tsx', { eager: true }) as Record<string, { fixtures: Fixture[]; usage?: string; preview?: React.ReactNode }>
 
 export const fixturesFor = (id: string) => Object.entries(modules).find(([p]) => p.includes(`/components/${id}/`))?.[1]
 
@@ -25,4 +25,9 @@ export function Fixtures({ id }: { id: string }) {
       {live > 0 && <p className="fixture-note">Hover, press or tab to one to see the other {live} states.</p>}
     </>
   )
+}
+
+/** A built component's card preview, or nothing. */
+export function Preview({ id }: { id: string }) {
+  return <>{fixturesFor(id)?.preview ?? null}</>
 }

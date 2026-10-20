@@ -5,6 +5,8 @@ name: TestimonialPicture
 kind: component
 status: review
 summary: The photo of the person behind a testimonial.
+category: display
+related: [ testimonials ]
 source:
   tool: figma
   fileKey: 1Zy0wiWKXQAvsfDBX3KR0d

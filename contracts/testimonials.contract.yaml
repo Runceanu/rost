@@ -6,6 +6,8 @@ kind: component
 status: review
 summary: |-
   A testimonial you can open and close: name and role, with the quote underneath.
+category: display
+related: [ testimonials-pics ]
 source:
   tool: figma
   fileKey: 1Zy0wiWKXQAvsfDBX3KR0d

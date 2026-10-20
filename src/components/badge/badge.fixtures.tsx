@@ -29,3 +29,12 @@ export const usage = `import { Badge } from 'rost/components/badge/Badge'
 <Badge status="negative">Overdue</Badge>
 <Badge status="positive" showIcon>Paid</Badge>
 <Badge status="warning" size="small" aria-label="Due soon" />`
+
+/** What the component's card on rost.build shows. */
+export const preview = (
+  <span style={{ display: 'flex', gap: 12, alignItems: 'center' }}>
+    <Badge status="positive">Paid</Badge>
+    <Badge status="negative">Overdue</Badge>
+    <Badge status="positive" size="small" aria-label="Paid" />
+  </span>
+)
