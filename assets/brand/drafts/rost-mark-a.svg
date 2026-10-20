@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none">
+  <!-- Rost mark, draft A: the the portfolio site ring and dot, with an R inside. Dark on light, light on dark. -->
+  <style>
+    .mark { stroke: #171717; }
+    @media (prefers-color-scheme: dark) { .mark { stroke: #ededed; } }
+  </style>
+  <g class="mark" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+    <!-- the ring, open at the top right where the dot sits -->
+    <path d="M22.4 2.53 A14.7 14.7 0 1 0 29.6 9.6" />
+  </g>
+  <g class="mark" stroke-width="2.66" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M11.3 23.3 V8.7 H16.1 A3.95 3.95 0 0 1 16.1 16.6 H11.3" />
+    <path d="M15.4 16.6 L21 23.3" />
+  </g>
+  <circle cx="26.5" cy="5.6" r="2.7" fill="#00d669" />
+</svg>

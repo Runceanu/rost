@@ -99,7 +99,7 @@ for (const id of ids) {
     import { createRoot } from 'react-dom/client'
     import { fixtures } from '${join(root, 'src/components', id, `${id}.fixtures.tsx`)}'
     createRoot(document.getElementById('root')).render(
-      <>{fixtures.map((f) => <div key={f.node} data-node={f.node} style={{ display: 'flex', margin: 8 }}>{f.element}</div>)}</>
+      <>{fixtures.map((f) => <div key={f.node} data-node={f.node} style={{ margin: 8 }}>{f.element}</div>)}</>
     )`)
   await build({ entryPoints: [join(work, 'entry.tsx')], bundle: true, outdir: work, jsx: 'automatic', logLevel: 'error', loader: { '.svg': 'file' }, plugins: [svgUrl] })
   const face = `@font-face { font-family: 'General Sans Variable'; font-weight: 200 700; src: url('file://${font}') format('truetype'); }`
@@ -120,6 +120,7 @@ for (const id of ids) {
     const basePath = target && join(root, 'baseline', id, target.file)
     if (!basePath || !existsSync(basePath)) { console.log(`  ?    ${node}  no Figma screenshot to compare with`); continue }
     const el = await page.$(`[data-node="${node}"] > *`)
+    if (!el) { failed++; console.log(`  FAIL ${target.name.padEnd(30)} rendered nothing`); continue }
     const shot = PNG.sync.read(await el.screenshot())
     const base = PNG.sync.read(readFileSync(basePath))
     const label = target.name.padEnd(30)

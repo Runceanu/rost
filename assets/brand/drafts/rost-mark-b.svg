@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none">
+  <!-- Rost mark, draft B: the R on its own, with the green dot. Dark on light, light on dark. -->
+  <style>
+    .mark { stroke: #171717; }
+    @media (prefers-color-scheme: dark) { .mark { stroke: #ededed; } }
+  </style>
+  <g class="mark" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M7.5 27 V6.5 H15.2 A5.6 5.6 0 0 1 15.2 17.7 H7.5" />
+    <path d="M14.2 17.7 L22.5 27" />
+  </g>
+  <circle cx="25.8" cy="6.2" r="2.9" fill="#00d669" />
+</svg>

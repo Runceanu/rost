@@ -1,4 +1,4 @@
-import type { ReactNode } from 'react'
+import type { HTMLAttributes, ReactNode } from 'react'
 import './inline-banner.css'
 import plusSmall from './icons/plus-small.svg?url'
 import plusMedium from './icons/plus-medium.svg?url'
@@ -12,11 +12,14 @@ import warningMedium from './icons/warning-medium.svg?url'
 export type InlineBannerStatus = 'default' | 'negative' | 'positive' | 'warning'
 export type InlineBannerSize = 'small' | 'medium'
 
-export interface InlineBannerProps {
+export interface InlineBannerProps extends Omit<HTMLAttributes<HTMLSpanElement>, 'children'> {
   readonly status?: InlineBannerStatus
   readonly size?: InlineBannerSize
-  /** Swaps the glyph. Figma only allows this on `default`, where the glyph sits in a slot. */
+  /** Default status only: replaces the plus, as Figma's slot does. */
   readonly icon?: ReactNode
+  /** Default status only: hides the glyph and leaves just the label. */
+  readonly showSlot?: boolean
+  /** The label. */
   readonly children: ReactNode
 }
 
@@ -32,22 +35,26 @@ const b = 'rost-inline-banner'
 
 /**
  * A filled status pill: a glyph and a short label. Built from
- * contracts/inline-banner.contract.yaml, with the layers following the Figma
- * component one to one, so the generated CSS lands on the same parts.
+ * contracts/inline-banner.contract.yaml, following the Figma layers, so the
+ * generated CSS lands on the same parts. It's spans all the way down and
+ * sits inline, so it can go inside a sentence.
  *
- * It's spans all the way down, so it can sit inside a sentence.
+ * Pass `role="status"` (or `role="alert"` for negative) when it appears
+ * because of something the person just did.
  */
-export function InlineBanner({ status = 'default', size = 'medium', icon, children }: InlineBannerProps) {
+export function InlineBanner({ status = 'default', size = 'small', icon, showSlot = true, children, className, ...rest }: InlineBannerProps) {
   const g = GLYPH[status]
   const glyph = (
     <span className={`${b}__${g.part}`} aria-hidden="true">
-      {status === 'default' && icon ? icon : <img src={g[size]} alt="" />}
+      <img src={g[size]} alt="" />
     </span>
   )
   return (
-    <span className={`${b} ${b}--status-${status} ${b}--size-${size}`}>
+    <span className={[b, `${b}--status-${status}`, `${b}--size-${size}`, className].filter(Boolean).join(' ')} {...rest}>
       <span className={`${b}__background`} />
-      {status === 'default' ? <span className={`${b}__slot`}>{glyph}</span> : glyph}
+      {status === 'default'
+        ? showSlot && <span className={`${b}__slot`}>{icon ?? glyph}</span>
+        : glyph}
       <span className={`${b}__label`}>
         <span className={`${b}__text`}>{children}</span>
       </span>

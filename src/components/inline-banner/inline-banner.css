@@ -1,11 +1,12 @@
 /* Generated from contracts/inline-banner.contract.yaml by bin/build-css.mjs. Don't edit: change the contract and rebuild. */
 
 .rost-inline-banner, .rost-inline-banner * { box-sizing: border-box; margin: 0; }
-.rost-inline-banner img { display: block; position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; }
+.rost-inline-banner > img, .rost-inline-banner [class*="__icons-"] > img { display: block; position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; }
 
 .rost-inline-banner {
+  display: inline-flex;
+  vertical-align: middle;
   align-items: center;
-  display: flex;
   position: relative;
   padding: var(--spacing-gap-small);
   border-radius: var(--spacing-radius-small);

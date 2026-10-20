@@ -115,7 +115,7 @@ writeFileSync(new URL('../docs/README.md', import.meta.url), `${GENERATED('*').r
 
 # Rost: documentation
 
-My design system, behind **The portfolio site**, **The accounting app** and whatever I build next. Start here.
+Rost started as a design system for my own needs and grew into a product of its own. Today it serves products across different industries. Start here.
 
 | Read | For |
 |---|---|

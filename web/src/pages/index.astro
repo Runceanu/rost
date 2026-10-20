@@ -7,12 +7,12 @@ import { kit, KINDS, title, inCode, built, tokens, GITHUB } from '../lib/kit'
 const groups = KINDS.filter(([k]: [string, string]) => kit.some((e) => e.kind === k))
 const variants = kit.reduce((n, e) => n + (e.c.variants?.length ?? 0), 0)
 ---
-<Base title="Rost · My design system" description="Rost is my design system, run as its own product. The portfolio site and the accounting app are built on it.">
+<Base title="Rost · My design system" description="Rost started as a design system for my own needs and grew into a product of its own. Today it serves products across different industries.">
   <section class="hero">
     <div class="kicker">Design system</div>
     <h1>Rost</h1>
-    <p class="lede">My design system, run as its own product. The portfolio site and the accounting app are built on it, and so will whatever I make next.</p>
-    <p class="muted"><i>Rost</i> is Romanian. It means purpose, or order: the sense that something is where it belongs. That's the whole job here.</p>
+    <p class="lede">Rost started as a design system for my own needs and grew into a product of its own. Today it serves products across different industries.</p>
+    <p class="muted"><i>Rost</i> is the Romanian word for purpose or order, in the sense that something is where it belongs.</p>
     <div class="btns">
       <a class="btn btn--primary" href="/components/">Browse components</a>
       <a class="btn" href={GITHUB} target="_blank" rel="noreferrer">GitHub</a>

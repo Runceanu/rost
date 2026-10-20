@@ -1,8 +1,8 @@
 # Rost
 
-This is my design system, and I run it like its own product. The portfolio site and the accounting app are built on it, and so will whatever I make next. None of them owns it.
+Rost started as a design system for my own needs and grew into a product of its own. Today it serves products across different industries. The portfolio site and the accounting app are two of them, and none of them owns it.
 
-*Rost* is Romanian. It means purpose, or order: the sense that something is where it belongs. That's the whole job here.
+*Rost* is the Romanian word for purpose or order, in the sense that something is where it belongs.
 
 Each component is a **contract**: one YAML file that says what the component is, which values it uses, how to use it, and where each of my apps implements it. Apps build against that one file instead of keeping their own copy.
 

@@ -23,12 +23,24 @@ props:
   size:
     type: enum
     values: [ Medium, Small ]
-    default: Medium
+    default: Small
+  label:
+    type: slot
+    notes: The text. In React, the children.
+  icon:
+    type: slot
+    notes: Replaces the plus glyph. Default status only, as in Figma.
+  showSlot:
+    type: boolean
+    default: true
+    notes: |-
+      Default status only: hides the glyph and leaves just the label.
 elements:
   root:
     styles:
+      display: { value: inline-flex, assert: false }
+      vertical-align: { value: middle, assert: false }
       align-items: { value: center }
-      display: { value: flex, assert: false }
       position: { value: relative, assert: false }
       padding: { token: spacing/gap/small, value: 8px }
       border-radius: { token: spacing/radius/small, value: 8px }
@@ -39,7 +51,7 @@ elements:
       background: { token: non-interactive/background/tertiary, value: "#3a3a3a" }
       opacity: { token: opacity/mild, value: "0.32" }
       border-radius: { token: spacing/radius/small, value: 8px }
-  -slot: {}
+  slot: {}
   icons-plus: {}
   label:
     styles:
@@ -66,7 +78,7 @@ variants:
     elements:
       root:
         gap: { token: spacing/gap/2xsmall, value: 4px }
-      -slot:
+      slot:
         align-items: { value: center }
         display: { value: flex, assert: false }
         flex-shrink: { value: "0", assert: false }
@@ -144,7 +156,7 @@ variants:
     elements:
       root:
         gap: { token: spacing/gap/small, value: 8px }
-      -slot:
+      slot:
         align-items: { value: center }
         display: { value: flex, assert: false }
         flex-shrink: { value: "0", assert: false }
