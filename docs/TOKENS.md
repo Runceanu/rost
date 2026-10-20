@@ -6,18 +6,18 @@ Every value in every contract, sorted by why it has a token or doesn't. `npm run
 
 | | Values | Share | Meaning |
 |---|---|---|---|
-| Has a token | 1252 | 53% | Uses a token, and the check tests it. |
-| Token suggested | 106 | 4% | A plain number where a token fits. It becomes a token at the freeze. |
-| How Figma builds it | 984 | 41% | How Figma builds the layer (position, inset, which sides get a stroke). Nothing to tokenise. |
-| Figma frame size | 21 | 1% | A root size that is just the Figma frame. Written down, not checked. |
+| Has a token | 1300 | 53% | Uses a token, and the check tests it. |
+| Token suggested | 122 | 5% | A plain number where a token fits. It becomes a token at the freeze. |
+| How Figma builds it | 995 | 41% | How Figma builds the layer (position, inset, which sides get a stroke). Nothing to tokenise. |
+| Figma frame size | 19 | 1% | A root size that is just the Figma frame. Written down, not checked. |
 | No token, on purpose | 10 | 0% | Plain on purpose, and the contract says why. |
-| Open gap | 4 | 0% | No token and no reason. Each one needs a decision from me. |
+| Open gap | 7 | 0% | No token and no reason. Each one needs a decision from me. |
 
 ## By contract
 
 | | Has a token | Token suggested | How Figma builds it | Figma frame size | No token, on purpose | Open gap |
 |---|---:|---:|---:|---:|---:|---:|
-| [Badge](components/badge.md) | 20 | 2 | 22 | · | · | · |
+| [Badge](components/badge.md) | 68 | 16 | 64 | · | · | 1 |
 | [Button](components/button.md) | 248 | · | 124 | · | · | · |
 | [Carousel](components/carousel.md) | 77 | 4 | 113 | 4 | 1 | 1 |
 | [Chip](components/chips.md) | 32 | · | 14 | · | · | · |
@@ -25,19 +25,19 @@ Every value in every contract, sorted by why it has a token or doesn't. `npm run
 | [Floating effect](components/effect-floating.md) | 1 | · | · | · | · | · |
 | [Hero Media](components/hero-media.md) | 6 | · | 1 | · | 1 | · |
 | [IconButton](components/icon-button.md) | 170 | 2 | 49 | · | · | · |
-| [InlineBanner](components/inline-banner.md) | 69 | 16 | 56 | · | · | · |
+| [InlineBanner](components/inline-banner.md) | 69 | 16 | 39 | · | · | · |
 | [Input](components/input.md) | 78 | 13 | 102 | 1 | · | · |
 | [Lock frame effect](components/effect-lock-frame.md) | 1 | · | · | · | · | · |
 | [Menu effect](components/effect-menu.md) | 1 | · | · | · | · | · |
 | [Menu](components/menu.md) | 31 | · | 17 | 1 | · | · |
 | [Paper effect](components/effect-paper.md) | 6 | · | · | · | 7 | · |
 | [PillButton](components/pill-button.md) | 153 | 2 | 53 | · | · | · |
-| [Projects](components/projects.md) | 53 | 11 | 47 | 1 | · | · |
+| [Projects](components/projects.md) | 53 | 11 | 44 | 1 | · | 1 |
 | [Tag](components/tags.md) | 46 | · | 27 | · | · | · |
-| [TestimonialPicture](components/testimonials-pics.md) | · | · | 2 | 2 | · | · |
-| [Testimonials](components/testimonials.md) | 148 | 49 | 272 | 9 | · | 1 |
+| [TestimonialPicture](components/testimonials-pics.md) | · | 2 | 1 | · | · | · |
+| [Testimonials](components/testimonials.md) | 148 | 49 | 264 | 9 | · | 1 |
 | [Thumb effect](components/effect-thumb.md) | 1 | · | · | · | · | · |
-| [Thumbs](components/thumbs.md) | 55 | 5 | 52 | 2 | 1 | 2 |
+| [Thumbs](components/thumbs.md) | 55 | 5 | 50 | 2 | 1 | 3 |
 | [Toggle](components/toggle.md) | 56 | 2 | 32 | · | · | · |
 
 ## Tokens that should be there
@@ -46,11 +46,11 @@ When I freeze the contracts, every one of these becomes the token. Anything mark
 
 | Suggest | Value | Exists | Uses | Where |
 |---|---|---|---:|---|
-| `spacing/size/2xsmall` | `16px` | yes | 33 | [Badge](components/badge.md) `icons-dot.width`, [Badge](components/badge.md) `icons-dot.height`, [Carousel](components/carousel.md) `number.width`, [InlineBanner](components/inline-banner.md) `icons-plus.width` +12 |
+| `spacing/size/2xsmall` | `16px` | yes | 39 | [Badge](components/badge.md) `icons-dot.width`, [Badge](components/badge.md) `icons-dot.height`, [Carousel](components/carousel.md) `number.width`, [InlineBanner](components/inline-banner.md) `icons-plus.width` +12 |
 | `spacing/size/xsmall` | `20px` | yes | 22 | [IconButton](components/icon-button.md) `icons-arrow-left.width`, [IconButton](components/icon-button.md) `icons-arrow-left.height`, [InlineBanner](components/inline-banner.md) `icons-plus.width`, [InlineBanner](components/inline-banner.md) `icons-plus.height` +12 |
 | `spacing/size/small-medium` | `32px` | yes | 18 | [Projects](components/projects.md) `-actions.width`, [Projects](components/projects.md) `-actions.height`, [Testimonials](components/testimonials.md) `-actions.width`, [Testimonials](components/testimonials.md) `-actions.height` |
-| `spacing/size/large` | `56px` | yes | 16 | [Testimonials](components/testimonials.md) `slot.width`, [Testimonials](components/testimonials.md) `slot.height` |
-| `spacing/size/small` | `24px` | yes | 9 | [Input](components/input.md) `icons-alarm.width`, [Input](components/input.md) `icons-alarm.height`, [Projects](components/projects.md) `badge.height`, [Projects](components/projects.md) `icons-lock.width` +3 |
+| `spacing/size/large` | `56px` | yes | 18 | [TestimonialPicture](components/testimonials-pics.md) `root.width`, [TestimonialPicture](components/testimonials-pics.md) `root.height`, [Testimonials](components/testimonials.md) `slot.width`, [Testimonials](components/testimonials.md) `slot.height` |
+| `spacing/size/small` | `24px` | yes | 17 | [Badge](components/badge.md) `root.width`, [Badge](components/badge.md) `root.height`, [Input](components/input.md) `icons-alarm.width`, [Input](components/input.md) `icons-alarm.height` +5 |
 | `spacing/size/3xsmall` | `12px` | yes | 4 | [Projects](components/projects.md) `icons-dot.width`, [Projects](components/projects.md) `icons-dot.height`, [Thumbs](components/thumbs.md) `icons-dot.width`, [Thumbs](components/thumbs.md) `icons-dot.height` |
 | `spacing/outline/medium` | `2px` | yes | 2 | [Projects](components/projects.md) `outline.height`, [Testimonials](components/testimonials.md) `outline.height` |
 | `spacing/gap/small` | `8px` | yes | 1 | [Input](components/input.md) `left.gap` |
@@ -71,10 +71,13 @@ When I freeze the contracts, every one of these becomes the token. Anything mark
 
 ## Open gaps
 
+- [Badge](components/badge.md) `root.min-width` = `24px`
 - [Carousel](components/carousel.md) `background.background` = `rgba(58,58,58,0.48)`
+- [Projects](components/projects.md) `badge.min-width` = `24px`
 - [Testimonials](components/testimonials.md) `bottom.width` = `976px`
 - [Thumbs](components/thumbs.md) `shadow.height` = `167px`
 - [Thumbs](components/thumbs.md) `content.background` = `rgba(0,0,0,0.48)`
+- [Thumbs](components/thumbs.md) `badge.min-width` = `24px`
 
 ## Figma variables missing from tokens.css
 

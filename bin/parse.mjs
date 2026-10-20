@@ -23,6 +23,7 @@ const PROPS = [
   ['font', 'font'], ['border-t', 'border-top-width'],
   // Where a vector sits inside its icon frame: `inset-[3.9%_3.91%_4.43%_4.42%]`.
   ['inset', 'inset'],
+  ['min-w', 'min-width'], ['min-h', 'min-height'],
 ]
 
 const unescape = (s) => s.replace(/\\+/g, '')
@@ -96,6 +97,13 @@ function expand(entry) {
  */
 function scopeFor(src, variantName) {
   const scope = {}
+  // Booleans and slots that aren't variant axes (showIcon, showSlot) are only
+  // known from the defaults in the signature. Without them a guard like
+  // `showIcon && (...)` couldn't be evaluated, so the block stayed in, even
+  // though Figma draws the component with it off. The variant name still
+  // wins for its own axes, since those defaults can't be trusted.
+  const sig = src.match(/function \w+\(\{([^}]*)\}/)?.[1] ?? ''
+  for (const m of sig.matchAll(/(\w+)\s*=\s*(true|false|null)\b/g)) scope[m[1]] = m[2] === 'true' ? true : m[2] === 'false' ? false : null
   for (const pair of (variantName || '').split(',')) {
     const [k, v] = pair.split('=').map((x) => x?.trim())
     if (k && v !== undefined) scope[k] = v
@@ -185,7 +193,9 @@ function partsOf(src, scope) {
   // <div> folded its typography into whichever div preceded it (the icon's
   // vector node), which then failed conformance against a part that has no
   // counterpart in code at all.
-  const starts = [...src.matchAll(/<(?:div|p|span)\b/g)].map((m) => m.index)
+  // <img> is an element too: Figma now exports icons as one image filling
+  // its frame. Left out, its `absolute inset-0` leaked into the frame above.
+  const starts = [...src.matchAll(/<(?:div|p|span|img)\b/g)].map((m) => m.index)
   const parts = {}
   starts.forEach((from, i) => {
     const slice = resolveConditionals(src.slice(from, starts[i + 1] ?? src.length), scope)
@@ -204,7 +214,8 @@ function partsOf(src, scope) {
     // When the text sits inside a frame Figma calls "label", that frame takes
     // the name and the text becomes `text`. Before, both wanted `label` and
     // the text lost, taking the font, size and colour with it.
-    const key = i === 0 ? 'root' : isText ? (parts.label ? 'text' : 'label') : name ? name.toLowerCase().replace(/[^\w]+/g, '-') : null
+    const isImage = /^<img\b/.test(slice)
+    const key = i === 0 ? 'root' : isImage ? null : isText ? (parts.label ? 'text' : 'label') : name ? name.toLowerCase().replace(/[^\w]+/g, '-') : null
     if (!key || !classes || parts[key]) return
     parts[key] = classes
   })
@@ -262,18 +273,33 @@ function structuralOf(classes) {
 export function parseVariant(file) {
   const src = readFileSync(file, 'utf8')
   const header = src.match(/^\/\* (.+?) \| (.+?) \| (.+?) \| (.+?) \*\//)
-  const values = {}
-  const scope = scopeFor(src, header?.[2])
-  for (const [part, classes] of Object.entries(partsOf(stripFalseGuards(src, scope), scope))) {
-    const acc = { ...structuralOf(classes) }
-    for (const cls of classes.split(/\s+/)) {
-      const p = parseClass(cls)
-      if (p) Object.assign(acc, expand(p))
+  const read = (scope) => {
+    const values = {}
+    for (const [part, classes] of Object.entries(partsOf(stripFalseGuards(src, scope), scope))) {
+      const acc = { ...structuralOf(classes) }
+      for (const cls of classes.split(/\s+/)) {
+        const p = parseClass(cls)
+        if (p) Object.assign(acc, expand(p))
+      }
+      if (Object.keys(acc).length) values[part] = acc
     }
-    if (Object.keys(acc).length) values[part] = acc
+    return values
+  }
+  // As Figma draws it: optional parts off, the way the screenshot shows it.
+  const scope = scopeFor(src, header?.[2])
+  const values = read(scope)
+  // Then with every optional part switched on (showLeading, showIcon...), so
+  // a part that's off by default still has its spec. Those parts are marked
+  // optional, and the values of parts that are on anyway don't change.
+  const optional = []
+  const shows = Object.keys(scope).filter((k) => /^show[A-Z]/.test(k) && scope[k] === false)
+  if (shows.length) {
+    const on = scopeFor(src, header?.[2])
+    for (const k of shows) on[k] = true
+    for (const [part, acc] of Object.entries(read(on))) if (!values[part]) { values[part] = acc; optional.push(part) }
   }
   return {
-    component: header?.[1], variant: header?.[2], nodeId: header?.[3], size: header?.[4], values,
+    component: header?.[1], variant: header?.[2], nodeId: header?.[3], size: header?.[4], values, optional,
   }
 }
 

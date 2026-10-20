@@ -25,6 +25,8 @@ const url = (n) => `https://www.figma.com/design/${FK}/UI-Kit-v01?node-id=${Stri
 const same = (a, b) => a?.value === b?.value && (a?.token ?? null) === (b?.token ?? null)
 
 for (const [comp, variants] of Object.entries(parsed)) {
+  // Only component sets get a contract. Icons and illustrations are assets.
+  if (!sets[comp]) continue
   const seen = new Map()
   for (const v of variants) {
     for (const [part, props] of Object.entries(v.values)) {
@@ -64,6 +66,10 @@ for (const [comp, variants] of Object.entries(parsed)) {
     if (['display', 'flex-direction', 'flex-shrink', 'flex', 'white-space', 'align-self'].includes(prop) ||
         (prop === 'position' && val.value === 'relative'))
       return { ...val, assert: false }
+    // A fixed root size right on the size scale is a decision (Badge's small
+    // dot is 24x24). Anything else is just how big the Figma frame was.
+    if (part === 'root' && (prop === 'width' || prop === 'height') && !val.token && SIZES[val.value])
+      return { ...val, suggest: SIZES[val.value] }
     if (part === 'root' && (prop === 'width' || prop === 'height') && !val.token)
       return { ...val, assert: false, notes: 'Just the size of the Figma frame. No token, and not something to copy.' }
     // Any part below the root sized on the scale: icon frames, action slots, avatars.
@@ -142,9 +148,15 @@ for (const [comp, variants] of Object.entries(parsed)) {
   const parts = [...new Set(variants.flatMap((v) => Object.keys(v.values)))]
   const elements = Object.fromEntries(parts.map((p) => {
     const { styles: _, ...authored } = prev.elements?.[p] ?? {}
-    return [p, { ...authored, ...(invariants[p] ? { styles: invariants[p] } : {}) }]
+    // A part that only shows up when a show* switch is on is optional.
+    const optional = variants.every((v) => !v.values[p] || v.optional?.includes(p))
+    return [p, { ...authored, ...(optional ? { optional: true } : {}), ...(invariants[p] ? { styles: invariants[p] } : {}) }]
   }))
   for (const [k, p] of Object.entries(props)) if (prev.props?.[k]?.notes) p.notes = prev.props[k].notes
+  // Props that aren't variant axes (a boolean like showIcon, a slot) are
+  // Figma component properties the read doesn't see. They're written by hand
+  // and kept.
+  for (const [k, p] of Object.entries(prev.props ?? {})) if (!props[k] && !(k in axes)) props[k] = p
 
   write({
     ...prev,

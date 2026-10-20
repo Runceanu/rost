@@ -2,25 +2,49 @@
   "badge": [
     {
       "nodeId": "139:396",
-      "name": "status=Default",
+      "name": "status=Default, size=Small",
+      "width": 24,
+      "height": 24
+    },
+    {
+      "nodeId": "346:3994",
+      "name": "status=Default, size=Medium",
       "width": 43,
       "height": 24
     },
     {
       "nodeId": "139:433",
-      "name": "status=Negative",
+      "name": "status=Negative, size=Small",
+      "width": 24,
+      "height": 24
+    },
+    {
+      "nodeId": "346:3999",
+      "name": "status=Negative, size=Medium",
       "width": 43,
       "height": 24
     },
     {
       "nodeId": "139:439",
-      "name": "status=Positive",
+      "name": "status=Positive, size=Small",
+      "width": 24,
+      "height": 24
+    },
+    {
+      "nodeId": "346:4004",
+      "name": "status=Positive, size=Medium",
       "width": 43,
       "height": 24
     },
     {
       "nodeId": "139:445",
-      "name": "status=Warning",
+      "name": "status=Warning, size=Small",
+      "width": 24,
+      "height": 24
+    },
+    {
+      "nodeId": "346:4009",
+      "name": "status=Warning, size=Medium",
       "width": 43,
       "height": 24
     }

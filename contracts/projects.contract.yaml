@@ -63,9 +63,8 @@ elements:
       gap: { token: spacing/gap/medium, value: 16px }
   icons-dot:
     styles:
-      position: { value: absolute }
-      inset: { value: "0" }
       flex-shrink: { value: "0", assert: false }
+      position: { value: relative, assert: false }
       width: { value: 12px, suggest: spacing/size/3xsmall }
       height: { value: 12px, suggest: spacing/size/3xsmall }
   -actions:
@@ -82,9 +81,8 @@ elements:
       height: { value: 32px, suggest: spacing/size/small-medium }
   icons-arrow-left:
     styles:
-      position: { value: absolute }
-      inset: { value: "0" }
       flex-shrink: { value: "0", assert: false }
+      position: { value: relative, assert: false }
       width: { value: 16px, suggest: spacing/size/2xsmall }
       height: { value: 16px, suggest: spacing/size/2xsmall }
   outline:
@@ -160,6 +158,7 @@ variants:
         position: { value: relative, assert: false }
         gap: { token: spacing/gap/3xsmall, value: 2px }
         height: { value: 24px, suggest: spacing/size/small }
+        min-width: { value: 24px }
         padding-bottom: { token: spacing/gap/3xsmall, value: 2px }
         padding-top: { token: spacing/gap/none, value: 0px }
         padding-left: { token: spacing/gap/small, value: 8px }
@@ -192,8 +191,7 @@ variants:
         color: { token: project/lock/label, value: "#d3d9d5" }
         white-space: { value: nowrap, assert: false }
       icons-lock:
-        position: { value: absolute }
-        inset: { value: "0" }
         flex-shrink: { value: "0", assert: false }
+        position: { value: relative, assert: false }
         width: { value: 24px, suggest: spacing/size/small }
         height: { value: 24px, suggest: spacing/size/small }

@@ -1,30 +1,237 @@
 {
+  "illustrations": [
+    {
+      "nodeId": "41:569",
+      "name": "type=Alignment",
+      "file": "41-569.png",
+      "width": 72,
+      "height": 72
+    },
+    {
+      "nodeId": "41:566",
+      "name": "type=Audit & Strategy",
+      "file": "41-566.png",
+      "width": 72,
+      "height": 72
+    },
+    {
+      "nodeId": "41:564",
+      "name": "type=Bridging the gaps",
+      "file": "41-564.png",
+      "width": 72,
+      "height": 72
+    },
+    {
+      "nodeId": "41:562",
+      "name": "type=Design partner",
+      "file": "41-562.png",
+      "width": 72,
+      "height": 72
+    },
+    {
+      "nodeId": "41:559",
+      "name": "type=Design system leadership",
+      "file": "41-559.png",
+      "width": 72,
+      "height": 72
+    },
+    {
+      "nodeId": "215:516",
+      "name": "type=Ship best",
+      "file": "215-516.png",
+      "width": 72,
+      "height": 72
+    },
+    {
+      "nodeId": "215:558",
+      "name": "type=Art",
+      "file": "215-558.png",
+      "width": 72,
+      "height": 72
+    },
+    {
+      "nodeId": "233:49",
+      "name": "type=Activation & conversion",
+      "file": "233-49.png",
+      "width": 72,
+      "height": 72
+    },
+    {
+      "nodeId": "233:55",
+      "name": "type=Retention",
+      "file": "233-55.png",
+      "width": 72,
+      "height": 72
+    },
+    {
+      "nodeId": "233:61",
+      "name": "type=Efficiency",
+      "file": "233-61.png",
+      "width": 72,
+      "height": 72
+    },
+    {
+      "nodeId": "41:567",
+      "name": "type=Design system",
+      "file": "41-567.png",
+      "width": 72,
+      "height": 72
+    },
+    {
+      "nodeId": "41:565",
+      "name": "type=Goal focused",
+      "file": "41-565.png",
+      "width": 72,
+      "height": 72
+    },
+    {
+      "nodeId": "41:563",
+      "name": "type=Implementing",
+      "file": "41-563.png",
+      "width": 72,
+      "height": 72
+    },
+    {
+      "nodeId": "41:560",
+      "name": "type=Interactive showcase",
+      "file": "41-560.png",
+      "width": 72,
+      "height": 72
+    },
+    {
+      "nodeId": "215:524",
+      "name": "type=UI",
+      "file": "215-524.png",
+      "width": 72,
+      "height": 72
+    },
+    {
+      "nodeId": "215:531",
+      "name": "type=Best idea",
+      "file": "215-531.png",
+      "width": 72,
+      "height": 72
+    },
+    {
+      "nodeId": "215:543",
+      "name": "type=Simplicity v Complexity",
+      "file": "215-543.png",
+      "width": 72,
+      "height": 72
+    },
+    {
+      "nodeId": "41:558",
+      "name": "type=Long term projects",
+      "file": "41-558.png",
+      "width": 72,
+      "height": 72
+    },
+    {
+      "nodeId": "41:557",
+      "name": "type=Mentoring",
+      "file": "41-557.png",
+      "width": 72,
+      "height": 72
+    },
+    {
+      "nodeId": "41:568",
+      "name": "type=Part of the team",
+      "file": "41-568.png",
+      "width": 72,
+      "height": 72
+    },
+    {
+      "nodeId": "41:555",
+      "name": "type=Product design",
+      "file": "41-555.png",
+      "width": 72,
+      "height": 72
+    },
+    {
+      "nodeId": "41:554",
+      "name": "type=Scale team",
+      "file": "41-554.png",
+      "width": 72,
+      "height": 72
+    },
+    {
+      "nodeId": "41:561",
+      "name": "type=Structured system",
+      "file": "41-561.png",
+      "width": 72,
+      "height": 72
+    },
+    {
+      "nodeId": "41:556",
+      "name": "type=Timezones",
+      "file": "41-556.png",
+      "width": 72,
+      "height": 72
+    }
+  ],
+  "divider": [
+    {
+      "nodeId": "39:111",
+      "name": "divider",
+      "file": "39-111.png",
+      "width": 104,
+      "height": 0
+    }
+  ],
   "badge": [
     {
       "nodeId": "139:396",
-      "name": "status=Default",
+      "name": "status=Default, size=Small",
       "file": "139-396.png",
+      "width": 24,
+      "height": 24
+    },
+    {
+      "nodeId": "346:3994",
+      "name": "status=Default, size=Medium",
+      "file": "346-3994.png",
       "width": 43,
       "height": 24
     },
     {
       "nodeId": "139:433",
-      "name": "status=Negative",
+      "name": "status=Negative, size=Small",
       "file": "139-433.png",
+      "width": 24,
+      "height": 24
+    },
+    {
+      "nodeId": "346:3999",
+      "name": "status=Negative, size=Medium",
+      "file": "346-3999.png",
       "width": 43,
       "height": 24
     },
     {
       "nodeId": "139:439",
-      "name": "status=Positive",
+      "name": "status=Positive, size=Small",
       "file": "139-439.png",
+      "width": 24,
+      "height": 24
+    },
+    {
+      "nodeId": "346:4004",
+      "name": "status=Positive, size=Medium",
+      "file": "346-4004.png",
       "width": 43,
       "height": 24
     },
     {
       "nodeId": "139:445",
-      "name": "status=Warning",
+      "name": "status=Warning, size=Small",
       "file": "139-445.png",
+      "width": 24,
+      "height": 24
+    },
+    {
+      "nodeId": "346:4009",
+      "name": "status=Warning, size=Medium",
+      "file": "346-4009.png",
       "width": 43,
       "height": 24
     }
@@ -1170,185 +1377,6 @@
       "file": "164-1082.png",
       "width": 56,
       "height": 56
-    }
-  ],
-  "illustrations": [
-    {
-      "nodeId": "41:569",
-      "name": "type=Alignment",
-      "file": "41-569.png",
-      "width": 72,
-      "height": 72
-    },
-    {
-      "nodeId": "41:566",
-      "name": "type=Audit & Strategy",
-      "file": "41-566.png",
-      "width": 72,
-      "height": 72
-    },
-    {
-      "nodeId": "41:564",
-      "name": "type=Bridging the gaps",
-      "file": "41-564.png",
-      "width": 72,
-      "height": 72
-    },
-    {
-      "nodeId": "41:562",
-      "name": "type=Design partner",
-      "file": "41-562.png",
-      "width": 72,
-      "height": 72
-    },
-    {
-      "nodeId": "41:559",
-      "name": "type=Design system leadership",
-      "file": "41-559.png",
-      "width": 72,
-      "height": 72
-    },
-    {
-      "nodeId": "215:516",
-      "name": "type=Ship best",
-      "file": "215-516.png",
-      "width": 72,
-      "height": 72
-    },
-    {
-      "nodeId": "215:558",
-      "name": "type=Art",
-      "file": "215-558.png",
-      "width": 72,
-      "height": 72
-    },
-    {
-      "nodeId": "233:49",
-      "name": "type=Activation & conversion",
-      "file": "233-49.png",
-      "width": 72,
-      "height": 72
-    },
-    {
-      "nodeId": "233:55",
-      "name": "type=Retention",
-      "file": "233-55.png",
-      "width": 72,
-      "height": 72
-    },
-    {
-      "nodeId": "233:61",
-      "name": "type=Efficiency",
-      "file": "233-61.png",
-      "width": 72,
-      "height": 72
-    },
-    {
-      "nodeId": "41:567",
-      "name": "type=Design system",
-      "file": "41-567.png",
-      "width": 72,
-      "height": 72
-    },
-    {
-      "nodeId": "41:565",
-      "name": "type=Goal focused",
-      "file": "41-565.png",
-      "width": 72,
-      "height": 72
-    },
-    {
-      "nodeId": "41:563",
-      "name": "type=Implementing",
-      "file": "41-563.png",
-      "width": 72,
-      "height": 72
-    },
-    {
-      "nodeId": "41:560",
-      "name": "type=Interactive showcase",
-      "file": "41-560.png",
-      "width": 72,
-      "height": 72
-    },
-    {
-      "nodeId": "215:524",
-      "name": "type=UI",
-      "file": "215-524.png",
-      "width": 72,
-      "height": 72
-    },
-    {
-      "nodeId": "215:531",
-      "name": "type=Best idea",
-      "file": "215-531.png",
-      "width": 72,
-      "height": 72
-    },
-    {
-      "nodeId": "215:543",
-      "name": "type=Simplicity v Complexity",
-      "file": "215-543.png",
-      "width": 72,
-      "height": 72
-    },
-    {
-      "nodeId": "41:558",
-      "name": "type=Long term projects",
-      "file": "41-558.png",
-      "width": 72,
-      "height": 72
-    },
-    {
-      "nodeId": "41:557",
-      "name": "type=Mentoring",
-      "file": "41-557.png",
-      "width": 72,
-      "height": 72
-    },
-    {
-      "nodeId": "41:568",
-      "name": "type=Part of the team",
-      "file": "41-568.png",
-      "width": 72,
-      "height": 72
-    },
-    {
-      "nodeId": "41:555",
-      "name": "type=Product design",
-      "file": "41-555.png",
-      "width": 72,
-      "height": 72
-    },
-    {
-      "nodeId": "41:554",
-      "name": "type=Scale team",
-      "file": "41-554.png",
-      "width": 72,
-      "height": 72
-    },
-    {
-      "nodeId": "41:561",
-      "name": "type=Structured system",
-      "file": "41-561.png",
-      "width": 72,
-      "height": 72
-    },
-    {
-      "nodeId": "41:556",
-      "name": "type=Timezones",
-      "file": "41-556.png",
-      "width": 72,
-      "height": 72
-    }
-  ],
-  "divider": [
-    {
-      "nodeId": "39:111",
-      "name": "divider",
-      "file": "39-111.png",
-      "width": 104,
-      "height": 0
     }
   ]
 }

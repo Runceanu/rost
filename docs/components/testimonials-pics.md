@@ -26,4 +26,13 @@
 
 - `root`
 
+## Tokens that should be there
+
+Plain numbers where a token fits exactly. They become tokens when I freeze the contracts.
+
+| Part | Property | Value | Suggest | |
+|---|---|---|---|---|
+| `root` | `width` | `56px` | `spacing/size/large` | exists |
+| `root` | `height` | `56px` | `spacing/size/large` | exists |
+
 Every value of every variant: [reference.html#testimonials-pics](../../reference.html#testimonials-pics)

@@ -11,7 +11,9 @@ import { readFileSync, writeFileSync, mkdirSync, existsSync } from 'node:fs'
 
 const nodes = JSON.parse(readFileSync(new URL('../registry/variant-nodes.json', import.meta.url), 'utf8'))
 const comps = process.argv.slice(2).length ? process.argv.slice(2) : Object.keys(nodes)
-const manifest = {}
+// Merge into what's there: a run for one component must not drop the others.
+const manifestPath = new URL('../baseline/manifest.json', import.meta.url)
+const manifest = existsSync(manifestPath) ? JSON.parse(readFileSync(manifestPath, 'utf8')) : {}
 let ok = 0, fail = 0, skipped = 0
 
 for (const comp of comps) {
@@ -31,5 +33,5 @@ for (const comp of comps) {
   }
   console.log(`  ${comp.padEnd(18)} ${manifest[comp].length}`)
 }
-writeFileSync(new URL('../baseline/manifest.json', import.meta.url), JSON.stringify(manifest, null, 2) + '\n')
+writeFileSync(manifestPath, JSON.stringify(manifest, null, 2) + '\n')
 console.log(`\n${ok} captured, ${skipped} already present, ${fail} failed`)
