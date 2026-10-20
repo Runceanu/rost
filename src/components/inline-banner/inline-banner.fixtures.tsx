@@ -20,3 +20,9 @@ export const fixtures = VARIANTS.map(([status, size, node]) => ({
   name: `status=${status}, size=${size}`,
   element: <InlineBanner status={status} size={size}>label</InlineBanner>,
 }))
+
+/** What a caller writes. Shown on the component's page. */
+export const usage = `import { InlineBanner } from 'rost/components/inline-banner/InlineBanner'
+
+<InlineBanner status="positive">Saved just now</InlineBanner>
+<InlineBanner status="negative" size="small">Payment failed</InlineBanner>`

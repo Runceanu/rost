@@ -19,3 +19,10 @@ export const fixtures = VARIANTS.map(([status, size, node]) => ({
     ? <Badge status={status} size="small" aria-label={status} />
     : <Badge status={status} size="medium">label</Badge>,
 }))
+
+/** What a caller writes. Shown on the component's page. */
+export const usage = `import { Badge } from 'rost/components/badge/Badge'
+
+<Badge status="negative">Overdue</Badge>
+<Badge status="positive" showIcon>Paid</Badge>
+<Badge status="warning" size="small" aria-label="Due soon" />`

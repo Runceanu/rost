@@ -79,6 +79,13 @@ function sideBySide(images, scale) {
   return out
 }
 
+// Components import icons as `./x.svg?url` (what Vite and Astro expect). esbuild
+// doesn't know the suffix, so drop it and let the file loader give the URL.
+const svgUrl = {
+  name: 'svg-url',
+  setup(b) { b.onResolve({ filter: /\.svg\?url$/ }, (a) => ({ path: join(a.resolveDir, a.path.replace(/\?url$/, '')) })) },
+}
+
 const browser = await chromium.launch()
 let failed = 0
 
@@ -94,7 +101,7 @@ for (const id of ids) {
     createRoot(document.getElementById('root')).render(
       <>{fixtures.map((f) => <div key={f.node} data-node={f.node} style={{ display: 'flex', margin: 8 }}>{f.element}</div>)}</>
     )`)
-  await build({ entryPoints: [join(work, 'entry.tsx')], bundle: true, outdir: work, jsx: 'automatic', logLevel: 'error', loader: { '.svg': 'file' } })
+  await build({ entryPoints: [join(work, 'entry.tsx')], bundle: true, outdir: work, jsx: 'automatic', logLevel: 'error', loader: { '.svg': 'file' }, plugins: [svgUrl] })
   const face = `@font-face { font-family: 'General Sans Variable'; font-weight: 200 700; src: url('file://${font}') format('truetype'); }`
   writeFileSync(join(work, 'index.html'), `<!doctype html><meta charset="utf-8">
     <link rel="stylesheet" href="file://${root}tokens/tokens.css">

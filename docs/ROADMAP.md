@@ -18,6 +18,12 @@ Still open from Figma:
 - Rename the sample client in Thumbs to "Client" and capture it again, so `baseline/thumbs/` can be public. `baseline/testimonials-pics/` stays private for good (real people's photos).
 - Seven values have no token and no reason yet. They're at the bottom of [Token coverage](TOKENS.md).
 
+## Done: a real website
+
+On 2026-10-20 rost.build became a proper site, the way shadcn's is: a homepage, a page per component, tokens, icons, and these docs. It's built with Astro from `web/`, straight from the contracts, so it can't drift from them. Components that are in code show up live, with a Code tab. The others show Figma's own renders until they're built.
+
+One gap: Figma's renders of Button came back empty (all 20), so its page has no pictures. They need capturing again next time Figma is open on the UI Kit.
+
 ## Now: Rost in code
 
 Two components so far, both built from their contracts and both matching Figma in the visual test:
@@ -29,7 +35,7 @@ Next, one at a time on the same setup (CSS from the contract, the component, fix
 
 - **Button, PillButton, IconButton, Toggle, Chip, Tag.** These have hover, press and focus, so the test needs to trigger those states first.
 - **Input, Menu, and the the portfolio site ones** (Carousel, Projects, Thumbs, Testimonials).
-- **Publish it as a package** that the accounting app and the portfolio site install, instead of keeping their own copies.
+- **`npx rost add badge`**, the way shadcn does it: copy a component, its CSS and its tokens into the accounting app or the portfolio site. That's how my apps will stop keeping their own copies.
 
 ## Now: make the contracts something I can trust
 

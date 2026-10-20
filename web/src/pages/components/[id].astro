@@ -1,0 +1,168 @@
+---
+import Base from '../../layouts/Base.astro'
+import { Code } from 'astro:components'
+import { Fixtures, fixturesFor } from '../../components/Fixtures'
+import { kit, byId, title, inCode, guidanceHtml, componentSource, sourceLink, classify, APP_LABEL, GITHUB, blankShot } from '../../lib/kit'
+
+export function getStaticPaths() {
+  return kit.map((e) => ({ params: { id: e.id } }))
+}
+
+const { id } = Astro.params as { id: string }
+const e = byId(id)
+const c = e.c
+const g = e.guidance
+const built = inCode(id)
+const src = sourceLink(c)
+const source = componentSource(id)
+const usage = fixturesFor(id)?.usage
+
+// Figma's own screenshots, for components that aren't in code yet. Two folders
+// hold private things (a client's name, real people's photos) and never ship.
+const shots = import.meta.glob(['../../../../baseline/**/*.png', '!../../../../baseline/thumbs/**', '!../../../../baseline/testimonials-pics/**'], { query: '?url', import: 'default', eager: true }) as Record<string, string>
+const manifest = (await import('../../../../baseline/manifest.json')).default as Record<string, { nodeId: string; name: string; file: string }[]>
+const withUrl = (manifest[id] ?? []).map((v) => ({ ...v, url: Object.entries(shots).find(([p]) => p.endsWith(`/baseline/${id}/${v.file}`))?.[1] })).filter((v) => v.url)
+const figma = withUrl.filter((v) => !blankShot(`baseline/${id}/${v.file}`))
+const blanks = withUrl.length - figma.length
+
+const isColour = (v: string) => /^(#[0-9a-f]{3,8}|rgba?\()/i.test(String(v).trim())
+const tokenCell = (prop: string, v: any) => {
+  const k = classify(prop, v)
+  if (k === 'token') return { cls: 'tk', text: v.token }
+  if (k === 'suggested') return { cls: 'tk', text: v.suggest }
+  if (k === 'layout') return { cls: 'tk--none', text: 'layout' }
+  if (k === 'sample') return { cls: 'tk--none', text: 'Figma frame size' }
+  if (k === 'reasoned') return { cls: 'tk--none', text: 'no token, on purpose' }
+  return { cls: 'tk--gap', text: 'no token yet' }
+}
+const fixed = Object.entries(e.invariants).flatMap(([part, props]: [string, any]) => Object.entries(props).map(([prop, v]: [string, any]) => ({ part, prop, v })))
+const byProp: Record<string, { name: string; v: any }[]> = {}
+for (const [name, parts] of Object.entries(e.variantMap) as [string, any][])
+  for (const [part, props] of Object.entries(parts) as [string, any][])
+    for (const [prop, v] of Object.entries(props)) (byProp[`${part}.${prop}`] ??= []).push({ name, v })
+const props = Object.entries(c.props ?? {}) as [string, any][]
+---
+<Base title={`${title(e)} · Rost`} description={c.summary} current={id} sidebar>
+  <div class="kicker">{e.kind}</div>
+  <h1>{title(e)}</h1>
+  {c.summary && <p class="lede">{c.summary}</p>}
+  <div class="chips">
+    {built ? <span class="chip chip--good">in code</span> : <span class="chip">not in code yet</span>}
+    <span class={`chip ${c.status === 'stable' ? 'chip--good' : ''}`}>contract: {c.status}</span>
+    <span class={`chip ${g?.status === 'agreed' ? 'chip--good' : g ? 'chip--warn' : ''}`}>guidance: {g?.status ?? 'none yet'}</span>
+    <a class="chip" href={`${GITHUB}/blob/master/contracts/${e.file}`} target="_blank" rel="noreferrer">contract on GitHub</a>
+    {src.href && <a class="chip" href={src.href} target="_blank" rel="noreferrer">{src.label}</a>}
+  </div>
+
+  {built ? (
+    <section class="tabs" data-tabs>
+      <div class="tab-bar" role="tablist">
+        <button role="tab" aria-selected="true" data-tab="preview">Preview</button>
+        <button role="tab" aria-selected="false" data-tab="code">Code</button>
+      </div>
+      <div class="tab-panel" data-panel="preview"><div class="stage"><Fixtures id={id} /></div></div>
+      <div class="tab-panel" data-panel="code" hidden>
+        {usage && <Code code={usage} lang="tsx" theme="vesper" />}
+        {source && (
+          <details class="source">
+            <summary>{source.file}</summary>
+            <Code code={source.code} lang="tsx" theme="vesper" />
+          </details>
+        )}
+      </div>
+    </section>
+  ) : blanks > 0 && figma.length === 0 ? (
+    <p class="note">Figma's renders of this one came back empty, so there's nothing to show yet. The contract below is complete; the pictures come with the next read.</p>
+  ) : figma.length > 0 && (
+    <section>
+      <div class="stage">
+        <div class="fixtures">
+          {figma.map((v) => (
+            <figure class="fixture">
+              <div class="fixture-stage"><img class="shot" src={v.url} alt={`${title(e)}, ${v.name}, as drawn in Figma`} loading="lazy" /></div>
+              <figcaption>{v.name.replace(/[a-z]+=/gi, '').replace(/, /g, ' · ')}</figcaption>
+            </figure>
+          ))}
+        </div>
+      </div>
+      <p class="note">These are Figma's own renders. The component isn't built in code yet; the contract below is what it'll be built from.</p>
+    </section>
+  )}
+
+  {g && <div class="prose" set:html={guidanceHtml(g)} />}
+
+  {props.length > 0 && (
+    <>
+      <h2>Props</h2>
+      <div class="scroll"><table class="t">
+        <thead><tr><th>Prop</th><th>Type</th><th>Values</th><th>Default</th></tr></thead>
+        <tbody>{props.map(([k, v]) => <tr><td>{k}</td><td>{v.type}</td><td>{(v.values ?? []).join(' · ')}</td><td>{v.default !== undefined ? String(v.default) : ''}</td></tr>)}</tbody>
+      </table></div>
+    </>
+  )}
+  {c.states?.length > 0 && <p class="muted">States: {c.states.join(', ')}.</p>}
+
+  {e.implementations.length > 0 && (
+    <>
+      <h2>Where it's used</h2>
+      <ul class="plain">{e.implementations.map((i: any) => <li><b>{APP_LABEL[i.app] ?? i.app}</b> <code>{i.component}</code>{i.root && <> <code>{i.root}</code></>}</li>)}</ul>
+    </>
+  )}
+  {e.deviations.length > 0 && (
+    <>
+      <h2>Where code differs on purpose</h2>
+      <ul class="plain">{e.deviations.map((d: any) => <li><b>{APP_LABEL[d.app] ?? d.app ?? 'Everywhere'}:</b> {d.what} <span class="muted">{d.why}</span></li>)}</ul>
+    </>
+  )}
+
+  <h2>Values</h2>
+  <p class="muted">Straight from the contract. Each value sits next to its token, because six tokens here all come out as <code>#3a3a3a</code> and the colour alone can't tell you which one is right.</p>
+  <h3>Never changes</h3>
+  <div class="scroll"><table class="t">
+    <thead><tr><th>Part</th><th>Property</th><th>Value</th><th>Token</th></tr></thead>
+    <tbody>{fixed.map(({ part, prop, v }) => { const t = tokenCell(prop, v); return <tr><td>{part}</td><td>{prop}</td><td>{isColour(v.value) && <span class="sw" style={`--c:${v.value}`} />}{v.value}</td><td class={t.cls}>{t.text}</td></tr> })}</tbody>
+  </table></div>
+  {Object.keys(byProp).length > 0 && (
+    <>
+      <h3>Changes by variant</h3>
+      {Object.entries(byProp).sort().map(([k, rows]) => (
+        <details class="vary">
+          <summary><code>{k}</code><span class="n">{rows.length}</span></summary>
+          <div class="scroll"><table class="t"><tbody>{rows.map(({ name, v }) => { const t = tokenCell(k.split('.')[1], v); return <tr><td>{name}</td><td>{isColour(v.value) && <span class="sw" style={`--c:${v.value}`} />}{v.value}</td><td class={t.cls}>{t.text}</td></tr> })}</tbody></table></div>
+        </details>
+      ))}
+    </>
+  )}
+</Base>
+
+<script>
+  for (const box of document.querySelectorAll('[data-tabs]')) {
+    const tabs = box.querySelectorAll('[data-tab]')
+    tabs.forEach((t) => t.addEventListener('click', () => {
+      tabs.forEach((x) => x.setAttribute('aria-selected', String(x === t)))
+      box.querySelectorAll('[data-panel]').forEach((p) => ((p as HTMLElement).hidden = (p as HTMLElement).dataset.panel !== (t as HTMLElement).dataset.tab))
+    }))
+  }
+</script>
+
+<style>
+  .tabs { margin: 8px 0 8px; }
+  .tab-bar { display: flex; gap: 4px; margin-bottom: 12px; }
+  .tab-bar button { font: inherit; font-size: 14px; color: var(--fg-3); background: none; border: 1px solid transparent; border-radius: 999px; padding: 6px 14px; cursor: pointer; }
+  .tab-bar button[aria-selected='true'] { color: var(--fg); background: var(--surface); border-color: var(--line); }
+  .stage { background: var(--ground); border: 1px solid var(--line); border-radius: 16px; padding: 28px; overflow-x: auto; }
+  .tab-panel :global(pre) { border-radius: 12px; padding: 16px; font-size: 13px; overflow-x: auto; }
+  .source { margin-top: 12px; }
+  .source summary { cursor: pointer; color: var(--fg-3); font-family: var(--mono); font-size: 12.5px; margin-bottom: 8px; }
+  .note { color: var(--fg-3); font-size: 13.5px; margin: 10px 0 0; }
+  .plain { padding-left: 18px; color: var(--fg-2); }
+  .plain li { margin: 4px 0; }
+  .vary { margin: 0 0 8px; }
+  .vary summary { cursor: pointer; display: flex; align-items: center; gap: 10px; padding: 6px 0; color: var(--fg); }
+  .vary .n { font-family: var(--mono); font-size: 11px; color: var(--fg-3); background: var(--surface); padding: 1px 8px; border-radius: 999px; }
+  :global(.fixtures) { display: flex; flex-wrap: wrap; gap: 28px 36px; align-items: flex-end; }
+  :global(.fixture) { margin: 0; display: flex; flex-direction: column; gap: 10px; align-items: flex-start; }
+  :global(.fixture-stage) { display: flex; align-items: center; min-height: 24px; }
+  :global(.shot) { display: block; max-width: 100%; height: auto; }
+  :global(.fixture figcaption) { font-family: var(--mono); font-size: 11px; color: var(--fg-3); }
+</style>

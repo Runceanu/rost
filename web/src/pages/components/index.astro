@@ -1,0 +1,30 @@
+---
+import Base from '../../layouts/Base.astro'
+import { kit, KINDS, title, inCode, built } from '../../lib/kit'
+const groups = KINDS.filter(([k]: [string, string]) => kit.some((e) => e.kind === k))
+---
+<Base title="Components · Rost" sidebar>
+  <div class="kicker">Components</div>
+  <h1>Everything in Rost</h1>
+  <p class="lede">{kit.length} components, patterns and effects.</p>
+  <p class="muted">{built.length} are built in code so far, marked with the green dot, and you can try them live. The others show Figma's own renders, with the contract they'll be built from.</p>
+  {groups.map(([k, label]: [string, string]) => (
+    <>
+      <h3>{label}</h3>
+      <div class="grid">
+        {kit.filter((e) => e.kind === k).map((e) => (
+          <a class="card comp" href={`/components/${e.id}/`}>
+            <span class="comp-name">{title(e)}{inCode(e.id) && <span class="dot" title="Built in code" />}</span>
+            <span class="comp-sum">{e.c.summary}</span>
+          </a>
+        ))}
+      </div>
+    </>
+  ))}
+</Base>
+<style>
+  .comp { display: flex; flex-direction: column; gap: 6px; text-decoration: none; }
+  .comp:hover { border-color: color-mix(in srgb, var(--fg) 28%, transparent); }
+  .comp-name { display: flex; align-items: center; gap: 8px; font-weight: 600; color: var(--fg); }
+  .comp-sum { color: var(--fg-3); font-size: 14px; line-height: 1.45; }
+</style>

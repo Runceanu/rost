@@ -1,0 +1,42 @@
+---
+import Base from '../layouts/Base.astro'
+import { tokens } from '../lib/kit'
+
+// tokens.json lost its hyphens in the keys (`non/interactive/...`), so the CSS
+// variable is what I show and group by: it's exact, and it's what code uses.
+const entries = Object.values(tokens).map((t) => ({ name: t.cssVar, value: t.value }))
+const family = (v: string) => {
+  const n = v.replace(/^--/, '')
+  if (n.startsWith('non-interactive-')) return 'Surfaces and text'
+  if (n.startsWith('actions-')) return 'Actions'
+  if (n.startsWith('input-')) return 'Inputs'
+  if (n.startsWith('project-')) return 'Projects'
+  if (n.startsWith('spacing-gap')) return 'Gaps and padding'
+  if (n.startsWith('spacing-size')) return 'Sizes'
+  if (n.startsWith('spacing-radius')) return 'Corner radius'
+  if (n.startsWith('spacing-outline')) return 'Outlines'
+  if (n.startsWith('spacing-')) return 'Layout'
+  if (n.startsWith('opacity-')) return 'Opacity'
+  if (n.startsWith('typography-') || n.startsWith('font-')) return 'Type'
+  if (n.startsWith('effect-') || n.startsWith('shadow-')) return 'Effects'
+  return 'Other'
+}
+const order = ['Surfaces and text', 'Actions', 'Inputs', 'Projects', 'Type', 'Gaps and padding', 'Sizes', 'Corner radius', 'Outlines', 'Opacity', 'Effects', 'Layout', 'Other']
+const groups = order.map((f) => [f, entries.filter((e) => family(e.name) === f)] as const).filter(([, list]) => list.length)
+const isColour = (v: string) => /^(#[0-9a-f]{3,8}|rgba?\()/i.test(v.trim())
+---
+<Base title="Tokens · Rost">
+  <div class="kicker">Foundations</div>
+  <h1>Tokens</h1>
+  <p class="lede">{entries.length} named values. Every colour, space and size in Rost comes from one of these.</p>
+  <p class="muted">The names are the CSS variables, exactly as code uses them, from <code>tokens/tokens.css</code>. Figma has more variables than this. I add them here as components need them.</p>
+  {groups.map(([f, list]) => (
+    <>
+      <h2>{f}</h2>
+      <div class="scroll"><table class="t">
+        <thead><tr><th>Token</th><th>Value</th></tr></thead>
+        <tbody>{list.map((t) => <tr><td>{t.name}</td><td>{isColour(t.value) && <span class="sw" style={`--c:${t.value}`} />}{t.value}</td></tr>)}</tbody>
+      </table></div>
+    </>
+  ))}
+</Base>

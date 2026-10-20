@@ -1,0 +1,54 @@
+---
+import Base from '../../layouts/Base.astro'
+import { md, readRepo, GITHUB } from '../../lib/kit'
+
+// The docs on the site are the same markdown files that live in the repo.
+const DOCS = {
+  contract: { file: 'docs/CONTRACT.md', title: 'How a contract works' },
+  roadmap: { file: 'docs/ROADMAP.md', title: "What's next" },
+  tokens: { file: 'docs/TOKENS.md', title: 'Token coverage' },
+} as const
+
+export function getStaticPaths() {
+  return ['contract', 'roadmap', 'tokens'].map((slug) => ({ params: { slug } }))
+}
+
+const { slug } = Astro.params as { slug: keyof typeof DOCS }
+const doc = DOCS[slug]
+const route: Record<string, string> = { 'CONTRACT.md': '/docs/contract/', 'ROADMAP.md': '/docs/roadmap/', 'TOKENS.md': '/docs/tokens/', 'README.md': '/' }
+
+// Links in the markdown point at files in the repo. On the site, a component
+// page or a doc goes to its page here, and anything else goes to GitHub.
+const fix = (href: string) => {
+  if (/^(https?:|#|mailto:)/.test(href)) return href
+  const clean = href.replace(/^\.\//, '')
+  const comp = clean.match(/^components\/([a-z0-9-]+)\.md/)
+  if (comp) return `/components/${comp[1]}/`
+  if (route[clean]) return route[clean]
+  const repoPath = clean.replace(/^\.\.\//, '')
+  return `${GITHUB}/blob/master/${repoPath.startsWith('docs/') || clean.startsWith('../') ? repoPath : 'docs/' + repoPath}`
+}
+const html = md(readRepo(doc.file).replace(/^<!--[\s\S]*?-->\s*/, ''))
+  .replace(/href="([^"]+)"/g, (_, h) => `href="${fix(h)}"`)
+---
+<Base title={`${doc.title} · Rost`}>
+  <div class="docs">
+    <nav class="doc-nav" aria-label="Docs">
+      {Object.entries(DOCS).map(([s, d]) => <a href={`/docs/${s}/`} class={s === slug ? 'is-active' : ''}>{d.title}</a>)}
+    </nav>
+    <article class="prose" set:html={html} />
+  </div>
+</Base>
+<style>
+  .docs { display: grid; gap: 32px; grid-template-columns: minmax(0, 1fr); }
+  @media (min-width: 960px) { .docs { grid-template-columns: 200px minmax(0, 1fr); } }
+  .doc-nav { display: flex; flex-wrap: wrap; gap: 6px; align-self: start; }
+  @media (min-width: 960px) { .doc-nav { flex-direction: column; position: sticky; top: 90px; } }
+  .doc-nav a { text-decoration: none; color: var(--fg-3); font-size: 14px; padding: 6px 10px; border-radius: 8px; }
+  .doc-nav a:hover, .doc-nav a.is-active { color: var(--fg); background: var(--surface); }
+  .prose :global(h1) { color: var(--fg); }
+  .prose :global(h2) { font-family: var(--body); font-size: 24px; letter-spacing: -.02em; text-transform: none; color: var(--fg); margin: 44px 0 10px; font-weight: 600; }
+  .prose :global(h3) { margin: 28px 0 8px; }
+  .prose :global(code) { color: var(--fg); }
+  .prose :global(li) { margin: 4px 0; }
+</style>
