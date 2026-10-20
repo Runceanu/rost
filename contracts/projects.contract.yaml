@@ -6,6 +6,8 @@ kind: component
 status: review
 summary: |-
   One row in the project list: number, name, and industry, type and period on the right.
+category: display
+related: [ thumbs, carousel ]
 source:
   tool: figma
   fileKey: 1Zy0wiWKXQAvsfDBX3KR0d

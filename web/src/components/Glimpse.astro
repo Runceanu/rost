@@ -1,73 +1,17 @@
 ---
-// What a component card shows above its name. The component itself where
-// it's built, Figma's picture where it fits the card, a crop of that picture
-// where it doesn't, and a few lines drawn from the tokens where there's no
-// picture to show (the effects, and the sets whose pictures stay private).
-import { Badge } from '../../../src/components/badge/Badge'
-import { InlineBanner } from '../../../src/components/inline-banner/InlineBanner'
-import { Thumbs } from '../../../src/components/thumbs/Thumbs'
-import { shotsFor } from '../lib/shots'
+// What a component card shows above its name: the component itself, from the
+// `preview` in its fixtures file. A component that isn't in code yet says so.
+// No screenshots here: a card shows Rost, or nothing.
+import { Preview, fixturesFor } from './Fixtures'
 
 interface Props { id: string }
 const { id } = Astro.props
-// Default first: a disabled or pressed variant is a poor first impression.
-const { shots: all } = shotsFor(id)
-const shots = [...all].sort((a, b) => Number(!/Default/.test(a.name)) - Number(!/Default/.test(b.name)))
-// The card's picture area, roughly: a third of a 1120px page, above the panel.
-const W = 300, H = 170
-const small = shots.filter((s) => s.width <= 120 && s.height <= 72)
-const pick = small.length ? small.filter((s, i, all) => all.findIndex((o) => o.file === s.file) === i).slice(0, 3) : shots.slice(0, 1)
-const fits = pick.length > 0 && pick.every((s) => s.width <= W && s.height <= H)
-// A crop: scaled down until one side fits, never up, and cut at the other.
-const crop = !fits && shots[0] ? { ...shots[0], scale: Math.min(1, Math.max(W / shots[0].width, H / shots[0].height)) } : null
+const built = Boolean(fixturesFor(id)?.preview)
 ---
 <span class="glimpse" aria-hidden="true">
-  {id === 'badge' ? (
-    <span class="row"><Badge status="positive">Paid</Badge><Badge status="negative">Overdue</Badge><Badge status="default" size="small" /></span>
-  ) : id === 'inline-banner' ? (
-    <span class="col"><InlineBanner status="positive">Saved just now</InlineBanner><InlineBanner status="warning" size="small">Due soon</InlineBanner></span>
-  ) : id === 'thumbs' ? (
-    <span class="mini"><Thumbs as="div" number="01" name="Rost" industry="Design" type="System" period="2026" style={{ width: 384, height: 334 }} /></span>
-  ) : id === 'divider' ? (
-    <span class="line" />
-  ) : fits ? (
-    <span class="row">{pick.map((s) => <img src={s.url} alt="" width={s.width} height={s.height} loading="lazy" />)}</span>
-  ) : crop ? (
-    <span class="crop"><img src={crop.url} alt="" width={Math.round(crop.width * crop.scale)} height={Math.round(crop.height * crop.scale)} loading="lazy" /></span>
-  ) : id === 'effect-thumb' || id === 'effect-menu' ? (
-    <span class="layers"><span class="blob" /><span class="glass" style={`backdrop-filter: var(--${id})`} /></span>
-  ) : id === 'effect-lock-frame' ? (
-    <span class="layers"><span class="blob" style="filter: var(--effect-lock-frame)" /></span>
-  ) : id === 'effect-floating' ? (
-    <span class="float" />
-  ) : id === 'effect-paper' ? (
-    <span class="paper" />
-  ) : id === 'hero-media' ? (
-    <span class="media" />
-  ) : id === 'testimonials-pics' ? (
-    <span class="row">{[0, 1, 2].map(() => <span class="face" />)}</span>
-  ) : (
-    <span class="frame" />
-  )}
+  {built ? <Preview id={id} /> : <span class="later">Not in code yet</span>}
 </span>
 <style>
   .glimpse { position: absolute; inset: 0 0 112px; display: flex; align-items: center; justify-content: center; padding: var(--spacing-gap-medium); overflow: hidden; }
-  .row { display: flex; flex-wrap: wrap; gap: var(--spacing-gap-small-medium); align-items: center; justify-content: center; }
-  .col { display: flex; flex-direction: column; gap: var(--spacing-gap-small); align-items: center; }
-  /* Figma renders on the page colour, darker than the card. Lighten drops
-     that backdrop and keeps everything the component draws above it. */
-  img { display: block; max-width: none; mix-blend-mode: lighten; }
-  .line { width: 160px; height: var(--spacing-outline-small); background: var(--non-interactive-foreground-quadruple); }
-  .crop { width: 100%; height: 100%; display: flex; align-items: center; justify-content: flex-start; overflow: hidden; }
-  .mini { transform: scale(.4); transform-origin: center; }
-  .mini :global(.rost-thumbs__slot) { background: var(--ground); }
-  .layers { position: relative; width: 160px; height: 96px; }
-  .blob { position: absolute; left: 24px; top: 12px; width: 72px; height: 72px; border-radius: 50%; background: var(--accent); }
-  .glass { position: absolute; inset: 40px 0 0 48px; border-radius: var(--spacing-radius-large); background: rgba(0, 0, 0, var(--opacity-medium)); }
-  .float { width: 120px; height: 72px; border-radius: var(--spacing-radius-large); background: var(--non-interactive-background-tertiary); box-shadow: var(--shadow-floating); }
-  .paper { width: 100%; height: 100%; background-image: radial-gradient(circle, var(--fg-3) 1px, transparent 1.5px); background-size: 16px 16px; opacity: var(--opacity-mild); }
-  .media { position: relative; width: 200px; height: 112px; border-radius: var(--spacing-radius-large); overflow: hidden; background: linear-gradient(135deg, var(--accent), var(--non-interactive-background-tertiary)); }
-  .media::after { content: ''; position: absolute; inset: 0; background: rgba(0, 0, 0, var(--opacity-medium)); }
-  .face { width: var(--spacing-size-large); height: var(--spacing-size-large); border-radius: 50%; background: var(--non-interactive-background-tertiary); }
-  .frame { width: 120px; height: var(--spacing-size-medium-large); border-radius: var(--spacing-radius-full); border: 1px dashed var(--non-interactive-foreground-quadruple); }
+  .later { font-family: var(--mono); font-size: 11px; letter-spacing: .09em; text-transform: uppercase; color: var(--fg-3); }
 </style>

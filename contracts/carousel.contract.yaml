@@ -6,6 +6,8 @@ kind: component
 status: review
 summary: |-
   A card in the home page carousel: a number, a title and a short description.
+category: navigation
+related: [ thumbs, projects ]
 source:
   tool: figma
   fileKey: 1Zy0wiWKXQAvsfDBX3KR0d
