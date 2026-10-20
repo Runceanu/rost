@@ -1,13 +1,13 @@
 ---
 import '../../../tokens/tokens.css'
 import '../styles/site.css'
-import { kit, KINDS, title, inCode, GITHUB } from '../lib/kit'
+import Logo from '../components/Logo.astro'
+import { groups, title, inCode, GITHUB } from '../lib/kit'
 
 interface Props { title: string; description?: string; current?: string; sidebar?: boolean }
 const { title: pageTitle, description = 'Rost started as a design system for my own needs and grew into a product of its own. Today it serves products across different industries.', current = '', sidebar = false } = Astro.props
-const groups = KINDS.filter(([k]: [string, string]) => kit.some((e) => e.kind === k))
 const path = Astro.url.pathname
-const navActive = (prefix: string) => (path.startsWith(prefix) ? 'is-active' : '')
+const here = (prefix: string) => (path.startsWith(prefix) ? 'page' : undefined)
 ---
 <!doctype html>
 <html lang="en">
@@ -17,42 +17,44 @@ const navActive = (prefix: string) => (path.startsWith(prefix) ? 'is-active' : '
     <title>{pageTitle}</title>
     <meta name="description" content={description} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="preconnect" href="https://api.fontshare.com" crossorigin />
+    <link rel="preconnect" href="https://api.fontshare.com" />
+    <link rel="preconnect" href="https://cdn.fontshare.com" crossorigin />
     <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600&display=swap" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap" />
   </head>
   <body>
+    <a class="skip" href="#content">Skip to content</a>
     <header class="top">
-      <a class="brand" href="/"><img src="/favicon.svg" alt="" width="22" height="22" /><span>Rost</span></a>
+      <a class="brand" href="/" aria-current={path === '/' ? 'page' : undefined}><Logo /><span>Rost</span></a>
       <nav class="top-nav" aria-label="Main">
-        <a href="/components/" class={navActive('/components')}>Components</a>
-        <a href="/tokens/" class={navActive('/tokens')}>Tokens</a>
-        <a href="/icons/" class={navActive('/icons')}>Icons</a>
-        <a href="/docs/contract/" class={navActive('/docs')}>Docs</a>
+        <a href="/components/" aria-current={here('/components')}>Components</a>
+        <a href="/tokens/" aria-current={here('/tokens')}>Tokens</a>
+        <a href="/icons/" aria-current={here('/icons')}>Icons</a>
+        <a href="/docs/contract/" aria-current={here('/docs')}>Docs</a>
         <a href={GITHUB} class="gh" target="_blank" rel="noreferrer">GitHub</a>
       </nav>
     </header>
     {sidebar ? (
       <div class="shell">
-        <aside class="side" aria-label="Components">
-          {groups.map(([k, label]: [string, string]) => (
+        <nav class="side" aria-label="Components">
+          {groups.map(([, label, list]) => (
             <div class="side-group">
               <div class="side-title">{label}</div>
-              {kit.filter((e) => e.kind === k).map((e) => (
-                <a href={`/components/${e.id}/`} class={e.id === current ? 'is-active' : ''}>
+              {list.map((e) => (
+                <a href={`/components/${e.id}/`} aria-current={e.id === current ? 'page' : undefined}>
                   <span>{title(e)}</span>
-                  {inCode(e.id) && <span class="dot" title="Built in code" />}
+                  {inCode(e.id) && <span class="dot"><span class="sr-only">Built in code</span></span>}
                 </a>
               ))}
             </div>
           ))}
-        </aside>
-        <main class="main">{current && <a class="back" href="/components/">&larr; All components</a>}<slot /></main>
+        </nav>
+        <main class="main" id="content">{current && <a class="back" href="/components/">&larr; All components</a>}<slot /></main>
       </div>
     ) : (
-      <main class="page"><slot /></main>
+      <main class="page" id="content"><slot /></main>
     )}
     <footer class="foot">
       <span>Rost. My design system, behind the portfolio site and the accounting app.</span>

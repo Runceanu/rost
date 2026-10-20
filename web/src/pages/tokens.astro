@@ -1,6 +1,6 @@
 ---
 import Base from '../layouts/Base.astro'
-import { tokens } from '../lib/kit'
+import { tokens, isColour } from '../lib/kit'
 
 // tokens.json lost its hyphens in the keys (`non/interactive/...`), so the CSS
 // variable is what I show and group by: it's exact, and it's what code uses.
@@ -23,7 +23,6 @@ const family = (v: string) => {
 }
 const order = ['Surfaces and text', 'Actions', 'Inputs', 'Projects', 'Type', 'Gaps and padding', 'Sizes', 'Corner radius', 'Outlines', 'Opacity', 'Effects', 'Layout', 'Other']
 const groups = order.map((f) => [f, entries.filter((e) => family(e.name) === f)] as const).filter(([, list]) => list.length)
-const isColour = (v: string) => /^(#[0-9a-f]{3,8}|rgba?\()/i.test(v.trim())
 ---
 <Base title="Tokens · Rost">
   <div class="kicker">Foundations</div>

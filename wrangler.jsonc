@@ -6,7 +6,8 @@
     "enabled": true
   },
   "assets": {
-    "directory": "web/dist"
+    "directory": "web/dist",
+    "not_found_handling": "404-page"
   },
   "routes": [
     {

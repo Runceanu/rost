@@ -2,7 +2,7 @@
 import Base from '../../layouts/Base.astro'
 import { Code } from 'astro:components'
 import { Fixtures, fixturesFor } from '../../components/Fixtures'
-import { kit, byId, title, inCode, guidanceHtml, componentSource, sourceLink, classify, APP_LABEL, GITHUB, blankShot } from '../../lib/kit'
+import { kit, byId, title, inCode, guidanceHtml, componentSource, sourceLink, tokenCell, isColour, APP_LABEL, GITHUB, blankShot } from '../../lib/kit'
 
 export function getStaticPaths() {
   return kit.map((e) => ({ params: { id: e.id } }))
@@ -17,24 +17,19 @@ const src = sourceLink(c)
 const source = componentSource(id)
 const usage = fixturesFor(id)?.usage
 
-// Figma's own screenshots, for components that aren't in code yet. Two folders
-// hold private things (a client's name, real people's photos) and never ship.
-const shots = import.meta.glob(['../../../../baseline/**/*.png', '!../../../../baseline/thumbs/**', '!../../../../baseline/testimonials-pics/**'], { query: '?url', import: 'default', eager: true }) as Record<string, string>
+// Figma's own screenshots, for components that aren't in code yet. Only a
+// component's own folder, one level down. Two of those hold private things (a
+// client's name, real people's photos) and never ship; icons and
+// illustrations have their own page.
+const shots = import.meta.glob(['../../../../baseline/*/*.png', '!../../../../baseline/thumbs/*', '!../../../../baseline/testimonials-pics/*', '!../../../../baseline/icons/*', '!../../../../baseline/illustrations/*'], { query: '?url', import: 'default', eager: true }) as Record<string, string>
 const manifest = (await import('../../../../baseline/manifest.json')).default as Record<string, { nodeId: string; name: string; file: string }[]>
 const withUrl = (manifest[id] ?? []).map((v) => ({ ...v, url: Object.entries(shots).find(([p]) => p.endsWith(`/baseline/${id}/${v.file}`))?.[1] })).filter((v) => v.url)
 const figma = withUrl.filter((v) => !blankShot(`baseline/${id}/${v.file}`))
 const blanks = withUrl.length - figma.length
 
-const isColour = (v: string) => /^(#[0-9a-f]{3,8}|rgba?\()/i.test(String(v).trim())
-const tokenCell = (prop: string, v: any) => {
-  const k = classify(prop, v)
-  if (k === 'token') return { cls: 'tk', text: v.token }
-  if (k === 'suggested') return { cls: 'tk', text: v.suggest }
-  if (k === 'layout') return { cls: 'tk--none', text: 'layout' }
-  if (k === 'sample') return { cls: 'tk--none', text: 'Figma frame size' }
-  if (k === 'reasoned') return { cls: 'tk--none', text: 'no token, on purpose' }
-  return { cls: 'tk--gap', text: 'no token yet' }
-}
+// The same words the markdown docs use, with a colour for each kind.
+const CELL: Record<string, string> = { token: 'tk', suggested: 'tk--warn', layout: 'tk--none', sample: 'tk--none', reasoned: 'tk--none', gap: 'tk--gap' }
+const cell = (prop: string, v: any) => { const t = tokenCell(prop, v); return { cls: CELL[t.kind] ?? 'tk--gap', text: t.text } }
 const fixed = Object.entries(e.invariants).flatMap(([part, props]: [string, any]) => Object.entries(props).map(([prop, v]: [string, any]) => ({ part, prop, v })))
 const byProp: Record<string, { name: string; v: any }[]> = {}
 for (const [name, parts] of Object.entries(e.variantMap) as [string, any][])
@@ -56,12 +51,12 @@ const props = Object.entries(c.props ?? {}) as [string, any][]
 
   {built ? (
     <section class="tabs" data-tabs>
-      <div class="tab-bar" role="tablist">
-        <button role="tab" aria-selected="true" data-tab="preview">Preview</button>
-        <button role="tab" aria-selected="false" data-tab="code">Code</button>
+      <div class="tab-bar" role="tablist" aria-label={`${title(e)} preview and code`}>
+        <button type="button" role="tab" id="tab-preview" aria-controls="panel-preview" aria-selected="true" tabindex="0">Preview</button>
+        <button type="button" role="tab" id="tab-code" aria-controls="panel-code" aria-selected="false" tabindex="-1">Code</button>
       </div>
-      <div class="tab-panel" data-panel="preview"><div class="stage"><Fixtures id={id} /></div></div>
-      <div class="tab-panel" data-panel="code" hidden>
+      <div class="tab-panel" role="tabpanel" id="panel-preview" aria-labelledby="tab-preview" tabindex="0"><div class="stage"><Fixtures id={id} /></div></div>
+      <div class="tab-panel" role="tabpanel" id="panel-code" aria-labelledby="tab-code" tabindex="0" hidden>
         {usage && <Code code={usage} lang="tsx" theme="vesper" />}
         {source && (
           <details class="source">
@@ -120,7 +115,7 @@ const props = Object.entries(c.props ?? {}) as [string, any][]
   <h3>Never changes</h3>
   <div class="scroll"><table class="t">
     <thead><tr><th>Part</th><th>Property</th><th>Value</th><th>Token</th></tr></thead>
-    <tbody>{fixed.map(({ part, prop, v }) => { const t = tokenCell(prop, v); return <tr><td>{part}</td><td>{prop}</td><td>{isColour(v.value) && <span class="sw" style={`--c:${v.value}`} />}{v.value}</td><td class={t.cls}>{t.text}</td></tr> })}</tbody>
+    <tbody>{fixed.map(({ part, prop, v }) => { const t = cell(prop, v); return <tr><td>{part}</td><td>{prop}</td><td>{isColour(v.value) && <span class="sw" style={`--c:${v.value}`} />}{v.value}</td><td class={t.cls}>{t.text}</td></tr> })}</tbody>
   </table></div>
   {Object.keys(byProp).length > 0 && (
     <>
@@ -128,7 +123,7 @@ const props = Object.entries(c.props ?? {}) as [string, any][]
       {Object.entries(byProp).sort().map(([k, rows]) => (
         <details class="vary">
           <summary><code>{k}</code><span class="n">{rows.length}</span></summary>
-          <div class="scroll"><table class="t"><tbody>{rows.map(({ name, v }) => { const t = tokenCell(k.split('.')[1], v); return <tr><td>{name}</td><td>{isColour(v.value) && <span class="sw" style={`--c:${v.value}`} />}{v.value}</td><td class={t.cls}>{t.text}</td></tr> })}</tbody></table></div>
+          <div class="scroll"><table class="t"><tbody>{rows.map(({ name, v }) => { const t = cell(k.split('.')[1], v); return <tr><td>{name}</td><td>{isColour(v.value) && <span class="sw" style={`--c:${v.value}`} />}{v.value}</td><td class={t.cls}>{t.text}</td></tr> })}</tbody></table></div>
         </details>
       ))}
     </>
@@ -136,32 +131,54 @@ const props = Object.entries(c.props ?? {}) as [string, any][]
 </Base>
 
 <script>
+  // Tabs as the ARIA pattern has them: click or arrow keys to move, and only
+  // the selected tab sits in the tab order.
   for (const box of document.querySelectorAll('[data-tabs]')) {
-    const tabs = box.querySelectorAll('[data-tab]')
-    tabs.forEach((t) => t.addEventListener('click', () => {
-      tabs.forEach((x) => x.setAttribute('aria-selected', String(x === t)))
-      box.querySelectorAll('[data-panel]').forEach((p) => ((p as HTMLElement).hidden = (p as HTMLElement).dataset.panel !== (t as HTMLElement).dataset.tab))
-    }))
+    const tabs = [...box.querySelectorAll<HTMLButtonElement>('[role="tab"]')]
+    const select = (tab: HTMLButtonElement) => {
+      for (const t of tabs) {
+        const on = t === tab
+        t.setAttribute('aria-selected', String(on))
+        t.tabIndex = on ? 0 : -1
+        document.getElementById(t.getAttribute('aria-controls')!)!.hidden = !on
+      }
+    }
+    tabs.forEach((t, i) => {
+      t.addEventListener('click', () => select(t))
+      t.addEventListener('keydown', (ev) => {
+        const step = ev.key === 'ArrowRight' ? 1 : ev.key === 'ArrowLeft' ? -1 : 0
+        const to = ev.key === 'Home' ? tabs[0] : ev.key === 'End' ? tabs.at(-1) : step ? tabs[(i + step + tabs.length) % tabs.length] : null
+        if (!to) return
+        ev.preventDefault()
+        select(to)
+        to.focus()
+      })
+    })
   }
 </script>
 
 <style>
-  .tabs { margin: 8px 0 8px; }
-  .tab-bar { display: flex; gap: 4px; margin-bottom: 12px; }
-  .tab-bar button { font: inherit; font-size: 14px; color: var(--fg-3); background: none; border: 1px solid transparent; border-radius: 999px; padding: 6px 14px; cursor: pointer; }
+  .tabs { margin: var(--spacing-gap-small) 0; }
+  .tab-bar { display: flex; gap: var(--spacing-gap-2xsmall); margin-bottom: var(--spacing-gap-small-medium); }
+  .tab-bar button { font: inherit; font-size: 14px; color: var(--fg-3); background: none; border: 1px solid transparent; border-radius: var(--spacing-radius-full); padding: var(--spacing-gap-xsmall) var(--spacing-gap-small-medium); cursor: pointer; }
   .tab-bar button[aria-selected='true'] { color: var(--fg); background: var(--surface); border-color: var(--line); }
-  .stage { background: var(--ground); border: 1px solid var(--line); border-radius: 16px; padding: 28px; overflow-x: auto; }
-  .tab-panel :global(pre) { border-radius: 12px; padding: 16px; font-size: 13px; overflow-x: auto; }
-  .source { margin-top: 12px; }
-  .source summary { cursor: pointer; color: var(--fg-3); font-family: var(--mono); font-size: 12.5px; margin-bottom: 8px; }
-  .note { color: var(--fg-3); font-size: 13.5px; margin: 10px 0 0; }
-  .plain { padding-left: 18px; color: var(--fg-2); }
-  .plain li { margin: 4px 0; }
-  .vary { margin: 0 0 8px; }
-  .vary summary { cursor: pointer; display: flex; align-items: center; gap: 10px; padding: 6px 0; color: var(--fg); }
-  .vary .n { font-family: var(--mono); font-size: 11px; color: var(--fg-3); background: var(--surface); padding: 1px 8px; border-radius: 999px; }
-  :global(.fixtures) { display: flex; flex-wrap: wrap; gap: 28px 36px; align-items: flex-end; }
-  :global(.fixture) { margin: 0; display: flex; flex-direction: column; gap: 10px; align-items: flex-start; }
+  .stage { background: var(--ground); border: 1px solid var(--line); border-radius: var(--spacing-radius-large); padding: var(--spacing-gap-xlarge); overflow-x: auto; }
+  @media (max-width: 520px) { .stage { padding: var(--spacing-gap-medium-large); } }
+  .source { margin-top: var(--spacing-gap-small-medium); }
+  .source summary { cursor: pointer; color: var(--fg-3); font-family: var(--mono); font-size: 12.5px; margin-bottom: var(--spacing-gap-small); }
+  .note { color: var(--fg-3); font-size: 13.5px; margin: var(--spacing-gap-small) 0 0; }
+  .plain { padding-left: var(--spacing-gap-medium-large); color: var(--fg-2); }
+  .plain li { margin: var(--spacing-gap-2xsmall) 0; }
+  .vary { margin: 0 0 var(--spacing-gap-small); }
+  .vary summary { cursor: pointer; display: flex; align-items: center; gap: var(--spacing-gap-small); padding: var(--spacing-gap-xsmall) 0; color: var(--fg); list-style: none; }
+  .vary summary::-webkit-details-marker { display: none; }
+  /* display: flex drops the native triangle, so it's drawn back. */
+  .vary summary::before { content: ''; width: 0; height: 0; border-left: 5px solid var(--fg-3); border-block: 4px solid transparent; transition: transform .15s; }
+  .vary[open] summary::before { transform: rotate(90deg); }
+  .vary .n { font-family: var(--mono); font-size: 11px; color: var(--fg-3); background: var(--surface); padding: 1px var(--spacing-gap-small); border-radius: var(--spacing-radius-full); }
+  .tk--warn { color: var(--warn); }
+  :global(.fixtures) { display: flex; flex-wrap: wrap; gap: var(--spacing-gap-large) var(--spacing-gap-2xlarge); align-items: flex-end; }
+  :global(.fixture) { margin: 0; display: flex; flex-direction: column; gap: var(--spacing-gap-small); align-items: flex-start; }
   :global(.fixture-stage) { min-height: var(--spacing-size-small); }
   :global(.shot) { display: block; max-width: 100%; height: auto; }
   :global(.fixture figcaption) { font-family: var(--mono); font-size: 11px; color: var(--fg-3); }

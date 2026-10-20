@@ -12,7 +12,7 @@ export function Fixtures({ id }: { id: string }) {
       {mod.fixtures.map((f) => (
         <figure key={f.node} className="fixture">
           <div className="fixture-stage">{f.element}</div>
-          <figcaption>{f.name.replace(/status=|size=/g, '').replace(', ', ' · ')}</figcaption>
+          <figcaption>{f.name.replace(/[a-z]+=/gi, '').replace(/, /g, ' · ')}</figcaption>
         </figure>
       ))}
     </div>

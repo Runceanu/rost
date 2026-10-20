@@ -1,0 +1,29 @@
+---
+// The cards for every component, grouped by kind. The home page and the
+// components index show the same list, so it's written once.
+import { groups, title, inCode } from '../lib/kit'
+interface Props { level?: 2 | 3 }
+const { level = 3 } = Astro.props
+const H = `h${level}`
+---
+{groups.map(([k, label, list]) => (
+  <>
+    <H class="group-title">{label}</H>
+    <ul class="grid" role="list">
+      {list.map((e) => (
+        <li><a class="card comp" href={`/components/${e.id}/`}>
+          <span class="comp-name">{title(e)}{inCode(e.id) && <span class="dot"><span class="sr-only">Built in code</span></span>}</span>
+          <span class="comp-sum">{e.c.summary}</span>
+        </a></li>
+      ))}
+    </ul>
+  </>
+))}
+<style>
+  .grid { list-style: none; margin: 0; padding: 0; }
+  .comp { display: flex; flex-direction: column; gap: var(--spacing-gap-xsmall); height: 100%; text-decoration: none; transition: border-color .15s; }
+  .comp:hover { border-color: color-mix(in srgb, var(--fg) 28%, transparent); }
+  .comp-name { display: flex; align-items: center; gap: var(--spacing-gap-small); font-weight: 600; color: var(--fg); }
+  .comp-sum { color: var(--fg-3); font-size: 14px; line-height: 1.45; }
+  h2.group-title { font-family: var(--mono); font-weight: 400; font-size: 12px; letter-spacing: .09em; text-transform: uppercase; color: var(--fg-3); margin: 32px 0 12px; }
+</style>
