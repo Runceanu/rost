@@ -60,8 +60,8 @@ Icon only in the kit. akount.ing adds a text label, and that's a declared deviat
 
 | App | What | Why | Taken to design |
 |---|---|---|---|
-| akount.ing | Accepts a text label; width grows past 40px to fit it, height stays 40px. Label colour follows the surface: secondary label unselected, primary label selected. | The year switcher needs text. The kit's toggle is icon-only and specifies no label colour. | not yet |
-| akount.ing | Rendered as role=radio inside a ToggleGroup radio group, which has no surface of its own. | Toggles are used as a single-choice set; ToggleGroup is not a kit component. | not yet |
+| akount.ing | Takes a text label. It grows wider than 40px to fit, and stays 40px tall. The label uses the secondary label colour when off and the primary one when on. | The year switcher needs text. The kit's Toggle is icon only, so it says nothing about a label's colour. | not yet |
+| akount.ing | Each toggle is a `role="radio"` inside a `ToggleGroup`. The group has no surface of its own. | There they're one choice from a set. The kit has no ToggleGroup, so akount.ing made one. | not yet |
 
 ## Tokens
 

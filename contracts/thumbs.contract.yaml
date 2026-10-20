@@ -175,7 +175,7 @@ elements:
       border-color: { token: project/focus/focus-ring, value: "#999" }
       border-radius:
         value: 28px
-        untokenised: "Derived: the element radius plus the focus ring offset."
+        untokenised: "The card's radius plus the ring's offset, so it follows from those two."
       pointer-events: { value: none, assert: false }
   badge:
     optional: true

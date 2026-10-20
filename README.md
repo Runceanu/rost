@@ -17,7 +17,8 @@ baseline/   Figma's own render of each variant, the target for the coded version
 assets/     icons and vector parts exported from Figma
 docs/       written by hand: CONTRACT.md, ROADMAP.md. Generated: the rest
 web/        the website at rost.build, built from everything above
-src/        the conformance check
+src/        the conformance check, and the components built in code (src/components/)
+raw/        what the Figma reads returned, before parsing
 bin/        reading Figma, building docs, auditing apps
 ```
 
@@ -36,16 +37,18 @@ npm run site        # build the website (web/) from the contracts, components an
 npm run site:dev    # work on the website, live, on http://localhost:4321
 npm run site:preview   # look at the built site on the same port
 npm run deploy      # build it and publish it to rost.build
-npm run css -- inline-banner           # write a component's CSS from its contract
-npm run test:visual -- inline-banner   # render it and compare with Figma, pixel by pixel
+npm run css -- thumbs           # write a component's CSS from its contract
+npm run test:visual -- thumbs   # render every variant and compare it with Figma's screenshot
 ```
 
 ```bash
-node bin/audit.mjs <app-dir> [<app-dir>...]   # undefined vars, raw hex, tokens the kit doesn't have
+npm run audit -- <app-dir> [<app-dir>...]   # undefined vars, raw hex, tokens the kit doesn't have
 ```
 
-To check an app, import `src/conform.ts` in one of its tests. akount.ing's `src/contracts/__tests__/contract.test.ts` shows how.
+To check an app, import `forApp` and `conform` from `rost/conform` in one of its tests. [How a contract works](docs/CONTRACT.md#checking-an-app) has the snippet. akount.ing doesn't do this yet: its test still reads its own old JSON copies.
 
 ## Where it stands
 
-22 contracts, all read from Figma, and validation is clean. I signed off the guidance on 16 of them on 2026-10-19. Badge and InlineBanner are built in code from their contracts, and every one of their 16 variants matches Figma in the visual test. Badge changed in Figma since August (it has a small dot-only size now), so its guidance is waiting for me to sign it off again. On 2026-10-20 I froze the contracts: they're the source now, not Figma. Changes happen in the YAML. The [roadmap](docs/ROADMAP.md) has the details.
+22 contracts, all read from Figma, and validation is clean. On 2026-10-20 I froze them: they're the source now, not Figma, and changes happen in the YAML.
+
+Three components are built in code from their contracts: Badge, InlineBanner and Thumbs. All 22 of their variants match Figma in the visual test. I've signed off the guidance on 15 contracts. Badge was the 16th, until Figma gave it a dot-only size, so it's back to `proposed`. Thumbs' guidance is new and waits for me too. Nothing is `stable` yet. The [roadmap](docs/ROADMAP.md) has the details.

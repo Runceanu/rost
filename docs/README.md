@@ -72,6 +72,6 @@ What needs attention. It's built from the contracts, so it's only as fresh as th
 ### Differences nobody has taken to design yet
 
 - [Hero Media](components/hero-media.md): The artwork is dimmed with `opacity/medium` (0.48) on a #171717 frame
-- [InlineBanner](components/inline-banner.md) in akount.ing: Renders label-only; the per-status glyph (plus / alarm / positive / warning) is an optional slot
-- [Toggle](components/toggle.md) in akount.ing: Accepts a text label; width grows past 40px to fit it, height stays 40px
-- [Toggle](components/toggle.md) in akount.ing: Rendered as role=radio inside a ToggleGroup radio group, which has no surface of its own
+- [InlineBanner](components/inline-banner.md) in akount.ing: Shows only the label
+- [Toggle](components/toggle.md) in akount.ing: Takes a text label
+- [Toggle](components/toggle.md) in akount.ing: Each toggle is a `role="radio"` inside a `ToggleGroup`

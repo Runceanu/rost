@@ -59,6 +59,6 @@ Every token this component uses, across all its variants.
 
 | Part | Property | Value | Why |
 |---|---|---|---|
-| `media` | `background-size` | `explicit px (asset-native, e.g. 2336px 1196px)` | Each artwork's native pixel size. |
+| `media` | `background-size` | `explicit px (asset-native, e.g. 2336px 1196px)` | Each artwork's own pixel size. It changes with every image, so a token wouldn't help. |
 
 See it live, with every value of every variant: [rost.build/components/hero-media](https://rost.build/components/hero-media/)

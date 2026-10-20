@@ -54,12 +54,12 @@ Every token this component uses, across all its variants.
 
 | Part | Property | Value | Why |
 |---|---|---|---|
-| `dot` | `radius` | `1px` | Dot geometry, tuned to the 16px pitch; not a reusable decision. |
-| `lens` | `radius` | `210px` | Motion tuning parameter of the lens field. |
-| `lens` | `push` | `9px` | Motion tuning parameter of the lens field. |
-| `lens` | `cursor` | `radius 210px, power 1.0` | Motion tuning parameter (radius and falloff power). |
-| `lens` | `halo` | `radius 240px, power 1.3` | Motion tuning parameter (radius and falloff power). |
-| `lens` | `press` | `radius 330px, power 1.7` | Motion tuning parameter (radius and falloff power). |
-| `pen` | `cadence` | `7-8s between sketches` | Timing of the sketch loop; a motion token group does not exist yet. |
+| `dot` | `radius` | `1px` | Tuned to the 16px grid. Nothing else would use it. |
+| `lens` | `radius` | `210px` | Tuned by eye for how the lens moves. Only the paper uses it. |
+| `lens` | `push` | `9px` | Tuned by eye for how the lens moves. Only the paper uses it. |
+| `lens` | `cursor` | `radius 210px, power 1.0` | Tuned by eye: how wide the lens is, and how fast it fades. Only the paper uses it. |
+| `lens` | `halo` | `radius 240px, power 1.3` | Tuned by eye: how wide the lens is, and how fast it fades. Only the paper uses it. |
+| `lens` | `press` | `radius 330px, power 1.7` | Tuned by eye: how wide the lens is, and how fast it fades. Only the paper uses it. |
+| `pen` | `cadence` | `7-8s between sketches` | How often the pen draws. There are no motion tokens yet. |
 
 See it live, with every value of every variant: [rost.build/components/effect-paper](https://rost.build/components/effect-paper/)

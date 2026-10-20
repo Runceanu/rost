@@ -13,30 +13,31 @@ runceanu.com's raw hex dropped from 230 to 99 without me touching the site. The 
 
 ## Done: the freeze
 
-On 2026-10-20 the contracts became the source. The import was finished: 22 contracts, all 192 variant screenshots, the 17 icons and the 24 illustrations. `bin/freeze.mjs` turned all 122 suggestions into tokens (every one of them a token that already existed) and stamped each contract with the date. The Figma read skips them now, and I won't edit Figma to match. If I ever need Figma again for one component, `--unfreeze` is there, on purpose.
+On 2026-10-20 the contracts became the source. The import was finished: 22 contracts and 192 screenshots from Figma (every variant, the 17 icons and the 24 illustrations). `bin/freeze.mjs` turned all 122 suggestions into tokens (every one of them a token that already existed) and stamped each contract with the date. The Figma read skips them now, and I won't edit Figma to match. If I ever need Figma again for one component, `--unfreeze` is there, on purpose.
 
 Still open from Figma:
 
-- Rename the sample client in Thumbs to "Client" and capture it again, so `baseline/thumbs/` can be public. `baseline/testimonials-pics/` stays private for good (real people's photos).
-- Seven values have no token and no reason yet. They're at the bottom of [Token coverage](TOKENS.md).
+- Rename the sample client in Thumbs to "Client" and capture it again, so `baseline/thumbs/` can be public. Until then the visual test leaves the name out of the comparison. `baseline/testimonials-pics/` stays private for good (real people's photos).
+- Button's 20 renders came back empty. Capture them again next time Figma is open on the UI Kit.
+- The Menu effect's blur. I took 12px from the nav, not from the "Menu" style, so that contract is still a draft.
+- A few values have no token and no reason yet. They're at the bottom of [Token coverage](TOKENS.md).
 
 ## Done: a real website
 
-On 2026-10-20 rost.build became a proper site, the way shadcn's is: a homepage, a page per component, tokens, icons, and these docs. It's built with Astro from `web/`, straight from the contracts, so it can't drift from them. Components that are in code show up live, with a Code tab. The others show Figma's own renders until they're built.
-
-One gap: Figma's renders of Button came back empty (all 20), so its page has no pictures. They need capturing again next time Figma is open on the UI Kit.
+On 2026-10-20 rost.build became a proper site, the way shadcn's is: a homepage, a page per component, tokens, icons, and these docs. It's built with Astro from `web/`, straight from the contracts, so it can't drift from them. Every component card on it is a Thumbs, with a glimpse of the component inside. Components that are in code show up live, with a Code tab. The others show Figma's own renders until they're built. Button has none to show (its renders came back empty), and TestimonialPicture's stay private.
 
 ## Now: Rost in code
 
-Two components so far, both built from their contracts and both matching Figma in the visual test:
+Three components so far, all built from their contracts and all matching Figma in the visual test:
 
 - **InlineBanner**, all 8 variants, with Figma's own icons.
 - **Badge**, all 8 variants. Figma gave it a small size since August: just the coloured dot. The dot in front of the label on the medium size is optional now.
+- **Thumbs**, all 6 states. It's the first one with hover, pressed and focus, so the visual test now forces those through Chrome's DevTools protocol. The "Coming soon" pill on a disabled card is the Badge.
 
 Next, one at a time on the same setup (CSS from the contract, the component, fixtures, the visual test):
 
-- **Button, PillButton, IconButton, Toggle, Chip, Tag.** These have hover, press and focus, so the test needs to trigger those states first.
-- **Input, Menu, and the runceanu.com ones** (Carousel, Projects, Thumbs, Testimonials).
+- **Button, PillButton, IconButton, Toggle, Chip, Tag.** The test can force their states now.
+- **Input, Menu, and the rest of runceanu.com's** (Carousel, Projects, Testimonials).
 - **`npx rost add badge`**, the way shadcn does it: copy a component, its CSS and its tokens into akount.ing or runceanu.com. That's how my apps will stop keeping their own copies.
 
 ## Now: make the contracts something I can trust
@@ -45,12 +46,12 @@ Next, one at a time on the same setup (CSS from the contract, the component, fix
    - **Real drift.** The primary PillButton has no 1px top and left edge (`border-top-width: spacing/outline/small`, `border-color: actions/primary/*/outline`). Only the secondary one shipped. The contracts couldn't show it until the parser stopped dropping `border-t` and rgba borders.
    - **A limit of the check.** akount.ing draws the selected Toggle's edge on `::before`, and the check only reads the root selector. `implementations.*.parts` needs a way to point a root property at a pseudo-element.
 
-   *Done when* every finding left is either fixed or written down as a deviation. Each component that gets to zero can go stable, the way Badge did.
-2. **Export every Figma variable.** `tokens.css` has 180 of the file's 582. I added the ones the contracts needed by hand (`opacity/strong`, the `project/*` set, title typography). The colour primitives, the rest of the typography scale and more are still missing. That needs a proper `bin/build-tokens.mjs`, keyed on the Figma names so hyphens survive (`non-interactive`, not `non/interactive`). Worth doing before the freeze, while Figma is still the source.
-3. **One list of components.** Node ids live in `extract.mjs`, `build-contracts.mjs` and `variant-nodes.json`. One file should drive all of it.
-4. **Variants as layers.** Right now a variant list repeats what one axis decides: Toggle's unselected background shows up five times, once per state. Curtis's layered approach (`when: { selected: false }` once, then `when: { state: Disabled }` on top) says it once and would cut most of Button's 156 variant values. The check needs to apply layers in order first.
+   *Done when* every finding left is either fixed or written down as a deviation. Each component that gets to zero can go stable. Badge got there first, then went back to `review` when Figma changed it.
+2. **Export every Figma variable.** `tokens.css` has 177 of the file's 582 variables ([Token coverage](TOKENS.md) keeps the count). I added the ones the contracts needed by hand (`opacity/strong`, the `project/*` set, title typography). The colour primitives, the rest of the typography scale and more are still missing. That needs a proper `bin/build-tokens.mjs`, keyed on the Figma names so hyphens survive (`non-interactive`, not `non/interactive`). The freeze came first, so this is one last read of the variables. It doesn't make Figma the source again.
+3. **One list of components.** `registry/component-sets.json` drives the contracts now, but the variant nodes still sit apart in `variant-nodes.json`. One file should hold both.
+4. **Variants as layers.** Right now a variant list repeats what one axis decides: Toggle's unselected background shows up five times, once per state. Curtis's layered approach (`when: { selected: false }` once, then `when: { state: Disabled }` on top) says it once and would cut most of Button's variant list. The check needs to apply layers in order first.
 5. **One copy of the contracts.** akount.ing still tests against its own old JSON copies of Badge and Button. Its test should read these YAML files through `forApp` instead.
-6. **Guidance for the six new components.** I signed off the other 16 on 2026-10-19. Carousel, Projects, Thumbs, Testimonials, TestimonialPicture and Divider still need theirs. While I'm at it, decide on the four deviations nobody has taken back to the design side yet (the Health section lists them).
+6. **Guidance for the new components, and Badge again.** I signed off 16 on 2026-10-19, and Badge went back to `proposed` when Figma gave it a dot-only size. Thumbs has a proposed one now. Carousel, Projects, Testimonials, TestimonialPicture and Divider still need theirs. While I'm at it, decide on the four deviations nobody has taken back to the design side yet (the Health section lists them).
 
 ## Next: grow the kit
 
@@ -59,9 +60,9 @@ In order of how much copied code each one removes.
 | Component | Why now | Where it stands |
 |---|---|---|
 | **Hero Media** as a shared component | The same hero CSS is copied into 7 case-study stylesheets | contract exists |
-| **Icons** | 17 in Figma, only the lock in code. InlineBanner can't show its glyphs without them | SVG export is next |
+| **Icons** as a component | The 17 SVGs are exported (`assets/icons/`), but there's no `Icon` component yet, and the apps draw their own | SVGs exported, component next |
 | **Divider** | akount.ing already has its own `Divider.tsx` | contract read 2026-10-19 |
-| **Thumbs, Carousel, Projects** | runceanu.com's home page, and where most of its raw hex lives | contracts read 2026-10-19 |
+| **Carousel, Projects** | runceanu.com's home page, and where most of its raw hex lives. Thumbs is done | contracts read 2026-10-19 |
 | **Testimonials, TestimonialPicture** | runceanu.com | contracts read 2026-10-19 |
 | **ListRow** | akount.ing builds it outside the kit | needs designing first |
 | **Tooltip** | IconButton's guidance leans on it | needs designing first |

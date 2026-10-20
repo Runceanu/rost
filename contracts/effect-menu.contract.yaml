@@ -34,7 +34,7 @@ guidance:
     - Project thumbnails, they have their own (**Thumb effect**).
     - On top of another frosted surface. Two blurs just turn to mud.
   behaviour: |-
-    `backdrop-filter: blur(12px)`, and a 24px version for the bigger case-study surfaces. I took the 12px from how it's used, I haven't read it from the style itself yet (it's in "Not right yet").
+    `backdrop-filter: blur(12px)`, and a 24px version for the bigger case-study surfaces. I took the 12px from how the nav uses it. I haven't read it from the style itself yet (see "Not right yet").
   accessibility:
     contrast: check text against the busiest thing that can scroll under it, not a flat colour.
     fallback: |-
@@ -43,5 +43,5 @@ pending:
   reason: |-
     The 12px comes from how the nav uses it, not from the "Menu" style itself (Dev Mode only gave back the swatch for node 29:5). Worth checking in Figma's effect panel. If the real size is different, update `--effect-menu` and this value.
   propertiesToRead:
-    - exact blur radius of the 'Menu' effect style and any token/variable binding
+    - The real blur size of the "Menu" style, and whether it's tied to a variable.
   nodesToWalk: [ "29:5" ]

@@ -31,7 +31,7 @@
 
 ## Behaviour
 
-`backdrop-filter: blur(12px)`, and a 24px version for the bigger case-study surfaces. I took the 12px from how it's used, I haven't read it from the style itself yet (it's in "Not right yet").
+`backdrop-filter: blur(12px)`, and a 24px version for the bigger case-study surfaces. I took the 12px from how the nav uses it. I haven't read it from the style itself yet (see "Not right yet").
 
 ## Accessibility
 

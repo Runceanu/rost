@@ -41,7 +41,7 @@ const illustrations = count(import.meta.glob('../../../assets/illustrations/*.sv
       <InlineBanner status="default">Open for work</InlineBanner>
       <InlineBanner status="negative" size="small">Payment failed</InlineBanner>
     </div>
-    <p class="show-note">These are the real components, rendered live. Each one is checked pixel by pixel against Figma.</p>
+    <p class="show-note">These are the real components, rendered live. Every variant is compared with Figma's own render, and fails if more than a sliver of it differs.</p>
   </section>
 
   <h2>How it works</h2>
@@ -59,17 +59,17 @@ const illustrations = count(import.meta.glob('../../../assets/illustrations/*.sv
     <div class="card">
       <div class="step">3</div>
       <h3>Checked against Figma</h3>
-      <p>Every variant is rendered in a browser and compared with Figma's own screenshot. If a pixel is wrong, the test says so.</p>
+      <p>Each variant of a built component is rendered in Chrome and compared with Figma's own screenshot. A wrong colour or a missing icon fails it. Text edges get a little slack, because Figma and Chrome never draw them quite the same.</p>
     </div>
   </div>
 
   <h2>Components</h2>
-  <p class="muted">{built.length} of them are in code so far (the green dot). The rest are contracts, and they come next, one at a time.</p>
+  <p class="muted">{built.length} of them are in code so far, and their cards show the real thing. The rest are contracts, and they come next, one at a time.</p>
   <ComponentGrid />
 
   <h2>Foundations</h2>
   <div class="grid foundations">
-    <a class="card comp" href="/tokens/"><span class="comp-name">Tokens</span><span class="comp-sum">Every colour, size, space, radius and opacity, with its name and value.</span></a>
+    <a class="card comp" href="/tokens/"><span class="comp-name">Tokens</span><span class="comp-sum">All {Object.keys(tokens).length}, with their names and values.</span></a>
     <a class="card comp" href="/icons/"><span class="comp-name">Icons and illustrations</span><span class="comp-sum">The {icons} icons and {illustrations} illustrations, as SVG.</span></a>
     <a class="card comp" href="/docs/contract/"><span class="comp-name">How a contract works</span><span class="comp-sum">What's in one, how it grows up, and how a component gets built.</span></a>
     <a class="card comp" href="/docs/roadmap/"><span class="comp-name">What's next</span><span class="comp-sum">The roadmap, in order.</span></a>

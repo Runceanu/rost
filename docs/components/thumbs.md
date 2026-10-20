@@ -132,6 +132,6 @@ Every token this component uses, across all its variants.
 | `content` | `background` | `rgba(0,0,0,0.48)` | Black at opacity/medium. The kit has no colour token with alpha for it. |
 | `dot` | `width` | `3px` | The dot's own size inside the icon. |
 | `dot` | `height` | `3px` | The dot's own size inside the icon. |
-| `focus-ring` | `border-radius` | `28px` | Derived: the element radius plus the focus ring offset. |
+| `focus-ring` | `border-radius` | `28px` | The card's radius plus the ring's offset, so it follows from those two. |
 
 See it live, with every value of every variant: [rost.build/components/thumbs](https://rost.build/components/thumbs/)
