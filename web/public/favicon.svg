@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none">
-  <!-- runceanu.com mark — follows the browser/OS theme: dark mark on light, light mark on dark -->
+  <!-- runceanu.com mark. It follows the browser/OS theme: dark mark on light, light mark on dark -->
   <style>
     .mark { fill: #171717; }
     @media (prefers-color-scheme: dark) {

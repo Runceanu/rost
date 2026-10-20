@@ -3,18 +3,23 @@
 import { readFileSync, existsSync } from 'node:fs'
 import { pathToFileURL } from 'node:url'
 import { marked } from 'marked'
+import { PNG } from 'pngjs'
 
 declare const __REPO__: string
 const repo = pathToFileURL(__REPO__)
 // Loaded from where it lives, not bundled: it reads the repo relative to itself.
 const lib = await import(/* @vite-ignore */ new URL('bin/lib/kit.mjs', repo).href)
-const { loadKit, KINDS, APP_LABEL, title, sourceLink, guidanceMarkdown, classify } = lib
-export { KINDS, APP_LABEL, title, sourceLink, classify }
+const { loadKit, KINDS, APP_LABEL, title, sourceLink, guidanceMarkdown, tokenCell, isColour } = lib
+export { APP_LABEL, title, sourceLink, tokenCell, isColour }
 
 export const kit: any[] = loadKit()
 export const byId = (id: string) => kit.find((e) => e.id === id)
 export const inCode = (id: string) => existsSync(new URL(`src/components/${id}/`, repo))
 export const built = kit.filter((e) => inCode(e.id))
+/** Components, patterns and effects, each with its entries, leaving out a kind that has none. */
+export const groups: [string, string, any[]][] = KINDS
+  .map(([k, label]: [string, string]) => [k, label, kit.filter((e) => e.kind === k)])
+  .filter(([, , list]: [string, string, any[]]) => list.length)
 
 export const md = (src: string) => marked.parse(src, { async: false }) as string
 export const guidanceHtml = (g: any) => (g ? md(guidanceMarkdown(g)) : '')
@@ -33,7 +38,6 @@ export const GITHUB = 'https://github.com/Runceanu/rost'
 
 // Figma sometimes hands back an empty, fully transparent render (it did for
 // all of Button on 2026-10-19). Those don't belong on a page.
-import { PNG } from 'pngjs'
 export function blankShot(path: string) {
   const p = PNG.sync.read(readFileSync(new URL(path, repo)))
   let lit = 0
