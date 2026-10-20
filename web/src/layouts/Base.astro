@@ -4,7 +4,7 @@ import '../styles/site.css'
 import { kit, KINDS, title, inCode, GITHUB } from '../lib/kit'
 
 interface Props { title: string; description?: string; current?: string; sidebar?: boolean }
-const { title: pageTitle, description = 'Rost, my design system, run as its own product.', current = '', sidebar = false } = Astro.props
+const { title: pageTitle, description = 'Rost started as a design system for my own needs and grew into a product of its own. Today it serves products across different industries.', current = '', sidebar = false } = Astro.props
 const groups = KINDS.filter(([k]: [string, string]) => kit.some((e) => e.kind === k))
 const path = Astro.url.pathname
 const navActive = (prefix: string) => (path.startsWith(prefix) ? 'is-active' : '')

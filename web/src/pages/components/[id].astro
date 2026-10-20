@@ -162,7 +162,7 @@ const props = Object.entries(c.props ?? {}) as [string, any][]
   .vary .n { font-family: var(--mono); font-size: 11px; color: var(--fg-3); background: var(--surface); padding: 1px 8px; border-radius: 999px; }
   :global(.fixtures) { display: flex; flex-wrap: wrap; gap: 28px 36px; align-items: flex-end; }
   :global(.fixture) { margin: 0; display: flex; flex-direction: column; gap: 10px; align-items: flex-start; }
-  :global(.fixture-stage) { display: flex; align-items: center; min-height: 24px; }
+  :global(.fixture-stage) { min-height: var(--spacing-size-small); }
   :global(.shot) { display: block; max-width: 100%; height: auto; }
   :global(.fixture figcaption) { font-family: var(--mono); font-size: 11px; color: var(--fg-3); }
 </style>

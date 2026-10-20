@@ -25,6 +25,9 @@ props:
     type: enum
     values: [ Medium, Small ]
     default: Medium
+  label:
+    type: slot
+    notes: The text. In React, the children. Medium only.
   showIcon:
     type: boolean
     default: false
@@ -35,6 +38,8 @@ props:
 elements:
   root:
     styles:
+      display: { value: inline-flex, assert: false }
+      vertical-align: { value: middle, assert: false }
       position: { value: relative, assert: false }
       min-width: { value: 24px }
   label: {}
@@ -74,13 +79,15 @@ variants:
       root:
         height: { token: spacing/size/small, value: 24px }
         align-items: { value: center }
-        display: { value: flex, assert: false }
         gap: { token: spacing/gap/3xsmall, value: 2px }
         padding-bottom: { token: spacing/gap/3xsmall, value: 2px }
         padding-top: { token: spacing/gap/none, value: 0px }
         padding-left: { token: spacing/gap/small, value: 8px }
         padding-right: { token: spacing/gap/small, value: 8px }
         border-radius: { token: spacing/radius/full, value: 10000px }
+        justify-content:
+          value: center
+          notes: Figma leaves this out on Default only; the other statuses have it. It only shows with a one-letter label, so I made them match.
       label:
         flex-shrink: { value: "0", assert: false }
         white-space: { value: nowrap, assert: false }
@@ -116,7 +123,6 @@ variants:
       root:
         height: { token: spacing/size/small, value: 24px }
         align-items: { value: center }
-        display: { value: flex, assert: false }
         gap: { token: spacing/gap/3xsmall, value: 2px }
         padding-bottom: { token: spacing/gap/3xsmall, value: 2px }
         padding-top: { token: spacing/gap/none, value: 0px }
@@ -159,7 +165,6 @@ variants:
       root:
         height: { token: spacing/size/small, value: 24px }
         align-items: { value: center }
-        display: { value: flex, assert: false }
         gap: { token: spacing/gap/3xsmall, value: 2px }
         padding-bottom: { token: spacing/gap/3xsmall, value: 2px }
         padding-top: { token: spacing/gap/none, value: 0px }
@@ -202,7 +207,6 @@ variants:
       root:
         height: { token: spacing/size/small, value: 24px }
         align-items: { value: center }
-        display: { value: flex, assert: false }
         gap: { token: spacing/gap/3xsmall, value: 2px }
         padding-bottom: { token: spacing/gap/3xsmall, value: 2px }
         padding-top: { token: spacing/gap/none, value: 0px }
@@ -253,7 +257,10 @@ guidance:
   behaviour: |-
     Two sizes now. `Small` is only the dot, 24 by 24, coloured by `status`. `Medium` is the label with an outline, and `status` changes only the outline (`non-interactive/background/<status>/light`). The text stays `non-interactive/foreground/tertiary` whatever the status, on purpose: I keep badges quiet. There's no background fill either. My first Badge in akount.ing got exactly that wrong. The dot in front of the label is optional now (`showIcon`), and off unless you ask for it.
   accessibility:
-    element: a `<span>`. Nothing to click.
+    element: a `<span>`. Nothing to click, nothing to focus.
+    name: |-
+      on `Medium`, the label. On `Small` there is no text, so pass `aria-label` and it becomes the dot's alt text.
+    keyboard: none. It isn't interactive.
     colour: |-
       the colour alone isn't enough. On `Medium` the text says the status. On `Small` there's no text, so give it an `aria-label` ("Overdue") or put the status in words right next to it.
     dot: "`aria-hidden=\"true\"` when there's a label next to it."

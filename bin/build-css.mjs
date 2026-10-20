@@ -15,7 +15,8 @@ import { read } from './lib/contract-io.mjs'
 
 const kebab = (s) => String(s).replace(/([a-z0-9])([A-Z])/g, '$1-$2').replace(/[^a-zA-Z0-9]+/g, '-').replace(/^-+|-+$/g, '').toLowerCase()
 const cssVar = (path) => `var(--${path.replace(/\//g, '-')})`
-const PSEUDO = { Default: '', Hover: ':hover', Pressed: ':active', Focus: ':focus-visible', Disabled: ':disabled' }
+// Disabled covers both: a native control and a span with aria-disabled.
+const PSEUDO = { Default: '', Hover: ':hover', Pressed: ':active', Focus: ':focus-visible', Disabled: ':is(:disabled, [aria-disabled="true"])' }
 
 function declarations(styles, { root }) {
   const out = []
@@ -32,7 +33,7 @@ function declarations(styles, { root }) {
     out.push(`${prop}: ${value};`)
   }
   if (sides) {
-    const width = styles['border-width'] || styles['border-top-width'] ? null : '1px'
+    const width = styles['border-width'] || styles['border-top-width'] ? null : 'var(--spacing-outline-small)'
     if (sides === 'all') out.push('border-style: solid;', ...(width ? [`border-width: ${width};`] : []))
     else for (const side of sides.split(' ')) out.push(`border-${side}-style: solid;`, ...(width ? [`border-${side}-width: ${width};`] : []))
   }
@@ -47,8 +48,9 @@ function build(id) {
     `/* Generated from contracts/${id}.contract.yaml by bin/build-css.mjs. Don't edit: change the contract and rebuild. */`,
     '',
     `.${base}, .${base} * { box-sizing: border-box; margin: 0; }`,
-    // Figma exports every icon and image as one picture filling its frame.
-    `.${base} img { display: block; position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; }`,
+    // Figma exports every icon and image as one picture filling its frame. Only
+    // the component's own pictures: an image a caller passes in stays as it is.
+    `.${base} > img, .${base} [class*="__icons-"] > img { display: block; position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; }`,
   ]
   const rule = (selector, decls) => { if (decls.length) rules.push('', `${selector} {`, ...decls.map((d) => `  ${d}`), '}') }
 
@@ -59,7 +61,10 @@ function build(id) {
     for (const [prop, val] of Object.entries(v.when)) {
       if (prop === 'state') root += PSEUDO[val] ?? `.${base}--state-${kebab(val)}`
       else if (val === true) root += `.${base}--${kebab(prop)}`
-      else if (val !== false) root += `.${base}--${kebab(prop)}-${kebab(val)}`
+      // A false boolean has no class of its own; say so, or its rules would
+      // also land on the true variant.
+      else if (val === false) root += `:not(.${base}--${kebab(prop)})`
+      else root += `.${base}--${kebab(prop)}-${kebab(val)}`
     }
     for (const [p, styles] of Object.entries(v.elements ?? {}))
       rule(p === 'root' ? root : `${root} ${part(p)}`, declarations(styles, { root: p === 'root' }))

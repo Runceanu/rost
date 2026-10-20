@@ -12,11 +12,14 @@ const VARIANTS: [BadgeStatus, BadgeSize, string][] = [
   ['warning', 'medium', '346:4009'],
 ]
 
+// Small badges have no text, so each gets a real label, the way a caller would.
+const LABEL: Record<BadgeStatus, string> = { default: 'Draft', negative: 'Overdue', positive: 'Paid', warning: 'Due soon' }
+
 export const fixtures = VARIANTS.map(([status, size, node]) => ({
   node,
   name: `status=${status}, size=${size}`,
   element: size === 'small'
-    ? <Badge status={status} size="small" aria-label={status} />
+    ? <Badge status={status} size="small" aria-label={LABEL[status]} />
     : <Badge status={status} size="medium">label</Badge>,
 }))
 

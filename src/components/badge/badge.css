@@ -1,9 +1,11 @@
 /* Generated from contracts/badge.contract.yaml by bin/build-css.mjs. Don't edit: change the contract and rebuild. */
 
 .rost-badge, .rost-badge * { box-sizing: border-box; margin: 0; }
-.rost-badge img { display: block; position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; }
+.rost-badge > img, .rost-badge [class*="__icons-"] > img { display: block; position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; }
 
 .rost-badge {
+  display: inline-flex;
+  vertical-align: middle;
   position: relative;
   min-width: 24px;
 }
@@ -31,13 +33,13 @@
 .rost-badge.rost-badge--status-default.rost-badge--size-medium {
   height: var(--spacing-size-small);
   align-items: center;
-  display: flex;
   gap: var(--spacing-gap-3xsmall);
   padding-bottom: var(--spacing-gap-3xsmall);
   padding-top: var(--spacing-gap-none);
   padding-left: var(--spacing-gap-small);
   padding-right: var(--spacing-gap-small);
   border-radius: var(--spacing-radius-full);
+  justify-content: center;
 }
 
 .rost-badge.rost-badge--status-default.rost-badge--size-medium .rost-badge__label {
@@ -60,7 +62,7 @@
   opacity: var(--opacity-solid);
   border-radius: var(--spacing-radius-full);
   border-style: solid;
-  border-width: 1px;
+  border-width: var(--spacing-outline-small);
 }
 
 .rost-badge.rost-badge--status-default.rost-badge--size-medium .rost-badge__icon {
@@ -81,7 +83,6 @@
 .rost-badge.rost-badge--status-negative.rost-badge--size-medium {
   height: var(--spacing-size-small);
   align-items: center;
-  display: flex;
   gap: var(--spacing-gap-3xsmall);
   padding-bottom: var(--spacing-gap-3xsmall);
   padding-top: var(--spacing-gap-none);
@@ -111,7 +112,7 @@
   opacity: var(--opacity-solid);
   border-radius: var(--spacing-radius-full);
   border-style: solid;
-  border-width: 1px;
+  border-width: var(--spacing-outline-small);
 }
 
 .rost-badge.rost-badge--status-negative.rost-badge--size-medium .rost-badge__icon {
@@ -132,7 +133,6 @@
 .rost-badge.rost-badge--status-positive.rost-badge--size-medium {
   height: var(--spacing-size-small);
   align-items: center;
-  display: flex;
   gap: var(--spacing-gap-3xsmall);
   padding-bottom: var(--spacing-gap-3xsmall);
   padding-top: var(--spacing-gap-none);
@@ -162,7 +162,7 @@
   opacity: var(--opacity-solid);
   border-radius: var(--spacing-radius-full);
   border-style: solid;
-  border-width: 1px;
+  border-width: var(--spacing-outline-small);
 }
 
 .rost-badge.rost-badge--status-positive.rost-badge--size-medium .rost-badge__icon {
@@ -183,7 +183,6 @@
 .rost-badge.rost-badge--status-warning.rost-badge--size-medium {
   height: var(--spacing-size-small);
   align-items: center;
-  display: flex;
   gap: var(--spacing-gap-3xsmall);
   padding-bottom: var(--spacing-gap-3xsmall);
   padding-top: var(--spacing-gap-none);
@@ -213,7 +212,7 @@
   opacity: var(--opacity-solid);
   border-radius: var(--spacing-radius-full);
   border-style: solid;
-  border-width: 1px;
+  border-width: var(--spacing-outline-small);
 }
 
 .rost-badge.rost-badge--status-warning.rost-badge--size-medium .rost-badge__icon {

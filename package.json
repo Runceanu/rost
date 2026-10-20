@@ -1,7 +1,7 @@
 {
   "name": "rost",
   "version": "0.1.0",
-  "description": "Rost: a design system run as its own product. Contracts, tokens and conformance for runceanu.com, akount.ing and what comes next.",
+  "description": "Rost: a design system that grew into a product of its own. Contracts, tokens and components, serving products across different industries.",
   "type": "module",
   "private": true,
   "exports": {
