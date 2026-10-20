@@ -67,6 +67,6 @@ Every token this component uses, across all its variants.
 
 | Part | Property | Value | Why |
 |---|---|---|---|
-| `focus-ring` | `border-radius` | `28px` | Derived: the element radius plus the focus ring offset. |
+| `focus-ring` | `border-radius` | `28px` | The element's radius plus the ring's offset, so it follows from those two. |
 
 See it live, with every value of every variant: [rost.build/components/carousel](https://rost.build/components/carousel/)

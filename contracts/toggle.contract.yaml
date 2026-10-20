@@ -191,9 +191,9 @@ implementations:
     root: .ak-toggle
     deviations:
       - what: |-
-          Accepts a text label; width grows past 40px to fit it, height stays 40px. Label colour follows the surface: secondary label unselected, primary label selected.
-        why: The year switcher needs text. The kit's toggle is icon-only and specifies no label colour.
+          Takes a text label. It grows wider than 40px to fit, and stays 40px tall. The label uses the secondary label colour when off and the primary one when on.
+        why: The year switcher needs text. The kit's Toggle is icon only, so it says nothing about a label's colour.
         raisedWithDesign: false
-      - what: Rendered as role=radio inside a ToggleGroup radio group, which has no surface of its own.
-        why: Toggles are used as a single-choice set; ToggleGroup is not a kit component.
+      - what: Each toggle is a `role="radio"` inside a `ToggleGroup`. The group has no surface of its own.
+        why: There they're one choice from a set. The kit has no ToggleGroup, so the accounting app made one.
         raisedWithDesign: false

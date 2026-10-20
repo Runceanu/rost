@@ -46,20 +46,20 @@ None. The freeze on 2026-10-20 turned all 122 suggestions into tokens.
 
 ## No token, on purpose
 
-- [Carousel](components/carousel.md) `focus-ring.border-radius` = `28px`: Derived: the element radius plus the focus ring offset.
-- [Hero Media](components/hero-media.md) `media.background-size` = `explicit px (asset-native, e.g. 2336px 1196px)`: Each artwork's native pixel size.
-- [Paper effect](components/effect-paper.md) `dot.radius` = `1px`: Dot geometry, tuned to the 16px pitch; not a reusable decision.
-- [Paper effect](components/effect-paper.md) `lens.radius` = `210px`: Motion tuning parameter of the lens field.
-- [Paper effect](components/effect-paper.md) `lens.push` = `9px`: Motion tuning parameter of the lens field.
-- [Paper effect](components/effect-paper.md) `lens.cursor` = `radius 210px, power 1.0`: Motion tuning parameter (radius and falloff power).
-- [Paper effect](components/effect-paper.md) `lens.halo` = `radius 240px, power 1.3`: Motion tuning parameter (radius and falloff power).
-- [Paper effect](components/effect-paper.md) `lens.press` = `radius 330px, power 1.7`: Motion tuning parameter (radius and falloff power).
-- [Paper effect](components/effect-paper.md) `pen.cadence` = `7-8s between sketches`: Timing of the sketch loop; a motion token group does not exist yet.
+- [Carousel](components/carousel.md) `focus-ring.border-radius` = `28px`: The element's radius plus the ring's offset, so it follows from those two.
+- [Hero Media](components/hero-media.md) `media.background-size` = `explicit px (asset-native, e.g. 2336px 1196px)`: Each artwork's own pixel size. It changes with every image, so a token wouldn't help.
+- [Paper effect](components/effect-paper.md) `dot.radius` = `1px`: Tuned to the 16px grid. Nothing else would use it.
+- [Paper effect](components/effect-paper.md) `lens.radius` = `210px`: Tuned by eye for how the lens moves. Only the paper uses it.
+- [Paper effect](components/effect-paper.md) `lens.push` = `9px`: Tuned by eye for how the lens moves. Only the paper uses it.
+- [Paper effect](components/effect-paper.md) `lens.cursor` = `radius 210px, power 1.0`: Tuned by eye: how wide the lens is, and how fast it fades. Only the paper uses it.
+- [Paper effect](components/effect-paper.md) `lens.halo` = `radius 240px, power 1.3`: Tuned by eye: how wide the lens is, and how fast it fades. Only the paper uses it.
+- [Paper effect](components/effect-paper.md) `lens.press` = `radius 330px, power 1.7`: Tuned by eye: how wide the lens is, and how fast it fades. Only the paper uses it.
+- [Paper effect](components/effect-paper.md) `pen.cadence` = `7-8s between sketches`: How often the pen draws. There are no motion tokens yet.
 - [Thumbs](components/thumbs.md) `shadow.background` = `linear-gradient(to bottom, rgba(6,8,5,0), var(--non-interactive-background-primary))`: A gradient from the page background, transparent, to the page background. The colour is the token; the ramp is the effect.
 - [Thumbs](components/thumbs.md) `content.background` = `rgba(0,0,0,0.48)`: Black at opacity/medium. The kit has no colour token with alpha for it.
 - [Thumbs](components/thumbs.md) `dot.width` = `3px`: The dot's own size inside the icon.
 - [Thumbs](components/thumbs.md) `dot.height` = `3px`: The dot's own size inside the icon.
-- [Thumbs](components/thumbs.md) `focus-ring.border-radius` = `28px`: Derived: the element radius plus the focus ring offset.
+- [Thumbs](components/thumbs.md) `focus-ring.border-radius` = `28px`: The card's radius plus the ring's offset, so it follows from those two.
 
 ## Open gaps
 

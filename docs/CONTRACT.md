@@ -84,7 +84,7 @@ cadence:  { value: 7-8s, untokenised: Motion timing… }   # plain on purpose, a
 
 - **`token`** is the token the source actually uses. I never fill it in by hand for something read from Figma. The conformance check tests it.
 - **`value`** is what CSS ends up with.
-- **`suggest`** is a token that *should* be there. Either it exists and Figma just isn't using it, or it doesn't exist yet and needs creating (`npm run validate` lists those as `new`). The Figma read adds these by itself when a plain number matches a step on the size or gap scale exactly. The conformance check ignores them.
+- **`suggest`** is a token that *should* be there. Either it exists and Figma just isn't using it, or it doesn't exist yet and needs creating (`npm run validate` lists those as `new`). Until the freeze, the Figma read added these by itself when a plain number matched a step on the size or gap scale exactly. The freeze turned all 122 into tokens, so there are none left. The conformance check ignores them.
 - **`untokenised`** says why a value has no token on purpose. Without it, a value with no token shows up as an open gap.
 - **`assert: false`** means it's written down but not checked, like a root width that's only the size of the Figma frame.
 - **`notes`** is for anything that would surprise you.
@@ -123,10 +123,10 @@ A component is `stable` when:
 
 ## Adding a component
 
-1. **Read it.** With the Figma desktop app open on the UI Kit, add the component's variants to `registry/variant-nodes.json`. Then run `node bin/extract-variants.mjs <id>`, `node bin/parse.mjs` and `node bin/build-contracts.mjs` (add the id to `sets` and `NAMES` in that last one). That writes `contracts/<id>.contract.yaml`. The list still lives in a few places, and fixing that is on the [roadmap](ROADMAP.md). For an effect or a pattern, copy `schema/template.contract.yaml` instead.
+1. **Start it.** Since the freeze, a new component can start in the contract: copy `schema/template.contract.yaml`. If it starts in Figma instead, open the Figma desktop app on the UI Kit, add the set to `registry/component-sets.json` (with a `name`) and its variants to `registry/variant-nodes.json`, then run `node bin/extract-variants.mjs <id>`, `node bin/parse.mjs` and `node bin/build-contracts.mjs`. That writes `contracts/<id>.contract.yaml`. Having two registry files is on the [roadmap](ROADMAP.md).
 2. **Describe it.** Add `summary`, `category`, `related` and `guidance`. Leave the guidance `proposed` until I've signed it off.
 3. **Register it.** Add each app under `implementations`, with its selectors.
-4. **Check it.** `npm run validate`, the conformance test in the app, and `npm run audit <app-dir>`. Anything that's different on purpose becomes a deviation.
+4. **Check it.** `npm run validate`, the conformance test in the app, and `npm run audit -- <app-dir>`. Anything that's different on purpose becomes a deviation.
 5. **Publish it.** `npm run docs`, then commit the contract and the rebuilt docs together.
 
 ## From contract to code
@@ -135,7 +135,7 @@ A component in code is built from its contract, not from memory.
 
 1. `npm run css -- <id>` writes `src/components/<id>/<id>.css` straight from the contract. Every part gets a class, every prop value a modifier, every value its token. I don't edit that file. If the CSS is wrong, the contract is wrong, and that's where I fix it.
 2. The React component sits next to it and follows the Figma layers one to one, so the classes land on the same parts.
-3. `<id>.fixtures.tsx` lists one example per Figma variant.
+3. `<id>.fixtures.tsx` lists one example per Figma variant. Hover, pressed and focus aren't props, so a fixture names them in `force` and the test puts them on the element through Chrome's DevTools protocol, the way the `:hov` panel does. A fixture can also `mask` a box the test shouldn't compare, like Thumbs' sample name, which shows a real client in Figma.
 4. `npm run test:visual -- <id>` renders each one in Chrome, on the same dark background Figma uses, with the same General Sans Variable font, and compares it with Figma's own screenshot from `baseline/`. It saves a side by side for each variant in `test-results/visual/<id>/`: Figma, mine, and the difference in red.
 
 A variant passes when its size is exact and almost nothing differs. Figma and Chrome never draw letter edges quite the same way: on InlineBanner, with everything else exact, about 2 to 2.4% of pixels still differ at the edges of the text, even allowing a pixel either way. So the line is 2.5%. A missing icon or a wrong colour goes well over it. One more thing Figma does that CSS can't: it rounds a component that hugs its text up to a whole pixel (Badge is 43px in Figma, 42.4px in the browser), so a right edge can sit a fraction of a pixel in. That's inside the line too.
@@ -145,9 +145,12 @@ A variant passes when its size is exact and almost nothing differs. Figma and Ch
 `src/conform.ts` has `forApp(contract, app)`. It turns a YAML contract into what one app should look like: that app's selectors, every fixed value, and the variants named the way Figma names them. Hand the result to `conform()`.
 
 ```ts
+import { readFileSync } from 'node:fs'
 import YAML from 'yaml'
 import { conform, forApp } from 'rost/conform'
 
 const contract = forApp(YAML.parse(readFileSync('contracts/badge.contract.yaml', 'utf8')), 'accounting-app')
 expect(conform(contract, css, tokensCss)).toEqual([])
 ```
+
+Pass a variant to check that one too: `conform(contract, css, tokensCss, 'status=Negative, size=Small')`. It looks for the modifier classes Rost's own CSS uses (`.rost-badge--status-negative`). An app that names them by value alone (`.ak-badge--negative`) adds `{ modifiers: 'value' }` at the end. It reports three kinds of finding: a value that's missing, a value that's different, and the right value from the wrong token. The last one is the reason the check exists.

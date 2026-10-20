@@ -60,7 +60,9 @@ const props = Object.entries(c.props ?? {}) as [string, any][]
       </div>
     </section>
   ) : blanks > 0 && figma.length === 0 ? (
-    <p class="note">Figma's renders of this one came back empty, so there's nothing to show yet. The contract below is complete; the pictures come with the next read.</p>
+    <p class="note">Figma's renders of this one came back empty, so there's nothing to show yet. The contract below is complete. I'll capture the pictures again next time I have Figma open.</p>
+  ) : figma.length === 0 && !e.kind.startsWith('effect') && e.kind !== 'pattern' ? (
+    <p class="note">Figma's renders of this one have real people's photos in them, so they stay off the site. The contract below is complete.</p>
   ) : figma.length > 0 && (
     <section>
       <div class="stage">
@@ -73,7 +75,7 @@ const props = Object.entries(c.props ?? {}) as [string, any][]
           ))}
         </div>
       </div>
-      <p class="note">These are Figma's own renders. The component isn't built in code yet; the contract below is what it'll be built from.</p>
+      <p class="note">These are Figma's own renders. It isn't built in code yet. The contract below is what I'll build it from.</p>
     </section>
   )}
 

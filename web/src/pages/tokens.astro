@@ -27,8 +27,8 @@ const groups = order.map((f) => [f, entries.filter((e) => family(e.name) === f)]
 <Base title="Tokens · Rost">
   <div class="kicker">Foundations</div>
   <h1>Tokens</h1>
-  <p class="lede">{entries.length} named values. Every colour, space and size in Rost comes from one of these.</p>
-  <p class="muted">The names are the CSS variables, exactly as code uses them, from <code>tokens/tokens.css</code>. Figma has more variables than this. I add them here as components need them.</p>
+  <p class="lede">{entries.length} named values. Almost every colour, space and size in Rost comes from one of these. The few that don't are listed in <a href="/docs/tokens/">Token coverage</a>.</p>
+  <p class="muted">The names are the CSS variables, exactly as code uses them, from <code>tokens/tokens.css</code>. Figma has 582 variables. Only the ones a contract needs are here so far, and exporting the rest is on the <a href="/docs/roadmap/">roadmap</a>.</p>
   {groups.map(([f, list]) => (
     <>
       <h2>{f}</h2>

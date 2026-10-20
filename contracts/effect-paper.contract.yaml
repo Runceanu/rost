@@ -31,18 +31,18 @@ elements:
       radius:
         value: 1px
         notes: Fixed when nothing's happening. Under the lens it grows to at most 1 + 1.3 times the field, about 2.3px at the peak. It only grows. New dots never appear.
-        untokenised: Dot geometry, tuned to the 16px pitch; not a reusable decision.
+        untokenised: Tuned to the 16px grid. Nothing else would use it.
   lens:
     notes: |-
       The dome every behaviour shares. It has three sources: the cursor (the magnifier), the button halo (hover a hero button and a lens rises under its centre, as if the button presses into the paper), and press ink (press down and the sheet dents, fast going in and slow coming back). Each dot looks at all three and the strongest wins, so lenses never add up. Dots inside grow and get pushed outward. They never multiply and never change shape.
     styles:
       radius:
         value: 210px
-        untokenised: Motion tuning parameter of the lens field.
+        untokenised: Tuned by eye for how the lens moves. Only the paper uses it.
       push:
         value: 9px
         notes: How far dots move outward at the peak, per unit of field. The dome eases smoothly to nothing at its edge. Both the push and the growth scale with how strong the source is.
-        untokenised: Motion tuning parameter of the lens field.
+        untokenised: Tuned by eye for how the lens moves. Only the paper uses it.
       accent:
         token: actions/primary/default/background
         value: "#00d669"
@@ -51,15 +51,15 @@ elements:
       cursor:
         value: radius 210px, power 1.0
         notes: Follows with a little lag. The first touch starts right at the pointer.
-        untokenised: Motion tuning parameter (radius and falloff power).
+        untokenised: "Tuned by eye: how wide the lens is, and how fast it fades. Only the paper uses it."
       halo:
         value: radius 240px, power 1.3
         notes: Sits on the centre of the hovered button. It's wider and stronger than the cursor lens, which is always in the same spot and would hide it otherwise.
-        untokenised: Motion tuning parameter (radius and falloff power).
+        untokenised: "Tuned by eye: how wide the lens is, and how fast it fades. Only the paper uses it."
       press:
         value: radius 330px, power 1.7
         notes: The strongest lens of all. It comes in about three times faster than it goes away. The field stops at 1.7.
-        untokenised: Motion tuning parameter (radius and falloff power).
+        untokenised: "Tuned by eye: how wide the lens is, and how fast it fades. Only the paper uses it."
   ripple:
     notes: |-
       A ring (a soft band, about 1.8s) that crosses the sheet from the middle. It's triggered by the availability dot's own pulse, every second beat: so every 8s, in step with it, never on a timer of its own. It only runs while the hero is on screen.
@@ -76,7 +76,7 @@ elements:
       cadence:
         value: 7-8s between sketches
         notes: Picked at random inside the window, so it never feels like a metronome.
-        untokenised: Timing of the sketch loop; a motion token group does not exist yet.
+        untokenised: How often the pen draws. There are no motion tokens yet.
 guidance:
   status: agreed
   use:

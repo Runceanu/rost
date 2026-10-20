@@ -25,7 +25,7 @@ elements:
         token: spacing/layout/hero-height
         value: 630px
         notes: |-
-          I created this token in code on 2026-10-19 (`tokens.css`). Figma has no variable for it, and since the contracts are taking over from Figma, that's fine. The case-study pages still write 630px directly.
+          I created this token in code on 2026-10-19 (`tokens.css`). Figma has no variable for it, and now that the contracts are the source, that's fine. The case-study pages still write 630px directly.
       padding: { token: spacing/gap/medium, value: 16px }
       background: { token: non-interactive/background/primary, value: "#060805" }
   frame:
@@ -55,7 +55,7 @@ elements:
         value: explicit px (asset-native, e.g. 2336px 1196px)
         notes: |-
           Never `cover` together with `fixed`. A fixed background sizes itself against the window, not the frame, and blows the artwork up. That bug is why one case study lost the pinned effect the first time. Vector artwork can go at twice its natural size, so it stays sharp.
-        untokenised: Each artwork's native pixel size.
+        untokenised: Each artwork's own pixel size. It changes with every image, so a token wouldn't help.
 guidance:
   status: agreed
   use:

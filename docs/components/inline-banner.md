@@ -51,7 +51,7 @@
 ## Accessibility
 
 - **Element**: a `<span>` or a `<p>`. If it shows up because of something the person just did, put it in a live region (`role="status"`, or `role="alert"` for `Negative`).
-- **Colour**: the icon carries the status as well as the fill. Until the icons are exported (the accounting app has a deviation for this), the words have to say the status.
+- **Colour**: the icon carries the status as well as the fill. The accounting app still shows no icon (that's its deviation), so there the words have to say the status.
 - **Glyph**: `aria-hidden="true"`. The label carries the meaning.
 
 ## Content
@@ -62,7 +62,7 @@ One short sentence, no full stop if it's a fragment. Lead with what happened: "S
 
 | App | What | Why | Taken to design |
 |---|---|---|---|
-| The accounting app | Renders label-only; the per-status glyph (plus / alarm / positive / warning) is an optional slot. | The kit glyphs are not exported yet, and drawing substitutes would ship something the kit does not contain. | not yet |
+| The accounting app | Shows only the label. The icon for each status (plus, check, alarm, warning) is an optional slot. | When I built it, the kit's glyphs weren't exported, and I didn't want to draw stand-ins the kit doesn't have. They're in `src/components/inline-banner/icons/` now, so this can go. | not yet |
 
 ## Tokens
 
