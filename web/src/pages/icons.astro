@@ -1,0 +1,33 @@
+---
+import Base from '../layouts/Base.astro'
+import { GITHUB } from '../lib/kit'
+
+const pick = (files: Record<string, string>) =>
+  Object.entries(files).map(([p, url]) => ({ name: p.split('/').pop()!.replace('.svg', ''), url })).sort((a, b) => a.name.localeCompare(b.name))
+const icons = pick(import.meta.glob('../../../assets/icons/*.svg', { query: '?url', import: 'default', eager: true }) as Record<string, string>)
+const illustrations = pick(import.meta.glob('../../../assets/illustrations/*.svg', { query: '?url', import: 'default', eager: true }) as Record<string, string>)
+---
+<Base title="Icons · Rost">
+  <div class="kicker">Foundations</div>
+  <h1>Icons and illustrations</h1>
+  <p class="lede">{icons.length} icons and {illustrations.length} illustrations, exported from Figma as SVG.</p>
+  <p class="muted">They live in <a href={`${GITHUB}/tree/master/assets`} target="_blank" rel="noreferrer"><code>assets/</code></a> on GitHub. Click one to open the file.</p>
+
+  <h2>Icons</h2>
+  <div class="tiles">
+    {icons.map((i) => <a class="tile" href={i.url} target="_blank" rel="noreferrer"><span class="art"><img src={i.url} alt="" width="24" height="24" /></span><span>{i.name}</span></a>)}
+  </div>
+
+  <h2>Illustrations</h2>
+  <div class="tiles tiles--big">
+    {illustrations.map((i) => <a class="tile" href={i.url} target="_blank" rel="noreferrer"><span class="art"><img src={i.url} alt="" width="72" height="72" /></span><span>{i.name.replace(/-/g, ' ')}</span></a>)}
+  </div>
+</Base>
+<style>
+  .tiles { display: grid; gap: 10px; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); }
+  .tiles--big { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); }
+  .tile { display: flex; flex-direction: column; align-items: center; gap: 10px; padding: 18px 10px; border-radius: 14px; border: 1px solid var(--line); background: var(--surface); text-decoration: none; color: var(--fg-3); font-family: var(--mono); font-size: 11.5px; text-align: center; }
+  .tile:hover { color: var(--fg); border-color: color-mix(in srgb, var(--fg) 28%, transparent); }
+  .art { display: grid; place-items: center; min-height: 72px; }
+  .muted a { color: var(--accent); }
+</style>

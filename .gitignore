@@ -13,3 +13,6 @@ assets/private/
 baseline/thumbs/
 baseline/testimonials-pics/
 test-results/
+.claude/
+web/dist/
+web/.astro/

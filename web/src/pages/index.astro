@@ -1,0 +1,107 @@
+---
+import Base from '../layouts/Base.astro'
+import { Badge } from '../../../src/components/badge/Badge'
+import { InlineBanner } from '../../../src/components/inline-banner/InlineBanner'
+import { kit, KINDS, title, inCode, built, tokens, GITHUB } from '../lib/kit'
+
+const groups = KINDS.filter(([k]: [string, string]) => kit.some((e) => e.kind === k))
+const variants = kit.reduce((n, e) => n + (e.c.variants?.length ?? 0), 0)
+---
+<Base title="Rost · My design system" description="Rost is my design system, run as its own product. runceanu.com and akount.ing are built on it.">
+  <section class="hero">
+    <div class="kicker">Design system</div>
+    <h1>Rost</h1>
+    <p class="lede">My design system, run as its own product. runceanu.com and akount.ing are built on it, and so will whatever I make next.</p>
+    <p class="muted"><i>Rost</i> is Romanian. It means purpose, or order: the sense that something is where it belongs. That's the whole job here.</p>
+    <div class="btns">
+      <a class="btn btn--primary" href="/components/">Browse components</a>
+      <a class="btn" href={GITHUB} target="_blank" rel="noreferrer">GitHub</a>
+    </div>
+    <div class="count">
+      <div><b>{kit.length}</b><span>components</span></div>
+      <div><b>{built.length}</b><span>built in code</span></div>
+      <div><b>{variants}</b><span>variants</span></div>
+      <div><b>{Object.keys(tokens).length}</b><span>tokens</span></div>
+    </div>
+  </section>
+
+  <section class="show" aria-label="Live components">
+    <div class="show-row">
+      <Badge status="positive">Paid</Badge>
+      <Badge status="negative">Overdue</Badge>
+      <Badge status="warning" showIcon>Due soon</Badge>
+      <Badge status="default" size="small" aria-label="Draft" />
+      <Badge status="positive" size="small" aria-label="Paid" />
+    </div>
+    <div class="show-row">
+      <InlineBanner status="positive">Saved just now</InlineBanner>
+      <InlineBanner status="default">Open for work</InlineBanner>
+      <InlineBanner status="negative" size="small">Payment failed</InlineBanner>
+    </div>
+    <p class="show-note">These are the real components, rendered live. Each one is checked pixel by pixel against Figma.</p>
+  </section>
+
+  <h2>How it works</h2>
+  <div class="steps">
+    <div class="card">
+      <div class="step">1</div>
+      <h3>A contract</h3>
+      <p>Each component is one YAML file: its parts, its tokens, every variant, how to use it, and where my apps build it. It's the source. Figma was where it started.</p>
+    </div>
+    <div class="card">
+      <div class="step">2</div>
+      <h3>Code from the contract</h3>
+      <p>The CSS is written straight from the contract, so nobody types a colour by hand. The React component follows the same parts.</p>
+    </div>
+    <div class="card">
+      <div class="step">3</div>
+      <h3>Checked against Figma</h3>
+      <p>Every variant is rendered in a browser and compared with Figma's own screenshot. If a pixel is wrong, the test says so.</p>
+    </div>
+  </div>
+
+  <h2>Components</h2>
+  <p class="muted">{built.length} of them are in code so far (the green dot). The rest are contracts, and they come next, one at a time.</p>
+  {groups.map(([k, label]: [string, string]) => (
+    <>
+      <h3>{label}</h3>
+      <div class="grid">
+        {kit.filter((e) => e.kind === k).map((e) => (
+          <a class="card comp" href={`/components/${e.id}/`}>
+            <span class="comp-name">{title(e)}{inCode(e.id) && <span class="dot" title="Built in code" />}</span>
+            <span class="comp-sum">{e.c.summary}</span>
+          </a>
+        ))}
+      </div>
+    </>
+  ))}
+
+  <h2>Foundations</h2>
+  <div class="grid">
+    <a class="card comp" href="/tokens/"><span class="comp-name">Tokens</span><span class="comp-sum">Every colour, size, space, radius and opacity, with its name and value.</span></a>
+    <a class="card comp" href="/icons/"><span class="comp-name">Icons and illustrations</span><span class="comp-sum">The 17 icons and 24 illustrations, as SVG.</span></a>
+    <a class="card comp" href="/docs/contract/"><span class="comp-name">How a contract works</span><span class="comp-sum">What's in one, how it grows up, and how a component gets built.</span></a>
+    <a class="card comp" href="/docs/roadmap/"><span class="comp-name">What's next</span><span class="comp-sum">The roadmap, in order.</span></a>
+  </div>
+</Base>
+
+<script>
+  // The old site was one long page with #badge-style anchors. Send those to the new pages.
+  const id = location.hash.slice(1)
+  if (id && id !== 'home' && /^[a-z0-9-]+$/.test(id)) location.replace(`/components/${id}/`)
+</script>
+
+<style>
+  .hero { padding: 24px 0 40px; border-bottom: 1px solid var(--line); }
+  .show { margin: 40px 0 0; padding: 36px 28px; border-radius: 20px; border: 1px solid var(--line); background: radial-gradient(120% 140% at 0% 0%, color-mix(in srgb, var(--accent) 8%, transparent), transparent 60%), var(--ground); display: flex; flex-direction: column; gap: 22px; }
+  .show-row { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; }
+  .show-note { margin: 4px 0 0; color: var(--fg-3); font-size: 13.5px; }
+  .steps { display: grid; gap: 14px; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+  .steps h3 { margin: 12px 0 8px; color: var(--fg); font-family: var(--body); font-size: 17px; letter-spacing: 0; text-transform: none; font-weight: 600; }
+  .steps p { margin: 0; color: var(--fg-2); font-size: 15px; }
+  .step { width: 28px; height: 28px; border-radius: 50%; display: grid; place-items: center; font-family: var(--mono); font-size: 13px; color: var(--accent); border: 1px solid color-mix(in srgb, var(--accent) 40%, transparent); }
+  .comp { display: flex; flex-direction: column; gap: 6px; text-decoration: none; transition: border-color .15s; }
+  .comp:hover { border-color: color-mix(in srgb, var(--fg) 28%, transparent); }
+  .comp-name { display: flex; align-items: center; gap: 8px; font-weight: 600; color: var(--fg); }
+  .comp-sum { color: var(--fg-3); font-size: 14px; line-height: 1.45; }
+</style>
