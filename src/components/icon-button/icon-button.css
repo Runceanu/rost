@@ -379,6 +379,8 @@
 }
 
 .rost-icon-button.rost-icon-button--type-project .rost-icon-button__icons-arrow-left {
+  width: var(--spacing-size-2xsmall);
+  height: var(--spacing-size-2xsmall);
   color: var(--actions-borderless-default-icon);
 }
 
@@ -397,6 +399,8 @@
 }
 
 .rost-icon-button.rost-icon-button--type-project:hover .rost-icon-button__icons-arrow-left {
+  width: var(--spacing-size-2xsmall);
+  height: var(--spacing-size-2xsmall);
   color: var(--actions-borderless-hover-icon);
 }
 
@@ -415,6 +419,8 @@
 }
 
 .rost-icon-button.rost-icon-button--type-project:active .rost-icon-button__icons-arrow-left {
+  width: var(--spacing-size-2xsmall);
+  height: var(--spacing-size-2xsmall);
   color: var(--actions-borderless-pressed-icon);
 }
 
@@ -427,6 +433,8 @@
 }
 
 .rost-icon-button.rost-icon-button--type-project:is(:disabled, [aria-disabled="true"]) .rost-icon-button__icons-arrow-left {
+  width: var(--spacing-size-2xsmall);
+  height: var(--spacing-size-2xsmall);
   color: var(--actions-borderless-disabled-icon);
 }
 
@@ -447,5 +455,7 @@
 }
 
 .rost-icon-button.rost-icon-button--type-project:focus-visible .rost-icon-button__icons-arrow-left {
+  width: var(--spacing-size-2xsmall);
+  height: var(--spacing-size-2xsmall);
   color: var(--actions-borderless-focus-icon);
 }

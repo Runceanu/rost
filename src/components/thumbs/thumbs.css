@@ -261,13 +261,13 @@
 }
 
 .rost-thumbs.rost-thumbs--state-locked .rost-thumbs__number {
-  color: var(--project-lock-sub-label);
+  color: var(--project-default-sub-label);
 }
 
 .rost-thumbs.rost-thumbs--state-locked .rost-thumbs__text {
-  color: var(--project-lock-label);
+  color: var(--project-default-label);
 }
 
 .rost-thumbs.rost-thumbs--state-locked .rost-thumbs__detail {
-  color: var(--project-lock-sub-label);
+  color: var(--project-default-sub-label);
 }

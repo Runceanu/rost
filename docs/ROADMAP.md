@@ -24,7 +24,7 @@ Still open from Figma:
 
 ## Done: a real website
 
-On 2026-10-20 rost.build became a proper site, the way shadcn's is: a homepage, a page per component, tokens, icons, and these docs. It's built with Astro from `web/`, straight from the contracts, so it can't drift from them. Every component card on it is a Thumbs, with a glimpse of the component inside. Components that are in code show up live, with a Code tab. The others show Figma's own renders until they're built. Button has none to show (its renders came back empty), and TestimonialPicture's stay private.
+On 2026-10-20 rost.build became a proper site, the way shadcn's is: a homepage, a page per component, tokens, icons, and these docs. It's built with Astro from `web/`, straight from the contracts, so it can't drift from them. Every component card on it is a Thumbs, with a glimpse of the component inside. Components that are in code show up live on their cards and pages, with a Code tab. The rest say "Not in code yet" on their card, and their pages show Figma's own renders until they're built. Button has none to show (its renders came back empty), and TestimonialPicture's stay private.
 
 ## Now: Rost in code
 
@@ -59,11 +59,11 @@ Next, one at a time on the same setup:
    - **A limit of the check.** akount.ing draws the selected Toggle's edge on `::before`, and the check only reads the root selector. `implementations.*.parts` needs a way to point a root property at a pseudo-element.
 
    *Done when* every finding left is either fixed or written down as a deviation. Each component that gets to zero can go stable. Badge got there first, then went back to `review` when Figma changed it.
-2. **Export every Figma variable.** `tokens.css` has 177 of the file's 582 variables ([Token coverage](TOKENS.md) keeps the count). I added the ones the contracts needed by hand (`opacity/strong`, the `project/*` set, title typography). On 2026-10-21 I found 35 more colour variables I'd read from Figma on 2026-10-19 and never exported: every `actions/*/icon`, `input/*/icon`, `project/*/icon`, `non-interactive/foreground/contrast` and `Base/Black`. Three times a colour got called "no token" when Figma had one, because only `tokens.css` was searched. A "no token" claim now gets checked against what Figma gave (`raw/*.get_variable_defs.txt`), not against what happened to be exported. The colour primitives, the rest of the typography scale and more are still missing. That needs a proper `bin/build-tokens.mjs`, keyed on the Figma names so hyphens survive (`non-interactive`, not `non/interactive`). The freeze came first, so this is one last read of the variables. It doesn't make Figma the source again.
+2. **Export every Figma variable.** [Token coverage](TOKENS.md) keeps the count of how many of the file's 582 variables `tokens.css` has. I added the ones the contracts needed by hand (`opacity/strong`, the `project/*` set, title typography). On 2026-10-21 I found 35 more colour variables I'd read from Figma on 2026-10-19 and never exported: every `actions/*/icon`, `input/*/icon`, `project/*/icon`, `non-interactive/foreground/contrast` and `Base/Black`. Three times a colour got called "no token" when Figma had one, because only `tokens.css` was searched. A "no token" claim now gets checked against what Figma gave (`raw/*.get_variable_defs.txt`), not against what happened to be exported. The colour primitives, the rest of the typography scale and more are still missing. That needs a proper `bin/build-tokens.mjs`, keyed on the Figma names so hyphens survive (`non-interactive`, not `non/interactive`). The freeze came first, so this is one last read of the variables. It doesn't make Figma the source again.
 3. **One list of components.** `registry/component-sets.json` drives the contracts now, but the variant nodes still sit apart in `variant-nodes.json`. One file should hold both.
 4. **Variants as layers.** Right now a variant list repeats what one axis decides: Toggle's unselected background shows up five times, once per state. Curtis's layered approach (`when: { selected: false }` once, then `when: { state: Disabled }` on top) says it once and would cut most of Button's variant list. The check needs to apply layers in order first.
 5. **One copy of the contracts.** akount.ing still tests against its own old JSON copies of Badge and Button. Its test should read these YAML files through `forApp` instead.
-6. **Guidance for the new components, and Badge again.** I signed off 16 on 2026-10-19, and Badge went back to `proposed` when Figma gave it a dot-only size. Thumbs has a proposed one now. Carousel, Projects, Testimonials, TestimonialPicture and Divider still need theirs. While I'm at it, decide on the four deviations nobody has taken back to the design side yet (the Health section lists them).
+6. **Guidance for the new components, and Badge again.** I signed off 16 on 2026-10-19, and Badge went back to `proposed` when Figma gave it a dot-only size. Thumbs, Carousel, Projects, Testimonials, Menu and Divider have proposed ones now, waiting for me. TestimonialPicture has none. While I'm at it, decide on the four deviations nobody has taken back to the design side yet (the Health section lists them).
 
 ## Next: grow the kit
 
@@ -73,9 +73,7 @@ In order of how much copied code each one removes.
 |---|---|---|
 | **Hero Media** as a shared component | The same hero CSS is copied into 7 case-study stylesheets | contract exists |
 | **Icons** as a component | The 17 SVGs are exported (`assets/icons/`), but there's no `Icon` component yet, and the apps draw their own | SVGs exported, component next |
-| **Divider** | akount.ing already has its own `Divider.tsx` | contract read 2026-10-19 |
-| **Carousel, Projects** | runceanu.com's home page, and where most of its raw hex lives. Thumbs is done | contracts read 2026-10-19 |
-| **Testimonials, TestimonialPicture** | runceanu.com | contracts read 2026-10-19 |
+| **TestimonialPicture** | runceanu.com's testimonials. Divider, Carousel, Projects, Testimonials and Thumbs are done | contract read 2026-10-19 |
 | **ListRow** | akount.ing builds it outside the kit | needs designing first |
 | **Tooltip** | IconButton's guidance leans on it | needs designing first |
 | **Switch, Textarea, a selected Chip** | The guidance already says they're missing | need designing first |

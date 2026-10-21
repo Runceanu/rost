@@ -39,7 +39,7 @@ export const usage = `import { Testimonials } from 'rost/components/testimonials
 export const preview = (
   <span style={{ display: 'block', width: 420 * 0.62, height: 210 * 0.62 }}>
     <span style={{ display: 'block', width: 420, transform: 'scale(.62)', transformOrigin: 'top left' }}>
-      <Testimonials expanded name="Client 1" jobDescription="Head of product" testimonial="He found the problem before we did." style={{ width: 420 }} />
+      <Testimonials as="span" expanded name="Client 1" jobDescription="Head of product" testimonial="He found the problem before we did." style={{ width: 420 }} />
     </span>
   </span>
 )

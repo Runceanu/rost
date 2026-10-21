@@ -9,6 +9,8 @@ interface Common {
   readonly icon?: ReactNode
   readonly children?: ReactNode
   readonly className?: string
+  /** `span` draws it without the button or link, for a preview inside something that's already one. */
+  readonly as?: 'span'
 }
 export type PillButtonProps =
   | (Common & Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'type'> & { readonly href?: undefined; readonly buttonType?: 'button' | 'submit' | 'reset' })
@@ -22,7 +24,7 @@ const b = 'rost-pill-button'
  * Built from contracts/pill-button.contract.yaml.
  */
 export function PillButton(props: PillButtonProps) {
-  const { type = 'primary', icon, children, className, ...rest } = props
+  const { type = 'primary', icon, children, className, as, ...rest } = props
   const cls = [b, `${b}--type-${type}`, className].filter(Boolean).join(' ')
   const inner = (
     <>
@@ -32,6 +34,10 @@ export function PillButton(props: PillButtonProps) {
       <span className={`${b}__focus-ring`} />
     </>
   )
+  if (as === 'span') {
+    const { disabled } = rest as { disabled?: boolean }
+    return <span className={cls} aria-disabled={disabled || undefined}>{inner}</span>
+  }
   if ('href' in rest && rest.href !== undefined) {
     const { href, disabled, ...a } = rest as AnchorHTMLAttributes<HTMLAnchorElement> & { disabled?: boolean }
     return <a className={cls} href={disabled ? undefined : href} aria-disabled={disabled || undefined} {...a}>{inner}</a>

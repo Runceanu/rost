@@ -25,9 +25,9 @@
 ## Anatomy
 
 - `root`
-- `icons-arrow-left`: The 20px icon slot. Its colour is the action's `icon` token, per type and state.
+- `icons-arrow-left`: The icon slot, 20px (16px on the Project type). Its colour is the action's `icon` token, per type and state.
 - `glyph`: Figma's arrow, drawn as a mask in the icon's colour so one file serves every state. A caller's own icon replaces it and should use `currentColor`.
-- `background`: The see-through fill under Secondary and Tertiary, on its own layer so the icon stays solid.
+- `background`: The see-through fill under Secondary and Tertiary, and under Project on hover and press, on its own layer so the icon stays solid.
 - `focus-ring`
 
 ## When to use
@@ -108,6 +108,7 @@ Every token this component uses, across all its variants.
 | `spacing/gap/small` | `8px` |
 | `spacing/outline/medium` | `2px` |
 | `spacing/radius/full` | `10000px` |
+| `spacing/size/2xsmall` | `16px` |
 | `spacing/size/medium-large` | `48px` |
 | `spacing/size/small-medium` | `32px` |
 | `spacing/size/xsmall` | `20px` |

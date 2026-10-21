@@ -35,7 +35,7 @@ export const usage = `import { PillButton } from 'rost/components/pill-button/Pi
 /** What the component's card on rost.build shows. */
 export const preview = (
   <span style={{ display: 'flex', gap: 'var(--spacing-gap-small)' }}>
-    <PillButton tabIndex={-1}>Get in touch</PillButton>
-    <PillButton type="secondary" tabIndex={-1}>The work</PillButton>
+    <PillButton as="span">Get in touch</PillButton>
+    <PillButton as="span" type="secondary">The work</PillButton>
   </span>
 )

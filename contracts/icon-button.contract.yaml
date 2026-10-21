@@ -36,7 +36,7 @@ elements:
       gap: { token: spacing/gap/small, value: 8px }
       border-radius: { token: spacing/radius/full, value: 10000px }
   icons-arrow-left:
-    notes: The 20px icon slot. Its colour is the action's `icon` token, per type and state.
+    notes: The icon slot, 20px (16px on the Project type). Its colour is the action's `icon` token, per type and state.
     styles:
       overflow: { value: clip }
       flex-shrink: { value: "0", assert: false }
@@ -54,7 +54,7 @@ elements:
         value: url(./icon-arrow-left.svg) center / contain no-repeat
         untokenised: "The icon file itself. `assets/icons/arrow-left.svg`, the same shape Figma uses (its insets match Figma's `Union` layer exactly)."
   background:
-    notes: The see-through fill under Secondary and Tertiary, on its own layer so the icon stays solid.
+    notes: The see-through fill under Secondary and Tertiary, and under Project on hover and press, on its own layer so the icon stays solid.
     styles:
       position: { value: absolute }
       inset: { value: "0" }
@@ -355,6 +355,8 @@ variants:
         height: { token: spacing/size/small-medium, value: 32px }
         padding: { token: spacing/gap/none, value: 0px }
       icons-arrow-left:
+        width: { token: spacing/size/2xsmall, value: 16px, notes: Figma's Project arrow is 16px. }
+        height: { token: spacing/size/2xsmall, value: 16px }
         color: { token: actions/borderless/default/icon, value: "#00d669" }
   - when: { type: Project, state: Hover }
     figmaNode: "93:742"
@@ -370,6 +372,8 @@ variants:
         opacity: { token: opacity/mild, value: "0.32" }
         border-radius: { token: spacing/radius/full, value: 10000px }
       icons-arrow-left:
+        width: { token: spacing/size/2xsmall, value: 16px, notes: Figma's Project arrow is 16px. }
+        height: { token: spacing/size/2xsmall, value: 16px }
         color: { token: actions/borderless/hover/icon, value: "#00b450" }
   - when: { type: Project, state: Pressed }
     figmaNode: "93:745"
@@ -385,6 +389,8 @@ variants:
         opacity: { token: opacity/mild, value: "0.32" }
         border-radius: { token: spacing/radius/full, value: 10000px }
       icons-arrow-left:
+        width: { token: spacing/size/2xsmall, value: 16px, notes: Figma's Project arrow is 16px. }
+        height: { token: spacing/size/2xsmall, value: 16px }
         color: { token: actions/borderless/pressed/icon, value: "#00d669" }
   - when: { type: Project, state: Disabled }
     figmaNode: "93:748"
@@ -396,6 +402,8 @@ variants:
         cursor: { value: default, assert: false }
         padding: { token: spacing/gap/none, value: 0px }
       icons-arrow-left:
+        width: { token: spacing/size/2xsmall, value: 16px, notes: Figma's Project arrow is 16px. }
+        height: { token: spacing/size/2xsmall, value: 16px }
         color: { token: actions/borderless/disabled/icon, value: "#00d669" }
   - when: { type: Project, state: Focus }
     figmaNode: "93:750"
@@ -413,6 +421,8 @@ variants:
         inset: { value: "calc(-1 * var(--spacing-gap-2xsmall))", untokenised: "Composed from a token: the ring sits spacing/gap/2xsmall outside the element." }
         border-radius: { token: spacing/radius/full, value: 10000px }
       icons-arrow-left:
+        width: { token: spacing/size/2xsmall, value: 16px, notes: Figma's Project arrow is 16px. }
+        height: { token: spacing/size/2xsmall, value: 16px }
         color: { token: actions/borderless/focus/icon, value: "#00d669" }
 guidance:
   status: agreed

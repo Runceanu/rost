@@ -33,8 +33,8 @@ export const usage = `import { IconButton } from 'rost/components/icon-button/Ic
 /** What the component's card on rost.build shows. */
 export const preview = (
   <span style={{ display: 'flex', gap: 'var(--spacing-gap-small-medium)', alignItems: 'center' }}>
-    <IconButton aria-label="Back" tabIndex={-1} />
-    <IconButton type="secondary" aria-label="Back" tabIndex={-1} />
-    <IconButton type="tertiary" aria-label="Back" tabIndex={-1} />
+    <IconButton as="span" aria-label="Back" />
+    <IconButton as="span" type="secondary" aria-label="Back" />
+    <IconButton as="span" type="tertiary" aria-label="Back" />
   </span>
 )

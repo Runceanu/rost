@@ -20,8 +20,8 @@ export const usage = `import { Chip } from 'rost/components/chips/Chip'
 /** What the component's card on rost.build shows. */
 export const preview = (
   <span style={{ display: 'flex', gap: 'var(--spacing-gap-small)' }}>
-    <Chip tabIndex={-1}>Product</Chip>
-    <Chip tabIndex={-1}>Brand</Chip>
-    <Chip tabIndex={-1}>Web</Chip>
+    <Chip as="span">Product</Chip>
+    <Chip as="span">Brand</Chip>
+    <Chip as="span">Web</Chip>
   </span>
 )

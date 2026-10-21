@@ -26,7 +26,7 @@
 
 - `root`
 - `background`: The see-through plate when it's off, on its own layer so the icon stays solid.
-- `icons-arrow-left`: The 20px icon slot. Its colour is the action's `icon` token, per type and state.
+- `icons-arrow-left`: The 20px icon slot. Its colour is the action's `icon` token: primary when it's on, secondary when it's off.
 - `glyph`: Figma's arrow, drawn as a mask in the icon's colour. A caller's own icon replaces it and should use `currentColor`.
 - `focus-ring`
 

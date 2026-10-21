@@ -6,7 +6,7 @@ Every value in every contract, sorted by why it has a token or doesn't. `npm run
 
 | | Values | Share | Meaning |
 |---|---|---|---|
-| Has a token | 1288 | 61% | Uses a token, and the check tests it. |
+| Has a token | 1298 | 61% | Uses a token, and the check tests it. |
 | Token suggested | 0 | 0% | A token I want that doesn't exist yet. The freeze turned every other suggestion into a token. |
 | How Figma builds it | 673 | 32% | How Figma builds the layer (position, inset, which sides get a stroke). Nothing to tokenise. |
 | Figma frame size | 89 | 4% | A root size that is just the Figma frame. Written down, not checked. |
@@ -24,7 +24,7 @@ Every value in every contract, sorted by why it has a token or doesn't. `npm run
 | [Divider](components/divider.md) | 2 | · | 2 | 2 | · | · |
 | [Floating effect](components/effect-floating.md) | 1 | · | · | · | · | · |
 | [Hero Media](components/hero-media.md) | 6 | · | 1 | · | 1 | · |
-| [IconButton](components/icon-button.md) | 182 | · | 53 | 10 | 6 | 2 |
+| [IconButton](components/icon-button.md) | 192 | · | 53 | 10 | 6 | 2 |
 | [InlineBanner](components/inline-banner.md) | 85 | · | 40 | · | · | · |
 | [Input](components/input.md) | 91 | · | 102 | 1 | · | · |
 | [Lock frame effect](components/effect-lock-frame.md) | 1 | · | · | · | · | · |
@@ -137,12 +137,12 @@ None. The freeze on 2026-10-20 turned all 122 suggestions into tokens.
 
 ## Figma variables missing from tokens.css
 
-The Figma file has **582** variables (`registry/figma-variables.json`) and `tokens/tokens.css` has **215** of them. No contract needs the other 367 today, but new components will, the way Chip needed `opacity/strong`.
+The Figma file has **582** variables (`registry/figma-variables.json`) and `tokens/tokens.css` has **216** of them. No contract needs the other 366 today, but new components will, the way Chip needed `opacity/strong`.
 
 | Family | Missing |
 |---|---:|
 | `actions/secondary` | 95 |
-| `spacing` | 52 |
+| `spacing` | 51 |
 | `color/dark` | 46 |
 | `color/light` | 46 |
 | `typography/line-height` | 19 |

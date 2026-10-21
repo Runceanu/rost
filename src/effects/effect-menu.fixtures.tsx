@@ -15,7 +15,7 @@ export const usage = `.panel {
 /** What the effect's card on rost.build shows: the nav's frosted glass over a button. */
 export const preview = (
   <span style={{ position: 'relative', display: 'block', width: 240, height: 80 }}>
-    <span style={{ position: 'absolute', left: 0, top: 0 }}><PillButton tabIndex={-1}>Behind the glass</PillButton></span>
+    <span style={{ position: 'absolute', left: 0, top: 0 }}><PillButton as="span">Behind the glass</PillButton></span>
     <span style={{ position: 'absolute', left: 88, top: 24, right: 0, bottom: 0, borderRadius: 'var(--spacing-radius-large)', ...frost }} />
   </span>
 )

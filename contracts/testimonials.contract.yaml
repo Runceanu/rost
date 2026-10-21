@@ -30,7 +30,7 @@ props:
   showDivider: { type: boolean, default: true, notes: The line under it. }
 stateSelectors:
   Focus: ":has(> .rost-testimonials__top:focus-visible)"
-  Disabled: ":has(> .rost-testimonials__top:disabled)"
+  Disabled: ":has(> .rost-testimonials__top:is(:disabled, [aria-disabled=\"true\"]))"
 states: [ Default, Hover, Pressed, Focus, Disabled ]
 elements:
   root:
