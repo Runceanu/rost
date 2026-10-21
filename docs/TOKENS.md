@@ -6,12 +6,12 @@ Every value in every contract, sorted by why it has a token or doesn't. `npm run
 
 | | Values | Share | Meaning |
 |---|---|---|---|
-| Has a token | 1284 | 61% | Uses a token, and the check tests it. |
+| Has a token | 1288 | 61% | Uses a token, and the check tests it. |
 | Token suggested | 0 | 0% | A token I want that doesn't exist yet. The freeze turned every other suggestion into a token. |
 | How Figma builds it | 673 | 32% | How Figma builds the layer (position, inset, which sides get a stroke). Nothing to tokenise. |
 | Figma frame size | 89 | 4% | A root size that is just the Figma frame. Written down, not checked. |
 | No token, on purpose | 42 | 2% | Plain on purpose, and the contract says why. |
-| Open gap | 25 | 1% | No token and no reason. Each one needs a decision from me. |
+| Open gap | 22 | 1% | No token and no reason. Each one needs a decision from me. |
 
 ## By contract
 
@@ -32,12 +32,12 @@ Every value in every contract, sorted by why it has a token or doesn't. `npm run
 | [Menu](components/menu.md) | 32 | · | 16 | 6 | · | 1 |
 | [Paper effect](components/effect-paper.md) | 6 | · | · | · | 7 | · |
 | [PillButton](components/pill-button.md) | 145 | · | 56 | 12 | 5 | 1 |
-| [Projects](components/projects.md) | 76 | · | 33 | 8 | 4 | 5 |
+| [Projects](components/projects.md) | 77 | · | 33 | 8 | 4 | 4 |
 | [Tag](components/tags.md) | 26 | · | 13 | 3 | · | 1 |
 | [TestimonialPicture](components/testimonials-pics.md) | 2 | · | 1 | · | · | · |
 | [Testimonials](components/testimonials.md) | 85 | · | 53 | 13 | 6 | 4 |
 | [Thumb effect](components/effect-thumb.md) | 1 | · | · | · | · | · |
-| [Thumbs](components/thumbs.md) | 73 | · | 50 | 9 | 5 | 7 |
+| [Thumbs](components/thumbs.md) | 76 | · | 50 | 9 | 5 | 5 |
 | [Toggle](components/toggle.md) | 61 | · | 23 | 8 | 6 | 2 |
 
 ## Tokens that should be there
@@ -97,7 +97,7 @@ None. The freeze on 2026-10-20 turned all 122 suggestions into tokens.
 - [Testimonials](components/testimonials.md) `icons-chevron.mask` = `url(./icon-chevron-up.svg) center / contain no-repeat`: The icon file itself.
 - [Testimonials](components/testimonials.md) `icons-chevron.mask` = `url(./icon-chevron-up.svg) center / contain no-repeat`: The icon file itself.
 - [Thumbs](components/thumbs.md) `shadow.background` = `linear-gradient(to bottom, rgba(6,8,5,0), var(--non-interactive-background-primary))`: A gradient from the page background, transparent, to the page background. The colour is the token; the ramp is the effect.
-- [Thumbs](components/thumbs.md) `content.background` = `color-mix(in srgb, black calc(var(--opacity-medium) * 100%), transparent)`: Black at opacity/medium. The opacity is the token; the kit has no black, so black is the one plain word here.
+- [Thumbs](components/thumbs.md) `content.background` = `color-mix(in srgb, var(--base-black) calc(var(--opacity-medium) * 100%), transparent)`: Composed from tokens: base/black at opacity/medium.
 - [Thumbs](components/thumbs.md) `dot.width` = `3px`: The dot's own size inside the icon.
 - [Thumbs](components/thumbs.md) `dot.height` = `3px`: The dot's own size inside the icon.
 - [Thumbs](components/thumbs.md) `focus-ring.inset` = `calc(-1 * var(--spacing-gap-2xsmall))`: Composed from a token: the ring sits spacing/gap/2xsmall outside the element.
@@ -121,7 +121,6 @@ None. The freeze on 2026-10-20 turned all 122 suggestions into tokens.
 - [Projects](components/projects.md) `outline.left` = `0`
 - [Projects](components/projects.md) `outline.right` = `0`
 - [Projects](components/projects.md) `outline.bottom` = `0`
-- [Projects](components/projects.md) `dot.background` = `#747573`
 - [Projects](components/projects.md) `focus-ring.border-style` = `solid`
 - [Tag](components/tags.md) `focus-ring.border-style` = `solid`
 - [Testimonials](components/testimonials.md) `outline.left` = `0`
@@ -133,52 +132,50 @@ None. The freeze on 2026-10-20 turned all 122 suggestions into tokens.
 - [Thumbs](components/thumbs.md) `shadow.bottom` = `0`
 - [Thumbs](components/thumbs.md) `shadow.height` = `50%`
 - [Thumbs](components/thumbs.md) `focus-ring.border-style` = `solid`
-- [Thumbs](components/thumbs.md) `dot.background` = `#747573`
-- [Thumbs](components/thumbs.md) `dot.background` = `#747573`
 - [Toggle](components/toggle.md) `glyph.background` = `currentColor`
 - [Toggle](components/toggle.md) `focus-ring.border-style` = `solid`
 
 ## Figma variables missing from tokens.css
 
-The Figma file has **582** variables (`registry/figma-variables.json`) and `tokens/tokens.css` has **181** of them. No contract needs the other 401 today, but new components will, the way Chip needed `opacity/strong`.
+The Figma file has **582** variables (`registry/figma-variables.json`) and `tokens/tokens.css` has **215** of them. No contract needs the other 367 today, but new components will, the way Chip needed `opacity/strong`.
 
 | Family | Missing |
 |---|---:|
-| `actions/secondary` | 100 |
+| `actions/secondary` | 95 |
 | `spacing` | 52 |
 | `color/dark` | 46 |
 | `color/light` | 46 |
-| `actions/borderless` | 19 |
 | `typography/line-height` | 19 |
 | `typography/font-size` | 17 |
-| `actions/primary` | 13 |
-| `actions/tertiary` | 12 |
-| `non-interactive/foreground` | 7 |
-| `input/regular` | 6 |
+| `actions/borderless` | 14 |
+| `actions/primary` | 8 |
+| `actions/tertiary` | 7 |
 | `non-interactive/background` | 6 |
+| `non-interactive/foreground` | 6 |
 | `typography/display` | 6 |
 | `typography/headline` | 5 |
-| `input/negative` | 4 |
 | `project/loading` | 4 |
 | `typography/font-weight` | 4 |
 | `spacing/outline` | 3 |
-| `project/default` | 2 |
-| `project/disabled` | 2 |
-| `project/focus` | 2 |
-| `project/hover` | 2 |
-| `project/lock` | 2 |
-| `project/pressed` | 2 |
+| `input/regular` | 2 |
 | `spacing/gap` | 2 |
 | `typography/placeholder` | 2 |
 | `Base/Black` | 1 |
 | `background` | 1 |
 | `focus-ring` | 1 |
 | `icon` | 1 |
+| `input/negative` | 1 |
 | `label` | 1 |
 | `opacity/hard` | 1 |
 | `opacity/softest` | 1 |
 | `opacity/transparent` | 1 |
 | `outline` | 1 |
+| `project/default` | 1 |
+| `project/disabled` | 1 |
+| `project/focus` | 1 |
+| `project/hover` | 1 |
+| `project/lock` | 1 |
+| `project/pressed` | 1 |
 | `spacing/radius` | 1 |
 | `spacing/size` | 1 |
 | `sub-label` | 1 |

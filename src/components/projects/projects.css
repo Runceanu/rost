@@ -57,7 +57,7 @@
   flex-shrink: 0;
   width: var(--spacing-size-small);
   height: var(--spacing-size-small);
-  background: var(--non-interactive-background-positive-base);
+  background: var(--project-lock-icon);
   mask: url(./icon-lock.svg) center / contain no-repeat;
 }
 
@@ -97,7 +97,7 @@
   width: 3px;
   height: 3px;
   border-radius: var(--spacing-radius-full);
-  background: #747573;
+  background: var(--project-default-icon);
 }
 
 .rost-projects__actions {
@@ -114,7 +114,7 @@
   display: block;
   width: var(--spacing-size-2xsmall);
   height: var(--spacing-size-2xsmall);
-  background: var(--actions-primary-default-background);
+  background: var(--actions-borderless-default-icon);
   mask: url(./icon-up-right.svg) center / contain no-repeat;
 }
 
@@ -167,7 +167,7 @@
 }
 
 .rost-projects:hover .rost-projects__dot {
-  background: var(--project-hover-sub-label);
+  background: var(--project-hover-icon);
 }
 
 .rost-projects:active {
@@ -192,7 +192,7 @@
 }
 
 .rost-projects:active .rost-projects__dot {
-  background: var(--project-pressed-sub-label);
+  background: var(--project-pressed-icon);
 }
 
 .rost-projects:focus-visible .rost-projects__focus-ring {
@@ -266,5 +266,5 @@
 }
 
 .rost-projects.rost-projects--state-locked .rost-projects__dot {
-  background: var(--non-interactive-background-positive-base);
+  background: var(--project-lock-icon);
 }

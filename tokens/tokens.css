@@ -226,6 +226,45 @@
   --project-default-label: #d3d9d5;
   --project-default-outline: #3a3a3a;
   --project-default-sub-label: #999999;
+  /* Read from Figma on 2026-10-19 with get_variable_defs but never exported; added 2026-10-21. */
+  --actions-borderless-default-icon: #00d669;
+  --actions-borderless-disabled-icon: #00d669;
+  --actions-borderless-focus-icon: #00d669;
+  --actions-borderless-hover-icon: #00b450;
+  --actions-borderless-pressed-icon: #00d669;
+  --actions-primary-default-icon: #3a3a3a;
+  --actions-primary-disabled-icon: #3a3a3a;
+  --actions-primary-focus-icon: #3a3a3a;
+  --actions-primary-hover-icon: #3a3a3a;
+  --actions-primary-pressed-icon: #3a3a3a;
+  --actions-secondary-regular-default-icon: #00d669;
+  --actions-secondary-regular-disabled-icon: #00d669;
+  --actions-secondary-regular-focus-icon: #00d669;
+  --actions-secondary-regular-hover-icon: #00b450;
+  --actions-secondary-regular-pressed-icon: #00d669;
+  --actions-tertiary-default-icon: #00d669;
+  --actions-tertiary-disabled-icon: #00d669;
+  --actions-tertiary-focus-icon: #00d669;
+  --actions-tertiary-hover-icon: #00b450;
+  --actions-tertiary-pressed-icon: #00d669;
+  --input-negative-default-icon: #e93120;
+  --input-negative-focus-icon: #e93120;
+  --input-negative-hover-icon: #ae1b13;
+  --input-regular-default-icon: #00d669;
+  --input-regular-disabled-icon: #b6ffda;
+  --input-regular-focus-icon: #00d669;
+  --input-regular-hover-icon: #00b450;
+  --non-interactive-foreground-contrast: #060805;
+
+  --base-black: #000000; /* Figma's "Base/Black", read 2026-10-19, added 2026-10-21. */
+
+  /* Figma's project/*/icon family, from get_variable_defs on Thumbs and Projects. Missed in the first export; added 2026-10-21. */
+  --project-default-icon: #747573;
+  --project-hover-icon: #ededed;
+  --project-pressed-icon: #c2c7c3;
+  --project-focus-icon: #747573;
+  --project-disabled-icon: #747573;
+  --project-lock-icon: #00d669;
   --project-hover-label: #00d669;
   --project-hover-outline: #00d669;
   --project-pressed-label: #00d669;
