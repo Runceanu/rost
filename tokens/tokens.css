@@ -258,7 +258,7 @@
 
   --base-black: #000000; /* Figma's "Base/Black", read 2026-10-19, added 2026-10-21. */
 
-  /* Figma's project/*/icon family, from get_variable_defs on Thumbs and Projects. Missed in the first export; added 2026-10-21. */
+  /* Figma's project icon family (project/<state>/icon), from get_variable_defs on Thumbs and Projects. Missed in the first export; added 2026-10-21. */
   --project-default-icon: #747573;
   --project-hover-icon: #ededed;
   --project-pressed-icon: #c2c7c3;
