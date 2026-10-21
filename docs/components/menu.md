@@ -80,4 +80,10 @@ Every token this component uses, across all its variants.
 | `typography/paragraph/font-size` | `14px` |
 | `typography/paragraph/line-height` | `20px` |
 
+## No token, on purpose
+
+| Part | Property | Value | Why |
+|---|---|---|---|
+| `focus-ring` | `inset` | `var(--spacing-gap-medium-large) calc(-1 * var(--spacing-gap-2xsmall))` | Composed from tokens: around the text only, spacing/gap/medium-large in from the top and bottom, spacing/gap/2xsmall out to each side. |
+
 See it live, with every value of every variant: [rost.build/components/menu](https://rost.build/components/menu/)

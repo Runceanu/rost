@@ -117,7 +117,7 @@
 .rost-testimonials__focus-ring {
   display: none;
   position: absolute;
-  inset: -4px;
+  inset: calc(-1 * var(--spacing-gap-2xsmall));
   border-style: solid;
   border-width: var(--spacing-outline-medium);
   border-color: var(--project-focus-focus-ring);

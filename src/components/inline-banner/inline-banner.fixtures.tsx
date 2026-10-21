@@ -29,7 +29,7 @@ export const usage = `import { InlineBanner } from 'rost/components/inline-banne
 
 /** What the component's card on rost.build shows. */
 export const preview = (
-  <span style={{ display: 'flex', flexDirection: 'column', gap: 8, alignItems: 'center' }}>
+  <span style={{ display: 'flex', flexDirection: 'column', gap: 'var(--spacing-gap-small)', alignItems: 'center' }}>
     <InlineBanner status="positive">Saved just now</InlineBanner>
     <InlineBanner status="warning" size="small">Due soon</InlineBanner>
   </span>

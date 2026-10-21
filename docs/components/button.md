@@ -118,4 +118,12 @@ Every token this component uses, across all its variants.
 | `typography/body/letter-spacing` | `0px` |
 | `typography/body/line-height` | `22px` |
 
+## No token, on purpose
+
+| Part | Property | Value | Why |
+|---|---|---|---|
+| `focus-ring` | `inset` | `calc(-1 * var(--spacing-gap-2xsmall))` | Composed from a token: the ring sits spacing/gap/2xsmall outside the element. |
+| `focus-ring` | `inset` | `calc(-1 * var(--spacing-gap-2xsmall))` | Composed from a token: the ring sits spacing/gap/2xsmall outside the element. |
+| `focus-ring` | `inset` | `calc(-1 * var(--spacing-gap-2xsmall))` | Composed from a token: the ring sits spacing/gap/2xsmall outside the element. |
+
 See it live, with every value of every variant: [rost.build/components/button](https://rost.build/components/button/)

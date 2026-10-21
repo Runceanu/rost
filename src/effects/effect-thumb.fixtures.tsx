@@ -2,14 +2,14 @@ import { PillButton } from '../components/pill-button/PillButton'
 
 // The effect is one token, applied by whatever needs it. Shown here over real
 // Rost components, so the blur has something to work on.
-const frost = { backdropFilter: 'var(--effect-thumb)', background: 'rgba(0, 0, 0, 0.48)' }
+const frost = { backdropFilter: 'var(--effect-thumb)', background: 'color-mix(in srgb, black calc(var(--opacity-medium) * 100%), transparent)' }
 
 export const fixtures = []
 
 /** What a caller writes. */
 export const usage = `.panel {
   backdrop-filter: var(--effect-thumb);
-  background: rgba(0, 0, 0, 0.48);
+  background: color-mix(in srgb, black calc(var(--opacity-medium) * 100%), transparent);
 }`
 
 /** What the effect's card on rost.build shows: a frosted panel over a button. */

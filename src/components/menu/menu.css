@@ -45,7 +45,7 @@
 .rost-menu__focus-ring {
   display: none;
   position: absolute;
-  inset: 20px -4px;
+  inset: var(--spacing-gap-medium-large) calc(-1 * var(--spacing-gap-2xsmall));
   border-style: solid;
   border-width: var(--spacing-outline-medium);
   border-color: var(--actions-primary-focus-focus-ring);

@@ -20,7 +20,7 @@
   display: none;
   position: absolute;
   inset: 0;
-  background: rgba(58,58,58,0.48);
+  background: color-mix(in srgb, var(--non-interactive-background-tertiary) calc(var(--opacity-medium) * 100%), transparent);
   backdrop-filter: var(--effect-thumb);
   opacity: var(--opacity-strong);
   border-radius: var(--spacing-radius-xlarge);
@@ -81,11 +81,11 @@
 .rost-carousel__focus-ring {
   display: none;
   position: absolute;
-  inset: -4px;
+  inset: calc(-1 * var(--spacing-gap-2xsmall));
   border-style: solid;
   border-width: var(--spacing-outline-medium);
   border-color: var(--project-focus-focus-ring);
-  border-radius: 28px;
+  border-radius: calc(var(--spacing-radius-xlarge) + var(--spacing-gap-2xsmall));
   pointer-events: none;
 }
 

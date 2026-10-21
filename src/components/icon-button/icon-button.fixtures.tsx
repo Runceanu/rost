@@ -12,7 +12,7 @@ const NODES: Record<IconButtonType, Record<string, string>> = {
   project: { Default: '93:740', Hover: '93:742', Pressed: '93:745', Disabled: '93:748', Focus: '93:750' },
 }
 const FORCE: Record<string, string[]> = { Hover: ['hover'], Pressed: ['active'], Focus: ['focus', 'focus-visible'] }
-const frame = (el: JSX.Element, state: string) => <div style={{ display: 'inline-flex', padding: state === 'Focus' ? 4 : 0 }}>{el}</div>
+const frame = (el: JSX.Element, state: string) => <div style={{ display: 'inline-flex', padding: state === 'Focus' ? 'var(--spacing-gap-2xsmall)' : 0 }}>{el}</div>
 const cap = (s: string) => s[0]!.toUpperCase() + s.slice(1)
 
 export const fixtures = Object.entries(NODES).flatMap(([type, states]) =>
@@ -32,7 +32,7 @@ export const usage = `import { IconButton } from 'rost/components/icon-button/Ic
 
 /** What the component's card on rost.build shows. */
 export const preview = (
-  <span style={{ display: 'flex', gap: 12, alignItems: 'center' }}>
+  <span style={{ display: 'flex', gap: 'var(--spacing-gap-small-medium)', alignItems: 'center' }}>
     <IconButton aria-label="Back" tabIndex={-1} />
     <IconButton type="secondary" aria-label="Back" tabIndex={-1} />
     <IconButton type="tertiary" aria-label="Back" tabIndex={-1} />

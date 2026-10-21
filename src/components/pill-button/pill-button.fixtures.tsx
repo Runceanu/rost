@@ -13,7 +13,7 @@ const NODES: Record<PillButtonType, Record<string, string>> = {
   borderless: { Default: '25:249', Hover: '25:251', Pressed: '25:254', Disabled: '25:257', Focus: '25:260' },
 }
 const FORCE: Record<string, string[]> = { Hover: ['hover'], Pressed: ['active'], Focus: ['focus', 'focus-visible'] }
-const frame = (el: JSX.Element, state: string) => <div style={{ display: 'inline-flex', padding: state === 'Focus' ? 4 : 0 }}>{el}</div>
+const frame = (el: JSX.Element, state: string) => <div style={{ display: 'inline-flex', padding: state === 'Focus' ? 'var(--spacing-gap-2xsmall)' : 0 }}>{el}</div>
 const cap = (s: string) => s[0]!.toUpperCase() + s.slice(1)
 
 export const fixtures = Object.entries(NODES).flatMap(([type, states]) =>
@@ -34,7 +34,7 @@ export const usage = `import { PillButton } from 'rost/components/pill-button/Pi
 
 /** What the component's card on rost.build shows. */
 export const preview = (
-  <span style={{ display: 'flex', gap: 8 }}>
+  <span style={{ display: 'flex', gap: 'var(--spacing-gap-small)' }}>
     <PillButton tabIndex={-1}>Get in touch</PillButton>
     <PillButton type="secondary" tabIndex={-1}>The work</PillButton>
   </span>

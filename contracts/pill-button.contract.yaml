@@ -122,7 +122,7 @@ variants:
         position: { value: absolute }
         border-width: { token: spacing/outline/medium, value: 2px }
         border-color: { token: actions/primary/focus/focus-ring, value: "#b6ffda" }
-        inset: { value: -4px, notes: "Figma said -5px on the left and top, to make up for the stroke. The stroke takes no space here, so it is -4px all round." }
+        inset: { value: "calc(-1 * var(--spacing-gap-2xsmall))", untokenised: "Composed from a token: spacing/gap/2xsmall out, all round. Figma said -5px on the left and top, to make up for the stroke, which takes no space here." }
         border-radius: { token: spacing/radius/full, value: 10000px }
   - when: { type: Primary, state: Pressed }
     figmaNode: "20:20"
@@ -224,7 +224,7 @@ variants:
         position: { value: absolute }
         border-width: { token: spacing/outline/medium, value: 2px }
         border-color: { token: actions/secondary/regular/focus/focus-ring, value: "#999" }
-        inset: { value: -4px }
+        inset: { value: "calc(-1 * var(--spacing-gap-2xsmall))", untokenised: "Composed from a token: the ring sits spacing/gap/2xsmall outside the element." }
         border-radius: { token: spacing/radius/full, value: 10000px }
   - when: { type: Borderless, state: Default }
     figmaNode: "25:249"
@@ -277,7 +277,7 @@ variants:
         position: { value: absolute }
         border-width: { token: spacing/outline/medium, value: 2px }
         border-color: { token: actions/secondary/regular/focus/focus-ring, value: "#999" }
-        inset: { value: -4px }
+        inset: { value: "calc(-1 * var(--spacing-gap-2xsmall))", untokenised: "Composed from a token: the ring sits spacing/gap/2xsmall outside the element." }
       root:
         padding: { token: spacing/gap/none, value: 0px }
   - when: { type: Secondary, state: Default }
@@ -370,7 +370,7 @@ variants:
         position: { value: absolute }
         border-width: { token: spacing/outline/medium, value: 2px }
         border-color: { token: actions/secondary/regular/focus/focus-ring, value: "#999" }
-        inset: { value: -4px }
+        inset: { value: "calc(-1 * var(--spacing-gap-2xsmall))", untokenised: "Composed from a token: the ring sits spacing/gap/2xsmall outside the element." }
         border-radius: { token: spacing/radius/full, value: 10000px }
       background:
         position: { value: absolute }

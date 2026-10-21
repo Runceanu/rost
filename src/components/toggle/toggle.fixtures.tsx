@@ -13,7 +13,7 @@ const NODES: [string, boolean, string][] = [
   ['Focus', true, '168:1190'], ['Focus', false, '168:1193'],
 ]
 const FORCE: Record<string, string[]> = { Hover: ['hover'], Pressed: ['active'], Focus: ['focus', 'focus-visible'] }
-const frame = (el: JSX.Element, state: string) => <div style={{ display: 'inline-flex', padding: state === 'Focus' ? 4 : 0 }}>{el}</div>
+const frame = (el: JSX.Element, state: string) => <div style={{ display: 'inline-flex', padding: state === 'Focus' ? 'var(--spacing-gap-2xsmall)' : 0 }}>{el}</div>
 
 export const fixtures = NODES.map(([state, selected, node]) => ({
   node,
@@ -34,7 +34,7 @@ export const usage = `import { Toggle } from 'rost/components/toggle/Toggle'
 
 /** What the component's card on rost.build shows. */
 export const preview = (
-  <span style={{ display: 'flex', gap: 12, alignItems: 'center' }}>
+  <span style={{ display: 'flex', gap: 'var(--spacing-gap-small-medium)', alignItems: 'center' }}>
     <Toggle selected aria-label="On" tabIndex={-1} />
     <Toggle aria-label="Off" tabIndex={-1} />
   </span>
