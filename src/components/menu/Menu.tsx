@@ -23,7 +23,7 @@ const b = 'rost-menu'
  */
 export function Menu({ title = 'Title', description = 'Description', showDescription = true, showDivider = true, disabled = false, className, href, as = 'a', ...rest }: MenuProps) {
   const Root = as
-  const link = as === 'a' ? { href: disabled ? undefined : href, 'aria-disabled': disabled || undefined } : {}
+  const link = as === 'a' ? { href: disabled ? undefined : href, 'aria-disabled': disabled || undefined } : { 'aria-disabled': disabled || undefined }
   return (
     <Root className={[b, className].filter(Boolean).join(' ')} {...link} {...(rest as object)}>
       <span className={`${b}__content`}>

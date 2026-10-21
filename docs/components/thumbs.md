@@ -102,8 +102,6 @@ Every token this component uses, across all its variants.
 | `project/hover/icon` | `#ededed` |
 | `project/hover/label` | `#00d669` |
 | `project/hover/sub-label` | `#ededed` |
-| `project/lock/label` | `#d3d9d5` |
-| `project/lock/sub-label` | `#999` |
 | `project/pressed/icon` | `#c2c7c3` |
 | `project/pressed/label` | `#00d669` |
 | `project/pressed/sub-label` | `#c2c7c3` |

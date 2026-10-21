@@ -35,7 +35,7 @@ export const usage = `import { Toggle } from 'rost/components/toggle/Toggle'
 /** What the component's card on rost.build shows. */
 export const preview = (
   <span style={{ display: 'flex', gap: 'var(--spacing-gap-small-medium)', alignItems: 'center' }}>
-    <Toggle selected aria-label="On" tabIndex={-1} />
-    <Toggle aria-label="Off" tabIndex={-1} />
+    <Toggle as="span" selected aria-label="On" />
+    <Toggle as="span" aria-label="Off" />
   </span>
 )

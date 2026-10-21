@@ -40,8 +40,9 @@
      used on the marketing pages. Kept here so headings have a scale to sit on. */
   --typography-title-font-size: 24px;
   --typography-title-line-height: 32px;
-  --typography-subtitle-font-size: 20px;
-  --typography-subtitle-line-height: 28px;
+  /* Old names for the sub-title tokens below. The accounting app and the portfolio site still use them. */
+  --typography-subtitle-font-size: var(--typography-sub-title-font-size);
+  --typography-subtitle-line-height: var(--typography-sub-title-line-height);
   --typography-sub-headline-font-size: 40px;
   --typography-sub-headline-line-height: 48px;
 
@@ -218,7 +219,8 @@
   --effect-thumb:      blur(12px);                        /* BACKGROUND_BLUR "Thumb": frosted project-thumbnail panel */
   --effect-menu:       blur(12px);                        /* BACKGROUND_BLUR "Menu": frosted glass, standard radius (nav, hero cards) */
   --effect-menu-lg:    blur(24px);                        /* "Menu" frosted glass, large radius (case-study hero + island backgrounds) */
-  --effect-lock-frame: blur(8px);                         /* LAYER_BLUR "Lock frame": locked thumbnail (spacing/base-8) */
+  --spacing-base-8: 8px;                                  /* Figma's spacing/base-8, the size the Lock frame blur is tied to */
+  --effect-lock-frame: blur(var(--spacing-base-8));       /* LAYER_BLUR "Lock frame": locked thumbnail */
   --shadow-floating:   0 16px 24px 0 rgba(0, 0, 0, 0.16); /* DROP_SHADOW "Shadow/Floating" (alpha = opacity/soft) */
 
   /* Read from Figma 2026-10-19 (get_design_context fallbacks, confirmed by get_variable_defs) for Projects, Thumbs and Testimonials. */
@@ -282,7 +284,7 @@
   --typography-title-letter-spacing: 0px;
 
 
-  /* Read from Figma 2026-10-19 with the label text fix. paragraph/* comes from the design-context values only; the rest is confirmed by get_variable_defs. */
+  /* Read from Figma 2026-10-19 with the label text fix. the paragraph tokens come from the design-context values only; the rest is confirmed by get_variable_defs. */
   --project-hover-sub-label: #ededed;
   --project-lock-label: #d3d9d5;
   --project-pressed-sub-label: #c2c7c3;
@@ -293,7 +295,7 @@
   --typography-paragraph-letter-spacing: 0px;
   --typography-paragraph-line-height: 20px;
 
-  /* Read from Figma's design context on 2026-10-21, for the Testimonials quote. Not confirmed by get_variable_defs yet: Figma was closed. */
+  /* The Testimonials quote's style. Confirmed by get_variable_defs on Testimonials (sub-title/regular: 20 on 28, 400). */
   --typography-sub-title-font-size: 20px;
   --typography-sub-title-line-height: 28px;
   --typography-sub-title-font-weight-regular: 400;

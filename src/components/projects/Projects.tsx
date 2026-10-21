@@ -43,7 +43,7 @@ export function Projects({
   const cls = [b, locked && `${b}--state-locked`, className].filter(Boolean).join(' ')
   const details = [showIndustry && industry, showType && type, showPeriod && period].filter((d) => d !== false)
   const Root = as
-  const link = as === 'a' ? { href: disabled ? undefined : href, 'aria-disabled': disabled || undefined } : {}
+  const link = as === 'a' ? { href: disabled ? undefined : href, 'aria-disabled': disabled || undefined } : { 'aria-disabled': disabled || undefined }
   return (
     <Root className={cls} {...link} {...(rest as object)}>
       {showDivider && <span className={`${b}__outline`} />}

@@ -47,7 +47,7 @@ export function Thumbs({
   // The details with a dot between each pair, whichever are shown.
   const details = [showIndustry && industry, showType && type, showPeriod && period].filter((d) => d !== false)
   const Root = as
-  const link = as === 'a' ? { href: disabled ? undefined : href, 'aria-disabled': disabled || undefined } : {}
+  const link = as === 'a' ? { href: disabled ? undefined : href, 'aria-disabled': disabled || undefined } : { 'aria-disabled': disabled || undefined }
   return (
     <Root className={cls} {...link} {...(rest as object)}>
       <span className={`${b}__slot`}>{children}</span>

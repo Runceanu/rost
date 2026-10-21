@@ -272,11 +272,11 @@ variants:
     figmaNode: "261:1232"
     elements:
       number:
-        color: { token: project/lock/sub-label, value: "#999" }
+        color: { token: project/default/sub-label, value: "#999", notes: "Figma's Locked card uses the default tokens, not project/lock/*." }
       text:
-        color: { token: project/lock/label, value: "#d3d9d5" }
+        color: { token: project/default/label, value: "#d3d9d5" }
       detail:
-        color: { token: project/lock/sub-label, value: "#999" }
+        color: { token: project/default/sub-label, value: "#999" }
 guidance:
   status: proposed
   use:

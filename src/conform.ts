@@ -35,6 +35,9 @@ export interface Contract {
   readonly invariants: PartValues
   readonly variants?: Readonly<Record<string, PartValues>>
   readonly deviations?: readonly { what: string; why: string }[]
+  /** How Rost's own CSS reaches a state (see the schema): only used when checking Rost's CSS. */
+  readonly statesOn?: string
+  readonly stateSelectors?: Readonly<Record<string, string>>
 }
 
 /** A contract as written in contracts/*.contract.yaml (schema v2). */
@@ -53,6 +56,8 @@ export interface YamlContract {
     readonly deviations?: readonly { what: string; why: string }[]
   }>>
   readonly deviations?: readonly { what: string; why: string }[]
+  readonly statesOn?: string
+  readonly stateSelectors?: Readonly<Record<string, string>>
 }
 
 export interface Finding {
@@ -88,6 +93,8 @@ export function forApp(c: YamlContract, app: string): Contract {
     invariants,
     variants,
     deviations: [...(c.deviations ?? []), ...(impl?.deviations ?? [])],
+    ...(c.statesOn ? { statesOn: c.statesOn } : {}),
+    ...(c.stateSelectors ? { stateSelectors: c.stateSelectors } : {}),
   }
 }
 
@@ -108,6 +115,33 @@ const splitTop = (s: string) => {
     else if (s[i] === ',' && depth === 0) { out.push(s.slice(from, i)); from = i + 1 }
   }
   return [...out, s.slice(from)].map((x) => x.trim()).filter(Boolean)
+}
+
+/**
+ * One spelling per selector. `.a:hover.a--on` and `.a--on:hover` match the
+ * same element, so each compound's parts are sorted; the descendant order
+ * stays. Without this, the check reports a rule as missing because it's
+ * written in a different order.
+ */
+export function normSelector(sel: string): string {
+  return splitDescendants(sel.trim()).map((compound) => {
+    const parts = compound.match(/(\.[\w-]+|#[\w-]+|\[[^\]]*\]|::?[\w-]+(?:\((?:[^()]|\([^()]*\))*\))?|^[a-z*][\w-]*)/g) ?? [compound]
+    const type = /^[a-z*]/.test(parts[0]!) ? parts.shift()! : ''
+    return type + parts.sort().join('')
+  }).join(' ')
+}
+
+/** Splits on spaces outside parentheses, so `:is(a, b) .x` is two compounds. */
+function splitDescendants(sel: string): string[] {
+  const out: string[] = []
+  let depth = 0, from = 0
+  for (let i = 0; i < sel.length; i++) {
+    if (sel[i] === '(') depth++
+    else if (sel[i] === ')') depth--
+    else if (/\s/.test(sel[i]!) && depth === 0) { if (i > from) out.push(sel.slice(from, i)); from = i + 1 }
+  }
+  if (from < sel.length) out.push(sel.slice(from))
+  return out.filter(Boolean)
 }
 
 /**
@@ -132,7 +166,7 @@ export function readRules(css: string): Map<string, Map<string, string>> {
     for (const raw of splitTop(prelude)) {
       // `:not(:disabled)` guards a state, it isn't part of the selector's
       // identity: `.btn--primary:hover:not(:disabled)` counts as `.btn--primary:hover`.
-      const selector = raw.replace(/:not\(:disabled\)/g, '').replace(/\s+/g, ' ')
+      const selector = normSelector(raw.replace(/:not\(:disabled\)/g, '').replace(/\s+/g, ' '))
       const decls = out.get(selector) ?? new Map<string, string>()
       for (const d of body.matchAll(/([\w-]+)\s*:\s*([^;]+)(?:;|$)/g)) decls.set(d[1]!.trim(), d[2]!.trim())
       out.set(selector, decls)
@@ -208,7 +242,12 @@ export function conform(contract: Contract, css: string, tokensCss: string, vari
       if (!axisRaw?.trim() || !valueRaw?.trim()) continue
       const axis = kebab(axisRaw)
       const value = kebab(valueRaw)
-      if (axis === 'state' && STATE_PSEUDOS[value]) pseudos = STATE_PSEUDOS[value]!
+      // Rost's own CSS can put a state on a part inside (`stateSelectors`), or
+      // only on a link or a button (`statesOn`); other apps write it plainly.
+      const own = valueStyle ? undefined : contract.stateSelectors?.[valueRaw.trim()]
+      if (axis === 'state' && own) pseudos = [own]
+      else if (axis === 'state' && STATE_PSEUDOS[value]) pseudos = STATE_PSEUDOS[value]!.map((p) =>
+        !valueStyle && contract.statesOn && ['hover', 'pressed', 'focus'].includes(value) ? `${p}${contract.statesOn}` : p)
       // Locked and the like aren't pseudo-classes: they're modifiers the caller sets.
       else if (value === 'true') modifiers += `${root}--${axis}`
       else if (value === 'false') modifiers += valueStyle ? '' : `:not(${root}--${axis})`
@@ -231,7 +270,7 @@ export function conform(contract: Contract, css: string, tokensCss: string, vari
     const variantRules = variant
       ? variantSelectors().map((v) => (part === 'root' ? v : `${v} ${partSelector(part)}`))
       : []
-    for (const sel of [base, ...variantRules]) for (const [k, v] of rules.get(sel) ?? []) merged.set(k, v)
+    for (const sel of [base, ...variantRules]) for (const [k, v] of rules.get(normSelector(sel)) ?? []) merged.set(k, v)
     return merged
   }
 
@@ -246,6 +285,11 @@ export function conform(contract: Contract, css: string, tokensCss: string, vari
       return { 'padding-top': top, 'padding-right': right, 'padding-bottom': bottom, 'padding-left': left }[prop]
     }
     if (prop === 'border-width' || prop === 'border-color') {
+      // A stroke on some sides only (Figma's `border-l border-t`) is written per side.
+      for (const side of ['top', 'right', 'bottom', 'left']) {
+        const one = decls.get(`border-${side}-${prop.split('-')[1]}`)
+        if (one !== undefined) return one
+      }
       const short = decls.get('border')
       if (short === undefined) return undefined
       const bits = short.split(/\s+(?![^(]*\))/)
@@ -264,10 +308,15 @@ export function conform(contract: Contract, css: string, tokensCss: string, vari
   }
 
   const findings: Finding[] = []
-  const sections: PartValues[] = [contract.invariants]
-  if (variant && contract.variants?.[variant]) sections.push(contract.variants[variant]!)
+  // What each part should end up with: the fixed values, with the variant's
+  // own values on top. Checking the fixed ones alone against a variant would
+  // report every override as drift.
+  const expected: Record<string, Record<string, ContractValue>> = {}
+  for (const [part, props] of Object.entries(contract.invariants)) expected[part] = { ...props }
+  if (variant && contract.variants?.[variant])
+    for (const [part, props] of Object.entries(contract.variants[variant]!)) expected[part] = { ...expected[part], ...props }
 
-  for (const section of sections) {
+  for (const section of [expected]) {
     for (const [part, props] of Object.entries(section)) {
       // Only parts the app claims are checked: a Figma node with no
       // counterpart in code (a default glyph inside a caller's slot) isn't

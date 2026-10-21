@@ -21,6 +21,8 @@ export interface TestimonialsProps extends HTMLAttributes<HTMLDivElement> {
   readonly disabled?: boolean
   /** The 56px round picture: TestimonialPicture, or an image. */
   readonly children?: ReactNode
+  /** `span` draws the header without its button, for a preview inside something that's already a link. */
+  readonly as?: 'button' | 'span'
 }
 
 const b = 'rost-testimonials'
@@ -34,16 +36,18 @@ export function Testimonials({
   name = 'Name', jobDescription = 'Job description', testimonial = 'This is where the testimonials comes',
   expanded, defaultExpanded = false, onExpandedChange,
   showName = true, showJobDescription = true, showAction = true, showDivider = true,
-  disabled = false, children, className, ...rest
+  disabled = false, children, className, as = 'button', ...rest
 }: TestimonialsProps) {
   const [own, setOwn] = useState(defaultExpanded)
   const open = expanded ?? own
   const quote = useId()
-  const toggle = () => { setOwn(!open); onExpandedChange?.(!open) }
+  const toggle = () => { if (expanded === undefined) setOwn(!open); onExpandedChange?.(!open) }
+  const Top = as
+  const header = as === 'button' ? { type: 'button' as const, 'aria-expanded': open, 'aria-controls': quote, disabled, onClick: toggle } : { 'aria-disabled': disabled || undefined }
   return (
     <div className={[b, open && `${b}--expanded`, className].filter(Boolean).join(' ')} {...rest}>
       {showDivider && <span className={`${b}__outline`} />}
-      <button type="button" className={`${b}__top`} aria-expanded={open} aria-controls={quote} disabled={disabled} onClick={toggle}>
+      <Top className={`${b}__top`} {...header}>
         <span className={`${b}__left`}>
           <span className={`${b}__slot`}>{children}</span>
           <span className={`${b}__content`}>
@@ -52,7 +56,7 @@ export function Testimonials({
           </span>
         </span>
         {showAction && <span className={`${b}__actions`} aria-hidden="true"><span className={`${b}__icons-chevron`} /></span>}
-      </button>
+      </Top>
       <div className={`${b}__bottom`} id={quote} hidden={!open}>
         <p className={`${b}__testimonial`}>{testimonial}</p>
       </div>

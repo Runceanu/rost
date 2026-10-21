@@ -46,7 +46,7 @@ elements:
       inset: { value: "0" }
       pointer-events: { value: none, assert: false }
   icons-arrow-left:
-    notes: The 20px icon slot. Its colour is the action's `icon` token, per type and state.
+    notes: "The 20px icon slot. Its colour is the action's `icon` token: primary when it's on, secondary when it's off."
     styles:
       flex-shrink: { value: "0", assert: false }
       position: { value: relative, assert: false }
