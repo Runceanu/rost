@@ -51,4 +51,4 @@ To check an app, import `forApp` and `conform` from `rost/conform` in one of its
 
 22 contracts, all read from Figma, and validation is clean. On 2026-10-20 I froze them: they're the source now, not Figma, and changes happen in the YAML.
 
-Three components are built in code from their contracts: Badge, InlineBanner and Thumbs. All 22 of their variants match Figma in the visual test. I've signed off the guidance on 15 contracts. Badge was the 16th, until Figma gave it a dot-only size, so it's back to `proposed`. Thumbs' guidance is new and waits for me too. Nothing is `stable` yet. The [roadmap](docs/ROADMAP.md) has the details.
+Nine components are built in code from their contracts: Badge, InlineBanner, Thumbs, Divider, Tag, Chip, PillButton, IconButton and Toggle. 82 of their 83 variants match Figma in the visual test (Chip Pressed is just over the line). I've signed off the guidance on 15 contracts. Badge was the 16th, until Figma gave it a dot-only size, so it's back to `proposed`. Thumbs' guidance is new and waits for me too. Nothing is `stable` yet. The [roadmap](docs/ROADMAP.md) has the details.

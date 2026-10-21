@@ -32,9 +32,11 @@ function declarations(styles, { root }) {
     out.push(`${prop}: ${value};`)
   }
   if (sides) {
-    const width = styles['border-width'] || styles['border-top-width'] ? null : 'var(--spacing-outline-small)'
-    if (sides === 'all') out.push('border-style: solid;', ...(width ? [`border-width: ${width};`] : []))
-    else for (const side of sides.split(' ')) out.push(`border-${side}-style: solid;`, ...(width ? [`border-${side}-width: ${width};`] : []))
+    // A side with no width of its own is Figma's default stroke, 1px
+    // (`border-l` next to `border-t-[1px]`), never the browser's 3px.
+    const fallback = 'var(--spacing-outline-small)'
+    if (sides === 'all') out.push('border-style: solid;', ...(styles['border-width'] ? [] : [`border-width: ${fallback};`]))
+    else for (const side of sides.split(' ')) out.push(`border-${side}-style: solid;`, ...(styles['border-width'] || styles[`border-${side}-width`] ? [] : [`border-${side}-width: ${fallback};`]))
   }
   return out
 }

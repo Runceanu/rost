@@ -26,8 +26,15 @@ elements:
     styles:
       justify-content: { value: center }
       align-items: { value: center }
-      display: { value: flex, assert: false }
+      display: { value: inline-flex, assert: false }
+      vertical-align: { value: middle, assert: false }
       position: { value: relative, assert: false }
+      background: { value: none, assert: false, notes: "A `<button>` or a link. The browser's own look goes; each type draws its own." }
+      border: { value: none, assert: false }
+      font: { value: inherit, assert: false }
+      text-decoration: { value: none, assert: false }
+      cursor: { value: pointer, assert: false }
+      outline: { value: none, assert: false }
       gap: { token: spacing/gap/small, value: 8px }
       height: { token: spacing/size/medium-large, value: 48px }
       border-radius: { token: spacing/radius/full, value: 10000px }
@@ -55,17 +62,26 @@ elements:
     styles:
       position: { value: absolute }
       inset: { value: 20.84% 16.66% 20.83% 18.4% }
-  focus-ring: {}
-  background: {}
+  focus-ring:
+    styles:
+      display: { value: none, assert: false }
+      border-style: { value: solid }
+      pointer-events: { value: none, assert: false }
+  background:
+    notes: The fill under Secondary, Tertiary and Borderless, drawn see-through on its own layer so the label stays solid.
+    styles:
+      position: { value: absolute }
+      inset: { value: "0" }
+      pointer-events: { value: none, assert: false }
 variants:
   - when: { type: Primary, state: Default }
     figmaNode: "20:13"
     elements:
       root:
-        border-sides: { value: left top }
         background: { token: actions/primary/default/background, value: "#00d669" }
-        border-color: { token: actions/primary/default/outline, value: "rgba(237,237,237,0.64)" }
-        border-top-width: { token: spacing/outline/small, value: 1px }
+        box-shadow:
+          value: inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-default-outline)
+          untokenised: "Figma's 1px left and top stroke, drawn inside the shape the way Figma draws it. A border would make the button 1px wider. The width and colour are tokens."
         padding-left: { token: spacing/gap/medium-large, value: 20px }
         padding-right: { token: spacing/gap/medium-large, value: 20px }
         padding-top: { token: spacing/gap/none, value: 0px }
@@ -76,10 +92,10 @@ variants:
     figmaNode: "20:15"
     elements:
       root:
-        border-sides: { value: left top }
         background: { token: actions/primary/hover/background, value: "#00b450" }
-        border-color: { token: actions/primary/hover/outline, value: "rgba(237,237,237,0.64)" }
-        border-top-width: { token: spacing/outline/small, value: 1px }
+        box-shadow:
+          value: inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-hover-outline)
+          untokenised: "Figma's 1px left and top stroke, drawn inside the shape the way Figma draws it. A border would make the button 1px wider. The width and colour are tokens."
         padding-left: { token: spacing/gap/medium-large, value: 20px }
         padding-right: { token: spacing/gap/medium-large, value: 20px }
         padding-top: { token: spacing/gap/none, value: 0px }
@@ -90,10 +106,10 @@ variants:
     figmaNode: "20:17"
     elements:
       root:
-        border-sides: { value: left top }
         background: { token: actions/primary/focus/background, value: "#00d669" }
-        border-color: { token: actions/primary/focus/outline, value: "rgba(237,237,237,0.64)" }
-        border-top-width: { token: spacing/outline/small, value: 1px }
+        box-shadow:
+          value: inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-focus-outline)
+          untokenised: "Figma's 1px left and top stroke, drawn inside the shape the way Figma draws it. A border would make the button 1px wider. The width and colour are tokens."
         padding-left: { token: spacing/gap/medium-large, value: 20px }
         padding-right: { token: spacing/gap/medium-large, value: 20px }
         padding-top: { token: spacing/gap/none, value: 0px }
@@ -102,19 +118,20 @@ variants:
         color: { token: actions/primary/focus/label, value: "#060805" }
       focus-ring:
         border-sides: { value: all }
+        display: { value: block, assert: false }
         position: { value: absolute }
         border-width: { token: spacing/outline/medium, value: 2px }
         border-color: { token: actions/primary/focus/focus-ring, value: "#b6ffda" }
-        inset: { value: -5px -4px -4px -5px }
+        inset: { value: -4px, notes: "Figma said -5px on the left and top, to make up for the stroke. The stroke takes no space here, so it is -4px all round." }
         border-radius: { token: spacing/radius/full, value: 10000px }
   - when: { type: Primary, state: Pressed }
     figmaNode: "20:20"
     elements:
       root:
-        border-sides: { value: left top }
         background: { token: actions/primary/pressed/background, value: "#00913a" }
-        border-color: { token: actions/primary/pressed/outline, value: "rgba(237,237,237,0.64)" }
-        border-top-width: { token: spacing/outline/small, value: 1px }
+        box-shadow:
+          value: inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-pressed-outline)
+          untokenised: "Figma's 1px left and top stroke, drawn inside the shape the way Figma draws it. A border would make the button 1px wider. The width and colour are tokens."
         padding-left: { token: spacing/gap/medium-large, value: 20px }
         padding-right: { token: spacing/gap/medium-large, value: 20px }
         padding-top: { token: spacing/gap/none, value: 0px }
@@ -125,15 +142,16 @@ variants:
     figmaNode: "20:22"
     elements:
       root:
-        border-sides: { value: left top }
         background: { token: actions/primary/disabled/background, value: "#00d669" }
-        border-color: { token: actions/primary/disabled/outline, value: "rgba(237,237,237,0.64)" }
-        border-top-width: { token: spacing/outline/small, value: 1px }
+        box-shadow:
+          value: inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-disabled-outline)
+          untokenised: "Figma's 1px left and top stroke, drawn inside the shape the way Figma draws it. A border would make the button 1px wider. The width and colour are tokens."
         padding-left: { token: spacing/gap/medium-large, value: 20px }
         padding-right: { token: spacing/gap/medium-large, value: 20px }
         padding-top: { token: spacing/gap/none, value: 0px }
         padding-bottom: { token: spacing/gap/none, value: 0px }
         opacity: { token: opacity/gentle, value: "0.24" }
+        cursor: { value: default, assert: false }
       label:
         color: { token: actions/primary/disabled/label, value: "#060805" }
   - when: { type: Tertiary, state: Default }
@@ -187,6 +205,7 @@ variants:
         padding-top: { token: spacing/gap/none, value: 0px }
         padding-bottom: { token: spacing/gap/none, value: 0px }
         opacity: { token: opacity/gentle, value: "0.24" }
+        cursor: { value: default, assert: false }
       label:
         color: { token: actions/tertiary/disabled/label, value: "#d3d9d5" }
   - when: { type: Tertiary, state: Focus }
@@ -201,6 +220,7 @@ variants:
         color: { token: actions/tertiary/focus/label, value: "#d3d9d5" }
       focus-ring:
         border-sides: { value: all }
+        display: { value: block, assert: false }
         position: { value: absolute }
         border-width: { token: spacing/outline/medium, value: 2px }
         border-color: { token: actions/secondary/regular/focus/focus-ring, value: "#999" }
@@ -244,6 +264,7 @@ variants:
         color: { token: actions/tertiary/disabled/label, value: "#d3d9d5" }
       root:
         opacity: { token: opacity/gentle, value: "0.24" }
+        cursor: { value: default, assert: false }
         padding: { token: spacing/gap/none, value: 0px }
   - when: { type: Borderless, state: Focus }
     figmaNode: "25:260"
@@ -252,6 +273,7 @@ variants:
         color: { token: actions/tertiary/focus/label, value: "#d3d9d5" }
       focus-ring:
         border-sides: { value: all }
+        display: { value: block, assert: false }
         position: { value: absolute }
         border-width: { token: spacing/outline/medium, value: 2px }
         border-color: { token: actions/secondary/regular/focus/focus-ring, value: "#999" }
@@ -321,6 +343,7 @@ variants:
         padding-top: { token: spacing/gap/none, value: 0px }
         padding-bottom: { token: spacing/gap/none, value: 0px }
         opacity: { token: opacity/gentle, value: "0.24" }
+        cursor: { value: default, assert: false }
       label:
         color: { token: actions/secondary/regular/disabled/label, value: "#d3d9d5" }
       background:
@@ -343,6 +366,7 @@ variants:
         color: { token: actions/secondary/regular/focus/label, value: "#d3d9d5" }
       focus-ring:
         border-sides: { value: all }
+        display: { value: block, assert: false }
         position: { value: absolute }
         border-width: { token: spacing/outline/medium, value: 2px }
         border-color: { token: actions/secondary/regular/focus/focus-ring, value: "#999" }

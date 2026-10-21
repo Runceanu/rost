@@ -25,8 +25,13 @@ elements:
     styles:
       justify-content: { value: center }
       align-items: { value: center }
-      display: { value: flex, assert: false }
+      display: { value: inline-flex, assert: false }
+      vertical-align: { value: middle, assert: false }
       position: { value: relative, assert: false }
+      background: { value: none, assert: false, notes: "A `<button>`. The browser's own look goes; on and off draw their own." }
+      border: { value: none, assert: false }
+      cursor: { value: pointer, assert: false }
+      outline: { value: none, assert: false }
       gap: { token: spacing/gap/small, value: 8px }
       padding-left: { token: spacing/gap/medium-large, value: 20px }
       padding-right: { token: spacing/gap/medium-large, value: 20px }
@@ -34,29 +39,50 @@ elements:
       padding-bottom: { token: spacing/gap/none, value: 0px }
       width: { token: spacing/size/medium, value: 40px }
       height: { token: spacing/size/medium, value: 40px }
-  icons-arrow-left:
-    styles:
-      overflow: { value: clip }
-      flex-shrink: { value: "0", assert: false }
-      position: { value: relative, assert: false }
-      width: { value: 20px, token: spacing/size/xsmall }
-      height: { value: 20px, token: spacing/size/xsmall }
-  union:
+  background:
+    notes: The see-through plate when it's off, on its own layer so the icon stays solid.
     styles:
       position: { value: absolute }
-      inset: { value: 20.84% 16.66% 20.83% 18.4% }
-  background: {}
-  focus-ring: {}
+      inset: { value: "0" }
+      pointer-events: { value: none, assert: false }
+  icons-arrow-left:
+    notes: The 20px icon slot. Its colour is read from Figma's pixels, because Figma bakes it into the SVG and doesn't say which token it is.
+    styles:
+      flex-shrink: { value: "0", assert: false }
+      position: { value: relative, assert: false }
+      overflow: { value: clip }
+      width: { value: 20px, token: spacing/size/xsmall }
+      height: { value: 20px, token: spacing/size/xsmall }
+  glyph:
+    notes: "Figma's arrow, drawn as a mask in the icon's colour. A caller's own icon replaces it and should use `currentColor`."
+    styles:
+      display: { value: block, assert: false }
+      width: { value: 100% }
+      height: { value: 100% }
+      background: { value: currentColor }
+      mask:
+        value: url(./icon-arrow-left.svg) center / contain no-repeat
+        untokenised: "The icon file itself, `assets/icons/arrow-left.svg`, the same shape as Figma's `Union` layer."
+  focus-ring:
+    styles:
+      display: { value: none, assert: false }
+      position: { value: absolute }
+      inset: { value: -4px }
+      border-style: { value: solid }
+      border-width: { token: spacing/outline/medium, value: 2px }
+      pointer-events: { value: none, assert: false }
 variants:
   - when: { state: Default, selected: true }
     figmaNode: "168:1150"
     elements:
       root:
-        border-sides: { value: left top }
         background: { token: actions/primary/default/background, value: "#00d669" }
-        border-color: { token: actions/primary/default/outline, value: "rgba(237,237,237,0.64)" }
-        border-top-width: { token: spacing/outline/small, value: 1px }
+        box-shadow:
+          value: inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-default-outline)
+          untokenised: "Figma's 1px left and top stroke, drawn inside the shape as Figma draws it. The width and colour are tokens."
         border-radius: { token: spacing/radius/full, value: 10000px }
+      icons-arrow-left:
+        color: { token: non-interactive/foreground/quadruple, value: "#3a3a3a", notes: "Read from the pixels. Six tokens hold #3a3a3a; this is the foreground one." }
   - when: { state: Default, selected: false }
     figmaNode: "168:1152"
     elements:
@@ -64,21 +90,23 @@ variants:
         border-radius: { token: spacing/radius/medium, value: 12px }
       background:
         border-sides: { value: left top }
-        position: { value: absolute }
-        inset: { value: "0" }
         background: { token: actions/secondary/regular/default/background, value: "#3a3a3a" }
         border-color: { token: actions/secondary/regular/default/outline, value: "#ededed" }
         opacity: { token: opacity/gentle, value: "0.24" }
         border-radius: { token: spacing/radius/medium, value: 12px }
+      icons-arrow-left:
+        color: { token: actions/primary/default/background, value: "#00d669" }
   - when: { state: Hover, selected: true }
     figmaNode: "168:1159"
     elements:
       root:
-        border-sides: { value: left top }
         background: { token: actions/primary/hover/background, value: "#00b450" }
-        border-color: { token: actions/primary/hover/outline, value: "rgba(237,237,237,0.64)" }
-        border-top-width: { token: spacing/outline/small, value: 1px }
+        box-shadow:
+          value: inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-hover-outline)
+          untokenised: "Figma's 1px left and top stroke, drawn inside the shape as Figma draws it. The width and colour are tokens."
         border-radius: { token: spacing/radius/full, value: 10000px }
+      icons-arrow-left:
+        color: { token: non-interactive/foreground/quadruple, value: "#3a3a3a", notes: "Read from the pixels. Six tokens hold #3a3a3a; this is the foreground one." }
   - when: { state: Hover, selected: false }
     figmaNode: "168:1161"
     elements:
@@ -86,21 +114,23 @@ variants:
         border-radius: { token: spacing/radius/medium, value: 12px }
       background:
         border-sides: { value: left top }
-        position: { value: absolute }
-        inset: { value: "0" }
-        background: { token: actions/secondary/regular/default/background, value: "#3a3a3a" }
-        border-color: { token: actions/secondary/regular/default/outline, value: "#ededed" }
-        opacity: { token: opacity/gentle, value: "0.24" }
+        background: { token: actions/secondary/regular/hover/background, value: "#747573" }
+        border-color: { token: actions/secondary/regular/hover/outline, value: "#ededed" }
+        opacity: { token: opacity/mild, value: "0.32" }
         border-radius: { token: spacing/radius/medium, value: 12px }
+      icons-arrow-left:
+        color: { token: actions/primary/hover/background, value: "#00b450" }
   - when: { state: Pressed, selected: true }
     figmaNode: "168:1170"
     elements:
       root:
-        border-sides: { value: left top }
         background: { token: actions/primary/pressed/background, value: "#00913a" }
-        border-color: { token: actions/primary/pressed/outline, value: "rgba(237,237,237,0.64)" }
-        border-top-width: { token: spacing/outline/small, value: 1px }
+        box-shadow:
+          value: inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-pressed-outline)
+          untokenised: "Figma's 1px left and top stroke, drawn inside the shape as Figma draws it. The width and colour are tokens."
         border-radius: { token: spacing/radius/full, value: 10000px }
+      icons-arrow-left:
+        color: { token: non-interactive/foreground/quadruple, value: "#3a3a3a", notes: "Read from the pixels. Six tokens hold #3a3a3a; this is the foreground one." }
   - when: { state: Pressed, selected: false }
     figmaNode: "168:1172"
     elements:
@@ -108,50 +138,54 @@ variants:
         border-radius: { token: spacing/radius/medium, value: 12px }
       background:
         border-sides: { value: left top }
-        position: { value: absolute }
-        inset: { value: "0" }
-        background: { token: actions/secondary/regular/default/background, value: "#3a3a3a" }
-        border-color: { token: actions/secondary/regular/default/outline, value: "#ededed" }
-        opacity: { token: opacity/gentle, value: "0.24" }
+        background: { token: actions/secondary/regular/pressed/background, value: "#999" }
+        border-color: { token: actions/secondary/regular/pressed/outline, value: "#ededed" }
+        opacity: { token: opacity/mild, value: "0.32" }
         border-radius: { token: spacing/radius/medium, value: 12px }
+      icons-arrow-left:
+        color: { token: actions/primary/default/background, value: "#00d669" }
   - when: { state: Disabled, selected: true }
     figmaNode: "168:1181"
     elements:
       root:
-        border-sides: { value: left top }
         background: { token: actions/primary/disabled/background, value: "#00d669" }
-        border-color: { token: actions/primary/disabled/outline, value: "rgba(237,237,237,0.64)" }
-        border-top-width: { token: spacing/outline/small, value: 1px }
+        box-shadow:
+          value: inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-disabled-outline)
+          untokenised: "Figma's 1px left and top stroke, drawn inside the shape as Figma draws it. The width and colour are tokens."
         border-radius: { token: spacing/radius/full, value: 10000px }
         opacity: { token: opacity/gentle, value: "0.24" }
+        cursor: { value: default, assert: false }
+      icons-arrow-left:
+        color: { token: non-interactive/foreground/quadruple, value: "#3a3a3a", notes: "Read from the pixels. Six tokens hold #3a3a3a; this is the foreground one." }
   - when: { state: Disabled, selected: false }
     figmaNode: "168:1183"
     elements:
       root:
         border-radius: { token: spacing/radius/medium, value: 12px }
+        opacity: { token: opacity/gentle, value: "0.24" }
+        cursor: { value: default, assert: false }
       background:
         border-sides: { value: left top }
-        position: { value: absolute }
-        inset: { value: "0" }
-        background: { token: actions/secondary/regular/default/background, value: "#3a3a3a" }
-        border-color: { token: actions/secondary/regular/default/outline, value: "#ededed" }
-        opacity: { token: opacity/gentle, value: "0.24" }
+        background: { token: actions/secondary/regular/disabled/background, value: "#3a3a3a" }
+        border-color: { token: actions/secondary/regular/disabled/outline, value: "#ededed" }
+        opacity: { token: opacity/mild, value: "0.32" }
         border-radius: { token: spacing/radius/medium, value: 12px }
+      icons-arrow-left:
+        color: { token: actions/primary/default/background, value: "#00d669" }
   - when: { state: Focus, selected: true }
     figmaNode: "168:1190"
     elements:
       root:
-        border-sides: { value: left top }
         background: { token: actions/primary/focus/background, value: "#00d669" }
-        border-color: { token: actions/primary/focus/outline, value: "rgba(237,237,237,0.64)" }
-        border-top-width: { token: spacing/outline/small, value: 1px }
+        box-shadow:
+          value: inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-focus-outline)
+          untokenised: "Figma's 1px left and top stroke, drawn inside the shape as Figma draws it. The width and colour are tokens."
         border-radius: { token: spacing/radius/full, value: 10000px }
+      icons-arrow-left:
+        color: { token: non-interactive/foreground/quadruple, value: "#3a3a3a", notes: "Read from the pixels. Six tokens hold #3a3a3a; this is the foreground one." }
       focus-ring:
-        border-sides: { value: all }
-        position: { value: absolute }
-        border-width: { token: spacing/outline/medium, value: 2px }
+        display: { value: block, assert: false }
         border-color: { token: actions/primary/focus/focus-ring, value: "#b6ffda" }
-        inset: { value: -5px -4px -4px -5px }
         border-radius: { token: spacing/radius/full, value: 10000px }
   - when: { state: Focus, selected: false }
     figmaNode: "168:1193"
@@ -160,12 +194,16 @@ variants:
         border-radius: { token: spacing/radius/medium, value: 12px }
       background:
         border-sides: { value: left top }
-        position: { value: absolute }
-        inset: { value: "0" }
-        background: { token: actions/secondary/regular/default/background, value: "#3a3a3a" }
-        border-color: { token: actions/secondary/regular/default/outline, value: "#ededed" }
+        background: { token: actions/secondary/regular/focus/background, value: "#3a3a3a" }
+        border-color: { token: actions/secondary/regular/focus/outline, value: "#ededed" }
         opacity: { token: opacity/gentle, value: "0.24" }
         border-radius: { token: spacing/radius/medium, value: 12px }
+      icons-arrow-left:
+        color: { token: actions/primary/default/background, value: "#00d669" }
+      focus-ring:
+        display: { value: block, assert: false }
+        border-color: { token: actions/secondary/regular/focus/focus-ring, value: "#999" }
+        border-radius: { token: spacing/radius/large, value: 16px }
 guidance:
   status: agreed
   use:

@@ -1,0 +1,420 @@
+/* Generated from contracts/pill-button.contract.yaml by bin/build-css.mjs. Don't edit: change the contract and rebuild. */
+
+.rost-pill-button, .rost-pill-button * { box-sizing: border-box; margin: 0; }
+.rost-pill-button > img, .rost-pill-button [class*="__icons-"] > img { display: block; position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; }
+
+.rost-pill-button {
+  justify-content: center;
+  align-items: center;
+  display: inline-flex;
+  vertical-align: middle;
+  position: relative;
+  background: none;
+  border: none;
+  font: inherit;
+  text-decoration: none;
+  cursor: pointer;
+  outline: none;
+  gap: var(--spacing-gap-small);
+  height: var(--spacing-size-medium-large);
+  border-radius: var(--spacing-radius-full);
+}
+
+.rost-pill-button__label {
+  flex-shrink: 0;
+  white-space: nowrap;
+  text-align: center;
+  position: relative;
+  font-family: var(--font-family-base);
+  font-weight: var(--typography-body-font-weight-medium);
+  line-height: var(--typography-body-line-height);
+  font-size: var(--typography-body-font-size);
+  letter-spacing: var(--typography-body-letter-spacing);
+}
+
+.rost-pill-button__icons-arrow-left {
+  overflow: clip;
+  flex-shrink: 0;
+  position: relative;
+  width: var(--spacing-size-xsmall);
+  height: var(--spacing-size-xsmall);
+}
+
+.rost-pill-button__union {
+  position: absolute;
+  inset: 20.84% 16.66% 20.83% 18.4%;
+}
+
+.rost-pill-button__focus-ring {
+  display: none;
+  border-style: solid;
+  pointer-events: none;
+}
+
+.rost-pill-button__background {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.rost-pill-button.rost-pill-button--type-primary {
+  background: var(--actions-primary-default-background);
+  box-shadow: inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-default-outline);
+  padding-left: var(--spacing-gap-medium-large);
+  padding-right: var(--spacing-gap-medium-large);
+  padding-top: var(--spacing-gap-none);
+  padding-bottom: var(--spacing-gap-none);
+}
+
+.rost-pill-button.rost-pill-button--type-primary .rost-pill-button__label {
+  color: var(--actions-primary-default-label);
+}
+
+.rost-pill-button.rost-pill-button--type-primary:hover {
+  background: var(--actions-primary-hover-background);
+  box-shadow: inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-hover-outline);
+  padding-left: var(--spacing-gap-medium-large);
+  padding-right: var(--spacing-gap-medium-large);
+  padding-top: var(--spacing-gap-none);
+  padding-bottom: var(--spacing-gap-none);
+}
+
+.rost-pill-button.rost-pill-button--type-primary:hover .rost-pill-button__label {
+  color: var(--actions-primary-hover-label);
+}
+
+.rost-pill-button.rost-pill-button--type-primary:focus-visible {
+  background: var(--actions-primary-focus-background);
+  box-shadow: inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-focus-outline);
+  padding-left: var(--spacing-gap-medium-large);
+  padding-right: var(--spacing-gap-medium-large);
+  padding-top: var(--spacing-gap-none);
+  padding-bottom: var(--spacing-gap-none);
+}
+
+.rost-pill-button.rost-pill-button--type-primary:focus-visible .rost-pill-button__label {
+  color: var(--actions-primary-focus-label);
+}
+
+.rost-pill-button.rost-pill-button--type-primary:focus-visible .rost-pill-button__focus-ring {
+  display: block;
+  position: absolute;
+  border-width: var(--spacing-outline-medium);
+  border-color: var(--actions-primary-focus-focus-ring);
+  inset: -4px;
+  border-radius: var(--spacing-radius-full);
+  border-style: solid;
+}
+
+.rost-pill-button.rost-pill-button--type-primary:active {
+  background: var(--actions-primary-pressed-background);
+  box-shadow: inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-pressed-outline);
+  padding-left: var(--spacing-gap-medium-large);
+  padding-right: var(--spacing-gap-medium-large);
+  padding-top: var(--spacing-gap-none);
+  padding-bottom: var(--spacing-gap-none);
+}
+
+.rost-pill-button.rost-pill-button--type-primary:active .rost-pill-button__label {
+  color: var(--actions-primary-pressed-label);
+}
+
+.rost-pill-button.rost-pill-button--type-primary:is(:disabled, [aria-disabled="true"]) {
+  background: var(--actions-primary-disabled-background);
+  box-shadow: inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-disabled-outline);
+  padding-left: var(--spacing-gap-medium-large);
+  padding-right: var(--spacing-gap-medium-large);
+  padding-top: var(--spacing-gap-none);
+  padding-bottom: var(--spacing-gap-none);
+  opacity: var(--opacity-gentle);
+  cursor: default;
+}
+
+.rost-pill-button.rost-pill-button--type-primary:is(:disabled, [aria-disabled="true"]) .rost-pill-button__label {
+  color: var(--actions-primary-disabled-label);
+}
+
+.rost-pill-button.rost-pill-button--type-tertiary {
+  padding-left: var(--spacing-gap-medium-large);
+  padding-right: var(--spacing-gap-medium-large);
+  padding-top: var(--spacing-gap-none);
+  padding-bottom: var(--spacing-gap-none);
+}
+
+.rost-pill-button.rost-pill-button--type-tertiary .rost-pill-button__label {
+  color: var(--actions-tertiary-default-label);
+}
+
+.rost-pill-button.rost-pill-button--type-tertiary:hover {
+  padding-left: var(--spacing-gap-medium-large);
+  padding-right: var(--spacing-gap-medium-large);
+  padding-top: var(--spacing-gap-none);
+  padding-bottom: var(--spacing-gap-none);
+}
+
+.rost-pill-button.rost-pill-button--type-tertiary:hover .rost-pill-button__label {
+  color: var(--actions-tertiary-hover-label);
+}
+
+.rost-pill-button.rost-pill-button--type-tertiary:hover .rost-pill-button__background {
+  position: absolute;
+  inset: 0;
+  background: var(--actions-tertiary-hover-background);
+  opacity: var(--opacity-mild);
+  border-radius: var(--spacing-radius-full);
+}
+
+.rost-pill-button.rost-pill-button--type-tertiary:active {
+  padding-left: var(--spacing-gap-medium-large);
+  padding-right: var(--spacing-gap-medium-large);
+  padding-top: var(--spacing-gap-none);
+  padding-bottom: var(--spacing-gap-none);
+}
+
+.rost-pill-button.rost-pill-button--type-tertiary:active .rost-pill-button__label {
+  color: var(--actions-tertiary-pressed-label);
+}
+
+.rost-pill-button.rost-pill-button--type-tertiary:active .rost-pill-button__background {
+  position: absolute;
+  inset: 0;
+  background: var(--actions-tertiary-pressed-background);
+  opacity: var(--opacity-mild);
+  border-radius: var(--spacing-radius-full);
+}
+
+.rost-pill-button.rost-pill-button--type-tertiary:is(:disabled, [aria-disabled="true"]) {
+  padding-left: var(--spacing-gap-medium-large);
+  padding-right: var(--spacing-gap-medium-large);
+  padding-top: var(--spacing-gap-none);
+  padding-bottom: var(--spacing-gap-none);
+  opacity: var(--opacity-gentle);
+  cursor: default;
+}
+
+.rost-pill-button.rost-pill-button--type-tertiary:is(:disabled, [aria-disabled="true"]) .rost-pill-button__label {
+  color: var(--actions-tertiary-disabled-label);
+}
+
+.rost-pill-button.rost-pill-button--type-tertiary:focus-visible {
+  padding-left: var(--spacing-gap-medium-large);
+  padding-right: var(--spacing-gap-medium-large);
+  padding-top: var(--spacing-gap-none);
+  padding-bottom: var(--spacing-gap-none);
+}
+
+.rost-pill-button.rost-pill-button--type-tertiary:focus-visible .rost-pill-button__label {
+  color: var(--actions-tertiary-focus-label);
+}
+
+.rost-pill-button.rost-pill-button--type-tertiary:focus-visible .rost-pill-button__focus-ring {
+  display: block;
+  position: absolute;
+  border-width: var(--spacing-outline-medium);
+  border-color: var(--actions-secondary-regular-focus-focus-ring);
+  inset: -4px;
+  border-radius: var(--spacing-radius-full);
+  border-style: solid;
+}
+
+.rost-pill-button.rost-pill-button--type-borderless .rost-pill-button__label {
+  color: var(--actions-tertiary-default-label);
+}
+
+.rost-pill-button.rost-pill-button--type-borderless {
+  padding: var(--spacing-gap-none);
+}
+
+.rost-pill-button.rost-pill-button--type-borderless:hover .rost-pill-button__label {
+  color: var(--actions-tertiary-hover-label);
+}
+
+.rost-pill-button.rost-pill-button--type-borderless:hover .rost-pill-button__background {
+  position: absolute;
+  inset: 0;
+  background: var(--actions-tertiary-hover-background);
+  opacity: var(--opacity-mild);
+}
+
+.rost-pill-button.rost-pill-button--type-borderless:hover {
+  padding: var(--spacing-gap-none);
+}
+
+.rost-pill-button.rost-pill-button--type-borderless:active .rost-pill-button__label {
+  color: var(--actions-tertiary-pressed-label);
+}
+
+.rost-pill-button.rost-pill-button--type-borderless:active .rost-pill-button__background {
+  position: absolute;
+  inset: 0;
+  background: var(--actions-tertiary-pressed-background);
+  opacity: var(--opacity-mild);
+}
+
+.rost-pill-button.rost-pill-button--type-borderless:active {
+  padding: var(--spacing-gap-none);
+}
+
+.rost-pill-button.rost-pill-button--type-borderless:is(:disabled, [aria-disabled="true"]) .rost-pill-button__label {
+  color: var(--actions-tertiary-disabled-label);
+}
+
+.rost-pill-button.rost-pill-button--type-borderless:is(:disabled, [aria-disabled="true"]) {
+  opacity: var(--opacity-gentle);
+  cursor: default;
+  padding: var(--spacing-gap-none);
+}
+
+.rost-pill-button.rost-pill-button--type-borderless:focus-visible .rost-pill-button__label {
+  color: var(--actions-tertiary-focus-label);
+}
+
+.rost-pill-button.rost-pill-button--type-borderless:focus-visible .rost-pill-button__focus-ring {
+  display: block;
+  position: absolute;
+  border-width: var(--spacing-outline-medium);
+  border-color: var(--actions-secondary-regular-focus-focus-ring);
+  inset: -4px;
+  border-style: solid;
+}
+
+.rost-pill-button.rost-pill-button--type-borderless:focus-visible {
+  padding: var(--spacing-gap-none);
+}
+
+.rost-pill-button.rost-pill-button--type-secondary {
+  padding-left: var(--spacing-gap-medium-large);
+  padding-right: var(--spacing-gap-medium-large);
+  padding-top: var(--spacing-gap-none);
+  padding-bottom: var(--spacing-gap-none);
+}
+
+.rost-pill-button.rost-pill-button--type-secondary .rost-pill-button__label {
+  color: var(--actions-secondary-regular-default-label);
+}
+
+.rost-pill-button.rost-pill-button--type-secondary .rost-pill-button__background {
+  position: absolute;
+  inset: 0;
+  background: var(--actions-secondary-regular-default-background);
+  opacity: var(--opacity-gentle);
+  border-radius: var(--spacing-radius-full);
+  border-left-color: var(--actions-secondary-regular-default-outline);
+  border-top-color: var(--actions-secondary-regular-default-outline);
+  border-left-style: solid;
+  border-left-width: var(--spacing-outline-small);
+  border-top-style: solid;
+  border-top-width: var(--spacing-outline-small);
+}
+
+.rost-pill-button.rost-pill-button--type-secondary:hover {
+  padding-left: var(--spacing-gap-medium-large);
+  padding-right: var(--spacing-gap-medium-large);
+  padding-top: var(--spacing-gap-none);
+  padding-bottom: var(--spacing-gap-none);
+}
+
+.rost-pill-button.rost-pill-button--type-secondary:hover .rost-pill-button__label {
+  color: var(--actions-secondary-regular-hover-label);
+}
+
+.rost-pill-button.rost-pill-button--type-secondary:hover .rost-pill-button__background {
+  position: absolute;
+  inset: 0;
+  background: var(--actions-secondary-regular-hover-background);
+  opacity: var(--opacity-mild);
+  border-radius: var(--spacing-radius-full);
+  border-left-color: var(--actions-secondary-regular-hover-outline);
+  border-top-color: var(--actions-secondary-regular-hover-outline);
+  border-left-style: solid;
+  border-left-width: var(--spacing-outline-small);
+  border-top-style: solid;
+  border-top-width: var(--spacing-outline-small);
+}
+
+.rost-pill-button.rost-pill-button--type-secondary:active {
+  padding-left: var(--spacing-gap-medium-large);
+  padding-right: var(--spacing-gap-medium-large);
+  padding-top: var(--spacing-gap-none);
+  padding-bottom: var(--spacing-gap-none);
+}
+
+.rost-pill-button.rost-pill-button--type-secondary:active .rost-pill-button__label {
+  color: var(--actions-secondary-regular-pressed-label);
+}
+
+.rost-pill-button.rost-pill-button--type-secondary:active .rost-pill-button__background {
+  position: absolute;
+  inset: 0;
+  background: var(--actions-secondary-regular-pressed-background);
+  opacity: var(--opacity-mild);
+  border-radius: var(--spacing-radius-full);
+  border-left-color: var(--actions-secondary-regular-pressed-outline);
+  border-top-color: var(--actions-secondary-regular-pressed-outline);
+  border-left-style: solid;
+  border-left-width: var(--spacing-outline-small);
+  border-top-style: solid;
+  border-top-width: var(--spacing-outline-small);
+}
+
+.rost-pill-button.rost-pill-button--type-secondary:is(:disabled, [aria-disabled="true"]) {
+  padding-left: var(--spacing-gap-medium-large);
+  padding-right: var(--spacing-gap-medium-large);
+  padding-top: var(--spacing-gap-none);
+  padding-bottom: var(--spacing-gap-none);
+  opacity: var(--opacity-gentle);
+  cursor: default;
+}
+
+.rost-pill-button.rost-pill-button--type-secondary:is(:disabled, [aria-disabled="true"]) .rost-pill-button__label {
+  color: var(--actions-secondary-regular-disabled-label);
+}
+
+.rost-pill-button.rost-pill-button--type-secondary:is(:disabled, [aria-disabled="true"]) .rost-pill-button__background {
+  position: absolute;
+  inset: 0;
+  background: var(--actions-secondary-regular-disabled-background);
+  opacity: var(--opacity-mild);
+  border-radius: var(--spacing-radius-full);
+  border-left-color: var(--actions-secondary-regular-disabled-outline);
+  border-top-color: var(--actions-secondary-regular-disabled-outline);
+  border-left-style: solid;
+  border-left-width: var(--spacing-outline-small);
+  border-top-style: solid;
+  border-top-width: var(--spacing-outline-small);
+}
+
+.rost-pill-button.rost-pill-button--type-secondary:focus-visible {
+  padding-left: var(--spacing-gap-medium-large);
+  padding-right: var(--spacing-gap-medium-large);
+  padding-top: var(--spacing-gap-none);
+  padding-bottom: var(--spacing-gap-none);
+}
+
+.rost-pill-button.rost-pill-button--type-secondary:focus-visible .rost-pill-button__label {
+  color: var(--actions-secondary-regular-focus-label);
+}
+
+.rost-pill-button.rost-pill-button--type-secondary:focus-visible .rost-pill-button__focus-ring {
+  display: block;
+  position: absolute;
+  border-width: var(--spacing-outline-medium);
+  border-color: var(--actions-secondary-regular-focus-focus-ring);
+  inset: -4px;
+  border-radius: var(--spacing-radius-full);
+  border-style: solid;
+}
+
+.rost-pill-button.rost-pill-button--type-secondary:focus-visible .rost-pill-button__background {
+  position: absolute;
+  inset: 0;
+  background: var(--actions-secondary-regular-focus-background);
+  opacity: var(--opacity-gentle);
+  border-radius: var(--spacing-radius-full);
+  border-left-color: var(--actions-secondary-regular-focus-outline);
+  border-top-color: var(--actions-secondary-regular-focus-outline);
+  border-left-style: solid;
+  border-left-width: var(--spacing-outline-small);
+  border-top-style: solid;
+  border-top-width: var(--spacing-outline-small);
+}

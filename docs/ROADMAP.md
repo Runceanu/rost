@@ -28,15 +28,21 @@ On 2026-10-20 rost.build became a proper site, the way shadcn's is: a homepage, 
 
 ## Now: Rost in code
 
-Three components so far, all built from their contracts and all matching Figma in the visual test:
+Nine components so far, all built from their contracts and checked against Figma in the visual test:
 
 - **InlineBanner**, all 8 variants, with Figma's own icons.
 - **Badge**, all 8 variants. Figma gave it a small size since August: just the coloured dot. The dot in front of the label on the medium size is optional now.
 - **Thumbs**, all 6 states. It's the first one with hover, pressed and focus, so the visual test now forces those through Chrome's DevTools protocol. The "Coming soon" pill on a disabled card is the Badge.
+- **Divider, Tag, Chip, PillButton, IconButton, Toggle.** 61 variants, all matching except Chip Pressed (2.62% against the 2.5% line: arc anti-aliasing, and text that sits about a pixel higher in Chrome).
 
-Next, one at a time on the same setup (CSS from the contract, the component, fixtures, the visual test):
+Building them turned up two things to fix:
 
-- **Button, PillButton, IconButton, Toggle, Chip, Tag.** The test can force their states now.
+- **The parser took the wrong branch.** Where Figma guards a layer per state, it kept Default's values for every state. Toggle's off side said hover, pressed and disabled all look like Default. The pixels and the raw read say otherwise, so I fixed Toggle by hand. Input, Menu and the the portfolio site ones may have the same problem, and building each one will show it.
+- **Text sits about a pixel higher in Chrome than in Figma.** General Sans' metrics (ascent 1010, descent 240, line gap 100) get split differently. An `ascent-override` in the `@font-face` brings it closer, but that changes every app's text, so it's a decision, not a test tweak.
+
+Next, one at a time on the same setup:
+
+- **Button.** Its Figma renders came back empty, so there's nothing to test it against until they're captured again.
 - **Input, Menu, and the rest of the portfolio site's** (Carousel, Projects, Testimonials).
 - **`npx rost add badge`**, the way shadcn does it: copy a component, its CSS and its tokens into the accounting app or the portfolio site. That's how my apps will stop keeping their own copies.
 
