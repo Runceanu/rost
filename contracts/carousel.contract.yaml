@@ -16,268 +16,168 @@ source:
   extractedAt: "2026-10-19"
   extractedBy: mcp
   frozenAt: "2026-10-20"
+props:
+  number: { type: slot, notes: A two-digit index in front of the title. }
+  title: { type: slot }
+  description: { type: slot }
+  showNumber: { type: boolean, default: true }
+  showTitle: { type: boolean, default: true }
+  showDescription: { type: boolean, default: true }
 states: [ Default, Hover, Pressed, Focus, Disabled ]
 elements:
-  root: {}
-  title: {}
-  number: {}
-  label: {}
-  text: {}
-  bottom: {}
-  background: {}
-  focus-ring: {}
+  root:
+    notes: "Figma's read of Default came back as a Code Connect prompt, not code. Default's values come from its branch in the other four reads, which all carry it."
+    styles:
+      display: { value: flex, assert: false }
+      flex-direction: { value: column, assert: false }
+      align-items: { value: flex-start }
+      position: { value: relative, assert: false }
+      gap: { token: spacing/gap/none, value: 0px }
+      padding: { token: spacing/gap/large, value: 24px }
+      border-radius: { token: spacing/radius/xlarge, value: 24px }
+      text-decoration: { value: none, assert: false, notes: "It's a link. The whole card is the target." }
+      color: { value: inherit, assert: false }
+      outline: { value: none, assert: false }
+      width:
+        value: 312px
+        assert: false
+        notes: Just the size of the Figma frame. No token, and not something to copy.
+  background:
+    notes: The glass that shows while it's pressed.
+    styles:
+      display: { value: none, assert: false }
+      position: { value: absolute }
+      inset: { value: "0" }
+      background: { value: "rgba(58,58,58,0.48)", untokenised: "#3a3a3a at 48%. The kit has no colour token with alpha for it." }
+      backdrop-filter: { token: effect/thumb, value: blur(12px) }
+      opacity: { token: opacity/strong, value: "0.64" }
+      border-radius: { token: spacing/radius/xlarge, value: 24px }
+      pointer-events: { value: none, assert: false }
+  title:
+    styles:
+      align-items: { value: center }
+      display: { value: flex, assert: false }
+      position: { value: relative, assert: false }
+      width: { value: 100% }
+      gap: { token: spacing/gap/medium, value: 16px }
+  number:
+    styles:
+      display: { value: flex, assert: false }
+      justify-content: { value: center }
+      align-items: { value: center }
+      flex-shrink: { value: "0", assert: false }
+      width: { value: 16px, token: spacing/size/2xsmall }
+      font-family: { token: font-family/base, value: "'General Sans Variable'" }
+      font-weight: { token: typography/label/font-weight/regular, value: "400" }
+      line-height: { token: typography/label/line-height, value: 14px }
+      font-size: { token: typography/label/font-size, value: 12px }
+      letter-spacing: { token: typography/label/letter-spacing, value: 0px }
+  text:
+    notes: The title.
+    styles:
+      flex: { value: 1 0 0, assert: false }
+      min-width: { value: 1px, assert: false }
+      font-family: { token: font-family/base, value: "'General Sans Variable'" }
+      font-weight: { token: typography/title/font-weight/medium, value: "500" }
+      line-height: { token: typography/title/line-height, value: 32px }
+      font-size: { token: typography/title/font-size, value: 24px }
+      letter-spacing: { token: typography/title/letter-spacing, value: 0px }
+  bottom:
+    styles:
+      align-items: { value: center }
+      display: { value: flex, assert: false }
+      position: { value: relative, assert: false }
+      width: { value: 100% }
+      justify-content: { value: flex-end }
+      gap: { token: spacing/gap/medium, value: 16px }
+      padding-left: { token: spacing/gap/xlarge, value: 32px }
+  description:
+    notes: The parser missed this line. It's the paragraph style.
+    styles:
+      flex: { value: 1 0 0, assert: false }
+      min-width: { value: 1px, assert: false }
+      font-family: { token: font-family/base, value: "'General Sans Variable'" }
+      font-weight: { token: typography/paragraph/font-weight/regular, value: "400" }
+      line-height: { token: typography/paragraph/line-height, value: 20px }
+      font-size: { token: typography/paragraph/font-size, value: 14px }
+      letter-spacing: { token: typography/paragraph/letter-spacing, value: 0px }
+  focus-ring:
+    styles:
+      display: { value: none, assert: false }
+      position: { value: absolute }
+      inset: { value: -4px }
+      border-style: { value: solid }
+      border-width: { token: spacing/outline/medium, value: 2px }
+      border-color: { token: project/focus/focus-ring, value: "#999" }
+      border-radius:
+        value: 28px
+        untokenised: "The element's radius plus the ring's offset, so it follows from those two."
+      pointer-events: { value: none, assert: false }
 variants:
   - when: { state: Default }
     figmaNode: "157:303"
+    elements:
+      number:
+        color: { token: project/default/sub-label, value: "#999" }
+      text:
+        color: { token: project/default/label, value: "#d3d9d5" }
+      description:
+        color: { token: project/default/sub-label, value: "#999" }
+  - when: { state: Hover }
+    figmaNode: "157:360"
+    elements:
+      number:
+        color: { token: project/hover/label, value: "#00d669" }
+      text:
+        color: { token: project/hover/label, value: "#00d669" }
+      description:
+        color: { token: project/hover/sub-label, value: "#ededed" }
+  - when: { state: Pressed }
+    figmaNode: "157:331"
+    elements:
+      background:
+        display: { value: block, assert: false }
+      number:
+        color: { token: project/pressed/label, value: "#00d669" }
+      text:
+        color: { token: project/pressed/label, value: "#00d669" }
+      description:
+        color: { token: project/pressed/sub-label, value: "#c2c7c3" }
+  - when: { state: Focus }
+    figmaNode: "157:345"
+    elements:
+      focus-ring:
+        display: { value: block, assert: false }
+      number:
+        color: { token: project/focus/sub-label, value: "#999" }
+      text:
+        color: { token: project/focus/label, value: "#d3d9d5" }
+      description:
+        color: { token: project/focus/sub-label, value: "#999" }
   - when: { state: Disabled }
     figmaNode: "157:317"
     elements:
       root:
-        display: { value: flex, assert: false }
-        flex-direction: { value: column, assert: false }
-        align-items: { value: flex-start }
-        position: { value: relative, assert: false }
-        gap: { token: spacing/gap/none, value: 0px }
-        padding: { token: spacing/gap/large, value: 24px }
-        border-radius: { token: spacing/radius/xlarge, value: 24px }
-        width:
-          value: 312px
-          assert: false
-          notes: Just the size of the Figma frame. No token, and not something to copy.
         opacity: { token: opacity/mild, value: "0.32" }
-      title:
-        align-items: { value: center }
-        display: { value: flex, assert: false }
-        flex-shrink: { value: "0", assert: false }
-        width: { value: 100% }
-        position: { value: relative, assert: false }
-        gap: { token: spacing/gap/medium, value: 16px }
+        cursor: { value: default, assert: false }
       number:
-        justify-content: { value: center }
-        align-items: { value: center }
-        display: { value: flex, assert: false }
-        flex-direction: { value: column, assert: false }
-        flex-shrink: { value: "0", assert: false }
-        position: { value: relative, assert: false }
-        width: { value: 16px, token: spacing/size/2xsmall }
-      label:
-        flex-shrink: { value: "0", assert: false }
-        width: { value: 100% }
-        position: { value: relative, assert: false }
-        font-family: { token: font-family/base, value: "'General Sans Variable'" }
-        font-weight: { token: typography/label/font-weight/regular, value: "400" }
-        line-height: { token: typography/label/line-height, value: 14px }
         color: { token: project/disabled/sub-label, value: "#999" }
-        font-size: { token: typography/label/font-size, value: 12px }
-        letter-spacing: { token: typography/label/letter-spacing, value: 0px }
       text:
-        flex-shrink: { value: "0", assert: false }
-        white-space: { value: nowrap, assert: false }
-        position: { value: relative, assert: false }
-        font-family: { token: font-family/base, value: "'General Sans Variable'" }
-        font-weight: { token: typography/title/font-weight/medium, value: "500" }
-        line-height: { token: typography/title/line-height, value: 32px }
         color: { token: project/disabled/label, value: "#d3d9d5" }
-        font-size: { token: typography/title/font-size, value: 24px }
-        letter-spacing: { token: typography/title/letter-spacing, value: 0px }
-      bottom:
-        align-items: { value: center }
-        display: { value: flex, assert: false }
-        flex-shrink: { value: "0", assert: false }
-        width: { value: 100% }
-        justify-content: { value: flex-end }
-        position: { value: relative, assert: false }
-        gap: { token: spacing/gap/medium, value: 16px }
-        padding-left: { token: spacing/gap/xlarge, value: 32px }
-  - when: { state: Pressed }
-    figmaNode: "157:331"
-    elements:
-      root:
-        display: { value: flex, assert: false }
-        flex-direction: { value: column, assert: false }
-        align-items: { value: flex-start }
-        position: { value: relative, assert: false }
-        gap: { token: spacing/gap/none, value: 0px }
-        padding: { token: spacing/gap/large, value: 24px }
-        border-radius: { token: spacing/radius/xlarge, value: 24px }
-        width:
-          value: 312px
-          assert: false
-          notes: Just the size of the Figma frame. No token, and not something to copy.
-      title:
-        align-items: { value: center }
-        display: { value: flex, assert: false }
-        flex-shrink: { value: "0", assert: false }
-        width: { value: 100% }
-        position: { value: relative, assert: false }
-        gap: { token: spacing/gap/medium, value: 16px }
-      number:
-        justify-content: { value: center }
-        align-items: { value: center }
-        display: { value: flex, assert: false }
-        flex-direction: { value: column, assert: false }
-        flex-shrink: { value: "0", assert: false }
-        position: { value: relative, assert: false }
-        width: { value: 16px, token: spacing/size/2xsmall }
-      label:
-        flex-shrink: { value: "0", assert: false }
-        width: { value: 100% }
-        position: { value: relative, assert: false }
-        font-family: { token: font-family/base, value: "'General Sans Variable'" }
-        font-weight: { token: typography/label/font-weight/regular, value: "400" }
-        line-height: { token: typography/label/line-height, value: 14px }
-        color: { token: project/pressed/label, value: "#00d669" }
-        font-size: { token: typography/label/font-size, value: 12px }
-        letter-spacing: { token: typography/label/letter-spacing, value: 0px }
-      text:
-        flex-shrink: { value: "0", assert: false }
-        white-space: { value: nowrap, assert: false }
-        position: { value: relative, assert: false }
-        font-family: { token: font-family/base, value: "'General Sans Variable'" }
-        font-weight: { token: typography/title/font-weight/medium, value: "500" }
-        line-height: { token: typography/title/line-height, value: 32px }
-        color: { token: project/pressed/label, value: "#00d669" }
-        font-size: { token: typography/title/font-size, value: 24px }
-        letter-spacing: { token: typography/title/letter-spacing, value: 0px }
-      bottom:
-        align-items: { value: center }
-        display: { value: flex, assert: false }
-        flex-shrink: { value: "0", assert: false }
-        width: { value: 100% }
-        justify-content: { value: flex-end }
-        position: { value: relative, assert: false }
-        gap: { token: spacing/gap/medium, value: 16px }
-        padding-left: { token: spacing/gap/xlarge, value: 32px }
-      background:
-        position: { value: absolute }
-        inset: { value: "0" }
-        background: { value: "rgba(58,58,58,0.48)" }
-        opacity: { token: opacity/strong, value: "0.64" }
-        border-radius: { token: spacing/radius/xlarge, value: 24px }
-  - when: { state: Focus }
-    figmaNode: "157:345"
-    elements:
-      root:
-        display: { value: flex, assert: false }
-        flex-direction: { value: column, assert: false }
-        align-items: { value: flex-start }
-        position: { value: relative, assert: false }
-        gap: { token: spacing/gap/none, value: 0px }
-        padding: { token: spacing/gap/large, value: 24px }
-        border-radius: { token: spacing/radius/xlarge, value: 24px }
-        width:
-          value: 312px
-          assert: false
-          notes: Just the size of the Figma frame. No token, and not something to copy.
-      title:
-        align-items: { value: center }
-        display: { value: flex, assert: false }
-        flex-shrink: { value: "0", assert: false }
-        width: { value: 100% }
-        position: { value: relative, assert: false }
-        gap: { token: spacing/gap/medium, value: 16px }
-      number:
-        justify-content: { value: center }
-        align-items: { value: center }
-        display: { value: flex, assert: false }
-        flex-direction: { value: column, assert: false }
-        flex-shrink: { value: "0", assert: false }
-        position: { value: relative, assert: false }
-        width: { value: 16px, token: spacing/size/2xsmall }
-      label:
-        flex-shrink: { value: "0", assert: false }
-        width: { value: 100% }
-        position: { value: relative, assert: false }
-        font-family: { token: font-family/base, value: "'General Sans Variable'" }
-        font-weight: { token: typography/label/font-weight/regular, value: "400" }
-        line-height: { token: typography/label/line-height, value: 14px }
-        color: { token: project/focus/sub-label, value: "#999" }
-        font-size: { token: typography/label/font-size, value: 12px }
-        letter-spacing: { token: typography/label/letter-spacing, value: 0px }
-      text:
-        flex-shrink: { value: "0", assert: false }
-        white-space: { value: nowrap, assert: false }
-        position: { value: relative, assert: false }
-        font-family: { token: font-family/base, value: "'General Sans Variable'" }
-        font-weight: { token: typography/title/font-weight/medium, value: "500" }
-        line-height: { token: typography/title/line-height, value: 32px }
-        color: { token: project/focus/label, value: "#d3d9d5" }
-        font-size: { token: typography/title/font-size, value: 24px }
-        letter-spacing: { token: typography/title/letter-spacing, value: 0px }
-      bottom:
-        align-items: { value: center }
-        display: { value: flex, assert: false }
-        flex-shrink: { value: "0", assert: false }
-        width: { value: 100% }
-        justify-content: { value: flex-end }
-        position: { value: relative, assert: false }
-        gap: { token: spacing/gap/medium, value: 16px }
-        padding-left: { token: spacing/gap/xlarge, value: 32px }
-      focus-ring:
-        border-sides: { value: all }
-        position: { value: absolute }
-        border-width: { token: spacing/outline/medium, value: 2px }
-        border-color: { token: project/focus/focus-ring, value: "#999" }
-        inset: { value: -4px }
-        border-radius:
-          value: 28px
-          untokenised: "The element's radius plus the ring's offset, so it follows from those two."
-  - when: { state: Hover }
-    figmaNode: "157:360"
-    elements:
-      root:
-        display: { value: flex, assert: false }
-        flex-direction: { value: column, assert: false }
-        align-items: { value: flex-start }
-        position: { value: relative, assert: false }
-        gap: { token: spacing/gap/none, value: 0px }
-        padding: { token: spacing/gap/large, value: 24px }
-        border-radius: { token: spacing/radius/xlarge, value: 24px }
-        width:
-          value: 312px
-          assert: false
-          notes: Just the size of the Figma frame. No token, and not something to copy.
-      title:
-        align-items: { value: center }
-        display: { value: flex, assert: false }
-        flex-shrink: { value: "0", assert: false }
-        width: { value: 100% }
-        position: { value: relative, assert: false }
-        gap: { token: spacing/gap/medium, value: 16px }
-      number:
-        justify-content: { value: center }
-        align-items: { value: center }
-        display: { value: flex, assert: false }
-        flex-direction: { value: column, assert: false }
-        flex-shrink: { value: "0", assert: false }
-        position: { value: relative, assert: false }
-        width: { value: 16px, token: spacing/size/2xsmall }
-      label:
-        flex-shrink: { value: "0", assert: false }
-        width: { value: 100% }
-        position: { value: relative, assert: false }
-        font-family: { token: font-family/base, value: "'General Sans Variable'" }
-        font-weight: { token: typography/label/font-weight/regular, value: "400" }
-        line-height: { token: typography/label/line-height, value: 14px }
-        color: { token: project/hover/label, value: "#00d669" }
-        font-size: { token: typography/label/font-size, value: 12px }
-        letter-spacing: { token: typography/label/letter-spacing, value: 0px }
-      text:
-        flex-shrink: { value: "0", assert: false }
-        white-space: { value: nowrap, assert: false }
-        position: { value: relative, assert: false }
-        font-family: { token: font-family/base, value: "'General Sans Variable'" }
-        font-weight: { token: typography/title/font-weight/medium, value: "500" }
-        line-height: { token: typography/title/line-height, value: 32px }
-        color: { token: project/hover/label, value: "#00d669" }
-        font-size: { token: typography/title/font-size, value: 24px }
-        letter-spacing: { token: typography/title/letter-spacing, value: 0px }
-      bottom:
-        align-items: { value: center }
-        display: { value: flex, assert: false }
-        flex-shrink: { value: "0", assert: false }
-        width: { value: 100% }
-        justify-content: { value: flex-end }
-        position: { value: relative, assert: false }
-        gap: { token: spacing/gap/medium, value: 16px }
-        padding-left: { token: spacing/gap/xlarge, value: 32px }
+      description:
+        color: { token: project/disabled/sub-label, value: "#999" }
+guidance:
+  status: proposed
+  use:
+    - The cards in the portfolio site's home page carousel. Each one leads to a piece of work.
+  avoid:
+    - A card with a picture. That's **Thumbs**.
+    - Long titles. The title wraps, but two lines of 24px eat the card.
+  behaviour: |-
+    A number, a title and a line of description, on nothing: the card has no fill until you press it. On hover the number and title go green and the description lightens. Pressed lays a frosted glass under it (`effect/thumb`). Disabled fades the whole card to `opacity/mild`.
+  accessibility:
+    element: an `<a>`. Disabled drops the `href` and sets `aria-disabled="true"`.
+    name: the title, read with the number and the description. Pass `aria-label` if that reads badly.
+    keyboard: Tab to it, Enter opens it. The carousel around it handles the arrows.
+    focus: a 2px ring, 4px outside the card, on `:focus-visible` only.
+  content: A title of one to three words. The description is one short sentence.

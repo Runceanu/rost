@@ -8,19 +8,23 @@
 |---|---|
 | Kind | component |
 | Contract | `review` · [testimonials.contract.yaml](../../contracts/testimonials.contract.yaml) |
-| Guidance | **missing** |
+| Guidance | `proposed` |
 | Source | [Figma 144:67](https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=144-67) · read 2026-10-19 · frozen 2026-10-20 |
 | Implemented in | nowhere yet |
-
-## Not right yet
-
-- No guidance yet. It needs a `guidance` block (there's one to copy in `schema/template.contract.yaml`).
 
 ## Props
 
 | Prop | Type | Values | Default |
 |---|---|---|---|
+| `name` | slot |  |  |
+| `jobDescription` | slot |  |  |
+| `testimonial` | slot |  |  |
+| `picture` | slot |  |  |
 | `expanded` | boolean |  | `false` |
+| `showName` | boolean |  | `true` |
+| `showJobDescription` | boolean |  | `true` |
+| `showAction` | boolean |  | `true` |
+| `showDivider` | boolean |  | `true` |
 
 ## States
 
@@ -28,18 +32,43 @@
 
 ## Anatomy
 
-- `root`
+- `root`: A disclosure. The header row (`top`) is the button; the whole block takes its states, the way Figma draws them. Values come from each variant's own branch of the Figma read.
+- `outline`: The divider underneath.
+- `top`: The header row, and the button. Its own browser look goes.
 - `left`
-- `slot`
+- `slot`: The picture.
 - `content`
-- `-actions`
-- `icons-arrow-left`
-- `outline`
-- `top`
-- `label`
-- `text`
-- `bottom`
+- `text`: The name.
+- `job-description`
+- `actions`: The chevron at the end, in a 32px round frame.
+- `icons-chevron`: Figma's 16px chevron, down when closed and up when open, drawn as a mask. #00d669 in every state.
+- `bottom`: The quote. Only there when it's expanded.
+- `testimonial`
 - `focus-ring`
+
+## When to use
+
+- What people said about working with me, in a list. Each one opens to show the quote.
+
+## When not to use
+
+- A quote that should always be visible. Put it on the page as text.
+- More than a sentence or three. It's a testimonial, not a case study.
+
+## Behaviour
+
+Closed, it's a row: the picture, the name and the role, a chevron, and a line underneath. Press it and it opens: the header slides 16px right and the quote shows below in `typography/sub-title`. On hover and press the name goes green and the line turns green (2px on hover). Disabled fades it to `opacity/gentle`.
+
+## Accessibility
+
+- **Element**: a `<div>` holding a `<button aria-expanded>` (the header) and the quote, which the button controls with `aria-controls`.
+- **Name**: the name and the role, from the button's text.
+- **Keyboard**: Tab to the header, Enter or Space opens and closes it.
+- **Focus**: a 2px ring, 4px outside the whole block, while the header has `:focus-visible`.
+
+## Content
+
+The name as the person writes it. The role in a few words. The quote in their words, trimmed, never rewritten.
 
 ## Tokens
 
@@ -47,7 +76,9 @@ Every token this component uses, across all its variants.
 
 | Token | Resolves to |
 |---|---|
+| `actions/primary/default/background` | `#00d669` |
 | `font-family/base` | `'General Sans Variable'` |
+| `non-interactive/foreground/secondary` | `#d3d9d5` |
 | `opacity/gentle` | `0.24` |
 | `project/default/label` | `#d3d9d5` |
 | `project/default/outline` | `#3a3a3a` |
@@ -70,8 +101,8 @@ Every token this component uses, across all its variants.
 | `spacing/gap/large` | `24px` |
 | `spacing/gap/medium` | `16px` |
 | `spacing/gap/none` | `0px` |
-| `spacing/gap/small` | `8px` |
 | `spacing/outline/medium` | `2px` |
+| `spacing/outline/small` | `1px` |
 | `spacing/radius/full` | `10000px` |
 | `spacing/size/2xsmall` | `16px` |
 | `spacing/size/large` | `56px` |
@@ -80,9 +111,24 @@ Every token this component uses, across all its variants.
 | `typography/paragraph/font-weight/regular` | `400` |
 | `typography/paragraph/letter-spacing` | `0px` |
 | `typography/paragraph/line-height` | `20px` |
+| `typography/sub-title/font-size` | `20px` |
+| `typography/sub-title/font-weight/regular` | `400` |
+| `typography/sub-title/letter-spacing` | `0px` |
+| `typography/sub-title/line-height` | `28px` |
 | `typography/title/font-size` | `24px` |
 | `typography/title/font-weight/medium` | `500` |
 | `typography/title/letter-spacing` | `0px` |
 | `typography/title/line-height` | `32px` |
+
+## No token, on purpose
+
+| Part | Property | Value | Why |
+|---|---|---|---|
+| `icons-chevron` | `mask` | `url(./icon-chevron-down.svg) center / contain no-repeat` | The icon file itself. |
+| `icons-chevron` | `mask` | `url(./icon-chevron-up.svg) center / contain no-repeat` | The icon file itself. |
+| `icons-chevron` | `mask` | `url(./icon-chevron-up.svg) center / contain no-repeat` | The icon file itself. |
+| `icons-chevron` | `mask` | `url(./icon-chevron-up.svg) center / contain no-repeat` | The icon file itself. |
+| `icons-chevron` | `mask` | `url(./icon-chevron-up.svg) center / contain no-repeat` | The icon file itself. |
+| `icons-chevron` | `mask` | `url(./icon-chevron-up.svg) center / contain no-repeat` | The icon file itself. |
 
 See it live, with every value of every variant: [rost.build/components/testimonials](https://rost.build/components/testimonials/)

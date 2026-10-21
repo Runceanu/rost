@@ -8,13 +8,27 @@
 |---|---|
 | Kind | component |
 | Contract | `review` · [projects.contract.yaml](../../contracts/projects.contract.yaml) |
-| Guidance | **missing** |
+| Guidance | `proposed` |
 | Source | [Figma 100:185](https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=100-185) · read 2026-10-19 · frozen 2026-10-20 |
 | Implemented in | nowhere yet |
 
-## Not right yet
+## Props
 
-- No guidance yet. It needs a `guidance` block (there's one to copy in `schema/template.contract.yaml`).
+| Prop | Type | Values | Default |
+|---|---|---|---|
+| `number` | slot |  |  |
+| `name` | slot |  |  |
+| `industry` | slot |  |  |
+| `type` | slot |  |  |
+| `period` | slot |  |  |
+| `showNumber` | boolean |  | `true` |
+| `showName` | boolean |  | `true` |
+| `showIndustry` | boolean |  | `true` |
+| `showType` | boolean |  | `true` |
+| `showPeriod` | boolean |  | `true` |
+| `showAction` | boolean |  | `true` |
+| `showDivider` | boolean |  | `true` |
+| `badge` | slot |  |  |
 
 ## States
 
@@ -22,18 +36,45 @@
 
 ## Anatomy
 
-- `root`
+- `root`: Each state's values are read from its own branch of the Figma read. The first parse kept Default's colours for every state, and missed the divider's 2px on hover.
+- `outline`: The divider under the row.
 - `left`
-- `label`
-- `text`
+- `number`
+- `text`: The name.
+- `icons-lock` (optional): Locked only, after the name. Figma's lock, drawn as a mask in the lock colour.
+- `badge` (optional): Disabled only, after the name. The pill is the Badge component.
 - `right`
-- `icons-dot`
-- `-actions`
-- `icons-arrow-left`
-- `outline`
+- `detail`: Industry, type and period.
+- `icons-dot`: Figma's 12px `icons/dot`, a 3px dot in the middle, drawn in CSS so its colour can follow the state.
+- `dot`
+- `actions`: The arrow at the end, in a 32px round frame. Figma names the layer `-> Actions`.
+- `icons-arrow`: Figma's `icons/up-right` (in a layer it calls `icons/arrow-left`), drawn as a mask. #00d669 in every state.
 - `focus-ring`
-- `badge`
-- `icons-lock`
+
+## When to use
+
+- The list of projects on the portfolio site, one row each. The row links to the case study.
+
+## When not to use
+
+- A grid with pictures. That's **Thumbs**.
+- Long names. At 40px, a name past three words pushes the details off the row.
+
+## Behaviour
+
+A number and a big name on the left, industry, type and period on the right, an arrow at the end, and a line underneath. On hover and press the content slides 16px right, the name goes green, and the line turns green (2px on hover). `Locked` puts a green lock after the name and turns the dots green, for work behind a password. `Disabled` fades everything but the badge, which says "Coming soon".
+
+## Accessibility
+
+- **Element**: an `<a>`. Disabled drops the `href` and sets `aria-disabled="true"`.
+- **Name**: the name, then the details. Pass `aria-label` if that reads badly.
+- **Keyboard**: Tab to it, Enter opens it.
+- **Focus**: a 2px ring, 4px outside the row, on `:focus-visible` only.
+- **Colour**: Locked says it with the lock icon, which has its own text for screen readers.
+
+## Content
+
+The name is the client or the product, as people know it. Details are a word or two each.
 
 ## Tokens
 
@@ -41,29 +82,33 @@ Every token this component uses, across all its variants.
 
 | Token | Resolves to |
 |---|---|
+| `actions/primary/default/background` | `#00d669` |
 | `font-family/base` | `'General Sans Variable'` |
+| `non-interactive/background/positive/base` | `#00d669` |
 | `opacity/gentle` | `0.24` |
-| `opacity/solid` | `1` |
 | `project/default/label` | `#d3d9d5` |
 | `project/default/outline` | `#3a3a3a` |
 | `project/default/sub-label` | `#999` |
 | `project/disabled/outline` | `#3a3a3a` |
+| `project/disabled/sub-label` | `#999` |
 | `project/focus/focus-ring` | `#999` |
 | `project/focus/outline` | `#3a3a3a` |
+| `project/focus/sub-label` | `#999` |
 | `project/hover/label` | `#00d669` |
 | `project/hover/outline` | `#00d669` |
+| `project/hover/sub-label` | `#ededed` |
 | `project/lock/label` | `#d3d9d5` |
 | `project/lock/outline` | `#3a3a3a` |
 | `project/lock/sub-label` | `#999` |
 | `project/pressed/label` | `#00d669` |
 | `project/pressed/outline` | `#10ffa4` |
+| `project/pressed/sub-label` | `#c2c7c3` |
 | `spacing/gap/2xlarge` | `40px` |
-| `spacing/gap/3xsmall` | `2px` |
 | `spacing/gap/large` | `24px` |
 | `spacing/gap/medium` | `16px` |
 | `spacing/gap/none` | `0px` |
-| `spacing/gap/small` | `8px` |
 | `spacing/outline/medium` | `2px` |
+| `spacing/outline/small` | `1px` |
 | `spacing/radius/full` | `10000px` |
 | `spacing/size/2xsmall` | `16px` |
 | `spacing/size/3xsmall` | `12px` |
@@ -77,5 +122,14 @@ Every token this component uses, across all its variants.
 | `typography/sub-headline/font-weight/medium` | `500` |
 | `typography/sub-headline/letter-spacing` | `0px` |
 | `typography/sub-headline/line-height` | `48px` |
+
+## No token, on purpose
+
+| Part | Property | Value | Why |
+|---|---|---|---|
+| `icons-lock` | `mask` | `url(./icon-lock.svg) center / contain no-repeat` | The icon file itself. |
+| `dot` | `width` | `3px` | The dot's own size inside the icon. |
+| `dot` | `height` | `3px` | The dot's own size inside the icon. |
+| `icons-arrow` | `mask` | `url(./icon-up-right.svg) center / contain no-repeat` | The icon file itself. |
 
 See it live, with every value of every variant: [rost.build/components/projects](https://rost.build/components/projects/)

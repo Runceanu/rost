@@ -12,7 +12,7 @@ Rost started as a design system for my own needs and grew into a product of its 
 | [Token coverage](TOKENS.md) | Why each value has a token or doesn't |
 | [Roadmap](ROADMAP.md) | What I'm doing next |
 
-**22** contracts, **0** stable. **18** have guidance, and I've signed off **15** of those.
+**22** contracts, **0** stable. **21** have guidance, and I've signed off **15** of those.
 
 ## Catalogue
 
@@ -22,7 +22,7 @@ Rost started as a design system for my own needs and grew into a product of its 
 |---|---|---|---|---|
 | [Badge](components/badge.md) | A small status marker: a coloured dot on its own, or an outlined label. The colour sits in the dot and the outline, never in the text. | `review` | `proposed` | The portfolio site, the accounting app |
 | [Button](components/button.md) | A 48px button with just a label, in four levels of emphasis. | `review` | `agreed` | · |
-| [Carousel](components/carousel.md) | A card in the home page carousel: a number, a title and a short description. | `review` | · | · |
+| [Carousel](components/carousel.md) | A card in the home page carousel: a number, a title and a short description. | `review` | `proposed` | · |
 | [Chip](components/chips.md) | A small outlined label you can click, for filters and quick choices. | `review` | `agreed` | The portfolio site |
 | [Divider](components/divider.md) | A thin line between things. | `review` | `proposed` | · |
 | [IconButton](components/icon-button.md) | A round button with only an icon, including the Project type used on case-study thumbnails. | `review` | `agreed` | · |
@@ -30,10 +30,10 @@ Rost started as a design system for my own needs and grew into a product of its 
 | [Input](components/input.md) | A 56px text field with a floating label, an optional lock icon, a line of help text and an error state. | `review` | `agreed` | The portfolio site, the accounting app |
 | [Menu](components/menu.md) | A navigation item: a label with a line underneath, used in the main nav. | `review` | `agreed` | · |
 | [PillButton](components/pill-button.md) | A 48px button with an icon in front of the label. My main call to action. | `review` | `agreed` | The accounting app |
-| [Projects](components/projects.md) | One row in the project list: number, name, and industry, type and period on the right. | `review` | · | · |
+| [Projects](components/projects.md) | One row in the project list: number, name, and industry, type and period on the right. | `review` | `proposed` | · |
 | [Tag](components/tags.md) | A compact 20px label with small corners, for what a piece of content is about. | `review` | `agreed` | · |
 | [TestimonialPicture](components/testimonials-pics.md) | The photo of the person behind a testimonial. | `review` | · | · |
-| [Testimonials](components/testimonials.md) | A testimonial you can open and close: name and role, with the quote underneath. | `review` | · | · |
+| [Testimonials](components/testimonials.md) | A testimonial you can open and close: name and role, with the quote underneath. | `review` | `proposed` | · |
 | [Thumbs](components/thumbs.md) | A project thumbnail card, with the project name and details on a frosted panel at the bottom. | `review` | `proposed` | · |
 | [Toggle](components/toggle.md) | A 40×40 icon button that stays on or off, alone or as one choice in a group. | `review` | `agreed` | The accounting app |
 
@@ -63,10 +63,7 @@ What needs attention. It's built from the contracts, so it's only as fresh as th
 
 ### No guidance yet
 
-- [Carousel](components/carousel.md)
-- [Projects](components/projects.md)
 - [TestimonialPicture](components/testimonials-pics.md)
-- [Testimonials](components/testimonials.md)
 
 ### Differences nobody has taken to design yet
 

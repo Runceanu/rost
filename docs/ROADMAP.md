@@ -28,22 +28,28 @@ On 2026-10-20 rost.build became a proper site, the way shadcn's is: a homepage, 
 
 ## Now: Rost in code
 
-Nine components so far, all built from their contracts and checked against Figma in the visual test:
+Thirteen components so far, all built from their contracts and checked against Figma in the visual test:
 
 - **InlineBanner**, all 8 variants, with Figma's own icons.
 - **Badge**, all 8 variants. Figma gave it a small size since August: just the coloured dot. The dot in front of the label on the medium size is optional now.
 - **Thumbs**, all 6 states. It's the first one with hover, pressed and focus, so the visual test now forces those through Chrome's DevTools protocol. The "Coming soon" pill on a disabled card is the Badge.
 - **Divider, Tag, Chip, PillButton, IconButton, Toggle.** 61 variants, all matching except Chip Pressed (2.62% against the 2.5% line: arc anti-aliasing, and text that sits about a pixel higher in Chrome).
+- **Carousel, Projects, Testimonials, Menu.** 26 variants, all matching except Projects Hover (see below). Testimonials is a disclosure: its header is the button, so the contract says which part its focus and disabled states come from (`stateSelectors`).
 
-Building them turned up two things to fix:
+The effects are in code too, as tokens: Thumb, Menu, Lock frame and Floating each show on the site applied to real components. The Paper effect isn't. It's a canvas animation that lives in the portfolio site, and only its numbers are tokens.
 
-- **The parser took the wrong branch.** Where Figma guards a layer per state, it kept Default's values for every state. Toggle's off side said hover, pressed and disabled all look like Default. The pixels and the raw read say otherwise, so I fixed Toggle by hand. Input, Menu and the the portfolio site ones may have the same problem, and building each one will show it.
+Building them turned up four things to fix:
+
+- **The parser took the wrong branch.** Where Figma guards a layer per state, it kept Default's values for every state. Toggle's off side said hover, pressed and disabled all look like Default. The pixels and the raw read say otherwise, so I fixed Toggle by hand. Projects and Menu had the same problem, and Carousel had lost its description line. Each one now reads its values from its own branch of the Figma read. Input is probably the same.
+- **Some Figma reads were never reads.** Carousel's Default came back as a Code Connect prompt and was saved as if it were code. Its values came from the other states' reads, which all carry Default's branch. Input's icons were never saved before their links expired.
+- **Figma's code and Figma's render disagree, twice.** Menu's description renders at 14px in four states while the code says 16px, and Projects' hovered details render #d3d9d5 while the code says #ededed. Both look like variable modes on those frames. I followed the render for Menu, where it matches a token exactly. Projects Hover is an open question, and its test fails until I decide.
 - **Text sits about a pixel higher in Chrome than in Figma.** General Sans' metrics (ascent 1010, descent 240, line gap 100) get split differently. An `ascent-override` in the `@font-face` brings it closer, but that changes every app's text, so it's a decision, not a test tweak.
 
 Next, one at a time on the same setup:
 
 - **Button.** Its Figma renders came back empty, so there's nothing to test it against until they're captured again.
-- **Input, Menu, and the rest of the portfolio site's** (Carousel, Projects, Testimonials).
+- **Input.** Built as soon as Figma is open again: its clear icon was never saved, and I won't draw a stand-in.
+- **TestimonialPicture and Hero Media.** One is real people's photos, the other has no Figma render. Both need a decision first.
 - **`npx rost add badge`**, the way shadcn does it: copy a component, its CSS and its tokens into the accounting app or the portfolio site. That's how my apps will stop keeping their own copies.
 
 ## Now: make the contracts something I can trust
