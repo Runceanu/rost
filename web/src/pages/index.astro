@@ -1,7 +1,5 @@
 ---
 import Base from '../layouts/Base.astro'
-import { Badge } from '../../../src/components/badge/Badge'
-import { InlineBanner } from '../../../src/components/inline-banner/InlineBanner'
 import ComponentGrid from '../components/ComponentGrid.astro'
 import { kit, built, tokens, GITHUB } from '../lib/kit'
 
@@ -26,22 +24,6 @@ const illustrations = count(import.meta.glob('../../../assets/illustrations/*.sv
       <div><b>{variants}</b><span>variants</span></div>
       <div><b>{Object.keys(tokens).length}</b><span>tokens</span></div>
     </div>
-  </section>
-
-  <section class="show" aria-label="Live components">
-    <div class="show-row">
-      <Badge status="positive">Paid</Badge>
-      <Badge status="negative">Overdue</Badge>
-      <Badge status="warning" showIcon>Due soon</Badge>
-      <Badge status="default" size="small" aria-label="Draft" />
-      <Badge status="positive" size="small" aria-label="Paid" />
-    </div>
-    <div class="show-row">
-      <InlineBanner status="positive">Saved just now</InlineBanner>
-      <InlineBanner status="default">Open for work</InlineBanner>
-      <InlineBanner status="negative" size="small">Payment failed</InlineBanner>
-    </div>
-    <p class="show-note">These are the real components, rendered live. Every variant is compared with Figma's own render, and fails if more than a sliver of it differs.</p>
   </section>
 
   <h2>How it works</h2>
@@ -86,9 +68,6 @@ const illustrations = count(import.meta.glob('../../../assets/illustrations/*.sv
 
 <style>
   .hero { padding: var(--spacing-gap-large) 0 var(--spacing-gap-2xlarge); border-bottom: 1px solid var(--line); }
-  .show { margin: var(--spacing-gap-2xlarge) 0 0; padding: var(--spacing-gap-xlarge) var(--spacing-gap-large); border-radius: var(--spacing-radius-xlarge); border: 1px solid var(--line); background: radial-gradient(120% 140% at 0% 0%, color-mix(in srgb, var(--accent) 8%, transparent), transparent 60%), var(--ground); display: flex; flex-direction: column; gap: var(--spacing-gap-large); }
-  .show-row { display: flex; flex-wrap: wrap; gap: var(--spacing-gap-medium); align-items: center; }
-  .show-note { margin: var(--spacing-gap-2xsmall) 0 0; color: var(--fg-3); font-size: 13.5px; }
   .steps { display: grid; gap: var(--spacing-gap-small-medium); grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
   .steps h3 { margin: var(--spacing-gap-small-medium) 0 var(--spacing-gap-small); color: var(--fg); font-family: var(--body); font-size: 17px; letter-spacing: 0; text-transform: none; font-weight: 600; }
   .steps p { margin: 0; color: var(--fg-2); font-size: 15px; }
