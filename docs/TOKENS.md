@@ -6,12 +6,12 @@ Every value in every contract, sorted by why it has a token or doesn't. `npm run
 
 | | Values | Share | Meaning |
 |---|---|---|---|
-| Has a token | 1417 | 57% | Uses a token, and the check tests it. |
+| Has a token | 1420 | 56% | Uses a token, and the check tests it. |
 | Token suggested | 0 | 0% | A token I want that doesn't exist yet. The freeze turned every other suggestion into a token. |
-| How Figma builds it | 984 | 40% | How Figma builds the layer (position, inset, which sides get a stroke). Nothing to tokenise. |
-| Figma frame size | 38 | 2% | A root size that is just the Figma frame. Written down, not checked. |
-| No token, on purpose | 14 | 1% | Plain on purpose, and the contract says why. |
-| Open gap | 13 | 1% | No token and no reason. Each one needs a decision from me. |
+| How Figma builds it | 982 | 39% | How Figma builds the layer (position, inset, which sides get a stroke). Nothing to tokenise. |
+| Figma frame size | 68 | 3% | A root size that is just the Figma frame. Written down, not checked. |
+| No token, on purpose | 31 | 1% | Plain on purpose, and the contract says why. |
+| Open gap | 18 | 1% | No token and no reason. Each one needs a decision from me. |
 
 ## By contract
 
@@ -24,21 +24,21 @@ Every value in every contract, sorted by why it has a token or doesn't. `npm run
 | [Divider](components/divider.md) | 2 | · | 2 | 2 | · | · |
 | [Floating effect](components/effect-floating.md) | 1 | · | · | · | · | · |
 | [Hero Media](components/hero-media.md) | 6 | · | 1 | · | 1 | · |
-| [IconButton](components/icon-button.md) | 172 | · | 49 | · | · | · |
+| [IconButton](components/icon-button.md) | 182 | · | 53 | 10 | 6 | 2 |
 | [InlineBanner](components/inline-banner.md) | 85 | · | 40 | · | · | · |
 | [Input](components/input.md) | 91 | · | 102 | 1 | · | · |
 | [Lock frame effect](components/effect-lock-frame.md) | 1 | · | · | · | · | · |
 | [Menu effect](components/effect-menu.md) | 1 | · | · | · | · | · |
 | [Menu](components/menu.md) | 31 | · | 17 | 1 | · | · |
 | [Paper effect](components/effect-paper.md) | 6 | · | · | · | 7 | · |
-| [PillButton](components/pill-button.md) | 155 | · | 53 | · | · | · |
+| [PillButton](components/pill-button.md) | 145 | · | 56 | 12 | 5 | 1 |
 | [Projects](components/projects.md) | 64 | · | 44 | 1 | · | 1 |
 | [Tag](components/tags.md) | 26 | · | 13 | 3 | · | 1 |
 | [TestimonialPicture](components/testimonials-pics.md) | 2 | · | 1 | · | · | · |
 | [Testimonials](components/testimonials.md) | 197 | · | 264 | 9 | · | 1 |
 | [Thumb effect](components/effect-thumb.md) | 1 | · | · | · | · | · |
 | [Thumbs](components/thumbs.md) | 73 | · | 50 | 9 | 5 | 7 |
-| [Toggle](components/toggle.md) | 58 | · | 32 | · | · | · |
+| [Toggle](components/toggle.md) | 61 | · | 23 | 8 | 6 | 2 |
 
 ## Tokens that should be there
 
@@ -48,6 +48,12 @@ None. The freeze on 2026-10-20 turned all 122 suggestions into tokens.
 
 - [Carousel](components/carousel.md) `focus-ring.border-radius` = `28px`: The element's radius plus the ring's offset, so it follows from those two.
 - [Hero Media](components/hero-media.md) `media.background-size` = `explicit px (asset-native, e.g. 2336px 1196px)`: Each artwork's own pixel size. It changes with every image, so a token wouldn't help.
+- [IconButton](components/icon-button.md) `glyph.mask` = `url(./icon-arrow-left.svg) center / contain no-repeat`: The icon file itself. `assets/icons/arrow-left.svg`, the same shape Figma uses (its insets match Figma's `Union` layer exactly).
+- [IconButton](components/icon-button.md) `root.box-shadow` = `inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-default-outline)`: Figma's 1px left and top stroke, drawn inside the shape as Figma draws it. The width and colour are tokens.
+- [IconButton](components/icon-button.md) `root.box-shadow` = `inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-hover-outline)`: Figma's 1px left and top stroke, drawn inside the shape as Figma draws it. The width and colour are tokens.
+- [IconButton](components/icon-button.md) `root.box-shadow` = `inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-pressed-outline)`: Figma's 1px left and top stroke, drawn inside the shape as Figma draws it. The width and colour are tokens.
+- [IconButton](components/icon-button.md) `root.box-shadow` = `inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-disabled-outline)`: Figma's 1px left and top stroke, drawn inside the shape as Figma draws it. The width and colour are tokens.
+- [IconButton](components/icon-button.md) `root.box-shadow` = `inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-focus-outline)`: Figma's 1px left and top stroke, drawn inside the shape as Figma draws it. The width and colour are tokens.
 - [Paper effect](components/effect-paper.md) `dot.radius` = `1px`: Tuned to the 16px grid. Nothing else would use it.
 - [Paper effect](components/effect-paper.md) `lens.radius` = `210px`: Tuned by eye for how the lens moves. Only the paper uses it.
 - [Paper effect](components/effect-paper.md) `lens.push` = `9px`: Tuned by eye for how the lens moves. Only the paper uses it.
@@ -55,17 +61,31 @@ None. The freeze on 2026-10-20 turned all 122 suggestions into tokens.
 - [Paper effect](components/effect-paper.md) `lens.halo` = `radius 240px, power 1.3`: Tuned by eye: how wide the lens is, and how fast it fades. Only the paper uses it.
 - [Paper effect](components/effect-paper.md) `lens.press` = `radius 330px, power 1.7`: Tuned by eye: how wide the lens is, and how fast it fades. Only the paper uses it.
 - [Paper effect](components/effect-paper.md) `pen.cadence` = `7-8s between sketches`: How often the pen draws. There are no motion tokens yet.
+- [PillButton](components/pill-button.md) `root.box-shadow` = `inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-default-outline)`: Figma's 1px left and top stroke, drawn inside the shape the way Figma draws it. A border would make the button 1px wider. The width and colour are tokens.
+- [PillButton](components/pill-button.md) `root.box-shadow` = `inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-hover-outline)`: Figma's 1px left and top stroke, drawn inside the shape the way Figma draws it. A border would make the button 1px wider. The width and colour are tokens.
+- [PillButton](components/pill-button.md) `root.box-shadow` = `inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-focus-outline)`: Figma's 1px left and top stroke, drawn inside the shape the way Figma draws it. A border would make the button 1px wider. The width and colour are tokens.
+- [PillButton](components/pill-button.md) `root.box-shadow` = `inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-pressed-outline)`: Figma's 1px left and top stroke, drawn inside the shape the way Figma draws it. A border would make the button 1px wider. The width and colour are tokens.
+- [PillButton](components/pill-button.md) `root.box-shadow` = `inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-disabled-outline)`: Figma's 1px left and top stroke, drawn inside the shape the way Figma draws it. A border would make the button 1px wider. The width and colour are tokens.
 - [Thumbs](components/thumbs.md) `shadow.background` = `linear-gradient(to bottom, rgba(6,8,5,0), var(--non-interactive-background-primary))`: A gradient from the page background, transparent, to the page background. The colour is the token; the ramp is the effect.
 - [Thumbs](components/thumbs.md) `content.background` = `rgba(0,0,0,0.48)`: Black at opacity/medium. The kit has no colour token with alpha for it.
 - [Thumbs](components/thumbs.md) `dot.width` = `3px`: The dot's own size inside the icon.
 - [Thumbs](components/thumbs.md) `dot.height` = `3px`: The dot's own size inside the icon.
 - [Thumbs](components/thumbs.md) `focus-ring.border-radius` = `28px`: The card's radius plus the ring's offset, so it follows from those two.
+- [Toggle](components/toggle.md) `glyph.mask` = `url(./icon-arrow-left.svg) center / contain no-repeat`: The icon file itself, `assets/icons/arrow-left.svg`, the same shape as Figma's `Union` layer.
+- [Toggle](components/toggle.md) `root.box-shadow` = `inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-default-outline)`: Figma's 1px left and top stroke, drawn inside the shape as Figma draws it. The width and colour are tokens.
+- [Toggle](components/toggle.md) `root.box-shadow` = `inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-hover-outline)`: Figma's 1px left and top stroke, drawn inside the shape as Figma draws it. The width and colour are tokens.
+- [Toggle](components/toggle.md) `root.box-shadow` = `inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-pressed-outline)`: Figma's 1px left and top stroke, drawn inside the shape as Figma draws it. The width and colour are tokens.
+- [Toggle](components/toggle.md) `root.box-shadow` = `inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-disabled-outline)`: Figma's 1px left and top stroke, drawn inside the shape as Figma draws it. The width and colour are tokens.
+- [Toggle](components/toggle.md) `root.box-shadow` = `inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-focus-outline)`: Figma's 1px left and top stroke, drawn inside the shape as Figma draws it. The width and colour are tokens.
 
 ## Open gaps
 
 - [Badge](components/badge.md) `root.min-width` = `24px`
 - [Carousel](components/carousel.md) `background.background` = `rgba(58,58,58,0.48)`
 - [Chip](components/chips.md) `focus-ring.border-style` = `solid`
+- [IconButton](components/icon-button.md) `glyph.background` = `currentColor`
+- [IconButton](components/icon-button.md) `focus-ring.border-style` = `solid`
+- [PillButton](components/pill-button.md) `focus-ring.border-style` = `solid`
 - [Projects](components/projects.md) `badge.min-width` = `24px`
 - [Tag](components/tags.md) `focus-ring.border-style` = `solid`
 - [Testimonials](components/testimonials.md) `bottom.width` = `976px`
@@ -76,6 +96,8 @@ None. The freeze on 2026-10-20 turned all 122 suggestions into tokens.
 - [Thumbs](components/thumbs.md) `focus-ring.border-style` = `solid`
 - [Thumbs](components/thumbs.md) `dot.background` = `#747573`
 - [Thumbs](components/thumbs.md) `dot.background` = `#747573`
+- [Toggle](components/toggle.md) `glyph.background` = `currentColor`
+- [Toggle](components/toggle.md) `focus-ring.border-style` = `solid`
 
 ## Figma variables missing from tokens.css
 

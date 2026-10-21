@@ -10,7 +10,9 @@
  * differ when each pixel may match its Figma neighbour up to 1px away. Figma
  * and Chrome place a line of text up to a pixel apart and never anti-alias it
  * the same, so the second number is the one that decides. A variant passes when
- * its size is exact and at most MAX_DIFF of its pixels differ beyond 1px.
+ * its size is exact, at most MAX_DIFF of its pixels differ beyond 1px, and no
+ * clump of them is bigger than MAX_CLUMP: text edges differ in specks, a
+ * missing part in one piece.
  *
  * Figma renders each component on the page background (#060805,
  * non-interactive/background/primary), so the test does too.
@@ -33,11 +35,18 @@ import { mkdirSync, readFileSync, writeFileSync, existsSync, rmSync } from 'node
 import { homedir } from 'node:os'
 import { join } from 'node:path'
 import { fileURLToPath } from 'node:url'
+import { createServer } from 'node:http'
+import { extname } from 'node:path'
 
 // Measured on InlineBanner (2026-10-19): with everything else exact, Figma and
 // Chrome still disagree on 2.0-2.4% of pixels at letter edges, beyond 1px.
 // A missing icon or a wrong colour lands well above this line.
 const MAX_DIFF = 0.025
+// And no clump of touching pixels that differ bigger than this. Measured on
+// 2026-10-21: text in passing variants clumps up to 29px; IconButton with its
+// arrow missing clumps at 34 to 54px, yet stayed under MAX_DIFF. A disabled
+// variant is too faint for either measure to see a missing part.
+const MAX_CLUMP = 32
 // How close two pixels' colours must be (sum of RGB differences) to count as
 // the same: room for anti-aliasing, far below a wrong colour.
 const CLOSE = 96
@@ -60,6 +69,7 @@ if (!ids.length) { console.log('Usage: node bin/visual-test.mjs <id> [<id> ...]'
 function beyondOnePixel(a, b) {
   const close = (p, i, q, j) => Math.abs(p.data[i] - q.data[j]) + Math.abs(p.data[i + 1] - q.data[j + 1]) + Math.abs(p.data[i + 2] - q.data[j + 2]) <= CLOSE
   const oneWay = (p, q) => {
+    const miss = new Uint8Array(p.width * p.height)
     let n = 0
     for (let y = 0; y < p.height; y++) for (let x = 0; x < p.width; x++) {
       const j = (y * p.width + x) * 4
@@ -68,11 +78,39 @@ function beyondOnePixel(a, b) {
         const yy = y + dy, xx = x + dx
         if (yy >= 0 && yy < p.height && xx >= 0 && xx < p.width && close(q, (yy * p.width + xx) * 4, p, j)) hit = true
       }
-      if (!hit) n++
+      if (!hit) { n++; miss[y * p.width + x] = 1 }
     }
-    return n
+    return { n, miss }
   }
-  return Math.max(oneWay(a, b), oneWay(b, a))
+  const ab = oneWay(a, b), ba = oneWay(b, a)
+  const miss = ab.miss.map((v, i) => v | ba.miss[i])
+  return { n: Math.max(ab.n, ba.n), clump: largestClump(miss, a.width, a.height) }
+}
+
+/**
+ * The biggest group of touching pixels that differ. Text edges differ in
+ * specks of one or two pixels; a missing or wrong part differs in a clump.
+ * The share alone missed IconButton's arrow when it didn't render at all.
+ */
+function largestClump(miss, w, h) {
+  const seen = new Uint8Array(miss.length)
+  let best = 0
+  for (let start = 0; start < miss.length; start++) {
+    if (!miss[start] || seen[start]) continue
+    let size = 0
+    const stack = [start]
+    seen[start] = 1
+    while (stack.length) {
+      const i = stack.pop(), x = i % w, y = (i - x) / w
+      size++
+      for (const [dx, dy] of [[1, 0], [-1, 0], [0, 1], [0, -1]]) {
+        const xx = x + dx, yy = y + dy, k = yy * w + xx
+        if (xx >= 0 && xx < w && yy >= 0 && yy < h && miss[k] && !seen[k]) { seen[k] = 1; stack.push(k) }
+      }
+    }
+    best = Math.max(best, size)
+  }
+  return best
 }
 
 /** Figma | ours | difference, scaled up with hard pixels so you can see them. */
@@ -99,6 +137,19 @@ const svgUrl = {
   setup(b) { b.onResolve({ filter: /\.svg\?url$/ }, (a) => ({ path: join(a.resolveDir, a.path.replace(/\?url$/, '')) })) },
 }
 
+// Pages are served over http, not opened as files: a browser won't apply a
+// CSS mask (IconButton's arrow) from a file:// URL, and the site is http too.
+// `/repo/...` is this repo, `/font` the font.
+const TYPES = { '.html': 'text/html', '.js': 'text/javascript', '.css': 'text/css', '.svg': 'image/svg+xml', '.png': 'image/png', '.ttf': 'font/ttf' }
+const server = createServer((req, res) => {
+  const path = decodeURIComponent(new URL(req.url, 'http://x').pathname)
+  const file = path === '/font' ? font : path.startsWith('/repo/') ? join(root, path.slice(6)) : null
+  if (!file || !file.startsWith(root) && file !== font || !existsSync(file)) { res.writeHead(404).end(); return }
+  res.writeHead(200, { 'Content-Type': TYPES[extname(file)] ?? 'application/octet-stream' }).end(readFileSync(file))
+})
+await new Promise((ok) => server.listen(0, '127.0.0.1', ok))
+const origin = `http://127.0.0.1:${server.address().port}`
+
 const browser = await chromium.launch()
 let failed = 0
 
@@ -115,14 +166,14 @@ for (const id of ids) {
       <>{fixtures.map((f) => <div key={f.node} data-node={f.node} data-force={(f.force ?? []).join(' ')} data-mask={JSON.stringify(f.mask ?? [])} style={{ margin: 8 }}>{f.element}</div>)}</>
     )`)
   await build({ entryPoints: [join(work, 'entry.tsx')], bundle: true, outdir: work, jsx: 'automatic', logLevel: 'error', loader: { '.svg': 'file' }, plugins: [svgUrl] })
-  const face = `@font-face { font-family: 'General Sans Variable'; font-weight: 200 700; src: url('file://${font}') format('truetype'); }`
+  const face = `@font-face { font-family: 'General Sans Variable'; font-weight: 200 700; src: url('${origin}/font') format('truetype'); }`
   writeFileSync(join(work, 'index.html'), `<!doctype html><meta charset="utf-8">
-    <link rel="stylesheet" href="file://${root}tokens/tokens.css">
+    <link rel="stylesheet" href="${origin}/repo/tokens/tokens.css">
     <style>${face} body { margin: 0; background: var(--non-interactive-background-primary); -webkit-font-smoothing: antialiased; }</style>
     <link rel="stylesheet" href="entry.css"><div id="root"></div><script src="entry.js"></script>`)
 
   const page = await browser.newPage({ deviceScaleFactor: 1 })
-  await page.goto('file://' + join(work, 'index.html'))
+  await page.goto(`${origin}/repo/${join('test-results/visual', id, 'index.html')}`)
   await page.evaluate(() => document.fonts.ready)
   // Figma rounds a component that hugs its content up to whole pixels: Chip
   // is 43px there and 42.4px in Chrome, with its text centred in the extra.
@@ -178,17 +229,19 @@ for (const id of ids) {
     const diff = new PNG({ width: base.width, height: base.height })
     const n = pixelmatch(base.data, shot.data, diff.data, base.width, base.height, { threshold: 0.1, includeAA: false })
     const share = n / (base.width * base.height)
-    const near = beyondOnePixel(base, shot) / (base.width * base.height)
-    const ok = near <= MAX_DIFF
+    const { n: off, clump } = beyondOnePixel(base, shot)
+    const near = off / (base.width * base.height)
+    const ok = near <= MAX_DIFF && clump <= MAX_CLUMP
     if (!ok) failed++
     writeFileSync(join(work, `${node.replace(':', '-')}.actual.png`), PNG.sync.write(shot))
     writeFileSync(join(work, `${node.replace(':', '-')}.diff.png`), PNG.sync.write(diff))
     writeFileSync(join(work, `${node.replace(':', '-')}.compare.png`), PNG.sync.write(sideBySide([base, shot, diff], ZOOM)))
-    console.log(`  ${ok ? 'ok  ' : 'FAIL'} ${label} ${(near * 100).toFixed(2)}% differ beyond 1px  (${(share * 100).toFixed(2)}% exactly)`)
+    console.log(`  ${ok ? 'ok  ' : 'FAIL'} ${label} ${(near * 100).toFixed(2)}% differ beyond 1px  (${(share * 100).toFixed(2)}% exactly), largest clump ${clump}px`)
   }
   await page.close()
 }
 
 await browser.close()
+server.close()
 console.log(failed ? `\n${failed} variant(s) don't match Figma yet` : '\nEverything matches Figma')
 process.exitCode = failed ? 1 : 0

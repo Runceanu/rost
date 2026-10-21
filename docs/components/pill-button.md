@@ -29,7 +29,7 @@
 - `icons-arrow-left` (optional)
 - `union` (optional)
 - `focus-ring`
-- `background`
+- `background`: The fill under Secondary, Tertiary and Borderless, drawn see-through on its own layer so the label stays solid.
 
 ## When to use
 
@@ -64,20 +64,15 @@ Every token this component uses, across all its variants.
 |---|---|
 | `actions/primary/default/background` | `#00d669` |
 | `actions/primary/default/label` | `#060805` |
-| `actions/primary/default/outline` | `rgba(237,237,237,0.64)` |
 | `actions/primary/disabled/background` | `#00d669` |
 | `actions/primary/disabled/label` | `#060805` |
-| `actions/primary/disabled/outline` | `rgba(237,237,237,0.64)` |
 | `actions/primary/focus/background` | `#00d669` |
 | `actions/primary/focus/focus-ring` | `#b6ffda` |
 | `actions/primary/focus/label` | `#060805` |
-| `actions/primary/focus/outline` | `rgba(237,237,237,0.64)` |
 | `actions/primary/hover/background` | `#00b450` |
 | `actions/primary/hover/label` | `#060805` |
-| `actions/primary/hover/outline` | `rgba(237,237,237,0.64)` |
 | `actions/primary/pressed/background` | `#00913a` |
 | `actions/primary/pressed/label` | `#060805` |
-| `actions/primary/pressed/outline` | `rgba(237,237,237,0.64)` |
 | `actions/secondary/regular/default/background` | `#3a3a3a` |
 | `actions/secondary/regular/default/label` | `#d3d9d5` |
 | `actions/secondary/regular/default/outline` | `#ededed` |
@@ -108,7 +103,6 @@ Every token this component uses, across all its variants.
 | `spacing/gap/none` | `0px` |
 | `spacing/gap/small` | `8px` |
 | `spacing/outline/medium` | `2px` |
-| `spacing/outline/small` | `1px` |
 | `spacing/radius/full` | `10000px` |
 | `spacing/size/medium-large` | `48px` |
 | `spacing/size/xsmall` | `20px` |
@@ -116,5 +110,15 @@ Every token this component uses, across all its variants.
 | `typography/body/font-weight/medium` | `500` |
 | `typography/body/letter-spacing` | `0px` |
 | `typography/body/line-height` | `22px` |
+
+## No token, on purpose
+
+| Part | Property | Value | Why |
+|---|---|---|---|
+| `root` | `box-shadow` | `inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-default-outline)` | Figma's 1px left and top stroke, drawn inside the shape the way Figma draws it. A border would make the button 1px wider. The width and colour are tokens. |
+| `root` | `box-shadow` | `inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-hover-outline)` | Figma's 1px left and top stroke, drawn inside the shape the way Figma draws it. A border would make the button 1px wider. The width and colour are tokens. |
+| `root` | `box-shadow` | `inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-focus-outline)` | Figma's 1px left and top stroke, drawn inside the shape the way Figma draws it. A border would make the button 1px wider. The width and colour are tokens. |
+| `root` | `box-shadow` | `inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-pressed-outline)` | Figma's 1px left and top stroke, drawn inside the shape the way Figma draws it. A border would make the button 1px wider. The width and colour are tokens. |
+| `root` | `box-shadow` | `inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-disabled-outline)` | Figma's 1px left and top stroke, drawn inside the shape the way Figma draws it. A border would make the button 1px wider. The width and colour are tokens. |
 
 See it live, with every value of every variant: [rost.build/components/pill-button](https://rost.build/components/pill-button/)

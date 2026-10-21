@@ -25,9 +25,9 @@
 ## Anatomy
 
 - `root`
-- `icons-arrow-left`
-- `union`
-- `background`
+- `icons-arrow-left`: The 20px icon slot. Its colour is read from Figma's pixels, because Figma bakes it into the SVG and doesn't say which token it is.
+- `glyph`: Figma's arrow, drawn as a mask in the icon's colour so one file serves every state. A caller's own icon replaces it and should use `currentColor`.
+- `background`: The see-through fill under Secondary and Tertiary, on its own layer so the icon stays solid.
 - `focus-ring`
 
 ## When to use
@@ -63,16 +63,11 @@ Every token this component uses, across all its variants.
 | Token | Resolves to |
 |---|---|
 | `actions/primary/default/background` | `#00d669` |
-| `actions/primary/default/outline` | `rgba(237,237,237,0.64)` |
 | `actions/primary/disabled/background` | `#00d669` |
-| `actions/primary/disabled/outline` | `rgba(237,237,237,0.64)` |
 | `actions/primary/focus/background` | `#00d669` |
 | `actions/primary/focus/focus-ring` | `#b6ffda` |
-| `actions/primary/focus/outline` | `rgba(237,237,237,0.64)` |
 | `actions/primary/hover/background` | `#00b450` |
-| `actions/primary/hover/outline` | `rgba(237,237,237,0.64)` |
 | `actions/primary/pressed/background` | `#00913a` |
-| `actions/primary/pressed/outline` | `rgba(237,237,237,0.64)` |
 | `actions/secondary/regular/default/background` | `#3a3a3a` |
 | `actions/secondary/regular/default/outline` | `#ededed` |
 | `actions/secondary/regular/disabled/background` | `#3a3a3a` |
@@ -86,16 +81,27 @@ Every token this component uses, across all its variants.
 | `actions/secondary/regular/pressed/outline` | `#ededed` |
 | `actions/tertiary/hover/background` | `#060805` |
 | `actions/tertiary/pressed/background` | `#454545` |
+| `non-interactive/foreground/quadruple` | `#3a3a3a` |
 | `opacity/gentle` | `0.24` |
 | `opacity/mild` | `0.32` |
 | `spacing/gap/medium-large` | `20px` |
 | `spacing/gap/none` | `0px` |
 | `spacing/gap/small` | `8px` |
 | `spacing/outline/medium` | `2px` |
-| `spacing/outline/small` | `1px` |
 | `spacing/radius/full` | `10000px` |
 | `spacing/size/medium-large` | `48px` |
 | `spacing/size/small-medium` | `32px` |
 | `spacing/size/xsmall` | `20px` |
+
+## No token, on purpose
+
+| Part | Property | Value | Why |
+|---|---|---|---|
+| `glyph` | `mask` | `url(./icon-arrow-left.svg) center / contain no-repeat` | The icon file itself. `assets/icons/arrow-left.svg`, the same shape Figma uses (its insets match Figma's `Union` layer exactly). |
+| `root` | `box-shadow` | `inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-default-outline)` | Figma's 1px left and top stroke, drawn inside the shape as Figma draws it. The width and colour are tokens. |
+| `root` | `box-shadow` | `inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-hover-outline)` | Figma's 1px left and top stroke, drawn inside the shape as Figma draws it. The width and colour are tokens. |
+| `root` | `box-shadow` | `inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-pressed-outline)` | Figma's 1px left and top stroke, drawn inside the shape as Figma draws it. The width and colour are tokens. |
+| `root` | `box-shadow` | `inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-disabled-outline)` | Figma's 1px left and top stroke, drawn inside the shape as Figma draws it. The width and colour are tokens. |
+| `root` | `box-shadow` | `inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-focus-outline)` | Figma's 1px left and top stroke, drawn inside the shape as Figma draws it. The width and colour are tokens. |
 
 See it live, with every value of every variant: [rost.build/components/icon-button](https://rost.build/components/icon-button/)

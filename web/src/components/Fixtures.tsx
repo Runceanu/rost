@@ -3,6 +3,11 @@
 type Fixture = { node: string; name: string; element: React.ReactNode; force?: string[] }
 const modules = import.meta.glob('../../../src/components/*/*.fixtures.tsx', { eager: true }) as Record<string, { fixtures: Fixture[]; usage?: string; preview?: React.ReactNode }>
 
+// Figma's variant name, as words: `state=Default, selected=True` reads
+// "Default · selected", and False reads "not selected".
+const caption = (name: string) =>
+  name.replace(/([a-z]+)=True/gi, '$1').replace(/([a-z]+)=False/gi, 'not $1').replace(/[a-z]+=/gi, '').replace(/, /g, ' · ')
+
 export const fixturesFor = (id: string) => Object.entries(modules).find(([p]) => p.includes(`/components/${id}/`))?.[1]
 
 export function Fixtures({ id }: { id: string }) {
@@ -18,7 +23,7 @@ export function Fixtures({ id }: { id: string }) {
         {still.map((f) => (
           <figure key={f.node} className="fixture">
             <div className="fixture-stage">{f.element}</div>
-            <figcaption>{f.name.replace(/[a-z]+=/gi, '').replace(/, /g, ' · ')}</figcaption>
+            <figcaption>{caption(f.name)}</figcaption>
           </figure>
         ))}
       </div>
