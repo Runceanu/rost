@@ -103,6 +103,15 @@ table.t { width: 100%; border-collapse: collapse; font-size: 13.5px; }
 .t th { text-align: left; font-family: var(--mono); font-weight: 400; font-size: 10.5px; letter-spacing: .09em; text-transform: uppercase; color: var(--fg-3); padding: var(--spacing-gap-small) var(--spacing-gap-small-medium); border-bottom: 1px solid var(--line); white-space: nowrap; }
 .t td { padding: var(--spacing-gap-small) var(--spacing-gap-small-medium); border-bottom: 1px solid color-mix(in srgb, var(--fg) 6%, transparent); white-space: nowrap; font-family: var(--mono); font-size: 12.5px; color: var(--fg-2); }
 .t tr:last-child td { border-bottom: none; }
+/* On a phone a token name takes the whole width, so each row stacks: the
+   name, then its value and token underneath. */
+@media (max-width: 600px) {
+  .t thead { display: none; }
+  .t tr { display: block; padding: var(--spacing-gap-small) var(--spacing-gap-small-medium); border-bottom: 1px solid color-mix(in srgb, var(--fg) 6%, transparent); }
+  .t tr:last-child { border-bottom: none; }
+  .t td { display: block; padding: 0; border: none; white-space: normal; overflow-wrap: anywhere; }
+  .t td:first-child { color: var(--fg); }
+}
 .sw { display: inline-block; width: 12px; height: 12px; border-radius: var(--spacing-radius-xsmall); background: var(--c); border: 1px solid color-mix(in srgb, var(--fg) 25%, transparent); margin-right: var(--spacing-gap-small); vertical-align: -1px; }
 .tk { color: var(--accent); }
 .tk--none { color: var(--fg-3); font-style: italic; }

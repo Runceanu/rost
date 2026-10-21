@@ -18,7 +18,7 @@ const src = sourceLink(c)
 const source = componentSource(id)
 const usage = fixturesFor(id)?.usage
 
-const { shots: figma, blanks } = shotsFor(id)
+const { shots: figma, blanks } = built ? { shots: [], blanks: 0 } : shotsFor(id)
 
 // The same words the markdown docs use, with a colour for each kind.
 const CELL: Record<string, string> = { token: 'tk', suggested: 'tk--warn', layout: 'tk--none', sample: 'tk--none', reasoned: 'tk--none', gap: 'tk--gap' }
@@ -173,8 +173,13 @@ const props = Object.entries(c.props ?? {}) as [string, any][]
   .vary .n { font-family: var(--mono); font-size: 11px; color: var(--fg-3); background: var(--surface); padding: 1px var(--spacing-gap-small); border-radius: var(--spacing-radius-full); }
   .tk--warn { color: var(--warn); }
   :global(.fixtures) { display: flex; flex-wrap: wrap; gap: var(--spacing-gap-large) var(--spacing-gap-2xlarge); align-items: flex-end; }
-  :global(.fixture) { margin: 0; display: flex; flex-direction: column; gap: var(--spacing-gap-small); align-items: flex-start; }
-  :global(.fixture-stage) { min-height: var(--spacing-size-small); }
+  :global(.fixture) { margin: 0; display: flex; flex-direction: column; gap: var(--spacing-gap-small); align-items: flex-start; max-width: 100%; min-width: 0; }
+  :global(.fixture-stage) { min-height: var(--spacing-size-small); max-width: 100%; }
+  /* A fixture is drawn at its Figma frame's width (Projects is 976px), which
+     the visual test needs. Here it gives way to the panel instead of running
+     past it, but never below its own content: on a phone a row can't fit,
+     so the panel scrolls rather than the text piling up. */
+  :global(.fixture-stage > [class^='rost-']) { max-width: 100%; min-width: max-content; }
   :global(.shot) { display: block; max-width: 100%; height: auto; }
   :global(.fixture-note) { margin: var(--spacing-gap-medium-large) 0 0; color: var(--fg-3); font-size: 13.5px; }
   :global(.fixture figcaption) { font-family: var(--mono); font-size: 11px; color: var(--fg-3); }

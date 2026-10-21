@@ -13,6 +13,11 @@
  *  3. UNKNOWN TOKENS. A local token with no counterpart in the Figma variable
  *     registry is either a name invented in code, or a real design decision
  *     that never made it back into the kit. Both are worth knowing.
+ *
+ * Undefined vars always fail the run. With --strict, raw hex and unknown
+ * tokens fail it too: for an app that's already clean and should stay so.
+ *
+ *   node bin/audit.mjs [--strict] <app-dir> [<app-dir>...]
  */
 import { readFileSync, readdirSync, statSync } from 'node:fs'
 import { join, relative, resolve } from 'node:path'
@@ -68,7 +73,10 @@ function audit(root) {
   return { root, files: files.length, defined: defined.size, undef, hex, unknown }
 }
 
-const targets = (process.argv.slice(2).length ? process.argv.slice(2) : ['.'])
+const args = process.argv.slice(2)
+const strict = args.includes('--strict')
+const paths = args.filter((a) => a !== '--strict')
+const targets = (paths.length ? paths : ['.'])
   .map((p) => resolve(p.replace(/^~/, homedir())))
 
 let failed = false
@@ -80,6 +88,7 @@ for (const t of targets) {
   for (const u of r.undef.slice(0, 20)) console.log(`    ${u.file}:${u.line}  ${u.token}`)
   if (r.undef.length > 20) console.log(`    …and ${r.undef.length - 20} more`)
   if (r.undef.length) failed = true
+  if (strict && (r.hex.length || r.unknown.length)) failed = true
 
   console.log(`\n  RAW HEX outside token definitions: ${r.hex.length}`)
   const byVal = {}

@@ -31,10 +31,11 @@ const accept = (styles, id, where) => {
 
 for (const id of ids()) {
   const c = read(id)
-  if (c.source.frozenAt) continue
+  // A contract written by hand may have no source yet; it freezes all the same.
+  if (c.source?.frozenAt) continue
   for (const [part, e] of Object.entries(c.elements ?? {})) accept(e.styles, id, part)
   for (const v of c.variants ?? []) for (const [part, s] of Object.entries(v.elements ?? {})) accept(s, id, part)
-  c.source.frozenAt = today
+  c.source = { ...(c.source ?? {}), frozenAt: today }
   frozen++
   if (apply) write(c)
 }

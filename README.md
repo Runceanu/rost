@@ -43,6 +43,7 @@ npm run test:visual -- thumbs   # render every variant and compare it with Figma
 
 ```bash
 npm run audit -- <app-dir> [<app-dir>...]   # undefined vars, raw hex, tokens the kit doesn't have
+npm run audit -- --strict <app-dir>          # same, but raw hex and unknown tokens fail it too
 ```
 
 To check an app, import `forApp` and `conform` from `rost/conform` in one of its tests. [How a contract works](docs/CONTRACT.md#checking-an-app) has the snippet. The accounting app doesn't do this yet: its test still reads its own old JSON copies.
