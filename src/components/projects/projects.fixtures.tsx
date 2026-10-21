@@ -10,7 +10,7 @@ export const fixtures = [
   { node: '100:184', name: 'state=Default', element: row() },
   { node: '100:180', name: 'state=Hover', element: row(), force: ['hover'] },
   { node: '100:182', name: 'state=Pressed', element: row(), force: ['active'] },
-  { node: '100:181', name: 'state=Focus', element: <div style={{ display: 'inline-flex', padding: 4 }}>{row()}</div>, force: ['focus', 'focus-visible'] },
+  { node: '100:181', name: 'state=Focus', element: <div style={{ display: 'inline-flex', padding: 'var(--spacing-gap-2xsmall)' }}>{row()}</div>, force: ['focus', 'focus-visible'] },
   { node: '100:183', name: 'state=Disabled', element: row({ disabled: true }) },
   { node: '238:140', name: 'state=Locked', element: row({ locked: true }) },
 ]

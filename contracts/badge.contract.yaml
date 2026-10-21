@@ -41,7 +41,7 @@ elements:
       display: { value: inline-flex, assert: false }
       vertical-align: { value: middle, assert: false }
       position: { value: relative, assert: false }
-      min-width: { value: 24px }
+      min-width: { token: spacing/size/small, value: 24px }
   label: {}
   outline: {}
   icon:

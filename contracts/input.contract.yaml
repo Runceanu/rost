@@ -208,7 +208,7 @@ variants:
         position: { value: absolute }
         border-width: { token: spacing/outline/medium, value: 2px }
         border-color: { token: input/negative/focus/focus-ring, value: "#00d669" }
-        inset: { value: -4px }
+        inset: { value: "calc(-1 * var(--spacing-gap-2xsmall))", untokenised: "Composed from a token: the ring sits spacing/gap/2xsmall outside the element." }
         border-radius: { token: spacing/radius/large, value: 16px }
   - when: { state: Default, configuration: Filled, selected: true, error: true }
     figmaNode: "252:1064"
@@ -271,7 +271,7 @@ variants:
         position: { value: absolute }
         border-width: { token: spacing/outline/medium, value: 2px }
         border-color: { token: input/negative/focus/focus-ring, value: "#00d669" }
-        inset: { value: -4px }
+        inset: { value: "calc(-1 * var(--spacing-gap-2xsmall))", untokenised: "Composed from a token: the ring sits spacing/gap/2xsmall outside the element." }
         border-radius: { token: spacing/radius/large, value: 16px }
   - when: { state: Hover, configuration: Empty, selected: false, error: true }
     figmaNode: "252:1076"

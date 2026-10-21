@@ -295,7 +295,7 @@ variants:
         position: { value: absolute }
         border-width: { token: spacing/outline/medium, value: 2px }
         border-color: { token: actions/primary/focus/focus-ring, value: "#b6ffda" }
-        inset: { value: -4px, notes: "Figma said -5px on the left and top, to make up for the stroke. The stroke takes no space here." }
+        inset: { value: "calc(-1 * var(--spacing-gap-2xsmall))", untokenised: "Composed from a token: spacing/gap/2xsmall out. Figma said -5px on the left and top, to make up for the stroke, which takes no space here." }
         border-radius: { token: spacing/radius/full, value: 10000px }
       icons-arrow-left:
         color: { token: non-interactive/foreground/quadruple, value: "#3a3a3a", notes: "Read from the pixels. Six tokens hold #3a3a3a; this is the foreground one." }
@@ -323,7 +323,7 @@ variants:
         position: { value: absolute }
         border-width: { token: spacing/outline/medium, value: 2px }
         border-color: { token: actions/secondary/regular/focus/focus-ring, value: "#999" }
-        inset: { value: -4px }
+        inset: { value: "calc(-1 * var(--spacing-gap-2xsmall))", untokenised: "Composed from a token: the ring sits spacing/gap/2xsmall outside the element." }
         border-radius: { token: spacing/radius/full, value: 10000px }
       icons-arrow-left:
         color: { token: actions/primary/default/background, value: "#00d669" }
@@ -343,7 +343,7 @@ variants:
         position: { value: absolute }
         border-width: { token: spacing/outline/medium, value: 2px }
         border-color: { token: actions/secondary/regular/focus/focus-ring, value: "#999" }
-        inset: { value: -4px }
+        inset: { value: "calc(-1 * var(--spacing-gap-2xsmall))", untokenised: "Composed from a token: the ring sits spacing/gap/2xsmall outside the element." }
         border-radius: { token: spacing/radius/full, value: 10000px }
       icons-arrow-left:
         color: { token: actions/primary/default/background, value: "#00d669" }
@@ -410,7 +410,7 @@ variants:
         position: { value: absolute }
         border-width: { token: spacing/outline/medium, value: 2px }
         border-color: { token: actions/secondary/regular/focus/focus-ring, value: "#999" }
-        inset: { value: -4px }
+        inset: { value: "calc(-1 * var(--spacing-gap-2xsmall))", untokenised: "Composed from a token: the ring sits spacing/gap/2xsmall outside the element." }
         border-radius: { token: spacing/radius/full, value: 10000px }
       icons-arrow-left:
         color: { token: actions/primary/default/background, value: "#00d669" }

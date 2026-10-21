@@ -22,7 +22,7 @@ export const fixtures = NODES.map(([state, expanded, node]) => {
   return {
     node,
     name: `state=${state}, expanded=${expanded ? 'True' : 'False'}`,
-    element: state === 'Focus' ? <div style={{ display: 'inline-flex', padding: 4 }}>{el}</div> : el,
+    element: state === 'Focus' ? <div style={{ display: 'inline-flex', padding: 'var(--spacing-gap-2xsmall)' }}>{el}</div> : el,
     ...(FORCE[state] ? { force: FORCE[state] } : {}),
     ...(state === 'Focus' ? { forceOn: '.rost-testimonials__top' } : {}),
   }

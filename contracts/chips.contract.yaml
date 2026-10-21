@@ -63,7 +63,7 @@ elements:
     styles:
       display: { value: none, assert: false }
       position: { value: absolute }
-      inset: { value: -4px }
+      inset: { value: "calc(-1 * var(--spacing-gap-2xsmall))", untokenised: "Composed from a token: the ring sits spacing/gap/2xsmall outside the element." }
       border-style: { value: solid }
       border-width: { token: spacing/outline/medium, value: 2px }
       border-color: { token: actions/secondary/regular/focus/focus-ring, value: "#999" }

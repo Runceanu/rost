@@ -131,5 +131,6 @@ Every token this component uses, across all its variants.
 | `dot` | `width` | `3px` | The dot's own size inside the icon. |
 | `dot` | `height` | `3px` | The dot's own size inside the icon. |
 | `icons-arrow` | `mask` | `url(./icon-up-right.svg) center / contain no-repeat` | The icon file itself. |
+| `focus-ring` | `inset` | `calc(-1 * var(--spacing-gap-2xsmall))` | Composed from a token: the ring sits spacing/gap/2xsmall outside the element. |
 
 See it live, with every value of every variant: [rost.build/components/projects](https://rost.build/components/projects/)

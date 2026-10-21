@@ -5,13 +5,13 @@ import { Tag } from './Tag'
 
 // In a flex box, so the tag sits on whole pixels rather than on a line of text.
 // Figma's Focus frame includes the ring, 4px outside.
-const box = (tag: JSX.Element, pad = 0) => <div style={{ display: 'inline-flex', padding: pad }}>{tag}</div>
+const box = (tag: JSX.Element, pad: number | string = 0) => <div style={{ display: 'inline-flex', padding: pad }}>{tag}</div>
 
 export const fixtures = [
   { node: '91:363', name: 'state=Default', element: box(<Tag href="#">label</Tag>) },
   { node: '91:372', name: 'state=Hover', element: box(<Tag href="#">label</Tag>), force: ['hover'] },
   { node: '91:383', name: 'state=Pressed', element: box(<Tag href="#">label</Tag>), force: ['active'] },
-  { node: '91:403', name: 'state=Focus', element: box(<Tag href="#">label</Tag>, 4), force: ['focus', 'focus-visible'] },
+  { node: '91:403', name: 'state=Focus', element: box(<Tag href="#">label</Tag>, 'var(--spacing-gap-2xsmall)'), force: ['focus', 'focus-visible'] },
   { node: '91:394', name: 'state=Disabled', element: box(<Tag href="#" disabled>label</Tag>) },
 ]
 
@@ -23,7 +23,7 @@ export const usage = `import { Tag } from 'rost/components/tags/Tag'
 
 /** What the component's card on rost.build shows. */
 export const preview = (
-  <span style={{ display: 'flex', gap: 8 }}>
+  <span style={{ display: 'flex', gap: 'var(--spacing-gap-small)' }}>
     <Tag>Fintech</Tag>
     <Tag>Product</Tag>
     <Tag>2025</Tag>

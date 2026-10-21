@@ -129,9 +129,10 @@ Every token this component uses, across all its variants.
 | Part | Property | Value | Why |
 |---|---|---|---|
 | `shadow` | `background` | `linear-gradient(to bottom, rgba(6,8,5,0), var(--non-interactive-background-primary))` | A gradient from the page background, transparent, to the page background. The colour is the token; the ramp is the effect. |
-| `content` | `background` | `rgba(0,0,0,0.48)` | Black at opacity/medium. The kit has no colour token with alpha for it. |
+| `content` | `background` | `color-mix(in srgb, black calc(var(--opacity-medium) * 100%), transparent)` | Black at opacity/medium. The opacity is the token; the kit has no black, so black is the one plain word here. |
 | `dot` | `width` | `3px` | The dot's own size inside the icon. |
 | `dot` | `height` | `3px` | The dot's own size inside the icon. |
-| `focus-ring` | `border-radius` | `28px` | The card's radius plus the ring's offset, so it follows from those two. |
+| `focus-ring` | `inset` | `calc(-1 * var(--spacing-gap-2xsmall))` | Composed from a token: the ring sits spacing/gap/2xsmall outside the element. |
+| `focus-ring` | `border-radius` | `calc(var(--spacing-radius-xlarge) + var(--spacing-gap-2xsmall))` | Composed from tokens: the element's spacing/radius/xlarge plus the ring's spacing/gap/2xsmall. |
 
 See it live, with every value of every variant: [rost.build/components/thumbs](https://rost.build/components/thumbs/)

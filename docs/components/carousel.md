@@ -107,7 +107,8 @@ Every token this component uses, across all its variants.
 
 | Part | Property | Value | Why |
 |---|---|---|---|
-| `background` | `background` | `rgba(58,58,58,0.48)` | #3a3a3a at 48%. The kit has no colour token with alpha for it. |
-| `focus-ring` | `border-radius` | `28px` | The element's radius plus the ring's offset, so it follows from those two. |
+| `background` | `background` | `color-mix(in srgb, var(--non-interactive-background-tertiary) calc(var(--opacity-medium) * 100%), transparent)` | Composed from tokens: non-interactive/background/tertiary at opacity/medium. |
+| `focus-ring` | `inset` | `calc(-1 * var(--spacing-gap-2xsmall))` | Composed from a token: the ring sits spacing/gap/2xsmall outside the element. |
+| `focus-ring` | `border-radius` | `calc(var(--spacing-radius-xlarge) + var(--spacing-gap-2xsmall))` | Composed from tokens: the element's spacing/radius/xlarge plus the ring's spacing/gap/2xsmall. |
 
 See it live, with every value of every variant: [rost.build/components/carousel](https://rost.build/components/carousel/)

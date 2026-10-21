@@ -109,4 +109,11 @@ Every token this component uses, across all its variants.
 | `typography/placeholder/letter-spacing` | `0px` |
 | `typography/placeholder/line-height` | `12px` |
 
+## No token, on purpose
+
+| Part | Property | Value | Why |
+|---|---|---|---|
+| `focus-ring` | `inset` | `calc(-1 * var(--spacing-gap-2xsmall))` | Composed from a token: the ring sits spacing/gap/2xsmall outside the element. |
+| `focus-ring` | `inset` | `calc(-1 * var(--spacing-gap-2xsmall))` | Composed from a token: the ring sits spacing/gap/2xsmall outside the element. |
+
 See it live, with every value of every variant: [rost.build/components/input](https://rost.build/components/input/)

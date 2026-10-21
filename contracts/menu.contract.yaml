@@ -67,7 +67,7 @@ elements:
     styles:
       display: { value: none, assert: false }
       position: { value: absolute }
-      inset: { value: 20px -4px, notes: "Around the text only: from 4px above it to 20px above the bottom, and 4px out to each side." }
+      inset: { value: "var(--spacing-gap-medium-large) calc(-1 * var(--spacing-gap-2xsmall))", untokenised: "Composed from tokens: around the text only, spacing/gap/medium-large in from the top and bottom, spacing/gap/2xsmall out to each side." }
       border-style: { value: solid }
       border-width: { token: spacing/outline/medium, value: 2px }
       border-color: { token: actions/primary/focus/focus-ring, value: "#b6ffda" }

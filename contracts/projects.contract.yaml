@@ -153,7 +153,7 @@ elements:
     styles:
       display: { value: none, assert: false }
       position: { value: absolute }
-      inset: { value: -4px }
+      inset: { value: "calc(-1 * var(--spacing-gap-2xsmall))", untokenised: "Composed from a token: the ring sits spacing/gap/2xsmall outside the element." }
       border-style: { value: solid }
       border-width: { token: spacing/outline/medium, value: 2px }
       border-color: { token: project/focus/focus-ring, value: "#999" }
@@ -187,7 +187,7 @@ variants:
         color:
           token: project/hover/sub-label
           value: "#ededed"
-          notes: "Open question. Figma's code read binds this token (#ededed, as in Thumbs and Carousel, where the pixels agree), but Figma's own render of this row shows #d3d9d5. Maybe a variable mode on the frame. The visual test fails on it until I decide which is right."
+          notes: "Decided on 2026-10-21: #ededed, the same as Thumbs and Carousel. Figma's render of this row drew #d3d9d5, probably a variable mode on the frame. I'm fixing the frame in Figma; until its screenshot is captured again, the visual test fails on this one, and that's expected."
       dot:
         background: { token: project/hover/sub-label, value: "#ededed" }
   - when: { state: Pressed }

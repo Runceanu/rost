@@ -16,7 +16,7 @@ export const fixtures = [
   { node: '109:77', name: 'state=Hover', element: <Thumbs href="#" style={SIZE} />, force: ['hover'], mask: [NAME] },
   { node: '109:168', name: 'state=Pressed', element: <Thumbs href="#" style={SIZE} />, force: ['active'], mask: [NAME] },
   // The ring sits 4px outside the card, and Figma's frame includes it.
-  { node: '109:118', name: 'state=Focus', element: <div style={{ padding: 4, display: 'inline-block' }}><Thumbs href="#" style={SIZE} /></div>, force: ['focus', 'focus-visible'], mask: [{ ...NAME, x: NAME.x + 4, y: NAME.y + 4 }] },
+  { node: '109:118', name: 'state=Focus', element: <div style={{ padding: 'var(--spacing-gap-2xsmall)', display: 'inline-block' }}><Thumbs href="#" style={SIZE} /></div>, force: ['focus', 'focus-visible'], mask: [{ ...NAME, x: NAME.x + 4, y: NAME.y + 4 }] },
   { node: '109:206', name: 'state=Disabled', element: <Thumbs disabled style={SIZE} />, mask: [NAME] },
   { node: '261:1232', name: 'state=Locked', element: <Thumbs href="#" locked style={SIZE} />, mask: [NAME] },
 ]
