@@ -254,4 +254,10 @@
   --typography-paragraph-letter-spacing: 0px;
   --typography-paragraph-line-height: 20px;
 
+  /* Read from Figma's design context on 2026-10-21, for the Testimonials quote. Not confirmed by get_variable_defs yet: Figma was closed. */
+  --typography-sub-title-font-size: 20px;
+  --typography-sub-title-line-height: 28px;
+  --typography-sub-title-font-weight-regular: 400;
+  --typography-sub-title-letter-spacing: 0px;
+
 }

@@ -6,12 +6,12 @@ Every value in every contract, sorted by why it has a token or doesn't. `npm run
 
 | | Values | Share | Meaning |
 |---|---|---|---|
-| Has a token | 1420 | 56% | Uses a token, and the check tests it. |
+| Has a token | 1283 | 61% | Uses a token, and the check tests it. |
 | Token suggested | 0 | 0% | A token I want that doesn't exist yet. The freeze turned every other suggestion into a token. |
-| How Figma builds it | 982 | 39% | How Figma builds the layer (position, inset, which sides get a stroke). Nothing to tokenise. |
-| Figma frame size | 68 | 3% | A root size that is just the Figma frame. Written down, not checked. |
-| No token, on purpose | 31 | 1% | Plain on purpose, and the contract says why. |
-| Open gap | 18 | 1% | No token and no reason. Each one needs a decision from me. |
+| How Figma builds it | 673 | 32% | How Figma builds the layer (position, inset, which sides get a stroke). Nothing to tokenise. |
+| Figma frame size | 89 | 4% | A root size that is just the Figma frame. Written down, not checked. |
+| No token, on purpose | 42 | 2% | Plain on purpose, and the contract says why. |
+| Open gap | 26 | 1% | No token and no reason. Each one needs a decision from me. |
 
 ## By contract
 
@@ -19,7 +19,7 @@ Every value in every contract, sorted by why it has a token or doesn't. `npm run
 |---|---:|---:|---:|---:|---:|---:|
 | [Badge](components/badge.md) | 84 | · | 63 | · | · | 1 |
 | [Button](components/button.md) | 248 | · | 124 | · | · | · |
-| [Carousel](components/carousel.md) | 81 | · | 113 | 4 | 1 | 1 |
+| [Carousel](components/carousel.md) | 43 | · | 27 | 9 | 2 | 1 |
 | [Chip](components/chips.md) | 32 | · | 16 | 8 | · | 1 |
 | [Divider](components/divider.md) | 2 | · | 2 | 2 | · | · |
 | [Floating effect](components/effect-floating.md) | 1 | · | · | · | · | · |
@@ -29,13 +29,13 @@ Every value in every contract, sorted by why it has a token or doesn't. `npm run
 | [Input](components/input.md) | 91 | · | 102 | 1 | · | · |
 | [Lock frame effect](components/effect-lock-frame.md) | 1 | · | · | · | · | · |
 | [Menu effect](components/effect-menu.md) | 1 | · | · | · | · | · |
-| [Menu](components/menu.md) | 31 | · | 17 | 1 | · | · |
+| [Menu](components/menu.md) | 32 | · | 16 | 6 | · | 1 |
 | [Paper effect](components/effect-paper.md) | 6 | · | · | · | 7 | · |
 | [PillButton](components/pill-button.md) | 145 | · | 56 | 12 | 5 | 1 |
-| [Projects](components/projects.md) | 64 | · | 44 | 1 | · | 1 |
+| [Projects](components/projects.md) | 76 | · | 33 | 8 | 4 | 5 |
 | [Tag](components/tags.md) | 26 | · | 13 | 3 | · | 1 |
 | [TestimonialPicture](components/testimonials-pics.md) | 2 | · | 1 | · | · | · |
-| [Testimonials](components/testimonials.md) | 197 | · | 264 | 9 | · | 1 |
+| [Testimonials](components/testimonials.md) | 85 | · | 53 | 13 | 6 | 4 |
 | [Thumb effect](components/effect-thumb.md) | 1 | · | · | · | · | · |
 | [Thumbs](components/thumbs.md) | 73 | · | 50 | 9 | 5 | 7 |
 | [Toggle](components/toggle.md) | 61 | · | 23 | 8 | 6 | 2 |
@@ -46,6 +46,7 @@ None. The freeze on 2026-10-20 turned all 122 suggestions into tokens.
 
 ## No token, on purpose
 
+- [Carousel](components/carousel.md) `background.background` = `rgba(58,58,58,0.48)`: #3a3a3a at 48%. The kit has no colour token with alpha for it.
 - [Carousel](components/carousel.md) `focus-ring.border-radius` = `28px`: The element's radius plus the ring's offset, so it follows from those two.
 - [Hero Media](components/hero-media.md) `media.background-size` = `explicit px (asset-native, e.g. 2336px 1196px)`: Each artwork's own pixel size. It changes with every image, so a token wouldn't help.
 - [IconButton](components/icon-button.md) `glyph.mask` = `url(./icon-arrow-left.svg) center / contain no-repeat`: The icon file itself. `assets/icons/arrow-left.svg`, the same shape Figma uses (its insets match Figma's `Union` layer exactly).
@@ -66,6 +67,16 @@ None. The freeze on 2026-10-20 turned all 122 suggestions into tokens.
 - [PillButton](components/pill-button.md) `root.box-shadow` = `inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-focus-outline)`: Figma's 1px left and top stroke, drawn inside the shape the way Figma draws it. A border would make the button 1px wider. The width and colour are tokens.
 - [PillButton](components/pill-button.md) `root.box-shadow` = `inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-pressed-outline)`: Figma's 1px left and top stroke, drawn inside the shape the way Figma draws it. A border would make the button 1px wider. The width and colour are tokens.
 - [PillButton](components/pill-button.md) `root.box-shadow` = `inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-disabled-outline)`: Figma's 1px left and top stroke, drawn inside the shape the way Figma draws it. A border would make the button 1px wider. The width and colour are tokens.
+- [Projects](components/projects.md) `icons-lock.mask` = `url(./icon-lock.svg) center / contain no-repeat`: The icon file itself.
+- [Projects](components/projects.md) `dot.width` = `3px`: The dot's own size inside the icon.
+- [Projects](components/projects.md) `dot.height` = `3px`: The dot's own size inside the icon.
+- [Projects](components/projects.md) `icons-arrow.mask` = `url(./icon-up-right.svg) center / contain no-repeat`: The icon file itself.
+- [Testimonials](components/testimonials.md) `icons-chevron.mask` = `url(./icon-chevron-down.svg) center / contain no-repeat`: The icon file itself.
+- [Testimonials](components/testimonials.md) `icons-chevron.mask` = `url(./icon-chevron-up.svg) center / contain no-repeat`: The icon file itself.
+- [Testimonials](components/testimonials.md) `icons-chevron.mask` = `url(./icon-chevron-up.svg) center / contain no-repeat`: The icon file itself.
+- [Testimonials](components/testimonials.md) `icons-chevron.mask` = `url(./icon-chevron-up.svg) center / contain no-repeat`: The icon file itself.
+- [Testimonials](components/testimonials.md) `icons-chevron.mask` = `url(./icon-chevron-up.svg) center / contain no-repeat`: The icon file itself.
+- [Testimonials](components/testimonials.md) `icons-chevron.mask` = `url(./icon-chevron-up.svg) center / contain no-repeat`: The icon file itself.
 - [Thumbs](components/thumbs.md) `shadow.background` = `linear-gradient(to bottom, rgba(6,8,5,0), var(--non-interactive-background-primary))`: A gradient from the page background, transparent, to the page background. The colour is the token; the ramp is the effect.
 - [Thumbs](components/thumbs.md) `content.background` = `rgba(0,0,0,0.48)`: Black at opacity/medium. The kit has no colour token with alpha for it.
 - [Thumbs](components/thumbs.md) `dot.width` = `3px`: The dot's own size inside the icon.
@@ -81,14 +92,22 @@ None. The freeze on 2026-10-20 turned all 122 suggestions into tokens.
 ## Open gaps
 
 - [Badge](components/badge.md) `root.min-width` = `24px`
-- [Carousel](components/carousel.md) `background.background` = `rgba(58,58,58,0.48)`
+- [Carousel](components/carousel.md) `focus-ring.border-style` = `solid`
 - [Chip](components/chips.md) `focus-ring.border-style` = `solid`
 - [IconButton](components/icon-button.md) `glyph.background` = `currentColor`
 - [IconButton](components/icon-button.md) `focus-ring.border-style` = `solid`
+- [Menu](components/menu.md) `focus-ring.border-style` = `solid`
 - [PillButton](components/pill-button.md) `focus-ring.border-style` = `solid`
-- [Projects](components/projects.md) `badge.min-width` = `24px`
+- [Projects](components/projects.md) `outline.left` = `0`
+- [Projects](components/projects.md) `outline.right` = `0`
+- [Projects](components/projects.md) `outline.bottom` = `0`
+- [Projects](components/projects.md) `dot.background` = `#747573`
+- [Projects](components/projects.md) `focus-ring.border-style` = `solid`
 - [Tag](components/tags.md) `focus-ring.border-style` = `solid`
-- [Testimonials](components/testimonials.md) `bottom.width` = `976px`
+- [Testimonials](components/testimonials.md) `outline.left` = `0`
+- [Testimonials](components/testimonials.md) `outline.right` = `0`
+- [Testimonials](components/testimonials.md) `outline.bottom` = `0`
+- [Testimonials](components/testimonials.md) `focus-ring.border-style` = `solid`
 - [Thumbs](components/thumbs.md) `shadow.left` = `0`
 - [Thumbs](components/thumbs.md) `shadow.right` = `0`
 - [Thumbs](components/thumbs.md) `shadow.bottom` = `0`
@@ -101,7 +120,7 @@ None. The freeze on 2026-10-20 turned all 122 suggestions into tokens.
 
 ## Figma variables missing from tokens.css
 
-The Figma file has **582** variables (`registry/figma-variables.json`) and `tokens/tokens.css` has **177** of them. No contract needs the other 405 today, but new components will, the way Chip needed `opacity/strong`.
+The Figma file has **582** variables (`registry/figma-variables.json`) and `tokens/tokens.css` has **181** of them. No contract needs the other 401 today, but new components will, the way Chip needed `opacity/strong`.
 
 | Family | Missing |
 |---|---:|
@@ -119,7 +138,6 @@ The Figma file has **582** variables (`registry/figma-variables.json`) and `toke
 | `non-interactive/background` | 6 |
 | `typography/display` | 6 |
 | `typography/headline` | 5 |
-| `typography/sub-title` | 5 |
 | `input/negative` | 4 |
 | `project/loading` | 4 |
 | `typography/font-weight` | 4 |
@@ -146,4 +164,5 @@ The Figma file has **582** variables (`registry/figma-variables.json`) and `toke
 | `sub-label` | 1 |
 | `typography/letter-spacing` | 1 |
 | `typography/sub-headline` | 1 |
+| `typography/sub-title` | 1 |
 | `typography/title` | 1 |

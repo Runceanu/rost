@@ -8,13 +8,20 @@
 |---|---|
 | Kind | component |
 | Contract | `review` · [carousel.contract.yaml](../../contracts/carousel.contract.yaml) |
-| Guidance | **missing** |
+| Guidance | `proposed` |
 | Source | [Figma 157:302](https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=157-302) · read 2026-10-19 · frozen 2026-10-20 |
 | Implemented in | nowhere yet |
 
-## Not right yet
+## Props
 
-- No guidance yet. It needs a `guidance` block (there's one to copy in `schema/template.contract.yaml`).
+| Prop | Type | Values | Default |
+|---|---|---|---|
+| `number` | slot |  |  |
+| `title` | slot |  |  |
+| `description` | slot |  |  |
+| `showNumber` | boolean |  | `true` |
+| `showTitle` | boolean |  | `true` |
+| `showDescription` | boolean |  | `true` |
 
 ## States
 
@@ -22,14 +29,38 @@
 
 ## Anatomy
 
-- `root`
+- `root`: Figma's read of Default came back as a Code Connect prompt, not code. Default's values come from its branch in the other four reads, which all carry it.
+- `background`: The glass that shows while it's pressed.
 - `title`
 - `number`
-- `label`
-- `text`
+- `text`: The title.
 - `bottom`
-- `background`
+- `description`: The parser missed this line. It's the paragraph style.
 - `focus-ring`
+
+## When to use
+
+- The cards in runceanu.com's home page carousel. Each one leads to a piece of work.
+
+## When not to use
+
+- A card with a picture. That's **Thumbs**.
+- Long titles. The title wraps, but two lines of 24px eat the card.
+
+## Behaviour
+
+A number, a title and a line of description, on nothing: the card has no fill until you press it. On hover the number and title go green and the description lightens. Pressed lays a frosted glass under it (`effect/thumb`). Disabled fades the whole card to `opacity/mild`.
+
+## Accessibility
+
+- **Element**: an `<a>`. Disabled drops the `href` and sets `aria-disabled="true"`.
+- **Name**: the title, read with the number and the description. Pass `aria-label` if that reads badly.
+- **Keyboard**: Tab to it, Enter opens it. The carousel around it handles the arrows.
+- **Focus**: a 2px ring, 4px outside the card, on `:focus-visible` only.
+
+## Content
+
+A title of one to three words. The description is one short sentence.
 
 ## Tokens
 
@@ -37,16 +68,21 @@ Every token this component uses, across all its variants.
 
 | Token | Resolves to |
 |---|---|
+| `effect/thumb` | `blur(12px)` |
 | `font-family/base` | `'General Sans Variable'` |
 | `opacity/mild` | `0.32` |
 | `opacity/strong` | `0.64` |
+| `project/default/label` | `#d3d9d5` |
+| `project/default/sub-label` | `#999` |
 | `project/disabled/label` | `#d3d9d5` |
 | `project/disabled/sub-label` | `#999` |
 | `project/focus/focus-ring` | `#999` |
 | `project/focus/label` | `#d3d9d5` |
 | `project/focus/sub-label` | `#999` |
 | `project/hover/label` | `#00d669` |
+| `project/hover/sub-label` | `#ededed` |
 | `project/pressed/label` | `#00d669` |
+| `project/pressed/sub-label` | `#c2c7c3` |
 | `spacing/gap/large` | `24px` |
 | `spacing/gap/medium` | `16px` |
 | `spacing/gap/none` | `0px` |
@@ -58,6 +94,10 @@ Every token this component uses, across all its variants.
 | `typography/label/font-weight/regular` | `400` |
 | `typography/label/letter-spacing` | `0px` |
 | `typography/label/line-height` | `14px` |
+| `typography/paragraph/font-size` | `14px` |
+| `typography/paragraph/font-weight/regular` | `400` |
+| `typography/paragraph/letter-spacing` | `0px` |
+| `typography/paragraph/line-height` | `20px` |
 | `typography/title/font-size` | `24px` |
 | `typography/title/font-weight/medium` | `500` |
 | `typography/title/letter-spacing` | `0px` |
@@ -67,6 +107,7 @@ Every token this component uses, across all its variants.
 
 | Part | Property | Value | Why |
 |---|---|---|---|
+| `background` | `background` | `rgba(58,58,58,0.48)` | #3a3a3a at 48%. The kit has no colour token with alpha for it. |
 | `focus-ring` | `border-radius` | `28px` | The element's radius plus the ring's offset, so it follows from those two. |
 
 See it live, with every value of every variant: [rost.build/components/carousel](https://rost.build/components/carousel/)

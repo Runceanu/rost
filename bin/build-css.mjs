@@ -62,7 +62,9 @@ function build(id) {
     for (const [prop, val] of Object.entries(v.when)) {
       // Hover, press and focus, only on the element that can have them
       // (`statesOn`). Disabled isn't one: a disabled link has no href.
-      if (prop === 'state' && PSEUDO[val] && c.statesOn && val !== 'Disabled' && val !== 'Default') root = `${c.statesOn}${root}${PSEUDO[val]}`
+      // A state that belongs to a part inside (`stateSelectors`), like a disclosure's button.
+      if (prop === 'state' && c.stateSelectors?.[val]) root += c.stateSelectors[val]
+      else if (prop === 'state' && PSEUDO[val] && c.statesOn && val !== 'Disabled' && val !== 'Default') root = `${c.statesOn}${root}${PSEUDO[val]}`
       else if (prop === 'state') root += PSEUDO[val] ?? `.${base}--state-${kebab(val)}`
       else if (val === true) root += `.${base}--${kebab(prop)}`
       // A false boolean has no class of its own; say so, or its rules would

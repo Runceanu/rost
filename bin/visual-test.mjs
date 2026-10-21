@@ -163,7 +163,7 @@ for (const id of ids) {
     import { createRoot } from 'react-dom/client'
     import { fixtures } from '${join(root, 'src/components', id, `${id}.fixtures.tsx`)}'
     createRoot(document.getElementById('root')).render(
-      <>{fixtures.map((f) => <div key={f.node} data-node={f.node} data-force={(f.force ?? []).join(' ')} data-mask={JSON.stringify(f.mask ?? [])} style={{ margin: 8 }}>{f.element}</div>)}</>
+      <>{fixtures.map((f) => <div key={f.node} data-node={f.node} data-force={(f.force ?? []).join(' ')} data-force-on={f.forceOn ?? ''} data-mask={JSON.stringify(f.mask ?? [])} style={{ margin: 8 }}>{f.element}</div>)}</>
     )`)
   await build({ entryPoints: [join(work, 'entry.tsx')], bundle: true, outdir: work, jsx: 'automatic', logLevel: 'error', loader: { '.svg': 'file' }, plugins: [svgUrl] })
   const face = `@font-face { font-family: 'General Sans Variable'; font-weight: 200 700; src: url('${origin}/font') format('truetype'); }`
@@ -191,9 +191,9 @@ for (const id of ids) {
   const cdp = await page.context().newCDPSession(page)
   await cdp.send('DOM.enable')
   await cdp.send('CSS.enable')
-  const force = async (node, classes) => {
+  const force = async (node, classes, on) => {
     const { root: doc } = await cdp.send('DOM.getDocument', { depth: -1 })
-    const { nodeId } = await cdp.send('DOM.querySelector', { nodeId: doc.nodeId, selector: `[data-node="${node}"] .rost-${id}` })
+    const { nodeId } = await cdp.send('DOM.querySelector', { nodeId: doc.nodeId, selector: `[data-node="${node}"] ${on || `.rost-${id}`}` })
     if (nodeId) await cdp.send('CSS.forcePseudoState', { nodeId, forcedPseudoClasses: classes })
     return nodeId
   }
@@ -207,7 +207,8 @@ for (const id of ids) {
     const el = await page.$(`[data-node="${node}"] > *`)
     if (!el) { failed++; console.log(`  FAIL ${target.name.padEnd(30)} rendered nothing`); continue }
     const forced = await page.$eval(`[data-node="${node}"]`, (e) => e.dataset.force.split(' ').filter(Boolean))
-    const forcedOn = forced.length ? await force(node, forced) : 0
+    const on = await page.$eval(`[data-node="${node}"]`, (e) => e.dataset.forceOn)
+    const forcedOn = forced.length ? await force(node, forced, on) : 0
     if (forced.length) await page.waitForTimeout(SETTLE_MS)
     const shot = PNG.sync.read(await el.screenshot())
     if (forcedOn) await cdp.send('CSS.forcePseudoState', { nodeId: forcedOn, forcedPseudoClasses: [] })

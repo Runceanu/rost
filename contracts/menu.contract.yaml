@@ -16,99 +16,113 @@ source:
   extractedAt: "2026-08-19"
   extractedBy: mcp
   frozenAt: "2026-10-20"
+props:
+  title: { type: slot }
+  description: { type: slot }
+  showDescription: { type: boolean, default: true }
+  showDivider: { type: boolean, default: true, notes: "The line underneath. It's Rost's Divider." }
 states: [ Default, Hover, Pressed, Focus, Disabled ]
 elements:
   root:
+    notes: Values come from each state's own branch of the Figma read. The first parse kept Default's colours for every state.
     styles:
+      display: { value: flex, assert: false }
+      flex-direction: { value: column, assert: false }
+      align-items: { value: flex-start }
       position: { value: relative, assert: false }
+      gap: { token: spacing/gap/large, value: 24px }
+      padding-top: { token: spacing/gap/large, value: 24px }
+      text-decoration: { value: none, assert: false, notes: "It's a link." }
+      color: { value: inherit, assert: false }
+      outline: { value: none, assert: false }
       width:
-        value: 104px
+        value: 324px
         assert: false
         notes: Just the size of the Figma frame. No token, and not something to copy.
-  line:
-    styles:
-      position: { value: absolute }
   content:
     styles:
       display: { value: flex, assert: false }
       flex-direction: { value: column, assert: false }
-      flex-shrink: { value: "0", assert: false }
-      width: { value: 100% }
       align-items: { value: flex-start }
-      position: { value: relative, assert: false }
+      width: { value: 100% }
       gap: { token: spacing/gap/small-medium, value: 12px }
+      font-family: { token: font-family/base, value: "'General Sans Variable'" }
       line-height: { token: typography/body/line-height, value: 22px }
       font-size: { token: typography/body/font-size, value: 16px }
       letter-spacing: { token: typography/body/letter-spacing, value: 0px }
-  label:
+  title:
     styles:
-      flex-shrink: { value: "0", assert: false }
       width: { value: 100% }
-      position: { value: relative, assert: false }
-  text:
+      font-weight: { token: typography/body/font-weight/medium, value: "500" }
+  description:
     styles:
-      flex-shrink: { value: "0", assert: false }
       width: { value: 100% }
-      position: { value: relative, assert: false }
-  focus-ring: {}
+      font-weight: { token: typography/body/font-weight/regular, value: "400" }
+  divider:
+    notes: "Rost's Divider, full width. Figma draws its line on a zero-height frame, half a pixel either side; Divider is one solid pixel, inside the test's tolerance."
+    styles:
+      width: { value: 100% }
+      flex-shrink: { value: "0", assert: false }
+  focus-ring:
+    styles:
+      display: { value: none, assert: false }
+      position: { value: absolute }
+      inset: { value: 20px -4px, notes: "Around the text only: from 4px above it to 20px above the bottom, and 4px out to each side." }
+      border-style: { value: solid }
+      border-width: { token: spacing/outline/medium, value: 2px }
+      border-color: { token: actions/primary/focus/focus-ring, value: "#b6ffda" }
+      pointer-events: { value: none, assert: false }
 variants:
   - when: { state: Default }
     figmaNode: "41:147"
     elements:
-      label:
-        font-family: { token: font-family/base, value: "'General Sans Variable'" }
-        font-weight: { token: typography/body/font-weight/medium, value: "500" }
+      title:
         color: { token: non-interactive/foreground/primary, value: "#ededed" }
-      text:
-        font-family: { token: font-family/base, value: "'General Sans Variable'" }
-        font-weight: { token: typography/body/font-weight/regular, value: "400" }
+      description:
         color: { token: non-interactive/foreground/tertiary, value: "#999" }
+        font-size: { token: typography/paragraph/font-size, value: 14px, notes: "Figma's code read says typography/body (16px), but its render of this state draws 14px on 20px, exactly paragraph. Probably a variable mode on the frame. I follow what Figma shows." }
+        line-height: { token: typography/paragraph/line-height, value: 20px }
   - when: { state: Hover }
     figmaNode: "41:260"
     elements:
-      label:
-        font-family: { token: font-family/base, value: "'General Sans Variable'" }
-        font-weight: { token: typography/body/font-weight/medium, value: "500" }
-      text:
-        font-family: { token: font-family/base, value: "'General Sans Variable'" }
-        font-weight: { token: typography/body/font-weight/regular, value: "400" }
-      content:
+      title:
         color: { token: non-interactive/foreground/primary, value: "#ededed" }
-  - when: { state: Focus }
-    figmaNode: "41:272"
-    elements:
-      label:
-        font-family: { token: font-family/base, value: "'General Sans Variable'" }
-        font-weight: { token: typography/body/font-weight/medium, value: "500" }
+      description:
         color: { token: non-interactive/foreground/primary, value: "#ededed" }
-      text:
-        font-family: { token: font-family/base, value: "'General Sans Variable'" }
-        font-weight: { token: typography/body/font-weight/regular, value: "400" }
-        color: { token: non-interactive/foreground/tertiary, value: "#999" }
-      focus-ring:
-        border-sides: { value: all }
-        position: { value: absolute }
-        border-width: { token: spacing/outline/medium, value: 2px }
-        border-color: { token: actions/primary/focus/focus-ring, value: "#b6ffda" }
-        inset: { value: 20px -4px }
+        font-size: { token: typography/paragraph/font-size, value: 14px }
+        line-height: { token: typography/paragraph/line-height, value: 20px }
   - when: { state: Pressed }
     figmaNode: "41:286"
     elements:
-      content:
+      title:
         color: { token: non-interactive/foreground/primary, value: "#ededed" }
-        font-family: { token: font-family/base, value: "'General Sans Variable'" }
+      description:
+        color: { token: non-interactive/foreground/primary, value: "#ededed" }
         font-weight: { token: typography/body/font-weight/medium, value: "500" }
+        font-size: { token: typography/body/font-size, value: 16px, notes: Pressed is the one state where Figma draws the description at body size. }
+        line-height: { token: typography/body/line-height, value: 22px }
+  - when: { state: Focus }
+    figmaNode: "41:272"
+    elements:
+      title:
+        color: { token: non-interactive/foreground/primary, value: "#ededed" }
+      description:
+        color: { token: non-interactive/foreground/tertiary, value: "#999" }
+        font-size: { token: typography/paragraph/font-size, value: 14px, notes: "Figma's code read says typography/body (16px), but its render of this state draws 14px on 20px, exactly paragraph. Probably a variable mode on the frame. I follow what Figma shows." }
+        line-height: { token: typography/paragraph/line-height, value: 20px }
+      focus-ring:
+        display: { value: block, assert: false }
   - when: { state: Disabled }
     figmaNode: "41:298"
     elements:
-      label:
-        font-family: { token: font-family/base, value: "'General Sans Variable'" }
-        font-weight: { token: typography/body/font-weight/medium, value: "500" }
-      text:
-        font-family: { token: font-family/base, value: "'General Sans Variable'" }
-        font-weight: { token: typography/body/font-weight/regular, value: "400" }
-      content:
+      title:
         color: { token: non-interactive/foreground/quadruple, value: "#3a3a3a" }
+      description:
+        color: { token: non-interactive/foreground/quadruple, value: "#3a3a3a" }
+        font-size: { token: typography/paragraph/font-size, value: 14px, notes: "Figma's code read says typography/body (16px), but its render of this state draws 14px on 20px, exactly paragraph. Probably a variable mode on the frame. I follow what Figma shows." }
+        line-height: { token: typography/paragraph/line-height, value: 20px }
+      root:
+        cursor: { value: default, assert: false }
 guidance:
   status: agreed
   use:

@@ -198,6 +198,11 @@
         }
       }
     },
+    "stateSelectors": {
+      "description": "Replaces the pseudo-class for a state, when the state belongs to a part inside, e.g. { Focus: ':has(> .rost-testimonials__top:focus-visible)' } for a disclosure whose header is the button.",
+      "type": "object",
+      "additionalProperties": { "type": "string" }
+    },
     "statesOn": {
       "description": "The element the interaction states need, as a selector, e.g. `:is(a[href], button)`. Without it, Hover and the rest apply to the root whatever it is. With it, a static one (a `<span>` tag) never reacts.",
       "type": "string"

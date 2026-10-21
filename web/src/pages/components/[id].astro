@@ -50,7 +50,7 @@ const props = Object.entries(c.props ?? {}) as [string, any][]
       </div>
       <div class="tab-panel" role="tabpanel" id="panel-preview" aria-labelledby="tab-preview" tabindex="0"><div class="stage"><Fixtures id={id} /></div></div>
       <div class="tab-panel" role="tabpanel" id="panel-code" aria-labelledby="tab-code" tabindex="0" hidden>
-        {usage && <Code code={usage} lang="tsx" theme="vesper" />}
+        {usage && <Code code={usage} lang={e.kind === 'effect' ? 'css' : 'tsx'} theme="vesper" />}
         {source && (
           <details class="source">
             <summary>{source.file}</summary>

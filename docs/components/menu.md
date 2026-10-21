@@ -12,17 +12,26 @@
 | Source | [Figma 41:259](https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=41-259) · read 2026-08-19 · frozen 2026-10-20 |
 | Implemented in | nowhere yet |
 
+## Props
+
+| Prop | Type | Values | Default |
+|---|---|---|---|
+| `title` | slot |  |  |
+| `description` | slot |  |  |
+| `showDescription` | boolean |  | `true` |
+| `showDivider` | boolean |  | `true` |
+
 ## States
 
 `Default` · `Hover` · `Pressed` · `Focus` · `Disabled`
 
 ## Anatomy
 
-- `root`
-- `line`
+- `root`: Values come from each state's own branch of the Figma read. The first parse kept Default's colours for every state.
 - `content`
-- `label`
-- `text`
+- `title`
+- `description`
+- `divider`: Rost's Divider, full width. Figma draws its line on a zero-height frame, half a pixel either side; Divider is one solid pixel, inside the test's tolerance.
 - `focus-ring`
 
 ## When to use
@@ -60,6 +69,7 @@ Every token this component uses, across all its variants.
 | `non-interactive/foreground/primary` | `#ededed` |
 | `non-interactive/foreground/quadruple` | `#3a3a3a` |
 | `non-interactive/foreground/tertiary` | `#999` |
+| `spacing/gap/large` | `24px` |
 | `spacing/gap/small-medium` | `12px` |
 | `spacing/outline/medium` | `2px` |
 | `typography/body/font-size` | `16px` |
@@ -67,5 +77,7 @@ Every token this component uses, across all its variants.
 | `typography/body/font-weight/regular` | `400` |
 | `typography/body/letter-spacing` | `0px` |
 | `typography/body/line-height` | `22px` |
+| `typography/paragraph/font-size` | `14px` |
+| `typography/paragraph/line-height` | `20px` |
 
 See it live, with every value of every variant: [rost.build/components/menu](https://rost.build/components/menu/)

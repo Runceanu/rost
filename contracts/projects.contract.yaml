@@ -16,185 +16,258 @@ source:
   extractedAt: "2026-10-19"
   extractedBy: mcp
   frozenAt: "2026-10-20"
+props:
+  number: { type: slot, notes: A two-digit index in front of the name. }
+  name: { type: slot }
+  industry: { type: slot }
+  type: { type: slot }
+  period: { type: slot }
+  showNumber: { type: boolean, default: true }
+  showName: { type: boolean, default: true }
+  showIndustry: { type: boolean, default: true }
+  showType: { type: boolean, default: true }
+  showPeriod: { type: boolean, default: true }
+  showAction: { type: boolean, default: true, notes: The arrow at the end of the row. }
+  showDivider: { type: boolean, default: true, notes: The line under the row. }
+  badge: { type: slot, notes: "The pill after the name on a disabled row, 'Coming soon' in Figma. It's Rost's Badge." }
 states: [ Default, Hover, Pressed, Focus, Disabled, Locked ]
 elements:
   root:
+    notes: Each state's values are read from its own branch of the Figma read. The first parse kept Default's colours for every state, and missed the divider's 2px on hover.
     styles:
-      align-items: { value: center }
       display: { value: flex, assert: false }
+      align-items: { value: center }
       position: { value: relative, assert: false }
       gap: { token: spacing/gap/2xlarge, value: 40px }
       padding-top: { token: spacing/gap/large, value: 24px }
       padding-bottom: { token: spacing/gap/large, value: 24px }
+      padding-left: { token: spacing/gap/none, value: 0px }
+      padding-right: { token: spacing/gap/none, value: 0px }
+      text-decoration: { value: none, assert: false, notes: "It's a link. The whole row is the target." }
+      color: { value: inherit, assert: false }
+      outline: { value: none, assert: false }
       width:
         value: 976px
         assert: false
-        notes: Just the size of the Figma frame. No token, and not something to copy.
+        notes: Just the size of the Figma frame. A row is as wide as its list.
+  outline:
+    notes: The divider under the row.
+    styles:
+      position: { value: absolute }
+      left: { value: "0" }
+      right: { value: "0" }
+      bottom: { value: "0" }
+      pointer-events: { value: none, assert: false }
   left:
     styles:
-      align-items: { value: center }
       display: { value: flex, assert: false }
+      align-items: { value: center }
       flex: { value: 1 0 0, assert: false }
-      position: { value: relative, assert: false }
-      gap: { value: 40px, token: spacing/gap/2xlarge }
-  label:
+      min-width: { value: 1px, assert: false }
+      gap: { token: spacing/gap/2xlarge, value: 40px }
+      white-space: { value: nowrap, assert: false }
+  number:
     styles:
       flex-shrink: { value: "0", assert: false }
-      position: { value: relative, assert: false }
       font-family: { token: font-family/base, value: "'General Sans Variable'" }
       font-weight: { token: typography/label/font-weight/regular, value: "400" }
       line-height: { token: typography/label/line-height, value: 14px }
       font-size: { token: typography/label/font-size, value: 12px }
       letter-spacing: { token: typography/label/letter-spacing, value: 0px }
   text:
+    notes: The name.
     styles:
       flex-shrink: { value: "0", assert: false }
-      position: { value: relative, assert: false }
       font-family: { token: font-family/base, value: "'General Sans Variable'" }
       font-weight: { token: typography/sub-headline/font-weight/medium, value: "500" }
       line-height: { token: typography/sub-headline/line-height, value: 48px }
       font-size: { token: typography/sub-headline/font-size, value: 40px }
       letter-spacing: { token: typography/sub-headline/letter-spacing, value: 0px }
+  icons-lock:
+    optional: true
+    notes: Locked only, after the name. Figma's lock, drawn as a mask in the lock colour.
+    styles:
+      display: { value: block, assert: false }
+      flex-shrink: { value: "0", assert: false }
+      width: { token: spacing/size/small, value: 24px }
+      height: { token: spacing/size/small, value: 24px }
+      background: { token: non-interactive/background/positive/base, value: "#00d669", notes: Read from Figma's lock picture. }
+      mask: { value: url(./icon-lock.svg) center / contain no-repeat, untokenised: The icon file itself. }
+  badge:
+    optional: true
+    notes: Disabled only, after the name. The pill is the Badge component.
+    styles:
+      display: { value: flex, assert: false }
+      flex-shrink: { value: "0", assert: false }
   right:
     styles:
-      align-items: { value: center }
       display: { value: flex, assert: false }
-      flex-shrink: { value: "0", assert: false }
-      height: { value: 100% }
+      align-items: { value: center }
       justify-content: { value: flex-end }
-      position: { value: relative, assert: false }
+      align-self: { value: stretch, assert: false }
       gap: { token: spacing/gap/medium, value: 16px }
-  icons-dot:
+  detail:
+    notes: Industry, type and period.
     styles:
       flex-shrink: { value: "0", assert: false }
-      position: { value: relative, assert: false }
+      white-space: { value: nowrap, assert: false }
+      font-family: { token: font-family/base, value: "'General Sans Variable'" }
+      font-weight: { token: typography/label/font-weight/regular, value: "400" }
+      line-height: { token: typography/label/line-height, value: 14px }
+      font-size: { token: typography/label/font-size, value: 12px }
+      letter-spacing: { token: typography/label/letter-spacing, value: 0px }
+  icons-dot:
+    notes: Figma's 12px `icons/dot`, a 3px dot in the middle, drawn in CSS so its colour can follow the state.
+    styles:
+      display: { value: flex, assert: false }
+      align-items: { value: center }
+      justify-content: { value: center }
+      flex-shrink: { value: "0", assert: false }
       width: { value: 12px, token: spacing/size/3xsmall }
       height: { value: 12px, token: spacing/size/3xsmall }
-  -actions:
+  dot:
     styles:
-      justify-content: { value: center }
-      align-items: { value: center }
-      display: { value: flex, assert: false }
-      flex-shrink: { value: "0", assert: false }
-      position: { value: relative, assert: false }
-      gap: { token: spacing/gap/small, value: 8px }
-      padding: { token: spacing/gap/none, value: 0px }
+      width: { value: 3px, untokenised: "The dot's own size inside the icon." }
+      height: { value: 3px, untokenised: "The dot's own size inside the icon." }
       border-radius: { token: spacing/radius/full, value: 10000px }
-      width: { value: 32px, token: spacing/size/small-medium }
-      height: { value: 32px, token: spacing/size/small-medium }
-  icons-arrow-left:
+      background: { value: "#747573", notes: "Figma's dot SVG is filled #747573, and no token holds it. Open, as in Thumbs." }
+  actions:
+    notes: The arrow at the end, in a 32px round frame. Figma names the layer `-> Actions`.
     styles:
+      display: { value: flex, assert: false }
+      align-items: { value: center }
+      justify-content: { value: center }
       flex-shrink: { value: "0", assert: false }
-      position: { value: relative, assert: false }
-      width: { value: 16px, token: spacing/size/2xsmall }
-      height: { value: 16px, token: spacing/size/2xsmall }
-  outline:
+      width: { token: spacing/size/small-medium, value: 32px }
+      height: { token: spacing/size/small-medium, value: 32px }
+      border-radius: { token: spacing/radius/full, value: 10000px }
+  icons-arrow:
+    notes: "Figma's `icons/up-right` (in a layer it calls `icons/arrow-left`), drawn as a mask. #00d669 in every state."
     styles:
+      display: { value: block, assert: false }
+      width: { token: spacing/size/2xsmall, value: 16px }
+      height: { token: spacing/size/2xsmall, value: 16px }
+      background: { token: actions/primary/default/background, value: "#00d669", notes: Read from Figma's arrow picture. }
+      mask: { value: url(./icon-up-right.svg) center / contain no-repeat, untokenised: The icon file itself. }
+  focus-ring:
+    styles:
+      display: { value: none, assert: false }
       position: { value: absolute }
-  focus-ring: {}
-  badge: {}
-  icons-lock: {}
+      inset: { value: -4px }
+      border-style: { value: solid }
+      border-width: { token: spacing/outline/medium, value: 2px }
+      border-color: { token: project/focus/focus-ring, value: "#999" }
+      pointer-events: { value: none, assert: false }
 variants:
+  - when: { state: Default }
+    figmaNode: "100:184"
+    elements:
+      outline:
+        background: { token: project/default/outline, value: "#3a3a3a" }
+        height: { token: spacing/outline/small, value: 1px }
+      number:
+        color: { token: project/default/sub-label, value: "#999" }
+      text:
+        color: { token: project/default/label, value: "#d3d9d5" }
+      detail:
+        color: { token: project/default/sub-label, value: "#999" }
   - when: { state: Hover }
     figmaNode: "100:180"
     elements:
       root:
-        padding-left: { token: spacing/gap/medium, value: 16px }
-        padding-right: { token: spacing/gap/none, value: 0px }
-      left:
-        white-space: { value: nowrap, assert: false }
-        color: { token: project/hover/label, value: "#00d669" }
+        padding-left: { token: spacing/gap/medium, value: 16px, notes: "On hover and press the row's content slides 16px to the right." }
       outline:
         background: { token: project/hover/outline, value: "#00d669" }
-        height: { value: 2px, token: spacing/outline/medium }
-  - when: { state: Focus }
-    figmaNode: "100:181"
-    elements:
-      root:
-        padding-left: { token: spacing/gap/none, value: 0px }
-        padding-right: { token: spacing/gap/none, value: 0px }
-      left:
-        white-space: { value: nowrap, assert: false }
-      outline:
-        background: { token: project/focus/outline, value: "#3a3a3a" }
-      focus-ring:
-        border-sides: { value: all }
-        position: { value: absolute }
-        border-width: { token: spacing/outline/medium, value: 2px }
-        border-color: { token: project/focus/focus-ring, value: "#999" }
-        inset: { value: -4px }
-      label:
-        color: { token: project/default/sub-label, value: "#999" }
+        height: { token: spacing/outline/medium, value: 2px }
+      number:
+        color: { token: project/hover/label, value: "#00d669" }
       text:
-        color: { token: project/default/label, value: "#d3d9d5" }
+        color: { token: project/hover/label, value: "#00d669" }
+      detail:
+        color:
+          token: project/hover/sub-label
+          value: "#ededed"
+          notes: "Open question. Figma's code read binds this token (#ededed, as in Thumbs and Carousel, where the pixels agree), but Figma's own render of this row shows #d3d9d5. Maybe a variable mode on the frame. The visual test fails on it until I decide which is right."
+      dot:
+        background: { token: project/hover/sub-label, value: "#ededed" }
   - when: { state: Pressed }
     figmaNode: "100:182"
     elements:
       root:
-        padding-left: { token: spacing/gap/medium, value: 16px }
-        padding-right: { token: spacing/gap/none, value: 0px }
-      left:
-        white-space: { value: nowrap, assert: false }
-        color: { token: project/pressed/label, value: "#00d669" }
+        padding-left: { token: spacing/gap/medium, value: 16px, notes: "On hover and press the row's content slides 16px to the right." }
       outline:
         background: { token: project/pressed/outline, value: "#10ffa4" }
+        height: { token: spacing/outline/small, value: 1px }
+      number:
+        color: { token: project/pressed/label, value: "#00d669" }
+      text:
+        color: { token: project/pressed/label, value: "#00d669" }
+      detail:
+        color: { token: project/pressed/sub-label, value: "#c2c7c3" }
+      dot:
+        background: { token: project/pressed/sub-label, value: "#c2c7c3" }
+  - when: { state: Focus }
+    figmaNode: "100:181"
+    elements:
+      focus-ring:
+        display: { value: block, assert: false }
+      outline:
+        background: { token: project/focus/outline, value: "#3a3a3a" }
+        height: { token: spacing/outline/small, value: 1px }
+      number:
+        color: { token: project/default/sub-label, value: "#999" }
+      text:
+        color: { token: project/default/label, value: "#d3d9d5" }
+      detail:
+        color: { token: project/focus/sub-label, value: "#999" }
   - when: { state: Disabled }
     figmaNode: "100:183"
     elements:
-      outline:
-        background: { token: project/disabled/outline, value: "#3a3a3a" }
-        opacity: { token: opacity/gentle, value: "0.24" }
-      label:
-        color: { token: project/default/sub-label, value: "#999" }
-        white-space: { value: nowrap, assert: false }
-        opacity: { token: opacity/gentle, value: "0.24" }
-      text:
-        color: { token: project/default/label, value: "#d3d9d5" }
-        white-space: { value: nowrap, assert: false }
-        opacity: { token: opacity/gentle, value: "0.24" }
       root:
-        opacity: { token: opacity/solid, value: "1" }
-      badge:
-        align-items: { value: center }
-        display: { value: flex, assert: false }
-        flex-shrink: { value: "0", assert: false }
-        position: { value: relative, assert: false }
-        gap: { token: spacing/gap/3xsmall, value: 2px }
-        height: { value: 24px, token: spacing/size/small }
-        min-width: { value: 24px }
-        padding-bottom: { token: spacing/gap/3xsmall, value: 2px }
-        padding-top: { token: spacing/gap/none, value: 0px }
-        padding-left: { token: spacing/gap/small, value: 8px }
-        padding-right: { token: spacing/gap/small, value: 8px }
-        border-radius: { token: spacing/radius/full, value: 10000px }
+        cursor: { value: default, assert: false }
       right:
         opacity: { token: opacity/gentle, value: "0.24" }
-      -actions:
+      actions:
         opacity: { token: opacity/gentle, value: "0.24" }
-  - when: { state: Default }
-    figmaNode: "100:184"
-    elements:
-      left:
-        white-space: { value: nowrap, assert: false }
       outline:
-        background: { token: project/default/outline, value: "#3a3a3a" }
-      label:
+        background: { token: project/disabled/outline, value: "#3a3a3a" }
+        height: { token: spacing/outline/small, value: 1px }
+        opacity: { token: opacity/gentle, value: "0.24" }
+      number:
         color: { token: project/default/sub-label, value: "#999" }
+        opacity: { token: opacity/gentle, value: "0.24" }
       text:
         color: { token: project/default/label, value: "#d3d9d5" }
+        opacity: { token: opacity/gentle, value: "0.24" }
+      detail:
+        color: { token: project/disabled/sub-label, value: "#999" }
   - when: { state: Locked }
     figmaNode: "238:140"
     elements:
       outline:
         background: { token: project/lock/outline, value: "#3a3a3a" }
-      label:
+        height: { token: spacing/outline/small, value: 1px }
+      number:
         color: { token: project/lock/sub-label, value: "#999" }
-        white-space: { value: nowrap, assert: false }
       text:
         color: { token: project/lock/label, value: "#d3d9d5" }
-        white-space: { value: nowrap, assert: false }
-      icons-lock:
-        flex-shrink: { value: "0", assert: false }
-        position: { value: relative, assert: false }
-        width: { value: 24px, token: spacing/size/small }
-        height: { value: 24px, token: spacing/size/small }
+      detail:
+        color: { token: project/lock/sub-label, value: "#999" }
+      dot:
+        background: { token: non-interactive/background/positive/base, value: "#00d669" }
+guidance:
+  status: proposed
+  use:
+    - The list of projects on runceanu.com, one row each. The row links to the case study.
+  avoid:
+    - A grid with pictures. That's **Thumbs**.
+    - Long names. At 40px, a name past three words pushes the details off the row.
+  behaviour: |-
+    A number and a big name on the left, industry, type and period on the right, an arrow at the end, and a line underneath. On hover and press the content slides 16px right, the name goes green, and the line turns green (2px on hover). `Locked` puts a green lock after the name and turns the dots green, for work behind a password. `Disabled` fades everything but the badge, which says "Coming soon".
+  accessibility:
+    element: an `<a>`. Disabled drops the `href` and sets `aria-disabled="true"`.
+    name: the name, then the details. Pass `aria-label` if that reads badly.
+    keyboard: Tab to it, Enter opens it.
+    focus: a 2px ring, 4px outside the row, on `:focus-visible` only.
+    colour: Locked says it with the lock icon, which has its own text for screen readers.
+  content: The name is the client or the product, as people know it. Details are a word or two each.
