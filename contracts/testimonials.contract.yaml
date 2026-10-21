@@ -127,7 +127,7 @@ elements:
       display: { value: block, assert: false }
       width: { token: spacing/size/2xsmall, value: 16px }
       height: { token: spacing/size/2xsmall, value: 16px }
-      background: { token: actions/primary/default/background, value: "#00d669", notes: "Read from Figma's chevron picture." }
+      background: { token: actions/borderless/default/icon, value: "#00d669" }
       mask: { value: url(./icon-chevron-down.svg) center / contain no-repeat, untokenised: The icon file itself. }
   bottom:
     notes: The quote. Only there when it's expanded.

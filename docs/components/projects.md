@@ -45,7 +45,7 @@
 - `badge` (optional): Disabled only, after the name. The pill is the Badge component.
 - `right`
 - `detail`: Industry, type and period.
-- `icons-dot`: Figma's 12px `icons/dot`, a 3px dot in the middle, drawn in CSS so its colour can follow the state.
+- `icons-dot`: Figma's 12px `icons/dot`, a 3px dot in the middle, drawn in CSS so its colour can follow the state (`project/*/icon`).
 - `dot`
 - `actions`: The arrow at the end, in a 32px round frame. Figma names the layer `-> Actions`.
 - `icons-arrow`: Figma's `icons/up-right` (in a layer it calls `icons/arrow-left`), drawn as a mask. #00d669 in every state.
@@ -82,10 +82,10 @@ Every token this component uses, across all its variants.
 
 | Token | Resolves to |
 |---|---|
-| `actions/primary/default/background` | `#00d669` |
+| `actions/borderless/default/icon` | `#00d669` |
 | `font-family/base` | `'General Sans Variable'` |
-| `non-interactive/background/positive/base` | `#00d669` |
 | `opacity/gentle` | `0.24` |
+| `project/default/icon` | `#747573` |
 | `project/default/label` | `#d3d9d5` |
 | `project/default/outline` | `#3a3a3a` |
 | `project/default/sub-label` | `#999` |
@@ -94,12 +94,15 @@ Every token this component uses, across all its variants.
 | `project/focus/focus-ring` | `#999` |
 | `project/focus/outline` | `#3a3a3a` |
 | `project/focus/sub-label` | `#999` |
+| `project/hover/icon` | `#ededed` |
 | `project/hover/label` | `#00d669` |
 | `project/hover/outline` | `#00d669` |
 | `project/hover/sub-label` | `#ededed` |
+| `project/lock/icon` | `#00d669` |
 | `project/lock/label` | `#d3d9d5` |
 | `project/lock/outline` | `#3a3a3a` |
 | `project/lock/sub-label` | `#999` |
+| `project/pressed/icon` | `#c2c7c3` |
 | `project/pressed/label` | `#00d669` |
 | `project/pressed/outline` | `#10ffa4` |
 | `project/pressed/sub-label` | `#c2c7c3` |

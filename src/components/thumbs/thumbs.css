@@ -46,7 +46,7 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  background: color-mix(in srgb, black calc(var(--opacity-medium) * 100%), transparent);
+  background: color-mix(in srgb, var(--base-black) calc(var(--opacity-medium) * 100%), transparent);
   backdrop-filter: var(--effect-thumb);
   gap: var(--spacing-gap-small);
   padding-bottom: var(--spacing-gap-large);
@@ -177,7 +177,7 @@
 }
 
 .rost-thumbs .rost-thumbs__dot {
-  background: #747573;
+  background: var(--project-default-icon);
 }
 
 .rost-thumbs:hover .rost-thumbs__number {
@@ -193,7 +193,7 @@
 }
 
 .rost-thumbs:hover .rost-thumbs__dot {
-  background: var(--project-hover-sub-label);
+  background: var(--project-hover-icon);
 }
 
 .rost-thumbs:active .rost-thumbs__number {
@@ -209,7 +209,7 @@
 }
 
 .rost-thumbs:active .rost-thumbs__dot {
-  background: var(--project-pressed-sub-label);
+  background: var(--project-pressed-icon);
 }
 
 .rost-thumbs:focus-visible .rost-thumbs__number {
@@ -226,6 +226,10 @@
 
 .rost-thumbs:focus-visible .rost-thumbs__focus-ring {
   display: block;
+}
+
+.rost-thumbs:focus-visible .rost-thumbs__dot {
+  background: var(--project-focus-icon);
 }
 
 .rost-thumbs:is(:disabled, [aria-disabled="true"]) {
@@ -245,7 +249,7 @@
 }
 
 .rost-thumbs:is(:disabled, [aria-disabled="true"]) .rost-thumbs__dot {
-  background: #747573;
+  background: var(--project-disabled-icon);
 }
 
 .rost-thumbs:is(:disabled, [aria-disabled="true"]) .rost-thumbs__slot {

@@ -91,7 +91,7 @@ elements:
       flex-shrink: { value: "0", assert: false }
       width: { token: spacing/size/small, value: 24px }
       height: { token: spacing/size/small, value: 24px }
-      background: { token: non-interactive/background/positive/base, value: "#00d669", notes: Read from Figma's lock picture. }
+      background: { token: project/lock/icon, value: "#00d669" }
       mask: { value: url(./icon-lock.svg) center / contain no-repeat, untokenised: The icon file itself. }
   badge:
     optional: true
@@ -117,7 +117,7 @@ elements:
       font-size: { token: typography/label/font-size, value: 12px }
       letter-spacing: { token: typography/label/letter-spacing, value: 0px }
   icons-dot:
-    notes: Figma's 12px `icons/dot`, a 3px dot in the middle, drawn in CSS so its colour can follow the state.
+    notes: "Figma's 12px `icons/dot`, a 3px dot in the middle, drawn in CSS so its colour can follow the state (`project/*/icon`)."
     styles:
       display: { value: flex, assert: false }
       align-items: { value: center }
@@ -130,7 +130,7 @@ elements:
       width: { value: 3px, untokenised: "The dot's own size inside the icon." }
       height: { value: 3px, untokenised: "The dot's own size inside the icon." }
       border-radius: { token: spacing/radius/full, value: 10000px }
-      background: { value: "#747573", notes: "Figma's dot SVG is filled #747573, and no token holds it. Open, as in Thumbs." }
+      background: { token: project/default/icon, value: "#747573" }
   actions:
     notes: The arrow at the end, in a 32px round frame. Figma names the layer `-> Actions`.
     styles:
@@ -147,7 +147,7 @@ elements:
       display: { value: block, assert: false }
       width: { token: spacing/size/2xsmall, value: 16px }
       height: { token: spacing/size/2xsmall, value: 16px }
-      background: { token: actions/primary/default/background, value: "#00d669", notes: Read from Figma's arrow picture. }
+      background: { token: actions/borderless/default/icon, value: "#00d669" }
       mask: { value: url(./icon-up-right.svg) center / contain no-repeat, untokenised: The icon file itself. }
   focus-ring:
     styles:
@@ -189,7 +189,7 @@ variants:
           value: "#ededed"
           notes: "Decided on 2026-10-21: #ededed, the same as Thumbs and Carousel. Figma's render of this row drew #d3d9d5, probably a variable mode on the frame. I'm fixing the frame in Figma; until its screenshot is captured again, the visual test fails on this one, and that's expected."
       dot:
-        background: { token: project/hover/sub-label, value: "#ededed" }
+        background: { token: project/hover/icon, value: "#ededed" }
   - when: { state: Pressed }
     figmaNode: "100:182"
     elements:
@@ -205,7 +205,7 @@ variants:
       detail:
         color: { token: project/pressed/sub-label, value: "#c2c7c3" }
       dot:
-        background: { token: project/pressed/sub-label, value: "#c2c7c3" }
+        background: { token: project/pressed/icon, value: "#c2c7c3" }
   - when: { state: Focus }
     figmaNode: "100:181"
     elements:
@@ -254,7 +254,7 @@ variants:
       detail:
         color: { token: project/lock/sub-label, value: "#999" }
       dot:
-        background: { token: non-interactive/background/positive/base, value: "#00d669" }
+        background: { token: project/lock/icon, value: "#00d669" }
 guidance:
   status: proposed
   use:

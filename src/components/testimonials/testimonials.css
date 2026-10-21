@@ -94,7 +94,7 @@
   display: block;
   width: var(--spacing-size-2xsmall);
   height: var(--spacing-size-2xsmall);
-  background: var(--actions-primary-default-background);
+  background: var(--actions-borderless-default-icon);
   mask: url(./icon-chevron-down.svg) center / contain no-repeat;
 }
 

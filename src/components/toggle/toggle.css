@@ -60,7 +60,7 @@
 }
 
 .rost-toggle.rost-toggle--selected .rost-toggle__icons-arrow-left {
-  color: var(--non-interactive-foreground-quadruple);
+  color: var(--actions-primary-default-icon);
 }
 
 .rost-toggle:not(.rost-toggle--selected) {
@@ -80,7 +80,7 @@
 }
 
 .rost-toggle:not(.rost-toggle--selected) .rost-toggle__icons-arrow-left {
-  color: var(--actions-primary-default-background);
+  color: var(--actions-secondary-regular-default-icon);
 }
 
 .rost-toggle:hover.rost-toggle--selected {
@@ -90,7 +90,7 @@
 }
 
 .rost-toggle:hover.rost-toggle--selected .rost-toggle__icons-arrow-left {
-  color: var(--non-interactive-foreground-quadruple);
+  color: var(--actions-primary-hover-icon);
 }
 
 .rost-toggle:hover:not(.rost-toggle--selected) {
@@ -110,7 +110,7 @@
 }
 
 .rost-toggle:hover:not(.rost-toggle--selected) .rost-toggle__icons-arrow-left {
-  color: var(--actions-primary-hover-background);
+  color: var(--actions-secondary-regular-hover-icon);
 }
 
 .rost-toggle:active.rost-toggle--selected {
@@ -120,7 +120,7 @@
 }
 
 .rost-toggle:active.rost-toggle--selected .rost-toggle__icons-arrow-left {
-  color: var(--non-interactive-foreground-quadruple);
+  color: var(--actions-primary-pressed-icon);
 }
 
 .rost-toggle:active:not(.rost-toggle--selected) {
@@ -140,7 +140,7 @@
 }
 
 .rost-toggle:active:not(.rost-toggle--selected) .rost-toggle__icons-arrow-left {
-  color: var(--actions-primary-default-background);
+  color: var(--actions-secondary-regular-pressed-icon);
 }
 
 .rost-toggle:is(:disabled, [aria-disabled="true"]).rost-toggle--selected {
@@ -152,7 +152,7 @@
 }
 
 .rost-toggle:is(:disabled, [aria-disabled="true"]).rost-toggle--selected .rost-toggle__icons-arrow-left {
-  color: var(--non-interactive-foreground-quadruple);
+  color: var(--actions-primary-disabled-icon);
 }
 
 .rost-toggle:is(:disabled, [aria-disabled="true"]):not(.rost-toggle--selected) {
@@ -174,7 +174,7 @@
 }
 
 .rost-toggle:is(:disabled, [aria-disabled="true"]):not(.rost-toggle--selected) .rost-toggle__icons-arrow-left {
-  color: var(--actions-primary-default-background);
+  color: var(--actions-secondary-regular-disabled-icon);
 }
 
 .rost-toggle:focus-visible.rost-toggle--selected {
@@ -184,7 +184,7 @@
 }
 
 .rost-toggle:focus-visible.rost-toggle--selected .rost-toggle__icons-arrow-left {
-  color: var(--non-interactive-foreground-quadruple);
+  color: var(--actions-primary-focus-icon);
 }
 
 .rost-toggle:focus-visible.rost-toggle--selected .rost-toggle__focus-ring {
@@ -210,7 +210,7 @@
 }
 
 .rost-toggle:focus-visible:not(.rost-toggle--selected) .rost-toggle__icons-arrow-left {
-  color: var(--actions-primary-default-background);
+  color: var(--actions-secondary-regular-focus-icon);
 }
 
 .rost-toggle:focus-visible:not(.rost-toggle--selected) .rost-toggle__focus-ring {

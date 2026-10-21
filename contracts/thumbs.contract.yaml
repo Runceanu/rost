@@ -91,7 +91,7 @@ elements:
       display: { value: flex, assert: false }
       flex-direction: { value: column, assert: false }
       align-items: { value: flex-start }
-      background: { value: "color-mix(in srgb, black calc(var(--opacity-medium) * 100%), transparent)", untokenised: "Black at opacity/medium. The opacity is the token; the kit has no black, so black is the one plain word here." }
+      background: { value: "color-mix(in srgb, var(--base-black) calc(var(--opacity-medium) * 100%), transparent)", untokenised: "Composed from tokens: base/black at opacity/medium." }
       backdrop-filter: { token: effect/thumb, value: blur(12px) }
       gap: { token: spacing/gap/small, value: 8px }
       padding-bottom: { token: spacing/gap/large, value: 24px }
@@ -215,7 +215,7 @@ variants:
       detail:
         color: { token: project/default/sub-label, value: "#999" }
       dot:
-        background: { value: "#747573", notes: "Figma's dot SVG is filled #747573, and no token holds it. Open." }
+        background: { token: project/default/icon, value: "#747573" }
   - when: { state: Hover }
     figmaNode: "109:77"
     elements:
@@ -226,7 +226,7 @@ variants:
       detail:
         color: { token: project/hover/sub-label, value: "#ededed" }
       dot:
-        background: { token: project/hover/sub-label, value: "#ededed" }
+        background: { token: project/hover/icon, value: "#ededed" }
   - when: { state: Pressed }
     figmaNode: "109:168"
     elements:
@@ -237,7 +237,7 @@ variants:
       detail:
         color: { token: project/pressed/sub-label, value: "#c2c7c3" }
       dot:
-        background: { token: project/pressed/sub-label, value: "#c2c7c3" }
+        background: { token: project/pressed/icon, value: "#c2c7c3" }
   - when: { state: Focus }
     figmaNode: "109:118"
     elements:
@@ -249,6 +249,8 @@ variants:
         color: { token: project/focus/sub-label, value: "#999" }
       focus-ring:
         display: { value: block, assert: false }
+      dot:
+        background: { token: project/focus/icon, value: "#747573" }
   - when: { state: Disabled }
     figmaNode: "109:206"
     elements:
@@ -261,7 +263,7 @@ variants:
       detail:
         color: { token: project/disabled/sub-label, value: "#999" }
       dot:
-        background: { value: "#747573", notes: Same as Default. }
+        background: { token: project/disabled/icon, value: "#747573" }
       slot:
         opacity: { token: opacity/mild, value: "0.32" }
       content:

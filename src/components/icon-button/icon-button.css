@@ -57,7 +57,7 @@
 }
 
 .rost-icon-button.rost-icon-button--type-primary .rost-icon-button__icons-arrow-left {
-  color: var(--non-interactive-foreground-quadruple);
+  color: var(--actions-primary-default-icon);
 }
 
 .rost-icon-button.rost-icon-button--type-secondary {
@@ -84,7 +84,7 @@
 }
 
 .rost-icon-button.rost-icon-button--type-secondary .rost-icon-button__icons-arrow-left {
-  color: var(--actions-primary-default-background);
+  color: var(--actions-secondary-regular-default-icon);
 }
 
 .rost-icon-button.rost-icon-button--type-tertiary {
@@ -97,7 +97,7 @@
 }
 
 .rost-icon-button.rost-icon-button--type-tertiary .rost-icon-button__icons-arrow-left {
-  color: var(--actions-primary-default-background);
+  color: var(--actions-tertiary-default-icon);
 }
 
 .rost-icon-button.rost-icon-button--type-primary:hover {
@@ -112,7 +112,7 @@
 }
 
 .rost-icon-button.rost-icon-button--type-primary:hover .rost-icon-button__icons-arrow-left {
-  color: var(--non-interactive-foreground-quadruple);
+  color: var(--actions-primary-hover-icon);
 }
 
 .rost-icon-button.rost-icon-button--type-secondary:hover {
@@ -139,7 +139,7 @@
 }
 
 .rost-icon-button.rost-icon-button--type-secondary:hover .rost-icon-button__icons-arrow-left {
-  color: var(--actions-primary-hover-background);
+  color: var(--actions-secondary-regular-hover-icon);
 }
 
 .rost-icon-button.rost-icon-button--type-tertiary:hover {
@@ -160,7 +160,7 @@
 }
 
 .rost-icon-button.rost-icon-button--type-tertiary:hover .rost-icon-button__icons-arrow-left {
-  color: var(--actions-primary-hover-background);
+  color: var(--actions-tertiary-hover-icon);
 }
 
 .rost-icon-button.rost-icon-button--type-primary:active {
@@ -175,7 +175,7 @@
 }
 
 .rost-icon-button.rost-icon-button--type-primary:active .rost-icon-button__icons-arrow-left {
-  color: var(--non-interactive-foreground-quadruple);
+  color: var(--actions-primary-pressed-icon);
 }
 
 .rost-icon-button.rost-icon-button--type-secondary:active {
@@ -202,7 +202,7 @@
 }
 
 .rost-icon-button.rost-icon-button--type-secondary:active .rost-icon-button__icons-arrow-left {
-  color: var(--actions-primary-default-background);
+  color: var(--actions-secondary-regular-pressed-icon);
 }
 
 .rost-icon-button.rost-icon-button--type-tertiary:active {
@@ -223,7 +223,7 @@
 }
 
 .rost-icon-button.rost-icon-button--type-tertiary:active .rost-icon-button__icons-arrow-left {
-  color: var(--actions-primary-default-background);
+  color: var(--actions-tertiary-pressed-icon);
 }
 
 .rost-icon-button.rost-icon-button--type-primary:is(:disabled, [aria-disabled="true"]) {
@@ -240,7 +240,7 @@
 }
 
 .rost-icon-button.rost-icon-button--type-primary:is(:disabled, [aria-disabled="true"]) .rost-icon-button__icons-arrow-left {
-  color: var(--non-interactive-foreground-quadruple);
+  color: var(--actions-primary-disabled-icon);
 }
 
 .rost-icon-button.rost-icon-button--type-secondary:is(:disabled, [aria-disabled="true"]) {
@@ -269,7 +269,7 @@
 }
 
 .rost-icon-button.rost-icon-button--type-secondary:is(:disabled, [aria-disabled="true"]) .rost-icon-button__icons-arrow-left {
-  color: var(--actions-primary-default-background);
+  color: var(--actions-secondary-regular-disabled-icon);
 }
 
 .rost-icon-button.rost-icon-button--type-tertiary:is(:disabled, [aria-disabled="true"]) {
@@ -284,7 +284,7 @@
 }
 
 .rost-icon-button.rost-icon-button--type-tertiary:is(:disabled, [aria-disabled="true"]) .rost-icon-button__icons-arrow-left {
-  color: var(--actions-primary-default-background);
+  color: var(--actions-tertiary-disabled-icon);
 }
 
 .rost-icon-button.rost-icon-button--type-primary:focus-visible {
@@ -309,7 +309,7 @@
 }
 
 .rost-icon-button.rost-icon-button--type-primary:focus-visible .rost-icon-button__icons-arrow-left {
-  color: var(--non-interactive-foreground-quadruple);
+  color: var(--actions-primary-focus-icon);
 }
 
 .rost-icon-button.rost-icon-button--type-secondary:focus-visible {
@@ -346,7 +346,7 @@
 }
 
 .rost-icon-button.rost-icon-button--type-secondary:focus-visible .rost-icon-button__icons-arrow-left {
-  color: var(--actions-primary-default-background);
+  color: var(--actions-secondary-regular-focus-icon);
 }
 
 .rost-icon-button.rost-icon-button--type-tertiary:focus-visible {
@@ -369,7 +369,7 @@
 }
 
 .rost-icon-button.rost-icon-button--type-tertiary:focus-visible .rost-icon-button__icons-arrow-left {
-  color: var(--actions-primary-default-background);
+  color: var(--actions-tertiary-focus-icon);
 }
 
 .rost-icon-button.rost-icon-button--type-project {
@@ -379,7 +379,7 @@
 }
 
 .rost-icon-button.rost-icon-button--type-project .rost-icon-button__icons-arrow-left {
-  color: var(--actions-primary-default-background);
+  color: var(--actions-borderless-default-icon);
 }
 
 .rost-icon-button.rost-icon-button--type-project:hover {
@@ -397,7 +397,7 @@
 }
 
 .rost-icon-button.rost-icon-button--type-project:hover .rost-icon-button__icons-arrow-left {
-  color: var(--actions-primary-hover-background);
+  color: var(--actions-borderless-hover-icon);
 }
 
 .rost-icon-button.rost-icon-button--type-project:active {
@@ -415,7 +415,7 @@
 }
 
 .rost-icon-button.rost-icon-button--type-project:active .rost-icon-button__icons-arrow-left {
-  color: var(--actions-primary-default-background);
+  color: var(--actions-borderless-pressed-icon);
 }
 
 .rost-icon-button.rost-icon-button--type-project:is(:disabled, [aria-disabled="true"]) {
@@ -427,7 +427,7 @@
 }
 
 .rost-icon-button.rost-icon-button--type-project:is(:disabled, [aria-disabled="true"]) .rost-icon-button__icons-arrow-left {
-  color: var(--actions-primary-default-background);
+  color: var(--actions-borderless-disabled-icon);
 }
 
 .rost-icon-button.rost-icon-button--type-project:focus-visible {
@@ -447,5 +447,5 @@
 }
 
 .rost-icon-button.rost-icon-button--type-project:focus-visible .rost-icon-button__icons-arrow-left {
-  color: var(--actions-primary-default-background);
+  color: var(--actions-borderless-focus-icon);
 }

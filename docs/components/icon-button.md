@@ -25,7 +25,7 @@
 ## Anatomy
 
 - `root`
-- `icons-arrow-left`: The 20px icon slot. Its colour is read from Figma's pixels, because Figma bakes it into the SVG and doesn't say which token it is.
+- `icons-arrow-left`: The 20px icon slot. Its colour is the action's `icon` token, per type and state.
 - `glyph`: Figma's arrow, drawn as a mask in the icon's colour so one file serves every state. A caller's own icon replaces it and should use `currentColor`.
 - `background`: The see-through fill under Secondary and Tertiary, on its own layer so the icon stays solid.
 - `focus-ring`
@@ -62,26 +62,45 @@ Every token this component uses, across all its variants.
 
 | Token | Resolves to |
 |---|---|
+| `actions/borderless/default/icon` | `#00d669` |
+| `actions/borderless/disabled/icon` | `#00d669` |
+| `actions/borderless/focus/icon` | `#00d669` |
+| `actions/borderless/hover/icon` | `#00b450` |
+| `actions/borderless/pressed/icon` | `#00d669` |
 | `actions/primary/default/background` | `#00d669` |
+| `actions/primary/default/icon` | `#3a3a3a` |
 | `actions/primary/disabled/background` | `#00d669` |
+| `actions/primary/disabled/icon` | `#3a3a3a` |
 | `actions/primary/focus/background` | `#00d669` |
 | `actions/primary/focus/focus-ring` | `#b6ffda` |
+| `actions/primary/focus/icon` | `#3a3a3a` |
 | `actions/primary/hover/background` | `#00b450` |
+| `actions/primary/hover/icon` | `#3a3a3a` |
 | `actions/primary/pressed/background` | `#00913a` |
+| `actions/primary/pressed/icon` | `#3a3a3a` |
 | `actions/secondary/regular/default/background` | `#3a3a3a` |
+| `actions/secondary/regular/default/icon` | `#00d669` |
 | `actions/secondary/regular/default/outline` | `#ededed` |
 | `actions/secondary/regular/disabled/background` | `#3a3a3a` |
+| `actions/secondary/regular/disabled/icon` | `#00d669` |
 | `actions/secondary/regular/disabled/outline` | `#ededed` |
 | `actions/secondary/regular/focus/background` | `#3a3a3a` |
 | `actions/secondary/regular/focus/focus-ring` | `#999` |
+| `actions/secondary/regular/focus/icon` | `#00d669` |
 | `actions/secondary/regular/focus/outline` | `#ededed` |
 | `actions/secondary/regular/hover/background` | `#747573` |
+| `actions/secondary/regular/hover/icon` | `#00b450` |
 | `actions/secondary/regular/hover/outline` | `#ededed` |
 | `actions/secondary/regular/pressed/background` | `#999` |
+| `actions/secondary/regular/pressed/icon` | `#00d669` |
 | `actions/secondary/regular/pressed/outline` | `#ededed` |
+| `actions/tertiary/default/icon` | `#00d669` |
+| `actions/tertiary/disabled/icon` | `#00d669` |
+| `actions/tertiary/focus/icon` | `#00d669` |
 | `actions/tertiary/hover/background` | `#060805` |
+| `actions/tertiary/hover/icon` | `#00b450` |
 | `actions/tertiary/pressed/background` | `#454545` |
-| `non-interactive/foreground/quadruple` | `#3a3a3a` |
+| `actions/tertiary/pressed/icon` | `#00d669` |
 | `opacity/gentle` | `0.24` |
 | `opacity/mild` | `0.32` |
 | `spacing/gap/medium-large` | `20px` |

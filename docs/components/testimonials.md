@@ -76,7 +76,7 @@ Every token this component uses, across all its variants.
 
 | Token | Resolves to |
 |---|---|
-| `actions/primary/default/background` | `#00d669` |
+| `actions/borderless/default/icon` | `#00d669` |
 | `font-family/base` | `'General Sans Variable'` |
 | `non-interactive/foreground/secondary` | `#d3d9d5` |
 | `opacity/gentle` | `0.24` |
