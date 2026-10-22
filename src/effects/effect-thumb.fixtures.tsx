@@ -1,9 +1,5 @@
 import { PillButton } from '../components/pill-button/PillButton'
 
-// The effect is one token, applied by whatever needs it. Shown here over real
-// Rost components, so the blur has something to work on.
-const frost = { backdropFilter: 'var(--effect-thumb)', background: 'color-mix(in srgb, var(--base-black) calc(var(--opacity-medium) * 100%), transparent)' }
-
 export const fixtures = []
 
 /** What a caller writes. */
@@ -12,10 +8,14 @@ export const usage = `.panel {
   background: color-mix(in srgb, var(--base-black) calc(var(--opacity-medium) * 100%), transparent);
 }`
 
-/** What the effect's card on rost.build shows: a frosted panel over a button. */
+/** What the effect's card on rost.build shows: a button with the frosted panel over its right half. */
 export const preview = (
-  <span style={{ position: 'relative', display: 'block', width: 240, height: 80 }}>
-    <span style={{ position: 'absolute', left: 0, top: 0 }}><PillButton as="span">Behind the glass</PillButton></span>
-    <span style={{ position: 'absolute', left: 88, top: 24, right: 0, bottom: 0, borderRadius: 'var(--spacing-radius-large)', ...frost }} />
+  <span style={{ position: 'relative', display: 'inline-flex' }}>
+    <PillButton as="span">Send invoice</PillButton>
+    <span style={{
+      position: 'absolute', top: 'calc(-1 * var(--spacing-gap-small))', bottom: 'calc(-1 * var(--spacing-gap-small))', left: '50%', right: 'calc(-1 * var(--spacing-gap-large))',
+      borderRadius: 'var(--spacing-radius-large)', backdropFilter: 'var(--effect-thumb)',
+      background: 'color-mix(in srgb, var(--base-black) calc(var(--opacity-medium) * 100%), transparent)',
+    }} />
   </span>
 )
