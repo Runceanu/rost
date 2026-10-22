@@ -68,5 +68,4 @@ What needs attention. It's built from the contracts, so it's only as fresh as th
 ### Differences nobody has taken to design yet
 
 - [Hero Media](components/hero-media.md): The artwork is dimmed with `opacity/medium` (0.48) on a #171717 frame
-- [Toggle](components/toggle.md) in the accounting app: Takes a text label
 - [Toggle](components/toggle.md) in the accounting app: Each toggle is a `role="radio"` inside a `ToggleGroup`
