@@ -36,6 +36,17 @@
   height: var(--spacing-size-xsmall);
 }
 
+.rost-toggle__label {
+  position: relative;
+  white-space: nowrap;
+  font-family: var(--font-family-base);
+  font-weight: var(--typography-body-font-weight-medium);
+  line-height: var(--typography-body-line-height);
+  font-size: var(--typography-body-font-size);
+  letter-spacing: var(--typography-body-letter-spacing);
+  font-variant-numeric: tabular-nums;
+}
+
 .rost-toggle__glyph {
   display: block;
   width: 100%;
@@ -63,6 +74,10 @@
   color: var(--actions-primary-default-icon);
 }
 
+.rost-toggle.rost-toggle--selected .rost-toggle__label {
+  color: var(--actions-primary-default-label);
+}
+
 .rost-toggle:not(.rost-toggle--selected) {
   border-radius: var(--spacing-radius-medium);
 }
@@ -83,6 +98,10 @@
   color: var(--actions-secondary-regular-default-icon);
 }
 
+.rost-toggle:not(.rost-toggle--selected) .rost-toggle__label {
+  color: var(--actions-secondary-regular-default-label);
+}
+
 .rost-toggle:hover.rost-toggle--selected {
   background: var(--actions-primary-hover-background);
   box-shadow: inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-hover-outline);
@@ -91,6 +110,10 @@
 
 .rost-toggle:hover.rost-toggle--selected .rost-toggle__icons-arrow-left {
   color: var(--actions-primary-hover-icon);
+}
+
+.rost-toggle:hover.rost-toggle--selected .rost-toggle__label {
+  color: var(--actions-primary-hover-label);
 }
 
 .rost-toggle:hover:not(.rost-toggle--selected) {
@@ -113,6 +136,10 @@
   color: var(--actions-secondary-regular-hover-icon);
 }
 
+.rost-toggle:hover:not(.rost-toggle--selected) .rost-toggle__label {
+  color: var(--actions-secondary-regular-hover-label);
+}
+
 .rost-toggle:active.rost-toggle--selected {
   background: var(--actions-primary-pressed-background);
   box-shadow: inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-pressed-outline);
@@ -121,6 +148,10 @@
 
 .rost-toggle:active.rost-toggle--selected .rost-toggle__icons-arrow-left {
   color: var(--actions-primary-pressed-icon);
+}
+
+.rost-toggle:active.rost-toggle--selected .rost-toggle__label {
+  color: var(--actions-primary-pressed-label);
 }
 
 .rost-toggle:active:not(.rost-toggle--selected) {
@@ -143,6 +174,10 @@
   color: var(--actions-secondary-regular-pressed-icon);
 }
 
+.rost-toggle:active:not(.rost-toggle--selected) .rost-toggle__label {
+  color: var(--actions-secondary-regular-pressed-label);
+}
+
 .rost-toggle:is(:disabled, [aria-disabled="true"]).rost-toggle--selected {
   background: var(--actions-primary-disabled-background);
   box-shadow: inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-disabled-outline);
@@ -153,6 +188,10 @@
 
 .rost-toggle:is(:disabled, [aria-disabled="true"]).rost-toggle--selected .rost-toggle__icons-arrow-left {
   color: var(--actions-primary-disabled-icon);
+}
+
+.rost-toggle:is(:disabled, [aria-disabled="true"]).rost-toggle--selected .rost-toggle__label {
+  color: var(--actions-primary-disabled-label);
 }
 
 .rost-toggle:is(:disabled, [aria-disabled="true"]):not(.rost-toggle--selected) {
@@ -177,6 +216,10 @@
   color: var(--actions-secondary-regular-disabled-icon);
 }
 
+.rost-toggle:is(:disabled, [aria-disabled="true"]):not(.rost-toggle--selected) .rost-toggle__label {
+  color: var(--actions-secondary-regular-disabled-label);
+}
+
 .rost-toggle:focus-visible.rost-toggle--selected {
   background: var(--actions-primary-focus-background);
   box-shadow: inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-focus-outline);
@@ -191,6 +234,10 @@
   display: block;
   border-color: var(--actions-primary-focus-focus-ring);
   border-radius: var(--spacing-radius-full);
+}
+
+.rost-toggle:focus-visible.rost-toggle--selected .rost-toggle__label {
+  color: var(--actions-primary-focus-label);
 }
 
 .rost-toggle:focus-visible:not(.rost-toggle--selected) {
@@ -217,4 +264,13 @@
   display: block;
   border-color: var(--actions-secondary-regular-focus-focus-ring);
   border-radius: var(--spacing-radius-large);
+}
+
+.rost-toggle:focus-visible:not(.rost-toggle--selected) .rost-toggle__label {
+  color: var(--actions-secondary-regular-focus-label);
+}
+
+.rost-toggle.rost-toggle--labelled {
+  width: auto;
+  min-width: var(--spacing-size-medium);
 }

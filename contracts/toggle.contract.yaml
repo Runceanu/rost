@@ -19,6 +19,13 @@ props:
   selected:
     type: boolean
     default: false
+  label:
+    type: slot
+    notes: Text instead of, or after, the icon. In React, the children. A labelled toggle grows wider than 40px to fit (`labelled`).
+  labelled:
+    type: boolean
+    default: false
+    notes: Set by the component when there's a label. Not a Figma axis; added on 2026-10-22 for akount.ing's year switcher.
 states: [ Default, Hover, Pressed, Focus, Disabled ]
 elements:
   root:
@@ -53,6 +60,17 @@ elements:
       overflow: { value: clip }
       width: { value: 20px, token: spacing/size/xsmall }
       height: { value: 20px, token: spacing/size/xsmall }
+  label:
+    notes: Not in Figma, which has no labelled toggle. Body type, medium, with tabular numbers so years line up. Its colour follows the state, the way a button's label does.
+    styles:
+      position: { value: relative, assert: false }
+      white-space: { value: nowrap, assert: false }
+      font-family: { token: font-family/base, value: "'General Sans Variable'" }
+      font-weight: { token: typography/body/font-weight/medium, value: "500" }
+      line-height: { token: typography/body/line-height, value: 22px }
+      font-size: { token: typography/body/font-size, value: 16px }
+      letter-spacing: { token: typography/body/letter-spacing, value: 0px }
+      font-variant-numeric: { value: tabular-nums, assert: false }
   glyph:
     notes: "Figma's arrow, drawn as a mask in the icon's colour. A caller's own icon replaces it and should use `currentColor`."
     styles:
@@ -83,6 +101,8 @@ variants:
         border-radius: { token: spacing/radius/full, value: 10000px }
       icons-arrow-left:
         color: { token: actions/primary/default/icon, value: "#3a3a3a" }
+      label:
+        color: { token: actions/primary/default/label, value: "#060805" }
   - when: { state: Default, selected: false }
     figmaNode: "168:1152"
     elements:
@@ -96,6 +116,8 @@ variants:
         border-radius: { token: spacing/radius/medium, value: 12px }
       icons-arrow-left:
         color: { token: actions/secondary/regular/default/icon, value: "#00d669" }
+      label:
+        color: { token: actions/secondary/regular/default/label, value: "#d3d9d5" }
   - when: { state: Hover, selected: true }
     figmaNode: "168:1159"
     elements:
@@ -107,6 +129,8 @@ variants:
         border-radius: { token: spacing/radius/full, value: 10000px }
       icons-arrow-left:
         color: { token: actions/primary/hover/icon, value: "#3a3a3a" }
+      label:
+        color: { token: actions/primary/hover/label, value: "#060805" }
   - when: { state: Hover, selected: false }
     figmaNode: "168:1161"
     elements:
@@ -120,6 +144,8 @@ variants:
         border-radius: { token: spacing/radius/medium, value: 12px }
       icons-arrow-left:
         color: { token: actions/secondary/regular/hover/icon, value: "#00b450" }
+      label:
+        color: { token: actions/secondary/regular/hover/label, value: "#ededed" }
   - when: { state: Pressed, selected: true }
     figmaNode: "168:1170"
     elements:
@@ -131,6 +157,8 @@ variants:
         border-radius: { token: spacing/radius/full, value: 10000px }
       icons-arrow-left:
         color: { token: actions/primary/pressed/icon, value: "#3a3a3a" }
+      label:
+        color: { token: actions/primary/pressed/label, value: "#060805" }
   - when: { state: Pressed, selected: false }
     figmaNode: "168:1172"
     elements:
@@ -144,6 +172,8 @@ variants:
         border-radius: { token: spacing/radius/medium, value: 12px }
       icons-arrow-left:
         color: { token: actions/secondary/regular/pressed/icon, value: "#00d669" }
+      label:
+        color: { token: actions/secondary/regular/pressed/label, value: "#d3d9d5" }
   - when: { state: Disabled, selected: true }
     figmaNode: "168:1181"
     elements:
@@ -157,6 +187,8 @@ variants:
         cursor: { value: default, assert: false }
       icons-arrow-left:
         color: { token: actions/primary/disabled/icon, value: "#3a3a3a" }
+      label:
+        color: { token: actions/primary/disabled/label, value: "#060805" }
   - when: { state: Disabled, selected: false }
     figmaNode: "168:1183"
     elements:
@@ -172,6 +204,8 @@ variants:
         border-radius: { token: spacing/radius/medium, value: 12px }
       icons-arrow-left:
         color: { token: actions/secondary/regular/disabled/icon, value: "#00d669" }
+      label:
+        color: { token: actions/secondary/regular/disabled/label, value: "#d3d9d5" }
   - when: { state: Focus, selected: true }
     figmaNode: "168:1190"
     elements:
@@ -187,6 +221,8 @@ variants:
         display: { value: block, assert: false }
         border-color: { token: actions/primary/focus/focus-ring, value: "#b6ffda" }
         border-radius: { token: spacing/radius/full, value: 10000px }
+      label:
+        color: { token: actions/primary/focus/label, value: "#060805" }
   - when: { state: Focus, selected: false }
     figmaNode: "168:1193"
     elements:
@@ -204,6 +240,13 @@ variants:
         display: { value: block, assert: false }
         border-color: { token: actions/secondary/regular/focus/focus-ring, value: "#999" }
         border-radius: { token: spacing/radius/large, value: 16px }
+      label:
+        color: { token: actions/secondary/regular/focus/label, value: "#d3d9d5" }
+  - when: { labelled: true }
+    elements:
+      root:
+        width: { value: auto, notes: "Not the Figma frame size: a labelled toggle sizes to its label." }
+        min-width: { token: spacing/size/medium, value: 40px, notes: "A labelled toggle is at least as wide as an icon-only one, and grows to fit its label." }
 guidance:
   status: agreed
   use:
@@ -222,16 +265,12 @@ guidance:
     focus: |-
       `focus-ring` (2px, `actions/primary/focus/focus-ring` when it's on), on `:focus-visible`.
     colour: on and off show in the shape (12px corners to fully round) as well as the colour.
-  content: Icon only in the kit. akount.ing adds a text label, and that's a declared deviation. If you add one, keep it to a short word or a number.
+  content: "An icon, or a short text label: a year, a number, one word. The label makes the toggle grow wider than 40px, and it never wraps. Figma only draws the icon-only one."
 implementations:
   a-kaunt:
     component: src/components/Toggle.tsx
     root: .ak-toggle
     deviations:
-      - what: |-
-          Takes a text label. It grows wider than 40px to fit, and stays 40px tall. The label uses the secondary label colour when off and the primary one when on.
-        why: The year switcher needs text. The kit's Toggle is icon only, so it says nothing about a label's colour.
-        raisedWithDesign: false
       - what: Each toggle is a `role="radio"` inside a `ToggleGroup`. The group has no surface of its own.
         why: There they're one choice from a set. The kit has no ToggleGroup, so akount.ing made one.
         raisedWithDesign: false

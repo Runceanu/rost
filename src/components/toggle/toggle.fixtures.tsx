@@ -15,27 +15,36 @@ const NODES: [string, boolean, string][] = [
 const FORCE: Record<string, string[]> = { Hover: ['hover'], Pressed: ['active'], Focus: ['focus', 'focus-visible'] }
 const frame = (el: JSX.Element, state: string) => <div style={{ display: 'inline-flex', padding: state === 'Focus' ? 'var(--spacing-gap-2xsmall)' : 0 }}>{el}</div>
 
-export const fixtures = NODES.map(([state, selected, node]) => ({
+export const fixtures: { node: string; name: string; element: JSX.Element; force?: string[] }[] = NODES.map(([state, selected, node]) => ({
   node,
   name: `state=${state}, selected=${selected ? 'True' : 'False'}`,
   element: frame(<Toggle selected={selected} aria-label="Previous year" disabled={state === 'Disabled'} />, state),
   ...(FORCE[state] ? { force: FORCE[state] } : {}),
 }))
 
+// A labelled toggle isn't in Figma, so these have no screenshot to compare
+// with: the visual test lists them and moves on. They show on the site.
+fixtures.push(
+  { node: 'labelled:off', name: 'labelled, off', element: <Toggle role="radio">2024</Toggle> },
+  { node: 'labelled:on', name: 'labelled, on', element: <Toggle role="radio" selected>2026</Toggle> },
+  { node: 'labelled:disabled', name: 'labelled, disabled', element: <Toggle role="radio" disabled>2023</Toggle> },
+)
+
 /** What a caller writes. Shown on the component's page. */
 export const usage = `import { Toggle } from 'rost/components/toggle/Toggle'
 
 <Toggle selected aria-label="Show archived" />
 
-<div role="radiogroup" aria-label="Year">
-  <Toggle role="radio" selected icon={<span>24</span>} aria-label="2024" />
-  <Toggle role="radio" icon={<span>25</span>} aria-label="2025" />
+<div role="radiogroup" aria-label="Tax year">
+  <Toggle role="radio" selected>2025</Toggle>
+  <Toggle role="radio">2026</Toggle>
 </div>`
 
 /** What the component's card on rost.build shows. */
 export const preview = (
-  <span style={{ display: 'flex', gap: 'var(--spacing-gap-small-medium)', alignItems: 'center' }}>
-    <Toggle as="span" selected aria-label="On" />
-    <Toggle as="span" aria-label="Off" />
+  <span role="radiogroup" aria-label="Tax year" style={{ display: 'flex', gap: 'var(--spacing-gap-3xsmall)', alignItems: 'center' }}>
+    <Toggle as="span">2024</Toggle>
+    <Toggle as="span">2025</Toggle>
+    <Toggle as="span" selected>2026</Toggle>
   </span>
 )

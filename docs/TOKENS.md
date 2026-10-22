@@ -6,12 +6,12 @@ Every value in every contract, sorted by why it has a token or doesn't. `npm run
 
 | | Values | Share | Meaning |
 |---|---|---|---|
-| Has a token | 1299 | 61% | Uses a token, and the check tests it. |
+| Has a token | 1315 | 61% | Uses a token, and the check tests it. |
 | Token suggested | 0 | 0% | A token I want that doesn't exist yet. The freeze turned every other suggestion into a token. |
-| How Figma builds it | 677 | 32% | How Figma builds the layer (position, inset, which sides get a stroke). Nothing to tokenise. |
-| Figma frame size | 89 | 4% | A root size that is just the Figma frame. Written down, not checked. |
+| How Figma builds it | 679 | 32% | How Figma builds the layer (position, inset, which sides get a stroke). Nothing to tokenise. |
+| Figma frame size | 90 | 4% | A root size that is just the Figma frame. Written down, not checked. |
 | No token, on purpose | 43 | 2% | Plain on purpose, and the contract says why. |
-| Open gap | 22 | 1% | No token and no reason. Each one needs a decision from me. |
+| Open gap | 23 | 1% | No token and no reason. Each one needs a decision from me. |
 
 ## By contract
 
@@ -38,7 +38,7 @@ Every value in every contract, sorted by why it has a token or doesn't. `npm run
 | [Testimonials](components/testimonials.md) | 85 | · | 53 | 13 | 6 | 4 |
 | [Thumb effect](components/effect-thumb.md) | 1 | · | · | · | · | · |
 | [Thumbs](components/thumbs.md) | 77 | · | 51 | 9 | 6 | 5 |
-| [Toggle](components/toggle.md) | 61 | · | 23 | 8 | 6 | 2 |
+| [Toggle](components/toggle.md) | 77 | · | 25 | 9 | 6 | 3 |
 
 ## Tokens that should be there
 
@@ -135,6 +135,7 @@ None. The freeze on 2026-10-20 turned all 122 suggestions into tokens.
 - [Thumbs](components/thumbs.md) `focus-ring.border-style` = `solid`
 - [Toggle](components/toggle.md) `glyph.background` = `currentColor`
 - [Toggle](components/toggle.md) `focus-ring.border-style` = `solid`
+- [Toggle](components/toggle.md) `root.width` = `auto`
 
 ## Figma variables missing from tokens.css
 

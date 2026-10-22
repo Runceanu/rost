@@ -17,6 +17,8 @@
 | Prop | Type | Values | Default |
 |---|---|---|---|
 | `selected` | boolean |  | `false` |
+| `label` | slot |  |  |
+| `labelled` | boolean |  | `false` |
 
 ## States
 
@@ -27,6 +29,7 @@
 - `root`
 - `background`: The see-through plate when it's off, on its own layer so the icon stays solid.
 - `icons-arrow-left`: The 20px icon slot. Its colour is the action's `icon` token: primary when it's on, secondary when it's off.
+- `label`: Not in Figma, which has no labelled toggle. Body type, medium, with tabular numbers so years line up. Its colour follows the state, the way a button's label does.
 - `glyph`: Figma's arrow, drawn as a mask in the icon's colour. A caller's own icon replaces it and should use `currentColor`.
 - `focus-ring`
 
@@ -54,13 +57,12 @@ It changes with `selected` and `state`. Off, it's a plate with 12px corners on t
 
 ## Content
 
-Icon only in the kit. akount.ing adds a text label, and that's a declared deviation. If you add one, keep it to a short word or a number.
+An icon, or a short text label: a year, a number, one word. The label makes the toggle grow wider than 40px, and it never wraps. Figma only draws the icon-only one.
 
 ## Where code differs on purpose
 
 | App | What | Why | Taken to design |
 |---|---|---|---|
-| akount.ing | Takes a text label. It grows wider than 40px to fit, and stays 40px tall. The label uses the secondary label colour when off and the primary one when on. | The year switcher needs text. The kit's Toggle is icon only, so it says nothing about a label's colour. | not yet |
 | akount.ing | Each toggle is a `role="radio"` inside a `ToggleGroup`. The group has no surface of its own. | There they're one choice from a set. The kit has no ToggleGroup, so akount.ing made one. | not yet |
 
 ## Tokens
@@ -71,31 +73,42 @@ Every token this component uses, across all its variants.
 |---|---|
 | `actions/primary/default/background` | `#00d669` |
 | `actions/primary/default/icon` | `#3a3a3a` |
+| `actions/primary/default/label` | `#060805` |
 | `actions/primary/disabled/background` | `#00d669` |
 | `actions/primary/disabled/icon` | `#3a3a3a` |
+| `actions/primary/disabled/label` | `#060805` |
 | `actions/primary/focus/background` | `#00d669` |
 | `actions/primary/focus/focus-ring` | `#b6ffda` |
 | `actions/primary/focus/icon` | `#3a3a3a` |
+| `actions/primary/focus/label` | `#060805` |
 | `actions/primary/hover/background` | `#00b450` |
 | `actions/primary/hover/icon` | `#3a3a3a` |
+| `actions/primary/hover/label` | `#060805` |
 | `actions/primary/pressed/background` | `#00913a` |
 | `actions/primary/pressed/icon` | `#3a3a3a` |
+| `actions/primary/pressed/label` | `#060805` |
 | `actions/secondary/regular/default/background` | `#3a3a3a` |
 | `actions/secondary/regular/default/icon` | `#00d669` |
+| `actions/secondary/regular/default/label` | `#d3d9d5` |
 | `actions/secondary/regular/default/outline` | `#ededed` |
 | `actions/secondary/regular/disabled/background` | `#3a3a3a` |
 | `actions/secondary/regular/disabled/icon` | `#00d669` |
+| `actions/secondary/regular/disabled/label` | `#d3d9d5` |
 | `actions/secondary/regular/disabled/outline` | `#ededed` |
 | `actions/secondary/regular/focus/background` | `#3a3a3a` |
 | `actions/secondary/regular/focus/focus-ring` | `#999` |
 | `actions/secondary/regular/focus/icon` | `#00d669` |
+| `actions/secondary/regular/focus/label` | `#d3d9d5` |
 | `actions/secondary/regular/focus/outline` | `#ededed` |
 | `actions/secondary/regular/hover/background` | `#747573` |
 | `actions/secondary/regular/hover/icon` | `#00b450` |
+| `actions/secondary/regular/hover/label` | `#ededed` |
 | `actions/secondary/regular/hover/outline` | `#ededed` |
 | `actions/secondary/regular/pressed/background` | `#999` |
 | `actions/secondary/regular/pressed/icon` | `#00d669` |
+| `actions/secondary/regular/pressed/label` | `#d3d9d5` |
 | `actions/secondary/regular/pressed/outline` | `#ededed` |
+| `font-family/base` | `'General Sans Variable'` |
 | `opacity/gentle` | `0.24` |
 | `opacity/mild` | `0.32` |
 | `spacing/gap/medium-large` | `20px` |
@@ -107,6 +120,10 @@ Every token this component uses, across all its variants.
 | `spacing/radius/medium` | `12px` |
 | `spacing/size/medium` | `40px` |
 | `spacing/size/xsmall` | `20px` |
+| `typography/body/font-size` | `16px` |
+| `typography/body/font-weight/medium` | `500` |
+| `typography/body/letter-spacing` | `0px` |
+| `typography/body/line-height` | `22px` |
 
 ## No token, on purpose
 
