@@ -24,7 +24,7 @@ Rost started as a design system for my own needs and grew into a product of its 
 | [Button](components/button.md) | A 48px button with just a label, in four levels of emphasis. | `review` | `agreed` | · |
 | [Carousel](components/carousel.md) | A card in the home page carousel: a number, a title and a short description. | `review` | `proposed` | · |
 | [Chip](components/chips.md) | A small outlined label you can click, for filters and quick choices. | `review` | `agreed` | runceanu.com |
-| [Divider](components/divider.md) | A thin line between things. | `review` | `proposed` | · |
+| [Divider](components/divider.md) | A thin line between things. | `review` | `proposed` | akount.ing |
 | [IconButton](components/icon-button.md) | A round button with only an icon, including the Project type used on case-study thumbnails. | `review` | `agreed` | · |
 | [InlineBanner](components/inline-banner.md) | A filled status pill with an icon and a label, in four statuses and two sizes. | `review` | `agreed` | akount.ing |
 | [Input](components/input.md) | A 56px text field with a floating label, an optional lock icon, a line of help text and an error state. | `review` | `agreed` | runceanu.com, akount.ing |
@@ -68,6 +68,5 @@ What needs attention. It's built from the contracts, so it's only as fresh as th
 ### Differences nobody has taken to design yet
 
 - [Hero Media](components/hero-media.md): The artwork is dimmed with `opacity/medium` (0.48) on a #171717 frame
-- [InlineBanner](components/inline-banner.md) in akount.ing: Shows only the label
 - [Toggle](components/toggle.md) in akount.ing: Takes a text label
 - [Toggle](components/toggle.md) in akount.ing: Each toggle is a `role="radio"` inside a `ToggleGroup`

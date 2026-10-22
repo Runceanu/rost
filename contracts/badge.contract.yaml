@@ -270,8 +270,5 @@ implementations:
     component: src/components/Badge.jsx
     root: .badge
   a-kaunt:
-    component: src/components/Badge.tsx
-    root: .ak-badge
-    parts:
-      label: .ak-badge__label
-      icon: .ak-badge__icon
+    component: src/rost/badge/Badge.tsx
+    root: .rost-badge

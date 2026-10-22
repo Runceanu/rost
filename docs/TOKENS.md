@@ -8,7 +8,7 @@ Every value in every contract, sorted by why it has a token or doesn't. `npm run
 |---|---|---|---|
 | Has a token | 1299 | 61% | Uses a token, and the check tests it. |
 | Token suggested | 0 | 0% | A token I want that doesn't exist yet. The freeze turned every other suggestion into a token. |
-| How Figma builds it | 674 | 32% | How Figma builds the layer (position, inset, which sides get a stroke). Nothing to tokenise. |
+| How Figma builds it | 677 | 32% | How Figma builds the layer (position, inset, which sides get a stroke). Nothing to tokenise. |
 | Figma frame size | 89 | 4% | A root size that is just the Figma frame. Written down, not checked. |
 | No token, on purpose | 43 | 2% | Plain on purpose, and the contract says why. |
 | Open gap | 22 | 1% | No token and no reason. Each one needs a decision from me. |
@@ -31,7 +31,7 @@ Every value in every contract, sorted by why it has a token or doesn't. `npm run
 | [Menu effect](components/effect-menu.md) | 1 | · | · | · | · | · |
 | [Menu](components/menu.md) | 32 | · | 16 | 6 | · | 1 |
 | [Paper effect](components/effect-paper.md) | 6 | · | · | · | 7 | · |
-| [PillButton](components/pill-button.md) | 145 | · | 56 | 12 | 5 | 1 |
+| [PillButton](components/pill-button.md) | 145 | · | 59 | 12 | 5 | 1 |
 | [Projects](components/projects.md) | 77 | · | 33 | 8 | 4 | 4 |
 | [Tag](components/tags.md) | 26 | · | 13 | 3 | · | 1 |
 | [TestimonialPicture](components/testimonials-pics.md) | 2 | · | 1 | · | · | · |

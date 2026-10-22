@@ -254,9 +254,5 @@ guidance:
     One short sentence, no full stop if it's a fragment. Lead with what happened: "Saved just now", "Payment failed: card expired".
 implementations:
   a-kaunt:
-    component: src/components/InlineBanner.tsx
-    root: .ak-banner
-    deviations:
-      - what: Shows only the label. The icon for each status (plus, check, alarm, warning) is an optional slot.
-        why: When I built it, the kit's glyphs weren't exported, and I didn't want to draw stand-ins the kit doesn't have. They're in `src/components/inline-banner/icons/` now, so this can go.
-        raisedWithDesign: false
+    component: src/rost/inline-banner/InlineBanner.tsx
+    root: .rost-inline-banner

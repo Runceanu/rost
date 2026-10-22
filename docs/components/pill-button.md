@@ -10,7 +10,7 @@
 | Contract | `review` · [pill-button.contract.yaml](../../contracts/pill-button.contract.yaml) |
 | Guidance | `agreed` |
 | Source | [Figma 20:14](https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=20-14) · read 2026-08-19 · frozen 2026-10-20 |
-| Implemented in | akount.ing (`src/components/Button.tsx`, `.ak-btn`) |
+| Implemented in | akount.ing (`src/rost/pill-button/PillButton.tsx`, `.rost-pill-button`) |
 
 ## Props
 
