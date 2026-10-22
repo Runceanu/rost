@@ -39,6 +39,8 @@ npm run site:preview   # look at the built site on the same port
 npm run deploy      # build it and publish it to rost.build
 npm run css -- thumbs           # write a component's CSS from its contract
 npm run test:visual -- thumbs   # render every variant and compare it with Figma's screenshot
+npm run add -- <app-dir> badge   # copy a component (and what it imports) into an app
+npm run add -- <app-dir>         # update every component the app already has
 ```
 
 ```bash
