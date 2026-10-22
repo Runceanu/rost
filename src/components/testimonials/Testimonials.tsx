@@ -33,7 +33,7 @@ const b = 'rost-testimonials'
  * contracts/testimonials.contract.yaml.
  */
 export function Testimonials({
-  name = 'Name', jobDescription = 'Job description', testimonial = 'This is where the testimonials comes',
+  name = 'Name', jobDescription = 'Job description', testimonial = 'This is where the testimonial goes',
   expanded, defaultExpanded = false, onExpandedChange,
   showName = true, showJobDescription = true, showAction = true, showDivider = true,
   disabled = false, children, className, as = 'button', ...rest

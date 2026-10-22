@@ -49,7 +49,7 @@
 - `focus-ring`
 - `badge` (optional): Places the Badge in the corner. The pill itself is the Badge component.
 - `locked` (optional)
-- `icons-lock` (optional)
+- `icons-lock` (optional): Figma's lock, drawn as a mask in its colour, the same way as in Projects.
 
 ## When to use
 
@@ -87,6 +87,7 @@ Every token this component uses, across all its variants.
 | `font-family/base` | `'General Sans Variable'` |
 | `non-interactive/background/positive/base` | `#00d669` |
 | `non-interactive/background/secondary` | `#171717` |
+| `non-interactive/foreground/contrast` | `#060805` |
 | `opacity/medium` | `0.48` |
 | `opacity/mild` | `0.32` |
 | `project/default/icon` | `#747573` |
@@ -137,5 +138,6 @@ Every token this component uses, across all its variants.
 | `dot` | `height` | `3px` | The dot's own size inside the icon. |
 | `focus-ring` | `inset` | `calc(-1 * var(--spacing-gap-2xsmall))` | Composed from a token: the ring sits spacing/gap/2xsmall outside the element. |
 | `focus-ring` | `border-radius` | `calc(var(--spacing-radius-xlarge) + var(--spacing-gap-2xsmall))` | Composed from tokens: the element's spacing/radius/xlarge plus the ring's spacing/gap/2xsmall. |
+| `icons-lock` | `mask` | `url(./icon-lock.svg) center / contain no-repeat` | The icon file itself. |
 
 See it live, with every value of every variant: [rost.build/components/thumbs](https://rost.build/components/thumbs/)

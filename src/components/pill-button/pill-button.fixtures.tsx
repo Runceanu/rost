@@ -1,12 +1,12 @@
 import type { JSX } from 'react'
-import { PillButton, type PillButtonType } from './PillButton'
+import { PillButton, type PillButtonVariant } from './PillButton'
 
 /**
  * One fixture per Figma variant, with Figma's sample label. Hover, pressed
  * and focus are forced by the test. Figma's Focus frames include the ring,
  * 4px outside, so those sit in a 4px frame here too.
  */
-const NODES: Record<PillButtonType, Record<string, string>> = {
+const NODES: Record<PillButtonVariant, Record<string, string>> = {
   primary: { Default: '20:13', Hover: '20:15', Pressed: '20:20', Disabled: '20:22', Focus: '20:17' },
   secondary: { Default: '25:80', Hover: '25:82', Pressed: '25:84', Disabled: '25:86', Focus: '25:88' },
   tertiary: { Default: '25:191', Hover: '25:194', Pressed: '25:197', Disabled: '25:200', Focus: '25:203' },
@@ -20,7 +20,7 @@ export const fixtures = Object.entries(NODES).flatMap(([type, states]) =>
   Object.entries(states).map(([state, node]) => ({
     node,
     name: `type=${cap(type)}, state=${state}`,
-    element: frame(<PillButton type={type as PillButtonType} disabled={state === 'Disabled'}>label</PillButton>, state),
+    element: frame(<PillButton variant={type as PillButtonVariant} disabled={state === 'Disabled'}>label</PillButton>, state),
     ...(FORCE[state] ? { force: FORCE[state] } : {}),
   })),
 )
@@ -29,13 +29,13 @@ export const fixtures = Object.entries(NODES).flatMap(([type, states]) =>
 export const usage = `import { PillButton } from 'rost/components/pill-button/PillButton'
 
 <PillButton>Get in touch</PillButton>
-<PillButton type="secondary" href="/work">See the work</PillButton>
-<PillButton type="tertiary">Cancel</PillButton>`
+<PillButton variant="secondary" href="/work">See the work</PillButton>
+<PillButton variant="tertiary">Cancel</PillButton>`
 
 /** What the component's card on rost.build shows. */
 export const preview = (
   <span style={{ display: 'flex', gap: 'var(--spacing-gap-small)' }}>
     <PillButton as="span">Get in touch</PillButton>
-    <PillButton as="span" type="secondary">The work</PillButton>
+    <PillButton as="span" variant="secondary">The work</PillButton>
   </span>
 )

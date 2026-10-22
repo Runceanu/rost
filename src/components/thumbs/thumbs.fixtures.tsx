@@ -24,17 +24,17 @@ export const fixtures = [
 /** What a caller writes. Shown on the component's page. */
 export const usage = `import { Thumbs } from 'rost/components/thumbs/Thumbs'
 
-<Thumbs href="/work/akount" number="01" name="akount.ing" industry="Finance" type="Product" period="2025">
+<Thumbs href="/work/akount" number="01" name="akount.ing" industry="Finance" kind="Product" period="2025">
   <img src="/work/akount.jpg" alt="" />
 </Thumbs>
 
-<Thumbs disabled number="02" name="Next one" industry="Health" type="Platform" period="2026" />`
+<Thumbs disabled number="02" name="Next one" industry="Health" kind="Platform" period="2026" />`
 
 /** What the component's card on rost.build shows: a smaller Thumbs, without its own link. */
 export const preview = (
   <span style={{ display: 'block', width: 384 * 0.36, height: 334 * 0.36 }}>
     <span style={{ display: 'block', transform: 'scale(.36)', transformOrigin: 'top left' }}>
-      <Thumbs as="div" number="01" name="Rost" showIndustry={false} showType={false} showPeriod={false} style={{ width: 384, height: 334 }}>
+      <Thumbs as="div" number="01" name="Rost" showIndustry={false} showKind={false} showPeriod={false} style={{ width: 384, height: 334 }}>
         <span style={{ position: 'absolute', inset: 0, background: 'var(--non-interactive-background-primary)' }} />
       </Thumbs>
     </span>

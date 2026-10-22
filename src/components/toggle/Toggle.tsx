@@ -1,7 +1,7 @@
 import type { ButtonHTMLAttributes, ReactNode } from 'react'
 import './toggle.css'
 
-export interface ToggleProps extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'type'> {
+export interface ToggleProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   /** On or off. Off is a faded plate with 12px corners, on a fully round primary pill. */
   readonly selected?: boolean
   /** Replaces the arrow. Draw it with `currentColor` and it follows the states. */
@@ -19,10 +19,10 @@ const b = 'rost-toggle'
  * of options, pass `role="radio"` and `aria-checked` instead. Built from
  * contracts/toggle.contract.yaml.
  */
-export function Toggle({ selected = false, icon, className, as = 'button', disabled, ...rest }: ToggleProps) {
+export function Toggle({ selected = false, icon, className, as = 'button', disabled, type = 'button', ...rest }: ToggleProps) {
   const radio = rest.role === 'radio'
   const Root = as
-  const own = as === 'button' ? { type: 'button' as const, disabled } : { 'aria-disabled': disabled || undefined }
+  const own = as === 'button' ? { type, disabled } : { 'aria-disabled': disabled || undefined }
   return (
     <Root
       {...own}

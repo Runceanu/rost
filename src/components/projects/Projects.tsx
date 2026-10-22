@@ -2,17 +2,18 @@ import { Fragment, type AnchorHTMLAttributes, type ReactNode } from 'react'
 import { Badge } from '../badge/Badge'
 import './projects.css'
 
-export interface ProjectsProps extends Omit<AnchorHTMLAttributes<HTMLAnchorElement>, 'type'> {
+export interface ProjectsProps extends AnchorHTMLAttributes<HTMLAnchorElement> {
   /** A two-digit index in front of the name. */
   readonly number?: ReactNode
   readonly name?: ReactNode
   readonly industry?: ReactNode
-  readonly type?: ReactNode
+  /** What kind of work it was. Figma calls this detail `type`. */
+  readonly kind?: ReactNode
   readonly period?: ReactNode
   readonly showNumber?: boolean
   readonly showName?: boolean
   readonly showIndustry?: boolean
-  readonly showType?: boolean
+  readonly showKind?: boolean
   readonly showPeriod?: boolean
   /** The arrow at the end of the row. */
   readonly showAction?: boolean
@@ -35,13 +36,13 @@ const b = 'rost-projects'
  * focus are the browser's. Built from contracts/projects.contract.yaml.
  */
 export function Projects({
-  number = '00', name = 'Name', industry = 'Industry', type = 'Type', period = 'Period',
-  showNumber = true, showName = true, showIndustry = true, showType = true, showPeriod = true,
+  number = '00', name = 'Name', industry = 'Industry', kind = 'Type', period = 'Period',
+  showNumber = true, showName = true, showIndustry = true, showKind = true, showPeriod = true,
   showAction = true, showDivider = true, disabled = false, badge = 'Coming soon', locked = false,
   className, href, as = 'a', ...rest
 }: ProjectsProps) {
   const cls = [b, locked && `${b}--state-locked`, className].filter(Boolean).join(' ')
-  const details = [showIndustry && industry, showType && type, showPeriod && period].filter((d) => d !== false)
+  const details = [showIndustry && industry, showKind && kind, showPeriod && period].filter((d) => d !== false)
   const Root = as
   const link = as === 'a' ? { href: disabled ? undefined : href, 'aria-disabled': disabled || undefined } : { 'aria-disabled': disabled || undefined }
   return (
