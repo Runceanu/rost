@@ -20,7 +20,7 @@ props:
   number: { type: slot, notes: A two-digit index in front of the name. }
   name: { type: slot }
   industry: { type: slot }
-  type: { type: slot }
+  type: { type: slot, notes: "What kind of work it was. In React it's `kind`, so it can't be mistaken for a button's type." }
   period: { type: slot }
   showNumber: { type: boolean, default: true }
   showName: { type: boolean, default: true }

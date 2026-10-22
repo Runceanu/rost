@@ -22,7 +22,7 @@ const two = (n: number) => String(n).padStart(2, '0')
             number={two(i + 1)}
             name={title(e)}
             industry={e.c.category ?? e.kind}
-            type={inCode(e.id) ? 'In code' : 'Contract'}
+            kind={inCode(e.id) ? 'In code' : 'Contract'}
             showPeriod={false}
           >
             <Glimpse id={e.id} />

@@ -158,10 +158,13 @@
 }
 
 .rost-thumbs__icons-lock {
+  display: block;
   flex-shrink: 0;
   position: relative;
   width: var(--spacing-size-small);
   height: var(--spacing-size-small);
+  background: var(--non-interactive-foreground-contrast);
+  mask: url(./icon-lock.svg) center / contain no-repeat;
 }
 
 .rost-thumbs .rost-thumbs__number {

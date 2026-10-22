@@ -1,10 +1,11 @@
 import type { AnchorHTMLAttributes, ButtonHTMLAttributes, ReactNode } from 'react'
 import './pill-button.css'
 
-export type PillButtonType = 'primary' | 'secondary' | 'tertiary' | 'borderless'
+export type PillButtonVariant = 'primary' | 'secondary' | 'tertiary' | 'borderless'
 
 interface Common {
-  readonly type?: PillButtonType
+  /** The look: Figma's `type` axis. */
+  readonly variant?: PillButtonVariant
   /** Optional, in front of the label: a 20px icon. Figma's `leading` slot, off by default. */
   readonly icon?: ReactNode
   readonly children?: ReactNode
@@ -13,8 +14,8 @@ interface Common {
   readonly as?: 'span'
 }
 export type PillButtonProps =
-  | (Common & Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'type'> & { readonly href?: undefined; readonly buttonType?: 'button' | 'submit' | 'reset' })
-  | (Common & Omit<AnchorHTMLAttributes<HTMLAnchorElement>, 'type'> & { readonly href: string; readonly disabled?: boolean })
+  | (Common & Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'type'> & { readonly href?: undefined; readonly type?: 'button' | 'submit' | 'reset' })
+  | (Common & AnchorHTMLAttributes<HTMLAnchorElement> & { readonly href: string; readonly disabled?: boolean })
 
 const b = 'rost-pill-button'
 
@@ -24,8 +25,8 @@ const b = 'rost-pill-button'
  * Built from contracts/pill-button.contract.yaml.
  */
 export function PillButton(props: PillButtonProps) {
-  const { type = 'primary', icon, children, className, as, ...rest } = props
-  const cls = [b, `${b}--type-${type}`, className].filter(Boolean).join(' ')
+  const { variant = 'primary', icon, children, className, as, ...rest } = props
+  const cls = [b, `${b}--type-${variant}`, className].filter(Boolean).join(' ')
   const inner = (
     <>
       <span className={`${b}__background`} />
@@ -42,6 +43,6 @@ export function PillButton(props: PillButtonProps) {
     const { href, disabled, ...a } = rest as AnchorHTMLAttributes<HTMLAnchorElement> & { disabled?: boolean }
     return <a className={cls} href={disabled ? undefined : href} aria-disabled={disabled || undefined} {...a}>{inner}</a>
   }
-  const { buttonType = 'button', ...btn } = rest as ButtonHTMLAttributes<HTMLButtonElement> & { buttonType?: 'button' | 'submit' | 'reset' }
-  return <button type={buttonType} className={cls} {...btn}>{inner}</button>
+  const { type = 'button', ...btn } = rest as ButtonHTMLAttributes<HTMLButtonElement>
+  return <button type={type} className={cls} {...btn}>{inner}</button>
 }

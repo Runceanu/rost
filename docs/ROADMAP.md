@@ -19,6 +19,7 @@ Still open from Figma:
 
 - Rename the sample client in Thumbs to "Client" and capture it again, so `baseline/thumbs/` can be public. Until then the visual test leaves the name out of the comparison. `baseline/testimonials-pics/` stays private for good (real people's photos).
 - Button's 20 renders came back empty. Capture them again next time Figma is open on the UI Kit.
+- Testimonials' sample quote says "This is where the testimonials comes". Rost says "This is where the testimonial goes". Change the `testimonial` property's default on the set (node 144:67) and capture the open variants again; until then the test leaves the quote out.
 - The Menu effect's blur. I took 12px from the nav, not from the "Menu" style, so that contract is still a draft.
 - A few values have no token and no reason yet. They're at the bottom of [Token coverage](TOKENS.md).
 

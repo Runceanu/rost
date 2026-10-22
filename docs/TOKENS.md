@@ -6,11 +6,11 @@ Every value in every contract, sorted by why it has a token or doesn't. `npm run
 
 | | Values | Share | Meaning |
 |---|---|---|---|
-| Has a token | 1298 | 61% | Uses a token, and the check tests it. |
+| Has a token | 1299 | 61% | Uses a token, and the check tests it. |
 | Token suggested | 0 | 0% | A token I want that doesn't exist yet. The freeze turned every other suggestion into a token. |
-| How Figma builds it | 673 | 32% | How Figma builds the layer (position, inset, which sides get a stroke). Nothing to tokenise. |
+| How Figma builds it | 674 | 32% | How Figma builds the layer (position, inset, which sides get a stroke). Nothing to tokenise. |
 | Figma frame size | 89 | 4% | A root size that is just the Figma frame. Written down, not checked. |
-| No token, on purpose | 42 | 2% | Plain on purpose, and the contract says why. |
+| No token, on purpose | 43 | 2% | Plain on purpose, and the contract says why. |
 | Open gap | 22 | 1% | No token and no reason. Each one needs a decision from me. |
 
 ## By contract
@@ -37,7 +37,7 @@ Every value in every contract, sorted by why it has a token or doesn't. `npm run
 | [TestimonialPicture](components/testimonials-pics.md) | 2 | · | 1 | · | · | · |
 | [Testimonials](components/testimonials.md) | 85 | · | 53 | 13 | 6 | 4 |
 | [Thumb effect](components/effect-thumb.md) | 1 | · | · | · | · | · |
-| [Thumbs](components/thumbs.md) | 76 | · | 50 | 9 | 5 | 5 |
+| [Thumbs](components/thumbs.md) | 77 | · | 51 | 9 | 6 | 5 |
 | [Toggle](components/toggle.md) | 61 | · | 23 | 8 | 6 | 2 |
 
 ## Tokens that should be there
@@ -102,6 +102,7 @@ None. The freeze on 2026-10-20 turned all 122 suggestions into tokens.
 - [Thumbs](components/thumbs.md) `dot.height` = `3px`: The dot's own size inside the icon.
 - [Thumbs](components/thumbs.md) `focus-ring.inset` = `calc(-1 * var(--spacing-gap-2xsmall))`: Composed from a token: the ring sits spacing/gap/2xsmall outside the element.
 - [Thumbs](components/thumbs.md) `focus-ring.border-radius` = `calc(var(--spacing-radius-xlarge) + var(--spacing-gap-2xsmall))`: Composed from tokens: the element's spacing/radius/xlarge plus the ring's spacing/gap/2xsmall.
+- [Thumbs](components/thumbs.md) `icons-lock.mask` = `url(./icon-lock.svg) center / contain no-repeat`: The icon file itself.
 - [Toggle](components/toggle.md) `glyph.mask` = `url(./icon-arrow-left.svg) center / contain no-repeat`: The icon file itself, `assets/icons/arrow-left.svg`, the same shape as Figma's `Union` layer.
 - [Toggle](components/toggle.md) `focus-ring.inset` = `calc(-1 * var(--spacing-gap-2xsmall))`: Composed from a token: the ring sits spacing/gap/2xsmall outside the element.
 - [Toggle](components/toggle.md) `root.box-shadow` = `inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-default-outline)`: Figma's 1px left and top stroke, drawn inside the shape as Figma draws it. The width and colour are tokens.

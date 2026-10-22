@@ -23,7 +23,7 @@ props:
     type: slot
     notes: A two-digit index in front of the name.
   industry: { type: slot }
-  type: { type: slot }
+  type: { type: slot, notes: "What kind of work it was. In React it's `kind`, so it can't be mistaken for a button's type." }
   period: { type: slot }
   showNumber: { type: boolean, default: true }
   showName: { type: boolean, default: true }
@@ -199,11 +199,15 @@ elements:
       border-radius: { token: spacing/radius/medium, value: 12px }
   icons-lock:
     optional: true
+    notes: "Figma's lock, drawn as a mask in its colour, the same way as in Projects."
     styles:
+      display: { value: block, assert: false }
       flex-shrink: { value: "0", assert: false }
       position: { value: relative, assert: false }
       width: { value: 24px, token: spacing/size/small }
       height: { value: 24px, token: spacing/size/small }
+      background: { token: non-interactive/foreground/contrast, value: "#060805" }
+      mask: { value: url(./icon-lock.svg) center / contain no-repeat, untokenised: The icon file itself. }
 variants:
   - when: { state: Default }
     figmaNode: "109:78"

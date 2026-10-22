@@ -1,20 +1,20 @@
 import { Fragment, type AnchorHTMLAttributes, type ReactNode } from 'react'
 import { Badge } from '../badge/Badge'
 import './thumbs.css'
-import iconLock from './icon-lock.svg?url'
 
-export interface ThumbsProps extends Omit<AnchorHTMLAttributes<HTMLAnchorElement>, 'type'> {
+export interface ThumbsProps extends AnchorHTMLAttributes<HTMLAnchorElement> {
   /** The project's name, in the title. */
   readonly name?: ReactNode
   /** A two-digit index in front of the name. */
   readonly number?: ReactNode
   readonly industry?: ReactNode
-  readonly type?: ReactNode
+  /** What kind of work it was. Figma calls this detail `type`. */
+  readonly kind?: ReactNode
   readonly period?: ReactNode
   readonly showNumber?: boolean
   readonly showName?: boolean
   readonly showIndustry?: boolean
-  readonly showType?: boolean
+  readonly showKind?: boolean
   readonly showPeriod?: boolean
   /** Dims the card, drops the link and shows `badge`. */
   readonly disabled?: boolean
@@ -39,13 +39,13 @@ const b = 'rost-thumbs'
  * following the Figma layers.
  */
 export function Thumbs({
-  name = 'Client', number = '00', industry = 'Industry', type = 'Type', period = 'Period',
-  showNumber = true, showName = true, showIndustry = true, showType = true, showPeriod = true,
+  name = 'Name', number = '00', industry = 'Industry', kind = 'Type', period = 'Period',
+  showNumber = true, showName = true, showIndustry = true, showKind = true, showPeriod = true,
   disabled = false, badge = 'Coming soon', locked = false, children, className, href, as = 'a', ...rest
 }: ThumbsProps) {
   const cls = [b, locked && `${b}--state-locked`, className].filter(Boolean).join(' ')
   // The details with a dot between each pair, whichever are shown.
-  const details = [showIndustry && industry, showType && type, showPeriod && period].filter((d) => d !== false)
+  const details = [showIndustry && industry, showKind && kind, showPeriod && period].filter((d) => d !== false)
   const Root = as
   const link = as === 'a' ? { href: disabled ? undefined : href, 'aria-disabled': disabled || undefined } : { 'aria-disabled': disabled || undefined }
   return (
@@ -70,7 +70,7 @@ export function Thumbs({
       {disabled && badge && <span className={`${b}__badge`}><Badge>{badge}</Badge></span>}
       {locked && (
         <span className={`${b}__locked`}>
-          <span className={`${b}__icons-lock`}><img src={iconLock} alt="Locked" /></span>
+          <span className={`${b}__icons-lock`} role="img" aria-label="Locked" />
         </span>
       )}
     </Root>

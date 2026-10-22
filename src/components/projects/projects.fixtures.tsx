@@ -18,11 +18,11 @@ export const fixtures = [
 /** What a caller writes. Shown on the component's page. */
 export const usage = `import { Projects } from 'rost/components/projects/Projects'
 
-<Projects href="/work/accounting" number="01" name="The accounting app" industry="Finance" type="Product" period="2025" />
-<Projects locked number="02" name="Client 1" industry="Health" type="Platform" period="2024" />`
+<Projects href="/work/accounting" number="01" name="The accounting app" industry="Finance" kind="Product" period="2025" />
+<Projects locked number="02" name="Client 1" industry="Health" kind="Platform" period="2024" />`
 
 /** What the component's card on rost.build shows: two rows, the second locked. The details are too small to read at card size, so they're off. */
-const quiet = { showIndustry: false, showType: false, showPeriod: false, style: { width: 480 } }
+const quiet = { showIndustry: false, showKind: false, showPeriod: false, style: { width: 480 } }
 export const preview = (
   <span style={{ display: 'block', width: 480 * 0.55, height: 192 * 0.55 }}>
     <span style={{ display: 'block', width: 480, transform: 'scale(.55)', transformOrigin: 'top left' }}>
