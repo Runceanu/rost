@@ -33,6 +33,9 @@
 }
 
 .rost-pill-button__icons-arrow-left {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   overflow: clip;
   flex-shrink: 0;
   position: relative;

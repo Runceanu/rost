@@ -10,7 +10,7 @@
 | Contract | `review` · [inline-banner.contract.yaml](../../contracts/inline-banner.contract.yaml) |
 | Guidance | `agreed` |
 | Source | [Figma 205:614](https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=205-614) · read 2026-10-20 · frozen 2026-10-20 |
-| Implemented in | The accounting app (`src/components/InlineBanner.tsx`, `.ak-banner`) |
+| Implemented in | The accounting app (`src/rost/inline-banner/InlineBanner.tsx`, `.rost-inline-banner`) |
 
 ## Props
 
@@ -57,12 +57,6 @@
 ## Content
 
 One short sentence, no full stop if it's a fragment. Lead with what happened: "Saved just now", "Payment failed: card expired".
-
-## Where code differs on purpose
-
-| App | What | Why | Taken to design |
-|---|---|---|---|
-| The accounting app | Shows only the label. The icon for each status (plus, check, alarm, warning) is an optional slot. | When I built it, the kit's glyphs weren't exported, and I didn't want to draw stand-ins the kit doesn't have. They're in `src/components/inline-banner/icons/` now, so this can go. | not yet |
 
 ## Tokens
 

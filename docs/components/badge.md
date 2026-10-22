@@ -10,7 +10,7 @@
 | Contract | `review` · [badge.contract.yaml](../../contracts/badge.contract.yaml) |
 | Guidance | `proposed` |
 | Source | [Figma 139:395](https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=139-395) · read 2026-10-20 · frozen 2026-10-20 |
-| Implemented in | The portfolio site (`src/components/Badge.jsx`, `.badge`)<br>the accounting app (`src/components/Badge.tsx`, `.ak-badge`) |
+| Implemented in | The portfolio site (`src/components/Badge.jsx`, `.badge`)<br>the accounting app (`src/rost/badge/Badge.tsx`, `.rost-badge`) |
 
 ## Props
 

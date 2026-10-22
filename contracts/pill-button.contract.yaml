@@ -52,6 +52,9 @@ elements:
   icons-arrow-left:
     optional: true
     styles:
+      display: { value: flex, assert: false }
+      align-items: { value: center }
+      justify-content: { value: center }
       overflow: { value: clip }
       flex-shrink: { value: "0", assert: false }
       position: { value: relative, assert: false }
@@ -401,5 +404,5 @@ guidance:
     A short verb phrase, sentence case. The icon has to match the words: an arrow pointing left only on "Back".
 implementations:
   accounting-app:
-    component: src/components/Button.tsx
-    root: .ak-btn
+    component: src/rost/pill-button/PillButton.tsx
+    root: .rost-pill-button
