@@ -1,3 +1,4 @@
+import { InlineBanner } from '../inline-banner/InlineBanner'
 import { Thumbs } from './Thumbs'
 
 /**
@@ -30,12 +31,15 @@ export const usage = `import { Thumbs } from 'rost/components/thumbs/Thumbs'
 
 <Thumbs disabled number="02" name="Next one" industry="Health" kind="Platform" period="2026" />`
 
-/** What the component's card on rost.build shows: a smaller Thumbs, without its own link. */
+/** What the component's card on rost.build shows: a smaller Thumbs, without its own link, with one real component as its picture. */
 export const preview = (
-  <span style={{ display: 'block', width: 384 * 0.36, height: 334 * 0.36 }}>
-    <span style={{ display: 'block', transform: 'scale(.36)', transformOrigin: 'top left' }}>
-      <Thumbs as="div" number="01" name="Rost" showIndustry={false} showKind={false} showPeriod={false} style={{ width: 384, height: 334 }}>
+  <span style={{ display: 'block', width: 260 * 0.55, height: 222 * 0.55 }}>
+    <span style={{ display: 'block', transform: 'scale(.55)', transformOrigin: 'top left' }}>
+      <Thumbs as="div" number="01" name="akount.ing" showIndustry={false} showKind={false} showPeriod={false} style={{ width: 260, height: 222 }}>
         <span style={{ position: 'absolute', inset: 0, background: 'var(--non-interactive-background-primary)' }} />
+        <span style={{ position: 'absolute', inset: '0 0 72px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+          <InlineBanner status="positive" size="medium">Invoice sent</InlineBanner>
+        </span>
       </Thumbs>
     </span>
   </span>
