@@ -10,8 +10,8 @@
  *     bug rather than a typo.
  *  2. RAW HEX. A literal colour cannot follow a theme or a token retune, and
  *     will not show up in any token audit later.
- *  3. UNKNOWN TOKENS. A local token with no counterpart in the Figma variable
- *     registry is either a name invented in code, or a real design decision
+ *  3. UNKNOWN TOKENS. A local token that's neither a Figma variable nor one of
+ *     Rost's own tokens is either a name invented in code, or a real design decision
  *     that never made it back into the kit. Both are worth knowing.
  *
  * Undefined vars always fail the run. With --strict, raw hex and unknown
@@ -26,7 +26,10 @@ import { fileURLToPath } from 'node:url'
 
 const here = fileURLToPath(new URL('.', import.meta.url))
 const registry = JSON.parse(readFileSync(join(here, '../registry/figma-variables.json'), 'utf8'))
-const kitPaths = new Set(registry.paths.map((p) => p.replace(/[/\-\s]/g, '').toLowerCase()))
+// The kit's names: every Figma variable, plus the tokens Rost made in code
+// (the effects, the shadow, aliases). Both are real; neither is an invention.
+const rostTokens = [...readFileSync(join(here, '../tokens/tokens.css'), 'utf8').replace(/\/\*[\s\S]*?\*\//g, '').matchAll(/(--[\w-]+)\s*:/g)].map((m) => m[1].slice(2))
+const kitPaths = new Set([...registry.paths, ...rostTokens].map((p) => p.replace(/[/\-\s]/g, '').toLowerCase()))
 
 const walk = (dir, out = []) => {
   for (const e of readdirSync(dir)) {

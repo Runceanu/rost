@@ -2,14 +2,14 @@
 
 What I'm doing next with Rost, in order. Each item says what "done" looks like, so I can tick it off instead of arguing with myself about it.
 
-Where the apps stood on 2026-10-20 (`npm run audit` on both):
+Where the apps stood on 2026-10-22 (`npm run audit` on both):
 
 | | Raw hex | Undefined vars | Token names the kit doesn't have |
 |---|---|---|---|
-| akount.ing | 0 | 0 | 5 |
-| runceanu.com | 99 | 2 | 88 |
+| akount.ing | 0 | 0 | 0 |
+| runceanu.com | 99 | 2 | 78 |
 
-runceanu.com's raw hex dropped from 230 to 99 without me touching the site. The audit used to count hex inside comments and `transparent`; now it doesn't. The 99 are real.
+runceanu.com's raw hex dropped from 230 to 99 without me touching the site. The audit used to count hex inside comments and `transparent`; now it doesn't. The 99 are real. The unknown-token counts fell too, for the same kind of reason: the audit now counts Rost's own tokens (the effects, the shadow) as the kit's, not only Figma's variables. akount.ing passes `--strict` now, and its tokens are resynced from Rost.
 
 ## Done: the freeze
 
