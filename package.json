@@ -17,6 +17,7 @@
     "rost-audit": "./bin/audit.mjs"
   },
   "scripts": {
+    "add": "node bin/add.mjs",
     "audit": "node bin/audit.mjs",
     "docs": "node bin/validate.mjs && node bin/build-docs.mjs",
     "build:contracts": "node bin/build-contracts.mjs",

@@ -51,7 +51,7 @@ Next, one at a time on the same setup:
 - **Button.** Its Figma renders came back empty, so there's nothing to test it against until they're captured again.
 - **Input.** Built as soon as Figma is open again: its clear icon was never saved, and I won't draw a stand-in.
 - **TestimonialPicture and Hero Media.** One is real people's photos, the other has no Figma render. Both need a decision first.
-- **`npx rost add badge`**, the way shadcn does it: copy a component, its CSS and its tokens into the accounting app or the portfolio site. That's how my apps will stop keeping their own copies.
+- **The portfolio site onto Rost's components**, with `npm run add`. It copies a component, what it imports, its contract and the check into an app, the way shadcn does, and updates them on a second run. The accounting app uses it for Badge, InlineBanner, Divider and Button since 2026-10-22. A real `npx rost add` waits until Rost is published to npm.
 
 ## Now: make the contracts something I can trust
 
