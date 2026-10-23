@@ -1,11 +1,13 @@
 import { HeroMedia } from './HeroMedia'
 
 /**
- * Hero Media has no Figma screenshot yet, so there's nothing to compare it
- * with. Once Figma has it as a component with an empty media slot (1440 by
- * 630), its fixture goes here.
+ * Figma's Hero Media (portfolio file, 793:2345) has both slots empty, so the
+ * test compares the frame: the 16px border, the 24px corners and the two
+ * surfaces. The artwork is each case study's own.
  */
-export const fixtures = []
+export const fixtures = [
+  { node: '793:2345', name: 'hero-media', element: <div style={{ width: 1440 }}><HeroMedia /></div> },
+]
 
 // Neutral artwork: hills in flat colour, nobody's work.
 const hills = `data:image/svg+xml,${encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect width="1200" height="600" fill="#2f4a5c"/><circle cx="860" cy="190" r="90" fill="#f2d7a0"/><path d="M0 380 Q300 250 600 340 T1200 300 V600 H0Z" fill="#3e6b5a"/><path d="M0 470 Q420 360 760 450 T1200 430 V600 H0Z" fill="#1f3b2f"/></svg>')}`

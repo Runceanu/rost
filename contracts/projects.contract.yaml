@@ -187,7 +187,7 @@ variants:
         color:
           token: project/hover/sub-label
           value: "#ededed"
-          notes: "Decided on 2026-10-21: #ededed, the same as Thumbs and Carousel. Figma's render of this row drew #d3d9d5, probably a variable mode on the frame. I'm fixing the frame in Figma; until its screenshot is captured again, the visual test fails on this one, and that's expected."
+          notes: "Decided on 2026-10-21: #ededed, the same as Thumbs and Carousel. Figma's frame held a stale #d3d9d5 although its variable said #ededed; I rebound it in Figma on 2026-10-23 and the test passes."
       dot:
         background: { token: project/hover/icon, value: "#ededed" }
   - when: { state: Pressed }

@@ -15,12 +15,6 @@ const NODES: [string, boolean, string][] = [
 ]
 const FORCE: Record<string, string[]> = { Hover: ['hover'], Pressed: ['active'], Focus: ['focus', 'focus-visible'] }
 
-// Figma's sample quote reads "This is where the testimonials comes". Rost
-// fixed it to "...testimonial goes"; until Figma's text is fixed and its
-// screenshots captured again, the quote's box isn't compared. Everything
-// else in the open variants still is. In Figma's pixels; Focus is 4px in.
-const QUOTE = { x: 12, y: 120, width: 400, height: 30 }
-
 export const fixtures = NODES.map(([state, expanded, node]) => {
   // Figma's open Default frame hugs its content: 976 plus the 16px indent.
   const width = state === 'Default' && expanded ? 992 : 976
@@ -31,7 +25,6 @@ export const fixtures = NODES.map(([state, expanded, node]) => {
     element: state === 'Focus' ? <div style={{ display: 'inline-flex', padding: 'var(--spacing-gap-2xsmall)' }}>{el}</div> : el,
     ...(FORCE[state] ? { force: FORCE[state] } : {}),
     ...(state === 'Focus' ? { forceOn: '.rost-testimonials__top' } : {}),
-    ...(expanded ? { mask: [state === 'Focus' ? { ...QUOTE, x: QUOTE.x + 4, y: QUOTE.y + 4 } : QUOTE] } : {}),
   }
 })
 

@@ -9,7 +9,7 @@
 | Kind | pattern |
 | Contract | `review` · [hero-media.contract.yaml](../../contracts/hero-media.contract.yaml) |
 | Guidance | `agreed` |
-| Source | [Figma 245:2900](https://www.figma.com/design/pg02BcqlCQCVt6LzTAiPhD/?node-id=245-2900) · read 2026-10-18 · frozen 2026-10-20 |
+| Source | [Figma 793:2345](https://www.figma.com/design/pg02BcqlCQCVt6LzTAiPhD/?node-id=793-2345) · read 2026-10-18 · frozen 2026-10-20 |
 | Implemented in | nowhere yet |
 
 ## Props
