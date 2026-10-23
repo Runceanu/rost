@@ -315,7 +315,7 @@ variants:
       icons-chevron:
         mask: { value: url(./icon-chevron-up.svg) center / contain no-repeat, untokenised: The icon file itself. }
 guidance:
-  status: proposed
+  status: agreed
   use:
     - What people said about working with me, in a list. Each one opens to show the quote.
   avoid:

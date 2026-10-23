@@ -167,7 +167,7 @@ variants:
       description:
         color: { token: project/disabled/sub-label, value: "#999" }
 guidance:
-  status: proposed
+  status: agreed
   use:
     - The cards in the portfolio site's home page carousel. Each one leads to a piece of work.
   avoid:

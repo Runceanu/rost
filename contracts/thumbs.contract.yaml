@@ -282,7 +282,7 @@ variants:
       detail:
         color: { token: project/default/sub-label, value: "#999" }
 guidance:
-  status: proposed
+  status: agreed
   use:
     - One project in a grid or a carousel of work. The whole card links to the case study.
     - A list of things that each want a picture and a short line of facts under a name.
