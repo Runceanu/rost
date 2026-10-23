@@ -82,7 +82,7 @@ None. The freeze on 2026-10-20 turned all 122 suggestions into tokens.
 - [Paper effect](components/effect-paper.md) `lens.cursor` = `radius 210px, power 1.0`: Tuned by eye: how wide the lens is, and how fast it fades. Only the paper uses it.
 - [Paper effect](components/effect-paper.md) `lens.halo` = `radius 240px, power 1.3`: Tuned by eye: how wide the lens is, and how fast it fades. Only the paper uses it.
 - [Paper effect](components/effect-paper.md) `lens.press` = `radius 330px, power 1.7`: Tuned by eye: how wide the lens is, and how fast it fades. Only the paper uses it.
-- [Paper effect](components/effect-paper.md) `pen.cadence` = `7-8s between sketches`: How often the pen draws. There are no motion tokens yet.
+- [Paper effect](components/effect-paper.md) `pen.cadence` = `2-3s between sketches, each one 3.2s from first line to gone`: How often the pen draws. There are no motion tokens yet.
 - [Projects](components/projects.md) `icons-lock.mask` = `url(./icon-lock.svg) center / contain no-repeat`: The icon file itself.
 - [Projects](components/projects.md) `dot.width` = `3px`: The dot's own size inside the icon.
 - [Projects](components/projects.md) `dot.height` = `3px`: The dot's own size inside the icon.

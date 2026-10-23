@@ -65,7 +65,7 @@ elements:
       A ring (a soft band, about 1.8s) that crosses the sheet from the middle. It's triggered by the availability dot's own pulse, every second beat: so every 8s, in step with it, never on a timer of its own. It only runs while the hero is on screen.
   pen:
     notes: |-
-      Every 7 to 8 seconds the pen sketches one kit component in 2px lines (colour `non-interactive/foreground/secondary` at the ink opacity). It draws line by line (about 1.6s), holds (about 3s), then fades. The rule of the grid: outer shapes follow the dot rows and columns exactly, start on a dot, measure in whole cells, and round their corners between dots. Small inner details (a check, an x, a knob, bars, a caret) keep their natural shape. Every point of a line moves with the lens, so the ink bulges like the dots do. One sketch at a time.
+      Every 2 to 3 seconds the pen sketches one kit component in 2px lines (colour `non-interactive/foreground/secondary` at the ink opacity). It draws line by line (about 1s), holds (about 1.5s), then fades. The first one comes half a second after the page opens. The rule of the grid: outer shapes follow the dot rows and columns exactly, start on a dot, measure in whole cells, and round their corners between dots. Small inner details (a check, an x, a knob, bars, a caret) keep their natural shape. Every point of a line moves with the lens, so the ink bulges like the dots do. One sketch at a time.
     styles:
       ink-opacity:
         token: opacity/mild
@@ -74,8 +74,8 @@ elements:
           Was a plain 0.3. On 2026-10-19 I tied it to `opacity/mild` (0.32, a touch stronger). `HeroBackdrop.jsx` reads `--opacity-mild`.
       stroke-width: { token: spacing/outline/medium, value: 2px }
       cadence:
-        value: 7-8s between sketches
-        notes: Picked at random inside the window, so it never feels like a metronome.
+        value: 2-3s between sketches, each one 3.2s from first line to gone
+        notes: "Picked at random inside the window, so it never feels like a metronome. Made faster on 2026-10-23 for rost.build; runceanu.com still draws over 5.2s and waits 7 to 8." 
         untokenised: How often the pen draws. There are no motion tokens yet.
 guidance:
   status: agreed

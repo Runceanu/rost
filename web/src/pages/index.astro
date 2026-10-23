@@ -71,14 +71,16 @@ const illustrations = count(import.meta.glob('../../../assets/illustrations/*.sv
 <style>
   .hero { position: relative; overflow-y: clip; padding: var(--spacing-gap-large) 0 var(--spacing-gap-2xlarge); border-bottom: 1px solid var(--line); }
   .hero > :not(.paper) { position: relative; }
-  /* The Paper effect: the page's full width, faded into a disc centred on the
-     hero and softened at its top and bottom edges, behind the words. */
+  /* The Paper effect, to the right of the words: from just past the widest
+     line to the window's edge, fading in from the left and at the top and
+     bottom. Below 900px there's no room beside the text, so it goes. */
   .paper {
-    position: absolute; top: 0; left: 50%; height: 100%;
-    width: var(--page-w, 100%); transform: translateX(-50%); pointer-events: none;
-    mask-image: radial-gradient(circle 552px at 50% 50%, #000 40%, transparent 92%), linear-gradient(to bottom, transparent, #000 var(--spacing-size-large), #000 calc(100% - var(--spacing-size-large)), transparent);
+    position: absolute; top: 0; height: 100%; pointer-events: none;
+    left: 600px; right: calc((100% - var(--page-w, 100%)) / 2);
+    mask-image: linear-gradient(to right, transparent, #000 var(--spacing-size-xlarge, 64px)), linear-gradient(to bottom, transparent, #000 var(--spacing-size-large), #000 calc(100% - var(--spacing-size-large)), transparent);
     mask-composite: intersect;
   }
+  @media (max-width: 900px) { .paper { display: none; } }
   .steps { display: grid; gap: var(--spacing-gap-small-medium); grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
   .steps h3 { margin: var(--spacing-gap-small-medium) 0 var(--spacing-gap-small); color: var(--fg); font-family: var(--body); font-size: 17px; letter-spacing: 0; text-transform: none; font-weight: 600; }
   .steps p { margin: 0; color: var(--fg-2); font-size: 15px; }
@@ -98,5 +100,5 @@ const illustrations = count(import.meta.glob('../../../assets/illustrations/*.sv
   const fit = () => document.documentElement.style.setProperty('--page-w', `${document.documentElement.clientWidth}px`)
   fit()
   addEventListener('resize', fit)
-  if (hero && canvas) mountPaper(canvas, { area: hero, buttons: hero.querySelectorAll('.rost-button') })
+  if (hero && canvas) mountPaper(canvas, { area: hero, buttons: hero.querySelectorAll('.rost-button'), sketches: true })
 </script>

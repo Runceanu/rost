@@ -3,11 +3,13 @@
  * moves by itself. It only reacts: the cursor is a magnifier (dots grow and
  * spread under an eased lens), pressing presses deeper into the paper, and
  * hovering one of the hero's buttons raises a lens under it.
- * Built from contracts/effect-paper.contract.yaml. runceanu.com's version
- * also sketches components on the paper and ripples with its availability
- * dot; Rost's doesn't do either.
+ * With `sketches`, a kit component is drawn on the paper from time to time,
+ * the way runceanu.com does it: the pen runs along the dot rows, holds, then
+ * fades, and the ink bulges under the lens like the dots. runceanu.com's
+ * ripple with its availability dot stays there.
+ * Built from contracts/effect-paper.contract.yaml.
  *
- *   const stop = mountPaper(canvas, { area: hero, buttons: hero.querySelectorAll('.rost-button') })
+ *   const stop = mountPaper(canvas, { area: hero, buttons: hero.querySelectorAll('.rost-button'), sketches: true })
  *
  * The canvas is decoration: give it aria-hidden="true" and pointer-events: none.
  */
@@ -17,6 +19,8 @@ export interface PaperOptions {
   readonly area?: Element | null
   /** Buttons that raise a lens under them on hover. */
   readonly buttons?: Iterable<Element>
+  /** Draw a kit component on the paper from time to time. Off with reduced motion. */
+  readonly sketches?: boolean
 }
 
 // Tuned by eye on runceanu.com, and only the paper uses them (see the contract).
@@ -26,6 +30,42 @@ const MAG = 1.3 // extra dot radius at the crest: 1px grows to 2.3px
 const DOT_R = 1
 const HALO = { r: 240, gain: 1.3 }
 const PRESS = { r: 330, gain: 1.7 }
+// Sketches: one component's whole life (draw, hold, fade), the share of it
+// spent drawing, and the pause before the next. runceanu.com takes 5.2s and
+// waits 7 to 8; here they come sooner and draw quicker.
+const SKETCH = { life: 3200, draw: 0.32, first: 500, gap: [2000, 3000] as const }
+
+type Pt = [number, number]
+const seg = (pts: Pt[], x1: number, y1: number, x2: number, y2: number, step = 5) => {
+  const n = Math.max(1, Math.ceil(Math.hypot(x2 - x1, y2 - y1) / step))
+  for (let i = pts.length ? 1 : 0; i <= n; i++) pts.push([x1 + ((x2 - x1) * i) / n, y1 + ((y2 - y1) * i) / n])
+}
+const arc = (pts: Pt[], cx: number, cy: number, r: number, a0: number, a1: number, step = 5) => {
+  const n = Math.max(2, Math.ceil((Math.abs(a1 - a0) * r) / step))
+  for (let i = pts.length ? 1 : 0; i <= n; i++) { const a = a0 + ((a1 - a0) * i) / n; pts.push([cx + Math.cos(a) * r, cy + Math.sin(a) * r]) }
+}
+const rrect = (x: number, y: number, w: number, h: number, r: number): Pt[] => {
+  const pts: Pt[] = [[x + r, y]]
+  seg(pts, x + r, y, x + w - r, y); arc(pts, x + w - r, y + r, r, -Math.PI / 2, 0)
+  seg(pts, x + w, y + r, x + w, y + h - r); arc(pts, x + w - r, y + h - r, r, 0, Math.PI / 2)
+  seg(pts, x + w - r, y + h, x + r, y + h); arc(pts, x + r, y + h - r, r, Math.PI / 2, Math.PI)
+  seg(pts, x, y + h - r, x, y + r); arc(pts, x + r, y + r, r, Math.PI, Math.PI * 1.5)
+  return pts
+}
+const circle = (cx: number, cy: number, r: number): Pt[] => { const pts: Pt[] = []; arc(pts, cx, cy, r, -Math.PI / 2, Math.PI * 1.5); return pts }
+const line = (x1: number, y1: number, x2: number, y2: number): Pt[] => { const pts: Pt[] = [[x1, y1]]; seg(pts, x1, y1, x2, y2); return pts }
+// Kit components in grid cells: the outlines run along dot rows and columns,
+// the small parts inside keep their natural proportions.
+const SHAPES: { w: number; h: number; build: (g: number) => Pt[][] }[] = [
+  { w: 10, h: 4, build: (g) => [rrect(0, 0, 10 * g, 4 * g, 2 * g), rrect(g, g, 2 * g, 2 * g, 0.5 * g), rrect(4 * g, 1.5 * g, 4 * g, g, 0.5 * g)] }, // badge
+  { w: 10, h: 4, build: (g) => [rrect(0, 0, 10 * g, 4 * g, 2 * g), circle(2 * g, 2 * g, g), rrect(3.5 * g, 1.5 * g, 3 * g, g, 0.5 * g), line(7.55 * g, 1.55 * g, 8.45 * g, 2.45 * g), line(8.45 * g, 1.55 * g, 7.55 * g, 2.45 * g)] }, // chip
+  { w: 4, h: 4, build: (g) => [circle(2 * g, 2 * g, 2 * g), line(1.2 * g, 2 * g, 2.8 * g, 2 * g), line(2 * g, 1.2 * g, 2 * g, 2.8 * g)] }, // icon button
+  { w: 4, h: 2, build: (g) => [rrect(0, 0, 4 * g, 2 * g, g), circle(g, g, 0.62 * g)] }, // toggle
+  { w: 3, h: 3, build: (g) => [rrect(0, 0, 3 * g, 3 * g, 0.75 * g), line(0.8 * g, 1.6 * g, 1.35 * g, 2.15 * g), line(1.35 * g, 2.15 * g, 2.3 * g, 0.95 * g)] }, // checkbox
+  { w: 4, h: 4, build: (g) => [circle(2 * g, 2 * g, 2 * g), circle(2 * g, 2 * g, 0.9 * g)] }, // radio
+  { w: 7, h: 4, build: (g) => [rrect(0, 0, 7 * g, 4 * g, 2 * g), rrect(1.5 * g, 1.5 * g, 3 * g, g, 0.5 * g)] }, // tag
+  { w: 12, h: 4, build: (g) => [rrect(0, 0, 12 * g, 4 * g, g), rrect(g, 1.5 * g, 4 * g, g, 0.5 * g), line(6.5 * g, g, 6.5 * g, 3 * g)] }, // input
+]
 
 /** `#ededed` or `rgb(…)` from a token, as [r, g, b]. */
 function rgb(value: string, fallback: [number, number, number]): [number, number, number] {
@@ -47,6 +87,9 @@ export function mountPaper(canvas: HTMLCanvasElement, options: PaperOptions = {}
   const BASE_A = parseFloat(token('--opacity-soft')) || 0.16
   const INK = rgb(token('--non-interactive-foreground-primary'), [237, 237, 237])
   const ACCENT = rgb(token('--actions-primary-default-background'), [0, 214, 105])
+  const PEN = rgb(token('--non-interactive-foreground-secondary'), [211, 217, 213])
+  const PEN_A = parseFloat(token('--opacity-mild')) || 0.32
+  const PEN_W = parseFloat(token('--spacing-outline-medium')) || 2
 
   let w = 0, h = 0, dpr = 1, raf = 0
   // Lens sources, all eased toward their targets.
@@ -54,6 +97,10 @@ export function mountPaper(canvas: HTMLCanvasElement, options: PaperOptions = {}
   const target = { x: -9999, y: -9999, p: 0 }
   const halo = { x: 0, y: 0, p: 0, tp: 0 }
   const press = { x: 0, y: 0, p: 0, tp: 0 }
+  // The sketch being drawn: its polylines with their running lengths.
+  let sketch: { t0: number; total: number; polys: { pts: Pt[]; len: number; start: number }[] } | null = null
+  let last = -1
+  let nextAt = performance.now() + SKETCH.first
 
   function resize() {
     const r = canvas.getBoundingClientRect()
@@ -83,7 +130,7 @@ export function mountPaper(canvas: HTMLCanvasElement, options: PaperOptions = {}
     return [Math.min(e, 1.7), fx, fy]
   }
 
-  function draw() {
+  function draw(now = performance.now()) {
     ctx!.setTransform(dpr, 0, 0, dpr, 0, 0)
     ctx!.clearRect(0, 0, w, h)
     const x0 = (w % GAP) / 2 || 0
@@ -109,19 +156,80 @@ export function mountPaper(canvas: HTMLCanvasElement, options: PaperOptions = {}
         ctx!.fill()
       }
     }
+    if (sketch) drawSketch(now)
   }
 
-  function tick() {
+  function startSketch() {
+    let i = Math.floor(Math.random() * SHAPES.length)
+    if (i === last) i = (i + 1) % SHAPES.length
+    last = i
+    const S = SHAPES[i]!
+    // Somewhere in the middle of the paper, snapped onto the dots.
+    const x0 = (w % GAP) / 2 || 0, y0 = GAP / 2
+    const tx = w / 2 + (Math.random() - 0.5) * Math.max(0, w - S.w * GAP - 4 * GAP) * 0.6 - (S.w * GAP) / 2
+    const ty = h / 2 + (Math.random() - 0.5) * Math.max(0, h - S.h * GAP - 4 * GAP) * 0.6 - (S.h * GAP) / 2
+    const X = x0 + Math.round((tx - x0) / GAP) * GAP, Y = y0 + Math.round((ty - y0) / GAP) * GAP
+    let total = 0
+    const polys = S.build(GAP).map((raw) => {
+      const pts = raw.map(([px, py]) => [px + X, py + Y] as Pt)
+      let len = 0
+      for (let k = 1; k < pts.length; k++) len += Math.hypot(pts[k]![0] - pts[k - 1]![0], pts[k]![1] - pts[k - 1]![1])
+      const start = total
+      total += len
+      return { pts, len, start }
+    })
+    sketch = { t0: performance.now(), total, polys }
+    wake()
+  }
+
+  // The pen draws the strokes in order, holds, then fades. Every point rides
+  // the lens, so the ink bulges under the cursor like the paper.
+  function drawSketch(now: number) {
+    const u = (now - sketch!.t0) / SKETCH.life
+    if (u >= 1) { sketch = null; nextAt = now + SKETCH.gap[0] + Math.random() * (SKETCH.gap[1] - SKETCH.gap[0]); return }
+    const d = Math.min(1, u / SKETCH.draw)
+    const budget = sketch!.total * d * d * (3 - 2 * d)
+    const fade = 1 - Math.max(0, (u - 0.8) / 0.2)
+    const warp = (x: number, y: number): Pt => { const [e, fx, fy] = field(x, y); return [x + fx * PUSH * e, y + fy * PUSH * e] }
+    ctx!.save()
+    ctx!.strokeStyle = `rgba(${PEN[0]},${PEN[1]},${PEN[2]},${PEN_A * fade})`
+    ctx!.lineWidth = PEN_W
+    ctx!.lineCap = 'round'
+    ctx!.lineJoin = 'round'
+    for (const P of sketch!.polys) {
+      if (budget <= P.start) break
+      const avail = Math.min(P.len, budget - P.start)
+      ctx!.beginPath()
+      let acc = 0
+      for (let k = 0; k < P.pts.length; k++) {
+        if (k > 0) {
+          const [ax, ay] = P.pts[k - 1]!, [bx, by] = P.pts[k]!
+          const sl = Math.hypot(bx - ax, by - ay)
+          if (acc + sl > avail) { const t = (avail - acc) / sl; ctx!.lineTo(...warp(ax + (bx - ax) * t, ay + (by - ay) * t)); break }
+          acc += sl
+        }
+        const [wx, wy] = warp(P.pts[k]![0], P.pts[k]![1])
+        if (k === 0) ctx!.moveTo(wx, wy)
+        else ctx!.lineTo(wx, wy)
+      }
+      ctx!.stroke()
+    }
+    ctx!.restore()
+  }
+
+  function tick(now: number) {
     raf = 0
     cur.x += (target.x - cur.x) * 0.18
     cur.y += (target.y - cur.y) * 0.18
     cur.p += (target.p - cur.p) * 0.12
     halo.p += (halo.tp - halo.p) * 0.14
     press.p += (press.tp - press.p) * (press.tp > press.p ? 0.3 : 0.08)
-    draw()
+    draw(now)
     const settled = Math.abs(target.x - cur.x) < 0.3 && Math.abs(target.y - cur.y) < 0.3
       && Math.abs(target.p - cur.p) < 0.004 && Math.abs(halo.tp - halo.p) < 0.004 && Math.abs(press.tp - press.p) < 0.004
+      && !sketch
     if (!settled || target.p > 0 || halo.tp > 0 || press.tp > 0) raf = requestAnimationFrame(tick)
+    else draw(now) // a clean frame once the last sketch has faded
   }
   const wake = () => { if (!raf) raf = requestAnimationFrame(tick) }
 
@@ -166,6 +274,13 @@ export function mountPaper(canvas: HTMLCanvasElement, options: PaperOptions = {}
   ro.observe(canvas)
   if (area) ro.observe(area)
   resize()
+  // Sketches only while the paper is on screen, and never with reduced motion.
+  let visible = true
+  const io = new IntersectionObserver(([e]) => { visible = !!e?.isIntersecting })
+  io.observe(canvas)
+  const timer = options.sketches && !reduce
+    ? window.setInterval(() => { if (!sketch && visible && w > 0 && performance.now() >= nextAt) startSketch() }, 200)
+    : 0
   // Reduced motion: the paper stays still and flat.
   if (!reduce) {
     window.addEventListener('pointermove', onMove, { passive: true })
@@ -176,6 +291,8 @@ export function mountPaper(canvas: HTMLCanvasElement, options: PaperOptions = {}
   }
   return () => {
     ro.disconnect()
+    io.disconnect()
+    if (timer) clearInterval(timer)
     window.removeEventListener('pointermove', onMove)
     window.removeEventListener('pointerdown', onDown)
     window.removeEventListener('pointerup', onUp)
