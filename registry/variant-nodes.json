@@ -1022,5 +1022,75 @@
       "width": 104,
       "height": 0
     }
+  ],
+  "tab": [
+    {
+      "nodeId": "442:2",
+      "name": "selected=True, state=Default",
+      "width": 60,
+      "height": 40
+    },
+    {
+      "nodeId": "442:11",
+      "name": "selected=True, state=Hover",
+      "width": 60,
+      "height": 40
+    },
+    {
+      "nodeId": "442:20",
+      "name": "selected=True, state=Pressed",
+      "width": 60,
+      "height": 40
+    },
+    {
+      "nodeId": "442:29",
+      "name": "selected=True, state=Focus",
+      "width": 60,
+      "height": 40
+    },
+    {
+      "nodeId": "442:39",
+      "name": "selected=True, state=Disabled",
+      "width": 60,
+      "height": 40
+    },
+    {
+      "nodeId": "442:48",
+      "name": "selected=False, state=Default",
+      "width": 60,
+      "height": 40
+    },
+    {
+      "nodeId": "442:57",
+      "name": "selected=False, state=Hover",
+      "width": 60,
+      "height": 40
+    },
+    {
+      "nodeId": "442:66",
+      "name": "selected=False, state=Pressed",
+      "width": 60,
+      "height": 40
+    },
+    {
+      "nodeId": "442:75",
+      "name": "selected=False, state=Focus",
+      "width": 60,
+      "height": 40
+    },
+    {
+      "nodeId": "442:85",
+      "name": "selected=False, state=Disabled",
+      "width": 60,
+      "height": 40
+    }
+  ],
+  "tabs": [
+    {
+      "nodeId": "442:448",
+      "name": "tabs",
+      "width": 278,
+      "height": 40
+    }
   ]
 }

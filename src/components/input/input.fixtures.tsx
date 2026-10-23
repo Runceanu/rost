@@ -36,9 +36,23 @@ export const usage = `import { Input } from 'rost/components/input/Input'
 <Input label="Email address" type="email" supportive="We'll send the receipt here." />
 <Input label="Amount" error supportive="Use a number, like 1200." />`
 
-/** What the component's card on rost.build shows. */
+/**
+ * What the component's card on rost.build shows. The card is a link, and a
+ * link can't hold an `<input>`, so this is Input's own markup with the value
+ * as text.
+ */
 export const preview = (
   <span style={{ display: 'block', width: 208 }}>
-    <Input label="Email address" value="name@example.com" readOnly supportive="We'll send the receipt here." tabIndex={-1} />
+    <span className="rost-input rost-input--configuration-filled" style={{ display: 'flex' }}>
+      <span className="rost-input__outline" />
+      <span className="rost-input__left">
+        <span className="rost-input__icons-lock" />
+        <span className="rost-input__content">
+          <span className="rost-input__label">Email address</span>
+          <span className="rost-input__value" style={{ display: 'block' }}>name@example.com</span>
+        </span>
+      </span>
+      <span className="rost-input__supportive">We'll send the receipt here.</span>
+    </span>
   </span>
 )

@@ -1,0 +1,12 @@
+/* Generated from contracts/tabs.contract.yaml by bin/build-css.mjs. Don't edit: change the contract and rebuild. */
+
+.rost-tabs, .rost-tabs * { box-sizing: border-box; margin: 0; }
+.rost-tabs > img, .rost-tabs [class*="__icons-"] > img { display: block; position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; }
+.rost-tabs ::placeholder { color: inherit; opacity: 1; }
+
+.rost-tabs {
+  display: flex;
+  align-items: flex-start;
+  gap: 0px;
+  box-shadow: inset 0 calc(-1 * var(--spacing-outline-small)) 0 0 var(--tabs-line);
+}

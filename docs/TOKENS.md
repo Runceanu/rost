@@ -6,12 +6,12 @@ Every value in every contract, sorted by why it has a token or doesn't. `npm run
 
 | | Values | Share | Meaning |
 |---|---|---|---|
-| Has a token | 1142 | 62% | Uses a token, and the check tests it. |
+| Has a token | 1179 | 62% | Uses a token, and the check tests it. |
 | Token suggested | 0 | 0% | A token I want that doesn't exist yet. The freeze turned every other suggestion into a token. |
-| How Figma builds it | 503 | 28% | How Figma builds the layer (position, inset, which sides get a stroke). Nothing to tokenise. |
-| Figma frame size | 112 | 6% | A root size that is just the Figma frame. Written down, not checked. |
-| No token, on purpose | 46 | 3% | Plain on purpose, and the contract says why. |
-| Open gap | 26 | 1% | No token and no reason. Each one needs a decision from me. |
+| How Figma builds it | 520 | 27% | How Figma builds the layer (position, inset, which sides get a stroke). Nothing to tokenise. |
+| Figma frame size | 125 | 7% | A root size that is just the Figma frame. Written down, not checked. |
+| No token, on purpose | 47 | 2% | Plain on purpose, and the contract says why. |
+| Open gap | 27 | 1% | No token and no reason. Each one needs a decision from me. |
 
 ## By contract
 
@@ -32,6 +32,8 @@ Every value in every contract, sorted by why it has a token or doesn't. `npm run
 | [Menu](components/menu.md) | 32 | · | 16 | 6 | · | 1 |
 | [Paper effect](components/effect-paper.md) | 6 | · | · | · | 7 | · |
 | [Projects](components/projects.md) | 77 | · | 33 | 8 | 4 | 4 |
+| [Tab](components/tab.md) | 37 | · | 15 | 12 | · | 1 |
+| [Tabs](components/tabs.md) | · | · | 2 | 1 | 1 | · |
 | [Tag](components/tags.md) | 26 | · | 13 | 3 | · | 1 |
 | [TestimonialPicture](components/testimonials-pics.md) | 2 | · | 8 | 1 | · | · |
 | [Testimonials](components/testimonials.md) | 85 | · | 53 | 13 | 6 | 4 |
@@ -86,6 +88,7 @@ None. The freeze on 2026-10-20 turned all 122 suggestions into tokens.
 - [Projects](components/projects.md) `dot.height` = `3px`: The dot's own size inside the icon.
 - [Projects](components/projects.md) `icons-arrow.mask` = `url(./icon-up-right.svg) center / contain no-repeat`: The icon file itself.
 - [Projects](components/projects.md) `focus-ring.inset` = `calc(-1 * var(--spacing-gap-2xsmall))`: Composed from a token: the ring sits spacing/gap/2xsmall outside the element.
+- [Tabs](components/tabs.md) `root.box-shadow` = `inset 0 calc(-1 * var(--spacing-outline-small)) 0 0 var(--tabs-line)`: Figma's 1px line along the bottom, drawn inside so the row stays 40px tall and the selected tab's underline sits on top of it. The width and colour are tokens (spacing/outline/small, tabs/line).
 - [Tag](components/tags.md) `focus-ring.inset` = `calc(-1 * var(--spacing-gap-2xsmall))`: Composed from a token: the ring sits spacing/gap/2xsmall outside the element.
 - [Testimonials](components/testimonials.md) `icons-chevron.mask` = `url(./icon-chevron-down.svg) center / contain no-repeat`: The icon file itself.
 - [Testimonials](components/testimonials.md) `focus-ring.inset` = `calc(-1 * var(--spacing-gap-2xsmall))`: Composed from a token: the ring sits spacing/gap/2xsmall outside the element.
@@ -124,6 +127,7 @@ None. The freeze on 2026-10-20 turned all 122 suggestions into tokens.
 - [Projects](components/projects.md) `outline.right` = `0`
 - [Projects](components/projects.md) `outline.bottom` = `0`
 - [Projects](components/projects.md) `focus-ring.border-style` = `solid`
+- [Tab](components/tab.md) `focus-ring.border-style` = `solid`
 - [Tag](components/tags.md) `focus-ring.border-style` = `solid`
 - [Testimonials](components/testimonials.md) `outline.left` = `0`
 - [Testimonials](components/testimonials.md) `outline.right` = `0`

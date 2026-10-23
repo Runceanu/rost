@@ -1196,5 +1196,86 @@
       "width": 1440,
       "height": 630
     }
+  ],
+  "tab": [
+    {
+      "nodeId": "442:2",
+      "name": "selected=True, state=Default",
+      "file": "442-2.png",
+      "width": 60,
+      "height": 40
+    },
+    {
+      "nodeId": "442:11",
+      "name": "selected=True, state=Hover",
+      "file": "442-11.png",
+      "width": 60,
+      "height": 40
+    },
+    {
+      "nodeId": "442:20",
+      "name": "selected=True, state=Pressed",
+      "file": "442-20.png",
+      "width": 60,
+      "height": 40
+    },
+    {
+      "nodeId": "442:29",
+      "name": "selected=True, state=Focus",
+      "file": "442-29.png",
+      "width": 60,
+      "height": 40
+    },
+    {
+      "nodeId": "442:39",
+      "name": "selected=True, state=Disabled",
+      "file": "442-39.png",
+      "width": 60,
+      "height": 40
+    },
+    {
+      "nodeId": "442:48",
+      "name": "selected=False, state=Default",
+      "file": "442-48.png",
+      "width": 60,
+      "height": 40
+    },
+    {
+      "nodeId": "442:57",
+      "name": "selected=False, state=Hover",
+      "file": "442-57.png",
+      "width": 60,
+      "height": 40
+    },
+    {
+      "nodeId": "442:66",
+      "name": "selected=False, state=Pressed",
+      "file": "442-66.png",
+      "width": 60,
+      "height": 40
+    },
+    {
+      "nodeId": "442:75",
+      "name": "selected=False, state=Focus",
+      "file": "442-75.png",
+      "width": 60,
+      "height": 40
+    },
+    {
+      "nodeId": "442:85",
+      "name": "selected=False, state=Disabled",
+      "file": "442-85.png",
+      "width": 60,
+      "height": 40
+    }
+  ],
+  "tabs": [
+    {
+      "nodeId": "442:448",
+      "name": "tabs",
+      "file": "442-448.png",
+      "width": 278,
+      "height": 40
+    }
   ]
 }

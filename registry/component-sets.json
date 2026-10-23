@@ -91,5 +91,15 @@
     "name": "Divider",
     "setNodeId": "39:111",
     "variantCount": 1
+  },
+  "tab": {
+    "name": "Tab",
+    "setNodeId": "442:94",
+    "variantCount": 10
+  },
+  "tabs": {
+    "name": "Tabs",
+    "setNodeId": "442:448",
+    "variantCount": 1
   }
 }

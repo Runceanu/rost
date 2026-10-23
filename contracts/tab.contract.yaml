@@ -1,0 +1,172 @@
+# yaml-language-server: $schema=../schema/component-contract.schema.json
+schemaVersion: 2
+id: tab
+name: Tab
+kind: component
+status: review
+summary: One tab in a row of tabs. A label, optional icons before and after it, and a green underline when it's the one selected.
+category: navigation
+related: [ tabs, toggle ]
+source:
+  tool: figma
+  fileKey: 1Zy0wiWKXQAvsfDBX3KR0d
+  nodeId: "442:94"
+  url: https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=442-94
+  extractedAt: "2026-10-23"
+  extractedBy: mcp
+props:
+  label: { type: slot, notes: "The tab's name. In React, the children." }
+  selected: { type: boolean, default: false, notes: "The tab whose panel shows. It gets the green underline." }
+  leading: { type: slot, notes: "Optional, before the label: a 20px icon in the label's colour. Figma's `showLeading` and `leading`." }
+  trailing: { type: slot, notes: "Optional, after the label, the same way. Figma's `showTrailing` and `trailing`." }
+states: [ Default, Hover, Pressed, Focus, Disabled ]
+elements:
+  root:
+    notes: "A `<button role=\"tab\">`. Its colour is the label's, and the icons follow it."
+    styles:
+      display: { value: inline-flex, assert: false }
+      align-items: { value: center }
+      justify-content: { value: center }
+      position: { value: relative, assert: false }
+      background: { value: none, assert: false, notes: "The browser's own button look goes." }
+      border: { value: none, assert: false }
+      font: { value: inherit, assert: false }
+      cursor: { value: pointer, assert: false }
+      outline: { value: none, assert: false }
+      gap: { token: spacing/gap/small, value: 8px }
+      height: { token: spacing/size/medium, value: 40px }
+      padding-left: { token: spacing/gap/medium, value: 16px }
+      padding-right: { token: spacing/gap/medium, value: 16px }
+      padding-top: { value: 0px, assert: false }
+      padding-bottom: { value: 0px, assert: false }
+  leading:
+    optional: true
+    notes: "A 20px icon. Draw it with `currentColor`."
+    styles:
+      display: { value: flex, assert: false }
+      flex-shrink: { value: "0", assert: false }
+      width: { token: spacing/size/xsmall, value: 20px }
+      height: { token: spacing/size/xsmall, value: 20px }
+  label:
+    styles:
+      white-space: { value: nowrap, assert: false }
+      font-family: { token: font-family/base, value: "'General Sans Variable'" }
+      font-weight: { token: typography/body/font-weight/medium, value: "500" }
+      line-height: { token: typography/body/line-height, value: 22px }
+      font-size: { token: typography/body/font-size, value: 16px }
+      letter-spacing: { token: typography/body/letter-spacing, value: 0px }
+  trailing:
+    optional: true
+    notes: "A 20px icon. Draw it with `currentColor`."
+    styles:
+      display: { value: flex, assert: false }
+      flex-shrink: { value: "0", assert: false }
+      width: { token: spacing/size/xsmall, value: 20px }
+      height: { token: spacing/size/xsmall, value: 20px }
+  underline:
+    notes: The 2px line along the bottom. Green on the selected tab, a grey hint on an unselected one under the pointer.
+    styles:
+      position: { value: absolute, assert: false }
+      left: { value: "0", assert: false }
+      right: { value: "0", assert: false }
+      bottom: { value: "0", assert: false }
+      height: { token: spacing/outline/medium, value: 2px }
+      pointer-events: { value: none, assert: false }
+  focus-ring:
+    notes: Inside the tab, so it never overlaps the next one.
+    styles:
+      display: { value: none, assert: false }
+      position: { value: absolute, assert: false }
+      inset: { value: "0", assert: false }
+      border-style: { value: solid }
+      border-width: { token: spacing/outline/medium, value: 2px }
+      border-radius: { token: spacing/radius/small, value: 8px }
+      pointer-events: { value: none, assert: false }
+variants:
+  - when: { state: Default, selected: true }
+    figmaNode: "442:2"
+    elements:
+      root:
+        color: { token: tabs/selected/default/label, value: "#ededed" }
+      underline:
+        background: { token: tabs/selected/default/underline, value: "#00d669" }
+  - when: { state: Hover, selected: true }
+    figmaNode: "442:11"
+    elements:
+      root:
+        color: { token: tabs/selected/hover/label, value: "#ededed" }
+      underline:
+        background: { token: tabs/selected/hover/underline, value: "#00b450" }
+  - when: { state: Pressed, selected: true }
+    figmaNode: "442:20"
+    elements:
+      root:
+        color: { token: tabs/selected/pressed/label, value: "#ededed" }
+      underline:
+        background: { token: tabs/selected/pressed/underline, value: "#00913a" }
+  - when: { state: Focus, selected: true }
+    figmaNode: "442:29"
+    elements:
+      root:
+        color: { token: tabs/selected/focus/label, value: "#ededed" }
+      underline:
+        background: { token: tabs/selected/focus/underline, value: "#00d669" }
+      focus-ring:
+        display: { value: block, assert: false }
+        border-color: { token: tabs/selected/focus/focus-ring, value: "#b6ffda" }
+  - when: { state: Disabled, selected: true }
+    figmaNode: "442:39"
+    elements:
+      root:
+        color: { token: tabs/selected/disabled/label, value: "#d3d9d5" }
+        opacity: { token: opacity/medium, value: "0.48" }
+      underline:
+        background: { token: tabs/selected/disabled/underline, value: "#00d669" }
+  - when: { state: Default, selected: false }
+    figmaNode: "442:48"
+    elements:
+      root:
+        color: { token: tabs/unselected/default/label, value: "#999999" }
+  - when: { state: Hover, selected: false }
+    figmaNode: "442:57"
+    elements:
+      root:
+        color: { token: tabs/unselected/hover/label, value: "#ededed" }
+      underline:
+        background: { token: tabs/unselected/hover/underline, value: "#3a3a3a" }
+  - when: { state: Pressed, selected: false }
+    figmaNode: "442:66"
+    elements:
+      root:
+        color: { token: tabs/unselected/pressed/label, value: "#d3d9d5" }
+      underline:
+        background: { token: tabs/unselected/pressed/underline, value: "#747573" }
+  - when: { state: Focus, selected: false }
+    figmaNode: "442:75"
+    elements:
+      root:
+        color: { token: tabs/unselected/focus/label, value: "#d3d9d5" }
+      focus-ring:
+        display: { value: block, assert: false }
+        border-color: { token: tabs/unselected/focus/focus-ring, value: "#999999" }
+  - when: { state: Disabled, selected: false }
+    figmaNode: "442:85"
+    elements:
+      root:
+        color: { token: tabs/unselected/disabled/label, value: "#999999" }
+        opacity: { token: opacity/medium, value: "0.48" }
+guidance:
+  status: proposed
+  use:
+    - "Switching between views of the same thing, in place: Preview and Code, Overview and Activity."
+  avoid:
+    - Going to another page. That's a link, or the nav.
+    - Turning one thing on and off. That's **Toggle**.
+  behaviour: |-
+    Always inside **Tabs**, and exactly one is selected. Selecting a tab shows its panel straight away. Hover, pressed and focus come from the browser; selected and disabled are props.
+  accessibility:
+    element: "`<button role=\"tab\">` with `aria-selected` and `aria-controls`, inside a `role=\"tablist\"` that has a name."
+    keyboard: Only the selected tab is in the tab order. Arrow keys move between tabs, Home and End go to the first and last.
+    focus: the `focus-ring` part, on `:focus-visible`.
+    icons: just decoration, `aria-hidden`. The label is the name.
+  content: One or two words, sentence case. The same kind of thing in every tab.

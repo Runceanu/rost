@@ -35,7 +35,7 @@ On 2026-10-20 rost.build became a proper site, the way shadcn's is: a homepage, 
 
 ## Now: Rost in code
 
-Fifteen components so far, all built from their contracts and checked against Figma in the visual test:
+Seventeen components so far, all built from their contracts and checked against Figma in the visual test:
 
 - **InlineBanner**, all 8 variants, with Figma's own icons.
 - **Badge**, all 8 variants. Figma gave it a small size since August: just the coloured dot. The dot in front of the label on the medium size is optional now.
@@ -45,6 +45,7 @@ Fifteen components so far, all built from their contracts and checked against Fi
 - **Button** is PillButton's set with the icon made optional. Figma has the same button twice (20:14 with an icon slot, 39:38 without), so on 2026-10-23 I made them one.
 - **Input**, all 14 variants. A press anywhere in the field puts the caret in it, since the empty input is 0px tall under its label. The clear button is Rost's IconButton.
 - **TestimonialPicture.** The photo is a slot, in code and in Figma. The test compares the empty 56px frame, and the site shows landscapes.
+- **Tab and Tabs**, designed in Figma on 2026-10-23 with their own `tabs/*` tokens: a label, optional icons before and after, and a green underline on the selected tab. All 11 variants match, and rost.build's Preview and Code tabs use them. The visual test now rounds every component inside another up to whole pixels, the way Figma does, so a bar of tabs is as wide as Figma's.
 
 The effects are in code too, as tokens: Thumb, Menu, Lock frame and Floating each show on the site applied to real components. The Paper effect isn't. It's a canvas animation that lives in the portfolio site, and only its numbers are tokens.
 
