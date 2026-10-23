@@ -52,6 +52,8 @@ function build(id) {
     // Figma exports every icon and image as one picture filling its frame. Only
     // the component's own pictures: an image a caller passes in stays as it is.
     `.${base} > img, .${base} [class*="__icons-"] > img { display: block; position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; }`,
+    // A field's placeholder is drawn in the field's own colour token, not the browser's grey.
+    `.${base} ::placeholder { color: inherit; opacity: 1; }`,
   ]
   const rule = (selector, decls) => { if (decls.length) rules.push('', `${selector} {`, ...decls.map((d) => `  ${d}`), '}') }
 

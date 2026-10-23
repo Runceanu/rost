@@ -16,22 +16,32 @@ source:
   extractedBy: mcp
   frozenAt: "2026-10-20"
 props:
+  label: { type: slot, notes: "The field's name. It sits where you type until there's a value or focus, then moves up small." }
+  value: { type: slot, notes: "What's typed. In React, the input's value." }
+  placeholder: { type: slot, notes: Shown in the empty field once it has focus. Never instead of the label. }
+  supportive: { type: slot, notes: "One line of help under the field, or the fix when there's an error." }
   configuration:
     type: enum
     values: [ Empty, Filled ]
     default: Empty
+    notes: In code it follows the value; you don't set it.
   selected:
     type: boolean
     default: false
+    notes: The field has focus. In code it follows focus; `selected` forces it, for previews and tests.
   error:
     type: boolean
     default: false
+  icon: { type: slot, notes: "The leading icon, Figma's lock by default." }
+stateSelectors:
+  Disabled: ":has(input:disabled)"
 states: [ Default, Hover, Disabled ]
 elements:
   root:
+    notes: Values come from each variant's own branch of Figma's read of 2026-10-23. The August read was out of date (it had a 16px label; Figma's is 14px now).
     styles:
-      align-items: { value: center }
       display: { value: flex, assert: false }
+      align-items: { value: center }
       position: { value: relative, assert: false }
       gap: { token: spacing/gap/small, value: 8px }
       height: { token: spacing/size/large, value: 56px }
@@ -40,113 +50,222 @@ elements:
       padding-top: { token: spacing/gap/none, value: 0px }
       padding-bottom: { token: spacing/gap/none, value: 0px }
       border-radius: { token: spacing/radius/medium, value: 12px }
+      cursor: { value: text, assert: false }
       width:
         value: 208px
         assert: false
-        notes: Just the size of the Figma frame. No token, and not something to copy.
+        notes: Just the size of the Figma frame. A field is as wide as its form.
   outline:
+    notes: The field's fill and its 1px edge, on their own layer.
     styles:
-      border-sides: { value: all }
       position: { value: absolute }
       inset: { value: "0" }
+      border-style: { value: solid }
       border-width: { token: spacing/outline/small, value: 1px }
-      opacity: { token: opacity/solid, value: "1" }
       border-radius: { token: spacing/radius/medium, value: 12px }
+      opacity: { token: opacity/solid, value: "1" }
+      pointer-events: { value: none, assert: false }
   left:
     styles:
-      align-items: { value: center }
       display: { value: flex, assert: false }
+      align-items: { value: center }
       flex: { value: 1 0 0, assert: false }
+      min-width: { value: 1px, assert: false }
       position: { value: relative, assert: false }
-      gap: { value: 8px, token: spacing/gap/small }
-  icons-lock: {}
-  union: {}
-  content: {}
-  label: {}
-  supportive-text: {}
-  text: {}
-  right: {}
-  icons-alarm: {}
-  focus-ring: {}
+      gap: { token: spacing/gap/small, value: 8px }
+  icons-lock:
+    notes: "Figma's lock, drawn as a mask in the field's `icon` colour."
+    styles:
+      display: { value: block, assert: false }
+      flex-shrink: { value: "0", assert: false }
+      width: { token: spacing/size/xsmall, value: 20px }
+      height: { token: spacing/size/xsmall, value: 20px }
+      mask: { value: url(./icon-lock.svg) center / contain no-repeat, untokenised: The icon file itself. }
+  content:
+    styles:
+      display: { value: flex, assert: false }
+      flex-direction: { value: column, assert: false }
+      align-items: { value: flex-start }
+      flex: { value: 1 0 0, assert: false }
+      min-width: { value: 1px, assert: false }
+      position: { value: relative, assert: false }
+      white-space: { value: nowrap, assert: false }
+  label:
+    styles:
+      font-family: { token: font-family/base, value: "'General Sans Variable'" }
+      font-weight: { token: typography/label/font-weight/regular, value: "400" }
+      pointer-events: { value: none, assert: false }
+  value:
+    notes: The real `<input>`. Its own look goes; it takes the field's type and colour.
+    styles:
+      display: { value: block, assert: false }
+      width: { value: 100% }
+      padding: { token: spacing/gap/none, value: 0px }
+      border: { value: none, assert: false }
+      background: { value: none, assert: false }
+      outline: { value: none, assert: false }
+      font-family: { token: font-family/base, value: "'General Sans Variable'" }
+      font-weight: { token: typography/paragraph/font-weight/regular, value: "400" }
+      font-size: { token: typography/paragraph/font-size, value: 14px }
+      line-height: { token: typography/paragraph/line-height, value: 20px }
+      letter-spacing: { token: typography/paragraph/letter-spacing, value: 0px }
+  right:
+    styles:
+      display: { value: flex, assert: false }
+      align-items: { value: center }
+      flex-shrink: { value: "0", assert: false }
+      position: { value: relative, assert: false }
+  clear-glyph:
+    notes: "Figma's clear icon, inside Rost's IconButton (the Project type, 32px, as Figma nests it). Drawn in the button's own icon colour."
+    styles:
+      display: { value: block, assert: false }
+      width: { token: spacing/size/2xsmall, value: 16px }
+      height: { token: spacing/size/2xsmall, value: 16px }
+      background: { value: currentColor }
+      mask: { value: url(./icon-clear.svg) center / contain no-repeat, untokenised: The icon file itself. }
+  icons-alarm:
+    notes: "Figma's alarm, 24px, on the right when there's an error."
+    styles:
+      display: { value: block, assert: false }
+      flex-shrink: { value: "0", assert: false }
+      width: { token: spacing/size/small, value: 24px }
+      height: { token: spacing/size/small, value: 24px }
+      mask: { value: url(./icon-alarm.svg) center / contain no-repeat, untokenised: The icon file itself. }
+  supportive:
+    styles:
+      position: { value: absolute }
+      left: { token: spacing/gap/small-medium, value: 12px }
+      top: { value: "calc(var(--spacing-size-large) + var(--spacing-gap-2xsmall))", untokenised: "Composed from tokens: the field's height plus spacing/gap/2xsmall." }
+      white-space: { value: nowrap, assert: false }
+      font-family: { token: font-family/base, value: "'General Sans Variable'" }
+      font-weight: { token: typography/label/font-weight/medium, value: "500" }
+      font-size: { token: typography/placeholder/font-size, value: 10px }
+      line-height: { token: typography/placeholder/line-height, value: 12px }
+      letter-spacing: { token: typography/placeholder/letter-spacing, value: 0px }
+  focus-ring:
+    styles:
+      display: { value: none, assert: false }
+      position: { value: absolute }
+      inset: { value: "calc(-1 * var(--spacing-gap-2xsmall))", untokenised: "Composed from a token: the ring sits spacing/gap/2xsmall outside the field." }
+      border-style: { value: solid }
+      border-width: { token: spacing/outline/medium, value: 2px }
+      border-radius: { token: spacing/radius/large, value: 16px }
+      pointer-events: { value: none, assert: false }
 variants:
   - when: { state: Default, configuration: Empty, selected: false, error: false }
     figmaNode: "240:274"
     elements:
       outline:
         background: { token: input/regular/default/background, value: "#060805" }
-        border-color: { token: input/regular/default/outline, value: "#555" }
+        border-color: { token: input/regular/default/outline, value: "#555555" }
       icons-lock:
-        overflow: { value: clip }
-        flex-shrink: { value: "0", assert: false }
-        position: { value: relative, assert: false }
-        width: { value: 20px, token: spacing/size/xsmall }
-        height: { value: 20px, token: spacing/size/xsmall }
-      union:
-        position: { value: absolute }
-        inset: { value: 8.33% 16.67% }
-      content:
-        display: { value: flex, assert: false }
-        flex-direction: { value: column, assert: false }
-        flex-shrink: { value: "0", assert: false }
-        align-items: { value: flex-start }
-        position: { value: relative, assert: false }
+        background: { token: input/regular/default/icon, value: "#00d669" }
       label:
-        flex-shrink: { value: "0", assert: false }
-        white-space: { value: nowrap, assert: false }
-        text-align: { value: center }
-        position: { value: relative, assert: false }
-        font-family: { token: font-family/base, value: "'General Sans Variable'" }
-        font-weight: { token: typography/body/font-weight/regular, value: "400" }
-        line-height: { token: typography/body/line-height, value: 22px }
-        color: { token: input/regular/default/label, value: "#999" }
-        font-size: { token: typography/body/font-size, value: 16px }
-        letter-spacing: { token: typography/body/letter-spacing, value: 0px }
-      supportive-text:
-        position: { value: absolute }
-        justify-content: { value: center }
-        align-items: { value: center }
-        display: { value: flex, assert: false }
-      text:
-        flex-shrink: { value: "0", assert: false }
-        white-space: { value: nowrap, assert: false }
-        text-align: { value: center }
-        position: { value: relative, assert: false }
-        font-family: { token: font-family/base, value: "'General Sans Variable'" }
-        font-weight: { token: typography/label/font-weight/medium, value: "500" }
-        line-height: { token: typography/placeholder/line-height, value: 12px }
-        color: { token: input/regular/default/supportive, value: "#999" }
-        font-size: { token: typography/placeholder/font-size, value: 10px }
-        letter-spacing: { token: typography/placeholder/letter-spacing, value: 0px }
+        color: { token: input/regular/default/label, value: "#999999" }
+        font-size: { token: typography/paragraph/font-size, value: 14px }
+        line-height: { token: typography/paragraph/line-height, value: 20px }
+        letter-spacing: { token: typography/paragraph/letter-spacing, value: 0px }
+      value:
+        height: { value: "0", assert: false, notes: "Empty and not focused: only the label shows. The input is still there, so you can tab into it." }
+        opacity: { value: "0", assert: false }
+      supportive:
+        color: { token: input/regular/default/supportive, value: "#999999" }
   - when: { state: Hover, configuration: Empty, selected: false, error: false }
     figmaNode: "240:277"
     elements:
       outline:
-        background: { token: input/regular/default/background, value: "#060805" }
-        border-color: { token: input/regular/default/outline, value: "#555" }
+        background: { token: input/regular/hover/background, value: "#171717" }
+        border-color: { token: input/regular/hover/outline, value: "#999999" }
+      icons-lock:
+        background: { token: input/regular/hover/icon, value: "#00b450" }
+      label:
+        color: { token: input/regular/hover/supportive, value: "#d3d9d5" }
+        font-size: { token: typography/paragraph/font-size, value: 14px }
+        line-height: { token: typography/paragraph/line-height, value: 20px }
+        letter-spacing: { token: typography/paragraph/letter-spacing, value: 0px }
+      value:
+        height: { value: "0", assert: false, notes: "Empty and not focused: only the label shows. The input is still there, so you can tab into it." }
+        opacity: { value: "0", assert: false }
+      supportive:
+        color: { token: input/regular/hover/supportive, value: "#d3d9d5" }
   - when: { state: Default, configuration: Empty, selected: true, error: false }
     figmaNode: "244:726"
     elements:
       outline:
-        background: { token: input/regular/default/background, value: "#060805" }
-        border-color: { token: input/regular/default/outline, value: "#555" }
+        background: { token: input/regular/focus/background, value: "#060805" }
+        border-color: { token: input/regular/focus/outline, value: "#555555" }
+      icons-lock:
+        background: { token: input/regular/focus/icon, value: "#00d669" }
+      label:
+        color: { token: input/regular/focus/label, value: "#999999" }
+        font-size: { token: typography/placeholder/font-size, value: 10px }
+        line-height: { token: typography/placeholder/line-height, value: 12px }
+        letter-spacing: { token: typography/placeholder/letter-spacing, value: 0px }
+      value:
+        color: { token: input/regular/focus/placeholder, value: "#c2c7c3" }
+      supportive:
+        color: { token: input/regular/focus/supportive, value: "#999999" }
+      focus-ring:
+        display: { value: block, assert: false }
+        border-color: { token: input/regular/focus/focus-ring, value: "#00d669" }
   - when: { state: Disabled, configuration: Empty, selected: false, error: false }
     figmaNode: "244:760"
     elements:
       outline:
-        background: { token: input/regular/default/background, value: "#060805" }
-        border-color: { token: input/regular/default/outline, value: "#555" }
+        background: { token: input/regular/disabled/background, value: "#171717" }
+        border-color: { token: input/regular/disabled/outline, value: "#3a3a3a" }
+      icons-lock:
+        background: { token: input/regular/disabled/icon, value: "#b6ffda" }
+        opacity: { token: opacity/soft, value: "0.16" }
+      label:
+        color: { token: input/regular/disabled/label, value: "#555555" }
+        font-size: { token: typography/paragraph/font-size, value: 14px }
+        line-height: { token: typography/paragraph/line-height, value: 20px }
+        letter-spacing: { token: typography/paragraph/letter-spacing, value: 0px }
+      value:
+        height: { value: "0", assert: false, notes: "Empty and not focused: only the label shows. The input is still there, so you can tab into it." }
+        opacity: { value: "0", assert: false }
+      supportive:
+        color: { token: input/regular/disabled/supportive, value: "#555555" }
   - when: { state: Default, configuration: Empty, selected: false, error: true }
     figmaNode: "252:1014"
     elements:
       outline:
-        background: { token: input/regular/default/background, value: "#060805" }
-        border-color: { token: input/regular/default/outline, value: "#555" }
+        background: { token: input/negative/default/background, value: "#060805" }
+        border-color: { token: input/negative/default/outline, value: "#f2705f" }
+      icons-lock:
+        background: { token: input/negative/default/icon, value: "#e93120" }
+      label:
+        color: { token: input/negative/default/label, value: "#e93120" }
+        font-size: { token: typography/paragraph/font-size, value: 14px }
+        line-height: { token: typography/paragraph/line-height, value: 20px }
+        letter-spacing: { token: typography/paragraph/letter-spacing, value: 0px }
+      value:
+        height: { value: "0", assert: false, notes: "Empty and not focused: only the label shows. The input is still there, so you can tab into it." }
+        opacity: { value: "0", assert: false }
+      supportive:
+        color: { token: input/negative/default/supportive, value: "#e93120" }
+      icons-alarm:
+        background: { token: input/negative/default/icon, value: "#e93120" }
   - when: { state: Default, configuration: Filled, selected: false, error: true }
     figmaNode: "252:1024"
     elements:
       outline:
-        background: { token: input/regular/default/background, value: "#060805" }
-        border-color: { token: input/regular/default/outline, value: "#555" }
+        background: { token: input/negative/default/background, value: "#060805" }
+        border-color: { token: input/negative/default/outline, value: "#f2705f" }
+      icons-lock:
+        background: { token: input/negative/default/icon, value: "#e93120" }
+      label:
+        color: { token: input/negative/default/label, value: "#e93120" }
+        font-size: { token: typography/placeholder/font-size, value: 10px }
+        line-height: { token: typography/placeholder/line-height, value: 12px }
+        letter-spacing: { token: typography/placeholder/letter-spacing, value: 0px }
+      value:
+        color: { token: input/negative/default/placeholder, value: "#999999" }
+      supportive:
+        color: { token: input/negative/default/supportive, value: "#e93120" }
+      icons-alarm:
+        background: { token: input/negative/default/icon, value: "#e93120" }
   - when: { state: Default, configuration: Empty, selected: true, error: true }
     figmaNode: "252:1052"
     elements:
@@ -154,62 +273,21 @@ variants:
         background: { token: input/negative/focus/background, value: "#060805" }
         border-color: { token: input/negative/focus/outline, value: "#f2705f" }
       icons-lock:
-        overflow: { value: clip }
-        flex-shrink: { value: "0", assert: false }
-        position: { value: relative, assert: false }
-        width: { value: 20px, token: spacing/size/xsmall }
-        height: { value: 20px, token: spacing/size/xsmall }
-      union:
-        position: { value: absolute }
-        inset: { value: 8.33% 16.67% }
-      content:
-        display: { value: flex, assert: false }
-        flex-direction: { value: column, assert: false }
-        flex-shrink: { value: "0", assert: false }
-        align-items: { value: flex-start }
-        position: { value: relative, assert: false }
-        white-space: { value: nowrap, assert: false }
-        text-align: { value: center }
-        font-family: { token: font-family/base, value: "'General Sans Variable'" }
+        background: { token: input/negative/focus/icon, value: "#e93120" }
       label:
-        flex-shrink: { value: "0", assert: false }
-        position: { value: relative, assert: false }
-        font-weight: { token: typography/label/font-weight/regular, value: "400" }
-        line-height: { token: typography/placeholder/line-height, value: 12px }
         color: { token: input/negative/focus/label, value: "#e93120" }
         font-size: { token: typography/placeholder/font-size, value: 10px }
+        line-height: { token: typography/placeholder/line-height, value: 12px }
         letter-spacing: { token: typography/placeholder/letter-spacing, value: 0px }
-      supportive-text:
-        position: { value: absolute }
-        justify-content: { value: center }
-        align-items: { value: center }
-        display: { value: flex, assert: false }
-      text:
-        flex-shrink: { value: "0", assert: false }
-        position: { value: relative, assert: false }
-        font-weight: { token: typography/body/font-weight/regular, value: "400" }
-        line-height: { token: typography/body/line-height, value: 22px }
+      value:
         color: { token: input/negative/focus/value, value: "#ededed" }
-        font-size: { token: typography/body/font-size, value: 16px }
-        letter-spacing: { token: typography/body/letter-spacing, value: 0px }
-      right:
-        align-items: { value: center }
-        display: { value: flex, assert: false }
-        flex-shrink: { value: "0", assert: false }
-        position: { value: relative, assert: false }
+      supportive:
+        color: { token: input/negative/focus/supportive, value: "#e93120" }
       icons-alarm:
-        overflow: { value: clip }
-        flex-shrink: { value: "0", assert: false }
-        position: { value: relative, assert: false }
-        width: { value: 24px, token: spacing/size/small }
-        height: { value: 24px, token: spacing/size/small }
+        background: { token: input/negative/focus/icon, value: "#e93120" }
       focus-ring:
-        border-sides: { value: all }
-        position: { value: absolute }
-        border-width: { token: spacing/outline/medium, value: 2px }
+        display: { value: block, assert: false }
         border-color: { token: input/negative/focus/focus-ring, value: "#00d669" }
-        inset: { value: "calc(-1 * var(--spacing-gap-2xsmall))", untokenised: "Composed from a token: the ring sits spacing/gap/2xsmall outside the element." }
-        border-radius: { token: spacing/radius/large, value: 16px }
   - when: { state: Default, configuration: Filled, selected: true, error: true }
     figmaNode: "252:1064"
     elements:
@@ -217,113 +295,132 @@ variants:
         background: { token: input/negative/focus/background, value: "#060805" }
         border-color: { token: input/negative/focus/outline, value: "#f2705f" }
       icons-lock:
-        overflow: { value: clip }
-        flex-shrink: { value: "0", assert: false }
-        position: { value: relative, assert: false }
-        width: { value: 20px, token: spacing/size/xsmall }
-        height: { value: 20px, token: spacing/size/xsmall }
-      union:
-        position: { value: absolute }
-        inset: { value: 8.33% 16.67% }
-      content:
-        display: { value: flex, assert: false }
-        flex-direction: { value: column, assert: false }
-        flex-shrink: { value: "0", assert: false }
-        align-items: { value: flex-start }
-        position: { value: relative, assert: false }
-        white-space: { value: nowrap, assert: false }
-        text-align: { value: center }
-        font-family: { token: font-family/base, value: "'General Sans Variable'" }
+        background: { token: input/negative/focus/icon, value: "#e93120" }
       label:
-        flex-shrink: { value: "0", assert: false }
-        position: { value: relative, assert: false }
-        font-weight: { token: typography/label/font-weight/regular, value: "400" }
-        line-height: { token: typography/placeholder/line-height, value: 12px }
         color: { token: input/negative/focus/label, value: "#e93120" }
         font-size: { token: typography/placeholder/font-size, value: 10px }
+        line-height: { token: typography/placeholder/line-height, value: 12px }
         letter-spacing: { token: typography/placeholder/letter-spacing, value: 0px }
-      supportive-text:
-        position: { value: absolute }
-        justify-content: { value: center }
-        align-items: { value: center }
-        display: { value: flex, assert: false }
-      text:
-        flex-shrink: { value: "0", assert: false }
-        position: { value: relative, assert: false }
-        font-weight: { token: typography/body/font-weight/regular, value: "400" }
-        line-height: { token: typography/body/line-height, value: 22px }
+      value:
         color: { token: input/negative/focus/value, value: "#ededed" }
-        font-size: { token: typography/body/font-size, value: 16px }
-        letter-spacing: { token: typography/body/letter-spacing, value: 0px }
-      right:
-        align-items: { value: center }
-        display: { value: flex, assert: false }
-        flex-shrink: { value: "0", assert: false }
-        position: { value: relative, assert: false }
+      supportive:
+        color: { token: input/negative/focus/supportive, value: "#e93120" }
       icons-alarm:
-        overflow: { value: clip }
-        flex-shrink: { value: "0", assert: false }
-        position: { value: relative, assert: false }
-        width: { value: 24px, token: spacing/size/small }
-        height: { value: 24px, token: spacing/size/small }
+        background: { token: input/negative/focus/icon, value: "#e93120" }
       focus-ring:
-        border-sides: { value: all }
-        position: { value: absolute }
-        border-width: { token: spacing/outline/medium, value: 2px }
+        display: { value: block, assert: false }
         border-color: { token: input/negative/focus/focus-ring, value: "#00d669" }
-        inset: { value: "calc(-1 * var(--spacing-gap-2xsmall))", untokenised: "Composed from a token: the ring sits spacing/gap/2xsmall outside the element." }
-        border-radius: { token: spacing/radius/large, value: 16px }
   - when: { state: Hover, configuration: Empty, selected: false, error: true }
     figmaNode: "252:1076"
     elements:
       outline:
-        background: { token: input/regular/default/background, value: "#060805" }
-        border-color: { token: input/regular/default/outline, value: "#555" }
+        background: { token: input/negative/hover/background, value: "#171717" }
+        border-color: { token: input/negative/hover/outline, value: "#e93120" }
+      icons-lock:
+        background: { token: input/negative/hover/icon, value: "#ae1b13" }
+      label:
+        color: { token: input/negative/hover/label, value: "#e93120" }
+        font-size: { token: typography/paragraph/font-size, value: 14px }
+        line-height: { token: typography/paragraph/line-height, value: 20px }
+        letter-spacing: { token: typography/paragraph/letter-spacing, value: 0px }
+      value:
+        height: { value: "0", assert: false, notes: "Empty and not focused: only the label shows. The input is still there, so you can tab into it." }
+        opacity: { value: "0", assert: false }
+      supportive:
+        color: { token: input/negative/hover/supportive, value: "#ae1b13" }
+      icons-alarm:
+        background: { token: input/negative/hover/icon, value: "#ae1b13" }
   - when: { state: Hover, configuration: Filled, selected: false, error: true }
     figmaNode: "252:1086"
     elements:
       outline:
-        background: { token: input/regular/default/background, value: "#060805" }
-        border-color: { token: input/regular/default/outline, value: "#555" }
+        background: { token: input/negative/hover/background, value: "#171717" }
+        border-color: { token: input/negative/hover/outline, value: "#e93120" }
+      icons-lock:
+        background: { token: input/negative/hover/icon, value: "#ae1b13" }
+      label:
+        color: { token: input/negative/hover/label, value: "#e93120" }
+        font-size: { token: typography/placeholder/font-size, value: 10px }
+        line-height: { token: typography/placeholder/line-height, value: 12px }
+        letter-spacing: { token: typography/placeholder/letter-spacing, value: 0px }
+      value:
+        color: { token: input/negative/hover/placeholder, value: "#555555" }
+      supportive:
+        color: { token: input/negative/hover/supportive, value: "#ae1b13" }
+      icons-alarm:
+        background: { token: input/negative/hover/icon, value: "#ae1b13" }
   - when: { state: Default, configuration: Filled, selected: false, error: false }
     figmaNode: "252:836"
     elements:
       outline:
         background: { token: input/regular/default/background, value: "#060805" }
-        border-color: { token: input/regular/default/outline, value: "#555" }
+        border-color: { token: input/regular/default/outline, value: "#555555" }
       icons-lock:
-        overflow: { value: clip }
-        flex-shrink: { value: "0", assert: false }
-        position: { value: relative, assert: false }
-        width: { value: 20px, token: spacing/size/xsmall }
-        height: { value: 20px, token: spacing/size/xsmall }
-      union:
-        position: { value: absolute }
-        inset: { value: 8.33% 16.67% }
-      content:
-        display: { value: flex, assert: false }
-        flex-direction: { value: column, assert: false }
-        flex-shrink: { value: "0", assert: false }
-        align-items: { value: flex-start }
-        position: { value: relative, assert: false }
+        background: { token: input/regular/default/icon, value: "#00d669" }
+      label:
+        color: { token: input/regular/default/label, value: "#999999" }
+        font-size: { token: typography/placeholder/font-size, value: 10px }
+        line-height: { token: typography/placeholder/line-height, value: 12px }
+        letter-spacing: { token: typography/placeholder/letter-spacing, value: 0px }
+      value:
+        color: { token: input/regular/default/placeholder, value: "#c2c7c3" }
+      supportive:
+        color: { token: input/regular/default/supportive, value: "#999999" }
   - when: { state: Disabled, configuration: Filled, selected: false, error: false }
     figmaNode: "252:847"
     elements:
       outline:
-        background: { token: input/regular/default/background, value: "#060805" }
-        border-color: { token: input/regular/default/outline, value: "#555" }
+        background: { token: input/regular/disabled/background, value: "#171717" }
+        border-color: { token: input/regular/disabled/outline, value: "#3a3a3a" }
+      icons-lock:
+        background: { token: input/regular/disabled/icon, value: "#b6ffda" }
+        opacity: { token: opacity/soft, value: "0.16" }
+      label:
+        color: { token: input/regular/disabled/label, value: "#555555" }
+        font-size: { token: typography/placeholder/font-size, value: 10px }
+        line-height: { token: typography/placeholder/line-height, value: 12px }
+        letter-spacing: { token: typography/placeholder/letter-spacing, value: 0px }
+      value:
+        color: { token: input/regular/disabled/placeholder, value: "#555555" }
+      supportive:
+        color: { token: input/regular/disabled/supportive, value: "#555555" }
   - when: { state: Default, configuration: Filled, selected: true, error: false }
     figmaNode: "252:856"
     elements:
       outline:
-        background: { token: input/regular/default/background, value: "#060805" }
-        border-color: { token: input/regular/default/outline, value: "#555" }
+        background: { token: input/regular/focus/background, value: "#060805" }
+        border-color: { token: input/regular/focus/outline, value: "#555555" }
+      icons-lock:
+        background: { token: input/regular/focus/icon, value: "#00d669" }
+      label:
+        color: { token: input/regular/focus/label, value: "#999999" }
+        font-size: { token: typography/placeholder/font-size, value: 10px }
+        line-height: { token: typography/placeholder/line-height, value: 12px }
+        letter-spacing: { token: typography/placeholder/letter-spacing, value: 0px }
+      value:
+        color: { token: input/regular/focus/placeholder, value: "#c2c7c3" }
+      supportive:
+        color: { token: input/regular/focus/supportive, value: "#999999" }
+      focus-ring:
+        display: { value: block, assert: false }
+        border-color: { token: input/regular/focus/focus-ring, value: "#00d669" }
   - when: { state: Hover, configuration: Filled, selected: false, error: false }
     figmaNode: "252:868"
     elements:
       outline:
-        background: { token: input/regular/default/background, value: "#060805" }
-        border-color: { token: input/regular/default/outline, value: "#555" }
+        background: { token: input/regular/hover/background, value: "#171717" }
+        border-color: { token: input/regular/hover/outline, value: "#999999" }
+      icons-lock:
+        background: { token: input/regular/hover/icon, value: "#00b450" }
+      label:
+        color: { token: input/regular/hover/label, value: "#d3d9d5" }
+        font-size: { token: typography/placeholder/font-size, value: 10px }
+        line-height: { token: typography/placeholder/line-height, value: 12px }
+        letter-spacing: { token: typography/placeholder/letter-spacing, value: 0px }
+      value:
+        color: { token: input/regular/hover/placeholder, value: "#d3d9d5" }
+      supportive:
+        color: { token: input/regular/hover/supportive, value: "#d3d9d5" }
 guidance:
   status: agreed
   use:

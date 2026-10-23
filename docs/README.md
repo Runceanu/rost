@@ -12,7 +12,7 @@ Rost started as a design system for my own needs and grew into a product of its 
 | [Token coverage](TOKENS.md) | Why each value has a token or doesn't |
 | [Roadmap](ROADMAP.md) | What I'm doing next |
 
-**22** contracts, **0** stable. **21** have guidance, and I've signed off **15** of those.
+**22** contracts, **0** stable. **21** have guidance, and I've signed off **21** of those.
 
 ## Catalogue
 
@@ -20,21 +20,21 @@ Rost started as a design system for my own needs and grew into a product of its 
 
 | | Summary | Contract | Guidance | Used in |
 |---|---|---|---|---|
-| [Badge](components/badge.md) | A small status marker: a coloured dot on its own, or an outlined label. The colour sits in the dot and the outline, never in the text. | `review` | `proposed` | runceanu.com, akount.ing |
+| [Badge](components/badge.md) | A small status marker: a coloured dot on its own, or an outlined label. The colour sits in the dot and the outline, never in the text. | `review` | `agreed` | runceanu.com, akount.ing |
 | [Button](components/button.md) | A 48px button with just a label, in four levels of emphasis. | `review` | `agreed` | · |
-| [Carousel](components/carousel.md) | A card in the home page carousel: a number, a title and a short description. | `review` | `proposed` | · |
+| [Carousel](components/carousel.md) | A card in the home page carousel: a number, a title and a short description. | `review` | `agreed` | · |
 | [Chip](components/chips.md) | A small outlined label you can click, for filters and quick choices. | `review` | `agreed` | runceanu.com |
-| [Divider](components/divider.md) | A thin line between things. | `review` | `proposed` | akount.ing |
+| [Divider](components/divider.md) | A thin line between things. | `review` | `agreed` | akount.ing |
 | [IconButton](components/icon-button.md) | A round button with only an icon, including the Project type used on case-study thumbnails. | `review` | `agreed` | · |
 | [InlineBanner](components/inline-banner.md) | A filled status pill with an icon and a label, in four statuses and two sizes. | `review` | `agreed` | akount.ing |
 | [Input](components/input.md) | A 56px text field with a floating label, an optional lock icon, a line of help text and an error state. | `review` | `agreed` | runceanu.com, akount.ing |
 | [Menu](components/menu.md) | A navigation item: a label with a line underneath, used in the main nav. | `review` | `agreed` | · |
 | [PillButton](components/pill-button.md) | A 48px button with an icon in front of the label. My main call to action. | `review` | `agreed` | akount.ing |
-| [Projects](components/projects.md) | One row in the project list: number, name, and industry, type and period on the right. | `review` | `proposed` | · |
+| [Projects](components/projects.md) | One row in the project list: number, name, and industry, type and period on the right. | `review` | `agreed` | · |
 | [Tag](components/tags.md) | A compact 20px label with small corners, for what a piece of content is about. | `review` | `agreed` | · |
 | [TestimonialPicture](components/testimonials-pics.md) | The photo of the person behind a testimonial. | `review` | · | · |
-| [Testimonials](components/testimonials.md) | A testimonial you can open and close: name and role, with the quote underneath. | `review` | `proposed` | · |
-| [Thumbs](components/thumbs.md) | A project thumbnail card, with the project name and details on a frosted panel at the bottom. | `review` | `proposed` | · |
+| [Testimonials](components/testimonials.md) | A testimonial you can open and close: name and role, with the quote underneath. | `review` | `agreed` | · |
+| [Thumbs](components/thumbs.md) | A project thumbnail card, with the project name and details on a frosted panel at the bottom. | `review` | `agreed` | · |
 | [Toggle](components/toggle.md) | A 40×40 icon button that stays on or off, alone or as one choice in a group. | `review` | `agreed` | akount.ing |
 
 ### Patterns

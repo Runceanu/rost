@@ -8,7 +8,7 @@
 |---|---|
 | Kind | component |
 | Contract | `review` · [carousel.contract.yaml](../../contracts/carousel.contract.yaml) |
-| Guidance | `proposed` |
+| Guidance | `agreed` |
 | Source | [Figma 157:302](https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=157-302) · read 2026-10-19 · frozen 2026-10-20 |
 | Implemented in | nowhere yet |
 
