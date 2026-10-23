@@ -10,18 +10,13 @@ related: [ testimonials ]
 source:
   tool: figma
   fileKey: 1Zy0wiWKXQAvsfDBX3KR0d
-  nodeId: "144:493"
-  url: https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=144-493
+  nodeId: "438:72"
+  url: https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=438-72
   extractedAt: "2026-10-19"
   extractedBy: mcp
   frozenAt: "2026-10-20"
 props:
   picture: { type: slot, notes: "The photo. In React, `src` and `alt`, or your own image as the children." }
-  people:
-    type: enum
-    values: [ Person 1, Person 2, Person 3, Person 4, Person 5, Person 6, Person 7, Person 8 ]
-    default: Person 1
-    notes: "Figma's eight sample photos, real people. Code has no such prop: the photo is the slot. Figma is getting a slot too, and then this goes."
 elements:
   root:
     notes: A 56px square. Testimonials rounds it.
@@ -40,20 +35,3 @@ elements:
       width: { value: 100%, assert: false }
       height: { value: 100%, assert: false }
       object-fit: { value: cover, assert: false }
-variants:
-  - when: { people: Person 7 }
-    figmaNode: "144:486"
-  - when: { people: Person 6 }
-    figmaNode: "144:487"
-  - when: { people: Person 5 }
-    figmaNode: "144:488"
-  - when: { people: Person 2 }
-    figmaNode: "144:489"
-  - when: { people: Person 4 }
-    figmaNode: "144:490"
-  - when: { people: Person 3 }
-    figmaNode: "144:491"
-  - when: { people: Person 1 }
-    figmaNode: "144:492"
-  - when: { people: Person 8 }
-    figmaNode: "164:1082"

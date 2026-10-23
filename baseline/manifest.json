@@ -1181,58 +1181,9 @@
   ],
   "testimonials-pics": [
     {
-      "nodeId": "144:492",
-      "name": "people=Person 1",
-      "file": "144-492.png",
-      "width": 56,
-      "height": 56
-    },
-    {
-      "nodeId": "144:489",
-      "name": "people=Person 2",
-      "file": "144-489.png",
-      "width": 56,
-      "height": 56
-    },
-    {
-      "nodeId": "144:491",
-      "name": "people=Person 3",
-      "file": "144-491.png",
-      "width": 56,
-      "height": 56
-    },
-    {
-      "nodeId": "144:490",
-      "name": "people=Person 4",
-      "file": "144-490.png",
-      "width": 56,
-      "height": 56
-    },
-    {
-      "nodeId": "144:488",
-      "name": "people=Person 5",
-      "file": "144-488.png",
-      "width": 56,
-      "height": 56
-    },
-    {
-      "nodeId": "144:487",
-      "name": "people=Person 6",
-      "file": "144-487.png",
-      "width": 56,
-      "height": 56
-    },
-    {
-      "nodeId": "144:486",
-      "name": "people=Person 7",
-      "file": "144-486.png",
-      "width": 56,
-      "height": 56
-    },
-    {
-      "nodeId": "164:1082",
-      "name": "people=Person 8",
-      "file": "164-1082.png",
+      "nodeId": "438:72",
+      "name": "testimonials-pics",
+      "file": "438-72.png",
       "width": 56,
       "height": 56
     }

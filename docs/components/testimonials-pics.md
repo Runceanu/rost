@@ -9,7 +9,7 @@
 | Kind | component |
 | Contract | `review` · [testimonials-pics.contract.yaml](../../contracts/testimonials-pics.contract.yaml) |
 | Guidance | **missing** |
-| Source | [Figma 144:493](https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=144-493) · read 2026-10-19 · frozen 2026-10-20 |
+| Source | [Figma 438:72](https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=438-72) · read 2026-10-19 · frozen 2026-10-20 |
 | Implemented in | nowhere yet |
 
 ## Not right yet
@@ -21,7 +21,6 @@
 | Prop | Type | Values | Default |
 |---|---|---|---|
 | `picture` | slot |  |  |
-| `people` | enum | `Person 1` `Person 2` `Person 3` `Person 4` `Person 5` `Person 6` `Person 7` `Person 8` | `Person 1` |
 
 ## Anatomy
 

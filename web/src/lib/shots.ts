@@ -1,15 +1,14 @@
 // Figma's own screenshots, for components that aren't in code yet. Only those
 // pages show them, so only those get them: each picture is read from disk and
 // written into its page, instead of bundling every screenshot into the site.
-// One folder holds real people's photos and never ships; icons and
-// illustrations have their own page.
+// Icons and illustrations have their own page.
 import { readFileSync, existsSync } from 'node:fs'
 import { pathToFileURL } from 'node:url'
 import { blankShot } from './kit'
 
 declare const __REPO__: string
 const repo = pathToFileURL(__REPO__)
-const PRIVATE = new Set(['testimonials-pics', 'icons', 'illustrations'])
+const PRIVATE = new Set(['icons', 'illustrations'])
 const manifest = JSON.parse(readFileSync(new URL('baseline/manifest.json', repo), 'utf8')) as Record<string, { nodeId: string; name: string; file: string; width: number; height: number }[]>
 
 export interface Shot { nodeId: string; name: string; file: string; width: number; height: number; url: string }
