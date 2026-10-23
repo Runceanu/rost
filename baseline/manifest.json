@@ -1277,5 +1277,14 @@
       "width": 278,
       "height": 40
     }
+  ],
+  "tooltip": [
+    {
+      "nodeId": "138:276",
+      "name": "tooltip",
+      "file": "138-276.png",
+      "width": 43,
+      "height": 20
+    }
   ]
 }

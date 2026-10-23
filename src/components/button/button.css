@@ -110,7 +110,7 @@
   border-style: solid;
 }
 
-.rost-button.rost-button--type-primary:active {
+.rost-button.rost-button--type-primary:is(:active, [aria-current="page"]) {
   background: var(--actions-primary-pressed-background);
   box-shadow: inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-pressed-outline);
   padding-left: var(--spacing-gap-medium-large);
@@ -119,7 +119,7 @@
   padding-bottom: var(--spacing-gap-none);
 }
 
-.rost-button.rost-button--type-primary:active .rost-button__label {
+.rost-button.rost-button--type-primary:is(:active, [aria-current="page"]) .rost-button__label {
   color: var(--actions-primary-pressed-label);
 }
 
@@ -168,18 +168,18 @@
   border-radius: var(--spacing-radius-full);
 }
 
-.rost-button.rost-button--type-tertiary:active {
+.rost-button.rost-button--type-tertiary:is(:active, [aria-current="page"]) {
   padding-left: var(--spacing-gap-medium-large);
   padding-right: var(--spacing-gap-medium-large);
   padding-top: var(--spacing-gap-none);
   padding-bottom: var(--spacing-gap-none);
 }
 
-.rost-button.rost-button--type-tertiary:active .rost-button__label {
+.rost-button.rost-button--type-tertiary:is(:active, [aria-current="page"]) .rost-button__label {
   color: var(--actions-tertiary-pressed-label);
 }
 
-.rost-button.rost-button--type-tertiary:active .rost-button__background {
+.rost-button.rost-button--type-tertiary:is(:active, [aria-current="page"]) .rost-button__background {
   position: absolute;
   inset: 0;
   background: var(--actions-tertiary-pressed-background);
@@ -244,18 +244,18 @@
   padding: var(--spacing-gap-none);
 }
 
-.rost-button.rost-button--type-borderless:active .rost-button__label {
+.rost-button.rost-button--type-borderless:is(:active, [aria-current="page"]) .rost-button__label {
   color: var(--actions-tertiary-pressed-label);
 }
 
-.rost-button.rost-button--type-borderless:active .rost-button__background {
+.rost-button.rost-button--type-borderless:is(:active, [aria-current="page"]) .rost-button__background {
   position: absolute;
   inset: 0;
   background: var(--actions-tertiary-pressed-background);
   opacity: var(--opacity-mild);
 }
 
-.rost-button.rost-button--type-borderless:active {
+.rost-button.rost-button--type-borderless:is(:active, [aria-current="page"]) {
   padding: var(--spacing-gap-none);
 }
 
@@ -336,18 +336,18 @@
   border-top-width: var(--spacing-outline-small);
 }
 
-.rost-button.rost-button--type-secondary:active {
+.rost-button.rost-button--type-secondary:is(:active, [aria-current="page"]) {
   padding-left: var(--spacing-gap-medium-large);
   padding-right: var(--spacing-gap-medium-large);
   padding-top: var(--spacing-gap-none);
   padding-bottom: var(--spacing-gap-none);
 }
 
-.rost-button.rost-button--type-secondary:active .rost-button__label {
+.rost-button.rost-button--type-secondary:is(:active, [aria-current="page"]) .rost-button__label {
   color: var(--actions-secondary-regular-pressed-label);
 }
 
-.rost-button.rost-button--type-secondary:active .rost-button__background {
+.rost-button.rost-button--type-secondary:is(:active, [aria-current="page"]) .rost-button__background {
   position: absolute;
   inset: 0;
   background: var(--actions-secondary-regular-pressed-background);

@@ -101,5 +101,10 @@
     "name": "Tabs",
     "setNodeId": "448:56",
     "variantCount": 1
+  },
+  "tooltip": {
+    "name": "Tooltip",
+    "setNodeId": "138:276",
+    "variantCount": 1
   }
 }

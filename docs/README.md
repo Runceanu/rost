@@ -12,7 +12,7 @@ Rost started as a design system for my own needs and grew into a product of its 
 | [Token coverage](TOKENS.md) | Why each value has a token or doesn't |
 | [Roadmap](ROADMAP.md) | What I'm doing next |
 
-**23** contracts, **0** stable. **22** have guidance, and I've signed off **20** of those.
+**24** contracts, **0** stable. **23** have guidance, and I've signed off **20** of those.
 
 ## Catalogue
 
@@ -37,6 +37,7 @@ Rost started as a design system for my own needs and grew into a product of its 
 | [Testimonials](components/testimonials.md) | A testimonial you can open and close: name and role, with the quote underneath. | `review` | `agreed` | · |
 | [Thumbs](components/thumbs.md) | A project thumbnail card, with the project name and details on a frosted panel at the bottom. | `review` | `agreed` | · |
 | [Toggle](components/toggle.md) | A 40×40 icon button that stays on or off, alone or as one choice in a group. | `review` | `agreed` | The accounting app |
+| [Tooltip](components/tooltip.md) | A small label that explains something when you point at it or focus it. | `review` | `proposed` | · |
 
 ### Patterns
 

@@ -6,11 +6,11 @@ Every value in every contract, sorted by why it has a token or doesn't. `npm run
 
 | | Values | Share | Meaning |
 |---|---|---|---|
-| Has a token | 1179 | 62% | Uses a token, and the check tests it. |
+| Has a token | 1191 | 62% | Uses a token, and the check tests it. |
 | Token suggested | 0 | 0% | A token I want that doesn't exist yet. The freeze turned every other suggestion into a token. |
-| How Figma builds it | 520 | 27% | How Figma builds the layer (position, inset, which sides get a stroke). Nothing to tokenise. |
+| How Figma builds it | 524 | 27% | How Figma builds the layer (position, inset, which sides get a stroke). Nothing to tokenise. |
 | Figma frame size | 125 | 7% | A root size that is just the Figma frame. Written down, not checked. |
-| No token, on purpose | 47 | 2% | Plain on purpose, and the contract says why. |
+| No token, on purpose | 48 | 3% | Plain on purpose, and the contract says why. |
 | Open gap | 27 | 1% | No token and no reason. Each one needs a decision from me. |
 
 ## By contract
@@ -40,6 +40,7 @@ Every value in every contract, sorted by why it has a token or doesn't. `npm run
 | [Thumb effect](components/effect-thumb.md) | 1 | · | · | · | · | · |
 | [Thumbs](components/thumbs.md) | 77 | · | 51 | 9 | 6 | 5 |
 | [Toggle](components/toggle.md) | 77 | · | 25 | 9 | 6 | 3 |
+| [Tooltip](components/tooltip.md) | 12 | · | 4 | · | 1 | · |
 
 ## Tokens that should be there
 
@@ -111,6 +112,7 @@ None. The freeze on 2026-10-20 turned all 122 suggestions into tokens.
 - [Toggle](components/toggle.md) `root.box-shadow` = `inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-pressed-outline)`: Figma's 1px left and top stroke, drawn inside the shape as Figma draws it. The width and colour are tokens.
 - [Toggle](components/toggle.md) `root.box-shadow` = `inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-disabled-outline)`: Figma's 1px left and top stroke, drawn inside the shape as Figma draws it. The width and colour are tokens.
 - [Toggle](components/toggle.md) `root.box-shadow` = `inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-focus-outline)`: Figma's 1px left and top stroke, drawn inside the shape as Figma draws it. The width and colour are tokens.
+- [Tooltip](components/tooltip.md) `root.height` = `20px`: Figma's own 20px; no size token is 20.
 
 ## Open gaps
 

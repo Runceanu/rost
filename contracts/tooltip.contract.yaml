@@ -1,0 +1,54 @@
+# yaml-language-server: $schema=../schema/component-contract.schema.json
+schemaVersion: 2
+id: tooltip
+name: Tooltip
+kind: component
+status: review
+summary: A small label that explains something when you point at it or focus it.
+category: feedback
+related: [ icon-button, button ]
+source:
+  tool: figma
+  fileKey: 1Zy0wiWKXQAvsfDBX3KR0d
+  nodeId: "138:276"
+  url: https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=138-276
+  extractedAt: "2026-10-23"
+  extractedBy: mcp
+props:
+  label: { type: slot, notes: "A few words. In React, the children." }
+elements:
+  root:
+    notes: "The bubble Figma draws. Where it sits and when it shows is the page's: 8px under the thing it explains, on hover and on focus."
+    styles:
+      display: { value: inline-flex, assert: false }
+      align-items: { value: center }
+      justify-content: { value: center }
+      white-space: { value: nowrap, assert: false }
+      height: { value: 20px, untokenised: "Figma's own 20px; no size token is 20." }
+      padding-left: { token: spacing/gap/small, value: 8px }
+      padding-right: { token: spacing/gap/small, value: 8px }
+      padding-top: { token: spacing/gap/none, value: 0px }
+      padding-bottom: { token: spacing/gap/none, value: 0px }
+      border-radius: { token: spacing/radius/xsmall, value: 4px }
+      background: { token: actions/secondary/regular/default/background, value: "#3a3a3a" }
+  label:
+    styles:
+      font-family: { token: font-family/base, value: "'General Sans Variable'" }
+      font-weight: { token: typography/label/font-weight/medium, value: "500" }
+      font-size: { token: typography/label/font-size, value: 12px }
+      line-height: { token: typography/label/line-height, value: 14px }
+      letter-spacing: { token: typography/label/letter-spacing, value: 0px }
+      color: { token: actions/secondary/regular/default/label, value: "#d3d9d5" }
+guidance:
+  status: proposed
+  use:
+    - "Used to explain something that can't explain itself: an icon-only button, or a nav item for the page you're already on."
+  avoid:
+    - Anything people need in order to use the page. A tooltip is easy to miss, and on a phone there's no hover.
+    - More than a few words. That's help text, or an **InlineBanner**.
+  behaviour: |-
+    Shows on hover and on keyboard focus of the thing it explains, 8px under it, and goes when the pointer or focus leaves.
+  accessibility:
+    element: "`role=\"tooltip\"`, linked from the thing it explains with `aria-describedby`."
+    hover: it never holds anything you'd need to click.
+  content: A few words, sentence case, no full stop.
