@@ -5,7 +5,7 @@ name: Carousel
 kind: component
 status: review
 summary: |-
-  A card in the home page carousel: a number, a title and a short description.
+  A card for a carousel: a number, a title and a short description.
 category: navigation
 related: [ thumbs, projects ]
 source:
@@ -169,7 +169,7 @@ variants:
 guidance:
   status: agreed
   use:
-    - The cards in the portfolio site's home page carousel. Each one leads to a piece of work.
+    - Used for a row of featured items you scroll through, each card leading to more.
   avoid:
     - A card with a picture. That's **Thumbs**.
     - Long titles. The title wraps, but two lines of 24px eat the card.

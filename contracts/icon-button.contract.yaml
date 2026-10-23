@@ -4,7 +4,7 @@ id: icon-button
 name: IconButton
 kind: component
 status: review
-summary: A round button with only an icon, including the Project type used on case-study thumbnails.
+summary: A round button with only an icon, including a Project type for sitting on top of images.
 category: actions
 related: [ button, toggle ]
 source:
@@ -430,7 +430,7 @@ guidance:
     - |-
       Actions everyone knows where a label would crowd things: close, back, next, previous.
     - |-
-      `Project` on project thumbnails and case-study cards, sitting on top of imagery.
+      `Project` on top of imagery: thumbnails and cards.
   avoid:
     - Any icon that isn't instantly obvious. Use **Button** with a label, an icon isn't one.
     - On/off or one-of-many choices. That's **Toggle**. IconButton does something, it doesn't remember anything.

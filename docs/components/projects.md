@@ -53,7 +53,7 @@
 
 ## When to use
 
-- The list of projects on the portfolio site, one row each. The row links to the case study.
+- Used as a list of projects or items, one row each, where the row links to the details.
 
 ## When not to use
 

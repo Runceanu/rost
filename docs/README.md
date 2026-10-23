@@ -22,10 +22,10 @@ Rost started as a design system for my own needs and grew into a product of its 
 |---|---|---|---|---|
 | [Badge](components/badge.md) | A small status marker: a coloured dot on its own, or an outlined label. The colour sits in the dot and the outline, never in the text. | `review` | `agreed` | The portfolio site, the accounting app |
 | [Button](components/button.md) | A 48px button with a label and, if it helps, an icon in front. In four levels of emphasis. | `review` | `agreed` | The accounting app |
-| [Carousel](components/carousel.md) | A card in the home page carousel: a number, a title and a short description. | `review` | `agreed` | · |
+| [Carousel](components/carousel.md) | A card for a carousel: a number, a title and a short description. | `review` | `agreed` | · |
 | [Chip](components/chips.md) | A small outlined label you can click, for filters and quick choices. | `review` | `agreed` | The portfolio site |
 | [Divider](components/divider.md) | A thin line between things. | `review` | `agreed` | The accounting app |
-| [IconButton](components/icon-button.md) | A round button with only an icon, including the Project type used on case-study thumbnails. | `review` | `agreed` | · |
+| [IconButton](components/icon-button.md) | A round button with only an icon, including a Project type for sitting on top of images. | `review` | `agreed` | · |
 | [InlineBanner](components/inline-banner.md) | A filled status pill with an icon and a label, in four statuses and two sizes. | `review` | `agreed` | The accounting app |
 | [Input](components/input.md) | A 56px text field with a floating label, an optional lock icon, a line of help text and an error state. | `review` | `agreed` | The portfolio site, the accounting app |
 | [Menu](components/menu.md) | A navigation item: a label with a line underneath, used in the main nav. | `review` | `agreed` | · |
@@ -42,7 +42,7 @@ Rost started as a design system for my own needs and grew into a product of its 
 
 | | Summary | Contract | Guidance | Used in |
 |---|---|---|---|---|
-| [Hero Media](components/hero-media.md) | The full-width hero on every case study: artwork pinned behind a 16px frame and dimmed to the same level everywhere. | `review` | `agreed` | · |
+| [Hero Media](components/hero-media.md) | A full-width hero: artwork pinned behind a 16px frame and dimmed, with the content on top. | `review` | `agreed` | · |
 
 ### Effects
 
@@ -50,8 +50,8 @@ Rost started as a design system for my own needs and grew into a product of its 
 |---|---|---|---|---|
 | [Floating effect](components/effect-floating.md) | The only drop shadow in the kit, for things that float above the page. | `review` | `agreed` | · |
 | [Lock frame effect](components/effect-lock-frame.md) | An 8px blur over a locked project's thumbnail, the blurred view behind the lock. | `review` | `agreed` | · |
-| [Menu effect](components/effect-menu.md) | Frosted glass behind the main nav and the case-study info cards, a 12px backdrop blur. | `draft` | `agreed` | · |
-| [Paper effect](components/effect-paper.md) | The sheet of dots behind the portfolio site's hero. It reacts to the cursor, the buttons and clicks, and never moves by itself. | `review` | `agreed` | The portfolio site |
+| [Menu effect](components/effect-menu.md) | Frosted glass, a 12px backdrop blur, for a nav or cards that sit over content. | `draft` | `agreed` | · |
+| [Paper effect](components/effect-paper.md) | A sheet of dots behind a hero. It reacts to the cursor, buttons and clicks, can sketch components on itself, and never moves on its own. | `review` | `agreed` | The portfolio site |
 | [Thumb effect](components/effect-thumb.md) | The frosted panel on project thumbnails, a backdrop blur. | `review` | `agreed` | · |
 
 ## Health

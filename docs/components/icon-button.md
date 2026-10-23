@@ -2,7 +2,7 @@
 
 # IconButton
 
-> A round button with only an icon, including the Project type used on case-study thumbnails.
+> A round button with only an icon, including a Project type for sitting on top of images.
 
 | | |
 |---|---|
@@ -33,7 +33,7 @@
 ## When to use
 
 - Actions everyone knows where a label would crowd things: close, back, next, previous.
-- `Project` on project thumbnails and case-study cards, sitting on top of imagery.
+- `Project` on top of imagery: thumbnails and cards.
 
 ## When not to use
 

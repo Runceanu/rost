@@ -30,7 +30,7 @@
 
 ## When to use
 
-- Saying what something is about: a case study's discipline, a project's platform.
+- Used to say what something is about: a discipline, a platform, a topic.
 
 ## When not to use
 

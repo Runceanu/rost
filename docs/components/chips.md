@@ -31,7 +31,7 @@
 
 ## When to use
 
-- Filters and quick picks in a row: categories on my portfolio, date ranges.
+- Used for filters and quick choices in a row: categories, date ranges.
 
 ## When not to use
 

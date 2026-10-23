@@ -101,7 +101,7 @@ guidance:
   status: agreed
   use:
     - |-
-      Saying what something is about: a case study's discipline, a project's platform.
+      Used to say what something is about: a discipline, a platform, a topic.
   avoid:
     - "A status: **Badge**. A filter: **Chip**."
   behaviour: |-

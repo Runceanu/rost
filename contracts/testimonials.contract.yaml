@@ -317,10 +317,10 @@ variants:
 guidance:
   status: agreed
   use:
-    - What people said about working with me, in a list. Each one opens to show the quote.
+    - "Used as a testimonial box or a list of quotes: name and role first, and each one opens to show the quote."
   avoid:
     - A quote that should always be visible. Put it on the page as text.
-    - More than a sentence or three. It's a testimonial, not a case study.
+    - More than a sentence or three. It's a quote, not an article.
   behaviour: |-
     Closed, it's a row: the picture, the name and the role, a chevron, and a line underneath. Press it and it opens: the header slides 16px right and the quote shows below in `typography/sub-title`. On hover and press the name goes green and the line turns green (2px on hover). Disabled fades it to `opacity/gentle`.
   accessibility:

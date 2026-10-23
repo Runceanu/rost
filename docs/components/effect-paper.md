@@ -2,7 +2,7 @@
 
 # Paper effect
 
-> The sheet of dots behind the portfolio site's hero. It reacts to the cursor, the buttons and clicks, and never moves by itself.
+> A sheet of dots behind a hero. It reacts to the cursor, buttons and clicks, can sketch components on itself, and never moves on its own.
 
 | | |
 |---|---|

@@ -36,7 +36,7 @@
 ## When to use
 
 - Switching a view or a filter on and off, when the change happens straight away.
-- Picking one option from a short set, as a group. The year switcher in the accounting app works like this.
+- Used to pick one option from a short set, as a group: a year switcher, a view switcher.
 
 ## When not to use
 
