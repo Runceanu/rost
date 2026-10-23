@@ -2,7 +2,7 @@
 
 # Carousel
 
-> A card in the home page carousel: a number, a title and a short description.
+> A card for a carousel: a number, a title and a short description.
 
 | | |
 |---|---|
@@ -40,7 +40,7 @@
 
 ## When to use
 
-- The cards in runceanu.com's home page carousel. Each one leads to a piece of work.
+- Used for a row of featured items you scroll through, each card leading to more.
 
 ## When not to use
 

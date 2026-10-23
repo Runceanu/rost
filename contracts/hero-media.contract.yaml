@@ -5,7 +5,7 @@ name: Hero Media
 kind: pattern
 status: review
 summary: |-
-  The full-width hero on every case study: artwork pinned behind a 16px frame and dimmed to the same level everywhere.
+  A full-width hero: artwork pinned behind a 16px frame and dimmed, with the content on top.
 category: surfaces
 related: [ effect-paper ]
 source:
@@ -67,9 +67,9 @@ elements:
 guidance:
   status: agreed
   use:
-    - The top of every case study on runceanu.com. One per page.
+    - Used at the top of a page that opens with artwork, like a project or an article. One per page.
   avoid:
-    - The home page. That one has the **Paper effect** instead of artwork.
+    - A page that opens with words, not an image. The **Paper effect** suits that one better.
   behaviour: |-
     The artwork stays put and the page scrolls over it (`background-attachment: fixed`). Phones, tablets and `prefers-reduced-motion` get a normal static background instead. The dim only works as opacity *and* the colour underneath together. Never change one without the other.
   accessibility:

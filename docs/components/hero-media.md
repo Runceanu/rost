@@ -2,7 +2,7 @@
 
 # Hero Media
 
-> The full-width hero on every case study: artwork pinned behind a 16px frame and dimmed to the same level everywhere.
+> A full-width hero: artwork pinned behind a 16px frame and dimmed, with the content on top.
 
 | | |
 |---|---|
@@ -28,11 +28,11 @@
 
 ## When to use
 
-- The top of every case study on runceanu.com. One per page.
+- Used at the top of a page that opens with artwork, like a project or an article. One per page.
 
 ## When not to use
 
-- The home page. That one has the **Paper effect** instead of artwork.
+- A page that opens with words, not an image. The **Paper effect** suits that one better.
 
 ## Behaviour
 

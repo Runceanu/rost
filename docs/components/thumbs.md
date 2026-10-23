@@ -53,7 +53,7 @@
 
 ## When to use
 
-- One project in a grid or a carousel of work. The whole card links to the case study.
+- Used as a card for one project or item in a grid or a carousel. The whole card links to the details.
 - A list of things that each want a picture and a short line of facts under a name.
 
 ## When not to use

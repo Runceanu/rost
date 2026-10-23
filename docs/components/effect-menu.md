@@ -2,7 +2,7 @@
 
 # Menu effect
 
-> Frosted glass behind the main nav and the case-study info cards, a 12px backdrop blur.
+> Frosted glass, a 12px backdrop blur, for a nav or cards that sit over content.
 
 | | |
 |---|---|

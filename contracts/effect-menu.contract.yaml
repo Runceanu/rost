@@ -4,7 +4,7 @@ id: effect-menu
 name: Menu
 kind: effect
 status: draft
-summary: Frosted glass behind the main nav and the case-study info cards, a 12px backdrop blur.
+summary: Frosted glass, a 12px backdrop blur, for a nav or cards that sit over content.
 category: effects
 related: [ menu, effect-thumb ]
 source:
