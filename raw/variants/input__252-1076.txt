@@ -1,7 +1,7 @@
 /* input | state=Hover, configuration=Empty, selected=False, error=True | 252:1076 | 208x56 */
-const imgUnion = "http://localhost:3845/assets/9ce209ca6d2ec275e25d7bf06a45ba4aad91351c.svg";
-const imgUnion1 = "http://localhost:3845/assets/c22237fbf5c391e39eeb6479c8d814a8abbee35e.svg";
-const imgUnion2 = "http://localhost:3845/assets/a7068f627c8b4bfa296b23fb6af3fd7983c08497.svg";
+const imgIconsLock = "http://localhost:3845/assets/f92ce2e0be73a7a6f7c3a24a0c6738d949984020.svg";
+const imgIconsLock1 = "http://localhost:3845/assets/5403f17363d7785d203b471384276a1ccf63d147.svg";
+const imgIconsAlarm = "http://localhost:3845/assets/727173316133fe13b4ee2e0ec55e09b9a88d8f6c.svg";
 type InputProps = {
   className?: string;
   configuration?: "Empty";
@@ -21,21 +21,19 @@ function Input({ className, configuration = "Empty", error = false, label = "lab
   const isHoverAndFalseAndError = state === "Hover" && !selected && error;
   return (
     <div className={className || "content-stretch flex gap-[var(--spacing\\/gap\\/small,8px)] h-[var(--spacing\\/size\\/large,56px)] items-center px-[var(--spacing\\/gap\\/small-medium,12px)] py-[var(--spacing\\/gap\\/none,0px)] relative rounded-[var(--spacing\\/radius\\/medium,12px)] w-[208px]"} id={isHoverAndFalseAndError ? "node-252_1076" : "node-240_274"}>
-      <div className={`${String.raw`absolute border-[length:var(--spacing\/outline\/small,1px)] border-solid inset-0 opacity-[var(--opacity\/solid,1)] rounded-[var(--spacing\/radius\/medium,12px)] `}${isHoverAndFalseAndError ? String.raw`bg-[var(--input\/negative\/hover\/background,#171717)] border-[var(--input\/negative\/hover\/outline,#e93120)]` : String.raw`bg-[var(--input\/regular\/default\/background,#060805)] border-[var(--input\/regular\/default\/outline,#555)]`}`} id={isHoverAndFalseAndError ? "node-252_1077" : "node-240_276"} data-name="outline" />
+      <div className={`${String.raw`absolute border-[length:var(--spacing\/outline\/small,1px)] border-solid inset-0 opacity-[calc(var(--opacity\/solid,100)/100)] rounded-[var(--spacing\/radius\/medium,12px)] `}${isHoverAndFalseAndError ? String.raw`bg-[var(--input\/negative\/hover\/background,#171717)] border-[var(--input\/negative\/hover\/outline,#e93120)]` : String.raw`bg-[var(--input\/regular\/default\/background,#060805)] border-[var(--input\/regular\/default\/outline,#555)]`}`} id={isHoverAndFalseAndError ? "node-252_1077" : "node-240_276"} data-name="outline" />
       <div className="content-stretch flex flex-[1_0_0] gap-[8px] items-center min-w-px relative" id={isHoverAndFalseAndError ? "node-252_1078" : "node-240_575"} data-name="Left">
         {isDefaultAndFalseAndNotError &&
           showTrailing &&
           (trailing || (
-            <div className="overflow-clip relative shrink-0 size-[20px]" data-node-id="240:572" data-name="icons/lock">
-              <div className="absolute inset-[8.33%_16.67%]" data-node-id="I240:572;208:68" data-name="Union">
-                <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgUnion} />
-              </div>
+            <div className="relative shrink-0 size-[20px]" data-node-id="240:572" data-name="icons/lock">
+              <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgIconsLock} />
             </div>
           ))}
         {isDefaultAndFalseAndNotError && (
           <div className="content-stretch flex flex-col items-start relative shrink-0" data-node-id="240:571" data-name="content">
             {showLabel && (
-              <p className="[word-break:break-word] font-[family-name:var(--font-family\/base,'General_Sans_Variable:Regular')] font-[var(--typography\/body\/font-weight\/regular,400)] leading-[var(--typography\/body\/line-height,22px)] relative shrink-0 text-[color:var(--input\/regular\/default\/label,#999)] text-[length:var(--typography\/body\/font-size,16px)] text-center tracking-[var(--typography\/body\/letter-spacing,0px)] whitespace-nowrap" data-node-id="240:308">
+              <p className="[word-break:break-word] font-[family-name:var(--font-family\/base,'General_Sans_Variable:Regular')] font-[var(--typography\/paragraph\/font-weight\/regular,400)] leading-[var(--typography\/paragraph\/line-height,20px)] relative shrink-0 text-[color:var(--input\/regular\/default\/label,#999)] text-[length:var(--typography\/paragraph\/font-size,14px)] text-center tracking-[var(--typography\/paragraph\/letter-spacing,0px)] whitespace-nowrap" data-node-id="240:308">
                 {label}
               </p>
             )}
@@ -44,16 +42,14 @@ function Input({ className, configuration = "Empty", error = false, label = "lab
         {isHoverAndFalseAndError &&
           showTrailing &&
           (trailing || (
-            <div className="overflow-clip relative shrink-0 size-[20px]" data-node-id="252:1079" data-name="icons/lock">
-              <div className="absolute inset-[8.33%_16.67%]" data-node-id="I252:1079;208:68" data-name="Union">
-                <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgUnion1} />
-              </div>
+            <div className="relative shrink-0 size-[20px]" data-node-id="252:1079" data-name="icons/lock">
+              <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgIconsLock1} />
             </div>
           ))}
         {isHoverAndFalseAndError && (
           <div className="content-stretch flex flex-col items-start relative shrink-0" data-node-id="252:1080" data-name="content">
             {showLabel && (
-              <p className="[word-break:break-word] font-[family-name:var(--font-family\/base,'General_Sans_Variable:Regular')] font-[var(--typography\/body\/font-weight\/regular,400)] leading-[var(--typography\/body\/line-height,22px)] relative shrink-0 text-[color:var(--input\/negative\/hover\/label,#e93120)] text-[length:var(--typography\/body\/font-size,16px)] text-center tracking-[var(--typography\/body\/letter-spacing,0px)] whitespace-nowrap" data-node-id="252:1081">
+              <p className="[word-break:break-word] font-[family-name:var(--font-family\/base,'General_Sans_Variable:Regular')] font-[var(--typography\/paragraph\/font-weight\/regular,400)] leading-[var(--typography\/paragraph\/line-height,20px)] relative shrink-0 text-[color:var(--input\/negative\/hover\/label,#e93120)] text-[length:var(--typography\/paragraph\/font-size,14px)] text-center tracking-[var(--typography\/paragraph\/letter-spacing,0px)] whitespace-nowrap" data-node-id="252:1081">
                 {label}
               </p>
             )}
@@ -69,10 +65,8 @@ function Input({ className, configuration = "Empty", error = false, label = "lab
       )}
       {isHoverAndFalseAndError && (
         <div className="content-stretch flex items-center relative shrink-0" data-node-id="252:1082" data-name="Right">
-          <div className="overflow-clip relative shrink-0 size-[24px]" data-node-id="257:1139" data-name="icons/alarm">
-            <div className="absolute inset-[3.9%_3.91%_4.43%_4.43%]" data-node-id="I257:1139;205:699" data-name="Union">
-              <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgUnion2} />
-            </div>
+          <div className="relative shrink-0 size-[24px]" data-node-id="257:1139" data-name="icons/alarm">
+            <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgIconsAlarm} />
           </div>
         </div>
       )}
@@ -94,6 +88,5 @@ SUPER CRITICAL: The generated React+Tailwind code MUST be converted to match the
 DO NOT install any Tailwind as a dependency unless the user instructs you to do so.
 
 Node ids have been added to the code as data attributes, e.g. `data-node-id="1:2"`.
-These styles are contained in the design: Base / Black: #000000, body/regular: Font(family: "font-family/base", style: Regular, size: typography/body/font-size, weight: typography/body/font-weight/regular, lineHeight: typography/body/line-height, letterSpacing: typography/body/letter-spacing), placeholder/medium: Font(family: "font-family/base", style: Medium, size: typography/placeholder/font-size, weight: typography/label/font-weight/medium, lineHeight: typography/placeholder/line-height, letterSpacing: typography/placeholder/letter-spacing).
+These styles are contained in the design: Base / Black: #000000, paragraph/regular: Font(family: "font-family/base", style: Regular, size: typography/paragraph/font-size, weight: typography/paragraph/font-weight/regular, lineHeight: typography/paragraph/line-height, letterSpacing: typography/paragraph/letter-spacing), placeholder/medium: Font(family: "font-family/base", style: Medium, size: typography/placeholder/font-size, weight: typography/label/font-weight/medium, lineHeight: typography/placeholder/line-height, letterSpacing: typography/placeholder/letter-spacing).
 Image assets are stored on a localhost server. Clients can use these images directly in code as a way to view the image assets the same way they would other remote servers. Images and SVGs will be stored as constants, e.g. const image = 'http://localhost:3845/assets/10c13ac1a228a365cb98a0064b1d5afbc84887b2.png' These constants will be used in the code as the source for the image, e.g. <img src={image} /> This is true for both images and SVGs, so you can use the same approach for both types of assets.
-IMPORTANT: After you call this tool, you MUST call get_screenshot to get a screenshot of the node for context.

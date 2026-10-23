@@ -6,12 +6,12 @@ Every value in every contract, sorted by why it has a token or doesn't. `npm run
 
 | | Values | Share | Meaning |
 |---|---|---|---|
-| Has a token | 1315 | 61% | Uses a token, and the check tests it. |
+| Has a token | 1390 | 64% | Uses a token, and the check tests it. |
 | Token suggested | 0 | 0% | A token I want that doesn't exist yet. The freeze turned every other suggestion into a token. |
-| How Figma builds it | 679 | 32% | How Figma builds the layer (position, inset, which sides get a stroke). Nothing to tokenise. |
-| Figma frame size | 90 | 4% | A root size that is just the Figma frame. Written down, not checked. |
-| No token, on purpose | 43 | 2% | Plain on purpose, and the contract says why. |
-| Open gap | 23 | 1% | No token and no reason. Each one needs a decision from me. |
+| How Figma builds it | 612 | 28% | How Figma builds the layer (position, inset, which sides get a stroke). Nothing to tokenise. |
+| Figma frame size | 109 | 5% | A root size that is just the Figma frame. Written down, not checked. |
+| No token, on purpose | 47 | 2% | Plain on purpose, and the contract says why. |
+| Open gap | 26 | 1% | No token and no reason. Each one needs a decision from me. |
 
 ## By contract
 
@@ -26,7 +26,7 @@ Every value in every contract, sorted by why it has a token or doesn't. `npm run
 | [Hero Media](components/hero-media.md) | 6 | · | 1 | · | 1 | · |
 | [IconButton](components/icon-button.md) | 192 | · | 53 | 10 | 6 | 2 |
 | [InlineBanner](components/inline-banner.md) | 85 | · | 40 | · | · | · |
-| [Input](components/input.md) | 91 | · | 102 | 1 | · | · |
+| [Input](components/input.md) | 166 | · | 35 | 20 | 4 | 3 |
 | [Lock frame effect](components/effect-lock-frame.md) | 1 | · | · | · | · | · |
 | [Menu effect](components/effect-menu.md) | 1 | · | · | · | · | · |
 | [Menu](components/menu.md) | 32 | · | 16 | 6 | · | 1 |
@@ -64,8 +64,11 @@ None. The freeze on 2026-10-20 turned all 122 suggestions into tokens.
 - [IconButton](components/icon-button.md) `focus-ring.inset` = `calc(-1 * var(--spacing-gap-2xsmall))`: Composed from a token: the ring sits spacing/gap/2xsmall outside the element.
 - [IconButton](components/icon-button.md) `focus-ring.inset` = `calc(-1 * var(--spacing-gap-2xsmall))`: Composed from a token: the ring sits spacing/gap/2xsmall outside the element.
 - [IconButton](components/icon-button.md) `focus-ring.inset` = `calc(-1 * var(--spacing-gap-2xsmall))`: Composed from a token: the ring sits spacing/gap/2xsmall outside the element.
-- [Input](components/input.md) `focus-ring.inset` = `calc(-1 * var(--spacing-gap-2xsmall))`: Composed from a token: the ring sits spacing/gap/2xsmall outside the element.
-- [Input](components/input.md) `focus-ring.inset` = `calc(-1 * var(--spacing-gap-2xsmall))`: Composed from a token: the ring sits spacing/gap/2xsmall outside the element.
+- [Input](components/input.md) `icons-lock.mask` = `url(./icon-lock.svg) center / contain no-repeat`: The icon file itself.
+- [Input](components/input.md) `clear-glyph.mask` = `url(./icon-clear.svg) center / contain no-repeat`: The icon file itself.
+- [Input](components/input.md) `icons-alarm.mask` = `url(./icon-alarm.svg) center / contain no-repeat`: The icon file itself.
+- [Input](components/input.md) `supportive.top` = `calc(var(--spacing-size-large) + var(--spacing-gap-2xsmall))`: Composed from tokens: the field's height plus spacing/gap/2xsmall.
+- [Input](components/input.md) `focus-ring.inset` = `calc(-1 * var(--spacing-gap-2xsmall))`: Composed from a token: the ring sits spacing/gap/2xsmall outside the field.
 - [Menu](components/menu.md) `focus-ring.inset` = `var(--spacing-gap-medium-large) calc(-1 * var(--spacing-gap-2xsmall))`: Composed from tokens: around the text only, spacing/gap/medium-large in from the top and bottom, spacing/gap/2xsmall out to each side.
 - [Paper effect](components/effect-paper.md) `dot.radius` = `1px`: Tuned to the 16px grid. Nothing else would use it.
 - [Paper effect](components/effect-paper.md) `lens.radius` = `210px`: Tuned by eye for how the lens moves. Only the paper uses it.
@@ -117,6 +120,9 @@ None. The freeze on 2026-10-20 turned all 122 suggestions into tokens.
 - [Chip](components/chips.md) `focus-ring.border-style` = `solid`
 - [IconButton](components/icon-button.md) `glyph.background` = `currentColor`
 - [IconButton](components/icon-button.md) `focus-ring.border-style` = `solid`
+- [Input](components/input.md) `outline.border-style` = `solid`
+- [Input](components/input.md) `clear-glyph.background` = `currentColor`
+- [Input](components/input.md) `focus-ring.border-style` = `solid`
 - [Menu](components/menu.md) `focus-ring.border-style` = `solid`
 - [PillButton](components/pill-button.md) `focus-ring.border-style` = `solid`
 - [Projects](components/projects.md) `outline.left` = `0`

@@ -16,9 +16,14 @@
 
 | Prop | Type | Values | Default |
 |---|---|---|---|
+| `label` | slot |  |  |
+| `value` | slot |  |  |
+| `placeholder` | slot |  |  |
+| `supportive` | slot |  |  |
 | `configuration` | enum | `Empty` `Filled` | `Empty` |
 | `selected` | boolean |  | `false` |
 | `error` | boolean |  | `false` |
+| `icon` | slot |  |  |
 
 ## States
 
@@ -26,17 +31,17 @@
 
 ## Anatomy
 
-- `root`
-- `outline`
+- `root`: Values come from each variant's own branch of Figma's read of 2026-10-23. The August read was out of date (it had a 16px label; Figma's is 14px now).
+- `outline`: The field's fill and its 1px edge, on their own layer.
 - `left`
-- `icons-lock`
-- `union`
+- `icons-lock`: Figma's lock, drawn as a mask in the field's `icon` colour.
 - `content`
 - `label`
-- `supportive-text`
-- `text`
+- `value`: The real `<input>`. Its own look goes; it takes the field's type and colour.
 - `right`
-- `icons-alarm`
+- `clear-glyph`: Figma's clear icon, inside Rost's IconButton (the Project type, 32px, as Figma nests it). Drawn in the button's own icon colour.
+- `icons-alarm`: Figma's alarm, 24px, on the right when there's an error.
+- `supportive`
 - `focus-ring`
 
 ## When to use
@@ -79,15 +84,51 @@ Every token this component uses, across all its variants.
 | Token | Resolves to |
 |---|---|
 | `font-family/base` | `'General Sans Variable'` |
+| `input/negative/default/background` | `#060805` |
+| `input/negative/default/icon` | `#e93120` |
+| `input/negative/default/label` | `#e93120` |
+| `input/negative/default/outline` | `#f2705f` |
+| `input/negative/default/placeholder` | `#999999` |
+| `input/negative/default/supportive` | `#e93120` |
 | `input/negative/focus/background` | `#060805` |
 | `input/negative/focus/focus-ring` | `#00d669` |
+| `input/negative/focus/icon` | `#e93120` |
 | `input/negative/focus/label` | `#e93120` |
 | `input/negative/focus/outline` | `#f2705f` |
+| `input/negative/focus/supportive` | `#e93120` |
 | `input/negative/focus/value` | `#ededed` |
+| `input/negative/hover/background` | `#171717` |
+| `input/negative/hover/icon` | `#ae1b13` |
+| `input/negative/hover/label` | `#e93120` |
+| `input/negative/hover/outline` | `#e93120` |
+| `input/negative/hover/placeholder` | `#555555` |
+| `input/negative/hover/supportive` | `#ae1b13` |
 | `input/regular/default/background` | `#060805` |
-| `input/regular/default/label` | `#999` |
-| `input/regular/default/outline` | `#555` |
-| `input/regular/default/supportive` | `#999` |
+| `input/regular/default/icon` | `#00d669` |
+| `input/regular/default/label` | `#999999` |
+| `input/regular/default/outline` | `#555555` |
+| `input/regular/default/placeholder` | `#c2c7c3` |
+| `input/regular/default/supportive` | `#999999` |
+| `input/regular/disabled/background` | `#171717` |
+| `input/regular/disabled/icon` | `#b6ffda` |
+| `input/regular/disabled/label` | `#555555` |
+| `input/regular/disabled/outline` | `#3a3a3a` |
+| `input/regular/disabled/placeholder` | `#555555` |
+| `input/regular/disabled/supportive` | `#555555` |
+| `input/regular/focus/background` | `#060805` |
+| `input/regular/focus/focus-ring` | `#00d669` |
+| `input/regular/focus/icon` | `#00d669` |
+| `input/regular/focus/label` | `#999999` |
+| `input/regular/focus/outline` | `#555555` |
+| `input/regular/focus/placeholder` | `#c2c7c3` |
+| `input/regular/focus/supportive` | `#999999` |
+| `input/regular/hover/background` | `#171717` |
+| `input/regular/hover/icon` | `#00b450` |
+| `input/regular/hover/label` | `#d3d9d5` |
+| `input/regular/hover/outline` | `#999999` |
+| `input/regular/hover/placeholder` | `#d3d9d5` |
+| `input/regular/hover/supportive` | `#d3d9d5` |
+| `opacity/soft` | `0.16` |
 | `opacity/solid` | `1` |
 | `spacing/gap/none` | `0px` |
 | `spacing/gap/small` | `8px` |
@@ -96,15 +137,16 @@ Every token this component uses, across all its variants.
 | `spacing/outline/small` | `1px` |
 | `spacing/radius/large` | `16px` |
 | `spacing/radius/medium` | `12px` |
+| `spacing/size/2xsmall` | `16px` |
 | `spacing/size/large` | `56px` |
 | `spacing/size/small` | `24px` |
 | `spacing/size/xsmall` | `20px` |
-| `typography/body/font-size` | `16px` |
-| `typography/body/font-weight/regular` | `400` |
-| `typography/body/letter-spacing` | `0px` |
-| `typography/body/line-height` | `22px` |
 | `typography/label/font-weight/medium` | `500` |
 | `typography/label/font-weight/regular` | `400` |
+| `typography/paragraph/font-size` | `14px` |
+| `typography/paragraph/font-weight/regular` | `400` |
+| `typography/paragraph/letter-spacing` | `0px` |
+| `typography/paragraph/line-height` | `20px` |
 | `typography/placeholder/font-size` | `10px` |
 | `typography/placeholder/letter-spacing` | `0px` |
 | `typography/placeholder/line-height` | `12px` |
@@ -113,7 +155,10 @@ Every token this component uses, across all its variants.
 
 | Part | Property | Value | Why |
 |---|---|---|---|
-| `focus-ring` | `inset` | `calc(-1 * var(--spacing-gap-2xsmall))` | Composed from a token: the ring sits spacing/gap/2xsmall outside the element. |
-| `focus-ring` | `inset` | `calc(-1 * var(--spacing-gap-2xsmall))` | Composed from a token: the ring sits spacing/gap/2xsmall outside the element. |
+| `icons-lock` | `mask` | `url(./icon-lock.svg) center / contain no-repeat` | The icon file itself. |
+| `clear-glyph` | `mask` | `url(./icon-clear.svg) center / contain no-repeat` | The icon file itself. |
+| `icons-alarm` | `mask` | `url(./icon-alarm.svg) center / contain no-repeat` | The icon file itself. |
+| `supportive` | `top` | `calc(var(--spacing-size-large) + var(--spacing-gap-2xsmall))` | Composed from tokens: the field's height plus spacing/gap/2xsmall. |
+| `focus-ring` | `inset` | `calc(-1 * var(--spacing-gap-2xsmall))` | Composed from a token: the ring sits spacing/gap/2xsmall outside the field. |
 
 See it live, with every value of every variant: [rost.build/components/input](https://rost.build/components/input/)

@@ -8,7 +8,7 @@
 |---|---|
 | Kind | component |
 | Contract | `review` · [thumbs.contract.yaml](../../contracts/thumbs.contract.yaml) |
-| Guidance | `proposed` |
+| Guidance | `agreed` |
 | Source | [Figma 109:79](https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=109-79) · read 2026-10-19 · frozen 2026-10-20 |
 | Implemented in | nowhere yet |
 
