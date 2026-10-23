@@ -71,18 +71,17 @@ const illustrations = count(import.meta.glob('../../../assets/illustrations/*.sv
 <style>
   .hero { position: relative; padding: var(--spacing-gap-large) 0 var(--spacing-gap-2xlarge); border-bottom: 1px solid var(--line); }
   .hero > :not(.paper) { position: relative; }
-  /* The Paper effect, to the right of the words: a disc of dots, faded the
-     way runceanu.com fades its own (solid to 40%, gone by 92%). It's up to
-     720px across, centred in the space between the text and the window's
-     edge, and free to spill past the hero's top and bottom. On narrower
-     screens it shrinks so its faded edge never reaches the words. Below
-     900px there's no room beside the text, so it goes. */
+  /* The Paper effect, beside the words: a disc of dots, faded the way
+     runceanu.com fades its own (solid to 40%, gone by 92%). It's up to 720px
+     across, sized to the space between the text and the window's edge, then
+     moved 280px in towards the text, and free to spill past the hero's top
+     and bottom. Below 900px there's no room beside the text, so it goes. */
   .paper {
     --area: calc(100% + (var(--page-w, 100%) - 100%) / 2 - 600px);
     --d: min(720px, var(--area));
     position: absolute; pointer-events: none;
     width: var(--d); aspect-ratio: 1;
-    left: calc(600px + var(--area) / 2 - var(--d) / 2);
+    left: calc(600px + var(--area) / 2 - var(--d) / 2 - 280px);
     top: 50%; transform: translateY(-50%);
     mask-image: radial-gradient(circle closest-side at 50% 50%, #000 40%, transparent 92%);
   }
