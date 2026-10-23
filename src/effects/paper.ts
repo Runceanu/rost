@@ -6,8 +6,8 @@
  * With `sketches`, a kit component is drawn on the paper from time to time,
  * the way the portfolio site does it: the pen runs along the dot rows, holds, then
  * fades, and the ink bulges under the lens like the dots. The next one
- * starts 2s after. The portfolio site's
- * ripple with its availability dot stays there.
+ * starts 2s after. With `ripple`, a wave crosses the sheet from the middle
+ * every 8s; the portfolio site times its own to its availability dot instead.
  * Built from contracts/effect-paper.contract.yaml.
  *
  *   const stop = mountPaper(canvas, { area: hero, buttons: hero.querySelectorAll('.rost-button'), sketches: true })
@@ -22,6 +22,10 @@ export interface PaperOptions {
   readonly buttons?: Iterable<Element>
   /** Draw a kit component on the paper from time to time. Off with reduced motion. */
   readonly sketches?: boolean
+  /** Send a wave across the sheet from the middle every 8s. Off with reduced motion. */
+  readonly ripple?: boolean
+  /** Elements the sketches keep clear of, like the words beside the paper. */
+  readonly avoid?: Iterable<Element>
 }
 
 // Tuned by eye on the portfolio site, and only the paper uses them (see the contract).
@@ -35,6 +39,9 @@ const PRESS = { r: 330, gain: 1.7 }
 // spent drawing, and the pause before the next. The portfolio site takes 5.2s and
 // waits 7 to 8; here they draw quicker, and the next starts 2s after this
 // one has faded from view (the fade is the last fifth of its life).
+// The wave: how long it takes to cross, the width of its band, how strong
+// it is, and how often it comes. The same as the portfolio site's.
+const RIPPLE = { life: 1800, band: 38, gain: 0.8, every: 8000, first: 1000 }
 const SKETCH = { life: 3200, draw: 0.32, fade: 0.2, first: 500, gap: 2000 }
 
 type Pt = [number, number]
@@ -103,6 +110,8 @@ export function mountPaper(canvas: HTMLCanvasElement, options: PaperOptions = {}
   let sketch: { t0: number; total: number; polys: { pts: Pt[]; len: number; start: number }[] } | null = null
   let last = -1
   let nextAt = performance.now() + SKETCH.first
+  let waveAt = 0
+  let nextWave = performance.now() + RIPPLE.first
 
   function resize() {
     const r = canvas.getBoundingClientRect()
@@ -129,6 +138,17 @@ export function mountPaper(canvas: HTMLCanvasElement, options: PaperOptions = {}
     dome(cur.x, cur.y, LENS_R, cur.p)
     dome(halo.x, halo.y, HALO.r, halo.p * HALO.gain)
     dome(press.x, press.y, PRESS.r, press.p * PRESS.gain)
+    // The wave: a soft ring growing from the middle, fading as it goes.
+    if (waveAt) {
+      const u = (performance.now() - waveAt) / RIPPLE.life
+      if (u > 0 && u < 1) {
+        const cx = w / 2, cy = h / 2
+        const R = u * Math.hypot(w, h) * 0.5
+        const d = Math.hypot(x - cx, y - cy)
+        const s = Math.exp(-((d - R) ** 2) / (2 * RIPPLE.band ** 2)) * (1 - u) * RIPPLE.gain
+        if (s > e) { e = s; fx = (x - cx) / (d || 1); fy = (y - cy) / (d || 1) }
+      }
+    }
     return [Math.min(e, 1.7), fx, fy]
   }
 
@@ -137,7 +157,7 @@ export function mountPaper(canvas: HTMLCanvasElement, options: PaperOptions = {}
     ctx!.clearRect(0, 0, w, h)
     const x0 = (w % GAP) / 2 || 0
     const y0 = GAP / 2
-    const active = cur.p > 0.001 || halo.p > 0.001 || press.p > 0.001
+    const active = cur.p > 0.001 || halo.p > 0.001 || press.p > 0.001 || waveAt > 0
     for (let y = y0; y <= h; y += GAP) {
       for (let x = x0; x <= w; x += GAP) {
         let dx = 0, dy = 0, r = DOT_R, g = 0
@@ -162,17 +182,32 @@ export function mountPaper(canvas: HTMLCanvasElement, options: PaperOptions = {}
   }
 
   function startSketch() {
-    let i = Math.floor(Math.random() * SHAPES.length)
-    if (i === last) i = (i + 1) % SHAPES.length
-    last = i
-    const S = SHAPES[i]!
     // Near the middle, where the dots are solid even when the paper is faded
-    // into a disc, snapped onto the dots.
+    // into a disc, snapped onto the dots, and a cell clear of the words.
     const x0 = (w % GAP) / 2 || 0, y0 = GAP / 2
     const room = Math.min(w, h) * 0.4
-    const tx = w / 2 + (Math.random() - 0.5) * Math.max(0, room - S.w * GAP) - (S.w * GAP) / 2
-    const ty = h / 2 + (Math.random() - 0.5) * Math.max(0, room - S.h * GAP) - (S.h * GAP) / 2
-    const X = x0 + Math.round((tx - x0) / GAP) * GAP, Y = y0 + Math.round((ty - y0) / GAP) * GAP
+    const c = canvas.getBoundingClientRect()
+    // The text itself, not its box: a paragraph's box is as wide as the page.
+    const tight = (el: Element) => { const r = document.createRange(); r.selectNodeContents(el); return r.getBoundingClientRect() }
+    const clear = avoid.map(tight).filter((r) => r.width > 0)
+      .map((r) => ({ l: r.left - c.left - GAP, t: r.top - c.top - GAP, r: r.right - c.left + GAP, b: r.bottom - c.top + GAP }))
+    // Each try picks a shape as well as a spot, so where a wide one can't fit
+    // a small one can. If nothing fits clear of the words, skip this turn.
+    let S: (typeof SHAPES)[number] | null = null
+    let X = 0, Y = 0
+    for (let tries = 0; tries < 24 && !S; tries++) {
+      let i = Math.floor(Math.random() * SHAPES.length)
+      if (i === last) i = (i + 1) % SHAPES.length
+      const cand = SHAPES[i]!
+      const sw = cand.w * GAP, sh = cand.h * GAP
+      const tx = w / 2 + (Math.random() - 0.5) * Math.max(0, room - sw) - sw / 2
+      const ty = h / 2 + (Math.random() - 0.5) * Math.max(0, room - sh) - sh / 2
+      const x = x0 + Math.round((tx - x0) / GAP) * GAP
+      const y = y0 + Math.round((ty - y0) / GAP) * GAP
+      if (x < 0 || x + sw > w || clear.some((r) => x < r.r && x + sw > r.l && y < r.b && y + sh > r.t)) continue
+      S = cand; X = x; Y = y; last = i
+    }
+    if (!S) { nextAt = performance.now() + SKETCH.gap; return }
     let total = 0
     const polys = S.build(GAP).map((raw) => {
       const pts = raw.map(([px, py]) => [px + X, py + Y] as Pt)
@@ -231,10 +266,11 @@ export function mountPaper(canvas: HTMLCanvasElement, options: PaperOptions = {}
     cur.p += (target.p - cur.p) * 0.12
     halo.p += (halo.tp - halo.p) * 0.14
     press.p += (press.tp - press.p) * (press.tp > press.p ? 0.3 : 0.08)
+    if (waveAt && now - waveAt > RIPPLE.life) waveAt = 0
     draw(now)
     const settled = Math.abs(target.x - cur.x) < 0.3 && Math.abs(target.y - cur.y) < 0.3
       && Math.abs(target.p - cur.p) < 0.004 && Math.abs(halo.tp - halo.p) < 0.004 && Math.abs(press.tp - press.p) < 0.004
-      && !sketch
+      && !sketch && !waveAt
     if (!settled || target.p > 0 || halo.tp > 0 || press.tp > 0) raf = requestAnimationFrame(tick)
     else draw(now) // a clean frame once the last sketch has faded
   }
@@ -267,6 +303,7 @@ export function mountPaper(canvas: HTMLCanvasElement, options: PaperOptions = {}
   }
   const onUp = () => { press.tp = 0; wake() }
   const buttons = [...(options.buttons ?? [])]
+  const avoid = [...(options.avoid ?? [])]
   const onEnter = (ev: Event) => {
     const r = canvas.getBoundingClientRect()
     const b = (ev.currentTarget as Element).getBoundingClientRect()
@@ -285,8 +322,13 @@ export function mountPaper(canvas: HTMLCanvasElement, options: PaperOptions = {}
   let visible = true
   const io = new IntersectionObserver(([e]) => { visible = !!e?.isIntersecting })
   io.observe(canvas)
-  const timer = options.sketches && !reduce
-    ? window.setInterval(() => { if (!sketch && visible && w > 0 && performance.now() >= nextAt) startSketch() }, 50)
+  const timer = (options.sketches || options.ripple) && !reduce
+    ? window.setInterval(() => {
+        if (!visible || w <= 0) return
+        const now = performance.now()
+        if (options.sketches && !sketch && now >= nextAt) startSketch()
+        if (options.ripple && now >= nextWave) { waveAt = now; nextWave = now + RIPPLE.every; wake() }
+      }, 50)
     : 0
   // Reduced motion: the paper stays still and flat.
   if (!reduce) {
