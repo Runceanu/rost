@@ -37,10 +37,7 @@ code { font-family: var(--mono); font-size: .88em; }
   background: color-mix(in srgb, var(--ground) 82%, transparent); backdrop-filter: var(--effect-menu);
 }
 .brand { display: flex; align-items: center; gap: var(--spacing-gap-small); text-decoration: none; font-weight: 600; font-size: 18px; letter-spacing: -.01em; }
-.top-nav { display: flex; gap: var(--spacing-gap-2xsmall); flex-wrap: wrap; justify-content: flex-end; }
-.top-nav a { text-decoration: none; color: var(--fg-3); font-size: 14px; padding: var(--spacing-gap-xsmall) var(--spacing-gap-small-medium); border-radius: var(--spacing-radius-full); }
-.top-nav a:hover, .top-nav a[aria-current] { color: var(--fg); background: var(--surface); }
-.top-nav .gh { color: var(--fg-2); border: 1px solid var(--line); }
+.top-nav { display: flex; align-items: center; gap: var(--spacing-gap-2xsmall); }
 
 /* Layouts */
 .page { width: 100%; max-width: 1120px; margin: 0 auto; padding: var(--spacing-gap-4xlarge) var(--spacing-gap-large) 96px; flex: 1; }
@@ -111,7 +108,16 @@ table.t { width: 100%; border-collapse: collapse; font-size: 13.5px; }
 
 @media (max-width: 520px) {
   .top { padding: 0 var(--spacing-gap-medium); gap: var(--spacing-gap-small); }
-  .top-nav a { padding: var(--spacing-gap-xsmall) var(--spacing-gap-small); font-size: 13.5px; }
-  .top-nav .gh { display: none; }
   .page, .main { padding-left: var(--spacing-gap-medium); padding-right: var(--spacing-gap-medium); }
+  /* On a phone the nav's Buttons shrink the way the portfolio site's do (40px,
+     12px sides, 14px type), GitHub goes (it's in the footer), and the logo
+     stands alone. If they still don't fit, the nav scrolls, not the page. */
+  .brand span { display: none; }
+  .top-nav { min-width: 0; overflow-x: auto; scrollbar-width: none; }
+  .top-nav .gh { display: none; }
+  .top-nav .rost-button.rost-button { height: var(--spacing-size-medium); padding-left: var(--spacing-gap-small-medium); padding-right: var(--spacing-gap-small-medium); }
+  .top-nav .rost-button .rost-button__label { font-size: 14px; }
+}
+@media (max-width: 380px) {
+  .top-nav .rost-button.rost-button { padding-left: var(--spacing-gap-small); padding-right: var(--spacing-gap-small); }
 }

@@ -3,12 +3,16 @@ import '../../../tokens/tokens.css'
 import '../../../tokens/fonts.css'
 import '../styles/site.css'
 import Logo from '../components/Logo.astro'
+import { Button } from '../../../src/components/button/Button'
 import { groups, title, inCode, GITHUB } from '../lib/kit'
 
 interface Props { title: string; description?: string; current?: string; sidebar?: boolean }
 const { title: pageTitle, description = 'Rost started as a design system for my own needs and grew into a product of its own. Today it serves products across different industries.', current = '', sidebar = false } = Astro.props
 const path = Astro.url.pathname
-const here = (prefix: string) => (path.startsWith(prefix) ? 'page' : undefined)
+// The top nav uses Rost's Button, as the portfolio site's does: Tertiary for the
+// sections, Secondary for GitHub. The page you're on is the disabled
+// Tertiary, the way the portfolio site marks it; inside a section the link stays.
+const NAV: [string, string][] = [['/components/', 'Components'], ['/tokens/', 'Tokens'], ['/icons/', 'Icons'], ['/docs/contract/', 'Docs']]
 ---
 <!doctype html>
 <html lang="en">
@@ -28,11 +32,10 @@ const here = (prefix: string) => (path.startsWith(prefix) ? 'page' : undefined)
     <header class="top">
       <a class="brand" href="/" aria-current={path === '/' ? 'page' : undefined}><Logo /><span>Rost</span></a>
       <nav class="top-nav" aria-label="Main">
-        <a href="/components/" aria-current={here('/components')}>Components</a>
-        <a href="/tokens/" aria-current={here('/tokens')}>Tokens</a>
-        <a href="/icons/" aria-current={here('/icons')}>Icons</a>
-        <a href="/docs/contract/" aria-current={here('/docs')}>Docs</a>
-        <a href={GITHUB} class="gh" target="_blank" rel="noreferrer">GitHub</a>
+        {NAV.map(([href, label]) => path === href
+          ? <span aria-current="page"><Button as="span" variant="tertiary" disabled>{label}</Button></span>
+          : <Button variant="tertiary" href={href}>{label}</Button>)}
+        <Button variant="secondary" href={GITHUB} className="gh" target="_blank" rel="noreferrer">GitHub</Button>
       </nav>
     </header>
     {sidebar ? (

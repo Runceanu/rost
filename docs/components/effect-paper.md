@@ -18,7 +18,7 @@
 - `dot`: One point on the grid. It never moves by itself, it only reacts (to the lens, the ripple, the pen). The paper should never twinkle.
 - `lens`: The dome every behaviour shares. It has three sources: the cursor (the magnifier), the button halo (hover a hero button and a lens rises under its centre, as if the button presses into the paper), and press ink (press down and the sheet dents, fast going in and slow coming back). Each dot looks at all three and the strongest wins, so lenses never add up. Dots inside grow and get pushed outward. They never multiply and never change shape.
 - `ripple`: A ring (a soft band, about 1.8s) that crosses the sheet from the middle. It's triggered by the availability dot's own pulse, every second beat: so every 8s, in step with it, never on a timer of its own. It only runs while the hero is on screen.
-- `pen`: Every 2 to 3 seconds the pen sketches one kit component in 2px lines (colour `non-interactive/foreground/secondary` at the ink opacity). It draws line by line (about 1s), holds (about 1.5s), then fades. The first one comes half a second after the page opens. The rule of the grid: outer shapes follow the dot rows and columns exactly, start on a dot, measure in whole cells, and round their corners between dots. Small inner details (a check, an x, a knob, bars, a caret) keep their natural shape. Every point of a line moves with the lens, so the ink bulges like the dots do. One sketch at a time.
+- `pen`: Two seconds after the last one fades, the pen sketches the next kit component in 2px lines (colour `non-interactive/foreground/secondary` at the ink opacity). It draws line by line (about 1s), holds (about 1.5s), then fades. The first one comes half a second after the page opens. The rule of the grid: outer shapes follow the dot rows and columns exactly, start on a dot, measure in whole cells, and round their corners between dots. Small inner details (a check, an x, a knob, bars, a caret) keep their natural shape. Every point of a line moves with the lens, so the ink bulges like the dots do. One sketch at a time.
 
 ## When to use
 
@@ -60,6 +60,6 @@ Every token this component uses, across all its variants.
 | `lens` | `cursor` | `radius 210px, power 1.0` | Tuned by eye: how wide the lens is, and how fast it fades. Only the paper uses it. |
 | `lens` | `halo` | `radius 240px, power 1.3` | Tuned by eye: how wide the lens is, and how fast it fades. Only the paper uses it. |
 | `lens` | `press` | `radius 330px, power 1.7` | Tuned by eye: how wide the lens is, and how fast it fades. Only the paper uses it. |
-| `pen` | `cadence` | `2-3s between sketches, each one 3.2s from first line to gone` | How often the pen draws. There are no motion tokens yet. |
+| `pen` | `cadence` | `2s between sketches, each one 3.2s from first line to gone` | How often the pen draws. There are no motion tokens yet. |
 
 See it live, with every value of every variant: [rost.build/components/effect-paper](https://rost.build/components/effect-paper/)
