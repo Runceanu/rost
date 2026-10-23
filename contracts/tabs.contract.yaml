@@ -10,12 +10,12 @@ related: [ tab, divider ]
 source:
   tool: figma
   fileKey: 1Zy0wiWKXQAvsfDBX3KR0d
-  nodeId: "442:448"
-  url: https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=442-448
+  nodeId: "448:56"
+  url: https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=448-56
   extractedAt: "2026-10-23"
   extractedBy: mcp
 props:
-  tabs: { type: slot, notes: "The Tab components. In React, the children." }
+  tabs: { type: slot, notes: "The tabs, in Figma's `tab-items` slot: add, remove or reorder them. In React, the Tab components as children." }
 elements:
   root:
     notes: "The `role=\"tablist\"`. The tabs sit side by side, with nothing between them."

@@ -16,7 +16,7 @@ const bar = (
   </Tabs>
 )
 
-export const fixtures = [{ node: '442:448', name: 'tabs', element: <div style={{ display: 'inline-block' }}>{bar}</div> }]
+export const fixtures = [{ node: '448:56', name: 'tabs', element: <div style={{ display: 'inline-block' }}>{bar}</div> }]
 
 /** What a caller writes. Shown on the component's page. */
 export const usage = `import { Tabs } from 'rost/components/tabs/Tabs'

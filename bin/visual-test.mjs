@@ -217,7 +217,7 @@ for (const id of ids) {
   for (const node of nodes) {
     const target = byNode[node]
     const basePath = target && join(root, 'baseline', id, target.file)
-    if (!basePath || !existsSync(basePath)) { console.log(`  ?    ${node}  no Figma screenshot to compare with`); continue }
+    if (!basePath || !existsSync(basePath)) { console.log(`  ?    ${node}  no Figma screenshot to compare with`); compared--; continue }
     const el = await page.$(`[data-node="${node}"] > *`)
     if (!el) { failed++; console.log(`  FAIL ${target.name.padEnd(30)} rendered nothing`); continue }
     const forced = await page.$eval(`[data-node="${node}"]`, (e) => e.dataset.force.split(' ').filter(Boolean))
