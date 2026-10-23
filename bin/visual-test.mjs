@@ -158,6 +158,7 @@ const origin = `http://127.0.0.1:${server.address().port}`
 
 const browser = await chromium.launch()
 let failed = 0
+let compared = 0
 
 for (const id of ids) {
   const work = join(root, 'test-results/visual', id)
@@ -206,7 +207,10 @@ for (const id of ids) {
 
   console.log(`\n${id}`)
   const byNode = Object.fromEntries((manifest[id] ?? []).map((v) => [v.nodeId, v]))
-  for (const node of await page.$$eval('[data-node]', (els) => els.map((e) => e.dataset.node))) {
+  const nodes = await page.$$eval('[data-node]', (els) => els.map((e) => e.dataset.node))
+  if (!nodes.length) console.log('  no fixtures yet: nothing to compare with')
+  compared += nodes.length
+  for (const node of nodes) {
     const target = byNode[node]
     const basePath = target && join(root, 'baseline', id, target.file)
     if (!basePath || !existsSync(basePath)) { console.log(`  ?    ${node}  no Figma screenshot to compare with`); continue }
@@ -250,5 +254,5 @@ for (const id of ids) {
 
 await browser.close()
 server.close()
-console.log(failed ? `\n${failed} variant(s) don't match Figma yet` : '\nEverything matches Figma')
+console.log(failed ? `\n${failed} variant(s) don't match Figma yet` : compared ? '\nEverything matches Figma' : '\nNothing was compared')
 process.exitCode = failed ? 1 : 0
