@@ -38,6 +38,12 @@ code { font-family: var(--mono); font-size: .88em; }
 }
 .brand { display: flex; align-items: center; gap: var(--spacing-gap-small); text-decoration: none; font-weight: 600; font-size: 18px; letter-spacing: -.01em; }
 .top-nav { display: flex; align-items: center; gap: var(--spacing-gap-2xsmall); }
+/* The page you're on: the pressed Tertiary, and Rost's Tooltip 8px under it
+   on hover, the way runceanu.com places its own. */
+.top-nav .here { position: relative; display: inline-flex; }
+.top-nav .here .rost-button { cursor: default; }
+.top-nav .here .rost-tooltip { position: absolute; top: calc(100% + var(--spacing-gap-small)); left: 50%; translate: -50% 4px; opacity: 0; pointer-events: none; transition: opacity .15s, translate .15s; z-index: 1; }
+.top-nav .here:hover .rost-tooltip { opacity: 1; translate: -50% 0; }
 
 /* Layouts */
 .page { width: 100%; max-width: 1120px; margin: 0 auto; padding: var(--spacing-gap-4xlarge) var(--spacing-gap-large) 96px; flex: 1; }

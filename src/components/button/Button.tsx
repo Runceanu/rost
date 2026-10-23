@@ -1,4 +1,4 @@
-import type { AnchorHTMLAttributes, ButtonHTMLAttributes, ReactNode } from 'react'
+import type { AnchorHTMLAttributes, ButtonHTMLAttributes, HTMLAttributes, ReactNode } from 'react'
 import './button.css'
 
 export type ButtonVariant = 'primary' | 'secondary' | 'tertiary' | 'borderless'
@@ -10,7 +10,7 @@ interface Common {
   readonly icon?: ReactNode
   readonly children?: ReactNode
   readonly className?: string
-  /** `span` draws it without the button or link, for a preview inside something that's already one. */
+  /** `span` draws it without the button or link: for a preview inside something that's already one, or the current page in a nav (with `aria-current="page"`). */
   readonly as?: 'span'
 }
 export type ButtonProps =
@@ -36,8 +36,8 @@ export function Button(props: ButtonProps) {
     </>
   )
   if (as === 'span') {
-    const { disabled } = rest as { disabled?: boolean }
-    return <span className={cls} aria-disabled={disabled || undefined}>{inner}</span>
+    const { disabled, type: _type, ...span } = rest as ButtonHTMLAttributes<HTMLButtonElement>
+    return <span className={cls} aria-disabled={disabled || undefined} {...(span as HTMLAttributes<HTMLSpanElement>)}>{inner}</span>
   }
   if ('href' in rest && rest.href !== undefined) {
     const { href, disabled, ...a } = rest as AnchorHTMLAttributes<HTMLAnchorElement> & { disabled?: boolean }

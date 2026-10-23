@@ -35,7 +35,7 @@ On 2026-10-20 rost.build became a proper site, the way shadcn's is: a homepage, 
 
 ## Now: Rost in code
 
-Seventeen components so far, all built from their contracts and checked against Figma in the visual test:
+Eighteen components so far, all built from their contracts and checked against Figma in the visual test:
 
 - **InlineBanner**, all 8 variants, with Figma's own icons.
 - **Badge**, all 8 variants. Figma gave it a small size since August: just the coloured dot. The dot in front of the label on the medium size is optional now.
@@ -46,6 +46,7 @@ Seventeen components so far, all built from their contracts and checked against 
 - **Input**, all 14 variants. A press anywhere in the field puts the caret in it, since the empty input is 0px tall under its label. The clear button is Rost's IconButton.
 - **TestimonialPicture.** The photo is a slot, in code and in Figma. The test compares the empty 56px frame, and the site shows landscapes.
 - **Tab and Tabs**, designed in Figma on 2026-10-23 with their own `tabs/*` tokens: a label, optional icons before and after, and a green underline on the selected tab. All 11 variants match, and rost.build's Preview and Code tabs use them. The visual test now rounds every component inside another up to whole pixels, the way Figma does, so a bar of tabs is as wide as Figma's.
+- **Tooltip**, from the UI Kit's own (138:276). Rost draws the bubble; the page decides where and when it shows. rost.build's nav uses it to say "You're already here" on the current page, which now wears Button's pressed look (`aria-current="page"`) instead of looking disabled.
 
 The effects are in code too, as tokens: Thumb, Menu, Lock frame and Floating each show on the site applied to real components. The Paper effect isn't. It's a canvas animation that lives in runceanu.com, and only its numbers are tokens.
 
@@ -84,7 +85,6 @@ In order of how much copied code each one removes.
 | **Icons** as a component | The 17 SVGs are exported (`assets/icons/`), but there's no `Icon` component yet, and the apps draw their own | SVGs exported, component next |
 | **TestimonialPicture** | runceanu.com's testimonials. Divider, Carousel, Projects, Testimonials and Thumbs are done | contract read 2026-10-19 |
 | **ListRow** | akount.ing builds it outside the kit | needs designing first |
-| **Tooltip** | IconButton's guidance leans on it | needs designing first |
 | **Switch, Textarea, a selected Chip** | The guidance already says they're missing | need designing first |
 
 After that, **move runceanu.com onto the kit's token names.** *Done when* its raw hex count is 0, like akount.ing's.

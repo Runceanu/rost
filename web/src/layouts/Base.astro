@@ -4,14 +4,16 @@ import '../../../tokens/fonts.css'
 import '../styles/site.css'
 import Logo from '../components/Logo.astro'
 import { Button } from '../../../src/components/button/Button'
+import { Tooltip } from '../../../src/components/tooltip/Tooltip'
 import { groups, title, inCode, GITHUB } from '../lib/kit'
 
 interface Props { title: string; description?: string; current?: string; sidebar?: boolean }
 const { title: pageTitle, description = 'Rost started as a design system for my own needs and grew into a product of its own. Today it serves products across different industries.', current = '', sidebar = false } = Astro.props
 const path = Astro.url.pathname
 // The top nav uses Rost's Button, as runceanu.com's does: Tertiary for the
-// sections, Secondary for GitHub. The page you're on is the disabled
-// Tertiary, the way runceanu.com marks it; inside a section the link stays.
+// sections, Secondary for GitHub. The page you're on wears the pressed look
+// (aria-current) and isn't a link, with a tooltip saying why; inside a
+// section the link stays.
 const NAV: [string, string][] = [['/components/', 'Components'], ['/tokens/', 'Tokens'], ['/icons/', 'Icons'], ['/docs/contract/', 'Docs']]
 ---
 <!doctype html>
@@ -33,7 +35,7 @@ const NAV: [string, string][] = [['/components/', 'Components'], ['/tokens/', 'T
       <a class="brand" href="/" aria-current={path === '/' ? 'page' : undefined}><Logo /><span>Rost</span></a>
       <nav class="top-nav" aria-label="Main">
         {NAV.map(([href, label]) => path === href
-          ? <span aria-current="page"><Button as="span" variant="tertiary" disabled>{label}</Button></span>
+          ? <span class="here" aria-describedby="here-tip"><Button as="span" variant="tertiary" aria-current="page">{label}</Button><Tooltip id="here-tip">You're already here</Tooltip></span>
           : <Button variant="tertiary" href={href}>{label}</Button>)}
         <Button variant="secondary" href={GITHUB} className="gh" target="_blank" rel="noreferrer">GitHub</Button>
       </nav>
