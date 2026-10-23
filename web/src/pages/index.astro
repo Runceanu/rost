@@ -87,7 +87,7 @@ const illustrations = count(import.meta.glob('../../../assets/illustrations/*.sv
   }
   @media (max-width: 900px) { .paper { display: none; } }
   .steps { display: grid; gap: var(--spacing-gap-small-medium); grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
-  .steps h3 { margin: var(--spacing-gap-small-medium) 0 var(--spacing-gap-small); color: var(--fg); font-family: var(--body); font-size: 17px; letter-spacing: 0; text-transform: none; font-weight: 600; }
+  .steps h3 { margin: var(--spacing-gap-small-medium) 0 var(--spacing-gap-small); color: var(--fg); font-family: var(--body); font-size: var(--typography-body-font-size); line-height: var(--typography-body-line-height); letter-spacing: 0; text-transform: none; font-weight: 500; }
   .steps p { margin: 0; color: var(--fg-2); font-size: 15px; }
   .step { width: var(--spacing-size-small); height: var(--spacing-size-small); border-radius: 50%; display: grid; place-items: center; font-family: var(--mono); font-size: 13px; color: var(--accent); border: 1px solid color-mix(in srgb, var(--accent) 40%, transparent); }
   .foundations .comp { display: flex; flex-direction: column; gap: var(--spacing-gap-xsmall); text-decoration: none; transition: border-color .15s; }

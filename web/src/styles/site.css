@@ -67,14 +67,19 @@ code { font-family: var(--mono); font-size: .88em; }
 .foot { display: flex; justify-content: space-between; gap: var(--spacing-gap-medium); flex-wrap: wrap; padding: var(--spacing-gap-large); border-top: 1px solid var(--line); color: var(--fg-3); font-size: 13px; }
 
 /* Type */
-h1 { font-weight: 600; letter-spacing: -.03em; line-height: 1.05; font-size: clamp(36px, 6vw, 60px); margin: 0 0 var(--spacing-gap-medium); text-wrap: balance; }
-h2 { font-weight: 600; letter-spacing: -.02em; font-size: 26px; line-height: 1.2; margin: var(--spacing-gap-4xlarge) 0 var(--spacing-gap-small-medium); }
+/* Titles match runceanu.com's: 64/72 for a page, 40/48 (typography/sub-headline)
+   for a section, weight 500, no extra letter spacing, stepping down at 768px
+   and 480px the way runceanu.com does. 64/72 isn't a kit token yet. */
+h1 { font-weight: 500; font-size: 64px; line-height: 72px; margin: 0 0 var(--spacing-gap-medium); text-wrap: balance; }
+h2 { font-weight: 500; font-size: var(--typography-sub-headline-font-size); line-height: var(--typography-sub-headline-line-height); margin: var(--spacing-gap-4xlarge) 0 var(--spacing-gap-small-medium); }
+@media (max-width: 768px) { h1 { font-size: 48px; line-height: 56px; } h2 { font-size: 34px; line-height: 42px; } }
+@media (max-width: 480px) { h1 { font-size: 36px; line-height: 44px; } h2 { font-size: 28px; line-height: 36px; } }
 h3 { font-family: var(--mono); font-weight: 400; font-size: 12px; letter-spacing: .09em; text-transform: uppercase; color: var(--fg-3); margin: var(--spacing-gap-xlarge) 0 var(--spacing-gap-small-medium); }
 .kicker { font-family: var(--mono); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--fg-3); margin-bottom: var(--spacing-gap-small); }
 .lede { font-size: clamp(18px, 2.4vw, 22px); line-height: 1.45; color: var(--fg); max-width: 40ch; margin: 0 0 var(--spacing-gap-medium); text-wrap: pretty; }
 .muted { color: var(--fg-2); max-width: 64ch; }
 .prose { color: var(--fg-2); max-width: 70ch; }
-.prose h2 { font-family: var(--mono); font-weight: 400; font-size: 12px; letter-spacing: .09em; text-transform: uppercase; color: var(--fg-3); margin: var(--spacing-gap-xlarge) 0 var(--spacing-gap-small); }
+.prose h2 { font-family: var(--mono); font-weight: 400; font-size: 12px; line-height: 1.2; letter-spacing: .09em; text-transform: uppercase; color: var(--fg-3); margin: var(--spacing-gap-xlarge) 0 var(--spacing-gap-small); }
 .prose p, .prose ul { margin: 0 0 var(--spacing-gap-small-medium); }
 .prose ul { padding-left: var(--spacing-gap-medium-large); }
 .prose strong { color: var(--fg); font-weight: 600; }
