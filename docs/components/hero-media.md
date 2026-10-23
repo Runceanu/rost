@@ -12,11 +12,19 @@
 | Source | [Figma 245:2900](https://www.figma.com/design/pg02BcqlCQCVt6LzTAiPhD/?node-id=245-2900) · read 2026-10-18 · frozen 2026-10-20 |
 | Implemented in | nowhere yet |
 
+## Props
+
+| Prop | Type | Values | Default |
+|---|---|---|---|
+| `media` | slot |  |  |
+| `content` | slot |  |  |
+
 ## Anatomy
 
-- `hero`: The full-width section, 630px tall, on `non-interactive/background/primary`. Its 16px padding is the frame that shows the page around the image. The width has to take off the real scrollbar (100vw includes it), otherwise the sides look about 8px while the top is 16.
-- `frame`: The window onto the artwork. It fills the hero inside the 16px frame, with `radius/xlarge` corners, and hides anything that spills out (a rounded `clip-path` when the artwork uses fixed positioning).
-- `media`: The artwork itself: a div with a background image, never an `<img>` (the pinned effect needs a background).
+- `root`: The full-width section, 630px tall, on `non-interactive/background/primary`. Its 16px padding is the frame that shows the page around the image. Full width means the container's width, not `100vw`: that includes the scrollbar, and then the sides look about 8px while the top is 16.
+- `frame`: The window onto the artwork. It fills the hero inside the 16px frame, with `radius/xlarge` corners, and hides anything that spills out. The rounded `clip-path` is what clips artwork pinned with `background-attachment: fixed`, which `overflow` alone doesn't.
+- `media`: The slot for the artwork, filling the frame. The artwork itself is a div with a background image, never an `<img>`: the pinned effect needs a background. Pin it with `background-attachment: fixed` and give it its size in px (the asset's own, e.g. 2336px 1196px), never `cover`: a fixed background sizes itself against the window, not the frame, and blows the artwork up. That bug is why one case study lost the pinned effect the first time. Phones, tablets and reduced motion get `scroll` instead, anchored to the frame.
+- `content`: The slot for what sits on top of the artwork. It fills the frame and is never dimmed.
 
 ## When to use
 
@@ -54,11 +62,5 @@ Every token this component uses, across all its variants.
 | `spacing/gap/medium` | `16px` |
 | `spacing/layout/hero-height` | `630px` |
 | `spacing/radius/xlarge` | `24px` |
-
-## No token, on purpose
-
-| Part | Property | Value | Why |
-|---|---|---|---|
-| `media` | `background-size` | `explicit px (asset-native, e.g. 2336px 1196px)` | Each artwork's own pixel size. It changes with every image, so a token wouldn't help. |
 
 See it live, with every value of every variant: [rost.build/components/hero-media](https://rost.build/components/hero-media/)

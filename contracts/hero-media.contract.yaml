@@ -16,11 +16,16 @@ source:
   extractedAt: "2026-10-18"
   extractedBy: mcp
   frozenAt: "2026-10-20"
+props:
+  media: { type: slot, notes: "The artwork, behind everything and dimmed. Usually a div with a background image, pinned with `background-attachment: fixed`." }
+  content: { type: slot, notes: "What sits on top: the title card, the client's logo. In React, the children." }
 elements:
-  hero:
+  root:
     notes: |-
-      The full-width section, 630px tall, on `non-interactive/background/primary`. Its 16px padding is the frame that shows the page around the image. The width has to take off the real scrollbar (100vw includes it), otherwise the sides look about 8px while the top is 16.
+      The full-width section, 630px tall, on `non-interactive/background/primary`. Its 16px padding is the frame that shows the page around the image. Full width means the container's width, not `100vw`: that includes the scrollbar, and then the sides look about 8px while the top is 16.
     styles:
+      display: { value: block, assert: false }
+      position: { value: relative, assert: false }
       height:
         token: spacing/layout/hero-height
         value: 630px
@@ -30,8 +35,12 @@ elements:
       background: { token: non-interactive/background/primary, value: "#060805" }
   frame:
     notes: |-
-      The window onto the artwork. It fills the hero inside the 16px frame, with `radius/xlarge` corners, and hides anything that spills out (a rounded `clip-path` when the artwork uses fixed positioning).
+      The window onto the artwork. It fills the hero inside the 16px frame, with `radius/xlarge` corners, and hides anything that spills out. The rounded `clip-path` is what clips artwork pinned with `background-attachment: fixed`, which `overflow` alone doesn't.
     styles:
+      position: { value: relative, assert: false }
+      height: { value: 100%, assert: false }
+      overflow: { value: hidden, assert: false }
+      clip-path: { value: "inset(0 round var(--spacing-radius-xlarge))", assert: false }
       border-radius: { token: spacing/radius/xlarge, value: 24px }
       background:
         token: non-interactive/background/secondary
@@ -40,22 +49,21 @@ elements:
           What the dimmed artwork sits on. It has to be the same on every case study. The same opacity looks darker on a darker surface, and that was exactly the bug I fixed on 2026-10-18: three heroes sat on #060805 and looked darker than the rest.
   media:
     notes: |-
-      The artwork itself: a div with a background image, never an `<img>` (the pinned effect needs a background).
+      The slot for the artwork, filling the frame. The artwork itself is a div with a background image, never an `<img>`: the pinned effect needs a background. Pin it with `background-attachment: fixed` and give it its size in px (the asset's own, e.g. 2336px 1196px), never `cover`: a fixed background sizes itself against the window, not the frame, and blows the artwork up. That bug is why one case study lost the pinned effect the first time. Phones, tablets and reduced motion get `scroll` instead, anchored to the frame.
     styles:
+      position: { value: absolute, assert: false }
+      inset: { value: "0", assert: false }
+      pointer-events: { value: none, assert: false }
       opacity:
         token: opacity/medium
         value: "0.48"
         notes: |-
           The one dim for every hero, decided on 2026-10-18. Figma still says 32% (`opacity/mild`), I went with 0.48. What you see is opacity times the colour underneath, so this only works together with the frame's #171717.
-      background-attachment:
-        value: fixed
-        notes: |-
-          The artwork stays pinned to the window while the page scrolls over it, the same idea as Paper. Phones, tablets and reduced motion get a normal background instead (`scroll`, `cover`, centred).
-      background-size:
-        value: explicit px (asset-native, e.g. 2336px 1196px)
-        notes: |-
-          Never `cover` together with `fixed`. A fixed background sizes itself against the window, not the frame, and blows the artwork up. That bug is why one case study lost the pinned effect the first time. Vector artwork can go at twice its natural size, so it stays sharp.
-        untokenised: Each artwork's own pixel size. It changes with every image, so a token wouldn't help.
+  content:
+    notes: The slot for what sits on top of the artwork. It fills the frame and is never dimmed.
+    styles:
+      position: { value: relative, assert: false }
+      height: { value: 100%, assert: false }
 guidance:
   status: agreed
   use:

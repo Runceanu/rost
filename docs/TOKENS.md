@@ -6,11 +6,11 @@ Every value in every contract, sorted by why it has a token or doesn't. `npm run
 
 | | Values | Share | Meaning |
 |---|---|---|---|
-| Has a token | 1142 | 63% | Uses a token, and the check tests it. |
+| Has a token | 1142 | 62% | Uses a token, and the check tests it. |
 | Token suggested | 0 | 0% | A token I want that doesn't exist yet. The freeze turned every other suggestion into a token. |
-| How Figma builds it | 495 | 27% | How Figma builds the layer (position, inset, which sides get a stroke). Nothing to tokenise. |
-| Figma frame size | 110 | 6% | A root size that is just the Figma frame. Written down, not checked. |
-| No token, on purpose | 47 | 3% | Plain on purpose, and the contract says why. |
+| How Figma builds it | 503 | 28% | How Figma builds the layer (position, inset, which sides get a stroke). Nothing to tokenise. |
+| Figma frame size | 112 | 6% | A root size that is just the Figma frame. Written down, not checked. |
+| No token, on purpose | 46 | 3% | Plain on purpose, and the contract says why. |
 | Open gap | 26 | 1% | No token and no reason. Each one needs a decision from me. |
 
 ## By contract
@@ -23,7 +23,7 @@ Every value in every contract, sorted by why it has a token or doesn't. `npm run
 | [Chip](components/chips.md) | 32 | · | 16 | 8 | · | 1 |
 | [Divider](components/divider.md) | 2 | · | 2 | 2 | · | · |
 | [Floating effect](components/effect-floating.md) | 1 | · | · | · | · | · |
-| [Hero Media](components/hero-media.md) | 6 | · | 1 | · | 1 | · |
+| [Hero Media](components/hero-media.md) | 6 | · | 9 | 2 | · | · |
 | [IconButton](components/icon-button.md) | 192 | · | 53 | 10 | 6 | 2 |
 | [InlineBanner](components/inline-banner.md) | 85 | · | 40 | · | · | · |
 | [Input](components/input.md) | 166 | · | 35 | 20 | 4 | 3 |
@@ -58,7 +58,6 @@ None. The freeze on 2026-10-20 turned all 122 suggestions into tokens.
 - [Carousel](components/carousel.md) `focus-ring.inset` = `calc(-1 * var(--spacing-gap-2xsmall))`: Composed from a token: the ring sits spacing/gap/2xsmall outside the element.
 - [Carousel](components/carousel.md) `focus-ring.border-radius` = `calc(var(--spacing-radius-xlarge) + var(--spacing-gap-2xsmall))`: Composed from tokens: the element's spacing/radius/xlarge plus the ring's spacing/gap/2xsmall.
 - [Chip](components/chips.md) `focus-ring.inset` = `calc(-1 * var(--spacing-gap-2xsmall))`: Composed from a token: the ring sits spacing/gap/2xsmall outside the element.
-- [Hero Media](components/hero-media.md) `media.background-size` = `explicit px (asset-native, e.g. 2336px 1196px)`: Each artwork's own pixel size. It changes with every image, so a token wouldn't help.
 - [IconButton](components/icon-button.md) `glyph.mask` = `url(./icon-arrow-left.svg) center / contain no-repeat`: The icon file itself. `assets/icons/arrow-left.svg`, the same shape Figma uses (its insets match Figma's `Union` layer exactly).
 - [IconButton](components/icon-button.md) `root.box-shadow` = `inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-default-outline)`: Figma's 1px left and top stroke, drawn inside the shape as Figma draws it. The width and colour are tokens.
 - [IconButton](components/icon-button.md) `root.box-shadow` = `inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-hover-outline)`: Figma's 1px left and top stroke, drawn inside the shape as Figma draws it. The width and colour are tokens.

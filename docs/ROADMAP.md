@@ -18,6 +18,7 @@ On 2026-10-20 the contracts became the source. The import was finished: 22 contr
 Still open from Figma:
 
 - Rename the sample client in Thumbs to "Client" and capture it again, so `baseline/thumbs/` can be public. Until then the visual test leaves the name out of the comparison. `baseline/testimonials-pics/` stays private for good (real people's photos).
+- Make Hero Media a component in the portfolio file (245:2900): 1440 by 630, the 16px frame, the 24px corners and the #171717 surface, with the media as an empty slot. Then I capture it and compare the frame.
 - Keep one Button set: 20:14, with its icon slot. The label-only set at 39:38 is the same button and can go.
 - Replace TestimonialPicture's eight sample photos (144:493) with one 56px component whose image is a slot, and give Testimonials' picture slot that, empty. Then `baseline/testimonials-pics/` has nothing private left.
 - Testimonials' sample quote says "This is where the testimonials comes". Rost says "This is where the testimonial goes". Change the `testimonial` property's default on the set (node 144:67) and capture the open variants again; until then the test leaves the quote out.
@@ -52,7 +53,7 @@ Building them turned up four things to fix:
 
 Next, one at a time on the same setup:
 
-- **Hero Media.** No Figma render yet. It'll take its artwork as a slot, and needs something to test against first.
+- **Hero Media.** In code since 2026-10-23, with two slots: the artwork behind and what sits on top. The artwork pins itself, as on the portfolio site. It's untested until Figma has it as a component (see the Figma list).
 - **The portfolio site onto Rost's components**, with `npm run add`. It copies a component, what it imports, its contract and the check into an app, the way shadcn does, and updates them on a second run. The accounting app uses it for Badge, InlineBanner, Divider and Button since 2026-10-22. A real `npx rost add` waits until Rost is published to npm.
 
 ## Now: make the contracts something I can trust
