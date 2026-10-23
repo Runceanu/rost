@@ -105,5 +105,5 @@ const illustrations = count(import.meta.glob('../../../assets/illustrations/*.sv
   const fit = () => document.documentElement.style.setProperty('--page-w', `${document.documentElement.clientWidth}px`)
   fit()
   addEventListener('resize', fit)
-  if (hero && canvas) mountPaper(canvas, { area: hero, buttons: hero.querySelectorAll('.rost-button'), sketches: true })
+  if (hero && canvas) mountPaper(canvas, { area: hero, buttons: hero.querySelectorAll('.rost-button'), sketches: true, ripple: true, avoid: hero.querySelectorAll('.kicker, h1, .lede, .muted, .btns, .count') })
 </script>
