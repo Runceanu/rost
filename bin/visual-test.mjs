@@ -24,7 +24,8 @@
  * aren't compared, for a sample text that can't be published.
  *
  * Font: the same General Sans Variable that Figma renders with, from
- * ROST_FONT (default ~/Library/Fonts/GeneralSans-Variable.ttf). Smoothing
+ * ROST_FONT (default ~/Library/Fonts/GeneralSans-Variable.ttf), with the
+ * metric overrides from tokens/fonts.css, the same ones the apps use. Smoothing
  * matches both apps (-webkit-font-smoothing: antialiased).
  */
 import { build } from 'esbuild'
@@ -56,6 +57,11 @@ const ZOOM = 6
 const root = fileURLToPath(new URL('../', import.meta.url))
 const font = process.env.ROST_FONT ?? join(homedir(), 'Library/Fonts/GeneralSans-Variable.ttf')
 if (!existsSync(font)) { console.log(`General Sans Variable not found at ${font}. Set ROST_FONT.`); process.exit(1) }
+// Rost's own placement of the font (tokens/fonts.css): the same overrides on
+// the local file. ROST_METRICS=ascent,descent,gap tries others, in percent.
+const metrics = process.env.ROST_METRICS
+  ? ((a, d, g) => ` ascent-override: ${a}%; descent-override: ${d}%; line-gap-override: ${g}%;`)(...process.env.ROST_METRICS.split(','))
+  : ' ' + (readFileSync(join(root, 'tokens/fonts.css'), 'utf8').match(/(?:ascent|descent|line-gap)-override:[^;]+;/g) ?? []).join(' ')
 const manifest = JSON.parse(readFileSync(join(root, 'baseline/manifest.json'), 'utf8'))
 const ids = process.argv.slice(2)
 if (!ids.length) { console.log('Usage: node bin/visual-test.mjs <id> [<id> ...]'); process.exit(1) }
@@ -166,7 +172,7 @@ for (const id of ids) {
       <>{fixtures.map((f) => <div key={f.node} data-node={f.node} data-force={(f.force ?? []).join(' ')} data-force-on={f.forceOn ?? ''} data-mask={JSON.stringify(f.mask ?? [])} style={{ margin: 8 }}>{f.element}</div>)}</>
     )`)
   await build({ entryPoints: [join(work, 'entry.tsx')], bundle: true, outdir: work, jsx: 'automatic', logLevel: 'error', loader: { '.svg': 'file' }, plugins: [svgUrl] })
-  const face = `@font-face { font-family: 'General Sans Variable'; font-weight: 200 700; src: url('${origin}/font') format('truetype'); }`
+  const face = `@font-face { font-family: 'General Sans Variable'; font-weight: 200 700; src: url('${origin}/font') format('truetype');${metrics} }`
   writeFileSync(join(work, 'index.html'), `<!doctype html><meta charset="utf-8">
     <link rel="stylesheet" href="${origin}/repo/tokens/tokens.css">
     <style>${face} body { margin: 0; background: var(--non-interactive-background-primary); -webkit-font-smoothing: antialiased; }</style>

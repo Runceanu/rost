@@ -11,7 +11,7 @@ Each component is a **contract**: one YAML file that says what the component is,
 ```
 contracts/  one YAML contract per component
 schema/     the contract format (JSON Schema v2) and a template
-tokens/     tokens.css and tokens.json
+tokens/     tokens.css, tokens.json, and fonts.css (General Sans, placed where Figma puts it)
 registry/   what exists in the Figma file: components, variants, node ids, icons
 baseline/   Figma's own render of each variant, the target for the coded versions
 assets/     icons and vector parts exported from Figma
@@ -54,4 +54,4 @@ To check an app, import `forApp` and `conform` from `rost/conform` in one of its
 
 22 contracts, all read from Figma, and validation is clean. On 2026-10-20 I froze them: they're the source now, not Figma, and changes happen in the YAML.
 
-Fourteen components are built in code from their contracts: Badge, InlineBanner, Thumbs, Divider, Tag, Chip, PillButton, IconButton, Toggle, Carousel, Projects, Testimonials, Menu and Input. 121 of their 123 variants match Figma in the visual test. Chip Pressed is just over the line, and Projects Hover waits for a fixed Figma frame to be captured again. Four of the five effects are tokens Rost already ships. Button, TestimonialPicture, Hero Media and the Paper effect aren't in code yet. Button waits for Figma: its screenshots still come back empty. I've signed off the guidance on 15 contracts. Badge was the 16th, until Figma gave it a dot-only size, so it's back to `proposed`. The guidance I wrote this week waits for me too. Nothing is `stable` yet. The [roadmap](docs/ROADMAP.md) has the details.
+Fifteen components are built in code from their contracts: Badge, InlineBanner, Thumbs, Divider, Tag, Chip, PillButton, IconButton, Toggle, Carousel, Projects, Testimonials, Menu, Input and TestimonialPicture. 129 of their 131 variants match Figma in the visual test. Chip Pressed is just over the line, and Projects Hover waits for a fixed Figma frame to be captured again. Four of the five effects are tokens Rost already ships. Button, Hero Media and the Paper effect aren't in code yet. Button waits for Figma: its screenshots still come back empty. I've signed off the guidance on 15 contracts. Badge was the 16th, until Figma gave it a dot-only size, so it's back to `proposed`. The guidance I wrote this week waits for me too. Nothing is `stable` yet. The [roadmap](docs/ROADMAP.md) has the details.

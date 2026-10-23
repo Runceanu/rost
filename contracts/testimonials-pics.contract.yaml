@@ -16,16 +16,30 @@ source:
   extractedBy: mcp
   frozenAt: "2026-10-20"
 props:
+  picture: { type: slot, notes: "The photo. In React, `src` and `alt`, or your own image as the children." }
   people:
     type: enum
     values: [ Person 1, Person 2, Person 3, Person 4, Person 5, Person 6, Person 7, Person 8 ]
     default: Person 1
+    notes: "Figma's eight sample photos, real people. Code has no such prop: the photo is the slot. Figma is getting a slot too, and then this goes."
 elements:
   root:
+    notes: A 56px square. Testimonials rounds it.
     styles:
+      display: { value: block, assert: false }
       position: { value: relative, assert: false }
+      overflow: { value: hidden, assert: false }
+      flex-shrink: { value: "0", assert: false }
       width: { value: 56px, token: spacing/size/large }
       height: { value: 56px, token: spacing/size/large }
+  image:
+    notes: The photo, cropped to fill the square.
+    styles:
+      position: { value: absolute, assert: false }
+      inset: { value: "0", assert: false }
+      width: { value: 100%, assert: false }
+      height: { value: 100%, assert: false }
+      object-fit: { value: cover, assert: false }
 variants:
   - when: { people: Person 7 }
     figmaNode: "144:486"

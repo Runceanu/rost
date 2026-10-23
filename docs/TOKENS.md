@@ -6,10 +6,10 @@ Every value in every contract, sorted by why it has a token or doesn't. `npm run
 
 | | Values | Share | Meaning |
 |---|---|---|---|
-| Has a token | 1390 | 64% | Uses a token, and the check tests it. |
+| Has a token | 1390 | 63% | Uses a token, and the check tests it. |
 | Token suggested | 0 | 0% | A token I want that doesn't exist yet. The freeze turned every other suggestion into a token. |
-| How Figma builds it | 612 | 28% | How Figma builds the layer (position, inset, which sides get a stroke). Nothing to tokenise. |
-| Figma frame size | 109 | 5% | A root size that is just the Figma frame. Written down, not checked. |
+| How Figma builds it | 619 | 28% | How Figma builds the layer (position, inset, which sides get a stroke). Nothing to tokenise. |
+| Figma frame size | 110 | 5% | A root size that is just the Figma frame. Written down, not checked. |
 | No token, on purpose | 47 | 2% | Plain on purpose, and the contract says why. |
 | Open gap | 26 | 1% | No token and no reason. Each one needs a decision from me. |
 
@@ -34,7 +34,7 @@ Every value in every contract, sorted by why it has a token or doesn't. `npm run
 | [PillButton](components/pill-button.md) | 145 | · | 59 | 12 | 5 | 1 |
 | [Projects](components/projects.md) | 77 | · | 33 | 8 | 4 | 4 |
 | [Tag](components/tags.md) | 26 | · | 13 | 3 | · | 1 |
-| [TestimonialPicture](components/testimonials-pics.md) | 2 | · | 1 | · | · | · |
+| [TestimonialPicture](components/testimonials-pics.md) | 2 | · | 8 | 1 | · | · |
 | [Testimonials](components/testimonials.md) | 85 | · | 53 | 13 | 6 | 4 |
 | [Thumb effect](components/effect-thumb.md) | 1 | · | · | · | · | · |
 | [Thumbs](components/thumbs.md) | 77 | · | 51 | 9 | 6 | 5 |
