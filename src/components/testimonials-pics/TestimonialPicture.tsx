@@ -15,7 +15,7 @@ const b = 'rost-testimonials-pics'
 /**
  * The photo of the person behind a testimonial: a 56px square that
  * Testimonials rounds. Built from contracts/testimonials-pics.contract.yaml.
- * Figma draws eight sample people; here the photo is a slot.
+ * The photo is a slot, in Figma too.
  */
 export function TestimonialPicture({ src, alt = '', children, className, ...rest }: TestimonialPictureProps) {
   return (

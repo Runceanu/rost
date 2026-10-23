@@ -22,11 +22,10 @@ On 2026-10-23 I edited Figma for the first time since the freeze, through Figma'
 - Thumbs' sample client is "Client", so `baseline/thumbs/` is public now and nothing is masked.
 - The Button set (20:14) is just "button". The label-only set had already gone.
 - Hero Media is a component in the portfolio file (793:2345): 1440 by 630, the 16px frame, the 24px corners, both surfaces bound to the kit's variables, and two empty slots, `media` and `content`.
-- TestimonialPicture has a new 56px component with an image slot (438:72), next to the old set.
+- TestimonialPicture is one 56px component with an image slot (438:72). The old set of eight real people's photos is deleted, so `baseline/testimonials-pics/` is public too.
 
 Still open from Figma:
 
-- The old TestimonialPicture set (144:493), eight photos of real people, waits for my yes before it's deleted. Until then `baseline/testimonials-pics/` stays private.
 - The Menu effect's blur. I took 12px from the nav, not from the "Menu" style, so that contract is still a draft.
 - A few values have no token and no reason yet. They're at the bottom of [Token coverage](TOKENS.md).
 
@@ -45,7 +44,7 @@ Fifteen components so far, all built from their contracts and checked against Fi
 - **Carousel, Projects, Testimonials, Menu.** 26 variants, all matching. Testimonials is a disclosure: its header is the button, so the contract says which part its focus and disabled states come from (`stateSelectors`).
 - **Button** is PillButton's set with the icon made optional. Figma has the same button twice (20:14 with an icon slot, 39:38 without), so on 2026-10-23 I made them one.
 - **Input**, all 14 variants. A press anywhere in the field puts the caret in it, since the empty input is 0px tall under its label. The clear button is Rost's IconButton.
-- **TestimonialPicture.** The photo is a slot. Figma's eight variants are eight real people, so the test masks the photo and only the 56px frame is compared, and the site shows landscapes instead.
+- **TestimonialPicture.** The photo is a slot, in code and in Figma. The test compares the empty 56px frame, and the site shows landscapes.
 
 The effects are in code too, as tokens: Thumb, Menu, Lock frame and Floating each show on the site applied to real components. The Paper effect isn't. It's a canvas animation that lives in the portfolio site, and only its numbers are tokens.
 

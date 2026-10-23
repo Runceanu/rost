@@ -1,9 +1,8 @@
 import { TestimonialPicture } from './TestimonialPicture'
 
 /**
- * Figma's eight variants are eight real people. Their screenshots stay
- * private (baseline/testimonials-pics/ is gitignored), so the test masks the
- * photo and compares only the frame. The pictures here are neutral: a few
+ * Figma's TestimonialPicture is a 56px square with an empty image slot, so
+ * the test compares an empty one. The pictures on the site are neutral: a few
  * landscapes in flat colour, no one in them.
  */
 const scene = (sky: string, sun: string, far: string, near: string) =>
@@ -16,17 +15,9 @@ export const samples = [
   scene('#4a5c2f', '#f0e6b0', '#6b7a3e', '#2f3b1f'),
 ]
 
-const NODES: [string, string][] = [
-  ['144:492', 'Person 1'], ['144:489', 'Person 2'], ['144:491', 'Person 3'], ['144:490', 'Person 4'],
-  ['144:488', 'Person 5'], ['144:487', 'Person 6'], ['144:486', 'Person 7'], ['164:1082', 'Person 8'],
+export const fixtures = [
+  { node: '438:72', name: 'testimonials-pics', element: <TestimonialPicture /> },
 ]
-
-export const fixtures = NODES.map(([node, person], i) => ({
-  node,
-  name: `people=${person}`,
-  element: <TestimonialPicture src={samples[i % samples.length]} />,
-  mask: [{ x: 0, y: 0, width: 56, height: 56 }],
-}))
 
 /** What a caller writes. Shown on the component's page. */
 export const usage = `import { TestimonialPicture } from 'rost/components/testimonials-pics/TestimonialPicture'

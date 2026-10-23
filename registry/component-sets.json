@@ -74,8 +74,8 @@
   },
   "testimonials-pics": {
     "name": "TestimonialPicture",
-    "setNodeId": "144:493",
-    "variantCount": 8
+    "setNodeId": "438:72",
+    "variantCount": 1
   },
   "toggle": {
     "name": "Toggle",
