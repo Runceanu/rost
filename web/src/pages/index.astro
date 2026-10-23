@@ -10,7 +10,8 @@ const icons = count(import.meta.glob('../../../assets/icons/*.svg'))
 const illustrations = count(import.meta.glob('../../../assets/illustrations/*.svg'))
 ---
 <Base title="Rost · My design system" description="Rost started as a design system for my own needs and grew into a product of its own. Today it serves products across different industries.">
-  <section class="hero">
+  <section class="hero" data-paper>
+    <canvas class="paper" aria-hidden="true"></canvas>
     <div class="kicker">Design system</div>
     <h1>Rost</h1>
     <p class="lede">Rost started as a design system for my own needs and grew into a product of its own. Today it serves products across different industries.</p>
@@ -68,7 +69,16 @@ const illustrations = count(import.meta.glob('../../../assets/illustrations/*.sv
 </script>
 
 <style>
-  .hero { padding: var(--spacing-gap-large) 0 var(--spacing-gap-2xlarge); border-bottom: 1px solid var(--line); }
+  .hero { position: relative; overflow-y: clip; padding: var(--spacing-gap-large) 0 var(--spacing-gap-2xlarge); border-bottom: 1px solid var(--line); }
+  .hero > :not(.paper) { position: relative; }
+  /* The Paper effect: the page's full width, faded into a disc centred on the
+     hero and softened at its top and bottom edges, behind the words. */
+  .paper {
+    position: absolute; top: 0; left: 50%; height: 100%;
+    width: var(--page-w, 100%); transform: translateX(-50%); pointer-events: none;
+    mask-image: radial-gradient(circle 552px at 50% 50%, #000 40%, transparent 92%), linear-gradient(to bottom, transparent, #000 var(--spacing-size-large), #000 calc(100% - var(--spacing-size-large)), transparent);
+    mask-composite: intersect;
+  }
   .steps { display: grid; gap: var(--spacing-gap-small-medium); grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
   .steps h3 { margin: var(--spacing-gap-small-medium) 0 var(--spacing-gap-small); color: var(--fg); font-family: var(--body); font-size: 17px; letter-spacing: 0; text-transform: none; font-weight: 600; }
   .steps p { margin: 0; color: var(--fg-2); font-size: 15px; }
@@ -78,3 +88,15 @@ const illustrations = count(import.meta.glob('../../../assets/illustrations/*.sv
   .foundations .comp-name { font-weight: 600; color: var(--fg); }
   .foundations .comp-sum { color: var(--fg-3); font-size: 14px; line-height: 1.45; }
 </style>
+
+<script>
+  import { mountPaper } from '../../../src/effects/paper'
+  const hero = document.querySelector<HTMLElement>('[data-paper]')
+  const canvas = hero?.querySelector<HTMLCanvasElement>('.paper')
+  // The viewport's width without its scrollbar (100vw counts it), so the
+  // paper spans the page and never makes it scroll sideways.
+  const fit = () => document.documentElement.style.setProperty('--page-w', `${document.documentElement.clientWidth}px`)
+  fit()
+  addEventListener('resize', fit)
+  if (hero && canvas) mountPaper(canvas, { area: hero, buttons: hero.querySelectorAll('.rost-button') })
+</script>
