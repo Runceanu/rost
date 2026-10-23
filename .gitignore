@@ -9,7 +9,6 @@ node_modules/
 !.env.example
 STATUS.md
 assets/private/
-baseline/thumbs/
 baseline/testimonials-pics/
 test-results/
 .claude/

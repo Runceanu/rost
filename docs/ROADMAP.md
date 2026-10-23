@@ -15,13 +15,18 @@ The portfolio site's raw hex dropped from 230 to 99 without me touching the site
 
 On 2026-10-20 the contracts became the source. The import was finished: 22 contracts and 192 screenshots from Figma (every variant, the 17 icons and the 24 illustrations). `bin/freeze.mjs` turned all 122 suggestions into tokens (every one of them a token that already existed) and stamped each contract with the date. The Figma read skips them now, and I won't edit Figma to match. If I ever need Figma again for one component, `--unfreeze` is there, on purpose.
 
+On 2026-10-23 I edited Figma for the first time since the freeze, through Figma's own write connector, to bring it in line with Rost:
+
+- Projects' hovered details were stuck on #d3d9d5 although their variable says #ededed. They're rebound, and the test passes.
+- Testimonials' sample quote is "This is where the testimonial goes", so the test compares it again.
+- Thumbs' sample client is "Client", so `baseline/thumbs/` is public now and nothing is masked.
+- The Button set (20:14) is just "button". The label-only set had already gone.
+- Hero Media is a component in the portfolio file (793:2345): 1440 by 630, the 16px frame, the 24px corners, both surfaces bound to the kit's variables, and two empty slots, `media` and `content`.
+- TestimonialPicture has a new 56px component with an image slot (438:72), next to the old set.
+
 Still open from Figma:
 
-- Rename the sample client in Thumbs to "Client" and capture it again, so `baseline/thumbs/` can be public. Until then the visual test leaves the name out of the comparison. `baseline/testimonials-pics/` stays private for good (real people's photos).
-- Make Hero Media a component in the portfolio file (245:2900): 1440 by 630, the 16px frame, the 24px corners and the #171717 surface, with the media as an empty slot. Then I capture it and compare the frame.
-- Keep one Button set: 20:14, with its icon slot. The label-only set at 39:38 is the same button and can go.
-- Replace TestimonialPicture's eight sample photos (144:493) with one 56px component whose image is a slot, and give Testimonials' picture slot that, empty. Then `baseline/testimonials-pics/` has nothing private left.
-- Testimonials' sample quote says "This is where the testimonials comes". Rost says "This is where the testimonial goes". Change the `testimonial` property's default on the set (node 144:67) and capture the open variants again; until then the test leaves the quote out.
+- The old TestimonialPicture set (144:493), eight photos of real people, waits for my yes before it's deleted. Until then `baseline/testimonials-pics/` stays private.
 - The Menu effect's blur. I took 12px from the nav, not from the "Menu" style, so that contract is still a draft.
 - A few values have no token and no reason yet. They're at the bottom of [Token coverage](TOKENS.md).
 
@@ -37,7 +42,7 @@ Fifteen components so far, all built from their contracts and checked against Fi
 - **Badge**, all 8 variants. Figma gave it a small size since August: just the coloured dot. The dot in front of the label on the medium size is optional now.
 - **Thumbs**, all 6 states. It's the first one with hover, pressed and focus, so the visual test now forces those through Chrome's DevTools protocol. The "Coming soon" pill on a disabled card is the Badge.
 - **Divider, Tag, Chip, Button, IconButton, Toggle.** 61 variants, all matching except Chip Pressed (2.62% against the 2.5% line: arc anti-aliasing, and text that sits about a pixel higher in Chrome).
-- **Carousel, Projects, Testimonials, Menu.** 26 variants, all matching except Projects Hover (see below). Testimonials is a disclosure: its header is the button, so the contract says which part its focus and disabled states come from (`stateSelectors`).
+- **Carousel, Projects, Testimonials, Menu.** 26 variants, all matching. Testimonials is a disclosure: its header is the button, so the contract says which part its focus and disabled states come from (`stateSelectors`).
 - **Button** is PillButton's set with the icon made optional. Figma has the same button twice (20:14 with an icon slot, 39:38 without), so on 2026-10-23 I made them one.
 - **Input**, all 14 variants. A press anywhere in the field puts the caret in it, since the empty input is 0px tall under its label. The clear button is Rost's IconButton.
 - **TestimonialPicture.** The photo is a slot. Figma's eight variants are eight real people, so the test masks the photo and only the 56px frame is compared, and the site shows landscapes instead.
@@ -48,12 +53,12 @@ Building them turned up four things to fix:
 
 - **The parser took the wrong branch.** Where Figma guards a layer per state, it kept Default's values for every state. Toggle's off side said hover, pressed and disabled all look like Default. The pixels and the raw read say otherwise, so I fixed Toggle by hand. Projects and Menu had the same problem, and Carousel had lost its description line. Each one now reads its values from its own branch of the Figma read. Input had it too: read again on 2026-10-23, every variant now comes from its own branch.
 - **Some Figma reads were never reads.** Carousel's Default came back as a Code Connect prompt and was saved as if it were code. Its values came from the other states' reads, which all carry Default's branch. Input's icons were never saved before their links expired. They're saved now.
-- **Figma's code and Figma's render disagree, twice.** Menu's description renders at 14px in four states while the code says 16px, and Projects' hovered details render #d3d9d5 while the code says #ededed. Both look like variable modes on those frames. I followed the render for Menu, where it matches a token exactly. For Projects Hover I kept #ededed, the same as Thumbs and Carousel, and I'm fixing the frame in Figma. Its test fails until that screenshot is captured again.
+- **Figma's code and Figma's render disagree, twice.** Menu's description renders at 14px in four states while the code says 16px, and Projects' hovered details render #d3d9d5 while the code says #ededed. Both look like variable modes on those frames. I followed the render for Menu, where it matches a token exactly. For Projects Hover I kept #ededed, the same as Thumbs and Carousel. The frame turned out to hold a stale copy of the colour, and on 2026-10-23 I rebound it in Figma; it matches now.
 - **Text sat about a pixel higher in Chrome than in Figma.** General Sans' metrics (ascent 1010, descent 240, line gap 100) get split differently. Since 2026-10-23 Rost ships its own `@font-face` (`tokens/fonts.css`) with `ascent-override: 106%` and `descent-override: 28%`, measured across every built component. The share of pixels that differ from Figma halved, and the accounting app and the portfolio site use the same three lines.
 
 Next, one at a time on the same setup:
 
-- **Hero Media.** In code since 2026-10-23, with two slots: the artwork behind and what sits on top. The artwork pins itself, as on the portfolio site. It's untested until Figma has it as a component (see the Figma list).
+- **Hero Media.** In code since 2026-10-23, with two slots: the artwork behind and what sits on top. The artwork pins itself, as on the portfolio site. Its frame matches Figma's component exactly.
 - **The portfolio site onto Rost's components**, with `npm run add`. It copies a component, what it imports, its contract and the check into an app, the way shadcn does, and updates them on a second run. The accounting app uses it for Badge, InlineBanner, Divider and Button since 2026-10-22. A real `npx rost add` waits until Rost is published to npm.
 
 ## Now: make the contracts something I can trust
