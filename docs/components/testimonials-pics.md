@@ -20,11 +20,13 @@
 
 | Prop | Type | Values | Default |
 |---|---|---|---|
+| `picture` | slot |  |  |
 | `people` | enum | `Person 1` `Person 2` `Person 3` `Person 4` `Person 5` `Person 6` `Person 7` `Person 8` | `Person 1` |
 
 ## Anatomy
 
-- `root`
+- `root`: A 56px square. Testimonials rounds it.
+- `image`: The photo, cropped to fill the square.
 
 ## Tokens
 

@@ -1,0 +1,26 @@
+/* General Sans, placed where Figma places it.
+ *
+ * Chrome and Figma split General Sans' vertical metrics differently (ascent
+ * 1010, descent 240, line gap 100 per 1000), so the same text sat about a
+ * pixel higher in Chrome. These three overrides move it back down. I measured
+ * them with the visual test, across every row of text in every built
+ * component on 2026-10-23. Ascent 105 to 109% with descent 26 to 28% all do
+ * about as well; 106 and 28 sit in the middle. The share of pixels that
+ * differ from Figma went from 1.53% to 0.78%. The line gap makes no
+ * difference once a line height is set, so it's 0.
+ *
+ * The file is Fontshare's (https://www.fontshare.com/fonts/general-sans), served
+ * from their CDN. An app that hosts its own copy of General Sans keeps its own
+ * `@font-face` and adds the same three lines to it. Every weight and the
+ * variable font have the same metrics, so the numbers are the same for all.
+ */
+@font-face {
+  font-family: 'General Sans Variable';
+  src: url('https://cdn.fontshare.com/wf/LHQJ5KSAL7VGAEIDSTEXCCOIUKFLT2I6/GW57XUEG4ZBVMLZZTQZTGYPROITRRQ5W/JA3IZUEMJ2J6WWT2OQVJOAWDXO3YL4YG.woff2') format('woff2');
+  font-weight: 200 700;
+  font-style: normal;
+  font-display: swap;
+  ascent-override: 106%;
+  descent-override: 28%;
+  line-gap-override: 0%;
+}

@@ -6,6 +6,7 @@
   "private": true,
   "exports": {
     "./tokens.css": "./tokens/tokens.css",
+    "./fonts.css": "./tokens/fonts.css",
     "./tokens.json": "./tokens/tokens.json",
     "./contracts/*": "./contracts/*",
     "./registry/*": "./registry/*",

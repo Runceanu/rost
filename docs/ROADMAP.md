@@ -29,7 +29,7 @@ On 2026-10-20 rost.build became a proper site, the way shadcn's is: a homepage, 
 
 ## Now: Rost in code
 
-Fourteen components so far, all built from their contracts and checked against Figma in the visual test:
+Fifteen components so far, all built from their contracts and checked against Figma in the visual test:
 
 - **InlineBanner**, all 8 variants, with Figma's own icons.
 - **Badge**, all 8 variants. Figma gave it a small size since August: just the coloured dot. The dot in front of the label on the medium size is optional now.
@@ -37,6 +37,7 @@ Fourteen components so far, all built from their contracts and checked against F
 - **Divider, Tag, Chip, PillButton, IconButton, Toggle.** 61 variants, all matching except Chip Pressed (2.62% against the 2.5% line: arc anti-aliasing, and text that sits about a pixel higher in Chrome).
 - **Carousel, Projects, Testimonials, Menu.** 26 variants, all matching except Projects Hover (see below). Testimonials is a disclosure: its header is the button, so the contract says which part its focus and disabled states come from (`stateSelectors`).
 - **Input**, all 14 variants. A press anywhere in the field puts the caret in it, since the empty input is 0px tall under its label. The clear button is Rost's IconButton.
+- **TestimonialPicture.** The photo is a slot. Figma's eight variants are eight real people, so the test masks the photo and only the 56px frame is compared, and the site shows landscapes instead.
 
 The effects are in code too, as tokens: Thumb, Menu, Lock frame and Floating each show on the site applied to real components. The Paper effect isn't. It's a canvas animation that lives in runceanu.com, and only its numbers are tokens.
 
@@ -45,12 +46,12 @@ Building them turned up four things to fix:
 - **The parser took the wrong branch.** Where Figma guards a layer per state, it kept Default's values for every state. Toggle's off side said hover, pressed and disabled all look like Default. The pixels and the raw read say otherwise, so I fixed Toggle by hand. Projects and Menu had the same problem, and Carousel had lost its description line. Each one now reads its values from its own branch of the Figma read. Input had it too: read again on 2026-10-23, every variant now comes from its own branch.
 - **Some Figma reads were never reads.** Carousel's Default came back as a Code Connect prompt and was saved as if it were code. Its values came from the other states' reads, which all carry Default's branch. Input's icons were never saved before their links expired. They're saved now.
 - **Figma's code and Figma's render disagree, twice.** Menu's description renders at 14px in four states while the code says 16px, and Projects' hovered details render #d3d9d5 while the code says #ededed. Both look like variable modes on those frames. I followed the render for Menu, where it matches a token exactly. For Projects Hover I kept #ededed, the same as Thumbs and Carousel, and I'm fixing the frame in Figma. Its test fails until that screenshot is captured again.
-- **Text sits about a pixel higher in Chrome than in Figma.** General Sans' metrics (ascent 1010, descent 240, line gap 100) get split differently. An `ascent-override` in the `@font-face` brings it closer, but that changes every app's text, so it's a decision, not a test tweak.
+- **Text sat about a pixel higher in Chrome than in Figma.** General Sans' metrics (ascent 1010, descent 240, line gap 100) get split differently. Since 2026-10-23 Rost ships its own `@font-face` (`tokens/fonts.css`) with `ascent-override: 106%` and `descent-override: 28%`, measured across every built component. The share of pixels that differ from Figma halved, and akount.ing and runceanu.com use the same three lines.
 
 Next, one at a time on the same setup:
 
 - **Button.** Its Figma renders still came back empty on 2026-10-23, so there's nothing to test it against yet.
-- **TestimonialPicture and Hero Media.** One is real people's photos, the other has no Figma render. Both need a decision first.
+- **Hero Media.** No Figma render yet. It'll take its artwork as a slot, and needs something to test against first.
 - **runceanu.com onto Rost's components**, with `npm run add`. It copies a component, what it imports, its contract and the check into an app, the way shadcn does, and updates them on a second run. akount.ing uses it for Badge, InlineBanner, Divider and Button since 2026-10-22. A real `npx rost add` waits until Rost is published to npm.
 
 ## Now: make the contracts something I can trust
