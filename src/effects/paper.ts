@@ -5,7 +5,8 @@
  * hovering one of the hero's buttons raises a lens under it.
  * With `sketches`, a kit component is drawn on the paper from time to time,
  * the way runceanu.com does it: the pen runs along the dot rows, holds, then
- * fades, and the ink bulges under the lens like the dots. runceanu.com's
+ * fades, and the ink bulges under the lens like the dots. The next one
+ * starts 2s after. runceanu.com's
  * ripple with its availability dot stays there.
  * Built from contracts/effect-paper.contract.yaml.
  *
@@ -32,8 +33,9 @@ const HALO = { r: 240, gain: 1.3 }
 const PRESS = { r: 330, gain: 1.7 }
 // Sketches: one component's whole life (draw, hold, fade), the share of it
 // spent drawing, and the pause before the next. runceanu.com takes 5.2s and
-// waits 7 to 8; here they come sooner and draw quicker.
-const SKETCH = { life: 3200, draw: 0.32, first: 500, gap: [2000, 3000] as const }
+// waits 7 to 8; here they draw quicker, and the next starts 2s after this
+// one has faded from view (the fade is the last fifth of its life).
+const SKETCH = { life: 3200, draw: 0.32, fade: 0.2, first: 500, gap: 2000 }
 
 type Pt = [number, number]
 const seg = (pts: Pt[], x1: number, y1: number, x2: number, y2: number, step = 5) => {
@@ -181,6 +183,9 @@ export function mountPaper(canvas: HTMLCanvasElement, options: PaperOptions = {}
       return { pts, len, start }
     })
     sketch = { t0: performance.now(), total, polys }
+    // The pause counts from when the ink starts to fade, so the gap you see
+    // between one sketch going and the next appearing is the 2s.
+    nextAt = sketch.t0 + SKETCH.life * (1 - SKETCH.fade) + SKETCH.gap
     wake()
   }
 
@@ -188,10 +193,10 @@ export function mountPaper(canvas: HTMLCanvasElement, options: PaperOptions = {}
   // the lens, so the ink bulges under the cursor like the paper.
   function drawSketch(now: number) {
     const u = (now - sketch!.t0) / SKETCH.life
-    if (u >= 1) { sketch = null; nextAt = now + SKETCH.gap[0] + Math.random() * (SKETCH.gap[1] - SKETCH.gap[0]); return }
+    if (u >= 1) { sketch = null; return }
     const d = Math.min(1, u / SKETCH.draw)
     const budget = sketch!.total * d * d * (3 - 2 * d)
-    const fade = 1 - Math.max(0, (u - 0.8) / 0.2)
+    const fade = 1 - Math.max(0, (u - (1 - SKETCH.fade)) / SKETCH.fade)
     const warp = (x: number, y: number): Pt => { const [e, fx, fy] = field(x, y); return [x + fx * PUSH * e, y + fy * PUSH * e] }
     ctx!.save()
     ctx!.strokeStyle = `rgba(${PEN[0]},${PEN[1]},${PEN[2]},${PEN_A * fade})`
@@ -281,7 +286,7 @@ export function mountPaper(canvas: HTMLCanvasElement, options: PaperOptions = {}
   const io = new IntersectionObserver(([e]) => { visible = !!e?.isIntersecting })
   io.observe(canvas)
   const timer = options.sketches && !reduce
-    ? window.setInterval(() => { if (!sketch && visible && w > 0 && performance.now() >= nextAt) startSketch() }, 200)
+    ? window.setInterval(() => { if (!sketch && visible && w > 0 && performance.now() >= nextAt) startSketch() }, 50)
     : 0
   // Reduced motion: the paper stays still and flat.
   if (!reduce) {
