@@ -6,11 +6,11 @@ Every value in every contract, sorted by why it has a token or doesn't. `npm run
 
 | | Values | Share | Meaning |
 |---|---|---|---|
-| Has a token | 1390 | 63% | Uses a token, and the check tests it. |
+| Has a token | 1142 | 63% | Uses a token, and the check tests it. |
 | Token suggested | 0 | 0% | A token I want that doesn't exist yet. The freeze turned every other suggestion into a token. |
-| How Figma builds it | 619 | 28% | How Figma builds the layer (position, inset, which sides get a stroke). Nothing to tokenise. |
-| Figma frame size | 110 | 5% | A root size that is just the Figma frame. Written down, not checked. |
-| No token, on purpose | 47 | 2% | Plain on purpose, and the contract says why. |
+| How Figma builds it | 495 | 27% | How Figma builds the layer (position, inset, which sides get a stroke). Nothing to tokenise. |
+| Figma frame size | 110 | 6% | A root size that is just the Figma frame. Written down, not checked. |
+| No token, on purpose | 47 | 3% | Plain on purpose, and the contract says why. |
 | Open gap | 26 | 1% | No token and no reason. Each one needs a decision from me. |
 
 ## By contract
@@ -18,7 +18,7 @@ Every value in every contract, sorted by why it has a token or doesn't. `npm run
 | | Has a token | Token suggested | How Figma builds it | Figma frame size | No token, on purpose | Open gap |
 |---|---:|---:|---:|---:|---:|---:|
 | [Badge](components/badge.md) | 85 | · | 63 | · | · | · |
-| [Button](components/button.md) | 248 | · | 124 | · | · | · |
+| [Button](components/button.md) | 145 | · | 59 | 12 | 5 | 1 |
 | [Carousel](components/carousel.md) | 43 | · | 27 | 9 | 2 | 1 |
 | [Chip](components/chips.md) | 32 | · | 16 | 8 | · | 1 |
 | [Divider](components/divider.md) | 2 | · | 2 | 2 | · | · |
@@ -31,7 +31,6 @@ Every value in every contract, sorted by why it has a token or doesn't. `npm run
 | [Menu effect](components/effect-menu.md) | 1 | · | · | · | · | · |
 | [Menu](components/menu.md) | 32 | · | 16 | 6 | · | 1 |
 | [Paper effect](components/effect-paper.md) | 6 | · | · | · | 7 | · |
-| [PillButton](components/pill-button.md) | 145 | · | 59 | 12 | 5 | 1 |
 | [Projects](components/projects.md) | 77 | · | 33 | 8 | 4 | 4 |
 | [Tag](components/tags.md) | 26 | · | 13 | 3 | · | 1 |
 | [TestimonialPicture](components/testimonials-pics.md) | 2 | · | 8 | 1 | · | · |
@@ -46,6 +45,12 @@ None. The freeze on 2026-10-20 turned all 122 suggestions into tokens.
 
 ## No token, on purpose
 
+- [Button](components/button.md) `root.box-shadow` = `inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-default-outline)`: Figma's 1px left and top stroke, drawn inside the shape the way Figma draws it. A border would make the button 1px wider. The width and colour are tokens.
+- [Button](components/button.md) `root.box-shadow` = `inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-hover-outline)`: Figma's 1px left and top stroke, drawn inside the shape the way Figma draws it. A border would make the button 1px wider. The width and colour are tokens.
+- [Button](components/button.md) `root.box-shadow` = `inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-focus-outline)`: Figma's 1px left and top stroke, drawn inside the shape the way Figma draws it. A border would make the button 1px wider. The width and colour are tokens.
+- [Button](components/button.md) `focus-ring.inset` = `calc(-1 * var(--spacing-gap-2xsmall))`: Composed from a token: spacing/gap/2xsmall out, all round. Figma said -5px on the left and top, to make up for the stroke, which takes no space here.
+- [Button](components/button.md) `root.box-shadow` = `inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-pressed-outline)`: Figma's 1px left and top stroke, drawn inside the shape the way Figma draws it. A border would make the button 1px wider. The width and colour are tokens.
+- [Button](components/button.md) `root.box-shadow` = `inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-disabled-outline)`: Figma's 1px left and top stroke, drawn inside the shape the way Figma draws it. A border would make the button 1px wider. The width and colour are tokens.
 - [Button](components/button.md) `focus-ring.inset` = `calc(-1 * var(--spacing-gap-2xsmall))`: Composed from a token: the ring sits spacing/gap/2xsmall outside the element.
 - [Button](components/button.md) `focus-ring.inset` = `calc(-1 * var(--spacing-gap-2xsmall))`: Composed from a token: the ring sits spacing/gap/2xsmall outside the element.
 - [Button](components/button.md) `focus-ring.inset` = `calc(-1 * var(--spacing-gap-2xsmall))`: Composed from a token: the ring sits spacing/gap/2xsmall outside the element.
@@ -77,15 +82,6 @@ None. The freeze on 2026-10-20 turned all 122 suggestions into tokens.
 - [Paper effect](components/effect-paper.md) `lens.halo` = `radius 240px, power 1.3`: Tuned by eye: how wide the lens is, and how fast it fades. Only the paper uses it.
 - [Paper effect](components/effect-paper.md) `lens.press` = `radius 330px, power 1.7`: Tuned by eye: how wide the lens is, and how fast it fades. Only the paper uses it.
 - [Paper effect](components/effect-paper.md) `pen.cadence` = `7-8s between sketches`: How often the pen draws. There are no motion tokens yet.
-- [PillButton](components/pill-button.md) `root.box-shadow` = `inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-default-outline)`: Figma's 1px left and top stroke, drawn inside the shape the way Figma draws it. A border would make the button 1px wider. The width and colour are tokens.
-- [PillButton](components/pill-button.md) `root.box-shadow` = `inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-hover-outline)`: Figma's 1px left and top stroke, drawn inside the shape the way Figma draws it. A border would make the button 1px wider. The width and colour are tokens.
-- [PillButton](components/pill-button.md) `root.box-shadow` = `inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-focus-outline)`: Figma's 1px left and top stroke, drawn inside the shape the way Figma draws it. A border would make the button 1px wider. The width and colour are tokens.
-- [PillButton](components/pill-button.md) `focus-ring.inset` = `calc(-1 * var(--spacing-gap-2xsmall))`: Composed from a token: spacing/gap/2xsmall out, all round. Figma said -5px on the left and top, to make up for the stroke, which takes no space here.
-- [PillButton](components/pill-button.md) `root.box-shadow` = `inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-pressed-outline)`: Figma's 1px left and top stroke, drawn inside the shape the way Figma draws it. A border would make the button 1px wider. The width and colour are tokens.
-- [PillButton](components/pill-button.md) `root.box-shadow` = `inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-disabled-outline)`: Figma's 1px left and top stroke, drawn inside the shape the way Figma draws it. A border would make the button 1px wider. The width and colour are tokens.
-- [PillButton](components/pill-button.md) `focus-ring.inset` = `calc(-1 * var(--spacing-gap-2xsmall))`: Composed from a token: the ring sits spacing/gap/2xsmall outside the element.
-- [PillButton](components/pill-button.md) `focus-ring.inset` = `calc(-1 * var(--spacing-gap-2xsmall))`: Composed from a token: the ring sits spacing/gap/2xsmall outside the element.
-- [PillButton](components/pill-button.md) `focus-ring.inset` = `calc(-1 * var(--spacing-gap-2xsmall))`: Composed from a token: the ring sits spacing/gap/2xsmall outside the element.
 - [Projects](components/projects.md) `icons-lock.mask` = `url(./icon-lock.svg) center / contain no-repeat`: The icon file itself.
 - [Projects](components/projects.md) `dot.width` = `3px`: The dot's own size inside the icon.
 - [Projects](components/projects.md) `dot.height` = `3px`: The dot's own size inside the icon.
@@ -116,6 +112,7 @@ None. The freeze on 2026-10-20 turned all 122 suggestions into tokens.
 
 ## Open gaps
 
+- [Button](components/button.md) `focus-ring.border-style` = `solid`
 - [Carousel](components/carousel.md) `focus-ring.border-style` = `solid`
 - [Chip](components/chips.md) `focus-ring.border-style` = `solid`
 - [IconButton](components/icon-button.md) `glyph.background` = `currentColor`
@@ -124,7 +121,6 @@ None. The freeze on 2026-10-20 turned all 122 suggestions into tokens.
 - [Input](components/input.md) `clear-glyph.background` = `currentColor`
 - [Input](components/input.md) `focus-ring.border-style` = `solid`
 - [Menu](components/menu.md) `focus-ring.border-style` = `solid`
-- [PillButton](components/pill-button.md) `focus-ring.border-style` = `solid`
 - [Projects](components/projects.md) `outline.left` = `0`
 - [Projects](components/projects.md) `outline.right` = `0`
 - [Projects](components/projects.md) `outline.bottom` = `0`

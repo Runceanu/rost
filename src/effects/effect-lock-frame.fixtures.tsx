@@ -1,4 +1,4 @@
-import { PillButton } from '../components/pill-button/PillButton'
+import { Button } from '../components/button/Button'
 import iconLock from '../components/thumbs/icon-lock.svg?url'
 
 export const fixtures = []
@@ -11,7 +11,7 @@ export const usage = `.locked .thumb {
 /** What the effect's card on rost.build shows: a button blurred by the effect, with the lock on top, as on a locked project. */
 export const preview = (
   <span style={{ position: 'relative', display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}>
-    <span style={{ display: 'inline-flex', filter: 'var(--effect-lock-frame)' }}><PillButton as="span">Send invoice</PillButton></span>
+    <span style={{ display: 'inline-flex', filter: 'var(--effect-lock-frame)' }}><Button as="span">Send invoice</Button></span>
     <span style={{ position: 'absolute', display: 'flex', padding: 'var(--spacing-gap-small)', borderRadius: 'var(--spacing-radius-medium)', background: 'var(--non-interactive-background-positive-base)' }}>
       <span role="img" aria-label="Locked" style={{
         display: 'block', width: 'var(--spacing-size-small)', height: 'var(--spacing-size-small)', background: 'var(--non-interactive-foreground-contrast)',

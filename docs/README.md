@@ -12,7 +12,7 @@ Rost started as a design system for my own needs and grew into a product of its 
 | [Token coverage](TOKENS.md) | Why each value has a token or doesn't |
 | [Roadmap](ROADMAP.md) | What I'm doing next |
 
-**22** contracts, **0** stable. **21** have guidance, and I've signed off **21** of those.
+**21** contracts, **0** stable. **20** have guidance, and I've signed off **20** of those.
 
 ## Catalogue
 
@@ -21,7 +21,7 @@ Rost started as a design system for my own needs and grew into a product of its 
 | | Summary | Contract | Guidance | Used in |
 |---|---|---|---|---|
 | [Badge](components/badge.md) | A small status marker: a coloured dot on its own, or an outlined label. The colour sits in the dot and the outline, never in the text. | `review` | `agreed` | The portfolio site, the accounting app |
-| [Button](components/button.md) | A 48px button with just a label, in four levels of emphasis. | `review` | `agreed` | · |
+| [Button](components/button.md) | A 48px button with a label and, if it helps, an icon in front. In four levels of emphasis. | `review` | `agreed` | The accounting app |
 | [Carousel](components/carousel.md) | A card in the home page carousel: a number, a title and a short description. | `review` | `agreed` | · |
 | [Chip](components/chips.md) | A small outlined label you can click, for filters and quick choices. | `review` | `agreed` | The portfolio site |
 | [Divider](components/divider.md) | A thin line between things. | `review` | `agreed` | The accounting app |
@@ -29,7 +29,6 @@ Rost started as a design system for my own needs and grew into a product of its 
 | [InlineBanner](components/inline-banner.md) | A filled status pill with an icon and a label, in four statuses and two sizes. | `review` | `agreed` | The accounting app |
 | [Input](components/input.md) | A 56px text field with a floating label, an optional lock icon, a line of help text and an error state. | `review` | `agreed` | The portfolio site, the accounting app |
 | [Menu](components/menu.md) | A navigation item: a label with a line underneath, used in the main nav. | `review` | `agreed` | · |
-| [PillButton](components/pill-button.md) | A 48px button with an icon in front of the label. My main call to action. | `review` | `agreed` | The accounting app |
 | [Projects](components/projects.md) | One row in the project list: number, name, and industry, type and period on the right. | `review` | `agreed` | · |
 | [Tag](components/tags.md) | A compact 20px label with small corners, for what a piece of content is about. | `review` | `agreed` | · |
 | [TestimonialPicture](components/testimonials-pics.md) | The photo of the person behind a testimonial. | `review` | · | · |
@@ -67,5 +66,6 @@ What needs attention. It's built from the contracts, so it's only as fresh as th
 
 ### Differences nobody has taken to design yet
 
+- [Button](components/button.md): Figma has Button twice: the set at 20:14 (PillButton, with a `leading` icon slot that's off by default) and the one at 39:38 (Button, label only)
 - [Hero Media](components/hero-media.md): The artwork is dimmed with `opacity/medium` (0.48) on a #171717 frame
 - [Toggle](components/toggle.md) in the accounting app: Each toggle is a `role="radio"` inside a `ToggleGroup`

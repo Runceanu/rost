@@ -6,7 +6,7 @@ kind: component
 status: review
 summary: A round button with only an icon, including the Project type used on case-study thumbnails.
 category: actions
-related: [ button, pill-button, toggle ]
+related: [ button, toggle ]
 source:
   tool: figma
   fileKey: 1Zy0wiWKXQAvsfDBX3KR0d
@@ -432,7 +432,7 @@ guidance:
     - |-
       `Project` on project thumbnails and case-study cards, sitting on top of imagery.
   avoid:
-    - Any icon that isn't instantly obvious. Use **PillButton**, an icon isn't a label.
+    - Any icon that isn't instantly obvious. Use **Button** with a label, an icon isn't one.
     - On/off or one-of-many choices. That's **Toggle**. IconButton does something, it doesn't remember anything.
   behaviour: |-
     `type` is `Primary`, `Secondary`, `Tertiary` or `Project`. States come from the browser like every other action. Don't shrink it below 40px, fingers need the room.

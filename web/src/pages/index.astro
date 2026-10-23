@@ -1,5 +1,6 @@
 ---
 import Base from '../layouts/Base.astro'
+import { Button } from '../../../src/components/button/Button'
 import ComponentGrid from '../components/ComponentGrid.astro'
 import { kit, built, tokens, GITHUB } from '../lib/kit'
 
@@ -15,8 +16,8 @@ const illustrations = count(import.meta.glob('../../../assets/illustrations/*.sv
     <p class="lede">Rost started as a design system for my own needs and grew into a product of its own. Today it serves products across different industries.</p>
     <p class="muted"><i lang="ro">Rost</i> is the Romanian word for purpose or order, in the sense that something is where it belongs.</p>
     <div class="btns">
-      <a class="btn btn--primary" href="/components/">Browse components</a>
-      <a class="btn" href={GITHUB} target="_blank" rel="noreferrer">GitHub</a>
+      <Button href="/components/">Browse components</Button>
+      <Button variant="secondary" href={GITHUB} target="_blank" rel="noreferrer">GitHub</Button>
     </div>
     <div class="count">
       <div><b>{kit.length}</b><span>contracts</span></div>
