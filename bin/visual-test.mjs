@@ -184,14 +184,18 @@ for (const id of ids) {
   await page.evaluate(() => document.fonts.ready)
   // Figma rounds a component that hugs its content up to whole pixels: Chip
   // is 43px there and 42.4px in Chrome, with its text centred in the extra.
-  // Do the same here, on the component's own root, before comparing.
-  await page.evaluate((cls) => {
-    for (const el of document.querySelectorAll(`[data-node] .${cls}, [data-node] > .${cls}`)) {
+  // It does that to every instance inside too (each Tab in a Tabs bar), so
+  // round the innermost Rost roots first, then the ones around them.
+  await page.evaluate(() => {
+    const roots = [...document.querySelectorAll('[data-node] [class^="rost-"], [data-node] [class*=" rost-"]')]
+      .filter((el) => [...el.classList].some((c) => /^rost-[a-z0-9-]+$/.test(c)))
+    const depth = (el) => { let d = 0; for (let p = el; p; p = p.parentElement) d++; return d }
+    for (const el of roots.sort((a, b) => depth(b) - depth(a))) {
       const r = el.getBoundingClientRect()
       if (!Number.isInteger(r.width)) el.style.width = `${Math.ceil(r.width)}px`
       if (!Number.isInteger(r.height)) el.style.height = `${Math.ceil(r.height)}px`
     }
-  }, `rost-${id}`)
+  })
   await page.waitForTimeout(SETTLE_MS)
 
   // Forced states go through the DevTools protocol, on the component's root.

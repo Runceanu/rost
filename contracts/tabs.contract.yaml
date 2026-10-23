@@ -1,0 +1,39 @@
+# yaml-language-server: $schema=../schema/component-contract.schema.json
+schemaVersion: 2
+id: tabs
+name: Tabs
+kind: component
+status: review
+summary: A row of tabs on a 1px line. One is selected, and its panel shows below.
+category: navigation
+related: [ tab, divider ]
+source:
+  tool: figma
+  fileKey: 1Zy0wiWKXQAvsfDBX3KR0d
+  nodeId: "442:448"
+  url: https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=442-448
+  extractedAt: "2026-10-23"
+  extractedBy: mcp
+props:
+  tabs: { type: slot, notes: "The Tab components. In React, the children." }
+elements:
+  root:
+    notes: "The `role=\"tablist\"`. The tabs sit side by side, with nothing between them."
+    styles:
+      display: { value: flex, assert: false }
+      align-items: { value: flex-start }
+      gap: { value: 0px, assert: false }
+      box-shadow:
+        value: inset 0 calc(-1 * var(--spacing-outline-small)) 0 0 var(--tabs-line)
+        untokenised: "Figma's 1px line along the bottom, drawn inside so the row stays 40px tall and the selected tab's underline sits on top of it. The width and colour are tokens (spacing/outline/small, tabs/line)."
+guidance:
+  status: proposed
+  use:
+    - Above the panels it switches between.
+  avoid:
+    - More tabs than fit on one line. Fewer, or a menu.
+  behaviour: |-
+    One tab is selected at a time. Changing it swaps the panel below; nothing else on the page moves.
+  accessibility:
+    element: "`role=\"tablist\"` with an `aria-label`, holding the tabs. Each panel is a `role=\"tabpanel\"` labelled by its tab."
+  content: Tabs that belong together, in the order people need them.

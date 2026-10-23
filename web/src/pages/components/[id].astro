@@ -6,6 +6,8 @@ import { kit, byId, title, inCode, guidanceHtml, componentSource, sourceLink, to
 import { shotsFor } from '../../lib/shots'
 import { Badge } from '../../../../src/components/badge/Badge'
 import { Tag } from '../../../../src/components/tags/Tag'
+import { Tabs } from '../../../../src/components/tabs/Tabs'
+import { Tab } from '../../../../src/components/tab/Tab'
 
 export function getStaticPaths() {
   return kit.map((e) => ({ params: { id: e.id } }))
@@ -46,10 +48,10 @@ const props = Object.entries(c.props ?? {}) as [string, any][]
 
   {built ? (
     <section class="tabs" data-tabs>
-      <div class="tab-bar" role="tablist" aria-label={`${title(e)} preview and code`}>
-        <button type="button" role="tab" id="tab-preview" aria-controls="panel-preview" aria-selected="true" tabindex="0">Preview</button>
-        <button type="button" role="tab" id="tab-code" aria-controls="panel-code" aria-selected="false" tabindex="-1">Code</button>
-      </div>
+      <Tabs className="tab-bar" aria-label={`${title(e)} preview and code`}>
+        <Tab selected id="tab-preview" aria-controls="panel-preview">Preview</Tab>
+        <Tab id="tab-code" aria-controls="panel-code">Code</Tab>
+      </Tabs>
       <div class="tab-panel" role="tabpanel" id="panel-preview" aria-labelledby="tab-preview" tabindex="0"><div class="stage"><Fixtures id={id} /></div></div>
       <div class="tab-panel" role="tabpanel" id="panel-code" aria-labelledby="tab-code" tabindex="0" hidden>
         {usage && <Code code={usage} lang={e.kind === 'effect' ? 'css' : 'tsx'} theme="vesper" />}
@@ -136,6 +138,7 @@ const props = Object.entries(c.props ?? {}) as [string, any][]
       for (const t of tabs) {
         const on = t === tab
         t.setAttribute('aria-selected', String(on))
+        t.classList.toggle('rost-tab--selected', on)
         t.tabIndex = on ? 0 : -1
         document.getElementById(t.getAttribute('aria-controls')!)!.hidden = !on
       }
@@ -156,10 +159,7 @@ const props = Object.entries(c.props ?? {}) as [string, any][]
 
 <style>
   .tabs { margin: var(--spacing-gap-small) 0; }
-  /* Plain tabs until Rost has a Tabs component (it isn't designed in Figma yet). */
-  .tab-bar { display: flex; gap: var(--spacing-gap-2xsmall); margin-bottom: var(--spacing-gap-small-medium); }
-  .tab-bar button { font: inherit; font-size: 14px; color: var(--fg-3); background: none; border: 1px solid transparent; border-radius: var(--spacing-radius-full); padding: var(--spacing-gap-xsmall) var(--spacing-gap-small-medium); cursor: pointer; }
-  .tab-bar button[aria-selected='true'] { color: var(--fg); background: var(--surface); border-color: var(--line); }
+  :global(.tab-bar) { margin-bottom: var(--spacing-gap-small-medium); }
   .stage { background: var(--ground); border: 1px solid var(--line); border-radius: var(--spacing-radius-large); padding: var(--spacing-gap-xlarge); overflow-x: auto; }
   @media (max-width: 520px) { .stage { padding: var(--spacing-gap-medium-large); } }
   .source { margin-top: var(--spacing-gap-small-medium); }
