@@ -18,20 +18,19 @@ const b = 'rost-toggle'
 
 /**
  * A button that stays on or off. On its own it's `aria-pressed`. In a group
- * of options, pass `role="radio"` and it's `aria-checked`; as a tab,
- * `role="tab"` and it's `aria-selected`. Built from
+ * of options, pass `role="radio"` and `aria-checked` instead. Built from
  * contracts/toggle.contract.yaml.
  */
 export function Toggle({ selected = false, icon, children, className, as = 'button', disabled, type = 'button', ...rest }: ToggleProps) {
   const labelled = children !== undefined && children !== null && children !== false
-  const state = rest.role === 'radio' ? 'aria-checked' : rest.role === 'tab' ? 'aria-selected' : 'aria-pressed'
+  const radio = rest.role === 'radio'
   const Root = as
   const own = as === 'button' ? { type, disabled } : { 'aria-disabled': disabled || undefined }
   return (
     <Root
       {...own}
       className={[b, selected && `${b}--selected`, labelled && `${b}--labelled`, className].filter(Boolean).join(' ')}
-      {...{ [state]: selected }}
+      {...(radio ? { 'aria-checked': selected } : { 'aria-pressed': selected })}
       {...(rest as object)}
     >
       <span className={`${b}__background`} />
