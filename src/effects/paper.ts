@@ -164,10 +164,12 @@ export function mountPaper(canvas: HTMLCanvasElement, options: PaperOptions = {}
     if (i === last) i = (i + 1) % SHAPES.length
     last = i
     const S = SHAPES[i]!
-    // Somewhere in the middle of the paper, snapped onto the dots.
+    // Near the middle, where the dots are solid even when the paper is faded
+    // into a disc, snapped onto the dots.
     const x0 = (w % GAP) / 2 || 0, y0 = GAP / 2
-    const tx = w / 2 + (Math.random() - 0.5) * Math.max(0, w - S.w * GAP - 4 * GAP) * 0.6 - (S.w * GAP) / 2
-    const ty = h / 2 + (Math.random() - 0.5) * Math.max(0, h - S.h * GAP - 4 * GAP) * 0.6 - (S.h * GAP) / 2
+    const room = Math.min(w, h) * 0.4
+    const tx = w / 2 + (Math.random() - 0.5) * Math.max(0, room - S.w * GAP) - (S.w * GAP) / 2
+    const ty = h / 2 + (Math.random() - 0.5) * Math.max(0, room - S.h * GAP) - (S.h * GAP) / 2
     const X = x0 + Math.round((tx - x0) / GAP) * GAP, Y = y0 + Math.round((ty - y0) / GAP) * GAP
     let total = 0
     const polys = S.build(GAP).map((raw) => {
