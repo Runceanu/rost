@@ -1,11 +1,11 @@
 import type { AnchorHTMLAttributes, ButtonHTMLAttributes, ReactNode } from 'react'
-import './pill-button.css'
+import './button.css'
 
-export type PillButtonVariant = 'primary' | 'secondary' | 'tertiary' | 'borderless'
+export type ButtonVariant = 'primary' | 'secondary' | 'tertiary' | 'borderless'
 
 interface Common {
   /** The look: Figma's `type` axis. */
-  readonly variant?: PillButtonVariant
+  readonly variant?: ButtonVariant
   /** Optional, in front of the label: a 20px icon. Figma's `leading` slot, off by default. */
   readonly icon?: ReactNode
   readonly children?: ReactNode
@@ -13,18 +13,18 @@ interface Common {
   /** `span` draws it without the button or link, for a preview inside something that's already one. */
   readonly as?: 'span'
 }
-export type PillButtonProps =
+export type ButtonProps =
   | (Common & Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'type'> & { readonly href?: undefined; readonly type?: 'button' | 'submit' | 'reset' })
   | (Common & AnchorHTMLAttributes<HTMLAnchorElement> & { readonly href: string; readonly disabled?: boolean })
 
-const b = 'rost-pill-button'
+const b = 'rost-button'
 
 /**
- * A rounded button with a label and an optional icon. A `<button>`, or an
+ * A 48px button with a label and an optional icon in front. A `<button>`, or an
  * `<a>` when it has an `href`. Hover, press and focus are the browser's.
- * Built from contracts/pill-button.contract.yaml.
+ * Built from contracts/button.contract.yaml.
  */
-export function PillButton(props: PillButtonProps) {
+export function Button(props: ButtonProps) {
   const { variant = 'primary', icon, children, className, as, ...rest } = props
   const cls = [b, `${b}--type-${variant}`, className].filter(Boolean).join(' ')
   const inner = (

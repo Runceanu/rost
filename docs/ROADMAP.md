@@ -18,7 +18,8 @@ On 2026-10-20 the contracts became the source. The import was finished: 22 contr
 Still open from Figma:
 
 - Rename the sample client in Thumbs to "Client" and capture it again, so `baseline/thumbs/` can be public. Until then the visual test leaves the name out of the comparison. `baseline/testimonials-pics/` stays private for good (real people's photos).
-- Button's 20 renders came back empty. Capture them again next time Figma is open on the UI Kit.
+- Keep one Button set: 20:14, with its icon slot. The label-only set at 39:38 is the same button and can go.
+- Replace TestimonialPicture's eight sample photos (144:493) with one 56px component whose image is a slot, and give Testimonials' picture slot that, empty. Then `baseline/testimonials-pics/` has nothing private left.
 - Testimonials' sample quote says "This is where the testimonials comes". Rost says "This is where the testimonial goes". Change the `testimonial` property's default on the set (node 144:67) and capture the open variants again; until then the test leaves the quote out.
 - The Menu effect's blur. I took 12px from the nav, not from the "Menu" style, so that contract is still a draft.
 - A few values have no token and no reason yet. They're at the bottom of [Token coverage](TOKENS.md).
@@ -34,8 +35,9 @@ Fifteen components so far, all built from their contracts and checked against Fi
 - **InlineBanner**, all 8 variants, with Figma's own icons.
 - **Badge**, all 8 variants. Figma gave it a small size since August: just the coloured dot. The dot in front of the label on the medium size is optional now.
 - **Thumbs**, all 6 states. It's the first one with hover, pressed and focus, so the visual test now forces those through Chrome's DevTools protocol. The "Coming soon" pill on a disabled card is the Badge.
-- **Divider, Tag, Chip, PillButton, IconButton, Toggle.** 61 variants, all matching except Chip Pressed (2.62% against the 2.5% line: arc anti-aliasing, and text that sits about a pixel higher in Chrome).
+- **Divider, Tag, Chip, Button, IconButton, Toggle.** 61 variants, all matching except Chip Pressed (2.62% against the 2.5% line: arc anti-aliasing, and text that sits about a pixel higher in Chrome).
 - **Carousel, Projects, Testimonials, Menu.** 26 variants, all matching except Projects Hover (see below). Testimonials is a disclosure: its header is the button, so the contract says which part its focus and disabled states come from (`stateSelectors`).
+- **Button** is PillButton's set with the icon made optional. Figma has the same button twice (20:14 with an icon slot, 39:38 without), so on 2026-10-23 I made them one.
 - **Input**, all 14 variants. A press anywhere in the field puts the caret in it, since the empty input is 0px tall under its label. The clear button is Rost's IconButton.
 - **TestimonialPicture.** The photo is a slot. Figma's eight variants are eight real people, so the test masks the photo and only the 56px frame is compared, and the site shows landscapes instead.
 
@@ -50,14 +52,13 @@ Building them turned up four things to fix:
 
 Next, one at a time on the same setup:
 
-- **Button.** Its Figma renders still came back empty on 2026-10-23, so there's nothing to test it against yet.
 - **Hero Media.** No Figma render yet. It'll take its artwork as a slot, and needs something to test against first.
 - **runceanu.com onto Rost's components**, with `npm run add`. It copies a component, what it imports, its contract and the check into an app, the way shadcn does, and updates them on a second run. akount.ing uses it for Badge, InlineBanner, Divider and Button since 2026-10-22. A real `npx rost add` waits until Rost is published to npm.
 
 ## Now: make the contracts something I can trust
 
-1. **Go through akount.ing's conformance findings.** Against the YAML contracts on 2026-10-19: Badge 0, InlineBanner 10, Input 15, Toggle 36, PillButton 47. I know two of the causes:
-   - **Real drift.** The primary PillButton has no 1px top and left edge (`border-top-width: spacing/outline/small`, `border-color: actions/primary/*/outline`). Only the secondary one shipped. The contracts couldn't show it until the parser stopped dropping `border-t` and rgba borders.
+1. **Go through akount.ing's conformance findings.** Against the YAML contracts on 2026-10-19: Badge 0, InlineBanner 10, Input 15, Toggle 36, PillButton (Button now) 47. I know two of the causes:
+   - **Real drift.** The primary PillButton (Button now) has no 1px top and left edge (`border-top-width: spacing/outline/small`, `border-color: actions/primary/*/outline`). Only the secondary one shipped. The contracts couldn't show it until the parser stopped dropping `border-t` and rgba borders.
    - **A limit of the check.** akount.ing draws the selected Toggle's edge on `::before`, and the check only reads the root selector. `implementations.*.parts` needs a way to point a root property at a pseudo-element.
 
    *Done when* every finding left is either fixed or written down as a deviation. Each component that gets to zero can go stable. Badge got there first, then went back to `review` when Figma changed it.

@@ -3,7 +3,7 @@
  * Copies Rost's components into an app, the way shadcn does it: the app owns
  * the files, and running this again brings them up to date.
  *
- *   node bin/add.mjs <app-dir> badge pill-button   add these (and what they import)
+ *   node bin/add.mjs <app-dir> badge button        add these (and what they import)
  *   node bin/add.mjs <app-dir>                     update every one the app already has
  *   node bin/add.mjs <app-dir> --tokens src/styles/tokens.css
  *                                                  also refresh the app's copy of tokens.css

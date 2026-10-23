@@ -4,18 +4,19 @@ id: button
 name: Button
 kind: component
 status: review
-summary: A 48px button with just a label, in four levels of emphasis.
+summary: A 48px button with a label and, if it helps, an icon in front. In four levels of emphasis.
 category: actions
-related: [ pill-button, icon-button ]
+related: [ icon-button, toggle ]
 source:
   tool: figma
   fileKey: 1Zy0wiWKXQAvsfDBX3KR0d
-  nodeId: "39:38"
-  url: https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=39-38
+  nodeId: "20:14"
+  url: https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=20-14
   extractedAt: "2026-08-19"
   extractedBy: mcp
   frozenAt: "2026-10-20"
 props:
+  icon: { type: slot, notes: "Optional, in front of the label: a 20px icon in the label's colour. Figma's `leading` slot, off by default." }
   type:
     type: enum
     values: [ Borderless, Primary, Secondary, Tertiary ]
@@ -26,8 +27,15 @@ elements:
     styles:
       justify-content: { value: center }
       align-items: { value: center }
-      display: { value: flex, assert: false }
+      display: { value: inline-flex, assert: false }
+      vertical-align: { value: middle, assert: false }
       position: { value: relative, assert: false }
+      background: { value: none, assert: false, notes: "A `<button>` or a link. The browser's own look goes; each type draws its own." }
+      border: { value: none, assert: false }
+      font: { value: inherit, assert: false }
+      text-decoration: { value: none, assert: false }
+      cursor: { value: pointer, assert: false }
+      outline: { value: none, assert: false }
       gap: { token: spacing/gap/small, value: 8px }
       height: { token: spacing/size/medium-large, value: 48px }
       border-radius: { token: spacing/radius/full, value: 10000px }
@@ -40,480 +48,342 @@ elements:
       font-family: { token: font-family/base, value: "'General Sans Variable'" }
       font-weight: { token: typography/body/font-weight/medium, value: "500" }
       line-height: { token: typography/body/line-height, value: 22px }
-      color: { token: actions/primary/default/label, value: "#060805" }
       font-size: { token: typography/body/font-size, value: 16px }
       letter-spacing: { token: typography/body/letter-spacing, value: 0px }
-  background: {}
-  text: {}
-  focus-ring: {}
+  icons-arrow-left:
+    optional: true
+    styles:
+      display: { value: flex, assert: false }
+      align-items: { value: center }
+      justify-content: { value: center }
+      overflow: { value: clip }
+      flex-shrink: { value: "0", assert: false }
+      position: { value: relative, assert: false }
+      width: { value: 20px, token: spacing/size/xsmall }
+      height: { value: 20px, token: spacing/size/xsmall }
+  union:
+    optional: true
+    styles:
+      position: { value: absolute }
+      inset: { value: 20.84% 16.66% 20.83% 18.4% }
+  focus-ring:
+    styles:
+      display: { value: none, assert: false }
+      border-style: { value: solid }
+      pointer-events: { value: none, assert: false }
+  background:
+    notes: The fill under Secondary, Tertiary and Borderless, drawn see-through on its own layer so the label stays solid.
+    styles:
+      position: { value: absolute }
+      inset: { value: "0" }
+      pointer-events: { value: none, assert: false }
 variants:
   - when: { type: Primary, state: Default }
-    figmaNode: "39:39"
+    figmaNode: "20:13"
     elements:
       root:
-        border-sides: { value: left top }
         background: { token: actions/primary/default/background, value: "#00d669" }
-        border-color: { token: actions/primary/default/outline, value: "rgba(237,237,237,0.64)" }
-        border-top-width: { token: spacing/outline/small, value: 1px }
+        box-shadow:
+          value: inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-default-outline)
+          untokenised: "Figma's 1px left and top stroke, drawn inside the shape the way Figma draws it. A border would make the button 1px wider. The width and colour are tokens."
         padding-left: { token: spacing/gap/medium-large, value: 20px }
         padding-right: { token: spacing/gap/medium-large, value: 20px }
         padding-top: { token: spacing/gap/none, value: 0px }
         padding-bottom: { token: spacing/gap/none, value: 0px }
-  - when: { type: Secondary, state: Default }
-    figmaNode: "39:41"
-    elements:
-      root:
-        padding-left: { token: spacing/gap/medium-large, value: 20px }
-        padding-right: { token: spacing/gap/medium-large, value: 20px }
-        padding-top: { token: spacing/gap/none, value: 0px }
-        padding-bottom: { token: spacing/gap/none, value: 0px }
-      background:
-        border-sides: { value: left top }
-        position: { value: absolute }
-        inset: { value: "0" }
-        background: { token: actions/secondary/regular/default/background, value: "#3a3a3a" }
-        border-color: { token: actions/secondary/regular/default/outline, value: "#ededed" }
-        opacity: { token: opacity/gentle, value: "0.24" }
-        border-radius: { token: spacing/radius/full, value: 10000px }
-      text:
-        flex-shrink: { value: "0", assert: false }
-        white-space: { value: nowrap, assert: false }
-        text-align: { value: center }
-        position: { value: relative, assert: false }
-        font-family: { token: font-family/base, value: "'General Sans Variable'" }
-        font-weight: { token: typography/body/font-weight/medium, value: "500" }
-        line-height: { token: typography/body/line-height, value: 22px }
-        color: { token: actions/secondary/regular/default/label, value: "#d3d9d5" }
-        font-size: { token: typography/body/font-size, value: 16px }
-        letter-spacing: { token: typography/body/letter-spacing, value: 0px }
-  - when: { type: Tertiary, state: Default }
-    figmaNode: "39:44"
-    elements:
-      root:
-        padding-left: { token: spacing/gap/medium-large, value: 20px }
-        padding-right: { token: spacing/gap/medium-large, value: 20px }
-        padding-top: { token: spacing/gap/none, value: 0px }
-        padding-bottom: { token: spacing/gap/none, value: 0px }
-      text:
-        flex-shrink: { value: "0", assert: false }
-        white-space: { value: nowrap, assert: false }
-        text-align: { value: center }
-        position: { value: relative, assert: false }
-        font-family: { token: font-family/base, value: "'General Sans Variable'" }
-        font-weight: { token: typography/body/font-weight/medium, value: "500" }
-        line-height: { token: typography/body/line-height, value: 22px }
-        color: { token: actions/tertiary/default/label, value: "#d3d9d5" }
-        font-size: { token: typography/body/font-size, value: 16px }
-        letter-spacing: { token: typography/body/letter-spacing, value: 0px }
-  - when: { type: Borderless, state: Default }
-    figmaNode: "39:46"
-    elements:
-      text:
-        flex-shrink: { value: "0", assert: false }
-        white-space: { value: nowrap, assert: false }
-        text-align: { value: center }
-        position: { value: relative, assert: false }
-        font-family: { token: font-family/base, value: "'General Sans Variable'" }
-        font-weight: { token: typography/body/font-weight/medium, value: "500" }
-        line-height: { token: typography/body/line-height, value: 22px }
-        color: { token: actions/tertiary/default/label, value: "#d3d9d5" }
-        font-size: { token: typography/body/font-size, value: 16px }
-        letter-spacing: { token: typography/body/letter-spacing, value: 0px }
-      root:
-        padding: { token: spacing/gap/none, value: 0px }
+      label:
+        color: { token: actions/primary/default/label, value: "#060805" }
   - when: { type: Primary, state: Hover }
-    figmaNode: "39:48"
+    figmaNode: "20:15"
     elements:
       root:
-        border-sides: { value: left top }
         background: { token: actions/primary/hover/background, value: "#00b450" }
-        border-color: { token: actions/primary/hover/outline, value: "rgba(237,237,237,0.64)" }
-        border-top-width: { token: spacing/outline/small, value: 1px }
+        box-shadow:
+          value: inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-hover-outline)
+          untokenised: "Figma's 1px left and top stroke, drawn inside the shape the way Figma draws it. A border would make the button 1px wider. The width and colour are tokens."
         padding-left: { token: spacing/gap/medium-large, value: 20px }
         padding-right: { token: spacing/gap/medium-large, value: 20px }
         padding-top: { token: spacing/gap/none, value: 0px }
         padding-bottom: { token: spacing/gap/none, value: 0px }
-      text:
-        flex-shrink: { value: "0", assert: false }
-        white-space: { value: nowrap, assert: false }
-        text-align: { value: center }
-        position: { value: relative, assert: false }
-        font-family: { token: font-family/base, value: "'General Sans Variable'" }
-        font-weight: { token: typography/body/font-weight/medium, value: "500" }
-        line-height: { token: typography/body/line-height, value: 22px }
+      label:
         color: { token: actions/primary/hover/label, value: "#060805" }
-        font-size: { token: typography/body/font-size, value: 16px }
-        letter-spacing: { token: typography/body/letter-spacing, value: 0px }
-  - when: { type: Secondary, state: Hover }
-    figmaNode: "39:50"
-    elements:
-      root:
-        padding-left: { token: spacing/gap/medium-large, value: 20px }
-        padding-right: { token: spacing/gap/medium-large, value: 20px }
-        padding-top: { token: spacing/gap/none, value: 0px }
-        padding-bottom: { token: spacing/gap/none, value: 0px }
-      background:
-        border-sides: { value: left top }
-        position: { value: absolute }
-        inset: { value: "0" }
-        background: { token: actions/secondary/regular/hover/background, value: "#747573" }
-        border-color: { token: actions/secondary/regular/hover/outline, value: "#ededed" }
-        opacity: { token: opacity/mild, value: "0.32" }
-        border-radius: { token: spacing/radius/full, value: 10000px }
-      text:
-        flex-shrink: { value: "0", assert: false }
-        white-space: { value: nowrap, assert: false }
-        text-align: { value: center }
-        position: { value: relative, assert: false }
-        font-family: { token: font-family/base, value: "'General Sans Variable'" }
-        font-weight: { token: typography/body/font-weight/medium, value: "500" }
-        line-height: { token: typography/body/line-height, value: 22px }
-        color: { token: actions/secondary/regular/hover/label, value: "#ededed" }
-        font-size: { token: typography/body/font-size, value: 16px }
-        letter-spacing: { token: typography/body/letter-spacing, value: 0px }
-  - when: { type: Tertiary, state: Hover }
-    figmaNode: "39:53"
-    elements:
-      root:
-        padding-left: { token: spacing/gap/medium-large, value: 20px }
-        padding-right: { token: spacing/gap/medium-large, value: 20px }
-        padding-top: { token: spacing/gap/none, value: 0px }
-        padding-bottom: { token: spacing/gap/none, value: 0px }
-      background:
-        position: { value: absolute }
-        inset: { value: "0" }
-        background: { token: actions/tertiary/hover/background, value: "#060805" }
-        opacity: { token: opacity/mild, value: "0.32" }
-        border-radius: { token: spacing/radius/full, value: 10000px }
-      text:
-        flex-shrink: { value: "0", assert: false }
-        white-space: { value: nowrap, assert: false }
-        text-align: { value: center }
-        position: { value: relative, assert: false }
-        font-family: { token: font-family/base, value: "'General Sans Variable'" }
-        font-weight: { token: typography/body/font-weight/medium, value: "500" }
-        line-height: { token: typography/body/line-height, value: 22px }
-        color: { token: actions/tertiary/hover/label, value: "#ededed" }
-        font-size: { token: typography/body/font-size, value: 16px }
-        letter-spacing: { token: typography/body/letter-spacing, value: 0px }
-  - when: { type: Borderless, state: Hover }
-    figmaNode: "39:56"
-    elements:
-      background:
-        position: { value: absolute }
-        inset: { value: "0" }
-        background: { token: actions/tertiary/hover/background, value: "#060805" }
-        opacity: { token: opacity/mild, value: "0.32" }
-      text:
-        flex-shrink: { value: "0", assert: false }
-        white-space: { value: nowrap, assert: false }
-        text-align: { value: center }
-        position: { value: relative, assert: false }
-        font-family: { token: font-family/base, value: "'General Sans Variable'" }
-        font-weight: { token: typography/body/font-weight/medium, value: "500" }
-        line-height: { token: typography/body/line-height, value: 22px }
-        color: { token: actions/tertiary/hover/label, value: "#ededed" }
-        font-size: { token: typography/body/font-size, value: 16px }
-        letter-spacing: { token: typography/body/letter-spacing, value: 0px }
-      root:
-        padding: { token: spacing/gap/none, value: 0px }
-  - when: { type: Primary, state: Pressed }
-    figmaNode: "39:59"
-    elements:
-      root:
-        border-sides: { value: left top }
-        background: { token: actions/primary/pressed/background, value: "#00913a" }
-        border-color: { token: actions/primary/pressed/outline, value: "rgba(237,237,237,0.64)" }
-        border-top-width: { token: spacing/outline/small, value: 1px }
-        padding-left: { token: spacing/gap/medium-large, value: 20px }
-        padding-right: { token: spacing/gap/medium-large, value: 20px }
-        padding-top: { token: spacing/gap/none, value: 0px }
-        padding-bottom: { token: spacing/gap/none, value: 0px }
-      text:
-        flex-shrink: { value: "0", assert: false }
-        white-space: { value: nowrap, assert: false }
-        text-align: { value: center }
-        position: { value: relative, assert: false }
-        font-family: { token: font-family/base, value: "'General Sans Variable'" }
-        font-weight: { token: typography/body/font-weight/medium, value: "500" }
-        line-height: { token: typography/body/line-height, value: 22px }
-        color: { token: actions/primary/pressed/label, value: "#060805" }
-        font-size: { token: typography/body/font-size, value: 16px }
-        letter-spacing: { token: typography/body/letter-spacing, value: 0px }
-  - when: { type: Secondary, state: Pressed }
-    figmaNode: "39:61"
-    elements:
-      root:
-        padding-left: { token: spacing/gap/medium-large, value: 20px }
-        padding-right: { token: spacing/gap/medium-large, value: 20px }
-        padding-top: { token: spacing/gap/none, value: 0px }
-        padding-bottom: { token: spacing/gap/none, value: 0px }
-      background:
-        border-sides: { value: left top }
-        position: { value: absolute }
-        inset: { value: "0" }
-        background: { token: actions/secondary/regular/pressed/background, value: "#999" }
-        border-color: { token: actions/secondary/regular/pressed/outline, value: "#ededed" }
-        opacity: { token: opacity/mild, value: "0.32" }
-        border-radius: { token: spacing/radius/full, value: 10000px }
-      text:
-        flex-shrink: { value: "0", assert: false }
-        white-space: { value: nowrap, assert: false }
-        text-align: { value: center }
-        position: { value: relative, assert: false }
-        font-family: { token: font-family/base, value: "'General Sans Variable'" }
-        font-weight: { token: typography/body/font-weight/medium, value: "500" }
-        line-height: { token: typography/body/line-height, value: 22px }
-        color: { token: actions/secondary/regular/pressed/label, value: "#d3d9d5" }
-        font-size: { token: typography/body/font-size, value: 16px }
-        letter-spacing: { token: typography/body/letter-spacing, value: 0px }
-  - when: { type: Tertiary, state: Pressed }
-    figmaNode: "39:64"
-    elements:
-      root:
-        padding-left: { token: spacing/gap/medium-large, value: 20px }
-        padding-right: { token: spacing/gap/medium-large, value: 20px }
-        padding-top: { token: spacing/gap/none, value: 0px }
-        padding-bottom: { token: spacing/gap/none, value: 0px }
-      background:
-        position: { value: absolute }
-        inset: { value: "0" }
-        background: { token: actions/tertiary/pressed/background, value: "#454545" }
-        opacity: { token: opacity/mild, value: "0.32" }
-        border-radius: { token: spacing/radius/full, value: 10000px }
-      text:
-        flex-shrink: { value: "0", assert: false }
-        white-space: { value: nowrap, assert: false }
-        text-align: { value: center }
-        position: { value: relative, assert: false }
-        font-family: { token: font-family/base, value: "'General Sans Variable'" }
-        font-weight: { token: typography/body/font-weight/medium, value: "500" }
-        line-height: { token: typography/body/line-height, value: 22px }
-        color: { token: actions/tertiary/pressed/label, value: "#d3d9d5" }
-        font-size: { token: typography/body/font-size, value: 16px }
-        letter-spacing: { token: typography/body/letter-spacing, value: 0px }
-  - when: { type: Borderless, state: Pressed }
-    figmaNode: "39:67"
-    elements:
-      background:
-        position: { value: absolute }
-        inset: { value: "0" }
-        background: { token: actions/tertiary/pressed/background, value: "#454545" }
-        opacity: { token: opacity/mild, value: "0.32" }
-      text:
-        flex-shrink: { value: "0", assert: false }
-        white-space: { value: nowrap, assert: false }
-        text-align: { value: center }
-        position: { value: relative, assert: false }
-        font-family: { token: font-family/base, value: "'General Sans Variable'" }
-        font-weight: { token: typography/body/font-weight/medium, value: "500" }
-        line-height: { token: typography/body/line-height, value: 22px }
-        color: { token: actions/tertiary/pressed/label, value: "#d3d9d5" }
-        font-size: { token: typography/body/font-size, value: 16px }
-        letter-spacing: { token: typography/body/letter-spacing, value: 0px }
-      root:
-        padding: { token: spacing/gap/none, value: 0px }
-  - when: { type: Primary, state: Disabled }
-    figmaNode: "39:70"
-    elements:
-      root:
-        border-sides: { value: left top }
-        background: { token: actions/primary/disabled/background, value: "#00d669" }
-        border-color: { token: actions/primary/disabled/outline, value: "rgba(237,237,237,0.64)" }
-        border-top-width: { token: spacing/outline/small, value: 1px }
-        padding-left: { token: spacing/gap/medium-large, value: 20px }
-        padding-right: { token: spacing/gap/medium-large, value: 20px }
-        padding-top: { token: spacing/gap/none, value: 0px }
-        padding-bottom: { token: spacing/gap/none, value: 0px }
-        opacity: { token: opacity/gentle, value: "0.24" }
-      text:
-        flex-shrink: { value: "0", assert: false }
-        white-space: { value: nowrap, assert: false }
-        text-align: { value: center }
-        position: { value: relative, assert: false }
-        font-family: { token: font-family/base, value: "'General Sans Variable'" }
-        font-weight: { token: typography/body/font-weight/medium, value: "500" }
-        line-height: { token: typography/body/line-height, value: 22px }
-        color: { token: actions/primary/disabled/label, value: "#060805" }
-        font-size: { token: typography/body/font-size, value: 16px }
-        letter-spacing: { token: typography/body/letter-spacing, value: 0px }
-  - when: { type: Secondary, state: Disabled }
-    figmaNode: "39:72"
-    elements:
-      root:
-        padding-left: { token: spacing/gap/medium-large, value: 20px }
-        padding-right: { token: spacing/gap/medium-large, value: 20px }
-        padding-top: { token: spacing/gap/none, value: 0px }
-        padding-bottom: { token: spacing/gap/none, value: 0px }
-        opacity: { token: opacity/gentle, value: "0.24" }
-      background:
-        border-sides: { value: left top }
-        position: { value: absolute }
-        inset: { value: "0" }
-        background: { token: actions/secondary/regular/disabled/background, value: "#3a3a3a" }
-        border-color: { token: actions/secondary/regular/disabled/outline, value: "#ededed" }
-        opacity: { token: opacity/mild, value: "0.32" }
-        border-radius: { token: spacing/radius/full, value: 10000px }
-      text:
-        flex-shrink: { value: "0", assert: false }
-        white-space: { value: nowrap, assert: false }
-        text-align: { value: center }
-        position: { value: relative, assert: false }
-        font-family: { token: font-family/base, value: "'General Sans Variable'" }
-        font-weight: { token: typography/body/font-weight/medium, value: "500" }
-        line-height: { token: typography/body/line-height, value: 22px }
-        color: { token: actions/secondary/regular/disabled/label, value: "#d3d9d5" }
-        font-size: { token: typography/body/font-size, value: 16px }
-        letter-spacing: { token: typography/body/letter-spacing, value: 0px }
-  - when: { type: Tertiary, state: Disabled }
-    figmaNode: "39:75"
-    elements:
-      root:
-        padding-left: { token: spacing/gap/medium-large, value: 20px }
-        padding-right: { token: spacing/gap/medium-large, value: 20px }
-        padding-top: { token: spacing/gap/none, value: 0px }
-        padding-bottom: { token: spacing/gap/none, value: 0px }
-        opacity: { token: opacity/gentle, value: "0.24" }
-      text:
-        flex-shrink: { value: "0", assert: false }
-        white-space: { value: nowrap, assert: false }
-        text-align: { value: center }
-        position: { value: relative, assert: false }
-        font-family: { token: font-family/base, value: "'General Sans Variable'" }
-        font-weight: { token: typography/body/font-weight/medium, value: "500" }
-        line-height: { token: typography/body/line-height, value: 22px }
-        color: { token: actions/tertiary/disabled/label, value: "#d3d9d5" }
-        font-size: { token: typography/body/font-size, value: 16px }
-        letter-spacing: { token: typography/body/letter-spacing, value: 0px }
-  - when: { type: Borderless, state: Disabled }
-    figmaNode: "39:77"
-    elements:
-      text:
-        flex-shrink: { value: "0", assert: false }
-        white-space: { value: nowrap, assert: false }
-        text-align: { value: center }
-        position: { value: relative, assert: false }
-        font-family: { token: font-family/base, value: "'General Sans Variable'" }
-        font-weight: { token: typography/body/font-weight/medium, value: "500" }
-        line-height: { token: typography/body/line-height, value: 22px }
-        color: { token: actions/tertiary/disabled/label, value: "#d3d9d5" }
-        font-size: { token: typography/body/font-size, value: 16px }
-        letter-spacing: { token: typography/body/letter-spacing, value: 0px }
-      root:
-        padding: { token: spacing/gap/none, value: 0px }
-        opacity: { token: opacity/gentle, value: "0.24" }
   - when: { type: Primary, state: Focus }
-    figmaNode: "39:79"
+    figmaNode: "20:17"
     elements:
       root:
-        border-sides: { value: left top }
         background: { token: actions/primary/focus/background, value: "#00d669" }
-        border-color: { token: actions/primary/focus/outline, value: "rgba(237,237,237,0.64)" }
-        border-top-width: { token: spacing/outline/small, value: 1px }
+        box-shadow:
+          value: inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-focus-outline)
+          untokenised: "Figma's 1px left and top stroke, drawn inside the shape the way Figma draws it. A border would make the button 1px wider. The width and colour are tokens."
         padding-left: { token: spacing/gap/medium-large, value: 20px }
         padding-right: { token: spacing/gap/medium-large, value: 20px }
         padding-top: { token: spacing/gap/none, value: 0px }
         padding-bottom: { token: spacing/gap/none, value: 0px }
-      text:
-        flex-shrink: { value: "0", assert: false }
-        white-space: { value: nowrap, assert: false }
-        text-align: { value: center }
-        position: { value: relative, assert: false }
-        font-family: { token: font-family/base, value: "'General Sans Variable'" }
-        font-weight: { token: typography/body/font-weight/medium, value: "500" }
-        line-height: { token: typography/body/line-height, value: 22px }
+      label:
         color: { token: actions/primary/focus/label, value: "#060805" }
-        font-size: { token: typography/body/font-size, value: 16px }
-        letter-spacing: { token: typography/body/letter-spacing, value: 0px }
       focus-ring:
         border-sides: { value: all }
+        display: { value: block, assert: false }
         position: { value: absolute }
         border-width: { token: spacing/outline/medium, value: 2px }
         border-color: { token: actions/primary/focus/focus-ring, value: "#b6ffda" }
-        inset: { value: -5px -4px -4px -5px }
+        inset: { value: "calc(-1 * var(--spacing-gap-2xsmall))", untokenised: "Composed from a token: spacing/gap/2xsmall out, all round. Figma said -5px on the left and top, to make up for the stroke, which takes no space here." }
         border-radius: { token: spacing/radius/full, value: 10000px }
-  - when: { type: Secondary, state: Focus }
-    figmaNode: "39:82"
+  - when: { type: Primary, state: Pressed }
+    figmaNode: "20:20"
+    elements:
+      root:
+        background: { token: actions/primary/pressed/background, value: "#00913a" }
+        box-shadow:
+          value: inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-pressed-outline)
+          untokenised: "Figma's 1px left and top stroke, drawn inside the shape the way Figma draws it. A border would make the button 1px wider. The width and colour are tokens."
+        padding-left: { token: spacing/gap/medium-large, value: 20px }
+        padding-right: { token: spacing/gap/medium-large, value: 20px }
+        padding-top: { token: spacing/gap/none, value: 0px }
+        padding-bottom: { token: spacing/gap/none, value: 0px }
+      label:
+        color: { token: actions/primary/pressed/label, value: "#060805" }
+  - when: { type: Primary, state: Disabled }
+    figmaNode: "20:22"
+    elements:
+      root:
+        background: { token: actions/primary/disabled/background, value: "#00d669" }
+        box-shadow:
+          value: inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-disabled-outline)
+          untokenised: "Figma's 1px left and top stroke, drawn inside the shape the way Figma draws it. A border would make the button 1px wider. The width and colour are tokens."
+        padding-left: { token: spacing/gap/medium-large, value: 20px }
+        padding-right: { token: spacing/gap/medium-large, value: 20px }
+        padding-top: { token: spacing/gap/none, value: 0px }
+        padding-bottom: { token: spacing/gap/none, value: 0px }
+        opacity: { token: opacity/gentle, value: "0.24" }
+        cursor: { value: default, assert: false }
+      label:
+        color: { token: actions/primary/disabled/label, value: "#060805" }
+  - when: { type: Tertiary, state: Default }
+    figmaNode: "25:191"
     elements:
       root:
         padding-left: { token: spacing/gap/medium-large, value: 20px }
         padding-right: { token: spacing/gap/medium-large, value: 20px }
         padding-top: { token: spacing/gap/none, value: 0px }
         padding-bottom: { token: spacing/gap/none, value: 0px }
+      label:
+        color: { token: actions/tertiary/default/label, value: "#d3d9d5" }
+  - when: { type: Tertiary, state: Hover }
+    figmaNode: "25:194"
+    elements:
+      root:
+        padding-left: { token: spacing/gap/medium-large, value: 20px }
+        padding-right: { token: spacing/gap/medium-large, value: 20px }
+        padding-top: { token: spacing/gap/none, value: 0px }
+        padding-bottom: { token: spacing/gap/none, value: 0px }
+      label:
+        color: { token: actions/tertiary/hover/label, value: "#ededed" }
       background:
+        position: { value: absolute }
+        inset: { value: "0" }
+        background: { token: actions/tertiary/hover/background, value: "#060805" }
+        opacity: { token: opacity/mild, value: "0.32" }
+        border-radius: { token: spacing/radius/full, value: 10000px }
+  - when: { type: Tertiary, state: Pressed }
+    figmaNode: "25:197"
+    elements:
+      root:
+        padding-left: { token: spacing/gap/medium-large, value: 20px }
+        padding-right: { token: spacing/gap/medium-large, value: 20px }
+        padding-top: { token: spacing/gap/none, value: 0px }
+        padding-bottom: { token: spacing/gap/none, value: 0px }
+      label:
+        color: { token: actions/tertiary/pressed/label, value: "#d3d9d5" }
+      background:
+        position: { value: absolute }
+        inset: { value: "0" }
+        background: { token: actions/tertiary/pressed/background, value: "#454545" }
+        opacity: { token: opacity/mild, value: "0.32" }
+        border-radius: { token: spacing/radius/full, value: 10000px }
+  - when: { type: Tertiary, state: Disabled }
+    figmaNode: "25:200"
+    elements:
+      root:
+        padding-left: { token: spacing/gap/medium-large, value: 20px }
+        padding-right: { token: spacing/gap/medium-large, value: 20px }
+        padding-top: { token: spacing/gap/none, value: 0px }
+        padding-bottom: { token: spacing/gap/none, value: 0px }
+        opacity: { token: opacity/gentle, value: "0.24" }
+        cursor: { value: default, assert: false }
+      label:
+        color: { token: actions/tertiary/disabled/label, value: "#d3d9d5" }
+  - when: { type: Tertiary, state: Focus }
+    figmaNode: "25:203"
+    elements:
+      root:
+        padding-left: { token: spacing/gap/medium-large, value: 20px }
+        padding-right: { token: spacing/gap/medium-large, value: 20px }
+        padding-top: { token: spacing/gap/none, value: 0px }
+        padding-bottom: { token: spacing/gap/none, value: 0px }
+      label:
+        color: { token: actions/tertiary/focus/label, value: "#d3d9d5" }
+      focus-ring:
+        border-sides: { value: all }
+        display: { value: block, assert: false }
+        position: { value: absolute }
+        border-width: { token: spacing/outline/medium, value: 2px }
+        border-color: { token: actions/secondary/regular/focus/focus-ring, value: "#999" }
+        inset: { value: "calc(-1 * var(--spacing-gap-2xsmall))", untokenised: "Composed from a token: the ring sits spacing/gap/2xsmall outside the element." }
+        border-radius: { token: spacing/radius/full, value: 10000px }
+  - when: { type: Borderless, state: Default }
+    figmaNode: "25:249"
+    elements:
+      label:
+        color: { token: actions/tertiary/default/label, value: "#d3d9d5" }
+      root:
+        padding: { token: spacing/gap/none, value: 0px }
+  - when: { type: Borderless, state: Hover }
+    figmaNode: "25:251"
+    elements:
+      label:
+        color: { token: actions/tertiary/hover/label, value: "#ededed" }
+      background:
+        position: { value: absolute }
+        inset: { value: "0" }
+        background: { token: actions/tertiary/hover/background, value: "#060805" }
+        opacity: { token: opacity/mild, value: "0.32" }
+      root:
+        padding: { token: spacing/gap/none, value: 0px }
+  - when: { type: Borderless, state: Pressed }
+    figmaNode: "25:254"
+    elements:
+      label:
+        color: { token: actions/tertiary/pressed/label, value: "#d3d9d5" }
+      background:
+        position: { value: absolute }
+        inset: { value: "0" }
+        background: { token: actions/tertiary/pressed/background, value: "#454545" }
+        opacity: { token: opacity/mild, value: "0.32" }
+      root:
+        padding: { token: spacing/gap/none, value: 0px }
+  - when: { type: Borderless, state: Disabled }
+    figmaNode: "25:257"
+    elements:
+      label:
+        color: { token: actions/tertiary/disabled/label, value: "#d3d9d5" }
+      root:
+        opacity: { token: opacity/gentle, value: "0.24" }
+        cursor: { value: default, assert: false }
+        padding: { token: spacing/gap/none, value: 0px }
+  - when: { type: Borderless, state: Focus }
+    figmaNode: "25:260"
+    elements:
+      label:
+        color: { token: actions/tertiary/focus/label, value: "#d3d9d5" }
+      focus-ring:
+        border-sides: { value: all }
+        display: { value: block, assert: false }
+        position: { value: absolute }
+        border-width: { token: spacing/outline/medium, value: 2px }
+        border-color: { token: actions/secondary/regular/focus/focus-ring, value: "#999" }
+        inset: { value: "calc(-1 * var(--spacing-gap-2xsmall))", untokenised: "Composed from a token: the ring sits spacing/gap/2xsmall outside the element." }
+      root:
+        padding: { token: spacing/gap/none, value: 0px }
+  - when: { type: Secondary, state: Default }
+    figmaNode: "25:80"
+    elements:
+      root:
+        padding-left: { token: spacing/gap/medium-large, value: 20px }
+        padding-right: { token: spacing/gap/medium-large, value: 20px }
+        padding-top: { token: spacing/gap/none, value: 0px }
+        padding-bottom: { token: spacing/gap/none, value: 0px }
+      label:
+        color: { token: actions/secondary/regular/default/label, value: "#d3d9d5" }
+      background:
+        position: { value: absolute }
+        inset: { value: "0" }
+        background: { token: actions/secondary/regular/default/background, value: "#3a3a3a" }
+        opacity: { token: opacity/gentle, value: "0.24" }
+        border-radius: { token: spacing/radius/full, value: 10000px }
         border-sides: { value: left top }
+        border-color: { token: actions/secondary/regular/default/outline, value: "#ededed" }
+  - when: { type: Secondary, state: Hover }
+    figmaNode: "25:82"
+    elements:
+      root:
+        padding-left: { token: spacing/gap/medium-large, value: 20px }
+        padding-right: { token: spacing/gap/medium-large, value: 20px }
+        padding-top: { token: spacing/gap/none, value: 0px }
+        padding-bottom: { token: spacing/gap/none, value: 0px }
+      label:
+        color: { token: actions/secondary/regular/hover/label, value: "#ededed" }
+      background:
+        position: { value: absolute }
+        inset: { value: "0" }
+        background: { token: actions/secondary/regular/hover/background, value: "#747573" }
+        opacity: { token: opacity/mild, value: "0.32" }
+        border-radius: { token: spacing/radius/full, value: 10000px }
+        border-sides: { value: left top }
+        border-color: { token: actions/secondary/regular/hover/outline, value: "#ededed" }
+  - when: { type: Secondary, state: Pressed }
+    figmaNode: "25:84"
+    elements:
+      root:
+        padding-left: { token: spacing/gap/medium-large, value: 20px }
+        padding-right: { token: spacing/gap/medium-large, value: 20px }
+        padding-top: { token: spacing/gap/none, value: 0px }
+        padding-bottom: { token: spacing/gap/none, value: 0px }
+      label:
+        color: { token: actions/secondary/regular/pressed/label, value: "#d3d9d5" }
+      background:
+        position: { value: absolute }
+        inset: { value: "0" }
+        background: { token: actions/secondary/regular/pressed/background, value: "#999" }
+        opacity: { token: opacity/mild, value: "0.32" }
+        border-radius: { token: spacing/radius/full, value: 10000px }
+        border-sides: { value: left top }
+        border-color: { token: actions/secondary/regular/pressed/outline, value: "#ededed" }
+  - when: { type: Secondary, state: Disabled }
+    figmaNode: "25:86"
+    elements:
+      root:
+        padding-left: { token: spacing/gap/medium-large, value: 20px }
+        padding-right: { token: spacing/gap/medium-large, value: 20px }
+        padding-top: { token: spacing/gap/none, value: 0px }
+        padding-bottom: { token: spacing/gap/none, value: 0px }
+        opacity: { token: opacity/gentle, value: "0.24" }
+        cursor: { value: default, assert: false }
+      label:
+        color: { token: actions/secondary/regular/disabled/label, value: "#d3d9d5" }
+      background:
+        position: { value: absolute }
+        inset: { value: "0" }
+        background: { token: actions/secondary/regular/disabled/background, value: "#3a3a3a" }
+        opacity: { token: opacity/mild, value: "0.32" }
+        border-radius: { token: spacing/radius/full, value: 10000px }
+        border-sides: { value: left top }
+        border-color: { token: actions/secondary/regular/disabled/outline, value: "#ededed" }
+  - when: { type: Secondary, state: Focus }
+    figmaNode: "25:88"
+    elements:
+      root:
+        padding-left: { token: spacing/gap/medium-large, value: 20px }
+        padding-right: { token: spacing/gap/medium-large, value: 20px }
+        padding-top: { token: spacing/gap/none, value: 0px }
+        padding-bottom: { token: spacing/gap/none, value: 0px }
+      label:
+        color: { token: actions/secondary/regular/focus/label, value: "#d3d9d5" }
+      focus-ring:
+        border-sides: { value: all }
+        display: { value: block, assert: false }
+        position: { value: absolute }
+        border-width: { token: spacing/outline/medium, value: 2px }
+        border-color: { token: actions/secondary/regular/focus/focus-ring, value: "#999" }
+        inset: { value: "calc(-1 * var(--spacing-gap-2xsmall))", untokenised: "Composed from a token: the ring sits spacing/gap/2xsmall outside the element." }
+        border-radius: { token: spacing/radius/full, value: 10000px }
+      background:
         position: { value: absolute }
         inset: { value: "0" }
         background: { token: actions/secondary/regular/focus/background, value: "#3a3a3a" }
-        border-color: { token: actions/secondary/regular/focus/outline, value: "#ededed" }
         opacity: { token: opacity/gentle, value: "0.24" }
         border-radius: { token: spacing/radius/full, value: 10000px }
-      text:
-        flex-shrink: { value: "0", assert: false }
-        white-space: { value: nowrap, assert: false }
-        text-align: { value: center }
-        position: { value: relative, assert: false }
-        font-family: { token: font-family/base, value: "'General Sans Variable'" }
-        font-weight: { token: typography/body/font-weight/medium, value: "500" }
-        line-height: { token: typography/body/line-height, value: 22px }
-        color: { token: actions/secondary/regular/focus/label, value: "#d3d9d5" }
-        font-size: { token: typography/body/font-size, value: 16px }
-        letter-spacing: { token: typography/body/letter-spacing, value: 0px }
-      focus-ring:
-        border-sides: { value: all }
-        position: { value: absolute }
-        border-width: { token: spacing/outline/medium, value: 2px }
-        border-color: { token: actions/secondary/regular/focus/focus-ring, value: "#999" }
-        inset: { value: "calc(-1 * var(--spacing-gap-2xsmall))", untokenised: "Composed from a token: the ring sits spacing/gap/2xsmall outside the element." }
-        border-radius: { token: spacing/radius/full, value: 10000px }
-  - when: { type: Tertiary, state: Focus }
-    figmaNode: "39:86"
-    elements:
-      root:
-        padding-left: { token: spacing/gap/medium-large, value: 20px }
-        padding-right: { token: spacing/gap/medium-large, value: 20px }
-        padding-top: { token: spacing/gap/none, value: 0px }
-        padding-bottom: { token: spacing/gap/none, value: 0px }
-      text:
-        flex-shrink: { value: "0", assert: false }
-        white-space: { value: nowrap, assert: false }
-        text-align: { value: center }
-        position: { value: relative, assert: false }
-        font-family: { token: font-family/base, value: "'General Sans Variable'" }
-        font-weight: { token: typography/body/font-weight/medium, value: "500" }
-        line-height: { token: typography/body/line-height, value: 22px }
-        color: { token: actions/tertiary/focus/label, value: "#d3d9d5" }
-        font-size: { token: typography/body/font-size, value: 16px }
-        letter-spacing: { token: typography/body/letter-spacing, value: 0px }
-      focus-ring:
-        border-sides: { value: all }
-        position: { value: absolute }
-        border-width: { token: spacing/outline/medium, value: 2px }
-        border-color: { token: actions/secondary/regular/focus/focus-ring, value: "#999" }
-        inset: { value: "calc(-1 * var(--spacing-gap-2xsmall))", untokenised: "Composed from a token: the ring sits spacing/gap/2xsmall outside the element." }
-        border-radius: { token: spacing/radius/full, value: 10000px }
-  - when: { type: Borderless, state: Focus }
-    figmaNode: "39:89"
-    elements:
-      text:
-        flex-shrink: { value: "0", assert: false }
-        white-space: { value: nowrap, assert: false }
-        text-align: { value: center }
-        position: { value: relative, assert: false }
-        font-family: { token: font-family/base, value: "'General Sans Variable'" }
-        font-weight: { token: typography/body/font-weight/medium, value: "500" }
-        line-height: { token: typography/body/line-height, value: 22px }
-        color: { token: actions/tertiary/focus/label, value: "#d3d9d5" }
-        font-size: { token: typography/body/font-size, value: 16px }
-        letter-spacing: { token: typography/body/letter-spacing, value: 0px }
-      root:
-        padding: { token: spacing/gap/none, value: 0px }
-      focus-ring:
-        border-sides: { value: all }
-        position: { value: absolute }
-        border-width: { token: spacing/outline/medium, value: 2px }
-        border-color: { token: actions/secondary/regular/focus/focus-ring, value: "#999" }
-        inset: { value: "calc(-1 * var(--spacing-gap-2xsmall))", untokenised: "Composed from a token: the ring sits spacing/gap/2xsmall outside the element." }
+        border-sides: { value: left top }
+        border-color: { token: actions/secondary/regular/focus/outline, value: "#ededed" }
 guidance:
   status: agreed
   use:
@@ -522,20 +392,32 @@ guidance:
       `Primary` for the one thing a screen is really about. One per screen, no more.
     - |-
       `Secondary` for the options next to it, `Tertiary` when little is at stake, `Borderless` in busy places where an outline would just be noise.
-  avoid:
     - |-
-      Actions that need an icon to make sense: use **PillButton**. Icon only: **IconButton**.
-    - Going somewhere. That's a link. A button that navigates breaks open-in-new-tab and the back button.
+      An icon when it helps people get it faster: a back arrow, an external link, a download.
+  avoid:
+    - When the icon is just decoration. Leave it out.
+    - When there's no room for the label. That's **IconButton**, never a Button with its label hidden.
     - Picking between options. That's **Toggle** or **Chip**.
   behaviour: |-
-    `type` sets how loud it is. `state` is never something you pass in code: hover, pressed and focus come from `:hover`, `:active` and `:focus-visible`. Disabled is the only one you set yourself. The background fades to `opacity/gentle` and the label stays readable.
+    `type` sets how loud it is. `state` is never something you pass in code: hover, pressed and focus come from `:hover`, `:active` and `:focus-visible`. Disabled is the only one you set yourself. The background fades to `opacity/gentle` and the label stays readable. The icon sits in a 20px slot (`icons-arrow-left` in Figma) and takes the label's colour.
   accessibility:
-    element: "`<button type=\"button\">`, or `type=\"submit\"` inside a form."
+    element: |-
+      `<button type="button">`, `type="submit"` inside a form, or `<a>` when it takes you somewhere. A button that navigates is still a link, so it keeps open-in-new-tab and the back button.
     name: |-
-      the label people see. Don't swap it for an `aria-label` that says something else.
-    keyboard: Enter and Space.
+      the label people see. Don't swap it for an `aria-label` that says something else. The icon is `aria-hidden="true"`.
+    keyboard: Enter, and Space for buttons.
     focus: the `focus-ring` part, 2px, only on `:focus-visible`.
     disabled: |-
       I'd rather use `aria-disabled="true"` with a short reason nearby than `disabled`. `disabled` drops the button out of the tab order and nobody can find out why it doesn't work.
   content: |-
-    A verb, sentence case, two or three words. "Save changes", not "OK" or "SUBMIT". Say what will happen.
+    A verb, sentence case, two or three words. "Save changes", not "OK" or "SUBMIT". Say what will happen. An icon has to match the words: an arrow pointing left only on "Back".
+deviations:
+  - what: |-
+      Figma has Button twice: the set at 20:14 (PillButton, with a `leading` icon slot that's off by default) and the one at 39:38 (Button, label only). Rost has one Button with an optional icon, built from 20:14.
+    why: |-
+      They have the same height, types, states and tokens. The other differences were layer names (`text` against `label`) and the Primary stroke, which is an inset shadow here because it takes no space. 20:14's screenshots all match; 39:38's came back empty. Merged on 2026-10-23.
+    raisedWithDesign: false
+implementations:
+  a-kaunt:
+    component: src/rost/button/Button.tsx
+    root: .rost-button

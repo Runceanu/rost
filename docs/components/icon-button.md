@@ -37,7 +37,7 @@
 
 ## When not to use
 
-- Any icon that isn't instantly obvious. Use **PillButton**, an icon isn't a label.
+- Any icon that isn't instantly obvious. Use **Button** with a label, an icon isn't one.
 - On/off or one-of-many choices. That's **Toggle**. IconButton does something, it doesn't remember anything.
 
 ## Behaviour

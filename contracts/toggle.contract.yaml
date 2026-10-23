@@ -261,6 +261,8 @@ guidance:
     alone: "`<button aria-pressed=\"true|false\">`."
     group: |-
       `role="radio"` with `aria-checked`, inside a `role="radiogroup"` that has a name. Arrow keys move between options, Tab gets you in and out.
+    tabs: |-
+      `role="tab"` with `aria-selected` and `aria-controls`, inside a `role="tablist"` that has a name. Only the selected tab is in the tab order; arrow keys, Home and End move between them. rost.build's Preview and Code tabs work this way.
     name: "`aria-label` when it's icon only."
     focus: |-
       `focus-ring` (2px, `actions/primary/focus/focus-ring` when it's on), on `:focus-visible`.

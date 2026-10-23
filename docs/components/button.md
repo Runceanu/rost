@@ -2,20 +2,21 @@
 
 # Button
 
-> A 48px button with just a label, in four levels of emphasis.
+> A 48px button with a label and, if it helps, an icon in front. In four levels of emphasis.
 
 | | |
 |---|---|
 | Kind | component |
 | Contract | `review` · [button.contract.yaml](../../contracts/button.contract.yaml) |
 | Guidance | `agreed` |
-| Source | [Figma 39:38](https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=39-38) · read 2026-08-19 · frozen 2026-10-20 |
-| Implemented in | nowhere yet |
+| Source | [Figma 20:14](https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=20-14) · read 2026-08-19 · frozen 2026-10-20 |
+| Implemented in | akount.ing (`src/rost/button/Button.tsx`, `.rost-button`) |
 
 ## Props
 
 | Prop | Type | Values | Default |
 |---|---|---|---|
+| `icon` | slot |  |  |
 | `type` | enum | `Borderless` `Primary` `Secondary` `Tertiary` | `Borderless` |
 
 ## States
@@ -26,37 +27,45 @@
 
 - `root`
 - `label`
-- `background`
-- `text`
+- `icons-arrow-left` (optional)
+- `union` (optional)
 - `focus-ring`
+- `background`: The fill under Secondary, Tertiary and Borderless, drawn see-through on its own layer so the label stays solid.
 
 ## When to use
 
 - Doing something: save, send, continue, open.
 - `Primary` for the one thing a screen is really about. One per screen, no more.
 - `Secondary` for the options next to it, `Tertiary` when little is at stake, `Borderless` in busy places where an outline would just be noise.
+- An icon when it helps people get it faster: a back arrow, an external link, a download.
 
 ## When not to use
 
-- Actions that need an icon to make sense: use **PillButton**. Icon only: **IconButton**.
-- Going somewhere. That's a link. A button that navigates breaks open-in-new-tab and the back button.
+- When the icon is just decoration. Leave it out.
+- When there's no room for the label. That's **IconButton**, never a Button with its label hidden.
 - Picking between options. That's **Toggle** or **Chip**.
 
 ## Behaviour
 
-`type` sets how loud it is. `state` is never something you pass in code: hover, pressed and focus come from `:hover`, `:active` and `:focus-visible`. Disabled is the only one you set yourself. The background fades to `opacity/gentle` and the label stays readable.
+`type` sets how loud it is. `state` is never something you pass in code: hover, pressed and focus come from `:hover`, `:active` and `:focus-visible`. Disabled is the only one you set yourself. The background fades to `opacity/gentle` and the label stays readable. The icon sits in a 20px slot (`icons-arrow-left` in Figma) and takes the label's colour.
 
 ## Accessibility
 
-- **Element**: `<button type="button">`, or `type="submit"` inside a form.
-- **Name**: the label people see. Don't swap it for an `aria-label` that says something else.
-- **Keyboard**: Enter and Space.
+- **Element**: `<button type="button">`, `type="submit"` inside a form, or `<a>` when it takes you somewhere. A button that navigates is still a link, so it keeps open-in-new-tab and the back button.
+- **Name**: the label people see. Don't swap it for an `aria-label` that says something else. The icon is `aria-hidden="true"`.
+- **Keyboard**: Enter, and Space for buttons.
 - **Focus**: the `focus-ring` part, 2px, only on `:focus-visible`.
 - **Disabled**: I'd rather use `aria-disabled="true"` with a short reason nearby than `disabled`. `disabled` drops the button out of the tab order and nobody can find out why it doesn't work.
 
 ## Content
 
-A verb, sentence case, two or three words. "Save changes", not "OK" or "SUBMIT". Say what will happen.
+A verb, sentence case, two or three words. "Save changes", not "OK" or "SUBMIT". Say what will happen. An icon has to match the words: an arrow pointing left only on "Back".
+
+## Where code differs on purpose
+
+| App | What | Why | Taken to design |
+|---|---|---|---|
+| all | Figma has Button twice: the set at 20:14 (PillButton, with a `leading` icon slot that's off by default) and the one at 39:38 (Button, label only). Rost has one Button with an optional icon, built from 20:14. | They have the same height, types, states and tokens. The other differences were layer names (`text` against `label`) and the Primary stroke, which is an inset shadow here because it takes no space. 20:14's screenshots all match; 39:38's came back empty. Merged on 2026-10-23. | not yet |
 
 ## Tokens
 
@@ -66,20 +75,15 @@ Every token this component uses, across all its variants.
 |---|---|
 | `actions/primary/default/background` | `#00d669` |
 | `actions/primary/default/label` | `#060805` |
-| `actions/primary/default/outline` | `rgba(237,237,237,0.64)` |
 | `actions/primary/disabled/background` | `#00d669` |
 | `actions/primary/disabled/label` | `#060805` |
-| `actions/primary/disabled/outline` | `rgba(237,237,237,0.64)` |
 | `actions/primary/focus/background` | `#00d669` |
 | `actions/primary/focus/focus-ring` | `#b6ffda` |
 | `actions/primary/focus/label` | `#060805` |
-| `actions/primary/focus/outline` | `rgba(237,237,237,0.64)` |
 | `actions/primary/hover/background` | `#00b450` |
 | `actions/primary/hover/label` | `#060805` |
-| `actions/primary/hover/outline` | `rgba(237,237,237,0.64)` |
 | `actions/primary/pressed/background` | `#00913a` |
 | `actions/primary/pressed/label` | `#060805` |
-| `actions/primary/pressed/outline` | `rgba(237,237,237,0.64)` |
 | `actions/secondary/regular/default/background` | `#3a3a3a` |
 | `actions/secondary/regular/default/label` | `#d3d9d5` |
 | `actions/secondary/regular/default/outline` | `#ededed` |
@@ -110,9 +114,9 @@ Every token this component uses, across all its variants.
 | `spacing/gap/none` | `0px` |
 | `spacing/gap/small` | `8px` |
 | `spacing/outline/medium` | `2px` |
-| `spacing/outline/small` | `1px` |
 | `spacing/radius/full` | `10000px` |
 | `spacing/size/medium-large` | `48px` |
+| `spacing/size/xsmall` | `20px` |
 | `typography/body/font-size` | `16px` |
 | `typography/body/font-weight/medium` | `500` |
 | `typography/body/letter-spacing` | `0px` |
@@ -122,6 +126,12 @@ Every token this component uses, across all its variants.
 
 | Part | Property | Value | Why |
 |---|---|---|---|
+| `root` | `box-shadow` | `inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-default-outline)` | Figma's 1px left and top stroke, drawn inside the shape the way Figma draws it. A border would make the button 1px wider. The width and colour are tokens. |
+| `root` | `box-shadow` | `inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-hover-outline)` | Figma's 1px left and top stroke, drawn inside the shape the way Figma draws it. A border would make the button 1px wider. The width and colour are tokens. |
+| `root` | `box-shadow` | `inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-focus-outline)` | Figma's 1px left and top stroke, drawn inside the shape the way Figma draws it. A border would make the button 1px wider. The width and colour are tokens. |
+| `focus-ring` | `inset` | `calc(-1 * var(--spacing-gap-2xsmall))` | Composed from a token: spacing/gap/2xsmall out, all round. Figma said -5px on the left and top, to make up for the stroke, which takes no space here. |
+| `root` | `box-shadow` | `inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-pressed-outline)` | Figma's 1px left and top stroke, drawn inside the shape the way Figma draws it. A border would make the button 1px wider. The width and colour are tokens. |
+| `root` | `box-shadow` | `inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-disabled-outline)` | Figma's 1px left and top stroke, drawn inside the shape the way Figma draws it. A border would make the button 1px wider. The width and colour are tokens. |
 | `focus-ring` | `inset` | `calc(-1 * var(--spacing-gap-2xsmall))` | Composed from a token: the ring sits spacing/gap/2xsmall outside the element. |
 | `focus-ring` | `inset` | `calc(-1 * var(--spacing-gap-2xsmall))` | Composed from a token: the ring sits spacing/gap/2xsmall outside the element. |
 | `focus-ring` | `inset` | `calc(-1 * var(--spacing-gap-2xsmall))` | Composed from a token: the ring sits spacing/gap/2xsmall outside the element. |

@@ -11,8 +11,13 @@
   },
   "button": {
     "name": "Button",
-    "setNodeId": "39:38",
+    "setNodeId": "20:14",
     "variantCount": 20
+  },
+  "Button (label only)": {
+    "setNodeId": "39:38",
+    "variantCount": 20,
+    "$comment": "The same component as Button, without the icon slot. Rost has one Button, built from the set at 20:14."
   },
   "illustrations": {
     "setNodeId": "41:570",
@@ -21,11 +26,6 @@
   "Icons": {
     "setNodeId": "92:15",
     "variantCount": 17
-  },
-  "pill-button": {
-    "name": "PillButton",
-    "setNodeId": "20:14",
-    "variantCount": 20
   },
   "icon-button": {
     "name": "IconButton",

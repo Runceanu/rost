@@ -1,12 +1,12 @@
 import type { JSX } from 'react'
-import { PillButton, type PillButtonVariant } from './PillButton'
+import { Button, type ButtonVariant } from './Button'
 
 /**
  * One fixture per Figma variant, with Figma's sample label. Hover, pressed
  * and focus are forced by the test. Figma's Focus frames include the ring,
  * 4px outside, so those sit in a 4px frame here too.
  */
-const NODES: Record<PillButtonVariant, Record<string, string>> = {
+const NODES: Record<ButtonVariant, Record<string, string>> = {
   primary: { Default: '20:13', Hover: '20:15', Pressed: '20:20', Disabled: '20:22', Focus: '20:17' },
   secondary: { Default: '25:80', Hover: '25:82', Pressed: '25:84', Disabled: '25:86', Focus: '25:88' },
   tertiary: { Default: '25:191', Hover: '25:194', Pressed: '25:197', Disabled: '25:200', Focus: '25:203' },
@@ -20,22 +20,23 @@ export const fixtures = Object.entries(NODES).flatMap(([type, states]) =>
   Object.entries(states).map(([state, node]) => ({
     node,
     name: `type=${cap(type)}, state=${state}`,
-    element: frame(<PillButton variant={type as PillButtonVariant} disabled={state === 'Disabled'}>label</PillButton>, state),
+    element: frame(<Button variant={type as ButtonVariant} disabled={state === 'Disabled'}>label</Button>, state),
     ...(FORCE[state] ? { force: FORCE[state] } : {}),
   })),
 )
 
 /** What a caller writes. Shown on the component's page. */
-export const usage = `import { PillButton } from 'rost/components/pill-button/PillButton'
+export const usage = `import { Button } from 'rost/components/button/Button'
 
-<PillButton>Get in touch</PillButton>
-<PillButton variant="secondary" href="/work">See the work</PillButton>
-<PillButton variant="tertiary">Cancel</PillButton>`
+<Button>Get in touch</Button>
+<Button variant="secondary" href="/work">See the work</Button>
+<Button variant="tertiary">Cancel</Button>
+<Button variant="secondary" href="/" icon={<ArrowLeft />}>Back</Button>`
 
 /** What the component's card on rost.build shows. */
 export const preview = (
   <span style={{ display: 'flex', gap: 'var(--spacing-gap-small)' }}>
-    <PillButton as="span">Get in touch</PillButton>
-    <PillButton as="span" variant="secondary">The work</PillButton>
+    <Button as="span">Get in touch</Button>
+    <Button as="span" variant="secondary">The work</Button>
   </span>
 )
