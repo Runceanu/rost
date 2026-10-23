@@ -256,7 +256,7 @@ variants:
       dot:
         background: { token: project/lock/icon, value: "#00d669" }
 guidance:
-  status: proposed
+  status: agreed
   use:
     - The list of projects on runceanu.com, one row each. The row links to the case study.
   avoid:

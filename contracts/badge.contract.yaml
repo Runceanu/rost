@@ -244,7 +244,7 @@ variants:
         width: { value: 16px, token: spacing/size/2xsmall }
         height: { value: 16px, token: spacing/size/2xsmall }
 guidance:
-  status: proposed
+  status: agreed
   use:
     - |-
       Marking the status of something in a list, a card or a table row: Paid, Overdue, Draft.

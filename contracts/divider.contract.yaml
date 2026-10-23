@@ -32,7 +32,7 @@ implementations:
     component: src/rost/divider/Divider.tsx
     root: .rost-divider
 guidance:
-  status: proposed
+  status: agreed
   use:
     - Between groups in a list or a menu, when space alone doesn't separate them.
   avoid:
