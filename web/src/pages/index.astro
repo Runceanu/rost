@@ -69,16 +69,22 @@ const illustrations = count(import.meta.glob('../../../assets/illustrations/*.sv
 </script>
 
 <style>
-  .hero { position: relative; overflow-y: clip; padding: var(--spacing-gap-large) 0 var(--spacing-gap-2xlarge); border-bottom: 1px solid var(--line); }
+  .hero { position: relative; padding: var(--spacing-gap-large) 0 var(--spacing-gap-2xlarge); border-bottom: 1px solid var(--line); }
   .hero > :not(.paper) { position: relative; }
-  /* The Paper effect, to the right of the words: from just past the widest
-     line to the window's edge, fading in from the left and at the top and
-     bottom. Below 900px there's no room beside the text, so it goes. */
+  /* The Paper effect, to the right of the words: a disc of dots, faded the
+     way runceanu.com fades its own (solid to 40%, gone by 92%). It's up to
+     720px across, centred in the space between the text and the window's
+     edge, and free to spill past the hero's top and bottom. On narrower
+     screens it shrinks so its faded edge never reaches the words. Below
+     900px there's no room beside the text, so it goes. */
   .paper {
-    position: absolute; top: 0; height: 100%; pointer-events: none;
-    left: 600px; right: calc((100% - var(--page-w, 100%)) / 2);
-    mask-image: linear-gradient(to right, transparent, #000 var(--spacing-size-xlarge, 64px)), linear-gradient(to bottom, transparent, #000 var(--spacing-size-large), #000 calc(100% - var(--spacing-size-large)), transparent);
-    mask-composite: intersect;
+    --area: calc(100% + (var(--page-w, 100%) - 100%) / 2 - 600px);
+    --d: min(720px, var(--area));
+    position: absolute; pointer-events: none;
+    width: var(--d); aspect-ratio: 1;
+    left: calc(600px + var(--area) / 2 - var(--d) / 2);
+    top: 50%; transform: translateY(-50%);
+    mask-image: radial-gradient(circle closest-side at 50% 50%, #000 40%, transparent 92%);
   }
   @media (max-width: 900px) { .paper { display: none; } }
   .steps { display: grid; gap: var(--spacing-gap-small-medium); grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
