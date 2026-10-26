@@ -2,16 +2,23 @@
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "rost",
   "compatibility_date": "2026-10-19",
+  "main": "worker/index.js",
   "observability": {
     "enabled": true
   },
   "assets": {
     "directory": "web/dist",
-    "not_found_handling": "404-page"
+    "binding": "ASSETS",
+    "not_found_handling": "404-page",
+    "run_worker_first": true
   },
   "routes": [
     {
       "pattern": "rost.build",
+      "custom_domain": true
+    },
+    {
+      "pattern": "www.rost.build",
       "custom_domain": true
     }
   ],
