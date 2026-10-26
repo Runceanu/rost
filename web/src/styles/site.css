@@ -96,7 +96,9 @@ h3 { font-family: var(--mono); font-weight: 400; font-size: 12px; letter-spacing
 .prose ul { padding-left: var(--spacing-gap-medium-large); }
 .prose strong { color: var(--fg); font-weight: 600; }
 .prose a { color: var(--accent); }
-.prose table { border-collapse: collapse; font-size: 14px; margin: var(--spacing-gap-small) 0 var(--spacing-gap-medium-large); display: block; overflow-x: auto; }
+.prose table { border-collapse: collapse; font-size: 14px; margin: var(--spacing-gap-small) 0 var(--spacing-gap-medium-large); width: 100%; }
+/* On a phone a wide table scrolls sideways instead of squeezing. */
+@media (max-width: 768px) { .prose table { display: block; overflow-x: auto; } }
 .prose th, .prose td { text-align: left; padding: var(--spacing-gap-small) var(--spacing-gap-small-medium); border-bottom: 1px solid var(--line); vertical-align: top; }
 .prose th { font-family: var(--mono); font-weight: 400; font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--fg-3); }
 /* Shiki paints its theme's own background inline; the site's surface wins. */
