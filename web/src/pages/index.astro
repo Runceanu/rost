@@ -124,7 +124,9 @@ const nextItems = [...roadmap.slice(nowAt, roadmap.indexOf('\n## ', nowAt + 5)).
 </script>
 
 <style>
-  .hero { position: relative; padding: var(--spacing-gap-large) 0 var(--spacing-gap-2xlarge); }
+  .hero { position: relative; padding: var(--spacing-gap-large) 0 0; }
+  /* 148px between the homepage's sections. No spacing token goes that high yet. */
+  h2 { margin-top: 148px; }
   .hero > :not(.paper) { position: relative; }
   /* The Paper effect, beside the words: a disc of dots, faded the way
      the portfolio site fades its own (solid to 40%, gone by 92%). It's up to 720px
