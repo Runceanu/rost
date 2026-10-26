@@ -293,7 +293,7 @@ variants:
       start:
         flex: { value: none, assert: false }
 guidance:
-  status: proposed
+  status: agreed
   use:
     - "Used for a list of things to pick from, or the items in a side nav: one row each, the picked one in green."
   avoid:

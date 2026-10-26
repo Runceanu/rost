@@ -8,7 +8,7 @@
 |---|---|
 | Kind | component |
 | Contract | `review` · [tooltip.contract.yaml](../../contracts/tooltip.contract.yaml) |
-| Guidance | `proposed` |
+| Guidance | `agreed` |
 | Source | [Figma 138:276](https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=138-276) · read 2026-10-23 |
 | Implemented in | nowhere yet |
 

@@ -40,7 +40,7 @@ elements:
       letter-spacing: { token: typography/label/letter-spacing, value: 0px }
       color: { token: actions/secondary/regular/default/label, value: "#d3d9d5" }
 guidance:
-  status: proposed
+  status: agreed
   use:
     - "Used to explain something that can't explain itself: an icon-only button, or a nav item for the page you're already on."
   avoid:

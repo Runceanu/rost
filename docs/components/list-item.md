@@ -8,7 +8,7 @@
 |---|---|
 | Kind | component |
 | Contract | `review` · [list-item.contract.yaml](../../contracts/list-item.contract.yaml) |
-| Guidance | `proposed` |
+| Guidance | `agreed` |
 | Source | [Figma 346:3364](https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=346-3364) · read 2026-10-26 |
 | Implemented in | nowhere yet |
 

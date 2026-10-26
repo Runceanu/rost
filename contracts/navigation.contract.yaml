@@ -81,7 +81,7 @@ variants:
         padding-left: { token: spacing/gap/medium, value: 16px }
         padding-right: { token: spacing/gap/medium, value: 16px }
 guidance:
-  status: proposed
+  status: agreed
   use:
     - "Used as the main navigation of an app, down the side: a few top-level places, and one action that matters everywhere."
   avoid:

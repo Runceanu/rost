@@ -157,7 +157,7 @@ variants:
         color: { token: tabs/unselected/disabled/label, value: "#999999" }
         opacity: { token: opacity/medium, value: "0.48" }
 guidance:
-  status: proposed
+  status: agreed
   use:
     - "Switching between views of the same thing, in place: Preview and Code, Overview and Activity."
   avoid:

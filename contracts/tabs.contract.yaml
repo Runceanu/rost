@@ -27,7 +27,7 @@ elements:
         value: inset 0 calc(-1 * var(--spacing-outline-small)) 0 0 var(--tabs-line)
         untokenised: "Figma's 1px line along the bottom, drawn inside so the row stays 40px tall and the selected tab's underline sits on top of it. The width and colour are tokens (spacing/outline/small, tabs/line)."
 guidance:
-  status: proposed
+  status: agreed
   use:
     - Above the panels it switches between.
   avoid:

@@ -75,7 +75,7 @@ Next:
 3. **One list of components.** `registry/component-sets.json` drives the contracts now, but the variant nodes still sit apart in `variant-nodes.json`. One file should hold both.
 4. **Variants as layers.** Right now a variant list repeats what one axis decides: Toggle's unselected background shows up five times, once per state. Curtis's layered approach (`when: { selected: false }` once, then `when: { state: Disabled }` on top) says it once and would cut most of Button's variant list. The check needs to apply layers in order first.
 5. **One copy of the contracts.** the accounting app's test does go through `forApp` now, but it still reads JSON copies of the five contracts (`contracts/rost/`). They match the YAML today. Nothing keeps them matching, so the test should read these YAML files instead.
-6. **Guidance for the new components.** Badge, Thumbs, Carousel, Projects, Testimonials, Menu and Divider are signed off. ListItem, Navigation, Tabs, TabItem and Tooltip have proposed guidance waiting for me. Since 2026-10-26 each of them covers element, name, keyboard and focus, so they can go stable as soon as I agree with them and an app uses them. TestimonialPicture has none. While I'm at it, decide on the four deviations nobody has taken back to the design side yet (the Health section lists them).
+6. **Guidance for the new components.** Every contract's guidance is signed off now. ListItem, Navigation, Tabs, TabItem and Tooltip were the last, on 2026-10-26, once they covered element, name, keyboard and focus. They can go stable as soon as an app uses them. TestimonialPicture still has none. While I'm at it, decide on the four deviations nobody has taken back to the design side yet (the Health section lists them).
 
 ## Next: grow the kit
 

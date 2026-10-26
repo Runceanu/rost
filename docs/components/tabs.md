@@ -8,7 +8,7 @@
 |---|---|
 | Kind | component |
 | Contract | `review` · [tabs.contract.yaml](../../contracts/tabs.contract.yaml) |
-| Guidance | `proposed` |
+| Guidance | `agreed` |
 | Source | [Figma 448:56](https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=448-56) · read 2026-10-23 |
 | Implemented in | nowhere yet |
 
