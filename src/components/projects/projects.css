@@ -2,6 +2,7 @@
 
 .rost-projects, .rost-projects * { box-sizing: border-box; margin: 0; }
 .rost-projects > img, .rost-projects [class*="__icons-"] > img { display: block; position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; }
+.rost-projects ::placeholder { color: inherit; opacity: 1; }
 
 .rost-projects {
   display: flex;

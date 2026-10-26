@@ -2,6 +2,7 @@
 
 .rost-menu, .rost-menu * { box-sizing: border-box; margin: 0; }
 .rost-menu > img, .rost-menu [class*="__icons-"] > img { display: block; position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; }
+.rost-menu ::placeholder { color: inherit; opacity: 1; }
 
 .rost-menu {
   display: flex;

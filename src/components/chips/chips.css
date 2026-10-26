@@ -2,6 +2,7 @@
 
 .rost-chips, .rost-chips * { box-sizing: border-box; margin: 0; }
 .rost-chips > img, .rost-chips [class*="__icons-"] > img { display: block; position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; }
+.rost-chips ::placeholder { color: inherit; opacity: 1; }
 
 .rost-chips {
   justify-content: center;

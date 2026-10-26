@@ -2,6 +2,7 @@
 
 .rost-thumbs, .rost-thumbs * { box-sizing: border-box; margin: 0; }
 .rost-thumbs > img, .rost-thumbs [class*="__icons-"] > img { display: block; position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; }
+.rost-thumbs ::placeholder { color: inherit; opacity: 1; }
 
 .rost-thumbs {
   display: flex;

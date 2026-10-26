@@ -1,0 +1,31 @@
+# What every push has to keep true: the contracts validate, and the docs and
+# the generated CSS are what the contracts say. If either was edited by hand,
+# or a contract changed without rebuilding them, this fails. Then the site has
+# to build.
+#
+# The visual test isn't here yet. It compares Chrome's render with Figma's, and
+# Linux draws text differently from the Mac the baselines were made on.
+name: Check
+on:
+  push:
+    branches: [master]
+  pull_request:
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - name: Validate the contracts
+        run: npm run validate
+      - name: Docs and CSS match the contracts
+        run: |
+          npm run docs
+          node bin/build-css.mjs $(ls src/components)
+          git diff --exit-code -- docs src/components
+      - name: Build the site
+        run: npx astro build --root web

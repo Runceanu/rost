@@ -2,6 +2,7 @@
 
 .rost-icon-button, .rost-icon-button * { box-sizing: border-box; margin: 0; }
 .rost-icon-button > img, .rost-icon-button [class*="__icons-"] > img { display: block; position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; }
+.rost-icon-button ::placeholder { color: inherit; opacity: 1; }
 
 .rost-icon-button {
   justify-content: center;

@@ -2,6 +2,7 @@
 
 .rost-tags, .rost-tags * { box-sizing: border-box; margin: 0; }
 .rost-tags > img, .rost-tags [class*="__icons-"] > img { display: block; position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; }
+.rost-tags ::placeholder { color: inherit; opacity: 1; }
 
 .rost-tags {
   justify-content: center;
