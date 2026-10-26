@@ -62,12 +62,12 @@
 }
 
 .rost-button.rost-button--type-primary {
-  background: var(--actions-primary-default-background);
-  box-shadow: inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-default-outline);
   padding-left: var(--spacing-gap-medium-large);
   padding-right: var(--spacing-gap-medium-large);
   padding-top: var(--spacing-gap-none);
   padding-bottom: var(--spacing-gap-none);
+  background: var(--actions-primary-default-background);
+  box-shadow: inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-default-outline);
 }
 
 .rost-button.rost-button--type-primary .rost-button__label {
@@ -75,12 +75,12 @@
 }
 
 .rost-button.rost-button--type-primary:hover {
-  background: var(--actions-primary-hover-background);
-  box-shadow: inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-hover-outline);
   padding-left: var(--spacing-gap-medium-large);
   padding-right: var(--spacing-gap-medium-large);
   padding-top: var(--spacing-gap-none);
   padding-bottom: var(--spacing-gap-none);
+  background: var(--actions-primary-hover-background);
+  box-shadow: inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-hover-outline);
 }
 
 .rost-button.rost-button--type-primary:hover .rost-button__label {
@@ -88,16 +88,12 @@
 }
 
 .rost-button.rost-button--type-primary:focus-visible {
-  background: var(--actions-primary-focus-background);
-  box-shadow: inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-focus-outline);
   padding-left: var(--spacing-gap-medium-large);
   padding-right: var(--spacing-gap-medium-large);
   padding-top: var(--spacing-gap-none);
   padding-bottom: var(--spacing-gap-none);
-}
-
-.rost-button.rost-button--type-primary:focus-visible .rost-button__label {
-  color: var(--actions-primary-focus-label);
+  background: var(--actions-primary-focus-background);
+  box-shadow: inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-focus-outline);
 }
 
 .rost-button.rost-button--type-primary:focus-visible .rost-button__focus-ring {
@@ -110,13 +106,17 @@
   border-style: solid;
 }
 
+.rost-button.rost-button--type-primary:focus-visible .rost-button__label {
+  color: var(--actions-primary-focus-label);
+}
+
 .rost-button.rost-button--type-primary:is(:active, [aria-current="page"]) {
-  background: var(--actions-primary-pressed-background);
-  box-shadow: inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-pressed-outline);
   padding-left: var(--spacing-gap-medium-large);
   padding-right: var(--spacing-gap-medium-large);
   padding-top: var(--spacing-gap-none);
   padding-bottom: var(--spacing-gap-none);
+  background: var(--actions-primary-pressed-background);
+  box-shadow: inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-pressed-outline);
 }
 
 .rost-button.rost-button--type-primary:is(:active, [aria-current="page"]) .rost-button__label {
@@ -124,14 +124,14 @@
 }
 
 .rost-button.rost-button--type-primary:is(:disabled, [aria-disabled="true"]) {
-  background: var(--actions-primary-disabled-background);
-  box-shadow: inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-disabled-outline);
   padding-left: var(--spacing-gap-medium-large);
   padding-right: var(--spacing-gap-medium-large);
   padding-top: var(--spacing-gap-none);
   padding-bottom: var(--spacing-gap-none);
   opacity: var(--opacity-gentle);
   cursor: default;
+  background: var(--actions-primary-disabled-background);
+  box-shadow: inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-disabled-outline);
 }
 
 .rost-button.rost-button--type-primary:is(:disabled, [aria-disabled="true"]) .rost-button__label {
@@ -207,10 +207,6 @@
   padding-bottom: var(--spacing-gap-none);
 }
 
-.rost-button.rost-button--type-tertiary:focus-visible .rost-button__label {
-  color: var(--actions-tertiary-focus-label);
-}
-
 .rost-button.rost-button--type-tertiary:focus-visible .rost-button__focus-ring {
   display: block;
   position: absolute;
@@ -221,11 +217,19 @@
   border-style: solid;
 }
 
+.rost-button.rost-button--type-tertiary:focus-visible .rost-button__label {
+  color: var(--actions-tertiary-focus-label);
+}
+
+.rost-button.rost-button--type-borderless {
+  padding: var(--spacing-gap-none);
+}
+
 .rost-button.rost-button--type-borderless .rost-button__label {
   color: var(--actions-tertiary-default-label);
 }
 
-.rost-button.rost-button--type-borderless {
+.rost-button.rost-button--type-borderless:hover {
   padding: var(--spacing-gap-none);
 }
 
@@ -240,7 +244,7 @@
   opacity: var(--opacity-mild);
 }
 
-.rost-button.rost-button--type-borderless:hover {
+.rost-button.rost-button--type-borderless:is(:active, [aria-current="page"]) {
   padding: var(--spacing-gap-none);
 }
 
@@ -255,22 +259,18 @@
   opacity: var(--opacity-mild);
 }
 
-.rost-button.rost-button--type-borderless:is(:active, [aria-current="page"]) {
+.rost-button.rost-button--type-borderless:is(:disabled, [aria-disabled="true"]) {
   padding: var(--spacing-gap-none);
+  opacity: var(--opacity-gentle);
+  cursor: default;
 }
 
 .rost-button.rost-button--type-borderless:is(:disabled, [aria-disabled="true"]) .rost-button__label {
   color: var(--actions-tertiary-disabled-label);
 }
 
-.rost-button.rost-button--type-borderless:is(:disabled, [aria-disabled="true"]) {
-  opacity: var(--opacity-gentle);
-  cursor: default;
+.rost-button.rost-button--type-borderless:focus-visible {
   padding: var(--spacing-gap-none);
-}
-
-.rost-button.rost-button--type-borderless:focus-visible .rost-button__label {
-  color: var(--actions-tertiary-focus-label);
 }
 
 .rost-button.rost-button--type-borderless:focus-visible .rost-button__focus-ring {
@@ -282,8 +282,8 @@
   border-style: solid;
 }
 
-.rost-button.rost-button--type-borderless:focus-visible {
-  padding: var(--spacing-gap-none);
+.rost-button.rost-button--type-borderless:focus-visible .rost-button__label {
+  color: var(--actions-tertiary-focus-label);
 }
 
 .rost-button.rost-button--type-secondary {
@@ -293,22 +293,22 @@
   padding-bottom: var(--spacing-gap-none);
 }
 
-.rost-button.rost-button--type-secondary .rost-button__label {
-  color: var(--actions-secondary-regular-default-label);
-}
-
 .rost-button.rost-button--type-secondary .rost-button__background {
   position: absolute;
   inset: 0;
+  border-radius: var(--spacing-radius-full);
   background: var(--actions-secondary-regular-default-background);
   opacity: var(--opacity-gentle);
-  border-radius: var(--spacing-radius-full);
   border-left-color: var(--actions-secondary-regular-default-outline);
   border-top-color: var(--actions-secondary-regular-default-outline);
   border-left-style: solid;
   border-left-width: var(--spacing-outline-small);
   border-top-style: solid;
   border-top-width: var(--spacing-outline-small);
+}
+
+.rost-button.rost-button--type-secondary .rost-button__label {
+  color: var(--actions-secondary-regular-default-label);
 }
 
 .rost-button.rost-button--type-secondary:hover {
@@ -318,22 +318,22 @@
   padding-bottom: var(--spacing-gap-none);
 }
 
-.rost-button.rost-button--type-secondary:hover .rost-button__label {
-  color: var(--actions-secondary-regular-hover-label);
-}
-
 .rost-button.rost-button--type-secondary:hover .rost-button__background {
   position: absolute;
   inset: 0;
+  border-radius: var(--spacing-radius-full);
   background: var(--actions-secondary-regular-hover-background);
   opacity: var(--opacity-mild);
-  border-radius: var(--spacing-radius-full);
   border-left-color: var(--actions-secondary-regular-hover-outline);
   border-top-color: var(--actions-secondary-regular-hover-outline);
   border-left-style: solid;
   border-left-width: var(--spacing-outline-small);
   border-top-style: solid;
   border-top-width: var(--spacing-outline-small);
+}
+
+.rost-button.rost-button--type-secondary:hover .rost-button__label {
+  color: var(--actions-secondary-regular-hover-label);
 }
 
 .rost-button.rost-button--type-secondary:is(:active, [aria-current="page"]) {
@@ -343,22 +343,22 @@
   padding-bottom: var(--spacing-gap-none);
 }
 
-.rost-button.rost-button--type-secondary:is(:active, [aria-current="page"]) .rost-button__label {
-  color: var(--actions-secondary-regular-pressed-label);
-}
-
 .rost-button.rost-button--type-secondary:is(:active, [aria-current="page"]) .rost-button__background {
   position: absolute;
   inset: 0;
+  border-radius: var(--spacing-radius-full);
   background: var(--actions-secondary-regular-pressed-background);
   opacity: var(--opacity-mild);
-  border-radius: var(--spacing-radius-full);
   border-left-color: var(--actions-secondary-regular-pressed-outline);
   border-top-color: var(--actions-secondary-regular-pressed-outline);
   border-left-style: solid;
   border-left-width: var(--spacing-outline-small);
   border-top-style: solid;
   border-top-width: var(--spacing-outline-small);
+}
+
+.rost-button.rost-button--type-secondary:is(:active, [aria-current="page"]) .rost-button__label {
+  color: var(--actions-secondary-regular-pressed-label);
 }
 
 .rost-button.rost-button--type-secondary:is(:disabled, [aria-disabled="true"]) {
@@ -370,22 +370,22 @@
   cursor: default;
 }
 
-.rost-button.rost-button--type-secondary:is(:disabled, [aria-disabled="true"]) .rost-button__label {
-  color: var(--actions-secondary-regular-disabled-label);
-}
-
 .rost-button.rost-button--type-secondary:is(:disabled, [aria-disabled="true"]) .rost-button__background {
   position: absolute;
   inset: 0;
+  border-radius: var(--spacing-radius-full);
   background: var(--actions-secondary-regular-disabled-background);
   opacity: var(--opacity-mild);
-  border-radius: var(--spacing-radius-full);
   border-left-color: var(--actions-secondary-regular-disabled-outline);
   border-top-color: var(--actions-secondary-regular-disabled-outline);
   border-left-style: solid;
   border-left-width: var(--spacing-outline-small);
   border-top-style: solid;
   border-top-width: var(--spacing-outline-small);
+}
+
+.rost-button.rost-button--type-secondary:is(:disabled, [aria-disabled="true"]) .rost-button__label {
+  color: var(--actions-secondary-regular-disabled-label);
 }
 
 .rost-button.rost-button--type-secondary:focus-visible {
@@ -395,8 +395,18 @@
   padding-bottom: var(--spacing-gap-none);
 }
 
-.rost-button.rost-button--type-secondary:focus-visible .rost-button__label {
-  color: var(--actions-secondary-regular-focus-label);
+.rost-button.rost-button--type-secondary:focus-visible .rost-button__background {
+  position: absolute;
+  inset: 0;
+  border-radius: var(--spacing-radius-full);
+  background: var(--actions-secondary-regular-focus-background);
+  opacity: var(--opacity-gentle);
+  border-left-color: var(--actions-secondary-regular-focus-outline);
+  border-top-color: var(--actions-secondary-regular-focus-outline);
+  border-left-style: solid;
+  border-left-width: var(--spacing-outline-small);
+  border-top-style: solid;
+  border-top-width: var(--spacing-outline-small);
 }
 
 .rost-button.rost-button--type-secondary:focus-visible .rost-button__focus-ring {
@@ -409,16 +419,6 @@
   border-style: solid;
 }
 
-.rost-button.rost-button--type-secondary:focus-visible .rost-button__background {
-  position: absolute;
-  inset: 0;
-  background: var(--actions-secondary-regular-focus-background);
-  opacity: var(--opacity-gentle);
-  border-radius: var(--spacing-radius-full);
-  border-left-color: var(--actions-secondary-regular-focus-outline);
-  border-top-color: var(--actions-secondary-regular-focus-outline);
-  border-left-style: solid;
-  border-left-width: var(--spacing-outline-small);
-  border-top-style: solid;
-  border-top-width: var(--spacing-outline-small);
+.rost-button.rost-button--type-secondary:focus-visible .rost-button__label {
+  color: var(--actions-secondary-regular-focus-label);
 }

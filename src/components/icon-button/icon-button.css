@@ -47,14 +47,14 @@
 }
 
 .rost-icon-button.rost-icon-button--type-primary {
-  background: var(--actions-primary-default-background);
-  box-shadow: inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-default-outline);
   padding-left: var(--spacing-gap-medium-large);
   padding-right: var(--spacing-gap-medium-large);
   padding-top: var(--spacing-gap-none);
   padding-bottom: var(--spacing-gap-none);
   width: var(--spacing-size-medium-large);
   height: var(--spacing-size-medium-large);
+  background: var(--actions-primary-default-background);
+  box-shadow: inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-default-outline);
 }
 
 .rost-icon-button.rost-icon-button--type-primary .rost-icon-button__icons-arrow-left {
@@ -73,11 +73,11 @@
 .rost-icon-button.rost-icon-button--type-secondary .rost-icon-button__background {
   position: absolute;
   inset: 0;
+  border-radius: var(--spacing-radius-full);
   background: var(--actions-secondary-regular-default-background);
   border-left-color: var(--actions-secondary-regular-default-outline);
   border-top-color: var(--actions-secondary-regular-default-outline);
   opacity: var(--opacity-gentle);
-  border-radius: var(--spacing-radius-full);
   border-left-style: solid;
   border-left-width: var(--spacing-outline-small);
   border-top-style: solid;
@@ -102,14 +102,14 @@
 }
 
 .rost-icon-button.rost-icon-button--type-primary:hover {
-  background: var(--actions-primary-hover-background);
-  box-shadow: inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-hover-outline);
   padding-left: var(--spacing-gap-medium-large);
   padding-right: var(--spacing-gap-medium-large);
   padding-top: var(--spacing-gap-none);
   padding-bottom: var(--spacing-gap-none);
   width: var(--spacing-size-medium-large);
   height: var(--spacing-size-medium-large);
+  background: var(--actions-primary-hover-background);
+  box-shadow: inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-hover-outline);
 }
 
 .rost-icon-button.rost-icon-button--type-primary:hover .rost-icon-button__icons-arrow-left {
@@ -128,11 +128,11 @@
 .rost-icon-button.rost-icon-button--type-secondary:hover .rost-icon-button__background {
   position: absolute;
   inset: 0;
+  border-radius: var(--spacing-radius-full);
   background: var(--actions-secondary-regular-hover-background);
   border-left-color: var(--actions-secondary-regular-hover-outline);
   border-top-color: var(--actions-secondary-regular-hover-outline);
   opacity: var(--opacity-mild);
-  border-radius: var(--spacing-radius-full);
   border-left-style: solid;
   border-left-width: var(--spacing-outline-small);
   border-top-style: solid;
@@ -165,14 +165,14 @@
 }
 
 .rost-icon-button.rost-icon-button--type-primary:active {
-  background: var(--actions-primary-pressed-background);
-  box-shadow: inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-pressed-outline);
   padding-left: var(--spacing-gap-medium-large);
   padding-right: var(--spacing-gap-medium-large);
   padding-top: var(--spacing-gap-none);
   padding-bottom: var(--spacing-gap-none);
   width: var(--spacing-size-medium-large);
   height: var(--spacing-size-medium-large);
+  background: var(--actions-primary-pressed-background);
+  box-shadow: inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-pressed-outline);
 }
 
 .rost-icon-button.rost-icon-button--type-primary:active .rost-icon-button__icons-arrow-left {
@@ -191,11 +191,11 @@
 .rost-icon-button.rost-icon-button--type-secondary:active .rost-icon-button__background {
   position: absolute;
   inset: 0;
+  border-radius: var(--spacing-radius-full);
   background: var(--actions-secondary-regular-pressed-background);
   border-left-color: var(--actions-secondary-regular-pressed-outline);
   border-top-color: var(--actions-secondary-regular-pressed-outline);
   opacity: var(--opacity-mild);
-  border-radius: var(--spacing-radius-full);
   border-left-style: solid;
   border-left-width: var(--spacing-outline-small);
   border-top-style: solid;
@@ -228,8 +228,6 @@
 }
 
 .rost-icon-button.rost-icon-button--type-primary:is(:disabled, [aria-disabled="true"]) {
-  background: var(--actions-primary-disabled-background);
-  box-shadow: inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-disabled-outline);
   padding-left: var(--spacing-gap-medium-large);
   padding-right: var(--spacing-gap-medium-large);
   padding-top: var(--spacing-gap-none);
@@ -238,6 +236,8 @@
   height: var(--spacing-size-medium-large);
   opacity: var(--opacity-gentle);
   cursor: default;
+  background: var(--actions-primary-disabled-background);
+  box-shadow: inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-disabled-outline);
 }
 
 .rost-icon-button.rost-icon-button--type-primary:is(:disabled, [aria-disabled="true"]) .rost-icon-button__icons-arrow-left {
@@ -258,11 +258,11 @@
 .rost-icon-button.rost-icon-button--type-secondary:is(:disabled, [aria-disabled="true"]) .rost-icon-button__background {
   position: absolute;
   inset: 0;
+  border-radius: var(--spacing-radius-full);
   background: var(--actions-secondary-regular-disabled-background);
   border-left-color: var(--actions-secondary-regular-disabled-outline);
   border-top-color: var(--actions-secondary-regular-disabled-outline);
   opacity: var(--opacity-mild);
-  border-radius: var(--spacing-radius-full);
   border-left-style: solid;
   border-left-width: var(--spacing-outline-small);
   border-top-style: solid;
@@ -289,23 +289,23 @@
 }
 
 .rost-icon-button.rost-icon-button--type-primary:focus-visible {
-  background: var(--actions-primary-focus-background);
-  box-shadow: inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-focus-outline);
   padding-left: var(--spacing-gap-medium-large);
   padding-right: var(--spacing-gap-medium-large);
   padding-top: var(--spacing-gap-none);
   padding-bottom: var(--spacing-gap-none);
   width: var(--spacing-size-medium-large);
   height: var(--spacing-size-medium-large);
+  background: var(--actions-primary-focus-background);
+  box-shadow: inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-focus-outline);
 }
 
 .rost-icon-button.rost-icon-button--type-primary:focus-visible .rost-icon-button__focus-ring {
   display: block;
   position: absolute;
   border-width: var(--spacing-outline-medium);
+  border-radius: var(--spacing-radius-full);
   border-color: var(--actions-primary-focus-focus-ring);
   inset: calc(-1 * var(--spacing-gap-2xsmall));
-  border-radius: var(--spacing-radius-full);
   border-style: solid;
 }
 
@@ -325,11 +325,11 @@
 .rost-icon-button.rost-icon-button--type-secondary:focus-visible .rost-icon-button__background {
   position: absolute;
   inset: 0;
+  border-radius: var(--spacing-radius-full);
   background: var(--actions-secondary-regular-focus-background);
   border-left-color: var(--actions-secondary-regular-focus-outline);
   border-top-color: var(--actions-secondary-regular-focus-outline);
   opacity: var(--opacity-gentle);
-  border-radius: var(--spacing-radius-full);
   border-left-style: solid;
   border-left-width: var(--spacing-outline-small);
   border-top-style: solid;
@@ -340,9 +340,9 @@
   display: block;
   position: absolute;
   border-width: var(--spacing-outline-medium);
+  border-radius: var(--spacing-radius-full);
   border-color: var(--actions-secondary-regular-focus-focus-ring);
   inset: calc(-1 * var(--spacing-gap-2xsmall));
-  border-radius: var(--spacing-radius-full);
   border-style: solid;
 }
 
@@ -363,9 +363,9 @@
   display: block;
   position: absolute;
   border-width: var(--spacing-outline-medium);
+  border-radius: var(--spacing-radius-full);
   border-color: var(--actions-secondary-regular-focus-focus-ring);
   inset: calc(-1 * var(--spacing-gap-2xsmall));
-  border-radius: var(--spacing-radius-full);
   border-style: solid;
 }
 
@@ -391,6 +391,12 @@
   padding: var(--spacing-gap-none);
 }
 
+.rost-icon-button.rost-icon-button--type-project:hover .rost-icon-button__icons-arrow-left {
+  width: var(--spacing-size-2xsmall);
+  height: var(--spacing-size-2xsmall);
+  color: var(--actions-borderless-hover-icon);
+}
+
 .rost-icon-button.rost-icon-button--type-project:hover .rost-icon-button__background {
   position: absolute;
   inset: 0;
@@ -399,16 +405,16 @@
   border-radius: var(--spacing-radius-full);
 }
 
-.rost-icon-button.rost-icon-button--type-project:hover .rost-icon-button__icons-arrow-left {
-  width: var(--spacing-size-2xsmall);
-  height: var(--spacing-size-2xsmall);
-  color: var(--actions-borderless-hover-icon);
-}
-
 .rost-icon-button.rost-icon-button--type-project:active {
   width: var(--spacing-size-small-medium);
   height: var(--spacing-size-small-medium);
   padding: var(--spacing-gap-none);
+}
+
+.rost-icon-button.rost-icon-button--type-project:active .rost-icon-button__icons-arrow-left {
+  width: var(--spacing-size-2xsmall);
+  height: var(--spacing-size-2xsmall);
+  color: var(--actions-borderless-pressed-icon);
 }
 
 .rost-icon-button.rost-icon-button--type-project:active .rost-icon-button__background {
@@ -419,18 +425,12 @@
   border-radius: var(--spacing-radius-full);
 }
 
-.rost-icon-button.rost-icon-button--type-project:active .rost-icon-button__icons-arrow-left {
-  width: var(--spacing-size-2xsmall);
-  height: var(--spacing-size-2xsmall);
-  color: var(--actions-borderless-pressed-icon);
-}
-
 .rost-icon-button.rost-icon-button--type-project:is(:disabled, [aria-disabled="true"]) {
   width: var(--spacing-size-small-medium);
   height: var(--spacing-size-small-medium);
+  padding: var(--spacing-gap-none);
   opacity: var(--opacity-gentle);
   cursor: default;
-  padding: var(--spacing-gap-none);
 }
 
 .rost-icon-button.rost-icon-button--type-project:is(:disabled, [aria-disabled="true"]) .rost-icon-button__icons-arrow-left {
@@ -445,18 +445,18 @@
   padding: var(--spacing-gap-none);
 }
 
-.rost-icon-button.rost-icon-button--type-project:focus-visible .rost-icon-button__focus-ring {
-  display: block;
-  position: absolute;
-  border-width: var(--spacing-outline-medium);
-  border-color: var(--actions-secondary-regular-focus-focus-ring);
-  inset: calc(-1 * var(--spacing-gap-2xsmall));
-  border-radius: var(--spacing-radius-full);
-  border-style: solid;
-}
-
 .rost-icon-button.rost-icon-button--type-project:focus-visible .rost-icon-button__icons-arrow-left {
   width: var(--spacing-size-2xsmall);
   height: var(--spacing-size-2xsmall);
   color: var(--actions-borderless-focus-icon);
+}
+
+.rost-icon-button.rost-icon-button--type-project:focus-visible .rost-icon-button__focus-ring {
+  display: block;
+  position: absolute;
+  border-width: var(--spacing-outline-medium);
+  border-radius: var(--spacing-radius-full);
+  border-color: var(--actions-secondary-regular-focus-focus-ring);
+  inset: calc(-1 * var(--spacing-gap-2xsmall));
+  border-style: solid;
 }

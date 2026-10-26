@@ -66,9 +66,9 @@
 }
 
 .rost-toggle.rost-toggle--selected {
+  border-radius: var(--spacing-radius-full);
   background: var(--actions-primary-default-background);
   box-shadow: inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-default-outline);
-  border-radius: var(--spacing-radius-full);
 }
 
 .rost-toggle.rost-toggle--selected .rost-toggle__icons-arrow-left {
@@ -84,11 +84,11 @@
 }
 
 .rost-toggle:not(.rost-toggle--selected) .rost-toggle__background {
+  border-radius: var(--spacing-radius-medium);
   background: var(--actions-secondary-regular-default-background);
   border-left-color: var(--actions-secondary-regular-default-outline);
   border-top-color: var(--actions-secondary-regular-default-outline);
   opacity: var(--opacity-gentle);
-  border-radius: var(--spacing-radius-medium);
   border-left-style: solid;
   border-left-width: var(--spacing-outline-small);
   border-top-style: solid;
@@ -104,9 +104,9 @@
 }
 
 .rost-toggle:hover.rost-toggle--selected {
+  border-radius: var(--spacing-radius-full);
   background: var(--actions-primary-hover-background);
   box-shadow: inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-hover-outline);
-  border-radius: var(--spacing-radius-full);
 }
 
 .rost-toggle:hover.rost-toggle--selected .rost-toggle__icons-arrow-left {
@@ -122,11 +122,11 @@
 }
 
 .rost-toggle:hover:not(.rost-toggle--selected) .rost-toggle__background {
+  border-radius: var(--spacing-radius-medium);
   background: var(--actions-secondary-regular-hover-background);
   border-left-color: var(--actions-secondary-regular-hover-outline);
   border-top-color: var(--actions-secondary-regular-hover-outline);
   opacity: var(--opacity-mild);
-  border-radius: var(--spacing-radius-medium);
   border-left-style: solid;
   border-left-width: var(--spacing-outline-small);
   border-top-style: solid;
@@ -142,9 +142,9 @@
 }
 
 .rost-toggle:active.rost-toggle--selected {
+  border-radius: var(--spacing-radius-full);
   background: var(--actions-primary-pressed-background);
   box-shadow: inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-pressed-outline);
-  border-radius: var(--spacing-radius-full);
 }
 
 .rost-toggle:active.rost-toggle--selected .rost-toggle__icons-arrow-left {
@@ -160,11 +160,11 @@
 }
 
 .rost-toggle:active:not(.rost-toggle--selected) .rost-toggle__background {
+  border-radius: var(--spacing-radius-medium);
   background: var(--actions-secondary-regular-pressed-background);
   border-left-color: var(--actions-secondary-regular-pressed-outline);
   border-top-color: var(--actions-secondary-regular-pressed-outline);
   opacity: var(--opacity-mild);
-  border-radius: var(--spacing-radius-medium);
   border-left-style: solid;
   border-left-width: var(--spacing-outline-small);
   border-top-style: solid;
@@ -180,11 +180,11 @@
 }
 
 .rost-toggle:is(:disabled, [aria-disabled="true"]).rost-toggle--selected {
-  background: var(--actions-primary-disabled-background);
-  box-shadow: inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-disabled-outline);
   border-radius: var(--spacing-radius-full);
   opacity: var(--opacity-gentle);
   cursor: default;
+  background: var(--actions-primary-disabled-background);
+  box-shadow: inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-disabled-outline);
 }
 
 .rost-toggle:is(:disabled, [aria-disabled="true"]).rost-toggle--selected .rost-toggle__icons-arrow-left {
@@ -202,11 +202,11 @@
 }
 
 .rost-toggle:is(:disabled, [aria-disabled="true"]):not(.rost-toggle--selected) .rost-toggle__background {
+  border-radius: var(--spacing-radius-medium);
   background: var(--actions-secondary-regular-disabled-background);
   border-left-color: var(--actions-secondary-regular-disabled-outline);
   border-top-color: var(--actions-secondary-regular-disabled-outline);
   opacity: var(--opacity-mild);
-  border-radius: var(--spacing-radius-medium);
   border-left-style: solid;
   border-left-width: var(--spacing-outline-small);
   border-top-style: solid;
@@ -222,19 +222,19 @@
 }
 
 .rost-toggle:focus-visible.rost-toggle--selected {
+  border-radius: var(--spacing-radius-full);
   background: var(--actions-primary-focus-background);
   box-shadow: inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-focus-outline);
-  border-radius: var(--spacing-radius-full);
-}
-
-.rost-toggle:focus-visible.rost-toggle--selected .rost-toggle__icons-arrow-left {
-  color: var(--actions-primary-focus-icon);
 }
 
 .rost-toggle:focus-visible.rost-toggle--selected .rost-toggle__focus-ring {
   display: block;
   border-color: var(--actions-primary-focus-focus-ring);
   border-radius: var(--spacing-radius-full);
+}
+
+.rost-toggle:focus-visible.rost-toggle--selected .rost-toggle__icons-arrow-left {
+  color: var(--actions-primary-focus-icon);
 }
 
 .rost-toggle:focus-visible.rost-toggle--selected .rost-toggle__label {
@@ -246,25 +246,25 @@
 }
 
 .rost-toggle:focus-visible:not(.rost-toggle--selected) .rost-toggle__background {
+  border-radius: var(--spacing-radius-medium);
   background: var(--actions-secondary-regular-focus-background);
   border-left-color: var(--actions-secondary-regular-focus-outline);
   border-top-color: var(--actions-secondary-regular-focus-outline);
   opacity: var(--opacity-gentle);
-  border-radius: var(--spacing-radius-medium);
   border-left-style: solid;
   border-left-width: var(--spacing-outline-small);
   border-top-style: solid;
   border-top-width: var(--spacing-outline-small);
 }
 
-.rost-toggle:focus-visible:not(.rost-toggle--selected) .rost-toggle__icons-arrow-left {
-  color: var(--actions-secondary-regular-focus-icon);
-}
-
 .rost-toggle:focus-visible:not(.rost-toggle--selected) .rost-toggle__focus-ring {
   display: block;
   border-color: var(--actions-secondary-regular-focus-focus-ring);
   border-radius: var(--spacing-radius-large);
+}
+
+.rost-toggle:focus-visible:not(.rost-toggle--selected) .rost-toggle__icons-arrow-left {
+  color: var(--actions-secondary-regular-focus-icon);
 }
 
 .rost-toggle:focus-visible:not(.rost-toggle--selected) .rost-toggle__label {

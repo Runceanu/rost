@@ -59,9 +59,9 @@
 .rost-badge.rost-badge--status-default.rost-badge--size-medium .rost-badge__outline {
   position: absolute;
   inset: 0;
-  border-color: var(--non-interactive-foreground-quadruple);
   opacity: var(--opacity-solid);
   border-radius: var(--spacing-radius-full);
+  border-color: var(--non-interactive-foreground-quadruple);
   border-style: solid;
   border-width: var(--spacing-outline-small);
 }
@@ -109,9 +109,9 @@
 .rost-badge.rost-badge--status-negative.rost-badge--size-medium .rost-badge__outline {
   position: absolute;
   inset: 0;
-  border-color: var(--non-interactive-background-negative-light);
   opacity: var(--opacity-solid);
   border-radius: var(--spacing-radius-full);
+  border-color: var(--non-interactive-background-negative-light);
   border-style: solid;
   border-width: var(--spacing-outline-small);
 }
@@ -159,9 +159,9 @@
 .rost-badge.rost-badge--status-positive.rost-badge--size-medium .rost-badge__outline {
   position: absolute;
   inset: 0;
-  border-color: var(--non-interactive-background-positive-light);
   opacity: var(--opacity-solid);
   border-radius: var(--spacing-radius-full);
+  border-color: var(--non-interactive-background-positive-light);
   border-style: solid;
   border-width: var(--spacing-outline-small);
 }
@@ -209,9 +209,9 @@
 .rost-badge.rost-badge--status-warning.rost-badge--size-medium .rost-badge__outline {
   position: absolute;
   inset: 0;
-  border-color: var(--non-interactive-background-warning-light);
   opacity: var(--opacity-solid);
   border-radius: var(--spacing-radius-full);
+  border-color: var(--non-interactive-background-warning-light);
   border-style: solid;
   border-width: var(--spacing-outline-small);
 }
