@@ -7,7 +7,7 @@
 import { readFileSync } from 'node:fs'
 import Ajv from 'ajv/dist/2020.js'
 import { read, ids } from './lib/contract-io.mjs'
-import { loadTokens, valuesOf } from './lib/kit.mjs'
+import { loadTokens, valuesOf, variantsOf } from './lib/kit.mjs'
 
 const schema = JSON.parse(readFileSync(new URL('../schema/component-contract.schema.json', import.meta.url), 'utf8'))
 const validate = new Ajv({ allErrors: true, validateFormats: false, allowUnionTypes: true }).compile(schema)
@@ -36,6 +36,11 @@ for (const id of all) {
       else if (p.type === 'enum' && !p.values.includes(val)) err(`variants[${i}] ${k}: "${val}" is not one of ${p.values.join(', ')}`)
     }
     for (const part of Object.keys(v.elements ?? {})) if (!c.elements?.[part]) err(`variants[${i}] styles "${part}", which is not in elements`)
+    // Two entries with the same `when` are one variant written twice: which wins is only the order.
+    const same = (c.variants ?? []).findIndex((x) => Object.keys(x.when).length === Object.keys(v.when).length && Object.entries(x.when).every(([k, val]) => v.when[k] === val))
+    if (same !== i) err(`variants[${i}] has the same when as variants[${same}]: merge them`)
+    // A layer is part of several Figma variants, so it can't be one of them.
+    if (v.figmaNode && !variantsOf(c).some((x) => x.figmaNode === v.figmaNode)) err(`variants[${i}] is a layer, so it can't have a figmaNode`)
   }
 
   const values = valuesOf(c)

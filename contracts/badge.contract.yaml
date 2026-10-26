@@ -49,200 +49,88 @@ elements:
   icons-dot:
     optional: true
 variants:
+  - when: { size: Small }
+    elements:
+      root:
+        width: { value: 24px, token: spacing/size/small }
+        height: { value: 24px, token: spacing/size/small }
+  - when: { size: Medium }
+    elements:
+      root:
+        height: { token: spacing/size/small, value: 24px }
+        align-items: { value: center }
+        gap: { token: spacing/gap/3xsmall, value: 2px }
+        padding-bottom: { token: spacing/gap/3xsmall, value: 2px }
+        padding-top: { token: spacing/gap/none, value: 0px }
+        padding-left: { token: spacing/gap/small, value: 8px }
+        padding-right: { token: spacing/gap/small, value: 8px }
+        border-radius: { token: spacing/radius/full, value: 10000px }
+      label:
+        flex-shrink: { value: "0", assert: false }
+        white-space: { value: nowrap, assert: false }
+        text-align: { value: center }
+        position: { value: relative, assert: false }
+        font-family: { token: font-family/base, value: "'General Sans Variable'" }
+        font-weight: { token: typography/label/font-weight/medium, value: "500" }
+        line-height: { token: typography/label/line-height, value: 14px }
+        color: { token: non-interactive/foreground/tertiary, value: "#999" }
+        font-size: { token: typography/label/font-size, value: 12px }
+        letter-spacing: { token: typography/label/letter-spacing, value: 0px }
+      outline:
+        border-sides: { value: all }
+        position: { value: absolute }
+        inset: { value: "0" }
+        opacity: { token: opacity/solid, value: "1" }
+        border-radius: { token: spacing/radius/full, value: 10000px }
+      icon:
+        align-items: { value: center }
+        display: { value: flex, assert: false }
+        flex-shrink: { value: "0", assert: false }
+        position: { value: relative, assert: false }
+        padding-top: { token: spacing/gap/3xsmall, value: 2px }
+      icons-dot:
+        flex-shrink: { value: "0", assert: false }
+        position: { value: relative, assert: false }
+        width: { value: 16px, token: spacing/size/2xsmall }
+        height: { value: 16px, token: spacing/size/2xsmall }
   - when: { status: Default, size: Small }
     figmaNode: "139:396"
-    elements:
-      root:
-        width: { value: 24px, token: spacing/size/small }
-        height: { value: 24px, token: spacing/size/small }
   - when: { status: Negative, size: Small }
     figmaNode: "139:433"
-    elements:
-      root:
-        width: { value: 24px, token: spacing/size/small }
-        height: { value: 24px, token: spacing/size/small }
   - when: { status: Positive, size: Small }
     figmaNode: "139:439"
-    elements:
-      root:
-        width: { value: 24px, token: spacing/size/small }
-        height: { value: 24px, token: spacing/size/small }
   - when: { status: Warning, size: Small }
     figmaNode: "139:445"
-    elements:
-      root:
-        width: { value: 24px, token: spacing/size/small }
-        height: { value: 24px, token: spacing/size/small }
   - when: { status: Default, size: Medium }
     figmaNode: "346:3994"
     elements:
       root:
-        height: { token: spacing/size/small, value: 24px }
-        align-items: { value: center }
-        gap: { token: spacing/gap/3xsmall, value: 2px }
-        padding-bottom: { token: spacing/gap/3xsmall, value: 2px }
-        padding-top: { token: spacing/gap/none, value: 0px }
-        padding-left: { token: spacing/gap/small, value: 8px }
-        padding-right: { token: spacing/gap/small, value: 8px }
-        border-radius: { token: spacing/radius/full, value: 10000px }
         justify-content:
           value: center
           notes: Figma leaves this out on Default only; the other statuses have it. It only shows with a one-letter label, so I made them match.
-      label:
-        flex-shrink: { value: "0", assert: false }
-        white-space: { value: nowrap, assert: false }
-        text-align: { value: center }
-        position: { value: relative, assert: false }
-        font-family: { token: font-family/base, value: "'General Sans Variable'" }
-        font-weight: { token: typography/label/font-weight/medium, value: "500" }
-        line-height: { token: typography/label/line-height, value: 14px }
-        color: { token: non-interactive/foreground/tertiary, value: "#999" }
-        font-size: { token: typography/label/font-size, value: 12px }
-        letter-spacing: { token: typography/label/letter-spacing, value: 0px }
       outline:
-        border-sides: { value: all }
-        position: { value: absolute }
-        inset: { value: "0" }
         border-color: { token: non-interactive/foreground/quadruple, value: "#3a3a3a" }
-        opacity: { token: opacity/solid, value: "1" }
-        border-radius: { token: spacing/radius/full, value: 10000px }
-      icon:
-        align-items: { value: center }
-        display: { value: flex, assert: false }
-        flex-shrink: { value: "0", assert: false }
-        position: { value: relative, assert: false }
-        padding-top: { token: spacing/gap/3xsmall, value: 2px }
-      icons-dot:
-        flex-shrink: { value: "0", assert: false }
-        position: { value: relative, assert: false }
-        width: { value: 16px, token: spacing/size/2xsmall }
-        height: { value: 16px, token: spacing/size/2xsmall }
   - when: { status: Negative, size: Medium }
     figmaNode: "346:3999"
     elements:
       root:
-        height: { token: spacing/size/small, value: 24px }
-        align-items: { value: center }
-        gap: { token: spacing/gap/3xsmall, value: 2px }
-        padding-bottom: { token: spacing/gap/3xsmall, value: 2px }
-        padding-top: { token: spacing/gap/none, value: 0px }
-        padding-left: { token: spacing/gap/small, value: 8px }
-        padding-right: { token: spacing/gap/small, value: 8px }
-        border-radius: { token: spacing/radius/full, value: 10000px }
         justify-content: { value: center }
-      label:
-        flex-shrink: { value: "0", assert: false }
-        white-space: { value: nowrap, assert: false }
-        text-align: { value: center }
-        position: { value: relative, assert: false }
-        font-family: { token: font-family/base, value: "'General Sans Variable'" }
-        font-weight: { token: typography/label/font-weight/medium, value: "500" }
-        line-height: { token: typography/label/line-height, value: 14px }
-        color: { token: non-interactive/foreground/tertiary, value: "#999" }
-        font-size: { token: typography/label/font-size, value: 12px }
-        letter-spacing: { token: typography/label/letter-spacing, value: 0px }
       outline:
-        border-sides: { value: all }
-        position: { value: absolute }
-        inset: { value: "0" }
         border-color: { token: non-interactive/background/negative/light, value: "#48050c" }
-        opacity: { token: opacity/solid, value: "1" }
-        border-radius: { token: spacing/radius/full, value: 10000px }
-      icon:
-        align-items: { value: center }
-        display: { value: flex, assert: false }
-        flex-shrink: { value: "0", assert: false }
-        position: { value: relative, assert: false }
-        padding-top: { token: spacing/gap/3xsmall, value: 2px }
-      icons-dot:
-        flex-shrink: { value: "0", assert: false }
-        position: { value: relative, assert: false }
-        width: { value: 16px, token: spacing/size/2xsmall }
-        height: { value: 16px, token: spacing/size/2xsmall }
   - when: { status: Positive, size: Medium }
     figmaNode: "346:4004"
     elements:
       root:
-        height: { token: spacing/size/small, value: 24px }
-        align-items: { value: center }
-        gap: { token: spacing/gap/3xsmall, value: 2px }
-        padding-bottom: { token: spacing/gap/3xsmall, value: 2px }
-        padding-top: { token: spacing/gap/none, value: 0px }
-        padding-left: { token: spacing/gap/small, value: 8px }
-        padding-right: { token: spacing/gap/small, value: 8px }
-        border-radius: { token: spacing/radius/full, value: 10000px }
         justify-content: { value: center }
-      label:
-        flex-shrink: { value: "0", assert: false }
-        white-space: { value: nowrap, assert: false }
-        text-align: { value: center }
-        position: { value: relative, assert: false }
-        font-family: { token: font-family/base, value: "'General Sans Variable'" }
-        font-weight: { token: typography/label/font-weight/medium, value: "500" }
-        line-height: { token: typography/label/line-height, value: 14px }
-        color: { token: non-interactive/foreground/tertiary, value: "#999" }
-        font-size: { token: typography/label/font-size, value: 12px }
-        letter-spacing: { token: typography/label/letter-spacing, value: 0px }
       outline:
-        border-sides: { value: all }
-        position: { value: absolute }
-        inset: { value: "0" }
         border-color: { token: non-interactive/background/positive/light, value: "#004c19" }
-        opacity: { token: opacity/solid, value: "1" }
-        border-radius: { token: spacing/radius/full, value: 10000px }
-      icon:
-        align-items: { value: center }
-        display: { value: flex, assert: false }
-        flex-shrink: { value: "0", assert: false }
-        position: { value: relative, assert: false }
-        padding-top: { token: spacing/gap/3xsmall, value: 2px }
-      icons-dot:
-        flex-shrink: { value: "0", assert: false }
-        position: { value: relative, assert: false }
-        width: { value: 16px, token: spacing/size/2xsmall }
-        height: { value: 16px, token: spacing/size/2xsmall }
   - when: { status: Warning, size: Medium }
     figmaNode: "346:4009"
     elements:
       root:
-        height: { token: spacing/size/small, value: 24px }
-        align-items: { value: center }
-        gap: { token: spacing/gap/3xsmall, value: 2px }
-        padding-bottom: { token: spacing/gap/3xsmall, value: 2px }
-        padding-top: { token: spacing/gap/none, value: 0px }
-        padding-left: { token: spacing/gap/small, value: 8px }
-        padding-right: { token: spacing/gap/small, value: 8px }
-        border-radius: { token: spacing/radius/full, value: 10000px }
         justify-content: { value: center }
-      label:
-        flex-shrink: { value: "0", assert: false }
-        white-space: { value: nowrap, assert: false }
-        text-align: { value: center }
-        position: { value: relative, assert: false }
-        font-family: { token: font-family/base, value: "'General Sans Variable'" }
-        font-weight: { token: typography/label/font-weight/medium, value: "500" }
-        line-height: { token: typography/label/line-height, value: 14px }
-        color: { token: non-interactive/foreground/tertiary, value: "#999" }
-        font-size: { token: typography/label/font-size, value: 12px }
-        letter-spacing: { token: typography/label/letter-spacing, value: 0px }
       outline:
-        border-sides: { value: all }
-        position: { value: absolute }
-        inset: { value: "0" }
         border-color: { token: non-interactive/background/warning/light, value: "#492604" }
-        opacity: { token: opacity/solid, value: "1" }
-        border-radius: { token: spacing/radius/full, value: 10000px }
-      icon:
-        align-items: { value: center }
-        display: { value: flex, assert: false }
-        flex-shrink: { value: "0", assert: false }
-        position: { value: relative, assert: false }
-        padding-top: { token: spacing/gap/3xsmall, value: 2px }
-      icons-dot:
-        flex-shrink: { value: "0", assert: false }
-        position: { value: relative, assert: false }
-        width: { value: 16px, token: spacing/size/2xsmall }
-        height: { value: 16px, token: spacing/size/2xsmall }
 guidance:
   status: agreed
   use:

@@ -157,7 +157,7 @@ writeFileSync(new URL('../docs/TOKENS.md', import.meta.url), `${GENERATED('*')}
 
 # Token coverage
 
-Every value in every contract, sorted by why it has a token or doesn't. \`npm run docs\` refreshes it.
+Every value in every contract, sorted by why it has a token or doesn't. A value in a layer counts once, however many variants it applies to. \`npm run docs\` refreshes it.
 
 | | Values | Share | Meaning |
 |---|---|---|---|

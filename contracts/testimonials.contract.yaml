@@ -154,6 +154,17 @@ elements:
       border-color: { token: project/focus/focus-ring, value: "#999" }
       pointer-events: { value: none, assert: false }
 variants:
+  - when: { expanded: true }
+    elements:
+      root:
+        flex-direction: { value: column, assert: false }
+        align-items: { value: flex-start }
+        justify-content: { value: center }
+        padding-left: { token: spacing/gap/medium, value: 16px }
+      bottom:
+        display: { value: flex, assert: false }
+      icons-chevron:
+        mask: { value: url(./icon-chevron-up.svg) center / contain no-repeat, untokenised: The icon file itself. }
   - when: { state: Default, expanded: false }
     figmaNode: "144:68"
     elements:
@@ -167,11 +178,6 @@ variants:
   - when: { state: Default, expanded: true }
     figmaNode: "144:347"
     elements:
-      root:
-        flex-direction: { value: column, assert: false }
-        align-items: { value: flex-start }
-        justify-content: { value: center }
-        padding-left: { token: spacing/gap/medium, value: 16px }
       outline:
         background: { token: project/default/outline, value: "#3a3a3a" }
         height: { token: spacing/outline/small, value: 1px }
@@ -179,10 +185,6 @@ variants:
         color: { token: project/default/label, value: "#d3d9d5" }
       job-description:
         color: { token: project/default/sub-label, value: "#999" }
-      bottom:
-        display: { value: flex, assert: false }
-      icons-chevron:
-        mask: { value: url(./icon-chevron-up.svg) center / contain no-repeat, untokenised: The icon file itself. }
   - when: { state: Hover, expanded: false }
     figmaNode: "144:117"
     elements:
@@ -198,11 +200,6 @@ variants:
   - when: { state: Hover, expanded: true }
     figmaNode: "144:380"
     elements:
-      root:
-        flex-direction: { value: column, assert: false }
-        align-items: { value: flex-start }
-        justify-content: { value: center }
-        padding-left: { token: spacing/gap/medium, value: 16px }
       outline:
         background: { token: project/hover/outline, value: "#00d669" }
         height: { token: spacing/outline/medium, value: 2px }
@@ -210,10 +207,6 @@ variants:
         color: { token: project/hover/label, value: "#00d669" }
       job-description:
         color: { token: project/hover/sub-label, value: "#ededed" }
-      bottom:
-        display: { value: flex, assert: false }
-      icons-chevron:
-        mask: { value: url(./icon-chevron-up.svg) center / contain no-repeat, untokenised: The icon file itself. }
   - when: { state: Pressed, expanded: false }
     figmaNode: "144:92"
     elements:
@@ -229,11 +222,6 @@ variants:
   - when: { state: Pressed, expanded: true }
     figmaNode: "144:363"
     elements:
-      root:
-        flex-direction: { value: column, assert: false }
-        align-items: { value: flex-start }
-        justify-content: { value: center }
-        padding-left: { token: spacing/gap/medium, value: 16px }
       outline:
         background: { token: project/pressed/outline, value: "#10ffa4" }
         height: { token: spacing/outline/small, value: 1px }
@@ -241,10 +229,6 @@ variants:
         color: { token: project/pressed/label, value: "#00d669" }
       job-description:
         color: { token: project/pressed/sub-label, value: "#c2c7c3" }
-      bottom:
-        display: { value: flex, assert: false }
-      icons-chevron:
-        mask: { value: url(./icon-chevron-up.svg) center / contain no-repeat, untokenised: The icon file itself. }
   - when: { state: Focus, expanded: false }
     figmaNode: "144:104"
     elements:
@@ -260,11 +244,6 @@ variants:
   - when: { state: Focus, expanded: true }
     figmaNode: "144:371"
     elements:
-      root:
-        flex-direction: { value: column, assert: false }
-        align-items: { value: flex-start }
-        justify-content: { value: center }
-        padding-left: { token: spacing/gap/medium, value: 16px }
       outline:
         background: { token: project/focus/outline, value: "#3a3a3a" }
         height: { token: spacing/outline/small, value: 1px }
@@ -272,10 +251,6 @@ variants:
         color: { token: project/focus/label, value: "#d3d9d5" }
       job-description:
         color: { token: project/focus/sub-label, value: "#999" }
-      bottom:
-        display: { value: flex, assert: false }
-      icons-chevron:
-        mask: { value: url(./icon-chevron-up.svg) center / contain no-repeat, untokenised: The icon file itself. }
       focus-ring:
         display: { value: block, assert: false }
   - when: { state: Disabled, expanded: false }
@@ -296,10 +271,6 @@ variants:
     figmaNode: "144:355"
     elements:
       root:
-        flex-direction: { value: column, assert: false }
-        align-items: { value: flex-start }
-        justify-content: { value: center }
-        padding-left: { token: spacing/gap/medium, value: 16px }
         opacity: { token: opacity/gentle, value: "0.24" }
       top:
         cursor: { value: default, assert: false }
@@ -310,10 +281,6 @@ variants:
         color: { token: project/disabled/label, value: "#d3d9d5" }
       job-description:
         color: { token: project/disabled/sub-label, value: "#999" }
-      bottom:
-        display: { value: flex, assert: false }
-      icons-chevron:
-        mask: { value: url(./icon-chevron-up.svg) center / contain no-repeat, untokenised: The icon file itself. }
 guidance:
   status: agreed
   use:

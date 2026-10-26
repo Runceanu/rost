@@ -51,7 +51,11 @@ elements:                   # every part, in DOM order, and what never changes
       gap: { token: spacing/gap/small, value: 8px }
   focus-ring: {}
 
-variants:                   # one per Figma variant: when it applies, its node, and only what differs
+variants:                   # when each applies, and only what differs. Layers first, then one per Figma variant
+  - when: { selected: false }   # a layer: every variant that's off
+    elements:
+      root:
+        border-radius: { token: spacing/radius/medium, value: 12px }
   - when: { state: Hover, selected: true }
     figmaNode: "168:1159"
     elements:
@@ -90,6 +94,36 @@ cadence:  { value: 7-8s, untokenised: Motion timing… }   # plain on purpose, a
 - **`notes`** is for anything that would surprise you.
 
 Some properties are just how Figma builds a layer: `position`, `inset`, `border-sides`, `align-items`, `justify-content`, `overflow`. Nobody tokenises those, so they're never counted as gaps. [Token coverage](TOKENS.md) sorts every value this way.
+
+### Variants as layers
+
+A Figma variant set is a grid: Toggle is five states times on and off. Written out cell by cell, every variant repeats what its row already decides, so Toggle's off shape used to show up five times, once per state. Now a `when` can name some of the axes and leave the others out:
+
+```yaml
+variants:
+  - when: { selected: false }                    # every variant that's off
+    elements:
+      root:
+        border-radius: { token: spacing/radius/medium, value: 12px }
+  - when: { state: Disabled }                    # every disabled one, on or off
+    elements:
+      root:
+        opacity: { token: opacity/gentle, value: "0.24" }
+  - when: { state: Disabled, selected: false }   # one Figma variant
+    figmaNode: "168:1183"
+    elements: …
+```
+
+How it's read:
+
+- An entry applies to every variant whose `when` has all of its conditions. `{ selected: false }` applies to `{ state: Disabled, selected: false }`, not to `{ state: Disabled, selected: true }`.
+- An entry whose `when` sits inside another entry's is a **layer**. It isn't a variant of its own, so it has no `figmaNode`. Everything else is a variant: one per Figma variant, plus any Figma doesn't draw, like Toggle's `{ labelled: true }`.
+- A variant gets its layers from the least specific to the most, and its own values last. Between two layers that name as many conditions, the later one wins.
+- I put the layers first and the variants after, so the file reads in the order it's applied.
+
+Every reader goes through the same function, `variantsOf` in `bin/lib/kit.mjs` (with a copy in `src/conform.ts`, which can't import it). `bin/build-css.mjs` writes one rule per variant with its layers already in, so the selectors are the same as when each variant was written out in full. The site's variant table and `forApp` show the variants the same way, with layers applied. `npm run validate` fails on two entries with the same `when`, and on a layer with a `figmaNode`.
+
+Two things it doesn't do. Two variants that can both be true at once (a labelled toggle that's also disabled) stay two rules in CSS, and the cascade decides between them, as it did before. And the Figma read (`bin/build-contracts.mjs`) still writes every variant out in full. Every contract is frozen, so it doesn't run on these any more.
 
 ### Deviations
 

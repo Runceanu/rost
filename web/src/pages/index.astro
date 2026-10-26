@@ -10,7 +10,7 @@ import { Code } from 'astro:components'
 import { readFileSync } from 'node:fs'
 import { pathToFileURL } from 'node:url'
 
-const variants = kit.reduce((n, e) => n + (e.c.variants?.length ?? 0), 0)
+const variants = kit.reduce((n, e) => n + e.variants.length, 0)
 const count = (files: Record<string, unknown>) => Object.keys(files).length
 const icons = count(import.meta.glob('../../../assets/icons/*.svg'))
 const illustrations = count(import.meta.glob('../../../assets/illustrations/*.svg'))

@@ -81,12 +81,35 @@ export interface ConformOptions {
 export const variantKey = (when: Readonly<Record<string, string | boolean>>): string =>
   Object.entries(when).map(([k, v]) => `${k}=${v === true ? 'True' : v === false ? 'False' : v}`).join(', ')
 
+type When = Readonly<Record<string, string | boolean>>
+
+/**
+ * The variants with their layers applied, keyed as Figma names them. An entry
+ * whose `when` sits inside another entry's is a layer, not a variant: its
+ * values go into every variant it sits inside, the least specific first and,
+ * between two as specific, the later one last. Mirrors variantsOf in bin/lib/kit.mjs.
+ */
+export function variantsOf(c: YamlContract): Record<string, PartValues> {
+  const all = c.variants ?? []
+  const within = (a: When, b: When) => Object.entries(a).every(([k, v]) => b[k] === v)
+  const size = (w: When) => Object.keys(w).length
+  const out: Record<string, PartValues> = {}
+  for (const v of all) {
+    if (all.some((y) => size(y.when) > size(v.when) && within(v.when, y.when))) continue
+    const on = all.map((x, i) => [x, i] as const).filter(([x]) => within(x.when, v.when))
+      .sort(([a, i], [b, j]) => size(a.when) - size(b.when) || i - j)
+    const elements: Record<string, Readonly<Record<string, ContractValue>>> = {}
+    for (const [x] of on) for (const [p, s] of Object.entries(x.elements ?? {})) elements[p] = { ...elements[p], ...s }
+    if (Object.keys(elements).length) out[variantKey(v.when)] = elements
+  }
+  return out
+}
+
 export function forApp(c: YamlContract, app: string): Contract {
   const impl = c.implementations?.[app]
   const invariants: Record<string, Readonly<Record<string, ContractValue>>> = {}
   for (const [part, e] of Object.entries(c.elements)) if (e.styles) invariants[part] = e.styles
-  const variants: Record<string, PartValues> = {}
-  for (const v of c.variants ?? []) if (v.elements) variants[variantKey(v.when)] = v.elements
+  const variants = variantsOf(c)
   return {
     name: c.name,
     ...(impl ? { implementation: { rootSelector: impl.root, partSelectors: impl.parts } } : {}),
