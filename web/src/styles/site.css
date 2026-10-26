@@ -57,8 +57,15 @@ code { font-family: var(--mono); font-size: .88em; }
 .back { display: inline-block; font-size: 14px; color: var(--fg-3); text-decoration: none; margin-bottom: var(--spacing-gap-medium-large); }
 @media (min-width: 960px) {
   .shell { grid-template-columns: 232px minmax(0, 1fr); }
-  .side { display: block; position: sticky; top: var(--header); align-self: start; height: calc(100vh - var(--header)); overflow-y: auto; border-right: 1px solid var(--line); padding: var(--spacing-gap-xlarge) 0; scrollbar-width: none; }
-  /* No scrollbar: it would take 12px off the rows' right side. The list still scrolls. */
+  .side { display: block; position: sticky; top: var(--header); align-self: start; height: calc(100vh - var(--header)); border-right: 1px solid var(--line); }
+  /* The browser's scrollbar would take 12px off the rows' right side, so it's
+     hidden and a thumb floats over the rows instead (Base.astro's script). */
+  .side-scroll { height: 100%; overflow-y: auto; padding: var(--spacing-gap-xlarge) 0; scrollbar-width: none; }
+  .side-scroll::-webkit-scrollbar { display: none; }
+  .side-thumb { position: absolute; top: 0; right: 2px; width: 4px; border-radius: var(--spacing-radius-full); background: var(--line); opacity: 0; transition: opacity .2s, width .15s; z-index: 2; touch-action: none; }
+  .side:hover .side-thumb, .side--scrolling .side-thumb, .side--dragging .side-thumb { opacity: 1; }
+  .side-thumb:hover, .side--dragging .side-thumb { width: 6px; background: var(--fg-3); }
+  .side--fits .side-thumb { display: none; }
   .main { padding: var(--spacing-gap-3xlarge) var(--spacing-gap-3xlarge) 120px; }
   .back, nav.docs-phone { display: none; }
 }

@@ -46,23 +46,26 @@ const NAV: [string, string][] = [['/components/', 'Components'], ['/tokens/', 'T
     {sidebar ? (
       <div class="shell">
         <nav class="side" aria-label={sideLabel}>
-          {ownSide ? <slot name="side" /> : groups.map(([, label, list]) => (
-            <div class="side-group">
-              <div class="side-title">{label}</div>
-              {list.map((e) => {
-                // A dot only when something needs looking at; hovering it says what.
-                const a = attention(e)
-                return (
-                  <span class="side-row">
-                    <ListItem href={`/components/${e.id}/`} selected={e.id === current} aria-current={e.id === current ? 'page' : undefined} badge={!!a} badgeStatus={a?.status}>
-                      {title(e)}{a && <span class="sr-only">: {a.why.join('. ')}</span>}
-                    </ListItem>
-                    {a && <Tooltip aria-hidden="true">{a.why.join('. ')}</Tooltip>}
-                  </span>
-                )
-              })}
-            </div>
-          ))}
+          <div class="side-scroll">
+            {ownSide ? <slot name="side" /> : groups.map(([, label, list]) => (
+              <div class="side-group">
+                <div class="side-title">{label}</div>
+                {list.map((e) => {
+                  // A dot only when something needs looking at; hovering it says what.
+                  const a = attention(e)
+                  return (
+                    <span class="side-row">
+                      <ListItem href={`/components/${e.id}/`} selected={e.id === current} aria-current={e.id === current ? 'page' : undefined} badge={!!a} badgeStatus={a?.status}>
+                        {title(e)}{a && <span class="sr-only">: {a.why.join('. ')}</span>}
+                      </ListItem>
+                      {a && <Tooltip aria-hidden="true">{a.why.join('. ')}</Tooltip>}
+                    </span>
+                  )
+                })}
+              </div>
+            ))}
+          </div>
+          <span class="side-thumb" aria-hidden="true"></span>
         </nav>
         <main class="main" id="content">{current && <a class="back" href="/components/">&larr; All components</a>}<slot /></main>
       </div>
@@ -73,5 +76,42 @@ const NAV: [string, string][] = [['/components/', 'Components'], ['/tokens/', 'T
       <span>Rost serves products across different industries.</span>
       <a href={GITHUB} target="_blank" rel="noreferrer">GitHub</a>
     </footer>
+    <script>
+      // The sidebar's scrollbar floats over the rows instead of taking 12px
+      // beside them: a thumb that follows the list, shows on hover and while
+      // scrolling, and can be dragged.
+      for (const side of document.querySelectorAll<HTMLElement>('.side')) {
+        const list = side.querySelector<HTMLElement>('.side-scroll')!
+        const thumb = side.querySelector<HTMLElement>('.side-thumb')!
+        let hide = 0
+        const place = () => {
+          const { scrollTop, scrollHeight, clientHeight } = list
+          const fits = scrollHeight <= clientHeight
+          side.classList.toggle('side--fits', fits)
+          if (fits) return
+          const h = Math.max(32, (clientHeight / scrollHeight) * clientHeight)
+          thumb.style.height = `${h}px`
+          thumb.style.transform = `translateY(${(scrollTop / (scrollHeight - clientHeight)) * (clientHeight - h)}px)`
+        }
+        list.addEventListener('scroll', () => {
+          place()
+          side.classList.add('side--scrolling')
+          clearTimeout(hide)
+          hide = window.setTimeout(() => side.classList.remove('side--scrolling'), 800)
+        }, { passive: true })
+        thumb.addEventListener('pointerdown', (ev) => {
+          const y = ev.clientY, top = list.scrollTop
+          const ratio = (list.scrollHeight - list.clientHeight) / (list.clientHeight - thumb.offsetHeight)
+          thumb.setPointerCapture(ev.pointerId)
+          side.classList.add('side--dragging')
+          const move = (e: PointerEvent) => { list.scrollTop = top + (e.clientY - y) * ratio }
+          const up = () => { side.classList.remove('side--dragging'); thumb.removeEventListener('pointermove', move); thumb.removeEventListener('pointerup', up) }
+          thumb.addEventListener('pointermove', move)
+          thumb.addEventListener('pointerup', up)
+        })
+        new ResizeObserver(place).observe(list)
+        place()
+      }
+    </script>
   </body>
 </html>
