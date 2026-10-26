@@ -34,22 +34,18 @@ const html = md(readRepo(doc.file).replace(/^<!--[\s\S]*?-->\s*/, ''))
 const PLAIN = '<h2>No token, on purpose</h2>'
 const at = html.indexOf(PLAIN)
 const end = at < 0 ? -1 : html.indexOf('<h2', at + PLAIN.length)
+const rows = Object.entries(DOCS).map(([s, d]) => ({ href: `/docs/${s}/`, title: d.title, here: s === slug }))
 const [before, after] = at < 0 ? [html, ''] : [html.slice(0, at + PLAIN.length), html.slice(end)]
 ---
-<Base title={`${doc.title} · Rost`}>
-  <div class="docs">
-    <nav class="doc-nav" aria-label="Docs">
-      {Object.entries(DOCS).map(([s, d]) => <ListItem href={`/docs/${s}/`} selected={s === slug} aria-current={s === slug ? 'page' : undefined}>{d.title}</ListItem>)}
-    </nav>
-    <article class="prose"><Fragment set:html={before} />{after && <PlainValues />}<Fragment set:html={after} /></article>
+<Base title={`${doc.title} · Rost`} sidebar sideLabel="Docs">
+  <div slot="side" class="side-group">
+    <div class="side-title">Docs</div>
+    {rows.map((r) => <ListItem href={r.href} selected={r.here} aria-current={r.here ? 'page' : undefined}>{r.title}</ListItem>)}
   </div>
+  <nav class="docs-phone side-group" aria-label="Docs">{rows.map((r) => <ListItem href={r.href} selected={r.here} aria-current={r.here ? 'page' : undefined}>{r.title}</ListItem>)}</nav>
+  <article class="prose"><Fragment set:html={before} />{after && <PlainValues />}<Fragment set:html={after} /></article>
 </Base>
 <style>
-  .docs { display: grid; gap: var(--spacing-gap-xlarge); grid-template-columns: minmax(0, 1fr); }
-  @media (min-width: 960px) { .docs { grid-template-columns: 200px minmax(0, 1fr); } }
-  /* The rows are Rost's ListItem; the page only lays them out. */
-  .doc-nav { display: flex; flex-direction: column; align-self: start; }
-  @media (min-width: 960px) { .doc-nav { position: sticky; top: calc(var(--header) + var(--spacing-gap-large)); } }
   .prose :global(h1) { color: var(--fg); }
   .prose :global(h2) { font-family: var(--body); font-size: 24px; letter-spacing: -.02em; text-transform: none; color: var(--fg); margin: var(--spacing-gap-3xlarge) 0 var(--spacing-gap-small); font-weight: 600; }
   .prose :global(h3) { margin: var(--spacing-gap-xlarge) 0 var(--spacing-gap-small); }

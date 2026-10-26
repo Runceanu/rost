@@ -53,14 +53,14 @@ code { font-family: var(--mono); font-size: .88em; }
 /* The component list is a whole screen long on a phone, so there it gives way
    to the page and a link back to the list. */
 .side { display: none; }
+.docs-phone { margin-bottom: var(--spacing-gap-large); }
 .back { display: inline-block; font-size: 14px; color: var(--fg-3); text-decoration: none; margin-bottom: var(--spacing-gap-medium-large); }
 @media (min-width: 960px) {
   .shell { grid-template-columns: 232px minmax(0, 1fr); }
-  .side { display: block; position: sticky; top: var(--header); align-self: start; height: calc(100vh - var(--header)); overflow-y: auto; border-right: 1px solid var(--line); padding: var(--spacing-gap-xlarge) 0; scrollbar-width: thin; scrollbar-color: transparent transparent; }
-  /* The scrollbar only shows while the pointer is over the list. */
-  .side:hover { scrollbar-color: var(--line) transparent; }
+  .side { display: block; position: sticky; top: var(--header); align-self: start; height: calc(100vh - var(--header)); overflow-y: auto; border-right: 1px solid var(--line); padding: var(--spacing-gap-xlarge) 0; scrollbar-width: none; }
+  /* No scrollbar: it would take 12px off the rows' right side. The list still scrolls. */
   .main { padding: var(--spacing-gap-3xlarge) var(--spacing-gap-3xlarge) 120px; }
-  .back { display: none; }
+  .back, nav.docs-phone { display: none; }
 }
 .side-group + .side-group { margin-top: var(--spacing-gap-large); }
 .side-title { font-family: var(--mono); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--fg-3); margin-bottom: var(--spacing-gap-xsmall); padding-left: var(--spacing-gap-small-medium); }
