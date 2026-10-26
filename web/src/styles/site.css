@@ -48,8 +48,8 @@ code { font-family: var(--mono); font-size: .88em; }
 /* Layouts */
 .page { width: 100%; max-width: 1120px; margin: 0 auto; padding: var(--spacing-gap-4xlarge) var(--spacing-gap-large) 96px; flex: 1; }
 .shell { display: grid; grid-template-columns: minmax(0, 1fr); flex: 1; width: 100%; }
-/* The sidebar keeps to the left edge; the page beside it stays as wide as before, centred in what's left. */
-.main { padding: var(--spacing-gap-2xlarge) var(--spacing-gap-large) 96px; min-width: 0; width: 100%; max-width: 1048px; justify-self: center; }
+/* The same content area as the homepage's `.page`, centred in what the sidebar leaves. */
+.main { padding: var(--spacing-gap-4xlarge) var(--spacing-gap-large) 96px; min-width: 0; width: 100%; max-width: 1120px; justify-self: center; }
 /* The component list is a whole screen long on a phone, so there it gives way
    to the page and a link back to the list. */
 .side { display: none; }
@@ -66,7 +66,6 @@ code { font-family: var(--mono); font-size: .88em; }
   .side:hover .side-thumb, .side--scrolling .side-thumb, .side--dragging .side-thumb { opacity: 1; }
   .side-thumb:hover, .side--dragging .side-thumb { width: 6px; background: var(--fg-3); }
   .side--fits .side-thumb { display: none; }
-  .main { padding: var(--spacing-gap-3xlarge) var(--spacing-gap-3xlarge) 120px; }
   .back, nav.docs-phone { display: none; }
 }
 .side-group + .side-group { margin-top: var(--spacing-gap-large); }
