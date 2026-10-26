@@ -33,7 +33,8 @@ const kitPaths = new Set([...registry.paths, ...rostTokens].map((p) => p.replace
 
 const walk = (dir, out = []) => {
   for (const e of readdirSync(dir)) {
-    if (['node_modules', 'dist', '.git', 'coverage'].includes(e)) continue
+    // dot-dirs skipped too: CI checks out the kit itself into .rost
+    if (e.startsWith('.') || ['node_modules', 'dist', 'coverage'].includes(e)) continue
     const p = join(dir, e)
     if (statSync(p).isDirectory()) walk(p, out)
     else if (/\.(s?css|jsx?|tsx?|astro|svelte|vue)$/.test(p)) out.push(p)
