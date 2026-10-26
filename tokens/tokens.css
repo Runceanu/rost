@@ -43,6 +43,12 @@
   /* Old names for the sub-title tokens below. The accounting app and the portfolio site still use them. */
   --typography-subtitle-font-size: var(--typography-sub-title-font-size);
   --typography-subtitle-line-height: var(--typography-sub-title-line-height);
+  /* Display and headline: the two sizes above sub-headline. Born on
+     the portfolio site (hero and section titles); no Figma variables yet. */
+  --typography-display-font-size: 64px;
+  --typography-display-line-height: 72px;
+  --typography-headline-font-size: 56px;
+  --typography-headline-line-height: 64px;
   --typography-sub-headline-font-size: 40px;
   --typography-sub-headline-line-height: 48px;
 
