@@ -2,14 +2,14 @@
 
 What I'm doing next with Rost, in order. Each item says what "done" looks like, so I can tick it off instead of arguing with myself about it.
 
-Where the apps stood on 2026-10-22 (`npm run audit` on both):
+Where the apps stood on 2026-10-26 (`npm run audit` on both):
 
 | | Raw hex | Undefined vars | Token names the kit doesn't have |
 |---|---|---|---|
 | The accounting app | 0 | 0 | 0 |
-| The portfolio site | 99 | 2 | 78 |
+| The portfolio site | 0 | 0 | 0 |
 
-The portfolio site's raw hex dropped from 230 to 99 without me touching the site. The audit used to count hex inside comments and `transparent`; now it doesn't. The 99 are real. The unknown-token counts fell too, for the same kind of reason: the audit now counts Rost's own tokens (the effects, the shadow) as the kit's, not only Figma's variables. The accounting app passes `--strict` now, and its tokens are resynced from Rost.
+On 2026-10-22 the portfolio site still had 99 raw hex values, 2 undefined vars and 78 unknown token names. On 2026-10-26 it got to zero on all three, and since then its CI runs the strict audit on every push, the way the accounting app's does.
 
 ## Done: the freeze
 
@@ -35,7 +35,7 @@ On 2026-10-20 rost.build became a proper site, the way shadcn's is: a homepage, 
 
 ## Now: Rost in code
 
-Twenty components so far, all built from their contracts and checked against Figma in the visual test:
+Twenty-one components so far, all built from their contracts and checked against Figma in the visual test:
 
 - **InlineBanner**, all 8 variants, with Figma's own icons.
 - **Badge**, all 8 variants. Figma gave it a small size since August: just the coloured dot. The dot in front of the label on the medium size is optional now.
@@ -48,6 +48,7 @@ Twenty components so far, all built from their contracts and checked against Fig
 - **Tabs and its TabItem**, designed in Figma on 2026-10-23 with their own `tabs/*` tokens: a label, optional icons before and after, and a green underline on the selected tab. All 11 variants match, and rost.build's Preview and Code tabs use them. They're one page on rost.build: a contract can say it's `partOf` another, and then it's shown under that one instead of on its own. The visual test now rounds every component inside another up to whole pixels, the way Figma does, so a bar of tabs is as wide as Figma's.
 - **Tooltip**, from the UI Kit's own (138:276). Rost draws the bubble; the page decides where and when it shows. rost.build's nav uses it to say "You're already here" on the current page, which now wears Button's pressed look (`aria-current="page"`) instead of looking disabled.
 - **ListItem**, all 10 variants, from the UI Kit's list page (346:3364). It brought Figma's `interactive/*` colours into Rost: `active` for the picked row, `inactive` for the rest. On a picked row Figma switches the status dot to the light theme, so the dot is its own part here.
+- **Hero Media**, with two slots: the artwork behind and what sits on top. The artwork pins itself, as on the portfolio site. Its frame matches Figma's component exactly.
 - **Navigation**, both variants, from the UI Kit's navigation page (356:949): a side nav on frosted glass, collapsed to icons or open with labels, made of ListItems and an IconButton or Button. ListItem learned an icon-only form for it, and the conformance check now names camelCase props the way the CSS does.
 
 The effects are in code too, as tokens: Thumb, Menu, Lock frame and Floating each show on the site applied to real components. The Paper effect isn't. It's a canvas animation that lives in the portfolio site, and only its numbers are tokens.
@@ -59,14 +60,13 @@ Building them turned up four things to fix:
 - **Figma's code and Figma's render disagree, twice.** Menu's description renders at 14px in four states while the code says 16px, and Projects' hovered details render #d3d9d5 while the code says #ededed. Both look like variable modes on those frames. I followed the render for Menu, where it matches a token exactly. For Projects Hover I kept #ededed, the same as Thumbs and Carousel. The frame turned out to hold a stale copy of the colour, and on 2026-10-23 I rebound it in Figma; it matches now.
 - **Text sat about a pixel higher in Chrome than in Figma.** General Sans' metrics (ascent 1010, descent 240, line gap 100) get split differently. Since 2026-10-23 Rost ships its own `@font-face` (`tokens/fonts.css`) with `ascent-override: 106%` and `descent-override: 28%`, measured across every built component. The share of pixels that differ from Figma halved, and the accounting app and the portfolio site use the same three lines.
 
-Next, one at a time on the same setup:
+Next:
 
-- **Hero Media.** In code since 2026-10-23, with two slots: the artwork behind and what sits on top. The artwork pins itself, as on the portfolio site. Its frame matches Figma's component exactly.
-- **The portfolio site onto Rost's components**, with `npm run add`. It copies a component, what it imports, its contract and the check into an app, the way shadcn does, and updates them on a second run. The accounting app uses it for Badge, InlineBanner, Divider and Button since 2026-10-22. A real `npx rost add` waits until Rost is published to npm.
+- **The portfolio site onto Rost's components**, with `npm run add`. It copies a component, what it imports, its contract and the check into an app, the way shadcn does, and updates them on a second run. The accounting app uses it for Badge, InlineBanner, Divider and Button since 2026-10-22. The portfolio site uses Rost's tokens everywhere now, but none of its components yet. A real `npx rost add` waits until Rost is published to npm.
 
 ## Now: make the contracts something I can trust
 
-1. **Go through the accounting app's conformance findings.** Against the YAML contracts on 2026-10-19: Badge 0, InlineBanner 10, Input 15, Toggle 36, PillButton (Button now) 47. I know two of the causes:
+1. **~~Go through the accounting app's conformance findings.~~** Done by 2026-10-26: The accounting app's contract test passes for Badge, Button, Divider, InlineBanner and Toggle with no findings left, and what it does differently is written down as deviations. They're all still `review`. Moving them to stable is my call now, not the check's. What it was: Against the YAML contracts on 2026-10-19: Badge 0, InlineBanner 10, Input 15, Toggle 36, PillButton (Button now) 47. I know two of the causes:
    - **Real drift.** The primary PillButton (Button now) has no 1px top and left edge (`border-top-width: spacing/outline/small`, `border-color: actions/primary/*/outline`). Only the secondary one shipped. The contracts couldn't show it until the parser stopped dropping `border-t` and rgba borders.
    - **A limit of the check.** the accounting app draws the selected Toggle's edge on `::before`, and the check only reads the root selector. `implementations.*.parts` needs a way to point a root property at a pseudo-element.
 
@@ -74,8 +74,8 @@ Next, one at a time on the same setup:
 2. **Export every Figma variable.** [Token coverage](TOKENS.md) keeps the count of how many of the file's 582 variables `tokens.css` has. I added the ones the contracts needed by hand (`opacity/strong`, the `project/*` set, title typography). On 2026-10-21 I found 35 more colour variables I'd read from Figma on 2026-10-19 and never exported: every `actions/*/icon`, `input/*/icon`, `project/*/icon`, `non-interactive/foreground/contrast` and `Base/Black`. Three times a colour got called "no token" when Figma had one, because only `tokens.css` was searched. A "no token" claim now gets checked against what Figma gave (`raw/*.get_variable_defs.txt`), not against what happened to be exported. The colour primitives, the rest of the typography scale and more are still missing. That needs a proper `bin/build-tokens.mjs`, keyed on the Figma names so hyphens survive (`non-interactive`, not `non/interactive`). The freeze came first, so this is one last read of the variables. It doesn't make Figma the source again.
 3. **One list of components.** `registry/component-sets.json` drives the contracts now, but the variant nodes still sit apart in `variant-nodes.json`. One file should hold both.
 4. **Variants as layers.** Right now a variant list repeats what one axis decides: Toggle's unselected background shows up five times, once per state. Curtis's layered approach (`when: { selected: false }` once, then `when: { state: Disabled }` on top) says it once and would cut most of Button's variant list. The check needs to apply layers in order first.
-5. **One copy of the contracts.** the accounting app still tests against its own old JSON copies of Badge and Button. Its test should read these YAML files through `forApp` instead.
-6. **Guidance for the new components, and Badge again.** I signed off 16 on 2026-10-19, and Badge went back to `proposed` when Figma gave it a dot-only size. Thumbs, Carousel, Projects, Testimonials, Menu and Divider have proposed ones now, waiting for me. TestimonialPicture has none. While I'm at it, decide on the four deviations nobody has taken back to the design side yet (the Health section lists them).
+5. **One copy of the contracts.** the accounting app's test does go through `forApp` now, but it still reads JSON copies of the five contracts (`contracts/rost/`). They match the YAML today. Nothing keeps them matching, so the test should read these YAML files instead.
+6. **Guidance for the new components.** Badge, Thumbs, Carousel, Projects, Testimonials, Menu and Divider are signed off. ListItem, Navigation, Tabs, TabItem and Tooltip have proposed guidance waiting for me, and TestimonialPicture has none. While I'm at it, decide on the four deviations nobody has taken back to the design side yet (the Health section lists them).
 
 ## Next: grow the kit
 
@@ -83,13 +83,12 @@ In order of how much copied code each one removes.
 
 | Component | Why now | Where it stands |
 |---|---|---|
-| **Hero Media** as a shared component | The same hero CSS is copied into 7 case-study stylesheets | contract exists |
+| **Hero Media** in the portfolio site | The same hero CSS is copied into 7 case-study stylesheets | in Rost's code, not in the site yet |
 | **Icons** as a component | The 17 SVGs are exported (`assets/icons/`), but there's no `Icon` component yet, and the apps draw their own | SVGs exported, component next |
-| **TestimonialPicture** | The portfolio site's testimonials. Divider, Carousel, Projects, Testimonials and Thumbs are done | contract read 2026-10-19 |
-| **ListRow** | The accounting app builds it outside the kit | needs designing first |
+| **ListRow** | The accounting app builds it outside the kit | ListItem exists now. I still have to check whether it covers the accounting app's rows or a ListRow needs designing |
 | **Switch, Textarea, a selected Chip** | The guidance already says they're missing | need designing first |
 
-After that, **move the portfolio site onto the kit's token names.** *Done when* its raw hex count is 0, like the accounting app's.
+~~Move the portfolio site onto the kit's token names.~~ Done on 2026-10-26: its raw hex count is 0, like the accounting app's.
 
 ## Later
 
@@ -100,7 +99,7 @@ Ideas from a workshop board I sat in on, shrunk down to a personal kit with two 
 | Spec templates for every kind of issue | The template contract and `npm run validate` are there. Add GitHub issue templates for *new component*, *deviation* and *token change* |
 | One place for docs, docs in markdown, a docs skill | Partly done: `docs/components/*.md` is markdown an agent can read. Next, a Claude skill that loads the right page before building a component in either app |
 | A better changelog | Build `CHANGELOG.md` from what changed in the contracts ("Badge: outline token went from X to Y"), not from commit messages |
-| Spec-driven work, PR checks | CI on every push: validate, rebuild the docs and fail if they changed, run the check in both apps |
+| Spec-driven work, PR checks | Both apps run the strict audit in CI now. Rost itself has no CI yet: validate, rebuild the docs and fail if they changed, run the visual test |
 | Designers working in code | The "Adding a component" steps in [CONTRACT.md](CONTRACT.md), down to one command each |
 | Charts | The accounting app will need them. Tokens for data-viz colours and a Chart contract come before any chart |
 | Device-specific work | Breakpoint and density tokens. There are none yet |
