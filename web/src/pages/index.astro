@@ -31,7 +31,7 @@ const illoSvgs = ['ui', 'structured-system', 'timezones'].map((n) => `data:image
 const statuses = ['skeleton', 'draft', 'review', 'stable']
 const roadmap = readRepo('docs/ROADMAP.md')
 const nowAt = roadmap.indexOf('## Now: make the contracts')
-const nextItems = [...roadmap.slice(nowAt, roadmap.indexOf('\n## ', nowAt + 5)).matchAll(/^\d+\. \*\*(.+?)\*\*/gm)].slice(0, 3).map((m) => m[1].replace(/\.$/, ''))
+const nextItems = [...roadmap.slice(nowAt, roadmap.indexOf('\n## ', nowAt + 5)).matchAll(/^\d+\. \*\*(.+?)\*\*/gm)].filter((m) => !m[1].startsWith('~~')).slice(0, 3).map((m) => m[1].replace(/\.$/, ''))
 ---
 <Base title="Rost · My design system" description="Rost started as a design system for my own needs and grew into a product of its own. Today it serves products across different industries.">
   <section class="hero" data-paper>
