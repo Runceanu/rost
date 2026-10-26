@@ -125,14 +125,14 @@ elements:
       width: { token: spacing/size/xsmall, value: 20px }
       height: { token: spacing/size/xsmall, value: 20px }
   focus-ring:
-    notes: "Over the whole row, inside it. Its corners are square in Figma (`spacing/radius/none`), unlike the plate's."
+    notes: "Over the whole row, inside it, following the row's 12px corners."
     styles:
       display: { value: none, assert: false }
       position: { value: absolute, assert: false }
       inset: { value: "0", assert: false }
       border-style: { value: solid }
       border-width: { token: spacing/outline/medium, value: 2px }
-      border-radius: { token: spacing/radius/none, value: 0px }
+      border-radius: { token: spacing/radius/medium, value: 12px }
       pointer-events: { value: none, assert: false }
 variants:
   - when: { state: Default, selected: true }

@@ -109,7 +109,7 @@
   inset: 0;
   border-style: solid;
   border-width: var(--spacing-outline-medium);
-  border-radius: var(--spacing-radius-none);
+  border-radius: var(--spacing-radius-medium);
   pointer-events: none;
 }
 

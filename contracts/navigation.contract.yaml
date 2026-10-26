@@ -25,7 +25,7 @@ elements:
     styles:
       display: { value: flex, assert: false }
       flex-direction: { value: column, assert: false }
-      justify-content: { value: space-between, notes: "Figma also sets a 96px gap, but with space-between it plays no part there; in CSS it would add on top, so it's left out." }
+      justify-content: { value: space-between, notes: "The logo at the top, the action at the bottom, the items in the middle. No gap: space-between spaces them." }
       align-items: { value: flex-start }
       position: { value: relative, assert: false }
       overflow: { value: hidden, assert: false }

@@ -41,7 +41,7 @@
 - `badge` (optional): Figma's small Badge: an 8px dot in a 24px box.
 - `dot` (optional)
 - `action` (optional)
-- `focus-ring`: Over the whole row, inside it. Its corners are square in Figma (`spacing/radius/none`), unlike the plate's.
+- `focus-ring`: Over the whole row, inside it, following the row's 12px corners.
 
 ## When to use
 
@@ -122,7 +122,6 @@ Every token this component uses, across all its variants.
 | `spacing/outline/medium` | `2px` |
 | `spacing/radius/full` | `10000px` |
 | `spacing/radius/medium` | `12px` |
-| `spacing/radius/none` | `0px` |
 | `spacing/radius/small` | `8px` |
 | `spacing/size/medium-large` | `48px` |
 | `spacing/size/small` | `24px` |
