@@ -281,6 +281,21 @@ variants:
         color: { token: project/disabled/label, value: "#d3d9d5" }
       job-description:
         color: { token: project/disabled/sub-label, value: "#999" }
+implementations:
+  portfolio-site:
+    component: src/rost/testimonials/Testimonials.tsx
+    root: .rost-testimonials
+    deviations:
+      - what: |-
+          The open quote is `non-interactive/foreground/tertiary`, with key phrases in `non-interactive/foreground/primary`. Figma has the whole quote in `non-interactive/foreground/secondary`.
+        why: |-
+          I pick out what matters in each quote, the same way the footer headline does. It's an editorial choice on the site, not a change to the component.
+        raisedWithDesign: false
+      - what: |-
+          Under 768px the name and job line wrap instead of staying on one line. The last row has no line at rest.
+        why: |-
+          Figma only has the desktop row, and a long job title runs off a phone screen. The list ends at the next section.
+        raisedWithDesign: false
 guidance:
   status: agreed
   use:

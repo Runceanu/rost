@@ -21,23 +21,23 @@ Rost started as a design system for my own needs and grew into a product of its 
 | | Summary | Contract | Guidance | Used in |
 |---|---|---|---|---|
 | [Badge](components/badge.md) | A small status marker: a coloured dot on its own, or an outlined label. The colour sits in the dot and the outline, never in the text. | `stable` | `agreed` | The portfolio site, the accounting app |
-| [Button](components/button.md) | A 48px button with a label and, if it helps, an icon in front. In four levels of emphasis. | `stable` | `agreed` | The accounting app |
+| [Button](components/button.md) | A 48px button with a label and, if it helps, an icon in front. In four levels of emphasis. | `stable` | `agreed` | The portfolio site, the accounting app |
 | [Carousel](components/carousel.md) | A card for a carousel: a number, a title and a short description. | `review` | `agreed` | · |
 | [Chip](components/chips.md) | A small outlined label you can click, for filters and quick choices. | `review` | `agreed` | The portfolio site |
-| [Divider](components/divider.md) | A thin line between things. | `stable` | `agreed` | The accounting app |
-| [IconButton](components/icon-button.md) | A round button with only an icon, including a Project type for sitting on top of images. | `review` | `agreed` | · |
+| [Divider](components/divider.md) | A thin line between things. | `stable` | `agreed` | The portfolio site, the accounting app |
+| [IconButton](components/icon-button.md) | A round button with only an icon, including a Project type for sitting on top of images. | `review` | `agreed` | The portfolio site |
 | [InlineBanner](components/inline-banner.md) | A filled status pill with an icon and a label, in four statuses and two sizes. | `stable` | `agreed` | The accounting app |
 | [Input](components/input.md) | A 56px text field with a floating label, an optional lock icon, a line of help text and an error state. | `review` | `agreed` | The portfolio site, the accounting app |
 | [ListItem](components/list-item.md) | One row you can pick in a list or a nav. A label, an optional line under it, and optional icons and a status dot. | `review` | `agreed` | · |
 | [Menu](components/menu.md) | A navigation item: a label with a line underneath, used in the main nav. | `review` | `agreed` | · |
 | [Navigation](components/navigation.md) | A side navigation on frosted glass. The logo at the top, the main items below it, one action at the bottom. Collapsed to icons, or open with labels. | `review` | `agreed` | · |
-| [Projects](components/projects.md) | One row in the project list: number, name, and industry, type and period on the right. | `review` | `agreed` | · |
+| [Projects](components/projects.md) | One row in the project list: number, name, and industry, type and period on the right. | `review` | `agreed` | The portfolio site |
 | [TabItem](components/tab-item.md) | One tab in a row of tabs. A label, optional icons before and after it, and a green underline when it's the one selected. | `review` | `agreed` | · |
 | [Tabs](components/tabs.md) | A row of tabs on a 1px line. One is selected, and its panel shows below. | `review` | `agreed` | · |
 | [Tag](components/tags.md) | A compact 20px label with small corners, for what a piece of content is about. | `review` | `agreed` | · |
-| [TestimonialPicture](components/testimonials-pics.md) | The photo of the person behind a testimonial. | `review` | · | · |
-| [Testimonials](components/testimonials.md) | A testimonial you can open and close: name and role, with the quote underneath. | `review` | `agreed` | · |
-| [Thumbs](components/thumbs.md) | A project thumbnail card, with the project name and details on a frosted panel at the bottom. | `review` | `agreed` | · |
+| [TestimonialPicture](components/testimonials-pics.md) | The photo of the person behind a testimonial. | `review` | · | The portfolio site |
+| [Testimonials](components/testimonials.md) | A testimonial you can open and close: name and role, with the quote underneath. | `review` | `agreed` | The portfolio site |
+| [Thumbs](components/thumbs.md) | A project thumbnail card, with the project name and details on a frosted panel at the bottom. | `review` | `agreed` | The portfolio site |
 | [Toggle](components/toggle.md) | A 40×40 icon button that stays on or off, alone or as one choice in a group. | `stable` | `agreed` | The accounting app |
 | [Tooltip](components/tooltip.md) | A small label that explains something when you point at it or focus it. | `review` | `agreed` | · |
 
@@ -45,7 +45,7 @@ Rost started as a design system for my own needs and grew into a product of its 
 
 | | Summary | Contract | Guidance | Used in |
 |---|---|---|---|---|
-| [Hero Media](components/hero-media.md) | A full-width hero: artwork pinned behind a 16px frame and dimmed, with the content on top. | `review` | `agreed` | · |
+| [Hero Media](components/hero-media.md) | A full-width hero: artwork pinned behind a 16px frame and dimmed, with the content on top. | `review` | `agreed` | The portfolio site |
 
 ### Effects
 
@@ -72,5 +72,10 @@ What needs attention. It's built from the contracts, so it's only as fresh as th
 ### Differences nobody has taken to design yet
 
 - [Button](components/button.md): Figma has Button twice: the set at 20:14 (PillButton, with a `leading` icon slot that's off by default) and the one at 39:38 (Button, label only)
+- [Chip](components/chips.md) in the portfolio site: Drawn as a `<span>` (`as="span"`) in the case-study meta, with no hover, press or cursor
 - [Hero Media](components/hero-media.md): The artwork is dimmed with `opacity/medium` (0.48) on a #171717 frame
+- [Hero Media](components/hero-media.md) in the portfolio site: Each case study makes the hero full-bleed (`width: 100vw`, negative margin) and brings its own artwork, sized and positioned for that collage
+- [Projects](components/projects.md) in the portfolio site: The last row in the Work list has no line at rest; hover and press still draw it
+- [Testimonials](components/testimonials.md) in the portfolio site: The open quote is `non-interactive/foreground/tertiary`, with key phrases in `non-interactive/foreground/primary`
+- [Testimonials](components/testimonials.md) in the portfolio site: Under 768px the name and job line wrap instead of staying on one line
 - [Toggle](components/toggle.md) in the accounting app: Each toggle is a `role="radio"` inside a `ToggleGroup`

@@ -300,6 +300,10 @@ variants:
         inset: { value: "calc(-1 * var(--spacing-gap-2xsmall))", untokenised: "Composed from a token: the ring sits spacing/gap/2xsmall outside the element." }
       icons-arrow-left:
         color: { token: actions/borderless/focus/icon, value: "#00d669" }
+implementations:
+  portfolio-site:
+    component: src/rost/icon-button/IconButton.tsx
+    root: .rost-icon-button
 guidance:
   status: agreed
   use:
