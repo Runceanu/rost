@@ -20,6 +20,7 @@
 | `description` | slot |  |  |
 | `leading` | slot |  |  |
 | `badge` | boolean |  | `false` |
+| `badgeStatus` | enum | `Default` `Negative` `Positive` `Warning` | `Default` |
 | `action` | slot |  |  |
 | `selected` | boolean |  | `false` |
 | `iconOnly` | boolean |  | `false` |
@@ -114,7 +115,10 @@ Every token this component uses, across all its variants.
 | `interactive/inactive/pressed/label` | `#d3d9d5` |
 | `interactive/inactive/pressed/sub-label` | `#c2c7c3` |
 | `non-interactive/background/contrast` | `#ededed` |
+| `non-interactive/background/negative/base` | `#e93120` |
+| `non-interactive/background/positive/base` | `#00d669` |
 | `non-interactive/background/primary` | `#060805` |
+| `non-interactive/background/warning/base` | `#fda50d` |
 | `opacity/gentle` | `0.24` |
 | `opacity/solid` | `1` |
 | `spacing/gap/3xsmall` | `2px` |

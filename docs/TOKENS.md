@@ -6,7 +6,7 @@ Every value in every contract, sorted by why it has a token or doesn't. A value 
 
 | | Values | Share | Meaning |
 |---|---|---|---|
-| Has a token | 1014 | 60% | Uses a token, and the check tests it. |
+| Has a token | 1017 | 60% | Uses a token, and the check tests it. |
 | Token suggested | 0 | 0% | A token I want that doesn't exist yet. The freeze turned every other suggestion into a token. |
 | How Figma builds it | 466 | 28% | How Figma builds the layer (position, inset, which sides get a stroke). Nothing to tokenise. |
 | Figma frame size | 129 | 8% | A root size that is just the Figma frame. Written down, not checked. |
@@ -27,7 +27,7 @@ Every value in every contract, sorted by why it has a token or doesn't. A value 
 | [IconButton](components/icon-button.md) | 87 | · | 32 | 7 | 6 | 2 |
 | [InlineBanner](components/inline-banner.md) | 44 | · | 34 | · | · | · |
 | [Input](components/input.md) | 166 | · | 35 | 20 | 4 | 3 |
-| [ListItem](components/list-item.md) | 95 | · | 32 | 10 | 2 | 1 |
+| [ListItem](components/list-item.md) | 98 | · | 32 | 10 | 2 | 1 |
 | [Lock frame effect](components/effect-lock-frame.md) | 1 | · | · | · | · | · |
 | [Menu effect](components/effect-menu.md) | 1 | · | · | · | · | · |
 | [Menu](components/menu.md) | 32 | · | 16 | 6 | · | 1 |

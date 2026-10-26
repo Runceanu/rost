@@ -48,8 +48,8 @@ const [before, after] = at < 0 ? [html, ''] : [html.slice(0, at + PLAIN.length),
   .docs { display: grid; gap: var(--spacing-gap-xlarge); grid-template-columns: minmax(0, 1fr); }
   @media (min-width: 960px) { .docs { grid-template-columns: 200px minmax(0, 1fr); } }
   /* The rows are Rost's ListItem; the page only lays them out. */
-  .doc-nav { display: flex; flex-wrap: wrap; gap: var(--spacing-gap-3xsmall); align-self: start; }
-  @media (min-width: 960px) { .doc-nav { flex-direction: column; position: sticky; top: calc(var(--header) + var(--spacing-gap-large)); } .doc-nav :global(.rost-list-item) { width: 100%; } }
+  .doc-nav { display: flex; flex-direction: column; align-self: start; }
+  @media (min-width: 960px) { .doc-nav { position: sticky; top: calc(var(--header) + var(--spacing-gap-large)); } }
   .prose :global(h1) { color: var(--fg); }
   .prose :global(h2) { font-family: var(--body); font-size: 24px; letter-spacing: -.02em; text-transform: none; color: var(--fg); margin: var(--spacing-gap-3xlarge) 0 var(--spacing-gap-small); font-weight: 600; }
   .prose :global(h3) { margin: var(--spacing-gap-xlarge) 0 var(--spacing-gap-small); }

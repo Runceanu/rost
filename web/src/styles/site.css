@@ -63,10 +63,13 @@ code { font-family: var(--mono); font-size: .88em; }
   .back { display: none; }
 }
 .side-group + .side-group { margin-top: var(--spacing-gap-large); }
-.side-title { font-family: var(--mono); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--fg-3); margin-bottom: var(--spacing-gap-xsmall); }
-/* The rows are Rost's ListItem; the site only stacks them. */
-.side-group { display: flex; flex-direction: column; gap: var(--spacing-gap-3xsmall); }
-.side-group .rost-list-item { width: 100%; }
+.side-title { font-family: var(--mono); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--fg-3); margin-bottom: var(--spacing-gap-xsmall); padding-left: var(--spacing-gap-small-medium); }
+/* The rows are Rost's ListItem, stacked as they come. */
+.side-group { display: flex; flex-direction: column; }
+/* The dot's tooltip shows above the row while the dot is hovered, or the row has focus. */
+.side-row { position: relative; display: block; }
+.side-row .rost-tooltip { position: absolute; bottom: 100%; right: 0; translate: 0 4px; opacity: 0; pointer-events: none; transition: opacity .15s, translate .15s; z-index: 1; }
+.side-row:has(.rost-list-item__badge:hover) .rost-tooltip, .side-row:has(:focus-visible) .rost-tooltip { opacity: 1; translate: 0 0; }
 .foot { display: flex; justify-content: space-between; gap: var(--spacing-gap-medium); flex-wrap: wrap; padding: var(--spacing-gap-large); border-top: 1px solid var(--line); color: var(--fg-3); font-size: 13px; }
 
 /* Type */

@@ -19,6 +19,7 @@ props:
   description: { type: slot, notes: "Optional, one short line under the label." }
   leading: { type: slot, notes: "Optional, a 20px icon before the text. Draw it with `currentColor`. Figma's `showLeading` and `Leading`." }
   badge: { type: boolean, default: false, notes: "Shows the status dot on the right. Figma's `showBadge`." }
+  badgeStatus: { type: enum, values: [ Default, Negative, Positive, Warning ], default: Default, notes: "The dot's colour: the `status` of Figma's small Badge inside the row, with Badge's own dot colours. On a selected row at rest the status colour wins; while that row is hovered, pressed, focused or disabled the dot goes dark, as Figma has it." }
   action: { type: slot, notes: "Optional, a 20px icon at the end, usually a chevron. Draw it with `currentColor`. Figma's `showAction` and `Action`." }
   selected: { type: boolean, default: false, notes: "The one that's picked: a solid green plate." }
   iconOnly: { type: boolean, default: false, notes: "Set by the component when there's no label: just the icon, centred in a 48px square, as in a collapsed navigation. Not a Figma axis: Figma hides the text (`showContent`) on the instance." }
@@ -292,6 +293,18 @@ variants:
         justify-content: { value: center, notes: "Figma centres the icon when the text is hidden." }
       start:
         flex: { value: none, assert: false }
+  - when: { badgeStatus: Negative }
+    elements:
+      dot:
+        background: { token: non-interactive/background/negative/base, value: "#e93120", notes: "Badge's small Negative dot." }
+  - when: { badgeStatus: Positive }
+    elements:
+      dot:
+        background: { token: non-interactive/background/positive/base, value: "#00d669", notes: "Badge's small Positive dot." }
+  - when: { badgeStatus: Warning }
+    elements:
+      dot:
+        background: { token: non-interactive/background/warning/base, value: "#fda50d", notes: "Badge's small Warning dot." }
 guidance:
   status: agreed
   use:

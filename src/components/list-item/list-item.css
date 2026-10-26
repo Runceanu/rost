@@ -353,3 +353,15 @@
 .rost-list-item.rost-list-item--icon-only .rost-list-item__start {
   flex: none;
 }
+
+.rost-list-item.rost-list-item--badge-status-negative .rost-list-item__dot {
+  background: var(--non-interactive-background-negative-base);
+}
+
+.rost-list-item.rost-list-item--badge-status-positive .rost-list-item__dot {
+  background: var(--non-interactive-background-positive-base);
+}
+
+.rost-list-item.rost-list-item--badge-status-warning .rost-list-item__dot {
+  background: var(--non-interactive-background-warning-base);
+}

@@ -47,3 +47,23 @@ export function blankShot(path: string) {
   for (let i = 3; i < p.data.length; i += 4) if (p.data[i] > 8 && ++lit > 4) return false
   return true
 }
+
+// What the visual test last found, per component: written by bin/visual-test.mjs.
+const failing: Record<string, { variant: string; why: string }[]> = existsSync(new URL('baseline/results.json', repo)) ? JSON.parse(readRepo('baseline/results.json')) : {}
+
+/**
+ * Whether a component needs looking at, and why, for the dot in the sidebar.
+ * A failing variant is an alarm; anything unfinished is a warning; a component
+ * with nothing wrong gets no dot. A part's failures count for its whole.
+ */
+export function attention(e: any): { status: 'negative' | 'warning'; why: string[] } | null {
+  const fails = [e, ...partsOf(e.id)].flatMap((x) => failing[x.id] ?? [])
+  const why = [
+    fails.length && `${fails.length === 1 ? 'A variant doesn\'t' : `${fails.length} variants don't`} match Figma`,
+    !inCode(e.id) && 'Not in code yet',
+    ['skeleton', 'draft'].includes(e.c.status) && `The contract is a ${e.c.status}`,
+    e.kind === 'component' && !e.guidance && 'No guidance yet',
+    e.guidance && e.guidance.status !== 'agreed' && 'Guidance not signed off',
+  ].filter(Boolean) as string[]
+  return why.length ? { status: fails.length ? 'negative' : 'warning', why } : null
+}

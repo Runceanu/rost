@@ -6,7 +6,7 @@ import Logo from '../components/Logo.astro'
 import { Button } from '../../../src/components/button/Button'
 import { Tooltip } from '../../../src/components/tooltip/Tooltip'
 import { ListItem } from '../../../src/components/list-item/ListItem'
-import { groups, title, inCode, GITHUB } from '../lib/kit'
+import { groups, title, attention, GITHUB } from '../lib/kit'
 
 interface Props { title: string; description?: string; current?: string; sidebar?: boolean }
 const { title: pageTitle, description = 'Rost started as a design system for my own needs and grew into a product of its own. Today it serves products across different industries.', current = '', sidebar = false } = Astro.props
@@ -47,11 +47,18 @@ const NAV: [string, string][] = [['/components/', 'Components'], ['/tokens/', 'T
           {groups.map(([, label, list]) => (
             <div class="side-group">
               <div class="side-title">{label}</div>
-              {list.map((e) => (
-                <ListItem href={`/components/${e.id}/`} selected={e.id === current} aria-current={e.id === current ? 'page' : undefined} badge={inCode(e.id)}>
-                  {title(e)}{inCode(e.id) && <span class="sr-only">, built in code</span>}
-                </ListItem>
-              ))}
+              {list.map((e) => {
+                // A dot only when something needs looking at; hovering it says what.
+                const a = attention(e)
+                return (
+                  <span class="side-row">
+                    <ListItem href={`/components/${e.id}/`} selected={e.id === current} aria-current={e.id === current ? 'page' : undefined} badge={!!a} badgeStatus={a?.status}>
+                      {title(e)}{a && <span class="sr-only">: {a.why.join('. ')}</span>}
+                    </ListItem>
+                    {a && <Tooltip aria-hidden="true">{a.why.join('. ')}</Tooltip>}
+                  </span>
+                )
+              })}
             </div>
           ))}
         </nav>

@@ -159,11 +159,16 @@ const origin = `http://127.0.0.1:${server.address().port}`
 const browser = await chromium.launch()
 let failed = 0
 let compared = 0
+// What didn't match, per component, kept in the repo so rost.build can say so.
+// Only the components tested this run are replaced.
+const resultsPath = join(root, 'baseline/results.json')
+const results = existsSync(resultsPath) ? JSON.parse(readFileSync(resultsPath, 'utf8')) : {}
 
 for (const id of ids) {
   const work = join(root, 'test-results/visual', id)
   rmSync(work, { recursive: true, force: true })
   mkdirSync(work, { recursive: true })
+  const failing = (results[id] = [])
 
   // A tiny page: every fixture in its own box, nothing else.
   writeFileSync(join(work, 'entry.tsx'), `
@@ -219,7 +224,7 @@ for (const id of ids) {
     const basePath = target && join(root, 'baseline', id, target.file)
     if (!basePath || !existsSync(basePath)) { console.log(`  ?    ${node}  no Figma screenshot to compare with`); compared--; continue }
     const el = await page.$(`[data-node="${node}"] > *`)
-    if (!el) { failed++; console.log(`  FAIL ${target.name.padEnd(30)} rendered nothing`); continue }
+    if (!el) { failed++; failing.push({ variant: target.name, why: 'renders nothing' }); console.log(`  FAIL ${target.name.padEnd(30)} rendered nothing`); continue }
     const forced = await page.$eval(`[data-node="${node}"]`, (e) => e.dataset.force.split(' ').filter(Boolean))
     const on = await page.$eval(`[data-node="${node}"]`, (e) => e.dataset.forceOn)
     const forcedOn = forced.length ? await force(node, forced, on) : 0
@@ -230,6 +235,7 @@ for (const id of ids) {
     const label = target.name.padEnd(30)
     if (shot.width !== base.width || shot.height !== base.height) {
       failed++
+      failing.push({ variant: target.name, why: `${shot.width}x${shot.height}, Figma's is ${base.width}x${base.height}` })
       console.log(`  FAIL ${label} size ${shot.width}x${shot.height}, Figma ${base.width}x${base.height}`)
       writeFileSync(join(work, `${node.replace(':', '-')}.actual.png`), PNG.sync.write(shot))
       continue
@@ -247,7 +253,7 @@ for (const id of ids) {
     const { n: off, clump } = beyondOnePixel(base, shot)
     const near = off / (base.width * base.height)
     const ok = near <= MAX_DIFF && clump <= MAX_CLUMP
-    if (!ok) failed++
+    if (!ok) { failed++; failing.push({ variant: target.name, why: `${(near * 100).toFixed(2)}% of pixels differ from Figma` }) }
     writeFileSync(join(work, `${node.replace(':', '-')}.actual.png`), PNG.sync.write(shot))
     writeFileSync(join(work, `${node.replace(':', '-')}.diff.png`), PNG.sync.write(diff))
     writeFileSync(join(work, `${node.replace(':', '-')}.compare.png`), PNG.sync.write(sideBySide([base, shot, diff], ZOOM)))
@@ -258,5 +264,7 @@ for (const id of ids) {
 
 await browser.close()
 server.close()
+for (const id of Object.keys(results)) if (!results[id].length) delete results[id]
+writeFileSync(resultsPath, JSON.stringify(results, null, 2) + '\n')
 console.log(failed ? `\n${failed} variant(s) don't match Figma yet` : compared ? '\nEverything matches Figma' : '\nNothing was compared')
 process.exitCode = failed ? 1 : 0
