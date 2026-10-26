@@ -123,7 +123,7 @@ A component is `stable` when:
 
 ## Adding a component
 
-1. **Start it.** Since the freeze, a new component can start in the contract: copy `schema/template.contract.yaml`. If it starts in Figma instead, open the Figma desktop app on the UI Kit, add the set to `registry/component-sets.json` (with a `name`) and its variants to `registry/variant-nodes.json`, then run `node bin/extract-variants.mjs <id>`, `node bin/parse.mjs` and `node bin/build-contracts.mjs`. That writes `contracts/<id>.contract.yaml`. Having two registry files is on the [roadmap](ROADMAP.md).
+1. **Start it.** Since the freeze, a new component can start in the contract: copy `schema/template.contract.yaml`. If it starts in Figma instead, open the Figma desktop app on the UI Kit, add the set to `registry/component-sets.json`, with a `name` and its `variants`, then run `node bin/extract-variants.mjs <id>`, `node bin/parse.mjs` and `node bin/build-contracts.mjs`. That writes `contracts/<id>.contract.yaml`.
 2. **Describe it.** Add `summary`, `category`, `related` and `guidance`. Leave the guidance `proposed` until I've signed it off.
 3. **Register it.** Add each app under `implementations`, with its selectors.
 4. **Check it.** `npm run validate`, the conformance test in the app, and `npm run audit -- <app-dir>`. Anything that's different on purpose becomes a deviation.
