@@ -29,7 +29,7 @@ const registry = JSON.parse(readFileSync(join(here, '../registry/figma-variables
 // The kit's names: every Figma variable, plus the tokens Rost made in code
 // (the effects, the shadow, aliases). Both are real; neither is an invention.
 const rostTokens = [...readFileSync(join(here, '../tokens/tokens.css'), 'utf8').replace(/\/\*[\s\S]*?\*\//g, '').matchAll(/(--[\w-]+)\s*:/g)].map((m) => m[1].slice(2))
-const kitPaths = new Set([...registry.paths, ...rostTokens].map((p) => p.replace(/[/\-\s]/g, '').toLowerCase()))
+const kitPaths = new Set([...Object.keys(registry.variables), ...rostTokens].map((p) => p.replace(/[/\-\s]/g, '').toLowerCase()))
 
 const walk = (dir, out = []) => {
   for (const e of readdirSync(dir)) {
