@@ -139,7 +139,10 @@ const props = Object.entries(c.props ?? {}) as [string, any][]
 <style>
   .part-title { margin-top: 0; }
   .tabs { margin: var(--spacing-gap-small) 0; }
-  :global(.tab-bar) { margin-bottom: var(--spacing-gap-small-medium); }
+  /* The same space under the tabs for both panels. Scoped under .tabs so it
+     outweighs the margin reset in Tabs' own CSS, which loads later. */
+  .tabs :global(.tab-bar) { margin-bottom: var(--spacing-gap-small-medium); }
+  .tabs :global(.tab-panel > pre.astro-code) { margin-top: 0; }
   .stage { background: var(--ground); border: 1px solid var(--line); border-radius: var(--spacing-radius-large); padding: var(--spacing-gap-xlarge); overflow-x: auto; }
   @media (max-width: 520px) { .stage { padding: var(--spacing-gap-medium-large); } }
   .source { margin-top: var(--spacing-gap-small-medium); }
