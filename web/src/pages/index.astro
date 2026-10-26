@@ -25,7 +25,7 @@ declare const __REPO__: string
 const figmaShot = `data:image/png;base64,${readFileSync(new URL('baseline/button/20-13.png', pathToFileURL(__REPO__))).toString('base64')}`
 // By CSS variable: tokens.json keys lose the hyphen in `non-interactive`.
 const swatches = ['actions/primary/default/background', 'interactive/inactive/hover/background', 'non-interactive/foreground/primary', 'non-interactive/foreground/negative/base'].map((k) => ({ k, v: `var(--${k.replaceAll('/', '-')})` }))
-const iconSvgs = ['arrow-left', 'chevron-right', 'circle-outline', 'arrow-up', 'chevron-down', 'up-right'].map((n) => readRepo(`assets/icons/${n}.svg`).replace(/fill="#[0-9a-fA-F]{6}"/g, 'fill="currentColor"'))
+const iconSvgs = ['arrow-left', 'circle-outline', 'up-right'].map((n) => readRepo(`assets/icons/${n}.svg`).replace(/fill="#[0-9a-fA-F]{6}"/g, 'fill="currentColor"'))
 // Illustrations keep their own colours, so they go in as pictures.
 const illoSvgs = ['ui', 'structured-system', 'timezones'].map((n) => `data:image/svg+xml;base64,${Buffer.from(readRepo(`assets/illustrations/${n}.svg`)).toString('base64')}`)
 const statuses = ['skeleton', 'draft', 'review', 'stable']
@@ -160,7 +160,7 @@ const nextItems = [...roadmap.slice(nowAt, roadmap.indexOf('\n## ', nowAt + 5)).
   .glyphs { display: flex; flex-direction: column; align-items: center; gap: var(--spacing-gap-large); }
   .illos { display: flex; gap: var(--spacing-gap-medium); }
   .illos img { display: block; }
-  .icons { display: flex; gap: var(--spacing-gap-medium); color: var(--accent); }
+  .icons { display: flex; gap: var(--spacing-gap-large); color: var(--non-interactive-foreground-secondary); }
   .ico :global(svg) { display: block; width: 24px; height: 24px; }
   .ladder { display: flex; flex-wrap: wrap; gap: var(--spacing-gap-small); justify-content: center; }
   .next { display: grid; gap: var(--spacing-gap-2xsmall); width: 100%; max-width: 280px; }
