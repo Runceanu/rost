@@ -63,10 +63,10 @@ code { font-family: var(--mono); font-size: .88em; }
   .back { display: none; }
 }
 .side-group + .side-group { margin-top: var(--spacing-gap-large); }
-.side-title { font-family: var(--mono); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--fg-3); margin-bottom: var(--spacing-gap-small); }
-.side a { display: flex; align-items: center; justify-content: space-between; gap: var(--spacing-gap-small); padding: var(--spacing-gap-2xsmall) var(--spacing-gap-small); margin: 0 calc(-1 * var(--spacing-gap-small)); border-radius: var(--spacing-radius-small); text-decoration: none; color: var(--fg-2); font-size: 14px; white-space: nowrap; }
-.side a:hover, .side a[aria-current] { background: var(--surface); color: var(--fg); }
-.dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); flex: none; }
+.side-title { font-family: var(--mono); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--fg-3); margin-bottom: var(--spacing-gap-xsmall); }
+/* The rows are Rost's ListItem; the site only stacks them. */
+.side-group { display: flex; flex-direction: column; gap: var(--spacing-gap-3xsmall); }
+.side-group .rost-list-item { width: 100%; }
 .foot { display: flex; justify-content: space-between; gap: var(--spacing-gap-medium); flex-wrap: wrap; padding: var(--spacing-gap-large); border-top: 1px solid var(--line); color: var(--fg-3); font-size: 13px; }
 
 /* Type */

@@ -5,6 +5,7 @@ import '../styles/site.css'
 import Logo from '../components/Logo.astro'
 import { Button } from '../../../src/components/button/Button'
 import { Tooltip } from '../../../src/components/tooltip/Tooltip'
+import { ListItem } from '../../../src/components/list-item/ListItem'
 import { groups, title, inCode, GITHUB } from '../lib/kit'
 
 interface Props { title: string; description?: string; current?: string; sidebar?: boolean }
@@ -47,10 +48,9 @@ const NAV: [string, string][] = [['/components/', 'Components'], ['/tokens/', 'T
             <div class="side-group">
               <div class="side-title">{label}</div>
               {list.map((e) => (
-                <a href={`/components/${e.id}/`} aria-current={e.id === current ? 'page' : undefined}>
-                  <span>{title(e)}</span>
-                  {inCode(e.id) && <span class="dot"><span class="sr-only">Built in code</span></span>}
-                </a>
+                <ListItem href={`/components/${e.id}/`} selected={e.id === current} aria-current={e.id === current ? 'page' : undefined} badge={inCode(e.id)}>
+                  {title(e)}{inCode(e.id) && <span class="sr-only">, built in code</span>}
+                </ListItem>
               ))}
             </div>
           ))}
