@@ -91,6 +91,9 @@ guidance:
     `collapsed` is icons only, 72px wide; open is 160px with labels. The items are ListItems: the current one is `selected`. The action is an IconButton when collapsed and a Button when open.
   accessibility:
     element: "a `<nav>` with an `aria-label`. The current item has `aria-current=\"page\"`."
+    name: the `aria-label` on the `<nav>`, like "Main". Each item is named by its label.
     collapsed: icon-only items need an `aria-label`, since there's no visible text.
+    keyboard: Tab goes through the items in order, then the action. Nothing custom, since they're links and a button.
+    focus: each ListItem's own `focus-ring`.
     contrast: the plate is see-through, so check the labels against what's behind it, not just the page colour.
   content: One or two words per item, nouns. The action says what it does.

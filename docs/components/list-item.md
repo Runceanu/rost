@@ -60,6 +60,7 @@
 
 - **Element**: a link (`<a href>`, with `aria-current="page"` on the current one in a nav), or a `<button>` that does something.
 - **Name**: the label. The icons are `aria-hidden`; the status dot needs words nearby if it means something.
+- **Keyboard**: nothing of its own. Tab reaches it, Enter follows the link, and Enter or Space presses the button.
 - **Focus**: the `focus-ring` part, on `:focus-visible`.
 
 ## Content

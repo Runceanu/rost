@@ -75,7 +75,7 @@ Next:
 3. **One list of components.** `registry/component-sets.json` drives the contracts now, but the variant nodes still sit apart in `variant-nodes.json`. One file should hold both.
 4. **Variants as layers.** Right now a variant list repeats what one axis decides: Toggle's unselected background shows up five times, once per state. Curtis's layered approach (`when: { selected: false }` once, then `when: { state: Disabled }` on top) says it once and would cut most of Button's variant list. The check needs to apply layers in order first.
 5. **One copy of the contracts.** the accounting app's test does go through `forApp` now, but it still reads JSON copies of the five contracts (`contracts/rost/`). They match the YAML today. Nothing keeps them matching, so the test should read these YAML files instead.
-6. **Guidance for the new components.** Badge, Thumbs, Carousel, Projects, Testimonials, Menu and Divider are signed off. ListItem, Navigation, Tabs, TabItem and Tooltip have proposed guidance waiting for me, and TestimonialPicture has none. While I'm at it, decide on the four deviations nobody has taken back to the design side yet (the Health section lists them).
+6. **Guidance for the new components.** Badge, Thumbs, Carousel, Projects, Testimonials, Menu and Divider are signed off. ListItem, Navigation, Tabs, TabItem and Tooltip have proposed guidance waiting for me. Since 2026-10-26 each of them covers element, name, keyboard and focus, so they can go stable as soon as I agree with them and an app uses them. TestimonialPicture has none. While I'm at it, decide on the four deviations nobody has taken back to the design side yet (the Health section lists them).
 
 ## Next: grow the kit
 
@@ -99,7 +99,7 @@ Ideas from a workshop board I sat in on, shrunk down to a personal kit with two 
 | Spec templates for every kind of issue | The template contract and `npm run validate` are there. Add GitHub issue templates for *new component*, *deviation* and *token change* |
 | One place for docs, docs in markdown, a docs skill | Partly done: `docs/components/*.md` is markdown an agent can read. Next, a Claude skill that loads the right page before building a component in either app |
 | A better changelog | Build `CHANGELOG.md` from what changed in the contracts ("Badge: outline token went from X to Y"), not from commit messages |
-| Spec-driven work, PR checks | Both apps run the strict audit in CI now. Rost itself has no CI yet: validate, rebuild the docs and fail if they changed, run the visual test |
+| Spec-driven work, PR checks | Both apps run the strict audit in CI. Since 2026-10-26 Rost has its own (`.github/workflows/check.yml`): the contracts validate, the docs and the generated CSS match them, the site builds. The visual test isn't in it yet, because Linux draws text differently from the Mac the baselines were made on |
 | Designers working in code | The "Adding a component" steps in [CONTRACT.md](CONTRACT.md), down to one command each |
 | Charts | The accounting app will need them. Tokens for data-viz colours and a Chart contract come before any chart |
 | Device-specific work | Breakpoint and density tokens. There are none yet |

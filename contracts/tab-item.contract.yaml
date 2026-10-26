@@ -167,6 +167,7 @@ guidance:
     Always inside **Tabs**, and exactly one is selected. Selecting a tab shows its panel straight away. Hover, pressed and focus come from the browser; selected and disabled are props.
   accessibility:
     element: "`<button role=\"tab\">` with `aria-selected` and `aria-controls`, inside a `role=\"tablist\"` that has a name."
+    name: the label.
     keyboard: Only the selected tab is in the tab order. Arrow keys move between tabs, Home and End go to the first and last.
     focus: the `focus-ring` part, on `:focus-visible`.
     icons: just decoration, `aria-hidden`. The label is the name.

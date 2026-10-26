@@ -50,5 +50,8 @@ guidance:
     Shows on hover and on keyboard focus of the thing it explains, 8px under it, and goes when the pointer or focus leaves.
   accessibility:
     element: "`role=\"tooltip\"`, linked from the thing it explains with `aria-describedby`."
-    hover: it never holds anything you'd need to click.
+    name: the tooltip isn't a name. The thing it explains still needs its own `aria-label`.
+    keyboard: it shows when focus arrives, and Escape hides it without moving focus.
+    focus: it never takes focus itself.
+    hover: it never holds anything you'd need to click, and the pointer can move onto it without it going.
   content: A few words, sentence case, no full stop.

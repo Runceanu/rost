@@ -50,6 +50,7 @@ Always inside **Tabs**, and exactly one is selected. Selecting a tab shows its p
 ## Accessibility
 
 - **Element**: `<button role="tab">` with `aria-selected` and `aria-controls`, inside a `role="tablist"` that has a name.
+- **Name**: the label.
 - **Keyboard**: Only the selected tab is in the tab order. Arrow keys move between tabs, Home and End go to the first and last.
 - **Focus**: the `focus-ring` part, on `:focus-visible`.
 - **Icons**: just decoration, `aria-hidden`. The label is the name.
