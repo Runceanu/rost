@@ -50,76 +50,82 @@ None. The freeze on 2026-10-20 turned all 122 suggestions into tokens.
 
 ## No token, on purpose
 
-- [Button](components/button.md) `root.box-shadow` = `inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-default-outline)`: Figma's 1px left and top stroke, drawn inside the shape the way Figma draws it. A border would make the button 1px wider. The width and colour are tokens.
-- [Button](components/button.md) `root.box-shadow` = `inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-hover-outline)`: Figma's 1px left and top stroke, drawn inside the shape the way Figma draws it. A border would make the button 1px wider. The width and colour are tokens.
-- [Button](components/button.md) `root.box-shadow` = `inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-focus-outline)`: Figma's 1px left and top stroke, drawn inside the shape the way Figma draws it. A border would make the button 1px wider. The width and colour are tokens.
-- [Button](components/button.md) `focus-ring.inset` = `calc(-1 * var(--spacing-gap-2xsmall))`: Composed from a token: spacing/gap/2xsmall out, all round. Figma said -5px on the left and top, to make up for the stroke, which takes no space here.
-- [Button](components/button.md) `root.box-shadow` = `inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-pressed-outline)`: Figma's 1px left and top stroke, drawn inside the shape the way Figma draws it. A border would make the button 1px wider. The width and colour are tokens.
-- [Button](components/button.md) `root.box-shadow` = `inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-disabled-outline)`: Figma's 1px left and top stroke, drawn inside the shape the way Figma draws it. A border would make the button 1px wider. The width and colour are tokens.
-- [Button](components/button.md) `focus-ring.inset` = `calc(-1 * var(--spacing-gap-2xsmall))`: Composed from a token: the ring sits spacing/gap/2xsmall outside the element.
-- [Button](components/button.md) `focus-ring.inset` = `calc(-1 * var(--spacing-gap-2xsmall))`: Composed from a token: the ring sits spacing/gap/2xsmall outside the element.
-- [Button](components/button.md) `focus-ring.inset` = `calc(-1 * var(--spacing-gap-2xsmall))`: Composed from a token: the ring sits spacing/gap/2xsmall outside the element.
-- [Carousel](components/carousel.md) `background.background` = `color-mix(in srgb, var(--non-interactive-background-tertiary) calc(var(--opacity-medium) * 100%), transparent)`: Composed from tokens: non-interactive/background/tertiary at opacity/medium.
-- [Carousel](components/carousel.md) `focus-ring.inset` = `calc(-1 * var(--spacing-gap-2xsmall))`: Composed from a token: the ring sits spacing/gap/2xsmall outside the element.
-- [Carousel](components/carousel.md) `focus-ring.border-radius` = `calc(var(--spacing-radius-xlarge) + var(--spacing-gap-2xsmall))`: Composed from tokens: the element's spacing/radius/xlarge plus the ring's spacing/gap/2xsmall.
-- [Chip](components/chips.md) `focus-ring.inset` = `calc(-1 * var(--spacing-gap-2xsmall))`: Composed from a token: the ring sits spacing/gap/2xsmall outside the element.
-- [IconButton](components/icon-button.md) `glyph.mask` = `url(./icon-arrow-left.svg) center / contain no-repeat`: The icon file itself. `assets/icons/arrow-left.svg`, the same shape Figma uses (its insets match Figma's `Union` layer exactly).
-- [IconButton](components/icon-button.md) `root.box-shadow` = `inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-default-outline)`: Figma's 1px left and top stroke, drawn inside the shape as Figma draws it. The width and colour are tokens.
-- [IconButton](components/icon-button.md) `root.box-shadow` = `inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-hover-outline)`: Figma's 1px left and top stroke, drawn inside the shape as Figma draws it. The width and colour are tokens.
-- [IconButton](components/icon-button.md) `root.box-shadow` = `inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-pressed-outline)`: Figma's 1px left and top stroke, drawn inside the shape as Figma draws it. The width and colour are tokens.
-- [IconButton](components/icon-button.md) `root.box-shadow` = `inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-disabled-outline)`: Figma's 1px left and top stroke, drawn inside the shape as Figma draws it. The width and colour are tokens.
-- [IconButton](components/icon-button.md) `root.box-shadow` = `inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-focus-outline)`: Figma's 1px left and top stroke, drawn inside the shape as Figma draws it. The width and colour are tokens.
-- [IconButton](components/icon-button.md) `focus-ring.inset` = `calc(-1 * var(--spacing-gap-2xsmall))`: Composed from a token: spacing/gap/2xsmall out. Figma said -5px on the left and top, to make up for the stroke, which takes no space here.
-- [IconButton](components/icon-button.md) `focus-ring.inset` = `calc(-1 * var(--spacing-gap-2xsmall))`: Composed from a token: the ring sits spacing/gap/2xsmall outside the element.
-- [IconButton](components/icon-button.md) `focus-ring.inset` = `calc(-1 * var(--spacing-gap-2xsmall))`: Composed from a token: the ring sits spacing/gap/2xsmall outside the element.
-- [IconButton](components/icon-button.md) `focus-ring.inset` = `calc(-1 * var(--spacing-gap-2xsmall))`: Composed from a token: the ring sits spacing/gap/2xsmall outside the element.
-- [Input](components/input.md) `icons-lock.mask` = `url(./icon-lock.svg) center / contain no-repeat`: The icon file itself.
-- [Input](components/input.md) `clear-glyph.mask` = `url(./icon-clear.svg) center / contain no-repeat`: The icon file itself.
-- [Input](components/input.md) `icons-alarm.mask` = `url(./icon-alarm.svg) center / contain no-repeat`: The icon file itself.
-- [Input](components/input.md) `supportive.top` = `calc(var(--spacing-size-large) + var(--spacing-gap-2xsmall))`: Composed from tokens: the field's height plus spacing/gap/2xsmall.
-- [Input](components/input.md) `focus-ring.inset` = `calc(-1 * var(--spacing-gap-2xsmall))`: Composed from a token: the ring sits spacing/gap/2xsmall outside the field.
-- [ListItem](components/list-item.md) `root.width` = `100%`: As wide as its list. Figma's sample is 208px.
-- [ListItem](components/list-item.md) `background.inset` = `4px`: Figma's own 4px inset of the plate.
-- [ListItem](components/list-item.md) `dot.width` = `8px`: The small Badge's own 8px dot.
-- [ListItem](components/list-item.md) `dot.height` = `8px`: The small Badge's own 8px dot.
-- [Menu](components/menu.md) `focus-ring.inset` = `var(--spacing-gap-medium-large) calc(-1 * var(--spacing-gap-2xsmall))`: Composed from tokens: around the text only, spacing/gap/medium-large in from the top and bottom, spacing/gap/2xsmall out to each side.
-- [Navigation](components/navigation.md) `root.height` = `100%`: As tall as the space it's given. Figma's sample is 408px.
-- [Navigation](components/navigation.md) `background.background` = `color-mix(in srgb, var(--non-interactive-background-primary) 48%, transparent)`: Figma's fill is a plain #060805 at 48%: `non-interactive/background/primary` at `opacity/medium`, though Figma doesn't bind either.
-- [Navigation](components/navigation.md) `main.width` = `100%`: Fills the panel inside its padding.
-- [Navigation](components/navigation.md) `action.width` = `100%`: Fills the panel inside its padding.
-- [Navigation](components/navigation.md) `root.width` = `160px`: Figma's own 160px; no size token is 160.
-- [Paper effect](components/effect-paper.md) `dot.radius` = `1px`: Tuned to the 16px grid. Nothing else would use it.
-- [Paper effect](components/effect-paper.md) `lens.radius` = `210px`: Tuned by eye for how the lens moves. Only the paper uses it.
-- [Paper effect](components/effect-paper.md) `lens.push` = `9px`: Tuned by eye for how the lens moves. Only the paper uses it.
-- [Paper effect](components/effect-paper.md) `lens.cursor` = `radius 210px, power 1.0`: Tuned by eye: how wide the lens is, and how fast it fades. Only the paper uses it.
-- [Paper effect](components/effect-paper.md) `lens.halo` = `radius 240px, power 1.3`: Tuned by eye: how wide the lens is, and how fast it fades. Only the paper uses it.
-- [Paper effect](components/effect-paper.md) `lens.press` = `radius 330px, power 1.7`: Tuned by eye: how wide the lens is, and how fast it fades. Only the paper uses it.
-- [Paper effect](components/effect-paper.md) `pen.cadence` = `2s between sketches, each one 3.2s from first line to gone`: How often the pen draws. There are no motion tokens yet.
-- [Projects](components/projects.md) `icons-lock.mask` = `url(./icon-lock.svg) center / contain no-repeat`: The icon file itself.
-- [Projects](components/projects.md) `dot.width` = `3px`: The dot's own size inside the icon.
-- [Projects](components/projects.md) `dot.height` = `3px`: The dot's own size inside the icon.
-- [Projects](components/projects.md) `icons-arrow.mask` = `url(./icon-up-right.svg) center / contain no-repeat`: The icon file itself.
-- [Projects](components/projects.md) `focus-ring.inset` = `calc(-1 * var(--spacing-gap-2xsmall))`: Composed from a token: the ring sits spacing/gap/2xsmall outside the element.
-- [Tabs](components/tabs.md) `root.box-shadow` = `inset 0 calc(-1 * var(--spacing-outline-small)) 0 0 var(--tabs-line)`: Figma's 1px line along the bottom, drawn inside so the row stays 40px tall and the selected tab's underline sits on top of it. The width and colour are tokens (spacing/outline/small, tabs/line).
-- [Tag](components/tags.md) `focus-ring.inset` = `calc(-1 * var(--spacing-gap-2xsmall))`: Composed from a token: the ring sits spacing/gap/2xsmall outside the element.
-- [Testimonials](components/testimonials.md) `icons-chevron.mask` = `url(./icon-chevron-down.svg) center / contain no-repeat`: The icon file itself.
-- [Testimonials](components/testimonials.md) `focus-ring.inset` = `calc(-1 * var(--spacing-gap-2xsmall))`: Composed from a token: the ring sits spacing/gap/2xsmall outside the element.
-- [Testimonials](components/testimonials.md) `icons-chevron.mask` = `url(./icon-chevron-up.svg) center / contain no-repeat`: The icon file itself.
-- [Thumbs](components/thumbs.md) `shadow.background` = `linear-gradient(to bottom, rgba(6,8,5,0), var(--non-interactive-background-primary))`: A gradient from the page background, transparent, to the page background. The colour is the token; the ramp is the effect.
-- [Thumbs](components/thumbs.md) `content.background` = `color-mix(in srgb, var(--base-black) calc(var(--opacity-medium) * 100%), transparent)`: Composed from tokens: base/black at opacity/medium.
-- [Thumbs](components/thumbs.md) `dot.width` = `3px`: The dot's own size inside the icon.
-- [Thumbs](components/thumbs.md) `dot.height` = `3px`: The dot's own size inside the icon.
-- [Thumbs](components/thumbs.md) `focus-ring.inset` = `calc(-1 * var(--spacing-gap-2xsmall))`: Composed from a token: the ring sits spacing/gap/2xsmall outside the element.
-- [Thumbs](components/thumbs.md) `focus-ring.border-radius` = `calc(var(--spacing-radius-xlarge) + var(--spacing-gap-2xsmall))`: Composed from tokens: the element's spacing/radius/xlarge plus the ring's spacing/gap/2xsmall.
-- [Thumbs](components/thumbs.md) `icons-lock.mask` = `url(./icon-lock.svg) center / contain no-repeat`: The icon file itself.
-- [Toggle](components/toggle.md) `glyph.mask` = `url(./icon-arrow-left.svg) center / contain no-repeat`: The icon file itself, `assets/icons/arrow-left.svg`, the same shape as Figma's `Union` layer.
-- [Toggle](components/toggle.md) `focus-ring.inset` = `calc(-1 * var(--spacing-gap-2xsmall))`: Composed from a token: the ring sits spacing/gap/2xsmall outside the element.
-- [Toggle](components/toggle.md) `root.box-shadow` = `inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-default-outline)`: Figma's 1px left and top stroke, drawn inside the shape as Figma draws it. The width and colour are tokens.
-- [Toggle](components/toggle.md) `root.box-shadow` = `inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-hover-outline)`: Figma's 1px left and top stroke, drawn inside the shape as Figma draws it. The width and colour are tokens.
-- [Toggle](components/toggle.md) `root.box-shadow` = `inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-pressed-outline)`: Figma's 1px left and top stroke, drawn inside the shape as Figma draws it. The width and colour are tokens.
-- [Toggle](components/toggle.md) `root.box-shadow` = `inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-disabled-outline)`: Figma's 1px left and top stroke, drawn inside the shape as Figma draws it. The width and colour are tokens.
-- [Toggle](components/toggle.md) `root.box-shadow` = `inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-focus-outline)`: Figma's 1px left and top stroke, drawn inside the shape as Figma draws it. The width and colour are tokens.
-- [Tooltip](components/tooltip.md) `root.height` = `20px`: Figma's own 20px; no size token is 20.
+### Strokes drawn inside
+
+Figma draws a stroke inside the shape. A CSS border takes up space, so the button would come out 1px wider. These are an inset `box-shadow` instead. The width and the colour are tokens, only the shadow around them isn't.
+
+| Where | Part | Value |
+|---|---|---|
+| [Button](components/button.md), [IconButton](components/icon-button.md), [Toggle](components/toggle.md) | `root.box-shadow` | `inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-default-outline)` and 4 more, one per state |
+| [Tabs](components/tabs.md) | `root.box-shadow` | `inset 0 calc(-1 * var(--spacing-outline-small)) 0 0 var(--tabs-line)` |
+
+### Focus rings
+
+The ring sits `spacing/gap/2xsmall` outside the element, so its inset is that token turned negative. On a rounded element the ring's radius grows by the same gap, so the two curves stay parallel.
+
+| Where | Part | Value |
+|---|---|---|
+| [Button](components/button.md), [Carousel](components/carousel.md), [Chip](components/chips.md), [IconButton](components/icon-button.md), [Input](components/input.md), [Projects](components/projects.md), [Tag](components/tags.md), [Testimonials](components/testimonials.md), [Thumbs](components/thumbs.md), [Toggle](components/toggle.md) | `focus-ring.inset` | `calc(-1 * var(--spacing-gap-2xsmall))` |
+| [Carousel](components/carousel.md), [Thumbs](components/thumbs.md) | `focus-ring.border-radius` | `calc(var(--spacing-radius-xlarge) + var(--spacing-gap-2xsmall))` |
+| [Menu](components/menu.md) | `focus-ring.inset` | `var(--spacing-gap-medium-large) calc(-1 * var(--spacing-gap-2xsmall))` |
+
+### Colours at an opacity
+
+A colour token at an opacity token. A token can't hold both, so `color-mix()` puts them together where they're used.
+
+| Where | Part | Value |
+|---|---|---|
+| [Carousel](components/carousel.md) | `background.background` | `color-mix(in srgb, var(--non-interactive-background-tertiary) calc(var(--opacity-medium) * 100%), transparent)` |
+| [Navigation](components/navigation.md) | `background.background` | `color-mix(in srgb, var(--non-interactive-background-primary) 48%, transparent)` |
+| [Thumbs](components/thumbs.md) | `shadow.background` | `linear-gradient(to bottom, rgba(6,8,5,0), var(--non-interactive-background-primary))` |
+| [Thumbs](components/thumbs.md) | `content.background` | `color-mix(in srgb, var(--base-black) calc(var(--opacity-medium) * 100%), transparent)` |
+
+### Icon files
+
+An icon is its SVG file, drawn as a mask so it takes the text colour. The file is the value.
+
+| Where | Part | Value |
+|---|---|---|
+| [IconButton](components/icon-button.md), [Toggle](components/toggle.md) | `glyph.mask` | `url(./icon-arrow-left.svg) center / contain no-repeat` |
+| [Input](components/input.md), [Projects](components/projects.md), [Thumbs](components/thumbs.md) | `icons-lock.mask` | `url(./icon-lock.svg) center / contain no-repeat` |
+| [Input](components/input.md) | `clear-glyph.mask` | `url(./icon-clear.svg) center / contain no-repeat` |
+| [Input](components/input.md) | `icons-alarm.mask` | `url(./icon-alarm.svg) center / contain no-repeat` |
+| [Projects](components/projects.md) | `icons-arrow.mask` | `url(./icon-up-right.svg) center / contain no-repeat` |
+| [Testimonials](components/testimonials.md) | `icons-chevron.mask` | `url(./icon-chevron-down.svg) center / contain no-repeat` and 1 more, one per state |
+
+### Sizes with no token
+
+Sizes and offsets that belong to one component, at a number no size token has.
+
+| Where | Part | Value | Why |
+|---|---|---|---|
+| [Input](components/input.md) | `supportive.top` | `calc(var(--spacing-size-large) + var(--spacing-gap-2xsmall))` | Composed from tokens: the field's height plus spacing/gap/2xsmall. |
+| [ListItem](components/list-item.md) | `root.width` | `100%` | As wide as its list. Figma's sample is 208px. |
+| [ListItem](components/list-item.md) | `background.inset` | `4px` | Figma's own 4px inset of the plate. |
+| [ListItem](components/list-item.md) | `dot.width` | `8px` | The small Badge's own 8px dot. |
+| [ListItem](components/list-item.md) | `dot.height` | `8px` | The small Badge's own 8px dot. |
+| [Navigation](components/navigation.md) | `root.height` | `100%` | As tall as the space it's given. Figma's sample is 408px. |
+| [Navigation](components/navigation.md) | `main.width` | `100%` | Fills the panel inside its padding. |
+| [Navigation](components/navigation.md) | `action.width` | `100%` | Fills the panel inside its padding. |
+| [Navigation](components/navigation.md) | `root.width` | `160px` | Figma's own 160px; no size token is 160. |
+| [Projects](components/projects.md), [Thumbs](components/thumbs.md) | `dot.width` | `3px` | The dot's own size inside the icon. |
+| [Projects](components/projects.md), [Thumbs](components/thumbs.md) | `dot.height` | `3px` | The dot's own size inside the icon. |
+| [Tooltip](components/tooltip.md) | `root.height` | `20px` | Figma's own 20px; no size token is 20. |
+
+### Tuned by eye
+
+The paper effect's numbers, tuned for how the dots move. Only the paper uses them, and there are no motion tokens yet.
+
+| Where | Part | Value | Why |
+|---|---|---|---|
+| [Paper effect](components/effect-paper.md) | `dot.radius` | `1px` | Tuned to the 16px grid. Nothing else would use it. |
+| [Paper effect](components/effect-paper.md) | `lens.radius` | `210px` | Tuned by eye for how the lens moves. Only the paper uses it. |
+| [Paper effect](components/effect-paper.md) | `lens.push` | `9px` | Tuned by eye for how the lens moves. Only the paper uses it. |
+| [Paper effect](components/effect-paper.md) | `lens.cursor` | `radius 210px, power 1.0` | Tuned by eye: how wide the lens is, and how fast it fades. Only the paper uses it. |
+| [Paper effect](components/effect-paper.md) | `lens.halo` | `radius 240px, power 1.3` | Tuned by eye: how wide the lens is, and how fast it fades. Only the paper uses it. |
+| [Paper effect](components/effect-paper.md) | `lens.press` | `radius 330px, power 1.7` | Tuned by eye: how wide the lens is, and how fast it fades. Only the paper uses it. |
+| [Paper effect](components/effect-paper.md) | `pen.cadence` | `2s between sketches, each one 3.2s from first line to gone` | How often the pen draws. There are no motion tokens yet. |
+
 
 ## Open gaps
 

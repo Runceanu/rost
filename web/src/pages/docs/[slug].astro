@@ -2,6 +2,7 @@
 import Base from '../../layouts/Base.astro'
 import { md, readRepo, GITHUB } from '../../lib/kit'
 import { DOCS } from '../../lib/docs'
+import PlainValues from '../../components/PlainValues.astro'
 
 export function getStaticPaths() {
   return Object.keys(DOCS).map((slug) => ({ params: { slug } }))
@@ -28,13 +29,18 @@ const fix = (href: string) => {
 }
 const html = md(readRepo(doc.file).replace(/^<!--[\s\S]*?-->\s*/, ''))
   .replace(/href="([^"]+)"/g, (_, h) => `href="${fix(h)}"`)
+// On the site, "No token, on purpose" is drawn instead of listed: the same rows, grouped, each group with a picture.
+const PLAIN = '<h2>No token, on purpose</h2>'
+const at = html.indexOf(PLAIN)
+const end = at < 0 ? -1 : html.indexOf('<h2', at + PLAIN.length)
+const [before, after] = at < 0 ? [html, ''] : [html.slice(0, at + PLAIN.length), html.slice(end)]
 ---
 <Base title={`${doc.title} · Rost`}>
   <div class="docs">
     <nav class="doc-nav" aria-label="Docs">
       {Object.entries(DOCS).map(([s, d]) => <a href={`/docs/${s}/`} aria-current={s === slug ? 'page' : undefined}>{d.title}</a>)}
     </nav>
-    <article class="prose" set:html={html} />
+    <article class="prose"><Fragment set:html={before} />{after && <PlainValues />}<Fragment set:html={after} /></article>
   </div>
 </Base>
 <style>

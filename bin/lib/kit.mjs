@@ -120,6 +120,55 @@ export function tokenCell(prop, v) {
   return { kind, text: 'no token yet' }
 }
 
+/**
+ * The values with no token on purpose, sorted by why. Most reasons repeat:
+ * the same inset stroke in five states, the same focus ring in eleven
+ * components. Each group says its reason once.
+ */
+export const PLAIN_KINDS = [
+  ['stroke', 'Strokes drawn inside', 'Figma draws a stroke inside the shape. A CSS border takes up space, so the button would come out 1px wider. These are an inset `box-shadow` instead. The width and the colour are tokens, only the shadow around them isn\'t.'],
+  ['ring', 'Focus rings', 'The ring sits `spacing/gap/2xsmall` outside the element, so its inset is that token turned negative. On a rounded element the ring\'s radius grows by the same gap, so the two curves stay parallel.'],
+  ['mix', 'Colours at an opacity', 'A colour token at an opacity token. A token can\'t hold both, so `color-mix()` puts them together where they\'re used.'],
+  ['icon', 'Icon files', 'An icon is its SVG file, drawn as a mask so it takes the text colour. The file is the value.'],
+  ['size', 'Sizes with no token', 'Sizes and offsets that belong to one component, at a number no size token has.'],
+  ['tuning', 'Tuned by eye', 'The paper effect\'s numbers, tuned for how the dots move. Only the paper uses them, and there are no motion tokens yet.'],
+]
+
+const plainKind = (e, { part, prop, v }) => {
+  if (e.kind === 'effect') return 'tuning'
+  if (part === 'focus-ring') return 'ring'
+  if (prop === 'box-shadow' && String(v.value).startsWith('inset')) return 'stroke'
+  if (prop === 'mask') return 'icon'
+  if (/color-mix|gradient/.test(v.value)) return 'mix'
+  return 'size'
+}
+
+/** Each kind with its entries, one per component, part and property, however many variants repeat it. */
+export function plainGroups(kit) {
+  const groups = new Map(PLAIN_KINDS.map(([k, label, why]) => [k, { kind: k, label, why, entries: new Map() }]))
+  for (const e of kit) for (const x of e.values) {
+    if (!x.v.untokenised) continue
+    const key = `${e.id} ${x.part} ${x.prop}`
+    const entries = groups.get(plainKind(e, x)).entries
+    const entry = entries.get(key) ?? entries.set(key, { e, part: x.part, prop: x.prop, values: [], why: x.v.untokenised }).get(key)
+    if (!entry.values.includes(x.v.value)) entry.values.push(x.v.value)
+  }
+  return [...groups.values()].map((g) => ({ ...g, entries: [...g.entries.values()] })).filter((g) => g.entries.length)
+    .map((g) => ({ ...g, notes: g.kind === 'size' || g.kind === 'tuning', rows: plainRows(g) }))
+}
+
+// One row per value, with every component that uses it. Sizes and tuning keep each value's own note.
+function plainRows(g) {
+  const notes = g.kind === 'size' || g.kind === 'tuning'
+  const rows = new Map()
+  for (const x of g.entries) {
+    const key = `${x.part}.${x.prop} ${[...x.values].sort().join(' ')}${notes ? x.why : ''}`
+    const row = rows.get(key) ?? rows.set(key, { part: x.part, prop: x.prop, values: x.values, why: x.why, where: [] }).get(key)
+    row.where.push(x.e)
+  }
+  return [...rows.values()]
+}
+
 // ── The kit ─────────────────────────────────────────────────────────────────
 
 export function loadKit() {

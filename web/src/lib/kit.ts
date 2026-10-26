@@ -9,8 +9,8 @@ declare const __REPO__: string
 const repo = pathToFileURL(__REPO__)
 // Loaded from where it lives, not bundled: it reads the repo relative to itself.
 const lib = await import(/* @vite-ignore */ new URL('bin/lib/kit.mjs', repo).href)
-const { loadKit, KINDS, APP_LABEL, title, sourceLink, guidanceMarkdown, tokenCell, isColour } = lib
-export { APP_LABEL, title, sourceLink, tokenCell, isColour }
+const { loadKit, KINDS, APP_LABEL, title, sourceLink, guidanceMarkdown, tokenCell, isColour, plainGroups } = lib
+export { APP_LABEL, title, sourceLink, tokenCell, isColour, plainGroups }
 
 export const kit: any[] = loadKit()
 export const byId = (id: string) => kit.find((e) => e.id === id)

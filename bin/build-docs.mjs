@@ -5,7 +5,7 @@
  * rost.build (web/) renders the same model for browsing.
  */
 import { mkdirSync, writeFileSync, readdirSync, rmSync, readFileSync } from 'node:fs'
-import { loadKit, loadTokens, KINDS, APP_LABEL, title, sourceLink, guidanceMarkdown, COVERAGE, classify } from './lib/kit.mjs'
+import { loadKit, loadTokens, KINDS, APP_LABEL, title, sourceLink, guidanceMarkdown, COVERAGE, classify, plainGroups } from './lib/kit.mjs'
 
 const kit = loadKit()
 const out = new URL('../docs/components/', import.meta.url)
@@ -186,7 +186,10 @@ ${[...suggestions.values()].sort((a, b) => b.n - a.n).map((r) => `| \`${r.token}
 
 ## No token, on purpose
 
-${kit.flatMap((e) => e.values.filter((x) => x.v.untokenised).map((x) => `- [${title(e)}](components/${e.id}.md) \`${x.part}.${x.prop}\` = \`${x.v.value}\`: ${x.v.untokenised}`)).join('\n') || 'None.'}
+${plainGroups(kit).map((g) => {
+  const value = (r) => `\`${cell(r.values[0])}\`${r.values.length > 1 ? ` and ${r.values.length - 1} more, one per state` : ''}`
+  return `### ${g.label}\n\n${g.why}\n\n| Where | Part | Value |${g.notes ? ' Why |' : ''}\n|---|---|---|${g.notes ? '---|' : ''}\n${g.rows.map((r) => `| ${r.where.map((e) => `[${title(e)}](components/${e.id}.md)`).join(', ')} | \`${r.part}.${r.prop}\` | ${value(r)} |${g.notes ? ` ${cell(r.why)} |` : ''}`).join('\n')}\n`
+}).join('\n') || 'None.'}
 
 ## Open gaps
 
