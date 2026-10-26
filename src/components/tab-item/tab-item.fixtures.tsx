@@ -1,4 +1,4 @@
-import { Tab } from './Tab'
+import { TabItem } from './TabItem'
 
 /**
  * One fixture per Figma variant, with Figma's sample label. Hover, pressed and
@@ -13,23 +13,23 @@ const FORCE: Record<string, string[]> = { Hover: ['hover'], Pressed: ['active'],
 export const fixtures = NODES.map(([selected, state, node]) => ({
   node,
   name: `selected=${selected ? 'True' : 'False'}, state=${state}`,
-  element: <div role="tablist" aria-label="Sample" style={{ display: 'inline-flex' }}><Tab selected={selected} disabled={state === 'Disabled'}>Tab</Tab></div>,
+  element: <div role="tablist" aria-label="Sample" style={{ display: 'inline-flex' }}><TabItem selected={selected} disabled={state === 'Disabled'}>Tab</TabItem></div>,
   ...(FORCE[state] ? { force: FORCE[state] } : {}),
 }))
 
 /** What a caller writes. Shown on the component's page. */
 export const usage = `import { Tabs } from 'rost/components/tabs/Tabs'
-import { Tab } from 'rost/components/tab/Tab'
+import { TabItem } from 'rost/components/tab-item/TabItem'
 
 <Tabs aria-label="Invoice">
-  <Tab selected aria-controls="panel-details">Details</Tab>
-  <Tab aria-controls="panel-history">History</Tab>
+  <TabItem selected aria-controls="panel-details">Details</TabItem>
+  <TabItem aria-controls="panel-history">History</TabItem>
 </Tabs>`
 
 /** What the component's card on rost.build shows. */
 export const preview = (
   <span style={{ display: 'inline-flex' }}>
-    <Tab as="span" selected>Preview</Tab>
-    <Tab as="span">Code</Tab>
+    <TabItem as="span" selected>Preview</TabItem>
+    <TabItem as="span">Code</TabItem>
   </span>
 )

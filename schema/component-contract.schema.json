@@ -35,6 +35,11 @@
         "pattern"
       ]
     },
+    "partOf": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9-]*$",
+      "description": "The contract this one is a part of, by id, e.g. a tab-item is part of tabs. It's documented on that one's page and isn't listed on its own."
+    },
     "status": {
       "enum": [
         "skeleton",

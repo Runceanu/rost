@@ -92,11 +92,6 @@
     "setNodeId": "39:111",
     "variantCount": 1
   },
-  "tab": {
-    "name": "Tab",
-    "setNodeId": "442:94",
-    "variantCount": 10
-  },
   "tabs": {
     "name": "Tabs",
     "setNodeId": "448:56",
@@ -106,5 +101,10 @@
     "name": "Tooltip",
     "setNodeId": "138:276",
     "variantCount": 1
+  },
+  "tab-item": {
+    "name": "TabItem",
+    "setNodeId": "442:94",
+    "variantCount": 10
   }
 }

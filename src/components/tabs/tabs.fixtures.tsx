@@ -1,5 +1,5 @@
 import { Tabs } from './Tabs'
-import { Tab } from '../tab/Tab'
+import { TabItem } from '../tab-item/TabItem'
 import arrow from '../toggle/icon-arrow-left.svg?url'
 
 /**
@@ -10,9 +10,9 @@ const glyph = <span style={{ display: 'block', width: '100%', height: '100%', ba
 
 const bar = (
   <Tabs aria-label="Sample">
-    <Tab selected>Preview</Tab>
-    <Tab>Code</Tab>
-    <Tab leading={glyph}>Tokens</Tab>
+    <TabItem selected>Preview</TabItem>
+    <TabItem>Code</TabItem>
+    <TabItem leading={glyph}>Tokens</TabItem>
   </Tabs>
 )
 
@@ -20,18 +20,18 @@ export const fixtures = [{ node: '448:56', name: 'tabs', element: <div style={{ 
 
 /** What a caller writes. Shown on the component's page. */
 export const usage = `import { Tabs } from 'rost/components/tabs/Tabs'
-import { Tab } from 'rost/components/tab/Tab'
+import { TabItem } from 'rost/components/tab-item/TabItem'
 
 <Tabs aria-label="Invoice">
-  <Tab selected aria-controls="panel-details">Details</Tab>
-  <Tab aria-controls="panel-history">History</Tab>
+  <TabItem selected aria-controls="panel-details">Details</TabItem>
+  <TabItem aria-controls="panel-history">History</TabItem>
 </Tabs>`
 
 /** What the component's card on rost.build shows: the same bar, drawn without buttons, since the card is a link. */
 export const preview = (
   <span className="rost-tabs" style={{ display: 'inline-flex' }}>
-    <Tab as="span" selected>Preview</Tab>
-    <Tab as="span">Code</Tab>
-    <Tab as="span" leading={glyph}>Tokens</Tab>
+    <TabItem as="span" selected>Preview</TabItem>
+    <TabItem as="span">Code</TabItem>
+    <TabItem as="span" leading={glyph}>Tokens</TabItem>
   </span>
 )

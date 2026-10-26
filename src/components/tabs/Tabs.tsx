@@ -4,7 +4,7 @@ import './tabs.css'
 export interface TabsProps extends HTMLAttributes<HTMLDivElement> {
   /** What the tabs switch between, for screen readers: "Button preview and code". */
   readonly 'aria-label': string
-  /** The Tab components. */
+  /** The TabItem components. */
   readonly children?: ReactNode
 }
 

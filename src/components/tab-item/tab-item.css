@@ -1,0 +1,145 @@
+/* Generated from contracts/tab-item.contract.yaml by bin/build-css.mjs. Don't edit: change the contract and rebuild. */
+
+.rost-tab-item, .rost-tab-item * { box-sizing: border-box; margin: 0; }
+.rost-tab-item > img, .rost-tab-item [class*="__icons-"] > img { display: block; position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; }
+.rost-tab-item ::placeholder { color: inherit; opacity: 1; }
+
+.rost-tab-item {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  background: none;
+  border: none;
+  font: inherit;
+  cursor: pointer;
+  outline: none;
+  gap: var(--spacing-gap-small);
+  height: var(--spacing-size-medium);
+  padding-left: var(--spacing-gap-medium);
+  padding-right: var(--spacing-gap-medium);
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+
+.rost-tab-item__leading {
+  display: flex;
+  flex-shrink: 0;
+  width: var(--spacing-size-xsmall);
+  height: var(--spacing-size-xsmall);
+}
+
+.rost-tab-item__label {
+  white-space: nowrap;
+  font-family: var(--font-family-base);
+  font-weight: var(--typography-body-font-weight-medium);
+  line-height: var(--typography-body-line-height);
+  font-size: var(--typography-body-font-size);
+  letter-spacing: var(--typography-body-letter-spacing);
+}
+
+.rost-tab-item__trailing {
+  display: flex;
+  flex-shrink: 0;
+  width: var(--spacing-size-xsmall);
+  height: var(--spacing-size-xsmall);
+}
+
+.rost-tab-item__underline {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: var(--spacing-outline-medium);
+  pointer-events: none;
+}
+
+.rost-tab-item__focus-ring {
+  display: none;
+  position: absolute;
+  inset: 0;
+  border-style: solid;
+  border-width: var(--spacing-outline-medium);
+  border-radius: var(--spacing-radius-small);
+  pointer-events: none;
+}
+
+.rost-tab-item.rost-tab-item--selected {
+  color: var(--tabs-selected-default-label);
+}
+
+.rost-tab-item.rost-tab-item--selected .rost-tab-item__underline {
+  background: var(--tabs-selected-default-underline);
+}
+
+.rost-tab-item:hover.rost-tab-item--selected {
+  color: var(--tabs-selected-hover-label);
+}
+
+.rost-tab-item:hover.rost-tab-item--selected .rost-tab-item__underline {
+  background: var(--tabs-selected-hover-underline);
+}
+
+.rost-tab-item:active.rost-tab-item--selected {
+  color: var(--tabs-selected-pressed-label);
+}
+
+.rost-tab-item:active.rost-tab-item--selected .rost-tab-item__underline {
+  background: var(--tabs-selected-pressed-underline);
+}
+
+.rost-tab-item:focus-visible.rost-tab-item--selected {
+  color: var(--tabs-selected-focus-label);
+}
+
+.rost-tab-item:focus-visible.rost-tab-item--selected .rost-tab-item__underline {
+  background: var(--tabs-selected-focus-underline);
+}
+
+.rost-tab-item:focus-visible.rost-tab-item--selected .rost-tab-item__focus-ring {
+  display: block;
+  border-color: var(--tabs-selected-focus-focus-ring);
+}
+
+.rost-tab-item:is(:disabled, [aria-disabled="true"]).rost-tab-item--selected {
+  color: var(--tabs-selected-disabled-label);
+  opacity: var(--opacity-medium);
+}
+
+.rost-tab-item:is(:disabled, [aria-disabled="true"]).rost-tab-item--selected .rost-tab-item__underline {
+  background: var(--tabs-selected-disabled-underline);
+}
+
+.rost-tab-item:not(.rost-tab-item--selected) {
+  color: var(--tabs-unselected-default-label);
+}
+
+.rost-tab-item:hover:not(.rost-tab-item--selected) {
+  color: var(--tabs-unselected-hover-label);
+}
+
+.rost-tab-item:hover:not(.rost-tab-item--selected) .rost-tab-item__underline {
+  background: var(--tabs-unselected-hover-underline);
+}
+
+.rost-tab-item:active:not(.rost-tab-item--selected) {
+  color: var(--tabs-unselected-pressed-label);
+}
+
+.rost-tab-item:active:not(.rost-tab-item--selected) .rost-tab-item__underline {
+  background: var(--tabs-unselected-pressed-underline);
+}
+
+.rost-tab-item:focus-visible:not(.rost-tab-item--selected) {
+  color: var(--tabs-unselected-focus-label);
+}
+
+.rost-tab-item:focus-visible:not(.rost-tab-item--selected) .rost-tab-item__focus-ring {
+  display: block;
+  border-color: var(--tabs-unselected-focus-focus-ring);
+}
+
+.rost-tab-item:is(:disabled, [aria-disabled="true"]):not(.rost-tab-item--selected) {
+  color: var(--tabs-unselected-disabled-label);
+  opacity: var(--opacity-medium);
+}

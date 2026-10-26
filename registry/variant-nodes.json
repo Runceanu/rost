@@ -1023,7 +1023,23 @@
       "height": 0
     }
   ],
-  "tab": [
+  "tabs": [
+    {
+      "nodeId": "448:56",
+      "name": "tabs",
+      "width": 278,
+      "height": 40
+    }
+  ],
+  "tooltip": [
+    {
+      "nodeId": "138:276",
+      "name": "tooltip",
+      "width": 43,
+      "height": 20
+    }
+  ],
+  "tab-item": [
     {
       "nodeId": "442:2",
       "name": "selected=True, state=Default",
@@ -1083,22 +1099,6 @@
       "name": "selected=False, state=Disabled",
       "width": 60,
       "height": 40
-    }
-  ],
-  "tabs": [
-    {
-      "nodeId": "448:56",
-      "name": "tabs",
-      "width": 278,
-      "height": 40
-    }
-  ],
-  "tooltip": [
-    {
-      "nodeId": "138:276",
-      "name": "tooltip",
-      "width": 43,
-      "height": 20
     }
   ]
 }

@@ -6,7 +6,7 @@ kind: component
 status: review
 summary: A row of tabs on a 1px line. One is selected, and its panel shows below.
 category: navigation
-related: [ tab, divider ]
+related: [ tab-item, divider ]
 source:
   tool: figma
   fileKey: 1Zy0wiWKXQAvsfDBX3KR0d
@@ -15,7 +15,7 @@ source:
   extractedAt: "2026-10-23"
   extractedBy: mcp
 props:
-  tabs: { type: slot, notes: "The tabs, in Figma's `tab-items` slot: add, remove or reorder them. In React, the Tab components as children." }
+  tabs: { type: slot, notes: "The tab-items, in Figma's `tab-items` slot: add, remove or reorder them. In React, the TabItem components as children." }
 elements:
   root:
     notes: "The `role=\"tablist\"`. The tabs sit side by side, with nothing between them."

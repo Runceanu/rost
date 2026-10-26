@@ -32,7 +32,7 @@ Every value in every contract, sorted by why it has a token or doesn't. `npm run
 | [Menu](components/menu.md) | 32 | · | 16 | 6 | · | 1 |
 | [Paper effect](components/effect-paper.md) | 6 | · | · | · | 7 | · |
 | [Projects](components/projects.md) | 77 | · | 33 | 8 | 4 | 4 |
-| [Tab](components/tab.md) | 37 | · | 15 | 12 | · | 1 |
+| [TabItem](components/tab-item.md) | 37 | · | 15 | 12 | · | 1 |
 | [Tabs](components/tabs.md) | · | · | 2 | 1 | 1 | · |
 | [Tag](components/tags.md) | 26 | · | 13 | 3 | · | 1 |
 | [TestimonialPicture](components/testimonials-pics.md) | 2 | · | 8 | 1 | · | · |
@@ -129,7 +129,7 @@ None. The freeze on 2026-10-20 turned all 122 suggestions into tokens.
 - [Projects](components/projects.md) `outline.right` = `0`
 - [Projects](components/projects.md) `outline.bottom` = `0`
 - [Projects](components/projects.md) `focus-ring.border-style` = `solid`
-- [Tab](components/tab.md) `focus-ring.border-style` = `solid`
+- [TabItem](components/tab-item.md) `focus-ring.border-style` = `solid`
 - [Tag](components/tags.md) `focus-ring.border-style` = `solid`
 - [Testimonials](components/testimonials.md) `outline.left` = `0`
 - [Testimonials](components/testimonials.md) `outline.right` = `0`

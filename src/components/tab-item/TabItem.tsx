@@ -1,7 +1,7 @@
 import type { ButtonHTMLAttributes, ReactNode } from 'react'
-import './tab.css'
+import './tab-item.css'
 
-export interface TabProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+export interface TabItemProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   /** The tab whose panel shows. It gets the green underline. */
   readonly selected?: boolean
   /** A 20px icon before the label. Draw it with `currentColor`. */
@@ -14,14 +14,14 @@ export interface TabProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   readonly as?: 'button' | 'span'
 }
 
-const b = 'rost-tab'
+const b = 'rost-tab-item'
 
 /**
  * One tab, always inside Tabs. A `<button role="tab">`: only the selected one
  * is in the tab order, and Tabs moves between them with the arrow keys.
- * Built from contracts/tab.contract.yaml.
+ * Built from contracts/tab-item.contract.yaml.
  */
-export function Tab({ selected = false, leading, trailing, children, className, type = 'button', as = 'button', ...rest }: TabProps) {
+export function TabItem({ selected = false, leading, trailing, children, className, type = 'button', as = 'button', ...rest }: TabItemProps) {
   const Root = as
   const own = as === 'button' ? { type, role: 'tab', 'aria-selected': selected, tabIndex: selected ? 0 : -1 } : {}
   return (

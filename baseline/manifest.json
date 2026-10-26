@@ -1197,7 +1197,25 @@
       "height": 630
     }
   ],
-  "tab": [
+  "tabs": [
+    {
+      "nodeId": "448:56",
+      "name": "tabs",
+      "file": "448-56.png",
+      "width": 278,
+      "height": 40
+    }
+  ],
+  "tooltip": [
+    {
+      "nodeId": "138:276",
+      "name": "tooltip",
+      "file": "138-276.png",
+      "width": 43,
+      "height": 20
+    }
+  ],
+  "tab-item": [
     {
       "nodeId": "442:2",
       "name": "selected=True, state=Default",
@@ -1267,24 +1285,6 @@
       "file": "442-85.png",
       "width": 60,
       "height": 40
-    }
-  ],
-  "tabs": [
-    {
-      "nodeId": "448:56",
-      "name": "tabs",
-      "file": "448-56.png",
-      "width": 278,
-      "height": 40
-    }
-  ],
-  "tooltip": [
-    {
-      "nodeId": "138:276",
-      "name": "tooltip",
-      "file": "138-276.png",
-      "width": 43,
-      "height": 20
     }
   ]
 }

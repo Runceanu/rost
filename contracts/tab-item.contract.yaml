@@ -1,7 +1,8 @@
 # yaml-language-server: $schema=../schema/component-contract.schema.json
 schemaVersion: 2
-id: tab
-name: Tab
+id: tab-item
+name: TabItem
+partOf: tabs
 kind: component
 status: review
 summary: One tab in a row of tabs. A label, optional icons before and after it, and a green underline when it's the one selected.

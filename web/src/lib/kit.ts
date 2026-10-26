@@ -17,9 +17,11 @@ export const byId = (id: string) => kit.find((e) => e.id === id)
 // A component has its folder; an effect is a token, in code once its preview exists.
 export const inCode = (id: string) => existsSync(new URL(`src/components/${id}/`, repo)) || existsSync(new URL(`src/effects/${id}.fixtures.tsx`, repo))
 export const built = kit.filter((e) => inCode(e.id))
-/** Components, patterns and effects, each with its entries, leaving out a kind that has none. */
+/** The contracts shown on another's page (a tab-item under tabs). */
+export const partsOf = (id: string) => kit.filter((e) => e.c.partOf === id)
+/** Components, patterns and effects, each with its entries, leaving out a kind that has none and the parts, which live on their whole's page. */
 export const groups: [string, string, any[]][] = KINDS
-  .map(([k, label]: [string, string]) => [k, label, kit.filter((e) => e.kind === k)])
+  .map(([k, label]: [string, string]) => [k, label, kit.filter((e) => e.kind === k && !e.c.partOf)])
   .filter(([, , list]: [string, string, any[]]) => list.length)
 
 export const md = (src: string) => marked.parse(src, { async: false }) as string
