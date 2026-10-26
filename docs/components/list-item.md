@@ -22,6 +22,7 @@
 | `badge` | boolean |  | `false` |
 | `action` | slot |  |  |
 | `selected` | boolean |  | `false` |
+| `iconOnly` | boolean |  | `false` |
 
 ## States
 

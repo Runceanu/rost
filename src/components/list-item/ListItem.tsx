@@ -31,16 +31,20 @@ const b = 'rost-list-item'
  */
 export function ListItem(props: ListItemProps) {
   const { selected = false, description, leading, badge = false, action, children, className, as, ...rest } = props
-  const cls = [b, selected && `${b}--selected`, className].filter(Boolean).join(' ')
+  // No label and nothing at the end: just the icon, centred, as in a collapsed nav.
+  const iconOnly = !children && !description && !badge && !action
+  const cls = [b, selected && `${b}--selected`, iconOnly && `${b}--icon-only`, className].filter(Boolean).join(' ')
   const inner = (
     <>
       <span className={`${b}__background`} />
       <span className={`${b}__start`}>
         {leading && <span className={`${b}__leading`} aria-hidden="true">{leading}</span>}
-        <span className={`${b}__text`}>
-          <span className={`${b}__label`}>{children}</span>
-          {description && <span className={`${b}__description`}>{description}</span>}
-        </span>
+        {(children || description) && (
+          <span className={`${b}__text`}>
+            <span className={`${b}__label`}>{children}</span>
+            {description && <span className={`${b}__description`}>{description}</span>}
+          </span>
+        )}
       </span>
       {(badge || action) && (
         <span className={`${b}__end`}>

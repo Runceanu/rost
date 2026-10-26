@@ -21,6 +21,7 @@ props:
   badge: { type: boolean, default: false, notes: "Shows the status dot on the right. Figma's `showBadge`." }
   action: { type: slot, notes: "Optional, a 20px icon at the end, usually a chevron. Draw it with `currentColor`. Figma's `showAction` and `Action`." }
   selected: { type: boolean, default: false, notes: "The one that's picked: a solid green plate." }
+  iconOnly: { type: boolean, default: false, notes: "Set by the component when there's no label: just the icon, centred in a 48px square, as in a collapsed navigation. Not a Figma axis: Figma hides the text (`showContent`) on the instance." }
 states: [ Default, Hover, Pressed, Focus, Disabled ]
 elements:
   root:
@@ -285,6 +286,12 @@ variants:
         color: { token: interactive/inactive/disabled/sub-label, value: "#999999" }
       action:
         color: { token: interactive/inactive/disabled/icon, value: "#00d669" }
+  - when: { iconOnly: true }
+    elements:
+      root:
+        justify-content: { value: center, notes: "Figma centres the icon when the text is hidden." }
+      start:
+        flex: { value: none, assert: false }
 guidance:
   status: proposed
   use:

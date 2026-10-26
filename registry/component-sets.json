@@ -111,5 +111,10 @@
     "name": "ListItem",
     "setNodeId": "346:3364",
     "variantCount": 10
+  },
+  "navigation": {
+    "name": "Navigation",
+    "setNodeId": "356:949",
+    "variantCount": 2
   }
 }

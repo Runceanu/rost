@@ -345,3 +345,11 @@
 .rost-list-item:is(:disabled, [aria-disabled="true"]):not(.rost-list-item--selected) .rost-list-item__action {
   color: var(--interactive-inactive-disabled-icon);
 }
+
+.rost-list-item.rost-list-item--icon-only {
+  justify-content: center;
+}
+
+.rost-list-item.rost-list-item--icon-only .rost-list-item__start {
+  flex: none;
+}

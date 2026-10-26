@@ -1,0 +1,96 @@
+# yaml-language-server: $schema=../schema/component-contract.schema.json
+schemaVersion: 2
+id: navigation
+name: Navigation
+kind: component
+status: review
+summary: A side navigation on frosted glass. The logo at the top, the main items below it, one action at the bottom. Collapsed to icons, or open with labels.
+category: navigation
+related: [ list-item, icon-button, button, effect-thumb ]
+source:
+  tool: figma
+  fileKey: 1Zy0wiWKXQAvsfDBX3KR0d
+  nodeId: "356:949"
+  url: https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=356-949
+  extractedAt: "2026-10-26"
+  extractedBy: mcp
+props:
+  collapsed: { type: boolean, default: false, notes: "72px wide with icons only, or 160px with labels." }
+  logo: { type: slot, notes: "The mark at the top, 40px." }
+  main: { type: slot, notes: "The items: ListItems, icon only when collapsed. Figma's `Main` slot. In React, the children." }
+  action: { type: slot, notes: "One action at the bottom: an IconButton when collapsed, a Button when open. Figma's `Action` slot." }
+elements:
+  root:
+    notes: "A `<nav>`, as tall as the space it's given. Figma's sample is 408px."
+    styles:
+      display: { value: flex, assert: false }
+      flex-direction: { value: column, assert: false }
+      justify-content: { value: space-between, notes: "Figma also sets a 96px gap, but with space-between it plays no part there; in CSS it would add on top, so it's left out." }
+      align-items: { value: flex-start }
+      position: { value: relative, assert: false }
+      overflow: { value: hidden, assert: false }
+      height: { value: 100%, untokenised: "As tall as the space it's given. Figma's sample is 408px." }
+      padding-top: { token: spacing/gap/medium, value: 16px }
+      padding-bottom: { token: spacing/gap/medium, value: 16px }
+      border-radius: { token: spacing/radius/xlarge, value: 24px }
+  background:
+    notes: "The frosted plate: the page's background at 48%, blurred behind, with the Thumb effect."
+    styles:
+      position: { value: absolute, assert: false }
+      inset: { value: "0", assert: false }
+      pointer-events: { value: none, assert: false }
+      background: { value: "color-mix(in srgb, var(--non-interactive-background-primary) 48%, transparent)", untokenised: "Figma's fill is a plain #060805 at 48%: `non-interactive/background/primary` at `opacity/medium`, though Figma doesn't bind either." }
+      backdrop-filter: { token: effect/thumb, value: blur(12px) }
+  logo:
+    styles:
+      display: { value: flex, assert: false }
+      flex-shrink: { value: "0", assert: false }
+      position: { value: relative, assert: false }
+      width: { token: spacing/size/medium, value: 40px }
+      height: { token: spacing/size/medium, value: 40px }
+  main:
+    notes: "Figma's `Main` slot."
+    styles:
+      display: { value: flex, assert: false }
+      flex-direction: { value: column, assert: false }
+      position: { value: relative, assert: false }
+      width: { value: 100%, untokenised: "Fills the panel inside its padding." }
+      gap: { token: spacing/gap/small, value: 8px }
+  action:
+    notes: "Figma's `Action` slot."
+    styles:
+      display: { value: flex, assert: false }
+      flex-direction: { value: column, assert: false }
+      position: { value: relative, assert: false }
+      width: { value: 100%, untokenised: "Fills the panel inside its padding." }
+      gap: { token: spacing/gap/small, value: 8px }
+variants:
+  - when: { collapsed: true }
+    figmaNode: "356:948"
+    elements:
+      root:
+        width: { token: spacing/size/2xlarge, value: 72px }
+        align-items: { value: center }
+        padding-left: { token: spacing/gap/small-medium, value: 12px }
+        padding-right: { token: spacing/gap/small-medium, value: 12px }
+  - when: { collapsed: false }
+    figmaNode: "356:947"
+    elements:
+      root:
+        width: { value: 160px, untokenised: "Figma's own 160px; no size token is 160." }
+        padding-left: { token: spacing/gap/medium, value: 16px }
+        padding-right: { token: spacing/gap/medium, value: 16px }
+guidance:
+  status: proposed
+  use:
+    - "Used as the main navigation of an app, down the side: a few top-level places, and one action that matters everywhere."
+  avoid:
+    - More than a handful of items. It's for the top level only.
+    - A website's header nav. That runs across the top.
+  behaviour: |-
+    `collapsed` is icons only, 72px wide; open is 160px with labels. The items are ListItems: the current one is `selected`. The action is an IconButton when collapsed and a Button when open.
+  accessibility:
+    element: "a `<nav>` with an `aria-label`. The current item has `aria-current=\"page\"`."
+    collapsed: icon-only items need an `aria-label`, since there's no visible text.
+    contrast: the plate is see-through, so check the labels against what's behind it, not just the page colour.
+  content: One or two words per item, nouns. The action says what it does.

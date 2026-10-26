@@ -1358,5 +1358,21 @@
       "width": 208,
       "height": 52
     }
+  ],
+  "navigation": [
+    {
+      "nodeId": "356:948",
+      "name": "collapsed=true",
+      "file": "356-948.png",
+      "width": 72,
+      "height": 408
+    },
+    {
+      "nodeId": "356:947",
+      "name": "collapsed=false",
+      "file": "356-947.png",
+      "width": 160,
+      "height": 408
+    }
   ]
 }

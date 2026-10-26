@@ -234,7 +234,8 @@ export function conform(contract: Contract, css: string, tokensCss: string, vari
    */
   const variantSelectors = (): string[] => {
     if (!variant) return [root]
-    const kebab = (s: string) => s.trim().toLowerCase().replace(/\s+/g, '-')
+    // The same as bin/build-css.mjs, so a camelCase prop (iconOnly) names the same class (--icon-only).
+    const kebab = (s: string) => s.trim().replace(/([a-z0-9])([A-Z])/g, '$1-$2').replace(/[^a-zA-Z0-9]+/g, '-').replace(/^-+|-+$/g, '').toLowerCase()
     let modifiers = ''
     let pseudos = ['']
     for (const pair of variant.split(',')) {

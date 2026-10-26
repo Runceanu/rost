@@ -6,11 +6,11 @@ Every value in every contract, sorted by why it has a token or doesn't. `npm run
 
 | | Values | Share | Meaning |
 |---|---|---|---|
-| Has a token | 1286 | 63% | Uses a token, and the check tests it. |
+| Has a token | 1299 | 62% | Uses a token, and the check tests it. |
 | Token suggested | 0 | 0% | A token I want that doesn't exist yet. The freeze turned every other suggestion into a token. |
-| How Figma builds it | 554 | 27% | How Figma builds the layer (position, inset, which sides get a stroke). Nothing to tokenise. |
-| Figma frame size | 135 | 7% | A root size that is just the Figma frame. Written down, not checked. |
-| No token, on purpose | 50 | 2% | Plain on purpose, and the contract says why. |
+| How Figma builds it | 577 | 28% | How Figma builds the layer (position, inset, which sides get a stroke). Nothing to tokenise. |
+| Figma frame size | 136 | 7% | A root size that is just the Figma frame. Written down, not checked. |
+| No token, on purpose | 52 | 2% | Plain on purpose, and the contract says why. |
 | Open gap | 28 | 1% | No token and no reason. Each one needs a decision from me. |
 
 ## By contract
@@ -27,10 +27,11 @@ Every value in every contract, sorted by why it has a token or doesn't. `npm run
 | [IconButton](components/icon-button.md) | 192 | · | 53 | 10 | 6 | 2 |
 | [InlineBanner](components/inline-banner.md) | 85 | · | 40 | · | · | · |
 | [Input](components/input.md) | 166 | · | 35 | 20 | 4 | 3 |
-| [ListItem](components/list-item.md) | 95 | · | 30 | 10 | 2 | 1 |
+| [ListItem](components/list-item.md) | 95 | · | 32 | 10 | 2 | 1 |
 | [Lock frame effect](components/effect-lock-frame.md) | 1 | · | · | · | · | · |
 | [Menu effect](components/effect-menu.md) | 1 | · | · | · | · | · |
 | [Menu](components/menu.md) | 32 | · | 16 | 6 | · | 1 |
+| [Navigation](components/navigation.md) | 13 | · | 21 | 1 | 2 | · |
 | [Paper effect](components/effect-paper.md) | 6 | · | · | · | 7 | · |
 | [Projects](components/projects.md) | 77 | · | 33 | 8 | 4 | 4 |
 | [TabItem](components/tab-item.md) | 37 | · | 15 | 12 | · | 1 |
@@ -82,6 +83,11 @@ None. The freeze on 2026-10-20 turned all 122 suggestions into tokens.
 - [ListItem](components/list-item.md) `dot.width` = `8px`: The small Badge's own 8px dot.
 - [ListItem](components/list-item.md) `dot.height` = `8px`: The small Badge's own 8px dot.
 - [Menu](components/menu.md) `focus-ring.inset` = `var(--spacing-gap-medium-large) calc(-1 * var(--spacing-gap-2xsmall))`: Composed from tokens: around the text only, spacing/gap/medium-large in from the top and bottom, spacing/gap/2xsmall out to each side.
+- [Navigation](components/navigation.md) `root.height` = `100%`: As tall as the space it's given. Figma's sample is 408px.
+- [Navigation](components/navigation.md) `background.background` = `color-mix(in srgb, var(--non-interactive-background-primary) 48%, transparent)`: Figma's fill is a plain #060805 at 48%: `non-interactive/background/primary` at `opacity/medium`, though Figma doesn't bind either.
+- [Navigation](components/navigation.md) `main.width` = `100%`: Fills the panel inside its padding.
+- [Navigation](components/navigation.md) `action.width` = `100%`: Fills the panel inside its padding.
+- [Navigation](components/navigation.md) `root.width` = `160px`: Figma's own 160px; no size token is 160.
 - [Paper effect](components/effect-paper.md) `dot.radius` = `1px`: Tuned to the 16px grid. Nothing else would use it.
 - [Paper effect](components/effect-paper.md) `lens.radius` = `210px`: Tuned by eye for how the lens moves. Only the paper uses it.
 - [Paper effect](components/effect-paper.md) `lens.push` = `9px`: Tuned by eye for how the lens moves. Only the paper uses it.

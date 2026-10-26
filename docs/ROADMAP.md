@@ -35,7 +35,7 @@ On 2026-10-20 rost.build became a proper site, the way shadcn's is: a homepage, 
 
 ## Now: Rost in code
 
-Nineteen components so far, all built from their contracts and checked against Figma in the visual test:
+Twenty components so far, all built from their contracts and checked against Figma in the visual test:
 
 - **InlineBanner**, all 8 variants, with Figma's own icons.
 - **Badge**, all 8 variants. Figma gave it a small size since August: just the coloured dot. The dot in front of the label on the medium size is optional now.
@@ -48,6 +48,7 @@ Nineteen components so far, all built from their contracts and checked against F
 - **Tabs and its TabItem**, designed in Figma on 2026-10-23 with their own `tabs/*` tokens: a label, optional icons before and after, and a green underline on the selected tab. All 11 variants match, and rost.build's Preview and Code tabs use them. They're one page on rost.build: a contract can say it's `partOf` another, and then it's shown under that one instead of on its own. The visual test now rounds every component inside another up to whole pixels, the way Figma does, so a bar of tabs is as wide as Figma's.
 - **Tooltip**, from the UI Kit's own (138:276). Rost draws the bubble; the page decides where and when it shows. rost.build's nav uses it to say "You're already here" on the current page, which now wears Button's pressed look (`aria-current="page"`) instead of looking disabled.
 - **ListItem**, all 10 variants, from the UI Kit's list page (346:3364). It brought Figma's `interactive/*` colours into Rost: `active` for the picked row, `inactive` for the rest. On a picked row Figma switches the status dot to the light theme, so the dot is its own part here.
+- **Navigation**, both variants, from the UI Kit's navigation page (356:949): a side nav on frosted glass, collapsed to icons or open with labels, made of ListItems and an IconButton or Button. ListItem learned an icon-only form for it, and the conformance check now names camelCase props the way the CSS does.
 
 The effects are in code too, as tokens: Thumb, Menu, Lock frame and Floating each show on the site applied to real components. The Paper effect isn't. It's a canvas animation that lives in the portfolio site, and only its numbers are tokens.
 
