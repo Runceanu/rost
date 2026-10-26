@@ -7,7 +7,7 @@
 | | |
 |---|---|
 | Kind | component |
-| Contract | `review` · [inline-banner.contract.yaml](../../contracts/inline-banner.contract.yaml) |
+| Contract | `stable` · [inline-banner.contract.yaml](../../contracts/inline-banner.contract.yaml) |
 | Guidance | `agreed` |
 | Source | [Figma 205:614](https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=205-614) · read 2026-10-20 · frozen 2026-10-20 |
 | Implemented in | The accounting app (`src/rost/inline-banner/InlineBanner.tsx`, `.rost-inline-banner`) |

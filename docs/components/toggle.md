@@ -7,7 +7,7 @@
 | | |
 |---|---|
 | Kind | component |
-| Contract | `review` · [toggle.contract.yaml](../../contracts/toggle.contract.yaml) |
+| Contract | `stable` · [toggle.contract.yaml](../../contracts/toggle.contract.yaml) |
 | Guidance | `agreed` |
 | Source | [Figma 168:1149](https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=168-1149) · read 2026-08-19 · frozen 2026-10-20 |
 | Implemented in | The accounting app (`src/rost/toggle/Toggle.tsx`, `.rost-toggle`) |

@@ -3,7 +3,7 @@ schemaVersion: 2
 id: button
 name: Button
 kind: component
-status: review
+status: stable
 summary: A 48px button with a label and, if it helps, an icon in front. In four levels of emphasis.
 category: actions
 related: [ icon-button, toggle ]

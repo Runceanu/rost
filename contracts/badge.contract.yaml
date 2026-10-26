@@ -3,7 +3,7 @@ schemaVersion: 2
 id: badge
 name: Badge
 kind: component
-status: review
+status: stable
 summary: |-
   A small status marker: a coloured dot on its own, or an outlined label. The colour sits in the dot and the outline, never in the text.
 category: feedback

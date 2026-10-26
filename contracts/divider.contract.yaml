@@ -3,7 +3,7 @@ schemaVersion: 2
 id: divider
 name: Divider
 kind: component
-status: review
+status: stable
 summary: A thin line between things.
 category: display
 related: [ menu ]

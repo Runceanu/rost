@@ -3,7 +3,7 @@ schemaVersion: 2
 id: toggle
 name: Toggle
 kind: component
-status: review
+status: stable
 summary: A 40×40 icon button that stays on or off, alone or as one choice in a group.
 category: selection
 related: [ icon-button, chips ]

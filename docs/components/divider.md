@@ -7,7 +7,7 @@
 | | |
 |---|---|
 | Kind | component |
-| Contract | `review` · [divider.contract.yaml](../../contracts/divider.contract.yaml) |
+| Contract | `stable` · [divider.contract.yaml](../../contracts/divider.contract.yaml) |
 | Guidance | `agreed` |
 | Source | [Figma 39:111](https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=39-111) · read 2026-10-19 · frozen 2026-10-20 |
 | Implemented in | The accounting app (`src/rost/divider/Divider.tsx`, `.rost-divider`) |

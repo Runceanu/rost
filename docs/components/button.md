@@ -7,7 +7,7 @@
 | | |
 |---|---|
 | Kind | component |
-| Contract | `review` · [button.contract.yaml](../../contracts/button.contract.yaml) |
+| Contract | `stable` · [button.contract.yaml](../../contracts/button.contract.yaml) |
 | Guidance | `agreed` |
 | Source | [Figma 20:14](https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=20-14) · read 2026-08-19 · frozen 2026-10-20 |
 | Implemented in | The accounting app (`src/rost/button/Button.tsx`, `.rost-button`) |

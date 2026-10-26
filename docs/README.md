@@ -12,7 +12,7 @@ Rost started as a design system for my own needs and grew into a product of its 
 | [Token coverage](TOKENS.md) | Why each value has a token or doesn't |
 | [Roadmap](ROADMAP.md) | What I'm doing next |
 
-**26** contracts, **0** stable. **25** have guidance, and I've signed off **20** of those.
+**26** contracts, **5** stable. **25** have guidance, and I've signed off **20** of those.
 
 ## Catalogue
 
@@ -20,13 +20,13 @@ Rost started as a design system for my own needs and grew into a product of its 
 
 | | Summary | Contract | Guidance | Used in |
 |---|---|---|---|---|
-| [Badge](components/badge.md) | A small status marker: a coloured dot on its own, or an outlined label. The colour sits in the dot and the outline, never in the text. | `review` | `agreed` | The portfolio site, the accounting app |
-| [Button](components/button.md) | A 48px button with a label and, if it helps, an icon in front. In four levels of emphasis. | `review` | `agreed` | The accounting app |
+| [Badge](components/badge.md) | A small status marker: a coloured dot on its own, or an outlined label. The colour sits in the dot and the outline, never in the text. | `stable` | `agreed` | The portfolio site, the accounting app |
+| [Button](components/button.md) | A 48px button with a label and, if it helps, an icon in front. In four levels of emphasis. | `stable` | `agreed` | The accounting app |
 | [Carousel](components/carousel.md) | A card for a carousel: a number, a title and a short description. | `review` | `agreed` | · |
 | [Chip](components/chips.md) | A small outlined label you can click, for filters and quick choices. | `review` | `agreed` | The portfolio site |
-| [Divider](components/divider.md) | A thin line between things. | `review` | `agreed` | The accounting app |
+| [Divider](components/divider.md) | A thin line between things. | `stable` | `agreed` | The accounting app |
 | [IconButton](components/icon-button.md) | A round button with only an icon, including a Project type for sitting on top of images. | `review` | `agreed` | · |
-| [InlineBanner](components/inline-banner.md) | A filled status pill with an icon and a label, in four statuses and two sizes. | `review` | `agreed` | The accounting app |
+| [InlineBanner](components/inline-banner.md) | A filled status pill with an icon and a label, in four statuses and two sizes. | `stable` | `agreed` | The accounting app |
 | [Input](components/input.md) | A 56px text field with a floating label, an optional lock icon, a line of help text and an error state. | `review` | `agreed` | The portfolio site, the accounting app |
 | [ListItem](components/list-item.md) | One row you can pick in a list or a nav. A label, an optional line under it, and optional icons and a status dot. | `review` | `proposed` | · |
 | [Menu](components/menu.md) | A navigation item: a label with a line underneath, used in the main nav. | `review` | `agreed` | · |
@@ -38,7 +38,7 @@ Rost started as a design system for my own needs and grew into a product of its 
 | [TestimonialPicture](components/testimonials-pics.md) | The photo of the person behind a testimonial. | `review` | · | · |
 | [Testimonials](components/testimonials.md) | A testimonial you can open and close: name and role, with the quote underneath. | `review` | `agreed` | · |
 | [Thumbs](components/thumbs.md) | A project thumbnail card, with the project name and details on a frosted panel at the bottom. | `review` | `agreed` | · |
-| [Toggle](components/toggle.md) | A 40×40 icon button that stays on or off, alone or as one choice in a group. | `review` | `agreed` | The accounting app |
+| [Toggle](components/toggle.md) | A 40×40 icon button that stays on or off, alone or as one choice in a group. | `stable` | `agreed` | The accounting app |
 | [Tooltip](components/tooltip.md) | A small label that explains something when you point at it or focus it. | `review` | `proposed` | · |
 
 ### Patterns

@@ -3,7 +3,7 @@ schemaVersion: 2
 id: inline-banner
 name: InlineBanner
 kind: component
-status: review
+status: stable
 summary: A filled status pill with an icon and a label, in four statuses and two sizes.
 category: feedback
 related: [ badge, input ]
