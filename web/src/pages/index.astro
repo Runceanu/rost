@@ -23,7 +23,6 @@ const css = readRepo('src/components/button/button.css')
 const cssLines = css.slice(css.indexOf('.rost-button {')).split('\n').slice(0, 7).join('\n')
 declare const __REPO__: string
 const figmaShot = `data:image/png;base64,${readFileSync(new URL('baseline/button/20-13.png', pathToFileURL(__REPO__))).toString('base64')}`
-// By CSS variable: tokens.json keys lose the hyphen in `non-interactive`.
 const swatches = ['actions/primary/default/background', 'interactive/inactive/hover/background', 'non-interactive/foreground/primary', 'non-interactive/foreground/negative/base'].map((k) => ({ k, v: `var(--${k.replaceAll('/', '-')})` }))
 const iconSvgs = ['arrow-left', 'circle-outline', 'up-right'].map((n) => readRepo(`assets/icons/${n}.svg`).replace(/fill="#[0-9a-fA-F]{6}"/g, 'fill="currentColor"'))
 // Illustrations keep their own colours, so they go in as pictures.

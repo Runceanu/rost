@@ -9,7 +9,9 @@
 import { callContent } from './figma.mjs'
 import { readFileSync, writeFileSync, mkdirSync, existsSync } from 'node:fs'
 
-const nodes = JSON.parse(readFileSync(new URL('../registry/variant-nodes.json', import.meta.url), 'utf8'))
+// Each set's variants, by component id: { badge: [{ nodeId, name, width, height }, …], … }
+const sets = JSON.parse(readFileSync(new URL('../registry/component-sets.json', import.meta.url), 'utf8'))
+const nodes = Object.fromEntries(Object.entries(sets).filter(([, s]) => s.variants).map(([id, s]) => [id, s.variants]))
 const comps = process.argv.slice(2).length ? process.argv.slice(2) : Object.keys(nodes)
 // Merge into what's there: a run for one component must not drop the others.
 const manifestPath = new URL('../baseline/manifest.json', import.meta.url)

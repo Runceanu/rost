@@ -12,9 +12,9 @@ import { read, ids } from './contract-io.mjs'
 // ── Tokens ──────────────────────────────────────────────────────────────────
 
 /**
- * tokens.json lost its hyphens in the keys (`non-interactive` became
- * `non/interactive`), so tokens are matched on the CSS variable, which is
- * exact: `spacing/gap/small` is there when `--spacing-gap-small` is.
+ * tokens.json is keyed on the Figma names, but a contract's token path is
+ * matched on the CSS variable, the name code actually uses:
+ * `spacing/gap/small` is there when `--spacing-gap-small` is.
  */
 export function loadTokens() {
   const tokens = JSON.parse(readFileSync(new URL('../../tokens/tokens.json', import.meta.url), 'utf8')).tokens
