@@ -6,6 +6,7 @@ import { Thumbs } from '../../../src/components/thumbs/Thumbs'
 import { Badge } from '../../../src/components/badge/Badge'
 import { ListItem } from '../../../src/components/list-item/ListItem'
 import { kit, built, tokens, readRepo, GITHUB } from '../lib/kit'
+import { Code } from 'astro:components'
 import { readFileSync } from 'node:fs'
 import { pathToFileURL } from 'node:url'
 
@@ -25,6 +26,8 @@ const figmaShot = `data:image/png;base64,${readFileSync(new URL('baseline/button
 // By CSS variable: tokens.json keys lose the hyphen in `non-interactive`.
 const swatches = ['actions/primary/default/background', 'interactive/inactive/hover/background', 'non-interactive/foreground/primary', 'non-interactive/foreground/negative/base'].map((k) => ({ k, v: `var(--${k.replaceAll('/', '-')})` }))
 const iconSvgs = ['arrow-left', 'chevron-right', 'circle-outline', 'arrow-up', 'chevron-down', 'up-right'].map((n) => readRepo(`assets/icons/${n}.svg`).replace(/fill="#[0-9a-fA-F]{6}"/g, 'fill="currentColor"'))
+// Illustrations keep their own colours, so they go in as pictures.
+const illoSvgs = ['ui', 'structured-system', 'timezones'].map((n) => `data:image/svg+xml;base64,${Buffer.from(readRepo(`assets/illustrations/${n}.svg`)).toString('base64')}`)
 const statuses = ['skeleton', 'draft', 'review', 'stable']
 const roadmap = readRepo('docs/ROADMAP.md')
 const nowAt = roadmap.indexOf('## Now: make the contracts')
@@ -53,13 +56,13 @@ const nextItems = [...roadmap.slice(nowAt, roadmap.indexOf('\n## ', nowAt + 5)).
   <ol class="cards steps" role="list">
     <li>
       <Thumbs as="div" className="card-thumb" number={two(1)} name="A contract" industry="Step" kind="YAML" showPeriod={false}>
-        <span class="peek" aria-hidden="true"><pre class="file">{contractLines}</pre></span>
+        <span class="peek" aria-hidden="true"><Code class="file" code={contractLines} lang="yaml" theme="vesper" /></span>
       </Thumbs>
       <p>Each component is one YAML file: its parts, its tokens, every variant, how to use it, and where my apps build it. It's the source. Figma was where it started.</p>
     </li>
     <li>
       <Thumbs as="div" className="card-thumb" number={two(2)} name="Code from the contract" industry="Step" kind="CSS and React" showPeriod={false}>
-        <span class="peek" aria-hidden="true"><pre class="file">{cssLines}</pre></span>
+        <span class="peek" aria-hidden="true"><Code class="file" code={cssLines} lang="css" theme="vesper" /></span>
       </Thumbs>
       <p>The CSS is written straight from the contract, so nobody types a colour by hand. The React component follows the same parts.</p>
     </li>
@@ -91,7 +94,12 @@ const nextItems = [...roadmap.slice(nowAt, roadmap.indexOf('\n## ', nowAt + 5)).
     </li>
     <li>
       <Thumbs className="card-thumb" href="/icons/" number={two(2)} name="Icons and illustrations" industry="Foundation" kind={`${icons} icons, ${illustrations} illustrations`} showPeriod={false}>
-        <span class="peek" aria-hidden="true"><span class="icons">{iconSvgs.map((svg) => <span class="ico" set:html={svg} />)}</span></span>
+        <span class="peek" aria-hidden="true">
+          <span class="glyphs">
+            <span class="illos">{illoSvgs.map((src) => <img src={src} alt="" width="64" height="64" />)}</span>
+            <span class="icons">{iconSvgs.map((svg) => <span class="ico" set:html={svg} />)}</span>
+          </span>
+        </span>
       </Thumbs>
     </li>
     <li>
@@ -139,7 +147,7 @@ const nextItems = [...roadmap.slice(nowAt, roadmap.indexOf('\n## ', nowAt + 5)).
   .steps p { margin: var(--spacing-gap-small-medium) 0 0; color: var(--fg-2); font-size: 15px; }
   /* The picture area, the same box Glimpse gives a component. */
   .peek { position: absolute; inset: 0 0 112px; display: flex; align-items: center; justify-content: center; padding: var(--spacing-gap-medium); overflow: hidden; }
-  .file { margin: 0; font-family: var(--mono); font-size: 11px; line-height: 1.6; color: var(--fg-2); white-space: pre; overflow: hidden; max-width: 100%; }
+  .peek :global(pre.file) { margin: 0; padding: 0; background: none !important; font-family: var(--mono); font-size: 11px; line-height: 1.6; white-space: pre; overflow: hidden !important; max-width: 100%; }
   .pair { display: flex; gap: var(--spacing-gap-large); align-items: flex-end; }
   .half { display: flex; flex-direction: column; align-items: center; gap: var(--spacing-gap-small); }
   .half img { display: block; }
@@ -147,7 +155,10 @@ const nextItems = [...roadmap.slice(nowAt, roadmap.indexOf('\n## ', nowAt + 5)).
   .swatches { display: grid; gap: var(--spacing-gap-small); }
   .sw-row { display: flex; align-items: center; gap: var(--spacing-gap-small); }
   .chip-c { width: 20px; height: 20px; border-radius: var(--spacing-radius-xsmall); border: 1px solid var(--line); flex: none; }
-  .icons { display: grid; grid-template-columns: repeat(3, 24px); gap: var(--spacing-gap-medium); color: var(--accent); }
+  .glyphs { display: flex; flex-direction: column; align-items: center; gap: var(--spacing-gap-large); }
+  .illos { display: flex; gap: var(--spacing-gap-medium); }
+  .illos img { display: block; }
+  .icons { display: flex; gap: var(--spacing-gap-medium); color: var(--accent); }
   .ico :global(svg) { display: block; width: 24px; height: 24px; }
   .ladder { display: flex; flex-wrap: wrap; gap: var(--spacing-gap-small); justify-content: center; }
   .next { display: grid; gap: var(--spacing-gap-2xsmall); width: 100%; max-width: 280px; }
