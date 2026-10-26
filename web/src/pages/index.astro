@@ -148,6 +148,8 @@ const nextItems = [...roadmap.slice(nowAt, roadmap.indexOf('\n## ', nowAt + 5)).
   .cards :global(.card-thumb) { width: 100%; aspect-ratio: 384 / 334; }
   /* The steps go in order already, so they carry no number. */
   .steps :global(.rost-thumbs__number) { display: none; }
+  /* The details indent to sit under the name after the number; with no number they start at the edge. */
+  .steps :global(.rost-thumbs__bottom) { padding-left: 0; }
   .steps p { margin: var(--spacing-gap-small-medium) 0 0; color: var(--fg-2); font-size: 15px; }
   /* The picture area, the same box Glimpse gives a component. */
   .peek { position: absolute; inset: 0 0 112px; display: flex; align-items: center; justify-content: center; padding: var(--spacing-gap-medium); overflow: hidden; }
