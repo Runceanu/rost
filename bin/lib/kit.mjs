@@ -46,6 +46,31 @@ export const STATES = Object.keys(STATE_PSEUDO)
 export const variantKey = (when) =>
   Object.entries(when).map(([k, v]) => `${k}=${v === true ? 'True' : v === false ? 'False' : v}`).join(', ')
 
+// ── Variants ────────────────────────────────────────────────────────────────
+
+/** Every condition of `a` is one of `b`'s too. */
+const within = (a, b) => Object.entries(a).every(([k, v]) => b[k] === v)
+
+/**
+ * The variants with their layers applied (docs/CONTRACT.md, "Variants as
+ * layers"). An entry whose `when` sits inside another entry's is a layer:
+ * it isn't a variant of its own, its values go into every variant it sits
+ * inside. Each variant gets its matching entries from the least specific to
+ * the most, and between two as specific, the later one wins.
+ * src/conform.ts keeps its own copy, since it can't import this file.
+ */
+export function variantsOf(c) {
+  const all = c.variants ?? []
+  const size = (x) => Object.keys(x.when).length
+  const isLayer = (x) => all.some((y) => size(y) > size(x) && within(x.when, y.when))
+  return all.filter((x) => !isLayer(x)).map((v) => {
+    const elements = {}
+    const on = all.map((x, i) => [x, i]).filter(([x]) => within(x.when, v.when)).sort(([a, i], [b, j]) => size(a) - size(b) || i - j)
+    for (const [x] of on) for (const [p, s] of Object.entries(x.elements ?? {})) elements[p] = { ...elements[p], ...s }
+    return { ...v, ...(Object.keys(elements).length ? { elements } : {}) }
+  })
+}
+
 // ── Values ──────────────────────────────────────────────────────────────────
 
 /** Every value in a contract, with where it sits. */
@@ -117,7 +142,9 @@ export function loadKit() {
       deviations: [...(c.deviations ?? []), ...implementations.flatMap((i) => (i.deviations ?? []).map((d) => ({ ...d, app: i.app })))],
       // Views for tables: fixed styles by part, and variant differences keyed as Figma names them.
       invariants: Object.fromEntries(Object.entries(c.elements ?? {}).filter(([, el]) => el.styles).map(([p, el]) => [p, el.styles])),
-      variantMap: Object.fromEntries((c.variants ?? []).filter((v) => v.elements).map((v) => [variantKey(v.when), v.elements])),
+      // The variants with their layers applied; a layer isn't one.
+      variants: variantsOf(c),
+      variantMap: Object.fromEntries(variantsOf(c).filter((v) => v.elements).map((v) => [variantKey(v.when), v.elements])),
       tokens,
       unresolved: [...tokens.keys()].filter((t) => !resolves(t)),
       values,

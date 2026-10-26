@@ -2,30 +2,30 @@
 
 # Token coverage
 
-Every value in every contract, sorted by why it has a token or doesn't. `npm run docs` refreshes it.
+Every value in every contract, sorted by why it has a token or doesn't. A value in a layer counts once, however many variants it applies to. `npm run docs` refreshes it.
 
 | | Values | Share | Meaning |
 |---|---|---|---|
-| Has a token | 1299 | 62% | Uses a token, and the check tests it. |
+| Has a token | 1014 | 60% | Uses a token, and the check tests it. |
 | Token suggested | 0 | 0% | A token I want that doesn't exist yet. The freeze turned every other suggestion into a token. |
-| How Figma builds it | 577 | 28% | How Figma builds the layer (position, inset, which sides get a stroke). Nothing to tokenise. |
-| Figma frame size | 136 | 7% | A root size that is just the Figma frame. Written down, not checked. |
-| No token, on purpose | 52 | 2% | Plain on purpose, and the contract says why. |
-| Open gap | 28 | 1% | No token and no reason. Each one needs a decision from me. |
+| How Figma builds it | 466 | 28% | How Figma builds the layer (position, inset, which sides get a stroke). Nothing to tokenise. |
+| Figma frame size | 129 | 8% | A root size that is just the Figma frame. Written down, not checked. |
+| No token, on purpose | 48 | 3% | Plain on purpose, and the contract says why. |
+| Open gap | 28 | 2% | No token and no reason. Each one needs a decision from me. |
 
 ## By contract
 
 | | Has a token | Token suggested | How Figma builds it | Figma frame size | No token, on purpose | Open gap |
 |---|---:|---:|---:|---:|---:|---:|
-| [Badge](components/badge.md) | 85 | · | 63 | · | · | · |
-| [Button](components/button.md) | 145 | · | 59 | 12 | 5 | 1 |
+| [Badge](components/badge.md) | 25 | · | 21 | · | · | · |
+| [Button](components/button.md) | 83 | · | 38 | 9 | 5 | 1 |
 | [Carousel](components/carousel.md) | 43 | · | 27 | 9 | 2 | 1 |
 | [Chip](components/chips.md) | 32 | · | 16 | 8 | · | 1 |
 | [Divider](components/divider.md) | 2 | · | 2 | 2 | · | · |
 | [Floating effect](components/effect-floating.md) | 1 | · | · | · | · | · |
 | [Hero Media](components/hero-media.md) | 6 | · | 9 | 2 | · | · |
-| [IconButton](components/icon-button.md) | 192 | · | 53 | 10 | 6 | 2 |
-| [InlineBanner](components/inline-banner.md) | 85 | · | 40 | · | · | · |
+| [IconButton](components/icon-button.md) | 87 | · | 32 | 7 | 6 | 2 |
+| [InlineBanner](components/inline-banner.md) | 44 | · | 34 | · | · | · |
 | [Input](components/input.md) | 166 | · | 35 | 20 | 4 | 3 |
 | [ListItem](components/list-item.md) | 95 | · | 32 | 10 | 2 | 1 |
 | [Lock frame effect](components/effect-lock-frame.md) | 1 | · | · | · | · | · |
@@ -38,10 +38,10 @@ Every value in every contract, sorted by why it has a token or doesn't. `npm run
 | [Tabs](components/tabs.md) | · | · | 2 | 1 | 1 | · |
 | [Tag](components/tags.md) | 26 | · | 13 | 3 | · | 1 |
 | [TestimonialPicture](components/testimonials-pics.md) | 2 | · | 8 | 1 | · | · |
-| [Testimonials](components/testimonials.md) | 85 | · | 53 | 13 | 6 | 4 |
+| [Testimonials](components/testimonials.md) | 81 | · | 37 | 13 | 2 | 4 |
 | [Thumb effect](components/effect-thumb.md) | 1 | · | · | · | · | · |
 | [Thumbs](components/thumbs.md) | 77 | · | 51 | 9 | 6 | 5 |
-| [Toggle](components/toggle.md) | 77 | · | 25 | 9 | 6 | 3 |
+| [Toggle](components/toggle.md) | 64 | · | 20 | 8 | 6 | 3 |
 | [Tooltip](components/tooltip.md) | 12 | · | 4 | · | 1 | · |
 
 ## Tokens that should be there
@@ -104,10 +104,6 @@ None. The freeze on 2026-10-20 turned all 122 suggestions into tokens.
 - [Tag](components/tags.md) `focus-ring.inset` = `calc(-1 * var(--spacing-gap-2xsmall))`: Composed from a token: the ring sits spacing/gap/2xsmall outside the element.
 - [Testimonials](components/testimonials.md) `icons-chevron.mask` = `url(./icon-chevron-down.svg) center / contain no-repeat`: The icon file itself.
 - [Testimonials](components/testimonials.md) `focus-ring.inset` = `calc(-1 * var(--spacing-gap-2xsmall))`: Composed from a token: the ring sits spacing/gap/2xsmall outside the element.
-- [Testimonials](components/testimonials.md) `icons-chevron.mask` = `url(./icon-chevron-up.svg) center / contain no-repeat`: The icon file itself.
-- [Testimonials](components/testimonials.md) `icons-chevron.mask` = `url(./icon-chevron-up.svg) center / contain no-repeat`: The icon file itself.
-- [Testimonials](components/testimonials.md) `icons-chevron.mask` = `url(./icon-chevron-up.svg) center / contain no-repeat`: The icon file itself.
-- [Testimonials](components/testimonials.md) `icons-chevron.mask` = `url(./icon-chevron-up.svg) center / contain no-repeat`: The icon file itself.
 - [Testimonials](components/testimonials.md) `icons-chevron.mask` = `url(./icon-chevron-up.svg) center / contain no-repeat`: The icon file itself.
 - [Thumbs](components/thumbs.md) `shadow.background` = `linear-gradient(to bottom, rgba(6,8,5,0), var(--non-interactive-background-primary))`: A gradient from the page background, transparent, to the page background. The colour is the token; the ramp is the effect.
 - [Thumbs](components/thumbs.md) `content.background` = `color-mix(in srgb, var(--base-black) calc(var(--opacity-medium) * 100%), transparent)`: Composed from tokens: base/black at opacity/medium.

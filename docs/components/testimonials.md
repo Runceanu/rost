@@ -127,9 +127,5 @@ Every token this component uses, across all its variants.
 | `icons-chevron` | `mask` | `url(./icon-chevron-down.svg) center / contain no-repeat` | The icon file itself. |
 | `focus-ring` | `inset` | `calc(-1 * var(--spacing-gap-2xsmall))` | Composed from a token: the ring sits spacing/gap/2xsmall outside the element. |
 | `icons-chevron` | `mask` | `url(./icon-chevron-up.svg) center / contain no-repeat` | The icon file itself. |
-| `icons-chevron` | `mask` | `url(./icon-chevron-up.svg) center / contain no-repeat` | The icon file itself. |
-| `icons-chevron` | `mask` | `url(./icon-chevron-up.svg) center / contain no-repeat` | The icon file itself. |
-| `icons-chevron` | `mask` | `url(./icon-chevron-up.svg) center / contain no-repeat` | The icon file itself. |
-| `icons-chevron` | `mask` | `url(./icon-chevron-up.svg) center / contain no-repeat` | The icon file itself. |
 
 See it live, with every value of every variant: [rost.build/components/testimonials](https://rost.build/components/testimonials/)

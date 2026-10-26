@@ -73,11 +73,8 @@ elements:
   icons-positive: {}
   icons-warning: {}
 variants:
-  - when: { status: Default, size: Small }
-    figmaNode: "205:615"
+  - when: { status: Default }
     elements:
-      root:
-        gap: { token: spacing/gap/2xsmall, value: 4px }
       slot:
         align-items: { value: center }
         display: { value: flex, assert: false }
@@ -88,8 +85,10 @@ variants:
       icons-plus:
         flex-shrink: { value: "0", assert: false }
         position: { value: relative, assert: false }
-        width: { value: 16px, token: spacing/size/2xsmall }
-        height: { value: 16px, token: spacing/size/2xsmall }
+  - when: { size: Small }
+    elements:
+      root:
+        gap: { token: spacing/gap/2xsmall, value: 4px }
       label:
         padding-bottom: { token: spacing/gap/3xsmall, value: 2px }
       text:
@@ -97,19 +96,29 @@ variants:
         line-height: { token: typography/label/line-height, value: 14px }
         font-size: { token: typography/label/font-size, value: 12px }
         letter-spacing: { token: typography/label/letter-spacing, value: 0px }
+  - when: { size: Medium }
+    elements:
+      root:
+        gap: { token: spacing/gap/small, value: 8px }
+      text:
+        font-weight: { token: typography/body/font-weight/medium, value: "500" }
+        line-height: { token: typography/body/line-height, value: 22px }
+        font-size: { token: typography/body/font-size, value: 16px }
+        letter-spacing: { token: typography/body/letter-spacing, value: 0px }
+      label:
+        gap: { token: spacing/gap/small, value: 8px }
+        padding: { token: spacing/gap/none, value: 0px }
+  - when: { status: Default, size: Small }
+    figmaNode: "205:615"
+    elements:
+      icons-plus:
+        width: { value: 16px, token: spacing/size/2xsmall }
+        height: { value: 16px, token: spacing/size/2xsmall }
   - when: { status: Negative, size: Small }
     figmaNode: "205:722"
     elements:
       root:
-        gap: { token: spacing/gap/2xsmall, value: 4px }
         opacity: { token: opacity/solid, value: "1" }
-      label:
-        padding-bottom: { token: spacing/gap/3xsmall, value: 2px }
-      text:
-        font-weight: { token: typography/label/font-weight/medium, value: "500" }
-        line-height: { token: typography/label/line-height, value: 14px }
-        font-size: { token: typography/label/font-size, value: 12px }
-        letter-spacing: { token: typography/label/letter-spacing, value: 0px }
       icons-alarm:
         flex-shrink: { value: "0", assert: false }
         position: { value: relative, assert: false }
@@ -119,15 +128,7 @@ variants:
     figmaNode: "207:32"
     elements:
       root:
-        gap: { token: spacing/gap/2xsmall, value: 4px }
         opacity: { token: opacity/solid, value: "1" }
-      label:
-        padding-bottom: { token: spacing/gap/3xsmall, value: 2px }
-      text:
-        font-weight: { token: typography/label/font-weight/medium, value: "500" }
-        line-height: { token: typography/label/line-height, value: 14px }
-        font-size: { token: typography/label/font-size, value: 12px }
-        letter-spacing: { token: typography/label/letter-spacing, value: 0px }
       icons-positive:
         flex-shrink: { value: "0", assert: false }
         position: { value: relative, assert: false }
@@ -137,15 +138,7 @@ variants:
     figmaNode: "207:48"
     elements:
       root:
-        gap: { token: spacing/gap/2xsmall, value: 4px }
         opacity: { token: opacity/solid, value: "1" }
-      label:
-        padding-bottom: { token: spacing/gap/3xsmall, value: 2px }
-      text:
-        font-weight: { token: typography/label/font-weight/medium, value: "500" }
-        line-height: { token: typography/label/line-height, value: 14px }
-        font-size: { token: typography/label/font-size, value: 12px }
-        letter-spacing: { token: typography/label/letter-spacing, value: 0px }
       icons-warning:
         flex-shrink: { value: "0", assert: false }
         position: { value: relative, assert: false }
@@ -154,85 +147,39 @@ variants:
   - when: { status: Default, size: Medium }
     figmaNode: "233:126"
     elements:
-      root:
-        gap: { token: spacing/gap/small, value: 8px }
-      slot:
-        align-items: { value: center }
-        display: { value: flex, assert: false }
-        flex-shrink: { value: "0", assert: false }
-        position: { value: relative, assert: false }
-        gap: { token: spacing/gap/none, value: 0px }
-        padding: { token: spacing/gap/none, value: 0px }
       icons-plus:
-        flex-shrink: { value: "0", assert: false }
-        position: { value: relative, assert: false }
         width: { value: 20px, token: spacing/size/xsmall }
         height: { value: 20px, token: spacing/size/xsmall }
-      text:
-        font-weight: { token: typography/body/font-weight/medium, value: "500" }
-        line-height: { token: typography/body/line-height, value: 22px }
-        font-size: { token: typography/body/font-size, value: 16px }
-        letter-spacing: { token: typography/body/letter-spacing, value: 0px }
-      label:
-        gap: { token: spacing/gap/small, value: 8px }
-        padding: { token: spacing/gap/none, value: 0px }
   - when: { status: Negative, size: Medium }
     figmaNode: "233:131"
     elements:
       root:
-        gap: { token: spacing/gap/small, value: 8px }
         opacity: { token: opacity/solid, value: "1" }
-      text:
-        font-weight: { token: typography/body/font-weight/medium, value: "500" }
-        line-height: { token: typography/body/line-height, value: 22px }
-        font-size: { token: typography/body/font-size, value: 16px }
-        letter-spacing: { token: typography/body/letter-spacing, value: 0px }
       icons-alarm:
         flex-shrink: { value: "0", assert: false }
         position: { value: relative, assert: false }
         width: { value: 20px, token: spacing/size/xsmall }
         height: { value: 20px, token: spacing/size/xsmall }
-      label:
-        gap: { token: spacing/gap/small, value: 8px }
-        padding: { token: spacing/gap/none, value: 0px }
   - when: { status: Positive, size: Medium }
     figmaNode: "233:136"
     elements:
       root:
-        gap: { token: spacing/gap/small, value: 8px }
         opacity: { token: opacity/solid, value: "1" }
-      text:
-        font-weight: { token: typography/body/font-weight/medium, value: "500" }
-        line-height: { token: typography/body/line-height, value: 22px }
-        font-size: { token: typography/body/font-size, value: 16px }
-        letter-spacing: { token: typography/body/letter-spacing, value: 0px }
       icons-positive:
         flex-shrink: { value: "0", assert: false }
         position: { value: relative, assert: false }
         width: { value: 20px, token: spacing/size/xsmall }
         height: { value: 20px, token: spacing/size/xsmall }
-      label:
-        gap: { token: spacing/gap/small, value: 8px }
-        padding: { token: spacing/gap/none, value: 0px }
   - when: { status: Warning, size: Medium }
     figmaNode: "233:141"
     elements:
       root:
-        gap: { token: spacing/gap/small, value: 8px }
         opacity: { token: opacity/solid, value: "1" }
-      text:
-        font-weight: { token: typography/body/font-weight/medium, value: "500" }
-        line-height: { token: typography/body/line-height, value: 22px }
-        font-size: { token: typography/body/font-size, value: 16px }
-        letter-spacing: { token: typography/body/letter-spacing, value: 0px }
       icons-warning:
         flex-shrink: { value: "0", assert: false }
         position: { value: relative, assert: false }
         width: { value: 20px, token: spacing/size/xsmall }
         height: { value: 20px, token: spacing/size/xsmall }
-      label:
-        gap: { token: spacing/gap/small, value: 8px }
-        padding: { token: spacing/gap/none, value: 0px }
 guidance:
   status: agreed
   use:

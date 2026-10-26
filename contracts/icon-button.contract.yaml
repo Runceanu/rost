@@ -65,24 +65,16 @@ elements:
       border-style: { value: solid }
       pointer-events: { value: none, assert: false }
 variants:
-  - when: { type: Primary, state: Default }
-    figmaNode: "93:588"
+  - when: { type: Primary }
     elements:
       root:
-        background: { token: actions/primary/default/background, value: "#00d669" }
-        box-shadow:
-          value: inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-default-outline)
-          untokenised: "Figma's 1px left and top stroke, drawn inside the shape as Figma draws it. The width and colour are tokens."
         padding-left: { token: spacing/gap/medium-large, value: 20px }
         padding-right: { token: spacing/gap/medium-large, value: 20px }
         padding-top: { token: spacing/gap/none, value: 0px }
         padding-bottom: { token: spacing/gap/none, value: 0px }
         width: { token: spacing/size/medium-large, value: 48px }
         height: { token: spacing/size/medium-large, value: 48px }
-      icons-arrow-left:
-        color: { token: actions/primary/default/icon, value: "#3a3a3a" }
-  - when: { type: Secondary, state: Default }
-    figmaNode: "93:591"
+  - when: { type: Secondary }
     elements:
       root:
         padding-left: { token: spacing/gap/medium-large, value: 20px }
@@ -95,14 +87,8 @@ variants:
         border-sides: { value: left top }
         position: { value: absolute }
         inset: { value: "0" }
-        background: { token: actions/secondary/regular/default/background, value: "#3a3a3a" }
-        border-color: { token: actions/secondary/regular/default/outline, value: "#ededed" }
-        opacity: { token: opacity/gentle, value: "0.24" }
         border-radius: { token: spacing/radius/full, value: 10000px }
-      icons-arrow-left:
-        color: { token: actions/secondary/regular/default/icon, value: "#00d669" }
-  - when: { type: Tertiary, state: Default }
-    figmaNode: "93:595"
+  - when: { type: Tertiary }
     elements:
       root:
         padding-left: { token: spacing/gap/medium-large, value: 20px }
@@ -111,6 +97,50 @@ variants:
         padding-bottom: { token: spacing/gap/none, value: 0px }
         width: { token: spacing/size/medium-large, value: 48px }
         height: { token: spacing/size/medium-large, value: 48px }
+  - when: { type: Project }
+    elements:
+      root:
+        width: { token: spacing/size/small-medium, value: 32px }
+        height: { token: spacing/size/small-medium, value: 32px }
+        padding: { token: spacing/gap/none, value: 0px }
+      icons-arrow-left:
+        width: { token: spacing/size/2xsmall, value: 16px, notes: Figma's Project arrow is 16px. }
+        height: { token: spacing/size/2xsmall, value: 16px }
+  - when: { state: Disabled }
+    elements:
+      root:
+        opacity: { token: opacity/gentle, value: "0.24" }
+        cursor: { value: default, assert: false }
+  - when: { state: Focus }
+    elements:
+      focus-ring:
+        border-sides: { value: all }
+        display: { value: block, assert: false }
+        position: { value: absolute }
+        border-width: { token: spacing/outline/medium, value: 2px }
+        border-radius: { token: spacing/radius/full, value: 10000px }
+  - when: { type: Primary, state: Default }
+    figmaNode: "93:588"
+    elements:
+      root:
+        background: { token: actions/primary/default/background, value: "#00d669" }
+        box-shadow:
+          value: inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-default-outline)
+          untokenised: "Figma's 1px left and top stroke, drawn inside the shape as Figma draws it. The width and colour are tokens."
+      icons-arrow-left:
+        color: { token: actions/primary/default/icon, value: "#3a3a3a" }
+  - when: { type: Secondary, state: Default }
+    figmaNode: "93:591"
+    elements:
+      background:
+        background: { token: actions/secondary/regular/default/background, value: "#3a3a3a" }
+        border-color: { token: actions/secondary/regular/default/outline, value: "#ededed" }
+        opacity: { token: opacity/gentle, value: "0.24" }
+      icons-arrow-left:
+        color: { token: actions/secondary/regular/default/icon, value: "#00d669" }
+  - when: { type: Tertiary, state: Default }
+    figmaNode: "93:595"
+    elements:
       icons-arrow-left:
         color: { token: actions/tertiary/default/icon, value: "#00d669" }
   - when: { type: Primary, state: Hover }
@@ -121,44 +151,20 @@ variants:
         box-shadow:
           value: inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-hover-outline)
           untokenised: "Figma's 1px left and top stroke, drawn inside the shape as Figma draws it. The width and colour are tokens."
-        padding-left: { token: spacing/gap/medium-large, value: 20px }
-        padding-right: { token: spacing/gap/medium-large, value: 20px }
-        padding-top: { token: spacing/gap/none, value: 0px }
-        padding-bottom: { token: spacing/gap/none, value: 0px }
-        width: { token: spacing/size/medium-large, value: 48px }
-        height: { token: spacing/size/medium-large, value: 48px }
       icons-arrow-left:
         color: { token: actions/primary/hover/icon, value: "#3a3a3a" }
   - when: { type: Secondary, state: Hover }
     figmaNode: "93:604"
     elements:
-      root:
-        padding-left: { token: spacing/gap/medium-large, value: 20px }
-        padding-right: { token: spacing/gap/medium-large, value: 20px }
-        padding-top: { token: spacing/gap/none, value: 0px }
-        padding-bottom: { token: spacing/gap/none, value: 0px }
-        width: { token: spacing/size/medium-large, value: 48px }
-        height: { token: spacing/size/medium-large, value: 48px }
       background:
-        border-sides: { value: left top }
-        position: { value: absolute }
-        inset: { value: "0" }
         background: { token: actions/secondary/regular/hover/background, value: "#747573" }
         border-color: { token: actions/secondary/regular/hover/outline, value: "#ededed" }
         opacity: { token: opacity/mild, value: "0.32" }
-        border-radius: { token: spacing/radius/full, value: 10000px }
       icons-arrow-left:
         color: { token: actions/secondary/regular/hover/icon, value: "#00b450" }
   - when: { type: Tertiary, state: Hover }
     figmaNode: "93:608"
     elements:
-      root:
-        padding-left: { token: spacing/gap/medium-large, value: 20px }
-        padding-right: { token: spacing/gap/medium-large, value: 20px }
-        padding-top: { token: spacing/gap/none, value: 0px }
-        padding-bottom: { token: spacing/gap/none, value: 0px }
-        width: { token: spacing/size/medium-large, value: 48px }
-        height: { token: spacing/size/medium-large, value: 48px }
       background:
         position: { value: absolute }
         inset: { value: "0" }
@@ -175,44 +181,20 @@ variants:
         box-shadow:
           value: inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-pressed-outline)
           untokenised: "Figma's 1px left and top stroke, drawn inside the shape as Figma draws it. The width and colour are tokens."
-        padding-left: { token: spacing/gap/medium-large, value: 20px }
-        padding-right: { token: spacing/gap/medium-large, value: 20px }
-        padding-top: { token: spacing/gap/none, value: 0px }
-        padding-bottom: { token: spacing/gap/none, value: 0px }
-        width: { token: spacing/size/medium-large, value: 48px }
-        height: { token: spacing/size/medium-large, value: 48px }
       icons-arrow-left:
         color: { token: actions/primary/pressed/icon, value: "#3a3a3a" }
   - when: { type: Secondary, state: Pressed }
     figmaNode: "93:619"
     elements:
-      root:
-        padding-left: { token: spacing/gap/medium-large, value: 20px }
-        padding-right: { token: spacing/gap/medium-large, value: 20px }
-        padding-top: { token: spacing/gap/none, value: 0px }
-        padding-bottom: { token: spacing/gap/none, value: 0px }
-        width: { token: spacing/size/medium-large, value: 48px }
-        height: { token: spacing/size/medium-large, value: 48px }
       background:
-        border-sides: { value: left top }
-        position: { value: absolute }
-        inset: { value: "0" }
         background: { token: actions/secondary/regular/pressed/background, value: "#999" }
         border-color: { token: actions/secondary/regular/pressed/outline, value: "#ededed" }
         opacity: { token: opacity/mild, value: "0.32" }
-        border-radius: { token: spacing/radius/full, value: 10000px }
       icons-arrow-left:
         color: { token: actions/secondary/regular/pressed/icon, value: "#00d669" }
   - when: { type: Tertiary, state: Pressed }
     figmaNode: "93:623"
     elements:
-      root:
-        padding-left: { token: spacing/gap/medium-large, value: 20px }
-        padding-right: { token: spacing/gap/medium-large, value: 20px }
-        padding-top: { token: spacing/gap/none, value: 0px }
-        padding-bottom: { token: spacing/gap/none, value: 0px }
-        width: { token: spacing/size/medium-large, value: 48px }
-        height: { token: spacing/size/medium-large, value: 48px }
       background:
         position: { value: absolute }
         inset: { value: "0" }
@@ -229,50 +211,20 @@ variants:
         box-shadow:
           value: inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-disabled-outline)
           untokenised: "Figma's 1px left and top stroke, drawn inside the shape as Figma draws it. The width and colour are tokens."
-        padding-left: { token: spacing/gap/medium-large, value: 20px }
-        padding-right: { token: spacing/gap/medium-large, value: 20px }
-        padding-top: { token: spacing/gap/none, value: 0px }
-        padding-bottom: { token: spacing/gap/none, value: 0px }
-        width: { token: spacing/size/medium-large, value: 48px }
-        height: { token: spacing/size/medium-large, value: 48px }
-        opacity: { token: opacity/gentle, value: "0.24" }
-        cursor: { value: default, assert: false }
       icons-arrow-left:
         color: { token: actions/primary/disabled/icon, value: "#3a3a3a" }
   - when: { type: Secondary, state: Disabled }
     figmaNode: "93:634"
     elements:
-      root:
-        padding-left: { token: spacing/gap/medium-large, value: 20px }
-        padding-right: { token: spacing/gap/medium-large, value: 20px }
-        padding-top: { token: spacing/gap/none, value: 0px }
-        padding-bottom: { token: spacing/gap/none, value: 0px }
-        width: { token: spacing/size/medium-large, value: 48px }
-        height: { token: spacing/size/medium-large, value: 48px }
-        opacity: { token: opacity/gentle, value: "0.24" }
-        cursor: { value: default, assert: false }
       background:
-        border-sides: { value: left top }
-        position: { value: absolute }
-        inset: { value: "0" }
         background: { token: actions/secondary/regular/disabled/background, value: "#3a3a3a" }
         border-color: { token: actions/secondary/regular/disabled/outline, value: "#ededed" }
         opacity: { token: opacity/mild, value: "0.32" }
-        border-radius: { token: spacing/radius/full, value: 10000px }
       icons-arrow-left:
         color: { token: actions/secondary/regular/disabled/icon, value: "#00d669" }
   - when: { type: Tertiary, state: Disabled }
     figmaNode: "93:638"
     elements:
-      root:
-        padding-left: { token: spacing/gap/medium-large, value: 20px }
-        padding-right: { token: spacing/gap/medium-large, value: 20px }
-        padding-top: { token: spacing/gap/none, value: 0px }
-        padding-bottom: { token: spacing/gap/none, value: 0px }
-        width: { token: spacing/size/medium-large, value: 48px }
-        height: { token: spacing/size/medium-large, value: 48px }
-        opacity: { token: opacity/gentle, value: "0.24" }
-        cursor: { value: default, assert: false }
       icons-arrow-left:
         color: { token: actions/tertiary/disabled/icon, value: "#00d669" }
   - when: { type: Primary, state: Focus }
@@ -283,88 +235,39 @@ variants:
         box-shadow:
           value: inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-focus-outline)
           untokenised: "Figma's 1px left and top stroke, drawn inside the shape as Figma draws it. The width and colour are tokens."
-        padding-left: { token: spacing/gap/medium-large, value: 20px }
-        padding-right: { token: spacing/gap/medium-large, value: 20px }
-        padding-top: { token: spacing/gap/none, value: 0px }
-        padding-bottom: { token: spacing/gap/none, value: 0px }
-        width: { token: spacing/size/medium-large, value: 48px }
-        height: { token: spacing/size/medium-large, value: 48px }
       focus-ring:
-        border-sides: { value: all }
-        display: { value: block, assert: false }
-        position: { value: absolute }
-        border-width: { token: spacing/outline/medium, value: 2px }
         border-color: { token: actions/primary/focus/focus-ring, value: "#b6ffda" }
         inset: { value: "calc(-1 * var(--spacing-gap-2xsmall))", untokenised: "Composed from a token: spacing/gap/2xsmall out. Figma said -5px on the left and top, to make up for the stroke, which takes no space here." }
-        border-radius: { token: spacing/radius/full, value: 10000px }
       icons-arrow-left:
         color: { token: actions/primary/focus/icon, value: "#3a3a3a" }
   - when: { type: Secondary, state: Focus }
     figmaNode: "93:648"
     elements:
-      root:
-        padding-left: { token: spacing/gap/medium-large, value: 20px }
-        padding-right: { token: spacing/gap/medium-large, value: 20px }
-        padding-top: { token: spacing/gap/none, value: 0px }
-        padding-bottom: { token: spacing/gap/none, value: 0px }
-        width: { token: spacing/size/medium-large, value: 48px }
-        height: { token: spacing/size/medium-large, value: 48px }
       background:
-        border-sides: { value: left top }
-        position: { value: absolute }
-        inset: { value: "0" }
         background: { token: actions/secondary/regular/focus/background, value: "#3a3a3a" }
         border-color: { token: actions/secondary/regular/focus/outline, value: "#ededed" }
         opacity: { token: opacity/gentle, value: "0.24" }
-        border-radius: { token: spacing/radius/full, value: 10000px }
       focus-ring:
-        border-sides: { value: all }
-        display: { value: block, assert: false }
-        position: { value: absolute }
-        border-width: { token: spacing/outline/medium, value: 2px }
         border-color: { token: actions/secondary/regular/focus/focus-ring, value: "#999" }
         inset: { value: "calc(-1 * var(--spacing-gap-2xsmall))", untokenised: "Composed from a token: the ring sits spacing/gap/2xsmall outside the element." }
-        border-radius: { token: spacing/radius/full, value: 10000px }
       icons-arrow-left:
         color: { token: actions/secondary/regular/focus/icon, value: "#00d669" }
   - when: { type: Tertiary, state: Focus }
     figmaNode: "93:653"
     elements:
-      root:
-        padding-left: { token: spacing/gap/medium-large, value: 20px }
-        padding-right: { token: spacing/gap/medium-large, value: 20px }
-        padding-top: { token: spacing/gap/none, value: 0px }
-        padding-bottom: { token: spacing/gap/none, value: 0px }
-        width: { token: spacing/size/medium-large, value: 48px }
-        height: { token: spacing/size/medium-large, value: 48px }
       focus-ring:
-        border-sides: { value: all }
-        display: { value: block, assert: false }
-        position: { value: absolute }
-        border-width: { token: spacing/outline/medium, value: 2px }
         border-color: { token: actions/secondary/regular/focus/focus-ring, value: "#999" }
         inset: { value: "calc(-1 * var(--spacing-gap-2xsmall))", untokenised: "Composed from a token: the ring sits spacing/gap/2xsmall outside the element." }
-        border-radius: { token: spacing/radius/full, value: 10000px }
       icons-arrow-left:
         color: { token: actions/tertiary/focus/icon, value: "#00d669" }
   - when: { type: Project, state: Default }
     figmaNode: "93:740"
     elements:
-      root:
-        width: { token: spacing/size/small-medium, value: 32px }
-        height: { token: spacing/size/small-medium, value: 32px }
-        padding: { token: spacing/gap/none, value: 0px }
       icons-arrow-left:
-        width: { token: spacing/size/2xsmall, value: 16px, notes: Figma's Project arrow is 16px. }
-        height: { token: spacing/size/2xsmall, value: 16px }
         color: { token: actions/borderless/default/icon, value: "#00d669" }
   - when: { type: Project, state: Hover }
     figmaNode: "93:742"
     elements:
-      root:
-        width: { token: spacing/size/small-medium, value: 32px }
-        height: { token: spacing/size/small-medium, value: 32px }
-        padding: { token: spacing/gap/none, value: 0px }
       background:
         position: { value: absolute }
         inset: { value: "0" }
@@ -372,16 +275,10 @@ variants:
         opacity: { token: opacity/mild, value: "0.32" }
         border-radius: { token: spacing/radius/full, value: 10000px }
       icons-arrow-left:
-        width: { token: spacing/size/2xsmall, value: 16px, notes: Figma's Project arrow is 16px. }
-        height: { token: spacing/size/2xsmall, value: 16px }
         color: { token: actions/borderless/hover/icon, value: "#00b450" }
   - when: { type: Project, state: Pressed }
     figmaNode: "93:745"
     elements:
-      root:
-        width: { token: spacing/size/small-medium, value: 32px }
-        height: { token: spacing/size/small-medium, value: 32px }
-        padding: { token: spacing/gap/none, value: 0px }
       background:
         position: { value: absolute }
         inset: { value: "0" }
@@ -389,40 +286,19 @@ variants:
         opacity: { token: opacity/mild, value: "0.32" }
         border-radius: { token: spacing/radius/full, value: 10000px }
       icons-arrow-left:
-        width: { token: spacing/size/2xsmall, value: 16px, notes: Figma's Project arrow is 16px. }
-        height: { token: spacing/size/2xsmall, value: 16px }
         color: { token: actions/borderless/pressed/icon, value: "#00d669" }
   - when: { type: Project, state: Disabled }
     figmaNode: "93:748"
     elements:
-      root:
-        width: { token: spacing/size/small-medium, value: 32px }
-        height: { token: spacing/size/small-medium, value: 32px }
-        opacity: { token: opacity/gentle, value: "0.24" }
-        cursor: { value: default, assert: false }
-        padding: { token: spacing/gap/none, value: 0px }
       icons-arrow-left:
-        width: { token: spacing/size/2xsmall, value: 16px, notes: Figma's Project arrow is 16px. }
-        height: { token: spacing/size/2xsmall, value: 16px }
         color: { token: actions/borderless/disabled/icon, value: "#00d669" }
   - when: { type: Project, state: Focus }
     figmaNode: "93:750"
     elements:
-      root:
-        width: { token: spacing/size/small-medium, value: 32px }
-        height: { token: spacing/size/small-medium, value: 32px }
-        padding: { token: spacing/gap/none, value: 0px }
       focus-ring:
-        border-sides: { value: all }
-        display: { value: block, assert: false }
-        position: { value: absolute }
-        border-width: { token: spacing/outline/medium, value: 2px }
         border-color: { token: actions/secondary/regular/focus/focus-ring, value: "#999" }
         inset: { value: "calc(-1 * var(--spacing-gap-2xsmall))", untokenised: "Composed from a token: the ring sits spacing/gap/2xsmall outside the element." }
-        border-radius: { token: spacing/radius/full, value: 10000px }
       icons-arrow-left:
-        width: { token: spacing/size/2xsmall, value: 16px, notes: Figma's Project arrow is 16px. }
-        height: { token: spacing/size/2xsmall, value: 16px }
         color: { token: actions/borderless/focus/icon, value: "#00d669" }
 guidance:
   status: agreed

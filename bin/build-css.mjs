@@ -12,7 +12,7 @@
  */
 import { mkdirSync, writeFileSync } from 'node:fs'
 import { read } from './lib/contract-io.mjs'
-import { STATE_PSEUDO as PSEUDO } from './lib/kit.mjs'
+import { STATE_PSEUDO as PSEUDO, variantsOf } from './lib/kit.mjs'
 
 const kebab = (s) => String(s).replace(/([a-z0-9])([A-Z])/g, '$1-$2').replace(/[^a-zA-Z0-9]+/g, '-').replace(/^-+|-+$/g, '').toLowerCase()
 const cssVar = (path) => `var(--${path.replace(/\//g, '-')})`
@@ -59,7 +59,9 @@ function build(id) {
 
   for (const [p, e] of Object.entries(c.elements ?? {})) rule(part(p), declarations(e.styles ?? {}, { root: p === 'root' }))
 
-  for (const v of c.variants ?? []) {
+  // One rule per variant with its layers already in, so the selectors are
+  // the same whether a contract writes its variants out or in layers.
+  for (const v of variantsOf(c)) {
     let root = `.${base}`
     for (const [prop, val] of Object.entries(v.when)) {
       // Hover, press and focus, only on the element that can have them

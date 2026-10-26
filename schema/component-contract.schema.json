@@ -242,7 +242,7 @@
       }
     },
     "variants": {
-      "description": "One entry per Figma variant: the configuration that selects it, its node, and only the values that differ from `elements`.",
+      "description": "Each entry says which variants it applies to (`when`) and only the values that differ from `elements`. A `when` may name some axes and leave others out: it then applies to every variant whose conditions include all of its own. An entry whose `when` sits inside another entry's is a layer, not a variant of its own. Each variant gets the entries that apply to it from the least specific to the most, and between two entries naming as many conditions, the later one wins. See docs/CONTRACT.md, \"Variants as layers\".",
       "type": "array",
       "items": {
         "type": "object",
@@ -252,7 +252,7 @@
         "additionalProperties": false,
         "properties": {
           "when": {
-            "description": "Prop and state values, e.g. { type: Primary, state: Hover, selected: true }.",
+            "description": "Prop and state values, e.g. { type: Primary, state: Hover, selected: true } for one Figma variant, or { selected: false } for every variant that is off.",
             "type": "object",
             "minProperties": 1,
             "additionalProperties": {
@@ -263,6 +263,7 @@
             }
           },
           "figmaNode": {
+            "description": "The Figma variant this entry is. Only on a variant, never on a layer.",
             "$ref": "#/$defs/nodeId"
           },
           "elements": {
