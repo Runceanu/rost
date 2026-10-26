@@ -12,7 +12,7 @@ Rost started as a design system for my own needs and grew into a product of its 
 | [Token coverage](TOKENS.md) | Why each value has a token or doesn't |
 | [Roadmap](ROADMAP.md) | What I'm doing next |
 
-**24** contracts, **0** stable. **23** have guidance, and I've signed off **20** of those.
+**25** contracts, **0** stable. **24** have guidance, and I've signed off **20** of those.
 
 ## Catalogue
 
@@ -28,6 +28,7 @@ Rost started as a design system for my own needs and grew into a product of its 
 | [IconButton](components/icon-button.md) | A round button with only an icon, including a Project type for sitting on top of images. | `review` | `agreed` | · |
 | [InlineBanner](components/inline-banner.md) | A filled status pill with an icon and a label, in four statuses and two sizes. | `review` | `agreed` | The accounting app |
 | [Input](components/input.md) | A 56px text field with a floating label, an optional lock icon, a line of help text and an error state. | `review` | `agreed` | The portfolio site, the accounting app |
+| [ListItem](components/list-item.md) | One row you can pick in a list or a nav. A label, an optional line under it, and optional icons and a status dot. | `review` | `proposed` | · |
 | [Menu](components/menu.md) | A navigation item: a label with a line underneath, used in the main nav. | `review` | `agreed` | · |
 | [Projects](components/projects.md) | One row in the project list: number, name, and industry, type and period on the right. | `review` | `agreed` | · |
 | [TabItem](components/tab-item.md) | One tab in a row of tabs. A label, optional icons before and after it, and a green underline when it's the one selected. | `review` | `proposed` | · |

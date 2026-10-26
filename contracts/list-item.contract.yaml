@@ -1,0 +1,301 @@
+# yaml-language-server: $schema=../schema/component-contract.schema.json
+schemaVersion: 2
+id: list-item
+name: ListItem
+kind: component
+status: review
+summary: One row you can pick in a list or a nav. A label, an optional line under it, and optional icons and a status dot.
+category: navigation
+related: [ badge, menu ]
+source:
+  tool: figma
+  fileKey: 1Zy0wiWKXQAvsfDBX3KR0d
+  nodeId: "346:3364"
+  url: https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=346-3364
+  extractedAt: "2026-10-26"
+  extractedBy: mcp
+props:
+  label: { type: slot, notes: "The item's name. In React, the children." }
+  description: { type: slot, notes: "Optional, one short line under the label." }
+  leading: { type: slot, notes: "Optional, a 20px icon before the text. Draw it with `currentColor`. Figma's `showLeading` and `Leading`." }
+  badge: { type: boolean, default: false, notes: "Shows the status dot on the right. Figma's `showBadge`." }
+  action: { type: slot, notes: "Optional, a 20px icon at the end, usually a chevron. Draw it with `currentColor`. Figma's `showAction` and `Action`." }
+  selected: { type: boolean, default: false, notes: "The one that's picked: a solid green plate." }
+states: [ Default, Hover, Pressed, Focus, Disabled ]
+elements:
+  root:
+    notes: "A link, or a `<button>`. Its text colours and the plate change with the state; the row itself has no fill."
+    styles:
+      display: { value: flex, assert: false }
+      align-items: { value: center }
+      position: { value: relative, assert: false }
+      width: { value: 100%, untokenised: "As wide as its list. Figma's sample is 208px." }
+      gap: { token: spacing/gap/small, value: 8px }
+      padding-top: { token: spacing/gap/small, value: 8px }
+      padding-bottom: { token: spacing/gap/small, value: 8px }
+      padding-left: { token: spacing/gap/small-medium, value: 12px }
+      padding-right: { token: spacing/gap/small-medium, value: 12px }
+      min-height: { token: spacing/size/medium-large, value: 48px }
+      border-radius: { token: spacing/radius/medium, value: 12px }
+      background: { value: none, assert: false }
+      border: { value: none, assert: false }
+      font: { value: inherit, assert: false }
+      text-align: { value: left, assert: false }
+      text-decoration: { value: none, assert: false }
+      cursor: { value: pointer, assert: false }
+      outline: { value: none, assert: false }
+  background:
+    notes: "The plate, 4px in from the row's edge with 8px corners. Solid green when selected; on an unselected row only hover and press show it, faded."
+    styles:
+      position: { value: absolute, assert: false }
+      inset: { value: 4px, untokenised: "Figma's own 4px inset of the plate." }
+      border-radius: { token: spacing/radius/small, value: 8px }
+      pointer-events: { value: none, assert: false }
+  start:
+    notes: "The icon and the text. Figma calls this layer `right`, although it's on the left."
+    styles:
+      display: { value: flex, assert: false }
+      align-items: { value: center }
+      flex: { value: 1 1 0, assert: false }
+      min-width: { value: "0", assert: false }
+      position: { value: relative, assert: false }
+      gap: { token: spacing/gap/small, value: 8px }
+  leading:
+    optional: true
+    styles:
+      display: { value: flex, assert: false }
+      flex-shrink: { value: "0", assert: false }
+      width: { token: spacing/size/xsmall, value: 20px }
+      height: { token: spacing/size/xsmall, value: 20px }
+  text:
+    notes: The label over the description.
+    styles:
+      display: { value: flex, assert: false }
+      flex-direction: { value: column, assert: false }
+      gap: { token: spacing/gap/3xsmall, value: 2px }
+      padding-bottom: { token: spacing/gap/3xsmall, value: 2px }
+      min-width: { value: "0", assert: false }
+  label:
+    styles:
+      white-space: { value: nowrap, assert: false }
+      font-family: { token: font-family/base, value: "'General Sans Variable'" }
+      font-weight: { token: typography/paragraph/font-weight/regular, value: "400" }
+      font-size: { token: typography/paragraph/font-size, value: 14px }
+      line-height: { token: typography/paragraph/line-height, value: 20px }
+      letter-spacing: { token: typography/paragraph/letter-spacing, value: 0px }
+  description:
+    optional: true
+    styles:
+      white-space: { value: nowrap, assert: false }
+      font-family: { token: font-family/base, value: "'General Sans Variable'" }
+      font-weight: { token: typography/label/font-weight/regular, value: "400" }
+      font-size: { token: typography/placeholder/font-size, value: 10px }
+      line-height: { token: typography/placeholder/line-height, value: 12px }
+      letter-spacing: { token: typography/placeholder/letter-spacing, value: 0px }
+  end:
+    notes: "The status dot and the action. Figma calls this layer `left`, although it's on the right."
+    optional: true
+    styles:
+      display: { value: flex, assert: false }
+      align-items: { value: center }
+      position: { value: relative, assert: false }
+      gap: { token: spacing/gap/small, value: 8px }
+  badge:
+    optional: true
+    notes: "Figma's small Badge: an 8px dot in a 24px box."
+    styles:
+      display: { value: flex, assert: false }
+      align-items: { value: center }
+      justify-content: { value: center }
+      width: { token: spacing/size/small, value: 24px }
+      height: { token: spacing/size/small, value: 24px }
+  dot:
+    optional: true
+    styles:
+      width: { value: 8px, untokenised: "The small Badge's own 8px dot." }
+      height: { value: 8px, untokenised: "The small Badge's own 8px dot." }
+      border-radius: { token: spacing/radius/full, value: 10000px }
+      background: { token: non-interactive/background/contrast, value: "#ededed" }
+  action:
+    optional: true
+    styles:
+      display: { value: flex, assert: false }
+      flex-shrink: { value: "0", assert: false }
+      width: { token: spacing/size/xsmall, value: 20px }
+      height: { token: spacing/size/xsmall, value: 20px }
+  focus-ring:
+    notes: "Over the whole row, inside it. Its corners are square in Figma (`spacing/radius/none`), unlike the plate's."
+    styles:
+      display: { value: none, assert: false }
+      position: { value: absolute, assert: false }
+      inset: { value: "0", assert: false }
+      border-style: { value: solid }
+      border-width: { token: spacing/outline/medium, value: 2px }
+      border-radius: { token: spacing/radius/none, value: 0px }
+      pointer-events: { value: none, assert: false }
+variants:
+  - when: { state: Default, selected: true }
+    figmaNode: "346:3862"
+    elements:
+      background:
+        background: { token: interactive/active/default/background, value: "#00d669" }
+        opacity: { token: opacity/solid, value: "1" }
+      leading:
+        color: { token: interactive/active/default/icon, value: "#060805" }
+      label:
+        color: { token: interactive/active/default/label, value: "#060805" }
+      description:
+        color: { token: interactive/active/default/sub-label, value: "#282828" }
+      action:
+        color: { token: interactive/active/default/icon, value: "#060805" }
+      dot:
+        background: { token: non-interactive/background/primary, value: "#060805", notes: "Figma sets the badge to the light theme on a selected row, where `contrast` comes out as #060805; in the dark theme that's `background/primary`." }
+  - when: { state: Hover, selected: true }
+    figmaNode: "346:3903"
+    elements:
+      background:
+        background: { token: interactive/active/hover/background, value: "#00b450" }
+        opacity: { token: opacity/solid, value: "1" }
+      leading:
+        color: { token: interactive/active/hover/icon, value: "#060805" }
+      label:
+        color: { token: interactive/active/hover/label, value: "#060805" }
+      description:
+        color: { token: interactive/active/hover/sub-label, value: "#3a3a3a" }
+      action:
+        color: { token: interactive/active/hover/icon, value: "#060805" }
+      dot:
+        background: { token: non-interactive/background/primary, value: "#060805", notes: "Figma sets the badge to the light theme on a selected row, where `contrast` comes out as #060805; in the dark theme that's `background/primary`." }
+  - when: { state: Pressed, selected: true }
+    figmaNode: "346:3882"
+    elements:
+      background:
+        background: { token: interactive/active/pressed/background, value: "#00913a" }
+        opacity: { token: opacity/solid, value: "1" }
+      leading:
+        color: { token: interactive/active/pressed/icon, value: "#060805" }
+      label:
+        color: { token: interactive/active/pressed/label, value: "#060805" }
+      description:
+        color: { token: interactive/active/pressed/sub-label, value: "#3a3a3a" }
+      action:
+        color: { token: interactive/active/pressed/icon, value: "#060805" }
+      dot:
+        background: { token: non-interactive/background/primary, value: "#060805", notes: "Figma sets the badge to the light theme on a selected row, where `contrast` comes out as #060805; in the dark theme that's `background/primary`." }
+  - when: { state: Focus, selected: true }
+    figmaNode: "346:3892"
+    elements:
+      background:
+        background: { token: interactive/active/focus/background, value: "#00d669" }
+        opacity: { token: opacity/solid, value: "1" }
+      leading:
+        color: { token: interactive/active/focus/icon, value: "#060805" }
+      label:
+        color: { token: interactive/active/focus/label, value: "#060805" }
+      description:
+        color: { token: interactive/active/focus/sub-label, value: "#3a3a3a" }
+      action:
+        color: { token: interactive/active/focus/icon, value: "#060805" }
+      dot:
+        background: { token: non-interactive/background/primary, value: "#060805", notes: "Figma sets the badge to the light theme on a selected row, where `contrast` comes out as #060805; in the dark theme that's `background/primary`." }
+      focus-ring:
+        display: { value: block, assert: false }
+        border-color: { token: interactive/active/focus/focus-ring, value: "#b6ffda" }
+  - when: { state: Disabled, selected: true }
+    figmaNode: "346:3872"
+    elements:
+      root:
+        opacity: { token: opacity/gentle, value: "0.24" }
+      background:
+        background: { token: interactive/active/disabled/background, value: "#00d669" }
+        opacity: { token: opacity/solid, value: "1" }
+      leading:
+        color: { token: interactive/active/disabled/icon, value: "#060805" }
+      label:
+        color: { token: interactive/active/disabled/label, value: "#060805" }
+      description:
+        color: { token: interactive/active/disabled/sub-label, value: "#3a3a3a" }
+      action:
+        color: { token: interactive/active/disabled/icon, value: "#060805" }
+      dot:
+        background: { token: non-interactive/background/primary, value: "#060805", notes: "Figma sets the badge to the light theme on a selected row, where `contrast` comes out as #060805; in the dark theme that's `background/primary`." }
+  - when: { state: Default, selected: false }
+    figmaNode: "346:3367"
+    elements:
+      leading:
+        color: { token: interactive/inactive/default/icon, value: "#00d669" }
+      label:
+        color: { token: interactive/inactive/default/label, value: "#d3d9d5" }
+      description:
+        color: { token: interactive/inactive/default/sub-label, value: "#999999" }
+      action:
+        color: { token: interactive/inactive/default/icon, value: "#00d669" }
+  - when: { state: Hover, selected: false }
+    figmaNode: "346:3649"
+    elements:
+      background:
+        background: { token: interactive/inactive/hover/background, value: "#006f27" }
+        opacity: { token: opacity/gentle, value: "0.24" }
+      leading:
+        color: { token: interactive/inactive/hover/icon, value: "#00b450" }
+      label:
+        color: { token: interactive/inactive/hover/label, value: "#ededed" }
+      description:
+        color: { token: interactive/inactive/hover/sub-label, value: "#d3d9d5" }
+      action:
+        color: { token: interactive/inactive/hover/icon, value: "#00b450" }
+  - when: { state: Pressed, selected: false }
+    figmaNode: "346:3725"
+    elements:
+      background:
+        background: { token: interactive/inactive/pressed/background, value: "#00913a" }
+        opacity: { token: opacity/gentle, value: "0.24" }
+      leading:
+        color: { token: interactive/inactive/pressed/icon, value: "#00d669" }
+      label:
+        color: { token: interactive/inactive/pressed/label, value: "#d3d9d5" }
+      description:
+        color: { token: interactive/inactive/pressed/sub-label, value: "#c2c7c3" }
+      action:
+        color: { token: interactive/inactive/pressed/icon, value: "#00d669" }
+  - when: { state: Focus, selected: false }
+    figmaNode: "346:3689"
+    elements:
+      leading:
+        color: { token: interactive/inactive/focus/icon, value: "#00d669" }
+      label:
+        color: { token: interactive/inactive/focus/label, value: "#d3d9d5" }
+      description:
+        color: { token: interactive/inactive/focus/sub-label, value: "#999999" }
+      action:
+        color: { token: interactive/inactive/focus/icon, value: "#00d669" }
+      focus-ring:
+        display: { value: block, assert: false }
+        border-color: { token: interactive/inactive/focus/focus-ring, value: "#999999" }
+  - when: { state: Disabled, selected: false }
+    figmaNode: "346:3759"
+    elements:
+      root:
+        opacity: { token: opacity/gentle, value: "0.24" }
+      leading:
+        color: { token: interactive/inactive/disabled/icon, value: "#00d669" }
+      label:
+        color: { token: interactive/inactive/disabled/label, value: "#d3d9d5" }
+      description:
+        color: { token: interactive/inactive/disabled/sub-label, value: "#999999" }
+      action:
+        color: { token: interactive/inactive/disabled/icon, value: "#00d669" }
+guidance:
+  status: proposed
+  use:
+    - "Used for a list of things to pick from, or the items in a side nav: one row each, the picked one in green."
+  avoid:
+    - A row of a few options side by side. That's **Tabs** or **Toggle**.
+    - Long text. The label and the line under it stay on one line each.
+  behaviour: |-
+    `selected` is the picked one. Hover, pressed and focus come from the browser, and disabled fades the whole row to `opacity/gentle`. On a selected row the status dot turns dark, the way Figma switches the badge to the light theme there.
+  accessibility:
+    element: "a link (`<a href>`, with `aria-current=\"page\"` on the current one in a nav), or a `<button>` that does something."
+    name: the label. The icons are `aria-hidden`; the status dot needs words nearby if it means something.
+    focus: the `focus-ring` part, on `:focus-visible`.
+  content: A noun or a short phrase, sentence case. The description is one short line.

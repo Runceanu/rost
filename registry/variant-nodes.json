@@ -1100,5 +1100,67 @@
       "width": 60,
       "height": 40
     }
+  ],
+  "list-item": [
+    {
+      "nodeId": "346:3367",
+      "name": "state=Default, selected=False",
+      "width": 208,
+      "height": 52
+    },
+    {
+      "nodeId": "346:3862",
+      "name": "state=Default, selected=True",
+      "width": 208,
+      "height": 52
+    },
+    {
+      "nodeId": "346:3759",
+      "name": "state=Disabled, selected=False",
+      "width": 208,
+      "height": 52
+    },
+    {
+      "nodeId": "346:3872",
+      "name": "state=Disabled, selected=True",
+      "width": 208,
+      "height": 52
+    },
+    {
+      "nodeId": "346:3725",
+      "name": "state=Pressed, selected=False",
+      "width": 208,
+      "height": 52
+    },
+    {
+      "nodeId": "346:3882",
+      "name": "state=Pressed, selected=True",
+      "width": 208,
+      "height": 52
+    },
+    {
+      "nodeId": "346:3689",
+      "name": "state=Focus, selected=False",
+      "width": 208,
+      "height": 52
+    },
+    {
+      "nodeId": "346:3892",
+      "name": "state=Focus, selected=True",
+      "width": 208,
+      "height": 52
+    },
+    {
+      "nodeId": "346:3649",
+      "name": "state=Hover, selected=False",
+      "width": 208,
+      "height": 52
+    },
+    {
+      "nodeId": "346:3903",
+      "name": "state=Hover, selected=True",
+      "width": 208,
+      "height": 52
+    }
   ]
 }

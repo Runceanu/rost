@@ -106,5 +106,10 @@
     "name": "TabItem",
     "setNodeId": "442:94",
     "variantCount": 10
+  },
+  "list-item": {
+    "name": "ListItem",
+    "setNodeId": "346:3364",
+    "variantCount": 10
   }
 }
