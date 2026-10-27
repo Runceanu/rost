@@ -11,6 +11,7 @@ Rost started as a design system for my own needs and grew into a product of its 
 | [rost.build](https://rost.build) | Every component, live where it's built, with every value of every variant |
 | [Token coverage](TOKENS.md) | Why each value has a token or doesn't |
 | [Roadmap](ROADMAP.md) | What I'm doing next |
+| [Release notes](CHANGELOG.md) | What changed in each release |
 
 **26** contracts, **5** stable. **25** have guidance, and I've signed off **25** of those.
 
