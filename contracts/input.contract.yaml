@@ -443,8 +443,8 @@ guidance:
     Label: a noun, sentence case ("Email address"). Help text: one line. Before an error it's a hint, after it it's the fix ("Use at least 8 characters", not "Invalid input").
 implementations:
   portfolio-site:
-    component: src/components/Input.jsx
-    root: .dsinput__box
+    component: src/rost/input/Input.tsx
+    root: .rost-input
   accounting-app:
     component: src/components/TextField.tsx
     root: .ak-field__box

@@ -16,7 +16,8 @@ export const samples = [
 ]
 
 export const fixtures = [
-  { node: '438:72', name: 'testimonials-pics', element: <TestimonialPicture /> },
+  // The test compares the empty slot; the page shows it with a picture in.
+  { node: '438:72', name: 'testimonials-pics', element: <TestimonialPicture />, display: <TestimonialPicture src={samples[0]} alt="" /> },
 ]
 
 /** What a caller writes. Shown on the component's page. */

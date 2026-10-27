@@ -10,7 +10,7 @@
 | Contract | `review` · [testimonials.contract.yaml](../../contracts/testimonials.contract.yaml) |
 | Guidance | `agreed` |
 | Source | [Figma 144:67](https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=144-67) · read 2026-10-19 · frozen 2026-10-20 |
-| Implemented in | nowhere yet |
+| Implemented in | The portfolio site (`src/rost/testimonials/Testimonials.tsx`, `.rost-testimonials`) |
 
 ## Props
 
@@ -69,6 +69,13 @@ Closed, it's a row: the picture, the name and the role, a chevron, and a line un
 ## Content
 
 The name as the person writes it. The role in a few words. The quote in their words, trimmed, never rewritten.
+
+## Where code differs on purpose
+
+| App | What | Why | Taken to design |
+|---|---|---|---|
+| The portfolio site | The open quote is `non-interactive/foreground/tertiary`, with key phrases in `non-interactive/foreground/primary`. Figma has the whole quote in `non-interactive/foreground/secondary`. | I pick out what matters in each quote, the same way the footer headline does. It's an editorial choice on the site, not a change to the component. | not yet |
+| The portfolio site | Under 768px the name and job line wrap instead of staying on one line. The last row has no line at rest. | Figma only has the desktop row, and a long job title runs off a phone screen. The list ends at the next section. | not yet |
 
 ## Tokens
 

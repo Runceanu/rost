@@ -8,7 +8,7 @@
 |---|---|
 | Kind | component |
 | Contract | `review` · [tab-item.contract.yaml](../../contracts/tab-item.contract.yaml) |
-| Guidance | `proposed` |
+| Guidance | `agreed` |
 | Source | [Figma 442:94](https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=442-94) · read 2026-10-23 |
 | Implemented in | nowhere yet |
 
@@ -50,6 +50,7 @@ Always inside **Tabs**, and exactly one is selected. Selecting a tab shows its p
 ## Accessibility
 
 - **Element**: `<button role="tab">` with `aria-selected` and `aria-controls`, inside a `role="tablist"` that has a name.
+- **Name**: the label.
 - **Keyboard**: Only the selected tab is in the tab order. Arrow keys move between tabs, Home and End go to the first and last.
 - **Focus**: the `focus-ring` part, on `:focus-visible`.
 - **Icons**: just decoration, `aria-hidden`. The label is the name.

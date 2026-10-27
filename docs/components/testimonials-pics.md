@@ -10,7 +10,7 @@
 | Contract | `review` · [testimonials-pics.contract.yaml](../../contracts/testimonials-pics.contract.yaml) |
 | Guidance | **missing** |
 | Source | [Figma 438:72](https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=438-72) · read 2026-10-19 · frozen 2026-10-20 |
-| Implemented in | nowhere yet |
+| Implemented in | The portfolio site (`src/rost/testimonials-pics/TestimonialPicture.tsx`, `.rost-testimonials-pics`) |
 
 ## Not right yet
 

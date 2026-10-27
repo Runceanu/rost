@@ -10,6 +10,8 @@ interface Common {
   readonly leading?: ReactNode
   /** Shows the status dot on the right. */
   readonly badge?: boolean
+  /** The dot's colour, as Badge's small size. */
+  readonly badgeStatus?: 'default' | 'negative' | 'positive' | 'warning'
   /** A 20px icon at the end, usually a chevron. Draw it with `currentColor`. */
   readonly action?: ReactNode
   /** The label. */
@@ -30,10 +32,10 @@ const b = 'rost-list-item'
  * Built from contracts/list-item.contract.yaml.
  */
 export function ListItem(props: ListItemProps) {
-  const { selected = false, description, leading, badge = false, action, children, className, as, ...rest } = props
+  const { selected = false, description, leading, badge = false, badgeStatus = 'default', action, children, className, as, ...rest } = props
   // No label and nothing at the end: just the icon, centred, as in a collapsed nav.
   const iconOnly = !children && !description && !badge && !action
-  const cls = [b, selected && `${b}--selected`, iconOnly && `${b}--icon-only`, className].filter(Boolean).join(' ')
+  const cls = [b, selected && `${b}--selected`, iconOnly && `${b}--icon-only`, badge && badgeStatus !== 'default' && `${b}--badge-status-${badgeStatus}`, className].filter(Boolean).join(' ')
   const inner = (
     <>
       <span className={`${b}__background`} />

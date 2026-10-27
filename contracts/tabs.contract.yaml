@@ -27,7 +27,7 @@ elements:
         value: inset 0 calc(-1 * var(--spacing-outline-small)) 0 0 var(--tabs-line)
         untokenised: "Figma's 1px line along the bottom, drawn inside so the row stays 40px tall and the selected tab's underline sits on top of it. The width and colour are tokens (spacing/outline/small, tabs/line)."
 guidance:
-  status: proposed
+  status: agreed
   use:
     - Above the panels it switches between.
   avoid:
@@ -35,5 +35,8 @@ guidance:
   behaviour: |-
     One tab is selected at a time. Changing it swaps the panel below; nothing else on the page moves.
   accessibility:
-    element: "`role=\"tablist\"` with an `aria-label`, holding the tabs. Each panel is a `role=\"tabpanel\"` labelled by its tab."
+    element: "`role=\"tablist\"` holding the tabs. Each panel is a `role=\"tabpanel\"` labelled by its tab."
+    name: an `aria-label` on the tablist that says what it switches, like "Example".
+    keyboard: Tab lands on the selected tab and the next Tab goes into its panel. Arrow keys, Home and End move between tabs (see **TabItem**).
+    focus: on the tabs themselves, each with its own `focus-ring`.
   content: Tabs that belong together, in the order people need them.

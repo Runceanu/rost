@@ -28,6 +28,9 @@ elements:
         assert: false
         notes: Just the size of the Figma frame. A divider is as wide as what it divides.
 implementations:
+  portfolio-site:
+    component: src/rost/divider/Divider.tsx
+    root: .rost-divider
   accounting-app:
     component: src/rost/divider/Divider.tsx
     root: .rost-divider

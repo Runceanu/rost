@@ -47,23 +47,35 @@ code { font-family: var(--mono); font-size: .88em; }
 
 /* Layouts */
 .page { width: 100%; max-width: 1120px; margin: 0 auto; padding: var(--spacing-gap-4xlarge) var(--spacing-gap-large) 96px; flex: 1; }
-.shell { display: grid; grid-template-columns: minmax(0, 1fr); flex: 1; width: 100%; max-width: 1280px; margin: 0 auto; }
-.main { padding: var(--spacing-gap-2xlarge) var(--spacing-gap-large) 96px; min-width: 0; }
+.shell { display: grid; grid-template-columns: minmax(0, 1fr); flex: 1; width: 100%; }
+/* The same content area as the homepage's `.page`, centred in what the sidebar leaves. */
+.main { padding: var(--spacing-gap-4xlarge) var(--spacing-gap-large) 96px; min-width: 0; width: 100%; max-width: 1120px; justify-self: center; }
 /* The component list is a whole screen long on a phone, so there it gives way
    to the page and a link back to the list. */
 .side { display: none; }
+.docs-phone { margin-bottom: var(--spacing-gap-large); }
 .back { display: inline-block; font-size: 14px; color: var(--fg-3); text-decoration: none; margin-bottom: var(--spacing-gap-medium-large); }
 @media (min-width: 960px) {
   .shell { grid-template-columns: 232px minmax(0, 1fr); }
-  .side { display: block; position: sticky; top: var(--header); align-self: start; height: calc(100vh - var(--header)); overflow-y: auto; border-right: 1px solid var(--line); padding: var(--spacing-gap-xlarge) var(--spacing-gap-medium-large); }
-  .main { padding: var(--spacing-gap-3xlarge) var(--spacing-gap-3xlarge) 120px; }
-  .back { display: none; }
+  .side { display: block; position: sticky; top: var(--header); align-self: start; height: calc(100vh - var(--header)); border-right: 1px solid var(--line); }
+  /* The browser's scrollbar would take 12px off the rows' right side, so it's
+     hidden and a thumb floats over the rows instead (Base.astro's script). */
+  .side-scroll { height: 100%; overflow-y: auto; padding: var(--spacing-gap-xlarge) 0; scrollbar-width: none; }
+  .side-scroll::-webkit-scrollbar { display: none; }
+  .side-thumb { position: absolute; top: 0; right: 2px; width: 4px; border-radius: var(--spacing-radius-full); background: var(--line); opacity: 0; transition: opacity .2s, width .15s; z-index: 2; touch-action: none; }
+  .side:hover .side-thumb, .side--scrolling .side-thumb, .side--dragging .side-thumb { opacity: 1; }
+  .side-thumb:hover, .side--dragging .side-thumb { width: 6px; background: var(--fg-3); }
+  .side--fits .side-thumb { display: none; }
+  .back, nav.docs-phone { display: none; }
 }
 .side-group + .side-group { margin-top: var(--spacing-gap-large); }
-.side-title { font-family: var(--mono); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--fg-3); margin-bottom: var(--spacing-gap-small); }
-.side a { display: flex; align-items: center; justify-content: space-between; gap: var(--spacing-gap-small); padding: var(--spacing-gap-2xsmall) var(--spacing-gap-small); margin: 0 calc(-1 * var(--spacing-gap-small)); border-radius: var(--spacing-radius-small); text-decoration: none; color: var(--fg-2); font-size: 14px; white-space: nowrap; }
-.side a:hover, .side a[aria-current] { background: var(--surface); color: var(--fg); }
-.dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); flex: none; }
+.side-title { font-family: var(--mono); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--fg-3); margin-bottom: var(--spacing-gap-xsmall); padding-left: var(--spacing-gap-small-medium); }
+/* The rows are Rost's ListItem, stacked as they come. */
+.side-group { display: flex; flex-direction: column; }
+/* The dot's tooltip shows above the row while the dot is hovered, or the row has focus. */
+.side-row { position: relative; display: block; }
+.side-row .rost-tooltip { position: absolute; bottom: 100%; right: 0; translate: 0 4px; opacity: 0; pointer-events: none; transition: opacity .15s, translate .15s; z-index: 1; }
+.side-row:has(.rost-list-item__badge:hover) .rost-tooltip, .side-row:has(:focus-visible) .rost-tooltip { opacity: 1; translate: 0 0; }
 .foot { display: flex; justify-content: space-between; gap: var(--spacing-gap-medium); flex-wrap: wrap; padding: var(--spacing-gap-large); border-top: 1px solid var(--line); color: var(--fg-3); font-size: 13px; }
 
 /* Type */
@@ -78,13 +90,15 @@ h3 { font-family: var(--mono); font-weight: 400; font-size: 12px; letter-spacing
 .kicker { font-family: var(--mono); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--fg-3); margin-bottom: var(--spacing-gap-small); }
 .lede { font-size: clamp(18px, 2.4vw, 22px); line-height: 1.45; color: var(--fg); max-width: 40ch; margin: 0 0 var(--spacing-gap-medium); text-wrap: pretty; }
 .muted { color: var(--fg-2); max-width: 64ch; }
-.prose { color: var(--fg-2); max-width: 70ch; }
+.prose { color: var(--fg-2); }
 .prose h2 { font-family: var(--mono); font-weight: 400; font-size: 12px; line-height: 1.2; letter-spacing: .09em; text-transform: uppercase; color: var(--fg-3); margin: var(--spacing-gap-xlarge) 0 var(--spacing-gap-small); }
 .prose p, .prose ul { margin: 0 0 var(--spacing-gap-small-medium); }
 .prose ul { padding-left: var(--spacing-gap-medium-large); }
 .prose strong { color: var(--fg); font-weight: 600; }
 .prose a { color: var(--accent); }
-.prose table { border-collapse: collapse; font-size: 14px; margin: var(--spacing-gap-small) 0 var(--spacing-gap-medium-large); display: block; overflow-x: auto; }
+.prose table { border-collapse: collapse; font-size: 14px; margin: var(--spacing-gap-small) 0 var(--spacing-gap-medium-large); width: 100%; }
+/* On a phone a wide table scrolls sideways instead of squeezing. */
+@media (max-width: 768px) { .prose table { display: block; overflow-x: auto; } }
 .prose th, .prose td { text-align: left; padding: var(--spacing-gap-small) var(--spacing-gap-small-medium); border-bottom: 1px solid var(--line); vertical-align: top; }
 .prose th { font-family: var(--mono); font-weight: 400; font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--fg-3); }
 /* Shiki paints its theme's own background inline; the site's surface wins. */
@@ -116,9 +130,10 @@ table.t { width: 100%; border-collapse: collapse; font-size: 13.5px; }
   .t td:first-child { color: var(--fg); }
 }
 .sw { display: inline-block; width: 12px; height: 12px; border-radius: var(--spacing-radius-xsmall); background: var(--c); border: 1px solid color-mix(in srgb, var(--fg) 25%, transparent); margin-right: var(--spacing-gap-small); vertical-align: -1px; }
-.tk { color: var(--accent); }
-.tk--none { color: var(--fg-3); font-style: italic; }
-.tk--gap { color: var(--bad); }
+/* Under .t td, which sets every cell's colour, so these weigh more. */
+.t td.tk { color: var(--accent); }
+.t td.tk--none { color: var(--fg-3); font-style: italic; }
+.t td.tk--gap { color: var(--bad); }
 
 @media (max-width: 520px) {
   .top { padding: 0 var(--spacing-gap-medium); gap: var(--spacing-gap-small); }
@@ -135,3 +150,5 @@ table.t { width: 100%; border-collapse: collapse; font-size: 13.5px; }
 @media (max-width: 380px) {
   .top-nav .rost-button.rost-button { padding-left: var(--spacing-gap-small); padding-right: var(--spacing-gap-small); }
 }
+/* A linked heading lands below the sticky header, not under it. */
+.prose [id] { scroll-margin-top: calc(var(--header) + var(--spacing-gap-medium)); }

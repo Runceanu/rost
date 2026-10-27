@@ -35,3 +35,7 @@ elements:
       width: { value: 100%, assert: false }
       height: { value: 100%, assert: false }
       object-fit: { value: cover, assert: false }
+implementations:
+  portfolio-site:
+    component: src/rost/testimonials-pics/TestimonialPicture.tsx
+    root: .rost-testimonials-pics

@@ -8,7 +8,7 @@
 |---|---|
 | Kind | component |
 | Contract | `review` · [tabs.contract.yaml](../../contracts/tabs.contract.yaml) |
-| Guidance | `proposed` |
+| Guidance | `agreed` |
 | Source | [Figma 448:56](https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=448-56) · read 2026-10-23 |
 | Implemented in | nowhere yet |
 
@@ -36,7 +36,10 @@ One tab is selected at a time. Changing it swaps the panel below; nothing else o
 
 ## Accessibility
 
-- **Element**: `role="tablist"` with an `aria-label`, holding the tabs. Each panel is a `role="tabpanel"` labelled by its tab.
+- **Element**: `role="tablist"` holding the tabs. Each panel is a `role="tabpanel"` labelled by its tab.
+- **Name**: an `aria-label` on the tablist that says what it switches, like "Example".
+- **Keyboard**: Tab lands on the selected tab and the next Tab goes into its panel. Arrow keys, Home and End move between tabs (see **TabItem**).
+- **Focus**: on the tabs themselves, each with its own `focus-ring`.
 
 ## Content
 

@@ -2,6 +2,7 @@
 
 .rost-inline-banner, .rost-inline-banner * { box-sizing: border-box; margin: 0; }
 .rost-inline-banner > img, .rost-inline-banner [class*="__icons-"] > img { display: block; position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; }
+.rost-inline-banner ::placeholder { color: inherit; opacity: 1; }
 
 .rost-inline-banner {
   display: inline-flex;
@@ -38,10 +39,6 @@
   color: var(--non-interactive-foreground-secondary);
 }
 
-.rost-inline-banner.rost-inline-banner--status-default.rost-inline-banner--size-small {
-  gap: var(--spacing-gap-2xsmall);
-}
-
 .rost-inline-banner.rost-inline-banner--status-default.rost-inline-banner--size-small .rost-inline-banner__slot {
   align-items: center;
   display: flex;
@@ -56,6 +53,10 @@
   position: relative;
   width: var(--spacing-size-2xsmall);
   height: var(--spacing-size-2xsmall);
+}
+
+.rost-inline-banner.rost-inline-banner--status-default.rost-inline-banner--size-small {
+  gap: var(--spacing-gap-2xsmall);
 }
 
 .rost-inline-banner.rost-inline-banner--status-default.rost-inline-banner--size-small .rost-inline-banner__label {
@@ -138,10 +139,6 @@
   height: var(--spacing-size-2xsmall);
 }
 
-.rost-inline-banner.rost-inline-banner--status-default.rost-inline-banner--size-medium {
-  gap: var(--spacing-gap-small);
-}
-
 .rost-inline-banner.rost-inline-banner--status-default.rost-inline-banner--size-medium .rost-inline-banner__slot {
   align-items: center;
   display: flex;
@@ -156,6 +153,10 @@
   position: relative;
   width: var(--spacing-size-xsmall);
   height: var(--spacing-size-xsmall);
+}
+
+.rost-inline-banner.rost-inline-banner--status-default.rost-inline-banner--size-medium {
+  gap: var(--spacing-gap-small);
 }
 
 .rost-inline-banner.rost-inline-banner--status-default.rost-inline-banner--size-medium .rost-inline-banner__text {
@@ -182,16 +183,16 @@
   letter-spacing: var(--typography-body-letter-spacing);
 }
 
+.rost-inline-banner.rost-inline-banner--status-negative.rost-inline-banner--size-medium .rost-inline-banner__label {
+  gap: var(--spacing-gap-small);
+  padding: var(--spacing-gap-none);
+}
+
 .rost-inline-banner.rost-inline-banner--status-negative.rost-inline-banner--size-medium .rost-inline-banner__icons-alarm {
   flex-shrink: 0;
   position: relative;
   width: var(--spacing-size-xsmall);
   height: var(--spacing-size-xsmall);
-}
-
-.rost-inline-banner.rost-inline-banner--status-negative.rost-inline-banner--size-medium .rost-inline-banner__label {
-  gap: var(--spacing-gap-small);
-  padding: var(--spacing-gap-none);
 }
 
 .rost-inline-banner.rost-inline-banner--status-positive.rost-inline-banner--size-medium {
@@ -206,16 +207,16 @@
   letter-spacing: var(--typography-body-letter-spacing);
 }
 
+.rost-inline-banner.rost-inline-banner--status-positive.rost-inline-banner--size-medium .rost-inline-banner__label {
+  gap: var(--spacing-gap-small);
+  padding: var(--spacing-gap-none);
+}
+
 .rost-inline-banner.rost-inline-banner--status-positive.rost-inline-banner--size-medium .rost-inline-banner__icons-positive {
   flex-shrink: 0;
   position: relative;
   width: var(--spacing-size-xsmall);
   height: var(--spacing-size-xsmall);
-}
-
-.rost-inline-banner.rost-inline-banner--status-positive.rost-inline-banner--size-medium .rost-inline-banner__label {
-  gap: var(--spacing-gap-small);
-  padding: var(--spacing-gap-none);
 }
 
 .rost-inline-banner.rost-inline-banner--status-warning.rost-inline-banner--size-medium {
@@ -230,14 +231,14 @@
   letter-spacing: var(--typography-body-letter-spacing);
 }
 
+.rost-inline-banner.rost-inline-banner--status-warning.rost-inline-banner--size-medium .rost-inline-banner__label {
+  gap: var(--spacing-gap-small);
+  padding: var(--spacing-gap-none);
+}
+
 .rost-inline-banner.rost-inline-banner--status-warning.rost-inline-banner--size-medium .rost-inline-banner__icons-warning {
   flex-shrink: 0;
   position: relative;
   width: var(--spacing-size-xsmall);
   height: var(--spacing-size-xsmall);
-}
-
-.rost-inline-banner.rost-inline-banner--status-warning.rost-inline-banner--size-medium .rost-inline-banner__label {
-  gap: var(--spacing-gap-small);
-  padding: var(--spacing-gap-none);
 }

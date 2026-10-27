@@ -5,7 +5,7 @@
  * rost.build (web/) renders the same model for browsing.
  */
 import { mkdirSync, writeFileSync, readdirSync, rmSync, readFileSync } from 'node:fs'
-import { loadKit, loadTokens, KINDS, APP_LABEL, title, sourceLink, guidanceMarkdown, COVERAGE, classify } from './lib/kit.mjs'
+import { loadKit, loadTokens, KINDS, APP_LABEL, title, sourceLink, guidanceMarkdown, COVERAGE, classify, plainGroups } from './lib/kit.mjs'
 
 const kit = loadKit()
 const out = new URL('../docs/components/', import.meta.url)
@@ -147,7 +147,7 @@ for (const e of kit) for (const x of e.values) if (x.v.suggest) {
   row.where.add(`[${title(e)}](components/${e.id}.md) \`${x.part}.${x.prop}\``); row.n++
   suggestions.set(k, row)
 }
-const figmaVars = JSON.parse(readFileSync(new URL('../registry/figma-variables.json', import.meta.url), 'utf8')).paths
+const figmaVars = Object.keys(JSON.parse(readFileSync(new URL('../registry/figma-variables.json', import.meta.url), 'utf8')).variables)
 const { vars } = loadTokens()
 const unexported = figmaVars.filter((p) => !vars.has('--' + p.replace(/[/ ]/g, '-')))
 const families = {}
@@ -186,19 +186,22 @@ ${[...suggestions.values()].sort((a, b) => b.n - a.n).map((r) => `| \`${r.token}
 
 ## No token, on purpose
 
-${kit.flatMap((e) => e.values.filter((x) => x.v.untokenised).map((x) => `- [${title(e)}](components/${e.id}.md) \`${x.part}.${x.prop}\` = \`${x.v.value}\`: ${x.v.untokenised}`)).join('\n') || 'None.'}
+${plainGroups(kit).map((g) => {
+  const value = (r) => `\`${cell(r.values[0])}\`${r.values.length > 1 ? ` and ${r.values.length - 1} more, one per state` : ''}`
+  return `### ${g.label}\n\n${g.why}\n\n| Where | Part | Value |${g.notes ? ' Why |' : ''}\n|---|---|---|${g.notes ? '---|' : ''}\n${g.rows.map((r) => `| ${r.where.map((e) => `[${title(e)}](components/${e.id}.md)`).join(', ')} | \`${r.part}.${r.prop}\` | ${value(r)} |${g.notes ? ` ${cell(r.why)} |` : ''}`).join('\n')}\n`
+}).join('\n') || 'None.'}
 
 ## Open gaps
 
 ${kit.flatMap((e) => e.values.filter((x) => classify(x.prop, x.v) === 'gap').map((x) => `- [${title(e)}](components/${e.id}.md) \`${x.part}.${x.prop}\` = \`${x.v.value}\``)).join('\n') || 'None. Every value has a token, a suggestion, or a reason.'}
 
-## Figma variables missing from tokens.css
+## Figma variables
 
-The Figma file has **${figmaVars.length}** variables (\`registry/figma-variables.json\`) and \`tokens/tokens.css\` has **${figmaVars.length - unexported.length}** of them. No contract needs the other ${unexported.length} today, but new components will, the way Chip needed \`opacity/strong\`.
-
+The Figma file has **${figmaVars.length}** variables (\`registry/figma-variables.json\`, read on 2026-10-26) and \`tokens/tokens.css\` has **${figmaVars.length - unexported.length}** of them. \`npm run tokens\` builds it from that read, so they can't come apart.
+${unexported.length ? `
 | Family | Missing |
 |---|---:|
 ${Object.entries(families).sort((a, b) => b[1] - a[1]).map(([f, n]) => `| \`${f}\` | ${n} |`).join('\n')}
-`)
+` : ''}`)
 
 console.log(`docs: ${kit.length} component pages + README (${counts.guided} with guidance)`)

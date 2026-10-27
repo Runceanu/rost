@@ -8,7 +8,7 @@
 |---|---|
 | Kind | component |
 | Contract | `review` · [navigation.contract.yaml](../../contracts/navigation.contract.yaml) |
-| Guidance | `proposed` |
+| Guidance | `agreed` |
 | Source | [Figma 356:949](https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=356-949) · read 2026-10-26 |
 | Implemented in | nowhere yet |
 
@@ -45,7 +45,10 @@
 ## Accessibility
 
 - **Element**: a `<nav>` with an `aria-label`. The current item has `aria-current="page"`.
+- **Name**: the `aria-label` on the `<nav>`, like "Main". Each item is named by its label.
 - **Collapsed**: icon-only items need an `aria-label`, since there's no visible text.
+- **Keyboard**: Tab goes through the items in order, then the action. Nothing custom, since they're links and a button.
+- **Focus**: each ListItem's own `focus-ring`.
 - **Contrast**: the plate is see-through, so check the labels against what's behind it, not just the page colour.
 
 ## Content

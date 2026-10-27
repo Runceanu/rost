@@ -255,6 +255,16 @@ variants:
         color: { token: project/lock/sub-label, value: "#999" }
       dot:
         background: { token: project/lock/icon, value: "#00d669" }
+implementations:
+  portfolio-site:
+    component: src/rost/projects/Projects.tsx
+    root: .rost-projects
+    deviations:
+      - what: |-
+          The last row in the Work list has no line at rest; hover and press still draw it. The 16px slide is eased over 0.2s.
+        why: |-
+          The list ends at the footer, and a line there reads as a stray border. Motion isn't in the contract.
+        raisedWithDesign: false
 guidance:
   status: agreed
   use:

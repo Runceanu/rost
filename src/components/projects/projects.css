@@ -2,6 +2,7 @@
 
 .rost-projects, .rost-projects * { box-sizing: border-box; margin: 0; }
 .rost-projects > img, .rost-projects [class*="__icons-"] > img { display: block; position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; }
+.rost-projects ::placeholder { color: inherit; opacity: 1; }
 
 .rost-projects {
   display: flex;
@@ -145,53 +146,53 @@
   color: var(--project-default-sub-label);
 }
 
-.rost-projects:hover {
+.rost-projects:hover:where(:not(:disabled, [aria-disabled="true"])) {
   padding-left: var(--spacing-gap-medium);
 }
 
-.rost-projects:hover .rost-projects__outline {
+.rost-projects:hover:where(:not(:disabled, [aria-disabled="true"])) .rost-projects__outline {
   background: var(--project-hover-outline);
   height: var(--spacing-outline-medium);
 }
 
-.rost-projects:hover .rost-projects__number {
+.rost-projects:hover:where(:not(:disabled, [aria-disabled="true"])) .rost-projects__number {
   color: var(--project-hover-label);
 }
 
-.rost-projects:hover .rost-projects__text {
+.rost-projects:hover:where(:not(:disabled, [aria-disabled="true"])) .rost-projects__text {
   color: var(--project-hover-label);
 }
 
-.rost-projects:hover .rost-projects__detail {
+.rost-projects:hover:where(:not(:disabled, [aria-disabled="true"])) .rost-projects__detail {
   color: var(--project-hover-sub-label);
 }
 
-.rost-projects:hover .rost-projects__dot {
+.rost-projects:hover:where(:not(:disabled, [aria-disabled="true"])) .rost-projects__dot {
   background: var(--project-hover-icon);
 }
 
-.rost-projects:active {
+.rost-projects:active:where(:not(:disabled, [aria-disabled="true"])) {
   padding-left: var(--spacing-gap-medium);
 }
 
-.rost-projects:active .rost-projects__outline {
+.rost-projects:active:where(:not(:disabled, [aria-disabled="true"])) .rost-projects__outline {
   background: var(--project-pressed-outline);
   height: var(--spacing-outline-small);
 }
 
-.rost-projects:active .rost-projects__number {
+.rost-projects:active:where(:not(:disabled, [aria-disabled="true"])) .rost-projects__number {
   color: var(--project-pressed-label);
 }
 
-.rost-projects:active .rost-projects__text {
+.rost-projects:active:where(:not(:disabled, [aria-disabled="true"])) .rost-projects__text {
   color: var(--project-pressed-label);
 }
 
-.rost-projects:active .rost-projects__detail {
+.rost-projects:active:where(:not(:disabled, [aria-disabled="true"])) .rost-projects__detail {
   color: var(--project-pressed-sub-label);
 }
 
-.rost-projects:active .rost-projects__dot {
+.rost-projects:active:where(:not(:disabled, [aria-disabled="true"])) .rost-projects__dot {
   background: var(--project-pressed-icon);
 }
 

@@ -20,7 +20,7 @@ Most of this comes from Nathan Curtis ([component contracts and schemas](https:/
 1. **Say each thing once.** The variant list and its Figma nodes used to live in two places that could disagree. The guidance and the app implementations lived in two more. Now it's one file.
 2. **Write by hand only what can't be generated, and keep it in the same file.** A side file is a second truth, and second truths drift.
 3. **Same input, same output.** Reading Figma again when nothing changed gives an empty diff. If the diff isn't empty, something really changed.
-4. **States aren't props.** Hover, pressed and focus come from the browser, not from whoever uses the component. They get their own list.
+4. **States aren't props.** Hover, pressed and focus come from the browser, not from whoever uses the component. They get their own list. In the CSS, hover and pressed skip a disabled item (`:where(:not(:disabled, [aria-disabled="true"]))`), so a disabled button doesn't light up under the pointer wherever its Disabled values don't say otherwise. The `:where()` keeps the rule's weight as it was.
 5. **Check it, don't describe it.** Every value carries its token name *and* what it resolves to, because six tokens here all come out as `#3a3a3a`. `npm run validate` checks the files, the conformance check reads the CSS.
 6. **Version the format.** It's `schemaVersion: 2`. If the shape changes, the version changes with it.
 
@@ -157,7 +157,7 @@ A component is `stable` when:
 
 ## Adding a component
 
-1. **Start it.** Since the freeze, a new component can start in the contract: copy `schema/template.contract.yaml`. If it starts in Figma instead, open the Figma desktop app on the UI Kit, add the set to `registry/component-sets.json` (with a `name`) and its variants to `registry/variant-nodes.json`, then run `node bin/extract-variants.mjs <id>`, `node bin/parse.mjs` and `node bin/build-contracts.mjs`. That writes `contracts/<id>.contract.yaml`. Having two registry files is on the [roadmap](ROADMAP.md).
+1. **Start it.** Since the freeze, a new component can start in the contract: copy `schema/template.contract.yaml`. If it starts in Figma instead, open the Figma desktop app on the UI Kit, add the set to `registry/component-sets.json`, with a `name` and its `variants`, then run `node bin/extract-variants.mjs <id>`, `node bin/parse.mjs` and `node bin/build-contracts.mjs`. That writes `contracts/<id>.contract.yaml`.
 2. **Describe it.** Add `summary`, `category`, `related` and `guidance`. Leave the guidance `proposed` until I've signed it off.
 3. **Register it.** Add each app under `implementations`, with its selectors.
 4. **Check it.** `npm run validate`, the conformance test in the app, and `npm run audit -- <app-dir>`. Anything that's different on purpose becomes a deviation.

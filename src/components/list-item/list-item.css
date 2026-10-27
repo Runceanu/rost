@@ -139,55 +139,55 @@
   background: var(--non-interactive-background-primary);
 }
 
-.rost-list-item:hover.rost-list-item--selected .rost-list-item__label {
+.rost-list-item:hover:where(:not(:disabled, [aria-disabled="true"])).rost-list-item--selected .rost-list-item__label {
   font-weight: var(--typography-paragraph-font-weight-medium);
   color: var(--interactive-active-hover-label);
 }
 
-.rost-list-item:hover.rost-list-item--selected .rost-list-item__background {
+.rost-list-item:hover:where(:not(:disabled, [aria-disabled="true"])).rost-list-item--selected .rost-list-item__background {
   background: var(--interactive-active-hover-background);
   opacity: var(--opacity-solid);
 }
 
-.rost-list-item:hover.rost-list-item--selected .rost-list-item__leading {
+.rost-list-item:hover:where(:not(:disabled, [aria-disabled="true"])).rost-list-item--selected .rost-list-item__leading {
   color: var(--interactive-active-hover-icon);
 }
 
-.rost-list-item:hover.rost-list-item--selected .rost-list-item__description {
+.rost-list-item:hover:where(:not(:disabled, [aria-disabled="true"])).rost-list-item--selected .rost-list-item__description {
   color: var(--interactive-active-hover-sub-label);
 }
 
-.rost-list-item:hover.rost-list-item--selected .rost-list-item__action {
+.rost-list-item:hover:where(:not(:disabled, [aria-disabled="true"])).rost-list-item--selected .rost-list-item__action {
   color: var(--interactive-active-hover-icon);
 }
 
-.rost-list-item:hover.rost-list-item--selected .rost-list-item__dot {
+.rost-list-item:hover:where(:not(:disabled, [aria-disabled="true"])).rost-list-item--selected .rost-list-item__dot {
   background: var(--non-interactive-background-primary);
 }
 
-.rost-list-item:active.rost-list-item--selected .rost-list-item__label {
+.rost-list-item:active:where(:not(:disabled, [aria-disabled="true"])).rost-list-item--selected .rost-list-item__label {
   font-weight: var(--typography-paragraph-font-weight-medium);
   color: var(--interactive-active-pressed-label);
 }
 
-.rost-list-item:active.rost-list-item--selected .rost-list-item__background {
+.rost-list-item:active:where(:not(:disabled, [aria-disabled="true"])).rost-list-item--selected .rost-list-item__background {
   background: var(--interactive-active-pressed-background);
   opacity: var(--opacity-solid);
 }
 
-.rost-list-item:active.rost-list-item--selected .rost-list-item__leading {
+.rost-list-item:active:where(:not(:disabled, [aria-disabled="true"])).rost-list-item--selected .rost-list-item__leading {
   color: var(--interactive-active-pressed-icon);
 }
 
-.rost-list-item:active.rost-list-item--selected .rost-list-item__description {
+.rost-list-item:active:where(:not(:disabled, [aria-disabled="true"])).rost-list-item--selected .rost-list-item__description {
   color: var(--interactive-active-pressed-sub-label);
 }
 
-.rost-list-item:active.rost-list-item--selected .rost-list-item__action {
+.rost-list-item:active:where(:not(:disabled, [aria-disabled="true"])).rost-list-item--selected .rost-list-item__action {
   color: var(--interactive-active-pressed-icon);
 }
 
-.rost-list-item:active.rost-list-item--selected .rost-list-item__dot {
+.rost-list-item:active:where(:not(:disabled, [aria-disabled="true"])).rost-list-item--selected .rost-list-item__dot {
   background: var(--non-interactive-background-primary);
 }
 
@@ -268,45 +268,45 @@
   color: var(--interactive-inactive-default-icon);
 }
 
-.rost-list-item:hover:not(.rost-list-item--selected) .rost-list-item__background {
+.rost-list-item:hover:where(:not(:disabled, [aria-disabled="true"])):not(.rost-list-item--selected) .rost-list-item__background {
   background: var(--interactive-inactive-hover-background);
   opacity: var(--opacity-gentle);
 }
 
-.rost-list-item:hover:not(.rost-list-item--selected) .rost-list-item__leading {
+.rost-list-item:hover:where(:not(:disabled, [aria-disabled="true"])):not(.rost-list-item--selected) .rost-list-item__leading {
   color: var(--interactive-inactive-hover-icon);
 }
 
-.rost-list-item:hover:not(.rost-list-item--selected) .rost-list-item__label {
+.rost-list-item:hover:where(:not(:disabled, [aria-disabled="true"])):not(.rost-list-item--selected) .rost-list-item__label {
   color: var(--interactive-inactive-hover-label);
 }
 
-.rost-list-item:hover:not(.rost-list-item--selected) .rost-list-item__description {
+.rost-list-item:hover:where(:not(:disabled, [aria-disabled="true"])):not(.rost-list-item--selected) .rost-list-item__description {
   color: var(--interactive-inactive-hover-sub-label);
 }
 
-.rost-list-item:hover:not(.rost-list-item--selected) .rost-list-item__action {
+.rost-list-item:hover:where(:not(:disabled, [aria-disabled="true"])):not(.rost-list-item--selected) .rost-list-item__action {
   color: var(--interactive-inactive-hover-icon);
 }
 
-.rost-list-item:active:not(.rost-list-item--selected) .rost-list-item__background {
+.rost-list-item:active:where(:not(:disabled, [aria-disabled="true"])):not(.rost-list-item--selected) .rost-list-item__background {
   background: var(--interactive-inactive-pressed-background);
   opacity: var(--opacity-gentle);
 }
 
-.rost-list-item:active:not(.rost-list-item--selected) .rost-list-item__leading {
+.rost-list-item:active:where(:not(:disabled, [aria-disabled="true"])):not(.rost-list-item--selected) .rost-list-item__leading {
   color: var(--interactive-inactive-pressed-icon);
 }
 
-.rost-list-item:active:not(.rost-list-item--selected) .rost-list-item__label {
+.rost-list-item:active:where(:not(:disabled, [aria-disabled="true"])):not(.rost-list-item--selected) .rost-list-item__label {
   color: var(--interactive-inactive-pressed-label);
 }
 
-.rost-list-item:active:not(.rost-list-item--selected) .rost-list-item__description {
+.rost-list-item:active:where(:not(:disabled, [aria-disabled="true"])):not(.rost-list-item--selected) .rost-list-item__description {
   color: var(--interactive-inactive-pressed-sub-label);
 }
 
-.rost-list-item:active:not(.rost-list-item--selected) .rost-list-item__action {
+.rost-list-item:active:where(:not(:disabled, [aria-disabled="true"])):not(.rost-list-item--selected) .rost-list-item__action {
   color: var(--interactive-inactive-pressed-icon);
 }
 
@@ -357,4 +357,16 @@
 
 .rost-list-item.rost-list-item--icon-only .rost-list-item__start {
   flex: none;
+}
+
+.rost-list-item.rost-list-item--badge-status-negative .rost-list-item__dot {
+  background: var(--non-interactive-background-negative-base);
+}
+
+.rost-list-item.rost-list-item--badge-status-positive .rost-list-item__dot {
+  background: var(--non-interactive-background-positive-base);
+}
+
+.rost-list-item.rost-list-item--badge-status-warning .rost-list-item__dot {
+  background: var(--non-interactive-background-warning-base);
 }

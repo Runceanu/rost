@@ -4,7 +4,7 @@
 // that one's page, under it, with `nested`.
 import { Code } from 'astro:components'
 import { Fixtures, fixturesFor } from './Fixtures'
-import { byId, title, inCode, guidanceHtml, componentSource, sourceLink, tokenCell, isColour, APP_LABEL, GITHUB } from '../lib/kit'
+import { byId, title, inCode, guidanceHtml, mdInline, componentSource, sourceLink, tokenCell, isColour, APP_LABEL, GITHUB } from '../lib/kit'
 import { shotsFor } from '../lib/shots'
 import { Badge } from '../../../src/components/badge/Badge'
 import { Tag } from '../../../src/components/tags/Tag'
@@ -107,13 +107,13 @@ const props = Object.entries(c.props ?? {}) as [string, any][]
   {e.implementations.length > 0 && (
     <>
       <h2>Where it's used</h2>
-      <ul class="plain">{e.implementations.map((i: any) => <li><b>{APP_LABEL[i.app] ?? i.app}</b> <code>{i.component}</code>{i.root && <> <code>{i.root}</code></>}</li>)}</ul>
+      <ul class="plain">{e.implementations.map((i: any) => <li><b>{APP_LABEL[i.app] ?? i.app}</b>{' '}<code>{i.component}</code>{i.root && <>{' '}<code>{i.root}</code></>}</li>)}</ul>
     </>
   )}
   {e.deviations.length > 0 && (
     <>
       <h2>Where code differs on purpose</h2>
-      <ul class="plain">{e.deviations.map((d: any) => <li><b>{APP_LABEL[d.app] ?? d.app ?? 'Everywhere'}:</b> {d.what} <span class="muted">{d.why}</span></li>)}</ul>
+      <ul class="plain">{e.deviations.map((d: any) => <li><b>{APP_LABEL[d.app] ?? d.app ?? 'Everywhere'}:</b>{' '}<Fragment set:html={mdInline(d.what)} />{' '}<span class="muted" set:html={mdInline(d.why ?? '')} /></li>)}</ul>
     </>
   )}
 
@@ -148,7 +148,7 @@ const props = Object.entries(c.props ?? {}) as [string, any][]
   .source { margin-top: var(--spacing-gap-small-medium); }
   .source summary { cursor: pointer; color: var(--fg-3); font-family: var(--mono); font-size: 12.5px; margin-bottom: var(--spacing-gap-small); }
   .note { color: var(--fg-3); font-size: 13.5px; margin: var(--spacing-gap-small) 0 0; }
-  .plain { padding-left: var(--spacing-gap-medium-large); color: var(--fg-2); }
+  .plain { padding-left: var(--spacing-gap-medium-large); color: var(--fg-2); overflow-wrap: anywhere; }
   .plain li { margin: var(--spacing-gap-2xsmall) 0; }
   .vary { margin: 0 0 var(--spacing-gap-small); }
   .vary summary { cursor: pointer; display: flex; align-items: center; gap: var(--spacing-gap-small); padding: var(--spacing-gap-xsmall) 0; color: var(--fg); list-style: none; }

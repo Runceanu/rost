@@ -64,6 +64,16 @@ elements:
     styles:
       position: { value: relative, assert: false }
       height: { value: 100%, assert: false }
+implementations:
+  portfolio-site:
+    component: src/rost/hero-media/HeroMedia.tsx
+    root: .rost-hero-media
+    deviations:
+      - what: |-
+          Each case study makes the hero full-bleed (`width: 100vw`, negative margin) and brings its own artwork, sized and positioned for that collage.
+        why: |-
+          The page has side padding and the hero ignores it. Where the artwork sits is content, not the component.
+        raisedWithDesign: false
 guidance:
   status: agreed
   use:

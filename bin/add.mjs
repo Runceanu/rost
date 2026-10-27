@@ -11,7 +11,7 @@
  * In the app it writes:
  *   src/rost/<id>/            the component, its CSS and icons (not the fixtures)
  *   src/rost/conform.ts       the check, so the app's tests can run it
- *   contracts/rost/<id>.contract.json   the contract, as JSON
+ *   contracts/rost/<id>.contract.yaml   the contract, the same file as Rost's
  *   src/rost/README.md        which Rost commit the copies come from
  *
  * Copies are replaced whole, so a file Rost removed goes from the app too.
@@ -22,7 +22,6 @@ import { join, resolve } from 'node:path'
 import { homedir } from 'node:os'
 import { execSync } from 'node:child_process'
 import { fileURLToPath } from 'node:url'
-import YAML from 'yaml'
 
 const rost = fileURLToPath(new URL('..', import.meta.url))
 const args = process.argv.slice(2)
@@ -65,7 +64,10 @@ for (const id of [...all].sort()) {
   rmSync(target, { recursive: true, force: true })
   cpSync(join(rost, 'src/components', id), target, { recursive: true, filter: (src) => !src.endsWith('.fixtures.tsx') })
   if (JSON.stringify(snapshot(target)) !== before) changed.push(`src/rost/${id}/`)
-  write(join(app, 'contracts/rost', `${id}.contract.json`), JSON.stringify(YAML.parse(readFileSync(join(rost, 'contracts', `${id}.contract.yaml`), 'utf8')), null, 2) + '\n')
+  write(join(app, 'contracts/rost', `${id}.contract.yaml`), readFileSync(join(rost, 'contracts', `${id}.contract.yaml`), 'utf8'))
+  // Until 2026-10-26 the contracts went in as JSON. That copy goes.
+  const json = join(app, 'contracts/rost', `${id}.contract.json`)
+  if (existsSync(json)) { rmSync(json); changed.push(`contracts/rost/${id}.contract.json (removed)`) }
 }
 write(join(app, 'src/rost/conform.ts'), readFileSync(join(rost, 'src/conform.ts'), 'utf8'))
 if (tokensAt) write(join(app, tokensAt), readFileSync(join(rost, 'tokens/tokens.css'), 'utf8'))
@@ -75,7 +77,7 @@ write(join(app, 'src/rost/README.md'), `# Rost, copied in
 
 These are Rost's own components, copied from https://github.com/Runceanu/rost at \`${from}\`:
 ${names.map((n) => `\`${n}\``).join(', ')}, with their CSS and icons, and \`conform.ts\`, the check that keeps them honest.
-\`contracts/rost/\` holds the matching contracts, as JSON.
+\`contracts/rost/\` holds the matching contracts, the same YAML files as Rost's.
 
 Don't edit these files here. Change them in Rost, then copy them again from the Rost repo:
 

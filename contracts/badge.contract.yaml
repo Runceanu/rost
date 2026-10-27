@@ -155,8 +155,8 @@ guidance:
   content: One or two words. Sentence case, no punctuation.
 implementations:
   portfolio-site:
-    component: src/components/Badge.jsx
-    root: .badge
+    component: src/rost/badge/Badge.tsx
+    root: .rost-badge
   accounting-app:
     component: src/rost/badge/Badge.tsx
     root: .rost-badge

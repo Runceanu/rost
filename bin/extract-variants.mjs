@@ -9,7 +9,9 @@
 import { call } from './figma.mjs'
 import { readFileSync, writeFileSync, existsSync } from 'node:fs'
 
-const nodes = JSON.parse(readFileSync(new URL('../registry/variant-nodes.json', import.meta.url), 'utf8'))
+// Each set's variants, by component id: { badge: [{ nodeId, name, width, height }, …], … }
+const sets = JSON.parse(readFileSync(new URL('../registry/component-sets.json', import.meta.url), 'utf8'))
+const nodes = Object.fromEntries(Object.entries(sets).filter(([, s]) => s.variants).map(([id, s]) => [id, s.variants]))
 const CORE = process.argv.slice(2).length ? process.argv.slice(2) : Object.keys(nodes)
 let ok = 0, fail = 0
 for (const comp of CORE) {

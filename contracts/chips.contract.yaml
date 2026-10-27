@@ -134,5 +134,11 @@ guidance:
   content: One or two words, sentence case.
 implementations:
   portfolio-site:
-    component: src/components/Chip.jsx
-    root: .chip
+    component: src/rost/chips/Chip.tsx
+    root: .rost-chips
+    deviations:
+      - what: |-
+          Drawn as a `<span>` (`as="span"`) in the case-study meta, with no hover, press or cursor.
+        why: |-
+          Nobody clicks those. The guidance says a static topic is a Tag, but the site's design has the outlined chip there, so I kept the look and took the states off.
+        raisedWithDesign: false

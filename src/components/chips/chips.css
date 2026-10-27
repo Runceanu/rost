@@ -2,6 +2,7 @@
 
 .rost-chips, .rost-chips * { box-sizing: border-box; margin: 0; }
 .rost-chips > img, .rost-chips [class*="__icons-"] > img { display: block; position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; }
+.rost-chips ::placeholder { color: inherit; opacity: 1; }
 
 .rost-chips {
   justify-content: center;
@@ -64,20 +65,20 @@
   opacity: var(--opacity-gentle);
 }
 
-.rost-chips.rost-chips--status-default:hover .rost-chips__label {
+.rost-chips.rost-chips--status-default:hover:where(:not(:disabled, [aria-disabled="true"])) .rost-chips__label {
   color: var(--actions-secondary-regular-hover-label);
 }
 
-.rost-chips.rost-chips--status-default:hover .rost-chips__outline {
+.rost-chips.rost-chips--status-default:hover:where(:not(:disabled, [aria-disabled="true"])) .rost-chips__outline {
   border-color: var(--actions-secondary-regular-hover-outline);
   opacity: var(--opacity-strong);
 }
 
-.rost-chips.rost-chips--status-default:active .rost-chips__label {
+.rost-chips.rost-chips--status-default:active:where(:not(:disabled, [aria-disabled="true"])) .rost-chips__label {
   color: var(--actions-secondary-regular-pressed-label);
 }
 
-.rost-chips.rost-chips--status-default:active .rost-chips__outline {
+.rost-chips.rost-chips--status-default:active:where(:not(:disabled, [aria-disabled="true"])) .rost-chips__outline {
   border-color: var(--actions-secondary-regular-pressed-outline);
   opacity: var(--opacity-solid);
 }

@@ -8,7 +8,7 @@
 |---|---|
 | Kind | component |
 | Contract | `review` · [list-item.contract.yaml](../../contracts/list-item.contract.yaml) |
-| Guidance | `proposed` |
+| Guidance | `agreed` |
 | Source | [Figma 346:3364](https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=346-3364) · read 2026-10-26 |
 | Implemented in | nowhere yet |
 
@@ -20,6 +20,7 @@
 | `description` | slot |  |  |
 | `leading` | slot |  |  |
 | `badge` | boolean |  | `false` |
+| `badgeStatus` | enum | `Default` `Negative` `Positive` `Warning` | `Default` |
 | `action` | slot |  |  |
 | `selected` | boolean |  | `false` |
 | `iconOnly` | boolean |  | `false` |
@@ -60,6 +61,7 @@
 
 - **Element**: a link (`<a href>`, with `aria-current="page"` on the current one in a nav), or a `<button>` that does something.
 - **Name**: the label. The icons are `aria-hidden`; the status dot needs words nearby if it means something.
+- **Keyboard**: nothing of its own. Tab reaches it, Enter follows the link, and Enter or Space presses the button.
 - **Focus**: the `focus-ring` part, on `:focus-visible`.
 
 ## Content
@@ -113,7 +115,10 @@ Every token this component uses, across all its variants.
 | `interactive/inactive/pressed/label` | `#d3d9d5` |
 | `interactive/inactive/pressed/sub-label` | `#c2c7c3` |
 | `non-interactive/background/contrast` | `#ededed` |
+| `non-interactive/background/negative/base` | `#e93120` |
+| `non-interactive/background/positive/base` | `#00d669` |
 | `non-interactive/background/primary` | `#060805` |
+| `non-interactive/background/warning/base` | `#fda50d` |
 | `opacity/gentle` | `0.24` |
 | `opacity/solid` | `1` |
 | `spacing/gap/3xsmall` | `2px` |

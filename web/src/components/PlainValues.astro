@@ -1,0 +1,139 @@
+---
+// "No token, on purpose", grouped by why, each group with a picture of what
+// the plain value does. The rows are the same ones TOKENS.md lists.
+import { kit, plainGroups, title, readRepo } from '../lib/kit'
+import { Button } from '../../../src/components/button/Button'
+
+const groups = plainGroups(kit)
+const valueText = (r: any) => r.values[0] + (r.values.length > 1 ? ` and ${r.values.length - 1} more, one per state` : '')
+
+// Each icon file once, read from the component that uses it.
+const icons = [...new Map(groups.find((g: any) => g.kind === 'icon')?.rows.map((r: any) => {
+  const file = r.values[0].match(/url\(\.\/(icon-[a-z-]+\.svg)\)/)?.[1]
+  return [file, `src/components/${r.where[0].id}/${file}`]
+}) ?? []).entries()].map(([file, path]) => ({
+  name: file.replace(/^icon-|\.svg$/g, ''),
+  mask: `url("data:image/svg+xml;utf8,${encodeURIComponent(readRepo(path))}") center / contain no-repeat`,
+}))
+
+// Fixed sizes to scale, each number once. 100% and composed values have nothing to draw.
+const sizes = [...new Map(groups.find((g: any) => g.kind === 'size')?.rows
+  .filter((r: any) => /^\d+px$/.test(r.values[0]))
+  .map((r: any) => [r.values[0], { px: parseInt(r.values[0]), label: `${r.where.map(title).join(', ')} ${r.part}` }]) ?? []).values()]
+  .sort((a, b) => b.px - a.px)
+
+// Colours at an opacity, each painted with its own value.
+const mixes = groups.find((g: any) => g.kind === 'mix')?.rows.map((r: any) => ({ value: r.values[0], label: `${r.where.map(title).join(', ')} ${r.part}` })) ?? []
+---
+<div class="plain">
+  {groups.map((g: any) => (
+    <section class="group" id={`plain-${g.kind}`}>
+      <div class="stage" aria-hidden="true">
+        {g.kind === 'stroke' && (
+          <div class="strokes">
+            <figure><span class="frame"><span class="pill border" /></span><figcaption>Border: grows past the frame</figcaption></figure>
+            <figure><span class="frame"><span class="pill inset" /></span><figcaption>Inset shadow: stays inside</figcaption></figure>
+            <p class="scale">Drawn at 4x. The dashed line is Figma's frame.</p>
+          </div>
+        )}
+        {g.kind === 'ring' && (
+          <div class="rings">
+            <span class="ringed pill-ring"><Button as="span">Focus</Button><span class="ring" /></span>
+            <span class="ringed card-ring"><span class="card" /><span class="ring" /></span>
+          </div>
+        )}
+        {g.kind === 'mix' && (
+          <div class="mixes">
+            {mixes.map((m: any) => <figure><span class="chip"><span style={`background: ${m.value}`} /></span><figcaption>{m.label}</figcaption></figure>)}
+          </div>
+        )}
+        {g.kind === 'icon' && (
+          <div class="icons">
+            {icons.map((i) => <figure><span class="glyph" style={`mask: ${i.mask}; -webkit-mask: ${i.mask}`} /><figcaption>{i.name}</figcaption></figure>)}
+          </div>
+        )}
+        {g.kind === 'size' && (
+          <div class="sizes">
+            {sizes.map((s: any) => <div class="size"><span class="bar" style={`width: ${s.px}px`} /><span><b>{s.px}px</b> {s.label}</span></div>)}
+          </div>
+        )}
+        {g.kind === 'tuning' && <canvas class="paper" data-plain-paper />}
+      </div>
+      <div class="text">
+        <h3>{g.label}</h3>
+        <p class="why" set:html={g.why.replace(/`([^`]+)`/g, '<code>$1</code>')} />
+        <ul class="rows">
+          {g.rows.map((r: any) => (
+            <li>
+              <span class="where">{r.where.map((e: any) => <a href={`/components/${e.id}/`}>{title(e)}</a>)}</span>
+              <span class="what">
+                <code class="prop">{r.part}.{r.prop}</code>
+                <code class="value">{valueText(r)}</code>
+                {g.notes && <span class="note">{r.why}</span>}
+              </span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+  ))}
+</div>
+
+<script>
+  import { mountPaper } from '../../../src/effects/paper'
+  const canvas = document.querySelector<HTMLCanvasElement>('[data-plain-paper]')
+  if (canvas) mountPaper(canvas, { area: canvas.parentElement! })
+</script>
+
+<style>
+  .plain { display: grid; gap: var(--spacing-gap-medium); margin-top: var(--spacing-gap-medium); }
+  .group { display: grid; gap: var(--spacing-gap-medium-large); padding: var(--spacing-gap-small); border-radius: var(--spacing-radius-xlarge); background: var(--surface); }
+  .text { padding: 0 var(--spacing-gap-small) var(--spacing-gap-small); }
+  .stage { position: relative; overflow: hidden; display: grid; place-items: center; min-height: 176px; padding: var(--spacing-gap-medium); border-radius: var(--spacing-radius-large); background: var(--non-interactive-background-primary); }
+  figure { margin: 0; display: grid; justify-items: center; gap: var(--spacing-gap-xsmall); }
+  figcaption, .scale { font-size: 12px; color: var(--fg-3); text-align: center; }
+  .scale { margin: 0; grid-column: 1 / -1; }
+
+  /* Strokes: the same 1px, as a border and as an inset shadow, at 4x. */
+  .strokes { display: grid; grid-template-columns: repeat(2, auto); gap: var(--spacing-gap-medium) var(--spacing-gap-2xlarge); }
+  .frame { position: relative; display: block; width: 96px; height: 40px; }
+  .frame::after { content: ''; position: absolute; inset: 0; border: 1px dashed var(--fg); border-radius: var(--spacing-radius-full); z-index: 1; }
+  .pill { position: absolute; top: 0; left: 0; width: 96px; height: 40px; border-radius: var(--spacing-radius-full); background: var(--actions-primary-default-background); }
+  .pill.border { box-sizing: content-box; border-left: 4px solid var(--non-interactive-foreground-primary); border-top: 4px solid var(--non-interactive-foreground-primary); }
+  .pill.inset { box-shadow: inset 4px 4px 0 0 var(--non-interactive-foreground-primary); }
+
+  /* Focus rings: drawn the way the components draw theirs, always on. */
+  .rings { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: var(--spacing-gap-2xlarge); }
+  .ringed { position: relative; display: inline-flex; }
+  .ring { position: absolute; inset: calc(-1 * var(--spacing-gap-2xsmall)); border: var(--spacing-outline-medium) solid var(--actions-primary-focus-focus-ring); pointer-events: none; }
+  .pill-ring .ring { border-radius: var(--spacing-radius-full); }
+  .card { display: block; width: 160px; height: 72px; border-radius: var(--spacing-radius-xlarge); background: var(--non-interactive-background-secondary); }
+  .card-ring .ring { border-radius: calc(var(--spacing-radius-xlarge) + var(--spacing-gap-2xsmall)); }
+
+  /* Colours at an opacity, over dots so the see-through shows. */
+  .mixes { display: flex; flex-wrap: wrap; justify-content: center; gap: var(--spacing-gap-medium); }
+  /* Each swatch over stripes of the page's own colours, so how much shows through is visible. */
+  .chip { display: block; position: relative; width: 104px; height: 72px; border-radius: var(--spacing-radius-medium); overflow: hidden; background: repeating-linear-gradient(135deg, var(--actions-primary-default-background) 0 8px, var(--non-interactive-foreground-primary) 8px 16px); }
+  .chip > span { position: absolute; inset: 0; }
+
+  .icons { display: flex; flex-wrap: wrap; justify-content: center; gap: var(--spacing-gap-medium) var(--spacing-gap-large); }
+  .glyph { display: block; width: 32px; height: 32px; background: var(--fg); }
+
+  .sizes { display: grid; gap: var(--spacing-gap-small); justify-self: center; min-width: 280px; }
+  .size { display: grid; gap: 4px; font-size: 12px; color: var(--fg-3); }
+  .size b { color: var(--fg); font-weight: 500; }
+  .bar { display: block; height: 8px; border-radius: 2px; background: var(--actions-primary-default-background); min-width: 3px; }
+
+  .paper { position: absolute; inset: 0; width: 100%; height: 100%; }
+
+  .text h3 { margin: 0 0 var(--spacing-gap-xsmall); font-family: var(--body); font-size: 20px; font-weight: 600; line-height: 1.3; letter-spacing: -.01em; text-transform: none; color: var(--fg); }
+  .why { margin: 0 0 var(--spacing-gap-medium); color: var(--fg-2); }
+  .rows { list-style: none; margin: 0; padding: 0; display: grid; }
+  .rows li { display: grid; gap: 2px var(--spacing-gap-medium); padding: var(--spacing-gap-small) 0; border-top: 1px solid var(--line); margin: 0; }
+  @media (min-width: 640px) { .rows li { grid-template-columns: 200px minmax(0, 1fr); align-items: start; } }
+  .what { display: grid; gap: 2px; }
+  .where { display: flex; flex-wrap: wrap; gap: 4px var(--spacing-gap-small); font-size: 14px; }
+  .prop { color: var(--fg); font-size: 12px; }
+  .value { color: var(--fg-2); font-size: 12px; overflow-wrap: anywhere; }
+  .note { font-size: 13px; color: var(--fg-3); }
+</style>

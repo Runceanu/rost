@@ -10,7 +10,7 @@
 | Contract | `review` · [projects.contract.yaml](../../contracts/projects.contract.yaml) |
 | Guidance | `agreed` |
 | Source | [Figma 100:185](https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=100-185) · read 2026-10-19 · frozen 2026-10-20 |
-| Implemented in | nowhere yet |
+| Implemented in | The portfolio site (`src/rost/projects/Projects.tsx`, `.rost-projects`) |
 
 ## Props
 
@@ -75,6 +75,12 @@ A number and a big name on the left, industry, type and period on the right, an 
 ## Content
 
 The name is the client or the product, as people know it. Details are a word or two each.
+
+## Where code differs on purpose
+
+| App | What | Why | Taken to design |
+|---|---|---|---|
+| The portfolio site | The last row in the Work list has no line at rest; hover and press still draw it. The 16px slide is eased over 0.2s. | The list ends at the footer, and a line there reads as a stray border. Motion isn't in the contract. | not yet |
 
 ## Tokens
 

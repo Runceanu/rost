@@ -338,6 +338,9 @@ deviations:
       They have the same height, types, states and tokens. The other differences were layer names (`text` against `label`) and the Primary stroke, which is an inset shadow here because it takes no space. 20:14's screenshots all match; 39:38's came back empty. Merged on 2026-10-23.
     raisedWithDesign: false
 implementations:
+  portfolio-site:
+    component: src/rost/button/Button.tsx
+    root: .rost-button
   accounting-app:
     component: src/rost/button/Button.tsx
     root: .rost-button

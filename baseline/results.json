@@ -1,0 +1,8 @@
+{
+  "chips": [
+    {
+      "variant": "status=Default, state=Pressed",
+      "why": "2.62% of pixels differ from Figma"
+    }
+  ]
+}

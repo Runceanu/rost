@@ -1,6 +1,7 @@
 // Every variant of a built component, rendered from the same fixtures the
 // visual test uses. What you see on the site is what gets compared with Figma.
-type Fixture = { node: string; name: string; element: React.ReactNode; force?: string[] }
+// `display` is what the page shows when the tested element is an empty Figma frame.
+type Fixture = { node: string; name: string; element: React.ReactNode; display?: React.ReactNode; force?: string[] }
 // Components in src/components/<id>/, effects in src/effects/<id>.fixtures.tsx.
 const modules = import.meta.glob(['../../../src/components/*/*.fixtures.tsx', '../../../src/effects/*.fixtures.tsx'], { eager: true }) as Record<string, { fixtures: Fixture[]; usage?: string; preview?: React.ReactNode }>
 
@@ -25,7 +26,7 @@ export function Fixtures({ id }: { id: string }) {
       <div className="fixtures">
         {still.map((f) => (
           <figure key={f.node} className="fixture">
-            <div className="fixture-stage">{f.element}</div>
+            <div className="fixture-stage">{f.display ?? f.element}</div>
             <figcaption>{caption(f.name)}</figcaption>
           </figure>
         ))}

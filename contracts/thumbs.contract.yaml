@@ -281,6 +281,10 @@ variants:
         color: { token: project/default/label, value: "#d3d9d5" }
       detail:
         color: { token: project/default/sub-label, value: "#999" }
+implementations:
+  portfolio-site:
+    component: src/rost/thumbs/Thumbs.tsx
+    root: .rost-thumbs
 guidance:
   status: agreed
   use:

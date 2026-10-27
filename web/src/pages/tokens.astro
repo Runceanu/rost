@@ -2,15 +2,18 @@
 import Base from '../layouts/Base.astro'
 import { tokens, isColour } from '../lib/kit'
 
-// tokens.json lost its hyphens in the keys (`non/interactive/...`), so the CSS
-// variable is what I show and group by: it's exact, and it's what code uses.
+// The CSS variable is what I show and group by, since it's what code uses.
 const entries = Object.values(tokens).map((t) => ({ name: t.cssVar, value: t.value }))
 const family = (v: string) => {
   const n = v.replace(/^--/, '')
+  if (n.startsWith('color-') || n === 'base-black') return 'Colour primitives'
   if (n.startsWith('non-interactive-')) return 'Surfaces and text'
+  if (n.startsWith('interactive-')) return 'Picked and unpicked'
+  if (n.startsWith('tabs-')) return 'Tabs'
   if (n.startsWith('actions-')) return 'Actions'
   if (n.startsWith('input-')) return 'Inputs'
   if (n.startsWith('project-')) return 'Projects'
+  if (n.startsWith('spacing-base')) return 'Spacing primitives'
   if (n.startsWith('spacing-gap')) return 'Gaps and padding'
   if (n.startsWith('spacing-size')) return 'Sizes'
   if (n.startsWith('spacing-radius')) return 'Corner radius'
@@ -21,14 +24,14 @@ const family = (v: string) => {
   if (n.startsWith('effect-') || n.startsWith('shadow-')) return 'Effects'
   return 'Other'
 }
-const order = ['Surfaces and text', 'Actions', 'Inputs', 'Projects', 'Type', 'Gaps and padding', 'Sizes', 'Corner radius', 'Outlines', 'Opacity', 'Effects', 'Layout', 'Other']
+const order = ['Surfaces and text', 'Actions', 'Inputs', 'Picked and unpicked', 'Projects', 'Tabs', 'Type', 'Colour primitives', 'Spacing primitives', 'Gaps and padding', 'Sizes', 'Corner radius', 'Outlines', 'Opacity', 'Effects', 'Layout', 'Other']
 const groups = order.map((f) => [f, entries.filter((e) => family(e.name) === f)] as const).filter(([, list]) => list.length)
 ---
 <Base title="Tokens · Rost">
   <div class="kicker">Foundations</div>
   <h1>Tokens</h1>
   <p class="lede">{entries.length} named values. Almost every colour, space and size in Rost comes from one of these. The few that don't are listed in <a href="/docs/tokens/">Token coverage</a>.</p>
-  <p class="muted">The names are the CSS variables, exactly as code uses them, from <code>tokens/tokens.css</code>. Figma has 582 variables. Only the ones a contract needs are here so far, and exporting the rest is on the <a href="/docs/roadmap/">roadmap</a>.</p>
+  <p class="muted">The names are the CSS variables, exactly as code uses them, from <code>tokens/tokens.css</code>. Every Figma variable is here, in the dark theme, plus a few of Rost's own: the effects, the shadow and the hero height. The light values are in <code>tokens/tokens.json</code>, but nothing uses them yet.</p>
   {groups.map(([f, list]) => (
     <>
       <h2>{f}</h2>

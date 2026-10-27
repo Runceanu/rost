@@ -10,7 +10,7 @@
 | Contract | `stable` · [divider.contract.yaml](../../contracts/divider.contract.yaml) |
 | Guidance | `agreed` |
 | Source | [Figma 39:111](https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=39-111) · read 2026-10-19 · frozen 2026-10-20 |
-| Implemented in | The accounting app (`src/rost/divider/Divider.tsx`, `.rost-divider`) |
+| Implemented in | The portfolio site (`src/rost/divider/Divider.tsx`, `.rost-divider`)<br>the accounting app (`src/rost/divider/Divider.tsx`, `.rost-divider`) |
 
 ## Anatomy
 
