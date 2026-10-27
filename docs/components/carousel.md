@@ -53,7 +53,7 @@ A number, a title and a line of description, on nothing: the card has no fill un
 
 ## Accessibility
 
-- **Element**: an `<a>`. Disabled drops the `href` and sets `aria-disabled="true"`.
+- **Element**: an `<a>`, or a `<button>` (`as="button"`) when the card switches something on the page instead of going somewhere. Disabled drops the `href` (or disables the button) and sets `aria-disabled="true"`. The card that's showing now gets `aria-current="step"`, and keeps the Pressed look while it has it, as Button does for the page you're on.
 - **Name**: the title, read with the number and the description. Pass `aria-label` if that reads badly.
 - **Keyboard**: Tab to it, Enter opens it. The carousel around it handles the arrows.
 - **Focus**: a 2px ring, 4px outside the card, on `:focus-visible` only.

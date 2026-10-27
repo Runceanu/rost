@@ -15,6 +15,11 @@
   text-decoration: none;
   color: inherit;
   outline: none;
+  background: none;
+  border: none;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
 }
 
 .rost-carousel__background {
@@ -114,19 +119,19 @@
   color: var(--project-hover-sub-label);
 }
 
-.rost-carousel:active:where(:not(:disabled, [aria-disabled="true"])) .rost-carousel__background {
+.rost-carousel:is(:active, [aria-current="step"]):where(:not(:disabled, [aria-disabled="true"])) .rost-carousel__background {
   display: block;
 }
 
-.rost-carousel:active:where(:not(:disabled, [aria-disabled="true"])) .rost-carousel__number {
+.rost-carousel:is(:active, [aria-current="step"]):where(:not(:disabled, [aria-disabled="true"])) .rost-carousel__number {
   color: var(--project-pressed-label);
 }
 
-.rost-carousel:active:where(:not(:disabled, [aria-disabled="true"])) .rost-carousel__text {
+.rost-carousel:is(:active, [aria-current="step"]):where(:not(:disabled, [aria-disabled="true"])) .rost-carousel__text {
   color: var(--project-pressed-label);
 }
 
-.rost-carousel:active:where(:not(:disabled, [aria-disabled="true"])) .rost-carousel__description {
+.rost-carousel:is(:active, [aria-current="step"]):where(:not(:disabled, [aria-disabled="true"])) .rost-carousel__description {
   color: var(--project-pressed-sub-label);
 }
 

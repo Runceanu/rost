@@ -24,6 +24,8 @@ props:
   showTitle: { type: boolean, default: true }
   showDescription: { type: boolean, default: true }
 states: [ Default, Hover, Pressed, Focus, Disabled ]
+stateSelectors:
+  Pressed: ":is(:active, [aria-current=\"step\"])"
 elements:
   root:
     notes: "Figma's read of Default came back as a Code Connect prompt, not code. Default's values come from its branch in the other four reads, which all carry it."
@@ -38,6 +40,11 @@ elements:
       text-decoration: { value: none, assert: false, notes: "It's a link. The whole card is the target." }
       color: { value: inherit, assert: false }
       outline: { value: none, assert: false }
+      background: { value: none, assert: false, notes: "A link or a `<button>`. The browser's own button look goes." }
+      border: { value: none, assert: false }
+      font: { value: inherit, assert: false }
+      text-align: { value: left, assert: false }
+      cursor: { value: pointer, assert: false }
       width:
         value: 312px
         assert: false
@@ -176,7 +183,7 @@ guidance:
   behaviour: |-
     A number, a title and a line of description, on nothing: the card has no fill until you press it. On hover the number and title go green and the description lightens. Pressed lays a frosted glass under it (`effect/thumb`). Disabled fades the whole card to `opacity/mild`.
   accessibility:
-    element: an `<a>`. Disabled drops the `href` and sets `aria-disabled="true"`.
+    element: an `<a>`, or a `<button>` (`as="button"`) when the card switches something on the page instead of going somewhere. Disabled drops the `href` (or disables the button) and sets `aria-disabled="true"`. The card that's showing now gets `aria-current="step"`, and keeps the Pressed look while it has it, as Button does for the page you're on.
     name: the title, read with the number and the description. Pass `aria-label` if that reads badly.
     keyboard: Tab to it, Enter opens it. The carousel around it handles the arrows.
     focus: a 2px ring, 4px outside the card, on `:focus-visible` only.

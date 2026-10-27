@@ -8,8 +8,8 @@ Every value in every contract, sorted by why it has a token or doesn't. A value 
 |---|---|---|---|
 | Has a token | 1002 | 60% | Uses a token, and the check tests it. |
 | Token suggested | 0 | 0% | A token I want that doesn't exist yet. The freeze turned every other suggestion into a token. |
-| How Figma builds it | 465 | 28% | How Figma builds the layer (position, inset, which sides get a stroke). Nothing to tokenise. |
-| Figma frame size | 129 | 8% | A root size that is just the Figma frame. Written down, not checked. |
+| How Figma builds it | 466 | 28% | How Figma builds the layer (position, inset, which sides get a stroke). Nothing to tokenise. |
+| Figma frame size | 133 | 8% | A root size that is just the Figma frame. Written down, not checked. |
 | No token, on purpose | 53 | 3% | Plain on purpose, and the contract says why. |
 | Open gap | 28 | 2% | No token and no reason. Each one needs a decision from me. |
 
@@ -19,7 +19,7 @@ Every value in every contract, sorted by why it has a token or doesn't. A value 
 |---|---:|---:|---:|---:|---:|---:|
 | [Badge](components/badge.md) | 25 | · | 21 | · | · | · |
 | [Button](components/button.md) | 83 | · | 38 | 9 | 5 | 1 |
-| [Carousel](components/carousel.md) | 43 | · | 27 | 9 | 2 | 1 |
+| [Carousel](components/carousel.md) | 43 | · | 28 | 13 | 2 | 1 |
 | [Chip](components/chips.md) | 27 | · | 15 | 8 | 5 | 1 |
 | [Divider](components/divider.md) | 2 | · | 2 | 2 | · | · |
 | [Floating effect](components/effect-floating.md) | 1 | · | · | · | · | · |

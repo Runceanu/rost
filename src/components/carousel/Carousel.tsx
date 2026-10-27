@@ -1,7 +1,7 @@
-import type { AnchorHTMLAttributes, ReactNode } from 'react'
+import type { AnchorHTMLAttributes, ButtonHTMLAttributes, ReactNode } from 'react'
 import './carousel.css'
 
-export interface CarouselProps extends Omit<AnchorHTMLAttributes<HTMLAnchorElement>, 'title'> {
+export interface CarouselProps extends Omit<AnchorHTMLAttributes<HTMLAnchorElement> & ButtonHTMLAttributes<HTMLButtonElement>, 'title' | 'type'> {
   /** A two-digit index in front of the title. */
   readonly number?: ReactNode
   readonly title?: ReactNode
@@ -11,8 +11,8 @@ export interface CarouselProps extends Omit<AnchorHTMLAttributes<HTMLAnchorEleme
   readonly showDescription?: boolean
   /** Fades the card and drops the link. */
   readonly disabled?: boolean
-  /** `div` draws it without the link, for a preview inside something that's already a link. */
-  readonly as?: 'a' | 'div'
+  /** `button` when it switches something on the page (pair it with `aria-current="step"` on the one showing); `div` draws it without the link, for a preview inside something that's already a link. */
+  readonly as?: 'a' | 'button' | 'div'
 }
 
 const b = 'rost-carousel'
@@ -28,7 +28,9 @@ export function Carousel({
   disabled = false, className, href, as = 'a', ...rest
 }: CarouselProps) {
   const Root = as
-  const link = as === 'a' ? { href: disabled ? undefined : href, 'aria-disabled': disabled || undefined } : { 'aria-disabled': disabled || undefined }
+  const link = as === 'a' ? { href: disabled ? undefined : href, 'aria-disabled': disabled || undefined }
+    : as === 'button' ? { type: 'button' as const, disabled, 'aria-disabled': disabled || undefined }
+    : { 'aria-disabled': disabled || undefined }
   return (
     <Root className={[b, className].filter(Boolean).join(' ')} {...link} {...(rest as object)}>
       <span className={`${b}__background`} />
