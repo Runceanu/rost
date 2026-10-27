@@ -113,6 +113,11 @@
   pointer-events: none;
 }
 
+.rost-list-item.rost-list-item--selected .rost-list-item__label {
+  font-weight: var(--typography-paragraph-font-weight-medium);
+  color: var(--interactive-active-default-label);
+}
+
 .rost-list-item.rost-list-item--selected .rost-list-item__background {
   background: var(--interactive-active-default-background);
   opacity: var(--opacity-solid);
@@ -120,10 +125,6 @@
 
 .rost-list-item.rost-list-item--selected .rost-list-item__leading {
   color: var(--interactive-active-default-icon);
-}
-
-.rost-list-item.rost-list-item--selected .rost-list-item__label {
-  color: var(--interactive-active-default-label);
 }
 
 .rost-list-item.rost-list-item--selected .rost-list-item__description {
@@ -138,6 +139,11 @@
   background: var(--non-interactive-background-primary);
 }
 
+.rost-list-item:hover.rost-list-item--selected .rost-list-item__label {
+  font-weight: var(--typography-paragraph-font-weight-medium);
+  color: var(--interactive-active-hover-label);
+}
+
 .rost-list-item:hover.rost-list-item--selected .rost-list-item__background {
   background: var(--interactive-active-hover-background);
   opacity: var(--opacity-solid);
@@ -145,10 +151,6 @@
 
 .rost-list-item:hover.rost-list-item--selected .rost-list-item__leading {
   color: var(--interactive-active-hover-icon);
-}
-
-.rost-list-item:hover.rost-list-item--selected .rost-list-item__label {
-  color: var(--interactive-active-hover-label);
 }
 
 .rost-list-item:hover.rost-list-item--selected .rost-list-item__description {
@@ -163,6 +165,11 @@
   background: var(--non-interactive-background-primary);
 }
 
+.rost-list-item:active.rost-list-item--selected .rost-list-item__label {
+  font-weight: var(--typography-paragraph-font-weight-medium);
+  color: var(--interactive-active-pressed-label);
+}
+
 .rost-list-item:active.rost-list-item--selected .rost-list-item__background {
   background: var(--interactive-active-pressed-background);
   opacity: var(--opacity-solid);
@@ -170,10 +177,6 @@
 
 .rost-list-item:active.rost-list-item--selected .rost-list-item__leading {
   color: var(--interactive-active-pressed-icon);
-}
-
-.rost-list-item:active.rost-list-item--selected .rost-list-item__label {
-  color: var(--interactive-active-pressed-label);
 }
 
 .rost-list-item:active.rost-list-item--selected .rost-list-item__description {
@@ -188,6 +191,11 @@
   background: var(--non-interactive-background-primary);
 }
 
+.rost-list-item:focus-visible.rost-list-item--selected .rost-list-item__label {
+  font-weight: var(--typography-paragraph-font-weight-medium);
+  color: var(--interactive-active-focus-label);
+}
+
 .rost-list-item:focus-visible.rost-list-item--selected .rost-list-item__background {
   background: var(--interactive-active-focus-background);
   opacity: var(--opacity-solid);
@@ -195,10 +203,6 @@
 
 .rost-list-item:focus-visible.rost-list-item--selected .rost-list-item__leading {
   color: var(--interactive-active-focus-icon);
-}
-
-.rost-list-item:focus-visible.rost-list-item--selected .rost-list-item__label {
-  color: var(--interactive-active-focus-label);
 }
 
 .rost-list-item:focus-visible.rost-list-item--selected .rost-list-item__description {
@@ -218,6 +222,11 @@
   border-color: var(--interactive-active-focus-focus-ring);
 }
 
+.rost-list-item:is(:disabled, [aria-disabled="true"]).rost-list-item--selected .rost-list-item__label {
+  font-weight: var(--typography-paragraph-font-weight-medium);
+  color: var(--interactive-active-disabled-label);
+}
+
 .rost-list-item:is(:disabled, [aria-disabled="true"]).rost-list-item--selected {
   opacity: var(--opacity-gentle);
 }
@@ -229,10 +238,6 @@
 
 .rost-list-item:is(:disabled, [aria-disabled="true"]).rost-list-item--selected .rost-list-item__leading {
   color: var(--interactive-active-disabled-icon);
-}
-
-.rost-list-item:is(:disabled, [aria-disabled="true"]).rost-list-item--selected .rost-list-item__label {
-  color: var(--interactive-active-disabled-label);
 }
 
 .rost-list-item:is(:disabled, [aria-disabled="true"]).rost-list-item--selected .rost-list-item__description {

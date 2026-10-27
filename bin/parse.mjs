@@ -96,7 +96,10 @@ function scopeFor(src, variantName) {
   for (const m of sig.matchAll(/(\w+)\s*=\s*(true|false|null)\b/g)) scope[m[1]] = m[2] === 'true' ? true : m[2] === 'false' ? false : null
   for (const pair of (variantName || '').split(',')) {
     const [k, v] = pair.split('=').map((x) => x?.trim())
-    if (k && v !== undefined) scope[k] = v
+    // `selected=False` (or `collapsed=false`) is the boolean false: the code
+    // tests `!selected`, and the string "False" is truthy, so every off
+    // variant read as on.
+    if (k && v !== undefined) scope[k] = /^true$/i.test(v) ? true : /^false$/i.test(v) ? false : v
   }
   // `const isSecondary = type === "Secondary";`, evaluated in declaration order.
   for (const m of src.matchAll(/const\s+(\w+)\s*=\s*([^;]+);/g)) {

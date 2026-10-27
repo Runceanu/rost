@@ -120,6 +120,14 @@
   pointer-events: none;
 }
 
+.rost-input.rost-input--configuration-empty:not(.rost-input--selected):not(.rost-input--error) .rost-input__label {
+  font-size: var(--typography-paragraph-font-size);
+  line-height: var(--typography-paragraph-line-height);
+  letter-spacing: var(--typography-paragraph-letter-spacing);
+  font-weight: var(--typography-paragraph-font-weight-regular);
+  color: var(--input-regular-default-label);
+}
+
 .rost-input.rost-input--configuration-empty:not(.rost-input--selected):not(.rost-input--error) .rost-input__outline {
   background: var(--input-regular-default-background);
   border-color: var(--input-regular-default-outline);
@@ -127,13 +135,6 @@
 
 .rost-input.rost-input--configuration-empty:not(.rost-input--selected):not(.rost-input--error) .rost-input__icons-lock {
   background: var(--input-regular-default-icon);
-}
-
-.rost-input.rost-input--configuration-empty:not(.rost-input--selected):not(.rost-input--error) .rost-input__label {
-  color: var(--input-regular-default-label);
-  font-size: var(--typography-paragraph-font-size);
-  line-height: var(--typography-paragraph-line-height);
-  letter-spacing: var(--typography-paragraph-letter-spacing);
 }
 
 .rost-input.rost-input--configuration-empty:not(.rost-input--selected):not(.rost-input--error) .rost-input__value {
@@ -145,6 +146,14 @@
   color: var(--input-regular-default-supportive);
 }
 
+.rost-input:hover.rost-input--configuration-empty:not(.rost-input--selected):not(.rost-input--error) .rost-input__label {
+  font-size: var(--typography-paragraph-font-size);
+  line-height: var(--typography-paragraph-line-height);
+  letter-spacing: var(--typography-paragraph-letter-spacing);
+  font-weight: var(--typography-paragraph-font-weight-regular);
+  color: var(--input-regular-hover-supportive);
+}
+
 .rost-input:hover.rost-input--configuration-empty:not(.rost-input--selected):not(.rost-input--error) .rost-input__outline {
   background: var(--input-regular-hover-background);
   border-color: var(--input-regular-hover-outline);
@@ -152,13 +161,6 @@
 
 .rost-input:hover.rost-input--configuration-empty:not(.rost-input--selected):not(.rost-input--error) .rost-input__icons-lock {
   background: var(--input-regular-hover-icon);
-}
-
-.rost-input:hover.rost-input--configuration-empty:not(.rost-input--selected):not(.rost-input--error) .rost-input__label {
-  color: var(--input-regular-hover-supportive);
-  font-size: var(--typography-paragraph-font-size);
-  line-height: var(--typography-paragraph-line-height);
-  letter-spacing: var(--typography-paragraph-letter-spacing);
 }
 
 .rost-input:hover.rost-input--configuration-empty:not(.rost-input--selected):not(.rost-input--error) .rost-input__value {
@@ -199,6 +201,14 @@
   border-color: var(--input-regular-focus-focus-ring);
 }
 
+.rost-input:has(input:disabled).rost-input--configuration-empty:not(.rost-input--selected):not(.rost-input--error) .rost-input__label {
+  font-size: var(--typography-paragraph-font-size);
+  line-height: var(--typography-paragraph-line-height);
+  letter-spacing: var(--typography-paragraph-letter-spacing);
+  font-weight: var(--typography-paragraph-font-weight-regular);
+  color: var(--input-regular-disabled-label);
+}
+
 .rost-input:has(input:disabled).rost-input--configuration-empty:not(.rost-input--selected):not(.rost-input--error) .rost-input__outline {
   background: var(--input-regular-disabled-background);
   border-color: var(--input-regular-disabled-outline);
@@ -207,13 +217,6 @@
 .rost-input:has(input:disabled).rost-input--configuration-empty:not(.rost-input--selected):not(.rost-input--error) .rost-input__icons-lock {
   background: var(--input-regular-disabled-icon);
   opacity: var(--opacity-soft);
-}
-
-.rost-input:has(input:disabled).rost-input--configuration-empty:not(.rost-input--selected):not(.rost-input--error) .rost-input__label {
-  color: var(--input-regular-disabled-label);
-  font-size: var(--typography-paragraph-font-size);
-  line-height: var(--typography-paragraph-line-height);
-  letter-spacing: var(--typography-paragraph-letter-spacing);
 }
 
 .rost-input:has(input:disabled).rost-input--configuration-empty:not(.rost-input--selected):not(.rost-input--error) .rost-input__value {
@@ -225,6 +228,14 @@
   color: var(--input-regular-disabled-supportive);
 }
 
+.rost-input.rost-input--configuration-empty:not(.rost-input--selected).rost-input--error .rost-input__label {
+  font-size: var(--typography-paragraph-font-size);
+  line-height: var(--typography-paragraph-line-height);
+  letter-spacing: var(--typography-paragraph-letter-spacing);
+  font-weight: var(--typography-paragraph-font-weight-regular);
+  color: var(--input-negative-default-label);
+}
+
 .rost-input.rost-input--configuration-empty:not(.rost-input--selected).rost-input--error .rost-input__outline {
   background: var(--input-negative-default-background);
   border-color: var(--input-negative-default-outline);
@@ -232,13 +243,6 @@
 
 .rost-input.rost-input--configuration-empty:not(.rost-input--selected).rost-input--error .rost-input__icons-lock {
   background: var(--input-negative-default-icon);
-}
-
-.rost-input.rost-input--configuration-empty:not(.rost-input--selected).rost-input--error .rost-input__label {
-  color: var(--input-negative-default-label);
-  font-size: var(--typography-paragraph-font-size);
-  line-height: var(--typography-paragraph-line-height);
-  letter-spacing: var(--typography-paragraph-letter-spacing);
 }
 
 .rost-input.rost-input--configuration-empty:not(.rost-input--selected).rost-input--error .rost-input__value {
@@ -348,6 +352,14 @@
   border-color: var(--input-negative-focus-focus-ring);
 }
 
+.rost-input:hover.rost-input--configuration-empty:not(.rost-input--selected).rost-input--error .rost-input__label {
+  font-size: var(--typography-paragraph-font-size);
+  line-height: var(--typography-paragraph-line-height);
+  letter-spacing: var(--typography-paragraph-letter-spacing);
+  font-weight: var(--typography-paragraph-font-weight-regular);
+  color: var(--input-negative-hover-label);
+}
+
 .rost-input:hover.rost-input--configuration-empty:not(.rost-input--selected).rost-input--error .rost-input__outline {
   background: var(--input-negative-hover-background);
   border-color: var(--input-negative-hover-outline);
@@ -355,13 +367,6 @@
 
 .rost-input:hover.rost-input--configuration-empty:not(.rost-input--selected).rost-input--error .rost-input__icons-lock {
   background: var(--input-negative-hover-icon);
-}
-
-.rost-input:hover.rost-input--configuration-empty:not(.rost-input--selected).rost-input--error .rost-input__label {
-  color: var(--input-negative-hover-label);
-  font-size: var(--typography-paragraph-font-size);
-  line-height: var(--typography-paragraph-line-height);
-  letter-spacing: var(--typography-paragraph-letter-spacing);
 }
 
 .rost-input:hover.rost-input--configuration-empty:not(.rost-input--selected).rost-input--error .rost-input__value {

@@ -152,6 +152,13 @@ elements:
       border-radius: { token: spacing/radius/large, value: 16px }
       pointer-events: { value: none, assert: false }
 variants:
+  - when: { configuration: Empty, selected: false }
+    elements:
+      label:
+        font-size: { token: typography/paragraph/font-size, value: 14px }
+        line-height: { token: typography/paragraph/line-height, value: 20px }
+        letter-spacing: { token: typography/paragraph/letter-spacing, value: 0px }
+        font-weight: { token: typography/paragraph/font-weight/regular, value: "400", notes: "While the label sits large in the empty field it is paragraph type, weight included. Same 400 as the label token, a different token." }
   - when: { state: Default, configuration: Empty, selected: false, error: false }
     figmaNode: "240:274"
     elements:
@@ -162,9 +169,6 @@ variants:
         background: { token: input/regular/default/icon, value: "#00d669" }
       label:
         color: { token: input/regular/default/label, value: "#999999" }
-        font-size: { token: typography/paragraph/font-size, value: 14px }
-        line-height: { token: typography/paragraph/line-height, value: 20px }
-        letter-spacing: { token: typography/paragraph/letter-spacing, value: 0px }
       value:
         height: { value: "0", assert: false, notes: "Empty and not focused: only the label shows. The input is still there, so you can tab into it." }
         opacity: { value: "0", assert: false }
@@ -180,9 +184,6 @@ variants:
         background: { token: input/regular/hover/icon, value: "#00b450" }
       label:
         color: { token: input/regular/hover/supportive, value: "#d3d9d5" }
-        font-size: { token: typography/paragraph/font-size, value: 14px }
-        line-height: { token: typography/paragraph/line-height, value: 20px }
-        letter-spacing: { token: typography/paragraph/letter-spacing, value: 0px }
       value:
         height: { value: "0", assert: false, notes: "Empty and not focused: only the label shows. The input is still there, so you can tab into it." }
         opacity: { value: "0", assert: false }
@@ -219,9 +220,6 @@ variants:
         opacity: { token: opacity/soft, value: "0.16" }
       label:
         color: { token: input/regular/disabled/label, value: "#555555" }
-        font-size: { token: typography/paragraph/font-size, value: 14px }
-        line-height: { token: typography/paragraph/line-height, value: 20px }
-        letter-spacing: { token: typography/paragraph/letter-spacing, value: 0px }
       value:
         height: { value: "0", assert: false, notes: "Empty and not focused: only the label shows. The input is still there, so you can tab into it." }
         opacity: { value: "0", assert: false }
@@ -237,9 +235,6 @@ variants:
         background: { token: input/negative/default/icon, value: "#e93120" }
       label:
         color: { token: input/negative/default/label, value: "#e93120" }
-        font-size: { token: typography/paragraph/font-size, value: 14px }
-        line-height: { token: typography/paragraph/line-height, value: 20px }
-        letter-spacing: { token: typography/paragraph/letter-spacing, value: 0px }
       value:
         height: { value: "0", assert: false, notes: "Empty and not focused: only the label shows. The input is still there, so you can tab into it." }
         opacity: { value: "0", assert: false }
@@ -320,9 +315,6 @@ variants:
         background: { token: input/negative/hover/icon, value: "#ae1b13" }
       label:
         color: { token: input/negative/hover/label, value: "#e93120" }
-        font-size: { token: typography/paragraph/font-size, value: 14px }
-        line-height: { token: typography/paragraph/line-height, value: 20px }
-        letter-spacing: { token: typography/paragraph/letter-spacing, value: 0px }
       value:
         height: { value: "0", assert: false, notes: "Empty and not focused: only the label shows. The input is still there, so you can tab into it." }
         opacity: { value: "0", assert: false }

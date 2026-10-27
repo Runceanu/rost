@@ -135,6 +135,10 @@ elements:
       border-radius: { token: spacing/radius/medium, value: 12px }
       pointer-events: { value: none, assert: false }
 variants:
+  - when: { selected: true }
+    elements:
+      label:
+        font-weight: { token: typography/paragraph/font-weight/medium, value: "500", notes: "The selected label is paragraph medium in every state. The contract had it regular until a node-by-node read on 2026-10-27." }
   - when: { state: Default, selected: true }
     figmaNode: "346:3862"
     elements:
