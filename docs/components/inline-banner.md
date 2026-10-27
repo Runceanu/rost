@@ -10,7 +10,7 @@
 | Contract | `stable` · [inline-banner.contract.yaml](../../contracts/inline-banner.contract.yaml) |
 | Guidance | `agreed` |
 | Source | [Figma 205:614](https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=205-614) · read 2026-10-20 · frozen 2026-10-20 |
-| Implemented in | The accounting app (`src/rost/inline-banner/InlineBanner.tsx`, `.rost-inline-banner`) |
+| Implemented in | The portfolio site (`src/rost/inline-banner/InlineBanner.tsx`, `.rost-inline-banner`)<br>the accounting app (`src/rost/inline-banner/InlineBanner.tsx`, `.rost-inline-banner`) |
 
 ## Props
 
@@ -57,6 +57,12 @@
 ## Content
 
 One short sentence, no full stop if it's a fragment. Lead with what happened: "Saved just now", "Payment failed: card expired".
+
+## Where code differs on purpose
+
+| App | What | Why | Taken to design |
+|---|---|---|---|
+| The portfolio site | The Roche case study's disclaimer is a whole sentence, so on a narrow screen its label wraps and sits left-aligned instead of staying on one centred line. | It's a disclaimer, not a status, and it's longer than a phone is wide. | not yet |
 
 ## Tokens
 

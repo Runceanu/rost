@@ -77,6 +77,12 @@ The picture fills the card, and the frosted panel sits on its bottom edge with t
 
 The name is the client or the product, as people know it. Details are a word or two each, the period like "2024" or "2023 to 2025".
 
+## Where code differs on purpose
+
+| App | What | Why | Taken to design |
+|---|---|---|---|
+| The portfolio site | Under 480px a name too long for its card wraps instead of staying on one line. It keeps `typography/title` at every width. The /built page does the same at every width. | Names like OneDS Instruments Artboard Creator don't fit a phone-width card on one line, and shrinking the type would leave Rost's scale. | not yet |
+
 ## Tokens
 
 Every token this component uses, across all its variants.

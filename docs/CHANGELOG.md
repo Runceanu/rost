@@ -4,6 +4,20 @@ What changed each time I merged into `master` and put rost.build live. Newest fi
 
 ## 2026-10-27
 
+**In the evening**
+
+- **Carousel can be a button, and the card that's showing wears Pressed.** `aria-current="step"` gets the Pressed look, the way `aria-current="page"` does for Button, and `as="button"` is for a card that switches something on the page instead of going somewhere. The root drops the browser's own button look. Figma's five variants still match.
+- **The portfolio site follows Rost.** Rost is the source of truth, so where the site differed, the site changed:
+  - Projects and Thumbs keep Rost's type at every width (40/48 and 24/32). They used to shrink on a phone; now a long name wraps.
+  - The nav is Rost's Button (Tertiary, Secondary) and Tooltip, like rost.build's header. Under 420px it drops Book an intro, which every page has in its body.
+  - The case-study steps are Rost's Carousel; the hand-built CarouselCard is gone. Their descriptions are `typography/paragraph` now.
+  - Roche's disclaimer is Rost's InlineBanner (Warning, Medium), with Rost's warning glyph.
+  - The app's tokens are Rost's `tokens.css`, whole. Its old partial copy had 308 of 670 tokens and the wrong `spacing/base-8`. One rule read a token that didn't exist (`--gap-7xlarge`); it reads `--spacing-gap-7xlarge` now.
+  - 59 raw `rgba()` colours are Rost colour tokens at Rost opacity tokens. 25 of them weren't on the opacity scale and moved to the nearest step, most by 0.04 or less.
+  - The app's copies are all on current Rost, and its contract test checks every whole variant (116), not the raw layers.
+  - What's left different is recorded on Projects, Thumbs, Button and InlineBanner, and Carousel and Tooltip list the portfolio site as an app that uses them.
+- **Not done yet.** Projects' number has no fixed width, so a narrow "01" pulls its name about 3px left of the rest. Thumbs fixes its number at 16px; Projects should too.
+
 **Later the same day**
 
 - **Chip matches Figma in every state.** Pressed was the one variant of 149 over the visual test's line (2.62% against 2.5%). The contract was right; Chrome draws a 1px border on a fully round box over two pixels at each end, where Figma draws one, and Pressed is the state where the outline is solid. Chip draws its edge as an inset shadow now, like Button and Toggle. Pressed is at 0.68%. The portfolio site has its own copy of Chip and gets this with `npm run add`.

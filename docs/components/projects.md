@@ -81,6 +81,7 @@ The name is the client or the product, as people know it. Details are a word or 
 | App | What | Why | Taken to design |
 |---|---|---|---|
 | The portfolio site | The last row in the Work list has no line at rest; hover and press still draw it. The 16px slide is eased over 0.2s. | The list ends at the footer, and a line there reads as a stray border. Motion isn't in the contract. | not yet |
+| The portfolio site | Under 768px the Work list hides the right side (industry, type and period), and a name too long for the row wraps instead of staying on one line. The name keeps `typography/sub-headline` at every width. | A phone has no room for both sides, and a 40px name like Paladin Software doesn't fit on one line there. Shrinking the type would leave Rost's scale. | not yet |
 
 ## Tokens
 

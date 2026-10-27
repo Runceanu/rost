@@ -200,6 +200,15 @@ guidance:
   content: |-
     One short sentence, no full stop if it's a fragment. Lead with what happened: "Saved just now", "Payment failed: card expired".
 implementations:
+  portfolio-site:
+    component: src/rost/inline-banner/InlineBanner.tsx
+    root: .rost-inline-banner
+    deviations:
+      - what: |-
+          The Roche case study's disclaimer is a whole sentence, so on a narrow screen its label wraps and sits left-aligned instead of staying on one centred line.
+        why: |-
+          It's a disclaimer, not a status, and it's longer than a phone is wide.
+        raisedWithDesign: false
   accounting-app:
     component: src/rost/inline-banner/InlineBanner.tsx
     root: .rost-inline-banner

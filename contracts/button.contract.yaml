@@ -341,6 +341,12 @@ implementations:
   portfolio-site:
     component: src/rost/button/Button.tsx
     root: .rost-button
+    deviations:
+      - what: |-
+          On a phone the homepage hero's two Buttons stretch to the full width of the column. Under 420px the nav drops its Book an intro Button, which every page has in its own body.
+        why: |-
+          Two hugging buttons side by side don't fit a phone, and the nav's three Buttons need 384px. Rost's Button doesn't shrink, so the layout gives way instead.
+        raisedWithDesign: false
   accounting-app:
     component: src/rost/button/Button.tsx
     root: .rost-button

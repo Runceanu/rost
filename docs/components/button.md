@@ -66,6 +66,7 @@ A verb, sentence case, two or three words. "Save changes", not "OK" or "SUBMIT".
 | App | What | Why | Taken to design |
 |---|---|---|---|
 | all | Figma has Button twice: the set at 20:14 (PillButton, with a `leading` icon slot that's off by default) and the one at 39:38 (Button, label only). Rost has one Button with an optional icon, built from 20:14. | They have the same height, types, states and tokens. The other differences were layer names (`text` against `label`) and the Primary stroke, which is an inset shadow here because it takes no space. 20:14's screenshots all match; 39:38's came back empty. Merged on 2026-10-23. | not yet |
+| The portfolio site | On a phone the homepage hero's two Buttons stretch to the full width of the column. Under 420px the nav drops its Book an intro Button, which every page has in its own body. | Two hugging buttons side by side don't fit a phone, and the nav's three Buttons need 384px. Rost's Button doesn't shrink, so the layout gives way instead. | not yet |
 
 ## Tokens
 

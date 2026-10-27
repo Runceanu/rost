@@ -285,6 +285,12 @@ implementations:
   portfolio-site:
     component: src/rost/thumbs/Thumbs.tsx
     root: .rost-thumbs
+    deviations:
+      - what: |-
+          Under 480px a name too long for its card wraps instead of staying on one line. It keeps `typography/title` at every width. The /built page does the same at every width.
+        why: |-
+          Names like OneDS Instruments Artboard Creator don't fit a phone-width card on one line, and shrinking the type would leave Rost's scale.
+        raisedWithDesign: false
 guidance:
   status: agreed
   use:

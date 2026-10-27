@@ -10,7 +10,7 @@
 | Contract | `review` · [tooltip.contract.yaml](../../contracts/tooltip.contract.yaml) |
 | Guidance | `agreed` |
 | Source | [Figma 138:276](https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=138-276) · read 2026-10-23 |
-| Implemented in | nowhere yet |
+| Implemented in | The portfolio site (`src/rost/tooltip/Tooltip.tsx`, `.rost-tooltip`) |
 
 ## Props
 

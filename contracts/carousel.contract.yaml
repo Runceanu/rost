@@ -173,6 +173,10 @@ variants:
         color: { token: project/disabled/label, value: "#d3d9d5" }
       description:
         color: { token: project/disabled/sub-label, value: "#999" }
+implementations:
+  portfolio-site:
+    component: src/rost/carousel/Carousel.tsx
+    root: .rost-carousel
 guidance:
   status: agreed
   use:

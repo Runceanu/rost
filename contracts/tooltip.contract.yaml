@@ -39,6 +39,10 @@ elements:
       line-height: { token: typography/label/line-height, value: 14px }
       letter-spacing: { token: typography/label/letter-spacing, value: 0px }
       color: { token: actions/secondary/regular/default/label, value: "#d3d9d5" }
+implementations:
+  portfolio-site:
+    component: src/rost/tooltip/Tooltip.tsx
+    root: .rost-tooltip
 guidance:
   status: agreed
   use:

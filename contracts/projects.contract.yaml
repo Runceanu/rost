@@ -265,6 +265,11 @@ implementations:
         why: |-
           The list ends at the footer, and a line there reads as a stray border. Motion isn't in the contract.
         raisedWithDesign: false
+      - what: |-
+          Under 768px the Work list hides the right side (industry, type and period), and a name too long for the row wraps instead of staying on one line. The name keeps `typography/sub-headline` at every width.
+        why: |-
+          A phone has no room for both sides, and a 40px name like Paladin Software doesn't fit on one line there. Shrinking the type would leave Rost's scale.
+        raisedWithDesign: false
 guidance:
   status: agreed
   use:
