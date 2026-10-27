@@ -13,7 +13,7 @@ Rost started as a design system for my own needs and grew into a product of its 
 | [Roadmap](ROADMAP.md) | What I'm doing next |
 | [Release notes](CHANGELOG.md) | What changed in each release |
 
-**26** contracts, **5** stable. **25** have guidance, and I've signed off **25** of those.
+**26** contracts, **5** stable. **26** have guidance, and I've signed off **25** of those.
 
 ## Catalogue
 
@@ -36,7 +36,7 @@ Rost started as a design system for my own needs and grew into a product of its 
 | [TabItem](components/tab-item.md) | One tab in a row of tabs. A label, optional icons before and after it, and a green underline when it's the one selected. | `review` | `agreed` | · |
 | [Tabs](components/tabs.md) | A row of tabs on a 1px line. One is selected, and its panel shows below. | `review` | `agreed` | · |
 | [Tag](components/tags.md) | A compact 20px label with small corners, for what a piece of content is about. | `review` | `agreed` | · |
-| [TestimonialPicture](components/testimonials-pics.md) | The photo of the person behind a testimonial. | `review` | · | The portfolio site |
+| [TestimonialPicture](components/testimonials-pics.md) | The photo of the person behind a testimonial. | `review` | `proposed` | The portfolio site |
 | [Testimonials](components/testimonials.md) | A testimonial you can open and close: name and role, with the quote underneath. | `review` | `agreed` | The portfolio site |
 | [Thumbs](components/thumbs.md) | A project thumbnail card, with the project name and details on a frosted panel at the bottom. | `review` | `agreed` | The portfolio site |
 | [Toggle](components/toggle.md) | A 40×40 icon button that stays on or off, alone or as one choice in a group. | `stable` | `agreed` | The accounting app |
@@ -65,10 +65,6 @@ What needs attention. It's built from the contracts, so it's only as fresh as th
 ### Still open from Figma
 
 - [Menu effect](components/effect-menu.md)
-
-### No guidance yet
-
-- [TestimonialPicture](components/testimonials-pics.md)
 
 ### Differences nobody has taken to design yet
 

@@ -32,6 +32,16 @@ const byProp: Record<string, { name: string; v: any }[]> = {}
 for (const [name, parts] of Object.entries(e.variantMap) as [string, any][])
   for (const [part, props] of Object.entries(parts) as [string, any][])
     for (const [prop, v] of Object.entries(props)) (byProp[`${part}.${prop}`] ??= []).push({ name, v })
+// Every group's table gets the same columns, so the values and tokens line up
+// from one group to the next. The cells are monospace: characters are widths.
+const rowsAll = Object.values(byProp).flat()
+// A long name (Input's four axes) wraps at 30 characters instead of pushing the rest off the side.
+const nameCh = Math.min(30, Math.max(0, ...rowsAll.map((r) => r.name.length)))
+// So does a value that's a whole expression (a box-shadow), past 28.
+const valueCh = Math.min(28, Math.max(0, ...rowsAll.map((r) => String(r.v.value).length + (isColour(r.v.value) ? 3 : 0))))
+// The token column takes what's left. This only keeps it from getting too
+// narrow to read; a reason written out ("on purpose: ...") wraps.
+const tokenCh = Math.min(24, Math.max(0, ...Object.entries(byProp).flatMap(([k, rows]) => rows.map((r) => tokenCell(k.split('.')[1], r.v).text.length))))
 const props = Object.entries(c.props ?? {}) as [string, any][]
 ---
   {nested ? (
@@ -130,7 +140,7 @@ const props = Object.entries(c.props ?? {}) as [string, any][]
       {Object.entries(byProp).sort().map(([k, rows]) => (
         <details class="vary">
           <summary><code>{k}</code><span class="n">{rows.length}</span></summary>
-          <div class="scroll"><table class="t"><tbody>{rows.map(({ name, v }) => { const t = cell(k.split('.')[1], v); return <tr><td>{name}</td><td>{isColour(v.value) && <span class="sw" style={`--c:${v.value}`} />}{v.value}</td><td class={t.cls}>{t.text}</td></tr> })}</tbody></table></div>
+          <div class="scroll"><table class="t t--vary" style={`--name:${nameCh};--value:${valueCh};--token:${tokenCh}`}><colgroup><col class="c-name" /><col class="c-value" /><col /></colgroup><tbody>{rows.map(({ name, v }) => { const t = cell(k.split('.')[1], v); return <tr><td>{name}</td><td>{isColour(v.value) && <span class="sw" style={`--c:${v.value}`} />}{v.value}</td><td class={t.cls}>{t.text}</td></tr> })}</tbody></table></div>
         </details>
       ))}
     </>
@@ -151,6 +161,13 @@ const props = Object.entries(c.props ?? {}) as [string, any][]
   .plain { padding-left: var(--spacing-gap-medium-large); color: var(--fg-2); overflow-wrap: anywhere; }
   .plain li { margin: var(--spacing-gap-2xsmall) 0; }
   .vary { margin: 0 0 var(--spacing-gap-small); }
+  .t--vary { table-layout: fixed; min-width: calc((var(--name) + var(--value) + var(--token)) * 1ch + 6 * var(--spacing-gap-small-medium)); font-family: var(--mono); font-size: 12.5px; }
+  .t--vary td { white-space: normal; overflow-wrap: anywhere; vertical-align: top; }
+  /* A phone stacks each row (site.css), so the columns, and the width they need, go. */
+  @media (max-width: 600px) { .t--vary, .t--vary tbody { display: block; min-width: 0; } .t--vary colgroup { display: none; } }
+  .t--vary col { font-family: var(--mono); font-size: 12.5px; }
+  .t--vary .c-name { width: calc(var(--name) * 1ch + 2 * var(--spacing-gap-small-medium) + var(--spacing-gap-large)); }
+  .t--vary .c-value { width: calc(var(--value) * 1ch + 2 * var(--spacing-gap-small-medium) + var(--spacing-gap-large)); }
   .vary summary { cursor: pointer; display: flex; align-items: center; gap: var(--spacing-gap-small); padding: var(--spacing-gap-xsmall) 0; color: var(--fg); list-style: none; }
   .vary summary::-webkit-details-marker { display: none; }
   /* display: flex drops the native triangle, so it's drawn back. */

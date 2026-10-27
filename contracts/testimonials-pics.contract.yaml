@@ -35,6 +35,20 @@ elements:
       width: { value: 100%, assert: false }
       height: { value: 100%, assert: false }
       object-fit: { value: cover, assert: false }
+guidance:
+  status: proposed
+  use:
+    - The photo at the start of a **Testimonials** row, next to the person's name and role.
+  avoid:
+    - A profile picture anywhere else, an avatar in a list or a header. Rost has no Avatar yet, so ask for one rather than reusing this.
+    - A logo instead of a face. A company's quote goes in **Testimonials** with no picture.
+  behaviour: |-
+    A 56px square that crops the photo to fill it. It has no states and does nothing when you press it; the row around it does. Testimonials rounds it, so on its own it's square.
+  accessibility:
+    element: "a `<span>` holding an `<img>`. It's never a link or a button."
+    name: "`alt=\"\"` when the name is right next to it, as in Testimonials, so a screen reader doesn't say it twice. Anywhere else, `alt` is the person's name."
+    colour: "nothing is said by colour. The name and role carry who it is."
+  content: A real photo of the person, with their consent, square or close to it, at least 112px so it's sharp on a 2x screen. In this repo's examples and on rost.build it's a landscape, never a real person.
 implementations:
   portfolio-site:
     component: src/rost/testimonials-pics/TestimonialPicture.tsx

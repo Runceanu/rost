@@ -26,7 +26,7 @@
 
 - `root`
 - `label`
-- `outline`
+- `outline`: The 1px edge, drawn as an inset shadow rather than a border. Chrome spreads a border on a fully round box over two pixels at the ends, where Figma draws one. That was all of Pressed's difference from Figma (2.62%, now 0.68%).
 - `focus-ring`
 
 ## When to use
@@ -65,16 +65,11 @@ Every token this component uses, across all its variants.
 | Token | Resolves to |
 |---|---|
 | `actions/secondary/regular/default/label` | `#d3d9d5` |
-| `actions/secondary/regular/default/outline` | `#ededed` |
 | `actions/secondary/regular/disabled/label` | `#d3d9d5` |
-| `actions/secondary/regular/disabled/outline` | `#ededed` |
 | `actions/secondary/regular/focus/focus-ring` | `#999` |
 | `actions/secondary/regular/focus/label` | `#d3d9d5` |
-| `actions/secondary/regular/focus/outline` | `#ededed` |
 | `actions/secondary/regular/hover/label` | `#ededed` |
-| `actions/secondary/regular/hover/outline` | `#ededed` |
 | `actions/secondary/regular/pressed/label` | `#d3d9d5` |
-| `actions/secondary/regular/pressed/outline` | `#ededed` |
 | `font-family/base` | `'General Sans Variable'` |
 | `opacity/gentle` | `0.24` |
 | `opacity/solid` | `1` |
@@ -95,5 +90,10 @@ Every token this component uses, across all its variants.
 | Part | Property | Value | Why |
 |---|---|---|---|
 | `focus-ring` | `inset` | `calc(-1 * var(--spacing-gap-2xsmall))` | Composed from a token: the ring sits spacing/gap/2xsmall outside the element. |
+| `outline` | `box-shadow` | `inset 0 0 0 var(--spacing-outline-small) var(--actions-secondary-regular-default-outline)` | Figma's 1px stroke, drawn inside the shape. The width and colour are tokens (spacing/outline/small, actions/secondary/regular/default/outline). |
+| `outline` | `box-shadow` | `inset 0 0 0 var(--spacing-outline-small) var(--actions-secondary-regular-hover-outline)` | Figma's 1px stroke, drawn inside the shape. The width and colour are tokens (spacing/outline/small, actions/secondary/regular/hover/outline). |
+| `outline` | `box-shadow` | `inset 0 0 0 var(--spacing-outline-small) var(--actions-secondary-regular-pressed-outline)` | Figma's 1px stroke, drawn inside the shape. The width and colour are tokens (spacing/outline/small, actions/secondary/regular/pressed/outline). |
+| `outline` | `box-shadow` | `inset 0 0 0 var(--spacing-outline-small) var(--actions-secondary-regular-disabled-outline)` | Figma's 1px stroke, drawn inside the shape. The width and colour are tokens (spacing/outline/small, actions/secondary/regular/disabled/outline). |
+| `outline` | `box-shadow` | `inset 0 0 0 var(--spacing-outline-small) var(--actions-secondary-regular-focus-outline)` | Figma's 1px stroke, drawn inside the shape. The width and colour are tokens (spacing/outline/small, actions/secondary/regular/focus/outline). |
 
 See it live, with every value of every variant: [rost.build/components/chips](https://rost.build/components/chips/)

@@ -6,11 +6,11 @@ Every value in every contract, sorted by why it has a token or doesn't. A value 
 
 | | Values | Share | Meaning |
 |---|---|---|---|
-| Has a token | 1007 | 60% | Uses a token, and the check tests it. |
+| Has a token | 1002 | 60% | Uses a token, and the check tests it. |
 | Token suggested | 0 | 0% | A token I want that doesn't exist yet. The freeze turned every other suggestion into a token. |
-| How Figma builds it | 466 | 28% | How Figma builds the layer (position, inset, which sides get a stroke). Nothing to tokenise. |
+| How Figma builds it | 465 | 28% | How Figma builds the layer (position, inset, which sides get a stroke). Nothing to tokenise. |
 | Figma frame size | 129 | 8% | A root size that is just the Figma frame. Written down, not checked. |
-| No token, on purpose | 48 | 3% | Plain on purpose, and the contract says why. |
+| No token, on purpose | 53 | 3% | Plain on purpose, and the contract says why. |
 | Open gap | 28 | 2% | No token and no reason. Each one needs a decision from me. |
 
 ## By contract
@@ -20,7 +20,7 @@ Every value in every contract, sorted by why it has a token or doesn't. A value 
 | [Badge](components/badge.md) | 25 | · | 21 | · | · | · |
 | [Button](components/button.md) | 83 | · | 38 | 9 | 5 | 1 |
 | [Carousel](components/carousel.md) | 43 | · | 27 | 9 | 2 | 1 |
-| [Chip](components/chips.md) | 32 | · | 16 | 8 | · | 1 |
+| [Chip](components/chips.md) | 27 | · | 15 | 8 | 5 | 1 |
 | [Divider](components/divider.md) | 2 | · | 2 | 2 | · | · |
 | [Floating effect](components/effect-floating.md) | 1 | · | · | · | · | · |
 | [Hero Media](components/hero-media.md) | 6 | · | 9 | 2 | · | · |
@@ -57,6 +57,7 @@ Figma draws a stroke inside the shape. A CSS border takes up space, so the butto
 | Where | Part | Value |
 |---|---|---|
 | [Button](components/button.md), [IconButton](components/icon-button.md), [Toggle](components/toggle.md) | `root.box-shadow` | `inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-default-outline)` and 4 more, one per state |
+| [Chip](components/chips.md) | `outline.box-shadow` | `inset 0 0 0 var(--spacing-outline-small) var(--actions-secondary-regular-default-outline)` and 4 more, one per state |
 | [Tabs](components/tabs.md) | `root.box-shadow` | `inset 0 calc(-1 * var(--spacing-outline-small)) 0 0 var(--tabs-line)` |
 
 ### Focus rings

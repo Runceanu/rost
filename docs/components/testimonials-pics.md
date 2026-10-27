@@ -8,13 +8,9 @@
 |---|---|
 | Kind | component |
 | Contract | `review` · [testimonials-pics.contract.yaml](../../contracts/testimonials-pics.contract.yaml) |
-| Guidance | **missing** |
+| Guidance | `proposed` |
 | Source | [Figma 438:72](https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=438-72) · read 2026-10-19 · frozen 2026-10-20 |
 | Implemented in | The portfolio site (`src/rost/testimonials-pics/TestimonialPicture.tsx`, `.rost-testimonials-pics`) |
-
-## Not right yet
-
-- No guidance yet. It needs a `guidance` block (there's one to copy in `schema/template.contract.yaml`).
 
 ## Props
 
@@ -26,6 +22,29 @@
 
 - `root`: A 56px square. Testimonials rounds it.
 - `image`: The photo, cropped to fill the square.
+
+## When to use
+
+- The photo at the start of a **Testimonials** row, next to the person's name and role.
+
+## When not to use
+
+- A profile picture anywhere else, an avatar in a list or a header. Rost has no Avatar yet, so ask for one rather than reusing this.
+- A logo instead of a face. A company's quote goes in **Testimonials** with no picture.
+
+## Behaviour
+
+A 56px square that crops the photo to fill it. It has no states and does nothing when you press it; the row around it does. Testimonials rounds it, so on its own it's square.
+
+## Accessibility
+
+- **Element**: a `<span>` holding an `<img>`. It's never a link or a button.
+- **Name**: `alt=""` when the name is right next to it, as in Testimonials, so a screen reader doesn't say it twice. Anywhere else, `alt` is the person's name.
+- **Colour**: nothing is said by colour. The name and role carry who it is.
+
+## Content
+
+A real photo of the person, with their consent, square or close to it, at least 112px so it's sharp on a 2x screen. In this repo's examples and on rost.build it's a landscape, never a real person.
 
 ## Tokens
 

@@ -53,8 +53,8 @@ elements:
       font-size: { token: typography/label/font-size, value: 12px }
       letter-spacing: { token: typography/label/letter-spacing, value: 0px }
   outline:
+    notes: "The 1px edge, drawn as an inset shadow rather than a border. Chrome spreads a border on a fully round box over two pixels at the ends, where Figma draws one. That was all of Pressed's difference from Figma (2.62%, now 0.68%)."
     styles:
-      border-sides: { value: all }
       position: { value: absolute }
       inset: { value: "0" }
       border-radius: { token: spacing/radius/full, value: 10000px }
@@ -76,7 +76,9 @@ variants:
       label:
         color: { token: actions/secondary/regular/default/label, value: "#d3d9d5" }
       outline:
-        border-color: { token: actions/secondary/regular/default/outline, value: "#ededed" }
+        box-shadow:
+          value: inset 0 0 0 var(--spacing-outline-small) var(--actions-secondary-regular-default-outline)
+          untokenised: "Figma's 1px stroke, drawn inside the shape. The width and colour are tokens (spacing/outline/small, actions/secondary/regular/default/outline)."
         opacity: { token: opacity/gentle, value: "0.24" }
   - when: { status: Default, state: Hover }
     figmaNode: "139:320"
@@ -84,7 +86,9 @@ variants:
       label:
         color: { token: actions/secondary/regular/hover/label, value: "#ededed" }
       outline:
-        border-color: { token: actions/secondary/regular/hover/outline, value: "#ededed" }
+        box-shadow:
+          value: inset 0 0 0 var(--spacing-outline-small) var(--actions-secondary-regular-hover-outline)
+          untokenised: "Figma's 1px stroke, drawn inside the shape. The width and colour are tokens (spacing/outline/small, actions/secondary/regular/hover/outline)."
         opacity: { token: opacity/strong, value: "0.64" }
   - when: { status: Default, state: Pressed }
     figmaNode: "139:322"
@@ -92,7 +96,9 @@ variants:
       label:
         color: { token: actions/secondary/regular/pressed/label, value: "#d3d9d5" }
       outline:
-        border-color: { token: actions/secondary/regular/pressed/outline, value: "#ededed" }
+        box-shadow:
+          value: inset 0 0 0 var(--spacing-outline-small) var(--actions-secondary-regular-pressed-outline)
+          untokenised: "Figma's 1px stroke, drawn inside the shape. The width and colour are tokens (spacing/outline/small, actions/secondary/regular/pressed/outline)."
         opacity: { token: opacity/solid, value: "1" }
   - when: { status: Default, state: Disabled }
     figmaNode: "139:324"
@@ -100,7 +106,9 @@ variants:
       label:
         color: { token: actions/secondary/regular/disabled/label, value: "#d3d9d5" }
       outline:
-        border-color: { token: actions/secondary/regular/disabled/outline, value: "#ededed" }
+        box-shadow:
+          value: inset 0 0 0 var(--spacing-outline-small) var(--actions-secondary-regular-disabled-outline)
+          untokenised: "Figma's 1px stroke, drawn inside the shape. The width and colour are tokens (spacing/outline/small, actions/secondary/regular/disabled/outline)."
         opacity: { token: opacity/solid, value: "1" }
       root:
         opacity: { token: opacity/gentle, value: "0.24" }
@@ -111,7 +119,9 @@ variants:
       label:
         color: { token: actions/secondary/regular/focus/label, value: "#d3d9d5" }
       outline:
-        border-color: { token: actions/secondary/regular/focus/outline, value: "#ededed" }
+        box-shadow:
+          value: inset 0 0 0 var(--spacing-outline-small) var(--actions-secondary-regular-focus-outline)
+          untokenised: "Figma's 1px stroke, drawn inside the shape. The width and colour are tokens (spacing/outline/small, actions/secondary/regular/focus/outline)."
         opacity: { token: opacity/gentle, value: "0.24" }
       focus-ring:
         display: { value: block, assert: false }

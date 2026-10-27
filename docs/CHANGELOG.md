@@ -4,6 +4,12 @@ What changed each time I merged into `master` and put rost.build live. Newest fi
 
 ## 2026-10-27
 
+**Later the same day**
+
+- **Chip matches Figma in every state.** Pressed was the one variant of 149 over the visual test's line (2.62% against 2.5%). The contract was right; Chrome draws a 1px border on a fully round box over two pixels at each end, where Figma draws one, and Pressed is the state where the outline is solid. Chip draws its edge as an inset shadow now, like Button and Toggle. Pressed is at 0.68%. The portfolio site has its own copy of Chip and gets this with `npm run add`.
+- **TestimonialPicture has guidance.** It's proposed, not agreed: when to use it (a Testimonials row), when not (an avatar anywhere else, a logo), and how to write its `alt`. It was the only contract with none.
+- **The tables under "Changes by variant" line up.** Every group on a component page uses the same columns, so values and tokens sit in one line from group to group. A long variant name or value wraps instead of pushing the token off the side, and on a phone each row stacks.
+
 **Fixed**
 
 - **ListItem.** A selected item's label is paragraph medium (500) now, as Figma draws it, in every state. It was regular (400).
