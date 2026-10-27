@@ -75,4 +75,5 @@ What needs attention. It's built from the contracts, so it's only as fresh as th
 - [Projects](components/projects.md) in the portfolio site: The last row in the Work list has no line at rest; hover and press still draw it
 - [Testimonials](components/testimonials.md) in the portfolio site: The open quote is `non-interactive/foreground/tertiary`, with key phrases in `non-interactive/foreground/primary`
 - [Testimonials](components/testimonials.md) in the portfolio site: Under 768px the name and job line wrap instead of staying on one line
+- [Testimonials](components/testimonials.md) in the portfolio site: The 16px slide on hover, press and opening is eased over 0.2s, the same as the Work list's projects
 - [Toggle](components/toggle.md) in the accounting app: Each toggle is a `role="radio"` inside a `ToggleGroup`

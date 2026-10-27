@@ -32,5 +32,6 @@ What changed each time I merged into `master` and put rost.build live. Newest fi
 
 **For apps**
 
+- **The portfolio site's Testimonials slide smoothly again.** The rows lost their motion on 2026-10-26, when the site moved to Rost's Testimonials, which has none. The 16px slide on hover, press and opening is eased over 0.2s now, the same as the Work list's projects. Motion isn't in the contract yet, so it's the site's own, recorded as a deviation.
 - The accounting app's contract test passes (52). If it takes ListItem or Input with `npm run add`, it gets the label fixes.
 - Not done yet: the Figma reader still mixes up two unnamed text lines in one part (Testimonials' title and the job under it) and misreads a few conditions in Tags, IconButton and Thumbs. I checked those against each node by hand this time.

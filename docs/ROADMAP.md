@@ -99,6 +99,7 @@ Ideas from a workshop board I sat in on, shrunk down to a personal kit with two 
 |---|---|
 | Spec templates for every kind of issue | The template contract and `npm run validate` are there. Add GitHub issue templates for *new component*, *deviation* and *token change* |
 | One place for docs, docs in markdown, a docs skill | Partly done: `docs/components/*.md` is markdown an agent can read. Next, a Claude skill that loads the right page before building a component in either app |
+| Motion in the contract | There are no motion tokens, so the portfolio site eases Projects' and Testimonials' 16px slide itself (0.2s, ease-out), each recorded as a deviation. Two components doing the same thing is the point to make it a token and put it in the contracts |
 | A better changelog | Started on 2026-10-27: [release notes](CHANGELOG.md), written by hand at every merge and deploy. Next, build the contract part of it from what changed in the contracts ("Badge: outline token went from X to Y"), not from commit messages |
 | Spec-driven work, PR checks | Both apps run the strict audit in CI. Since 2026-10-26 Rost has its own (`.github/workflows/check.yml`): the contracts validate, the docs and the generated CSS match them, the site builds. The visual test isn't in it yet, because Linux draws text differently from the Mac the baselines were made on |
 | Designers working in code | The "Adding a component" steps in [CONTRACT.md](CONTRACT.md), down to one command each |
