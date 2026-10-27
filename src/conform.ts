@@ -148,10 +148,31 @@ const splitTop = (s: string) => {
  */
 export function normSelector(sel: string): string {
   return splitDescendants(sel.trim()).map((compound) => {
-    const parts = compound.match(/(\.[\w-]+|#[\w-]+|\[[^\]]*\]|::?[\w-]+(?:\((?:[^()]|\([^()]*\))*\))?|^[a-z*][\w-]*)/g) ?? [compound]
+    const parts = simpleSelectors(compound)
     const type = /^[a-z*]/.test(parts[0]!) ? parts.shift()! : ''
     return type + parts.sort().join('')
   }).join(' ')
+}
+
+/** A compound's simple selectors (`.a`, `[x]`, `:not(...)`, however deep the brackets go), and its type first if it has one. */
+function simpleSelectors(compound: string): string[] {
+  const parts: string[] = []
+  let i = 0
+  while (i < compound.length) {
+    let j = i + 1
+    if (compound[i] === '[') j = compound.indexOf(']', i) + 1 || compound.length
+    else {
+      // `::before` is one selector, not two.
+      if (compound[i] === ':' && compound[j] === ':') j++
+      while (j < compound.length && !/[.#[:]/.test(compound[j]!)) {
+        if (compound[j] === '(') { let depth = 0; do { if (compound[j] === '(') depth++; else if (compound[j] === ')') depth--; j++ } while (j < compound.length && depth); continue }
+        j++
+      }
+    }
+    parts.push(compound.slice(i, j))
+    i = j
+  }
+  return parts
 }
 
 /** Splits on spaces outside parentheses, so `:is(a, b) .x` is two compounds. */
@@ -276,6 +297,11 @@ export function conform(contract: Contract, css: string, tokensCss: string, vari
       else if (value === 'true') modifiers += `${root}--${axis}`
       else if (value === 'false') modifiers += valueStyle ? '' : `:not(${root}--${axis})`
       else modifiers += valueStyle ? `${root}--${value}` : `${root}--${axis}-${value}`
+      // Rost's own CSS keeps hover and press off a disabled item (bin/build-css.mjs).
+      if (!valueStyle && axis === 'state' && (value === 'hover' || value === 'pressed')) {
+        const off = `:where(:not(${(contract.stateSelectors?.Disabled ?? STATE_PSEUDOS.disabled![0]!).replace(/^:is\((.*)\)$/, '$1')}))`
+        pseudos = pseudos.flatMap((p) => [p, `${p}${off}`])
+      }
     }
     return pseudos.map((p) => `${root}${modifiers}${p}`)
   }

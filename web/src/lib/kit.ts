@@ -24,7 +24,18 @@ export const groups: [string, string, any[]][] = KINDS
   .map(([k, label]: [string, string]) => [k, label, kit.filter((e) => e.kind === k && !e.c.partOf)])
   .filter(([, , list]: [string, string, any[]]) => list.length)
 
-export const md = (src: string) => marked.parse(src, { async: false }) as string
+// Headings get GitHub's ids, so a link like CONTRACT.md#variants-as-layers lands here too.
+const withIds = (html: string) => {
+  const seen = new Map<string, number>()
+  return html.replace(/<h([1-6])>([\s\S]*?)<\/h\1>/g, (_, n, inner) => {
+    const base = inner.replace(/<[^>]+>/g, '').replace(/&[a-z#0-9]+;/gi, '').toLowerCase().trim().replace(/[^\p{L}\p{N}\s-]/gu, '').replace(/\s/g, '-')
+    const k = seen.get(base) ?? 0
+    seen.set(base, k + 1)
+    return `<h${n} id="${k ? `${base}-${k}` : base}">${inner}</h${n}>`
+  })
+}
+export const md = (src: string) => withIds(marked.parse(src, { async: false }) as string)
+export const mdInline = (src: string) => marked.parseInline(src, { async: false }) as string
 export const guidanceHtml = (g: any) => (g ? md(guidanceMarkdown(g)) : '')
 export const readRepo = (path: string) => readFileSync(new URL(path, repo), 'utf8')
 

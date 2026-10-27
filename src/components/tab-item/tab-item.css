@@ -72,19 +72,19 @@
   background: var(--tabs-selected-default-underline);
 }
 
-.rost-tab-item:hover.rost-tab-item--selected {
+.rost-tab-item:hover:where(:not(:disabled, [aria-disabled="true"])).rost-tab-item--selected {
   color: var(--tabs-selected-hover-label);
 }
 
-.rost-tab-item:hover.rost-tab-item--selected .rost-tab-item__underline {
+.rost-tab-item:hover:where(:not(:disabled, [aria-disabled="true"])).rost-tab-item--selected .rost-tab-item__underline {
   background: var(--tabs-selected-hover-underline);
 }
 
-.rost-tab-item:active.rost-tab-item--selected {
+.rost-tab-item:active:where(:not(:disabled, [aria-disabled="true"])).rost-tab-item--selected {
   color: var(--tabs-selected-pressed-label);
 }
 
-.rost-tab-item:active.rost-tab-item--selected .rost-tab-item__underline {
+.rost-tab-item:active:where(:not(:disabled, [aria-disabled="true"])).rost-tab-item--selected .rost-tab-item__underline {
   background: var(--tabs-selected-pressed-underline);
 }
 
@@ -114,19 +114,19 @@
   color: var(--tabs-unselected-default-label);
 }
 
-.rost-tab-item:hover:not(.rost-tab-item--selected) {
+.rost-tab-item:hover:where(:not(:disabled, [aria-disabled="true"])):not(.rost-tab-item--selected) {
   color: var(--tabs-unselected-hover-label);
 }
 
-.rost-tab-item:hover:not(.rost-tab-item--selected) .rost-tab-item__underline {
+.rost-tab-item:hover:where(:not(:disabled, [aria-disabled="true"])):not(.rost-tab-item--selected) .rost-tab-item__underline {
   background: var(--tabs-unselected-hover-underline);
 }
 
-.rost-tab-item:active:not(.rost-tab-item--selected) {
+.rost-tab-item:active:where(:not(:disabled, [aria-disabled="true"])):not(.rost-tab-item--selected) {
   color: var(--tabs-unselected-pressed-label);
 }
 
-.rost-tab-item:active:not(.rost-tab-item--selected) .rost-tab-item__underline {
+.rost-tab-item:active:where(:not(:disabled, [aria-disabled="true"])):not(.rost-tab-item--selected) .rost-tab-item__underline {
   background: var(--tabs-unselected-pressed-underline);
 }
 

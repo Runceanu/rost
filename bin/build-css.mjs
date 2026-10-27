@@ -61,6 +61,8 @@ function build(id) {
 
   // One rule per variant with its layers already in, so the selectors are
   // the same whether a contract writes its variants out or in layers.
+  // What Disabled is on this component, without the :is() wrapper so it reads plainly inside :not().
+  const disabledOf = (c) => (c.stateSelectors?.Disabled ?? PSEUDO.Disabled).replace(/^:is\((.*)\)$/, '$1')
   for (const v of variantsOf(c)) {
     let root = `.${base}`
     for (const [prop, val] of Object.entries(v.when)) {
@@ -75,6 +77,10 @@ function build(id) {
       // also land on the true variant.
       else if (val === false) root += `:not(.${base}--${kebab(prop)})`
       else root += `.${base}--${kebab(prop)}-${kebab(val)}`
+      // A disabled item doesn't react: hover and press skip it, or their looks
+      // would show through wherever the Disabled rule doesn't set its own.
+      // :where() keeps the rule's weight as it was, so focus still wins as before.
+      if (prop === 'state' && (val === 'Hover' || val === 'Pressed') && c.states?.includes('Disabled')) root += `:where(:not(${disabledOf(c)}))`
     }
     for (const [p, styles] of Object.entries(v.elements ?? {}))
       rule(p === 'root' ? root : `${root} ${part(p)}`, declarations(styles, { root: p === 'root' }))

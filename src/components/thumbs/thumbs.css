@@ -184,35 +184,35 @@
   background: var(--project-default-icon);
 }
 
-.rost-thumbs:hover .rost-thumbs__number {
+.rost-thumbs:hover:where(:not(:disabled, [aria-disabled="true"])) .rost-thumbs__number {
   color: var(--project-hover-label);
 }
 
-.rost-thumbs:hover .rost-thumbs__text {
+.rost-thumbs:hover:where(:not(:disabled, [aria-disabled="true"])) .rost-thumbs__text {
   color: var(--project-hover-label);
 }
 
-.rost-thumbs:hover .rost-thumbs__detail {
+.rost-thumbs:hover:where(:not(:disabled, [aria-disabled="true"])) .rost-thumbs__detail {
   color: var(--project-hover-sub-label);
 }
 
-.rost-thumbs:hover .rost-thumbs__dot {
+.rost-thumbs:hover:where(:not(:disabled, [aria-disabled="true"])) .rost-thumbs__dot {
   background: var(--project-hover-icon);
 }
 
-.rost-thumbs:active .rost-thumbs__number {
+.rost-thumbs:active:where(:not(:disabled, [aria-disabled="true"])) .rost-thumbs__number {
   color: var(--project-pressed-label);
 }
 
-.rost-thumbs:active .rost-thumbs__text {
+.rost-thumbs:active:where(:not(:disabled, [aria-disabled="true"])) .rost-thumbs__text {
   color: var(--project-pressed-label);
 }
 
-.rost-thumbs:active .rost-thumbs__detail {
+.rost-thumbs:active:where(:not(:disabled, [aria-disabled="true"])) .rost-thumbs__detail {
   color: var(--project-pressed-sub-label);
 }
 
-.rost-thumbs:active .rost-thumbs__dot {
+.rost-thumbs:active:where(:not(:disabled, [aria-disabled="true"])) .rost-thumbs__dot {
   background: var(--project-pressed-icon);
 }
 

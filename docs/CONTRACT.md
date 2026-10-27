@@ -20,7 +20,7 @@ Most of this comes from Nathan Curtis ([component contracts and schemas](https:/
 1. **Say each thing once.** The variant list and its Figma nodes used to live in two places that could disagree. The guidance and the app implementations lived in two more. Now it's one file.
 2. **Write by hand only what can't be generated, and keep it in the same file.** A side file is a second truth, and second truths drift.
 3. **Same input, same output.** Reading Figma again when nothing changed gives an empty diff. If the diff isn't empty, something really changed.
-4. **States aren't props.** Hover, pressed and focus come from the browser, not from whoever uses the component. They get their own list.
+4. **States aren't props.** Hover, pressed and focus come from the browser, not from whoever uses the component. They get their own list. In the CSS, hover and pressed skip a disabled item (`:where(:not(:disabled, [aria-disabled="true"]))`), so a disabled button doesn't light up under the pointer wherever its Disabled values don't say otherwise. The `:where()` keeps the rule's weight as it was.
 5. **Check it, don't describe it.** Every value carries its token name *and* what it resolves to, because six tokens here all come out as `#3a3a3a`. `npm run validate` checks the files, the conformance check reads the CSS.
 6. **Version the format.** It's `schemaVersion: 2`. If the shape changes, the version changes with it.
 

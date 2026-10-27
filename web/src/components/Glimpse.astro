@@ -8,7 +8,7 @@ interface Props { id: string }
 const { id } = Astro.props
 const built = Boolean(fixturesFor(id)?.preview)
 ---
-<span class="glimpse" aria-hidden="true">
+<span class="glimpse" aria-hidden="true" inert>
   {built ? <Preview id={id} /> : <span class="later">Not in code yet</span>}
 </span>
 <style>

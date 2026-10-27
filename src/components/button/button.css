@@ -74,7 +74,7 @@
   color: var(--actions-primary-default-label);
 }
 
-.rost-button.rost-button--type-primary:hover {
+.rost-button.rost-button--type-primary:hover:where(:not(:disabled, [aria-disabled="true"])) {
   padding-left: var(--spacing-gap-medium-large);
   padding-right: var(--spacing-gap-medium-large);
   padding-top: var(--spacing-gap-none);
@@ -83,7 +83,7 @@
   box-shadow: inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-hover-outline);
 }
 
-.rost-button.rost-button--type-primary:hover .rost-button__label {
+.rost-button.rost-button--type-primary:hover:where(:not(:disabled, [aria-disabled="true"])) .rost-button__label {
   color: var(--actions-primary-hover-label);
 }
 
@@ -110,7 +110,7 @@
   color: var(--actions-primary-focus-label);
 }
 
-.rost-button.rost-button--type-primary:is(:active, [aria-current="page"]) {
+.rost-button.rost-button--type-primary:is(:active, [aria-current="page"]):where(:not(:disabled, [aria-disabled="true"])) {
   padding-left: var(--spacing-gap-medium-large);
   padding-right: var(--spacing-gap-medium-large);
   padding-top: var(--spacing-gap-none);
@@ -119,7 +119,7 @@
   box-shadow: inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-pressed-outline);
 }
 
-.rost-button.rost-button--type-primary:is(:active, [aria-current="page"]) .rost-button__label {
+.rost-button.rost-button--type-primary:is(:active, [aria-current="page"]):where(:not(:disabled, [aria-disabled="true"])) .rost-button__label {
   color: var(--actions-primary-pressed-label);
 }
 
@@ -149,18 +149,18 @@
   color: var(--actions-tertiary-default-label);
 }
 
-.rost-button.rost-button--type-tertiary:hover {
+.rost-button.rost-button--type-tertiary:hover:where(:not(:disabled, [aria-disabled="true"])) {
   padding-left: var(--spacing-gap-medium-large);
   padding-right: var(--spacing-gap-medium-large);
   padding-top: var(--spacing-gap-none);
   padding-bottom: var(--spacing-gap-none);
 }
 
-.rost-button.rost-button--type-tertiary:hover .rost-button__label {
+.rost-button.rost-button--type-tertiary:hover:where(:not(:disabled, [aria-disabled="true"])) .rost-button__label {
   color: var(--actions-tertiary-hover-label);
 }
 
-.rost-button.rost-button--type-tertiary:hover .rost-button__background {
+.rost-button.rost-button--type-tertiary:hover:where(:not(:disabled, [aria-disabled="true"])) .rost-button__background {
   position: absolute;
   inset: 0;
   background: var(--actions-tertiary-hover-background);
@@ -168,18 +168,18 @@
   border-radius: var(--spacing-radius-full);
 }
 
-.rost-button.rost-button--type-tertiary:is(:active, [aria-current="page"]) {
+.rost-button.rost-button--type-tertiary:is(:active, [aria-current="page"]):where(:not(:disabled, [aria-disabled="true"])) {
   padding-left: var(--spacing-gap-medium-large);
   padding-right: var(--spacing-gap-medium-large);
   padding-top: var(--spacing-gap-none);
   padding-bottom: var(--spacing-gap-none);
 }
 
-.rost-button.rost-button--type-tertiary:is(:active, [aria-current="page"]) .rost-button__label {
+.rost-button.rost-button--type-tertiary:is(:active, [aria-current="page"]):where(:not(:disabled, [aria-disabled="true"])) .rost-button__label {
   color: var(--actions-tertiary-pressed-label);
 }
 
-.rost-button.rost-button--type-tertiary:is(:active, [aria-current="page"]) .rost-button__background {
+.rost-button.rost-button--type-tertiary:is(:active, [aria-current="page"]):where(:not(:disabled, [aria-disabled="true"])) .rost-button__background {
   position: absolute;
   inset: 0;
   background: var(--actions-tertiary-pressed-background);
@@ -229,30 +229,30 @@
   color: var(--actions-tertiary-default-label);
 }
 
-.rost-button.rost-button--type-borderless:hover {
+.rost-button.rost-button--type-borderless:hover:where(:not(:disabled, [aria-disabled="true"])) {
   padding: var(--spacing-gap-none);
 }
 
-.rost-button.rost-button--type-borderless:hover .rost-button__label {
+.rost-button.rost-button--type-borderless:hover:where(:not(:disabled, [aria-disabled="true"])) .rost-button__label {
   color: var(--actions-tertiary-hover-label);
 }
 
-.rost-button.rost-button--type-borderless:hover .rost-button__background {
+.rost-button.rost-button--type-borderless:hover:where(:not(:disabled, [aria-disabled="true"])) .rost-button__background {
   position: absolute;
   inset: 0;
   background: var(--actions-tertiary-hover-background);
   opacity: var(--opacity-mild);
 }
 
-.rost-button.rost-button--type-borderless:is(:active, [aria-current="page"]) {
+.rost-button.rost-button--type-borderless:is(:active, [aria-current="page"]):where(:not(:disabled, [aria-disabled="true"])) {
   padding: var(--spacing-gap-none);
 }
 
-.rost-button.rost-button--type-borderless:is(:active, [aria-current="page"]) .rost-button__label {
+.rost-button.rost-button--type-borderless:is(:active, [aria-current="page"]):where(:not(:disabled, [aria-disabled="true"])) .rost-button__label {
   color: var(--actions-tertiary-pressed-label);
 }
 
-.rost-button.rost-button--type-borderless:is(:active, [aria-current="page"]) .rost-button__background {
+.rost-button.rost-button--type-borderless:is(:active, [aria-current="page"]):where(:not(:disabled, [aria-disabled="true"])) .rost-button__background {
   position: absolute;
   inset: 0;
   background: var(--actions-tertiary-pressed-background);
@@ -311,14 +311,14 @@
   color: var(--actions-secondary-regular-default-label);
 }
 
-.rost-button.rost-button--type-secondary:hover {
+.rost-button.rost-button--type-secondary:hover:where(:not(:disabled, [aria-disabled="true"])) {
   padding-left: var(--spacing-gap-medium-large);
   padding-right: var(--spacing-gap-medium-large);
   padding-top: var(--spacing-gap-none);
   padding-bottom: var(--spacing-gap-none);
 }
 
-.rost-button.rost-button--type-secondary:hover .rost-button__background {
+.rost-button.rost-button--type-secondary:hover:where(:not(:disabled, [aria-disabled="true"])) .rost-button__background {
   position: absolute;
   inset: 0;
   border-radius: var(--spacing-radius-full);
@@ -332,18 +332,18 @@
   border-top-width: var(--spacing-outline-small);
 }
 
-.rost-button.rost-button--type-secondary:hover .rost-button__label {
+.rost-button.rost-button--type-secondary:hover:where(:not(:disabled, [aria-disabled="true"])) .rost-button__label {
   color: var(--actions-secondary-regular-hover-label);
 }
 
-.rost-button.rost-button--type-secondary:is(:active, [aria-current="page"]) {
+.rost-button.rost-button--type-secondary:is(:active, [aria-current="page"]):where(:not(:disabled, [aria-disabled="true"])) {
   padding-left: var(--spacing-gap-medium-large);
   padding-right: var(--spacing-gap-medium-large);
   padding-top: var(--spacing-gap-none);
   padding-bottom: var(--spacing-gap-none);
 }
 
-.rost-button.rost-button--type-secondary:is(:active, [aria-current="page"]) .rost-button__background {
+.rost-button.rost-button--type-secondary:is(:active, [aria-current="page"]):where(:not(:disabled, [aria-disabled="true"])) .rost-button__background {
   position: absolute;
   inset: 0;
   border-radius: var(--spacing-radius-full);
@@ -357,7 +357,7 @@
   border-top-width: var(--spacing-outline-small);
 }
 
-.rost-button.rost-button--type-secondary:is(:active, [aria-current="page"]) .rost-button__label {
+.rost-button.rost-button--type-secondary:is(:active, [aria-current="page"]):where(:not(:disabled, [aria-disabled="true"])) .rost-button__label {
   color: var(--actions-secondary-regular-pressed-label);
 }
 

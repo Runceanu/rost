@@ -102,31 +102,31 @@
   color: var(--project-default-sub-label);
 }
 
-.rost-carousel:hover .rost-carousel__number {
+.rost-carousel:hover:where(:not(:disabled, [aria-disabled="true"])) .rost-carousel__number {
   color: var(--project-hover-label);
 }
 
-.rost-carousel:hover .rost-carousel__text {
+.rost-carousel:hover:where(:not(:disabled, [aria-disabled="true"])) .rost-carousel__text {
   color: var(--project-hover-label);
 }
 
-.rost-carousel:hover .rost-carousel__description {
+.rost-carousel:hover:where(:not(:disabled, [aria-disabled="true"])) .rost-carousel__description {
   color: var(--project-hover-sub-label);
 }
 
-.rost-carousel:active .rost-carousel__background {
+.rost-carousel:active:where(:not(:disabled, [aria-disabled="true"])) .rost-carousel__background {
   display: block;
 }
 
-.rost-carousel:active .rost-carousel__number {
+.rost-carousel:active:where(:not(:disabled, [aria-disabled="true"])) .rost-carousel__number {
   color: var(--project-pressed-label);
 }
 
-.rost-carousel:active .rost-carousel__text {
+.rost-carousel:active:where(:not(:disabled, [aria-disabled="true"])) .rost-carousel__text {
   color: var(--project-pressed-label);
 }
 
-.rost-carousel:active .rost-carousel__description {
+.rost-carousel:active:where(:not(:disabled, [aria-disabled="true"])) .rost-carousel__description {
   color: var(--project-pressed-sub-label);
 }
 

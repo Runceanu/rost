@@ -5,12 +5,22 @@ import { HeroMedia } from './HeroMedia'
  * test compares the frame: the 16px border, the 24px corners and the two
  * surfaces. The artwork is each case study's own.
  */
-export const fixtures = [
-  { node: '793:2345', name: 'hero-media', element: <div style={{ width: 1440 }}><HeroMedia /></div> },
-]
-
 // Neutral artwork: hills in flat colour, nobody's work.
 const hills = `data:image/svg+xml,${encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect width="1200" height="600" fill="#2f4a5c"/><circle cx="860" cy="190" r="90" fill="#f2d7a0"/><path d="M0 380 Q300 250 600 340 T1200 300 V600 H0Z" fill="#3e6b5a"/><path d="M0 470 Q420 360 760 450 T1200 430 V600 H0Z" fill="#1f3b2f"/></svg>')}`
+
+export const fixtures = [
+  // The test compares Figma's empty 1440px frame; the page shows one with artwork, as wide as the page allows.
+  {
+    node: '793:2345', name: 'hero-media', element: <div style={{ width: 1440 }}><HeroMedia /></div>,
+    display: (
+      <span style={{ display: 'block', width: 'min(720px, 80vw)' }}>
+        <HeroMedia style={{ height: 320 }} media={<span style={{ position: 'absolute', inset: 0, background: `url("${hills}") center / cover` }} />}>
+          <span style={{ display: 'flex', alignItems: 'flex-end', height: '100%', padding: 24, fontSize: 28, fontWeight: 600 }}>Case study title</span>
+        </HeroMedia>
+      </span>
+    ),
+  },
+]
 
 /** What a caller writes. Shown on the component's page. */
 export const usage = `import { HeroMedia } from 'rost/components/hero-media/HeroMedia'

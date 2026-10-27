@@ -103,25 +103,25 @@
   color: var(--actions-secondary-regular-default-label);
 }
 
-.rost-toggle:hover.rost-toggle--selected {
+.rost-toggle:hover:where(:not(:disabled, [aria-disabled="true"])).rost-toggle--selected {
   border-radius: var(--spacing-radius-full);
   background: var(--actions-primary-hover-background);
   box-shadow: inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-hover-outline);
 }
 
-.rost-toggle:hover.rost-toggle--selected .rost-toggle__icons-arrow-left {
+.rost-toggle:hover:where(:not(:disabled, [aria-disabled="true"])).rost-toggle--selected .rost-toggle__icons-arrow-left {
   color: var(--actions-primary-hover-icon);
 }
 
-.rost-toggle:hover.rost-toggle--selected .rost-toggle__label {
+.rost-toggle:hover:where(:not(:disabled, [aria-disabled="true"])).rost-toggle--selected .rost-toggle__label {
   color: var(--actions-primary-hover-label);
 }
 
-.rost-toggle:hover:not(.rost-toggle--selected) {
+.rost-toggle:hover:where(:not(:disabled, [aria-disabled="true"])):not(.rost-toggle--selected) {
   border-radius: var(--spacing-radius-medium);
 }
 
-.rost-toggle:hover:not(.rost-toggle--selected) .rost-toggle__background {
+.rost-toggle:hover:where(:not(:disabled, [aria-disabled="true"])):not(.rost-toggle--selected) .rost-toggle__background {
   border-radius: var(--spacing-radius-medium);
   background: var(--actions-secondary-regular-hover-background);
   border-left-color: var(--actions-secondary-regular-hover-outline);
@@ -133,33 +133,33 @@
   border-top-width: var(--spacing-outline-small);
 }
 
-.rost-toggle:hover:not(.rost-toggle--selected) .rost-toggle__icons-arrow-left {
+.rost-toggle:hover:where(:not(:disabled, [aria-disabled="true"])):not(.rost-toggle--selected) .rost-toggle__icons-arrow-left {
   color: var(--actions-secondary-regular-hover-icon);
 }
 
-.rost-toggle:hover:not(.rost-toggle--selected) .rost-toggle__label {
+.rost-toggle:hover:where(:not(:disabled, [aria-disabled="true"])):not(.rost-toggle--selected) .rost-toggle__label {
   color: var(--actions-secondary-regular-hover-label);
 }
 
-.rost-toggle:active.rost-toggle--selected {
+.rost-toggle:active:where(:not(:disabled, [aria-disabled="true"])).rost-toggle--selected {
   border-radius: var(--spacing-radius-full);
   background: var(--actions-primary-pressed-background);
   box-shadow: inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-pressed-outline);
 }
 
-.rost-toggle:active.rost-toggle--selected .rost-toggle__icons-arrow-left {
+.rost-toggle:active:where(:not(:disabled, [aria-disabled="true"])).rost-toggle--selected .rost-toggle__icons-arrow-left {
   color: var(--actions-primary-pressed-icon);
 }
 
-.rost-toggle:active.rost-toggle--selected .rost-toggle__label {
+.rost-toggle:active:where(:not(:disabled, [aria-disabled="true"])).rost-toggle--selected .rost-toggle__label {
   color: var(--actions-primary-pressed-label);
 }
 
-.rost-toggle:active:not(.rost-toggle--selected) {
+.rost-toggle:active:where(:not(:disabled, [aria-disabled="true"])):not(.rost-toggle--selected) {
   border-radius: var(--spacing-radius-medium);
 }
 
-.rost-toggle:active:not(.rost-toggle--selected) .rost-toggle__background {
+.rost-toggle:active:where(:not(:disabled, [aria-disabled="true"])):not(.rost-toggle--selected) .rost-toggle__background {
   border-radius: var(--spacing-radius-medium);
   background: var(--actions-secondary-regular-pressed-background);
   border-left-color: var(--actions-secondary-regular-pressed-outline);
@@ -171,11 +171,11 @@
   border-top-width: var(--spacing-outline-small);
 }
 
-.rost-toggle:active:not(.rost-toggle--selected) .rost-toggle__icons-arrow-left {
+.rost-toggle:active:where(:not(:disabled, [aria-disabled="true"])):not(.rost-toggle--selected) .rost-toggle__icons-arrow-left {
   color: var(--actions-secondary-regular-pressed-icon);
 }
 
-.rost-toggle:active:not(.rost-toggle--selected) .rost-toggle__label {
+.rost-toggle:active:where(:not(:disabled, [aria-disabled="true"])):not(.rost-toggle--selected) .rost-toggle__label {
   color: var(--actions-secondary-regular-pressed-label);
 }
 

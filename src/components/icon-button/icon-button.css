@@ -101,7 +101,7 @@
   color: var(--actions-tertiary-default-icon);
 }
 
-.rost-icon-button.rost-icon-button--type-primary:hover {
+.rost-icon-button.rost-icon-button--type-primary:hover:where(:not(:disabled, [aria-disabled="true"])) {
   padding-left: var(--spacing-gap-medium-large);
   padding-right: var(--spacing-gap-medium-large);
   padding-top: var(--spacing-gap-none);
@@ -112,11 +112,11 @@
   box-shadow: inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-hover-outline);
 }
 
-.rost-icon-button.rost-icon-button--type-primary:hover .rost-icon-button__icons-arrow-left {
+.rost-icon-button.rost-icon-button--type-primary:hover:where(:not(:disabled, [aria-disabled="true"])) .rost-icon-button__icons-arrow-left {
   color: var(--actions-primary-hover-icon);
 }
 
-.rost-icon-button.rost-icon-button--type-secondary:hover {
+.rost-icon-button.rost-icon-button--type-secondary:hover:where(:not(:disabled, [aria-disabled="true"])) {
   padding-left: var(--spacing-gap-medium-large);
   padding-right: var(--spacing-gap-medium-large);
   padding-top: var(--spacing-gap-none);
@@ -125,7 +125,7 @@
   height: var(--spacing-size-medium-large);
 }
 
-.rost-icon-button.rost-icon-button--type-secondary:hover .rost-icon-button__background {
+.rost-icon-button.rost-icon-button--type-secondary:hover:where(:not(:disabled, [aria-disabled="true"])) .rost-icon-button__background {
   position: absolute;
   inset: 0;
   border-radius: var(--spacing-radius-full);
@@ -139,11 +139,11 @@
   border-top-width: var(--spacing-outline-small);
 }
 
-.rost-icon-button.rost-icon-button--type-secondary:hover .rost-icon-button__icons-arrow-left {
+.rost-icon-button.rost-icon-button--type-secondary:hover:where(:not(:disabled, [aria-disabled="true"])) .rost-icon-button__icons-arrow-left {
   color: var(--actions-secondary-regular-hover-icon);
 }
 
-.rost-icon-button.rost-icon-button--type-tertiary:hover {
+.rost-icon-button.rost-icon-button--type-tertiary:hover:where(:not(:disabled, [aria-disabled="true"])) {
   padding-left: var(--spacing-gap-medium-large);
   padding-right: var(--spacing-gap-medium-large);
   padding-top: var(--spacing-gap-none);
@@ -152,7 +152,7 @@
   height: var(--spacing-size-medium-large);
 }
 
-.rost-icon-button.rost-icon-button--type-tertiary:hover .rost-icon-button__background {
+.rost-icon-button.rost-icon-button--type-tertiary:hover:where(:not(:disabled, [aria-disabled="true"])) .rost-icon-button__background {
   position: absolute;
   inset: 0;
   background: var(--actions-tertiary-hover-background);
@@ -160,11 +160,11 @@
   border-radius: var(--spacing-radius-full);
 }
 
-.rost-icon-button.rost-icon-button--type-tertiary:hover .rost-icon-button__icons-arrow-left {
+.rost-icon-button.rost-icon-button--type-tertiary:hover:where(:not(:disabled, [aria-disabled="true"])) .rost-icon-button__icons-arrow-left {
   color: var(--actions-tertiary-hover-icon);
 }
 
-.rost-icon-button.rost-icon-button--type-primary:active {
+.rost-icon-button.rost-icon-button--type-primary:active:where(:not(:disabled, [aria-disabled="true"])) {
   padding-left: var(--spacing-gap-medium-large);
   padding-right: var(--spacing-gap-medium-large);
   padding-top: var(--spacing-gap-none);
@@ -175,11 +175,11 @@
   box-shadow: inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-pressed-outline);
 }
 
-.rost-icon-button.rost-icon-button--type-primary:active .rost-icon-button__icons-arrow-left {
+.rost-icon-button.rost-icon-button--type-primary:active:where(:not(:disabled, [aria-disabled="true"])) .rost-icon-button__icons-arrow-left {
   color: var(--actions-primary-pressed-icon);
 }
 
-.rost-icon-button.rost-icon-button--type-secondary:active {
+.rost-icon-button.rost-icon-button--type-secondary:active:where(:not(:disabled, [aria-disabled="true"])) {
   padding-left: var(--spacing-gap-medium-large);
   padding-right: var(--spacing-gap-medium-large);
   padding-top: var(--spacing-gap-none);
@@ -188,7 +188,7 @@
   height: var(--spacing-size-medium-large);
 }
 
-.rost-icon-button.rost-icon-button--type-secondary:active .rost-icon-button__background {
+.rost-icon-button.rost-icon-button--type-secondary:active:where(:not(:disabled, [aria-disabled="true"])) .rost-icon-button__background {
   position: absolute;
   inset: 0;
   border-radius: var(--spacing-radius-full);
@@ -202,11 +202,11 @@
   border-top-width: var(--spacing-outline-small);
 }
 
-.rost-icon-button.rost-icon-button--type-secondary:active .rost-icon-button__icons-arrow-left {
+.rost-icon-button.rost-icon-button--type-secondary:active:where(:not(:disabled, [aria-disabled="true"])) .rost-icon-button__icons-arrow-left {
   color: var(--actions-secondary-regular-pressed-icon);
 }
 
-.rost-icon-button.rost-icon-button--type-tertiary:active {
+.rost-icon-button.rost-icon-button--type-tertiary:active:where(:not(:disabled, [aria-disabled="true"])) {
   padding-left: var(--spacing-gap-medium-large);
   padding-right: var(--spacing-gap-medium-large);
   padding-top: var(--spacing-gap-none);
@@ -215,7 +215,7 @@
   height: var(--spacing-size-medium-large);
 }
 
-.rost-icon-button.rost-icon-button--type-tertiary:active .rost-icon-button__background {
+.rost-icon-button.rost-icon-button--type-tertiary:active:where(:not(:disabled, [aria-disabled="true"])) .rost-icon-button__background {
   position: absolute;
   inset: 0;
   background: var(--actions-tertiary-pressed-background);
@@ -223,7 +223,7 @@
   border-radius: var(--spacing-radius-full);
 }
 
-.rost-icon-button.rost-icon-button--type-tertiary:active .rost-icon-button__icons-arrow-left {
+.rost-icon-button.rost-icon-button--type-tertiary:active:where(:not(:disabled, [aria-disabled="true"])) .rost-icon-button__icons-arrow-left {
   color: var(--actions-tertiary-pressed-icon);
 }
 
@@ -385,19 +385,19 @@
   color: var(--actions-borderless-default-icon);
 }
 
-.rost-icon-button.rost-icon-button--type-project:hover {
+.rost-icon-button.rost-icon-button--type-project:hover:where(:not(:disabled, [aria-disabled="true"])) {
   width: var(--spacing-size-small-medium);
   height: var(--spacing-size-small-medium);
   padding: var(--spacing-gap-none);
 }
 
-.rost-icon-button.rost-icon-button--type-project:hover .rost-icon-button__icons-arrow-left {
+.rost-icon-button.rost-icon-button--type-project:hover:where(:not(:disabled, [aria-disabled="true"])) .rost-icon-button__icons-arrow-left {
   width: var(--spacing-size-2xsmall);
   height: var(--spacing-size-2xsmall);
   color: var(--actions-borderless-hover-icon);
 }
 
-.rost-icon-button.rost-icon-button--type-project:hover .rost-icon-button__background {
+.rost-icon-button.rost-icon-button--type-project:hover:where(:not(:disabled, [aria-disabled="true"])) .rost-icon-button__background {
   position: absolute;
   inset: 0;
   background: var(--actions-tertiary-hover-background);
@@ -405,19 +405,19 @@
   border-radius: var(--spacing-radius-full);
 }
 
-.rost-icon-button.rost-icon-button--type-project:active {
+.rost-icon-button.rost-icon-button--type-project:active:where(:not(:disabled, [aria-disabled="true"])) {
   width: var(--spacing-size-small-medium);
   height: var(--spacing-size-small-medium);
   padding: var(--spacing-gap-none);
 }
 
-.rost-icon-button.rost-icon-button--type-project:active .rost-icon-button__icons-arrow-left {
+.rost-icon-button.rost-icon-button--type-project:active:where(:not(:disabled, [aria-disabled="true"])) .rost-icon-button__icons-arrow-left {
   width: var(--spacing-size-2xsmall);
   height: var(--spacing-size-2xsmall);
   color: var(--actions-borderless-pressed-icon);
 }
 
-.rost-icon-button.rost-icon-button--type-project:active .rost-icon-button__background {
+.rost-icon-button.rost-icon-button--type-project:active:where(:not(:disabled, [aria-disabled="true"])) .rost-icon-button__background {
   position: absolute;
   inset: 0;
   background: var(--actions-tertiary-pressed-background);

@@ -63,21 +63,21 @@
   line-height: var(--typography-paragraph-line-height);
 }
 
-.rost-menu:hover .rost-menu__title {
+.rost-menu:hover:where(:not(:disabled, [aria-disabled="true"])) .rost-menu__title {
   color: var(--non-interactive-foreground-primary);
 }
 
-.rost-menu:hover .rost-menu__description {
+.rost-menu:hover:where(:not(:disabled, [aria-disabled="true"])) .rost-menu__description {
   color: var(--non-interactive-foreground-primary);
   font-size: var(--typography-paragraph-font-size);
   line-height: var(--typography-paragraph-line-height);
 }
 
-.rost-menu:active .rost-menu__title {
+.rost-menu:active:where(:not(:disabled, [aria-disabled="true"])) .rost-menu__title {
   color: var(--non-interactive-foreground-primary);
 }
 
-.rost-menu:active .rost-menu__description {
+.rost-menu:active:where(:not(:disabled, [aria-disabled="true"])) .rost-menu__description {
   color: var(--non-interactive-foreground-primary);
   font-weight: var(--typography-body-font-weight-medium);
   font-size: var(--typography-body-font-size);

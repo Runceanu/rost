@@ -60,19 +60,19 @@ const nextItems = [
   <ol class="cards steps" role="list">
     <li>
       <Thumbs as="div" className="card-thumb" showNumber={false} name="A contract" industry="Step" kind="YAML" showPeriod={false}>
-        <span class="peek" aria-hidden="true"><Code class="file" code={contractLines} lang="yaml" theme="vesper" /></span>
+        <span class="peek" aria-hidden="true" inert><Code class="file" code={contractLines} lang="yaml" theme="vesper" /></span>
       </Thumbs>
       <p>Each component is one YAML file: its parts, its tokens, every variant, how to use it, and where my apps build it. It's the source. Figma was where it started.</p>
     </li>
     <li>
       <Thumbs as="div" className="card-thumb" showNumber={false} name="Code from the contract" industry="Step" kind="CSS and React" showPeriod={false}>
-        <span class="peek" aria-hidden="true"><Code class="file" code={cssLines} lang="css" theme="vesper" /></span>
+        <span class="peek" aria-hidden="true" inert><Code class="file" code={cssLines} lang="css" theme="vesper" /></span>
       </Thumbs>
       <p>The CSS is written straight from the contract, so nobody types a colour by hand. The React component follows the same parts.</p>
     </li>
     <li>
       <Thumbs as="div" className="card-thumb" showNumber={false} name="Checked against Figma" industry="Step" kind="Visual test" showPeriod={false}>
-        <span class="peek" aria-hidden="true">
+        <span class="peek" aria-hidden="true" inert>
           <span class="pair">
             <span class="half"><img src={figmaShot} alt="" width="76" height="48" /><span class="cap">Figma</span></span>
             <span class="half"><Button as="span">label</Button><span class="cap">Code</span></span>
@@ -91,14 +91,14 @@ const nextItems = [
   <ul class="cards" role="list">
     <li>
       <Thumbs className="card-thumb" href="/tokens/" number={two(1)} name="Tokens" industry="Foundation" kind={`${Object.keys(tokens).length} tokens`} showPeriod={false}>
-        <span class="peek" aria-hidden="true">
+        <span class="peek" aria-hidden="true" inert>
           <span class="swatches">{swatches.map(({ k, v }) => <span class="sw-row"><span class="chip-c" style={`background:${v}`} /><span class="cap">{k}</span></span>)}</span>
         </span>
       </Thumbs>
     </li>
     <li>
       <Thumbs className="card-thumb" href="/icons/" number={two(2)} name="Icons and illustrations" industry="Foundation" kind={`${icons} icons, ${illustrations} illustrations`} showPeriod={false}>
-        <span class="peek" aria-hidden="true">
+        <span class="peek" aria-hidden="true" inert>
           <span class="glyphs">
             <span class="illos">{illoSvgs.map((src) => <img src={src} alt="" width="64" height="64" />)}</span>
             <span class="icons">{iconSvgs.map((svg) => <span class="ico" set:html={svg} />)}</span>
@@ -108,12 +108,12 @@ const nextItems = [
     </li>
     <li>
       <Thumbs className="card-thumb" href="/docs/contract/" number={two(3)} name="How a contract works" industry="Docs" kind="Statuses" showPeriod={false}>
-        <span class="peek" aria-hidden="true"><span class="ladder">{statuses.map((st) => <Badge status={st === 'stable' ? 'positive' : 'default'}>{st}</Badge>)}</span></span>
+        <span class="peek" aria-hidden="true" inert><span class="ladder">{statuses.map((st) => <Badge status={st === 'stable' ? 'positive' : 'default'}>{st}</Badge>)}</span></span>
       </Thumbs>
     </li>
     <li>
       <Thumbs className="card-thumb" href="/docs/roadmap/" number={two(4)} name="What's next" industry="Docs" kind="Roadmap" showPeriod={false}>
-        <span class="peek" aria-hidden="true"><span class="next">{nextItems.map((t, i) => <ListItem as="span" selected={i === 0}>{t}</ListItem>)}</span></span>
+        <span class="peek" aria-hidden="true" inert><span class="next">{nextItems.map((t, i) => <ListItem as="span" selected={i === 0}>{t}</ListItem>)}</span></span>
       </Thumbs>
     </li>
   </ul>
