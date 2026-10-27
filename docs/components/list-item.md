@@ -133,6 +133,7 @@ Every token this component uses, across all its variants.
 | `spacing/size/xsmall` | `20px` |
 | `typography/label/font-weight/regular` | `400` |
 | `typography/paragraph/font-size` | `14px` |
+| `typography/paragraph/font-weight/medium` | `500` |
 | `typography/paragraph/font-weight/regular` | `400` |
 | `typography/paragraph/letter-spacing` | `0px` |
 | `typography/paragraph/line-height` | `20px` |
