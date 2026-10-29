@@ -4,6 +4,7 @@ What changed each time I merged into `master` and put rost.build live. Newest fi
 
 ## 2026-10-29
 
+- **How a contract works is drawn, not only written.** On rost.build the page opens with Rost's numbers as they are today (contracts, components, tokens, variants matching Figma, apps), counted from the contracts at build time. What a contract gives an agent reads as cards, the way from Figma to code as a diagram, and the statuses as a track with how many contracts sit at each. The words are still only in `docs/CONTRACT.md`, which reads the same as before on GitHub.
 - **The docs say why, once.** [How a contract works](CONTRACT.md) opens with why Rost uses contracts and not just tokens, which used to sit in the README, and what a contract gives an agent that builds UI: named tokens, when not to use a component, the accessibility to follow, and a check it can run. The README is shorter and only points the way. Stale bits went: old counts, the accounting app's old file paths in the example, and a note that the accounting app didn't run the check.
 
 ## 2026-10-27

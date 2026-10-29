@@ -3,6 +3,7 @@ import Base from '../../layouts/Base.astro'
 import { md, readRepo, GITHUB } from '../../lib/kit'
 import { DOCS } from '../../lib/docs'
 import PlainValues from '../../components/PlainValues.astro'
+import ContractVisuals from '../../components/ContractVisuals.astro'
 import { ListItem } from '../../../../src/components/list-item/ListItem'
 
 export function getStaticPaths() {
@@ -30,6 +31,24 @@ const fix = (href: string) => {
 }
 const html = md(readRepo(doc.file).replace(/^<!--[\s\S]*?-->\s*/, ''))
   .replace(/href="([^"]+)"/g, (_, h) => `href="${fix(h)}"`)
+  // On How a contract works, a list whose items open with a bold word reads as cards; on GitHub it stays a list.
+  .replace(/<ul>(\s*<li><strong>[^<]+<\/strong>)/g, (m, first) => (slug === 'contract' ? `<ul class="cards">${first}` : m))
+  // The label sits on its own line there, so the full stop after it goes.
+  .replace(/(<li><strong>[^<]+<\/strong>)\.\s*/g, (m, label) => (slug === 'contract' ? label : m))
+
+// How a contract works gets drawn parts after the headings they belong to. The words stay in the markdown.
+const DRAWN: Record<string, [string, 'stats' | 'pipeline' | 'lifecycle'][]> = {
+  contract: [['</h1>', 'stats'], ['<h2 id="where-a-contract-is-in-its-life">Where a contract is in its life</h2>', 'lifecycle'], ['<h2 id="from-contract-to-code">From contract to code</h2>', 'pipeline']],
+}
+const pieces: { html: string; part?: 'stats' | 'pipeline' | 'lifecycle' }[] = []
+let rest = html
+for (const [marker, part] of DRAWN[slug] ?? []) {
+  const i = rest.indexOf(marker)
+  if (i < 0) continue
+  pieces.push({ html: rest.slice(0, i + marker.length), part })
+  rest = rest.slice(i + marker.length)
+}
+pieces.push({ html: rest })
 // On the site, "No token, on purpose" is drawn instead of listed: the same rows, grouped, each group with a picture.
 const PLAIN = '<h2>No token, on purpose</h2>'
 const at = html.indexOf(PLAIN)
@@ -43,7 +62,10 @@ const [before, after] = at < 0 ? [html, ''] : [html.slice(0, at + PLAIN.length),
     {rows.map((r) => <ListItem href={r.href} selected={r.here} aria-current={r.here ? 'page' : undefined}>{r.title}</ListItem>)}
   </div>
   <nav class="docs-phone side-group" aria-label="Docs">{rows.map((r) => <ListItem href={r.href} selected={r.here} aria-current={r.here ? 'page' : undefined}>{r.title}</ListItem>)}</nav>
-  <article class="prose"><Fragment set:html={before} />{after && <PlainValues />}<Fragment set:html={after} /></article>
+  <article class="prose">
+    {after ? <><Fragment set:html={before} /><PlainValues /><Fragment set:html={after} /></>
+      : pieces.map((p) => <><Fragment set:html={p.html} />{p.part && <ContractVisuals part={p.part} />}</>)}
+  </article>
 </Base>
 <style>
   .prose :global(h1) { color: var(--fg); }
@@ -51,4 +73,8 @@ const [before, after] = at < 0 ? [html, ''] : [html.slice(0, at + PLAIN.length),
   .prose :global(h3) { margin: var(--spacing-gap-xlarge) 0 var(--spacing-gap-small); }
   .prose :global(code) { color: var(--fg); }
   .prose :global(li) { margin: var(--spacing-gap-2xsmall) 0; }
+  /* A list of bold-led points, drawn as cards: the bold word is the card's label. */
+  .prose :global(ul.cards) { list-style: none; padding: 0; margin: var(--spacing-gap-medium) 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: var(--spacing-gap-small); }
+  .prose :global(ul.cards li) { margin: 0; padding: var(--spacing-gap-medium); border-radius: var(--spacing-radius-large); background: var(--surface); color: var(--fg-2); font-size: 15px; line-height: 1.5; }
+  .prose :global(ul.cards li strong:first-child) { display: block; margin-bottom: var(--spacing-gap-2xsmall); font-family: var(--mono); font-size: 11px; font-weight: 400; letter-spacing: .1em; text-transform: uppercase; color: var(--accent); }
 </style>

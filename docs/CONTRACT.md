@@ -21,11 +21,11 @@ A contract writes down what was read, and from which node, and the check fails w
 
 The same file is what an agent needs when it builds UI, Claude or any other. It reads one file per component instead of guessing from a screenshot:
 
-- every value names its token, and a value with no token says why, so there's nothing left to make up
-- `guidance` says when not to use a component and what to use instead, which is the call a model gets wrong most often
-- the accessibility part gives the element, the name, the keys and the focus, so the markup isn't a styled `div`
-- `status` says what's safe to build on, and deviations say which differences are meant, so a mismatch on purpose doesn't get "fixed"
-- the check is something it can run: build, check, fix the findings, stop when there are none
+- **Grounding**. Every value names its token, and a value with no token says why, so there's nothing left to make up.
+- **Judgement**. `guidance` says when not to use a component and what to use instead. That's the call a model gets wrong most often.
+- **Accessibility**. The element, the name, the keys and the focus are written down, so the markup isn't a styled `div`.
+- **Trust**. `status` says what's safe to build on, and deviations say which differences are meant, so a mismatch on purpose doesn't get "fixed".
+- **A loop**. The check is something it can run: build, check, fix the findings, stop when there are none.
 
 [`docs/components/`](components/) has each contract as markdown, ready to load as context.
 

@@ -60,7 +60,7 @@ export function blankShot(path: string) {
 }
 
 // What the visual test last found, per component: written by bin/visual-test.mjs.
-const failing: Record<string, { variant: string; why: string }[]> = existsSync(new URL('baseline/results.json', repo)) ? JSON.parse(readRepo('baseline/results.json')) : {}
+export const failing: Record<string, { variant: string; why: string }[]> = existsSync(new URL('baseline/results.json', repo)) ? JSON.parse(readRepo('baseline/results.json')) : {}
 
 /**
  * Whether a component needs looking at, and why, for the dot in the sidebar.
