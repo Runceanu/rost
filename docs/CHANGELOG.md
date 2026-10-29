@@ -2,6 +2,10 @@
 
 What changed each time I merged into `master` and put rost.build live. Newest first. The commits have the details; this is what it means for a component or an app.
 
+## 2026-10-29
+
+- **The docs say why, once.** [How a contract works](CONTRACT.md) opens with why Rost uses contracts and not just tokens, which used to sit in the README, and what a contract gives an agent that builds UI: named tokens, when not to use a component, the accessibility to follow, and a check it can run. The README is shorter and only points the way. Stale bits went: old counts, the accounting app's old file paths in the example, and a note that the accounting app didn't run the check.
+
 ## 2026-10-27
 
 **In the evening**

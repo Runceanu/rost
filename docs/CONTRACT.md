@@ -13,6 +13,22 @@ Figma is where the values were first read. Code gets checked against the contrac
 
 The format itself is [`schema/component-contract.schema.json`](../schema/component-contract.schema.json). If you'd rather see a filled-in one, start from [`schema/template.contract.yaml`](../schema/template.contract.yaml). This page is the plain-language version of both.
 
+## Why contracts, not just tokens
+
+Tokens alone didn't stop the drift. I built the first Badge in the accounting app by guessing the component from its tokens instead of reading the Figma node. It came out wrong in three places at once: a background fill the kit doesn't have, a coloured label where the kit keeps it grey, and an outline from the wrong token family.
+
+A contract writes down what was read, and from which node, and the check fails when code stops matching. It compares token names, not just pixels. Six tokens here come out as `#3a3a3a`, and a screenshot can't tell the right one from the wrong one.
+
+The same file is what an agent needs when it builds UI, Claude or any other. It reads one file per component instead of guessing from a screenshot:
+
+- every value names its token, and a value with no token says why, so there's nothing left to make up
+- `guidance` says when not to use a component and what to use instead, which is the call a model gets wrong most often
+- the accessibility part gives the element, the name, the keys and the focus, so the markup isn't a styled `div`
+- `status` says what's safe to build on, and deviations say which differences are meant, so a mismatch on purpose doesn't get "fixed"
+- the check is something it can run: build, check, fix the findings, stop when there are none
+
+[`docs/components/`](components/) has each contract as markdown, ready to load as context.
+
 ## What I follow
 
 Most of this comes from Nathan Curtis ([component contracts and schemas](https://nathanacurtis.substack.com/p/component-contracts-and-schemas), [conventions in Figma](https://nathanacurtis.substack.com/p/design-system-conventions-in-figma)) and Christine Vallaure ([design system contracts](https://christinevallaure.substack.com/p/design-system-contracts-the-component)). What I took from them:
@@ -20,8 +36,8 @@ Most of this comes from Nathan Curtis ([component contracts and schemas](https:/
 1. **Say each thing once.** The variant list and its Figma nodes used to live in two places that could disagree. The guidance and the app implementations lived in two more. Now it's one file.
 2. **Write by hand only what can't be generated, and keep it in the same file.** A side file is a second truth, and second truths drift.
 3. **Same input, same output.** Reading Figma again when nothing changed gives an empty diff. If the diff isn't empty, something really changed.
-4. **States aren't props.** Hover, pressed and focus come from the browser, not from whoever uses the component. They get their own list. In the CSS, hover and pressed skip a disabled item (`:where(:not(:disabled, [aria-disabled="true"]))`), so a disabled button doesn't light up under the pointer wherever its Disabled values don't say otherwise. The `:where()` keeps the rule's weight as it was.
-5. **Check it, don't describe it.** Every value carries its token name *and* what it resolves to, because six tokens here all come out as `#3a3a3a`. `npm run validate` checks the files, the conformance check reads the CSS.
+4. **States aren't props.** Hover, pressed and focus come from the browser, not from whoever uses the component. They get their own list.
+5. **Check it, don't describe it.** Every value carries its token name *and* what it resolves to. `npm run validate` checks the files, the conformance check reads the CSS.
 6. **Version the format.** It's `schemaVersion: 2`. If the shape changes, the version changes with it.
 
 ## What's in one
@@ -44,6 +60,8 @@ source:                     # where the values were read from
 props:                      # what a caller can set
   selected: { type: boolean, default: false }
 states: [ Default, Hover, Pressed, Focus, Disabled ]
+stateSelectors:             # only where a state isn't its plain pseudo-class
+  Pressed: ":is(:active, [aria-current=\"page\"])"   # Button: the page you're on looks pressed
 
 elements:                   # every part, in DOM order, and what never changes
   root:
@@ -64,7 +82,7 @@ variants:                   # when each applies, and only what differs. Layers f
 
 guidance: …                 # by hand: when to use it, when not, behaviour, accessibility, content
 implementations:            # by hand: where each app builds it, and where it knowingly differs
-  accounting-app: { component: src/components/Toggle.tsx, root: .ak-toggle, deviations: […] }
+  accounting-app: { component: src/rost/toggle/Toggle.tsx, root: .rost-toggle, deviations: […] }
 deviations: […]             # by hand: differences that apply to every app
 pending: …                  # what still needs reading
 ```
@@ -88,7 +106,7 @@ cadence:  { value: 7-8s, untokenised: Motion timing… }   # plain on purpose, a
 
 - **`token`** is the token the source actually uses. I never fill it in by hand for something read from Figma. The conformance check tests it.
 - **`value`** is what CSS ends up with.
-- **`suggest`** is a token that *should* be there. Either it exists and Figma just isn't using it, or it doesn't exist yet and needs creating (`npm run validate` lists those as `new`). Until the freeze, the Figma read added these by itself when a plain number matched a step on the size or gap scale exactly. The freeze turned all 122 into tokens, so there are none left. The conformance check ignores them.
+- **`suggest`** is a token that *should* be there but isn't used yet. The freeze turned all 122 into tokens, so there are none left. The check ignores them.
 - **`untokenised`** says why a value has no token on purpose. Without it, a value with no token shows up as an open gap.
 - **`assert: false`** means it's written down but not checked, like a root width that's only the size of the Figma frame.
 - **`notes`** is for anything that would surprise you.
@@ -123,7 +141,7 @@ How it's read:
 
 Every reader goes through the same function, `variantsOf` in `bin/lib/kit.mjs` (with a copy in `src/conform.ts`, which can't import it). `bin/build-css.mjs` writes one rule per variant with its layers already in, so the selectors are the same as when each variant was written out in full. The site's variant table and `forApp` show the variants the same way, with layers applied. `npm run validate` fails on two entries with the same `when`, and on a layer with a `figmaNode`.
 
-Two things it doesn't do. Two variants that can both be true at once (a labelled toggle that's also disabled) stay two rules in CSS, and the cascade decides between them, as it did before. And the Figma read (`bin/build-contracts.mjs`) still writes every variant out in full. Every contract is frozen, so it doesn't run on these any more.
+Two variants that can both be true at once (a labelled toggle that's also disabled) stay two rules in CSS, and the cascade decides between them.
 
 ### Deviations
 
@@ -167,16 +185,16 @@ A component is `stable` when:
 
 A component in code is built from its contract, not from memory.
 
-1. `npm run css -- <id>` writes `src/components/<id>/<id>.css` straight from the contract. Every part gets a class, every prop value a modifier, every value its token. I don't edit that file. If the CSS is wrong, the contract is wrong, and that's where I fix it.
+1. `npm run css -- <id>` writes `src/components/<id>/<id>.css` straight from the contract. Every part gets a class, every prop value a modifier, every value its token. Hover and pressed skip a disabled item, inside `:where()` so the rule weighs what it did. I don't edit that file. If the CSS is wrong, the contract is wrong, and that's where I fix it.
 2. The React component sits next to it and follows the Figma layers one to one, so the classes land on the same parts.
 3. `<id>.fixtures.tsx` lists one example per Figma variant. Hover, pressed and focus aren't props, so a fixture names them in `force` and the test puts them on the element through Chrome's DevTools protocol, the way the `:hov` panel does. Pages are served over http, as on the site, because a browser won't apply a CSS mask from a `file://` page. A fixture can also `mask` a box the test shouldn't compare, like Thumbs' sample name, which shows a real client in Figma.
 4. `npm run test:visual -- <id>` renders each one in Chrome, on the same dark background Figma uses, with the same General Sans Variable font, and compares it with Figma's own screenshot from `baseline/`. It saves a side by side for each variant in `test-results/visual/<id>/`: Figma, mine, and the difference in red.
 
-A variant passes when its size is exact and almost nothing differs. Figma and Chrome never draw letter edges quite the same way: on InlineBanner, with everything else exact, about 2 to 2.4% of pixels still differ at the edges of the text, even allowing a pixel either way. So the line is 2.5%. That alone isn't enough for a small part: IconButton passed at 2.3% with its arrow missing. So there's a second line. The pixels that differ can't touch each other in a clump bigger than 32. Text edges differ in specks of up to 29, and a missing arrow in one piece of 34 or more. Neither line sees a missing part on a disabled variant, which is too faint to tell. Figma also rounds a component that hugs its text up to a whole pixel (Chip is 43px in Figma, 42.4px in Chrome) and centres the content in the extra. The test does the same to the component's root before it compares.
+A variant passes when its size is exact and almost nothing differs. Figma and Chrome never draw letter edges quite the same, so up to 2.5% of pixels may differ, allowing a pixel either way. That alone let IconButton pass with its arrow missing, so the pixels that differ also can't touch each other in a clump bigger than 32: text edges differ in specks, a missing part in one piece. A component that hugs its text is rounded up to a whole pixel first, as Figma does. Neither line sees a missing part on a disabled variant, which is too faint to tell. The results go to `baseline/results.json`, which rost.build reads for the dots in its sidebar.
 
 ## Checking an app
 
-`src/conform.ts` has `forApp(contract, app)`. It turns a YAML contract into what one app should look like: that app's selectors, every fixed value, and the variants named the way Figma names them. Hand the result to `conform()`.
+`npm run add -- <app-dir> <id>` copies the component, its contract (the same YAML) and `src/conform.ts` into the app, the way shadcn does: the app owns the copies, and running it again updates them. `src/conform.ts` has `forApp(contract, app)`. It turns a YAML contract into what one app should look like: that app's selectors, every fixed value, and the variants named the way Figma names them. Hand the result to `conform()`.
 
 ```ts
 import { readFileSync } from 'node:fs'
@@ -187,4 +205,4 @@ const contract = forApp(YAML.parse(readFileSync('contracts/badge.contract.yaml',
 expect(conform(contract, css, tokensCss)).toEqual([])
 ```
 
-Pass a variant to check that one too: `conform(contract, css, tokensCss, 'status=Negative, size=Small')`. It looks for the modifier classes Rost's own CSS uses (`.rost-badge--status-negative`). An app that names them by value alone (`.ak-badge--negative`) adds `{ modifiers: 'value' }` at the end. It reports three kinds of finding: a value that's missing, a value that's different, and the right value from the wrong token. The last one is the reason the check exists.
+Pass a variant to check that one too: `conform(contract, css, tokensCss, 'status=Negative, size=Small')`. Loop over `Object.keys(contract.variants)`, which has every whole variant with its layers in, not over the YAML's `variants`, where a layer like `size=Small` isn't a variant of its own. It looks for the modifier classes Rost's own CSS uses (`.rost-badge--status-negative`). An app that names them by value alone (`.ak-badge--negative`) adds `{ modifiers: 'value' }` at the end. It reports three kinds of finding: a value that's missing, a value that's different, and the right value from the wrong token. The last one is the reason the check exists.
