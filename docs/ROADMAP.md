@@ -86,7 +86,7 @@ In order of how much copied code each one removes.
 |---|---|---|
 | **Icons** as a component | The 17 SVGs are exported (`assets/icons/`), but there's no `Icon` component yet, and the apps draw their own | SVGs exported, component next |
 | **~~ListRow~~ Table** | The accounting app builds it outside the kit | ListRow became Table on 2026-10-30. ListItem didn't cover it: a row there leads with a Badge, ends with an amount and can carry a second Badge. Those rows are a table, so Rost has Table, TableRow and TableItem as drafts, with `leading` and `trailing` slots. Next: move the accounting app's payment schedule onto them |
-| **Switch, Textarea, a selected Chip** | The guidance already says they're missing | need designing first |
+| **Switch, Textarea, a selected Chip, Menu's current page** | The guidance said they were missing | Drafted in code on 2026-10-30 from the tokens Rost already has, then drawn in Figma (with ToggleGroup) and matching it. Guidance is proposed: next, I read them and sign them off |
 
 ~~Move the portfolio site onto the kit's token names.~~ Done on 2026-10-26: its raw hex count is 0, like the accounting app's.
 

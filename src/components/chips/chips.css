@@ -36,6 +36,13 @@
   letter-spacing: var(--typography-label-letter-spacing);
 }
 
+.rost-chips__background {
+  position: absolute;
+  inset: 0;
+  border-radius: var(--spacing-radius-full);
+  pointer-events: none;
+}
+
 .rost-chips__outline {
   position: absolute;
   inset: 0;
@@ -106,4 +113,74 @@
 
 .rost-chips.rost-chips--status-default:focus-visible .rost-chips__focus-ring {
   display: block;
+}
+
+.rost-chips.rost-chips--selected .rost-chips__background {
+  background: var(--interactive-active-default-background);
+}
+
+.rost-chips.rost-chips--selected .rost-chips__label {
+  color: var(--interactive-active-default-label);
+}
+
+.rost-chips.rost-chips--selected .rost-chips__outline {
+  opacity: var(--opacity-transparent);
+}
+
+.rost-chips:hover:where(:not(:disabled, [aria-disabled="true"])).rost-chips--selected .rost-chips__background {
+  background: var(--interactive-active-hover-background);
+}
+
+.rost-chips:hover:where(:not(:disabled, [aria-disabled="true"])).rost-chips--selected .rost-chips__label {
+  color: var(--interactive-active-hover-label);
+}
+
+.rost-chips:hover:where(:not(:disabled, [aria-disabled="true"])).rost-chips--selected .rost-chips__outline {
+  opacity: var(--opacity-transparent);
+}
+
+.rost-chips:active:where(:not(:disabled, [aria-disabled="true"])).rost-chips--selected .rost-chips__background {
+  background: var(--interactive-active-pressed-background);
+}
+
+.rost-chips:active:where(:not(:disabled, [aria-disabled="true"])).rost-chips--selected .rost-chips__label {
+  color: var(--interactive-active-pressed-label);
+}
+
+.rost-chips:active:where(:not(:disabled, [aria-disabled="true"])).rost-chips--selected .rost-chips__outline {
+  opacity: var(--opacity-transparent);
+}
+
+.rost-chips:focus-visible.rost-chips--selected .rost-chips__background {
+  background: var(--interactive-active-focus-background);
+}
+
+.rost-chips:focus-visible.rost-chips--selected .rost-chips__label {
+  color: var(--interactive-active-focus-label);
+}
+
+.rost-chips:focus-visible.rost-chips--selected .rost-chips__outline {
+  opacity: var(--opacity-transparent);
+}
+
+.rost-chips:focus-visible.rost-chips--selected .rost-chips__focus-ring {
+  display: block;
+  border-color: var(--interactive-active-focus-focus-ring);
+}
+
+.rost-chips:is(:disabled, [aria-disabled="true"]).rost-chips--selected .rost-chips__background {
+  background: var(--interactive-active-disabled-background);
+}
+
+.rost-chips:is(:disabled, [aria-disabled="true"]).rost-chips--selected .rost-chips__label {
+  color: var(--interactive-active-disabled-label);
+}
+
+.rost-chips:is(:disabled, [aria-disabled="true"]).rost-chips--selected .rost-chips__outline {
+  opacity: var(--opacity-transparent);
+}
+
+.rost-chips:is(:disabled, [aria-disabled="true"]).rost-chips--selected {
+  opacity: var(--opacity-gentle);
+  cursor: default;
 }

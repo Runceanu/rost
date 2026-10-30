@@ -12,6 +12,11 @@ export const fixtures = [
   { node: '41:286', name: 'state=Pressed', element: item(), force: ['active'] },
   { node: '41:272', name: 'state=Focus', element: <div style={{ display: 'inline-flex', padding: '0 var(--spacing-gap-2xsmall)' }}>{item()}</div>, force: ['focus', 'focus-visible'] },
   { node: '41:298', name: 'state=Disabled', element: item({ disabled: true }) },
+  // The page you're on, from aria-current="page". In Figma since 2026-10-30.
+  // Figma draws the divider half a pixel either side of a zero-height line, so
+  // its render shows the bright line at half strength in the frame's last row.
+  // Divider is one solid pixel, so that row isn't compared.
+  { node: '527:586', name: 'state=Current', element: item({ 'aria-current': 'page' }), mask: [{ x: 0, y: 102, width: 324, height: 1 }] },
 ]
 
 /** What a caller writes. Shown on the component's page. */
@@ -23,4 +28,4 @@ export const usage = `import { Menu } from 'rost/components/menu/Menu'
 </nav>`
 
 /** What the component's card on rost.build shows. */
-export const preview = <Menu as="div" title="Work" description="Products and case studies" style={{ width: 220 }} />
+export const preview = <Menu as="div" title="Work" description="Products and case studies" aria-current="page" style={{ width: 220 }} />

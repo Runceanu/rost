@@ -19,7 +19,8 @@ const b = 'rost-menu'
 /**
  * One item in the main menu: a title, a line of description, and a divider.
  * It's a link; hover, press and focus are the browser's. Mark the current
- * page with `aria-current="page"`. Built from contracts/menu.contract.yaml.
+ * page with `aria-current="page"` and it takes the Current look: a bright,
+ * medium description and a bright line. Built from contracts/menu.contract.yaml.
  */
 export function Menu({ title = 'Title', description = 'Description', showDescription = true, showDivider = true, disabled = false, className, href, as = 'a', ...rest }: MenuProps) {
   const Root = as

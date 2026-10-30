@@ -20,6 +20,10 @@ props:
     type: enum
     values: [ Default ]
     default: Default
+  selected:
+    type: boolean
+    default: false
+    notes: "Proposed, and in Figma since 2026-10-30 (the set's second column). The chip that's on, in a row of filters: ListItem's solid green plate, with the same `interactive/active` tokens. In code it also sets `aria-pressed`."
 states: [ Default, Hover, Pressed, Focus, Disabled ]
 elements:
   root:
@@ -52,6 +56,13 @@ elements:
       line-height: { token: typography/label/line-height, value: 14px }
       font-size: { token: typography/label/font-size, value: 12px }
       letter-spacing: { token: typography/label/letter-spacing, value: 0px }
+  background:
+    notes: "Proposed, in Figma since 2026-10-30. The plate behind a selected chip, the full size of the pill. An unselected chip leaves it empty, so the Figma states don't change."
+    styles:
+      position: { value: absolute }
+      inset: { value: "0" }
+      border-radius: { token: spacing/radius/full, value: 10000px }
+      pointer-events: { value: none, assert: false }
   outline:
     notes: "The 1px edge, drawn as an inset shadow rather than a border. Chrome spreads a border on a fully round box over two pixels at the ends, where Figma draws one. That was all of Pressed's difference from Figma (2.62%, now 0.68%)."
     styles:
@@ -125,6 +136,59 @@ variants:
         opacity: { token: opacity/gentle, value: "0.24" }
       focus-ring:
         display: { value: block, assert: false }
+  # Proposed: the selected chip, drawn after ListItem's selected row. Drawn in code first, in Figma since 2026-10-30.
+  # These come after the Figma states so they win over them.
+  - when: { state: Default, selected: true }
+    figmaNode: "527:484"
+    elements:
+      background:
+        background: { token: interactive/active/default/background, value: "#00d669" }
+      label:
+        color: { token: interactive/active/default/label, value: "#060805" }
+      outline:
+        opacity: { token: opacity/transparent, value: "0", notes: "A selected chip has no edge, like a selected ListItem. The plate is the edge." }
+  - when: { state: Hover, selected: true }
+    figmaNode: "527:488"
+    elements:
+      background:
+        background: { token: interactive/active/hover/background, value: "#00b450" }
+      label:
+        color: { token: interactive/active/hover/label, value: "#060805" }
+      outline:
+        opacity: { token: opacity/transparent, value: "0", notes: "A selected chip has no edge, like a selected ListItem. The plate is the edge." }
+  - when: { state: Pressed, selected: true }
+    figmaNode: "527:492"
+    elements:
+      background:
+        background: { token: interactive/active/pressed/background, value: "#00913a" }
+      label:
+        color: { token: interactive/active/pressed/label, value: "#060805" }
+      outline:
+        opacity: { token: opacity/transparent, value: "0", notes: "A selected chip has no edge, like a selected ListItem. The plate is the edge." }
+  - when: { state: Focus, selected: true }
+    figmaNode: "527:496"
+    elements:
+      background:
+        background: { token: interactive/active/focus/background, value: "#00d669" }
+      label:
+        color: { token: interactive/active/focus/label, value: "#060805" }
+      outline:
+        opacity: { token: opacity/transparent, value: "0", notes: "A selected chip has no edge, like a selected ListItem. The plate is the edge." }
+      focus-ring:
+        display: { value: block, assert: false }
+        border-color: { token: interactive/active/focus/focus-ring, value: "#b6ffda" }
+  - when: { state: Disabled, selected: true }
+    figmaNode: "527:501"
+    elements:
+      background:
+        background: { token: interactive/active/disabled/background, value: "#00d669" }
+      label:
+        color: { token: interactive/active/disabled/label, value: "#060805" }
+      outline:
+        opacity: { token: opacity/transparent, value: "0", notes: "A selected chip has no edge, like a selected ListItem. The plate is the edge." }
+      root:
+        opacity: { token: opacity/gentle, value: "0.24" }
+        cursor: { value: default, assert: false }
 guidance:
   status: agreed
   use:
@@ -134,10 +198,12 @@ guidance:
     - "A status nobody clicks: **Badge**."
     - "A topic on a piece of content: **Tag**."
   behaviour: |-
-    One `status` (`Default`) and five states. Hover, pressed and focus come from the browser. There's no selected chip in the kit yet, so a selected chip needs designing before anyone builds one. Not an improvised fill.
+    One `status` (`Default`) and five states. Hover, pressed and focus come from the browser.
+
+    `selected` is the chip that's on: a solid green plate with a dark label, the same look and tokens as a selected ListItem, and no edge. It's my proposal. I drew it in code first and then in the kit, in the Chip set's second column. Use it, but it isn't signed off yet. Don't improvise another fill.
   accessibility:
     element: |-
-      `<button type="button">`, with `aria-pressed` when it filters.
+      `<button type="button">`, with `aria-pressed` when it filters. Pass `selected` (true or false) and Chip sets `aria-pressed` for you. Leave it out on a chip that just does something, and there's no `aria-pressed` at all.
     group: |-
       wrap the set in something with a name (`role="group"` and `aria-label="Filter by category"`).
     focus: "`focus-ring`, on `:focus-visible`."

@@ -12,7 +12,8 @@
       { "nodeId": "41:286", "name": "state=Pressed", "width": 324, "height": 104 },
       { "nodeId": "41:272", "name": "state=Focus", "width": 324, "height": 104 },
       { "nodeId": "41:260", "name": "state=Hover", "width": 324, "height": 104 },
-      { "nodeId": "41:147", "name": "state=Default", "width": 324, "height": 104 }
+      { "nodeId": "41:147", "name": "state=Default", "width": 324, "height": 104 },
+      { "nodeId": "527:586", "name": "state=Current", "width": 324, "height": 104 }
     ]
   },
   "button": {
@@ -152,11 +153,16 @@
     "name": "Chip",
     "setNodeId": "139:317",
     "variants": [
-      { "nodeId": "139:318", "name": "status=Default, state=Default", "width": 43, "height": 24 },
-      { "nodeId": "139:320", "name": "status=Default, state=Hover", "width": 43, "height": 24 },
-      { "nodeId": "139:322", "name": "status=Default, state=Pressed", "width": 43, "height": 24 },
-      { "nodeId": "139:324", "name": "status=Default, state=Disabled", "width": 43, "height": 24 },
-      { "nodeId": "139:326", "name": "status=Default, state=Focus", "width": 43, "height": 24 }
+      { "nodeId": "139:318", "name": "status=Default, state=Default, selected=False", "width": 43, "height": 24 },
+      { "nodeId": "139:320", "name": "status=Default, state=Hover, selected=False", "width": 43, "height": 24 },
+      { "nodeId": "139:322", "name": "status=Default, state=Pressed, selected=False", "width": 43, "height": 24 },
+      { "nodeId": "139:324", "name": "status=Default, state=Disabled, selected=False", "width": 43, "height": 24 },
+      { "nodeId": "139:326", "name": "status=Default, state=Focus, selected=False", "width": 43, "height": 24 },
+      { "nodeId": "527:484", "name": "status=Default, state=Default, selected=True", "width": 43, "height": 24 },
+      { "nodeId": "527:488", "name": "status=Default, state=Hover, selected=True", "width": 43, "height": 24 },
+      { "nodeId": "527:492", "name": "status=Default, state=Pressed, selected=True", "width": 43, "height": 24 },
+      { "nodeId": "527:496", "name": "status=Default, state=Focus, selected=True", "width": 43, "height": 24 },
+      { "nodeId": "527:501", "name": "status=Default, state=Disabled, selected=True", "width": 43, "height": 24 }
     ]
   },
   "input": {
@@ -359,6 +365,42 @@
       { "nodeId": "527:90", "name": "header=Row, numeric=True", "width": 189, "height": 52 },
       { "nodeId": "527:102", "name": "header=Column, numeric=False", "width": 189, "height": 38 },
       { "nodeId": "527:114", "name": "header=Column, numeric=True", "width": 189, "height": 38 }
+    ]
+  },
+  "switch": {
+    "name": "Switch",
+    "setNodeId": "528:402",
+    "variants": [
+      { "nodeId": "528:350", "name": "state=Default, checked=False", "width": 161, "height": 24 },
+      { "nodeId": "528:355", "name": "state=Hover, checked=False", "width": 161, "height": 24 },
+      { "nodeId": "528:360", "name": "state=Pressed, checked=False", "width": 161, "height": 24 },
+      { "nodeId": "528:365", "name": "state=Focus, checked=False", "width": 161, "height": 24 },
+      { "nodeId": "528:371", "name": "state=Disabled, checked=False", "width": 161, "height": 24 },
+      { "nodeId": "528:376", "name": "state=Default, checked=True", "width": 161, "height": 24 },
+      { "nodeId": "528:381", "name": "state=Hover, checked=True", "width": 161, "height": 24 },
+      { "nodeId": "528:386", "name": "state=Pressed, checked=True", "width": 161, "height": 24 },
+      { "nodeId": "528:391", "name": "state=Focus, checked=True", "width": 161, "height": 24 },
+      { "nodeId": "528:397", "name": "state=Disabled, checked=True", "width": 161, "height": 24 }
+    ]
+  },
+  "textarea": {
+    "name": "Textarea",
+    "setNodeId": "528:814",
+    "variants": [
+      { "nodeId": "528:761", "name": "state=Default, selected=False, error=False", "width": 280, "height": 104 },
+      { "nodeId": "528:767", "name": "state=Hover, selected=False, error=False", "width": 280, "height": 104 },
+      { "nodeId": "528:773", "name": "state=Default, selected=True, error=False", "width": 280, "height": 104 },
+      { "nodeId": "528:780", "name": "state=Disabled, selected=False, error=False", "width": 280, "height": 104 },
+      { "nodeId": "528:786", "name": "state=Default, selected=False, error=True", "width": 280, "height": 104 },
+      { "nodeId": "528:795", "name": "state=Hover, selected=False, error=True", "width": 280, "height": 104 },
+      { "nodeId": "528:804", "name": "state=Default, selected=True, error=True", "width": 280, "height": 104 }
+    ]
+  },
+  "toggle-group": {
+    "name": "ToggleGroup",
+    "setNodeId": "528:742",
+    "variants": [
+      { "nodeId": "528:742", "name": "toggle-group", "width": 124, "height": 40 }
     ]
   }
 }

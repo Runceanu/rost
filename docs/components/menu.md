@@ -23,7 +23,7 @@
 
 ## States
 
-`Default` · `Hover` · `Pressed` · `Focus` · `Disabled`
+`Default` · `Hover` · `Pressed` · `Focus` · `Disabled` · `Current`
 
 ## Anatomy
 
@@ -45,12 +45,12 @@
 
 ## Behaviour
 
-Five states. The `line` part is the indicator. It marks the page you're on (`aria-current`), not where the mouse is.
+Six states. The sixth, `Current`, I added in code first and then in Figma, the page you're on. It comes from `aria-current="page"`, not from the mouse. The description turns bright and medium, as when you press it, and the divider underneath goes as bright as the text. It's still my proposal, not signed off.
 
 ## Accessibility
 
 - **Element**: `<a>`, inside `<nav aria-label="Main">` and a list.
-- **Current Page**: `aria-current="page"`. That's also what the line is styled from.
+- **Current Page**: `aria-current="page"`. That's also what the `Current` look is styled from, so there's no prop to keep in step with it.
 - **Focus**: `focus-ring`, on `:focus-visible`.
 - **Mobile**: when it folds behind a button, that button gets `aria-expanded` and controls the list.
 

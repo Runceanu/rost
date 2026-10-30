@@ -17,6 +17,7 @@
 | Prop | Type | Values | Default |
 |---|---|---|---|
 | `status` | enum | `Default` | `Default` |
+| `selected` | boolean |  | `false` |
 
 ## States
 
@@ -26,6 +27,7 @@
 
 - `root`
 - `label`
+- `background`: Proposed, in Figma since 2026-10-30. The plate behind a selected chip, the full size of the pill. An unselected chip leaves it empty, so the Figma states don't change.
 - `outline`: The 1px edge, drawn as an inset shadow rather than a border. Chrome spreads a border on a fully round box over two pixels at the ends, where Figma draws one. That was all of Pressed's difference from Figma (2.62%, now 0.68%).
 - `focus-ring`
 
@@ -40,11 +42,13 @@
 
 ## Behaviour
 
-One `status` (`Default`) and five states. Hover, pressed and focus come from the browser. There's no selected chip in the kit yet, so a selected chip needs designing before anyone builds one. Not an improvised fill.
+One `status` (`Default`) and five states. Hover, pressed and focus come from the browser.
+
+`selected` is the chip that's on: a solid green plate with a dark label, the same look and tokens as a selected ListItem, and no edge. It's my proposal. I drew it in code first and then in the kit, in the Chip set's second column. Use it, but it isn't signed off yet. Don't improvise another fill.
 
 ## Accessibility
 
-- **Element**: `<button type="button">`, with `aria-pressed` when it filters.
+- **Element**: `<button type="button">`, with `aria-pressed` when it filters. Pass `selected` (true or false) and Chip sets `aria-pressed` for you. Leave it out on a chip that just does something, and there's no `aria-pressed` at all.
 - **Group**: wrap the set in something with a name (`role="group"` and `aria-label="Filter by category"`).
 - **Focus**: `focus-ring`, on `:focus-visible`.
 
@@ -71,9 +75,21 @@ Every token this component uses, across all its variants.
 | `actions/secondary/regular/hover/label` | `#ededed` |
 | `actions/secondary/regular/pressed/label` | `#d3d9d5` |
 | `font-family/base` | `'General Sans Variable'` |
+| `interactive/active/default/background` | `#00d669` |
+| `interactive/active/default/label` | `#060805` |
+| `interactive/active/disabled/background` | `#00d669` |
+| `interactive/active/disabled/label` | `#060805` |
+| `interactive/active/focus/background` | `#00d669` |
+| `interactive/active/focus/focus-ring` | `#b6ffda` |
+| `interactive/active/focus/label` | `#060805` |
+| `interactive/active/hover/background` | `#00b450` |
+| `interactive/active/hover/label` | `#060805` |
+| `interactive/active/pressed/background` | `#00913a` |
+| `interactive/active/pressed/label` | `#060805` |
 | `opacity/gentle` | `0.24` |
 | `opacity/solid` | `1` |
 | `opacity/strong` | `0.64` |
+| `opacity/transparent` | `0` |
 | `spacing/gap/3xsmall` | `2px` |
 | `spacing/gap/none` | `0px` |
 | `spacing/gap/small` | `8px` |

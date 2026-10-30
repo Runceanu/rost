@@ -7,20 +7,26 @@ export const fixtures = [
   { node: '139:322', name: 'state=Pressed', element: <Chip>label</Chip>, force: ['active'] },
   { node: '139:326', name: 'state=Focus', element: <div style={{ display: 'inline-flex', padding: 'var(--spacing-gap-2xsmall)' }}><Chip>label</Chip></div>, force: ['focus', 'focus-visible'] },
   { node: '139:324', name: 'state=Disabled', element: <Chip disabled>label</Chip> },
+  // The selected chip, drawn after ListItem's selected row. Figma has it since 2026-10-30, in the set's second column.
+  { node: '527:484', name: 'state=Default, selected=True', element: <Chip selected>label</Chip> },
+  { node: '527:488', name: 'state=Hover, selected=True', element: <Chip selected>label</Chip>, force: ['hover'] },
+  { node: '527:492', name: 'state=Pressed, selected=True', element: <Chip selected>label</Chip>, force: ['active'] },
+  { node: '527:496', name: 'state=Focus, selected=True', element: <div style={{ display: 'inline-flex', padding: 'var(--spacing-gap-2xsmall)' }}><Chip selected>label</Chip></div>, force: ['focus', 'focus-visible'] },
+  { node: '527:501', name: 'state=Disabled, selected=True', element: <Chip selected disabled>label</Chip> },
 ]
 
 /** What a caller writes. Shown on the component's page. */
 export const usage = `import { Chip } from 'rost/components/chips/Chip'
 
 <div role="group" aria-label="Filter by category">
-  <Chip aria-pressed="false">Product</Chip>
-  <Chip aria-pressed="false">Brand</Chip>
+  <Chip selected={filter === 'product'} onClick={() => setFilter('product')}>Product</Chip>
+  <Chip selected={filter === 'brand'} onClick={() => setFilter('brand')}>Brand</Chip>
 </div>`
 
 /** What the component's card on rost.build shows. */
 export const preview = (
   <span style={{ display: 'flex', gap: 'var(--spacing-gap-small)' }}>
-    <Chip as="span">Product</Chip>
+    <Chip as="span" selected>Product</Chip>
     <Chip as="span">Brand</Chip>
     <Chip as="span">Web</Chip>
   </span>

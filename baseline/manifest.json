@@ -753,36 +753,71 @@
   "chips": [
     {
       "nodeId": "139:318",
-      "name": "status=Default, state=Default",
+      "name": "status=Default, state=Default, selected=False",
       "file": "139-318.png",
       "width": 43,
       "height": 24
     },
     {
       "nodeId": "139:320",
-      "name": "status=Default, state=Hover",
+      "name": "status=Default, state=Hover, selected=False",
       "file": "139-320.png",
       "width": 43,
       "height": 24
     },
     {
       "nodeId": "139:322",
-      "name": "status=Default, state=Pressed",
+      "name": "status=Default, state=Pressed, selected=False",
       "file": "139-322.png",
       "width": 43,
       "height": 24
     },
     {
       "nodeId": "139:324",
-      "name": "status=Default, state=Disabled",
+      "name": "status=Default, state=Disabled, selected=False",
       "file": "139-324.png",
       "width": 43,
       "height": 24
     },
     {
       "nodeId": "139:326",
-      "name": "status=Default, state=Focus",
+      "name": "status=Default, state=Focus, selected=False",
       "file": "139-326.png",
+      "width": 43,
+      "height": 24
+    },
+    {
+      "nodeId": "527:484",
+      "name": "status=Default, state=Default, selected=True",
+      "file": "527-484.png",
+      "width": 43,
+      "height": 24
+    },
+    {
+      "nodeId": "527:488",
+      "name": "status=Default, state=Hover, selected=True",
+      "file": "527-488.png",
+      "width": 43,
+      "height": 24
+    },
+    {
+      "nodeId": "527:492",
+      "name": "status=Default, state=Pressed, selected=True",
+      "file": "527-492.png",
+      "width": 43,
+      "height": 24
+    },
+    {
+      "nodeId": "527:496",
+      "name": "status=Default, state=Focus, selected=True",
+      "file": "527-496.png",
+      "width": 43,
+      "height": 24
+    },
+    {
+      "nodeId": "527:501",
+      "name": "status=Default, state=Disabled, selected=True",
+      "file": "527-501.png",
       "width": 43,
       "height": 24
     }
@@ -857,6 +892,13 @@
       "nodeId": "41:147",
       "name": "state=Default",
       "file": "41-147.png",
+      "width": 324,
+      "height": 104
+    },
+    {
+      "nodeId": "527:586",
+      "name": "state=Current",
+      "file": "527-586.png",
       "width": 324,
       "height": 104
     }
@@ -1484,6 +1526,138 @@
       "file": "527-114.png",
       "width": 189,
       "height": 38
+    }
+  ],
+  "switch": [
+    {
+      "nodeId": "528:350",
+      "name": "state=Default, checked=False",
+      "file": "528-350.png",
+      "width": 161,
+      "height": 24
+    },
+    {
+      "nodeId": "528:355",
+      "name": "state=Hover, checked=False",
+      "file": "528-355.png",
+      "width": 161,
+      "height": 24
+    },
+    {
+      "nodeId": "528:360",
+      "name": "state=Pressed, checked=False",
+      "file": "528-360.png",
+      "width": 161,
+      "height": 24
+    },
+    {
+      "nodeId": "528:365",
+      "name": "state=Focus, checked=False",
+      "file": "528-365.png",
+      "width": 161,
+      "height": 24
+    },
+    {
+      "nodeId": "528:371",
+      "name": "state=Disabled, checked=False",
+      "file": "528-371.png",
+      "width": 161,
+      "height": 24
+    },
+    {
+      "nodeId": "528:376",
+      "name": "state=Default, checked=True",
+      "file": "528-376.png",
+      "width": 161,
+      "height": 24
+    },
+    {
+      "nodeId": "528:381",
+      "name": "state=Hover, checked=True",
+      "file": "528-381.png",
+      "width": 161,
+      "height": 24
+    },
+    {
+      "nodeId": "528:386",
+      "name": "state=Pressed, checked=True",
+      "file": "528-386.png",
+      "width": 161,
+      "height": 24
+    },
+    {
+      "nodeId": "528:391",
+      "name": "state=Focus, checked=True",
+      "file": "528-391.png",
+      "width": 161,
+      "height": 24
+    },
+    {
+      "nodeId": "528:397",
+      "name": "state=Disabled, checked=True",
+      "file": "528-397.png",
+      "width": 161,
+      "height": 24
+    }
+  ],
+  "textarea": [
+    {
+      "nodeId": "528:761",
+      "name": "state=Default, selected=False, error=False",
+      "file": "528-761.png",
+      "width": 280,
+      "height": 104
+    },
+    {
+      "nodeId": "528:767",
+      "name": "state=Hover, selected=False, error=False",
+      "file": "528-767.png",
+      "width": 280,
+      "height": 104
+    },
+    {
+      "nodeId": "528:773",
+      "name": "state=Default, selected=True, error=False",
+      "file": "528-773.png",
+      "width": 280,
+      "height": 104
+    },
+    {
+      "nodeId": "528:780",
+      "name": "state=Disabled, selected=False, error=False",
+      "file": "528-780.png",
+      "width": 280,
+      "height": 104
+    },
+    {
+      "nodeId": "528:786",
+      "name": "state=Default, selected=False, error=True",
+      "file": "528-786.png",
+      "width": 280,
+      "height": 104
+    },
+    {
+      "nodeId": "528:795",
+      "name": "state=Hover, selected=False, error=True",
+      "file": "528-795.png",
+      "width": 280,
+      "height": 104
+    },
+    {
+      "nodeId": "528:804",
+      "name": "state=Default, selected=True, error=True",
+      "file": "528-804.png",
+      "width": 280,
+      "height": 104
+    }
+  ],
+  "toggle-group": [
+    {
+      "nodeId": "528:742",
+      "name": "toggle-group",
+      "file": "528-742.png",
+      "width": 124,
+      "height": 40
     }
   ]
 }
