@@ -29,9 +29,13 @@ elements:
 guidance:
   status: agreed
   use:
-    - Above the panels it switches between.
+    - title: Above its panels
+      text: Above the panels it switches between.
+      show: tabs
   avoid:
-    - More tabs than fit on one line. Fewer, or a menu.
+    - title: Too many tabs
+      text: More tabs than fit on one line. Fewer, or a menu.
+      show: tabs
   behaviour: |-
     One tab is selected at a time. Changing it swaps the panel below; nothing else on the page moves.
   accessibility:

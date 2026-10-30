@@ -312,10 +312,15 @@ variants:
 guidance:
   status: agreed
   use:
-    - "Used for a list of things to pick from, or the items in a side nav: one row each, the picked one in green."
+    - title: A list to pick from
+      text: "Used for a list of things to pick from, or the items in a side nav: one row each, the picked one in green."
+      show: state=Default, selected=True
   avoid:
-    - A row of a few options side by side. That's **Tabs** or **Toggle**.
-    - Long text. The label and the line under it stay on one line each.
+    - title: A few options side by side
+      text: A row of a few options side by side. That's **Tabs** or **Toggle**.
+    - title: Long text
+      text: Long text. The label and the line under it stay on one line each.
+      show: state=Default, selected=False
   behaviour: |-
     `selected` is the picked one. Hover, pressed and focus come from the browser, and disabled fades the whole row to `opacity/gentle`. On a selected row the status dot turns dark, the way Figma switches the badge to the light theme there.
   accessibility:

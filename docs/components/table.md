@@ -29,14 +29,14 @@
 
 ## When to use
 
-- Several things of the same kind with the same few facts each, read across: payments with a date, what they're for and an amount.
-- When the columns mean something: an amount in the same place on every row, so the eye runs down them.
+- **Data read across.** Several things of the same kind with the same few facts each, read across: payments with a date, what they're for and an amount.
+- **Columns that mean something.** When the columns mean something: an amount in the same place on every row, so the eye runs down them.
 
 ## When not to use
 
-- A list of things to pick or go to, one fact each. That's **ListItem**.
-- Laying out a page or a form. A table is for data.
-- More columns than fit on a phone. Two or three is right: put the rest in the row's description, the way the accounting app puts "leaves €4,210" under the date.
+- **One fact each.** A list of things to pick or go to, one fact each. That's **ListItem**.
+- **Laying out a page.** Laying out a page or a form. A table is for data.
+- **Too many columns.** More columns than fit on a phone. Two or three is right: put the rest in the row's description, the way the accounting app puts "leaves €4,210" under the date.
 
 ## Behaviour
 

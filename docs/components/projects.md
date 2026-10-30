@@ -53,12 +53,12 @@
 
 ## When to use
 
-- Used as a list of projects or items, one row each, where the row links to the details.
+- **A list of projects.** Used as a list of projects or items, one row each, where the row links to the details.
 
 ## When not to use
 
-- A grid with pictures. That's **Thumbs**.
-- Long names. At 40px, a name past three words pushes the details off the row.
+- **A grid with pictures.** A grid with pictures. That's **Thumbs**.
+- **Long names.** Long names. At 40px, a name past three words pushes the details off the row.
 
 ## Behaviour
 

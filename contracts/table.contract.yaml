@@ -54,12 +54,21 @@ elements:
 guidance:
   status: proposed
   use:
-    - "Several things of the same kind with the same few facts each, read across: payments with a date, what they're for and an amount."
-    - "When the columns mean something: an amount in the same place on every row, so the eye runs down them."
+    - title: Data read across
+      text: "Several things of the same kind with the same few facts each, read across: payments with a date, what they're for and an amount."
+      show: with a caption
+    - title: Columns that mean something
+      text: "When the columns mean something: an amount in the same place on every row, so the eye runs down them."
+      show: with column headers
   avoid:
-    - "A list of things to pick or go to, one fact each. That's **ListItem**."
-    - "Laying out a page or a form. A table is for data."
-    - "More columns than fit on a phone. Two or three is right: put the rest in the row's description, the way the accounting app puts \"leaves €4,210\" under the date."
+    - title: One fact each
+      text: A list of things to pick or go to, one fact each. That's **ListItem**.
+    - title: Laying out a page
+      text: Laying out a page or a form. A table is for data.
+      show: with a caption
+    - title: Too many columns
+      text: "More columns than fit on a phone. Two or three is right: put the rest in the row's description, the way the accounting app puts \"leaves €4,210\" under the date."
+      show: with column headers
   behaviour: |-
     The table draws nothing itself. Each TableRow draws a hairline under it, the last one too, so the table has an end. Rows that are links or can be picked react to the pointer; the others don't.
   accessibility:

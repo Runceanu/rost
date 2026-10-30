@@ -83,10 +83,16 @@ variants:
 guidance:
   status: agreed
   use:
-    - "Used as the main navigation of an app, down the side: a few top-level places, and one action that matters everywhere."
+    - title: An app's main places
+      text: "Used as the main navigation of an app, down the side: a few top-level places, and one action that matters everywhere."
+      show: collapsed=false
   avoid:
-    - More than a handful of items. It's for the top level only.
-    - A website's header nav. That runs across the top.
+    - title: A long list of places
+      text: More than a handful of items. It's for the top level only.
+      show: collapsed=false
+    - title: A website header
+      text: A website's header nav. That runs across the top.
+      show: collapsed=true
   behaviour: |-
     `collapsed` is icons only, 72px wide; open is 160px with labels. The items are ListItems: the current one is `selected`. The action is an IconButton when collapsed and a Button when open.
   accessibility:

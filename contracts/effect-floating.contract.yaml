@@ -28,10 +28,11 @@ elements:
 guidance:
   status: agreed
   use:
-    - |-
-      Anything lifted above the content: menus, popovers, a card being dragged.
+    - title: Things lifted above the page
+      text: "Anything lifted above the content: menus, popovers, a card being dragged."
   avoid:
-    - Cards just sitting there. This kit is dark, so surfaces are told apart by tone, not shadow.
+    - title: Cards at rest
+      text: Cards just sitting there. Surfaces are told apart by tone, not shadow.
   behaviour: |-
     `0 16px 24px rgba(0,0,0,0.16)`, as `--shadow-floating`. There's no family of elevation tokens yet. If I ever need a second shadow, that's when I add one.
   accessibility:

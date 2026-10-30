@@ -183,13 +183,18 @@ variants:
 guidance:
   status: agreed
   use:
-    - |-
-      Telling people something about the page or a section they should notice: saved, offline, open for work, needs your attention.
-    - |-
-      `Small` in a line of text, `Medium` on its own line or at the top of a section.
+    - title: Something to notice
+      text: "Telling people something about the page or a section they should notice: saved, offline, open for work, needs your attention."
+      show: status=positive, size=medium
+    - title: Small or medium
+      text: "`Small` in a line of text, `Medium` on its own line or at the top of a section."
+      show: status=warning, size=small
   avoid:
-    - The status of one item in a list or table. That's **Badge**, smaller and quieter.
-    - Anything that needs a decision. That's a dialog. A banner tells, it doesn't ask.
+    - title: One item's status
+      text: The status of one item in a list or table. That's **Badge**, smaller and quieter.
+    - title: Asking for a decision
+      text: Anything that needs a decision. That's a dialog. A banner tells, it doesn't ask.
+      show: status=negative, size=medium
   behaviour: |-
     `status` (`Default`, `Positive`, `Negative`, `Warning`) sets the fill and the icon: plus, check, alarm, warning. You can't interact with it: no hover, no focus.
   accessibility:

@@ -40,12 +40,12 @@
 
 ## When to use
 
-- Used for a row of featured items you scroll through, each card leading to more.
+- **A row of featured items.** Used for a row of featured items you scroll through, each card leading to more.
 
 ## When not to use
 
-- A card with a picture. That's **Thumbs**.
-- Long titles. The title wraps, but two lines of 24px eat the card.
+- **A card with a picture.** A card with a picture. That's **Thumbs**.
+- **Long titles.** Long titles. The title wraps, but two lines of 24px eat the card.
 
 ## Behaviour
 

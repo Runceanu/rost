@@ -46,12 +46,12 @@
 
 ## When to use
 
-- Used for a list of things to pick from, or the items in a side nav: one row each, the picked one in green.
+- **A list to pick from.** Used for a list of things to pick from, or the items in a side nav: one row each, the picked one in green.
 
 ## When not to use
 
-- A row of a few options side by side. That's **Tabs** or **Toggle**.
-- Long text. The label and the line under it stay on one line each.
+- **A few options side by side.** A row of a few options side by side. That's **Tabs** or **Toggle**.
+- **Long text.** Long text. The label and the line under it stay on one line each.
 
 ## Behaviour
 

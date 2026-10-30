@@ -53,13 +53,13 @@
 
 ## When to use
 
-- Used as a card for one project or item in a grid or a carousel. The whole card links to the details.
-- A list of things that each want a picture and a short line of facts under a name.
+- **A card that links.** Used as a card for one project or item in a grid or a carousel. The whole card links to the details.
+- **A picture and a few facts.** A list of things that each want a picture and a short line of facts under a name.
 
 ## When not to use
 
-- A card that isn't a link. Thumbs has hover, pressed and focus because it's meant to be clicked.
-- Long names. The title doesn't wrap, by design. Two or three words.
+- **A card that isn't a link.** A card that isn't a link. Thumbs has hover, pressed and focus because it's meant to be clicked.
+- **Long names.** Long names. The title doesn't wrap, by design. Two or three words.
 
 ## Behaviour
 

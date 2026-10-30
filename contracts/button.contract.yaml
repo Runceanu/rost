@@ -308,17 +308,26 @@ variants:
 guidance:
   status: agreed
   use:
-    - "Doing something: save, send, continue, open."
-    - |-
-      `Primary` for the one thing a screen is really about. One per screen, no more.
-    - |-
-      `Secondary` for the options next to it, `Tertiary` when little is at stake, `Borderless` in busy places where an outline would just be noise.
-    - |-
-      An icon when it helps people get it faster: a back arrow, an external link, a download.
+    - title: Doing something
+      text: "Doing something: save, send, continue, open."
+      show: type=Primary, state=Default
+    - title: The main action
+      text: "`Primary` for the one thing a screen is really about. One per screen, no more."
+      show: type=Primary, state=Default
+    - title: The other actions
+      text: "`Secondary` for the options next to it, `Tertiary` when little is at stake, `Borderless` in busy places where an outline would just be noise."
+      show: type=Secondary, state=Default
+    - title: With an icon
+      text: "An icon when it helps people get it faster: a back arrow, an external link, a download."
+      show: with an icon
   avoid:
-    - When the icon is just decoration. Leave it out.
-    - When there's no room for the label. That's **IconButton**, never a Button with its label hidden.
-    - Picking between options. That's **Toggle** or **Chip**.
+    - title: Icons for decoration
+      text: When the icon is just decoration. Leave it out.
+      show: with an icon
+    - title: No room for a label
+      text: When there's no room for the label. That's **IconButton**, never a Button with its label hidden.
+    - title: Picking an option
+      text: Picking between options. That's **Toggle** or **Chip**.
   behaviour: |-
     `type` sets how loud it is. `state` is never something you pass in code: hover, pressed and focus come from `:hover`, `:active` and `:focus-visible`. Disabled is the only one you set yourself. The whole button fades to `opacity/gentle`, label and all. In a nav, the page you're on wears the pressed look (`aria-current="page"`): it reads as chosen, not as broken. The icon sits in a 20px slot (`icons-arrow-left` in Figma) and takes the label's colour.
   accessibility:

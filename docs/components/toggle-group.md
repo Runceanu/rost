@@ -25,13 +25,13 @@
 
 ## When to use
 
-- Picking one of a few options that all fit on a line, where the choice applies straight away: a year, a view, a period.
+- **One of a few, straight away.** Picking one of a few options that all fit on a line, where the choice applies straight away: a year, a view, a period.
 
 ## When not to use
 
-- More options than fit on one line. That's a menu.
-- Switching panels of content under it. That's **Tabs**.
-- Several things that can be on at once. Those are Toggles on their own, each `aria-pressed`.
+- **Too many options.** More options than fit on one line. That's a menu.
+- **Switching panels.** Switching panels of content under it. That's **Tabs**.
+- **Several on at once.** Several things that can be on at once. Those are Toggles on their own, each `aria-pressed`.
 
 ## Behaviour
 

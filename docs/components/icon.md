@@ -26,14 +26,14 @@
 
 ## When to use
 
-- Next to a label, when the shape says the same thing faster. An arrow on "Back", a chevron on something that opens.
-- Inside Button and IconButton, through their `icon` slot, at Small.
+- **Next to a label.** Next to a label, when the shape says the same thing faster. An arrow on "Back", a chevron on something that opens.
+- **Inside a button.** Inside Button and IconButton, through their `icon` slot, at Small.
 
 ## When not to use
 
-- On its own as something to press. That's **IconButton**, which gives it a target and states.
-- A picture with no job next to words. That's an **Illustration**, which keeps its own colours.
-- A glyph Rost doesn't have. Add the SVG to `assets/icons/` and Figma's set first, so they stay the same list.
+- **Something to press.** On its own as something to press. That's **IconButton**, which gives it a target and states.
+- **A picture with no job.** A picture with no job next to words. That's an **Illustration**, which keeps its own colours.
+- **A glyph Rost lacks.** A glyph Rost doesn't have. Add the SVG to `assets/icons/` and Figma's set first, so they stay the same list.
 
 ## Behaviour
 

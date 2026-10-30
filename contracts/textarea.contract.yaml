@@ -218,10 +218,15 @@ variants:
 guidance:
   status: proposed
   use:
-    - "Text that runs to more than a line: a note on a payment, a message, a description."
+    - title: More than a line
+      text: "Text that runs to more than a line: a note on a payment, a message, a description."
+      show: state=Default, selected=False, error=False
   avoid:
-    - "One line of text, like a name or an amount. That's **Input**."
-    - "Rich text with bold and lists. This is plain text only."
+    - title: One line
+      text: One line of text, like a name or an amount. That's **Input**.
+    - title: Rich text
+      text: Rich text with bold and lists. This is plain text only.
+      show: state=Default, selected=False, error=False
   behaviour: |-
     It's Input grown down, with the same tokens for the fill, the edge, the label, the help line and the focus ring. Three things change it:
 

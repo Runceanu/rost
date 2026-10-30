@@ -294,11 +294,19 @@ implementations:
 guidance:
   status: agreed
   use:
-    - Used as a card for one project or item in a grid or a carousel. The whole card links to the details.
-    - A list of things that each want a picture and a short line of facts under a name.
+    - title: A card that links
+      text: Used as a card for one project or item in a grid or a carousel. The whole card links to the details.
+      show: state=Default
+    - title: A picture and a few facts
+      text: A list of things that each want a picture and a short line of facts under a name.
+      show: state=Locked
   avoid:
-    - A card that isn't a link. Thumbs has hover, pressed and focus because it's meant to be clicked.
-    - Long names. The title doesn't wrap, by design. Two or three words.
+    - title: A card that isn't a link
+      text: A card that isn't a link. Thumbs has hover, pressed and focus because it's meant to be clicked.
+      show: state=Disabled
+    - title: Long names
+      text: Long names. The title doesn't wrap, by design. Two or three words.
+      show: state=Default
   behaviour: |-
     The picture fills the card, and the frosted panel sits on its bottom edge with the number, the name and three details. On hover and pressed the name and number go green, and the details lighten. `Disabled` dims the picture and the panel and shows the badge ("Coming soon"). `Locked` keeps the card as it is and puts a green lock in the corner, for work I can't show without a password.
   accessibility:

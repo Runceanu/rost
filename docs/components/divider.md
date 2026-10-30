@@ -18,12 +18,12 @@
 
 ## When to use
 
-- Between groups in a list or a menu, when space alone doesn't separate them.
+- **Between groups.** Between groups in a list or a menu, when space alone doesn't separate them.
 
 ## When not to use
 
-- Between every item. Space does that better.
-- Holding up a layout. If the line goes, the layout should still read.
+- **Between every item.** Between every item. Space does that better.
+- **Holding up a layout.** Holding up a layout. If the line goes, the layout should still read.
 
 ## Behaviour
 

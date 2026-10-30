@@ -46,10 +46,15 @@ implementations:
 guidance:
   status: agreed
   use:
-    - "Used to explain something that can't explain itself: an icon-only button, or a nav item for the page you're already on."
+    - title: Explaining a bare icon
+      text: "Used to explain something that can't explain itself: an icon-only button, or a nav item for the page you're already on."
+      show: tooltip
   avoid:
-    - Anything people need in order to use the page. A tooltip is easy to miss, and on a phone there's no hover.
-    - More than a few words. That's help text, or an **InlineBanner**.
+    - title: Anything people need
+      text: Anything people need in order to use the page. A tooltip is easy to miss, and on a phone there's no hover.
+      show: tooltip
+    - title: More than a few words
+      text: More than a few words. That's help text, or an **InlineBanner**.
   behaviour: |-
     Shows on hover and on keyboard focus of the thing it explains, 8px under it, and goes when the pointer or focus leaves.
   accessibility:

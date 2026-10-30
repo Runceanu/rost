@@ -240,11 +240,17 @@ variants:
 guidance:
   status: agreed
   use:
-    - Switching a view or a filter on and off, when the change happens straight away.
-    - "Used to pick one option from a short set, as a group: a year switcher, a view switcher."
+    - title: On and off, straight away
+      text: Switching a view or a filter on and off, when the change happens straight away.
+      show: labelled, on
+    - title: One of a short set
+      text: "Used to pick one option from a short set, as a group: a year switcher, a view switcher."
+      show: state=Default, selected=True
   avoid:
-    - Doing something. That's **IconButton**. A toggle remembers, a button doesn't.
-    - A settings-style switch with a label. There isn't one in the kit yet, so ask for one rather than stretching Toggle.
+    - title: Doing something
+      text: Doing something. That's **IconButton**. A toggle remembers, a button doesn't.
+    - title: A settings switch
+      text: A setting that's on or off, with a label. That's **Switch**.
   behaviour: |-
     It changes with `selected` and `state`. Off, it's a plate with 12px corners on the secondary surface, faded down. On, it becomes a fully round primary pill. The change of shape is part of the signal, not just the colour.
   accessibility:

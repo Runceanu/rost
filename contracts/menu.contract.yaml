@@ -140,11 +140,14 @@ variants:
 guidance:
   status: agreed
   use:
-    - Moving between the main pages or sections.
+    - title: Moving between pages
+      text: Moving between the main pages or sections.
+      show: state=Current
   avoid:
-    - Actions. That's **Button**, menu items take you somewhere.
-    - |-
-      Mixing it up with the **Menu effect** (`effect-menu`), which is the frosted surface the nav sits on.
+    - title: Actions
+      text: Actions. That's **Button**, menu items take you somewhere.
+    - title: The frosted surface
+      text: Mixing it up with the **Menu effect** (`effect-menu`), which is the frosted surface the nav sits on.
   behaviour: |-
     Six states. The sixth, `Current`, I added in code first and then in Figma, the page you're on. It comes from `aria-current="page"`, not from the mouse. The description turns bright and medium, as when you press it, and the divider underneath goes as bright as the text. It's still my proposal, not signed off.
   accessibility:

@@ -18,11 +18,11 @@
 
 ## When to use
 
-- On the thumbnail of a locked project (NDA, password), together with the lock icon.
+- **A locked project.** On the thumbnail of a locked project (NDA, password), together with the lock icon.
 
 ## When not to use
 
-- Loading or disabled states. Blur says "hidden", not "wait".
+- **Loading or disabled.** Loading or disabled states. Blur says "hidden", not "wait".
 
 ## Behaviour
 

@@ -40,12 +40,12 @@
 
 ## When to use
 
-- Text that runs to more than a line: a note on a payment, a message, a description.
+- **More than a line.** Text that runs to more than a line: a note on a payment, a message, a description.
 
 ## When not to use
 
-- One line of text, like a name or an amount. That's **Input**.
-- Rich text with bold and lists. This is plain text only.
+- **One line.** One line of text, like a name or an amount. That's **Input**.
+- **Rich text.** Rich text with bold and lists. This is plain text only.
 
 ## Behaviour
 

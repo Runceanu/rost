@@ -25,12 +25,12 @@
 
 ## When to use
 
-- Giving a card or a section a face, like the service cards on the portfolio site.
+- **A face for a card.** Giving a card or a section a face, like the service cards on the portfolio site.
 
 ## When not to use
 
-- Standing in for an icon next to a label. That's **Icon**, which is smaller and takes the text colour.
-- Stretching it. It's drawn for 72px; bigger and the lines get heavy.
+- **Standing in for an icon.** Standing in for an icon next to a label. That's **Icon**, which is smaller and takes the text colour.
+- **Stretched bigger.** Stretching it. It's drawn for 72px; bigger and the lines get heavy.
 
 ## Behaviour
 

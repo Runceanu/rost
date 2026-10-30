@@ -36,12 +36,12 @@
 
 ## When to use
 
-- Switching between views of the same thing, in place: Preview and Code, Overview and Activity.
+- **Views of the same thing.** Switching between views of the same thing, in place: Preview and Code, Overview and Activity.
 
 ## When not to use
 
-- Going to another page. That's a link, or the nav.
-- Turning one thing on and off. That's **Toggle**.
+- **Going to another page.** Going to another page. That's a link, or the nav.
+- **On and off.** Turning one thing on and off. That's **Toggle**.
 
 ## Behaviour
 

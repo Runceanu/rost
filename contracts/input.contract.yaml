@@ -416,10 +416,14 @@ variants:
 guidance:
   status: agreed
   use:
-    - "Any single line of text: email, name, an amount, search."
+    - title: One line of text
+      text: "Any single line of text: email, name, an amount, search."
+      show: state=Default, configuration=Filled, selected=False, error=False
   avoid:
-    - Picking from a known list. That's **Chip** or **Toggle**, free text just invites typos.
-    - Several lines of text. That's **Textarea**.
+    - title: Picking from a known list
+      text: Picking from a known list. That's **Chip** or **Toggle**, free text just invites typos.
+    - title: Several lines
+      text: Several lines of text. That's **Textarea**.
   behaviour: |-
     Four things change it:
 

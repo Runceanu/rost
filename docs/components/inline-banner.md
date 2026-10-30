@@ -36,13 +36,13 @@
 
 ## When to use
 
-- Telling people something about the page or a section they should notice: saved, offline, open for work, needs your attention.
-- `Small` in a line of text, `Medium` on its own line or at the top of a section.
+- **Something to notice.** Telling people something about the page or a section they should notice: saved, offline, open for work, needs your attention.
+- **Small or medium.** `Small` in a line of text, `Medium` on its own line or at the top of a section.
 
 ## When not to use
 
-- The status of one item in a list or table. That's **Badge**, smaller and quieter.
-- Anything that needs a decision. That's a dialog. A banner tells, it doesn't ask.
+- **One item's status.** The status of one item in a list or table. That's **Badge**, smaller and quieter.
+- **Asking for a decision.** Anything that needs a decision. That's a dialog. A banner tells, it doesn't ask.
 
 ## Behaviour
 

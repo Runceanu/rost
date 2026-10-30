@@ -309,13 +309,17 @@ implementations:
 guidance:
   status: agreed
   use:
-    - |-
-      Actions everyone knows where a label would crowd things: close, back, next, previous.
-    - |-
-      `Project` on top of imagery: thumbnails and cards.
+    - title: Actions everyone knows
+      text: "Actions everyone knows where a label would crowd things: close, back, next, previous."
+      show: type=Secondary, state=Default
+    - title: On top of a picture
+      text: "`Project` on top of imagery: thumbnails and cards."
+      show: type=Project, state=Default
   avoid:
-    - Any icon that isn't instantly obvious. Use **Button** with a label, an icon isn't one.
-    - On/off or one-of-many choices. That's **Toggle**. IconButton does something, it doesn't remember anything.
+    - title: An icon that needs explaining
+      text: Any icon that isn't instantly obvious. Use **Button** with a label, an icon isn't one.
+    - title: On or off
+      text: On/off or one-of-many choices. That's **Toggle**. IconButton does something, it doesn't remember anything.
   behaviour: |-
     `type` is `Primary`, `Secondary`, `Tertiary` or `Project`. States come from the browser like every other action. Primary, Secondary and Tertiary are 40px, and that's the floor: fingers need the room. Project is 32px because it sits inside a project row, and the whole row is the target there.
   accessibility:

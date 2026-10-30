@@ -32,11 +32,17 @@ implementations:
 guidance:
   status: proposed
   use:
-    - "Picking one of a few options that all fit on a line, where the choice applies straight away: a year, a view, a period."
+    - title: One of a few, straight away
+      text: "Picking one of a few options that all fit on a line, where the choice applies straight away: a year, a view, a period."
+      show: years, 2026 chosen
   avoid:
-    - More options than fit on one line. That's a menu.
-    - Switching panels of content under it. That's **Tabs**.
-    - Several things that can be on at once. Those are Toggles on their own, each `aria-pressed`.
+    - title: Too many options
+      text: More options than fit on one line. That's a menu.
+      show: years, 2026 chosen
+    - title: Switching panels
+      text: Switching panels of content under it. That's **Tabs**.
+    - title: Several on at once
+      text: Several things that can be on at once. Those are Toggles on their own, each `aria-pressed`.
   behaviour: |-
     One toggle is on at a time. Choosing another turns the last one off. The group draws nothing itself; each Toggle shows its own on and off.
 

@@ -34,16 +34,16 @@
 
 ## When to use
 
-- Doing something: save, send, continue, open.
-- `Primary` for the one thing a screen is really about. One per screen, no more.
-- `Secondary` for the options next to it, `Tertiary` when little is at stake, `Borderless` in busy places where an outline would just be noise.
-- An icon when it helps people get it faster: a back arrow, an external link, a download.
+- **Doing something.** Doing something: save, send, continue, open.
+- **The main action.** `Primary` for the one thing a screen is really about. One per screen, no more.
+- **The other actions.** `Secondary` for the options next to it, `Tertiary` when little is at stake, `Borderless` in busy places where an outline would just be noise.
+- **With an icon.** An icon when it helps people get it faster: a back arrow, an external link, a download.
 
 ## When not to use
 
-- When the icon is just decoration. Leave it out.
-- When there's no room for the label. That's **IconButton**, never a Button with its label hidden.
-- Picking between options. That's **Toggle** or **Chip**.
+- **Icons for decoration.** When the icon is just decoration. Leave it out.
+- **No room for a label.** When there's no room for the label. That's **IconButton**, never a Button with its label hidden.
+- **Picking an option.** Picking between options. That's **Toggle** or **Chip**.
 
 ## Behaviour
 

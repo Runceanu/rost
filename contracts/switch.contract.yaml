@@ -202,11 +202,17 @@ variants:
 guidance:
   status: proposed
   use:
-    - "A setting that's on or off and works the moment you flip it: email me receipts, show cents, dark charts."
+    - title: A setting that works at once
+      text: "A setting that's on or off and works the moment you flip it: email me receipts, show cents, dark charts."
+      show: state=Default, checked=True
   avoid:
-    - "A choice that waits for a Save button. That's a checkbox, and Rost doesn't have one yet."
-    - "Filtering what's on screen. That's **Chip**, with `selected`."
-    - "An icon button that stays pressed, like bold in an editor. That's **Toggle**."
+    - title: A choice that waits for Save
+      text: A choice that waits for a Save button. That's a checkbox, and Rost doesn't have one yet.
+      show: state=Default, checked=False
+    - title: Filtering the screen
+      text: Filtering what's on screen. That's **Chip**, with `selected`.
+    - title: A button that stays pressed
+      text: An icon button that stays pressed, like bold in an editor. That's **Toggle**.
   behaviour: |-
     Off is a faded track with the thumb on the left, the way an off Toggle is faded. On is a solid primary green track with a dark thumb on the right. Hover, press and focus come from the browser and follow Toggle's colours. Disabled fades the whole thing, label too.
 

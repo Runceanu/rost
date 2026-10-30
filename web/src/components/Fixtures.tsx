@@ -49,3 +49,10 @@ export function Fixtures({ id }: { id: string }) {
 export function Preview({ id }: { id: string }) {
   return <>{fixturesFor(id)?.preview ?? null}</>
 }
+
+/** One fixture by name, drawn on its own: what a guidance card shows. */
+export function Shot({ id, name }: { id: string; name: string }) {
+  const f = fixturesFor(id)?.fixtures.find((x) => x.name === name)
+  if (!f) throw new Error(`${id}: guidance shows "${name}", and there's no fixture by that name`)
+  return <>{f.display ?? f.element}</>
+}

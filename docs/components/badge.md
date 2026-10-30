@@ -32,14 +32,14 @@
 
 ## When to use
 
-- Marking the status of something in a list, a card or a table row: Paid, Overdue, Draft.
-- `Small` when there's no room for words, or the status is obvious from where it sits. Just the coloured dot.
+- **Status in a list.** Marking the status of something in a list, a card or a table row: Paid, Overdue, Draft.
+- **Just the dot.** `Small` when there's no room for words, or the status is obvious from where it sits. Just the coloured dot.
 
 ## When not to use
 
-- Telling people something about the whole page. That's **InlineBanner**.
-- Describing what something is about rather than its status. That's **Tag**.
-- Anything clickable. Badge doesn't do hover or focus, **Chip** does.
+- **News for the whole page.** Telling people something about the whole page. That's **InlineBanner**.
+- **What a thing is about.** Describing what something is about rather than its status. That's **Tag**.
+- **Something to click.** Anything clickable. Badge doesn't do hover or focus, **Chip** does.
 
 ## Behaviour
 

@@ -46,12 +46,12 @@
 
 ## When to use
 
-- Any single line of text: email, name, an amount, search.
+- **One line of text.** Any single line of text: email, name, an amount, search.
 
 ## When not to use
 
-- Picking from a known list. That's **Chip** or **Toggle**, free text just invites typos.
-- Several lines of text. That's **Textarea**.
+- **Picking from a known list.** Picking from a known list. That's **Chip** or **Toggle**, free text just invites typos.
+- **Several lines.** Several lines of text. That's **Textarea**.
 
 ## Behaviour
 

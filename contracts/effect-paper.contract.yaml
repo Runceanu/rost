@@ -75,14 +75,16 @@ elements:
       stroke-width: { token: spacing/outline/medium, value: 2px }
       cadence:
         value: 2s between sketches, each one 3.2s from first line to gone
-        notes: "Made faster on 2026-10-23 for rost.build, and the pause set to an even 2s. The portfolio site still draws over 5.2s and waits 7 to 8 at random." 
+        notes: "Made faster on 2026-10-23 for rost.build, and the pause set to an even 2s. The portfolio site still draws over 5.2s and waits 7 to 8 at random."
         untokenised: How often the pen draws. There are no motion tokens yet.
 guidance:
   status: agreed
   use:
-    - Behind the home hero, and only there. It's the site's signature, and using it twice waters it down.
+    - title: The home hero
+      text: Behind the home hero, and only there. It's the site's signature, and using it twice waters it down.
   avoid:
-    - Behind dense content or forms. At small sizes the dots fight with the text.
+    - title: Behind dense content
+      text: Behind dense content or forms. At small sizes the dots fight with the text.
   behaviour: The dots only ever react, through the lens, the ripple and the pen described in the parts. They never animate on their own. Everything snaps to the 16px grid. When nothing happens it's one still frame, and it only runs while the hero is on screen.
   accessibility:
     decorative: the canvas is `aria-hidden="true"` and never takes focus.

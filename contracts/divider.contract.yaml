@@ -37,10 +37,16 @@ implementations:
 guidance:
   status: agreed
   use:
-    - Between groups in a list or a menu, when space alone doesn't separate them.
+    - title: Between groups
+      text: Between groups in a list or a menu, when space alone doesn't separate them.
+      show: divider
   avoid:
-    - Between every item. Space does that better.
-    - Holding up a layout. If the line goes, the layout should still read.
+    - title: Between every item
+      text: Between every item. Space does that better.
+      show: divider
+    - title: Holding up a layout
+      text: Holding up a layout. If the line goes, the layout should still read.
+      show: divider
   behaviour: |-
     One 1px line in `non-interactive/foreground/quinary`, as wide as its container. Figma only has the horizontal one.
   accessibility:

@@ -28,11 +28,11 @@
 
 ## When to use
 
-- Used at the top of a page that opens with artwork, like a project or an article. One per page.
+- **A page that opens with artwork.** Used at the top of a page that opens with artwork, like a project or an article. One per page.
 
 ## When not to use
 
-- A page that opens with words, not an image. The **Paper effect** suits that one better.
+- **A page that opens with words.** A page that opens with words, not an image. The **Paper effect** suits that one better.
 
 ## Behaviour
 

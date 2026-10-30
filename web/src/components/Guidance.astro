@@ -1,46 +1,41 @@
 ---
-// A contract's guidance, drawn: when to use it as cards, when not to with the
-// component to reach for instead shown live, and accessibility as one card per
-// concern. The words are the contract's own; docs/components/*.md keeps them as text.
+// A contract's guidance, drawn. Each "when to use" and "when not to use" line
+// is a card with its own title and a picture: the fixture it names, or the
+// component it points at in bold, or this component's own preview. Accessibility
+// is a card per concern. The words are the contract's own; docs/components/*.md
+// keeps them as text.
 import { kit, title, mdInline, inCode } from '../lib/kit'
-import { Preview } from './Fixtures'
+import { Preview, Shot } from './Fixtures'
 
-interface Props { g: any }
-const { g } = Astro.props
+interface Item { title: string; text: string; show?: string }
+interface Props { g: any; id: string }
+const { g, id } = Astro.props
 const label = (k: string) => k.replace(/([A-Z])/g, ' $1').replace(/^./, (s) => s.toUpperCase())
 // "That's **IconButton**." points at another component: find it, to show it.
 const byTitle = new Map(kit.map((e) => [title(e).toLowerCase(), e]))
-const pointsTo = (text: string) => [...text.matchAll(/\*\*([^*]+)\*\*/g)].map((m) => byTitle.get(m[1].toLowerCase())).find((e) => e && inCode(e.id))
-const avoid = (g.avoid ?? []).map((text: string) => ({ text, instead: pointsTo(text) }))
+const pointsTo = (text: string) => [...text.matchAll(/\*\*([^*]+)\*\*/g)].map((m) => byTitle.get(m[1].toLowerCase())).find((e) => e && inCode(e.id) && e.id !== id)
+const cards = (list: Item[] = [], avoid = false) => list.map((x) => ({ ...x, instead: avoid && !x.show ? pointsTo(x.text) : undefined }))
+const use = cards(g.use), avoid = cards(g.avoid, true)
+// A table needs about 360px to read, so its cards are wider than the rest.
+const wide = ['table', 'table-row', 'table-item'].includes(id)
 ---
-{g.use?.length > 0 && (
+{[['When to use', 'use', use], ['When not to use', 'avoid', avoid]].map(([heading, kind, list]: any) => list.length > 0 && (
   <section class="guide">
-    <h2>When to use</h2>
-    <ul class="g-cards">
-      {g.use.map((x: string) => <li class="g-card use"><span class="tag">Use it</span><p set:html={mdInline(x)} /></li>)}
-    </ul>
-  </section>
-)}
-
-{avoid.length > 0 && (
-  <section class="guide">
-    <h2>When not to use</h2>
-    <ul class="g-cards">
-      {avoid.map((a: any) => (
-        <li class="g-card avoid">
-          <span class="tag">Not for</span>
-          <p set:html={mdInline(a.text)} />
-          {a.instead && (
-            <a class="instead" href={`/components/${a.instead.id}/`}>
-              <span class="stage" aria-hidden="true" inert><Preview id={a.instead.id} /></span>
-              <span class="instead-name">Use {title(a.instead)}</span>
-            </a>
-          )}
+    <h2>{heading}</h2>
+    <ul class:list={['g-cards', { 'g-cards--wide': wide }]}>
+      {list.map((c: any) => (
+        <li class={`g-card g-card--pic ${kind}`}>
+          {c.instead
+            ? <a class="stage" href={`/components/${c.instead.id}/`} tabindex="-1" aria-hidden="true"><span inert><Preview id={c.instead.id} /></span></a>
+            : <span class="stage" aria-hidden="true" inert>{c.show ? <Shot id={id} name={c.show} /> : <Preview id={id} />}</span>}
+          <h3 class="g-title">{c.title}</h3>
+          <p set:html={mdInline(c.text)} />
+          {c.instead && <a class="instead-name" href={`/components/${c.instead.id}/`}>Use {title(c.instead)}</a>}
         </li>
       ))}
     </ul>
   </section>
-)}
+))}
 
 {g.behaviour && (
   <section class="guide">
@@ -53,7 +48,7 @@ const avoid = (g.avoid ?? []).map((text: string) => ({ text, instead: pointsTo(t
   <section class="guide">
     <h2>Accessibility</h2>
     <ul class="g-cards">
-      {Object.entries(g.accessibility).map(([k, v]) => <li class="g-card"><span class="tag tag--plain">{label(k)}</span><p set:html={mdInline(String(v))} /></li>)}
+      {Object.entries(g.accessibility).map(([k, v]) => <li class="g-card"><span class="tag">{label(k)}</span><p set:html={mdInline(String(v))} /></li>)}
     </ul>
   </section>
 )}
@@ -74,15 +69,19 @@ const avoid = (g.avoid ?? []).map((text: string) => ({ text, instead: pointsTo(t
 
 <style>
   .guide .g-cards { list-style: none; margin: var(--spacing-gap-medium) 0 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: var(--spacing-gap-small); }
+  .guide .g-cards--wide { grid-template-columns: repeat(auto-fill, minmax(min(100%, 400px), 1fr)); }
   .g-card { margin: 0; display: flex; flex-direction: column; gap: var(--spacing-gap-small); padding: var(--spacing-gap-medium); border-radius: var(--spacing-radius-large); background: var(--surface); color: var(--fg); font-size: 15px; line-height: 1.5; min-width: 0; }
   .g-card p { margin: 0; }
   .g-card :global(code) { font-size: .86em; }
-  .tag { align-self: flex-start; font-family: var(--mono); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--accent); }
-  .avoid .tag { color: var(--warn); }
-  .tag--plain { color: var(--fg-2); }
-  .instead { margin-top: auto; display: grid; gap: var(--spacing-gap-small); text-decoration: none; color: inherit; }
-  .instead .stage { display: grid; place-items: center; min-height: 96px; padding: var(--spacing-gap-medium); border-radius: var(--spacing-radius-medium); background: var(--ground); overflow-x: auto; justify-items: start; }
-  .instead-name { font-size: 13px; color: var(--accent); }
-  .instead:hover .instead-name { text-decoration: underline; }
+  .tag { align-self: flex-start; font-family: var(--mono); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--fg-2); }
+  .g-card--pic { padding-top: var(--spacing-gap-small); }
+  .g-title { margin: var(--spacing-gap-2xsmall) 0 0; font-family: inherit; letter-spacing: normal; text-transform: none; color: var(--fg); font-size: 17px; line-height: 1.3; font-weight: 500; display: flex; align-items: center; gap: var(--spacing-gap-small); }
+  /* A mark in front of the title says which list it's from, so the title doesn't have to. */
+  .g-title::before { content: ""; flex: none; width: 8px; height: 8px; border-radius: 50%; background: var(--accent); }
+  .avoid .g-title::before { background: var(--warn); }
+  .stage { display: grid; grid-template-columns: minmax(0, 1fr); place-items: center; min-height: 120px; padding: var(--spacing-gap-medium); border-radius: var(--spacing-radius-medium); background: var(--ground); overflow-x: auto; text-decoration: none; color: inherit; }
+  .stage > :global(*) { max-width: 100%; }
+  .instead-name { margin-top: auto; font-size: 13px; color: var(--fg); text-decoration: underline; text-underline-offset: 3px; }
+  .instead-name:hover { color: var(--accent); }
   .text { margin: var(--spacing-gap-small) 0 0; max-width: 70ch; color: var(--fg-2); }
 </style>

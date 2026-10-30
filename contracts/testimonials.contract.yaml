@@ -304,10 +304,16 @@ implementations:
 guidance:
   status: agreed
   use:
-    - "Used as a testimonial box or a list of quotes: name and role first, and each one opens to show the quote."
+    - title: Quotes that open
+      text: "Used as a testimonial box or a list of quotes: name and role first, and each one opens to show the quote."
+      show: state=Default, expanded=True
   avoid:
-    - A quote that should always be visible. Put it on the page as text.
-    - More than a sentence or three. It's a quote, not an article.
+    - title: A quote always on show
+      text: A quote that should always be visible. Put it on the page as text.
+      show: state=Default, expanded=False
+    - title: A long quote
+      text: More than a sentence or three. It's a quote, not an article.
+      show: state=Default, expanded=True
   behaviour: |-
     Closed, it's a row: the picture, the name and the role, a chevron, and a line underneath. Press it and it opens: the header slides 16px right and the quote shows below in `typography/sub-title`. On hover and press the name goes green and the line turns green (2px on hover). Disabled fades it to `opacity/gentle`.
   accessibility:

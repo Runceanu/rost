@@ -65,11 +65,18 @@ variants:
 guidance:
   status: proposed
   use:
-    - "Every row of a Table, the header row too."
-    - "A row that opens the thing it shows, with `href`: a payment, an invoice, a client."
+    - title: Every row
+      text: Every row of a Table, the header row too.
+      show: state=Default, selected=False
+    - title: A row that opens something
+      text: "A row that opens the thing it shows, with `href`: a payment, an invoice, a client."
+      show: state=Hover, selected=False
   avoid:
-    - "Links or buttons in several cells of a row that's itself a link. The cover sits over them. Pick one: the row, or the controls."
-    - "Showing a status with the fill. `selected` means picked; a status is a **Badge** in a cell."
+    - title: Controls in a linked row
+      text: "Links or buttons in several cells of a row that's itself a link. The cover sits over them. Pick one: the row, or the controls."
+      show: state=Default, selected=False
+    - title: A status as a fill
+      text: Showing a status with the fill. `selected` means picked; a status is a **Badge** in a cell.
   behaviour: |-
     A row with `href` or `onSelect` is one target: the pointer anywhere on it hovers and presses it, and focus draws a ring round the whole row. A plain row doesn't react. `selected` keeps its fill on hover, a shade lighter.
   accessibility:

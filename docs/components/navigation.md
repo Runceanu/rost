@@ -31,12 +31,12 @@
 
 ## When to use
 
-- Used as the main navigation of an app, down the side: a few top-level places, and one action that matters everywhere.
+- **An app's main places.** Used as the main navigation of an app, down the side: a few top-level places, and one action that matters everywhere.
 
 ## When not to use
 
-- More than a handful of items. It's for the top level only.
-- A website's header nav. That runs across the top.
+- **A long list of places.** More than a handful of items. It's for the top level only.
+- **A website header.** A website's header nav. That runs across the top.
 
 ## Behaviour
 

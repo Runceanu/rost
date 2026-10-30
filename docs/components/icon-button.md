@@ -33,13 +33,13 @@
 
 ## When to use
 
-- Actions everyone knows where a label would crowd things: close, back, next, previous.
-- `Project` on top of imagery: thumbnails and cards.
+- **Actions everyone knows.** Actions everyone knows where a label would crowd things: close, back, next, previous.
+- **On top of a picture.** `Project` on top of imagery: thumbnails and cards.
 
 ## When not to use
 
-- Any icon that isn't instantly obvious. Use **Button** with a label, an icon isn't one.
-- On/off or one-of-many choices. That's **Toggle**. IconButton does something, it doesn't remember anything.
+- **An icon that needs explaining.** Any icon that isn't instantly obvious. Use **Button** with a label, an icon isn't one.
+- **On or off.** On/off or one-of-many choices. That's **Toggle**. IconButton does something, it doesn't remember anything.
 
 ## Behaviour
 

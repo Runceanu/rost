@@ -134,14 +134,19 @@ variants:
 guidance:
   status: agreed
   use:
-    - |-
-      Marking the status of something in a list, a card or a table row: Paid, Overdue, Draft.
-    - |-
-      `Small` when there's no room for words, or the status is obvious from where it sits. Just the coloured dot.
+    - title: Status in a list
+      text: "Marking the status of something in a list, a card or a table row: Paid, Overdue, Draft."
+      show: status=positive, size=medium
+    - title: Just the dot
+      text: "`Small` when there's no room for words, or the status is obvious from where it sits. Just the coloured dot."
+      show: status=positive, size=small
   avoid:
-    - Telling people something about the whole page. That's **InlineBanner**.
-    - Describing what something is about rather than its status. That's **Tag**.
-    - Anything clickable. Badge doesn't do hover or focus, **Chip** does.
+    - title: News for the whole page
+      text: Telling people something about the whole page. That's **InlineBanner**.
+    - title: What a thing is about
+      text: Describing what something is about rather than its status. That's **Tag**.
+    - title: Something to click
+      text: Anything clickable. Badge doesn't do hover or focus, **Chip** does.
   behaviour: |-
     Two sizes now. `Small` is only the dot, 24 by 24, coloured by `status`. `Medium` is the label with an outline, and `status` changes only the outline (`non-interactive/background/<status>/light`). The text stays `non-interactive/foreground/tertiary` whatever the status, on purpose: I keep badges quiet. There's no background fill either. My first Badge in the accounting app got exactly that wrong. The dot in front of the label is optional now (`showIcon`), and off unless you ask for it.
   accessibility:

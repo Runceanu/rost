@@ -124,12 +124,21 @@ variants:
 guidance:
   status: proposed
   use:
-    - "Every cell of a TableRow."
-    - "`leading` for what kind of thing the row is (a Badge), `trailing` for a note on this one value (an estimate Badge)."
-    - "`numeric` for every amount, and on that column's header."
+    - title: Every cell
+      text: Every cell of a TableRow.
+      show: header=None, numeric=False
+    - title: Leading and trailing
+      text: "`leading` for what kind of thing the row is (a Badge), `trailing` for a note on this one value (an estimate Badge)."
+      show: header=Row, numeric=False
+    - title: Amounts
+      text: "`numeric` for every amount, and on that column's header."
+      show: header=None, numeric=True
   avoid:
-    - "Two lines of description. Say less, or give it a column."
-    - "A link or button of its own in a row that's already a link. See **TableRow**."
+    - title: Two lines of description
+      text: Two lines of description. Say less, or give it a column.
+      show: header=None, numeric=False
+    - title: A link inside a linked row
+      text: A link or button of its own in a row that's already a link. See **TableRow**.
   behaviour: |-
     A cell doesn't react. In a row with `href` or `onSelect` the header cell holds the link or button, and the row draws hover, press and focus for it.
   accessibility:

@@ -36,12 +36,12 @@
 
 ## When to use
 
-- Moving between the main pages or sections.
+- **Moving between pages.** Moving between the main pages or sections.
 
 ## When not to use
 
-- Actions. That's **Button**, menu items take you somewhere.
-- Mixing it up with the **Menu effect** (`effect-menu`), which is the frosted surface the nav sits on.
+- **Actions.** Actions. That's **Button**, menu items take you somewhere.
+- **The frosted surface.** Mixing it up with the **Menu effect** (`effect-menu`), which is the frosted surface the nav sits on.
 
 ## Behaviour
 

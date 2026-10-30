@@ -22,11 +22,11 @@
 
 ## When to use
 
-- Behind the home hero, and only there. It's the site's signature, and using it twice waters it down.
+- **The home hero.** Behind the home hero, and only there. It's the site's signature, and using it twice waters it down.
 
 ## When not to use
 
-- Behind dense content or forms. At small sizes the dots fight with the text.
+- **Behind dense content.** Behind dense content or forms. At small sizes the dots fight with the text.
 
 ## Behaviour
 

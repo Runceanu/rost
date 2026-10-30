@@ -192,11 +192,14 @@ variants:
 guidance:
   status: agreed
   use:
-    - |-
-      Used for filters and quick choices in a row: categories, date ranges.
+    - title: Filters and quick choices
+      text: "Used for filters and quick choices in a row: categories, date ranges."
+      show: state=Default, selected=True
   avoid:
-    - "A status nobody clicks: **Badge**."
-    - "A topic on a piece of content: **Tag**."
+    - title: A status
+      text: "A status nobody clicks: **Badge**."
+    - title: A topic
+      text: "A topic on a piece of content: **Tag**."
   behaviour: |-
     One `status` (`Default`) and five states. Hover, pressed and focus come from the browser.
 

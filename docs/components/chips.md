@@ -33,12 +33,12 @@
 
 ## When to use
 
-- Used for filters and quick choices in a row: categories, date ranges.
+- **Filters and quick choices.** Used for filters and quick choices in a row: categories, date ranges.
 
 ## When not to use
 
-- A status nobody clicks: **Badge**.
-- A topic on a piece of content: **Tag**.
+- **A status.** A status nobody clicks: **Badge**.
+- **A topic.** A topic on a piece of content: **Tag**.
 
 ## Behaviour
 

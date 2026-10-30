@@ -28,11 +28,13 @@ elements:
 guidance:
   status: agreed
   use:
-    - |-
-      Things that float over content and have to stay readable while it scrolls underneath: the nav, the hero info cards.
+    - title: Floating over scrolling content
+      text: "Things that float over content and have to stay readable while it scrolls underneath: the nav, the hero info cards."
   avoid:
-    - Project thumbnails, they have their own (**Thumb effect**).
-    - On top of another frosted surface. Two blurs just turn to mud.
+    - title: Project thumbnails
+      text: Project thumbnails, they have their own (**Thumb effect**).
+    - title: On another frosted surface
+      text: On top of another frosted surface. Two blurs just turn to mud.
   behaviour: |-
     `backdrop-filter: blur(12px)`, and a 24px version for the bigger case-study surfaces. I took the 12px from how the nav uses it. I haven't read it from the style itself yet (see "Not right yet").
   accessibility:

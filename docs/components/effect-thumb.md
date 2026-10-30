@@ -18,11 +18,11 @@
 
 ## When to use
 
-- The text panel on a project thumbnail, in Thumbs and Carousel, and Navigation's panel.
+- **A thumbnail's text panel.** The text panel on a project thumbnail, in Thumbs and Carousel, and Navigation's panel.
 
 ## When not to use
 
-- A menu that opens over the page. That's the **Menu effect**.
+- **A menu over the page.** A menu that opens over the page. That's the **Menu effect**.
 
 ## Behaviour
 

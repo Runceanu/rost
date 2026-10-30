@@ -28,9 +28,11 @@ elements:
 guidance:
   status: agreed
   use:
-    - On the thumbnail of a locked project (NDA, password), together with the lock icon.
+    - title: A locked project
+      text: On the thumbnail of a locked project (NDA, password), together with the lock icon.
   avoid:
-    - Loading or disabled states. Blur says "hidden", not "wait".
+    - title: Loading or disabled
+      text: Loading or disabled states. Blur says "hidden", not "wait".
   behaviour: |-
     `filter: blur(8px)` blurs the element's own content. Thumb is the opposite: it blurs what's behind it. In Figma the blur is tied to `spacing/base-8`, a spacing token, so the code uses its own `--effect-lock-frame` instead.
   accessibility:

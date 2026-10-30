@@ -28,9 +28,11 @@ elements:
 guidance:
   status: agreed
   use:
-    - The text panel on a project thumbnail, in Thumbs and Carousel, and Navigation's panel.
+    - title: A thumbnail's text panel
+      text: The text panel on a project thumbnail, in Thumbs and Carousel, and Navigation's panel.
   avoid:
-    - A menu that opens over the page. That's the **Menu effect**.
+    - title: A menu over the page
+      text: A menu that opens over the page. That's the **Menu effect**.
   behaviour: |-
     It blurs what's behind the panel. In Figma the blur is tied to `opacity/gentle`, an opacity token borrowed as a blur size. It works, but changing that opacity would also move this blur. Its own blur token would fix it.
   accessibility:

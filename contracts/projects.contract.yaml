@@ -275,10 +275,15 @@ implementations:
 guidance:
   status: agreed
   use:
-    - Used as a list of projects or items, one row each, where the row links to the details.
+    - title: A list of projects
+      text: Used as a list of projects or items, one row each, where the row links to the details.
+      show: state=Default
   avoid:
-    - A grid with pictures. That's **Thumbs**.
-    - Long names. At 40px, a name past three words pushes the details off the row.
+    - title: A grid with pictures
+      text: A grid with pictures. That's **Thumbs**.
+    - title: Long names
+      text: Long names. At 40px, a name past three words pushes the details off the row.
+      show: state=Default
   behaviour: |-
     A number and a big name on the left, industry, type and period on the right, an arrow at the end, and a line underneath. On hover and press the content slides 16px right, the name goes green, and the line turns green (2px on hover). `Locked` puts a green lock after the name and turns the dots green, for work behind a password. `Disabled` fades everything but the badge, which says "Coming soon".
   accessibility:

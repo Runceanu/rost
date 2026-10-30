@@ -118,7 +118,7 @@ const props = Object.entries(c.props ?? {}) as [string, any][]
     </div>
   </section>
 
-  {g && <Guidance g={g} />}
+  {g && <Guidance g={g} id={e.id} />}
 
   {props.length > 0 && (
     <>

@@ -134,10 +134,15 @@ variants:
 guidance:
   status: proposed
   use:
-    - Giving a card or a section a face, like the service cards on the portfolio site.
+    - title: A face for a card
+      text: Giving a card or a section a face, like the service cards on the portfolio site.
+      show: type=Design system
   avoid:
-    - Standing in for an icon next to a label. That's **Icon**, which is smaller and takes the text colour.
-    - Stretching it. It's drawn for 72px; bigger and the lines get heavy.
+    - title: Standing in for an icon
+      text: Standing in for an icon next to a label. That's **Icon**, which is smaller and takes the text colour.
+    - title: Stretched bigger
+      text: Stretching it. It's drawn for 72px; bigger and the lines get heavy.
+      show: type=Design system
   behaviour: |-
     A fixed 72px square. The drawing's colours are baked in, Figma's greys with one green, and they're made for a dark ground.
   accessibility:

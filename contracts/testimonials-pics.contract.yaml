@@ -38,10 +38,15 @@ elements:
 guidance:
   status: proposed
   use:
-    - The photo at the start of a **Testimonials** row, next to the person's name and role.
+    - title: A testimonial's photo
+      text: The photo at the start of a **Testimonials** row, next to the person's name and role.
+      show: testimonials-pics
   avoid:
-    - A profile picture anywhere else, an avatar in a list or a header. Rost has no Avatar yet, so ask for one rather than reusing this.
-    - A logo instead of a face. A company's quote goes in **Testimonials** with no picture.
+    - title: An avatar elsewhere
+      text: A profile picture anywhere else, an avatar in a list or a header. Rost has no Avatar yet, so ask for one rather than reusing this.
+      show: testimonials-pics
+    - title: A logo
+      text: A logo instead of a face. A company's quote goes in **Testimonials** with no picture.
   behaviour: |-
     A 56px square that crops the photo to fill it. It has no states and does nothing when you press it; the row around it does. Testimonials rounds it, so on its own it's square.
   accessibility:

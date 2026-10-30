@@ -48,12 +48,12 @@
 
 ## When to use
 
-- Used as a testimonial box or a list of quotes: name and role first, and each one opens to show the quote.
+- **Quotes that open.** Used as a testimonial box or a list of quotes: name and role first, and each one opens to show the quote.
 
 ## When not to use
 
-- A quote that should always be visible. Put it on the page as text.
-- More than a sentence or three. It's a quote, not an article.
+- **A quote always on show.** A quote that should always be visible. Put it on the page as text.
+- **A long quote.** More than a sentence or three. It's a quote, not an article.
 
 ## Behaviour
 

@@ -18,11 +18,11 @@
 
 ## When to use
 
-- Anything lifted above the content: menus, popovers, a card being dragged.
+- **Things lifted above the page.** Anything lifted above the content: menus, popovers, a card being dragged.
 
 ## When not to use
 
-- Cards just sitting there. This kit is dark, so surfaces are told apart by tone, not shadow.
+- **Cards at rest.** Cards just sitting there. Surfaces are told apart by tone, not shadow.
 
 ## Behaviour
 

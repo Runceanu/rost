@@ -159,10 +159,15 @@ variants:
 guidance:
   status: agreed
   use:
-    - "Switching between views of the same thing, in place: Preview and Code, Overview and Activity."
+    - title: Views of the same thing
+      text: "Switching between views of the same thing, in place: Preview and Code, Overview and Activity."
+      show: selected=True, state=Default
   avoid:
-    - Going to another page. That's a link, or the nav.
-    - Turning one thing on and off. That's **Toggle**.
+    - title: Going to another page
+      text: Going to another page. That's a link, or the nav.
+      show: selected=False, state=Default
+    - title: On and off
+      text: Turning one thing on and off. That's **Toggle**.
   behaviour: |-
     Always inside **Tabs**, and exactly one is selected. Selecting a tab shows its panel straight away. Hover, pressed and focus come from the browser; selected and disabled are props.
   accessibility:

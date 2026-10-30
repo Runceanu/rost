@@ -36,13 +36,13 @@
 
 ## When to use
 
-- Switching a view or a filter on and off, when the change happens straight away.
-- Used to pick one option from a short set, as a group: a year switcher, a view switcher.
+- **On and off, straight away.** Switching a view or a filter on and off, when the change happens straight away.
+- **One of a short set.** Used to pick one option from a short set, as a group: a year switcher, a view switcher.
 
 ## When not to use
 
-- Doing something. That's **IconButton**. A toggle remembers, a button doesn't.
-- A settings-style switch with a label. There isn't one in the kit yet, so ask for one rather than stretching Toggle.
+- **Doing something.** Doing something. That's **IconButton**. A toggle remembers, a button doesn't.
+- **A settings switch.** A setting that's on or off, with a label. That's **Switch**.
 
 ## Behaviour
 

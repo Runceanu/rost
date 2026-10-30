@@ -129,12 +129,20 @@ variants:
 guidance:
   status: proposed
   use:
-    - Next to a label, when the shape says the same thing faster. An arrow on "Back", a chevron on something that opens.
-    - Inside Button and IconButton, through their `icon` slot, at Small.
+    - title: Next to a label
+      text: Next to a label, when the shape says the same thing faster. An arrow on "Back", a chevron on something that opens.
+      show: icons/arrow-left
+    - title: Inside a button
+      text: Inside Button and IconButton, through their `icon` slot, at Small.
+      show: icons/arrow-right
   avoid:
-    - On its own as something to press. That's **IconButton**, which gives it a target and states.
-    - A picture with no job next to words. That's an **Illustration**, which keeps its own colours.
-    - A glyph Rost doesn't have. Add the SVG to `assets/icons/` and Figma's set first, so they stay the same list.
+    - title: Something to press
+      text: On its own as something to press. That's **IconButton**, which gives it a target and states.
+    - title: A picture with no job
+      text: A picture with no job next to words. That's an **Illustration**, which keeps its own colours.
+    - title: A glyph Rost lacks
+      text: A glyph Rost doesn't have. Add the SVG to `assets/icons/` and Figma's set first, so they stay the same list.
+      show: icons/dot
   behaviour: |-
     It takes the text colour it sits in. Figma draws them in `non-interactive/foreground/tertiary` (#999999); inside a Button it's the button's icon colour, state by state. The shapes are Figma's exports, kept as they are.
   accessibility:

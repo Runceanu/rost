@@ -220,8 +220,8 @@ export function guidanceMarkdown(g) {
   if (!g) return ''
   const label = (k) => k.replace(/([A-Z])/g, ' $1').replace(/^./, (s) => s.toUpperCase())
   const out = []
-  if (g.use?.length) out.push('## When to use', '', ...g.use.map((x) => `- ${x}`), '')
-  if (g.avoid?.length) out.push('## When not to use', '', ...g.avoid.map((x) => `- ${x}`), '')
+  if (g.use?.length) out.push('## When to use', '', ...g.use.map((x) => `- **${x.title}.** ${x.text}`), '')
+  if (g.avoid?.length) out.push('## When not to use', '', ...g.avoid.map((x) => `- **${x.title}.** ${x.text}`), '')
   if (g.behaviour) out.push('## Behaviour', '', g.behaviour, '')
   if (g.accessibility) out.push('## Accessibility', '', ...Object.entries(g.accessibility).map(([k, v]) => `- **${label(k)}**: ${v}`), '')
   if (g.content) out.push('## Content', '', g.content, '')

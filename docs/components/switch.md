@@ -34,13 +34,13 @@
 
 ## When to use
 
-- A setting that's on or off and works the moment you flip it: email me receipts, show cents, dark charts.
+- **A setting that works at once.** A setting that's on or off and works the moment you flip it: email me receipts, show cents, dark charts.
 
 ## When not to use
 
-- A choice that waits for a Save button. That's a checkbox, and Rost doesn't have one yet.
-- Filtering what's on screen. That's **Chip**, with `selected`.
-- An icon button that stays pressed, like bold in an editor. That's **Toggle**.
+- **A choice that waits for Save.** A choice that waits for a Save button. That's a checkbox, and Rost doesn't have one yet.
+- **Filtering the screen.** Filtering what's on screen. That's **Chip**, with `selected`.
+- **A button that stays pressed.** An icon button that stays pressed, like bold in an editor. That's **Toggle**.
 
 ## Behaviour
 

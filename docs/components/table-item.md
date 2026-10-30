@@ -37,14 +37,14 @@
 
 ## When to use
 
-- Every cell of a TableRow.
-- `leading` for what kind of thing the row is (a Badge), `trailing` for a note on this one value (an estimate Badge).
-- `numeric` for every amount, and on that column's header.
+- **Every cell.** Every cell of a TableRow.
+- **Leading and trailing.** `leading` for what kind of thing the row is (a Badge), `trailing` for a note on this one value (an estimate Badge).
+- **Amounts.** `numeric` for every amount, and on that column's header.
 
 ## When not to use
 
-- Two lines of description. Say less, or give it a column.
-- A link or button of its own in a row that's already a link. See **TableRow**.
+- **Two lines of description.** Two lines of description. Say less, or give it a column.
+- **A link inside a linked row.** A link or button of its own in a row that's already a link. See **TableRow**.
 
 ## Behaviour
 

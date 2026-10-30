@@ -24,11 +24,11 @@
 
 ## When to use
 
-- Above the panels it switches between.
+- **Above its panels.** Above the panels it switches between.
 
 ## When not to use
 
-- More tabs than fit on one line. Fewer, or a menu.
+- **Too many tabs.** More tabs than fit on one line. Fewer, or a menu.
 
 ## Behaviour
 

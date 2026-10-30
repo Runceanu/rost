@@ -1,5 +1,6 @@
 import type { JSX } from 'react'
 import { Button, type ButtonVariant } from './Button'
+import { Icon } from '../icon/Icon'
 
 /**
  * One fixture per Figma variant, with Figma's sample label. Hover, pressed
@@ -23,7 +24,10 @@ export const fixtures = Object.entries(NODES).flatMap(([type, states]) =>
     element: frame(<Button variant={type as ButtonVariant} disabled={state === 'Disabled'}>label</Button>, state),
     ...(FORCE[state] ? { force: FORCE[state] } : {}),
   })),
-)
+).concat([
+  // Not a Figma frame: Figma's Button has the icon slot off. For the guidance card about icons.
+  { node: 'button:icon', name: 'with an icon', element: <Button variant="secondary" icon={<Icon name="arrow-left" size="small" />}>Back</Button> },
+])
 
 /** What a caller writes. Shown on the component's page. */
 export const usage = `import { Button } from 'rost/components/button/Button'

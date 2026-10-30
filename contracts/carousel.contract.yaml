@@ -180,10 +180,15 @@ implementations:
 guidance:
   status: agreed
   use:
-    - Used for a row of featured items you scroll through, each card leading to more.
+    - title: A row of featured items
+      text: Used for a row of featured items you scroll through, each card leading to more.
+      show: state=Default
   avoid:
-    - A card with a picture. That's **Thumbs**.
-    - Long titles. The title wraps, but two lines of 24px eat the card.
+    - title: A card with a picture
+      text: A card with a picture. That's **Thumbs**.
+    - title: Long titles
+      text: Long titles. The title wraps, but two lines of 24px eat the card.
+      show: state=Default
   behaviour: |-
     A number, a title and a line of description, on nothing: the card has no fill until you press it. On hover the number and title go green and the description lightens. Pressed lays a frosted glass under it (`effect/thumb`). Disabled fades the whole card to `opacity/mild`.
   accessibility:

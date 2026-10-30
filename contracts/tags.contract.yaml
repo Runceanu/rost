@@ -100,10 +100,12 @@ variants:
 guidance:
   status: agreed
   use:
-    - |-
-      Used to say what something is about: a discipline, a platform, a topic.
+    - title: What something is about
+      text: "Used to say what something is about: a discipline, a platform, a topic."
+      show: state=Default
   avoid:
-    - "A status: **Badge**. A filter: **Chip**."
+    - title: A status or a filter
+      text: "A status: **Badge**. A filter: **Chip**."
   behaviour: |-
     One `type` (`Primary`) and five states. The hover and press states are there for tags that link to a filtered list. A tag that doesn't go anywhere shouldn't have them.
   accessibility:

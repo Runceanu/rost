@@ -77,9 +77,12 @@ implementations:
 guidance:
   status: agreed
   use:
-    - Used at the top of a page that opens with artwork, like a project or an article. One per page.
+    - title: A page that opens with artwork
+      text: Used at the top of a page that opens with artwork, like a project or an article. One per page.
+      show: hero-media
   avoid:
-    - A page that opens with words, not an image. The **Paper effect** suits that one better.
+    - title: A page that opens with words
+      text: A page that opens with words, not an image. The **Paper effect** suits that one better.
   behaviour: |-
     The artwork stays put and the page scrolls over it (`background-attachment: fixed`). Phones, tablets and `prefers-reduced-motion` get a normal static background instead. The dim only works as opacity *and* the colour underneath together. Never change one without the other.
   accessibility:

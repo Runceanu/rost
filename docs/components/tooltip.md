@@ -25,12 +25,12 @@
 
 ## When to use
 
-- Used to explain something that can't explain itself: an icon-only button, or a nav item for the page you're already on.
+- **Explaining a bare icon.** Used to explain something that can't explain itself: an icon-only button, or a nav item for the page you're already on.
 
 ## When not to use
 
-- Anything people need in order to use the page. A tooltip is easy to miss, and on a phone there's no hover.
-- More than a few words. That's help text, or an **InlineBanner**.
+- **Anything people need.** Anything people need in order to use the page. A tooltip is easy to miss, and on a phone there's no hover.
+- **More than a few words.** More than a few words. That's help text, or an **InlineBanner**.
 
 ## Behaviour
 

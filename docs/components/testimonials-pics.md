@@ -25,12 +25,12 @@
 
 ## When to use
 
-- The photo at the start of a **Testimonials** row, next to the person's name and role.
+- **A testimonial's photo.** The photo at the start of a **Testimonials** row, next to the person's name and role.
 
 ## When not to use
 
-- A profile picture anywhere else, an avatar in a list or a header. Rost has no Avatar yet, so ask for one rather than reusing this.
-- A logo instead of a face. A company's quote goes in **Testimonials** with no picture.
+- **An avatar elsewhere.** A profile picture anywhere else, an avatar in a list or a header. Rost has no Avatar yet, so ask for one rather than reusing this.
+- **A logo.** A logo instead of a face. A company's quote goes in **Testimonials** with no picture.
 
 ## Behaviour
 

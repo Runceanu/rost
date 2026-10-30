@@ -30,13 +30,13 @@
 
 ## When to use
 
-- Every row of a Table, the header row too.
-- A row that opens the thing it shows, with `href`: a payment, an invoice, a client.
+- **Every row.** Every row of a Table, the header row too.
+- **A row that opens something.** A row that opens the thing it shows, with `href`: a payment, an invoice, a client.
 
 ## When not to use
 
-- Links or buttons in several cells of a row that's itself a link. The cover sits over them. Pick one: the row, or the controls.
-- Showing a status with the fill. `selected` means picked; a status is a **Badge** in a cell.
+- **Controls in a linked row.** Links or buttons in several cells of a row that's itself a link. The cover sits over them. Pick one: the row, or the controls.
+- **A status as a fill.** Showing a status with the fill. `selected` means picked; a status is a **Badge** in a cell.
 
 ## Behaviour
 

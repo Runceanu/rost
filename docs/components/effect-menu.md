@@ -22,12 +22,12 @@
 
 ## When to use
 
-- Things that float over content and have to stay readable while it scrolls underneath: the nav, the hero info cards.
+- **Floating over scrolling content.** Things that float over content and have to stay readable while it scrolls underneath: the nav, the hero info cards.
 
 ## When not to use
 
-- Project thumbnails, they have their own (**Thumb effect**).
-- On top of another frosted surface. Two blurs just turn to mud.
+- **Project thumbnails.** Project thumbnails, they have their own (**Thumb effect**).
+- **On another frosted surface.** On top of another frosted surface. Two blurs just turn to mud.
 
 ## Behaviour
 

@@ -30,11 +30,11 @@
 
 ## When to use
 
-- Used to say what something is about: a discipline, a platform, a topic.
+- **What something is about.** Used to say what something is about: a discipline, a platform, a topic.
 
 ## When not to use
 
-- A status: **Badge**. A filter: **Chip**.
+- **A status or a filter.** A status: **Badge**. A filter: **Chip**.
 
 ## Behaviour
 
