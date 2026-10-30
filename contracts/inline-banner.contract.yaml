@@ -195,7 +195,7 @@ guidance:
   accessibility:
     element: |-
       a `<span>` or a `<p>`. If it shows up because of something the person just did, put it in a live region (`role="status"`, or `role="alert"` for `Negative`).
-    colour: the icon carries the status as well as the fill. The accounting app still shows no icon (that's its deviation), so there the words have to say the status.
+    colour: the icon carries the status, so the status never rests on colour alone.
     glyph: "`aria-hidden=\"true\"`. The label carries the meaning."
   content: |-
     One short sentence, no full stop if it's a fragment. Lead with what happened: "Saved just now", "Payment failed: card expired".

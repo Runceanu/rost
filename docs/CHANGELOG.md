@@ -2,6 +2,11 @@
 
 What changed each time I merged into `master` and put rost.build live. Newest first. The commits have the details; this is what it means for a component or an app.
 
+## 2026-10-30
+
+- **The accounting app is on current Rost.** Every copy is up to date (the disabled-hover fix and variants as layers came with them), its tokens are Rost's whole file (its old copy had `spacing/base-8` at 8px, not 16), and its contract test checks every whole variant, 289 tests in all. Its text fields are Rost's Input now, so the label, the value, the help line and the focus ring match the contract, and the help line is tied to the field for screen readers. A mismatched passphrase marks the Confirm field, not the first one.
+- **Input says how much room its help line needs.** It hangs below the 56px field, so a layout leaves 16px under a field that has one. The accounting app's lock screen ran the line into the next field before.
+
 ## 2026-10-29
 
 - **How a contract works is drawn, not only written.** On rost.build the page opens with Rost's numbers as they are today (contracts, components, tokens, variants matching Figma, apps), counted from the contracts at build time. What a contract gives an agent reads as cards, the way from Figma to code as a diagram, and the statuses as a track with how many contracts sit at each. The words are still only in `docs/CONTRACT.md`, which reads the same as before on GitHub.

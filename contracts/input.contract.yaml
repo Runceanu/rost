@@ -440,11 +440,11 @@ guidance:
     lockIcon: |-
       just decoration, unless it means read-only. If it does, set `readonly` and say so in the help text.
   content: |-
-    Label: a noun, sentence case ("Email address"). Help text: one line. Before an error it's a hint, after it it's the fix ("Use at least 8 characters", not "Invalid input").
+    Label: a noun, sentence case ("Email address"). Help text: one line. Before an error it's a hint, after it it's the fix ("Use at least 8 characters", not "Invalid input"). The help line hangs below the 56px field, outside it, so a layout leaves `spacing/gap/2xsmall` plus its 12px line (16px) under a field that has one.
 implementations:
   portfolio-site:
     component: src/rost/input/Input.tsx
     root: .rost-input
   accounting-app:
-    component: src/components/TextField.tsx
-    root: .ak-field__box
+    component: src/rost/input/Input.tsx
+    root: .rost-input

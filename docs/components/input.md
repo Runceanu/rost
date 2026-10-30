@@ -10,7 +10,7 @@
 | Contract | `review` · [input.contract.yaml](../../contracts/input.contract.yaml) |
 | Guidance | `agreed` |
 | Source | [Figma 240:273](https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=240-273) · read 2026-08-19 · frozen 2026-10-20 |
-| Implemented in | The portfolio site (`src/rost/input/Input.tsx`, `.rost-input`)<br>the accounting app (`src/components/TextField.tsx`, `.ak-field__box`) |
+| Implemented in | The portfolio site (`src/rost/input/Input.tsx`, `.rost-input`)<br>the accounting app (`src/rost/input/Input.tsx`, `.rost-input`) |
 
 ## Props
 
@@ -75,7 +75,7 @@ Check what people typed when they leave the field or submit, not on every key.
 
 ## Content
 
-Label: a noun, sentence case ("Email address"). Help text: one line. Before an error it's a hint, after it it's the fix ("Use at least 8 characters", not "Invalid input").
+Label: a noun, sentence case ("Email address"). Help text: one line. Before an error it's a hint, after it it's the fix ("Use at least 8 characters", not "Invalid input"). The help line hangs below the 56px field, outside it, so a layout leaves `spacing/gap/2xsmall` plus its 12px line (16px) under a field that has one.
 
 ## Tokens
 

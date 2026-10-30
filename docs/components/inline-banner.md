@@ -51,7 +51,7 @@
 ## Accessibility
 
 - **Element**: a `<span>` or a `<p>`. If it shows up because of something the person just did, put it in a live region (`role="status"`, or `role="alert"` for `Negative`).
-- **Colour**: the icon carries the status as well as the fill. The accounting app still shows no icon (that's its deviation), so there the words have to say the status.
+- **Colour**: the icon carries the status, so the status never rests on colour alone.
 - **Glyph**: `aria-hidden="true"`. The label carries the meaning.
 
 ## Content
