@@ -10,7 +10,7 @@
 | Contract | `review` · [effect-paper.contract.yaml](../../contracts/effect-paper.contract.yaml) |
 | Guidance | `agreed` |
 | Source | `portfolio-site/src/components/HeroBackdrop.jsx` · read 2026-10-19 · frozen 2026-10-20 |
-| Implemented in | The portfolio site (`src/components/HeroBackdrop.jsx`) |
+| Implemented in | Portfolio site (`src/components/HeroBackdrop.jsx`) |
 
 ## Anatomy
 

@@ -21,33 +21,33 @@ Rost started as a design system for my own needs and grew into a product of its 
 
 | | Summary | Contract | Guidance | Used in |
 |---|---|---|---|---|
-| [Badge](components/badge.md) | A small status marker: a coloured dot on its own, or an outlined label. The colour sits in the dot and the outline, never in the text. | `stable` | `agreed` | The portfolio site, the accounting app |
-| [Button](components/button.md) | A 48px button with a label and, if it helps, an icon in front. In four levels of emphasis. | `stable` | `agreed` | The portfolio site, the accounting app |
-| [Carousel](components/carousel.md) | A card for a carousel: a number, a title and a short description. | `review` | `agreed` | The portfolio site |
-| [Chip](components/chips.md) | A small outlined label you can click, for filters and quick choices. | `review` | `agreed` | The portfolio site |
-| [Divider](components/divider.md) | A thin line between things. | `stable` | `agreed` | The portfolio site, the accounting app |
-| [IconButton](components/icon-button.md) | A round button with only an icon, including a Project type for sitting on top of images. | `review` | `agreed` | The portfolio site |
-| [InlineBanner](components/inline-banner.md) | A filled status pill with an icon and a label, in four statuses and two sizes. | `stable` | `agreed` | The portfolio site, the accounting app |
-| [Input](components/input.md) | A 56px text field with a floating label, an optional lock icon, a line of help text and an error state. | `review` | `agreed` | The portfolio site, the accounting app |
+| [Badge](components/badge.md) | A small status marker: a coloured dot on its own, or an outlined label. The colour sits in the dot and the outline, never in the text. | `stable` | `agreed` | Portfolio site, Accounting app |
+| [Button](components/button.md) | A 48px button with a label and, if it helps, an icon in front. In four levels of emphasis. | `stable` | `agreed` | Portfolio site, Accounting app |
+| [Carousel](components/carousel.md) | A card for a carousel: a number, a title and a short description. | `review` | `agreed` | Portfolio site |
+| [Chip](components/chips.md) | A small outlined label you can click, for filters and quick choices. | `review` | `agreed` | Portfolio site |
+| [Divider](components/divider.md) | A thin line between things. | `stable` | `agreed` | Portfolio site, Accounting app |
+| [IconButton](components/icon-button.md) | A round button with only an icon, including a Project type for sitting on top of images. | `review` | `agreed` | Portfolio site |
+| [InlineBanner](components/inline-banner.md) | A filled status pill with an icon and a label, in four statuses and two sizes. | `stable` | `agreed` | Portfolio site, Accounting app |
+| [Input](components/input.md) | A 56px text field with a floating label, an optional lock icon, a line of help text and an error state. | `review` | `agreed` | Portfolio site, Accounting app |
 | [ListItem](components/list-item.md) | One row you can pick in a list or a nav. A label, an optional line under it, and optional icons and a status dot. | `review` | `agreed` | · |
 | [Menu](components/menu.md) | A navigation item: a label with a line underneath, used in the main nav. | `review` | `agreed` | · |
 | [Navigation](components/navigation.md) | A side navigation on frosted glass. The logo at the top, the main items below it, one action at the bottom. Collapsed to icons, or open with labels. | `review` | `agreed` | · |
-| [Projects](components/projects.md) | One row in the project list: number, name, and industry, type and period on the right. | `review` | `agreed` | The portfolio site |
+| [Projects](components/projects.md) | One row in the project list: number, name, and industry, type and period on the right. | `review` | `agreed` | Portfolio site |
 | [TabItem](components/tab-item.md) | One tab in a row of tabs. A label, optional icons before and after it, and a green underline when it's the one selected. | `review` | `agreed` | · |
 | [Tabs](components/tabs.md) | A row of tabs on a 1px line. One is selected, and its panel shows below. | `review` | `agreed` | · |
 | [Tag](components/tags.md) | A compact 20px label with small corners, for what a piece of content is about. | `review` | `agreed` | · |
-| [TestimonialPicture](components/testimonials-pics.md) | The photo of the person behind a testimonial. | `review` | `proposed` | The portfolio site |
-| [Testimonials](components/testimonials.md) | A testimonial you can open and close: name and role, with the quote underneath. | `review` | `agreed` | The portfolio site |
-| [Thumbs](components/thumbs.md) | A project thumbnail card, with the project name and details on a frosted panel at the bottom. | `review` | `agreed` | The portfolio site |
-| [Toggle](components/toggle.md) | A 40×40 icon button that stays on or off, alone or as one choice in a group. | `stable` | `agreed` | The accounting app |
-| [ToggleGroup](components/toggle-group.md) | A row of Toggles where one is chosen, like a year switcher. Arrow keys move the choice, and the row is one stop for Tab. | `draft` | `proposed` | The accounting app |
-| [Tooltip](components/tooltip.md) | A small label that explains something when you point at it or focus it. | `review` | `agreed` | The portfolio site |
+| [TestimonialPicture](components/testimonials-pics.md) | The photo of the person behind a testimonial. | `review` | `proposed` | Portfolio site |
+| [Testimonials](components/testimonials.md) | A testimonial you can open and close: name and role, with the quote underneath. | `review` | `agreed` | Portfolio site |
+| [Thumbs](components/thumbs.md) | A project thumbnail card, with the project name and details on a frosted panel at the bottom. | `review` | `agreed` | Portfolio site |
+| [Toggle](components/toggle.md) | A 40×40 icon button that stays on or off, alone or as one choice in a group. | `stable` | `agreed` | Accounting app |
+| [ToggleGroup](components/toggle-group.md) | A row of Toggles where one is chosen, like a year switcher. Arrow keys move the choice, and the row is one stop for Tab. | `draft` | `proposed` | Accounting app |
+| [Tooltip](components/tooltip.md) | A small label that explains something when you point at it or focus it. | `review` | `agreed` | Portfolio site |
 
 ### Patterns
 
 | | Summary | Contract | Guidance | Used in |
 |---|---|---|---|---|
-| [Hero Media](components/hero-media.md) | A full-width hero: artwork pinned behind a 16px frame and dimmed, with the content on top. | `review` | `agreed` | The portfolio site |
+| [Hero Media](components/hero-media.md) | A full-width hero: artwork pinned behind a 16px frame and dimmed, with the content on top. | `review` | `agreed` | Portfolio site |
 
 ### Effects
 
@@ -56,7 +56,7 @@ Rost started as a design system for my own needs and grew into a product of its 
 | [Floating effect](components/effect-floating.md) | The only drop shadow in the kit, for things that float above the page. | `review` | `agreed` | · |
 | [Lock frame effect](components/effect-lock-frame.md) | An 8px blur over a locked project's thumbnail, the blurred view behind the lock. | `review` | `agreed` | · |
 | [Menu effect](components/effect-menu.md) | Frosted glass, a 12px backdrop blur, for a nav or cards that sit over content. | `draft` | `agreed` | · |
-| [Paper effect](components/effect-paper.md) | A sheet of dots behind a hero. It reacts to the cursor, buttons and clicks, can sketch components on itself, and never moves on its own. | `review` | `agreed` | The portfolio site |
+| [Paper effect](components/effect-paper.md) | A sheet of dots behind a hero. It reacts to the cursor, buttons and clicks, can sketch components on itself, and never moves on its own. | `review` | `agreed` | Portfolio site |
 | [Thumb effect](components/effect-thumb.md) | The frosted panel on project thumbnails, a backdrop blur. | `review` | `agreed` | · |
 
 ## Health

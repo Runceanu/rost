@@ -17,7 +17,7 @@ export const fixtures = [
 /** What a caller writes. Shown on the component's page. */
 export const usage = `import { Carousel } from 'rost/components/carousel/Carousel'
 
-<Carousel href="/work/accounting" number="01" title="The accounting app" description="Bookkeeping that explains itself." />`
+<Carousel href="/work/accounting" number="01" title="Accounting app" description="Bookkeeping that explains itself." />`
 
 /** What the component's card on rost.build shows. */
-export const preview = <Carousel as="div" number="01" title="The accounting app" description="Bookkeeping that explains itself." style={{ width: 240 }} />
+export const preview = <Carousel as="div" number="01" title="Accounting app" description="Bookkeeping that explains itself." style={{ width: 240 }} />

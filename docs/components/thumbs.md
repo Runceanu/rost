@@ -10,7 +10,7 @@
 | Contract | `review` · [thumbs.contract.yaml](../../contracts/thumbs.contract.yaml) |
 | Guidance | `agreed` |
 | Source | [Figma 109:79](https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=109-79) · read 2026-10-19 · frozen 2026-10-20 |
-| Implemented in | The portfolio site (`src/rost/thumbs/Thumbs.tsx`, `.rost-thumbs`) |
+| Implemented in | Portfolio site (`src/rost/thumbs/Thumbs.tsx`, `.rost-thumbs`) |
 
 ## Props
 
@@ -81,7 +81,7 @@ The name is the client or the product, as people know it. Details are a word or 
 
 | App | What | Why | Taken to design |
 |---|---|---|---|
-| The portfolio site | Under 480px a name too long for its card wraps instead of staying on one line. It keeps `typography/title` at every width. The /built page does the same at every width. | Names like OneDS Instruments Artboard Creator don't fit a phone-width card on one line, and shrinking the type would leave Rost's scale. | not yet |
+| Portfolio site | Under 480px a name too long for its card wraps instead of staying on one line. It keeps `typography/title` at every width. The /built page does the same at every width. | Names like OneDS Instruments Artboard Creator don't fit a phone-width card on one line, and shrinking the type would leave Rost's scale. | not yet |
 
 ## Tokens
 

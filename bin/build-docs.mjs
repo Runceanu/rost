@@ -101,7 +101,7 @@ const health = [
   ['Tokens missing from tokens.css', kit.filter((e) => e.unresolved.length).map((e) => `[${title(e)}](components/${e.id}.md): ${e.unresolved.map((t) => `\`${t}\``).join(', ')}`)],
   ['Still open from Figma', kit.filter((e) => e.c.pending).map((e) => `[${title(e)}](components/${e.id}.md)`)],
   ['No guidance yet', by('component').filter((e) => !e.guidance).map((e) => `[${title(e)}](components/${e.id}.md)`)],
-  ['Differences nobody has taken to design yet', kit.flatMap((e) => e.deviations.filter((d) => !d.raisedWithDesign).map((d) => `[${title(e)}](components/${e.id}.md)${d.app ? ` in ${APP_LABEL[d.app] ?? d.app}` : ''}: ${cell(d.what).split('. ')[0].replace(/\.$/, '')}`))],
+  ['Differences nobody has taken to design yet', kit.flatMap((e) => e.deviations.filter((d) => !d.raisedWithDesign).map((d) => `[${title(e)}](components/${e.id}.md)${d.app ? ` in the ${(APP_LABEL[d.app] ?? d.app).toLowerCase()}` : ''}: ${cell(d.what).split('. ')[0].replace(/\.$/, '')}`))],
 ].filter(([, items]) => items.length)
 
 const counts = {

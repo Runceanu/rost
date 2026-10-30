@@ -21,7 +21,7 @@ export const fixtures = [
 /** What a caller writes. Shown on the component's page. */
 export const usage = `import { Thumbs } from 'rost/components/thumbs/Thumbs'
 
-<Thumbs href="/work/accounting" number="01" name="The accounting app" industry="Finance" kind="Product" period="2025">
+<Thumbs href="/work/accounting" number="01" name="Accounting app" industry="Finance" kind="Product" period="2025">
   <img src="/work/accounting.jpg" alt="" />
 </Thumbs>
 
@@ -31,7 +31,7 @@ export const usage = `import { Thumbs } from 'rost/components/thumbs/Thumbs'
 export const preview = (
   <span style={{ display: 'block', width: 260 * 0.55, height: 222 * 0.55 }}>
     <span style={{ display: 'block', transform: 'scale(.55)', transformOrigin: 'top left' }}>
-      <Thumbs as="div" number="01" name="The accounting app" showIndustry={false} showKind={false} showPeriod={false} style={{ width: 260, height: 222 }}>
+      <Thumbs as="div" number="01" name="Accounting app" showIndustry={false} showKind={false} showPeriod={false} style={{ width: 260, height: 222 }}>
         <span style={{ position: 'absolute', inset: 0, background: 'var(--non-interactive-background-primary)' }} />
         <span style={{ position: 'absolute', inset: '0 0 72px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
           <InlineBanner status="positive" size="medium">Invoice sent</InlineBanner>

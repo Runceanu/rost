@@ -10,7 +10,7 @@
 | Contract | `review` · [hero-media.contract.yaml](../../contracts/hero-media.contract.yaml) |
 | Guidance | `agreed` |
 | Source | [Figma 793:2345](https://www.figma.com/design/pg02BcqlCQCVt6LzTAiPhD/?node-id=793-2345) · read 2026-10-18 · frozen 2026-10-20 |
-| Implemented in | The portfolio site (`src/rost/hero-media/HeroMedia.tsx`, `.rost-hero-media`) |
+| Implemented in | Portfolio site (`src/rost/hero-media/HeroMedia.tsx`, `.rost-hero-media`) |
 
 ## Props
 
@@ -49,7 +49,7 @@ The artwork stays put and the page scrolls over it (`background-attachment: fixe
 | App | What | Why | Taken to design |
 |---|---|---|---|
 | all | The artwork is dimmed with `opacity/medium` (0.48) on a #171717 frame. Figma's node says 32% (`opacity/mild`). | I set one dim for every case study on 2026-10-18. What you see is opacity times what's underneath, and three heroes looked darker at the same opacity. Figma never caught up. | not yet |
-| The portfolio site | Each case study makes the hero full-bleed (`width: 100vw`, negative margin) and brings its own artwork, sized and positioned for that collage. | The page has side padding and the hero ignores it. Where the artwork sits is content, not the component. | not yet |
+| Portfolio site | Each case study makes the hero full-bleed (`width: 100vw`, negative margin) and brings its own artwork, sized and positioned for that collage. | The page has side padding and the hero ignores it. Where the artwork sits is content, not the component. | not yet |
 
 ## Tokens
 

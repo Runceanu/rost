@@ -10,7 +10,7 @@
 | Contract | `stable` · [inline-banner.contract.yaml](../../contracts/inline-banner.contract.yaml) |
 | Guidance | `agreed` |
 | Source | [Figma 205:614](https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=205-614) · read 2026-10-20 · frozen 2026-10-20 |
-| Implemented in | The portfolio site (`src/rost/inline-banner/InlineBanner.tsx`, `.rost-inline-banner`)<br>the accounting app (`src/rost/inline-banner/InlineBanner.tsx`, `.rost-inline-banner`) |
+| Implemented in | Portfolio site (`src/rost/inline-banner/InlineBanner.tsx`, `.rost-inline-banner`)<br>Accounting app (`src/rost/inline-banner/InlineBanner.tsx`, `.rost-inline-banner`) |
 
 ## Props
 
@@ -62,8 +62,8 @@ One short sentence, no full stop if it's a fragment. Lead with what happened: "S
 
 | App | What | Why | Taken to design |
 |---|---|---|---|
-| The portfolio site | The Roche case study's disclaimer is a whole sentence, so on a narrow screen its label wraps and sits left-aligned instead of staying on one centred line. | It's a disclaimer, not a status, and it's longer than a phone is wide. | not yet |
-| The accounting app | Every banner's label wraps and sits left-aligned on a narrow screen, instead of staying on one centred line. | Its banners are sentences, a due date and an amount, and on a phone one line ran wider than the screen and widened the whole page. | not yet |
+| Portfolio site | The Roche case study's disclaimer is a whole sentence, so on a narrow screen its label wraps and sits left-aligned instead of staying on one centred line. | It's a disclaimer, not a status, and it's longer than a phone is wide. | not yet |
+| Accounting app | Every banner's label wraps and sits left-aligned on a narrow screen, instead of staying on one centred line. | Its banners are sentences, a due date and an amount, and on a phone one line ran wider than the screen and widened the whole page. | not yet |
 
 ## Tokens
 

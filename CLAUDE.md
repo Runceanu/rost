@@ -20,4 +20,4 @@ The tables (values, tokens, props) are data and stay as they are. The words arou
 
 ## Publishing
 
-This repo is public. Before pushing, check nothing private gets in: client names (they're "Client N" here), real people's names or photos, my working notes (`STATUS.md` stays local), local paths, or any registry that isn't public npm (`.npmrc` pins it).
+This repo is public. Before pushing, check nothing private gets in: client names (they're "Client N" here), the names or addresses of my apps' websites (they're "the accounting app" and "the portfolio site" here, `accounting-app` and `portfolio-site` as keys), real people's names or photos, my working notes (`STATUS.md` stays local), local paths, or any registry that isn't public npm (`.npmrc` pins it).

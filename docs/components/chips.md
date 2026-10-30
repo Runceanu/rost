@@ -10,7 +10,7 @@
 | Contract | `review` · [chips.contract.yaml](../../contracts/chips.contract.yaml) |
 | Guidance | `agreed` |
 | Source | [Figma 139:317](https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=139-317) · read 2026-08-19 · frozen 2026-10-20 |
-| Implemented in | The portfolio site (`src/rost/chips/Chip.tsx`, `.rost-chips`) |
+| Implemented in | Portfolio site (`src/rost/chips/Chip.tsx`, `.rost-chips`) |
 
 ## Props
 
@@ -56,7 +56,7 @@ One or two words, sentence case.
 
 | App | What | Why | Taken to design |
 |---|---|---|---|
-| The portfolio site | Drawn as a `<span>` (`as="span"`) in the case-study meta, with no hover, press or cursor. | Nobody clicks those. The guidance says a static topic is a Tag, but the site's design has the outlined chip there, so I kept the look and took the states off. | not yet |
+| Portfolio site | Drawn as a `<span>` (`as="span"`) in the case-study meta, with no hover, press or cursor. | Nobody clicks those. The guidance says a static topic is a Tag, but the site's design has the outlined chip there, so I kept the look and took the states off. | not yet |
 
 ## Tokens
 

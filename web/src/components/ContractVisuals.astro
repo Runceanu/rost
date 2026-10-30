@@ -18,7 +18,7 @@ const stats = [
   [components.length, 'components in code'],
   [tokenCount, 'tokens'],
   [`${variants - failingCount}/${variants}`, 'variants match Figma'],
-  [apps.length, apps.map((a) => APP_LABEL[a] ?? a).join(' and ')],
+  [apps.length, apps.map((a) => (APP_LABEL[a] ?? a).toLowerCase()).join(' and ')],
 ]
 
 const STAGES = ['skeleton', 'draft', 'review', 'stable', 'deprecated']

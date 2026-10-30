@@ -10,7 +10,7 @@
 | Contract | `review` · [input.contract.yaml](../../contracts/input.contract.yaml) |
 | Guidance | `agreed` |
 | Source | [Figma 240:273](https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=240-273) · read 2026-08-19 · frozen 2026-10-20 |
-| Implemented in | The portfolio site (`src/rost/input/Input.tsx`, `.rost-input`)<br>the accounting app (`src/rost/input/Input.tsx`, `.rost-input`) |
+| Implemented in | Portfolio site (`src/rost/input/Input.tsx`, `.rost-input`)<br>Accounting app (`src/rost/input/Input.tsx`, `.rost-input`) |
 
 ## Props
 

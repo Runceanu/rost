@@ -205,7 +205,7 @@ export function loadKit() {
 
 export const KINDS = [['component', 'Components'], ['pattern', 'Patterns'], ['effect', 'Effects']]
 // The app ids are also listed in the schema (implementations.propertyNames). Keep both in step.
-export const APP_LABEL = { 'accounting-app': 'the accounting app', 'portfolio-site': 'the portfolio site' }
+export const APP_LABEL = { 'accounting-app': 'Accounting app', 'portfolio-site': 'Portfolio site' }
 
 /** Display name: the Menu component and the Menu effect style share a Figma name. */
 export const title = (e) => (e.kind === 'effect' ? `${e.c.name} effect` : e.c.name)

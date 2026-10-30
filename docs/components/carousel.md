@@ -10,7 +10,7 @@
 | Contract | `review` · [carousel.contract.yaml](../../contracts/carousel.contract.yaml) |
 | Guidance | `agreed` |
 | Source | [Figma 157:302](https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=157-302) · read 2026-10-19 · frozen 2026-10-20 |
-| Implemented in | The portfolio site (`src/rost/carousel/Carousel.tsx`, `.rost-carousel`) |
+| Implemented in | Portfolio site (`src/rost/carousel/Carousel.tsx`, `.rost-carousel`) |
 
 ## Props
 

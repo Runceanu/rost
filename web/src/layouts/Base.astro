@@ -113,5 +113,10 @@ const NAV: [string, string][] = [['/components/', 'Components'], ['/tokens/', 'T
         place()
       }
     </script>
+    <script>
+      // The Paper effect's previews are canvases; paper.ts draws on them.
+      import { mountPaper } from '../../../src/effects/paper'
+      for (const c of document.querySelectorAll<HTMLCanvasElement>('canvas[data-paper-preview]')) mountPaper(c, { area: c.parentElement })
+    </script>
   </body>
 </html>

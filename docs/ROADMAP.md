@@ -84,9 +84,8 @@ In order of how much copied code each one removes.
 
 | Component | Why now | Where it stands |
 |---|---|---|
-| **Hero Media** in the portfolio site | The same hero CSS is copied into 7 case-study stylesheets | in Rost's code, not in the site yet |
 | **Icons** as a component | The 17 SVGs are exported (`assets/icons/`), but there's no `Icon` component yet, and the apps draw their own | SVGs exported, component next |
-| **ListRow** | The accounting app builds it outside the kit | ListItem exists now. I still have to check whether it covers the accounting app's rows or a ListRow needs designing |
+| **ListRow** | The accounting app builds it outside the kit | Checked on 2026-10-30: ListItem doesn't cover it. A row there leads with a Badge, ends with an amount and can carry a second Badge; ListItem has a 20px icon, a status dot and an action icon. Needs designing |
 | **Switch, Textarea, a selected Chip** | The guidance already says they're missing | need designing first |
 
 ~~Move the portfolio site onto the kit's token names.~~ Done on 2026-10-26: its raw hex count is 0, like the accounting app's.
