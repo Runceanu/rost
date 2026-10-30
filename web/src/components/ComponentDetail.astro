@@ -103,18 +103,18 @@ const props = Object.entries(c.props ?? {}) as [string, any][]
     </div>
     {built && (
       <div class="tab-panel" role="tabpanel" id={k('panel-code')} aria-labelledby={k('tab-code')} tabindex="0" hidden>
-        {usage && <Code code={usage} lang={e.kind === 'effect' ? 'css' : 'tsx'} theme="vesper" />}
+        {usage && <Code code={usage} lang={e.kind === 'effect' ? 'css' : 'tsx'} themes={{ dark: 'vesper', light: 'github-light' }} defaultColor="dark" />}
         {source && (
           <details class="source">
             <summary>{source.file}</summary>
-            <Code code={source.code} lang="tsx" theme="vesper" />
+            <Code code={source.code} lang="tsx" themes={{ dark: 'vesper', light: 'github-light' }} defaultColor="dark" />
           </details>
         )}
       </div>
     )}
     <div class="tab-panel" role="tabpanel" id={k('panel-contract')} aria-labelledby={k('tab-contract')} tabindex="0" hidden>
       <p class="note contract-note">The source for everything on this page: <a href={`${GITHUB}/blob/master/contracts/${e.file}`} target="_blank" rel="noreferrer"><code>contracts/{e.file}</code></a>. The CSS, the docs and the checks in each app are built from it.</p>
-      <div class="contract"><Code code={contract} lang="yaml" theme="vesper" /></div>
+      <div class="contract"><Code code={contract} lang="yaml" themes={{ dark: 'vesper', light: 'github-light' }} defaultColor="dark" /></div>
     </div>
   </section>
 

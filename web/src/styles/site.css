@@ -108,6 +108,8 @@ h3 { font-family: var(--mono); font-weight: 400; font-size: 12px; letter-spacing
 .prose th { font-weight: 500; font-size: 13px; color: var(--fg); border-bottom-color: var(--line); }
 /* Shiki paints its theme's own background inline; the site's surface wins. */
 .prose pre, pre.astro-code { background-color: var(--surface) !important; border-radius: var(--spacing-radius-medium); padding: var(--spacing-gap-medium); overflow-x: auto; font-size: 13px; }
+/* Code is coloured with vesper inline, and carries github-light's colours as --shiki-light for the light theme. */
+[data-theme="light"] .astro-code, [data-theme="light"] .astro-code span { color: var(--shiki-light) !important; }
 
 /* Bits */
 .btns { display: flex; flex-wrap: wrap; gap: var(--spacing-gap-small); margin: var(--spacing-gap-large) 0 0; }

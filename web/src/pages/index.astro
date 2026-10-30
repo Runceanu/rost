@@ -60,20 +60,20 @@ const nextItems = [
   <ol class="cards steps" role="list">
     <li>
       <Thumbs as="div" className="card-thumb" showNumber={false} name="A contract" industry="Step" kind="YAML" showPeriod={false}>
-        <span class="peek" aria-hidden="true" inert><Code class="file" code={contractLines} lang="yaml" theme="vesper" /></span>
+        <span class="peek" aria-hidden="true" inert><Code class="file" code={contractLines} lang="yaml" themes={{ dark: 'vesper', light: 'github-light' }} defaultColor="dark" /></span>
       </Thumbs>
       <p>Each component is one YAML file: its parts, its tokens, every variant, how to use it, and where my apps build it. It's the source. Figma was where it started.</p>
     </li>
     <li>
       <Thumbs as="div" className="card-thumb" showNumber={false} name="Code from the contract" industry="Step" kind="CSS and React" showPeriod={false}>
-        <span class="peek" aria-hidden="true" inert><Code class="file" code={cssLines} lang="css" theme="vesper" /></span>
+        <span class="peek" aria-hidden="true" inert><Code class="file" code={cssLines} lang="css" themes={{ dark: 'vesper', light: 'github-light' }} defaultColor="dark" /></span>
       </Thumbs>
       <p>The CSS is written straight from the contract, so nobody types a colour by hand. The React component follows the same parts.</p>
     </li>
     <li>
       <Thumbs as="div" className="card-thumb" showNumber={false} name="Checked against Figma" industry="Step" kind="Visual test" showPeriod={false}>
         <span class="peek" aria-hidden="true" inert>
-          <span class="pair">
+          <span class="pair" data-theme="dark">
             <span class="half"><img src={figmaShot} alt="" width="76" height="48" /><span class="cap">Figma</span></span>
             <span class="half"><Button as="span">label</Button><span class="cap">Code</span></span>
           </span>
@@ -158,7 +158,8 @@ const nextItems = [
   /* The picture area, the same box Glimpse gives a component. */
   .peek { position: absolute; inset: 0 0 112px; display: flex; align-items: center; justify-content: center; padding: var(--spacing-gap-medium); overflow: hidden; }
   .peek :global(pre.file) { margin: 0; padding: 0; background: none !important; font-family: var(--mono); font-size: 11px; line-height: 1.6; white-space: pre; overflow: hidden !important; max-width: 100%; }
-  .pair { display: flex; gap: var(--spacing-gap-large); align-items: flex-end; }
+  /* The test compares in dark, and Figma's shot is drawn on the dark page, so the pair stays dark in both themes. */
+  .pair { display: flex; gap: var(--spacing-gap-large); align-items: flex-end; padding: var(--spacing-gap-medium) var(--spacing-gap-medium-large); border-radius: var(--spacing-radius-large); background: var(--non-interactive-background-primary); }
   .half { display: flex; flex-direction: column; align-items: center; gap: var(--spacing-gap-small); }
   .half img { display: block; }
   .cap { font-family: var(--mono); font-size: 11px; color: var(--fg-3); }

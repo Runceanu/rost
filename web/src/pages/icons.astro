@@ -44,7 +44,7 @@ const kinds = [
       <h2>{k.title}</h2>
       <p class="blurb" set:html={k.blurb.replace(/`([^`]+)`/g, '<code>$1</code>')} />
       <div class="how">
-        <Code code={k.usage} lang="tsx" theme="vesper" />
+        <Code code={k.usage} lang="tsx" themes={{ dark: 'vesper', light: 'github-light' }} defaultColor="dark" />
         <p class="links">
           <a href={`/components/${k.id}/`}>The {k.id === 'icon' ? 'Icon' : 'Illustration'} contract</a>
           <a href={`${GITHUB}/tree/master/${k.file}`} target="_blank" rel="noreferrer"><code>{k.file}/</code> on GitHub</a>
@@ -72,12 +72,12 @@ const kinds = [
               <a href={`${GITHUB}/blob/master/${k.file}/${i.name}.svg`} target="_blank" rel="noreferrer"><code>{i.name}.svg</code></a>
             </p>
             <h4>React</h4>
-            <Code code={i.react} lang="tsx" theme="vesper" />
+            <Code code={i.react} lang="tsx" themes={{ dark: 'vesper', light: 'github-light' }} defaultColor="dark" />
             <h4>HTML and CSS</h4>
-            <Code code={i.html} lang="html" theme="vesper" />
+            <Code code={i.html} lang="html" themes={{ dark: 'vesper', light: 'github-light' }} defaultColor="dark" />
             <details>
               <summary>The SVG</summary>
-              <Code code={i.svg} lang="svg" theme="vesper" />
+              <Code code={i.svg} lang="svg" themes={{ dark: 'vesper', light: 'github-light' }} defaultColor="dark" />
             </details>
           </div>
         </div>
