@@ -85,7 +85,7 @@ In order of how much copied code each one removes.
 | Component | Why now | Where it stands |
 |---|---|---|
 | **Icons** as a component | The 17 SVGs are exported (`assets/icons/`), but there's no `Icon` component yet, and the apps draw their own | SVGs exported, component next |
-| **ListRow** | The accounting app builds it outside the kit | Checked on 2026-10-30: ListItem doesn't cover it. A row there leads with a Badge, ends with an amount and can carry a second Badge; ListItem has a 20px icon, a status dot and an action icon. Needs designing |
+| **~~ListRow~~ Table** | The accounting app builds it outside the kit | ListRow became Table on 2026-10-30. ListItem didn't cover it: a row there leads with a Badge, ends with an amount and can carry a second Badge. Those rows are a table, so Rost has Table, TableRow and TableItem as drafts, with `leading` and `trailing` slots. Next: move the accounting app's payment schedule onto them |
 | **Switch, Textarea, a selected Chip** | The guidance already says they're missing | need designing first |
 
 ~~Move the portfolio site onto the kit's token names.~~ Done on 2026-10-26: its raw hex count is 0, like the accounting app's.

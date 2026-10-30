@@ -1,0 +1,68 @@
+# yaml-language-server: $schema=../schema/component-contract.schema.json
+schemaVersion: 2
+id: table
+name: Table
+kind: component
+status: draft
+summary: Rows of the same kind of thing, side by side in columns, like the accounting app's payments. No box, a hairline between rows.
+category: display
+related: [ table-row, table-item, list-item ]
+source:
+  tool: code
+  repo: rost
+  path: src/components/table/Table.tsx
+  extractedAt: "2026-10-30"
+  frozenAt: "2026-10-30"
+props:
+  caption: { type: slot, notes: "Optional, what the table is: \"What to pay, and when\". Drawn above the rows and read first by screen readers. Without one, give the table an `aria-label` or point `aria-labelledby` at the heading above it." }
+  head: { type: slot, notes: "Optional, a TableRow of column headers (TableItem with `header=\"column\"`). It goes in the `<thead>`. Leave it out when the rows explain themselves, as the accounting app's do." }
+  rows: { type: slot, notes: "The TableRows. In React, the children. They go in the `<tbody>`." }
+elements:
+  root:
+    notes: "A real `<table>`. It has no surface of its own: no box, no fill. The rows draw the lines."
+    styles:
+      width: { value: 100%, untokenised: "As wide as where it sits." }
+      border-collapse: { value: collapse, assert: false, notes: "So a row's hairline is drawn; a `<tr>` only has borders when they collapse." }
+      font-family: { token: font-family/base, value: "'General Sans Variable'" }
+      font-weight: { token: typography/paragraph/font-weight/regular, value: "400" }
+      font-size: { token: typography/paragraph/font-size, value: 14px }
+      line-height: { token: typography/paragraph/line-height, value: 20px }
+      letter-spacing: { token: typography/paragraph/letter-spacing, value: 0px }
+      color: { token: non-interactive/foreground/primary, value: "#ededed" }
+  caption:
+    optional: true
+    notes: "The `<caption>`, above the rows, lined up with the text in the first column."
+    styles:
+      caption-side: { value: top, assert: false }
+      text-align: { value: left, assert: false }
+      padding-left: { token: spacing/gap/small-medium, value: 12px }
+      padding-right: { token: spacing/gap/small-medium, value: 12px }
+      padding-bottom: { token: spacing/gap/small, value: 8px }
+      font-weight: { token: typography/paragraph/font-weight/medium, value: "500" }
+      color: { token: non-interactive/foreground/primary, value: "#ededed" }
+  head:
+    optional: true
+    notes: "The `<thead>`. Only there when `head` is."
+    styles:
+      vertical-align: { value: bottom, assert: false }
+  body:
+    notes: "The `<tbody>` with the rows."
+    styles:
+      vertical-align: { value: middle, assert: false }
+guidance:
+  status: proposed
+  use:
+    - "Several things of the same kind with the same few facts each, read across: payments with a date, what they're for and an amount."
+    - "When the columns mean something: an amount in the same place on every row, so the eye runs down them."
+  avoid:
+    - "A list of things to pick or go to, one fact each. That's **ListItem**."
+    - "Laying out a page or a form. A table is for data."
+    - "More columns than fit on a phone. Two or three is right: put the rest in the row's description, the way the accounting app puts \"leaves €4,210\" under the date."
+  behaviour: |-
+    The table draws nothing itself. Each TableRow draws a hairline under it, the last one too, so the table has an end. Rows that are links or can be picked react to the pointer; the others don't.
+  accessibility:
+    element: "a `<table>` with a `<caption>`, a `<thead>` when there are column headers and a `<tbody>`. Each row's first cell is usually its header (`<th scope=\"row\">`), so a screen reader names the row when it reads an amount."
+    name: "the `caption`. Without one, an `aria-label` or `aria-labelledby` on the table."
+    keyboard: "nothing of its own. A row that's a link or a button is one Tab stop, through its header cell."
+    focus: "TableRow's focus ring, on the whole row."
+  content: "A caption in sentence case, a few words. Column headers are one or two words."

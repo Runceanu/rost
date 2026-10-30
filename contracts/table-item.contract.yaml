@@ -1,0 +1,138 @@
+# yaml-language-server: $schema=../schema/component-contract.schema.json
+schemaVersion: 2
+id: table-item
+name: TableItem
+partOf: table
+kind: component
+status: draft
+summary: One cell of a TableRow. Its content with an optional line under it, and leading and trailing slots for a Badge or an icon.
+category: display
+related: [ table, table-row, badge ]
+source:
+  tool: code
+  repo: rost
+  path: src/components/table-item/TableItem.tsx
+  extractedAt: "2026-10-30"
+  frozenAt: "2026-10-30"
+props:
+  content: { type: slot, notes: "What the cell says. In React, the children." }
+  description: { type: slot, notes: "Optional, a line under the content in the quieter colour: what a payment is for, or what an amount would be." }
+  leading: { type: slot, notes: "Optional, before the content: a Badge, or a 20px icon drawn with `currentColor`. The accounting app puts the tax a payment is for here." }
+  trailing: { type: slot, notes: "Optional, after the content: a Badge or an icon. The accounting app marks an estimate here." }
+  header:
+    type: enum
+    values: [ None, Row, Column ]
+    default: None
+    notes: "None is a data cell, a `<td>`. Row is the cell that names its row, a `<th scope=\"row\">`, in medium weight; in a row with `href` or `onSelect` it holds the link or button. Column is a column header in the table's `head`, a `<th scope=\"col\">`, in the smaller label size."
+  numeric: { type: boolean, default: false, notes: "For amounts: lined up on the right and kept on one line, so a minus sign never breaks off. Its column header should be numeric too." }
+elements:
+  root:
+    notes: "A `<td>` or a `<th>`. 12px at the sides, as ListItem, so the text lines up with a ListItem's above or below the table."
+    styles:
+      padding-top: { token: spacing/gap/small, value: 8px }
+      padding-bottom: { token: spacing/gap/small, value: 8px }
+      padding-left: { token: spacing/gap/small-medium, value: 12px }
+      padding-right: { token: spacing/gap/small-medium, value: 12px }
+      text-align: { value: left, assert: false }
+      font-weight: { value: inherit, assert: false, notes: "A `<th>` is bold in the browser; here the header's weight comes from `header`." }
+  action:
+    optional: true
+    notes: "Only in a row's header cell when the row has `href` or `onSelect`: an `<a>` or a `<button>` round the content. Nothing of its own shows; the row draws the states."
+    styles:
+      display: { value: block, assert: false }
+      width: { value: 100%, untokenised: "As wide as its cell." }
+      padding: { value: "0", assert: false }
+      background: { value: none, assert: false }
+      border: { value: none, assert: false }
+      color: { value: inherit, assert: false }
+      font: { value: inherit, assert: false }
+      text-align: { value: inherit, assert: false }
+      text-decoration: { value: none, assert: false }
+      cursor: { value: pointer, assert: false }
+      outline: { value: none, assert: false, notes: "The row draws the focus ring." }
+  cover:
+    optional: true
+    notes: "An empty layer inside the action, stretched over the whole row, so the pointer anywhere on the row hovers and presses the link."
+    styles:
+      position: { value: absolute, assert: false }
+      inset: { value: "0", assert: false }
+  content:
+    notes: "Leading, the text and trailing, side by side."
+    styles:
+      display: { value: flex, assert: false }
+      align-items: { value: center }
+      gap: { token: spacing/gap/small, value: 8px }
+  leading:
+    optional: true
+    styles:
+      display: { value: flex, assert: false }
+      align-items: { value: center }
+      flex-shrink: { value: "0", assert: false }
+  text:
+    notes: The content over the description.
+    styles:
+      display: { value: flex, assert: false }
+      flex-direction: { value: column, assert: false }
+      gap: { token: spacing/gap/3xsmall, value: 2px }
+      min-width: { value: "0", assert: false }
+  label:
+    notes: "In the text colour, inherited from the Table."
+    styles:
+      overflow-wrap: { value: anywhere, assert: false }
+  description:
+    optional: true
+    styles:
+      font-weight: { token: typography/label/font-weight/regular, value: "400" }
+      font-size: { token: typography/label/font-size, value: 12px }
+      line-height: { token: typography/label/line-height, value: 14px }
+      letter-spacing: { token: typography/label/letter-spacing, value: 0px }
+      color: { token: non-interactive/foreground/tertiary, value: "#999999" }
+  trailing:
+    optional: true
+    styles:
+      display: { value: flex, assert: false }
+      align-items: { value: center }
+      flex-shrink: { value: "0", assert: false }
+variants:
+  - when: { header: Row }
+    elements:
+      label:
+        font-weight: { token: typography/paragraph/font-weight/medium, value: "500" }
+  - when: { header: Column }
+    elements:
+      root:
+        padding-top: { token: spacing/gap/2xsmall, value: 4px, notes: "A header row is lower than a row of data." }
+        padding-bottom: { token: spacing/gap/2xsmall, value: 4px }
+        vertical-align: { value: bottom, assert: false }
+      label:
+        font-weight: { token: typography/label/font-weight/medium, value: "500" }
+        font-size: { token: typography/label/font-size, value: 12px }
+        line-height: { token: typography/label/line-height, value: 14px }
+        letter-spacing: { token: typography/label/letter-spacing, value: 0px }
+  - when: { numeric: true }
+    elements:
+      root:
+        text-align: { value: right, assert: false }
+      content:
+        justify-content: { value: flex-end }
+      text:
+        align-items: { value: flex-end, assert: false }
+      label:
+        white-space: { value: nowrap, assert: false, notes: "An amount stays on one line, its minus sign too. General Sans has no tabular figures, so amounts line up on their right edge, not digit by digit." }
+guidance:
+  status: proposed
+  use:
+    - "Every cell of a TableRow."
+    - "`leading` for what kind of thing the row is (a Badge), `trailing` for a note on this one value (an estimate Badge)."
+    - "`numeric` for every amount, and on that column's header."
+  avoid:
+    - "Two lines of description. Say less, or give it a column."
+    - "A link or button of its own in a row that's already a link. See **TableRow**."
+  behaviour: |-
+    A cell doesn't react. In a row with `href` or `onSelect` the header cell holds the link or button, and the row draws hover, press and focus for it.
+  accessibility:
+    element: "`<td>`, or `<th>` with `scope=\"row\"` or `scope=\"col\"` from `header`."
+    name: "a row's header cell names its row for screen readers, and names its link or button. A Badge in `leading` or `trailing` is read with the cell. An icon there should be `aria-hidden`; if it means something, say it in words too."
+    keyboard: "nothing of its own. See **TableRow**."
+    focus: "none of its own. The row draws the ring."
+  content: "Short. A date, a name, an amount. The description is one line."

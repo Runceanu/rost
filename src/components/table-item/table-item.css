@@ -1,0 +1,103 @@
+/* Generated from contracts/table-item.contract.yaml by bin/build-css.mjs. Don't edit: change the contract and rebuild. */
+
+.rost-table-item, .rost-table-item * { box-sizing: border-box; margin: 0; }
+.rost-table-item > img, .rost-table-item [class*="__icons-"] > img { display: block; position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; }
+.rost-table-item ::placeholder { color: inherit; opacity: 1; }
+
+.rost-table-item {
+  padding-top: var(--spacing-gap-small);
+  padding-bottom: var(--spacing-gap-small);
+  padding-left: var(--spacing-gap-small-medium);
+  padding-right: var(--spacing-gap-small-medium);
+  text-align: left;
+  font-weight: inherit;
+}
+
+.rost-table-item__action {
+  display: block;
+  width: 100%;
+  padding: 0;
+  background: none;
+  border: none;
+  color: inherit;
+  font: inherit;
+  text-align: inherit;
+  text-decoration: none;
+  cursor: pointer;
+  outline: none;
+}
+
+.rost-table-item__cover {
+  position: absolute;
+  inset: 0;
+}
+
+.rost-table-item__content {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-gap-small);
+}
+
+.rost-table-item__leading {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.rost-table-item__text {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-gap-3xsmall);
+  min-width: 0;
+}
+
+.rost-table-item__label {
+  overflow-wrap: anywhere;
+}
+
+.rost-table-item__description {
+  font-weight: var(--typography-label-font-weight-regular);
+  font-size: var(--typography-label-font-size);
+  line-height: var(--typography-label-line-height);
+  letter-spacing: var(--typography-label-letter-spacing);
+  color: var(--non-interactive-foreground-tertiary);
+}
+
+.rost-table-item__trailing {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.rost-table-item.rost-table-item--header-row .rost-table-item__label {
+  font-weight: var(--typography-paragraph-font-weight-medium);
+}
+
+.rost-table-item.rost-table-item--header-column {
+  padding-top: var(--spacing-gap-2xsmall);
+  padding-bottom: var(--spacing-gap-2xsmall);
+  vertical-align: bottom;
+}
+
+.rost-table-item.rost-table-item--header-column .rost-table-item__label {
+  font-weight: var(--typography-label-font-weight-medium);
+  font-size: var(--typography-label-font-size);
+  line-height: var(--typography-label-line-height);
+  letter-spacing: var(--typography-label-letter-spacing);
+}
+
+.rost-table-item.rost-table-item--numeric {
+  text-align: right;
+}
+
+.rost-table-item.rost-table-item--numeric .rost-table-item__content {
+  justify-content: flex-end;
+}
+
+.rost-table-item.rost-table-item--numeric .rost-table-item__text {
+  align-items: flex-end;
+}
+
+.rost-table-item.rost-table-item--numeric .rost-table-item__label {
+  white-space: nowrap;
+}

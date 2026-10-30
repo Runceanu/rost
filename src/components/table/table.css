@@ -1,0 +1,34 @@
+/* Generated from contracts/table.contract.yaml by bin/build-css.mjs. Don't edit: change the contract and rebuild. */
+
+.rost-table, .rost-table * { box-sizing: border-box; margin: 0; }
+.rost-table > img, .rost-table [class*="__icons-"] > img { display: block; position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; }
+.rost-table ::placeholder { color: inherit; opacity: 1; }
+
+.rost-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--font-family-base);
+  font-weight: var(--typography-paragraph-font-weight-regular);
+  font-size: var(--typography-paragraph-font-size);
+  line-height: var(--typography-paragraph-line-height);
+  letter-spacing: var(--typography-paragraph-letter-spacing);
+  color: var(--non-interactive-foreground-primary);
+}
+
+.rost-table__caption {
+  caption-side: top;
+  text-align: left;
+  padding-left: var(--spacing-gap-small-medium);
+  padding-right: var(--spacing-gap-small-medium);
+  padding-bottom: var(--spacing-gap-small);
+  font-weight: var(--typography-paragraph-font-weight-medium);
+  color: var(--non-interactive-foreground-primary);
+}
+
+.rost-table__head {
+  vertical-align: bottom;
+}
+
+.rost-table__body {
+  vertical-align: middle;
+}

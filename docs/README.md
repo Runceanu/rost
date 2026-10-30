@@ -13,7 +13,7 @@ Rost started as a design system for my own needs and grew into a product of its 
 | [Roadmap](ROADMAP.md) | What I'm doing next |
 | [Release notes](CHANGELOG.md) | What changed in each release |
 
-**29** contracts, **5** stable. **29** have guidance, and I've signed off **25** of those.
+**32** contracts, **5** stable. **32** have guidance, and I've signed off **25** of those.
 
 ## Catalogue
 
@@ -36,6 +36,9 @@ Rost started as a design system for my own needs and grew into a product of its 
 | [Navigation](components/navigation.md) | A side navigation on frosted glass. The logo at the top, the main items below it, one action at the bottom. Collapsed to icons, or open with labels. | `review` | `agreed` | · |
 | [Projects](components/projects.md) | One row in the project list: number, name, and industry, type and period on the right. | `review` | `agreed` | Portfolio site |
 | [TabItem](components/tab-item.md) | One tab in a row of tabs. A label, optional icons before and after it, and a green underline when it's the one selected. | `review` | `agreed` | · |
+| [Table](components/table.md) | Rows of the same kind of thing, side by side in columns, like the accounting app's payments. No box, a hairline between rows. | `draft` | `proposed` | · |
+| [TableItem](components/table-item.md) | One cell of a TableRow. Its content with an optional line under it, and leading and trailing slots for a Badge or an icon. | `draft` | `proposed` | · |
+| [TableRow](components/table-row.md) | One row of a Table, with a hairline under it. It can be a link or something you pick, through its header cell. | `draft` | `proposed` | · |
 | [Tabs](components/tabs.md) | A row of tabs on a 1px line. One is selected, and its panel shows below. | `review` | `agreed` | · |
 | [Tag](components/tags.md) | A compact 20px label with small corners, for what a piece of content is about. | `review` | `agreed` | · |
 | [TestimonialPicture](components/testimonials-pics.md) | The photo of the person behind a testimonial. | `review` | `proposed` | Portfolio site |

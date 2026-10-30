@@ -6,11 +6,11 @@ Every value in every contract, sorted by why it has a token or doesn't. A value 
 
 | | Values | Share | Meaning |
 |---|---|---|---|
-| Has a token | 1012 | 58% | Uses a token, and the check tests it. |
+| Has a token | 1050 | 57% | Uses a token, and the check tests it. |
 | Token suggested | 0 | 0% | A token I want that doesn't exist yet. The freeze turned every other suggestion into a token. |
-| How Figma builds it | 474 | 27% | How Figma builds the layer (position, inset, which sides get a stroke). Nothing to tokenise. |
-| Figma frame size | 139 | 8% | A root size that is just the Figma frame. Written down, not checked. |
-| No token, on purpose | 95 | 5% | Plain on purpose, and the contract says why. |
+| How Figma builds it | 501 | 27% | How Figma builds the layer (position, inset, which sides get a stroke). Nothing to tokenise. |
+| Figma frame size | 153 | 8% | A root size that is just the Figma frame. Written down, not checked. |
+| No token, on purpose | 96 | 5% | Plain on purpose, and the contract says why. |
 | Open gap | 29 | 2% | No token and no reason. Each one needs a decision from me. |
 
 ## By contract
@@ -37,6 +37,9 @@ Every value in every contract, sorted by why it has a token or doesn't. A value 
 | [Paper effect](components/effect-paper.md) | 6 | · | · | · | 7 | · |
 | [Projects](components/projects.md) | 77 | · | 33 | 8 | 5 | 4 |
 | [TabItem](components/tab-item.md) | 37 | · | 15 | 12 | · | 1 |
+| [Table](components/table.md) | 11 | · | 4 | 2 | · | · |
+| [TableItem](components/table-item.md) | 18 | · | 21 | 11 | · | · |
+| [TableRow](components/table-row.md) | 9 | · | 2 | 1 | 1 | · |
 | [Tabs](components/tabs.md) | · | · | 2 | 1 | 1 | · |
 | [Tag](components/tags.md) | 26 | · | 13 | 3 | · | 1 |
 | [TestimonialPicture](components/testimonials-pics.md) | 2 | · | 8 | 1 | · | · |
@@ -117,6 +120,9 @@ Sizes and offsets that belong to one component, at a number no size token has.
 | [Projects](components/projects.md) | `number.min-width` | `2ch` | Two zeros in the number's own font: 14px at label size. It follows the font, so it isn't a size token. |
 | [Projects](components/projects.md), [Thumbs](components/thumbs.md) | `dot.width` | `3px` | The dot's own size inside the icon. |
 | [Projects](components/projects.md), [Thumbs](components/thumbs.md) | `dot.height` | `3px` | The dot's own size inside the icon. |
+| [Table](components/table.md) | `root.width` | `100%` | As wide as where it sits. |
+| [TableItem](components/table-item.md) | `action.width` | `100%` | As wide as its cell. |
+| [TableRow](components/table-row.md) | `root.outline-offset` | `-2px` | Inside the row, the ring's own width, so it isn't cut by the rows around it. |
 
 ### Tuned by eye
 

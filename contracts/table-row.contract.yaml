@@ -1,0 +1,74 @@
+# yaml-language-server: $schema=../schema/component-contract.schema.json
+schemaVersion: 2
+id: table-row
+name: TableRow
+partOf: table
+kind: component
+status: draft
+summary: One row of a Table, with a hairline under it. It can be a link or something you pick, through its header cell.
+category: display
+related: [ table, table-item, list-item ]
+source:
+  tool: code
+  repo: rost
+  path: src/components/table-row/TableRow.tsx
+  extractedAt: "2026-10-30"
+  frozenAt: "2026-10-30"
+props:
+  items: { type: slot, notes: "The TableItems, one per column. In React, the children." }
+  href: { type: string, notes: "Optional. Makes the row a link: the row's header cell (TableItem with `header=\"row\"`) wraps its content in an `<a>` that covers the whole row." }
+  selected: { type: boolean, default: false, notes: "The picked row, or the current page's in a list of links. A dark green fill; the text keeps its colours. In React, `onSelect` makes a row you pick: the header cell's content becomes a `<button>` that covers the row, with `aria-pressed` from `selected`." }
+states: [ Default, Hover, Pressed, Focus ]
+stateSelectors:
+  Hover: ":has(.rost-table-item__action:hover)"
+  Pressed: ":has(.rost-table-item__action:active)"
+  Focus: ":has(.rost-table-item__action:focus-visible)"
+elements:
+  root:
+    notes: "A `<tr>`. Only a row with a link or a button in it reacts to the pointer and to focus: the states come from that `action`, not from the row."
+    styles:
+      position: { value: relative, assert: false, notes: "So the action's cover can stretch over the whole row." }
+      height: { token: spacing/size/medium-large, value: 48px, notes: "The least a row is, as ListItem. A row with a description grows." }
+      border-sides: { value: bottom }
+      border-width: { token: spacing/outline/small, value: 1px }
+      border-color: { token: non-interactive/foreground/quinary, value: "#282828", notes: "The hairline between rows, the one the accounting app's rows had." }
+variants:
+  - when: { state: Default, selected: true }
+    elements:
+      root:
+        background: { token: non-interactive/background/brand, value: "#004c19", notes: "Quieter than ListItem's green plate: a table's text stays readable in its own colours." }
+  - when: { state: Hover, selected: false }
+    elements:
+      root:
+        background: { token: non-interactive/background/secondary, value: "#171717" }
+  - when: { state: Hover, selected: true }
+    elements:
+      root:
+        background: { token: interactive/inactive/hover/background, value: "#006f27" }
+  - when: { state: Pressed, selected: false }
+    elements:
+      root:
+        background: { token: non-interactive/background/tertiary, value: "#3a3a3a" }
+  - when: { state: Focus }
+    elements:
+      root:
+        outline-style: { value: solid, assert: false }
+        outline-width: { token: spacing/outline/medium, value: 2px }
+        outline-offset: { value: -2px, untokenised: "Inside the row, the ring's own width, so it isn't cut by the rows around it." }
+        outline-color: { token: interactive/inactive/focus/focus-ring, value: "#999999" }
+guidance:
+  status: proposed
+  use:
+    - "Every row of a Table, the header row too."
+    - "A row that opens the thing it shows, with `href`: a payment, an invoice, a client."
+  avoid:
+    - "Links or buttons in several cells of a row that's itself a link. The cover sits over them. Pick one: the row, or the controls."
+    - "Showing a status with the fill. `selected` means picked; a status is a **Badge** in a cell."
+  behaviour: |-
+    A row with `href` or `onSelect` is one target: the pointer anywhere on it hovers and presses it, and focus draws a ring round the whole row. A plain row doesn't react. `selected` keeps its fill on hover, a shade lighter.
+  accessibility:
+    element: "a `<tr>`. The link or button lives in the row's header cell, because a `<tr>` can't be one. Its cover stretches over the row, so the whole row is the target."
+    name: "the header cell's content: the link or button is named by what's in it, a date or a client's name. Make that cell say which row it is."
+    keyboard: "a linked row is one Tab stop. Enter follows the link; Enter or Space presses the button."
+    focus: "a 2px ring inside the row, on `:focus-visible` of its link or button."
+  content: "One thing per row. The header cell names it."

@@ -1,0 +1,36 @@
+/* Generated from contracts/table-row.contract.yaml by bin/build-css.mjs. Don't edit: change the contract and rebuild. */
+
+.rost-table-row, .rost-table-row * { box-sizing: border-box; margin: 0; }
+.rost-table-row > img, .rost-table-row [class*="__icons-"] > img { display: block; position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; }
+.rost-table-row ::placeholder { color: inherit; opacity: 1; }
+
+.rost-table-row {
+  position: relative;
+  height: var(--spacing-size-medium-large);
+  border-bottom-width: var(--spacing-outline-small);
+  border-bottom-color: var(--non-interactive-foreground-quinary);
+  border-bottom-style: solid;
+}
+
+.rost-table-row.rost-table-row--selected {
+  background: var(--non-interactive-background-brand);
+}
+
+.rost-table-row:has(.rost-table-item__action:hover):not(.rost-table-row--selected) {
+  background: var(--non-interactive-background-secondary);
+}
+
+.rost-table-row:has(.rost-table-item__action:hover).rost-table-row--selected {
+  background: var(--interactive-inactive-hover-background);
+}
+
+.rost-table-row:has(.rost-table-item__action:active):not(.rost-table-row--selected) {
+  background: var(--non-interactive-background-tertiary);
+}
+
+.rost-table-row:has(.rost-table-item__action:focus-visible) {
+  outline-style: solid;
+  outline-width: var(--spacing-outline-medium);
+  outline-offset: -2px;
+  outline-color: var(--interactive-inactive-focus-focus-ring);
+}
