@@ -21,7 +21,7 @@ const row = (props: { selected?: boolean; href?: string }, date = '15 Nov') => (
     <TableItem numeric>€640</TableItem>
   </TableRow>
 )
-const frame = (r: React.ReactNode) => <div style={{ width: 360, maxWidth: '100%' }}><Table aria-label="Payments">{r}</Table></div>
+const frame = (r: React.ReactNode, width = 360) => <div style={{ width, maxWidth: '100%' }}><Table aria-label="Payments">{r}</Table></div>
 
 export const fixtures = NODES.map(([state, selected, node]) => ({
   node,
@@ -43,4 +43,4 @@ export const usage = `import { TableRow } from 'rost/components/table-row/TableR
 <TableRow onSelect={() => setPicked(p.id)} selected={p.id === picked}>…</TableRow>`
 
 /** What the component's card on rost.build shows. No links: a card is one already. */
-export const preview = frame(<>{row({ selected: true }, '31 Oct')}{row({})}</>)
+export const preview = frame(<>{row({ selected: true }, '31 Oct')}{row({})}</>, 300)
