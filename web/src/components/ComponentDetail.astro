@@ -3,6 +3,7 @@
 // values. A contract that's part of another (a tab-item in tabs) is shown on
 // that one's page, under it, with `nested`.
 import { Code } from 'astro:components'
+import Guidance from './Guidance.astro'
 import { Fixtures, fixturesFor, caption } from './Fixtures'
 import { byId, title, inCode, guidanceHtml, mdInline, componentSource, sourceLink, tokenCell, isColour, readRepo, APP_LABEL, GITHUB } from '../lib/kit'
 import { variantTables } from '../lib/variants'
@@ -117,7 +118,7 @@ const props = Object.entries(c.props ?? {}) as [string, any][]
     </div>
   </section>
 
-  {g && <div class="prose" set:html={guidanceHtml(g)} />}
+  {g && <Guidance g={g} />}
 
   {props.length > 0 && (
     <>
@@ -304,8 +305,8 @@ const props = Object.entries(c.props ?? {}) as [string, any][]
   .spec-table { margin: 0 0 var(--spacing-gap-small-medium); }
   .spec-head { margin: 0 0 var(--spacing-gap-xsmall); font-size: 14px; font-weight: 500; color: var(--fg); }
   .spec-grid { width: 100%; border-collapse: collapse; table-layout: fixed; min-width: calc(200px + var(--cols) * 150px); }
-  .spec-grid th, .spec-grid td { text-align: left; vertical-align: top; padding: var(--spacing-gap-small) var(--spacing-gap-small-medium); border-top: 1px solid color-mix(in srgb, var(--fg) 6%, transparent); }
-  .spec-grid thead th { border-top: none; font-size: 13px; font-weight: 500; color: var(--fg-2); }
+  .spec-grid th, .spec-grid td { text-align: left; vertical-align: top; padding: var(--spacing-gap-small) var(--spacing-gap-small-medium) var(--spacing-gap-small) 0; border-top: 1px solid color-mix(in srgb, var(--fg) 6%, transparent); }
+  .spec-grid thead th { border-top: none; border-bottom: 1px solid var(--line); font-size: 13px; font-weight: 500; color: var(--fg); }
   .spec-grid thead th:first-child { width: 200px; }
   .spec-grid tbody th { font-weight: 400; }
   .spec-grid tbody th code { display: block; font-size: 12px; color: var(--fg); overflow-wrap: anywhere; }

@@ -1,0 +1,88 @@
+---
+// A contract's guidance, drawn: when to use it as cards, when not to with the
+// component to reach for instead shown live, and accessibility as one card per
+// concern. The words are the contract's own; docs/components/*.md keeps them as text.
+import { kit, title, mdInline, inCode } from '../lib/kit'
+import { Preview } from './Fixtures'
+
+interface Props { g: any }
+const { g } = Astro.props
+const label = (k: string) => k.replace(/([A-Z])/g, ' $1').replace(/^./, (s) => s.toUpperCase())
+// "That's **IconButton**." points at another component: find it, to show it.
+const byTitle = new Map(kit.map((e) => [title(e).toLowerCase(), e]))
+const pointsTo = (text: string) => [...text.matchAll(/\*\*([^*]+)\*\*/g)].map((m) => byTitle.get(m[1].toLowerCase())).find((e) => e && inCode(e.id))
+const avoid = (g.avoid ?? []).map((text: string) => ({ text, instead: pointsTo(text) }))
+---
+{g.use?.length > 0 && (
+  <section class="guide">
+    <h2>When to use</h2>
+    <ul class="g-cards">
+      {g.use.map((x: string) => <li class="g-card use"><span class="tag">Use it</span><p set:html={mdInline(x)} /></li>)}
+    </ul>
+  </section>
+)}
+
+{avoid.length > 0 && (
+  <section class="guide">
+    <h2>When not to use</h2>
+    <ul class="g-cards">
+      {avoid.map((a: any) => (
+        <li class="g-card avoid">
+          <span class="tag">Not for</span>
+          <p set:html={mdInline(a.text)} />
+          {a.instead && (
+            <a class="instead" href={`/components/${a.instead.id}/`}>
+              <span class="stage" aria-hidden="true" inert><Preview id={a.instead.id} /></span>
+              <span class="instead-name">Use {title(a.instead)}</span>
+            </a>
+          )}
+        </li>
+      ))}
+    </ul>
+  </section>
+)}
+
+{g.behaviour && (
+  <section class="guide">
+    <h2>Behaviour</h2>
+    <p class="text" set:html={mdInline(g.behaviour)} />
+  </section>
+)}
+
+{g.accessibility && (
+  <section class="guide">
+    <h2>Accessibility</h2>
+    <ul class="g-cards">
+      {Object.entries(g.accessibility).map(([k, v]) => <li class="g-card"><span class="tag tag--plain">{label(k)}</span><p set:html={mdInline(String(v))} /></li>)}
+    </ul>
+  </section>
+)}
+
+{g.content && (
+  <section class="guide">
+    <h2>Content</h2>
+    <p class="text" set:html={mdInline(g.content)} />
+  </section>
+)}
+
+{g.openQuestions?.length > 0 && (
+  <section class="guide">
+    <h2>Open questions</h2>
+    <ul class="g-cards">{g.openQuestions.map((x: string) => <li class="g-card"><p set:html={mdInline(x)} /></li>)}</ul>
+  </section>
+)}
+
+<style>
+  .guide .g-cards { list-style: none; margin: var(--spacing-gap-medium) 0 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: var(--spacing-gap-small); }
+  .g-card { margin: 0; display: flex; flex-direction: column; gap: var(--spacing-gap-small); padding: var(--spacing-gap-medium); border-radius: var(--spacing-radius-large); background: var(--surface); color: var(--fg); font-size: 15px; line-height: 1.5; min-width: 0; }
+  .g-card p { margin: 0; }
+  .g-card :global(code) { font-size: .86em; }
+  .tag { align-self: flex-start; font-family: var(--mono); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--accent); }
+  .avoid .tag { color: var(--warn); }
+  .tag--plain { color: var(--fg-2); }
+  .instead { margin-top: auto; display: grid; gap: var(--spacing-gap-small); text-decoration: none; color: inherit; }
+  .instead .stage { display: grid; place-items: center; min-height: 96px; padding: var(--spacing-gap-medium); border-radius: var(--spacing-radius-medium); background: var(--ground); overflow-x: auto; justify-items: start; }
+  .instead-name { font-size: 13px; color: var(--accent); }
+  .instead:hover .instead-name { text-decoration: underline; }
+  .text { margin: var(--spacing-gap-small) 0 0; max-width: 70ch; color: var(--fg-2); }
+</style>

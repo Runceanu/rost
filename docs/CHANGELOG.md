@@ -4,6 +4,8 @@ What changed each time I merged into `master` and put rost.build live. Newest fi
 
 ## 2026-10-30
 
+- **Less grey on rost.build.** Tables sit on the page now: no box, no outline, no grey fill, labels in the text colour, only a hairline between rows. Cards and icon tiles lost their outlines too.
+- **Guidance is drawn, not listed.** On a component page "When to use" and "When not to use" are cards, and when a "not for" points at another component (`**IconButton**`), that component shows live in the card with a link to it. Accessibility is a card per concern. The words are the contract's own.
 - **Projects' names line up whatever the number.** In General Sans a "1" is narrower than a "0", and the font has no tabular figures, so a row numbered "01" started its name about 3px left of the rest. The number is at least `2ch` wide now, the width of Figma's "00" in its own font, so every name starts in the same place. All six Figma states still match.
 - **Component pages are easier to read.** On rost.build:
   - A **Contract** tab sits next to Preview and Code, with the whole YAML the page is built from.
