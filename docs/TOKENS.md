@@ -183,15 +183,15 @@ The paper effect's numbers, tuned for how the dots move. Only the paper uses the
 
 Dark is the default. It's what Figma draws first and what both apps use. Light is new (2026-10-30). Only colours change: 332 theme colours have a light value of their own. Every other token, and every component, is the same in both.
 
-`tokens/tokens.css` puts dark on `:root`. Light applies under `[data-theme="light"]`, or under `prefers-color-scheme: light` when nothing sets a theme. `[data-theme="dark"]` brings dark back inside a light page, so a dark panel can sit in a light one. Set it on `<html>` for the whole page:
+`tokens/tokens.css` puts dark on `:root`. Light applies under `[data-theme="light"]` and nowhere else. A system set to light doesn't change it: with no `data-theme` you get dark. `[data-theme="dark"]` brings dark back inside a light page, so a dark panel can sit in a light one. Set it on `<html>` for the whole page:
 
 ```html
 <html data-theme="light">
 ```
 
-One thing to know before updating an app: with no `data-theme`, a visitor whose system is set to light now gets the light theme. Neither app has been checked in light yet, so both should set `data-theme="dark"` on `<html>` until they have been.
+So an app can update without looking at light first. Neither has been checked in light yet.
 
-rost.build has a switch in the header. It remembers your pick in `localStorage` (`rost-theme`); until you use it, the site follows your system.
+rost.build has a switch in the header. It remembers your pick in `localStorage` (`rost-theme`); until you use it, the site is dark.
 
 ### Where the light values come from
 

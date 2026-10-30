@@ -34,7 +34,7 @@ const NAV: [string, string][] = [['/components/', 'Components'], ['/tokens/', 'T
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap" />
     <script is:inline>
       // Before anything paints: the theme you picked last time, if you picked one.
-      // Without it there's no data-theme, and tokens.css follows the system.
+      // Without one there's no data-theme, and tokens.css stays dark.
       try { const t = localStorage.getItem('rost-theme'); if (t === 'light' || t === 'dark') document.documentElement.dataset.theme = t } catch {}
     </script>
   </head>
@@ -124,10 +124,9 @@ const NAV: [string, string][] = [['/components/', 'Components'], ['/tokens/', 'T
     </script>
     <script>
       // Light or dark. The switch says what it will do, flips data-theme on
-      // <html> and remembers it. Until you use it the site follows the system.
+      // <html> and remembers it. Until you use it the site is dark.
       const html = document.documentElement
-      const system = matchMedia('(prefers-color-scheme: light)')
-      const current = () => (html.dataset.theme as 'light' | 'dark' | undefined) ?? (system.matches ? 'light' : 'dark')
+      const current = () => (html.dataset.theme === 'light' ? 'light' : 'dark')
       const changed = () => {
         const next = current() === 'light' ? 'dark' : 'light'
         for (const b of document.querySelectorAll<HTMLElement>('[data-theme-switch]')) b.setAttribute('aria-label', `Switch to the ${next} theme`)
@@ -139,7 +138,6 @@ const NAV: [string, string][] = [['/components/', 'Components'], ['/tokens/', 'T
           try { localStorage.setItem('rost-theme', html.dataset.theme) } catch {}
           changed()
         })
-      system.addEventListener('change', () => { if (!html.dataset.theme) changed() })
       changed()
     </script>
     <script>

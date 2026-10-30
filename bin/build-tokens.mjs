@@ -18,8 +18,8 @@
  * light mode. registry/light.json says where that differs from Figma's first
  * light values and why. Figma has those corrections now; a rule Figma doesn't
  * match is applied on top and the build says so. Light applies under
- * [data-theme="light"], or under prefers-color-scheme: light when no theme is
- * set. [data-theme="dark"] brings dark back inside a light page. Only the
+ * [data-theme="light"] and nowhere else: a light system setting doesn't change
+ * it. [data-theme="dark"] brings dark back inside a light page. Only the
  * colours change; every other token is the same in both.
  *
  *   node bin/build-tokens.mjs           write tokens/
@@ -212,19 +212,12 @@ const themes = `
 /* ── Light ──────────────────────────────────────────────────────────────────
  * Only the colours change, ${themed.length} of them. Figma's light mode, with Rost's own
  * corrections from registry/light.json where Figma's value fails contrast.
- * Set data-theme="light" on <html> (or any element), or leave it unset and
- * follow the system. data-theme="dark" brings dark back inside a light page.
+ * Set data-theme="light" on <html> (or any element). Without it you get dark,
+ * whatever the system says. data-theme="dark" brings dark back inside a light page.
  */
 [data-theme="light"] {
   color-scheme: light;
 ${block('light', '  ')}
-}
-
-@media (prefers-color-scheme: light) {
-  :root:not([data-theme]) {
-    color-scheme: light;
-${block('light', '    ')}
-  }
 }
 
 [data-theme="dark"] {
