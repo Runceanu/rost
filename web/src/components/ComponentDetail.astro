@@ -3,7 +3,7 @@
 // values. A contract that's part of another (a tab-item in tabs) is shown on
 // that one's page, under it, with `nested`.
 import { Code } from 'astro:components'
-import { Fixtures, fixturesFor } from './Fixtures'
+import { Fixtures, fixturesFor, caption } from './Fixtures'
 import { byId, title, inCode, guidanceHtml, mdInline, componentSource, sourceLink, tokenCell, isColour, readRepo, APP_LABEL, GITHUB } from '../lib/kit'
 import { variantTables } from '../lib/variants'
 import { shotsFor } from '../lib/shots'
@@ -36,8 +36,8 @@ const partsFixed = Object.entries(e.invariants).map(([part, styles]: [string, an
   return { part, rows: all.filter((r) => !QUIET.has(r.kind)), quiet: all.filter((r) => QUIET.has(r.kind)) }
 })
 const vt = variantTables(e.variantMap)
-// "type=Primary" as a word and its value, for headings and labels.
-const axis = (s: string) => s.replace(/([\w-]+)=([\w-]+)/g, '<span class="ax">$1</span> $2')
+// Headings read like the preview captions: "Primary", "Selected · Not error".
+const label = (s: string) => s.startsWith('All but ') ? `All but ${caption(s.slice(8))}` : s.includes('=') ? caption(s) : s
 const contract = readRepo(`contracts/${e.file}`)
 
 // Each app's card carries its own deviations; the ones for everyone stay below.
@@ -91,7 +91,7 @@ const props = Object.entries(c.props ?? {}) as [string, any][]
               {figma.map((v) => (
                 <figure class="fixture">
                   <div class="fixture-stage"><img class="shot" src={v.url} alt={`${title(e)}, ${v.name}, as drawn in Figma`} loading="lazy" /></div>
-                  <figcaption>{v.name.replace(/[a-z]+=/gi, '').replace(/, /g, ' · ')}</figcaption>
+                  <figcaption>{caption(v.name, id)}</figcaption>
                 </figure>
               ))}
             </div>
@@ -197,9 +197,9 @@ const props = Object.entries(c.props ?? {}) as [string, any][]
           <p class="follows">Follows <b>{gr.axes.join(' and ')}</b></p>
           {gr.tables.map((t) => (
             <div class="spec-table">
-              {t.heading && <p class="spec-head" set:html={axis(t.heading)} />}
+              {t.heading && <p class="spec-head">{label(t.heading)}</p>}
               <div class="scroll"><table class="spec-grid" style={`--cols:${t.columns.length}`}>
-                <thead><tr><th></th>{t.columns.map((c) => <th>{c}</th>)}</tr></thead>
+                <thead><tr><th></th>{t.columns.map((c) => <th>{caption(`${gr.column}=${c}`)}</th>)}</tr></thead>
                 <tbody>{t.rows.map((r) => (
                   <tr>
                     <th scope="row"><code>{r.key}</code>{r.prefix && <span class="prefix">{r.prefix}</span>}</th>
@@ -222,7 +222,7 @@ const props = Object.entries(c.props ?? {}) as [string, any][]
       <div class="parts">
         {vt.only.map((o) => (
           <section class="part-card">
-            <h4 set:html={axis(o.label)} />
+            <h4>{label(o.label)}</h4>
             <ul class="vals">
               {o.rows.map(({ key, v }) => { const t = cell(key.split('.')[1], v); return (
                 <li>
@@ -296,7 +296,6 @@ const props = Object.entries(c.props ?? {}) as [string, any][]
   .tok.tk--warn { color: var(--warn); }
   .quiet { margin: var(--spacing-gap-small) 0 0; font-family: var(--mono); font-size: 11.5px; line-height: 1.7; color: var(--fg-3); }
   .quiet span { color: var(--fg-2); }
-  .part-card :global(.ax), .spec-head :global(.ax) { color: var(--fg-3); font-weight: 400; }
 
   /* Changes by variant: spec tables, a column per state. */
   .spec { margin: 0 0 var(--spacing-gap-large); }
