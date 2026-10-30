@@ -4,7 +4,7 @@ What changed each time I merged into `master` and put rost.build live. Newest fi
 
 ## 2026-10-30
 
-- **The apps aren't named anywhere public.** The docs, the contracts, the site and the code call them the accounting app and the portfolio site, with `accounting-app` and `portfolio-site` as their keys. `tokens/portfolio-aliases.json` is `tokens/portfolio-aliases.json`.
+- **The apps aren't named anywhere public.** The docs, the contracts, the site and the code call them the accounting app and the portfolio site, with `accounting-app` and `portfolio-site` as their keys. The token alias file has a neutral name too, `tokens/portfolio-aliases.json`.
 - **The Paper effect shows itself.** It's been in code all along (`src/effects/paper.ts`), but with no preview the site said "Not in code yet". Its card and page draw the sheet live now; move the pointer over it.
 - **The roadmap's Next table is current.** Hero Media is in the portfolio site already, so that row is gone, and ListRow is checked: ListItem doesn't cover the accounting app's rows, so it needs designing.
 - **ToggleGroup.** A row of Toggles where one is chosen, like the accounting app's year switcher. Tab lands on the chosen toggle and the next Tab leaves, arrow keys move the choice and skip disabled ones, and Home and End go to the first and last. Toggle's guidance promised this and nothing did it; now Rost does, and the accounting app's year switcher uses it, so its own group and the deviation that went with it are gone. It started in code, so it's a draft with proposed guidance until there's a Figma frame.
