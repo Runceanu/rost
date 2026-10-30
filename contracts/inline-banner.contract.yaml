@@ -212,3 +212,9 @@ implementations:
   accounting-app:
     component: src/rost/inline-banner/InlineBanner.tsx
     root: .rost-inline-banner
+    deviations:
+      - what: |-
+          Every banner's label wraps and sits left-aligned on a narrow screen, instead of staying on one centred line.
+        why: |-
+          Its banners are sentences, a due date and an amount, and on a phone one line ran wider than the screen and widened the whole page.
+        raisedWithDesign: false

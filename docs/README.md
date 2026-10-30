@@ -74,6 +74,7 @@ What needs attention. It's built from the contracts, so it's only as fresh as th
 - [Hero Media](components/hero-media.md): The artwork is dimmed with `opacity/medium` (0.48) on a #171717 frame
 - [Hero Media](components/hero-media.md) in the portfolio site: Each case study makes the hero full-bleed (`width: 100vw`, negative margin) and brings its own artwork, sized and positioned for that collage
 - [InlineBanner](components/inline-banner.md) in the portfolio site: The Roche case study's disclaimer is a whole sentence, so on a narrow screen its label wraps and sits left-aligned instead of staying on one centred line
+- [InlineBanner](components/inline-banner.md) in the accounting app: Every banner's label wraps and sits left-aligned on a narrow screen, instead of staying on one centred line
 - [Projects](components/projects.md) in the portfolio site: The last row in the Work list has no line at rest; hover and press still draw it
 - [Projects](components/projects.md) in the portfolio site: Under 768px the Work list hides the right side (industry, type and period), and a name too long for the row wraps instead of staying on one line
 - [Testimonials](components/testimonials.md) in the portfolio site: The open quote is `non-interactive/foreground/tertiary`, with key phrases in `non-interactive/foreground/primary`
