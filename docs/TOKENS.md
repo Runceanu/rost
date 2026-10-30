@@ -88,7 +88,7 @@ A colour token at an opacity token. A token can't hold both, so `color-mix()` pu
 | [Carousel](components/carousel.md) | `background.background` | `color-mix(in srgb, var(--non-interactive-background-tertiary) calc(var(--opacity-medium) * 100%), transparent)` |
 | [Navigation](components/navigation.md) | `background.background` | `color-mix(in srgb, var(--non-interactive-background-primary) 48%, transparent)` |
 | [Thumbs](components/thumbs.md) | `shadow.background` | `linear-gradient(to bottom, rgba(6,8,5,0), var(--non-interactive-background-primary))` |
-| [Thumbs](components/thumbs.md) | `content.background` | `color-mix(in srgb, var(--base-black) calc(var(--opacity-medium) * 100%), transparent)` |
+| [Thumbs](components/thumbs.md) | `content.background` | `color-mix(in srgb, var(--non-interactive-background-primary) calc(var(--opacity-medium) * 100%), transparent)` |
 
 ### Icon files
 
@@ -221,9 +221,9 @@ Figma already had a light mode for every theme colour, mostly the dark scale tur
 
 `node bin/contrast.mjs` renders every fixture of every component in both themes, with hover, pressed and focus forced, and measures each piece of text and each icon against the pixels behind it. It measures what's drawn rather than pairs of tokens, because a lot of backgrounds here are a token at an opacity on their own layer. WCAG AA: 4.5 for text, 3 for large text and icons. Disabled states are listed and not counted.
 
-On 2026-10-30, with these values, nothing fails in light that passes in dark, except Thumbs. What's still wrong:
+On 2026-10-30, with these values, nothing fails in light that passes in dark, except the details on Thumbs. What's still wrong:
 
-- **Thumbs** draws its frosted panel in `base/black` at medium opacity. That's a primitive, not a theme colour, so the panel stays dark in light while its text goes dark with the theme. The text is unreadable there. The fix belongs in the contract: either the panel takes a theme colour, or the panel is dark on purpose (it sits on a photo) and gets `data-theme="dark"`. I haven't decided which. The lock on a Locked thumb is the same story: `non-interactive/foreground/contrast` on the green dot is near-black in dark and near-white in light, and the dot stays green.
+- **Thumbs' details in light.** The panel used to be `base/black`, which stayed black in light under dark text. It's the page colour now, `non-interactive/background/primary` at medium opacity, in the contract and in Figma, so it turns light with the theme. The lock on a Locked thumb is `actions/primary/default/label` now, dark on the green in both themes. What's left: the grey details (`project/*/sub-label`, `#747573` in light) come out at 4.3:1 on the panel, just under 4.5. A darker light value would fix it, but Projects uses the same tokens, so I haven't changed it yet.
 - **Pictures with their colour baked in.** Badge's small dots and InlineBanner's icons are SVG files with a fill, so they don't follow the theme. I looked at both in light: they read, because the label next to them says the same thing, but the bright green and orange are under 3:1 on InlineBanner's light grey. They'd need to be masks in a theme colour, the way Icon does it.
 - **Already failing in dark.** The pressed primary icon (`#3a3a3a` on the pressed green, 2.8:1), a selected ListItem's description when pressed or hovered, the hover and pressed Tag, an Input's hover icon and error text when the field has an error. These come from Figma's dark values. Light fixes the ones it can.
 - **Borderless in Figma.** Its hover and pressed fill is drawn as a square, with no corner radius. In dark the hover fill is the page colour, so it never showed; in light it's a grey box behind the label. Code has its own background layer and isn't affected. The Figma component needs a radius on that layer.

@@ -91,7 +91,7 @@ elements:
       display: { value: flex, assert: false }
       flex-direction: { value: column, assert: false }
       align-items: { value: flex-start }
-      background: { value: "color-mix(in srgb, var(--base-black) calc(var(--opacity-medium) * 100%), transparent)", untokenised: "Composed from tokens: base/black at opacity/medium." }
+      background: { value: "color-mix(in srgb, var(--non-interactive-background-primary) calc(var(--opacity-medium) * 100%), transparent)", untokenised: "Composed from tokens: the page background at opacity/medium. It was base/black, which stays black in light while the text on it goes dark." }
       backdrop-filter: { token: effect/thumb, value: blur(12px) }
       gap: { token: spacing/gap/small, value: 8px }
       padding-bottom: { token: spacing/gap/large, value: 24px }
@@ -206,7 +206,7 @@ elements:
       position: { value: relative, assert: false }
       width: { value: 24px, token: spacing/size/small }
       height: { value: 24px, token: spacing/size/small }
-      background: { token: non-interactive/foreground/contrast, value: "#060805" }
+      background: { token: actions/primary/default/label, value: "#060805", notes: "Dark on the green in both themes, like a primary button's label. It was non-interactive/foreground/contrast, which turns white in light." }
       mask: { value: url(./icon-lock.svg) center / contain no-repeat, untokenised: The icon file itself. }
 variants:
   - when: { state: Default }

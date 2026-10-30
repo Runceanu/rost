@@ -89,11 +89,11 @@ Every token this component uses, across all its variants.
 
 | Token | Resolves to |
 |---|---|
+| `actions/primary/default/label` | `#060805` |
 | `effect/thumb` | `blur(12px)` |
 | `font-family/base` | `'General Sans Variable'` |
 | `non-interactive/background/positive/base` | `#00d669` |
 | `non-interactive/background/secondary` | `#171717` |
-| `non-interactive/foreground/contrast` | `#060805` |
 | `opacity/medium` | `0.48` |
 | `opacity/mild` | `0.32` |
 | `project/default/icon` | `#747573` |
@@ -139,7 +139,7 @@ Every token this component uses, across all its variants.
 | Part | Property | Value | Why |
 |---|---|---|---|
 | `shadow` | `background` | `linear-gradient(to bottom, rgba(6,8,5,0), var(--non-interactive-background-primary))` | A gradient from the page background, transparent, to the page background. The colour is the token; the ramp is the effect. |
-| `content` | `background` | `color-mix(in srgb, var(--base-black) calc(var(--opacity-medium) * 100%), transparent)` | Composed from tokens: base/black at opacity/medium. |
+| `content` | `background` | `color-mix(in srgb, var(--non-interactive-background-primary) calc(var(--opacity-medium) * 100%), transparent)` | Composed from tokens: the page background at opacity/medium. It was base/black, which stays black in light while the text on it goes dark. |
 | `dot` | `width` | `3px` | The dot's own size inside the icon. |
 | `dot` | `height` | `3px` | The dot's own size inside the icon. |
 | `focus-ring` | `inset` | `calc(-1 * var(--spacing-gap-2xsmall))` | Composed from a token: the ring sits spacing/gap/2xsmall outside the element. |
