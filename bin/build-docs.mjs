@@ -123,6 +123,7 @@ Rost started as a design system for my own needs and grew into a product of its 
 | [Components](#catalogue) | A page per component: how to use it, props, parts, tokens, where code differs |
 | [rost.build](https://rost.build) | Every component, live where it's built, with every value of every variant |
 | [Token coverage](TOKENS.md) | Why each value has a token or doesn't |
+| [Accessibility](ACCESSIBILITY.md) | Where the components stand against WCAG 2.1 AA, in both themes |
 | [Roadmap](ROADMAP.md) | What I'm doing next |
 | [Release notes](CHANGELOG.md) | What changed in each release |
 

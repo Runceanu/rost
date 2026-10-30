@@ -28,7 +28,10 @@ export const fixtures = VARIANTS.map(([state, filled, selected, error, node]) =>
     selected,
   ),
   ...(state === 'Hover' ? { force: ['hover'] } : {}),
-}))
+})).concat([
+  // Not a Figma frame: one with no `selected`, so it follows focus the way it does in use. bin/a11y.mjs tabs to it.
+  { node: 'input:live', name: 'follows focus', element: frame(<Input label="Email address" supportive="We'll send the receipt here." readOnly value="" />, false) },
+])
 
 /** What a caller writes. Shown on the component's page. */
 export const usage = `import { Input } from 'rost/components/input/Input'
