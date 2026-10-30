@@ -5,10 +5,19 @@ type Fixture = { node: string; name: string; element: React.ReactNode; display?:
 // Components in src/components/<id>/, effects in src/effects/<id>.fixtures.tsx.
 const modules = import.meta.glob(['../../../src/components/*/*.fixtures.tsx', '../../../src/effects/*.fixtures.tsx'], { eager: true }) as Record<string, { fixtures: Fixture[]; usage?: string; preview?: React.ReactNode }>
 
-// Figma's variant name, as words: `state=Default, selected=True` reads
-// "Default · selected", and False reads "not selected".
-const caption = (name: string) =>
-  name.replace(/([a-z]+)=True/gi, '$1').replace(/([a-z]+)=False/gi, 'not $1').replace(/[a-z]+=/gi, '').replace(/, /g, ' · ')
+// One caption format everywhere a variant is named: each value as a word
+// with a capital, joined by " · ". `state=Default, selected=True` reads
+// "Default · Selected", False reads "Not selected", and a lone fixture named
+// after its component (`divider`) reads "Default".
+const cap = (s: string) => s.charAt(0).toUpperCase() + s.slice(1)
+export const caption = (name: string, id?: string) =>
+  name === id ? 'Default'
+    : name.split(/,\s*/).map((part) => {
+      const [axis, value] = part.includes('=') ? part.split('=') : [null, part]
+      if (value === 'True') return cap(axis!)
+      if (value === 'False') return `Not ${axis!.toLowerCase()}`
+      return cap(value.trim())
+    }).join(' · ')
 
 export const fixturesFor = (id: string) => Object.entries(modules).find(([p]) => p.includes(`/components/${id}/`) || p.endsWith(`/effects/${id}.fixtures.tsx`))?.[1]
 
@@ -27,7 +36,7 @@ export function Fixtures({ id }: { id: string }) {
         {still.map((f) => (
           <figure key={f.node} className="fixture">
             <div className="fixture-stage">{f.display ?? f.element}</div>
-            <figcaption>{caption(f.name)}</figcaption>
+            <figcaption>{caption(f.name, id)}</figcaption>
           </figure>
         ))}
       </div>

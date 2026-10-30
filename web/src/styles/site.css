@@ -83,7 +83,7 @@ code { font-family: var(--mono); font-size: .88em; }
    for a section, weight 500, no extra letter spacing, stepping down at 768px
    and 480px the way the portfolio site does. 64/72 isn't a kit token yet. */
 h1 { font-weight: 500; font-size: 64px; line-height: 72px; margin: 0 0 var(--spacing-gap-medium); text-wrap: balance; }
-h2 { font-weight: 500; font-size: var(--typography-sub-headline-font-size); line-height: var(--typography-sub-headline-line-height); margin: var(--spacing-gap-4xlarge) 0 var(--spacing-gap-small-medium); }
+h2 { color: var(--fg); font-weight: 500; font-size: var(--typography-sub-headline-font-size); line-height: var(--typography-sub-headline-line-height); margin: var(--spacing-gap-4xlarge) 0 var(--spacing-gap-small-medium); }
 @media (max-width: 768px) { h1 { font-size: 48px; line-height: 56px; } h2 { font-size: 34px; line-height: 42px; } }
 @media (max-width: 480px) { h1 { font-size: 36px; line-height: 44px; } h2 { font-size: 28px; line-height: 36px; } }
 h3 { font-family: var(--mono); font-weight: 400; font-size: 12px; letter-spacing: .09em; text-transform: uppercase; color: var(--fg-3); margin: var(--spacing-gap-xlarge) 0 var(--spacing-gap-small-medium); }
@@ -91,7 +91,6 @@ h3 { font-family: var(--mono); font-weight: 400; font-size: 12px; letter-spacing
 .lede { font-size: clamp(18px, 2.4vw, 22px); line-height: 1.45; color: var(--fg); max-width: 40ch; margin: 0 0 var(--spacing-gap-medium); text-wrap: pretty; }
 .muted { color: var(--fg-2); max-width: 64ch; }
 .prose { color: var(--fg-2); }
-.prose h2 { font-family: var(--mono); font-weight: 400; font-size: 12px; line-height: 1.2; letter-spacing: .09em; text-transform: uppercase; color: var(--fg-3); margin: var(--spacing-gap-xlarge) 0 var(--spacing-gap-small); }
 .prose p, .prose ul { margin: 0 0 var(--spacing-gap-small-medium); }
 .prose ul { padding-left: var(--spacing-gap-medium-large); }
 .prose strong { color: var(--fg); font-weight: 600; }

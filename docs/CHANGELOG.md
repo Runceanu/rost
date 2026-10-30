@@ -4,6 +4,7 @@ What changed each time I merged into `master` and put rost.build live. Newest fi
 
 ## 2026-10-30
 
+- **One heading style, one caption format.** Every `h2` on rost.build is the section title, 40/48 (`typography/sub-headline`), on the home page, the component pages and the docs alike; the guidance headings and the docs had their own. Preview captions read the same everywhere: each value with a capital, joined by " · ", "Not selected" for an off boolean, and "Default" for a component with one fixture.
 - **The apps aren't named anywhere public.** The docs, the contracts, the site and the code call them the accounting app and the portfolio site, with `accounting-app` and `portfolio-site` as their keys. The token alias file has a neutral name too, `tokens/portfolio-aliases.json`.
 - **The Paper effect shows itself.** It's been in code all along (`src/effects/paper.ts`), but with no preview the site said "Not in code yet". Its card and page draw the sheet live now; move the pointer over it.
 - **The roadmap's Next table is current.** Hero Media is in the portfolio site already, so that row is gone, and ListRow is checked: ListItem doesn't cover the accounting app's rows, so it needs designing.
