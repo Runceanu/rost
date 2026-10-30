@@ -260,7 +260,3 @@ implementations:
   accounting-app:
     component: src/rost/toggle/Toggle.tsx
     root: .rost-toggle
-    deviations:
-      - what: Each toggle is a `role="radio"` inside a `ToggleGroup`. The group has no surface of its own.
-        why: There they're one choice from a set. The kit has no ToggleGroup, so the accounting app made one.
-        raisedWithDesign: false

@@ -10,7 +10,7 @@
 | Contract | `draft` · [toggle-group.contract.yaml](../../contracts/toggle-group.contract.yaml) |
 | Guidance | `proposed` |
 | Source | `rost/src/components/toggle-group/ToggleGroup.tsx` · read 2026-10-30 · frozen 2026-10-30 |
-| Implemented in | nowhere yet |
+| Implemented in | The accounting app (`src/rost/toggle-group/ToggleGroup.tsx`, `.rost-toggle-group`) |
 
 ## Props
 

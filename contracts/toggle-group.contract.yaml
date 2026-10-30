@@ -23,6 +23,10 @@ elements:
       display: { value: inline-flex, assert: false }
       align-items: { value: center }
       gap: { token: spacing/gap/3xsmall, value: 2px }
+implementations:
+  accounting-app:
+    component: src/rost/toggle-group/ToggleGroup.tsx
+    root: .rost-toggle-group
 guidance:
   status: proposed
   use:

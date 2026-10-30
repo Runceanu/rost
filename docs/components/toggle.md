@@ -60,12 +60,6 @@ It changes with `selected` and `state`. Off, it's a plate with 12px corners on t
 
 An icon, or a short text label: a year, a number, one word. The label makes the toggle grow wider than 40px, and it never wraps. Figma only draws the icon-only one.
 
-## Where code differs on purpose
-
-| App | What | Why | Taken to design |
-|---|---|---|---|
-| The accounting app | Each toggle is a `role="radio"` inside a `ToggleGroup`. The group has no surface of its own. | There they're one choice from a set. The kit has no ToggleGroup, so the accounting app made one. | not yet |
-
 ## Tokens
 
 Every token this component uses, across all its variants.

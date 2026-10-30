@@ -40,7 +40,7 @@ Rost started as a design system for my own needs and grew into a product of its 
 | [Testimonials](components/testimonials.md) | A testimonial you can open and close: name and role, with the quote underneath. | `review` | `agreed` | The portfolio site |
 | [Thumbs](components/thumbs.md) | A project thumbnail card, with the project name and details on a frosted panel at the bottom. | `review` | `agreed` | The portfolio site |
 | [Toggle](components/toggle.md) | A 40×40 icon button that stays on or off, alone or as one choice in a group. | `stable` | `agreed` | The accounting app |
-| [ToggleGroup](components/toggle-group.md) | A row of Toggles where one is chosen, like a year switcher. Arrow keys move the choice, and the row is one stop for Tab. | `draft` | `proposed` | · |
+| [ToggleGroup](components/toggle-group.md) | A row of Toggles where one is chosen, like a year switcher. Arrow keys move the choice, and the row is one stop for Tab. | `draft` | `proposed` | The accounting app |
 | [Tooltip](components/tooltip.md) | A small label that explains something when you point at it or focus it. | `review` | `agreed` | The portfolio site |
 
 ### Patterns
@@ -82,4 +82,3 @@ What needs attention. It's built from the contracts, so it's only as fresh as th
 - [Testimonials](components/testimonials.md) in the portfolio site: Under 768px the name and job line wrap instead of staying on one line
 - [Testimonials](components/testimonials.md) in the portfolio site: The 16px slide on hover, press and opening is eased over 0.2s, the same as the Work list's projects
 - [Thumbs](components/thumbs.md) in the portfolio site: Under 480px a name too long for its card wraps instead of staying on one line
-- [Toggle](components/toggle.md) in the accounting app: Each toggle is a `role="radio"` inside a `ToggleGroup`
