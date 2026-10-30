@@ -4,7 +4,8 @@
 // that one's page, under it, with `nested`.
 import { Code } from 'astro:components'
 import { Fixtures, fixturesFor } from './Fixtures'
-import { byId, title, inCode, guidanceHtml, mdInline, componentSource, sourceLink, tokenCell, isColour, APP_LABEL, GITHUB } from '../lib/kit'
+import { byId, title, inCode, guidanceHtml, mdInline, componentSource, sourceLink, tokenCell, isColour, readRepo, APP_LABEL, GITHUB } from '../lib/kit'
+import { variantTables } from '../lib/variants'
 import { shotsFor } from '../lib/shots'
 import { Badge } from '../../../src/components/badge/Badge'
 import { Tag } from '../../../src/components/tags/Tag'
@@ -27,21 +28,27 @@ const { shots: figma, blanks } = built ? { shots: [], blanks: 0 } : shotsFor(id)
 // The same words the markdown docs use, with a colour for each kind.
 const CELL: Record<string, string> = { token: 'tk', suggested: 'tk--warn', layout: 'tk--none', sample: 'tk--none', reasoned: 'tk--none', gap: 'tk--gap' }
 const cell = (prop: string, v: any) => { const t = tokenCell(prop, v); return { cls: CELL[t.kind] ?? 'tk--gap', text: t.text } }
-const fixed = Object.entries(e.invariants).flatMap(([part, props]: [string, any]) => Object.entries(props).map(([prop, v]: [string, any]) => ({ part, prop, v })))
-const byProp: Record<string, { name: string; v: any }[]> = {}
-for (const [name, parts] of Object.entries(e.variantMap) as [string, any][])
-  for (const [part, props] of Object.entries(parts) as [string, any][])
-    for (const [prop, v] of Object.entries(props)) (byProp[`${part}.${prop}`] ??= []).push({ name, v })
-// Every group's table gets the same columns, so the values and tokens line up
-// from one group to the next. The cells are monospace: characters are widths.
-const rowsAll = Object.values(byProp).flat()
-// A long name (Input's four axes) wraps at 30 characters instead of pushing the rest off the side.
-const nameCh = Math.min(30, Math.max(0, ...rowsAll.map((r) => r.name.length)))
-// So does a value that's a whole expression (a box-shadow), past 28.
-const valueCh = Math.min(28, Math.max(0, ...rowsAll.map((r) => String(r.v.value).length + (isColour(r.v.value) ? 3 : 0))))
-// The token column takes what's left. This only keeps it from getting too
-// narrow to read; a reason written out ("on purpose: ...") wraps.
-const tokenCh = Math.min(24, Math.max(0, ...Object.entries(byProp).flatMap(([k, rows]) => rows.map((r) => tokenCell(k.split('.')[1], r.v).text.length))))
+// Never changes: one card per part. The values with a token (or missing one)
+// are rows; plain layout (display, position) folds into one quiet line.
+const QUIET = new Set(['layout', 'sample'])
+const partsFixed = Object.entries(e.invariants).map(([part, styles]: [string, any]) => {
+  const all = Object.entries(styles).map(([prop, v]: [string, any]) => ({ prop, v, kind: tokenCell(prop, v).kind }))
+  return { part, rows: all.filter((r) => !QUIET.has(r.kind)), quiet: all.filter((r) => QUIET.has(r.kind)) }
+})
+const vt = variantTables(e.variantMap)
+// "type=Primary" as a word and its value, for headings and labels.
+const axis = (s: string) => s.replace(/([\w-]+)=([\w-]+)/g, '<span class="ax">$1</span> $2')
+const contract = readRepo(`contracts/${e.file}`)
+
+// Each app's card carries its own deviations; the ones for everyone stay below.
+const apps = e.implementations.map((i: any) => ({
+  ...i,
+  label: APP_LABEL[i.app] ?? i.app,
+  own: String(i.component ?? '').startsWith('src/rost/'),
+  deviations: e.deviations.filter((d: any) => d.app === i.app),
+}))
+const everywhere = e.deviations.filter((d: any) => !d.app)
+const initials = (s: string) => s.split(/\s+/).map((w) => w[0]).join('').slice(0, 2).toUpperCase()
 const props = Object.entries(c.props ?? {}) as [string, any][]
 ---
   {nested ? (
@@ -64,13 +71,36 @@ const props = Object.entries(c.props ?? {}) as [string, any][]
     {src.href && <Tag href={src.href} target="_blank" rel="noreferrer">{src.label}</Tag>}
   </div>
 
-  {built ? (
-    <section class="tabs" data-tabs>
-      <Tabs className="tab-bar" aria-label={`${title(e)} preview and code`}>
-        <TabItem selected id={k('tab-preview')} aria-controls={k('panel-preview')}>Preview</TabItem>
-        <TabItem id={k('tab-code')} aria-controls={k('panel-code')}>Code</TabItem>
-      </Tabs>
-      <div class="tab-panel" role="tabpanel" id={k('panel-preview')} aria-labelledby={k('tab-preview')} tabindex="0"><div class="stage"><Fixtures id={id} /></div></div>
+  <section class="tabs" data-tabs>
+    <Tabs className="tab-bar" aria-label={`${title(e)} views`}>
+      <TabItem selected id={k('tab-preview')} aria-controls={k('panel-preview')}>{built ? 'Preview' : 'Figma'}</TabItem>
+      {built && <TabItem id={k('tab-code')} aria-controls={k('panel-code')}>Code</TabItem>}
+      <TabItem id={k('tab-contract')} aria-controls={k('panel-contract')}>Contract</TabItem>
+    </Tabs>
+    <div class="tab-panel" role="tabpanel" id={k('panel-preview')} aria-labelledby={k('tab-preview')} tabindex="0">
+      {built ? (
+        <div class="stage"><Fixtures id={id} /></div>
+      ) : blanks > 0 && figma.length === 0 ? (
+        <p class="note">Figma's renders of this one came back empty, so there's nothing to show yet. The contract is complete. I'll capture the pictures again next time I have Figma open.</p>
+      ) : figma.length === 0 ? (
+        <p class="note">{e.kind.startsWith('effect') || e.kind === 'pattern' ? "There's no picture of this one. The contract is complete." : "Figma's renders of this one have real people's photos in them, so they stay off the site. The contract is complete."}</p>
+      ) : (
+        <>
+          <div class="stage">
+            <div class="fixtures">
+              {figma.map((v) => (
+                <figure class="fixture">
+                  <div class="fixture-stage"><img class="shot" src={v.url} alt={`${title(e)}, ${v.name}, as drawn in Figma`} loading="lazy" /></div>
+                  <figcaption>{v.name.replace(/[a-z]+=/gi, '').replace(/, /g, ' · ')}</figcaption>
+                </figure>
+              ))}
+            </div>
+          </div>
+          <p class="note">These are Figma's own renders. It isn't built in code yet. The contract is what I'll build it from.</p>
+        </>
+      )}
+    </div>
+    {built && (
       <div class="tab-panel" role="tabpanel" id={k('panel-code')} aria-labelledby={k('tab-code')} tabindex="0" hidden>
         {usage && <Code code={usage} lang={e.kind === 'effect' ? 'css' : 'tsx'} theme="vesper" />}
         {source && (
@@ -80,26 +110,12 @@ const props = Object.entries(c.props ?? {}) as [string, any][]
           </details>
         )}
       </div>
-    </section>
-  ) : blanks > 0 && figma.length === 0 ? (
-    <p class="note">Figma's renders of this one came back empty, so there's nothing to show yet. The contract below is complete. I'll capture the pictures again next time I have Figma open.</p>
-  ) : figma.length === 0 && !e.kind.startsWith('effect') && e.kind !== 'pattern' ? (
-    <p class="note">Figma's renders of this one have real people's photos in them, so they stay off the site. The contract below is complete.</p>
-  ) : figma.length > 0 && (
-    <section>
-      <div class="stage">
-        <div class="fixtures">
-          {figma.map((v) => (
-            <figure class="fixture">
-              <div class="fixture-stage"><img class="shot" src={v.url} alt={`${title(e)}, ${v.name}, as drawn in Figma`} loading="lazy" /></div>
-              <figcaption>{v.name.replace(/[a-z]+=/gi, '').replace(/, /g, ' · ')}</figcaption>
-            </figure>
-          ))}
-        </div>
-      </div>
-      <p class="note">These are Figma's own renders. It isn't built in code yet. The contract below is what I'll build it from.</p>
-    </section>
-  )}
+    )}
+    <div class="tab-panel" role="tabpanel" id={k('panel-contract')} aria-labelledby={k('tab-contract')} tabindex="0" hidden>
+      <p class="note contract-note">The source for everything on this page: <a href={`${GITHUB}/blob/master/contracts/${e.file}`} target="_blank" rel="noreferrer"><code>contracts/{e.file}</code></a>. The CSS, the docs and the checks in each app are built from it.</p>
+      <div class="contract"><Code code={contract} lang="yaml" theme="vesper" /></div>
+    </div>
+  </section>
 
   {g && <div class="prose" set:html={guidanceHtml(g)} />}
 
@@ -114,35 +130,111 @@ const props = Object.entries(c.props ?? {}) as [string, any][]
   )}
   {c.states?.length > 0 && <p class="muted">States: {c.states.join(', ')}.</p>}
 
-  {e.implementations.length > 0 && (
+  {apps.length > 0 && (
     <>
       <h2>Where it's used</h2>
-      <ul class="plain">{e.implementations.map((i: any) => <li><b>{APP_LABEL[i.app] ?? i.app}</b>{' '}<code>{i.component}</code>{i.root && <>{' '}<code>{i.root}</code></>}</li>)}</ul>
+      <div class="apps">
+        {apps.map((i: any) => (
+          <article class="app">
+            <header>
+              <span class="avatar" aria-hidden="true">{initials(i.label)}</span>
+              <div class="app-name">
+                <b>{i.label}</b>
+                <span class={`own ${i.own ? 'own--rost' : 'own--app'}`}>{i.own ? "Rost's own copy" : 'Its own version'}</span>
+              </div>
+            </header>
+            <dl class="where">
+              <dt>File</dt><dd><code>{i.component}</code></dd>
+              {i.root && <><dt>Class</dt><dd><code>{i.root}</code></dd></>}
+            </dl>
+            {i.deviations.length > 0 ? (
+              <div class="diffs">
+                <span class="diffs-title">Differs on purpose</span>
+                <ul>{i.deviations.map((d: any) => <li><Fragment set:html={mdInline(d.what)} />{d.why && <span class="why" set:html={mdInline(d.why)} />}</li>)}</ul>
+              </div>
+            ) : <p class="matches">Matches the contract.</p>}
+          </article>
+        ))}
+      </div>
     </>
   )}
-  {e.deviations.length > 0 && (
+  {everywhere.length > 0 && (
     <>
-      <h2>Where code differs on purpose</h2>
-      <ul class="plain">{e.deviations.map((d: any) => <li><b>{APP_LABEL[d.app] ?? d.app ?? 'Everywhere'}:</b>{' '}<Fragment set:html={mdInline(d.what)} />{' '}<span class="muted" set:html={mdInline(d.why ?? '')} /></li>)}</ul>
+      <h2>Where Rost differs from Figma</h2>
+      <ul class="plain">{everywhere.map((d: any) => <li><Fragment set:html={mdInline(d.what)} />{' '}<span class="muted" set:html={mdInline(d.why ?? '')} /></li>)}</ul>
     </>
   )}
 
   <h2>Values</h2>
   <p class="muted">Straight from the contract. Each value sits next to its token, because six tokens here all come out as <code>#3a3a3a</code> and the colour alone can't tell you which one is right.</p>
   <h3>Never changes</h3>
-  <div class="scroll"><table class="t">
-    <thead><tr><th>Part</th><th>Property</th><th>Value</th><th>Token</th></tr></thead>
-    <tbody>{fixed.map(({ part, prop, v }) => { const t = cell(prop, v); return <tr><td>{part}</td><td>{prop}</td><td>{isColour(v.value) && <span class="sw" style={`--c:${v.value}`} />}{v.value}</td><td class={t.cls}>{t.text}</td></tr> })}</tbody>
-  </table></div>
-  {Object.keys(byProp).length > 0 && (
+  <div class="parts">
+    {partsFixed.map(({ part, rows, quiet }) => (
+      <section class="part-card">
+        <h4><code>{part}</code></h4>
+        {rows.length > 0 && (
+          <ul class="vals">
+            {rows.map(({ prop, v }) => { const t = cell(prop, v); return (
+              <li>
+                <span class="prop">{prop}</span>
+                <span class="val">{isColour(v.value) && <span class="sw" style={`--c:${v.value}`} />}{v.value}</span>
+                <span class={`tok ${t.cls}`}>{t.text}</span>
+              </li>
+            ) })}
+          </ul>
+        )}
+        {quiet.length > 0 && <p class="quiet">{quiet.map(({ prop, v }, n) => <>{n > 0 && ' · '}<span>{prop}</span> {v.value}</>)}</p>}
+      </section>
+    ))}
+  </div>
+
+  {vt.groups.length > 0 && (
     <>
       <h3>Changes by variant</h3>
-      {Object.entries(byProp).sort().map(([k, rows]) => (
-        <details class="vary">
-          <summary><code>{k}</code><span class="n">{rows.length}</span></summary>
-          <div class="scroll"><table class="t t--vary" style={`--name:${nameCh};--value:${valueCh};--token:${tokenCh}`}><colgroup><col class="c-name" /><col class="c-value" /><col /></colgroup><tbody>{rows.map(({ name, v }) => { const t = cell(k.split('.')[1], v); return <tr><td>{name}</td><td>{isColour(v.value) && <span class="sw" style={`--c:${v.value}`} />}{v.value}</td><td class={t.cls}>{t.text}</td></tr> })}</tbody></table></div>
-        </details>
+      <p class="muted">{vt.count} variants. Each table is what one thing changes with: a column per {vt.groups[0].column}, a row per property. Where every row starts with the same token path, it's written once, under the property.</p>
+      {vt.groups.map((gr) => (
+        <section class="spec">
+          <p class="follows">Follows <b>{gr.axes.join(' and ')}</b></p>
+          {gr.tables.map((t) => (
+            <div class="spec-table">
+              {t.heading && <p class="spec-head" set:html={axis(t.heading)} />}
+              <div class="scroll"><table class="spec-grid" style={`--cols:${t.columns.length}`}>
+                <thead><tr><th></th>{t.columns.map((c) => <th>{c}</th>)}</tr></thead>
+                <tbody>{t.rows.map((r) => (
+                  <tr>
+                    <th scope="row"><code>{r.key}</code>{r.prefix && <span class="prefix">{r.prefix}</span>}</th>
+                    {r.cells.map((cl) => cl ? (
+                      <td><span class={`cv${cl.token ? '' : ' cv--plain'}`}>{isColour(cl.value) && <span class="sw" style={`--c:${cl.value}`} />}{cl.token ?? cl.value}</span>{cl.token && cl.value && <span class="raw">{cl.value}</span>}</td>
+                    ) : <td class="none">·</td>)}
+                  </tr>
+                ))}</tbody>
+              </table></div>
+            </div>
+          ))}
+        </section>
       ))}
+    </>
+  )}
+  {vt.only.length > 0 && (
+    <>
+      <h3>Only in some variants</h3>
+      <p class="muted">These don't change: they're just set in some variants and not others.</p>
+      <div class="parts">
+        {vt.only.map((o) => (
+          <section class="part-card">
+            <h4 set:html={axis(o.label)} />
+            <ul class="vals">
+              {o.rows.map(({ key, v }) => { const t = cell(key.split('.')[1], v); return (
+                <li>
+                  <span class="prop">{key}</span>
+                  <span class="val">{isColour(v.value) && <span class="sw" style={`--c:${v.value}`} />}{v.value}</span>
+                  <span class={`tok ${t.cls}`}>{t.text}</span>
+                </li>
+              ) })}
+            </ul>
+          </section>
+        ))}
+      </div>
     </>
   )}
 
@@ -160,21 +252,70 @@ const props = Object.entries(c.props ?? {}) as [string, any][]
   .note { color: var(--fg-3); font-size: 13.5px; margin: var(--spacing-gap-small) 0 0; }
   .plain { padding-left: var(--spacing-gap-medium-large); color: var(--fg-2); overflow-wrap: anywhere; }
   .plain li { margin: var(--spacing-gap-2xsmall) 0; }
-  .vary { margin: 0 0 var(--spacing-gap-small); }
-  .t--vary { table-layout: fixed; min-width: calc((var(--name) + var(--value) + var(--token)) * 1ch + 6 * var(--spacing-gap-small-medium)); font-family: var(--mono); font-size: 12.5px; }
-  .t--vary td { white-space: normal; overflow-wrap: anywhere; vertical-align: top; }
-  /* A phone stacks each row (site.css), so the columns, and the width they need, go. */
-  @media (max-width: 600px) { .t--vary, .t--vary tbody { display: block; min-width: 0; } .t--vary colgroup { display: none; } }
-  .t--vary col { font-family: var(--mono); font-size: 12.5px; }
-  .t--vary .c-name { width: calc(var(--name) * 1ch + 2 * var(--spacing-gap-small-medium) + var(--spacing-gap-large)); }
-  .t--vary .c-value { width: calc(var(--value) * 1ch + 2 * var(--spacing-gap-small-medium) + var(--spacing-gap-large)); }
-  .vary summary { cursor: pointer; display: flex; align-items: center; gap: var(--spacing-gap-small); padding: var(--spacing-gap-xsmall) 0; color: var(--fg); list-style: none; }
-  .vary summary::-webkit-details-marker { display: none; }
-  /* display: flex drops the native triangle, so it's drawn back. */
-  .vary summary::before { content: ''; width: 0; height: 0; border-left: 5px solid var(--fg-3); border-block: 4px solid transparent; transition: transform .15s; }
-  .vary[open] summary::before { transform: rotate(90deg); }
-  .vary .n { font-family: var(--mono); font-size: 11px; color: var(--fg-3); background: var(--surface); padding: 1px var(--spacing-gap-small); border-radius: var(--spacing-radius-full); }
   .tk--warn { color: var(--warn); }
+  .contract-note { margin: 0 0 var(--spacing-gap-small); }
+  .contract-note a { color: var(--accent); }
+  .contract { max-height: 640px; overflow: auto; border-radius: var(--spacing-radius-medium); }
+  .contract :global(pre.astro-code) { margin: 0; }
+
+  /* Where it's used: a card per app. */
+  .apps { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--spacing-gap-small-medium); }
+  .app { display: grid; align-content: start; gap: var(--spacing-gap-medium); padding: var(--spacing-gap-medium-large); border-radius: var(--spacing-radius-large); background: var(--surface); min-width: 0; }
+  .app header { display: flex; align-items: center; gap: var(--spacing-gap-small-medium); }
+  .avatar { display: grid; place-items: center; flex-shrink: 0; width: 40px; height: 40px; border-radius: var(--spacing-radius-full); background: var(--ground); color: var(--fg); font-size: 13px; font-weight: 600; letter-spacing: .02em; box-shadow: inset 0 0 0 1px var(--line); }
+  .app-name { display: grid; gap: 2px; }
+  .app-name b { font-weight: 500; font-size: 17px; color: var(--fg); }
+  .own { font-size: 12.5px; display: inline-flex; align-items: center; gap: 6px; }
+  .own::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+  .own--rost { color: var(--accent); }
+  .own--app { color: var(--warn); }
+  .where { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 4px var(--spacing-gap-small-medium); margin: 0; font-size: 13px; }
+  .where dt { color: var(--fg-3); }
+  .where dd { margin: 0; overflow-wrap: anywhere; }
+  .where code { font-size: 12px; color: var(--fg-2); }
+  .matches { margin: 0; font-size: 13px; color: var(--fg-3); }
+  .diffs { border-top: 1px solid var(--line); padding-top: var(--spacing-gap-small-medium); }
+  .diffs-title { font-size: 12.5px; color: var(--warn); }
+  .diffs ul { margin: var(--spacing-gap-xsmall) 0 0; padding-left: var(--spacing-gap-medium); font-size: 13.5px; color: var(--fg-2); }
+  .diffs li { margin: 0 0 var(--spacing-gap-xsmall); }
+  .diffs .why { display: block; color: var(--fg-3); font-size: 13px; margin-top: 2px; }
+
+  /* Never changes, and Only in some variants: a card per part. */
+  .parts { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: var(--spacing-gap-small-medium); }
+  .part-card { padding: var(--spacing-gap-medium) var(--spacing-gap-medium-large); border-radius: var(--spacing-radius-large); background: var(--surface); min-width: 0; }
+  .part-card h4 { margin: 0 0 var(--spacing-gap-small); font-size: 15px; font-weight: 500; color: var(--fg); }
+  .part-card h4 code { font-size: 14px; color: var(--fg); }
+  .vals { list-style: none; margin: 0; padding: 0; }
+  .vals li { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 0 var(--spacing-gap-small-medium); padding: 6px 0; margin: 0; border-top: 1px solid color-mix(in srgb, var(--fg) 6%, transparent); font-size: 13px; }
+  .vals li:first-child { border-top: none; }
+  .prop { color: var(--fg-2); font-family: var(--mono); font-size: 12px; overflow-wrap: anywhere; }
+  .val { color: var(--fg); font-family: var(--mono); font-size: 12px; text-align: right; overflow-wrap: anywhere; }
+  .tok { grid-column: 1 / -1; font-family: var(--mono); font-size: 11.5px; color: var(--accent); overflow-wrap: anywhere; }
+  .tok.tk--none { color: var(--fg-3); font-style: italic; }
+  .tok.tk--gap { color: var(--bad); }
+  .tok.tk--warn { color: var(--warn); }
+  .quiet { margin: var(--spacing-gap-small) 0 0; font-family: var(--mono); font-size: 11.5px; line-height: 1.7; color: var(--fg-3); }
+  .quiet span { color: var(--fg-2); }
+  .part-card :global(.ax), .spec-head :global(.ax) { color: var(--fg-3); font-weight: 400; }
+
+  /* Changes by variant: spec tables, a column per state. */
+  .spec { margin: 0 0 var(--spacing-gap-large); }
+  .follows { margin: 0 0 var(--spacing-gap-small); font-size: 14px; color: var(--fg-3); }
+  .follows b { color: var(--fg); font-weight: 500; }
+  .spec-table { margin: 0 0 var(--spacing-gap-small-medium); }
+  .spec-head { margin: 0 0 var(--spacing-gap-xsmall); font-size: 14px; font-weight: 500; color: var(--fg); }
+  .spec-grid { width: 100%; border-collapse: collapse; table-layout: fixed; min-width: calc(200px + var(--cols) * 150px); }
+  .spec-grid th, .spec-grid td { text-align: left; vertical-align: top; padding: var(--spacing-gap-small) var(--spacing-gap-small-medium); border-top: 1px solid color-mix(in srgb, var(--fg) 6%, transparent); }
+  .spec-grid thead th { border-top: none; font-size: 13px; font-weight: 500; color: var(--fg-2); }
+  .spec-grid thead th:first-child { width: 200px; }
+  .spec-grid tbody th { font-weight: 400; }
+  .spec-grid tbody th code { display: block; font-size: 12px; color: var(--fg); overflow-wrap: anywhere; }
+  .prefix { display: block; margin-top: 2px; font-family: var(--mono); font-size: 11px; color: var(--fg-3); overflow-wrap: anywhere; }
+  .cv { display: flex; align-items: center; gap: 6px; font-family: var(--mono); font-size: 12px; color: var(--accent); overflow-wrap: anywhere; min-width: 0; }
+  .cv .sw { margin: 0; flex-shrink: 0; }
+  .raw { display: block; margin-top: 2px; font-family: var(--mono); font-size: 11px; color: var(--fg-3); overflow-wrap: anywhere; }
+  .cv--plain { color: var(--fg-2); }
+  .none { color: var(--fg-3); }
   :global(.fixtures) { display: flex; flex-wrap: wrap; gap: var(--spacing-gap-large) var(--spacing-gap-2xlarge); align-items: flex-end; }
   :global(.fixture) { margin: 0; display: flex; flex-direction: column; gap: var(--spacing-gap-small); align-items: flex-start; max-width: 100%; min-width: 0; }
   :global(.fixture-stage) { min-height: var(--spacing-size-small); max-width: 100%; }

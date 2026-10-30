@@ -25,20 +25,104 @@ const family = (v: string) => {
   return 'Other'
 }
 const order = ['Surfaces and text', 'Actions', 'Inputs', 'Picked and unpicked', 'Projects', 'Tabs', 'Type', 'Colour primitives', 'Spacing primitives', 'Gaps and padding', 'Sizes', 'Corner radius', 'Outlines', 'Opacity', 'Effects', 'Layout', 'Other']
-const groups = order.map((f) => [f, entries.filter((e) => family(e.name) === f)] as const).filter(([, list]) => list.length)
+// What each token looks like, drawn from its own value.
+const px = (v: string) => (/^-?\d+(\.\d+)?px$/.test(v) ? parseFloat(v) : null)
+const look = (name: string, value: string) => {
+  const n = name.replace(/^--/, '')
+  if (isColour(value)) return 'colour'
+  if (n.startsWith('opacity-')) return 'opacity'
+  if (n.startsWith('spacing-radius')) return 'radius'
+  if (n.startsWith('spacing-outline')) return 'outline'
+  if (n.startsWith('spacing-') && px(value) !== null) return 'length'
+  if (n.includes('font-size')) return 'font-size'
+  if (n.includes('font-weight')) return 'font-weight'
+  if (n.startsWith('font-family')) return 'font-family'
+  if (n.startsWith('effect-')) return 'blur'
+  if (n.startsWith('shadow-')) return 'shadow'
+  return 'plain'
+}
+// A list of lengths reads smallest to largest; anything else stays by name.
+const sorted = (list: { name: string; value: string }[]) => list.every((t) => px(t.value) !== null) ? [...list].sort((a, b) => px(a.value)! - px(b.value)!) : list
+const groups = order.map((f) => [f, sorted(entries.filter((e) => family(e.name) === f))] as const).filter(([, list]) => list.length)
+const isSwatches = (list: readonly { name: string; value: string }[]) => list.every((t) => isColour(t.value))
 ---
 <Base title="Tokens · Rost">
   <div class="kicker">Foundations</div>
   <h1>Tokens</h1>
   <p class="lede">{entries.length} named values. Almost every colour, space and size in Rost comes from one of these. The few that don't are listed in <a href="/docs/tokens/">Token coverage</a>.</p>
   <p class="muted">The names are the CSS variables, exactly as code uses them, from <code>tokens/tokens.css</code>. Every Figma variable is here, in the dark theme, plus a few of Rost's own: the effects, the shadow and the hero height. The light values are in <code>tokens/tokens.json</code>, but nothing uses them yet.</p>
+  <nav class="jump" aria-label="Token groups">{groups.map(([f, list]) => <a href={`#${f.toLowerCase().replace(/\W+/g, '-')}`}>{f} <span>{list.length}</span></a>)}</nav>
   {groups.map(([f, list]) => (
     <>
-      <h2>{f}</h2>
-      <div class="scroll"><table class="t">
-        <thead><tr><th>Token</th><th>Value</th></tr></thead>
-        <tbody>{list.map((t) => <tr><td>{t.name}</td><td>{isColour(t.value) && <span class="sw" style={`--c:${t.value}`} />}{t.value}</td></tr>)}</tbody>
-      </table></div>
+      <h2 id={f.toLowerCase().replace(/\W+/g, '-')}>{f}</h2>
+      {isSwatches(list) ? (
+        <ul class="swatches">
+          {list.map((t) => (
+            <li>
+              <span class="chip" style={`--c:${t.value}`} />
+              <code class="name">{t.name}</code>
+              <span class="value">{t.value}</span>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <ul class="rows">
+          {list.map((t) => { const l = look(t.name, t.value); const n = px(t.value) ?? 0; return (
+            <li>
+              <span class={`pic pic--${l}`} aria-hidden="true">
+                {l === 'colour' && <span class="dot" style={`--c:${t.value}`} />}
+                {l === 'opacity' && <span class="op" style={`opacity:${t.value}`} />}
+                {l === 'radius' && <span class="rad" style={`border-top-left-radius:${Math.min(n, 40)}px`} />}
+                {l === 'outline' && <span class="line" style={`height:${t.value}`} />}
+                {l === 'length' && <span class="bar" style={`width:${Math.min(n, 160)}px`} />}
+                {l === 'font-size' && <span class="aa" style={`font-size:${Math.min(n, 40)}px`}>Aa</span>}
+                {l === 'font-weight' && <span class="aa" style={`font-weight:${t.value}`}>Aa</span>}
+                {l === 'font-family' && <span class="aa">Aa</span>}
+                {l === 'blur' && <span class="blur"><span style={`backdrop-filter:${t.value}`} /></span>}
+                {l === 'shadow' && <span class="shadow" style={`box-shadow:${t.value}`} />}
+              </span>
+              <code class="name">{t.name}</code>
+              <span class="value">{t.value}{l === 'length' && n > 160 && <span class="cap"> (drawn at 160)</span>}</span>
+            </li>
+          ) })}
+        </ul>
+      )}
     </>
   ))}
 </Base>
+
+<style>
+  .jump { display: flex; flex-wrap: wrap; gap: var(--spacing-gap-xsmall); margin: var(--spacing-gap-large) 0 0; }
+  .jump a { font-size: 13px; color: var(--fg-2); text-decoration: none; padding: 4px var(--spacing-gap-small-medium); border-radius: var(--spacing-radius-full); background: var(--surface); }
+  .jump a:hover { color: var(--fg); }
+  .jump span { color: var(--fg-3); font-family: var(--mono); font-size: 11px; margin-left: 2px; }
+
+  .swatches { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: var(--spacing-gap-small-medium); }
+  .swatches li { margin: 0; display: grid; gap: 4px; padding: var(--spacing-gap-small); border-radius: var(--spacing-radius-large); background: var(--surface); min-width: 0; }
+  .chip { display: block; height: 64px; border-radius: var(--spacing-radius-medium); background: var(--c); box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--fg) 10%, transparent); margin-bottom: 4px; }
+  .name { font-size: 12px; color: var(--fg); overflow-wrap: anywhere; padding: 0 4px; }
+  .value { font-family: var(--mono); font-size: 11.5px; color: var(--fg-3); overflow-wrap: anywhere; padding: 0 4px; }
+  .swatches .value { padding-bottom: 4px; }
+
+  .rows { list-style: none; margin: 0; padding: var(--spacing-gap-2xsmall) var(--spacing-gap-medium); border-radius: var(--spacing-radius-large); background: var(--surface); }
+  .rows li { display: grid; grid-template-columns: 176px minmax(0, 1fr) auto; align-items: center; gap: var(--spacing-gap-medium); padding: var(--spacing-gap-small) 0; margin: 0; border-top: 1px solid color-mix(in srgb, var(--fg) 6%, transparent); min-height: 44px; }
+  .rows li:first-child { border-top: none; }
+  .rows .name, .rows .value { padding: 0; }
+  .rows .value { text-align: right; color: var(--fg-2); }
+  .cap { color: var(--fg-3); }
+  @media (max-width: 600px) {
+    .rows li { grid-template-columns: minmax(0, 1fr) auto; }
+    .rows .pic { grid-column: 1 / -1; }
+  }
+  .pic { display: flex; align-items: center; min-height: 24px; overflow: hidden; }
+  .dot { width: 24px; height: 24px; border-radius: var(--spacing-radius-small); background: var(--c); box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--fg) 10%, transparent); }
+  .op { width: 40px; height: 24px; border-radius: var(--spacing-radius-small); background: var(--fg); }
+  .pic--opacity { background: repeating-conic-gradient(var(--ground) 0 25%, color-mix(in srgb, var(--fg) 10%, var(--ground)) 0 50%) 0 0 / 8px 8px; width: 40px; border-radius: var(--spacing-radius-small); }
+  .rad { width: 40px; height: 40px; border-top: 2px solid var(--accent); border-left: 2px solid var(--accent); }
+  .line { width: 120px; background: var(--accent); }
+  .bar { height: 8px; border-radius: 2px; background: var(--accent); min-width: 2px; }
+  .aa { font-family: var(--body); color: var(--fg); line-height: 1; }
+  .blur { position: relative; width: 64px; height: 32px; border-radius: var(--spacing-radius-small); background: repeating-linear-gradient(90deg, var(--accent) 0 6px, var(--fg) 6px 12px); overflow: hidden; }
+  .blur span { position: absolute; inset: 6px 12px; border-radius: 4px; }
+  .shadow { width: 56px; height: 28px; border-radius: var(--spacing-radius-small); background: var(--non-interactive-foreground-quadruple); }
+</style>
