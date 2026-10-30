@@ -1,0 +1,146 @@
+# yaml-language-server: $schema=../schema/component-contract.schema.json
+schemaVersion: 2
+id: illustration
+name: Illustration
+kind: component
+status: review
+summary: One of Rost's 24 small drawings, 72px, in its own greys and green.
+category: display
+related: [ icon, thumbs ]
+source:
+  tool: figma
+  fileKey: 1Zy0wiWKXQAvsfDBX3KR0d
+  nodeId: "41:570"
+  url: https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=41-570
+  extractedAt: "2026-10-30"
+  extractedBy: mcp
+  frozenAt: "2026-10-30"
+props:
+  name:
+    type: enum
+    values: [ activation-and-conversion, alignment, art, audit-and-strategy, best-idea, bridging-the-gaps, design-partner, design-system, design-system-leadership, efficiency, goal-focused, implementing, interactive-showcase, long-term-projects, mentoring, part-of-the-team, product-design, retention, scale-team, ship-best, simplicity-v-complexity, structured-system, timezones, ui ]
+    default: alignment
+    notes: "The file in `assets/illustrations/`, without `.svg`. Figma's `type` names, in lower case with dashes: \"Audit & Strategy\" is `audit-and-strategy`."
+  label: { type: slot, notes: "What the drawing stands for, when it carries meaning. Without one it's hidden from screen readers." }
+elements:
+  root:
+    notes: "A `<span>` with the drawing as its background. It keeps its own colours, so unlike an Icon it doesn't follow the text."
+    styles:
+      display: { value: inline-block, assert: false }
+      vertical-align: { value: middle, assert: false }
+      flex-shrink: { value: "0", assert: false }
+      width: { token: spacing/size/2xlarge, value: 72px }
+      height: { token: spacing/size/2xlarge, value: 72px }
+      background-position: { value: center, assert: false }
+      background-size: { value: contain, assert: false }
+      background-repeat: { value: no-repeat, assert: false }
+variants:
+  - when: { name: activation-and-conversion }
+    elements:
+      root:
+        background-image: { value: url(./svg/activation-and-conversion.svg), untokenised: "The drawing, `assets/illustrations/activation-and-conversion.svg` (Figma's \"Activation & conversion\"). Its colours are Figma's own." }
+  - when: { name: alignment }
+    elements:
+      root:
+        background-image: { value: url(./svg/alignment.svg), untokenised: "The drawing, `assets/illustrations/alignment.svg` (Figma's \"Alignment\"). Its colours are Figma's own." }
+  - when: { name: art }
+    elements:
+      root:
+        background-image: { value: url(./svg/art.svg), untokenised: "The drawing, `assets/illustrations/art.svg` (Figma's \"Art\"). Its colours are Figma's own." }
+  - when: { name: audit-and-strategy }
+    elements:
+      root:
+        background-image: { value: url(./svg/audit-and-strategy.svg), untokenised: "The drawing, `assets/illustrations/audit-and-strategy.svg` (Figma's \"Audit & Strategy\"). Its colours are Figma's own." }
+  - when: { name: best-idea }
+    elements:
+      root:
+        background-image: { value: url(./svg/best-idea.svg), untokenised: "The drawing, `assets/illustrations/best-idea.svg` (Figma's \"Best idea\"). Its colours are Figma's own." }
+  - when: { name: bridging-the-gaps }
+    elements:
+      root:
+        background-image: { value: url(./svg/bridging-the-gaps.svg), untokenised: "The drawing, `assets/illustrations/bridging-the-gaps.svg` (Figma's \"Bridging the gaps\"). Its colours are Figma's own." }
+  - when: { name: design-partner }
+    elements:
+      root:
+        background-image: { value: url(./svg/design-partner.svg), untokenised: "The drawing, `assets/illustrations/design-partner.svg` (Figma's \"Design partner\"). Its colours are Figma's own." }
+  - when: { name: design-system }
+    elements:
+      root:
+        background-image: { value: url(./svg/design-system.svg), untokenised: "The drawing, `assets/illustrations/design-system.svg` (Figma's \"Design system\"). Its colours are Figma's own." }
+  - when: { name: design-system-leadership }
+    elements:
+      root:
+        background-image: { value: url(./svg/design-system-leadership.svg), untokenised: "The drawing, `assets/illustrations/design-system-leadership.svg` (Figma's \"Design system leadership\"). Its colours are Figma's own." }
+  - when: { name: efficiency }
+    elements:
+      root:
+        background-image: { value: url(./svg/efficiency.svg), untokenised: "The drawing, `assets/illustrations/efficiency.svg` (Figma's \"Efficiency\"). Its colours are Figma's own." }
+  - when: { name: goal-focused }
+    elements:
+      root:
+        background-image: { value: url(./svg/goal-focused.svg), untokenised: "The drawing, `assets/illustrations/goal-focused.svg` (Figma's \"Goal focused\"). Its colours are Figma's own." }
+  - when: { name: implementing }
+    elements:
+      root:
+        background-image: { value: url(./svg/implementing.svg), untokenised: "The drawing, `assets/illustrations/implementing.svg` (Figma's \"Implementing\"). Its colours are Figma's own." }
+  - when: { name: interactive-showcase }
+    elements:
+      root:
+        background-image: { value: url(./svg/interactive-showcase.svg), untokenised: "The drawing, `assets/illustrations/interactive-showcase.svg` (Figma's \"Interactive showcase\"). Its colours are Figma's own." }
+  - when: { name: long-term-projects }
+    elements:
+      root:
+        background-image: { value: url(./svg/long-term-projects.svg), untokenised: "The drawing, `assets/illustrations/long-term-projects.svg` (Figma's \"Long term projects\"). Its colours are Figma's own." }
+  - when: { name: mentoring }
+    elements:
+      root:
+        background-image: { value: url(./svg/mentoring.svg), untokenised: "The drawing, `assets/illustrations/mentoring.svg` (Figma's \"Mentoring\"). Its colours are Figma's own." }
+  - when: { name: part-of-the-team }
+    elements:
+      root:
+        background-image: { value: url(./svg/part-of-the-team.svg), untokenised: "The drawing, `assets/illustrations/part-of-the-team.svg` (Figma's \"Part of the team\"). Its colours are Figma's own." }
+  - when: { name: product-design }
+    elements:
+      root:
+        background-image: { value: url(./svg/product-design.svg), untokenised: "The drawing, `assets/illustrations/product-design.svg` (Figma's \"Product design\"). Its colours are Figma's own." }
+  - when: { name: retention }
+    elements:
+      root:
+        background-image: { value: url(./svg/retention.svg), untokenised: "The drawing, `assets/illustrations/retention.svg` (Figma's \"Retention\"). Its colours are Figma's own." }
+  - when: { name: scale-team }
+    elements:
+      root:
+        background-image: { value: url(./svg/scale-team.svg), untokenised: "The drawing, `assets/illustrations/scale-team.svg` (Figma's \"Scale team\"). Its colours are Figma's own." }
+  - when: { name: ship-best }
+    elements:
+      root:
+        background-image: { value: url(./svg/ship-best.svg), untokenised: "The drawing, `assets/illustrations/ship-best.svg` (Figma's \"Ship best\"). Its colours are Figma's own." }
+  - when: { name: simplicity-v-complexity }
+    elements:
+      root:
+        background-image: { value: url(./svg/simplicity-v-complexity.svg), untokenised: "The drawing, `assets/illustrations/simplicity-v-complexity.svg` (Figma's \"Simplicity v Complexity\"). Its colours are Figma's own." }
+  - when: { name: structured-system }
+    elements:
+      root:
+        background-image: { value: url(./svg/structured-system.svg), untokenised: "The drawing, `assets/illustrations/structured-system.svg` (Figma's \"Structured system\"). Its colours are Figma's own." }
+  - when: { name: timezones }
+    elements:
+      root:
+        background-image: { value: url(./svg/timezones.svg), untokenised: "The drawing, `assets/illustrations/timezones.svg` (Figma's \"Timezones\"). Its colours are Figma's own." }
+  - when: { name: ui }
+    elements:
+      root:
+        background-image: { value: url(./svg/ui.svg), untokenised: "The drawing, `assets/illustrations/ui.svg` (Figma's \"UI\"). Its colours are Figma's own." }
+guidance:
+  status: proposed
+  use:
+    - Giving a card or a section a face, like the service cards on the portfolio site.
+  avoid:
+    - Standing in for an icon next to a label. That's **Icon**, which is smaller and takes the text colour.
+    - Stretching it. It's drawn for 72px; bigger and the lines get heavy.
+  behaviour: |-
+    A fixed 72px square. The drawing's colours are baked in, Figma's greys with one green, and they're made for a dark ground.
+  accessibility:
+    hidden: "Most of the time it's decoration beside a heading that says the same, so it's `aria-hidden=\"true\"`. That's the default."
+    labelled: "When it carries meaning on its own, pass `label`. It becomes `role=\"img\"` with that `aria-label`."
+  content: None. A label, when there is one, says what it stands for.

@@ -6,12 +6,12 @@ Every value in every contract, sorted by why it has a token or doesn't. A value 
 
 | | Values | Share | Meaning |
 |---|---|---|---|
-| Has a token | 1004 | 60% | Uses a token, and the check tests it. |
+| Has a token | 1012 | 58% | Uses a token, and the check tests it. |
 | Token suggested | 0 | 0% | A token I want that doesn't exist yet. The freeze turned every other suggestion into a token. |
-| How Figma builds it | 468 | 28% | How Figma builds the layer (position, inset, which sides get a stroke). Nothing to tokenise. |
-| Figma frame size | 133 | 8% | A root size that is just the Figma frame. Written down, not checked. |
-| No token, on purpose | 53 | 3% | Plain on purpose, and the contract says why. |
-| Open gap | 28 | 2% | No token and no reason. Each one needs a decision from me. |
+| How Figma builds it | 474 | 27% | How Figma builds the layer (position, inset, which sides get a stroke). Nothing to tokenise. |
+| Figma frame size | 139 | 8% | A root size that is just the Figma frame. Written down, not checked. |
+| No token, on purpose | 95 | 5% | Plain on purpose, and the contract says why. |
+| Open gap | 29 | 2% | No token and no reason. Each one needs a decision from me. |
 
 ## By contract
 
@@ -24,7 +24,9 @@ Every value in every contract, sorted by why it has a token or doesn't. A value 
 | [Divider](components/divider.md) | 2 | · | 2 | 2 | · | · |
 | [Floating effect](components/effect-floating.md) | 1 | · | · | · | · | · |
 | [Hero Media](components/hero-media.md) | 6 | · | 9 | 2 | · | · |
+| [Icon](components/icon.md) | 6 | · | 3 | 3 | 18 | 1 |
 | [IconButton](components/icon-button.md) | 87 | · | 32 | 7 | 6 | 2 |
+| [Illustration](components/illustration.md) | 2 | · | 3 | 3 | 24 | · |
 | [InlineBanner](components/inline-banner.md) | 44 | · | 34 | · | · | · |
 | [Input](components/input.md) | 155 | · | 35 | 20 | 4 | 3 |
 | [ListItem](components/list-item.md) | 99 | · | 32 | 10 | 2 | 1 |
@@ -101,6 +103,8 @@ Sizes and offsets that belong to one component, at a number no size token has.
 
 | Where | Part | Value | Why |
 |---|---|---|---|
+| [Icon](components/icon.md) | `root.mask-image` | `url(./svg/arrow-down.svg)` and 17 more, one per state | The icon file, `assets/icons/arrow-down.svg`. |
+| [Illustration](components/illustration.md) | `root.background-image` | `url(./svg/activation-and-conversion.svg)` and 23 more, one per state | The drawing, `assets/illustrations/activation-and-conversion.svg` (Figma's "Activation & conversion"). Its colours are Figma's own. |
 | [Input](components/input.md) | `supportive.top` | `calc(var(--spacing-size-large) + var(--spacing-gap-2xsmall))` | Composed from tokens: the field's height plus spacing/gap/2xsmall. |
 | [ListItem](components/list-item.md) | `root.width` | `100%` | As wide as its list. Figma's sample is 208px. |
 | [ListItem](components/list-item.md) | `background.inset` | `4px` | Figma's own 4px inset of the plate. |
@@ -134,6 +138,7 @@ The paper effect's numbers, tuned for how the dots move. Only the paper uses the
 - [Button](components/button.md) `focus-ring.border-style` = `solid`
 - [Carousel](components/carousel.md) `focus-ring.border-style` = `solid`
 - [Chip](components/chips.md) `focus-ring.border-style` = `solid`
+- [Icon](components/icon.md) `root.background` = `currentColor`
 - [IconButton](components/icon-button.md) `glyph.background` = `currentColor`
 - [IconButton](components/icon-button.md) `focus-ring.border-style` = `solid`
 - [Input](components/input.md) `outline.border-style` = `solid`

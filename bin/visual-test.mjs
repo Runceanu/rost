@@ -215,13 +215,15 @@ for (const id of ids) {
   }
 
   console.log(`\n${id}`)
-  const byNode = Object.fromEntries((manifest[id] ?? []).map((v) => [v.nodeId, v]))
+  // Icon and Illustration are built from Figma's asset sets, which have plural names.
+  const set = { icon: 'icons', illustration: 'illustrations' }[id] ?? id
+  const byNode = Object.fromEntries((manifest[set] ?? []).map((v) => [v.nodeId, v]))
   const nodes = await page.$$eval('[data-node]', (els) => els.map((e) => e.dataset.node))
   if (!nodes.length) console.log('  no fixtures yet: nothing to compare with')
   compared += nodes.length
   for (const node of nodes) {
     const target = byNode[node]
-    const basePath = target && join(root, 'baseline', id, target.file)
+    const basePath = target && join(root, 'baseline', set, target.file)
     if (!basePath || !existsSync(basePath)) { console.log(`  ?    ${node}  no Figma screenshot to compare with`); compared--; continue }
     const el = await page.$(`[data-node="${node}"] > *`)
     if (!el) { failed++; failing.push({ variant: target.name, why: 'renders nothing' }); console.log(`  FAIL ${target.name.padEnd(30)} rendered nothing`); continue }

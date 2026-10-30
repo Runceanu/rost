@@ -1,0 +1,102 @@
+/* Generated from contracts/icon.contract.yaml by bin/build-css.mjs. Don't edit: change the contract and rebuild. */
+
+.rost-icon, .rost-icon * { box-sizing: border-box; margin: 0; }
+.rost-icon > img, .rost-icon [class*="__icons-"] > img { display: block; position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; }
+.rost-icon ::placeholder { color: inherit; opacity: 1; }
+
+.rost-icon {
+  display: inline-block;
+  vertical-align: middle;
+  flex-shrink: 0;
+  background: currentColor;
+  mask-position: center;
+  mask-size: contain;
+  mask-repeat: no-repeat;
+}
+
+.rost-icon.rost-icon--size-medium {
+  width: var(--spacing-size-small);
+  height: var(--spacing-size-small);
+}
+
+.rost-icon.rost-icon--size-small {
+  width: var(--spacing-size-xsmall);
+  height: var(--spacing-size-xsmall);
+}
+
+.rost-icon.rost-icon--size-xsmall {
+  width: var(--spacing-size-2xsmall);
+  height: var(--spacing-size-2xsmall);
+}
+
+.rost-icon.rost-icon--name-arrow-down {
+  mask-image: url(./svg/arrow-down.svg);
+}
+
+.rost-icon.rost-icon--name-arrow-down-left {
+  mask-image: url(./svg/arrow-down-left.svg);
+}
+
+.rost-icon.rost-icon--name-arrow-left {
+  mask-image: url(./svg/arrow-left.svg);
+}
+
+.rost-icon.rost-icon--name-arrow-right {
+  mask-image: url(./svg/arrow-right.svg);
+}
+
+.rost-icon.rost-icon--name-arrow-up {
+  mask-image: url(./svg/arrow-up.svg);
+}
+
+.rost-icon.rost-icon--name-chevron-down {
+  mask-image: url(./svg/chevron-down.svg);
+}
+
+.rost-icon.rost-icon--name-chevron-left {
+  mask-image: url(./svg/chevron-left.svg);
+}
+
+.rost-icon.rost-icon--name-chevron-right {
+  mask-image: url(./svg/chevron-right.svg);
+}
+
+.rost-icon.rost-icon--name-chevron-up {
+  mask-image: url(./svg/chevron-up.svg);
+}
+
+.rost-icon.rost-icon--name-circle-outline {
+  mask-image: url(./svg/circle-outline.svg);
+}
+
+.rost-icon.rost-icon--name-desktop {
+  mask-image: url(./svg/desktop.svg);
+}
+
+.rost-icon.rost-icon--name-dot {
+  mask-image: url(./svg/dot.svg);
+}
+
+.rost-icon.rost-icon--name-down-right {
+  mask-image: url(./svg/down-right.svg);
+}
+
+.rost-icon.rost-icon--name-drag {
+  mask-image: url(./svg/drag.svg);
+}
+
+.rost-icon.rost-icon--name-mobile {
+  mask-image: url(./svg/mobile.svg);
+}
+
+.rost-icon.rost-icon--name-scroll {
+  mask-image: url(./svg/scroll.svg);
+}
+
+.rost-icon.rost-icon--name-up-left {
+  mask-image: url(./svg/up-left.svg);
+}
+
+.rost-icon.rost-icon--name-up-right {
+  mask-image: url(./svg/up-right.svg);
+}

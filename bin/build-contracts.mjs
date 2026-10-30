@@ -83,7 +83,8 @@ function keep(next, prev) {
 const keepAll = (next, prev) => Object.fromEntries(Object.entries(next).map(([prop, v]) => [prop, keep(v, prev?.[prop])]))
 
 for (const [id, variants] of Object.entries(parsed)) {
-  // Only named component sets get a contract. Icons and illustrations are assets.
+  // Only named component sets get a contract. Icon and Illustration are built
+  // from the icons and illustrations sets by hand, so this leaves them alone.
   const set = COMPONENTS[id]
   if (!set) continue
 

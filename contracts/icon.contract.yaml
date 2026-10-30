@@ -1,0 +1,143 @@
+# yaml-language-server: $schema=../schema/component-contract.schema.json
+schemaVersion: 2
+id: icon
+name: Icon
+kind: component
+status: review
+summary: One of Rost's 18 glyphs, 24px, in the colour of the text around it.
+category: display
+related: [ icon-button, button, illustration ]
+source:
+  tool: figma
+  fileKey: 1Zy0wiWKXQAvsfDBX3KR0d
+  nodeId: "92:15"
+  url: https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=92-15
+  extractedAt: "2026-10-30"
+  extractedBy: mcp
+  frozenAt: "2026-10-30"
+props:
+  name:
+    type: enum
+    values: [ arrow-down, arrow-down-left, arrow-left, arrow-right, arrow-up, chevron-down, chevron-left, chevron-right, chevron-up, circle-outline, desktop, dot, down-right, drag, mobile, scroll, up-left, up-right ]
+    default: arrow-right
+    notes: "The file in `assets/icons/`, without `.svg`. Figma calls it `icons/<name>`. `circle-outline` is a file with no frame in Figma's set."
+  size:
+    type: enum
+    values: [ Medium, Small, XSmall ]
+    default: Medium
+    notes: "Medium is Figma's 24px. Small (20px) is the slot Button and IconButton give an icon, XSmall (16px) the one on IconButton's Project type."
+  label: { type: slot, notes: "What the icon means, when nothing else says it. With a label it's `role=\"img\"`; without one it's hidden from screen readers." }
+elements:
+  root:
+    notes: "A `<span>` filled with `currentColor` and cut to the icon's shape by a mask, so one file draws in any colour and follows a button's states."
+    styles:
+      display: { value: inline-block, assert: false }
+      vertical-align: { value: middle, assert: false }
+      flex-shrink: { value: "0", assert: false }
+      background: { value: currentColor }
+      mask-position: { value: center, assert: false }
+      mask-size: { value: contain, assert: false }
+      mask-repeat: { value: no-repeat, assert: false }
+variants:
+  - when: { size: Medium }
+    elements:
+      root:
+        width: { token: spacing/size/small, value: 24px }
+        height: { token: spacing/size/small, value: 24px }
+  - when: { size: Small }
+    elements:
+      root:
+        width: { token: spacing/size/xsmall, value: 20px }
+        height: { token: spacing/size/xsmall, value: 20px }
+  - when: { size: XSmall }
+    elements:
+      root:
+        width: { token: spacing/size/2xsmall, value: 16px }
+        height: { token: spacing/size/2xsmall, value: 16px }
+  - when: { name: arrow-down }
+    elements:
+      root:
+        mask-image: { value: url(./svg/arrow-down.svg), untokenised: "The icon file, `assets/icons/arrow-down.svg`." }
+  - when: { name: arrow-down-left }
+    elements:
+      root:
+        mask-image: { value: url(./svg/arrow-down-left.svg), untokenised: "The icon file, `assets/icons/arrow-down-left.svg`." }
+  - when: { name: arrow-left }
+    elements:
+      root:
+        mask-image: { value: url(./svg/arrow-left.svg), untokenised: "The icon file, `assets/icons/arrow-left.svg`." }
+  - when: { name: arrow-right }
+    elements:
+      root:
+        mask-image: { value: url(./svg/arrow-right.svg), untokenised: "The icon file, `assets/icons/arrow-right.svg`." }
+  - when: { name: arrow-up }
+    elements:
+      root:
+        mask-image: { value: url(./svg/arrow-up.svg), untokenised: "The icon file, `assets/icons/arrow-up.svg`." }
+  - when: { name: chevron-down }
+    elements:
+      root:
+        mask-image: { value: url(./svg/chevron-down.svg), untokenised: "The icon file, `assets/icons/chevron-down.svg`." }
+  - when: { name: chevron-left }
+    elements:
+      root:
+        mask-image: { value: url(./svg/chevron-left.svg), untokenised: "The icon file, `assets/icons/chevron-left.svg`." }
+  - when: { name: chevron-right }
+    elements:
+      root:
+        mask-image: { value: url(./svg/chevron-right.svg), untokenised: "The icon file, `assets/icons/chevron-right.svg`." }
+  - when: { name: chevron-up }
+    elements:
+      root:
+        mask-image: { value: url(./svg/chevron-up.svg), untokenised: "The icon file, `assets/icons/chevron-up.svg`." }
+  - when: { name: circle-outline }
+    elements:
+      root:
+        mask-image: { value: url(./svg/circle-outline.svg), untokenised: "The icon file, `assets/icons/circle-outline.svg`." }
+  - when: { name: desktop }
+    elements:
+      root:
+        mask-image: { value: url(./svg/desktop.svg), untokenised: "The icon file, `assets/icons/desktop.svg`." }
+  - when: { name: dot }
+    elements:
+      root:
+        mask-image: { value: url(./svg/dot.svg), untokenised: "The icon file, `assets/icons/dot.svg`." }
+  - when: { name: down-right }
+    elements:
+      root:
+        mask-image: { value: url(./svg/down-right.svg), untokenised: "The icon file, `assets/icons/down-right.svg`." }
+  - when: { name: drag }
+    elements:
+      root:
+        mask-image: { value: url(./svg/drag.svg), untokenised: "The icon file, `assets/icons/drag.svg`." }
+  - when: { name: mobile }
+    elements:
+      root:
+        mask-image: { value: url(./svg/mobile.svg), untokenised: "The icon file, `assets/icons/mobile.svg`." }
+  - when: { name: scroll }
+    elements:
+      root:
+        mask-image: { value: url(./svg/scroll.svg), untokenised: "The icon file, `assets/icons/scroll.svg`." }
+  - when: { name: up-left }
+    elements:
+      root:
+        mask-image: { value: url(./svg/up-left.svg), untokenised: "The icon file, `assets/icons/up-left.svg`." }
+  - when: { name: up-right }
+    elements:
+      root:
+        mask-image: { value: url(./svg/up-right.svg), untokenised: "The icon file, `assets/icons/up-right.svg`." }
+guidance:
+  status: proposed
+  use:
+    - Next to a label, when the shape says the same thing faster. An arrow on "Back", a chevron on something that opens.
+    - Inside Button and IconButton, through their `icon` slot, at Small.
+  avoid:
+    - On its own as something to press. That's **IconButton**, which gives it a target and states.
+    - A picture with no job next to words. That's an **Illustration**, which keeps its own colours.
+    - A glyph Rost doesn't have. Add the SVG to `assets/icons/` and Figma's set first, so they stay the same list.
+  behaviour: |-
+    It takes the text colour it sits in. Figma draws them in `non-interactive/foreground/tertiary` (#999999); inside a Button it's the button's icon colour, state by state. The shapes are Figma's exports, kept as they are.
+  accessibility:
+    hidden: "Next to words that say the same, it's `aria-hidden=\"true\"`. That's the default."
+    labelled: "On its own and meaningful, pass `label`. It becomes `role=\"img\"` with that `aria-label`."
+  content: A label names what it means, not what it looks like. "Next", not "Right arrow".

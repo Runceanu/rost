@@ -13,7 +13,7 @@ Rost started as a design system for my own needs and grew into a product of its 
 | [Roadmap](ROADMAP.md) | What I'm doing next |
 | [Release notes](CHANGELOG.md) | What changed in each release |
 
-**27** contracts, **5** stable. **27** have guidance, and I've signed off **25** of those.
+**29** contracts, **5** stable. **29** have guidance, and I've signed off **25** of those.
 
 ## Catalogue
 
@@ -26,7 +26,9 @@ Rost started as a design system for my own needs and grew into a product of its 
 | [Carousel](components/carousel.md) | A card for a carousel: a number, a title and a short description. | `review` | `agreed` | Portfolio site |
 | [Chip](components/chips.md) | A small outlined label you can click, for filters and quick choices. | `review` | `agreed` | Portfolio site |
 | [Divider](components/divider.md) | A thin line between things. | `stable` | `agreed` | Portfolio site, Accounting app |
+| [Icon](components/icon.md) | One of Rost's 18 glyphs, 24px, in the colour of the text around it. | `review` | `proposed` | · |
 | [IconButton](components/icon-button.md) | A round button with only an icon, including a Project type for sitting on top of images. | `review` | `agreed` | Portfolio site |
+| [Illustration](components/illustration.md) | One of Rost's 24 small drawings, 72px, in its own greys and green. | `review` | `proposed` | · |
 | [InlineBanner](components/inline-banner.md) | A filled status pill with an icon and a label, in four statuses and two sizes. | `stable` | `agreed` | Portfolio site, Accounting app |
 | [Input](components/input.md) | A 56px text field with a floating label, an optional lock icon, a line of help text and an error state. | `review` | `agreed` | Portfolio site, Accounting app |
 | [ListItem](components/list-item.md) | One row you can pick in a list or a nav. A label, an optional line under it, and optional icons and a status dot. | `review` | `agreed` | · |

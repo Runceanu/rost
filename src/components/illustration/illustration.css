@@ -1,0 +1,112 @@
+/* Generated from contracts/illustration.contract.yaml by bin/build-css.mjs. Don't edit: change the contract and rebuild. */
+
+.rost-illustration, .rost-illustration * { box-sizing: border-box; margin: 0; }
+.rost-illustration > img, .rost-illustration [class*="__icons-"] > img { display: block; position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; }
+.rost-illustration ::placeholder { color: inherit; opacity: 1; }
+
+.rost-illustration {
+  display: inline-block;
+  vertical-align: middle;
+  flex-shrink: 0;
+  width: var(--spacing-size-2xlarge);
+  height: var(--spacing-size-2xlarge);
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.rost-illustration.rost-illustration--name-activation-and-conversion {
+  background-image: url(./svg/activation-and-conversion.svg);
+}
+
+.rost-illustration.rost-illustration--name-alignment {
+  background-image: url(./svg/alignment.svg);
+}
+
+.rost-illustration.rost-illustration--name-art {
+  background-image: url(./svg/art.svg);
+}
+
+.rost-illustration.rost-illustration--name-audit-and-strategy {
+  background-image: url(./svg/audit-and-strategy.svg);
+}
+
+.rost-illustration.rost-illustration--name-best-idea {
+  background-image: url(./svg/best-idea.svg);
+}
+
+.rost-illustration.rost-illustration--name-bridging-the-gaps {
+  background-image: url(./svg/bridging-the-gaps.svg);
+}
+
+.rost-illustration.rost-illustration--name-design-partner {
+  background-image: url(./svg/design-partner.svg);
+}
+
+.rost-illustration.rost-illustration--name-design-system {
+  background-image: url(./svg/design-system.svg);
+}
+
+.rost-illustration.rost-illustration--name-design-system-leadership {
+  background-image: url(./svg/design-system-leadership.svg);
+}
+
+.rost-illustration.rost-illustration--name-efficiency {
+  background-image: url(./svg/efficiency.svg);
+}
+
+.rost-illustration.rost-illustration--name-goal-focused {
+  background-image: url(./svg/goal-focused.svg);
+}
+
+.rost-illustration.rost-illustration--name-implementing {
+  background-image: url(./svg/implementing.svg);
+}
+
+.rost-illustration.rost-illustration--name-interactive-showcase {
+  background-image: url(./svg/interactive-showcase.svg);
+}
+
+.rost-illustration.rost-illustration--name-long-term-projects {
+  background-image: url(./svg/long-term-projects.svg);
+}
+
+.rost-illustration.rost-illustration--name-mentoring {
+  background-image: url(./svg/mentoring.svg);
+}
+
+.rost-illustration.rost-illustration--name-part-of-the-team {
+  background-image: url(./svg/part-of-the-team.svg);
+}
+
+.rost-illustration.rost-illustration--name-product-design {
+  background-image: url(./svg/product-design.svg);
+}
+
+.rost-illustration.rost-illustration--name-retention {
+  background-image: url(./svg/retention.svg);
+}
+
+.rost-illustration.rost-illustration--name-scale-team {
+  background-image: url(./svg/scale-team.svg);
+}
+
+.rost-illustration.rost-illustration--name-ship-best {
+  background-image: url(./svg/ship-best.svg);
+}
+
+.rost-illustration.rost-illustration--name-simplicity-v-complexity {
+  background-image: url(./svg/simplicity-v-complexity.svg);
+}
+
+.rost-illustration.rost-illustration--name-structured-system {
+  background-image: url(./svg/structured-system.svg);
+}
+
+.rost-illustration.rost-illustration--name-timezones {
+  background-image: url(./svg/timezones.svg);
+}
+
+.rost-illustration.rost-illustration--name-ui {
+  background-image: url(./svg/ui.svg);
+}

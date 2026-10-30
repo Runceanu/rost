@@ -1,33 +1,125 @@
 ---
 import Base from '../layouts/Base.astro'
-import { GITHUB } from '../lib/kit'
+import { Code } from 'astro:components'
+import { GITHUB, readRepo } from '../lib/kit'
+import { Icon, ICON_NAMES } from '../../../src/components/icon/Icon'
+import { Illustration, ILLUSTRATION_NAMES } from '../../../src/components/illustration/Illustration'
+import { usage as iconUsage } from '../../../src/components/icon/icon.fixtures'
+import { usage as illoUsage } from '../../../src/components/illustration/illustration.fixtures'
 
-const pick = (files: Record<string, string>) =>
-  Object.entries(files).map(([p, url]) => ({ name: p.split('/').pop()!.replace('.svg', ''), url })).sort((a, b) => a.name.localeCompare(b.name))
-const icons = pick(import.meta.glob('../../../assets/icons/*.svg', { query: '?url', import: 'default', eager: true }) as Record<string, string>)
-const illustrations = pick(import.meta.glob('../../../assets/illustrations/*.svg', { query: '?url', import: 'default', eager: true }) as Record<string, string>)
+const sets = JSON.parse(readRepo('registry/component-sets.json'))
+const slug = (s: string) => s.replace(/&/g, 'and').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')
+const figmaIcon = Object.fromEntries(sets.icons.variants.map((v: any) => [v.name.split('/').pop(), v]))
+const figmaIllo = Object.fromEntries(sets.illustrations.variants.map((v: any) => [slug(v.name.split('=')[1]), v]))
+const figma = (node: string) => `https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=${node.replace(':', '-')}`
+// The SVG as exported, without Figma's inline style and layer ids, which a caller doesn't need.
+const svg = (path: string) => readRepo(path).replace(/ preserveAspectRatio="none" overflow="visible" style="display: block;"/, '').replace(/ id="[^"]*"/g, '').trim()
+
+const icons = ICON_NAMES.map((name) => ({
+  name,
+  figma: figmaIcon[name],
+  react: `import { Icon } from 'rost/components/icon/Icon'\n\n<Icon name="${name}" />`,
+  html: `<!-- with rost/components/icon/icon.css loaded -->\n<span class="rost-icon rost-icon--name-${name} rost-icon--size-medium" aria-hidden="true"></span>`,
+  svg: svg(`assets/icons/${name}.svg`),
+}))
+const illustrations = ILLUSTRATION_NAMES.map((name) => ({
+  name,
+  figma: figmaIllo[name],
+  react: `import { Illustration } from 'rost/components/illustration/Illustration'\n\n<Illustration name="${name}" />`,
+  html: `<!-- with rost/components/illustration/illustration.css loaded -->\n<span class="rost-illustration rost-illustration--name-${name}" aria-hidden="true"></span>`,
+  svg: svg(`assets/illustrations/${name}.svg`),
+}))
+const kinds = [
+  { id: 'icon', title: 'Icons', items: icons, usage: iconUsage, file: 'assets/icons', blurb: 'Each one is a mask filled with the text colour, so it follows a button through its states. 24px by default; `size="small"` is the 20px slot Button and IconButton use.' },
+  { id: 'illustration', title: 'Illustrations', items: illustrations, usage: illoUsage, file: 'assets/illustrations', blurb: 'Drawn at 72px in Figma\'s greys and one green, for a dark ground. They keep their own colours.' },
+]
 ---
 <Base title="Icons · Rost">
   <div class="kicker">Foundations</div>
   <h1>Icons and illustrations</h1>
-  <p class="lede">{icons.length} icons and {illustrations.length} illustrations, exported from Figma as SVG.</p>
-  <p class="muted">They live in <a href={`${GITHUB}/tree/master/assets`} target="_blank" rel="noreferrer"><code>assets/</code></a> on GitHub. Click one to open the file.</p>
+  <p class="lede">{icons.length} icons and {illustrations.length} illustrations from Figma, each a Rost component with a contract. Pick one to see how to use it.</p>
 
-  <h2>Icons</h2>
-  <div class="tiles">
-    {icons.map((i) => <a class="tile" href={i.url} target="_blank" rel="noreferrer"><span class="art"><img src={i.url} alt="" width="24" height="24" /></span><span>{i.name}</span></a>)}
-  </div>
+  {kinds.map((k) => (
+    <section class="set" data-set={k.id}>
+      <h2>{k.title}</h2>
+      <p class="blurb" set:html={k.blurb.replace(/`([^`]+)`/g, '<code>$1</code>')} />
+      <div class="how">
+        <Code code={k.usage} lang="tsx" theme="vesper" />
+        <p class="links">
+          <a href={`/components/${k.id}/`}>The {k.id === 'icon' ? 'Icon' : 'Illustration'} contract</a>
+          <a href={`${GITHUB}/tree/master/${k.file}`} target="_blank" rel="noreferrer"><code>{k.file}/</code> on GitHub</a>
+        </p>
+      </div>
 
-  <h2>Illustrations</h2>
-  <div class="tiles tiles--big">
-    {illustrations.map((i) => <a class="tile" href={i.url} target="_blank" rel="noreferrer"><span class="art"><img src={i.url} alt="" width="72" height="72" /></span><span>{i.name.replace(/-/g, ' ')}</span></a>)}
-  </div>
+      <div class={`tiles tiles--${k.id}`} role="listbox" aria-label={k.title}>
+        {k.items.map((i, n) => (
+          <button type="button" class="tile" role="option" aria-selected={n === 0 ? 'true' : 'false'} data-pick={i.name}>
+            <span class="art">{k.id === 'icon' ? <Icon name={i.name as any} /> : <Illustration name={i.name as any} />}</span>
+            <span class="tname">{i.name}</span>
+          </button>
+        ))}
+      </div>
+
+      {k.items.map((i, n) => (
+        <div class="detail" data-detail={i.name} hidden={n !== 0}>
+          <div class="big">{k.id === 'icon' ? <span class="big-icon"><Icon name={i.name as any} /></span> : <Illustration name={i.name as any} />}</div>
+          <div class="info">
+            <h3><code>{i.name}</code></h3>
+            <p class="meta">
+              {i.figma
+                ? <a href={figma(i.figma.nodeId)} target="_blank" rel="noreferrer">Figma <code>{i.figma.name}</code></a>
+                : <span>No frame in Figma's set yet.</span>}
+              <a href={`${GITHUB}/blob/master/${k.file}/${i.name}.svg`} target="_blank" rel="noreferrer"><code>{i.name}.svg</code></a>
+            </p>
+            <h4>React</h4>
+            <Code code={i.react} lang="tsx" theme="vesper" />
+            <h4>HTML and CSS</h4>
+            <Code code={i.html} lang="html" theme="vesper" />
+            <details>
+              <summary>The SVG</summary>
+              <Code code={i.svg} lang="svg" theme="vesper" />
+            </details>
+          </div>
+        </div>
+      ))}
+    </section>
+  ))}
 </Base>
+<script>
+  for (const set of document.querySelectorAll<HTMLElement>('.set')) {
+    set.addEventListener('click', (e) => {
+      const tile = (e.target as HTMLElement).closest<HTMLElement>('[data-pick]')
+      if (!tile) return
+      for (const t of set.querySelectorAll('[data-pick]')) t.setAttribute('aria-selected', String(t === tile))
+      for (const d of set.querySelectorAll<HTMLElement>('[data-detail]')) d.hidden = d.dataset.detail !== tile.dataset.pick
+    })
+  }
+</script>
 <style>
-  .tiles { display: grid; gap: var(--spacing-gap-small); grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); }
-  .tiles--big { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); }
-  .tile { display: flex; flex-direction: column; align-items: center; gap: var(--spacing-gap-small); padding: var(--spacing-gap-medium) var(--spacing-gap-small); border-radius: var(--spacing-radius-medium); background: var(--surface); text-decoration: none; color: var(--fg-3); font-family: var(--mono); font-size: 11.5px; text-align: center; }
-  .tile:hover { color: var(--fg); border-color: color-mix(in srgb, var(--fg) 28%, transparent); }
+  .blurb { max-width: 70ch; color: var(--fg-2); }
+  .how { display: grid; gap: var(--spacing-gap-small); margin: var(--spacing-gap-medium) 0 var(--spacing-gap-large); }
+  .links { display: flex; flex-wrap: wrap; gap: var(--spacing-gap-medium); margin: 0; font-size: 14px; }
+  .links a, .meta a { color: var(--accent); }
+  .tiles { display: grid; gap: var(--spacing-gap-small); grid-template-columns: repeat(auto-fill, minmax(112px, 1fr)); }
+  .tiles--illustration { grid-template-columns: repeat(auto-fill, minmax(148px, 1fr)); }
+  .tile { display: flex; flex-direction: column; align-items: center; gap: var(--spacing-gap-small); padding: var(--spacing-gap-medium) var(--spacing-gap-small); border: 0; border-radius: var(--spacing-radius-medium); background: var(--surface); color: var(--fg-3); font: 11.5px var(--mono); text-align: center; cursor: pointer; min-width: 0; }
+  .tile .art { color: var(--non-interactive-foreground-tertiary); }
+  .tile:hover, .tile[aria-selected="true"] { color: var(--fg); }
+  .tile:hover .art, .tile[aria-selected="true"] .art { color: var(--fg); }
+  .tile[aria-selected="true"] { box-shadow: inset 0 0 0 1px var(--accent); }
+  .tile:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .tname { overflow-wrap: anywhere; }
   .art { display: grid; place-items: center; min-height: var(--spacing-size-2xlarge); }
-  .muted a { color: var(--accent); }
+  .detail { display: grid; grid-template-columns: 200px minmax(0, 1fr); gap: var(--spacing-gap-large); margin-top: var(--spacing-gap-medium); padding: var(--spacing-gap-large); border-radius: var(--spacing-radius-large); background: var(--surface); }
+  .detail[hidden] { display: none; }
+  .big { display: grid; place-items: center; min-height: 200px; border-radius: var(--spacing-radius-medium); background: var(--ground); color: var(--fg); }
+  .big-icon { display: contents; }
+  .big-icon :global(.rost-icon) { width: 96px; height: 96px; }
+  .info { min-width: 0; }
+  .info h3 { margin: 0; }
+  .info h4 { margin: var(--spacing-gap-medium) 0 var(--spacing-gap-xsmall); font-size: 13px; font-weight: 500; color: var(--fg); }
+  .meta { display: flex; flex-wrap: wrap; gap: var(--spacing-gap-medium); margin: var(--spacing-gap-xsmall) 0 0; font-size: 14px; color: var(--fg-3); }
+  details { margin-top: var(--spacing-gap-medium); }
+  summary { cursor: pointer; font-size: 13px; color: var(--fg-2); }
+  @media (max-width: 640px) { .detail { grid-template-columns: 1fr; padding: var(--spacing-gap-medium); } .big { min-height: 140px; } }
 </style>
