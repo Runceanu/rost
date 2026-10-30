@@ -26,7 +26,7 @@
 
 ## Behaviour
 
-`filter: blur(8px)` blurs the element's own content. Thumb is the opposite: it blurs what's behind it. In Figma the blur is tied to `spacing/base-8`, which isn't in `tokens.css`, so the code uses `--effect-lock-frame` instead.
+`filter: blur(8px)` blurs the element's own content. Thumb is the opposite: it blurs what's behind it. In Figma the blur is tied to `spacing/base-8`, a spacing token, so the code uses its own `--effect-lock-frame` instead.
 
 ## Accessibility
 

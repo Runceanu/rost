@@ -17,6 +17,7 @@
 | Prop | Type | Values | Default |
 |---|---|---|---|
 | `selected` | boolean |  | `false` |
+| `icon` | slot |  |  |
 | `label` | slot |  |  |
 | `labelled` | boolean |  | `false` |
 

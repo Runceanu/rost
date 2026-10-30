@@ -4,6 +4,13 @@ What changed each time I merged into `master` and put rost.build live. Newest fi
 
 ## 2026-10-30
 
+- **Contracts say what the code does.** From the review of every component:
+  - Tooltip's 20px height is `spacing/size/xsmall` now, not "no token". It still matches Figma.
+  - IconButton and Toggle list their `icon` slot.
+  - Button and IconButton note that React calls `type` `variant`; Projects and Thumbs note `showKind`.
+  - Button's guidance says the whole button fades when disabled, label and all.
+  - IconButton's guidance says why Project is 32px when the others keep a 40px floor.
+  - Thumbs' focus ring is 4px out, as drawn. The Thumb effect lists Navigation, which uses it, and the Lock frame effect no longer says `spacing/base-8` is missing.
 - **The accounting app is on current Rost.** Every copy is up to date (the disabled-hover fix and variants as layers came with them), its tokens are Rost's whole file (its old copy had `spacing/base-8` at 8px, not 16), and its contract test checks every whole variant, 289 tests in all. Its text fields are Rost's Input now, so the label, the value, the help line and the focus ring match the contract, and the help line is tied to the field for screen readers. A mismatched passphrase marks the Confirm field, not the first one.
 - **The accounting app's signed-in screens, checked on a phone.** I walked setup, the dashboard and the past years with a throwaway vault and invented statements. Four things widened or broke the page on a phone, and they're fixed: the setup questions used whole sentences as field labels (each question is text above its field now, with a short label in it), a sentence-long InlineBanner ran off the screen (it wraps now, recorded as a deviation), an amount broke its minus sign onto its own line, and a badge sat over its date. The setup steps' numbers fit their circles too.
 - **Input says how much room its help line needs.** It hangs below the 56px field, so a layout leaves 16px under a field that has one. The accounting app's lock screen ran the line into the next field before.

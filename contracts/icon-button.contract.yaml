@@ -20,6 +20,8 @@ props:
     type: enum
     values: [ Primary, Project, Secondary, Tertiary ]
     default: Primary
+    notes: "In React it's `variant`, so it can't be mistaken for a `<button>`'s own `type`."
+  icon: { type: slot, notes: "The glyph. Figma's arrow by default. Draw it with `currentColor`." }
 states: [ Default, Hover, Pressed, Focus, Disabled ]
 elements:
   root:
@@ -315,7 +317,7 @@ guidance:
     - Any icon that isn't instantly obvious. Use **Button** with a label, an icon isn't one.
     - On/off or one-of-many choices. That's **Toggle**. IconButton does something, it doesn't remember anything.
   behaviour: |-
-    `type` is `Primary`, `Secondary`, `Tertiary` or `Project`. States come from the browser like every other action. Don't shrink it below 40px, fingers need the room.
+    `type` is `Primary`, `Secondary`, `Tertiary` or `Project`. States come from the browser like every other action. Primary, Secondary and Tertiary are 40px, and that's the floor: fingers need the room. Project is 32px because it sits inside a project row, and the whole row is the target there.
   accessibility:
     element: "`<button type=\"button\">`."
     name: |-

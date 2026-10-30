@@ -14,15 +14,15 @@
 
 ## Anatomy
 
-- `root`: Whatever the style is applied to: the frosted text panel on a project thumbnail. Thumbs and Carousel both use it.
+- `root`: Whatever the style is applied to: the frosted text panel on a project thumbnail, and the panel behind the side navigation. Thumbs, Carousel and Navigation use it.
 
 ## When to use
 
-- The text panel on a project thumbnail, in Thumbs and Carousel.
+- The text panel on a project thumbnail, in Thumbs and Carousel, and Navigation's panel.
 
 ## When not to use
 
-- Navigation. That's the **Menu effect**.
+- A menu that opens over the page. That's the **Menu effect**.
 
 ## Behaviour
 

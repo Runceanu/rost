@@ -19,6 +19,7 @@ props:
   selected:
     type: boolean
     default: false
+  icon: { type: slot, notes: "The glyph. Figma's arrow by default. Draw it with `currentColor`." }
   label:
     type: slot
     notes: Text instead of, or after, the icon. In React, the children. A labelled toggle grows wider than 40px to fit (`labelled`).

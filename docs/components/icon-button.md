@@ -17,6 +17,7 @@
 | Prop | Type | Values | Default |
 |---|---|---|---|
 | `type` | enum | `Primary` `Project` `Secondary` `Tertiary` | `Primary` |
+| `icon` | slot |  |  |
 
 ## States
 
@@ -42,7 +43,7 @@
 
 ## Behaviour
 
-`type` is `Primary`, `Secondary`, `Tertiary` or `Project`. States come from the browser like every other action. Don't shrink it below 40px, fingers need the room.
+`type` is `Primary`, `Secondary`, `Tertiary` or `Project`. States come from the browser like every other action. Primary, Secondary and Tertiary are 40px, and that's the floor: fingers need the room. Project is 32px because it sits inside a project row, and the whole row is the target there.
 
 ## Accessibility
 

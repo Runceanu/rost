@@ -70,7 +70,7 @@ The picture fills the card, and the frosted panel sits on its bottom edge with t
 - **Element**: an `<a>`. Disabled drops the `href` and sets `aria-disabled="true"`.
 - **Name**: the link's text, which is the number, the name and the details read in order. Pass `aria-label` if that reads badly.
 - **Keyboard**: Tab to it, Enter opens it.
-- **Focus**: a 2px ring, 2px outside the card, on `:focus-visible` only.
+- **Focus**: a 2px ring, 4px outside the card, on `:focus-visible` only.
 - **Colour**: Locked says it with the lock icon, which has its own text ("Locked") for screen readers.
 
 ## Content

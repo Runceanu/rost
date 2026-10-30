@@ -24,7 +24,7 @@ elements:
         token: effect/lock-frame
         value: blur(8px)
         notes: |-
-          The Figma effect style "Lock frame", a layer blur (`filter: blur()`). It blurs the element's own content, not what's behind it, which is the opposite of Thumb. In Figma its size is tied to `spacing/base-8`, a spacing token borrowed as a blur, and that one isn't in `tokens.css`. In code the whole effect is `--effect-lock-frame`, and that's the token the contract checks.
+          The Figma effect style "Lock frame", a layer blur (`filter: blur()`). It blurs the element's own content, not what's behind it, which is the opposite of Thumb. In Figma its size is tied to `spacing/base-8`, a spacing token borrowed as a blur. Figma's blur radius is twice CSS's, so its 16px is `blur(8px)` here. In code the whole effect is `--effect-lock-frame`, and that's the token the contract checks.
 guidance:
   status: agreed
   use:
@@ -32,7 +32,7 @@ guidance:
   avoid:
     - Loading or disabled states. Blur says "hidden", not "wait".
   behaviour: |-
-    `filter: blur(8px)` blurs the element's own content. Thumb is the opposite: it blurs what's behind it. In Figma the blur is tied to `spacing/base-8`, which isn't in `tokens.css`, so the code uses `--effect-lock-frame` instead.
+    `filter: blur(8px)` blurs the element's own content. Thumb is the opposite: it blurs what's behind it. In Figma the blur is tied to `spacing/base-8`, a spacing token, so the code uses its own `--effect-lock-frame` instead.
   accessibility:
     name: |-
       say it's locked in words ("Locked case study"). Blur and an icon aren't enough.

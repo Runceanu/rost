@@ -28,7 +28,7 @@ props:
   showNumber: { type: boolean, default: true }
   showName: { type: boolean, default: true }
   showIndustry: { type: boolean, default: true }
-  showType: { type: boolean, default: true }
+  showType: { type: boolean, default: true, notes: "In React it's `showKind`, after `kind`." }
   showPeriod: { type: boolean, default: true }
   image:
     type: slot
@@ -305,6 +305,6 @@ guidance:
     element: an `<a>`. Disabled drops the `href` and sets `aria-disabled="true"`.
     name: the link's text, which is the number, the name and the details read in order. Pass `aria-label` if that reads badly.
     keyboard: Tab to it, Enter opens it.
-    focus: a 2px ring, 2px outside the card, on `:focus-visible` only.
+    focus: a 2px ring, 4px outside the card, on `:focus-visible` only.
     colour: Locked says it with the lock icon, which has its own text ("Locked") for screen readers.
   content: The name is the client or the product, as people know it. Details are a word or two each, the period like "2024" or "2023 to 2025".

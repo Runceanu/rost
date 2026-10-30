@@ -25,7 +25,7 @@ props:
   showNumber: { type: boolean, default: true }
   showName: { type: boolean, default: true }
   showIndustry: { type: boolean, default: true }
-  showType: { type: boolean, default: true }
+  showType: { type: boolean, default: true, notes: "In React it's `showKind`, after `kind`." }
   showPeriod: { type: boolean, default: true }
   showAction: { type: boolean, default: true, notes: The arrow at the end of the row. }
   showDivider: { type: boolean, default: true, notes: The line under the row. }

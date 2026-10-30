@@ -24,7 +24,7 @@ elements:
       align-items: { value: center }
       justify-content: { value: center }
       white-space: { value: nowrap, assert: false }
-      height: { value: 20px, untokenised: "Figma's own 20px; no size token is 20." }
+      height: { token: spacing/size/xsmall, value: 20px }
       padding-left: { token: spacing/gap/small, value: 8px }
       padding-right: { token: spacing/gap/small, value: 8px }
       padding-top: { token: spacing/gap/none, value: 0px }

@@ -6,11 +6,11 @@ Every value in every contract, sorted by why it has a token or doesn't. A value 
 
 | | Values | Share | Meaning |
 |---|---|---|---|
-| Has a token | 1002 | 60% | Uses a token, and the check tests it. |
+| Has a token | 1003 | 60% | Uses a token, and the check tests it. |
 | Token suggested | 0 | 0% | A token I want that doesn't exist yet. The freeze turned every other suggestion into a token. |
 | How Figma builds it | 466 | 28% | How Figma builds the layer (position, inset, which sides get a stroke). Nothing to tokenise. |
 | Figma frame size | 133 | 8% | A root size that is just the Figma frame. Written down, not checked. |
-| No token, on purpose | 53 | 3% | Plain on purpose, and the contract says why. |
+| No token, on purpose | 52 | 3% | Plain on purpose, and the contract says why. |
 | Open gap | 28 | 2% | No token and no reason. Each one needs a decision from me. |
 
 ## By contract
@@ -42,7 +42,7 @@ Every value in every contract, sorted by why it has a token or doesn't. A value 
 | [Thumb effect](components/effect-thumb.md) | 1 | · | · | · | · | · |
 | [Thumbs](components/thumbs.md) | 77 | · | 51 | 9 | 6 | 5 |
 | [Toggle](components/toggle.md) | 64 | · | 20 | 8 | 6 | 3 |
-| [Tooltip](components/tooltip.md) | 12 | · | 4 | · | 1 | · |
+| [Tooltip](components/tooltip.md) | 13 | · | 4 | · | · | · |
 
 ## Tokens that should be there
 
@@ -111,7 +111,6 @@ Sizes and offsets that belong to one component, at a number no size token has.
 | [Navigation](components/navigation.md) | `root.width` | `160px` | Figma's own 160px; no size token is 160. |
 | [Projects](components/projects.md), [Thumbs](components/thumbs.md) | `dot.width` | `3px` | The dot's own size inside the icon. |
 | [Projects](components/projects.md), [Thumbs](components/thumbs.md) | `dot.height` | `3px` | The dot's own size inside the icon. |
-| [Tooltip](components/tooltip.md) | `root.height` | `20px` | Figma's own 20px; no size token is 20. |
 
 ### Tuned by eye
 

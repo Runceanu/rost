@@ -60,15 +60,10 @@ Every token this component uses, across all its variants.
 | `spacing/gap/none` | `0px` |
 | `spacing/gap/small` | `8px` |
 | `spacing/radius/xsmall` | `4px` |
+| `spacing/size/xsmall` | `20px` |
 | `typography/label/font-size` | `12px` |
 | `typography/label/font-weight/medium` | `500` |
 | `typography/label/letter-spacing` | `0px` |
 | `typography/label/line-height` | `14px` |
-
-## No token, on purpose
-
-| Part | Property | Value | Why |
-|---|---|---|---|
-| `root` | `height` | `20px` | Figma's own 20px; no size token is 20. |
 
 See it live, with every value of every variant: [rost.build/components/tooltip](https://rost.build/components/tooltip/)

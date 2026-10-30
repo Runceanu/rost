@@ -47,7 +47,7 @@
 
 ## Behaviour
 
-`type` sets how loud it is. `state` is never something you pass in code: hover, pressed and focus come from `:hover`, `:active` and `:focus-visible`. Disabled is the only one you set yourself. The background fades to `opacity/gentle` and the label stays readable. In a nav, the page you're on wears the pressed look (`aria-current="page"`): it reads as chosen, not as broken. The icon sits in a 20px slot (`icons-arrow-left` in Figma) and takes the label's colour.
+`type` sets how loud it is. `state` is never something you pass in code: hover, pressed and focus come from `:hover`, `:active` and `:focus-visible`. Disabled is the only one you set yourself. The whole button fades to `opacity/gentle`, label and all. In a nav, the page you're on wears the pressed look (`aria-current="page"`): it reads as chosen, not as broken. The icon sits in a 20px slot (`icons-arrow-left` in Figma) and takes the label's colour.
 
 ## Accessibility
 

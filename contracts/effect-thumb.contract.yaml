@@ -18,7 +18,7 @@ source:
 elements:
   root:
     notes: |-
-      Whatever the style is applied to: the frosted text panel on a project thumbnail. Thumbs and Carousel both use it.
+      Whatever the style is applied to: the frosted text panel on a project thumbnail, and the panel behind the side navigation. Thumbs, Carousel and Navigation use it.
     styles:
       backdrop-filter:
         token: effect/thumb
@@ -28,9 +28,9 @@ elements:
 guidance:
   status: agreed
   use:
-    - The text panel on a project thumbnail, in Thumbs and Carousel.
+    - The text panel on a project thumbnail, in Thumbs and Carousel, and Navigation's panel.
   avoid:
-    - Navigation. That's the **Menu effect**.
+    - A menu that opens over the page. That's the **Menu effect**.
   behaviour: |-
     It blurs what's behind the panel. In Figma the blur is tied to `opacity/gentle`, an opacity token borrowed as a blur size. It works, but changing that opacity would also move this blur. Its own blur token would fix it.
   accessibility:

@@ -9,7 +9,7 @@
   align-items: center;
   justify-content: center;
   white-space: nowrap;
-  height: 20px;
+  height: var(--spacing-size-xsmall);
   padding-left: var(--spacing-gap-small);
   padding-right: var(--spacing-gap-small);
   padding-top: var(--spacing-gap-none);
