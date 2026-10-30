@@ -2,23 +2,33 @@ import { Table } from '../table/Table'
 import { TableRow } from './TableRow'
 import { TableItem } from '../table-item/TableItem'
 
-// TableRow started in code and was drawn in Figma after; the fixtures aren't
-// compared with it yet. A `<tr>` only means something in a table, so each
-// fixture is a small Table. Hover, press or tab to a linked row on the page
-// to see its states.
+/**
+ * One fixture per Figma variant: "15 Nov" over its description, and €640.
+ * A `<tr>` only means something in a table, so each is a one-row Table. The
+ * rows are links, since only a row with a link reacts: hover, press and focus
+ * are forced on the link, and the row draws them.
+ */
+const NODES: [state: string, selected: boolean, node: string][] = [
+  ['Default', false, '527:163'], ['Default', true, '527:217'], ['Hover', false, '527:255'], ['Hover', true, '527:293'],
+  ['Pressed', false, '527:331'], ['Pressed', true, '527:369'], ['Focus', false, '527:407'], ['Focus', true, '527:445'],
+]
+// A selected row keeps its hover fill while it's pressed, so Pressed is hover and active together.
+const FORCE: Record<string, string[]> = { Hover: ['hover'], Pressed: ['hover', 'active'], Focus: ['focus', 'focus-visible'] }
+
 const row = (props: { selected?: boolean; href?: string }, date = '15 Nov') => (
   <TableRow {...props}>
     <TableItem header="row" description="Income tax, instalment 2 of 3">{date}</TableItem>
     <TableItem numeric>€640</TableItem>
   </TableRow>
 )
-const frame = (r: React.ReactNode) => <div style={{ width: 320, maxWidth: '100%' }}><Table aria-label="Payments">{r}</Table></div>
+const frame = (r: React.ReactNode) => <div style={{ width: 360, maxWidth: '100%' }}><Table aria-label="Payments">{r}</Table></div>
 
-export const fixtures = [
-  { node: 'row:plain', name: 'plain', element: frame(row({})) },
-  { node: 'row:link', name: 'link', element: frame(row({ href: '#15-nov' })) },
-  { node: 'row:selected', name: 'link, selected', element: frame(row({ href: '#15-nov', selected: true })) },
-]
+export const fixtures = NODES.map(([state, selected, node]) => ({
+  node,
+  name: `state=${state}, selected=${selected ? 'True' : 'False'}`,
+  element: frame(row({ href: '#15-nov', selected })),
+  ...(FORCE[state] ? { force: FORCE[state], forceOn: '.rost-table-item__action' } : {}),
+}))
 
 /** What a caller writes. Shown on the component's page. */
 export const usage = `import { TableRow } from 'rost/components/table-row/TableRow'

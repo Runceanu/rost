@@ -1374,5 +1374,116 @@
       "width": 160,
       "height": 408
     }
+  ],
+  "table": [
+    {
+      "nodeId": "527:596",
+      "name": "table",
+      "file": "527-596.png",
+      "width": 360,
+      "height": 187
+    }
+  ],
+  "table-row": [
+    {
+      "nodeId": "527:163",
+      "name": "state=Default, selected=False",
+      "file": "527-163.png",
+      "width": 360,
+      "height": 53
+    },
+    {
+      "nodeId": "527:217",
+      "name": "state=Default, selected=True",
+      "file": "527-217.png",
+      "width": 360,
+      "height": 53
+    },
+    {
+      "nodeId": "527:255",
+      "name": "state=Hover, selected=False",
+      "file": "527-255.png",
+      "width": 360,
+      "height": 53
+    },
+    {
+      "nodeId": "527:293",
+      "name": "state=Hover, selected=True",
+      "file": "527-293.png",
+      "width": 360,
+      "height": 53
+    },
+    {
+      "nodeId": "527:331",
+      "name": "state=Pressed, selected=False",
+      "file": "527-331.png",
+      "width": 360,
+      "height": 53
+    },
+    {
+      "nodeId": "527:369",
+      "name": "state=Pressed, selected=True",
+      "file": "527-369.png",
+      "width": 360,
+      "height": 53
+    },
+    {
+      "nodeId": "527:407",
+      "name": "state=Focus, selected=False",
+      "file": "527-407.png",
+      "width": 360,
+      "height": 53
+    },
+    {
+      "nodeId": "527:445",
+      "name": "state=Focus, selected=True",
+      "file": "527-445.png",
+      "width": 360,
+      "height": 53
+    }
+  ],
+  "table-item": [
+    {
+      "nodeId": "527:54",
+      "name": "header=None, numeric=False",
+      "file": "527-54.png",
+      "width": 189,
+      "height": 52
+    },
+    {
+      "nodeId": "527:66",
+      "name": "header=None, numeric=True",
+      "file": "527-66.png",
+      "width": 189,
+      "height": 52
+    },
+    {
+      "nodeId": "527:78",
+      "name": "header=Row, numeric=False",
+      "file": "527-78.png",
+      "width": 189,
+      "height": 52
+    },
+    {
+      "nodeId": "527:90",
+      "name": "header=Row, numeric=True",
+      "file": "527-90.png",
+      "width": 189,
+      "height": 52
+    },
+    {
+      "nodeId": "527:102",
+      "name": "header=Column, numeric=False",
+      "file": "527-102.png",
+      "width": 189,
+      "height": 38
+    },
+    {
+      "nodeId": "527:114",
+      "name": "header=Column, numeric=True",
+      "file": "527-114.png",
+      "width": 189,
+      "height": 38
+    }
   ]
 }

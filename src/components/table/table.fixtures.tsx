@@ -3,9 +3,8 @@ import { TableRow } from '../table-row/TableRow'
 import { TableItem } from '../table-item/TableItem'
 import { Badge } from '../badge/Badge'
 
-// Table started in code and was drawn in Figma after, on the table page. The
-// fixtures aren't compared with Figma's screenshots yet. The sample is the
-// accounting app's payment schedule, with invented amounts.
+// The first fixture is Figma's table (527:596): the accounting app's payment
+// schedule, with invented amounts. The others show what Figma doesn't draw.
 const payments = [
   { kind: 'URSSAF', status: 'positive', date: '31 Oct', what: 'Q3 contributions', amount: '€1,284' },
   { kind: 'Income tax', status: 'warning', date: '15 Nov', what: 'Instalment 2 of 3', amount: '€640', estimate: true },
@@ -29,7 +28,7 @@ const head = (
 const frame = (table: React.ReactNode) => <div style={{ width: 360, maxWidth: '100%' }}>{table}</div>
 
 export const fixtures = [
-  { node: 'table:caption', name: 'with a caption', element: frame(<Table caption="What to pay, and when">{rows(false)}</Table>) },
+  { node: '527:596', name: 'with a caption', element: frame(<Table caption="What to pay, and when">{rows(false)}</Table>) },
   { node: 'table:links', name: 'rows as links', element: frame(<Table caption="What to pay, and when">{rows(true)}</Table>) },
   { node: 'table:head', name: 'with column headers', element: frame(<Table aria-label="Payments" head={head}>{rows(false)}</Table>) },
 ]

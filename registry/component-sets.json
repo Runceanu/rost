@@ -327,5 +327,38 @@
       { "nodeId": "356:948", "name": "collapsed=true", "width": 72, "height": 408 },
       { "nodeId": "356:947", "name": "collapsed=false", "width": 160, "height": 408 }
     ]
+  },
+  "table": {
+    "name": "Table",
+    "setNodeId": "527:596",
+    "variants": [
+      { "nodeId": "527:596", "name": "table", "width": 360, "height": 187 }
+    ]
+  },
+  "table-row": {
+    "name": "TableRow",
+    "setNodeId": "527:483",
+    "variants": [
+      { "nodeId": "527:163", "name": "state=Default, selected=False", "width": 360, "height": 53 },
+      { "nodeId": "527:217", "name": "state=Default, selected=True", "width": 360, "height": 53 },
+      { "nodeId": "527:255", "name": "state=Hover, selected=False", "width": 360, "height": 53 },
+      { "nodeId": "527:293", "name": "state=Hover, selected=True", "width": 360, "height": 53 },
+      { "nodeId": "527:331", "name": "state=Pressed, selected=False", "width": 360, "height": 53 },
+      { "nodeId": "527:369", "name": "state=Pressed, selected=True", "width": 360, "height": 53 },
+      { "nodeId": "527:407", "name": "state=Focus, selected=False", "width": 360, "height": 53 },
+      { "nodeId": "527:445", "name": "state=Focus, selected=True", "width": 360, "height": 53 }
+    ]
+  },
+  "table-item": {
+    "name": "TableItem",
+    "setNodeId": "527:126",
+    "variants": [
+      { "nodeId": "527:54", "name": "header=None, numeric=False", "width": 189, "height": 52 },
+      { "nodeId": "527:66", "name": "header=None, numeric=True", "width": 189, "height": 52 },
+      { "nodeId": "527:78", "name": "header=Row, numeric=False", "width": 189, "height": 52 },
+      { "nodeId": "527:90", "name": "header=Row, numeric=True", "width": 189, "height": 52 },
+      { "nodeId": "527:102", "name": "header=Column, numeric=False", "width": 189, "height": 38 },
+      { "nodeId": "527:114", "name": "header=Column, numeric=True", "width": 189, "height": 38 }
+    ]
   }
 }

@@ -194,6 +194,9 @@ for (const id of ids) {
   await page.evaluate(() => {
     const roots = [...document.querySelectorAll('[data-node] [class^="rost-"], [data-node] [class*=" rost-"]')]
       .filter((el) => [...el.classList].some((c) => /^rost-[a-z0-9-]+$/.test(c)))
+      // Except a table's rows and cells: the table sizes them, and a row owns
+      // half of each collapsed hairline, so 52.5px is right and 53px grows the table.
+      .filter((el) => !['TR', 'TD', 'TH', 'CAPTION'].includes(el.tagName))
     const depth = (el) => { let d = 0; for (let p = el; p; p = p.parentElement) d++; return d }
     for (const el of roots.sort((a, b) => depth(b) - depth(a))) {
       const r = el.getBoundingClientRect()
