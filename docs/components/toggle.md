@@ -51,7 +51,7 @@ It changes with `selected` and `state`. Off, it's a plate with 12px corners on t
 ## Accessibility
 
 - **Alone**: `<button aria-pressed="true|false">`.
-- **Group**: `role="radio"` with `aria-checked`, inside a `role="radiogroup"` that has a name. Arrow keys move between options, Tab gets you in and out.
+- **Group**: `role="radio"` with `aria-checked`, inside **ToggleGroup**, which is the named `role="radiogroup"` and does the keys: arrows move between options and choose, Tab gets you in and out.
 - **Name**: `aria-label` when it's icon only.
 - **Focus**: `focus-ring` (2px, `actions/primary/focus/focus-ring` when it's on), on `:focus-visible`.
 - **Colour**: on and off show in the shape (12px corners to fully round) as well as the colour.

@@ -1,0 +1,11 @@
+/* Generated from contracts/toggle-group.contract.yaml by bin/build-css.mjs. Don't edit: change the contract and rebuild. */
+
+.rost-toggle-group, .rost-toggle-group * { box-sizing: border-box; margin: 0; }
+.rost-toggle-group > img, .rost-toggle-group [class*="__icons-"] > img { display: block; position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; }
+.rost-toggle-group ::placeholder { color: inherit; opacity: 1; }
+
+.rost-toggle-group {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-gap-3xsmall);
+}

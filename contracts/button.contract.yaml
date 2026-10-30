@@ -20,8 +20,8 @@ props:
   type:
     type: enum
     values: [ Borderless, Primary, Secondary, Tertiary ]
-    default: Borderless
-    notes: "In React it's `variant`, so it can't be mistaken for a `<button>`'s own `type`."
+    default: Primary
+    notes: "In React it's `variant`, so it can't be mistaken for a `<button>`'s own `type`. Figma's set lists Borderless first; a Button that says nothing is the main action, so the default is Primary."
 states: [ Default, Hover, Pressed, Focus, Disabled ]
 stateSelectors:
   Pressed: ":is(:active, [aria-current=\"page\"])"

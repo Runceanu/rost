@@ -6,7 +6,7 @@ kind: component
 status: stable
 summary: A 40×40 icon button that stays on or off, alone or as one choice in a group.
 category: selection
-related: [ icon-button, chips ]
+related: [ toggle-group, icon-button, chips ]
 source:
   tool: figma
   fileKey: 1Zy0wiWKXQAvsfDBX3KR0d
@@ -250,7 +250,7 @@ guidance:
   accessibility:
     alone: "`<button aria-pressed=\"true|false\">`."
     group: |-
-      `role="radio"` with `aria-checked`, inside a `role="radiogroup"` that has a name. Arrow keys move between options, Tab gets you in and out.
+      `role="radio"` with `aria-checked`, inside **ToggleGroup**, which is the named `role="radiogroup"` and does the keys: arrows move between options and choose, Tab gets you in and out.
     name: "`aria-label` when it's icon only."
     focus: |-
       `focus-ring` (2px, `actions/primary/focus/focus-ring` when it's on), on `:focus-visible`.

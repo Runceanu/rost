@@ -17,7 +17,7 @@
 | Prop | Type | Values | Default |
 |---|---|---|---|
 | `icon` | slot |  |  |
-| `type` | enum | `Borderless` `Primary` `Secondary` `Tertiary` | `Borderless` |
+| `type` | enum | `Borderless` `Primary` `Secondary` `Tertiary` | `Primary` |
 
 ## States
 

@@ -13,7 +13,7 @@ Rost started as a design system for my own needs and grew into a product of its 
 | [Roadmap](ROADMAP.md) | What I'm doing next |
 | [Release notes](CHANGELOG.md) | What changed in each release |
 
-**26** contracts, **5** stable. **26** have guidance, and I've signed off **25** of those.
+**27** contracts, **5** stable. **27** have guidance, and I've signed off **25** of those.
 
 ## Catalogue
 
@@ -40,6 +40,7 @@ Rost started as a design system for my own needs and grew into a product of its 
 | [Testimonials](components/testimonials.md) | A testimonial you can open and close: name and role, with the quote underneath. | `review` | `agreed` | The portfolio site |
 | [Thumbs](components/thumbs.md) | A project thumbnail card, with the project name and details on a frosted panel at the bottom. | `review` | `agreed` | The portfolio site |
 | [Toggle](components/toggle.md) | A 40×40 icon button that stays on or off, alone or as one choice in a group. | `stable` | `agreed` | The accounting app |
+| [ToggleGroup](components/toggle-group.md) | A row of Toggles where one is chosen, like a year switcher. Arrow keys move the choice, and the row is one stop for Tab. | `draft` | `proposed` | · |
 | [Tooltip](components/tooltip.md) | A small label that explains something when you point at it or focus it. | `review` | `agreed` | The portfolio site |
 
 ### Patterns
