@@ -37,6 +37,7 @@
 
 .rost-projects__number {
   flex-shrink: 0;
+  min-width: 2ch;
   font-family: var(--font-family-base);
   font-weight: var(--typography-label-font-weight-regular);
   line-height: var(--typography-label-line-height);

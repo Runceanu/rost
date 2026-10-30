@@ -39,7 +39,7 @@
 - `root`: Each state's values are read from its own branch of the Figma read. The first parse kept Default's colours for every state, and missed the divider's 2px on hover.
 - `outline`: The divider under the row.
 - `left`
-- `number`
+- `number`: At least two digits wide, the width of Figma's "00". Figma hugs the digits, and in General Sans a "1" is narrower than a "0" (it has no tabular figures), so a row numbered "01" pulled its name about 3px left of the rest.
 - `text`: The name.
 - `icons-lock` (optional): Locked only, after the name. Figma's lock, drawn as a mask in the lock colour.
 - `badge` (optional): Disabled only, after the name. The pill is the Badge component.
@@ -137,6 +137,7 @@ Every token this component uses, across all its variants.
 
 | Part | Property | Value | Why |
 |---|---|---|---|
+| `number` | `min-width` | `2ch` | Two zeros in the number's own font: 14px at label size. It follows the font, so it isn't a size token. |
 | `icons-lock` | `mask` | `url(./icon-lock.svg) center / contain no-repeat` | The icon file itself. |
 | `dot` | `width` | `3px` | The dot's own size inside the icon. |
 | `dot` | `height` | `3px` | The dot's own size inside the icon. |

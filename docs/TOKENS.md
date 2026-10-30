@@ -10,7 +10,7 @@ Every value in every contract, sorted by why it has a token or doesn't. A value 
 | Token suggested | 0 | 0% | A token I want that doesn't exist yet. The freeze turned every other suggestion into a token. |
 | How Figma builds it | 468 | 28% | How Figma builds the layer (position, inset, which sides get a stroke). Nothing to tokenise. |
 | Figma frame size | 133 | 8% | A root size that is just the Figma frame. Written down, not checked. |
-| No token, on purpose | 52 | 3% | Plain on purpose, and the contract says why. |
+| No token, on purpose | 53 | 3% | Plain on purpose, and the contract says why. |
 | Open gap | 28 | 2% | No token and no reason. Each one needs a decision from me. |
 
 ## By contract
@@ -33,7 +33,7 @@ Every value in every contract, sorted by why it has a token or doesn't. A value 
 | [Menu](components/menu.md) | 32 | · | 16 | 6 | · | 1 |
 | [Navigation](components/navigation.md) | 13 | · | 21 | 1 | 2 | · |
 | [Paper effect](components/effect-paper.md) | 6 | · | · | · | 7 | · |
-| [Projects](components/projects.md) | 77 | · | 33 | 8 | 4 | 4 |
+| [Projects](components/projects.md) | 77 | · | 33 | 8 | 5 | 4 |
 | [TabItem](components/tab-item.md) | 37 | · | 15 | 12 | · | 1 |
 | [Tabs](components/tabs.md) | · | · | 2 | 1 | 1 | · |
 | [Tag](components/tags.md) | 26 | · | 13 | 3 | · | 1 |
@@ -110,6 +110,7 @@ Sizes and offsets that belong to one component, at a number no size token has.
 | [Navigation](components/navigation.md) | `main.width` | `100%` | Fills the panel inside its padding. |
 | [Navigation](components/navigation.md) | `action.width` | `100%` | Fills the panel inside its padding. |
 | [Navigation](components/navigation.md) | `root.width` | `160px` | Figma's own 160px; no size token is 160. |
+| [Projects](components/projects.md) | `number.min-width` | `2ch` | Two zeros in the number's own font: 14px at label size. It follows the font, so it isn't a size token. |
 | [Projects](components/projects.md), [Thumbs](components/thumbs.md) | `dot.width` | `3px` | The dot's own size inside the icon. |
 | [Projects](components/projects.md), [Thumbs](components/thumbs.md) | `dot.height` | `3px` | The dot's own size inside the icon. |
 

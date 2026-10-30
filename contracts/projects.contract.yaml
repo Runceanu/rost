@@ -67,8 +67,10 @@ elements:
       gap: { token: spacing/gap/2xlarge, value: 40px }
       white-space: { value: nowrap, assert: false }
   number:
+    notes: "At least two digits wide, the width of Figma's \"00\". Figma hugs the digits, and in General Sans a \"1\" is narrower than a \"0\" (it has no tabular figures), so a row numbered \"01\" pulled its name about 3px left of the rest."
     styles:
       flex-shrink: { value: "0", assert: false }
+      min-width: { value: 2ch, untokenised: "Two zeros in the number's own font: 14px at label size. It follows the font, so it isn't a size token." }
       font-family: { token: font-family/base, value: "'General Sans Variable'" }
       font-weight: { token: typography/label/font-weight/regular, value: "400" }
       line-height: { token: typography/label/line-height, value: 14px }

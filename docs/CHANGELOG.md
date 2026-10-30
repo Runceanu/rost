@@ -4,6 +4,7 @@ What changed each time I merged into `master` and put rost.build live. Newest fi
 
 ## 2026-10-30
 
+- **Projects' names line up whatever the number.** In General Sans a "1" is narrower than a "0", and the font has no tabular figures, so a row numbered "01" started its name about 3px left of the rest. The number is at least `2ch` wide now, the width of Figma's "00" in its own font, so every name starts in the same place. All six Figma states still match.
 - **Component pages are easier to read.** On rost.build:
   - A **Contract** tab sits next to Preview and Code, with the whole YAML the page is built from.
   - **Where it's used** is a card per app: whether it runs Rost's own copy or its own version, the file and class, and that app's deviations in the card. What's left under the old heading is what Rost does differently from Figma everywhere, so it's called that now.
@@ -46,7 +47,6 @@ What changed each time I merged into `master` and put rost.build live. Newest fi
   - 59 raw `rgba()` colours are Rost colour tokens at Rost opacity tokens. 25 of them weren't on the opacity scale and moved to the nearest step, most by 0.04 or less.
   - The app's copies are all on current Rost, and its contract test checks every whole variant (116), not the raw layers.
   - What's left different is recorded on Projects, Thumbs, Button and InlineBanner, and Carousel and Tooltip list the portfolio site as an app that uses them.
-- **Not done yet.** Projects' number has no fixed width, so a narrow "01" pulls its name about 3px left of the rest. Thumbs fixes its number at 16px; Projects should too.
 
 **Later the same day**
 
