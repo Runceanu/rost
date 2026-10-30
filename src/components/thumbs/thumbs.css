@@ -47,7 +47,7 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  background: color-mix(in srgb, var(--base-black) calc(var(--opacity-medium) * 100%), transparent);
+  background: color-mix(in srgb, var(--non-interactive-background-primary) calc(var(--opacity-medium) * 100%), transparent);
   backdrop-filter: var(--effect-thumb);
   gap: var(--spacing-gap-small);
   padding-bottom: var(--spacing-gap-large);
@@ -164,7 +164,7 @@
   position: relative;
   width: var(--spacing-size-small);
   height: var(--spacing-size-small);
-  background: var(--non-interactive-foreground-contrast);
+  background: var(--actions-primary-default-label);
   mask: url(./icon-lock.svg) center / contain no-repeat;
 }
 
