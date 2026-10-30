@@ -1,0 +1,97 @@
+{
+  "$comment": "Rost's own light values. Each rule names tokens (* is one level of the path, ** any number), optionally only those whose Figma light value was `from`, and the light value they take instead: a primitive (@color/light/...) or a hex. They went into Figma's light mode on 2026-10-30, so registry/figma-variables.json has them too; bin/build-tokens.mjs checks every rule still holds there, and applies any that doesn't. Later rules win. Only theme colour tokens, and only their light value. Checked with node bin/contrast.mjs.",
+  "rules": [
+    {
+      "tokens": ["**/icon", "**/label", "**/sub-label", "icon"],
+      "from": "@color/light/primary/500",
+      "light": "@color/light/primary/800",
+      "why": "Figma's light mode keeps the bright green for icons and text. #00d669 is 1.9:1 on #fcfcfc. The darker green of the same family is 6.2:1."
+    },
+    {
+      "tokens": ["**/icon", "**/label"],
+      "from": "@color/light/primary/400",
+      "light": "@color/light/primary/900",
+      "why": "Hover goes dimmer in dark and darker in light. Figma had it go lighter, to #00f882, which nearly disappears."
+    },
+    {
+      "tokens": ["**/focus-ring"],
+      "from": ["@color/light/primary/400", "@color/light/primary/600"],
+      "light": "@color/light/primary/800",
+      "why": "A focus ring has to be seen: 3:1 at least. The pale greens were 1.4 and 2.7."
+    },
+    {
+      "tokens": ["tabs/selected/default/underline", "tabs/selected/focus/underline", "tabs/selected/disabled/underline", "project/hover/outline"],
+      "from": "@color/light/primary/500",
+      "light": "@color/light/primary/700",
+      "why": "The underline of the selected tab and the line under a hovered project: one step darker than the fill green, 4:1."
+    },
+    {
+      "tokens": ["tabs/selected/hover/underline"],
+      "light": "@color/light/primary/800",
+      "why": "Its hover, one step darker again."
+    },
+    {
+      "tokens": ["tabs/selected/pressed/underline"],
+      "light": "@color/light/primary/900",
+      "why": "And pressed."
+    },
+    {
+      "tokens": ["actions/primary/*/icon", "actions/primary/*/sub-label", "interactive/active/*/icon", "interactive/active/*/sub-label"],
+      "light": "@color/light/neutral/800",
+      "why": "On the green fill. Figma's #454545 is 3.5:1 there; #171717 is 9:1."
+    },
+    {
+      "tokens": ["actions/primary/pressed/icon", "actions/primary/pressed/sub-label", "interactive/active/pressed/icon", "interactive/active/pressed/sub-label"],
+      "light": "@color/light/neutral/900",
+      "why": "The pressed green is darker, so these go to the same near-black as the label."
+    },
+    {
+      "tokens": ["actions/secondary/*/hover/background"],
+      "light": "@color/light/neutral/400",
+      "why": "Secondary buttons and tags darken as you press. Figma's light mode had hover and pressed both on mid-greys, and a tag's label on its pressed grey at 3.9:1."
+    },
+    {
+      "tokens": ["actions/secondary/*/pressed/background"],
+      "light": "@color/light/neutral/500",
+      "why": "Pressed, one step further. #171717 on #999999 is 6.3:1."
+    },
+    {
+      "tokens": ["actions/secondary/*/pressed/sub-label"],
+      "light": "@color/light/neutral/800",
+      "why": "Readable on the pressed grey."
+    },
+    {
+      "tokens": ["input/negative/*/label", "input/negative/default/supportive", "input/negative/focus/supportive", "non-interactive/foreground/negative/base"],
+      "from": "@color/light/negative/500",
+      "light": "@color/light/negative/600",
+      "why": "Error text. #e93120 is 4.2:1 on #fcfcfc, just short. #ae1b13 is 6.9:1."
+    },
+    {
+      "tokens": ["actions/secondary/negative/hover/icon"],
+      "light": "@color/light/negative/600",
+      "why": "Hover darker, as with the green."
+    },
+    {
+      "tokens": ["actions/secondary/positive/*/icon", "non-interactive/foreground/positive/base"],
+      "from": ["@color/light/positive/500", "@color/light/primary/500"],
+      "light": "@color/light/positive/700",
+      "why": "The positive green as a mark or text on a light ground: #31d84d is 1.8:1, #0e7118 is 6.4:1."
+    },
+    {
+      "tokens": ["actions/secondary/positive/hover/icon"],
+      "light": "@color/light/positive/800",
+      "why": "Hover darker."
+    },
+    {
+      "tokens": ["actions/secondary/warning/*/icon", "non-interactive/foreground/warning/base"],
+      "from": "@color/light/warning/500",
+      "light": "@color/light/warning/700",
+      "why": "Orange can't be text on white and stay orange. #fda50d is 1.9:1; #7a4805 is 7.4:1, a dark amber."
+    },
+    {
+      "tokens": ["actions/secondary/warning/hover/icon"],
+      "light": "@color/light/warning/800",
+      "why": "Hover darker."
+    }
+  ]
+}

@@ -6,6 +6,7 @@ import Logo from '../components/Logo.astro'
 import { Button } from '../../../src/components/button/Button'
 import { Tooltip } from '../../../src/components/tooltip/Tooltip'
 import { ListItem } from '../../../src/components/list-item/ListItem'
+import { ThemeSwitch } from '../components/ThemeSwitch'
 import { groups, title, attention, GITHUB } from '../lib/kit'
 
 interface Props { title: string; description?: string; current?: string; sidebar?: boolean; sideLabel?: string }
@@ -31,17 +32,25 @@ const NAV: [string, string][] = [['/components/', 'Components'], ['/tokens/', 'T
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap" />
+    <script is:inline>
+      // Before anything paints: the theme you picked last time, if you picked one.
+      // Without it there's no data-theme, and tokens.css follows the system.
+      try { const t = localStorage.getItem('rost-theme'); if (t === 'light' || t === 'dark') document.documentElement.dataset.theme = t } catch {}
+    </script>
   </head>
   <body>
     <a class="skip" href="#content">Skip to content</a>
     <header class="top">
       <a class="brand" href="/" aria-current={path === '/' ? 'page' : undefined}><Logo /><span>Rost</span></a>
-      <nav class="top-nav" aria-label="Main">
-        {NAV.map(([href, label]) => path === href
-          ? <span class="here" aria-describedby="here-tip"><Button as="span" variant="tertiary" aria-current="page">{label}</Button><Tooltip id="here-tip">You're already here</Tooltip></span>
-          : <Button variant="tertiary" href={href}>{label}</Button>)}
-        <Button variant="secondary" href={GITHUB} className="gh" target="_blank" rel="noreferrer">GitHub</Button>
-      </nav>
+      <div class="top-end">
+        <nav class="top-nav" aria-label="Main">
+          {NAV.map(([href, label]) => path === href
+            ? <span class="here" aria-describedby="here-tip"><Button as="span" variant="tertiary" aria-current="page">{label}</Button><Tooltip id="here-tip">You're already here</Tooltip></span>
+            : <Button variant="tertiary" href={href}>{label}</Button>)}
+          <Button variant="secondary" href={GITHUB} className="gh" target="_blank" rel="noreferrer">GitHub</Button>
+        </nav>
+        <ThemeSwitch />
+      </div>
     </header>
     {sidebar ? (
       <div class="shell">
@@ -114,9 +123,36 @@ const NAV: [string, string][] = [['/components/', 'Components'], ['/tokens/', 'T
       }
     </script>
     <script>
-      // The Paper effect's previews are canvases; paper.ts draws on them.
+      // Light or dark. The switch says what it will do, flips data-theme on
+      // <html> and remembers it. Until you use it the site follows the system.
+      const html = document.documentElement
+      const system = matchMedia('(prefers-color-scheme: light)')
+      const current = () => (html.dataset.theme as 'light' | 'dark' | undefined) ?? (system.matches ? 'light' : 'dark')
+      const changed = () => {
+        const next = current() === 'light' ? 'dark' : 'light'
+        for (const b of document.querySelectorAll<HTMLElement>('[data-theme-switch]')) b.setAttribute('aria-label', `Switch to the ${next} theme`)
+        dispatchEvent(new Event('rost-theme'))
+      }
+      for (const b of document.querySelectorAll<HTMLElement>('[data-theme-switch]'))
+        b.addEventListener('click', () => {
+          html.dataset.theme = current() === 'light' ? 'dark' : 'light'
+          try { localStorage.setItem('rost-theme', html.dataset.theme) } catch {}
+          changed()
+        })
+      system.addEventListener('change', () => { if (!html.dataset.theme) changed() })
+      changed()
+    </script>
+    <script>
+      // The Paper effect's previews are canvases; paper.ts draws on them. It
+      // reads its colours once, so a new theme mounts it again.
       import { mountPaper } from '../../../src/effects/paper'
-      for (const c of document.querySelectorAll<HTMLCanvasElement>('canvas[data-paper-preview]')) mountPaper(c, { area: c.parentElement })
+      let stops: (() => void)[] = []
+      const mount = () => {
+        stops.forEach((stop) => stop())
+        stops = [...document.querySelectorAll<HTMLCanvasElement>('canvas[data-paper-preview]')].map((c) => mountPaper(c, { area: c.parentElement }))
+      }
+      mount()
+      addEventListener('rost-theme', mount)
     </script>
   </body>
 </html>

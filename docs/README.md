@@ -87,5 +87,5 @@ What needs attention. It's built from the contracts, so it's only as fresh as th
 - [Projects](components/projects.md) in the portfolio site: Under 768px the Work list hides the right side (industry, type and period), and a name too long for the row wraps instead of staying on one line
 - [Testimonials](components/testimonials.md) in the portfolio site: The open quote is `non-interactive/foreground/tertiary`, with key phrases in `non-interactive/foreground/primary`
 - [Testimonials](components/testimonials.md) in the portfolio site: Under 768px the name and job line wrap instead of staying on one line
-- [Testimonials](components/testimonials.md) in the portfolio site: The 16px slide on hover, press and opening is eased over 0.2s, the same as the Work list's projects
+- [Testimonials](components/testimonials.md) in the portfolio site: The 16px slide on hover, press and opening takes `motion/duration/base` with `motion/easing/out`, the same as the Work list's projects
 - [Thumbs](components/thumbs.md) in the portfolio site: Under 480px a name too long for its card wraps instead of staying on one line

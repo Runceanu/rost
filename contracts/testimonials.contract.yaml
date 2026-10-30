@@ -297,7 +297,7 @@ implementations:
           Figma only has the desktop row, and a long job title runs off a phone screen. The list ends at the next section.
         raisedWithDesign: false
       - what: |-
-          The 16px slide on hover, press and opening is eased over 0.2s, the same as the Work list's projects.
+          The 16px slide on hover, press and opening takes `motion/duration/base` with `motion/easing/out`, the same as the Work list's projects.
         why: |-
           Without it the row jumps. Motion isn't in the contract yet, so it's the site's, and it matches Projects'.
         raisedWithDesign: false
