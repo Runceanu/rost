@@ -185,5 +185,12 @@ const nextItems = [
   const fit = () => document.documentElement.style.setProperty('--page-w', `${document.documentElement.clientWidth}px`)
   fit()
   addEventListener('resize', fit)
-  if (hero && canvas) mountPaper(canvas, { area: hero, buttons: hero.querySelectorAll('.rost-button'), sketches: true, ripple: true, avoid: hero.querySelectorAll('.kicker, h1, .lede, .muted, .btns, .count') })
+  // Paper reads its colours once, so a new theme mounts it again.
+  let stop = () => {}
+  const mount = () => {
+    stop()
+    if (hero && canvas) stop = mountPaper(canvas, { area: hero, buttons: hero.querySelectorAll('.rost-button'), sketches: true, ripple: true, avoid: hero.querySelectorAll('.kicker, h1, .lede, .muted, .btns, .count') })
+  }
+  mount()
+  addEventListener('rost-theme', mount)
 </script>

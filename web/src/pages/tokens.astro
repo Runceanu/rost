@@ -3,7 +3,9 @@ import Base from '../layouts/Base.astro'
 import { tokens, isColour } from '../lib/kit'
 
 // The CSS variable is what I show and group by, since it's what code uses.
-const entries = Object.values(tokens).map((t) => ({ name: t.cssVar, value: t.value }))
+// A theme colour has a light value too; the swatch draws the variable itself,
+// so it shows whichever theme you're looking at.
+const entries = Object.values(tokens).map((t) => ({ name: t.cssVar, value: t.value, light: (t as { light?: string }).light }))
 const family = (v: string) => {
   const n = v.replace(/^--/, '')
   if (n.startsWith('color-') || n === 'base-black') return 'Colour primitives'
@@ -22,9 +24,10 @@ const family = (v: string) => {
   if (n.startsWith('opacity-')) return 'Opacity'
   if (n.startsWith('typography-') || n.startsWith('font-')) return 'Type'
   if (n.startsWith('effect-') || n.startsWith('shadow-')) return 'Effects'
+  if (n.startsWith('motion-')) return 'Motion'
   return 'Other'
 }
-const order = ['Surfaces and text', 'Actions', 'Inputs', 'Picked and unpicked', 'Projects', 'Tabs', 'Type', 'Colour primitives', 'Spacing primitives', 'Gaps and padding', 'Sizes', 'Corner radius', 'Outlines', 'Opacity', 'Effects', 'Layout', 'Other']
+const order = ['Surfaces and text', 'Actions', 'Inputs', 'Picked and unpicked', 'Projects', 'Tabs', 'Type', 'Colour primitives', 'Spacing primitives', 'Gaps and padding', 'Sizes', 'Corner radius', 'Outlines', 'Opacity', 'Effects', 'Motion', 'Layout', 'Other']
 // What each token looks like, drawn from its own value.
 const px = (v: string) => (/^-?\d+(\.\d+)?px$/.test(v) ? parseFloat(v) : null)
 const look = (name: string, value: string) => {
@@ -39,18 +42,20 @@ const look = (name: string, value: string) => {
   if (n.startsWith('font-family')) return 'font-family'
   if (n.startsWith('effect-')) return 'blur'
   if (n.startsWith('shadow-')) return 'shadow'
+  if (n.startsWith('motion-duration')) return 'duration'
+  if (n.startsWith('motion-easing')) return 'easing'
   return 'plain'
 }
 // A list of lengths reads smallest to largest; anything else stays by name.
-const sorted = (list: { name: string; value: string }[]) => list.every((t) => px(t.value) !== null) ? [...list].sort((a, b) => px(a.value)! - px(b.value)!) : list
+const sorted = (list: { name: string; value: string; light?: string }[]) => list.every((t) => px(t.value) !== null) ? [...list].sort((a, b) => px(a.value)! - px(b.value)!) : list
 const groups = order.map((f) => [f, sorted(entries.filter((e) => family(e.name) === f))] as const).filter(([, list]) => list.length)
-const isSwatches = (list: readonly { name: string; value: string }[]) => list.every((t) => isColour(t.value))
+const isSwatches = (list: readonly { name: string; value: string; light?: string }[]) => list.every((t) => isColour(t.value))
 ---
 <Base title="Tokens · Rost">
   <div class="kicker">Foundations</div>
   <h1>Tokens</h1>
   <p class="lede">{entries.length} named values. Almost every colour, space and size in Rost comes from one of these. The few that don't are listed in <a href="/docs/tokens/">Token coverage</a>.</p>
-  <p class="muted">The names are the CSS variables, exactly as code uses them, from <code>tokens/tokens.css</code>. Every Figma variable is here, in the dark theme, plus a few of Rost's own: the effects, the shadow and the hero height. The light values are in <code>tokens/tokens.json</code>, but nothing uses them yet.</p>
+  <p class="muted">The names are the CSS variables, exactly as code uses them, from <code>tokens/tokens.css</code>. Every Figma variable is here, plus a few of Rost's own: the effects, the shadow, the hero height and motion. Colours come in two themes, dark first and light second. The swatches show the theme you're in, so the switch at the top changes them. <a href="/docs/tokens/">Token coverage</a> says how the light values were picked.</p>
   <nav class="jump" aria-label="Token groups">{groups.map(([f, list]) => <a href={`#${f.toLowerCase().replace(/\W+/g, '-')}`}>{f} <span>{list.length}</span></a>)}</nav>
   {groups.map(([f, list]) => (
     <>
@@ -59,9 +64,9 @@ const isSwatches = (list: readonly { name: string; value: string }[]) => list.ev
         <ul class="swatches">
           {list.map((t) => (
             <li>
-              <span class="chip" style={`--c:${t.value}`} />
+              <span class="chip" style={`--c:var(${t.name})`} />
               <code class="name">{t.name}</code>
-              <span class="value">{t.value}</span>
+              <span class="value">{t.light && t.light !== t.value ? <><span title="Dark">{t.value}</span> · <span title="Light">{t.light}</span></> : t.value}</span>
             </li>
           ))}
         </ul>
@@ -70,7 +75,7 @@ const isSwatches = (list: readonly { name: string; value: string }[]) => list.ev
           {list.map((t) => { const l = look(t.name, t.value); const n = px(t.value) ?? 0; return (
             <li>
               <span class={`pic pic--${l}`} aria-hidden="true">
-                {l === 'colour' && <span class="dot" style={`--c:${t.value}`} />}
+                {l === 'colour' && <span class="dot" style={`--c:var(${t.name})`} />}
                 {l === 'opacity' && <span class="op" style={`opacity:${t.value}`} />}
                 {l === 'radius' && <span class="rad" style={`border-top-left-radius:${Math.min(n, 40)}px`} />}
                 {l === 'outline' && <span class="line" style={`height:${t.value}`} />}
@@ -80,9 +85,11 @@ const isSwatches = (list: readonly { name: string; value: string }[]) => list.ev
                 {l === 'font-family' && <span class="aa">Aa</span>}
                 {l === 'blur' && <span class="blur"><span style={`backdrop-filter:${t.value}`} /></span>}
                 {l === 'shadow' && <span class="shadow" style={`box-shadow:${t.value}`} />}
+                {l === 'duration' && <span class="mo"><span style={`transition: transform var(${t.name}) var(--motion-easing-standard)`} /></span>}
+                {l === 'easing' && <span class="mo"><span style={`transition: transform var(--motion-duration-slower) var(${t.name})`} /></span>}
               </span>
               <code class="name">{t.name}</code>
-              <span class="value">{t.value}{l === 'length' && n > 160 && <span class="cap"> (drawn at 160)</span>}</span>
+              <span class="value">{t.light && t.light !== t.value ? <><span title="Dark">{t.value}</span> · <span title="Light">{t.light}</span></> : t.value}{l === 'length' && n > 160 && <span class="cap"> (drawn at 160)</span>}</span>
             </li>
           ) })}
         </ul>
@@ -124,5 +131,9 @@ const isSwatches = (list: readonly { name: string; value: string }[]) => list.ev
   .aa { font-family: var(--body); color: var(--fg); line-height: 1; }
   .blur { position: relative; width: 64px; height: 32px; border-radius: var(--spacing-radius-small); background: repeating-linear-gradient(90deg, var(--accent) 0 6px, var(--fg) 6px 12px); overflow: hidden; }
   .blur span { position: absolute; inset: 6px 12px; border-radius: 4px; }
+  /* Motion: hover the row and the dot crosses its track with that duration or easing. */
+  .mo { position: relative; width: 120px; height: 12px; border-radius: var(--spacing-radius-full); background: color-mix(in srgb, var(--fg) 8%, transparent); }
+  .mo span { position: absolute; top: 0; left: 0; width: 12px; height: 12px; border-radius: 50%; background: var(--accent); }
+  .rows li:hover .mo span { transform: translateX(108px); }
   .shadow { width: 56px; height: 28px; border-radius: var(--spacing-radius-small); background: var(--non-interactive-foreground-quadruple); }
 </style>

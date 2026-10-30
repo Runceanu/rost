@@ -263,7 +263,7 @@ implementations:
     root: .rost-projects
     deviations:
       - what: |-
-          The last row in the Work list has no line at rest; hover and press still draw it. The 16px slide is eased over 0.2s.
+          The last row in the Work list has no line at rest; hover and press still draw it. The 16px slide takes `motion/duration/base` with `motion/easing/out`.
         why: |-
           The list ends at the footer, and a line there reads as a stray border. Motion isn't in the contract.
         raisedWithDesign: false

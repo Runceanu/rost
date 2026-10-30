@@ -11,9 +11,14 @@
  *
  * Everything is keyed on the Figma name, so hyphens survive: the key is
  * `non-interactive/foreground/primary` and the CSS variable is
- * `--non-interactive-foreground-primary`. tokens.css is the dark theme, Rost's
- * default. tokens.json also carries each theme variable's light value and the
- * primitive it points at.
+ * `--non-interactive-foreground-primary`.
+ *
+ * Two themes. Dark is Rost's default and sits on :root. Light takes Figma's
+ * light mode, with Rost's own corrections from registry/light.json on top
+ * (where Figma's light value fails contrast), and applies under
+ * [data-theme="light"], or under prefers-color-scheme: light when no theme is
+ * set. [data-theme="dark"] brings dark back inside a light page. Only the
+ * colours change; every other token is the same in both.
  *
  *   node bin/build-tokens.mjs           write tokens/
  *   node bin/build-tokens.mjs --check   exit 1 if tokens/ is out of date
@@ -25,6 +30,7 @@ import { fileURLToPath } from 'node:url'
 const root = fileURLToPath(new URL('..', import.meta.url))
 const check = process.argv.includes('--check')
 const registry = JSON.parse(readFileSync(join(root, 'registry/figma-variables.json'), 'utf8'))
+const lightRules = JSON.parse(readFileSync(join(root, 'registry/light.json'), 'utf8')).rules
 
 // The family's fallbacks. Figma only knows the variable font's name.
 const FONT_FALLBACKS = ["'General Sans'", 'sans-serif']
@@ -39,6 +45,16 @@ const ROST = [
   ['effect/menu-lg', 'blur(24px)', '"Menu" frosted glass, large radius (case-study hero and island backgrounds).'],
   ['effect/lock-frame', 'blur(8px)', 'LAYER_BLUR "Lock frame": a locked thumbnail. Figma ties it to spacing/base-8 (16), and its blur radius is twice CSS\'s.'],
   ['shadow/floating', '0 16px 24px 0 rgba(0, 0, 0, 0.16)', 'DROP_SHADOW "Shadow/Floating" (alpha is opacity/soft).'],
+  ['motion/duration/fast', '150ms', 'A colour or opacity change on hover, a tooltip appearing.'],
+  ['motion/duration/base', '200ms', 'Something small moving: the 16px slide of a Projects or Testimonials row.'],
+  ['motion/duration/slow', '450ms', 'Something big moving: the nav sliding, a banner going away.'],
+  ['motion/duration/slower', '600ms', 'Content arriving on scroll on the portfolio site.'],
+  ['motion/easing/standard', 'ease', 'CSS\'s own ease. The default for fades and colour.'],
+  ['motion/easing/out', 'ease-out', 'Starts fast, settles. The row slide.'],
+  ['motion/easing/in-out', 'ease-in-out', 'For things that loop: a pulse, the scroll hint bobbing.'],
+  ['motion/easing/move', 'cubic-bezier(0.4, 0, 0.2, 1)', 'Something moving from one place to another.'],
+  ['motion/easing/arrive', 'cubic-bezier(0.22, 1, 0.36, 1)', 'Content arriving, with a long soft finish.'],
+  ['motion/easing/spring', 'cubic-bezier(0.34, 1.56, 0.64, 1)', 'A small overshoot, for things that assemble. Use it rarely.'],
 ]
 
 // ── Figma's variables ──────────────────────────────────────────────────────
@@ -91,18 +107,41 @@ const add = (name, entry) => {
   tokens[name] = entry
 }
 
+// Rost's light rules: * is one level of the path, ** any number. `from`, when
+// it's there, narrows a rule to tokens whose Figma light value is that primitive.
+const glob = (p) => new RegExp('^' + p.split('/').map((s) => (s === '**' ? '.+' : s === '*' ? '[^/]+' : s.replace(/[.+?^${}()|[\]\\]/g, '\\$&'))).join('/') + '$')
+const lightOf = new Map()
+lightRules.forEach((rule, i) => {
+  const from = rule.from && [rule.from].flat()
+  const hits = [...vars].filter(([n, v]) => v.collection === 'theme' && v.type === 'COLOR' && rule.tokens.some((p) => glob(p).test(n)) && (!from || from.includes(v.light)))
+  if (!hits.length) throw new Error(`registry/light.json rule ${i + 1} (${rule.tokens.join(', ')}) matches no theme colour`)
+  for (const [n] of hits) lightOf.set(n, { value: rule.light, why: rule.why })
+})
+function resolveLight(name) {
+  const own = lightOf.get(name)
+  if (!own) return { ...resolve(name, 'light'), rost: false }
+  const x = own.value
+  if (x.startsWith('@')) return { ...resolve(x.slice(1), 'light', [name]), from: x.slice(1), rost: true }
+  return { value: x, rost: true }
+}
+
 for (const [name, v] of vars) {
   const dark = resolve(name, 'dark')
   const entry = { cssVar: cssVar(name), value: css(name, v.type, dark.value), source: 'figma', collection: v.collection }
   if (dark.from) entry.alias = dark.from
-  if (v.collection === 'theme') entry.light = css(name, v.type, resolve(name, 'light').value)
+  if (v.collection === 'theme') {
+    const light = resolveLight(name)
+    entry.light = css(name, v.type, light.value)
+    if (light.from) entry.lightAlias = light.from
+    if (light.rost) entry.lightSource = 'rost'
+  }
   add(name, entry)
 }
 const notes = new Map()
 for (const [name, value, note] of ROST) {
   if (vars.has(name)) throw new Error(`${name} is a Figma variable now: take it out of ROST`)
   const plain = value.replace(/var\((--[\w-]+)\)/g, (m, ref) => tokens[byVar.get(ref)]?.value ?? m)
-  add(name, { cssVar: cssVar(name), value: plain, source: 'rost' })
+  add(name, { cssVar: cssVar(name), value: plain, source: 'rost', note })
   notes.set(name, { css: value, note })
 }
 
@@ -148,20 +187,51 @@ const lost = figma.filter((n) => !placed.has(n))
 if (lost.length) throw new Error(`no section for ${lost.join(', ')}`)
 blocks.push(`  /* ── Rost's own (no Figma variable) ${'─'.repeat(38)} */\n${ROST.map(([n]) => `  /* ${notes.get(n).note} */\n  ${tokens[n].cssVar}: ${notes.get(n).css};`).join('\n')}`)
 
+// The light theme: every theme colour whose light value differs from its dark one.
+const themed = sorted.filter((n) => tokens[n].collection === 'theme' && vars.get(n).type === 'COLOR' && tokens[n].light !== tokens[n].value)
+const block = (key, indent) => themed.map((n) => `${indent}${tokens[n].cssVar}: ${tokens[n][key]};`).join('\n')
+const themes = `
+/* ── Light ──────────────────────────────────────────────────────────────────
+ * Only the colours change, ${themed.length} of them. Figma's light mode, with Rost's own
+ * corrections from registry/light.json where Figma's value fails contrast.
+ * Set data-theme="light" on <html> (or any element), or leave it unset and
+ * follow the system. data-theme="dark" brings dark back inside a light page.
+ */
+[data-theme="light"] {
+  color-scheme: light;
+${block('light', '  ')}
+}
+
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme]) {
+    color-scheme: light;
+${block('light', '    ')}
+  }
+}
+
+[data-theme="dark"] {
+  color-scheme: dark;
+${block('value', '  ')}
+}
+`
+
 const cssOut = `/* Generated by bin/build-tokens.mjs from registry/figma-variables.json. Don't edit by hand: npm run tokens.
  *
  * Design tokens from UI Kit v01 (https://www.figma.com/design/${registry.fileKey}/UI-Kit-v01).
  * Every Figma variable is here, named after its Figma path with / as -, so
  * actions/primary/hover/background is --actions-primary-hover-background.
- * The values are the dark theme, Rost's default. Rost's own tokens come last.
+ * :root is the dark theme, Rost's default. Rost's own tokens come after
+ * Figma's, and the light theme after that.
  */
 
 :root {
+  color-scheme: dark;
+
 ${blocks.join('\n\n')}
 }
-`
+${themes}`
 const jsonOut = JSON.stringify({
-  $comment: "Generated by bin/build-tokens.mjs. Keys are the Figma names. value is the dark theme, light the light one (theme variables only), alias the variable it points at. source is figma, or rost for Rost's own.",
+  $comment: "Generated by bin/build-tokens.mjs. Keys are the Figma names. value is the dark theme, light the light one (theme variables only), alias and lightAlias the primitive each points at. lightSource is rost when registry/light.json sets the light value instead of Figma. source is figma, or rost for Rost's own.",
   count: sorted.length,
   tokens: Object.fromEntries(sorted.map((n) => [n, tokens[n]])),
 }, null, 2) + '\n'

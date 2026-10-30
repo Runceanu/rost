@@ -15,7 +15,9 @@
  * missing part in one piece.
  *
  * Figma renders each component on the page background (#060805,
- * non-interactive/background/primary), so the test does too.
+ * non-interactive/background/primary), in the dark theme, so the test does
+ * too. Headless Chromium says its system is light, so the page sets
+ * data-theme="dark" rather than follow it.
  *
  * A fixture can ask for two more things. `force` holds pseudo-classes
  * (hover, active, focus-visible) put on the component's root through the
@@ -179,7 +181,8 @@ for (const id of ids) {
     )`)
   await build({ entryPoints: [join(work, 'entry.tsx')], bundle: true, outdir: work, jsx: 'automatic', logLevel: 'error', loader: { '.svg': 'file' }, plugins: [svgUrl] })
   const face = `@font-face { font-family: 'General Sans Variable'; font-weight: 200 700; src: url('${origin}/font') format('truetype');${metrics} }`
-  writeFileSync(join(work, 'index.html'), `<!doctype html><meta charset="utf-8">
+  // Figma's frames are the dark theme. data-theme pins it, whatever the system says.
+  writeFileSync(join(work, 'index.html'), `<!doctype html><html data-theme="dark"><meta charset="utf-8">
     <link rel="stylesheet" href="${origin}/repo/tokens/tokens.css">
     <style>${face} body { margin: 0; background: var(--non-interactive-background-primary); -webkit-font-smoothing: antialiased; }</style>
     <link rel="stylesheet" href="entry.css"><div id="root"></div><script src="entry.js"></script>`)
