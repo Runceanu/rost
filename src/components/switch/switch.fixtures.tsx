@@ -1,16 +1,24 @@
 import { Switch } from './Switch'
 
-// Switch started in code, not Figma, so there's no screenshot to compare
-// with. These are the looks the page shows; hover, press and focus are left
-// for you to try on the real thing.
-export const fixtures = [
-  { node: 'switch:off', name: 'state=Default, checked=False', element: <Switch>Email me receipts</Switch> },
-  { node: 'switch:on', name: 'state=Default, checked=True', element: <Switch checked>Email me receipts</Switch> },
-  { node: 'switch:disabled-off', name: 'state=Disabled, checked=False', element: <Switch disabled>Email me receipts</Switch> },
-  { node: 'switch:disabled-on', name: 'state=Disabled, checked=True', element: <Switch disabled checked>Email me receipts</Switch> },
-  { node: 'switch:hover-off', name: 'state=Hover, checked=False', element: <Switch>Email me receipts</Switch>, force: ['hover'] },
-  { node: 'switch:focus-on', name: 'state=Focus, checked=True', element: <div style={{ display: 'inline-flex', padding: 'var(--spacing-gap-2xsmall)' }}><Switch checked>Email me receipts</Switch></div>, force: ['focus', 'focus-visible'] },
+// One fixture per Figma variant. Hover, pressed and focus are forced by the
+// test. A focused one's frame has the ring, 4px outside the track; the label
+// is further in on the right, so there's nothing to add on that side.
+type V = [state: 'Default' | 'Hover' | 'Pressed' | 'Focus' | 'Disabled', checked: boolean, node: string]
+const VARIANTS: V[] = [
+  ['Default', false, '528:350'], ['Hover', false, '528:355'], ['Pressed', false, '528:360'], ['Focus', false, '528:365'], ['Disabled', false, '528:371'],
+  ['Default', true, '528:376'], ['Hover', true, '528:381'], ['Pressed', true, '528:386'], ['Focus', true, '528:391'], ['Disabled', true, '528:397'],
 ]
+const FORCE = { Hover: ['hover'], Pressed: ['active'], Focus: ['focus', 'focus-visible'] } as Record<string, string[]>
+
+export const fixtures = VARIANTS.map(([state, checked, node]) => {
+  const sw = <Switch checked={checked} disabled={state === 'Disabled'}>Email me receipts</Switch>
+  return {
+    node,
+    name: `state=${state}, checked=${checked ? 'True' : 'False'}`,
+    element: state === 'Focus' ? <div style={{ display: 'inline-flex', padding: '4px 0 4px 4px' }}>{sw}</div> : sw,
+    ...(FORCE[state] ? { force: FORCE[state] } : {}),
+  }
+})
 
 /** What a caller writes. Shown on the component's page. */
 export const usage = `import { Switch } from 'rost/components/switch/Switch'

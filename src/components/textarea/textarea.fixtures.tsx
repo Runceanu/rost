@@ -1,24 +1,28 @@
 import type { JSX } from 'react'
 import { Textarea } from './Textarea'
 
-// Textarea started in code, not Figma, so there's no screenshot to compare
-// with. One fixture per look the contract draws, with Input's sample text.
-// The frame leaves room for the help line under the field and the ring around it.
-type V = [state: 'Default' | 'Hover' | 'Disabled', selected: boolean, error: boolean]
+/**
+ * One fixture per Figma variant. Figma's frame includes the help line under
+ * the field (120px tall in all); a focused one also has the ring, 4px outside
+ * (288 by 124). Hover is forced by the test. Chrome's resize handle in the
+ * corner is the one thing Figma doesn't draw, and it's within tolerance.
+ */
+type V = [state: 'Default' | 'Hover' | 'Disabled', selected: boolean, error: boolean, node: string]
 const VARIANTS: V[] = [
-  ['Default', false, false], ['Hover', false, false], ['Default', true, false], ['Disabled', false, false],
-  ['Default', false, true], ['Hover', false, true], ['Default', true, true],
+  ['Default', false, false, '528:761'], ['Hover', false, false, '528:767'], ['Default', true, false, '528:773'],
+  ['Disabled', false, false, '528:780'], ['Default', false, true, '528:786'], ['Hover', false, true, '528:795'],
+  ['Default', true, true, '528:804'],
 ]
-const frame = (el: JSX.Element) => <div style={{ width: 280, padding: '4px 4px 20px' }}>{el}</div>
-const name = (state: string, selected: boolean, error: boolean) =>
-  `state=${state}, selected=${selected ? 'True' : 'False'}, error=${error ? 'True' : 'False'}`
+const frame = (el: JSX.Element, selected: boolean) =>
+  <div style={selected ? { width: 280, height: 120, padding: '4px 4px 0' } : { width: 280, height: 120 }}>{el}</div>
 
-export const fixtures = VARIANTS.map(([state, selected, error]) => ({
-  node: `textarea:${state.toLowerCase()}${selected ? '-selected' : ''}${error ? '-error' : ''}`,
-  name: name(state, selected, error),
+export const fixtures = VARIANTS.map(([state, selected, error, node]) => ({
+  node,
+  name: `state=${state}, selected=${selected ? 'True' : 'False'}, error=${error ? 'True' : 'False'}`,
   element: frame(
     <Textarea label="Note" supportive={error ? 'Keep it under 500 characters.' : 'Only you see this.'} readOnly
       defaultValue="Paid in two parts. The second half lands in March." selected={selected} error={error} disabled={state === 'Disabled'} />,
+    selected,
   ),
   ...(state === 'Hover' ? { force: ['hover'] } : {}),
 }))

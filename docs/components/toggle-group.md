@@ -9,7 +9,7 @@
 | Kind | component |
 | Contract | `draft` · [toggle-group.contract.yaml](../../contracts/toggle-group.contract.yaml) |
 | Guidance | `proposed` |
-| Source | `rost/src/components/toggle-group/ToggleGroup.tsx` · read 2026-10-30 · frozen 2026-10-30 |
+| Source | [Figma 528:742](https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=528-742) · read 2026-10-30 · frozen 2026-10-30 |
 | Implemented in | Accounting app (`src/rost/toggle-group/ToggleGroup.tsx`, `.rost-toggle-group`) |
 
 ## Props
@@ -36,6 +36,8 @@
 ## Behaviour
 
 One toggle is on at a time. Choosing another turns the last one off. The group draws nothing itself; each Toggle shows its own on and off.
+
+In Figma it sits under Toggle, a component with a `toggles` slot of Toggle instances. Figma's Toggle has no label yet, so the Figma group shows three icon toggles, not years.
 
 ## Accessibility
 

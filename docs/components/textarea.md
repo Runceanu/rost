@@ -9,7 +9,7 @@
 | Kind | component |
 | Contract | `draft` · [textarea.contract.yaml](../../contracts/textarea.contract.yaml) |
 | Guidance | `proposed` |
-| Source | `rost/src/components/textarea/Textarea.tsx` · read 2026-10-30 · frozen 2026-10-30 |
+| Source | [Figma 528:814](https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=528-814) · read 2026-10-30 · frozen 2026-10-30 |
 | Implemented in | nowhere yet |
 
 ## Props
@@ -57,7 +57,7 @@ It's Input grown down, with the same tokens for the fill, the edge, the label, t
 
 One difference from Input: the label always sits small at the top. Input's label sits large in an empty field, but in a box three lines tall it would float alone in the middle. It starts three lines tall (`rows`), and you can drag it taller.
 
-It's my draft, built in code from Input's contract. There's no Figma frame yet.
+It's my draft. I built it in code from Input's contract, then drew it in the kit next to Input, with Input's variables. The seven variants match Figma.
 
 ## Accessibility
 

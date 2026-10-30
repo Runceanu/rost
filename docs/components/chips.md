@@ -27,7 +27,7 @@
 
 - `root`
 - `label`
-- `background`: Proposed, not in Figma yet. The plate behind a selected chip, the full size of the pill. An unselected chip leaves it empty, so the Figma states don't change.
+- `background`: Proposed, in Figma since 2026-10-30. The plate behind a selected chip, the full size of the pill. An unselected chip leaves it empty, so the Figma states don't change.
 - `outline`: The 1px edge, drawn as an inset shadow rather than a border. Chrome spreads a border on a fully round box over two pixels at the ends, where Figma draws one. That was all of Pressed's difference from Figma (2.62%, now 0.68%).
 - `focus-ring`
 
@@ -44,7 +44,7 @@
 
 One `status` (`Default`) and five states. Hover, pressed and focus come from the browser.
 
-`selected` is the chip that's on: a solid green plate with a dark label, the same look and tokens as a selected ListItem, and no edge. It's my proposal, drawn in code, and Figma doesn't have it yet. Use it, but expect the colours to move a little once I draw it in the kit. Don't improvise another fill.
+`selected` is the chip that's on: a solid green plate with a dark label, the same look and tokens as a selected ListItem, and no edge. It's my proposal. I drew it in code first and then in the kit, in the Chip set's second column. Use it, but it isn't signed off yet. Don't improvise another fill.
 
 ## Accessibility
 

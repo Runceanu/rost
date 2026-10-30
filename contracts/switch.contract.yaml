@@ -8,10 +8,12 @@ summary: A setting that's on or off and takes effect straight away. A pill track
 category: selection
 related: [ toggle, chips ]
 source:
-  tool: code
-  repo: rost
-  path: src/components/switch/Switch.tsx
+  tool: figma
+  fileKey: 1Zy0wiWKXQAvsfDBX3KR0d
+  nodeId: "528:402"
+  url: https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=528-402
   extractedAt: "2026-10-30"
+  extractedBy: hand
   frozenAt: "2026-10-30"
 props:
   checked: { type: boolean, default: false, notes: "On or off. It's the switch's `aria-checked`. In React, controlled with `checked` or left to itself with `defaultChecked`." }
@@ -114,6 +116,7 @@ variants:
       label:
         color: { token: actions/secondary/regular/disabled/label, value: "#d3d9d5" }
   - when: { state: Default, checked: false }
+    figmaNode: "528:350"
     elements:
       background:
         background: { token: actions/secondary/regular/default/background, value: "#3a3a3a" }
@@ -121,6 +124,7 @@ variants:
       thumb:
         background: { token: actions/secondary/regular/default/label, value: "#d3d9d5" }
   - when: { state: Hover, checked: false }
+    figmaNode: "528:355"
     elements:
       background:
         background: { token: actions/secondary/regular/hover/background, value: "#747573" }
@@ -128,6 +132,7 @@ variants:
       thumb:
         background: { token: actions/secondary/regular/hover/label, value: "#ededed" }
   - when: { state: Pressed, checked: false }
+    figmaNode: "528:360"
     elements:
       background:
         background: { token: actions/secondary/regular/pressed/background, value: "#999" }
@@ -135,6 +140,7 @@ variants:
       thumb:
         background: { token: actions/secondary/regular/pressed/label, value: "#d3d9d5" }
   - when: { state: Focus, checked: false }
+    figmaNode: "528:365"
     elements:
       background:
         background: { token: actions/secondary/regular/focus/background, value: "#3a3a3a" }
@@ -144,6 +150,7 @@ variants:
       focus-ring:
         border-color: { token: actions/secondary/regular/focus/focus-ring, value: "#999" }
   - when: { state: Disabled, checked: false }
+    figmaNode: "528:371"
     elements:
       background:
         background: { token: actions/secondary/regular/disabled/background, value: "#3a3a3a" }
@@ -151,6 +158,7 @@ variants:
       thumb:
         background: { token: actions/secondary/regular/disabled/label, value: "#d3d9d5" }
   - when: { state: Default, checked: true }
+    figmaNode: "528:376"
     elements:
       background:
         background: { token: actions/primary/default/background, value: "#00d669" }
@@ -158,6 +166,7 @@ variants:
       thumb:
         background: { token: actions/primary/default/label, value: "#060805" }
   - when: { state: Hover, checked: true }
+    figmaNode: "528:381"
     elements:
       background:
         background: { token: actions/primary/hover/background, value: "#00b450" }
@@ -165,6 +174,7 @@ variants:
       thumb:
         background: { token: actions/primary/hover/label, value: "#060805" }
   - when: { state: Pressed, checked: true }
+    figmaNode: "528:386"
     elements:
       background:
         background: { token: actions/primary/pressed/background, value: "#00913a" }
@@ -172,6 +182,7 @@ variants:
       thumb:
         background: { token: actions/primary/pressed/label, value: "#060805" }
   - when: { state: Focus, checked: true }
+    figmaNode: "528:391"
     elements:
       background:
         background: { token: actions/primary/focus/background, value: "#00d669" }
@@ -181,6 +192,7 @@ variants:
       focus-ring:
         border-color: { token: actions/primary/focus/focus-ring, value: "#b6ffda" }
   - when: { state: Disabled, checked: true }
+    figmaNode: "528:397"
     elements:
       background:
         background: { token: actions/primary/disabled/background, value: "#00d669" }
@@ -198,7 +210,7 @@ guidance:
   behaviour: |-
     Off is a faded track with the thumb on the left, the way an off Toggle is faded. On is a solid primary green track with a dark thumb on the right. Hover, press and focus come from the browser and follow Toggle's colours. Disabled fades the whole thing, label too.
 
-    It's my draft, drawn in code from Toggle's and Button's tokens. There's no Figma frame yet, so nothing to test it against.
+    It's my draft. I built it in code from Toggle's and Button's tokens, then drew it in the kit next to Toggle, bound to the same variables. The ten variants match Figma.
   accessibility:
     element: "`<button type=\"button\" role=\"switch\">` with `aria-checked`. Switch sets both."
     name: "The label inside the button is its name. A switch with no label needs an `aria-label`."

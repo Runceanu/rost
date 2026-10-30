@@ -126,11 +126,12 @@ variants:
       root:
         cursor: { value: default, assert: false }
   - when: { state: Current }
+    figmaNode: "527:586"
     elements:
       title:
         color: { token: non-interactive/foreground/primary, value: "#ededed" }
       description:
-        color: { token: non-interactive/foreground/primary, value: "#ededed", notes: "Proposed, not in Figma yet. The page you're on, set by `aria-current=\"page\"`. It wears Pressed's colour and weight, the way Button's nav wears its pressed look. It keeps the resting size, though: Pressed grows the description to body size, and the current row would come out taller than its neighbours." }
+        color: { token: non-interactive/foreground/primary, value: "#ededed", notes: "Proposed, in Figma since 2026-10-30. The page you're on, set by `aria-current=\"page\"`. It wears Pressed's colour and weight, the way Button's nav wears its pressed look. It keeps the resting size, though: Pressed grows the description to body size, and the current row would come out taller than its neighbours." }
         font-weight: { token: typography/body/font-weight/medium, value: "500" }
         font-size: { token: typography/paragraph/font-size, value: 14px }
         line-height: { token: typography/paragraph/line-height, value: 20px }
@@ -145,7 +146,7 @@ guidance:
     - |-
       Mixing it up with the **Menu effect** (`effect-menu`), which is the frosted surface the nav sits on.
   behaviour: |-
-    Five states from Figma, and a sixth I added in code: `Current`, the page you're on. It comes from `aria-current="page"`, not from the mouse. The description turns bright and medium, as when you press it, and the divider underneath goes as bright as the text. That's my proposal; Figma doesn't have it yet.
+    Six states. The sixth, `Current`, I added in code first and then in Figma, the page you're on. It comes from `aria-current="page"`, not from the mouse. The description turns bright and medium, as when you press it, and the divider underneath goes as bright as the text. It's still my proposal, not signed off.
   accessibility:
     element: "`<a>`, inside `<nav aria-label=\"Main\">` and a list."
     currentPage: |-

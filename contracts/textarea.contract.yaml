@@ -8,10 +8,12 @@ summary: A text field for several lines, with Input's label, help line, error an
 category: inputs
 related: [ input ]
 source:
-  tool: code
-  repo: rost
-  path: src/components/textarea/Textarea.tsx
+  tool: figma
+  fileKey: 1Zy0wiWKXQAvsfDBX3KR0d
+  nodeId: "528:814"
+  url: https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=528-814
   extractedAt: "2026-10-30"
+  extractedBy: hand
   frozenAt: "2026-10-30"
 props:
   label: { type: slot, notes: "The field's name. Always small at the top, where a filled Input puts it." }
@@ -118,6 +120,7 @@ elements:
       pointer-events: { value: none, assert: false }
 variants:
   - when: { state: Default, selected: false, error: false }
+    figmaNode: "528:761"
     elements:
       outline:
         background: { token: input/regular/default/background, value: "#060805" }
@@ -129,6 +132,7 @@ variants:
       supportive:
         color: { token: input/regular/default/supportive, value: "#999999" }
   - when: { state: Hover, selected: false, error: false }
+    figmaNode: "528:767"
     elements:
       outline:
         background: { token: input/regular/hover/background, value: "#171717" }
@@ -140,6 +144,7 @@ variants:
       supportive:
         color: { token: input/regular/hover/supportive, value: "#d3d9d5" }
   - when: { state: Default, selected: true, error: false }
+    figmaNode: "528:773"
     elements:
       outline:
         background: { token: input/regular/focus/background, value: "#060805" }
@@ -154,6 +159,7 @@ variants:
         display: { value: block, assert: false }
         border-color: { token: input/regular/focus/focus-ring, value: "#00d669" }
   - when: { state: Disabled, selected: false, error: false }
+    figmaNode: "528:780"
     elements:
       outline:
         background: { token: input/regular/disabled/background, value: "#171717" }
@@ -165,6 +171,7 @@ variants:
       supportive:
         color: { token: input/regular/disabled/supportive, value: "#555555" }
   - when: { state: Default, selected: false, error: true }
+    figmaNode: "528:786"
     elements:
       outline:
         background: { token: input/negative/default/background, value: "#060805" }
@@ -178,6 +185,7 @@ variants:
       icons-alarm:
         background: { token: input/negative/default/icon, value: "#e93120" }
   - when: { state: Hover, selected: false, error: true }
+    figmaNode: "528:795"
     elements:
       outline:
         background: { token: input/negative/hover/background, value: "#171717" }
@@ -191,6 +199,7 @@ variants:
       icons-alarm:
         background: { token: input/negative/hover/icon, value: "#ae1b13" }
   - when: { state: Default, selected: true, error: true }
+    figmaNode: "528:804"
     elements:
       outline:
         background: { token: input/negative/focus/background, value: "#060805" }
@@ -222,7 +231,7 @@ guidance:
 
     One difference from Input: the label always sits small at the top. Input's label sits large in an empty field, but in a box three lines tall it would float alone in the middle. It starts three lines tall (`rows`), and you can drag it taller.
 
-    It's my draft, built in code from Input's contract. There's no Figma frame yet.
+    It's my draft. I built it in code from Input's contract, then drew it in the kit next to Input, with Input's variables. The seven variants match Figma.
   accessibility:
     element: "a real `<textarea>` with a `<label for>`. Never a `placeholder` instead of the label."
     supportiveText: connected with `aria-describedby`.

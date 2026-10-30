@@ -9,7 +9,7 @@
 | Kind | component |
 | Contract | `draft` · [switch.contract.yaml](../../contracts/switch.contract.yaml) |
 | Guidance | `proposed` |
-| Source | `rost/src/components/switch/Switch.tsx` · read 2026-10-30 · frozen 2026-10-30 |
+| Source | [Figma 528:402](https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=528-402) · read 2026-10-30 · frozen 2026-10-30 |
 | Implemented in | nowhere yet |
 
 ## Props
@@ -46,7 +46,7 @@
 
 Off is a faded track with the thumb on the left, the way an off Toggle is faded. On is a solid primary green track with a dark thumb on the right. Hover, press and focus come from the browser and follow Toggle's colours. Disabled fades the whole thing, label too.
 
-It's my draft, drawn in code from Toggle's and Button's tokens. There's no Figma frame yet, so nothing to test it against.
+It's my draft. I built it in code from Toggle's and Button's tokens, then drew it in the kit next to Toggle, bound to the same variables. The ten variants match Figma.
 
 ## Accessibility
 

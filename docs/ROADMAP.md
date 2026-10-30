@@ -86,7 +86,7 @@ In order of how much copied code each one removes.
 |---|---|---|
 | **Icons** as a component | The 17 SVGs are exported (`assets/icons/`), but there's no `Icon` component yet, and the apps draw their own | SVGs exported, component next |
 | **ListRow** | The accounting app builds it outside the kit | Checked on 2026-10-30: ListItem doesn't cover it. A row there leads with a Badge, ends with an amount and can carry a second Badge; ListItem has a 20px icon, a status dot and an action icon. Needs designing |
-| **Switch, Textarea, a selected Chip, Menu's current page** | The guidance said they were missing | Drafted in code on 2026-10-30 from the tokens Rost already has, with proposed guidance. Next: draw them in Figma, then test them against it |
+| **Switch, Textarea, a selected Chip, Menu's current page** | The guidance said they were missing | Drafted in code on 2026-10-30 from the tokens Rost already has, then drawn in Figma (with ToggleGroup) and matching it. Guidance is proposed: next, I read them and sign them off |
 
 ~~Move the portfolio site onto the kit's token names.~~ Done on 2026-10-26: its raw hex count is 0, like the accounting app's.
 
