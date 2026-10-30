@@ -9,7 +9,7 @@
 | Kind | component |
 | Contract | `draft` · [table.contract.yaml](../../contracts/table.contract.yaml) |
 | Guidance | `proposed` |
-| Source | `rost/src/components/table/Table.tsx` · read 2026-10-30 · frozen 2026-10-30 |
+| Source | [Figma 527:596](https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=527-596) · read 2026-10-30 · frozen 2026-10-30 |
 | Implemented in | nowhere yet |
 
 ## Props

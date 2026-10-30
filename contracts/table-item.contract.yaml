@@ -9,10 +9,12 @@ summary: One cell of a TableRow. Its content with an optional line under it, and
 category: display
 related: [ table, table-row, badge ]
 source:
-  tool: code
-  repo: rost
-  path: src/components/table-item/TableItem.tsx
+  tool: figma
+  fileKey: 1Zy0wiWKXQAvsfDBX3KR0d
+  nodeId: "527:126"
+  url: https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=527-126
   extractedAt: "2026-10-30"
+  extractedBy: hand
   frozenAt: "2026-10-30"
 props:
   content: { type: slot, notes: "What the cell says. In React, the children." }

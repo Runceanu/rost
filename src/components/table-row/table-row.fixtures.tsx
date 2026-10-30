@@ -2,7 +2,8 @@ import { Table } from '../table/Table'
 import { TableRow } from './TableRow'
 import { TableItem } from '../table-item/TableItem'
 
-// TableRow started in code. A `<tr>` only means something in a table, so each
+// TableRow started in code and was drawn in Figma after; the fixtures aren't
+// compared with it yet. A `<tr>` only means something in a table, so each
 // fixture is a small Table. Hover, press or tab to a linked row on the page
 // to see its states.
 const row = (props: { selected?: boolean; href?: string }, date = '15 Nov') => (

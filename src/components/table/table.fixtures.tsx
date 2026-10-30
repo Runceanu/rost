@@ -3,8 +3,9 @@ import { TableRow } from '../table-row/TableRow'
 import { TableItem } from '../table-item/TableItem'
 import { Badge } from '../badge/Badge'
 
-// Table started in code, not Figma, so there's no screenshot to compare. The
-// sample is the accounting app's payment schedule, with invented amounts.
+// Table started in code and was drawn in Figma after, on the table page. The
+// fixtures aren't compared with Figma's screenshots yet. The sample is the
+// accounting app's payment schedule, with invented amounts.
 const payments = [
   { kind: 'URSSAF', status: 'positive', date: '31 Oct', what: 'Q3 contributions', amount: '€1,284' },
   { kind: 'Income tax', status: 'warning', date: '15 Nov', what: 'Instalment 2 of 3', amount: '€640', estimate: true },

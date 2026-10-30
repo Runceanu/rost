@@ -8,10 +8,12 @@ summary: Rows of the same kind of thing, side by side in columns, like the accou
 category: display
 related: [ table-row, table-item, list-item ]
 source:
-  tool: code
-  repo: rost
-  path: src/components/table/Table.tsx
+  tool: figma
+  fileKey: 1Zy0wiWKXQAvsfDBX3KR0d
+  nodeId: "527:596"
+  url: https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=527-596
   extractedAt: "2026-10-30"
+  extractedBy: hand
   frozenAt: "2026-10-30"
 props:
   caption: { type: slot, notes: "Optional, what the table is: \"What to pay, and when\". Drawn above the rows and read first by screen readers. Without one, give the table an `aria-label` or point `aria-labelledby` at the heading above it." }

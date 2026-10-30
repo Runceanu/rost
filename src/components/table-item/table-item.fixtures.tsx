@@ -3,7 +3,8 @@ import { TableRow } from '../table-row/TableRow'
 import { TableItem } from './TableItem'
 import { Badge } from '../badge/Badge'
 
-// TableItem started in code. A cell only means something in a row, so each
+// TableItem started in code and was drawn in Figma after; the fixtures aren't
+// compared with it yet. A cell only means something in a row, so each
 // fixture is a one-row Table.
 const frame = (cells: React.ReactNode) => <div style={{ width: 280, maxWidth: '100%' }}><Table aria-label="Sample"><TableRow>{cells}</TableRow></Table></div>
 
