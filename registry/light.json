@@ -1,5 +1,5 @@
 {
-  "$comment": "Rost's own light values, read by bin/build-tokens.mjs on top of Figma's light mode. Each rule names tokens (* is one level of the path, ** any number), optionally only those whose Figma light value is `from`, and the light value they take instead: a primitive (@color/light/...) or a hex. Later rules win. Only theme colour tokens, and only their light value. Checked with node bin/contrast.mjs.",
+  "$comment": "Rost's own light values. Each rule names tokens (* is one level of the path, ** any number), optionally only those whose Figma light value was `from`, and the light value they take instead: a primitive (@color/light/...) or a hex. They went into Figma's light mode on 2026-10-30, so registry/figma-variables.json has them too; bin/build-tokens.mjs checks every rule still holds there, and applies any that doesn't. Later rules win. Only theme colour tokens, and only their light value. Checked with node bin/contrast.mjs.",
   "rules": [
     {
       "tokens": ["**/icon", "**/label", "**/sub-label", "icon"],
@@ -20,20 +20,18 @@
       "why": "A focus ring has to be seen: 3:1 at least. The pale greens were 1.4 and 2.7."
     },
     {
-      "tokens": ["tabs/selected/*/underline", "project/hover/outline"],
+      "tokens": ["tabs/selected/default/underline", "tabs/selected/focus/underline", "tabs/selected/disabled/underline", "project/hover/outline"],
       "from": "@color/light/primary/500",
       "light": "@color/light/primary/700",
       "why": "The underline of the selected tab and the line under a hovered project: one step darker than the fill green, 4:1."
     },
     {
-      "tokens": ["tabs/selected/*/underline"],
-      "from": "@color/light/primary/600",
+      "tokens": ["tabs/selected/hover/underline"],
       "light": "@color/light/primary/800",
       "why": "Its hover, one step darker again."
     },
     {
-      "tokens": ["tabs/selected/*/underline"],
-      "from": "@color/light/primary/700",
+      "tokens": ["tabs/selected/pressed/underline"],
       "light": "@color/light/primary/900",
       "why": "And pressed."
     },
@@ -63,7 +61,7 @@
       "why": "Readable on the pressed grey."
     },
     {
-      "tokens": ["input/negative/*/label", "input/negative/*/supportive", "non-interactive/foreground/negative/base"],
+      "tokens": ["input/negative/*/label", "input/negative/default/supportive", "input/negative/focus/supportive", "non-interactive/foreground/negative/base"],
       "from": "@color/light/negative/500",
       "light": "@color/light/negative/600",
       "why": "Error text. #e93120 is 4.2:1 on #fcfcfc, just short. #ae1b13 is 6.9:1."

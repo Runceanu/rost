@@ -153,7 +153,9 @@ const lightRules = JSON.parse(readFileSync(new URL('../registry/light.json', imp
 const themedCount = Object.values(tokenJson).filter((t) => t.collection === 'theme' && t.light && t.light !== t.value).length
 const lightOverridden = Object.values(tokenJson).filter((t) => t.lightSource === 'rost').length
 const motionTokens = Object.entries(tokenJson).filter(([n]) => n.startsWith('motion/'))
-const figmaVars = Object.keys(JSON.parse(readFileSync(new URL('../registry/figma-variables.json', import.meta.url), 'utf8')).variables)
+const figmaRegistry = JSON.parse(readFileSync(new URL('../registry/figma-variables.json', import.meta.url), 'utf8'))
+const figmaVars = Object.keys(figmaRegistry.variables)
+const figmaRead = figmaRegistry.readOn
 const { vars } = loadTokens()
 const unexported = figmaVars.filter((p) => !vars.has('--' + p.replace(/[/ ]/g, '-')))
 const families = {}
@@ -217,7 +219,7 @@ rost.build has a switch in the header. It remembers your pick in \`localStorage\
 
 ### Where the light values come from
 
-Figma already has a light mode for every theme colour, mostly the dark scale turned upside down. I started from that. Where it failed contrast I picked another step of the same family, in \`registry/light.json\`, which the token build reads on top of Figma. ${lightRules.length} rules, ${lightOverridden} tokens. The bright green \`#00d669\` stays: it's still the primary button, the selected chip and every green fill. What changes is green used as text, an icon or a line on a light ground, where it was 1.9:1.
+Figma already had a light mode for every theme colour, mostly the dark scale turned upside down. I started from that. Where it failed contrast I picked another step of the same family, in \`registry/light.json\`. ${lightRules.length} rules, ${lightOverridden} tokens. On 2026-10-30 those went into Figma too: the theme collection's light mode has them, as aliases to the same primitives, so switching an instance to light in Figma shows what the code shows. \`registry/light.json\` stays as the record of what I changed and why, and the token build checks that Figma still agrees with it. The bright green \`#00d669\` stays: it's still the primary button, the selected chip and every green fill. What changes is green used as text, an icon or a line on a light ground, where it was 1.9:1.
 
 | Tokens | Figma's light | Rost's light | Why |
 |---|---|---|---|
@@ -232,6 +234,7 @@ On 2026-10-30, with these values, nothing fails in light that passes in dark, ex
 - **Thumbs** draws its frosted panel in \`base/black\` at medium opacity. That's a primitive, not a theme colour, so the panel stays dark in light while its text goes dark with the theme. The text is unreadable there. The fix belongs in the contract: either the panel takes a theme colour, or the panel is dark on purpose (it sits on a photo) and gets \`data-theme="dark"\`. I haven't decided which. The lock on a Locked thumb is the same story: \`non-interactive/foreground/contrast\` on the green dot is near-black in dark and near-white in light, and the dot stays green.
 - **Pictures with their colour baked in.** Badge's small dots and InlineBanner's icons are SVG files with a fill, so they don't follow the theme. I looked at both in light: they read, because the label next to them says the same thing, but the bright green and orange are under 3:1 on InlineBanner's light grey. They'd need to be masks in a theme colour, the way Icon does it.
 - **Already failing in dark.** The pressed primary icon (\`#3a3a3a\` on the pressed green, 2.8:1), a selected ListItem's description when pressed or hovered, the hover and pressed Tag, an Input's hover icon and error text when the field has an error. These come from Figma's dark values. Light fixes the ones it can.
+- **Borderless in Figma.** Its hover and pressed fill is drawn as a square, with no corner radius. In dark the hover fill is the page colour, so it never showed; in light it's a grey box behind the label. Code has its own background layer and isn't affected. The Figma component needs a radius on that layer.
 - Thumbs' bottom shade is a gradient from \`rgba(6,8,5,0)\`, a transparent dark. Browsers blend gradients with the alpha first, so it looks the same on a light ground, but it's still a dark-only value in a contract.
 
 ### Illustrations
@@ -240,7 +243,7 @@ The illustrations are drawn for a dark ground, and they stay that way. Their gre
 
 ## Motion
 
-Rost had no motion tokens. Durations and easings were plain numbers, mostly on the portfolio site, a few on rost.build. I went through both and they fall into a handful of values, so those are the tokens. They're Rost's own: Figma has no motion variables.
+Rost had no motion tokens. Durations and easings were plain numbers, mostly on the portfolio site, a few on rost.build. I went through both and they fall into a handful of values, so those are the tokens. They're in Figma too, in the base collection: durations as numbers (milliseconds), easings as strings, since Figma has no easing type. No layer property in Figma takes either, so they're hidden from every property picker and are there to be read, by people and by the token build.
 
 | Token | Value | For |
 |---|---|---|
@@ -252,7 +255,7 @@ rost.build's own transitions use the tokens now. No component in Rost animates y
 
 ## Figma variables
 
-The Figma file has **${figmaVars.length}** variables (\`registry/figma-variables.json\`, read on 2026-10-26) and \`tokens/tokens.css\` has **${figmaVars.length - unexported.length}** of them. \`npm run tokens\` builds it from that read, so they can't come apart.
+The Figma file has **${figmaVars.length}** variables (\`registry/figma-variables.json\`, read on ${figmaRead}) and \`tokens/tokens.css\` has **${figmaVars.length - unexported.length}** of them. \`npm run tokens\` builds it from that read, so they can't come apart.
 ${unexported.length ? `
 | Family | Missing |
 |---|---:|

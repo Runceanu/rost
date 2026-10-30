@@ -3,7 +3,8 @@
  * Builds tokens/tokens.css and tokens/tokens.json from Figma's variables.
  *
  * registry/figma-variables.json holds every local variable in the UI Kit, read
- * once with use_figma on 2026-10-26. A few variables come from a library, not
+ * with use_figma (first on 2026-10-26, again on 2026-10-30 once the light
+ * values and motion were in Figma). A few variables come from a library, not
  * the file itself (Base/Black), so they're taken from the saved
  * raw/*.get_variable_defs.txt reads. Then come Rost's own tokens, the ones
  * Figma has no variable for: the effects, the shadow, the hero height and two
@@ -13,9 +14,10 @@
  * `non-interactive/foreground/primary` and the CSS variable is
  * `--non-interactive-foreground-primary`.
  *
- * Two themes. Dark is Rost's default and sits on :root. Light takes Figma's
- * light mode, with Rost's own corrections from registry/light.json on top
- * (where Figma's light value fails contrast), and applies under
+ * Two themes. Dark is Rost's default and sits on :root. Light is Figma's
+ * light mode. registry/light.json says where that differs from Figma's first
+ * light values and why. Figma has those corrections now; a rule Figma doesn't
+ * match is applied on top and the build says so. Light applies under
  * [data-theme="light"], or under prefers-color-scheme: light when no theme is
  * set. [data-theme="dark"] brings dark back inside a light page. Only the
  * colours change; every other token is the same in both.
@@ -45,17 +47,23 @@ const ROST = [
   ['effect/menu-lg', 'blur(24px)', '"Menu" frosted glass, large radius (case-study hero and island backgrounds).'],
   ['effect/lock-frame', 'blur(8px)', 'LAYER_BLUR "Lock frame": a locked thumbnail. Figma ties it to spacing/base-8 (16), and its blur radius is twice CSS\'s.'],
   ['shadow/floating', '0 16px 24px 0 rgba(0, 0, 0, 0.16)', 'DROP_SHADOW "Shadow/Floating" (alpha is opacity/soft).'],
-  ['motion/duration/fast', '150ms', 'A colour or opacity change on hover, a tooltip appearing.'],
-  ['motion/duration/base', '200ms', 'Something small moving: the 16px slide of a Projects or Testimonials row.'],
-  ['motion/duration/slow', '450ms', 'Something big moving: the nav sliding, a banner going away.'],
-  ['motion/duration/slower', '600ms', 'Content arriving on scroll on the portfolio site.'],
-  ['motion/easing/standard', 'ease', 'CSS\'s own ease. The default for fades and colour.'],
-  ['motion/easing/out', 'ease-out', 'Starts fast, settles. The row slide.'],
-  ['motion/easing/in-out', 'ease-in-out', 'For things that loop: a pulse, the scroll hint bobbing.'],
-  ['motion/easing/move', 'cubic-bezier(0.4, 0, 0.2, 1)', 'Something moving from one place to another.'],
-  ['motion/easing/arrive', 'cubic-bezier(0.22, 1, 0.36, 1)', 'Content arriving, with a long soft finish.'],
-  ['motion/easing/spring', 'cubic-bezier(0.34, 1.56, 0.64, 1)', 'A small overshoot, for things that assemble. Use it rarely.'],
 ]
+
+// What the motion variables are for. Figma has the values, in its base
+// collection (durations in milliseconds, easings as CSS strings); these notes
+// are the same as each variable's description there.
+const NOTES = {
+  'motion/duration/fast': 'A colour or opacity change on hover, a tooltip appearing.',
+  'motion/duration/base': 'Something small moving: the 16px slide of a Projects or Testimonials row.',
+  'motion/duration/slow': 'Something big moving: the nav sliding, a banner going away.',
+  'motion/duration/slower': 'Content arriving on scroll on the portfolio site.',
+  'motion/easing/standard': "CSS's own ease. The default for fades and colour.",
+  'motion/easing/out': 'Starts fast, settles. The row slide.',
+  'motion/easing/in-out': 'For things that loop: a pulse, the scroll hint bobbing.',
+  'motion/easing/move': 'Something moving from one place to another.',
+  'motion/easing/arrive': 'Content arriving, with a long soft finish.',
+  'motion/easing/spring': 'A small overshoot, for things that assemble. Use it rarely.',
+}
 
 // ── Figma's variables ──────────────────────────────────────────────────────
 
@@ -87,12 +95,13 @@ function resolve(name, mode, seen = []) {
   return { value: x, from: seen.length ? name : undefined }
 }
 
-/** Figma's number to CSS: opacities are percentages, weights are bare, the rest are pixels. */
+/** Figma's number to CSS: opacities are percentages, weights are bare, durations milliseconds, the rest pixels. */
 function css(name, type, x) {
   if (type === 'COLOR') return String(x).toLowerCase()
   if (type === 'STRING') return name.startsWith('font-family/') ? [`'${x}'`, ...FONT_FALLBACKS].join(', ') : String(x)
   if (name.startsWith('opacity/')) return String(Number((x / 100).toFixed(4)))
   if (name.includes('font-weight')) return String(x)
+  if (name.startsWith('motion/duration/')) return `${x}ms`
   return `${x}px`
 }
 
@@ -108,14 +117,21 @@ const add = (name, entry) => {
 }
 
 // Rost's light rules: * is one level of the path, ** any number. `from`, when
-// it's there, narrows a rule to tokens whose Figma light value is that primitive.
+// it's there, narrows a rule to tokens whose Figma light value was that
+// primitive. Figma has Rost's values now, so a token already at the rule's
+// value matches too, and a rule Figma doesn't match yet is listed.
 const glob = (p) => new RegExp('^' + p.split('/').map((s) => (s === '**' ? '.+' : s === '*' ? '[^/]+' : s.replace(/[.+?^${}()|[\]\\]/g, '\\$&'))).join('/') + '$')
 const lightOf = new Map()
+const notInFigma = new Set()
 lightRules.forEach((rule, i) => {
   const from = rule.from && [rule.from].flat()
-  const hits = [...vars].filter(([n, v]) => v.collection === 'theme' && v.type === 'COLOR' && rule.tokens.some((p) => glob(p).test(n)) && (!from || from.includes(v.light)))
+  const hits = [...vars].filter(([n, v]) => v.collection === 'theme' && v.type === 'COLOR' && rule.tokens.some((p) => glob(p).test(n)) && (!from || from.includes(v.light) || v.light === rule.light))
   if (!hits.length) throw new Error(`registry/light.json rule ${i + 1} (${rule.tokens.join(', ')}) matches no theme colour`)
-  for (const [n] of hits) lightOf.set(n, { value: rule.light, why: rule.why })
+  for (const [n, v] of hits) {
+    lightOf.set(n, { value: rule.light, why: rule.why })
+    if (v.light === rule.light) notInFigma.delete(n)
+    else notInFigma.add(n)
+  }
 })
 function resolveLight(name) {
   const own = lightOf.get(name)
@@ -128,6 +144,7 @@ function resolveLight(name) {
 for (const [name, v] of vars) {
   const dark = resolve(name, 'dark')
   const entry = { cssVar: cssVar(name), value: css(name, v.type, dark.value), source: 'figma', collection: v.collection }
+  if (NOTES[name]) entry.note = NOTES[name]
   if (dark.from) entry.alias = dark.from
   if (v.collection === 'theme') {
     const light = resolveLight(name)
@@ -173,6 +190,7 @@ const SECTIONS = [
   ['Spacing / radius', (n) => n.startsWith('spacing/radius/')],
   ['Spacing / outline', (n) => n.startsWith('spacing/outline/')],
   ['Opacity', (n) => n.startsWith('opacity/')],
+  ['Motion (durations, and easings for transition-timing-function)', (n) => n.startsWith('motion/')],
 ]
 const sorted = Object.keys(tokens).sort((a, b) => a.localeCompare(b, 'en', { numeric: true }))
 const figma = sorted.filter((n) => tokens[n].source === 'figma')
@@ -244,4 +262,5 @@ if (check) {
 } else {
   for (const [p, s] of outputs) writeFileSync(join(root, p), s)
   console.log(`tokens: ${figma.length} from Figma, ${ROST.length} of Rost's own${disagree ? `, ${disagree} disagree with an older read` : ''}`)
+  if (notInFigma.size) console.log(`  ${notInFigma.size} light value(s) from registry/light.json aren't in Figma yet: ${[...notInFigma].join(', ')}`)
 }

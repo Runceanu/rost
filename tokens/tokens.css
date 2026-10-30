@@ -702,6 +702,18 @@
   --opacity-strong: 0.64;
   --opacity-transparent: 0;
 
+  /* ── Motion (durations, and easings for transition-timing-function) ──────── */
+  --motion-duration-base: 200ms;
+  --motion-duration-fast: 150ms;
+  --motion-duration-slow: 450ms;
+  --motion-duration-slower: 600ms;
+  --motion-easing-arrive: cubic-bezier(0.22, 1, 0.36, 1);
+  --motion-easing-in-out: ease-in-out;
+  --motion-easing-move: cubic-bezier(0.4, 0, 0.2, 1);
+  --motion-easing-out: ease-out;
+  --motion-easing-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --motion-easing-standard: ease;
+
   /* ── Rost's own (no Figma variable) ────────────────────────────────────── */
   /* Old name for typography/sub-title/font-size. The accounting app and the portfolio site still use it. */
   --typography-subtitle-font-size: var(--typography-sub-title-font-size);
@@ -719,26 +731,6 @@
   --effect-lock-frame: blur(8px);
   /* DROP_SHADOW "Shadow/Floating" (alpha is opacity/soft). */
   --shadow-floating: 0 16px 24px 0 rgba(0, 0, 0, 0.16);
-  /* A colour or opacity change on hover, a tooltip appearing. */
-  --motion-duration-fast: 150ms;
-  /* Something small moving: the 16px slide of a Projects or Testimonials row. */
-  --motion-duration-base: 200ms;
-  /* Something big moving: the nav sliding, a banner going away. */
-  --motion-duration-slow: 450ms;
-  /* Content arriving on scroll on the portfolio site. */
-  --motion-duration-slower: 600ms;
-  /* CSS's own ease. The default for fades and colour. */
-  --motion-easing-standard: ease;
-  /* Starts fast, settles. The row slide. */
-  --motion-easing-out: ease-out;
-  /* For things that loop: a pulse, the scroll hint bobbing. */
-  --motion-easing-in-out: ease-in-out;
-  /* Something moving from one place to another. */
-  --motion-easing-move: cubic-bezier(0.4, 0, 0.2, 1);
-  /* Content arriving, with a long soft finish. */
-  --motion-easing-arrive: cubic-bezier(0.22, 1, 0.36, 1);
-  /* A small overshoot, for things that assemble. Use it rarely. */
-  --motion-easing-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 /* ── Light ──────────────────────────────────────────────────────────────────

@@ -181,22 +181,22 @@ rost.build has a switch in the header. It remembers your pick in `localStorage` 
 
 ### Where the light values come from
 
-Figma already has a light mode for every theme colour, mostly the dark scale turned upside down. I started from that. Where it failed contrast I picked another step of the same family, in `registry/light.json`, which the token build reads on top of Figma. 17 rules, 89 tokens. The bright green `#00d669` stays: it's still the primary button, the selected chip and every green fill. What changes is green used as text, an icon or a line on a light ground, where it was 1.9:1.
+Figma already had a light mode for every theme colour, mostly the dark scale turned upside down. I started from that. Where it failed contrast I picked another step of the same family, in `registry/light.json`. 17 rules, 89 tokens. On 2026-10-30 those went into Figma too: the theme collection's light mode has them, as aliases to the same primitives, so switching an instance to light in Figma shows what the code shows. `registry/light.json` stays as the record of what I changed and why, and the token build checks that Figma still agrees with it. The bright green `#00d669` stays: it's still the primary button, the selected chip and every green fill. What changes is green used as text, an icon or a line on a light ground, where it was 1.9:1.
 
 | Tokens | Figma's light | Rost's light | Why |
 |---|---|---|---|
 | `**/icon`, `**/label`, `**/sub-label`, `icon` | `primary/500` | `primary/800` | Figma's light mode keeps the bright green for icons and text. #00d669 is 1.9:1 on #fcfcfc. The darker green of the same family is 6.2:1. |
 | `**/icon`, `**/label` | `primary/400` | `primary/900` | Hover goes dimmer in dark and darker in light. Figma had it go lighter, to #00f882, which nearly disappears. |
 | `**/focus-ring` | `primary/400`, `primary/600` | `primary/800` | A focus ring has to be seen: 3:1 at least. The pale greens were 1.4 and 2.7. |
-| `tabs/selected/*/underline`, `project/hover/outline` | `primary/500` | `primary/700` | The underline of the selected tab and the line under a hovered project: one step darker than the fill green, 4:1. |
-| `tabs/selected/*/underline` | `primary/600` | `primary/800` | Its hover, one step darker again. |
-| `tabs/selected/*/underline` | `primary/700` | `primary/900` | And pressed. |
+| `tabs/selected/default/underline`, `tabs/selected/focus/underline`, `tabs/selected/disabled/underline`, `project/hover/outline` | `primary/500` | `primary/700` | The underline of the selected tab and the line under a hovered project: one step darker than the fill green, 4:1. |
+| `tabs/selected/hover/underline` | whatever Figma has | `primary/800` | Its hover, one step darker again. |
+| `tabs/selected/pressed/underline` | whatever Figma has | `primary/900` | And pressed. |
 | `actions/primary/*/icon`, `actions/primary/*/sub-label`, `interactive/active/*/icon`, `interactive/active/*/sub-label` | whatever Figma has | `neutral/800` | On the green fill. Figma's #454545 is 3.5:1 there; #171717 is 9:1. |
 | `actions/primary/pressed/icon`, `actions/primary/pressed/sub-label`, `interactive/active/pressed/icon`, `interactive/active/pressed/sub-label` | whatever Figma has | `neutral/900` | The pressed green is darker, so these go to the same near-black as the label. |
 | `actions/secondary/*/hover/background` | whatever Figma has | `neutral/400` | Secondary buttons and tags darken as you press. Figma's light mode had hover and pressed both on mid-greys, and a tag's label on its pressed grey at 3.9:1. |
 | `actions/secondary/*/pressed/background` | whatever Figma has | `neutral/500` | Pressed, one step further. #171717 on #999999 is 6.3:1. |
 | `actions/secondary/*/pressed/sub-label` | whatever Figma has | `neutral/800` | Readable on the pressed grey. |
-| `input/negative/*/label`, `input/negative/*/supportive`, `non-interactive/foreground/negative/base` | `negative/500` | `negative/600` | Error text. #e93120 is 4.2:1 on #fcfcfc, just short. #ae1b13 is 6.9:1. |
+| `input/negative/*/label`, `input/negative/default/supportive`, `input/negative/focus/supportive`, `non-interactive/foreground/negative/base` | `negative/500` | `negative/600` | Error text. #e93120 is 4.2:1 on #fcfcfc, just short. #ae1b13 is 6.9:1. |
 | `actions/secondary/negative/hover/icon` | whatever Figma has | `negative/600` | Hover darker, as with the green. |
 | `actions/secondary/positive/*/icon`, `non-interactive/foreground/positive/base` | `positive/500`, `primary/500` | `positive/700` | The positive green as a mark or text on a light ground: #31d84d is 1.8:1, #0e7118 is 6.4:1. |
 | `actions/secondary/positive/hover/icon` | whatever Figma has | `positive/800` | Hover darker. |
@@ -212,6 +212,7 @@ On 2026-10-30, with these values, nothing fails in light that passes in dark, ex
 - **Thumbs** draws its frosted panel in `base/black` at medium opacity. That's a primitive, not a theme colour, so the panel stays dark in light while its text goes dark with the theme. The text is unreadable there. The fix belongs in the contract: either the panel takes a theme colour, or the panel is dark on purpose (it sits on a photo) and gets `data-theme="dark"`. I haven't decided which. The lock on a Locked thumb is the same story: `non-interactive/foreground/contrast` on the green dot is near-black in dark and near-white in light, and the dot stays green.
 - **Pictures with their colour baked in.** Badge's small dots and InlineBanner's icons are SVG files with a fill, so they don't follow the theme. I looked at both in light: they read, because the label next to them says the same thing, but the bright green and orange are under 3:1 on InlineBanner's light grey. They'd need to be masks in a theme colour, the way Icon does it.
 - **Already failing in dark.** The pressed primary icon (`#3a3a3a` on the pressed green, 2.8:1), a selected ListItem's description when pressed or hovered, the hover and pressed Tag, an Input's hover icon and error text when the field has an error. These come from Figma's dark values. Light fixes the ones it can.
+- **Borderless in Figma.** Its hover and pressed fill is drawn as a square, with no corner radius. In dark the hover fill is the page colour, so it never showed; in light it's a grey box behind the label. Code has its own background layer and isn't affected. The Figma component needs a radius on that layer.
 - Thumbs' bottom shade is a gradient from `rgba(6,8,5,0)`, a transparent dark. Browsers blend gradients with the alpha first, so it looks the same on a light ground, but it's still a dark-only value in a contract.
 
 ### Illustrations
@@ -220,7 +221,7 @@ The illustrations are drawn for a dark ground, and they stay that way. Their gre
 
 ## Motion
 
-Rost had no motion tokens. Durations and easings were plain numbers, mostly on the portfolio site, a few on rost.build. I went through both and they fall into a handful of values, so those are the tokens. They're Rost's own: Figma has no motion variables.
+Rost had no motion tokens. Durations and easings were plain numbers, mostly on the portfolio site, a few on rost.build. I went through both and they fall into a handful of values, so those are the tokens. They're in Figma too, in the base collection: durations as numbers (milliseconds), easings as strings, since Figma has no easing type. No layer property in Figma takes either, so they're hidden from every property picker and are there to be read, by people and by the token build.
 
 | Token | Value | For |
 |---|---|---|
@@ -241,4 +242,4 @@ rost.build's own transitions use the tokens now. No component in Rost animates y
 
 ## Figma variables
 
-The Figma file has **661** variables (`registry/figma-variables.json`, read on 2026-10-26) and `tokens/tokens.css` has **661** of them. `npm run tokens` builds it from that read, so they can't come apart.
+The Figma file has **671** variables (`registry/figma-variables.json`, read on 2026-10-30) and `tokens/tokens.css` has **671** of them. `npm run tokens` builds it from that read, so they can't come apart.
