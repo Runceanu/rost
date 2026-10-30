@@ -21,7 +21,9 @@ props:
   description: { type: slot }
   showDescription: { type: boolean, default: true }
   showDivider: { type: boolean, default: true, notes: "The line underneath. It's Rost's Divider." }
-states: [ Default, Hover, Pressed, Focus, Disabled ]
+stateSelectors:
+  Current: '[aria-current="page"]'
+states: [ Default, Hover, Pressed, Focus, Disabled, Current ]
 elements:
   root:
     notes: Values come from each state's own branch of the Figma read. The first parse kept Default's colours for every state.
@@ -123,6 +125,17 @@ variants:
         line-height: { token: typography/paragraph/line-height, value: 20px }
       root:
         cursor: { value: default, assert: false }
+  - when: { state: Current }
+    elements:
+      title:
+        color: { token: non-interactive/foreground/primary, value: "#ededed" }
+      description:
+        color: { token: non-interactive/foreground/primary, value: "#ededed", notes: "Proposed, not in Figma yet. The page you're on, set by `aria-current=\"page\"`. It wears Pressed's colour and weight, the way Button's nav wears its pressed look. It keeps the resting size, though: Pressed grows the description to body size, and the current row would come out taller than its neighbours." }
+        font-weight: { token: typography/body/font-weight/medium, value: "500" }
+        font-size: { token: typography/paragraph/font-size, value: 14px }
+        line-height: { token: typography/paragraph/line-height, value: 20px }
+      divider:
+        background: { token: non-interactive/foreground/primary, value: "#ededed", notes: "Proposed. The line under the page you're on is as bright as its text, so the row reads as \"you are here\" at a glance, not only by its weight." }
 guidance:
   status: agreed
   use:
@@ -132,11 +145,11 @@ guidance:
     - |-
       Mixing it up with the **Menu effect** (`effect-menu`), which is the frosted surface the nav sits on.
   behaviour: |-
-    Five states. The `line` part is the indicator. It marks the page you're on (`aria-current`), not where the mouse is.
+    Five states from Figma, and a sixth I added in code: `Current`, the page you're on. It comes from `aria-current="page"`, not from the mouse. The description turns bright and medium, as when you press it, and the divider underneath goes as bright as the text. That's my proposal; Figma doesn't have it yet.
   accessibility:
     element: "`<a>`, inside `<nav aria-label=\"Main\">` and a list."
     currentPage: |-
-      `aria-current="page"`. That's also what the line is styled from.
+      `aria-current="page"`. That's also what the `Current` look is styled from, so there's no prop to keep in step with it.
     focus: "`focus-ring`, on `:focus-visible`."
     mobile: |-
       when it folds behind a button, that button gets `aria-expanded` and controls the list.

@@ -12,6 +12,8 @@ export const fixtures = [
   { node: '41:286', name: 'state=Pressed', element: item(), force: ['active'] },
   { node: '41:272', name: 'state=Focus', element: <div style={{ display: 'inline-flex', padding: '0 var(--spacing-gap-2xsmall)' }}>{item()}</div>, force: ['focus', 'focus-visible'] },
   { node: '41:298', name: 'state=Disabled', element: item({ disabled: true }) },
+  // Proposed, not in Figma yet, so nothing to compare with: the page you're on.
+  { node: 'menu:current', name: 'state=Current', element: item({ 'aria-current': 'page' }) },
 ]
 
 /** What a caller writes. Shown on the component's page. */
@@ -23,4 +25,4 @@ export const usage = `import { Menu } from 'rost/components/menu/Menu'
 </nav>`
 
 /** What the component's card on rost.build shows. */
-export const preview = <Menu as="div" title="Work" description="Products and case studies" style={{ width: 220 }} />
+export const preview = <Menu as="div" title="Work" description="Products and case studies" aria-current="page" style={{ width: 220 }} />

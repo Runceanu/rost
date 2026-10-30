@@ -1,0 +1,234 @@
+# yaml-language-server: $schema=../schema/component-contract.schema.json
+schemaVersion: 2
+id: textarea
+name: Textarea
+kind: component
+status: draft
+summary: A text field for several lines, with Input's label, help line, error and focus ring.
+category: inputs
+related: [ input ]
+source:
+  tool: code
+  repo: rost
+  path: src/components/textarea/Textarea.tsx
+  extractedAt: "2026-10-30"
+  frozenAt: "2026-10-30"
+props:
+  label: { type: slot, notes: "The field's name. Always small at the top, where a filled Input puts it." }
+  value: { type: slot, notes: "What's typed. In React, the textarea's value." }
+  placeholder: { type: slot, notes: "Shown in the empty field. Never instead of the label." }
+  supportive: { type: slot, notes: "One line of help under the field, or the fix when there's an error." }
+  selected:
+    type: boolean
+    default: false
+    notes: The field has focus. In code it follows focus; `selected` forces it, for previews and tests.
+  error:
+    type: boolean
+    default: false
+stateSelectors:
+  Disabled: ":has(textarea:disabled)"
+states: [ Default, Hover, Disabled ]
+elements:
+  root:
+    notes: "Input's field, grown down. The same 12px padding and corners, and the same tokens for every colour."
+    styles:
+      display: { value: flex, assert: false }
+      flex-direction: { value: column, assert: false }
+      position: { value: relative, assert: false }
+      gap: { token: spacing/gap/2xsmall, value: 4px }
+      padding-top: { token: spacing/gap/small-medium, value: 12px }
+      padding-bottom: { token: spacing/gap/small-medium, value: 12px }
+      padding-left: { token: spacing/gap/small-medium, value: 12px }
+      padding-right: { token: spacing/gap/small-medium, value: 12px }
+      border-radius: { token: spacing/radius/medium, value: 12px }
+      cursor: { value: text, assert: false }
+  outline:
+    notes: The field's fill and its 1px edge, on their own layer, as in Input.
+    styles:
+      position: { value: absolute }
+      inset: { value: "0" }
+      border-style: { value: solid }
+      border-width: { token: spacing/outline/small, value: 1px }
+      border-radius: { token: spacing/radius/medium, value: 12px }
+      opacity: { token: opacity/solid, value: "1" }
+      pointer-events: { value: none, assert: false }
+  header:
+    notes: "The label's line, with the alarm at the end when there's an error. 16px tall either way, so the text doesn't move when an error shows up."
+    styles:
+      display: { value: flex, assert: false }
+      align-items: { value: center }
+      position: { value: relative, assert: false }
+      gap: { token: spacing/gap/small, value: 8px }
+      min-height: { token: spacing/size/2xsmall, value: 16px }
+  label:
+    notes: "Input's floated label: placeholder type, regular. Unlike Input it never sits large in the field. A box this tall would leave it floating alone in the middle."
+    styles:
+      flex: { value: 1 0 0, assert: false }
+      min-width: { value: 1px, assert: false }
+      font-family: { token: font-family/base, value: "'General Sans Variable'" }
+      font-weight: { token: typography/label/font-weight/regular, value: "400" }
+      font-size: { token: typography/placeholder/font-size, value: 10px }
+      line-height: { token: typography/placeholder/line-height, value: 12px }
+      letter-spacing: { token: typography/placeholder/letter-spacing, value: 0px }
+      pointer-events: { value: none, assert: false }
+  icons-alarm:
+    notes: "Input's alarm, at 16px so it fits the label's line. Input draws it at 24 beside a single line."
+    styles:
+      display: { value: block, assert: false }
+      flex-shrink: { value: "0", assert: false }
+      width: { token: spacing/size/2xsmall, value: 16px }
+      height: { token: spacing/size/2xsmall, value: 16px }
+      mask: { value: url(./icon-alarm.svg) center / contain no-repeat, untokenised: "The icon file itself, the same one Input uses." }
+  value:
+    notes: "The real `<textarea>`. Its own look goes; it takes the field's type and colour. You can drag it taller, not wider."
+    styles:
+      display: { value: block, assert: false }
+      position: { value: relative, assert: false }
+      width: { value: 100% }
+      padding: { token: spacing/gap/none, value: 0px }
+      border: { value: none, assert: false }
+      background: { value: none, assert: false }
+      outline: { value: none, assert: false }
+      resize: { value: vertical, assert: false }
+      font-family: { token: font-family/base, value: "'General Sans Variable'" }
+      font-weight: { token: typography/paragraph/font-weight/regular, value: "400" }
+      font-size: { token: typography/paragraph/font-size, value: 14px }
+      line-height: { token: typography/paragraph/line-height, value: 20px }
+      letter-spacing: { token: typography/paragraph/letter-spacing, value: 0px }
+  supportive:
+    notes: "Hangs below the field, outside it, as Input's does. Leave 16px under a field that has one."
+    styles:
+      position: { value: absolute }
+      left: { token: spacing/gap/small-medium, value: 12px }
+      top: { value: "calc(100% + var(--spacing-gap-2xsmall))", untokenised: "Composed from a token: the field's own height, whatever it is, plus spacing/gap/2xsmall." }
+      white-space: { value: nowrap, assert: false }
+      font-family: { token: font-family/base, value: "'General Sans Variable'" }
+      font-weight: { token: typography/label/font-weight/medium, value: "500" }
+      font-size: { token: typography/placeholder/font-size, value: 10px }
+      line-height: { token: typography/placeholder/line-height, value: 12px }
+      letter-spacing: { token: typography/placeholder/letter-spacing, value: 0px }
+  focus-ring:
+    styles:
+      display: { value: none, assert: false }
+      position: { value: absolute }
+      inset: { value: "calc(-1 * var(--spacing-gap-2xsmall))", untokenised: "Composed from a token: the ring sits spacing/gap/2xsmall outside the field." }
+      border-style: { value: solid }
+      border-width: { token: spacing/outline/medium, value: 2px }
+      border-radius: { token: spacing/radius/large, value: 16px }
+      pointer-events: { value: none, assert: false }
+variants:
+  - when: { state: Default, selected: false, error: false }
+    elements:
+      outline:
+        background: { token: input/regular/default/background, value: "#060805" }
+        border-color: { token: input/regular/default/outline, value: "#555555" }
+      label:
+        color: { token: input/regular/default/label, value: "#999999" }
+      value:
+        color: { token: input/regular/default/placeholder, value: "#c2c7c3" }
+      supportive:
+        color: { token: input/regular/default/supportive, value: "#999999" }
+  - when: { state: Hover, selected: false, error: false }
+    elements:
+      outline:
+        background: { token: input/regular/hover/background, value: "#171717" }
+        border-color: { token: input/regular/hover/outline, value: "#999999" }
+      label:
+        color: { token: input/regular/hover/label, value: "#d3d9d5" }
+      value:
+        color: { token: input/regular/hover/placeholder, value: "#d3d9d5" }
+      supportive:
+        color: { token: input/regular/hover/supportive, value: "#d3d9d5" }
+  - when: { state: Default, selected: true, error: false }
+    elements:
+      outline:
+        background: { token: input/regular/focus/background, value: "#060805" }
+        border-color: { token: input/regular/focus/outline, value: "#555555" }
+      label:
+        color: { token: input/regular/focus/label, value: "#999999" }
+      value:
+        color: { token: input/regular/focus/placeholder, value: "#c2c7c3" }
+      supportive:
+        color: { token: input/regular/focus/supportive, value: "#999999" }
+      focus-ring:
+        display: { value: block, assert: false }
+        border-color: { token: input/regular/focus/focus-ring, value: "#00d669" }
+  - when: { state: Disabled, selected: false, error: false }
+    elements:
+      outline:
+        background: { token: input/regular/disabled/background, value: "#171717" }
+        border-color: { token: input/regular/disabled/outline, value: "#3a3a3a" }
+      label:
+        color: { token: input/regular/disabled/label, value: "#555555" }
+      value:
+        color: { token: input/regular/disabled/placeholder, value: "#555555" }
+      supportive:
+        color: { token: input/regular/disabled/supportive, value: "#555555" }
+  - when: { state: Default, selected: false, error: true }
+    elements:
+      outline:
+        background: { token: input/negative/default/background, value: "#060805" }
+        border-color: { token: input/negative/default/outline, value: "#f2705f" }
+      label:
+        color: { token: input/negative/default/label, value: "#e93120" }
+      value:
+        color: { token: input/negative/default/placeholder, value: "#999999" }
+      supportive:
+        color: { token: input/negative/default/supportive, value: "#e93120" }
+      icons-alarm:
+        background: { token: input/negative/default/icon, value: "#e93120" }
+  - when: { state: Hover, selected: false, error: true }
+    elements:
+      outline:
+        background: { token: input/negative/hover/background, value: "#171717" }
+        border-color: { token: input/negative/hover/outline, value: "#e93120" }
+      label:
+        color: { token: input/negative/hover/label, value: "#e93120" }
+      value:
+        color: { token: input/negative/hover/placeholder, value: "#555555" }
+      supportive:
+        color: { token: input/negative/hover/supportive, value: "#ae1b13" }
+      icons-alarm:
+        background: { token: input/negative/hover/icon, value: "#ae1b13" }
+  - when: { state: Default, selected: true, error: true }
+    elements:
+      outline:
+        background: { token: input/negative/focus/background, value: "#060805" }
+        border-color: { token: input/negative/focus/outline, value: "#f2705f" }
+      label:
+        color: { token: input/negative/focus/label, value: "#e93120" }
+      value:
+        color: { token: input/negative/focus/value, value: "#ededed" }
+      supportive:
+        color: { token: input/negative/focus/supportive, value: "#e93120" }
+      icons-alarm:
+        background: { token: input/negative/focus/icon, value: "#e93120" }
+      focus-ring:
+        display: { value: block, assert: false }
+        border-color: { token: input/negative/focus/focus-ring, value: "#00d669" }
+guidance:
+  status: proposed
+  use:
+    - "Text that runs to more than a line: a note on a payment, a message, a description."
+  avoid:
+    - "One line of text, like a name or an amount. That's **Input**."
+    - "Rich text with bold and lists. This is plain text only."
+  behaviour: |-
+    It's Input grown down, with the same tokens for the fill, the edge, the label, the help line and the focus ring. Three things change it:
+
+    - **`selected`**: it has focus, so the focus ring shows.
+    - **`error`**: the edge, label and help text go red, and the alarm shows at the end of the label's line.
+    - **`state`**: `Default`, `Hover` and `Disabled`.
+
+    One difference from Input: the label always sits small at the top. Input's label sits large in an empty field, but in a box three lines tall it would float alone in the middle. It starts three lines tall (`rows`), and you can drag it taller.
+
+    It's my draft, built in code from Input's contract. There's no Figma frame yet.
+  accessibility:
+    element: "a real `<textarea>` with a `<label for>`. Never a `placeholder` instead of the label."
+    supportiveText: connected with `aria-describedby`.
+    error: "`aria-invalid=\"true\"`, and the help text says how to fix it."
+    colour: an error shows as the alarm icon and the message, not only red.
+    keyboard: "Tab reaches it and Enter starts a new line, so a form with one can't submit on Enter from inside it."
+    focus: the ring shows on `:focus-visible` and when you arrive by keyboard. Never remove the outline without the ring.
+  content: |-
+    Label: a noun, sentence case ("Note"). Help text: one line, a hint before an error and the fix after it ("Keep it under 500 characters"). The help line hangs below the field, so leave 16px under it.

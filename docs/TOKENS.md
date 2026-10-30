@@ -6,12 +6,12 @@ Every value in every contract, sorted by why it has a token or doesn't. A value 
 
 | | Values | Share | Meaning |
 |---|---|---|---|
-| Has a token | 1012 | 58% | Uses a token, and the check tests it. |
+| Has a token | 1164 | 59% | Uses a token, and the check tests it. |
 | Token suggested | 0 | 0% | A token I want that doesn't exist yet. The freeze turned every other suggestion into a token. |
-| How Figma builds it | 474 | 27% | How Figma builds the layer (position, inset, which sides get a stroke). Nothing to tokenise. |
-| Figma frame size | 139 | 8% | A root size that is just the Figma frame. Written down, not checked. |
-| No token, on purpose | 95 | 5% | Plain on purpose, and the contract says why. |
-| Open gap | 29 | 2% | No token and no reason. Each one needs a decision from me. |
+| How Figma builds it | 513 | 26% | How Figma builds the layer (position, inset, which sides get a stroke). Nothing to tokenise. |
+| Figma frame size | 159 | 8% | A root size that is just the Figma frame. Written down, not checked. |
+| No token, on purpose | 99 | 5% | Plain on purpose, and the contract says why. |
+| Open gap | 32 | 2% | No token and no reason. Each one needs a decision from me. |
 
 ## By contract
 
@@ -20,7 +20,7 @@ Every value in every contract, sorted by why it has a token or doesn't. A value 
 | [Badge](components/badge.md) | 25 | · | 21 | · | · | · |
 | [Button](components/button.md) | 83 | · | 38 | 9 | 5 | 1 |
 | [Carousel](components/carousel.md) | 43 | · | 28 | 13 | 2 | 1 |
-| [Chip](components/chips.md) | 27 | · | 15 | 8 | 5 | 1 |
+| [Chip](components/chips.md) | 45 | · | 18 | 10 | 5 | 1 |
 | [Divider](components/divider.md) | 2 | · | 2 | 2 | · | · |
 | [Floating effect](components/effect-floating.md) | 1 | · | · | · | · | · |
 | [Hero Media](components/hero-media.md) | 6 | · | 9 | 2 | · | · |
@@ -32,15 +32,17 @@ Every value in every contract, sorted by why it has a token or doesn't. A value 
 | [ListItem](components/list-item.md) | 99 | · | 32 | 10 | 2 | 1 |
 | [Lock frame effect](components/effect-lock-frame.md) | 1 | · | · | · | · | · |
 | [Menu effect](components/effect-menu.md) | 1 | · | · | · | · | · |
-| [Menu](components/menu.md) | 32 | · | 16 | 6 | · | 1 |
+| [Menu](components/menu.md) | 38 | · | 16 | 6 | · | 1 |
 | [Navigation](components/navigation.md) | 13 | · | 21 | 1 | 2 | · |
 | [Paper effect](components/effect-paper.md) | 6 | · | · | · | 7 | · |
 | [Projects](components/projects.md) | 77 | · | 33 | 8 | 5 | 4 |
+| [Switch](components/switch.md) | 56 | · | 15 | 9 | 2 | 1 |
 | [TabItem](components/tab-item.md) | 37 | · | 15 | 12 | · | 1 |
 | [Tabs](components/tabs.md) | · | · | 2 | 1 | 1 | · |
 | [Tag](components/tags.md) | 26 | · | 13 | 3 | · | 1 |
 | [TestimonialPicture](components/testimonials-pics.md) | 2 | · | 8 | 1 | · | · |
 | [Testimonials](components/testimonials.md) | 81 | · | 37 | 13 | 2 | 4 |
+| [Textarea](components/textarea.md) | 72 | · | 21 | 9 | 2 | 2 |
 | [Thumb effect](components/effect-thumb.md) | 1 | · | · | · | · | · |
 | [Thumbs](components/thumbs.md) | 77 | · | 51 | 9 | 6 | 5 |
 | [Toggle](components/toggle.md) | 64 | · | 20 | 8 | 6 | 3 |
@@ -61,6 +63,7 @@ Figma draws a stroke inside the shape. A CSS border takes up space, so the butto
 |---|---|---|
 | [Button](components/button.md), [IconButton](components/icon-button.md), [Toggle](components/toggle.md) | `root.box-shadow` | `inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-default-outline)` and 4 more, one per state |
 | [Chip](components/chips.md) | `outline.box-shadow` | `inset 0 0 0 var(--spacing-outline-small) var(--actions-secondary-regular-default-outline)` and 4 more, one per state |
+| [Switch](components/switch.md) | `background.box-shadow` | `inset 0 0 0 var(--spacing-outline-small) var(--actions-secondary-regular-default-outline)` |
 | [Tabs](components/tabs.md) | `root.box-shadow` | `inset 0 calc(-1 * var(--spacing-outline-small)) 0 0 var(--tabs-line)` |
 
 ### Focus rings
@@ -69,7 +72,7 @@ The ring sits `spacing/gap/2xsmall` outside the element, so its inset is that to
 
 | Where | Part | Value |
 |---|---|---|
-| [Button](components/button.md), [Carousel](components/carousel.md), [Chip](components/chips.md), [IconButton](components/icon-button.md), [Input](components/input.md), [Projects](components/projects.md), [Tag](components/tags.md), [Testimonials](components/testimonials.md), [Thumbs](components/thumbs.md), [Toggle](components/toggle.md) | `focus-ring.inset` | `calc(-1 * var(--spacing-gap-2xsmall))` |
+| [Button](components/button.md), [Carousel](components/carousel.md), [Chip](components/chips.md), [IconButton](components/icon-button.md), [Input](components/input.md), [Projects](components/projects.md), [Switch](components/switch.md), [Tag](components/tags.md), [Testimonials](components/testimonials.md), [Textarea](components/textarea.md), [Thumbs](components/thumbs.md), [Toggle](components/toggle.md) | `focus-ring.inset` | `calc(-1 * var(--spacing-gap-2xsmall))` |
 | [Carousel](components/carousel.md), [Thumbs](components/thumbs.md) | `focus-ring.border-radius` | `calc(var(--spacing-radius-xlarge) + var(--spacing-gap-2xsmall))` |
 | [Menu](components/menu.md) | `focus-ring.inset` | `var(--spacing-gap-medium-large) calc(-1 * var(--spacing-gap-2xsmall))` |
 
@@ -93,7 +96,7 @@ An icon is its SVG file, drawn as a mask so it takes the text colour. The file i
 | [IconButton](components/icon-button.md), [Toggle](components/toggle.md) | `glyph.mask` | `url(./icon-arrow-left.svg) center / contain no-repeat` |
 | [Input](components/input.md), [Projects](components/projects.md), [Thumbs](components/thumbs.md) | `icons-lock.mask` | `url(./icon-lock.svg) center / contain no-repeat` |
 | [Input](components/input.md) | `clear-glyph.mask` | `url(./icon-clear.svg) center / contain no-repeat` |
-| [Input](components/input.md) | `icons-alarm.mask` | `url(./icon-alarm.svg) center / contain no-repeat` |
+| [Input](components/input.md), [Textarea](components/textarea.md) | `icons-alarm.mask` | `url(./icon-alarm.svg) center / contain no-repeat` |
 | [Projects](components/projects.md) | `icons-arrow.mask` | `url(./icon-up-right.svg) center / contain no-repeat` |
 | [Testimonials](components/testimonials.md) | `icons-chevron.mask` | `url(./icon-chevron-down.svg) center / contain no-repeat` and 1 more, one per state |
 
@@ -117,6 +120,8 @@ Sizes and offsets that belong to one component, at a number no size token has.
 | [Projects](components/projects.md) | `number.min-width` | `2ch` | Two zeros in the number's own font: 14px at label size. It follows the font, so it isn't a size token. |
 | [Projects](components/projects.md), [Thumbs](components/thumbs.md) | `dot.width` | `3px` | The dot's own size inside the icon. |
 | [Projects](components/projects.md), [Thumbs](components/thumbs.md) | `dot.height` | `3px` | The dot's own size inside the icon. |
+| [Switch](components/switch.md) | `thumb.left` | `calc(100% - var(--spacing-size-2xsmall) - var(--spacing-gap-2xsmall))` | Composed from tokens: the far end of the track, less the thumb and its 4px. |
+| [Textarea](components/textarea.md) | `supportive.top` | `calc(100% + var(--spacing-gap-2xsmall))` | Composed from a token: the field's own height, whatever it is, plus spacing/gap/2xsmall. |
 
 ### Tuned by eye
 
@@ -150,12 +155,15 @@ The paper effect's numbers, tuned for how the dots move. Only the paper uses the
 - [Projects](components/projects.md) `outline.right` = `0`
 - [Projects](components/projects.md) `outline.bottom` = `0`
 - [Projects](components/projects.md) `focus-ring.border-style` = `solid`
+- [Switch](components/switch.md) `focus-ring.border-style` = `solid`
 - [TabItem](components/tab-item.md) `focus-ring.border-style` = `solid`
 - [Tag](components/tags.md) `focus-ring.border-style` = `solid`
 - [Testimonials](components/testimonials.md) `outline.left` = `0`
 - [Testimonials](components/testimonials.md) `outline.right` = `0`
 - [Testimonials](components/testimonials.md) `outline.bottom` = `0`
 - [Testimonials](components/testimonials.md) `focus-ring.border-style` = `solid`
+- [Textarea](components/textarea.md) `outline.border-style` = `solid`
+- [Textarea](components/textarea.md) `focus-ring.border-style` = `solid`
 - [Thumbs](components/thumbs.md) `shadow.left` = `0`
 - [Thumbs](components/thumbs.md) `shadow.right` = `0`
 - [Thumbs](components/thumbs.md) `shadow.bottom` = `0`

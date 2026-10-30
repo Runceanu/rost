@@ -51,7 +51,7 @@
 ## When not to use
 
 - Picking from a known list. That's **Chip** or **Toggle**, free text just invites typos.
-- Several lines of text. There's no textarea in the kit yet.
+- Several lines of text. That's **Textarea**.
 
 ## Behaviour
 

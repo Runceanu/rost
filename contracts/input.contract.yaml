@@ -419,7 +419,7 @@ guidance:
     - "Any single line of text: email, name, an amount, search."
   avoid:
     - Picking from a known list. That's **Chip** or **Toggle**, free text just invites typos.
-    - Several lines of text. There's no textarea in the kit yet.
+    - Several lines of text. That's **Textarea**.
   behaviour: |-
     Four things change it:
 

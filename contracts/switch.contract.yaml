@@ -1,0 +1,208 @@
+# yaml-language-server: $schema=../schema/component-contract.schema.json
+schemaVersion: 2
+id: switch
+name: Switch
+kind: component
+status: draft
+summary: A setting that's on or off and takes effect straight away. A pill track with a thumb that moves across, and a label beside it.
+category: selection
+related: [ toggle, chips ]
+source:
+  tool: code
+  repo: rost
+  path: src/components/switch/Switch.tsx
+  extractedAt: "2026-10-30"
+  frozenAt: "2026-10-30"
+props:
+  checked: { type: boolean, default: false, notes: "On or off. It's the switch's `aria-checked`. In React, controlled with `checked` or left to itself with `defaultChecked`." }
+  label: { type: slot, notes: "What it turns on, drawn after the track: \"Email me receipts\". In React, the children. Without one, give it an `aria-label`." }
+states: [ Default, Hover, Pressed, Focus, Disabled ]
+elements:
+  root:
+    notes: "A `<button role=\"switch\">`. The browser's own look goes. It holds the track and the label, so a click on either flips it."
+    styles:
+      display: { value: inline-flex, assert: false }
+      align-items: { value: center }
+      vertical-align: { value: middle, assert: false }
+      position: { value: relative, assert: false }
+      gap: { token: spacing/gap/small, value: 8px }
+      padding: { token: spacing/gap/none, value: 0px }
+      background: { value: none, assert: false }
+      border: { value: none, assert: false }
+      font: { value: inherit, assert: false }
+      text-align: { value: start }
+      cursor: { value: pointer, assert: false }
+      outline: { value: none, assert: false }
+  track:
+    notes: "The pill. 40 by 24, the size of a Toggle across and a Chip down."
+    styles:
+      position: { value: relative, assert: false }
+      flex-shrink: { value: "0", assert: false }
+      width: { token: spacing/size/medium, value: 40px }
+      height: { token: spacing/size/small, value: 24px }
+      border-radius: { token: spacing/radius/full, value: 10000px }
+  background:
+    notes: "The track's fill and its 1px edge, on their own layer. Off, it's faded the way an off Toggle's plate is, so the thumb on top stays solid."
+    styles:
+      position: { value: absolute }
+      inset: { value: "0" }
+      border-radius: { token: spacing/radius/full, value: 10000px }
+      pointer-events: { value: none, assert: false }
+  thumb:
+    notes: "The 16px dot, 4px in from the track's edge. It sits left when off and right when on. It jumps for now: there are no motion tokens yet, and when there are it should slide."
+    styles:
+      position: { value: absolute }
+      top: { token: spacing/gap/2xsmall, value: 4px }
+      left: { token: spacing/gap/2xsmall, value: 4px }
+      width: { token: spacing/size/2xsmall, value: 16px }
+      height: { token: spacing/size/2xsmall, value: 16px }
+      border-radius: { token: spacing/radius/full, value: 10000px }
+      pointer-events: { value: none, assert: false }
+  label:
+    notes: "Paragraph type, in the colour a secondary action's label has in each state. It doesn't change with on and off: the track says that."
+    styles:
+      position: { value: relative, assert: false }
+      font-family: { token: font-family/base, value: "'General Sans Variable'" }
+      font-weight: { token: typography/paragraph/font-weight/regular, value: "400" }
+      font-size: { token: typography/paragraph/font-size, value: 14px }
+      line-height: { token: typography/paragraph/line-height, value: 20px }
+      letter-spacing: { token: typography/paragraph/letter-spacing, value: 0px }
+  focus-ring:
+    notes: "Around the track only, not the label, so it keeps the pill's shape."
+    styles:
+      display: { value: none, assert: false }
+      position: { value: absolute }
+      inset: { value: "calc(-1 * var(--spacing-gap-2xsmall))", untokenised: "Composed from a token: the ring sits spacing/gap/2xsmall outside the track." }
+      border-style: { value: solid }
+      border-width: { token: spacing/outline/medium, value: 2px }
+      border-radius: { token: spacing/radius/full, value: 10000px }
+      pointer-events: { value: none, assert: false }
+variants:
+  - when: { checked: true }
+    elements:
+      thumb:
+        left: { value: "calc(100% - var(--spacing-size-2xsmall) - var(--spacing-gap-2xsmall))", untokenised: "Composed from tokens: the far end of the track, less the thumb and its 4px." }
+  - when: { checked: false }
+    elements:
+      background:
+        box-shadow:
+          value: inset 0 0 0 var(--spacing-outline-small) var(--actions-secondary-regular-default-outline)
+          untokenised: "A 1px edge drawn inside the pill, as Chip draws its edge. The width and colour are tokens."
+  - when: { state: Default }
+    elements:
+      label:
+        color: { token: actions/secondary/regular/default/label, value: "#d3d9d5" }
+  - when: { state: Hover }
+    elements:
+      label:
+        color: { token: actions/secondary/regular/hover/label, value: "#ededed" }
+  - when: { state: Pressed }
+    elements:
+      label:
+        color: { token: actions/secondary/regular/pressed/label, value: "#d3d9d5" }
+  - when: { state: Focus }
+    elements:
+      label:
+        color: { token: actions/secondary/regular/focus/label, value: "#d3d9d5" }
+      focus-ring:
+        display: { value: block, assert: false }
+  - when: { state: Disabled }
+    elements:
+      root:
+        opacity: { token: opacity/gentle, value: "0.24" }
+        cursor: { value: default, assert: false }
+      label:
+        color: { token: actions/secondary/regular/disabled/label, value: "#d3d9d5" }
+  - when: { state: Default, checked: false }
+    elements:
+      background:
+        background: { token: actions/secondary/regular/default/background, value: "#3a3a3a" }
+        opacity: { token: opacity/gentle, value: "0.24" }
+      thumb:
+        background: { token: actions/secondary/regular/default/label, value: "#d3d9d5" }
+  - when: { state: Hover, checked: false }
+    elements:
+      background:
+        background: { token: actions/secondary/regular/hover/background, value: "#747573" }
+        opacity: { token: opacity/mild, value: "0.32" }
+      thumb:
+        background: { token: actions/secondary/regular/hover/label, value: "#ededed" }
+  - when: { state: Pressed, checked: false }
+    elements:
+      background:
+        background: { token: actions/secondary/regular/pressed/background, value: "#999" }
+        opacity: { token: opacity/mild, value: "0.32" }
+      thumb:
+        background: { token: actions/secondary/regular/pressed/label, value: "#d3d9d5" }
+  - when: { state: Focus, checked: false }
+    elements:
+      background:
+        background: { token: actions/secondary/regular/focus/background, value: "#3a3a3a" }
+        opacity: { token: opacity/gentle, value: "0.24" }
+      thumb:
+        background: { token: actions/secondary/regular/focus/label, value: "#d3d9d5" }
+      focus-ring:
+        border-color: { token: actions/secondary/regular/focus/focus-ring, value: "#999" }
+  - when: { state: Disabled, checked: false }
+    elements:
+      background:
+        background: { token: actions/secondary/regular/disabled/background, value: "#3a3a3a" }
+        opacity: { token: opacity/gentle, value: "0.24" }
+      thumb:
+        background: { token: actions/secondary/regular/disabled/label, value: "#d3d9d5" }
+  - when: { state: Default, checked: true }
+    elements:
+      background:
+        background: { token: actions/primary/default/background, value: "#00d669" }
+        opacity: { token: opacity/solid, value: "1" }
+      thumb:
+        background: { token: actions/primary/default/label, value: "#060805" }
+  - when: { state: Hover, checked: true }
+    elements:
+      background:
+        background: { token: actions/primary/hover/background, value: "#00b450" }
+        opacity: { token: opacity/solid, value: "1" }
+      thumb:
+        background: { token: actions/primary/hover/label, value: "#060805" }
+  - when: { state: Pressed, checked: true }
+    elements:
+      background:
+        background: { token: actions/primary/pressed/background, value: "#00913a" }
+        opacity: { token: opacity/solid, value: "1" }
+      thumb:
+        background: { token: actions/primary/pressed/label, value: "#060805" }
+  - when: { state: Focus, checked: true }
+    elements:
+      background:
+        background: { token: actions/primary/focus/background, value: "#00d669" }
+        opacity: { token: opacity/solid, value: "1" }
+      thumb:
+        background: { token: actions/primary/focus/label, value: "#060805" }
+      focus-ring:
+        border-color: { token: actions/primary/focus/focus-ring, value: "#b6ffda" }
+  - when: { state: Disabled, checked: true }
+    elements:
+      background:
+        background: { token: actions/primary/disabled/background, value: "#00d669" }
+        opacity: { token: opacity/solid, value: "1" }
+      thumb:
+        background: { token: actions/primary/disabled/label, value: "#060805" }
+guidance:
+  status: proposed
+  use:
+    - "A setting that's on or off and works the moment you flip it: email me receipts, show cents, dark charts."
+  avoid:
+    - "A choice that waits for a Save button. That's a checkbox, and Rost doesn't have one yet."
+    - "Filtering what's on screen. That's **Chip**, with `selected`."
+    - "An icon button that stays pressed, like bold in an editor. That's **Toggle**."
+  behaviour: |-
+    Off is a faded track with the thumb on the left, the way an off Toggle is faded. On is a solid primary green track with a dark thumb on the right. Hover, press and focus come from the browser and follow Toggle's colours. Disabled fades the whole thing, label too.
+
+    It's my draft, drawn in code from Toggle's and Button's tokens. There's no Figma frame yet, so nothing to test it against.
+  accessibility:
+    element: "`<button type=\"button\" role=\"switch\">` with `aria-checked`. Switch sets both."
+    name: "The label inside the button is its name. A switch with no label needs an `aria-label`."
+    keyboard: "Tab reaches it. Space flips it, and so does Enter, since it's a button."
+    focus: "`focus-ring` around the track, on `:focus-visible`."
+    colour: "On and off aren't only green and grey: the thumb moves from one end to the other."
+  content: "Say what's on when it's on, as a short phrase in sentence case: \"Email me receipts\", not \"Receipts: on/off\". The label doesn't change when you flip it."
