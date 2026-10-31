@@ -54,9 +54,9 @@ Every token this component uses, across all its variants.
 
 | Token | Resolves to |
 |---|---|
-| `actions/secondary/regular/default/background` | `#3a3a3a` |
-| `actions/secondary/regular/default/label` | `#d3d9d5` |
 | `font-family/base` | `'General Sans Variable'` |
+| `non-interactive/background/tertiary` | `#3a3a3a` |
+| `non-interactive/foreground/secondary` | `#d3d9d5` |
 | `spacing/gap/none` | `0px` |
 | `spacing/gap/small` | `8px` |
 | `spacing/radius/xsmall` | `4px` |

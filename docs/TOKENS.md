@@ -65,11 +65,12 @@ Figma draws a stroke inside the shape. A CSS border takes up space, so the butto
 
 | Where | Part | Value |
 |---|---|---|
-| [Button](components/button.md), [IconButton](components/icon-button.md) | `root.box-shadow` | `inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-default-outline)` and 4 more, one per state |
-| [Chip](components/chips.md) | `outline.box-shadow` | `inset 0 0 0 var(--spacing-outline-small) var(--actions-secondary-regular-default-outline)` and 5 more, one per state |
-| [TableItem](components/table-item.md) | `root.box-shadow` | `inset var(--spacing-outline-medium) 0 0 0 var(--non-interactive-foreground-positive-base)` |
+| [Button](components/button.md) | `root.box-shadow` | `inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--button-primary-default-outline)` and 4 more, one per state |
+| [Chip](components/chips.md) | `outline.box-shadow` | `inset 0 0 0 var(--spacing-outline-small) var(--chip-unselected-default-outline)` and 9 more, one per state |
+| [IconButton](components/icon-button.md) | `root.box-shadow` | `inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--icon-button-primary-default-outline)` and 4 more, one per state |
+| [TableItem](components/table-item.md) | `root.box-shadow` | `inset var(--spacing-outline-medium) 0 0 0 var(--table-item-selected-row-edge)` |
 | [Tabs](components/tabs.md) | `root.box-shadow` | `inset 0 calc(-1 * var(--spacing-outline-small)) 0 0 var(--tabs-line)` |
-| [Toggle](components/toggle.md) | `root.box-shadow` | `inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-default-outline), inset 0 0 0 var(--spacing-outline-small) var(--non-interactive-foreground-positive-base)` and 4 more, one per state |
+| [Toggle](components/toggle.md) | `root.box-shadow` | `inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--toggle-on-default-outline), inset 0 0 0 var(--spacing-outline-small) var(--toggle-on-default-edge)` and 4 more, one per state |
 
 ### Focus rings
 
@@ -87,10 +88,10 @@ A colour token at an opacity token. A token can't hold both, so `color-mix()` pu
 
 | Where | Part | Value |
 |---|---|---|
-| [Carousel](components/carousel.md) | `background.background` | `color-mix(in srgb, var(--non-interactive-background-tertiary) calc(var(--opacity-medium) * 100%), transparent)` |
+| [Carousel](components/carousel.md) | `background.background` | `color-mix(in srgb, var(--carousel-background) calc(var(--opacity-medium) * 100%), transparent)` |
 | [Navigation](components/navigation.md) | `background.background` | `color-mix(in srgb, var(--non-interactive-background-primary) 48%, transparent)` |
-| [Thumbs](components/thumbs.md) | `shadow.background` | `linear-gradient(to bottom, rgba(6,8,5,0), var(--non-interactive-background-primary))` |
-| [Thumbs](components/thumbs.md) | `content.background` | `color-mix(in srgb, var(--non-interactive-background-primary) calc(var(--opacity-medium) * 100%), transparent)` |
+| [Thumbs](components/thumbs.md) | `shadow.background` | `linear-gradient(to bottom, rgba(6,8,5,0), var(--thumbs-shade))` |
+| [Thumbs](components/thumbs.md) | `content.background` | `color-mix(in srgb, var(--thumbs-panel) calc(var(--opacity-medium) * 100%), transparent)` |
 
 ### Icon files
 
@@ -182,9 +183,21 @@ The paper effect's numbers, tuned for how the dots move. Only the paper uses the
 - [Toggle](components/toggle.md) `focus-ring.border-style` = `solid`
 - [Toggle](components/toggle.md) `root.width` = `auto`
 
+## Three layers
+
+Colours come in three layers, each an alias of the one under it.
+
+- **Primitives:** `color/dark/neutral/500`, `color/light/primary/800`. The raw scale, one per theme. Nothing uses them directly.
+- **Semantic:** `non-interactive/foreground/secondary`, `actions/primary/hover/background`. What a colour is for. Static components use these: Badge, Divider, Tooltip, InlineBanner, HeroMedia, Table's caption.
+- **Component:** `button/primary/hover/background`, `chip/selected/default/edge`. One family per interactive component, named `<component>/<variant>/<state>/<part>`, each pointing at the semantic token it used before. 431 of them, for 17 components; Input's family is `input/`, which was already its own.
+
+Every interactive component reads only its own family. So a fix for one is an alias change on one, and the rest don't move. The Tag fix on 2026-10-31 shows why: darkening the shared Secondary pressed label took Button, Chip and Switch with it.
+
+When a component needs a colour no other has, change its own token to point somewhere else, in Figma and in `registry/figma-variables.json` at once. When every component should change, change the semantic token underneath.
+
 ## Two themes
 
-Dark is the default. It's what Figma draws first and what both apps use. Light is new (2026-10-30). Only colours change: 332 theme colours have a light value of their own. Every other token, and every component, is the same in both.
+Dark is the default. It's what Figma draws first and what both apps use. Light is new (2026-10-30). Only colours change: 693 theme colours have a light value of their own. Every other token, and every component, is the same in both.
 
 `tokens/tokens.css` puts dark on `:root`. Light applies under `[data-theme="light"]` and nowhere else. A system set to light doesn't change it: with no `data-theme` you get dark. `[data-theme="dark"]` brings dark back inside a light page, so a dark panel can sit in a light one. Set it on `<html>` for the whole page:
 
@@ -257,4 +270,4 @@ rost.build's own transitions use the tokens now. No component in Rost animates y
 
 ## Figma variables
 
-The Figma file has **671** variables (`registry/figma-variables.json`, read on 2026-10-31) and `tokens/tokens.css` has **671** of them. `npm run tokens` builds it from that read, so they can't come apart.
+The Figma file has **1102** variables (`registry/figma-variables.json`, read on 2026-10-31) and `tokens/tokens.css` has **1102** of them. `npm run tokens` builds it from that read, so they can't come apart.

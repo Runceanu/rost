@@ -127,7 +127,7 @@ elements:
       display: { value: block, assert: false }
       width: { token: spacing/size/2xsmall, value: 16px }
       height: { token: spacing/size/2xsmall, value: 16px }
-      background: { token: actions/borderless/default/icon, value: "#00d669" }
+      background: { token: testimonials/icon, value: "#00d669" }
       mask: { value: url(./icon-chevron-down.svg) center / contain no-repeat, untokenised: The icon file itself. }
   bottom:
     notes: The quote. Only there when it's expanded.
@@ -138,7 +138,7 @@ elements:
     styles:
       flex: { value: 1 0 0, assert: false }
       min-width: { value: 1px, assert: false }
-      color: { token: non-interactive/foreground/secondary, value: "#d3d9d5" }
+      color: { token: testimonials/label, value: "#d3d9d5" }
       font-family: { token: font-family/base, value: "'General Sans Variable'" }
       font-weight: { token: typography/sub-title/font-weight/regular, value: "400" }
       line-height: { token: typography/sub-title/line-height, value: 28px }
@@ -151,7 +151,7 @@ elements:
       inset: { value: "calc(-1 * var(--spacing-gap-2xsmall))", untokenised: "Composed from a token: the ring sits spacing/gap/2xsmall outside the element." }
       border-style: { value: solid }
       border-width: { token: spacing/outline/medium, value: 2px }
-      border-color: { token: project/focus/focus-ring, value: "#999" }
+      border-color: { token: testimonials/focus-ring, value: "#999" }
       pointer-events: { value: none, assert: false }
 variants:
   - when: { expanded: true }
@@ -169,88 +169,88 @@ variants:
     figmaNode: "144:68"
     elements:
       outline:
-        background: { token: project/default/outline, value: "#3a3a3a" }
+        background: { token: testimonials/default/outline, value: "#3a3a3a" }
         height: { token: spacing/outline/small, value: 1px }
       text:
-        color: { token: project/default/label, value: "#d3d9d5" }
+        color: { token: testimonials/default/label, value: "#d3d9d5" }
       job-description:
-        color: { token: project/default/sub-label, value: "#999" }
+        color: { token: testimonials/default/sub-label, value: "#999" }
   - when: { state: Default, expanded: true }
     figmaNode: "144:347"
     elements:
       outline:
-        background: { token: project/default/outline, value: "#3a3a3a" }
+        background: { token: testimonials/default/outline, value: "#3a3a3a" }
         height: { token: spacing/outline/small, value: 1px }
       text:
-        color: { token: project/default/label, value: "#d3d9d5" }
+        color: { token: testimonials/default/label, value: "#d3d9d5" }
       job-description:
-        color: { token: project/default/sub-label, value: "#999" }
+        color: { token: testimonials/default/sub-label, value: "#999" }
   - when: { state: Hover, expanded: false }
     figmaNode: "144:117"
     elements:
       root:
         padding-left: { token: spacing/gap/medium, value: 16px }
       outline:
-        background: { token: project/hover/outline, value: "#00d669" }
+        background: { token: testimonials/hover/outline, value: "#00d669" }
         height: { token: spacing/outline/medium, value: 2px }
       text:
-        color: { token: project/hover/label, value: "#00d669" }
+        color: { token: testimonials/hover/label, value: "#00d669" }
       job-description:
-        color: { token: project/hover/sub-label, value: "#ededed" }
+        color: { token: testimonials/hover/sub-label, value: "#ededed" }
   - when: { state: Hover, expanded: true }
     figmaNode: "144:380"
     elements:
       outline:
-        background: { token: project/hover/outline, value: "#00d669" }
+        background: { token: testimonials/hover/outline, value: "#00d669" }
         height: { token: spacing/outline/medium, value: 2px }
       text:
-        color: { token: project/hover/label, value: "#00d669" }
+        color: { token: testimonials/hover/label, value: "#00d669" }
       job-description:
-        color: { token: project/hover/sub-label, value: "#ededed" }
+        color: { token: testimonials/hover/sub-label, value: "#ededed" }
   - when: { state: Pressed, expanded: false }
     figmaNode: "144:92"
     elements:
       root:
         padding-left: { token: spacing/gap/medium, value: 16px }
       outline:
-        background: { token: project/pressed/outline, value: "#10ffa4" }
+        background: { token: testimonials/pressed/outline, value: "#10ffa4" }
         height: { token: spacing/outline/small, value: 1px }
       text:
-        color: { token: project/pressed/label, value: "#00d669" }
+        color: { token: testimonials/pressed/label, value: "#00d669" }
       job-description:
-        color: { token: project/pressed/sub-label, value: "#c2c7c3" }
+        color: { token: testimonials/pressed/sub-label, value: "#c2c7c3" }
   - when: { state: Pressed, expanded: true }
     figmaNode: "144:363"
     elements:
       outline:
-        background: { token: project/pressed/outline, value: "#10ffa4" }
+        background: { token: testimonials/pressed/outline, value: "#10ffa4" }
         height: { token: spacing/outline/small, value: 1px }
       text:
-        color: { token: project/pressed/label, value: "#00d669" }
+        color: { token: testimonials/pressed/label, value: "#00d669" }
       job-description:
-        color: { token: project/pressed/sub-label, value: "#c2c7c3" }
+        color: { token: testimonials/pressed/sub-label, value: "#c2c7c3" }
   - when: { state: Focus, expanded: false }
     figmaNode: "144:104"
     elements:
       outline:
-        background: { token: project/focus/outline, value: "#3a3a3a" }
+        background: { token: testimonials/focus/outline, value: "#3a3a3a" }
         height: { token: spacing/outline/small, value: 1px }
       text:
-        color: { token: project/focus/label, value: "#d3d9d5" }
+        color: { token: testimonials/focus/label, value: "#d3d9d5" }
       job-description:
-        color: { token: project/focus/sub-label, value: "#999" }
+        color: { token: testimonials/focus/sub-label, value: "#999" }
       focus-ring:
         display: { value: block, assert: false }
   - when: { state: Focus, expanded: true }
     figmaNode: "144:371"
     elements:
       outline:
-        background: { token: project/focus/outline, value: "#3a3a3a" }
+        background: { token: testimonials/focus/outline, value: "#3a3a3a" }
         height: { token: spacing/outline/small, value: 1px }
       text:
-        color: { token: project/focus/label, value: "#d3d9d5" }
+        color: { token: testimonials/focus/label, value: "#d3d9d5" }
       job-description:
-        color: { token: project/focus/sub-label, value: "#999" }
+        color: { token: testimonials/focus/sub-label, value: "#999" }
       focus-ring:
         display: { value: block, assert: false }
   - when: { state: Disabled, expanded: false }
@@ -261,12 +261,12 @@ variants:
       top:
         cursor: { value: default, assert: false }
       outline:
-        background: { token: project/disabled/outline, value: "#3a3a3a" }
+        background: { token: testimonials/disabled/outline, value: "#3a3a3a" }
         height: { token: spacing/outline/small, value: 1px }
       text:
-        color: { token: project/disabled/label, value: "#d3d9d5" }
+        color: { token: testimonials/disabled/label, value: "#d3d9d5" }
       job-description:
-        color: { token: project/disabled/sub-label, value: "#999" }
+        color: { token: testimonials/disabled/sub-label, value: "#999" }
   - when: { state: Disabled, expanded: true }
     figmaNode: "144:355"
     elements:
@@ -275,12 +275,12 @@ variants:
       top:
         cursor: { value: default, assert: false }
       outline:
-        background: { token: project/disabled/outline, value: "#3a3a3a" }
+        background: { token: testimonials/disabled/outline, value: "#3a3a3a" }
         height: { token: spacing/outline/small, value: 1px }
       text:
-        color: { token: project/disabled/label, value: "#d3d9d5" }
+        color: { token: testimonials/disabled/label, value: "#d3d9d5" }
       job-description:
-        color: { token: project/disabled/sub-label, value: "#999" }
+        color: { token: testimonials/disabled/sub-label, value: "#999" }
 implementations:
   portfolio-site:
     component: src/rost/testimonials/Testimonials.tsx

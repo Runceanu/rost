@@ -64,30 +64,6 @@ Every token this component uses, across all its variants.
 
 | Token | Resolves to |
 |---|---|
-| `actions/primary/default/background` | `#00d669` |
-| `actions/primary/default/label` | `#060805` |
-| `actions/primary/disabled/background` | `#00d669` |
-| `actions/primary/disabled/label` | `#060805` |
-| `actions/primary/focus/background` | `#00d669` |
-| `actions/primary/focus/focus-ring` | `#b6ffda` |
-| `actions/primary/focus/label` | `#060805` |
-| `actions/primary/hover/background` | `#00b450` |
-| `actions/primary/hover/label` | `#060805` |
-| `actions/primary/pressed/background` | `#00913a` |
-| `actions/primary/pressed/label` | `#060805` |
-| `actions/secondary/regular/default/background` | `#3a3a3a` |
-| `actions/secondary/regular/default/label` | `#d3d9d5` |
-| `actions/secondary/regular/disabled/background` | `#3a3a3a` |
-| `actions/secondary/regular/disabled/label` | `#d3d9d5` |
-| `actions/secondary/regular/focus/background` | `#3a3a3a` |
-| `actions/secondary/regular/focus/focus-ring` | `#999` |
-| `actions/secondary/regular/focus/label` | `#d3d9d5` |
-| `actions/secondary/regular/hover/background` | `#747573` |
-| `actions/secondary/regular/hover/label` | `#ededed` |
-| `actions/secondary/regular/pressed/background` | `#999` |
-| `actions/secondary/regular/pressed/label` | `#d3d9d5` |
-| `input/regular/default/outline` | `#747573` |
-| `non-interactive/foreground/positive/base` | `#00d669` |
 | `opacity/gentle` | `0.24` |
 | `opacity/mild` | `0.32` |
 | `opacity/solid` | `1` |
@@ -99,6 +75,30 @@ Every token this component uses, across all its variants.
 | `spacing/size/2xsmall` | `16px` |
 | `spacing/size/medium` | `40px` |
 | `spacing/size/small` | `24px` |
+| `switch/off/default/thumb` | `#d3d9d5` |
+| `switch/off/default/track` | `#3a3a3a` |
+| `switch/off/disabled/thumb` | `#d3d9d5` |
+| `switch/off/disabled/track` | `#3a3a3a` |
+| `switch/off/edge` | `#747573` |
+| `switch/off/focus/focus-ring` | `#999` |
+| `switch/off/focus/thumb` | `#d3d9d5` |
+| `switch/off/focus/track` | `#3a3a3a` |
+| `switch/off/hover/thumb` | `#ededed` |
+| `switch/off/hover/track` | `#747573` |
+| `switch/off/pressed/thumb` | `#d3d9d5` |
+| `switch/off/pressed/track` | `#999` |
+| `switch/on/default/thumb` | `#060805` |
+| `switch/on/default/track` | `#00d669` |
+| `switch/on/disabled/thumb` | `#060805` |
+| `switch/on/disabled/track` | `#00d669` |
+| `switch/on/edge` | `#00d669` |
+| `switch/on/focus/focus-ring` | `#b6ffda` |
+| `switch/on/focus/thumb` | `#060805` |
+| `switch/on/focus/track` | `#00d669` |
+| `switch/on/hover/thumb` | `#060805` |
+| `switch/on/hover/track` | `#00b450` |
+| `switch/on/pressed/thumb` | `#060805` |
+| `switch/on/pressed/track` | `#00913a` |
 
 ## No token, on purpose
 

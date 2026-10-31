@@ -59,15 +59,15 @@ Every token this component uses, across all its variants.
 
 | Token | Resolves to |
 |---|---|
-| `interactive/inactive/focus/focus-ring` | `#999999` |
-| `interactive/inactive/hover/background` | `#006f27` |
-| `non-interactive/background/brand` | `#004c19` |
-| `non-interactive/background/secondary` | `#171717` |
-| `non-interactive/background/tertiary` | `#3a3a3a` |
-| `non-interactive/foreground/quinary` | `#282828` |
 | `spacing/outline/medium` | `2px` |
 | `spacing/outline/small` | `1px` |
 | `spacing/size/medium-large` | `48px` |
+| `table-row/divider` | `#282828` |
+| `table-row/focus/focus-ring` | `#999999` |
+| `table-row/selected/default/background` | `#004c19` |
+| `table-row/selected/hover/background` | `#006f27` |
+| `table-row/unselected/hover/background` | `#171717` |
+| `table-row/unselected/pressed/background` | `#3a3a3a` |
 
 ## No token, on purpose
 

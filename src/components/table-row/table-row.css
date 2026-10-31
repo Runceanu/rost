@@ -8,29 +8,29 @@
   position: relative;
   height: var(--spacing-size-medium-large);
   border-bottom-width: var(--spacing-outline-small);
-  border-bottom-color: var(--non-interactive-foreground-quinary);
+  border-bottom-color: var(--table-row-divider);
   border-bottom-style: solid;
 }
 
 .rost-table-row.rost-table-row--selected {
-  background: var(--non-interactive-background-brand);
+  background: var(--table-row-selected-default-background);
 }
 
 .rost-table-row:has(.rost-table-item__action:hover):not(.rost-table-row--selected) {
-  background: var(--non-interactive-background-secondary);
+  background: var(--table-row-unselected-hover-background);
 }
 
 .rost-table-row:has(.rost-table-item__action:hover).rost-table-row--selected {
-  background: var(--interactive-inactive-hover-background);
+  background: var(--table-row-selected-hover-background);
 }
 
 .rost-table-row:has(.rost-table-item__action:active):not(.rost-table-row--selected) {
-  background: var(--non-interactive-background-tertiary);
+  background: var(--table-row-unselected-pressed-background);
 }
 
 .rost-table-row:has(.rost-table-item__action:focus-visible) {
   outline-style: solid;
   outline-width: var(--spacing-outline-medium);
   outline-offset: -2px;
-  outline-color: var(--interactive-inactive-focus-focus-ring);
+  outline-color: var(--table-row-focus-focus-ring);
 }

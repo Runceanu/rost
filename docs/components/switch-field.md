@@ -60,10 +60,10 @@ Every token this component uses, across all its variants.
 
 | Token | Resolves to |
 |---|---|
-| `actions/secondary/regular/default/label` | `#d3d9d5` |
 | `font-family/base` | `'General Sans Variable'` |
 | `opacity/gentle` | `0.24` |
 | `spacing/gap/small` | `8px` |
+| `switch-field/label` | `#d3d9d5` |
 | `typography/paragraph/font-size` | `14px` |
 | `typography/paragraph/font-weight/regular` | `400` |
 | `typography/paragraph/letter-spacing` | `0px` |

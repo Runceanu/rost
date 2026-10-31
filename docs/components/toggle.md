@@ -66,43 +66,6 @@ Every token this component uses, across all its variants.
 
 | Token | Resolves to |
 |---|---|
-| `actions/primary/default/background` | `#00d669` |
-| `actions/primary/default/icon` | `#3a3a3a` |
-| `actions/primary/default/label` | `#060805` |
-| `actions/primary/disabled/background` | `#00d669` |
-| `actions/primary/disabled/icon` | `#3a3a3a` |
-| `actions/primary/disabled/label` | `#060805` |
-| `actions/primary/focus/background` | `#00d669` |
-| `actions/primary/focus/focus-ring` | `#b6ffda` |
-| `actions/primary/focus/icon` | `#3a3a3a` |
-| `actions/primary/focus/label` | `#060805` |
-| `actions/primary/hover/background` | `#00b450` |
-| `actions/primary/hover/icon` | `#3a3a3a` |
-| `actions/primary/hover/label` | `#060805` |
-| `actions/primary/pressed/background` | `#00913a` |
-| `actions/primary/pressed/icon` | `#3a3a3a` |
-| `actions/primary/pressed/label` | `#060805` |
-| `actions/secondary/regular/default/background` | `#3a3a3a` |
-| `actions/secondary/regular/default/icon` | `#00d669` |
-| `actions/secondary/regular/default/label` | `#d3d9d5` |
-| `actions/secondary/regular/default/outline` | `#ededed` |
-| `actions/secondary/regular/disabled/background` | `#3a3a3a` |
-| `actions/secondary/regular/disabled/icon` | `#00d669` |
-| `actions/secondary/regular/disabled/label` | `#d3d9d5` |
-| `actions/secondary/regular/disabled/outline` | `#ededed` |
-| `actions/secondary/regular/focus/background` | `#3a3a3a` |
-| `actions/secondary/regular/focus/focus-ring` | `#999` |
-| `actions/secondary/regular/focus/icon` | `#00d669` |
-| `actions/secondary/regular/focus/label` | `#d3d9d5` |
-| `actions/secondary/regular/focus/outline` | `#ededed` |
-| `actions/secondary/regular/hover/background` | `#747573` |
-| `actions/secondary/regular/hover/icon` | `#00b450` |
-| `actions/secondary/regular/hover/label` | `#ededed` |
-| `actions/secondary/regular/hover/outline` | `#ededed` |
-| `actions/secondary/regular/pressed/background` | `#999` |
-| `actions/secondary/regular/pressed/icon` | `#00d669` |
-| `actions/secondary/regular/pressed/label` | `#d3d9d5` |
-| `actions/secondary/regular/pressed/outline` | `#ededed` |
 | `font-family/base` | `'General Sans Variable'` |
 | `opacity/gentle` | `0.24` |
 | `opacity/mild` | `0.32` |
@@ -115,6 +78,43 @@ Every token this component uses, across all its variants.
 | `spacing/radius/medium` | `12px` |
 | `spacing/size/medium` | `40px` |
 | `spacing/size/xsmall` | `20px` |
+| `toggle/off/default/background` | `#3a3a3a` |
+| `toggle/off/default/icon` | `#00d669` |
+| `toggle/off/default/label` | `#d3d9d5` |
+| `toggle/off/default/outline` | `#ededed` |
+| `toggle/off/disabled/background` | `#3a3a3a` |
+| `toggle/off/disabled/icon` | `#00d669` |
+| `toggle/off/disabled/label` | `#d3d9d5` |
+| `toggle/off/disabled/outline` | `#ededed` |
+| `toggle/off/focus/background` | `#3a3a3a` |
+| `toggle/off/focus/focus-ring` | `#999` |
+| `toggle/off/focus/icon` | `#00d669` |
+| `toggle/off/focus/label` | `#d3d9d5` |
+| `toggle/off/focus/outline` | `#ededed` |
+| `toggle/off/hover/background` | `#747573` |
+| `toggle/off/hover/icon` | `#00b450` |
+| `toggle/off/hover/label` | `#ededed` |
+| `toggle/off/hover/outline` | `#ededed` |
+| `toggle/off/pressed/background` | `#999` |
+| `toggle/off/pressed/icon` | `#00d669` |
+| `toggle/off/pressed/label` | `#d3d9d5` |
+| `toggle/off/pressed/outline` | `#ededed` |
+| `toggle/on/default/background` | `#00d669` |
+| `toggle/on/default/icon` | `#3a3a3a` |
+| `toggle/on/default/label` | `#060805` |
+| `toggle/on/disabled/background` | `#00d669` |
+| `toggle/on/disabled/icon` | `#3a3a3a` |
+| `toggle/on/disabled/label` | `#060805` |
+| `toggle/on/focus/background` | `#00d669` |
+| `toggle/on/focus/focus-ring` | `#b6ffda` |
+| `toggle/on/focus/icon` | `#3a3a3a` |
+| `toggle/on/focus/label` | `#060805` |
+| `toggle/on/hover/background` | `#00b450` |
+| `toggle/on/hover/icon` | `#3a3a3a` |
+| `toggle/on/hover/label` | `#060805` |
+| `toggle/on/pressed/background` | `#00913a` |
+| `toggle/on/pressed/icon` | `#3a3a3a` |
+| `toggle/on/pressed/label` | `#060805` |
 | `typography/body/font-size` | `16px` |
 | `typography/body/font-weight/medium` | `500` |
 | `typography/body/letter-spacing` | `0px` |
@@ -126,10 +126,10 @@ Every token this component uses, across all its variants.
 |---|---|---|---|
 | `glyph` | `mask` | `url(./icon-arrow-left.svg) center / contain no-repeat` | The icon file itself, `assets/icons/arrow-left.svg`, the same shape as Figma's `Union` layer. |
 | `focus-ring` | `inset` | `calc(-1 * var(--spacing-gap-2xsmall))` | Composed from a token: the ring sits spacing/gap/2xsmall outside the element. |
-| `root` | `box-shadow` | `inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-default-outline), inset 0 0 0 var(--spacing-outline-small) var(--non-interactive-foreground-positive-base)` | Figma's 1px left and top stroke, drawn inside the shape as Figma draws it, over a 1px ring in the positive green. The ring is the fill's own colour in dark; in light it's a dark green, because the bright fill is 1.8:1 on white and an on toggle has to be seen (WCAG 1.4.11). The widths and colours are tokens. |
-| `root` | `box-shadow` | `inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-hover-outline), inset 0 0 0 var(--spacing-outline-small) var(--non-interactive-foreground-positive-base)` | Figma's 1px left and top stroke, drawn inside the shape as Figma draws it, over a 1px ring in the positive green. The ring is the fill's own colour in dark; in light it's a dark green, because the bright fill is 1.8:1 on white and an on toggle has to be seen (WCAG 1.4.11). The widths and colours are tokens. |
-| `root` | `box-shadow` | `inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-pressed-outline), inset 0 0 0 var(--spacing-outline-small) var(--non-interactive-foreground-positive-base)` | Figma's 1px left and top stroke, drawn inside the shape as Figma draws it, over a 1px ring in the positive green. The ring is the fill's own colour in dark; in light it's a dark green, because the bright fill is 1.8:1 on white and an on toggle has to be seen (WCAG 1.4.11). The widths and colours are tokens. |
-| `root` | `box-shadow` | `inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-disabled-outline), inset 0 0 0 var(--spacing-outline-small) var(--non-interactive-foreground-positive-base)` | Figma's 1px left and top stroke, drawn inside the shape as Figma draws it, over a 1px ring in the positive green. The ring is the fill's own colour in dark; in light it's a dark green, because the bright fill is 1.8:1 on white and an on toggle has to be seen (WCAG 1.4.11). The widths and colours are tokens. |
-| `root` | `box-shadow` | `inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-focus-outline), inset 0 0 0 var(--spacing-outline-small) var(--non-interactive-foreground-positive-base)` | Figma's 1px left and top stroke, drawn inside the shape as Figma draws it, over a 1px ring in the positive green. The ring is the fill's own colour in dark; in light it's a dark green, because the bright fill is 1.8:1 on white and an on toggle has to be seen (WCAG 1.4.11). The widths and colours are tokens. |
+| `root` | `box-shadow` | `inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--toggle-on-default-outline), inset 0 0 0 var(--spacing-outline-small) var(--toggle-on-default-edge)` | Figma's 1px left and top stroke, drawn inside the shape as Figma draws it, over a 1px ring in the positive green. The ring is the fill's own colour in dark; in light it's a dark green, because the bright fill is 1.8:1 on white and an on toggle has to be seen (WCAG 1.4.11). The widths and colours are tokens. |
+| `root` | `box-shadow` | `inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--toggle-on-hover-outline), inset 0 0 0 var(--spacing-outline-small) var(--toggle-on-hover-edge)` | Figma's 1px left and top stroke, drawn inside the shape as Figma draws it, over a 1px ring in the positive green. The ring is the fill's own colour in dark; in light it's a dark green, because the bright fill is 1.8:1 on white and an on toggle has to be seen (WCAG 1.4.11). The widths and colours are tokens. |
+| `root` | `box-shadow` | `inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--toggle-on-pressed-outline), inset 0 0 0 var(--spacing-outline-small) var(--toggle-on-pressed-edge)` | Figma's 1px left and top stroke, drawn inside the shape as Figma draws it, over a 1px ring in the positive green. The ring is the fill's own colour in dark; in light it's a dark green, because the bright fill is 1.8:1 on white and an on toggle has to be seen (WCAG 1.4.11). The widths and colours are tokens. |
+| `root` | `box-shadow` | `inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--toggle-on-disabled-outline), inset 0 0 0 var(--spacing-outline-small) var(--toggle-on-disabled-edge)` | Figma's 1px left and top stroke, drawn inside the shape as Figma draws it, over a 1px ring in the positive green. The ring is the fill's own colour in dark; in light it's a dark green, because the bright fill is 1.8:1 on white and an on toggle has to be seen (WCAG 1.4.11). The widths and colours are tokens. |
+| `root` | `box-shadow` | `inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--toggle-on-focus-outline), inset 0 0 0 var(--spacing-outline-small) var(--toggle-on-focus-edge)` | Figma's 1px left and top stroke, drawn inside the shape as Figma draws it, over a 1px ring in the positive green. The ring is the fill's own colour in dark; in light it's a dark green, because the bright fill is 1.8:1 on white and an on toggle has to be seen (WCAG 1.4.11). The widths and colours are tokens. |
 
 See it live, with every value of every variant: [rost.build/components/toggle](https://rost.build/components/toggle/)

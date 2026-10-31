@@ -125,183 +125,183 @@ variants:
     figmaNode: "93:588"
     elements:
       root:
-        background: { token: actions/primary/default/background, value: "#00d669" }
+        background: { token: icon-button/primary/default/background, value: "#00d669" }
         box-shadow:
-          value: inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-default-outline)
+          value: inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--icon-button-primary-default-outline)
           untokenised: "Figma's 1px left and top stroke, drawn inside the shape as Figma draws it. The width and colour are tokens."
       icons-arrow-left:
-        color: { token: actions/primary/default/icon, value: "#3a3a3a" }
+        color: { token: icon-button/primary/default/icon, value: "#3a3a3a" }
   - when: { type: Secondary, state: Default }
     figmaNode: "93:591"
     elements:
       background:
-        background: { token: actions/secondary/regular/default/background, value: "#3a3a3a" }
-        border-color: { token: actions/secondary/regular/default/outline, value: "#ededed" }
+        background: { token: icon-button/secondary/default/background, value: "#3a3a3a" }
+        border-color: { token: icon-button/secondary/default/outline, value: "#ededed" }
         opacity: { token: opacity/gentle, value: "0.24" }
       icons-arrow-left:
-        color: { token: actions/secondary/regular/default/icon, value: "#00d669" }
+        color: { token: icon-button/secondary/default/icon, value: "#00d669" }
   - when: { type: Tertiary, state: Default }
     figmaNode: "93:595"
     elements:
       icons-arrow-left:
-        color: { token: actions/tertiary/default/icon, value: "#00d669" }
+        color: { token: icon-button/tertiary/default/icon, value: "#00d669" }
   - when: { type: Primary, state: Hover }
     figmaNode: "93:601"
     elements:
       root:
-        background: { token: actions/primary/hover/background, value: "#00b450" }
+        background: { token: icon-button/primary/hover/background, value: "#00b450" }
         box-shadow:
-          value: inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-hover-outline)
+          value: inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--icon-button-primary-hover-outline)
           untokenised: "Figma's 1px left and top stroke, drawn inside the shape as Figma draws it. The width and colour are tokens."
       icons-arrow-left:
-        color: { token: actions/primary/hover/icon, value: "#3a3a3a" }
+        color: { token: icon-button/primary/hover/icon, value: "#3a3a3a" }
   - when: { type: Secondary, state: Hover }
     figmaNode: "93:604"
     elements:
       background:
-        background: { token: actions/secondary/regular/hover/background, value: "#747573" }
-        border-color: { token: actions/secondary/regular/hover/outline, value: "#ededed" }
+        background: { token: icon-button/secondary/hover/background, value: "#747573" }
+        border-color: { token: icon-button/secondary/hover/outline, value: "#ededed" }
         opacity: { token: opacity/mild, value: "0.32" }
       icons-arrow-left:
-        color: { token: actions/secondary/regular/hover/icon, value: "#00b450" }
+        color: { token: icon-button/secondary/hover/icon, value: "#00b450" }
   - when: { type: Tertiary, state: Hover }
     figmaNode: "93:608"
     elements:
       background:
         position: { value: absolute }
         inset: { value: "0" }
-        background: { token: actions/tertiary/hover/background, value: "#060805" }
+        background: { token: icon-button/tertiary/hover/background, value: "#060805" }
         opacity: { token: opacity/mild, value: "0.32" }
         border-radius: { token: spacing/radius/full, value: 10000px }
       icons-arrow-left:
-        color: { token: actions/tertiary/hover/icon, value: "#00b450" }
+        color: { token: icon-button/tertiary/hover/icon, value: "#00b450" }
   - when: { type: Primary, state: Pressed }
     figmaNode: "93:616"
     elements:
       root:
-        background: { token: actions/primary/pressed/background, value: "#00913a" }
+        background: { token: icon-button/primary/pressed/background, value: "#00913a" }
         box-shadow:
-          value: inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-pressed-outline)
+          value: inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--icon-button-primary-pressed-outline)
           untokenised: "Figma's 1px left and top stroke, drawn inside the shape as Figma draws it. The width and colour are tokens."
       icons-arrow-left:
-        color: { token: actions/primary/pressed/icon, value: "#3a3a3a" }
+        color: { token: icon-button/primary/pressed/icon, value: "#3a3a3a" }
   - when: { type: Secondary, state: Pressed }
     figmaNode: "93:619"
     elements:
       background:
-        background: { token: actions/secondary/regular/pressed/background, value: "#999" }
-        border-color: { token: actions/secondary/regular/pressed/outline, value: "#ededed" }
+        background: { token: icon-button/secondary/pressed/background, value: "#999" }
+        border-color: { token: icon-button/secondary/pressed/outline, value: "#ededed" }
         opacity: { token: opacity/mild, value: "0.32" }
       icons-arrow-left:
-        color: { token: actions/secondary/regular/pressed/icon, value: "#00d669" }
+        color: { token: icon-button/secondary/pressed/icon, value: "#00d669" }
   - when: { type: Tertiary, state: Pressed }
     figmaNode: "93:623"
     elements:
       background:
         position: { value: absolute }
         inset: { value: "0" }
-        background: { token: actions/tertiary/pressed/background, value: "#454545" }
+        background: { token: icon-button/tertiary/pressed/background, value: "#454545" }
         opacity: { token: opacity/mild, value: "0.32" }
         border-radius: { token: spacing/radius/full, value: 10000px }
       icons-arrow-left:
-        color: { token: actions/tertiary/pressed/icon, value: "#00d669" }
+        color: { token: icon-button/tertiary/pressed/icon, value: "#00d669" }
   - when: { type: Primary, state: Disabled }
     figmaNode: "93:631"
     elements:
       root:
-        background: { token: actions/primary/disabled/background, value: "#00d669" }
+        background: { token: icon-button/primary/disabled/background, value: "#00d669" }
         box-shadow:
-          value: inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-disabled-outline)
+          value: inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--icon-button-primary-disabled-outline)
           untokenised: "Figma's 1px left and top stroke, drawn inside the shape as Figma draws it. The width and colour are tokens."
       icons-arrow-left:
-        color: { token: actions/primary/disabled/icon, value: "#3a3a3a" }
+        color: { token: icon-button/primary/disabled/icon, value: "#3a3a3a" }
   - when: { type: Secondary, state: Disabled }
     figmaNode: "93:634"
     elements:
       background:
-        background: { token: actions/secondary/regular/disabled/background, value: "#3a3a3a" }
-        border-color: { token: actions/secondary/regular/disabled/outline, value: "#ededed" }
+        background: { token: icon-button/secondary/disabled/background, value: "#3a3a3a" }
+        border-color: { token: icon-button/secondary/disabled/outline, value: "#ededed" }
         opacity: { token: opacity/mild, value: "0.32" }
       icons-arrow-left:
-        color: { token: actions/secondary/regular/disabled/icon, value: "#00d669" }
+        color: { token: icon-button/secondary/disabled/icon, value: "#00d669" }
   - when: { type: Tertiary, state: Disabled }
     figmaNode: "93:638"
     elements:
       icons-arrow-left:
-        color: { token: actions/tertiary/disabled/icon, value: "#00d669" }
+        color: { token: icon-button/tertiary/disabled/icon, value: "#00d669" }
   - when: { type: Primary, state: Focus }
     figmaNode: "93:644"
     elements:
       root:
-        background: { token: actions/primary/focus/background, value: "#00d669" }
+        background: { token: icon-button/primary/focus/background, value: "#00d669" }
         box-shadow:
-          value: inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-focus-outline)
+          value: inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--icon-button-primary-focus-outline)
           untokenised: "Figma's 1px left and top stroke, drawn inside the shape as Figma draws it. The width and colour are tokens."
       focus-ring:
-        border-color: { token: actions/primary/focus/focus-ring, value: "#b6ffda" }
+        border-color: { token: icon-button/primary/focus/focus-ring, value: "#b6ffda" }
         inset: { value: "calc(-1 * var(--spacing-gap-2xsmall))", untokenised: "Composed from a token: spacing/gap/2xsmall out. Figma said -5px on the left and top, to make up for the stroke, which takes no space here." }
       icons-arrow-left:
-        color: { token: actions/primary/focus/icon, value: "#3a3a3a" }
+        color: { token: icon-button/primary/focus/icon, value: "#3a3a3a" }
   - when: { type: Secondary, state: Focus }
     figmaNode: "93:648"
     elements:
       background:
-        background: { token: actions/secondary/regular/focus/background, value: "#3a3a3a" }
-        border-color: { token: actions/secondary/regular/focus/outline, value: "#ededed" }
+        background: { token: icon-button/secondary/focus/background, value: "#3a3a3a" }
+        border-color: { token: icon-button/secondary/focus/outline, value: "#ededed" }
         opacity: { token: opacity/gentle, value: "0.24" }
       focus-ring:
-        border-color: { token: actions/secondary/regular/focus/focus-ring, value: "#999" }
+        border-color: { token: icon-button/secondary/focus/focus-ring, value: "#999" }
         inset: { value: "calc(-1 * var(--spacing-gap-2xsmall))", untokenised: "Composed from a token: the ring sits spacing/gap/2xsmall outside the element." }
       icons-arrow-left:
-        color: { token: actions/secondary/regular/focus/icon, value: "#00d669" }
+        color: { token: icon-button/secondary/focus/icon, value: "#00d669" }
   - when: { type: Tertiary, state: Focus }
     figmaNode: "93:653"
     elements:
       focus-ring:
-        border-color: { token: actions/secondary/regular/focus/focus-ring, value: "#999" }
+        border-color: { token: icon-button/tertiary/focus/focus-ring, value: "#999" }
         inset: { value: "calc(-1 * var(--spacing-gap-2xsmall))", untokenised: "Composed from a token: the ring sits spacing/gap/2xsmall outside the element." }
       icons-arrow-left:
-        color: { token: actions/tertiary/focus/icon, value: "#00d669" }
+        color: { token: icon-button/tertiary/focus/icon, value: "#00d669" }
   - when: { type: Project, state: Default }
     figmaNode: "93:740"
     elements:
       icons-arrow-left:
-        color: { token: actions/borderless/default/icon, value: "#00d669" }
+        color: { token: icon-button/project/default/icon, value: "#00d669" }
   - when: { type: Project, state: Hover }
     figmaNode: "93:742"
     elements:
       background:
         position: { value: absolute }
         inset: { value: "0" }
-        background: { token: actions/tertiary/hover/background, value: "#060805" }
+        background: { token: icon-button/project/hover/background, value: "#060805" }
         opacity: { token: opacity/mild, value: "0.32" }
         border-radius: { token: spacing/radius/full, value: 10000px }
       icons-arrow-left:
-        color: { token: actions/borderless/hover/icon, value: "#00b450" }
+        color: { token: icon-button/project/hover/icon, value: "#00b450" }
   - when: { type: Project, state: Pressed }
     figmaNode: "93:745"
     elements:
       background:
         position: { value: absolute }
         inset: { value: "0" }
-        background: { token: actions/tertiary/pressed/background, value: "#454545" }
+        background: { token: icon-button/project/pressed/background, value: "#454545" }
         opacity: { token: opacity/mild, value: "0.32" }
         border-radius: { token: spacing/radius/full, value: 10000px }
       icons-arrow-left:
-        color: { token: actions/borderless/pressed/icon, value: "#00d669" }
+        color: { token: icon-button/project/pressed/icon, value: "#00d669" }
   - when: { type: Project, state: Disabled }
     figmaNode: "93:748"
     elements:
       icons-arrow-left:
-        color: { token: actions/borderless/disabled/icon, value: "#00d669" }
+        color: { token: icon-button/project/disabled/icon, value: "#00d669" }
   - when: { type: Project, state: Focus }
     figmaNode: "93:750"
     elements:
       focus-ring:
-        border-color: { token: actions/secondary/regular/focus/focus-ring, value: "#999" }
+        border-color: { token: icon-button/project/focus/focus-ring, value: "#999" }
         inset: { value: "calc(-1 * var(--spacing-gap-2xsmall))", untokenised: "Composed from a token: the ring sits spacing/gap/2xsmall outside the element." }
       icons-arrow-left:
-        color: { token: actions/borderless/focus/icon, value: "#00d669" }
+        color: { token: icon-button/project/focus/icon, value: "#00d669" }
 implementations:
   portfolio-site:
     component: src/rost/icon-button/IconButton.tsx

@@ -77,7 +77,7 @@ elements:
       inset: { value: "calc(-1 * var(--spacing-gap-2xsmall))", untokenised: "Composed from a token: the ring sits spacing/gap/2xsmall outside the element." }
       border-style: { value: solid }
       border-width: { token: spacing/outline/medium, value: 2px }
-      border-color: { token: actions/secondary/regular/focus/focus-ring, value: "#999" }
+      border-color: { token: chip/focus-ring, value: "#999" }
       border-radius: { token: spacing/radius/full, value: 10000px }
       pointer-events: { value: none, assert: false }
 variants:
@@ -85,40 +85,40 @@ variants:
     figmaNode: "139:318"
     elements:
       label:
-        color: { token: actions/secondary/regular/default/label, value: "#d3d9d5" }
+        color: { token: chip/unselected/default/label, value: "#d3d9d5" }
       outline:
         box-shadow:
-          value: inset 0 0 0 var(--spacing-outline-small) var(--actions-secondary-regular-default-outline)
+          value: inset 0 0 0 var(--spacing-outline-small) var(--chip-unselected-default-outline)
           untokenised: "Figma's 1px stroke, drawn inside the shape. The width and colour are tokens (spacing/outline/small, actions/secondary/regular/default/outline)."
         opacity: { token: opacity/gentle, value: "0.24" }
   - when: { status: Default, state: Hover }
     figmaNode: "139:320"
     elements:
       label:
-        color: { token: actions/secondary/regular/hover/label, value: "#ededed" }
+        color: { token: chip/unselected/hover/label, value: "#ededed" }
       outline:
         box-shadow:
-          value: inset 0 0 0 var(--spacing-outline-small) var(--actions-secondary-regular-hover-outline)
+          value: inset 0 0 0 var(--spacing-outline-small) var(--chip-unselected-hover-outline)
           untokenised: "Figma's 1px stroke, drawn inside the shape. The width and colour are tokens (spacing/outline/small, actions/secondary/regular/hover/outline)."
         opacity: { token: opacity/strong, value: "0.64" }
   - when: { status: Default, state: Pressed }
     figmaNode: "139:322"
     elements:
       label:
-        color: { token: actions/secondary/regular/pressed/label, value: "#d3d9d5" }
+        color: { token: chip/unselected/pressed/label, value: "#d3d9d5" }
       outline:
         box-shadow:
-          value: inset 0 0 0 var(--spacing-outline-small) var(--actions-secondary-regular-pressed-outline)
+          value: inset 0 0 0 var(--spacing-outline-small) var(--chip-unselected-pressed-outline)
           untokenised: "Figma's 1px stroke, drawn inside the shape. The width and colour are tokens (spacing/outline/small, actions/secondary/regular/pressed/outline)."
         opacity: { token: opacity/solid, value: "1" }
   - when: { status: Default, state: Disabled }
     figmaNode: "139:324"
     elements:
       label:
-        color: { token: actions/secondary/regular/disabled/label, value: "#d3d9d5" }
+        color: { token: chip/unselected/disabled/label, value: "#d3d9d5" }
       outline:
         box-shadow:
-          value: inset 0 0 0 var(--spacing-outline-small) var(--actions-secondary-regular-disabled-outline)
+          value: inset 0 0 0 var(--spacing-outline-small) var(--chip-unselected-disabled-outline)
           untokenised: "Figma's 1px stroke, drawn inside the shape. The width and colour are tokens (spacing/outline/small, actions/secondary/regular/disabled/outline)."
         opacity: { token: opacity/solid, value: "1" }
       root:
@@ -128,10 +128,10 @@ variants:
     figmaNode: "139:326"
     elements:
       label:
-        color: { token: actions/secondary/regular/focus/label, value: "#d3d9d5" }
+        color: { token: chip/unselected/focus/label, value: "#d3d9d5" }
       outline:
         box-shadow:
-          value: inset 0 0 0 var(--spacing-outline-small) var(--actions-secondary-regular-focus-outline)
+          value: inset 0 0 0 var(--spacing-outline-small) var(--chip-unselected-focus-outline)
           untokenised: "Figma's 1px stroke, drawn inside the shape. The width and colour are tokens (spacing/outline/small, actions/secondary/regular/focus/outline)."
         opacity: { token: opacity/gentle, value: "0.24" }
       focus-ring:
@@ -142,55 +142,55 @@ variants:
     figmaNode: "527:484"
     elements:
       background:
-        background: { token: interactive/active/default/background, value: "#00d669" }
+        background: { token: chip/selected/default/background, value: "#00d669" }
       label:
-        color: { token: interactive/active/default/label, value: "#060805" }
+        color: { token: chip/selected/default/label, value: "#060805" }
       outline:
         opacity: { token: opacity/solid, value: "1" }
-        box-shadow: { value: "inset 0 0 0 var(--spacing-outline-small) var(--non-interactive-foreground-positive-base)", untokenised: "Composed from tokens: a 1px edge in the positive green. In dark it's the plate's own colour, so it only shows on hover and press. In light it's a dark green, because the bright plate is 1.9:1 on white and a selected chip has to be seen (WCAG 1.4.11)." }
+        box-shadow: { value: "inset 0 0 0 var(--spacing-outline-small) var(--chip-selected-default-edge)", untokenised: "Composed from tokens: a 1px edge in the positive green. In dark it's the plate's own colour, so it only shows on hover and press. In light it's a dark green, because the bright plate is 1.9:1 on white and a selected chip has to be seen (WCAG 1.4.11)." }
   - when: { state: Hover, selected: true }
     figmaNode: "527:488"
     elements:
       background:
-        background: { token: interactive/active/hover/background, value: "#00b450" }
+        background: { token: chip/selected/hover/background, value: "#00b450" }
       label:
-        color: { token: interactive/active/hover/label, value: "#060805" }
+        color: { token: chip/selected/hover/label, value: "#060805" }
       outline:
         opacity: { token: opacity/solid, value: "1" }
-        box-shadow: { value: "inset 0 0 0 var(--spacing-outline-small) var(--non-interactive-foreground-positive-base)", untokenised: "Composed from tokens: a 1px edge in the positive green. In dark it's the plate's own colour, so it only shows on hover and press. In light it's a dark green, because the bright plate is 1.9:1 on white and a selected chip has to be seen (WCAG 1.4.11)." }
+        box-shadow: { value: "inset 0 0 0 var(--spacing-outline-small) var(--chip-selected-hover-edge)", untokenised: "Composed from tokens: a 1px edge in the positive green. In dark it's the plate's own colour, so it only shows on hover and press. In light it's a dark green, because the bright plate is 1.9:1 on white and a selected chip has to be seen (WCAG 1.4.11)." }
   - when: { state: Pressed, selected: true }
     figmaNode: "527:492"
     elements:
       background:
-        background: { token: interactive/active/pressed/background, value: "#00913a" }
+        background: { token: chip/selected/pressed/background, value: "#00913a" }
       label:
-        color: { token: interactive/active/pressed/label, value: "#060805" }
+        color: { token: chip/selected/pressed/label, value: "#060805" }
       outline:
         opacity: { token: opacity/solid, value: "1" }
-        box-shadow: { value: "inset 0 0 0 var(--spacing-outline-small) var(--non-interactive-foreground-positive-base)", untokenised: "Composed from tokens: a 1px edge in the positive green. In dark it's the plate's own colour, so it only shows on hover and press. In light it's a dark green, because the bright plate is 1.9:1 on white and a selected chip has to be seen (WCAG 1.4.11)." }
+        box-shadow: { value: "inset 0 0 0 var(--spacing-outline-small) var(--chip-selected-pressed-edge)", untokenised: "Composed from tokens: a 1px edge in the positive green. In dark it's the plate's own colour, so it only shows on hover and press. In light it's a dark green, because the bright plate is 1.9:1 on white and a selected chip has to be seen (WCAG 1.4.11)." }
   - when: { state: Focus, selected: true }
     figmaNode: "527:496"
     elements:
       background:
-        background: { token: interactive/active/focus/background, value: "#00d669" }
+        background: { token: chip/selected/focus/background, value: "#00d669" }
       label:
-        color: { token: interactive/active/focus/label, value: "#060805" }
+        color: { token: chip/selected/focus/label, value: "#060805" }
       outline:
         opacity: { token: opacity/solid, value: "1" }
-        box-shadow: { value: "inset 0 0 0 var(--spacing-outline-small) var(--non-interactive-foreground-positive-base)", untokenised: "Composed from tokens: a 1px edge in the positive green. In dark it's the plate's own colour, so it only shows on hover and press. In light it's a dark green, because the bright plate is 1.9:1 on white and a selected chip has to be seen (WCAG 1.4.11)." }
+        box-shadow: { value: "inset 0 0 0 var(--spacing-outline-small) var(--chip-selected-focus-edge)", untokenised: "Composed from tokens: a 1px edge in the positive green. In dark it's the plate's own colour, so it only shows on hover and press. In light it's a dark green, because the bright plate is 1.9:1 on white and a selected chip has to be seen (WCAG 1.4.11)." }
       focus-ring:
         display: { value: block, assert: false }
-        border-color: { token: interactive/active/focus/focus-ring, value: "#b6ffda" }
+        border-color: { token: chip/selected/focus/focus-ring, value: "#b6ffda" }
   - when: { state: Disabled, selected: true }
     figmaNode: "527:501"
     elements:
       background:
-        background: { token: interactive/active/disabled/background, value: "#00d669" }
+        background: { token: chip/selected/disabled/background, value: "#00d669" }
       label:
-        color: { token: interactive/active/disabled/label, value: "#060805" }
+        color: { token: chip/selected/disabled/label, value: "#060805" }
       outline:
         opacity: { token: opacity/solid, value: "1" }
-        box-shadow: { value: "inset 0 0 0 var(--spacing-outline-small) var(--non-interactive-foreground-positive-base)", untokenised: "Composed from tokens: a 1px edge in the positive green. In dark it's the plate's own colour, so it only shows on hover and press. In light it's a dark green, because the bright plate is 1.9:1 on white and a selected chip has to be seen (WCAG 1.4.11)." }
+        box-shadow: { value: "inset 0 0 0 var(--spacing-outline-small) var(--chip-selected-disabled-edge)", untokenised: "Composed from tokens: a 1px edge in the positive green. In dark it's the plate's own colour, so it only shows on hover and press. In light it's a dark green, because the bright plate is 1.9:1 on white and a selected chip has to be seen (WCAG 1.4.11)." }
       root:
         opacity: { token: opacity/gentle, value: "0.24" }
         cursor: { value: default, assert: false }

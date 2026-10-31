@@ -59,7 +59,7 @@
   flex-shrink: 0;
   width: var(--spacing-size-small);
   height: var(--spacing-size-small);
-  background: var(--project-lock-icon);
+  background: var(--projects-lock);
   mask: url(./icon-lock.svg) center / contain no-repeat;
 }
 
@@ -99,7 +99,7 @@
   width: 3px;
   height: 3px;
   border-radius: var(--spacing-radius-full);
-  background: var(--project-default-icon);
+  background: var(--projects-dot);
 }
 
 .rost-projects__actions {
@@ -116,7 +116,7 @@
   display: block;
   width: var(--spacing-size-2xsmall);
   height: var(--spacing-size-2xsmall);
-  background: var(--actions-borderless-default-icon);
+  background: var(--projects-icon);
   mask: url(./icon-up-right.svg) center / contain no-repeat;
 }
 
@@ -126,25 +126,25 @@
   inset: calc(-1 * var(--spacing-gap-2xsmall));
   border-style: solid;
   border-width: var(--spacing-outline-medium);
-  border-color: var(--project-focus-focus-ring);
+  border-color: var(--projects-focus-ring);
   pointer-events: none;
 }
 
 .rost-projects .rost-projects__outline {
-  background: var(--project-default-outline);
+  background: var(--projects-default-outline);
   height: var(--spacing-outline-small);
 }
 
 .rost-projects .rost-projects__number {
-  color: var(--project-default-sub-label);
+  color: var(--projects-default-number);
 }
 
 .rost-projects .rost-projects__text {
-  color: var(--project-default-label);
+  color: var(--projects-default-label);
 }
 
 .rost-projects .rost-projects__detail {
-  color: var(--project-default-sub-label);
+  color: var(--projects-default-sub-label);
 }
 
 .rost-projects:hover:where(:not(:disabled, [aria-disabled="true"])) {
@@ -152,24 +152,24 @@
 }
 
 .rost-projects:hover:where(:not(:disabled, [aria-disabled="true"])) .rost-projects__outline {
-  background: var(--project-hover-outline);
+  background: var(--projects-hover-outline);
   height: var(--spacing-outline-medium);
 }
 
 .rost-projects:hover:where(:not(:disabled, [aria-disabled="true"])) .rost-projects__number {
-  color: var(--project-hover-label);
+  color: var(--projects-hover-number);
 }
 
 .rost-projects:hover:where(:not(:disabled, [aria-disabled="true"])) .rost-projects__text {
-  color: var(--project-hover-label);
+  color: var(--projects-hover-label);
 }
 
 .rost-projects:hover:where(:not(:disabled, [aria-disabled="true"])) .rost-projects__detail {
-  color: var(--project-hover-sub-label);
+  color: var(--projects-hover-sub-label);
 }
 
 .rost-projects:hover:where(:not(:disabled, [aria-disabled="true"])) .rost-projects__dot {
-  background: var(--project-hover-icon);
+  background: var(--projects-hover-dot);
 }
 
 .rost-projects:active:where(:not(:disabled, [aria-disabled="true"])) {
@@ -177,24 +177,24 @@
 }
 
 .rost-projects:active:where(:not(:disabled, [aria-disabled="true"])) .rost-projects__outline {
-  background: var(--project-pressed-outline);
+  background: var(--projects-pressed-outline);
   height: var(--spacing-outline-small);
 }
 
 .rost-projects:active:where(:not(:disabled, [aria-disabled="true"])) .rost-projects__number {
-  color: var(--project-pressed-label);
+  color: var(--projects-pressed-number);
 }
 
 .rost-projects:active:where(:not(:disabled, [aria-disabled="true"])) .rost-projects__text {
-  color: var(--project-pressed-label);
+  color: var(--projects-pressed-label);
 }
 
 .rost-projects:active:where(:not(:disabled, [aria-disabled="true"])) .rost-projects__detail {
-  color: var(--project-pressed-sub-label);
+  color: var(--projects-pressed-sub-label);
 }
 
 .rost-projects:active:where(:not(:disabled, [aria-disabled="true"])) .rost-projects__dot {
-  background: var(--project-pressed-icon);
+  background: var(--projects-pressed-dot);
 }
 
 .rost-projects:focus-visible .rost-projects__focus-ring {
@@ -202,20 +202,20 @@
 }
 
 .rost-projects:focus-visible .rost-projects__outline {
-  background: var(--project-focus-outline);
+  background: var(--projects-focus-outline);
   height: var(--spacing-outline-small);
 }
 
 .rost-projects:focus-visible .rost-projects__number {
-  color: var(--project-default-sub-label);
+  color: var(--projects-focus-number);
 }
 
 .rost-projects:focus-visible .rost-projects__text {
-  color: var(--project-default-label);
+  color: var(--projects-focus-label);
 }
 
 .rost-projects:focus-visible .rost-projects__detail {
-  color: var(--project-focus-sub-label);
+  color: var(--projects-focus-sub-label);
 }
 
 .rost-projects:is(:disabled, [aria-disabled="true"]) {
@@ -231,42 +231,42 @@
 }
 
 .rost-projects:is(:disabled, [aria-disabled="true"]) .rost-projects__outline {
-  background: var(--project-disabled-outline);
+  background: var(--projects-disabled-outline);
   height: var(--spacing-outline-small);
   opacity: var(--opacity-gentle);
 }
 
 .rost-projects:is(:disabled, [aria-disabled="true"]) .rost-projects__number {
-  color: var(--project-default-sub-label);
+  color: var(--projects-disabled-number);
   opacity: var(--opacity-gentle);
 }
 
 .rost-projects:is(:disabled, [aria-disabled="true"]) .rost-projects__text {
-  color: var(--project-default-label);
+  color: var(--projects-disabled-label);
   opacity: var(--opacity-gentle);
 }
 
 .rost-projects:is(:disabled, [aria-disabled="true"]) .rost-projects__detail {
-  color: var(--project-disabled-sub-label);
+  color: var(--projects-disabled-sub-label);
 }
 
 .rost-projects.rost-projects--state-locked .rost-projects__outline {
-  background: var(--project-lock-outline);
+  background: var(--projects-locked-outline);
   height: var(--spacing-outline-small);
 }
 
 .rost-projects.rost-projects--state-locked .rost-projects__number {
-  color: var(--project-lock-sub-label);
+  color: var(--projects-locked-number);
 }
 
 .rost-projects.rost-projects--state-locked .rost-projects__text {
-  color: var(--project-lock-label);
+  color: var(--projects-locked-label);
 }
 
 .rost-projects.rost-projects--state-locked .rost-projects__detail {
-  color: var(--project-lock-sub-label);
+  color: var(--projects-locked-sub-label);
 }
 
 .rost-projects.rost-projects--state-locked .rost-projects__dot {
-  background: var(--project-lock-icon);
+  background: var(--projects-locked-dot);
 }

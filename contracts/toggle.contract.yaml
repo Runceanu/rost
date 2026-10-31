@@ -115,123 +115,123 @@ variants:
     figmaNode: "168:1150"
     elements:
       root:
-        background: { token: actions/primary/default/background, value: "#00d669" }
+        background: { token: toggle/on/default/background, value: "#00d669" }
         box-shadow:
-          value: inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-default-outline), inset 0 0 0 var(--spacing-outline-small) var(--non-interactive-foreground-positive-base)
+          value: inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--toggle-on-default-outline), inset 0 0 0 var(--spacing-outline-small) var(--toggle-on-default-edge)
           untokenised: "Figma's 1px left and top stroke, drawn inside the shape as Figma draws it, over a 1px ring in the positive green. The ring is the fill's own colour in dark; in light it's a dark green, because the bright fill is 1.8:1 on white and an on toggle has to be seen (WCAG 1.4.11). The widths and colours are tokens."
       icons-arrow-left:
-        color: { token: actions/primary/default/icon, value: "#3a3a3a" }
+        color: { token: toggle/on/default/icon, value: "#3a3a3a" }
       label:
-        color: { token: actions/primary/default/label, value: "#060805" }
+        color: { token: toggle/on/default/label, value: "#060805" }
   - when: { state: Default, selected: false }
     figmaNode: "168:1152"
     elements:
       background:
-        background: { token: actions/secondary/regular/default/background, value: "#3a3a3a" }
-        border-color: { token: actions/secondary/regular/default/outline, value: "#ededed" }
+        background: { token: toggle/off/default/background, value: "#3a3a3a" }
+        border-color: { token: toggle/off/default/outline, value: "#ededed" }
         opacity: { token: opacity/gentle, value: "0.24" }
       icons-arrow-left:
-        color: { token: actions/secondary/regular/default/icon, value: "#00d669" }
+        color: { token: toggle/off/default/icon, value: "#00d669" }
       label:
-        color: { token: actions/secondary/regular/default/label, value: "#d3d9d5" }
+        color: { token: toggle/off/default/label, value: "#d3d9d5" }
   - when: { state: Hover, selected: true }
     figmaNode: "168:1159"
     elements:
       root:
-        background: { token: actions/primary/hover/background, value: "#00b450" }
+        background: { token: toggle/on/hover/background, value: "#00b450" }
         box-shadow:
-          value: inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-hover-outline), inset 0 0 0 var(--spacing-outline-small) var(--non-interactive-foreground-positive-base)
+          value: inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--toggle-on-hover-outline), inset 0 0 0 var(--spacing-outline-small) var(--toggle-on-hover-edge)
           untokenised: "Figma's 1px left and top stroke, drawn inside the shape as Figma draws it, over a 1px ring in the positive green. The ring is the fill's own colour in dark; in light it's a dark green, because the bright fill is 1.8:1 on white and an on toggle has to be seen (WCAG 1.4.11). The widths and colours are tokens."
       icons-arrow-left:
-        color: { token: actions/primary/hover/icon, value: "#3a3a3a" }
+        color: { token: toggle/on/hover/icon, value: "#3a3a3a" }
       label:
-        color: { token: actions/primary/hover/label, value: "#060805" }
+        color: { token: toggle/on/hover/label, value: "#060805" }
   - when: { state: Hover, selected: false }
     figmaNode: "168:1161"
     elements:
       background:
-        background: { token: actions/secondary/regular/hover/background, value: "#747573" }
-        border-color: { token: actions/secondary/regular/hover/outline, value: "#ededed" }
+        background: { token: toggle/off/hover/background, value: "#747573" }
+        border-color: { token: toggle/off/hover/outline, value: "#ededed" }
         opacity: { token: opacity/mild, value: "0.32" }
       icons-arrow-left:
-        color: { token: actions/secondary/regular/hover/icon, value: "#00b450" }
+        color: { token: toggle/off/hover/icon, value: "#00b450" }
       label:
-        color: { token: actions/secondary/regular/hover/label, value: "#ededed" }
+        color: { token: toggle/off/hover/label, value: "#ededed" }
   - when: { state: Pressed, selected: true }
     figmaNode: "168:1170"
     elements:
       root:
-        background: { token: actions/primary/pressed/background, value: "#00913a" }
+        background: { token: toggle/on/pressed/background, value: "#00913a" }
         box-shadow:
-          value: inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-pressed-outline), inset 0 0 0 var(--spacing-outline-small) var(--non-interactive-foreground-positive-base)
+          value: inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--toggle-on-pressed-outline), inset 0 0 0 var(--spacing-outline-small) var(--toggle-on-pressed-edge)
           untokenised: "Figma's 1px left and top stroke, drawn inside the shape as Figma draws it, over a 1px ring in the positive green. The ring is the fill's own colour in dark; in light it's a dark green, because the bright fill is 1.8:1 on white and an on toggle has to be seen (WCAG 1.4.11). The widths and colours are tokens."
       icons-arrow-left:
-        color: { token: actions/primary/pressed/icon, value: "#3a3a3a" }
+        color: { token: toggle/on/pressed/icon, value: "#3a3a3a" }
       label:
-        color: { token: actions/primary/pressed/label, value: "#060805" }
+        color: { token: toggle/on/pressed/label, value: "#060805" }
   - when: { state: Pressed, selected: false }
     figmaNode: "168:1172"
     elements:
       background:
-        background: { token: actions/secondary/regular/pressed/background, value: "#999" }
-        border-color: { token: actions/secondary/regular/pressed/outline, value: "#ededed" }
+        background: { token: toggle/off/pressed/background, value: "#999" }
+        border-color: { token: toggle/off/pressed/outline, value: "#ededed" }
         opacity: { token: opacity/mild, value: "0.32" }
       icons-arrow-left:
-        color: { token: actions/secondary/regular/pressed/icon, value: "#00d669" }
+        color: { token: toggle/off/pressed/icon, value: "#00d669" }
       label:
-        color: { token: actions/secondary/regular/pressed/label, value: "#d3d9d5" }
+        color: { token: toggle/off/pressed/label, value: "#d3d9d5" }
   - when: { state: Disabled, selected: true }
     figmaNode: "168:1181"
     elements:
       root:
-        background: { token: actions/primary/disabled/background, value: "#00d669" }
+        background: { token: toggle/on/disabled/background, value: "#00d669" }
         box-shadow:
-          value: inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-disabled-outline), inset 0 0 0 var(--spacing-outline-small) var(--non-interactive-foreground-positive-base)
+          value: inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--toggle-on-disabled-outline), inset 0 0 0 var(--spacing-outline-small) var(--toggle-on-disabled-edge)
           untokenised: "Figma's 1px left and top stroke, drawn inside the shape as Figma draws it, over a 1px ring in the positive green. The ring is the fill's own colour in dark; in light it's a dark green, because the bright fill is 1.8:1 on white and an on toggle has to be seen (WCAG 1.4.11). The widths and colours are tokens."
       icons-arrow-left:
-        color: { token: actions/primary/disabled/icon, value: "#3a3a3a" }
+        color: { token: toggle/on/disabled/icon, value: "#3a3a3a" }
       label:
-        color: { token: actions/primary/disabled/label, value: "#060805" }
+        color: { token: toggle/on/disabled/label, value: "#060805" }
   - when: { state: Disabled, selected: false }
     figmaNode: "168:1183"
     elements:
       background:
-        background: { token: actions/secondary/regular/disabled/background, value: "#3a3a3a" }
-        border-color: { token: actions/secondary/regular/disabled/outline, value: "#ededed" }
+        background: { token: toggle/off/disabled/background, value: "#3a3a3a" }
+        border-color: { token: toggle/off/disabled/outline, value: "#ededed" }
         opacity: { token: opacity/mild, value: "0.32" }
       icons-arrow-left:
-        color: { token: actions/secondary/regular/disabled/icon, value: "#00d669" }
+        color: { token: toggle/off/disabled/icon, value: "#00d669" }
       label:
-        color: { token: actions/secondary/regular/disabled/label, value: "#d3d9d5" }
+        color: { token: toggle/off/disabled/label, value: "#d3d9d5" }
   - when: { state: Focus, selected: true }
     figmaNode: "168:1190"
     elements:
       root:
-        background: { token: actions/primary/focus/background, value: "#00d669" }
+        background: { token: toggle/on/focus/background, value: "#00d669" }
         box-shadow:
-          value: inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-focus-outline), inset 0 0 0 var(--spacing-outline-small) var(--non-interactive-foreground-positive-base)
+          value: inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--toggle-on-focus-outline), inset 0 0 0 var(--spacing-outline-small) var(--toggle-on-focus-edge)
           untokenised: "Figma's 1px left and top stroke, drawn inside the shape as Figma draws it, over a 1px ring in the positive green. The ring is the fill's own colour in dark; in light it's a dark green, because the bright fill is 1.8:1 on white and an on toggle has to be seen (WCAG 1.4.11). The widths and colours are tokens."
       icons-arrow-left:
-        color: { token: actions/primary/focus/icon, value: "#3a3a3a" }
+        color: { token: toggle/on/focus/icon, value: "#3a3a3a" }
       focus-ring:
-        border-color: { token: actions/primary/focus/focus-ring, value: "#b6ffda" }
+        border-color: { token: toggle/on/focus/focus-ring, value: "#b6ffda" }
         border-radius: { token: spacing/radius/full, value: 10000px }
       label:
-        color: { token: actions/primary/focus/label, value: "#060805" }
+        color: { token: toggle/on/focus/label, value: "#060805" }
   - when: { state: Focus, selected: false }
     figmaNode: "168:1193"
     elements:
       background:
-        background: { token: actions/secondary/regular/focus/background, value: "#3a3a3a" }
-        border-color: { token: actions/secondary/regular/focus/outline, value: "#ededed" }
+        background: { token: toggle/off/focus/background, value: "#3a3a3a" }
+        border-color: { token: toggle/off/focus/outline, value: "#ededed" }
         opacity: { token: opacity/gentle, value: "0.24" }
       icons-arrow-left:
-        color: { token: actions/secondary/regular/focus/icon, value: "#00d669" }
+        color: { token: toggle/off/focus/icon, value: "#00d669" }
       focus-ring:
-        border-color: { token: actions/secondary/regular/focus/focus-ring, value: "#999" }
+        border-color: { token: toggle/off/focus/focus-ring, value: "#999" }
         border-radius: { token: spacing/radius/large, value: 16px }
       label:
-        color: { token: actions/secondary/regular/focus/label, value: "#d3d9d5" }
+        color: { token: toggle/off/focus/label, value: "#d3d9d5" }
   - when: { labelled: true }
     elements:
       root:

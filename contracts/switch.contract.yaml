@@ -76,13 +76,13 @@ variants:
   - when: { checked: true }
     elements:
       track:
-        outline-color: { token: non-interactive/foreground/positive/base, value: "#00d669", notes: "The fill's own green in dark, where the fill already stands out. In light it's a dark green, because the bright fill is 1.9:1 on white." }
+        outline-color: { token: switch/on/edge, value: "#00d669", notes: "The fill's own green in dark, where the fill already stands out. In light it's a dark green, because the bright fill is 1.9:1 on white." }
       thumb:
         left: { value: "calc(100% - var(--spacing-size-2xsmall) - var(--spacing-gap-2xsmall))", untokenised: "Composed from tokens: the far end of the track, less the thumb and its 4px." }
   - when: { checked: false }
     elements:
       track:
-        outline-color: { token: input/regular/default/outline, value: "#747573", notes: "A field's edge: 4.3:1 on the dark page, 4.5:1 on the light one." }
+        outline-color: { token: switch/off/edge, value: "#747573", notes: "A field's edge: 4.3:1 on the dark page, 4.5:1 on the light one." }
   - when: { state: Focus }
     elements:
       focus-ring:
@@ -96,86 +96,86 @@ variants:
     figmaNode: "528:350"
     elements:
       background:
-        background: { token: actions/secondary/regular/default/background, value: "#3a3a3a" }
+        background: { token: switch/off/default/track, value: "#3a3a3a" }
         opacity: { token: opacity/gentle, value: "0.24" }
       thumb:
-        background: { token: actions/secondary/regular/default/label, value: "#d3d9d5" }
+        background: { token: switch/off/default/thumb, value: "#d3d9d5" }
   - when: { state: Hover, checked: false }
     figmaNode: "528:355"
     elements:
       background:
-        background: { token: actions/secondary/regular/hover/background, value: "#747573" }
+        background: { token: switch/off/hover/track, value: "#747573" }
         opacity: { token: opacity/mild, value: "0.32" }
       thumb:
-        background: { token: actions/secondary/regular/hover/label, value: "#ededed" }
+        background: { token: switch/off/hover/thumb, value: "#ededed" }
   - when: { state: Pressed, checked: false }
     figmaNode: "528:360"
     elements:
       background:
-        background: { token: actions/secondary/regular/pressed/background, value: "#999" }
+        background: { token: switch/off/pressed/track, value: "#999" }
         opacity: { token: opacity/mild, value: "0.32" }
       thumb:
-        background: { token: actions/secondary/regular/pressed/label, value: "#d3d9d5" }
+        background: { token: switch/off/pressed/thumb, value: "#d3d9d5" }
   - when: { state: Focus, checked: false }
     figmaNode: "528:365"
     elements:
       background:
-        background: { token: actions/secondary/regular/focus/background, value: "#3a3a3a" }
+        background: { token: switch/off/focus/track, value: "#3a3a3a" }
         opacity: { token: opacity/gentle, value: "0.24" }
       thumb:
-        background: { token: actions/secondary/regular/focus/label, value: "#d3d9d5" }
+        background: { token: switch/off/focus/thumb, value: "#d3d9d5" }
       focus-ring:
-        border-color: { token: actions/secondary/regular/focus/focus-ring, value: "#999" }
+        border-color: { token: switch/off/focus/focus-ring, value: "#999" }
   - when: { state: Disabled, checked: false }
     figmaNode: "528:371"
     elements:
       background:
-        background: { token: actions/secondary/regular/disabled/background, value: "#3a3a3a" }
+        background: { token: switch/off/disabled/track, value: "#3a3a3a" }
         opacity: { token: opacity/gentle, value: "0.24" }
       thumb:
-        background: { token: actions/secondary/regular/disabled/label, value: "#d3d9d5" }
+        background: { token: switch/off/disabled/thumb, value: "#d3d9d5" }
   - when: { state: Default, checked: true }
     figmaNode: "528:376"
     elements:
       background:
-        background: { token: actions/primary/default/background, value: "#00d669" }
+        background: { token: switch/on/default/track, value: "#00d669" }
         opacity: { token: opacity/solid, value: "1" }
       thumb:
-        background: { token: actions/primary/default/label, value: "#060805" }
+        background: { token: switch/on/default/thumb, value: "#060805" }
   - when: { state: Hover, checked: true }
     figmaNode: "528:381"
     elements:
       background:
-        background: { token: actions/primary/hover/background, value: "#00b450" }
+        background: { token: switch/on/hover/track, value: "#00b450" }
         opacity: { token: opacity/solid, value: "1" }
       thumb:
-        background: { token: actions/primary/hover/label, value: "#060805" }
+        background: { token: switch/on/hover/thumb, value: "#060805" }
   - when: { state: Pressed, checked: true }
     figmaNode: "528:386"
     elements:
       background:
-        background: { token: actions/primary/pressed/background, value: "#00913a" }
+        background: { token: switch/on/pressed/track, value: "#00913a" }
         opacity: { token: opacity/solid, value: "1" }
       thumb:
-        background: { token: actions/primary/pressed/label, value: "#060805" }
+        background: { token: switch/on/pressed/thumb, value: "#060805" }
   - when: { state: Focus, checked: true }
     figmaNode: "528:391"
     elements:
       background:
-        background: { token: actions/primary/focus/background, value: "#00d669" }
+        background: { token: switch/on/focus/track, value: "#00d669" }
         opacity: { token: opacity/solid, value: "1" }
       thumb:
-        background: { token: actions/primary/focus/label, value: "#060805" }
+        background: { token: switch/on/focus/thumb, value: "#060805" }
       focus-ring:
-        border-color: { token: actions/primary/focus/focus-ring, value: "#b6ffda" }
+        border-color: { token: switch/on/focus/focus-ring, value: "#b6ffda" }
   - when: { state: Disabled, checked: true }
     figmaNode: "528:397"
     elements:
       background:
-        background: { token: actions/primary/disabled/background, value: "#00d669" }
+        background: { token: switch/on/disabled/track, value: "#00d669" }
         opacity: { token: opacity/solid, value: "1" }
       thumb:
-        background: { token: actions/primary/disabled/label, value: "#060805" }
+        background: { token: switch/on/disabled/thumb, value: "#060805" }
 guidance:
   status: proposed
   use:

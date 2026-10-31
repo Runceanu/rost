@@ -93,7 +93,7 @@ elements:
       flex-shrink: { value: "0", assert: false }
       width: { token: spacing/size/small, value: 24px }
       height: { token: spacing/size/small, value: 24px }
-      background: { token: project/lock/icon, value: "#00d669" }
+      background: { token: projects/lock, value: "#00d669" }
       mask: { value: url(./icon-lock.svg) center / contain no-repeat, untokenised: The icon file itself. }
   badge:
     optional: true
@@ -132,7 +132,7 @@ elements:
       width: { value: 3px, untokenised: "The dot's own size inside the icon." }
       height: { value: 3px, untokenised: "The dot's own size inside the icon." }
       border-radius: { token: spacing/radius/full, value: 10000px }
-      background: { token: project/default/icon, value: "#747573" }
+      background: { token: projects/dot, value: "#747573" }
   actions:
     notes: The arrow at the end, in a 32px round frame. Figma names the layer `-> Actions`.
     styles:
@@ -149,7 +149,7 @@ elements:
       display: { value: block, assert: false }
       width: { token: spacing/size/2xsmall, value: 16px }
       height: { token: spacing/size/2xsmall, value: 16px }
-      background: { token: actions/borderless/default/icon, value: "#00d669" }
+      background: { token: projects/icon, value: "#00d669" }
       mask: { value: url(./icon-up-right.svg) center / contain no-repeat, untokenised: The icon file itself. }
   focus-ring:
     styles:
@@ -158,70 +158,70 @@ elements:
       inset: { value: "calc(-1 * var(--spacing-gap-2xsmall))", untokenised: "Composed from a token: the ring sits spacing/gap/2xsmall outside the element." }
       border-style: { value: solid }
       border-width: { token: spacing/outline/medium, value: 2px }
-      border-color: { token: project/focus/focus-ring, value: "#999" }
+      border-color: { token: projects/focus-ring, value: "#999" }
       pointer-events: { value: none, assert: false }
 variants:
   - when: { state: Default }
     figmaNode: "100:184"
     elements:
       outline:
-        background: { token: project/default/outline, value: "#3a3a3a" }
+        background: { token: projects/default/outline, value: "#3a3a3a" }
         height: { token: spacing/outline/small, value: 1px }
       number:
-        color: { token: project/default/sub-label, value: "#999" }
+        color: { token: projects/default/number, value: "#999" }
       text:
-        color: { token: project/default/label, value: "#d3d9d5" }
+        color: { token: projects/default/label, value: "#d3d9d5" }
       detail:
-        color: { token: project/default/sub-label, value: "#999" }
+        color: { token: projects/default/sub-label, value: "#999" }
   - when: { state: Hover }
     figmaNode: "100:180"
     elements:
       root:
         padding-left: { token: spacing/gap/medium, value: 16px, notes: "On hover and press the row's content slides 16px to the right." }
       outline:
-        background: { token: project/hover/outline, value: "#00d669" }
+        background: { token: projects/hover/outline, value: "#00d669" }
         height: { token: spacing/outline/medium, value: 2px }
       number:
-        color: { token: project/hover/label, value: "#00d669" }
+        color: { token: projects/hover/number, value: "#00d669" }
       text:
-        color: { token: project/hover/label, value: "#00d669" }
+        color: { token: projects/hover/label, value: "#00d669" }
       detail:
         color:
-          token: project/hover/sub-label
+          token: projects/hover/sub-label
           value: "#ededed"
           notes: "Decided on 2026-10-21: #ededed, the same as Thumbs and Carousel. Figma's frame held a stale #d3d9d5 although its variable said #ededed; I rebound it in Figma on 2026-10-23 and the test passes."
       dot:
-        background: { token: project/hover/icon, value: "#ededed" }
+        background: { token: projects/hover/dot, value: "#ededed" }
   - when: { state: Pressed }
     figmaNode: "100:182"
     elements:
       root:
         padding-left: { token: spacing/gap/medium, value: 16px, notes: "On hover and press the row's content slides 16px to the right." }
       outline:
-        background: { token: project/pressed/outline, value: "#10ffa4" }
+        background: { token: projects/pressed/outline, value: "#10ffa4" }
         height: { token: spacing/outline/small, value: 1px }
       number:
-        color: { token: project/pressed/label, value: "#00d669" }
+        color: { token: projects/pressed/number, value: "#00d669" }
       text:
-        color: { token: project/pressed/label, value: "#00d669" }
+        color: { token: projects/pressed/label, value: "#00d669" }
       detail:
-        color: { token: project/pressed/sub-label, value: "#c2c7c3" }
+        color: { token: projects/pressed/sub-label, value: "#c2c7c3" }
       dot:
-        background: { token: project/pressed/icon, value: "#c2c7c3" }
+        background: { token: projects/pressed/dot, value: "#c2c7c3" }
   - when: { state: Focus }
     figmaNode: "100:181"
     elements:
       focus-ring:
         display: { value: block, assert: false }
       outline:
-        background: { token: project/focus/outline, value: "#3a3a3a" }
+        background: { token: projects/focus/outline, value: "#3a3a3a" }
         height: { token: spacing/outline/small, value: 1px }
       number:
-        color: { token: project/default/sub-label, value: "#999" }
+        color: { token: projects/focus/number, value: "#999" }
       text:
-        color: { token: project/default/label, value: "#d3d9d5" }
+        color: { token: projects/focus/label, value: "#d3d9d5" }
       detail:
-        color: { token: project/focus/sub-label, value: "#999" }
+        color: { token: projects/focus/sub-label, value: "#999" }
   - when: { state: Disabled }
     figmaNode: "100:183"
     elements:
@@ -232,31 +232,31 @@ variants:
       actions:
         opacity: { token: opacity/gentle, value: "0.24" }
       outline:
-        background: { token: project/disabled/outline, value: "#3a3a3a" }
+        background: { token: projects/disabled/outline, value: "#3a3a3a" }
         height: { token: spacing/outline/small, value: 1px }
         opacity: { token: opacity/gentle, value: "0.24" }
       number:
-        color: { token: project/default/sub-label, value: "#999" }
+        color: { token: projects/disabled/number, value: "#999" }
         opacity: { token: opacity/gentle, value: "0.24" }
       text:
-        color: { token: project/default/label, value: "#d3d9d5" }
+        color: { token: projects/disabled/label, value: "#d3d9d5" }
         opacity: { token: opacity/gentle, value: "0.24" }
       detail:
-        color: { token: project/disabled/sub-label, value: "#999" }
+        color: { token: projects/disabled/sub-label, value: "#999" }
   - when: { state: Locked }
     figmaNode: "238:140"
     elements:
       outline:
-        background: { token: project/lock/outline, value: "#3a3a3a" }
+        background: { token: projects/locked/outline, value: "#3a3a3a" }
         height: { token: spacing/outline/small, value: 1px }
       number:
-        color: { token: project/lock/sub-label, value: "#999" }
+        color: { token: projects/locked/number, value: "#999" }
       text:
-        color: { token: project/lock/label, value: "#d3d9d5" }
+        color: { token: projects/locked/label, value: "#d3d9d5" }
       detail:
-        color: { token: project/lock/sub-label, value: "#999" }
+        color: { token: projects/locked/sub-label, value: "#999" }
       dot:
-        background: { token: project/lock/icon, value: "#00d669" }
+        background: { token: projects/locked/dot, value: "#00d669" }
 implementations:
   portfolio-site:
     component: src/rost/projects/Projects.tsx

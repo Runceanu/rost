@@ -127,184 +127,184 @@ variants:
     figmaNode: "20:13"
     elements:
       root:
-        background: { token: actions/primary/default/background, value: "#00d669" }
+        background: { token: button/primary/default/background, value: "#00d669" }
         box-shadow:
-          value: inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-default-outline)
+          value: inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--button-primary-default-outline)
           untokenised: "Figma's 1px left and top stroke, drawn inside the shape the way Figma draws it. A border would make the button 1px wider. The width and colour are tokens."
       label:
-        color: { token: actions/primary/default/label, value: "#060805" }
+        color: { token: button/primary/default/label, value: "#060805" }
   - when: { type: Primary, state: Hover }
     figmaNode: "20:15"
     elements:
       root:
-        background: { token: actions/primary/hover/background, value: "#00b450" }
+        background: { token: button/primary/hover/background, value: "#00b450" }
         box-shadow:
-          value: inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-hover-outline)
+          value: inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--button-primary-hover-outline)
           untokenised: "Figma's 1px left and top stroke, drawn inside the shape the way Figma draws it. A border would make the button 1px wider. The width and colour are tokens."
       label:
-        color: { token: actions/primary/hover/label, value: "#060805" }
+        color: { token: button/primary/hover/label, value: "#060805" }
   - when: { type: Primary, state: Focus }
     figmaNode: "20:17"
     elements:
       root:
-        background: { token: actions/primary/focus/background, value: "#00d669" }
+        background: { token: button/primary/focus/background, value: "#00d669" }
         box-shadow:
-          value: inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-focus-outline)
+          value: inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--button-primary-focus-outline)
           untokenised: "Figma's 1px left and top stroke, drawn inside the shape the way Figma draws it. A border would make the button 1px wider. The width and colour are tokens."
       label:
-        color: { token: actions/primary/focus/label, value: "#060805" }
+        color: { token: button/primary/focus/label, value: "#060805" }
       focus-ring:
-        border-color: { token: actions/primary/focus/focus-ring, value: "#b6ffda" }
+        border-color: { token: button/primary/focus/focus-ring, value: "#b6ffda" }
         inset: { value: "calc(-1 * var(--spacing-gap-2xsmall))", untokenised: "Composed from a token: spacing/gap/2xsmall out, all round. Figma said -5px on the left and top, to make up for the stroke, which takes no space here." }
         border-radius: { token: spacing/radius/full, value: 10000px }
   - when: { type: Primary, state: Pressed }
     figmaNode: "20:20"
     elements:
       root:
-        background: { token: actions/primary/pressed/background, value: "#00913a" }
+        background: { token: button/primary/pressed/background, value: "#00913a" }
         box-shadow:
-          value: inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-pressed-outline)
+          value: inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--button-primary-pressed-outline)
           untokenised: "Figma's 1px left and top stroke, drawn inside the shape the way Figma draws it. A border would make the button 1px wider. The width and colour are tokens."
       label:
-        color: { token: actions/primary/pressed/label, value: "#060805" }
+        color: { token: button/primary/pressed/label, value: "#060805" }
   - when: { type: Primary, state: Disabled }
     figmaNode: "20:22"
     elements:
       root:
-        background: { token: actions/primary/disabled/background, value: "#00d669" }
+        background: { token: button/primary/disabled/background, value: "#00d669" }
         box-shadow:
-          value: inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-disabled-outline)
+          value: inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--button-primary-disabled-outline)
           untokenised: "Figma's 1px left and top stroke, drawn inside the shape the way Figma draws it. A border would make the button 1px wider. The width and colour are tokens."
       label:
-        color: { token: actions/primary/disabled/label, value: "#060805" }
+        color: { token: button/primary/disabled/label, value: "#060805" }
   - when: { type: Tertiary, state: Default }
     figmaNode: "25:191"
     elements:
       label:
-        color: { token: actions/tertiary/default/label, value: "#d3d9d5" }
+        color: { token: button/tertiary/default/label, value: "#d3d9d5" }
   - when: { type: Tertiary, state: Hover }
     figmaNode: "25:194"
     elements:
       label:
-        color: { token: actions/tertiary/hover/label, value: "#ededed" }
+        color: { token: button/tertiary/hover/label, value: "#ededed" }
       background:
         position: { value: absolute }
         inset: { value: "0" }
-        background: { token: actions/tertiary/hover/background, value: "#060805" }
+        background: { token: button/tertiary/hover/background, value: "#060805" }
         opacity: { token: opacity/mild, value: "0.32" }
         border-radius: { token: spacing/radius/full, value: 10000px }
   - when: { type: Tertiary, state: Pressed }
     figmaNode: "25:197"
     elements:
       label:
-        color: { token: actions/tertiary/pressed/label, value: "#d3d9d5" }
+        color: { token: button/tertiary/pressed/label, value: "#d3d9d5" }
       background:
         position: { value: absolute }
         inset: { value: "0" }
-        background: { token: actions/tertiary/pressed/background, value: "#454545" }
+        background: { token: button/tertiary/pressed/background, value: "#454545" }
         opacity: { token: opacity/mild, value: "0.32" }
         border-radius: { token: spacing/radius/full, value: 10000px }
   - when: { type: Tertiary, state: Disabled }
     figmaNode: "25:200"
     elements:
       label:
-        color: { token: actions/tertiary/disabled/label, value: "#d3d9d5" }
+        color: { token: button/tertiary/disabled/label, value: "#d3d9d5" }
   - when: { type: Tertiary, state: Focus }
     figmaNode: "25:203"
     elements:
       label:
-        color: { token: actions/tertiary/focus/label, value: "#d3d9d5" }
+        color: { token: button/tertiary/focus/label, value: "#d3d9d5" }
       focus-ring:
-        border-color: { token: actions/secondary/regular/focus/focus-ring, value: "#999" }
+        border-color: { token: button/tertiary/focus/focus-ring, value: "#999" }
         inset: { value: "calc(-1 * var(--spacing-gap-2xsmall))", untokenised: "Composed from a token: the ring sits spacing/gap/2xsmall outside the element." }
         border-radius: { token: spacing/radius/full, value: 10000px }
   - when: { type: Borderless, state: Default }
     figmaNode: "25:249"
     elements:
       label:
-        color: { token: actions/tertiary/default/label, value: "#d3d9d5" }
+        color: { token: button/borderless/default/label, value: "#d3d9d5" }
   - when: { type: Borderless, state: Hover }
     figmaNode: "25:251"
     elements:
       label:
-        color: { token: actions/tertiary/hover/label, value: "#ededed" }
+        color: { token: button/borderless/hover/label, value: "#ededed" }
       background:
         position: { value: absolute }
         inset: { value: "0" }
-        background: { token: actions/tertiary/hover/background, value: "#060805" }
+        background: { token: button/borderless/hover/background, value: "#060805" }
         opacity: { token: opacity/mild, value: "0.32" }
   - when: { type: Borderless, state: Pressed }
     figmaNode: "25:254"
     elements:
       label:
-        color: { token: actions/tertiary/pressed/label, value: "#d3d9d5" }
+        color: { token: button/borderless/pressed/label, value: "#d3d9d5" }
       background:
         position: { value: absolute }
         inset: { value: "0" }
-        background: { token: actions/tertiary/pressed/background, value: "#454545" }
+        background: { token: button/borderless/pressed/background, value: "#454545" }
         opacity: { token: opacity/mild, value: "0.32" }
   - when: { type: Borderless, state: Disabled }
     figmaNode: "25:257"
     elements:
       label:
-        color: { token: actions/tertiary/disabled/label, value: "#d3d9d5" }
+        color: { token: button/borderless/disabled/label, value: "#d3d9d5" }
   - when: { type: Borderless, state: Focus }
     figmaNode: "25:260"
     elements:
       label:
-        color: { token: actions/tertiary/focus/label, value: "#d3d9d5" }
+        color: { token: button/borderless/focus/label, value: "#d3d9d5" }
       focus-ring:
-        border-color: { token: actions/secondary/regular/focus/focus-ring, value: "#999" }
+        border-color: { token: button/borderless/focus/focus-ring, value: "#999" }
         inset: { value: "calc(-1 * var(--spacing-gap-2xsmall))", untokenised: "Composed from a token: the ring sits spacing/gap/2xsmall outside the element." }
   - when: { type: Secondary, state: Default }
     figmaNode: "25:80"
     elements:
       label:
-        color: { token: actions/secondary/regular/default/label, value: "#d3d9d5" }
+        color: { token: button/secondary/default/label, value: "#d3d9d5" }
       background:
-        background: { token: actions/secondary/regular/default/background, value: "#3a3a3a" }
+        background: { token: button/secondary/default/background, value: "#3a3a3a" }
         opacity: { token: opacity/gentle, value: "0.24" }
-        border-color: { token: actions/secondary/regular/default/outline, value: "#ededed" }
+        border-color: { token: button/secondary/default/outline, value: "#ededed" }
   - when: { type: Secondary, state: Hover }
     figmaNode: "25:82"
     elements:
       label:
-        color: { token: actions/secondary/regular/hover/label, value: "#ededed" }
+        color: { token: button/secondary/hover/label, value: "#ededed" }
       background:
-        background: { token: actions/secondary/regular/hover/background, value: "#747573" }
+        background: { token: button/secondary/hover/background, value: "#747573" }
         opacity: { token: opacity/mild, value: "0.32" }
-        border-color: { token: actions/secondary/regular/hover/outline, value: "#ededed" }
+        border-color: { token: button/secondary/hover/outline, value: "#ededed" }
   - when: { type: Secondary, state: Pressed }
     figmaNode: "25:84"
     elements:
       label:
-        color: { token: actions/secondary/regular/pressed/label, value: "#d3d9d5" }
+        color: { token: button/secondary/pressed/label, value: "#d3d9d5" }
       background:
-        background: { token: actions/secondary/regular/pressed/background, value: "#999" }
+        background: { token: button/secondary/pressed/background, value: "#999" }
         opacity: { token: opacity/mild, value: "0.32" }
-        border-color: { token: actions/secondary/regular/pressed/outline, value: "#ededed" }
+        border-color: { token: button/secondary/pressed/outline, value: "#ededed" }
   - when: { type: Secondary, state: Disabled }
     figmaNode: "25:86"
     elements:
       label:
-        color: { token: actions/secondary/regular/disabled/label, value: "#d3d9d5" }
+        color: { token: button/secondary/disabled/label, value: "#d3d9d5" }
       background:
-        background: { token: actions/secondary/regular/disabled/background, value: "#3a3a3a" }
+        background: { token: button/secondary/disabled/background, value: "#3a3a3a" }
         opacity: { token: opacity/mild, value: "0.32" }
-        border-color: { token: actions/secondary/regular/disabled/outline, value: "#ededed" }
+        border-color: { token: button/secondary/disabled/outline, value: "#ededed" }
   - when: { type: Secondary, state: Focus }
     figmaNode: "25:88"
     elements:
       label:
-        color: { token: actions/secondary/regular/focus/label, value: "#d3d9d5" }
+        color: { token: button/secondary/focus/label, value: "#d3d9d5" }
       focus-ring:
-        border-color: { token: actions/secondary/regular/focus/focus-ring, value: "#999" }
+        border-color: { token: button/secondary/focus/focus-ring, value: "#999" }
         inset: { value: "calc(-1 * var(--spacing-gap-2xsmall))", untokenised: "Composed from a token: the ring sits spacing/gap/2xsmall outside the element." }
         border-radius: { token: spacing/radius/full, value: 10000px }
       background:
-        background: { token: actions/secondary/regular/focus/background, value: "#3a3a3a" }
+        background: { token: button/secondary/focus/background, value: "#3a3a3a" }
         opacity: { token: opacity/gentle, value: "0.24" }
-        border-color: { token: actions/secondary/regular/focus/outline, value: "#ededed" }
+        border-color: { token: button/secondary/focus/outline, value: "#ededed" }
 guidance:
   status: agreed
   use:

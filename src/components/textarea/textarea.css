@@ -93,142 +93,142 @@
 }
 
 .rost-textarea:not(.rost-textarea--selected):not(.rost-textarea--error) .rost-textarea__outline {
-  background: var(--input-regular-default-background);
-  border-color: var(--input-regular-default-outline);
+  background: var(--textarea-regular-default-background);
+  border-color: var(--textarea-regular-default-outline);
 }
 
 .rost-textarea:not(.rost-textarea--selected):not(.rost-textarea--error) .rost-textarea__label {
-  color: var(--input-regular-default-label);
+  color: var(--textarea-regular-default-label);
 }
 
 .rost-textarea:not(.rost-textarea--selected):not(.rost-textarea--error) .rost-textarea__value {
-  color: var(--input-regular-default-placeholder);
+  color: var(--textarea-regular-default-placeholder);
 }
 
 .rost-textarea:not(.rost-textarea--selected):not(.rost-textarea--error) .rost-textarea__supportive {
-  color: var(--input-regular-default-supportive);
+  color: var(--textarea-regular-default-supportive);
 }
 
 .rost-textarea:hover:where(:not(:has(textarea:disabled))):not(.rost-textarea--selected):not(.rost-textarea--error) .rost-textarea__outline {
-  background: var(--input-regular-hover-background);
-  border-color: var(--input-regular-hover-outline);
+  background: var(--textarea-regular-hover-background);
+  border-color: var(--textarea-regular-hover-outline);
 }
 
 .rost-textarea:hover:where(:not(:has(textarea:disabled))):not(.rost-textarea--selected):not(.rost-textarea--error) .rost-textarea__label {
-  color: var(--input-regular-hover-label);
+  color: var(--textarea-regular-hover-label);
 }
 
 .rost-textarea:hover:where(:not(:has(textarea:disabled))):not(.rost-textarea--selected):not(.rost-textarea--error) .rost-textarea__value {
-  color: var(--input-regular-hover-placeholder);
+  color: var(--textarea-regular-hover-placeholder);
 }
 
 .rost-textarea:hover:where(:not(:has(textarea:disabled))):not(.rost-textarea--selected):not(.rost-textarea--error) .rost-textarea__supportive {
-  color: var(--input-regular-hover-supportive);
+  color: var(--textarea-regular-hover-supportive);
 }
 
 .rost-textarea.rost-textarea--selected:not(.rost-textarea--error) .rost-textarea__outline {
-  background: var(--input-regular-focus-background);
-  border-color: var(--input-regular-focus-outline);
+  background: var(--textarea-regular-focus-background);
+  border-color: var(--textarea-regular-focus-outline);
 }
 
 .rost-textarea.rost-textarea--selected:not(.rost-textarea--error) .rost-textarea__label {
-  color: var(--input-regular-focus-label);
+  color: var(--textarea-regular-focus-label);
 }
 
 .rost-textarea.rost-textarea--selected:not(.rost-textarea--error) .rost-textarea__value {
-  color: var(--input-regular-focus-placeholder);
+  color: var(--textarea-regular-focus-placeholder);
 }
 
 .rost-textarea.rost-textarea--selected:not(.rost-textarea--error) .rost-textarea__supportive {
-  color: var(--input-regular-focus-supportive);
+  color: var(--textarea-regular-focus-supportive);
 }
 
 .rost-textarea.rost-textarea--selected:not(.rost-textarea--error) .rost-textarea__focus-ring {
   display: block;
-  border-color: var(--input-regular-focus-focus-ring);
+  border-color: var(--textarea-regular-focus-focus-ring);
 }
 
 .rost-textarea:has(textarea:disabled):not(.rost-textarea--selected):not(.rost-textarea--error) .rost-textarea__outline {
-  background: var(--input-regular-disabled-background);
-  border-color: var(--input-regular-disabled-outline);
+  background: var(--textarea-regular-disabled-background);
+  border-color: var(--textarea-regular-disabled-outline);
 }
 
 .rost-textarea:has(textarea:disabled):not(.rost-textarea--selected):not(.rost-textarea--error) .rost-textarea__label {
-  color: var(--input-regular-disabled-label);
+  color: var(--textarea-regular-disabled-label);
 }
 
 .rost-textarea:has(textarea:disabled):not(.rost-textarea--selected):not(.rost-textarea--error) .rost-textarea__value {
-  color: var(--input-regular-disabled-placeholder);
+  color: var(--textarea-regular-disabled-placeholder);
 }
 
 .rost-textarea:has(textarea:disabled):not(.rost-textarea--selected):not(.rost-textarea--error) .rost-textarea__supportive {
-  color: var(--input-regular-disabled-supportive);
+  color: var(--textarea-regular-disabled-supportive);
 }
 
 .rost-textarea:not(.rost-textarea--selected).rost-textarea--error .rost-textarea__outline {
-  background: var(--input-negative-default-background);
-  border-color: var(--input-negative-default-outline);
+  background: var(--textarea-negative-default-background);
+  border-color: var(--textarea-negative-default-outline);
 }
 
 .rost-textarea:not(.rost-textarea--selected).rost-textarea--error .rost-textarea__label {
-  color: var(--input-negative-default-label);
+  color: var(--textarea-negative-default-label);
 }
 
 .rost-textarea:not(.rost-textarea--selected).rost-textarea--error .rost-textarea__value {
-  color: var(--input-negative-default-placeholder);
+  color: var(--textarea-negative-default-placeholder);
 }
 
 .rost-textarea:not(.rost-textarea--selected).rost-textarea--error .rost-textarea__supportive {
-  color: var(--input-negative-default-supportive);
+  color: var(--textarea-negative-default-supportive);
 }
 
 .rost-textarea:not(.rost-textarea--selected).rost-textarea--error .rost-textarea__icons-alarm {
-  background: var(--input-negative-default-icon);
+  background: var(--textarea-negative-default-icon);
 }
 
 .rost-textarea:hover:where(:not(:has(textarea:disabled))):not(.rost-textarea--selected).rost-textarea--error .rost-textarea__outline {
-  background: var(--input-negative-hover-background);
-  border-color: var(--input-negative-hover-outline);
+  background: var(--textarea-negative-hover-background);
+  border-color: var(--textarea-negative-hover-outline);
 }
 
 .rost-textarea:hover:where(:not(:has(textarea:disabled))):not(.rost-textarea--selected).rost-textarea--error .rost-textarea__label {
-  color: var(--input-negative-hover-label);
+  color: var(--textarea-negative-hover-label);
 }
 
 .rost-textarea:hover:where(:not(:has(textarea:disabled))):not(.rost-textarea--selected).rost-textarea--error .rost-textarea__value {
-  color: var(--input-negative-hover-placeholder);
+  color: var(--textarea-negative-hover-placeholder);
 }
 
 .rost-textarea:hover:where(:not(:has(textarea:disabled))):not(.rost-textarea--selected).rost-textarea--error .rost-textarea__supportive {
-  color: var(--input-negative-hover-supportive);
+  color: var(--textarea-negative-hover-supportive);
 }
 
 .rost-textarea:hover:where(:not(:has(textarea:disabled))):not(.rost-textarea--selected).rost-textarea--error .rost-textarea__icons-alarm {
-  background: var(--input-negative-hover-icon);
+  background: var(--textarea-negative-hover-icon);
 }
 
 .rost-textarea.rost-textarea--selected.rost-textarea--error .rost-textarea__outline {
-  background: var(--input-negative-focus-background);
-  border-color: var(--input-negative-focus-outline);
+  background: var(--textarea-negative-focus-background);
+  border-color: var(--textarea-negative-focus-outline);
 }
 
 .rost-textarea.rost-textarea--selected.rost-textarea--error .rost-textarea__label {
-  color: var(--input-negative-focus-label);
+  color: var(--textarea-negative-focus-label);
 }
 
 .rost-textarea.rost-textarea--selected.rost-textarea--error .rost-textarea__value {
-  color: var(--input-negative-focus-value);
+  color: var(--textarea-negative-focus-value);
 }
 
 .rost-textarea.rost-textarea--selected.rost-textarea--error .rost-textarea__supportive {
-  color: var(--input-negative-focus-supportive);
+  color: var(--textarea-negative-focus-supportive);
 }
 
 .rost-textarea.rost-textarea--selected.rost-textarea--error .rost-textarea__icons-alarm {
-  background: var(--input-negative-focus-icon);
+  background: var(--textarea-negative-focus-icon);
 }
 
 .rost-textarea.rost-textarea--selected.rost-textarea--error .rost-textarea__focus-ring {
   display: block;
-  border-color: var(--input-negative-focus-focus-ring);
+  border-color: var(--textarea-negative-focus-focus-ring);
 }

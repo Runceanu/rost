@@ -66,12 +66,12 @@
   padding-right: var(--spacing-gap-medium-large);
   padding-top: var(--spacing-gap-none);
   padding-bottom: var(--spacing-gap-none);
-  background: var(--actions-primary-default-background);
-  box-shadow: inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-default-outline);
+  background: var(--button-primary-default-background);
+  box-shadow: inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--button-primary-default-outline);
 }
 
 .rost-button.rost-button--type-primary .rost-button__label {
-  color: var(--actions-primary-default-label);
+  color: var(--button-primary-default-label);
 }
 
 .rost-button.rost-button--type-primary:hover:where(:not(:disabled, [aria-disabled="true"])) {
@@ -79,12 +79,12 @@
   padding-right: var(--spacing-gap-medium-large);
   padding-top: var(--spacing-gap-none);
   padding-bottom: var(--spacing-gap-none);
-  background: var(--actions-primary-hover-background);
-  box-shadow: inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-hover-outline);
+  background: var(--button-primary-hover-background);
+  box-shadow: inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--button-primary-hover-outline);
 }
 
 .rost-button.rost-button--type-primary:hover:where(:not(:disabled, [aria-disabled="true"])) .rost-button__label {
-  color: var(--actions-primary-hover-label);
+  color: var(--button-primary-hover-label);
 }
 
 .rost-button.rost-button--type-primary:focus-visible {
@@ -92,22 +92,22 @@
   padding-right: var(--spacing-gap-medium-large);
   padding-top: var(--spacing-gap-none);
   padding-bottom: var(--spacing-gap-none);
-  background: var(--actions-primary-focus-background);
-  box-shadow: inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-focus-outline);
+  background: var(--button-primary-focus-background);
+  box-shadow: inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--button-primary-focus-outline);
 }
 
 .rost-button.rost-button--type-primary:focus-visible .rost-button__focus-ring {
   display: block;
   position: absolute;
   border-width: var(--spacing-outline-medium);
-  border-color: var(--actions-primary-focus-focus-ring);
+  border-color: var(--button-primary-focus-focus-ring);
   inset: calc(-1 * var(--spacing-gap-2xsmall));
   border-radius: var(--spacing-radius-full);
   border-style: solid;
 }
 
 .rost-button.rost-button--type-primary:focus-visible .rost-button__label {
-  color: var(--actions-primary-focus-label);
+  color: var(--button-primary-focus-label);
 }
 
 .rost-button.rost-button--type-primary:is(:active, [aria-current="page"]):where(:not(:disabled, [aria-disabled="true"])) {
@@ -115,12 +115,12 @@
   padding-right: var(--spacing-gap-medium-large);
   padding-top: var(--spacing-gap-none);
   padding-bottom: var(--spacing-gap-none);
-  background: var(--actions-primary-pressed-background);
-  box-shadow: inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-pressed-outline);
+  background: var(--button-primary-pressed-background);
+  box-shadow: inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--button-primary-pressed-outline);
 }
 
 .rost-button.rost-button--type-primary:is(:active, [aria-current="page"]):where(:not(:disabled, [aria-disabled="true"])) .rost-button__label {
-  color: var(--actions-primary-pressed-label);
+  color: var(--button-primary-pressed-label);
 }
 
 .rost-button.rost-button--type-primary:is(:disabled, [aria-disabled="true"]) {
@@ -130,12 +130,12 @@
   padding-bottom: var(--spacing-gap-none);
   opacity: var(--opacity-gentle);
   cursor: default;
-  background: var(--actions-primary-disabled-background);
-  box-shadow: inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-disabled-outline);
+  background: var(--button-primary-disabled-background);
+  box-shadow: inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--button-primary-disabled-outline);
 }
 
 .rost-button.rost-button--type-primary:is(:disabled, [aria-disabled="true"]) .rost-button__label {
-  color: var(--actions-primary-disabled-label);
+  color: var(--button-primary-disabled-label);
 }
 
 .rost-button.rost-button--type-tertiary {
@@ -146,7 +146,7 @@
 }
 
 .rost-button.rost-button--type-tertiary .rost-button__label {
-  color: var(--actions-tertiary-default-label);
+  color: var(--button-tertiary-default-label);
 }
 
 .rost-button.rost-button--type-tertiary:hover:where(:not(:disabled, [aria-disabled="true"])) {
@@ -157,13 +157,13 @@
 }
 
 .rost-button.rost-button--type-tertiary:hover:where(:not(:disabled, [aria-disabled="true"])) .rost-button__label {
-  color: var(--actions-tertiary-hover-label);
+  color: var(--button-tertiary-hover-label);
 }
 
 .rost-button.rost-button--type-tertiary:hover:where(:not(:disabled, [aria-disabled="true"])) .rost-button__background {
   position: absolute;
   inset: 0;
-  background: var(--actions-tertiary-hover-background);
+  background: var(--button-tertiary-hover-background);
   opacity: var(--opacity-mild);
   border-radius: var(--spacing-radius-full);
 }
@@ -176,13 +176,13 @@
 }
 
 .rost-button.rost-button--type-tertiary:is(:active, [aria-current="page"]):where(:not(:disabled, [aria-disabled="true"])) .rost-button__label {
-  color: var(--actions-tertiary-pressed-label);
+  color: var(--button-tertiary-pressed-label);
 }
 
 .rost-button.rost-button--type-tertiary:is(:active, [aria-current="page"]):where(:not(:disabled, [aria-disabled="true"])) .rost-button__background {
   position: absolute;
   inset: 0;
-  background: var(--actions-tertiary-pressed-background);
+  background: var(--button-tertiary-pressed-background);
   opacity: var(--opacity-mild);
   border-radius: var(--spacing-radius-full);
 }
@@ -197,7 +197,7 @@
 }
 
 .rost-button.rost-button--type-tertiary:is(:disabled, [aria-disabled="true"]) .rost-button__label {
-  color: var(--actions-tertiary-disabled-label);
+  color: var(--button-tertiary-disabled-label);
 }
 
 .rost-button.rost-button--type-tertiary:focus-visible {
@@ -211,14 +211,14 @@
   display: block;
   position: absolute;
   border-width: var(--spacing-outline-medium);
-  border-color: var(--actions-secondary-regular-focus-focus-ring);
+  border-color: var(--button-tertiary-focus-focus-ring);
   inset: calc(-1 * var(--spacing-gap-2xsmall));
   border-radius: var(--spacing-radius-full);
   border-style: solid;
 }
 
 .rost-button.rost-button--type-tertiary:focus-visible .rost-button__label {
-  color: var(--actions-tertiary-focus-label);
+  color: var(--button-tertiary-focus-label);
 }
 
 .rost-button.rost-button--type-borderless {
@@ -226,7 +226,7 @@
 }
 
 .rost-button.rost-button--type-borderless .rost-button__label {
-  color: var(--actions-tertiary-default-label);
+  color: var(--button-borderless-default-label);
 }
 
 .rost-button.rost-button--type-borderless:hover:where(:not(:disabled, [aria-disabled="true"])) {
@@ -234,13 +234,13 @@
 }
 
 .rost-button.rost-button--type-borderless:hover:where(:not(:disabled, [aria-disabled="true"])) .rost-button__label {
-  color: var(--actions-tertiary-hover-label);
+  color: var(--button-borderless-hover-label);
 }
 
 .rost-button.rost-button--type-borderless:hover:where(:not(:disabled, [aria-disabled="true"])) .rost-button__background {
   position: absolute;
   inset: 0;
-  background: var(--actions-tertiary-hover-background);
+  background: var(--button-borderless-hover-background);
   opacity: var(--opacity-mild);
 }
 
@@ -249,13 +249,13 @@
 }
 
 .rost-button.rost-button--type-borderless:is(:active, [aria-current="page"]):where(:not(:disabled, [aria-disabled="true"])) .rost-button__label {
-  color: var(--actions-tertiary-pressed-label);
+  color: var(--button-borderless-pressed-label);
 }
 
 .rost-button.rost-button--type-borderless:is(:active, [aria-current="page"]):where(:not(:disabled, [aria-disabled="true"])) .rost-button__background {
   position: absolute;
   inset: 0;
-  background: var(--actions-tertiary-pressed-background);
+  background: var(--button-borderless-pressed-background);
   opacity: var(--opacity-mild);
 }
 
@@ -266,7 +266,7 @@
 }
 
 .rost-button.rost-button--type-borderless:is(:disabled, [aria-disabled="true"]) .rost-button__label {
-  color: var(--actions-tertiary-disabled-label);
+  color: var(--button-borderless-disabled-label);
 }
 
 .rost-button.rost-button--type-borderless:focus-visible {
@@ -277,13 +277,13 @@
   display: block;
   position: absolute;
   border-width: var(--spacing-outline-medium);
-  border-color: var(--actions-secondary-regular-focus-focus-ring);
+  border-color: var(--button-borderless-focus-focus-ring);
   inset: calc(-1 * var(--spacing-gap-2xsmall));
   border-style: solid;
 }
 
 .rost-button.rost-button--type-borderless:focus-visible .rost-button__label {
-  color: var(--actions-tertiary-focus-label);
+  color: var(--button-borderless-focus-label);
 }
 
 .rost-button.rost-button--type-secondary {
@@ -297,10 +297,10 @@
   position: absolute;
   inset: 0;
   border-radius: var(--spacing-radius-full);
-  background: var(--actions-secondary-regular-default-background);
+  background: var(--button-secondary-default-background);
   opacity: var(--opacity-gentle);
-  border-left-color: var(--actions-secondary-regular-default-outline);
-  border-top-color: var(--actions-secondary-regular-default-outline);
+  border-left-color: var(--button-secondary-default-outline);
+  border-top-color: var(--button-secondary-default-outline);
   border-left-style: solid;
   border-left-width: var(--spacing-outline-small);
   border-top-style: solid;
@@ -308,7 +308,7 @@
 }
 
 .rost-button.rost-button--type-secondary .rost-button__label {
-  color: var(--actions-secondary-regular-default-label);
+  color: var(--button-secondary-default-label);
 }
 
 .rost-button.rost-button--type-secondary:hover:where(:not(:disabled, [aria-disabled="true"])) {
@@ -322,10 +322,10 @@
   position: absolute;
   inset: 0;
   border-radius: var(--spacing-radius-full);
-  background: var(--actions-secondary-regular-hover-background);
+  background: var(--button-secondary-hover-background);
   opacity: var(--opacity-mild);
-  border-left-color: var(--actions-secondary-regular-hover-outline);
-  border-top-color: var(--actions-secondary-regular-hover-outline);
+  border-left-color: var(--button-secondary-hover-outline);
+  border-top-color: var(--button-secondary-hover-outline);
   border-left-style: solid;
   border-left-width: var(--spacing-outline-small);
   border-top-style: solid;
@@ -333,7 +333,7 @@
 }
 
 .rost-button.rost-button--type-secondary:hover:where(:not(:disabled, [aria-disabled="true"])) .rost-button__label {
-  color: var(--actions-secondary-regular-hover-label);
+  color: var(--button-secondary-hover-label);
 }
 
 .rost-button.rost-button--type-secondary:is(:active, [aria-current="page"]):where(:not(:disabled, [aria-disabled="true"])) {
@@ -347,10 +347,10 @@
   position: absolute;
   inset: 0;
   border-radius: var(--spacing-radius-full);
-  background: var(--actions-secondary-regular-pressed-background);
+  background: var(--button-secondary-pressed-background);
   opacity: var(--opacity-mild);
-  border-left-color: var(--actions-secondary-regular-pressed-outline);
-  border-top-color: var(--actions-secondary-regular-pressed-outline);
+  border-left-color: var(--button-secondary-pressed-outline);
+  border-top-color: var(--button-secondary-pressed-outline);
   border-left-style: solid;
   border-left-width: var(--spacing-outline-small);
   border-top-style: solid;
@@ -358,7 +358,7 @@
 }
 
 .rost-button.rost-button--type-secondary:is(:active, [aria-current="page"]):where(:not(:disabled, [aria-disabled="true"])) .rost-button__label {
-  color: var(--actions-secondary-regular-pressed-label);
+  color: var(--button-secondary-pressed-label);
 }
 
 .rost-button.rost-button--type-secondary:is(:disabled, [aria-disabled="true"]) {
@@ -374,10 +374,10 @@
   position: absolute;
   inset: 0;
   border-radius: var(--spacing-radius-full);
-  background: var(--actions-secondary-regular-disabled-background);
+  background: var(--button-secondary-disabled-background);
   opacity: var(--opacity-mild);
-  border-left-color: var(--actions-secondary-regular-disabled-outline);
-  border-top-color: var(--actions-secondary-regular-disabled-outline);
+  border-left-color: var(--button-secondary-disabled-outline);
+  border-top-color: var(--button-secondary-disabled-outline);
   border-left-style: solid;
   border-left-width: var(--spacing-outline-small);
   border-top-style: solid;
@@ -385,7 +385,7 @@
 }
 
 .rost-button.rost-button--type-secondary:is(:disabled, [aria-disabled="true"]) .rost-button__label {
-  color: var(--actions-secondary-regular-disabled-label);
+  color: var(--button-secondary-disabled-label);
 }
 
 .rost-button.rost-button--type-secondary:focus-visible {
@@ -399,10 +399,10 @@
   position: absolute;
   inset: 0;
   border-radius: var(--spacing-radius-full);
-  background: var(--actions-secondary-regular-focus-background);
+  background: var(--button-secondary-focus-background);
   opacity: var(--opacity-gentle);
-  border-left-color: var(--actions-secondary-regular-focus-outline);
-  border-top-color: var(--actions-secondary-regular-focus-outline);
+  border-left-color: var(--button-secondary-focus-outline);
+  border-top-color: var(--button-secondary-focus-outline);
   border-left-style: solid;
   border-left-width: var(--spacing-outline-small);
   border-top-style: solid;
@@ -413,12 +413,12 @@
   display: block;
   position: absolute;
   border-width: var(--spacing-outline-medium);
-  border-color: var(--actions-secondary-regular-focus-focus-ring);
+  border-color: var(--button-secondary-focus-focus-ring);
   inset: calc(-1 * var(--spacing-gap-2xsmall));
   border-radius: var(--spacing-radius-full);
   border-style: solid;
 }
 
 .rost-button.rost-button--type-secondary:focus-visible .rost-button__label {
-  color: var(--actions-secondary-regular-focus-label);
+  color: var(--button-secondary-focus-label);
 }

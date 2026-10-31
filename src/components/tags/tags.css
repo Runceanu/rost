@@ -18,7 +18,7 @@
   padding-left: var(--spacing-gap-small);
   padding-right: var(--spacing-gap-small);
   border-radius: var(--spacing-radius-xsmall);
-  background: var(--actions-secondary-regular-default-background);
+  background: var(--tag-background);
   outline: none;
 }
 
@@ -30,7 +30,7 @@
   font-family: var(--font-family-base);
   font-weight: var(--typography-label-font-weight-medium);
   line-height: var(--typography-label-line-height);
-  color: var(--actions-secondary-regular-default-label);
+  color: var(--tag-label);
   font-size: var(--typography-label-font-size);
   letter-spacing: var(--typography-label-letter-spacing);
 }
@@ -41,33 +41,33 @@
   inset: calc(-1 * var(--spacing-gap-2xsmall));
   border-style: solid;
   border-width: var(--spacing-outline-medium);
-  border-color: var(--actions-secondary-regular-focus-focus-ring);
+  border-color: var(--tag-focus-ring);
   border-radius: var(--spacing-radius-small);
   pointer-events: none;
 }
 
 :is(a[href], button).rost-tags.rost-tags--type-primary:hover:where(:not(:disabled, [aria-disabled="true"])) {
-  background: var(--actions-secondary-regular-hover-background);
+  background: var(--tag-hover-background);
 }
 
 :is(a[href], button).rost-tags.rost-tags--type-primary:hover:where(:not(:disabled, [aria-disabled="true"])) .rost-tags__label {
-  color: var(--actions-secondary-regular-hover-label);
+  color: var(--tag-hover-label);
 }
 
 :is(a[href], button).rost-tags.rost-tags--type-primary:active:where(:not(:disabled, [aria-disabled="true"])) {
-  background: var(--actions-secondary-regular-pressed-background);
+  background: var(--tag-pressed-background);
 }
 
 :is(a[href], button).rost-tags.rost-tags--type-primary:active:where(:not(:disabled, [aria-disabled="true"])) .rost-tags__label {
-  color: var(--actions-secondary-regular-pressed-label);
+  color: var(--tag-pressed-label);
 }
 
 :is(a[href], button).rost-tags.rost-tags--type-primary:focus-visible {
-  background: var(--actions-secondary-regular-focus-background);
+  background: var(--tag-focus-background);
 }
 
 :is(a[href], button).rost-tags.rost-tags--type-primary:focus-visible .rost-tags__label {
-  color: var(--actions-secondary-regular-focus-label);
+  color: var(--tag-focus-label);
 }
 
 :is(a[href], button).rost-tags.rost-tags--type-primary:focus-visible .rost-tags__focus-ring {
@@ -75,10 +75,10 @@
 }
 
 .rost-tags.rost-tags--type-primary:is(:disabled, [aria-disabled="true"]) {
-  background: var(--actions-secondary-regular-disabled-background);
+  background: var(--tag-disabled-background);
   opacity: var(--opacity-gentle);
 }
 
 .rost-tags.rost-tags--type-primary:is(:disabled, [aria-disabled="true"]) .rost-tags__label {
-  color: var(--actions-secondary-regular-disabled-label);
+  color: var(--tag-disabled-label);
 }

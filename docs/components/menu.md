@@ -64,11 +64,21 @@ Every token this component uses, across all its variants.
 
 | Token | Resolves to |
 |---|---|
-| `actions/primary/focus/focus-ring` | `#b6ffda` |
 | `font-family/base` | `'General Sans Variable'` |
-| `non-interactive/foreground/primary` | `#ededed` |
-| `non-interactive/foreground/quadruple` | `#3a3a3a` |
-| `non-interactive/foreground/tertiary` | `#999` |
+| `menu/current/divider` | `#ededed` |
+| `menu/current/label` | `#ededed` |
+| `menu/current/sub-label` | `#ededed` |
+| `menu/default/label` | `#ededed` |
+| `menu/default/sub-label` | `#999` |
+| `menu/disabled/label` | `#3a3a3a` |
+| `menu/disabled/sub-label` | `#3a3a3a` |
+| `menu/focus-ring` | `#b6ffda` |
+| `menu/focus/label` | `#ededed` |
+| `menu/focus/sub-label` | `#999` |
+| `menu/hover/label` | `#ededed` |
+| `menu/hover/sub-label` | `#ededed` |
+| `menu/pressed/label` | `#ededed` |
+| `menu/pressed/sub-label` | `#ededed` |
 | `spacing/gap/large` | `24px` |
 | `spacing/gap/small-medium` | `12px` |
 | `spacing/outline/medium` | `2px` |

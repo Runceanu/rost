@@ -63,45 +63,49 @@ Every token this component uses, across all its variants.
 
 | Token | Resolves to |
 |---|---|
-| `actions/borderless/default/icon` | `#00d669` |
-| `actions/borderless/disabled/icon` | `#00d669` |
-| `actions/borderless/focus/icon` | `#00d669` |
-| `actions/borderless/hover/icon` | `#00b450` |
-| `actions/borderless/pressed/icon` | `#00d669` |
-| `actions/primary/default/background` | `#00d669` |
-| `actions/primary/default/icon` | `#3a3a3a` |
-| `actions/primary/disabled/background` | `#00d669` |
-| `actions/primary/disabled/icon` | `#3a3a3a` |
-| `actions/primary/focus/background` | `#00d669` |
-| `actions/primary/focus/focus-ring` | `#b6ffda` |
-| `actions/primary/focus/icon` | `#3a3a3a` |
-| `actions/primary/hover/background` | `#00b450` |
-| `actions/primary/hover/icon` | `#3a3a3a` |
-| `actions/primary/pressed/background` | `#00913a` |
-| `actions/primary/pressed/icon` | `#3a3a3a` |
-| `actions/secondary/regular/default/background` | `#3a3a3a` |
-| `actions/secondary/regular/default/icon` | `#00d669` |
-| `actions/secondary/regular/default/outline` | `#ededed` |
-| `actions/secondary/regular/disabled/background` | `#3a3a3a` |
-| `actions/secondary/regular/disabled/icon` | `#00d669` |
-| `actions/secondary/regular/disabled/outline` | `#ededed` |
-| `actions/secondary/regular/focus/background` | `#3a3a3a` |
-| `actions/secondary/regular/focus/focus-ring` | `#999` |
-| `actions/secondary/regular/focus/icon` | `#00d669` |
-| `actions/secondary/regular/focus/outline` | `#ededed` |
-| `actions/secondary/regular/hover/background` | `#747573` |
-| `actions/secondary/regular/hover/icon` | `#00b450` |
-| `actions/secondary/regular/hover/outline` | `#ededed` |
-| `actions/secondary/regular/pressed/background` | `#999` |
-| `actions/secondary/regular/pressed/icon` | `#00d669` |
-| `actions/secondary/regular/pressed/outline` | `#ededed` |
-| `actions/tertiary/default/icon` | `#00d669` |
-| `actions/tertiary/disabled/icon` | `#00d669` |
-| `actions/tertiary/focus/icon` | `#00d669` |
-| `actions/tertiary/hover/background` | `#060805` |
-| `actions/tertiary/hover/icon` | `#00b450` |
-| `actions/tertiary/pressed/background` | `#454545` |
-| `actions/tertiary/pressed/icon` | `#00d669` |
+| `icon-button/primary/default/background` | `#00d669` |
+| `icon-button/primary/default/icon` | `#3a3a3a` |
+| `icon-button/primary/disabled/background` | `#00d669` |
+| `icon-button/primary/disabled/icon` | `#3a3a3a` |
+| `icon-button/primary/focus/background` | `#00d669` |
+| `icon-button/primary/focus/focus-ring` | `#b6ffda` |
+| `icon-button/primary/focus/icon` | `#3a3a3a` |
+| `icon-button/primary/hover/background` | `#00b450` |
+| `icon-button/primary/hover/icon` | `#3a3a3a` |
+| `icon-button/primary/pressed/background` | `#00913a` |
+| `icon-button/primary/pressed/icon` | `#3a3a3a` |
+| `icon-button/project/default/icon` | `#00d669` |
+| `icon-button/project/disabled/icon` | `#00d669` |
+| `icon-button/project/focus/focus-ring` | `#999` |
+| `icon-button/project/focus/icon` | `#00d669` |
+| `icon-button/project/hover/background` | `#060805` |
+| `icon-button/project/hover/icon` | `#00b450` |
+| `icon-button/project/pressed/background` | `#454545` |
+| `icon-button/project/pressed/icon` | `#00d669` |
+| `icon-button/secondary/default/background` | `#3a3a3a` |
+| `icon-button/secondary/default/icon` | `#00d669` |
+| `icon-button/secondary/default/outline` | `#ededed` |
+| `icon-button/secondary/disabled/background` | `#3a3a3a` |
+| `icon-button/secondary/disabled/icon` | `#00d669` |
+| `icon-button/secondary/disabled/outline` | `#ededed` |
+| `icon-button/secondary/focus/background` | `#3a3a3a` |
+| `icon-button/secondary/focus/focus-ring` | `#999` |
+| `icon-button/secondary/focus/icon` | `#00d669` |
+| `icon-button/secondary/focus/outline` | `#ededed` |
+| `icon-button/secondary/hover/background` | `#747573` |
+| `icon-button/secondary/hover/icon` | `#00b450` |
+| `icon-button/secondary/hover/outline` | `#ededed` |
+| `icon-button/secondary/pressed/background` | `#999` |
+| `icon-button/secondary/pressed/icon` | `#00d669` |
+| `icon-button/secondary/pressed/outline` | `#ededed` |
+| `icon-button/tertiary/default/icon` | `#00d669` |
+| `icon-button/tertiary/disabled/icon` | `#00d669` |
+| `icon-button/tertiary/focus/focus-ring` | `#999` |
+| `icon-button/tertiary/focus/icon` | `#00d669` |
+| `icon-button/tertiary/hover/background` | `#060805` |
+| `icon-button/tertiary/hover/icon` | `#00b450` |
+| `icon-button/tertiary/pressed/background` | `#454545` |
+| `icon-button/tertiary/pressed/icon` | `#00d669` |
 | `opacity/gentle` | `0.24` |
 | `opacity/mild` | `0.32` |
 | `spacing/gap/medium-large` | `20px` |
@@ -119,11 +123,11 @@ Every token this component uses, across all its variants.
 | Part | Property | Value | Why |
 |---|---|---|---|
 | `glyph` | `mask` | `url(./icon-arrow-left.svg) center / contain no-repeat` | The icon file itself. `assets/icons/arrow-left.svg`, the same shape Figma uses (its insets match Figma's `Union` layer exactly). |
-| `root` | `box-shadow` | `inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-default-outline)` | Figma's 1px left and top stroke, drawn inside the shape as Figma draws it. The width and colour are tokens. |
-| `root` | `box-shadow` | `inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-hover-outline)` | Figma's 1px left and top stroke, drawn inside the shape as Figma draws it. The width and colour are tokens. |
-| `root` | `box-shadow` | `inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-pressed-outline)` | Figma's 1px left and top stroke, drawn inside the shape as Figma draws it. The width and colour are tokens. |
-| `root` | `box-shadow` | `inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-disabled-outline)` | Figma's 1px left and top stroke, drawn inside the shape as Figma draws it. The width and colour are tokens. |
-| `root` | `box-shadow` | `inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-focus-outline)` | Figma's 1px left and top stroke, drawn inside the shape as Figma draws it. The width and colour are tokens. |
+| `root` | `box-shadow` | `inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--icon-button-primary-default-outline)` | Figma's 1px left and top stroke, drawn inside the shape as Figma draws it. The width and colour are tokens. |
+| `root` | `box-shadow` | `inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--icon-button-primary-hover-outline)` | Figma's 1px left and top stroke, drawn inside the shape as Figma draws it. The width and colour are tokens. |
+| `root` | `box-shadow` | `inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--icon-button-primary-pressed-outline)` | Figma's 1px left and top stroke, drawn inside the shape as Figma draws it. The width and colour are tokens. |
+| `root` | `box-shadow` | `inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--icon-button-primary-disabled-outline)` | Figma's 1px left and top stroke, drawn inside the shape as Figma draws it. The width and colour are tokens. |
+| `root` | `box-shadow` | `inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--icon-button-primary-focus-outline)` | Figma's 1px left and top stroke, drawn inside the shape as Figma draws it. The width and colour are tokens. |
 | `focus-ring` | `inset` | `calc(-1 * var(--spacing-gap-2xsmall))` | Composed from a token: spacing/gap/2xsmall out. Figma said -5px on the left and top, to make up for the stroke, which takes no space here. |
 | `focus-ring` | `inset` | `calc(-1 * var(--spacing-gap-2xsmall))` | Composed from a token: the ring sits spacing/gap/2xsmall outside the element. |
 | `focus-ring` | `inset` | `calc(-1 * var(--spacing-gap-2xsmall))` | Composed from a token: the ring sits spacing/gap/2xsmall outside the element. |

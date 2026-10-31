@@ -95,7 +95,7 @@
   display: block;
   width: var(--spacing-size-2xsmall);
   height: var(--spacing-size-2xsmall);
-  background: var(--actions-borderless-default-icon);
+  background: var(--testimonials-icon);
   mask: url(./icon-chevron-down.svg) center / contain no-repeat;
 }
 
@@ -107,7 +107,7 @@
 .rost-testimonials__testimonial {
   flex: 1 0 0;
   min-width: 1px;
-  color: var(--non-interactive-foreground-secondary);
+  color: var(--testimonials-label);
   font-family: var(--font-family-base);
   font-weight: var(--typography-sub-title-font-weight-regular);
   line-height: var(--typography-sub-title-line-height);
@@ -121,21 +121,21 @@
   inset: calc(-1 * var(--spacing-gap-2xsmall));
   border-style: solid;
   border-width: var(--spacing-outline-medium);
-  border-color: var(--project-focus-focus-ring);
+  border-color: var(--testimonials-focus-ring);
   pointer-events: none;
 }
 
 .rost-testimonials:not(.rost-testimonials--expanded) .rost-testimonials__outline {
-  background: var(--project-default-outline);
+  background: var(--testimonials-default-outline);
   height: var(--spacing-outline-small);
 }
 
 .rost-testimonials:not(.rost-testimonials--expanded) .rost-testimonials__text {
-  color: var(--project-default-label);
+  color: var(--testimonials-default-label);
 }
 
 .rost-testimonials:not(.rost-testimonials--expanded) .rost-testimonials__job-description {
-  color: var(--project-default-sub-label);
+  color: var(--testimonials-default-sub-label);
 }
 
 .rost-testimonials.rost-testimonials--expanded {
@@ -154,16 +154,16 @@
 }
 
 .rost-testimonials.rost-testimonials--expanded .rost-testimonials__outline {
-  background: var(--project-default-outline);
+  background: var(--testimonials-default-outline);
   height: var(--spacing-outline-small);
 }
 
 .rost-testimonials.rost-testimonials--expanded .rost-testimonials__text {
-  color: var(--project-default-label);
+  color: var(--testimonials-default-label);
 }
 
 .rost-testimonials.rost-testimonials--expanded .rost-testimonials__job-description {
-  color: var(--project-default-sub-label);
+  color: var(--testimonials-default-sub-label);
 }
 
 .rost-testimonials:hover:where(:not(:has(> .rost-testimonials__top:is(:disabled, [aria-disabled="true"])))):not(.rost-testimonials--expanded) {
@@ -171,16 +171,16 @@
 }
 
 .rost-testimonials:hover:where(:not(:has(> .rost-testimonials__top:is(:disabled, [aria-disabled="true"])))):not(.rost-testimonials--expanded) .rost-testimonials__outline {
-  background: var(--project-hover-outline);
+  background: var(--testimonials-hover-outline);
   height: var(--spacing-outline-medium);
 }
 
 .rost-testimonials:hover:where(:not(:has(> .rost-testimonials__top:is(:disabled, [aria-disabled="true"])))):not(.rost-testimonials--expanded) .rost-testimonials__text {
-  color: var(--project-hover-label);
+  color: var(--testimonials-hover-label);
 }
 
 .rost-testimonials:hover:where(:not(:has(> .rost-testimonials__top:is(:disabled, [aria-disabled="true"])))):not(.rost-testimonials--expanded) .rost-testimonials__job-description {
-  color: var(--project-hover-sub-label);
+  color: var(--testimonials-hover-sub-label);
 }
 
 .rost-testimonials:hover:where(:not(:has(> .rost-testimonials__top:is(:disabled, [aria-disabled="true"])))).rost-testimonials--expanded {
@@ -199,16 +199,16 @@
 }
 
 .rost-testimonials:hover:where(:not(:has(> .rost-testimonials__top:is(:disabled, [aria-disabled="true"])))).rost-testimonials--expanded .rost-testimonials__outline {
-  background: var(--project-hover-outline);
+  background: var(--testimonials-hover-outline);
   height: var(--spacing-outline-medium);
 }
 
 .rost-testimonials:hover:where(:not(:has(> .rost-testimonials__top:is(:disabled, [aria-disabled="true"])))).rost-testimonials--expanded .rost-testimonials__text {
-  color: var(--project-hover-label);
+  color: var(--testimonials-hover-label);
 }
 
 .rost-testimonials:hover:where(:not(:has(> .rost-testimonials__top:is(:disabled, [aria-disabled="true"])))).rost-testimonials--expanded .rost-testimonials__job-description {
-  color: var(--project-hover-sub-label);
+  color: var(--testimonials-hover-sub-label);
 }
 
 .rost-testimonials:active:where(:not(:has(> .rost-testimonials__top:is(:disabled, [aria-disabled="true"])))):not(.rost-testimonials--expanded) {
@@ -216,16 +216,16 @@
 }
 
 .rost-testimonials:active:where(:not(:has(> .rost-testimonials__top:is(:disabled, [aria-disabled="true"])))):not(.rost-testimonials--expanded) .rost-testimonials__outline {
-  background: var(--project-pressed-outline);
+  background: var(--testimonials-pressed-outline);
   height: var(--spacing-outline-small);
 }
 
 .rost-testimonials:active:where(:not(:has(> .rost-testimonials__top:is(:disabled, [aria-disabled="true"])))):not(.rost-testimonials--expanded) .rost-testimonials__text {
-  color: var(--project-pressed-label);
+  color: var(--testimonials-pressed-label);
 }
 
 .rost-testimonials:active:where(:not(:has(> .rost-testimonials__top:is(:disabled, [aria-disabled="true"])))):not(.rost-testimonials--expanded) .rost-testimonials__job-description {
-  color: var(--project-pressed-sub-label);
+  color: var(--testimonials-pressed-sub-label);
 }
 
 .rost-testimonials:active:where(:not(:has(> .rost-testimonials__top:is(:disabled, [aria-disabled="true"])))).rost-testimonials--expanded {
@@ -244,29 +244,29 @@
 }
 
 .rost-testimonials:active:where(:not(:has(> .rost-testimonials__top:is(:disabled, [aria-disabled="true"])))).rost-testimonials--expanded .rost-testimonials__outline {
-  background: var(--project-pressed-outline);
+  background: var(--testimonials-pressed-outline);
   height: var(--spacing-outline-small);
 }
 
 .rost-testimonials:active:where(:not(:has(> .rost-testimonials__top:is(:disabled, [aria-disabled="true"])))).rost-testimonials--expanded .rost-testimonials__text {
-  color: var(--project-pressed-label);
+  color: var(--testimonials-pressed-label);
 }
 
 .rost-testimonials:active:where(:not(:has(> .rost-testimonials__top:is(:disabled, [aria-disabled="true"])))).rost-testimonials--expanded .rost-testimonials__job-description {
-  color: var(--project-pressed-sub-label);
+  color: var(--testimonials-pressed-sub-label);
 }
 
 .rost-testimonials:has(> .rost-testimonials__top:focus-visible):not(.rost-testimonials--expanded) .rost-testimonials__outline {
-  background: var(--project-focus-outline);
+  background: var(--testimonials-focus-outline);
   height: var(--spacing-outline-small);
 }
 
 .rost-testimonials:has(> .rost-testimonials__top:focus-visible):not(.rost-testimonials--expanded) .rost-testimonials__text {
-  color: var(--project-focus-label);
+  color: var(--testimonials-focus-label);
 }
 
 .rost-testimonials:has(> .rost-testimonials__top:focus-visible):not(.rost-testimonials--expanded) .rost-testimonials__job-description {
-  color: var(--project-focus-sub-label);
+  color: var(--testimonials-focus-sub-label);
 }
 
 .rost-testimonials:has(> .rost-testimonials__top:focus-visible):not(.rost-testimonials--expanded) .rost-testimonials__focus-ring {
@@ -289,16 +289,16 @@
 }
 
 .rost-testimonials:has(> .rost-testimonials__top:focus-visible).rost-testimonials--expanded .rost-testimonials__outline {
-  background: var(--project-focus-outline);
+  background: var(--testimonials-focus-outline);
   height: var(--spacing-outline-small);
 }
 
 .rost-testimonials:has(> .rost-testimonials__top:focus-visible).rost-testimonials--expanded .rost-testimonials__text {
-  color: var(--project-focus-label);
+  color: var(--testimonials-focus-label);
 }
 
 .rost-testimonials:has(> .rost-testimonials__top:focus-visible).rost-testimonials--expanded .rost-testimonials__job-description {
-  color: var(--project-focus-sub-label);
+  color: var(--testimonials-focus-sub-label);
 }
 
 .rost-testimonials:has(> .rost-testimonials__top:focus-visible).rost-testimonials--expanded .rost-testimonials__focus-ring {
@@ -314,16 +314,16 @@
 }
 
 .rost-testimonials:has(> .rost-testimonials__top:is(:disabled, [aria-disabled="true"])):not(.rost-testimonials--expanded) .rost-testimonials__outline {
-  background: var(--project-disabled-outline);
+  background: var(--testimonials-disabled-outline);
   height: var(--spacing-outline-small);
 }
 
 .rost-testimonials:has(> .rost-testimonials__top:is(:disabled, [aria-disabled="true"])):not(.rost-testimonials--expanded) .rost-testimonials__text {
-  color: var(--project-disabled-label);
+  color: var(--testimonials-disabled-label);
 }
 
 .rost-testimonials:has(> .rost-testimonials__top:is(:disabled, [aria-disabled="true"])):not(.rost-testimonials--expanded) .rost-testimonials__job-description {
-  color: var(--project-disabled-sub-label);
+  color: var(--testimonials-disabled-sub-label);
 }
 
 .rost-testimonials:has(> .rost-testimonials__top:is(:disabled, [aria-disabled="true"])).rost-testimonials--expanded {
@@ -347,14 +347,14 @@
 }
 
 .rost-testimonials:has(> .rost-testimonials__top:is(:disabled, [aria-disabled="true"])).rost-testimonials--expanded .rost-testimonials__outline {
-  background: var(--project-disabled-outline);
+  background: var(--testimonials-disabled-outline);
   height: var(--spacing-outline-small);
 }
 
 .rost-testimonials:has(> .rost-testimonials__top:is(:disabled, [aria-disabled="true"])).rost-testimonials--expanded .rost-testimonials__text {
-  color: var(--project-disabled-label);
+  color: var(--testimonials-disabled-label);
 }
 
 .rost-testimonials:has(> .rost-testimonials__top:is(:disabled, [aria-disabled="true"])).rost-testimonials--expanded .rost-testimonials__job-description {
-  color: var(--project-disabled-sub-label);
+  color: var(--testimonials-disabled-sub-label);
 }

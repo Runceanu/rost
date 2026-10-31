@@ -60,7 +60,7 @@
   font-size: var(--typography-label-font-size);
   line-height: var(--typography-label-line-height);
   letter-spacing: var(--typography-label-letter-spacing);
-  color: var(--non-interactive-foreground-tertiary);
+  color: var(--table-item-sub-label);
 }
 
 .rost-table-item__trailing {
@@ -70,11 +70,11 @@
 }
 
 .rost-table-item:is(.rost-table-row--selected *, .rost-table-row:has(.rost-table-item__action:is(:hover, :active, :focus-visible)) *) .rost-table-item__description {
-  color: var(--non-interactive-foreground-primary);
+  color: var(--table-item-highlighted-sub-label);
 }
 
 .rost-table-item:is(.rost-table-row--selected > :first-child) {
-  box-shadow: inset var(--spacing-outline-medium) 0 0 0 var(--non-interactive-foreground-positive-base);
+  box-shadow: inset var(--spacing-outline-medium) 0 0 0 var(--table-item-selected-row-edge);
 }
 
 .rost-table-item.rost-table-item--header-row .rost-table-item__label {

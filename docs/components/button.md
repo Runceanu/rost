@@ -74,40 +74,49 @@ Every token this component uses, across all its variants.
 
 | Token | Resolves to |
 |---|---|
-| `actions/primary/default/background` | `#00d669` |
-| `actions/primary/default/label` | `#060805` |
-| `actions/primary/disabled/background` | `#00d669` |
-| `actions/primary/disabled/label` | `#060805` |
-| `actions/primary/focus/background` | `#00d669` |
-| `actions/primary/focus/focus-ring` | `#b6ffda` |
-| `actions/primary/focus/label` | `#060805` |
-| `actions/primary/hover/background` | `#00b450` |
-| `actions/primary/hover/label` | `#060805` |
-| `actions/primary/pressed/background` | `#00913a` |
-| `actions/primary/pressed/label` | `#060805` |
-| `actions/secondary/regular/default/background` | `#3a3a3a` |
-| `actions/secondary/regular/default/label` | `#d3d9d5` |
-| `actions/secondary/regular/default/outline` | `#ededed` |
-| `actions/secondary/regular/disabled/background` | `#3a3a3a` |
-| `actions/secondary/regular/disabled/label` | `#d3d9d5` |
-| `actions/secondary/regular/disabled/outline` | `#ededed` |
-| `actions/secondary/regular/focus/background` | `#3a3a3a` |
-| `actions/secondary/regular/focus/focus-ring` | `#999` |
-| `actions/secondary/regular/focus/label` | `#d3d9d5` |
-| `actions/secondary/regular/focus/outline` | `#ededed` |
-| `actions/secondary/regular/hover/background` | `#747573` |
-| `actions/secondary/regular/hover/label` | `#ededed` |
-| `actions/secondary/regular/hover/outline` | `#ededed` |
-| `actions/secondary/regular/pressed/background` | `#999` |
-| `actions/secondary/regular/pressed/label` | `#d3d9d5` |
-| `actions/secondary/regular/pressed/outline` | `#ededed` |
-| `actions/tertiary/default/label` | `#d3d9d5` |
-| `actions/tertiary/disabled/label` | `#d3d9d5` |
-| `actions/tertiary/focus/label` | `#d3d9d5` |
-| `actions/tertiary/hover/background` | `#060805` |
-| `actions/tertiary/hover/label` | `#ededed` |
-| `actions/tertiary/pressed/background` | `#454545` |
-| `actions/tertiary/pressed/label` | `#d3d9d5` |
+| `button/borderless/default/label` | `#d3d9d5` |
+| `button/borderless/disabled/label` | `#d3d9d5` |
+| `button/borderless/focus/focus-ring` | `#999` |
+| `button/borderless/focus/label` | `#d3d9d5` |
+| `button/borderless/hover/background` | `#060805` |
+| `button/borderless/hover/label` | `#ededed` |
+| `button/borderless/pressed/background` | `#454545` |
+| `button/borderless/pressed/label` | `#d3d9d5` |
+| `button/primary/default/background` | `#00d669` |
+| `button/primary/default/label` | `#060805` |
+| `button/primary/disabled/background` | `#00d669` |
+| `button/primary/disabled/label` | `#060805` |
+| `button/primary/focus/background` | `#00d669` |
+| `button/primary/focus/focus-ring` | `#b6ffda` |
+| `button/primary/focus/label` | `#060805` |
+| `button/primary/hover/background` | `#00b450` |
+| `button/primary/hover/label` | `#060805` |
+| `button/primary/pressed/background` | `#00913a` |
+| `button/primary/pressed/label` | `#060805` |
+| `button/secondary/default/background` | `#3a3a3a` |
+| `button/secondary/default/label` | `#d3d9d5` |
+| `button/secondary/default/outline` | `#ededed` |
+| `button/secondary/disabled/background` | `#3a3a3a` |
+| `button/secondary/disabled/label` | `#d3d9d5` |
+| `button/secondary/disabled/outline` | `#ededed` |
+| `button/secondary/focus/background` | `#3a3a3a` |
+| `button/secondary/focus/focus-ring` | `#999` |
+| `button/secondary/focus/label` | `#d3d9d5` |
+| `button/secondary/focus/outline` | `#ededed` |
+| `button/secondary/hover/background` | `#747573` |
+| `button/secondary/hover/label` | `#ededed` |
+| `button/secondary/hover/outline` | `#ededed` |
+| `button/secondary/pressed/background` | `#999` |
+| `button/secondary/pressed/label` | `#d3d9d5` |
+| `button/secondary/pressed/outline` | `#ededed` |
+| `button/tertiary/default/label` | `#d3d9d5` |
+| `button/tertiary/disabled/label` | `#d3d9d5` |
+| `button/tertiary/focus/focus-ring` | `#999` |
+| `button/tertiary/focus/label` | `#d3d9d5` |
+| `button/tertiary/hover/background` | `#060805` |
+| `button/tertiary/hover/label` | `#ededed` |
+| `button/tertiary/pressed/background` | `#454545` |
+| `button/tertiary/pressed/label` | `#d3d9d5` |
 | `font-family/base` | `'General Sans Variable'` |
 | `opacity/gentle` | `0.24` |
 | `opacity/mild` | `0.32` |
@@ -127,12 +136,12 @@ Every token this component uses, across all its variants.
 
 | Part | Property | Value | Why |
 |---|---|---|---|
-| `root` | `box-shadow` | `inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-default-outline)` | Figma's 1px left and top stroke, drawn inside the shape the way Figma draws it. A border would make the button 1px wider. The width and colour are tokens. |
-| `root` | `box-shadow` | `inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-hover-outline)` | Figma's 1px left and top stroke, drawn inside the shape the way Figma draws it. A border would make the button 1px wider. The width and colour are tokens. |
-| `root` | `box-shadow` | `inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-focus-outline)` | Figma's 1px left and top stroke, drawn inside the shape the way Figma draws it. A border would make the button 1px wider. The width and colour are tokens. |
+| `root` | `box-shadow` | `inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--button-primary-default-outline)` | Figma's 1px left and top stroke, drawn inside the shape the way Figma draws it. A border would make the button 1px wider. The width and colour are tokens. |
+| `root` | `box-shadow` | `inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--button-primary-hover-outline)` | Figma's 1px left and top stroke, drawn inside the shape the way Figma draws it. A border would make the button 1px wider. The width and colour are tokens. |
+| `root` | `box-shadow` | `inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--button-primary-focus-outline)` | Figma's 1px left and top stroke, drawn inside the shape the way Figma draws it. A border would make the button 1px wider. The width and colour are tokens. |
 | `focus-ring` | `inset` | `calc(-1 * var(--spacing-gap-2xsmall))` | Composed from a token: spacing/gap/2xsmall out, all round. Figma said -5px on the left and top, to make up for the stroke, which takes no space here. |
-| `root` | `box-shadow` | `inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-pressed-outline)` | Figma's 1px left and top stroke, drawn inside the shape the way Figma draws it. A border would make the button 1px wider. The width and colour are tokens. |
-| `root` | `box-shadow` | `inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-disabled-outline)` | Figma's 1px left and top stroke, drawn inside the shape the way Figma draws it. A border would make the button 1px wider. The width and colour are tokens. |
+| `root` | `box-shadow` | `inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--button-primary-pressed-outline)` | Figma's 1px left and top stroke, drawn inside the shape the way Figma draws it. A border would make the button 1px wider. The width and colour are tokens. |
+| `root` | `box-shadow` | `inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--button-primary-disabled-outline)` | Figma's 1px left and top stroke, drawn inside the shape the way Figma draws it. A border would make the button 1px wider. The width and colour are tokens. |
 | `focus-ring` | `inset` | `calc(-1 * var(--spacing-gap-2xsmall))` | Composed from a token: the ring sits spacing/gap/2xsmall outside the element. |
 | `focus-ring` | `inset` | `calc(-1 * var(--spacing-gap-2xsmall))` | Composed from a token: the ring sits spacing/gap/2xsmall outside the element. |
 | `focus-ring` | `inset` | `calc(-1 * var(--spacing-gap-2xsmall))` | Composed from a token: the ring sits spacing/gap/2xsmall outside the element. |

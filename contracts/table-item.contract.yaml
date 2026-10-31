@@ -92,7 +92,7 @@ elements:
       font-size: { token: typography/label/font-size, value: 12px }
       line-height: { token: typography/label/line-height, value: 14px }
       letter-spacing: { token: typography/label/letter-spacing, value: 0px }
-      color: { token: non-interactive/foreground/tertiary, value: "#999999" }
+      color: { token: table-item/sub-label, value: "#999999" }
   trailing:
     optional: true
     styles:
@@ -103,11 +103,11 @@ variants:
   - when: { state: Highlighted }
     elements:
       description:
-        color: { token: non-interactive/foreground/primary, value: "#ededed", notes: "Highlighted isn't something you set: a cell is highlighted when its row is selected, hovered, pressed or focused. The quiet grey is under 4.5:1 on those fills, so the description takes the label's colour there." }
+        color: { token: table-item/highlighted/sub-label, value: "#ededed", notes: "Highlighted isn't something you set: a cell is highlighted when its row is selected, hovered, pressed or focused. The quiet grey is under 4.5:1 on those fills, so the description takes the label's colour there." }
   - when: { state: SelectedRow }
     elements:
       root:
-        box-shadow: { value: "inset var(--spacing-outline-medium) 0 0 0 var(--non-interactive-foreground-positive-base)", untokenised: "Composed from tokens: a 2px bar down the left of a selected row's first cell. The row's dark green fill is 2:1 against the page, under the 3:1 a selected row needs to be seen (WCAG 1.4.11); the bar is 10:1 in dark and 6:1 in light. A `<tr>` can't draw it, so its first cell does." }
+        box-shadow: { value: "inset var(--spacing-outline-medium) 0 0 0 var(--table-item-selected-row-edge)", untokenised: "Composed from tokens: a 2px bar down the left of a selected row's first cell. The row's dark green fill is 2:1 against the page, under the 3:1 a selected row needs to be seen (WCAG 1.4.11); the bar is 10:1 in dark and 6:1 in light. A `<tr>` can't draw it, so its first cell does." }
   - when: { header: Row }
     elements:
       label:

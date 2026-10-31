@@ -30,7 +30,7 @@ elements:
       padding-top: { token: spacing/gap/none, value: 0px }
       padding-bottom: { token: spacing/gap/none, value: 0px }
       border-radius: { token: spacing/radius/xsmall, value: 4px }
-      background: { token: actions/secondary/regular/default/background, value: "#3a3a3a" }
+      background: { token: non-interactive/background/tertiary, value: "#3a3a3a" }
   label:
     styles:
       font-family: { token: font-family/base, value: "'General Sans Variable'" }
@@ -38,7 +38,7 @@ elements:
       font-size: { token: typography/label/font-size, value: 12px }
       line-height: { token: typography/label/line-height, value: 14px }
       letter-spacing: { token: typography/label/letter-spacing, value: 0px }
-      color: { token: actions/secondary/regular/default/label, value: "#d3d9d5" }
+      color: { token: non-interactive/foreground/secondary, value: "#d3d9d5" }
 implementations:
   portfolio-site:
     component: src/rost/tooltip/Tooltip.tsx

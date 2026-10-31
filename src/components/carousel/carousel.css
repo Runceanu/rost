@@ -26,7 +26,7 @@
   display: none;
   position: absolute;
   inset: 0;
-  background: color-mix(in srgb, var(--non-interactive-background-tertiary) calc(var(--opacity-medium) * 100%), transparent);
+  background: color-mix(in srgb, var(--carousel-background) calc(var(--opacity-medium) * 100%), transparent);
   backdrop-filter: var(--effect-thumb);
   opacity: var(--opacity-strong);
   border-radius: var(--spacing-radius-xlarge);
@@ -90,33 +90,33 @@
   inset: calc(-1 * var(--spacing-gap-2xsmall));
   border-style: solid;
   border-width: var(--spacing-outline-medium);
-  border-color: var(--project-focus-focus-ring);
+  border-color: var(--carousel-focus-ring);
   border-radius: calc(var(--spacing-radius-xlarge) + var(--spacing-gap-2xsmall));
   pointer-events: none;
 }
 
 .rost-carousel .rost-carousel__number {
-  color: var(--project-default-sub-label);
+  color: var(--carousel-default-number);
 }
 
 .rost-carousel .rost-carousel__text {
-  color: var(--project-default-label);
+  color: var(--carousel-default-label);
 }
 
 .rost-carousel .rost-carousel__description {
-  color: var(--project-default-sub-label);
+  color: var(--carousel-default-sub-label);
 }
 
 .rost-carousel:hover:where(:not(:disabled, [aria-disabled="true"])) .rost-carousel__number {
-  color: var(--project-hover-label);
+  color: var(--carousel-hover-number);
 }
 
 .rost-carousel:hover:where(:not(:disabled, [aria-disabled="true"])) .rost-carousel__text {
-  color: var(--project-hover-label);
+  color: var(--carousel-hover-label);
 }
 
 .rost-carousel:hover:where(:not(:disabled, [aria-disabled="true"])) .rost-carousel__description {
-  color: var(--project-hover-sub-label);
+  color: var(--carousel-hover-sub-label);
 }
 
 .rost-carousel:is(:active, [aria-current="step"]):where(:not(:disabled, [aria-disabled="true"])) .rost-carousel__background {
@@ -124,15 +124,15 @@
 }
 
 .rost-carousel:is(:active, [aria-current="step"]):where(:not(:disabled, [aria-disabled="true"])) .rost-carousel__number {
-  color: var(--project-pressed-label);
+  color: var(--carousel-pressed-number);
 }
 
 .rost-carousel:is(:active, [aria-current="step"]):where(:not(:disabled, [aria-disabled="true"])) .rost-carousel__text {
-  color: var(--project-pressed-label);
+  color: var(--carousel-pressed-label);
 }
 
 .rost-carousel:is(:active, [aria-current="step"]):where(:not(:disabled, [aria-disabled="true"])) .rost-carousel__description {
-  color: var(--project-pressed-sub-label);
+  color: var(--carousel-pressed-sub-label);
 }
 
 .rost-carousel:focus-visible .rost-carousel__focus-ring {
@@ -140,15 +140,15 @@
 }
 
 .rost-carousel:focus-visible .rost-carousel__number {
-  color: var(--project-focus-sub-label);
+  color: var(--carousel-focus-number);
 }
 
 .rost-carousel:focus-visible .rost-carousel__text {
-  color: var(--project-focus-label);
+  color: var(--carousel-focus-label);
 }
 
 .rost-carousel:focus-visible .rost-carousel__description {
-  color: var(--project-focus-sub-label);
+  color: var(--carousel-focus-sub-label);
 }
 
 .rost-carousel:is(:disabled, [aria-disabled="true"]) {
@@ -157,13 +157,13 @@
 }
 
 .rost-carousel:is(:disabled, [aria-disabled="true"]) .rost-carousel__number {
-  color: var(--project-disabled-sub-label);
+  color: var(--carousel-disabled-number);
 }
 
 .rost-carousel:is(:disabled, [aria-disabled="true"]) .rost-carousel__text {
-  color: var(--project-disabled-label);
+  color: var(--carousel-disabled-label);
 }
 
 .rost-carousel:is(:disabled, [aria-disabled="true"]) .rost-carousel__description {
-  color: var(--project-disabled-sub-label);
+  color: var(--carousel-disabled-sub-label);
 }

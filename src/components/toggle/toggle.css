@@ -67,16 +67,16 @@
 
 .rost-toggle.rost-toggle--selected {
   border-radius: var(--spacing-radius-full);
-  background: var(--actions-primary-default-background);
-  box-shadow: inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-default-outline), inset 0 0 0 var(--spacing-outline-small) var(--non-interactive-foreground-positive-base);
+  background: var(--toggle-on-default-background);
+  box-shadow: inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--toggle-on-default-outline), inset 0 0 0 var(--spacing-outline-small) var(--toggle-on-default-edge);
 }
 
 .rost-toggle.rost-toggle--selected .rost-toggle__icons-arrow-left {
-  color: var(--actions-primary-default-icon);
+  color: var(--toggle-on-default-icon);
 }
 
 .rost-toggle.rost-toggle--selected .rost-toggle__label {
-  color: var(--actions-primary-default-label);
+  color: var(--toggle-on-default-label);
 }
 
 .rost-toggle:not(.rost-toggle--selected) {
@@ -85,9 +85,9 @@
 
 .rost-toggle:not(.rost-toggle--selected) .rost-toggle__background {
   border-radius: var(--spacing-radius-medium);
-  background: var(--actions-secondary-regular-default-background);
-  border-left-color: var(--actions-secondary-regular-default-outline);
-  border-top-color: var(--actions-secondary-regular-default-outline);
+  background: var(--toggle-off-default-background);
+  border-left-color: var(--toggle-off-default-outline);
+  border-top-color: var(--toggle-off-default-outline);
   opacity: var(--opacity-gentle);
   border-left-style: solid;
   border-left-width: var(--spacing-outline-small);
@@ -96,25 +96,25 @@
 }
 
 .rost-toggle:not(.rost-toggle--selected) .rost-toggle__icons-arrow-left {
-  color: var(--actions-secondary-regular-default-icon);
+  color: var(--toggle-off-default-icon);
 }
 
 .rost-toggle:not(.rost-toggle--selected) .rost-toggle__label {
-  color: var(--actions-secondary-regular-default-label);
+  color: var(--toggle-off-default-label);
 }
 
 .rost-toggle:hover:where(:not(:disabled, [aria-disabled="true"])).rost-toggle--selected {
   border-radius: var(--spacing-radius-full);
-  background: var(--actions-primary-hover-background);
-  box-shadow: inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-hover-outline), inset 0 0 0 var(--spacing-outline-small) var(--non-interactive-foreground-positive-base);
+  background: var(--toggle-on-hover-background);
+  box-shadow: inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--toggle-on-hover-outline), inset 0 0 0 var(--spacing-outline-small) var(--toggle-on-hover-edge);
 }
 
 .rost-toggle:hover:where(:not(:disabled, [aria-disabled="true"])).rost-toggle--selected .rost-toggle__icons-arrow-left {
-  color: var(--actions-primary-hover-icon);
+  color: var(--toggle-on-hover-icon);
 }
 
 .rost-toggle:hover:where(:not(:disabled, [aria-disabled="true"])).rost-toggle--selected .rost-toggle__label {
-  color: var(--actions-primary-hover-label);
+  color: var(--toggle-on-hover-label);
 }
 
 .rost-toggle:hover:where(:not(:disabled, [aria-disabled="true"])):not(.rost-toggle--selected) {
@@ -123,9 +123,9 @@
 
 .rost-toggle:hover:where(:not(:disabled, [aria-disabled="true"])):not(.rost-toggle--selected) .rost-toggle__background {
   border-radius: var(--spacing-radius-medium);
-  background: var(--actions-secondary-regular-hover-background);
-  border-left-color: var(--actions-secondary-regular-hover-outline);
-  border-top-color: var(--actions-secondary-regular-hover-outline);
+  background: var(--toggle-off-hover-background);
+  border-left-color: var(--toggle-off-hover-outline);
+  border-top-color: var(--toggle-off-hover-outline);
   opacity: var(--opacity-mild);
   border-left-style: solid;
   border-left-width: var(--spacing-outline-small);
@@ -134,25 +134,25 @@
 }
 
 .rost-toggle:hover:where(:not(:disabled, [aria-disabled="true"])):not(.rost-toggle--selected) .rost-toggle__icons-arrow-left {
-  color: var(--actions-secondary-regular-hover-icon);
+  color: var(--toggle-off-hover-icon);
 }
 
 .rost-toggle:hover:where(:not(:disabled, [aria-disabled="true"])):not(.rost-toggle--selected) .rost-toggle__label {
-  color: var(--actions-secondary-regular-hover-label);
+  color: var(--toggle-off-hover-label);
 }
 
 .rost-toggle:active:where(:not(:disabled, [aria-disabled="true"])).rost-toggle--selected {
   border-radius: var(--spacing-radius-full);
-  background: var(--actions-primary-pressed-background);
-  box-shadow: inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-pressed-outline), inset 0 0 0 var(--spacing-outline-small) var(--non-interactive-foreground-positive-base);
+  background: var(--toggle-on-pressed-background);
+  box-shadow: inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--toggle-on-pressed-outline), inset 0 0 0 var(--spacing-outline-small) var(--toggle-on-pressed-edge);
 }
 
 .rost-toggle:active:where(:not(:disabled, [aria-disabled="true"])).rost-toggle--selected .rost-toggle__icons-arrow-left {
-  color: var(--actions-primary-pressed-icon);
+  color: var(--toggle-on-pressed-icon);
 }
 
 .rost-toggle:active:where(:not(:disabled, [aria-disabled="true"])).rost-toggle--selected .rost-toggle__label {
-  color: var(--actions-primary-pressed-label);
+  color: var(--toggle-on-pressed-label);
 }
 
 .rost-toggle:active:where(:not(:disabled, [aria-disabled="true"])):not(.rost-toggle--selected) {
@@ -161,9 +161,9 @@
 
 .rost-toggle:active:where(:not(:disabled, [aria-disabled="true"])):not(.rost-toggle--selected) .rost-toggle__background {
   border-radius: var(--spacing-radius-medium);
-  background: var(--actions-secondary-regular-pressed-background);
-  border-left-color: var(--actions-secondary-regular-pressed-outline);
-  border-top-color: var(--actions-secondary-regular-pressed-outline);
+  background: var(--toggle-off-pressed-background);
+  border-left-color: var(--toggle-off-pressed-outline);
+  border-top-color: var(--toggle-off-pressed-outline);
   opacity: var(--opacity-mild);
   border-left-style: solid;
   border-left-width: var(--spacing-outline-small);
@@ -172,27 +172,27 @@
 }
 
 .rost-toggle:active:where(:not(:disabled, [aria-disabled="true"])):not(.rost-toggle--selected) .rost-toggle__icons-arrow-left {
-  color: var(--actions-secondary-regular-pressed-icon);
+  color: var(--toggle-off-pressed-icon);
 }
 
 .rost-toggle:active:where(:not(:disabled, [aria-disabled="true"])):not(.rost-toggle--selected) .rost-toggle__label {
-  color: var(--actions-secondary-regular-pressed-label);
+  color: var(--toggle-off-pressed-label);
 }
 
 .rost-toggle:is(:disabled, [aria-disabled="true"]).rost-toggle--selected {
   border-radius: var(--spacing-radius-full);
   opacity: var(--opacity-gentle);
   cursor: default;
-  background: var(--actions-primary-disabled-background);
-  box-shadow: inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-disabled-outline), inset 0 0 0 var(--spacing-outline-small) var(--non-interactive-foreground-positive-base);
+  background: var(--toggle-on-disabled-background);
+  box-shadow: inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--toggle-on-disabled-outline), inset 0 0 0 var(--spacing-outline-small) var(--toggle-on-disabled-edge);
 }
 
 .rost-toggle:is(:disabled, [aria-disabled="true"]).rost-toggle--selected .rost-toggle__icons-arrow-left {
-  color: var(--actions-primary-disabled-icon);
+  color: var(--toggle-on-disabled-icon);
 }
 
 .rost-toggle:is(:disabled, [aria-disabled="true"]).rost-toggle--selected .rost-toggle__label {
-  color: var(--actions-primary-disabled-label);
+  color: var(--toggle-on-disabled-label);
 }
 
 .rost-toggle:is(:disabled, [aria-disabled="true"]):not(.rost-toggle--selected) {
@@ -203,9 +203,9 @@
 
 .rost-toggle:is(:disabled, [aria-disabled="true"]):not(.rost-toggle--selected) .rost-toggle__background {
   border-radius: var(--spacing-radius-medium);
-  background: var(--actions-secondary-regular-disabled-background);
-  border-left-color: var(--actions-secondary-regular-disabled-outline);
-  border-top-color: var(--actions-secondary-regular-disabled-outline);
+  background: var(--toggle-off-disabled-background);
+  border-left-color: var(--toggle-off-disabled-outline);
+  border-top-color: var(--toggle-off-disabled-outline);
   opacity: var(--opacity-mild);
   border-left-style: solid;
   border-left-width: var(--spacing-outline-small);
@@ -214,31 +214,31 @@
 }
 
 .rost-toggle:is(:disabled, [aria-disabled="true"]):not(.rost-toggle--selected) .rost-toggle__icons-arrow-left {
-  color: var(--actions-secondary-regular-disabled-icon);
+  color: var(--toggle-off-disabled-icon);
 }
 
 .rost-toggle:is(:disabled, [aria-disabled="true"]):not(.rost-toggle--selected) .rost-toggle__label {
-  color: var(--actions-secondary-regular-disabled-label);
+  color: var(--toggle-off-disabled-label);
 }
 
 .rost-toggle:focus-visible.rost-toggle--selected {
   border-radius: var(--spacing-radius-full);
-  background: var(--actions-primary-focus-background);
-  box-shadow: inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-focus-outline), inset 0 0 0 var(--spacing-outline-small) var(--non-interactive-foreground-positive-base);
+  background: var(--toggle-on-focus-background);
+  box-shadow: inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--toggle-on-focus-outline), inset 0 0 0 var(--spacing-outline-small) var(--toggle-on-focus-edge);
 }
 
 .rost-toggle:focus-visible.rost-toggle--selected .rost-toggle__focus-ring {
   display: block;
-  border-color: var(--actions-primary-focus-focus-ring);
+  border-color: var(--toggle-on-focus-focus-ring);
   border-radius: var(--spacing-radius-full);
 }
 
 .rost-toggle:focus-visible.rost-toggle--selected .rost-toggle__icons-arrow-left {
-  color: var(--actions-primary-focus-icon);
+  color: var(--toggle-on-focus-icon);
 }
 
 .rost-toggle:focus-visible.rost-toggle--selected .rost-toggle__label {
-  color: var(--actions-primary-focus-label);
+  color: var(--toggle-on-focus-label);
 }
 
 .rost-toggle:focus-visible:not(.rost-toggle--selected) {
@@ -247,9 +247,9 @@
 
 .rost-toggle:focus-visible:not(.rost-toggle--selected) .rost-toggle__background {
   border-radius: var(--spacing-radius-medium);
-  background: var(--actions-secondary-regular-focus-background);
-  border-left-color: var(--actions-secondary-regular-focus-outline);
-  border-top-color: var(--actions-secondary-regular-focus-outline);
+  background: var(--toggle-off-focus-background);
+  border-left-color: var(--toggle-off-focus-outline);
+  border-top-color: var(--toggle-off-focus-outline);
   opacity: var(--opacity-gentle);
   border-left-style: solid;
   border-left-width: var(--spacing-outline-small);
@@ -259,16 +259,16 @@
 
 .rost-toggle:focus-visible:not(.rost-toggle--selected) .rost-toggle__focus-ring {
   display: block;
-  border-color: var(--actions-secondary-regular-focus-focus-ring);
+  border-color: var(--toggle-off-focus-focus-ring);
   border-radius: var(--spacing-radius-large);
 }
 
 .rost-toggle:focus-visible:not(.rost-toggle--selected) .rost-toggle__icons-arrow-left {
-  color: var(--actions-secondary-regular-focus-icon);
+  color: var(--toggle-off-focus-icon);
 }
 
 .rost-toggle:focus-visible:not(.rost-toggle--selected) .rost-toggle__label {
-  color: var(--actions-secondary-regular-focus-label);
+  color: var(--toggle-off-focus-label);
 }
 
 .rost-toggle.rost-toggle--labelled {

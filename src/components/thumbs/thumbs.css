@@ -22,7 +22,7 @@
   width: 100%;
   position: relative;
   overflow: hidden;
-  background: var(--non-interactive-background-secondary);
+  background: var(--thumbs-slot);
   border-radius: var(--spacing-radius-xlarge);
 }
 
@@ -32,7 +32,7 @@
   right: 0;
   bottom: 0;
   height: 50%;
-  background: linear-gradient(to bottom, rgba(6,8,5,0), var(--non-interactive-background-primary));
+  background: linear-gradient(to bottom, rgba(6,8,5,0), var(--thumbs-shade));
   opacity: var(--opacity-medium);
   border-bottom-left-radius: var(--spacing-radius-xlarge);
   border-bottom-right-radius: var(--spacing-radius-xlarge);
@@ -47,7 +47,7 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  background: color-mix(in srgb, var(--non-interactive-background-primary) calc(var(--opacity-medium) * 100%), transparent);
+  background: color-mix(in srgb, var(--thumbs-panel) calc(var(--opacity-medium) * 100%), transparent);
   backdrop-filter: var(--effect-thumb);
   gap: var(--spacing-gap-small);
   padding-bottom: var(--spacing-gap-large);
@@ -134,7 +134,7 @@
   inset: calc(-1 * var(--spacing-gap-2xsmall));
   border-style: solid;
   border-width: var(--spacing-outline-medium);
-  border-color: var(--project-focus-focus-ring);
+  border-color: var(--thumbs-focus-ring);
   border-radius: calc(var(--spacing-radius-xlarge) + var(--spacing-gap-2xsmall));
   pointer-events: none;
 }
@@ -152,7 +152,7 @@
   right: var(--spacing-gap-medium);
   align-items: center;
   display: flex;
-  background: var(--non-interactive-background-positive-base);
+  background: var(--thumbs-lock-plate);
   gap: var(--spacing-gap-none);
   padding: var(--spacing-gap-small);
   border-radius: var(--spacing-radius-medium);
@@ -164,68 +164,68 @@
   position: relative;
   width: var(--spacing-size-small);
   height: var(--spacing-size-small);
-  background: var(--actions-primary-default-label);
+  background: var(--thumbs-lock);
   mask: url(./icon-lock.svg) center / contain no-repeat;
 }
 
 .rost-thumbs .rost-thumbs__number {
-  color: var(--project-default-sub-label);
+  color: var(--thumbs-default-number);
 }
 
 .rost-thumbs .rost-thumbs__text {
-  color: var(--project-default-label);
+  color: var(--thumbs-default-label);
 }
 
 .rost-thumbs .rost-thumbs__detail {
-  color: var(--project-default-sub-label);
+  color: var(--thumbs-default-sub-label);
 }
 
 .rost-thumbs .rost-thumbs__dot {
-  background: var(--project-default-icon);
+  background: var(--thumbs-default-dot);
 }
 
 .rost-thumbs:hover:where(:not(:disabled, [aria-disabled="true"])) .rost-thumbs__number {
-  color: var(--project-hover-label);
+  color: var(--thumbs-hover-number);
 }
 
 .rost-thumbs:hover:where(:not(:disabled, [aria-disabled="true"])) .rost-thumbs__text {
-  color: var(--project-hover-label);
+  color: var(--thumbs-hover-label);
 }
 
 .rost-thumbs:hover:where(:not(:disabled, [aria-disabled="true"])) .rost-thumbs__detail {
-  color: var(--project-hover-sub-label);
+  color: var(--thumbs-hover-sub-label);
 }
 
 .rost-thumbs:hover:where(:not(:disabled, [aria-disabled="true"])) .rost-thumbs__dot {
-  background: var(--project-hover-icon);
+  background: var(--thumbs-hover-dot);
 }
 
 .rost-thumbs:active:where(:not(:disabled, [aria-disabled="true"])) .rost-thumbs__number {
-  color: var(--project-pressed-label);
+  color: var(--thumbs-pressed-number);
 }
 
 .rost-thumbs:active:where(:not(:disabled, [aria-disabled="true"])) .rost-thumbs__text {
-  color: var(--project-pressed-label);
+  color: var(--thumbs-pressed-label);
 }
 
 .rost-thumbs:active:where(:not(:disabled, [aria-disabled="true"])) .rost-thumbs__detail {
-  color: var(--project-pressed-sub-label);
+  color: var(--thumbs-pressed-sub-label);
 }
 
 .rost-thumbs:active:where(:not(:disabled, [aria-disabled="true"])) .rost-thumbs__dot {
-  background: var(--project-pressed-icon);
+  background: var(--thumbs-pressed-dot);
 }
 
 .rost-thumbs:focus-visible .rost-thumbs__number {
-  color: var(--project-focus-sub-label);
+  color: var(--thumbs-focus-number);
 }
 
 .rost-thumbs:focus-visible .rost-thumbs__text {
-  color: var(--project-focus-label);
+  color: var(--thumbs-focus-label);
 }
 
 .rost-thumbs:focus-visible .rost-thumbs__detail {
-  color: var(--project-focus-sub-label);
+  color: var(--thumbs-focus-sub-label);
 }
 
 .rost-thumbs:focus-visible .rost-thumbs__focus-ring {
@@ -233,7 +233,7 @@
 }
 
 .rost-thumbs:focus-visible .rost-thumbs__dot {
-  background: var(--project-focus-icon);
+  background: var(--thumbs-focus-dot);
 }
 
 .rost-thumbs:is(:disabled, [aria-disabled="true"]) {
@@ -241,19 +241,19 @@
 }
 
 .rost-thumbs:is(:disabled, [aria-disabled="true"]) .rost-thumbs__number {
-  color: var(--project-disabled-sub-label);
+  color: var(--thumbs-disabled-number);
 }
 
 .rost-thumbs:is(:disabled, [aria-disabled="true"]) .rost-thumbs__text {
-  color: var(--project-disabled-label);
+  color: var(--thumbs-disabled-label);
 }
 
 .rost-thumbs:is(:disabled, [aria-disabled="true"]) .rost-thumbs__detail {
-  color: var(--project-disabled-sub-label);
+  color: var(--thumbs-disabled-sub-label);
 }
 
 .rost-thumbs:is(:disabled, [aria-disabled="true"]) .rost-thumbs__dot {
-  background: var(--project-disabled-icon);
+  background: var(--thumbs-disabled-dot);
 }
 
 .rost-thumbs:is(:disabled, [aria-disabled="true"]) .rost-thumbs__slot {
@@ -265,13 +265,13 @@
 }
 
 .rost-thumbs.rost-thumbs--state-locked .rost-thumbs__number {
-  color: var(--project-default-sub-label);
+  color: var(--thumbs-locked-number);
 }
 
 .rost-thumbs.rost-thumbs--state-locked .rost-thumbs__text {
-  color: var(--project-default-label);
+  color: var(--thumbs-locked-label);
 }
 
 .rost-thumbs.rost-thumbs--state-locked .rost-thumbs__detail {
-  color: var(--project-default-sub-label);
+  color: var(--thumbs-locked-sub-label);
 }

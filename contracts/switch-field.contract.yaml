@@ -40,7 +40,7 @@ elements:
       font-size: { token: typography/paragraph/font-size, value: 14px }
       line-height: { token: typography/paragraph/line-height, value: 20px }
       letter-spacing: { token: typography/paragraph/letter-spacing, value: 0px }
-      color: { token: actions/secondary/regular/default/label, value: "#d3d9d5" }
+      color: { token: switch-field/label, value: "#d3d9d5" }
       cursor: { value: pointer, assert: false }
 variants:
   - when: { side: Left }

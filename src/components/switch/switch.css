@@ -58,64 +58,64 @@
 }
 
 .rost-switch:not(.rost-switch--checked) .rost-switch__track {
-  outline-color: var(--input-regular-default-outline);
+  outline-color: var(--switch-off-edge);
 }
 
 .rost-switch:not(.rost-switch--checked) .rost-switch__background {
-  background: var(--actions-secondary-regular-default-background);
+  background: var(--switch-off-default-track);
   opacity: var(--opacity-gentle);
 }
 
 .rost-switch:not(.rost-switch--checked) .rost-switch__thumb {
-  background: var(--actions-secondary-regular-default-label);
+  background: var(--switch-off-default-thumb);
 }
 
 .rost-switch:hover:where(:not(:disabled, [aria-disabled="true"])):not(.rost-switch--checked) .rost-switch__track {
-  outline-color: var(--input-regular-default-outline);
+  outline-color: var(--switch-off-edge);
 }
 
 .rost-switch:hover:where(:not(:disabled, [aria-disabled="true"])):not(.rost-switch--checked) .rost-switch__background {
-  background: var(--actions-secondary-regular-hover-background);
+  background: var(--switch-off-hover-track);
   opacity: var(--opacity-mild);
 }
 
 .rost-switch:hover:where(:not(:disabled, [aria-disabled="true"])):not(.rost-switch--checked) .rost-switch__thumb {
-  background: var(--actions-secondary-regular-hover-label);
+  background: var(--switch-off-hover-thumb);
 }
 
 .rost-switch:active:where(:not(:disabled, [aria-disabled="true"])):not(.rost-switch--checked) .rost-switch__track {
-  outline-color: var(--input-regular-default-outline);
+  outline-color: var(--switch-off-edge);
 }
 
 .rost-switch:active:where(:not(:disabled, [aria-disabled="true"])):not(.rost-switch--checked) .rost-switch__background {
-  background: var(--actions-secondary-regular-pressed-background);
+  background: var(--switch-off-pressed-track);
   opacity: var(--opacity-mild);
 }
 
 .rost-switch:active:where(:not(:disabled, [aria-disabled="true"])):not(.rost-switch--checked) .rost-switch__thumb {
-  background: var(--actions-secondary-regular-pressed-label);
+  background: var(--switch-off-pressed-thumb);
 }
 
 .rost-switch:focus-visible:not(.rost-switch--checked) .rost-switch__track {
-  outline-color: var(--input-regular-default-outline);
+  outline-color: var(--switch-off-edge);
 }
 
 .rost-switch:focus-visible:not(.rost-switch--checked) .rost-switch__focus-ring {
   display: block;
-  border-color: var(--actions-secondary-regular-focus-focus-ring);
+  border-color: var(--switch-off-focus-focus-ring);
 }
 
 .rost-switch:focus-visible:not(.rost-switch--checked) .rost-switch__background {
-  background: var(--actions-secondary-regular-focus-background);
+  background: var(--switch-off-focus-track);
   opacity: var(--opacity-gentle);
 }
 
 .rost-switch:focus-visible:not(.rost-switch--checked) .rost-switch__thumb {
-  background: var(--actions-secondary-regular-focus-label);
+  background: var(--switch-off-focus-thumb);
 }
 
 .rost-switch:is(:disabled, [aria-disabled="true"]):not(.rost-switch--checked) .rost-switch__track {
-  outline-color: var(--input-regular-default-outline);
+  outline-color: var(--switch-off-edge);
 }
 
 .rost-switch:is(:disabled, [aria-disabled="true"]):not(.rost-switch--checked) {
@@ -124,82 +124,82 @@
 }
 
 .rost-switch:is(:disabled, [aria-disabled="true"]):not(.rost-switch--checked) .rost-switch__background {
-  background: var(--actions-secondary-regular-disabled-background);
+  background: var(--switch-off-disabled-track);
   opacity: var(--opacity-gentle);
 }
 
 .rost-switch:is(:disabled, [aria-disabled="true"]):not(.rost-switch--checked) .rost-switch__thumb {
-  background: var(--actions-secondary-regular-disabled-label);
+  background: var(--switch-off-disabled-thumb);
 }
 
 .rost-switch.rost-switch--checked .rost-switch__track {
-  outline-color: var(--non-interactive-foreground-positive-base);
+  outline-color: var(--switch-on-edge);
 }
 
 .rost-switch.rost-switch--checked .rost-switch__thumb {
   left: calc(100% - var(--spacing-size-2xsmall) - var(--spacing-gap-2xsmall));
-  background: var(--actions-primary-default-label);
+  background: var(--switch-on-default-thumb);
 }
 
 .rost-switch.rost-switch--checked .rost-switch__background {
-  background: var(--actions-primary-default-background);
+  background: var(--switch-on-default-track);
   opacity: var(--opacity-solid);
 }
 
 .rost-switch:hover:where(:not(:disabled, [aria-disabled="true"])).rost-switch--checked .rost-switch__track {
-  outline-color: var(--non-interactive-foreground-positive-base);
+  outline-color: var(--switch-on-edge);
 }
 
 .rost-switch:hover:where(:not(:disabled, [aria-disabled="true"])).rost-switch--checked .rost-switch__thumb {
   left: calc(100% - var(--spacing-size-2xsmall) - var(--spacing-gap-2xsmall));
-  background: var(--actions-primary-hover-label);
+  background: var(--switch-on-hover-thumb);
 }
 
 .rost-switch:hover:where(:not(:disabled, [aria-disabled="true"])).rost-switch--checked .rost-switch__background {
-  background: var(--actions-primary-hover-background);
+  background: var(--switch-on-hover-track);
   opacity: var(--opacity-solid);
 }
 
 .rost-switch:active:where(:not(:disabled, [aria-disabled="true"])).rost-switch--checked .rost-switch__track {
-  outline-color: var(--non-interactive-foreground-positive-base);
+  outline-color: var(--switch-on-edge);
 }
 
 .rost-switch:active:where(:not(:disabled, [aria-disabled="true"])).rost-switch--checked .rost-switch__thumb {
   left: calc(100% - var(--spacing-size-2xsmall) - var(--spacing-gap-2xsmall));
-  background: var(--actions-primary-pressed-label);
+  background: var(--switch-on-pressed-thumb);
 }
 
 .rost-switch:active:where(:not(:disabled, [aria-disabled="true"])).rost-switch--checked .rost-switch__background {
-  background: var(--actions-primary-pressed-background);
+  background: var(--switch-on-pressed-track);
   opacity: var(--opacity-solid);
 }
 
 .rost-switch:focus-visible.rost-switch--checked .rost-switch__track {
-  outline-color: var(--non-interactive-foreground-positive-base);
+  outline-color: var(--switch-on-edge);
 }
 
 .rost-switch:focus-visible.rost-switch--checked .rost-switch__thumb {
   left: calc(100% - var(--spacing-size-2xsmall) - var(--spacing-gap-2xsmall));
-  background: var(--actions-primary-focus-label);
+  background: var(--switch-on-focus-thumb);
 }
 
 .rost-switch:focus-visible.rost-switch--checked .rost-switch__focus-ring {
   display: block;
-  border-color: var(--actions-primary-focus-focus-ring);
+  border-color: var(--switch-on-focus-focus-ring);
 }
 
 .rost-switch:focus-visible.rost-switch--checked .rost-switch__background {
-  background: var(--actions-primary-focus-background);
+  background: var(--switch-on-focus-track);
   opacity: var(--opacity-solid);
 }
 
 .rost-switch:is(:disabled, [aria-disabled="true"]).rost-switch--checked .rost-switch__track {
-  outline-color: var(--non-interactive-foreground-positive-base);
+  outline-color: var(--switch-on-edge);
 }
 
 .rost-switch:is(:disabled, [aria-disabled="true"]).rost-switch--checked .rost-switch__thumb {
   left: calc(100% - var(--spacing-size-2xsmall) - var(--spacing-gap-2xsmall));
-  background: var(--actions-primary-disabled-label);
+  background: var(--switch-on-disabled-thumb);
 }
 
 .rost-switch:is(:disabled, [aria-disabled="true"]).rost-switch--checked {
@@ -208,6 +208,6 @@
 }
 
 .rost-switch:is(:disabled, [aria-disabled="true"]).rost-switch--checked .rost-switch__background {
-  background: var(--actions-primary-disabled-background);
+  background: var(--switch-on-disabled-track);
   opacity: var(--opacity-solid);
 }

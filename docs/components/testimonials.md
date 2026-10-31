@@ -84,26 +84,8 @@ Every token this component uses, across all its variants.
 
 | Token | Resolves to |
 |---|---|
-| `actions/borderless/default/icon` | `#00d669` |
 | `font-family/base` | `'General Sans Variable'` |
-| `non-interactive/foreground/secondary` | `#d3d9d5` |
 | `opacity/gentle` | `0.24` |
-| `project/default/label` | `#d3d9d5` |
-| `project/default/outline` | `#3a3a3a` |
-| `project/default/sub-label` | `#999` |
-| `project/disabled/label` | `#d3d9d5` |
-| `project/disabled/outline` | `#3a3a3a` |
-| `project/disabled/sub-label` | `#999` |
-| `project/focus/focus-ring` | `#999` |
-| `project/focus/label` | `#d3d9d5` |
-| `project/focus/outline` | `#3a3a3a` |
-| `project/focus/sub-label` | `#999` |
-| `project/hover/label` | `#00d669` |
-| `project/hover/outline` | `#00d669` |
-| `project/hover/sub-label` | `#ededed` |
-| `project/pressed/label` | `#00d669` |
-| `project/pressed/outline` | `#10ffa4` |
-| `project/pressed/sub-label` | `#c2c7c3` |
 | `spacing/gap/2xlarge` | `40px` |
 | `spacing/gap/2xsmall` | `4px` |
 | `spacing/gap/large` | `24px` |
@@ -115,6 +97,24 @@ Every token this component uses, across all its variants.
 | `spacing/size/2xsmall` | `16px` |
 | `spacing/size/large` | `56px` |
 | `spacing/size/small-medium` | `32px` |
+| `testimonials/default/label` | `#d3d9d5` |
+| `testimonials/default/outline` | `#3a3a3a` |
+| `testimonials/default/sub-label` | `#999` |
+| `testimonials/disabled/label` | `#d3d9d5` |
+| `testimonials/disabled/outline` | `#3a3a3a` |
+| `testimonials/disabled/sub-label` | `#999` |
+| `testimonials/focus-ring` | `#999` |
+| `testimonials/focus/label` | `#d3d9d5` |
+| `testimonials/focus/outline` | `#3a3a3a` |
+| `testimonials/focus/sub-label` | `#999` |
+| `testimonials/hover/label` | `#00d669` |
+| `testimonials/hover/outline` | `#00d669` |
+| `testimonials/hover/sub-label` | `#ededed` |
+| `testimonials/icon` | `#00d669` |
+| `testimonials/label` | `#d3d9d5` |
+| `testimonials/pressed/label` | `#00d669` |
+| `testimonials/pressed/outline` | `#10ffa4` |
+| `testimonials/pressed/sub-label` | `#c2c7c3` |
 | `typography/paragraph/font-size` | `14px` |
 | `typography/paragraph/font-weight/regular` | `400` |
 | `typography/paragraph/letter-spacing` | `0px` |

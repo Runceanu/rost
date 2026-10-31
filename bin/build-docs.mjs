@@ -155,6 +155,9 @@ const themedCount = Object.values(tokenJson).filter((t) => t.collection === 'the
 const lightOverridden = Object.values(tokenJson).filter((t) => t.lightSource === 'rost').length
 const motionTokens = Object.entries(tokenJson).filter(([n]) => n.startsWith('motion/'))
 const figmaRegistry = JSON.parse(readFileSync(new URL('../registry/figma-variables.json', import.meta.url), 'utf8'))
+const COMPONENT_FAMILIES = ['button', 'icon-button', 'toggle', 'chip', 'tag', 'switch', 'switch-field', 'textarea', 'list-item', 'menu', 'tab-item', 'table-row', 'table-item', 'carousel', 'projects', 'thumbs', 'testimonials']
+const componentFamilies = COMPONENT_FAMILIES.length
+const componentCount = Object.keys(figmaRegistry.variables).filter((n) => COMPONENT_FAMILIES.includes(n.split('/')[0])).length
 const figmaVars = Object.keys(figmaRegistry.variables)
 const figmaRead = figmaRegistry.readOn
 const { vars } = loadTokens()
@@ -203,6 +206,18 @@ ${plainGroups(kit).map((g) => {
 ## Open gaps
 
 ${kit.flatMap((e) => e.values.filter((x) => classify(x.prop, x.v) === 'gap').map((x) => `- [${title(e)}](components/${e.id}.md) \`${x.part}.${x.prop}\` = \`${x.v.value}\``)).join('\n') || 'None. Every value has a token, a suggestion, or a reason.'}
+
+## Three layers
+
+Colours come in three layers, each an alias of the one under it.
+
+- **Primitives:** \`color/dark/neutral/500\`, \`color/light/primary/800\`. The raw scale, one per theme. Nothing uses them directly.
+- **Semantic:** \`non-interactive/foreground/secondary\`, \`actions/primary/hover/background\`. What a colour is for. Static components use these: Badge, Divider, Tooltip, InlineBanner, HeroMedia, Table's caption.
+- **Component:** \`button/primary/hover/background\`, \`chip/selected/default/edge\`. One family per interactive component, named \`<component>/<variant>/<state>/<part>\`, each pointing at the semantic token it used before. ${componentCount} of them, for ${componentFamilies} components; Input's family is \`input/\`, which was already its own.
+
+Every interactive component reads only its own family. So a fix for one is an alias change on one, and the rest don't move. The Tag fix on 2026-10-31 shows why: darkening the shared Secondary pressed label took Button, Chip and Switch with it.
+
+When a component needs a colour no other has, change its own token to point somewhere else, in Figma and in \`registry/figma-variables.json\` at once. When every component should change, change the semantic token underneath.
 
 ## Two themes
 

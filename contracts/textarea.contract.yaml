@@ -123,98 +123,98 @@ variants:
     figmaNode: "528:761"
     elements:
       outline:
-        background: { token: input/regular/default/background, value: "#060805" }
-        border-color: { token: input/regular/default/outline, value: "#555555" }
+        background: { token: textarea/regular/default/background, value: "#060805" }
+        border-color: { token: textarea/regular/default/outline, value: "#555555" }
       label:
-        color: { token: input/regular/default/label, value: "#999999" }
+        color: { token: textarea/regular/default/label, value: "#999999" }
       value:
-        color: { token: input/regular/default/placeholder, value: "#c2c7c3" }
+        color: { token: textarea/regular/default/placeholder, value: "#c2c7c3" }
       supportive:
-        color: { token: input/regular/default/supportive, value: "#999999" }
+        color: { token: textarea/regular/default/supportive, value: "#999999" }
   - when: { state: Hover, selected: false, error: false }
     figmaNode: "528:767"
     elements:
       outline:
-        background: { token: input/regular/hover/background, value: "#171717" }
-        border-color: { token: input/regular/hover/outline, value: "#999999" }
+        background: { token: textarea/regular/hover/background, value: "#171717" }
+        border-color: { token: textarea/regular/hover/outline, value: "#999999" }
       label:
-        color: { token: input/regular/hover/label, value: "#d3d9d5" }
+        color: { token: textarea/regular/hover/label, value: "#d3d9d5" }
       value:
-        color: { token: input/regular/hover/placeholder, value: "#d3d9d5" }
+        color: { token: textarea/regular/hover/placeholder, value: "#d3d9d5" }
       supportive:
-        color: { token: input/regular/hover/supportive, value: "#d3d9d5" }
+        color: { token: textarea/regular/hover/supportive, value: "#d3d9d5" }
   - when: { state: Default, selected: true, error: false }
     figmaNode: "528:773"
     elements:
       outline:
-        background: { token: input/regular/focus/background, value: "#060805" }
-        border-color: { token: input/regular/focus/outline, value: "#555555" }
+        background: { token: textarea/regular/focus/background, value: "#060805" }
+        border-color: { token: textarea/regular/focus/outline, value: "#555555" }
       label:
-        color: { token: input/regular/focus/label, value: "#999999" }
+        color: { token: textarea/regular/focus/label, value: "#999999" }
       value:
-        color: { token: input/regular/focus/placeholder, value: "#c2c7c3" }
+        color: { token: textarea/regular/focus/placeholder, value: "#c2c7c3" }
       supportive:
-        color: { token: input/regular/focus/supportive, value: "#999999" }
+        color: { token: textarea/regular/focus/supportive, value: "#999999" }
       focus-ring:
         display: { value: block, assert: false }
-        border-color: { token: input/regular/focus/focus-ring, value: "#00d669" }
+        border-color: { token: textarea/regular/focus/focus-ring, value: "#00d669" }
   - when: { state: Disabled, selected: false, error: false }
     figmaNode: "528:780"
     elements:
       outline:
-        background: { token: input/regular/disabled/background, value: "#171717" }
-        border-color: { token: input/regular/disabled/outline, value: "#3a3a3a" }
+        background: { token: textarea/regular/disabled/background, value: "#171717" }
+        border-color: { token: textarea/regular/disabled/outline, value: "#3a3a3a" }
       label:
-        color: { token: input/regular/disabled/label, value: "#555555" }
+        color: { token: textarea/regular/disabled/label, value: "#555555" }
       value:
-        color: { token: input/regular/disabled/placeholder, value: "#555555" }
+        color: { token: textarea/regular/disabled/placeholder, value: "#555555" }
       supportive:
-        color: { token: input/regular/disabled/supportive, value: "#555555" }
+        color: { token: textarea/regular/disabled/supportive, value: "#555555" }
   - when: { state: Default, selected: false, error: true }
     figmaNode: "528:786"
     elements:
       outline:
-        background: { token: input/negative/default/background, value: "#060805" }
-        border-color: { token: input/negative/default/outline, value: "#f2705f" }
+        background: { token: textarea/negative/default/background, value: "#060805" }
+        border-color: { token: textarea/negative/default/outline, value: "#f2705f" }
       label:
-        color: { token: input/negative/default/label, value: "#e93120" }
+        color: { token: textarea/negative/default/label, value: "#e93120" }
       value:
-        color: { token: input/negative/default/placeholder, value: "#999999" }
+        color: { token: textarea/negative/default/placeholder, value: "#999999" }
       supportive:
-        color: { token: input/negative/default/supportive, value: "#e93120" }
+        color: { token: textarea/negative/default/supportive, value: "#e93120" }
       icons-alarm:
-        background: { token: input/negative/default/icon, value: "#e93120" }
+        background: { token: textarea/negative/default/icon, value: "#e93120" }
   - when: { state: Hover, selected: false, error: true }
     figmaNode: "528:795"
     elements:
       outline:
-        background: { token: input/negative/hover/background, value: "#171717" }
-        border-color: { token: input/negative/hover/outline, value: "#e93120" }
+        background: { token: textarea/negative/hover/background, value: "#171717" }
+        border-color: { token: textarea/negative/hover/outline, value: "#e93120" }
       label:
-        color: { token: input/negative/hover/label, value: "#e93120" }
+        color: { token: textarea/negative/hover/label, value: "#e93120" }
       value:
-        color: { token: input/negative/hover/placeholder, value: "#555555" }
+        color: { token: textarea/negative/hover/placeholder, value: "#555555" }
       supportive:
-        color: { token: input/negative/hover/supportive, value: "#ae1b13" }
+        color: { token: textarea/negative/hover/supportive, value: "#ae1b13" }
       icons-alarm:
-        background: { token: input/negative/hover/icon, value: "#ae1b13" }
+        background: { token: textarea/negative/hover/icon, value: "#ae1b13" }
   - when: { state: Default, selected: true, error: true }
     figmaNode: "528:804"
     elements:
       outline:
-        background: { token: input/negative/focus/background, value: "#060805" }
-        border-color: { token: input/negative/focus/outline, value: "#f2705f" }
+        background: { token: textarea/negative/focus/background, value: "#060805" }
+        border-color: { token: textarea/negative/focus/outline, value: "#f2705f" }
       label:
-        color: { token: input/negative/focus/label, value: "#e93120" }
+        color: { token: textarea/negative/focus/label, value: "#e93120" }
       value:
-        color: { token: input/negative/focus/value, value: "#ededed" }
+        color: { token: textarea/negative/focus/value, value: "#ededed" }
       supportive:
-        color: { token: input/negative/focus/supportive, value: "#e93120" }
+        color: { token: textarea/negative/focus/supportive, value: "#e93120" }
       icons-alarm:
-        background: { token: input/negative/focus/icon, value: "#e93120" }
+        background: { token: textarea/negative/focus/icon, value: "#e93120" }
       focus-ring:
         display: { value: block, assert: false }
-        border-color: { token: input/negative/focus/focus-ring, value: "#00d669" }
+        border-color: { token: textarea/negative/focus/focus-ring, value: "#00d669" }
 guidance:
   status: proposed
   use:

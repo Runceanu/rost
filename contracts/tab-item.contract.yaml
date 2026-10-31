@@ -88,73 +88,73 @@ variants:
     figmaNode: "442:2"
     elements:
       root:
-        color: { token: tabs/selected/default/label, value: "#ededed" }
+        color: { token: tab-item/selected/default/label, value: "#ededed" }
       underline:
-        background: { token: tabs/selected/default/underline, value: "#00d669" }
+        background: { token: tab-item/selected/default/underline, value: "#00d669" }
   - when: { state: Hover, selected: true }
     figmaNode: "442:11"
     elements:
       root:
-        color: { token: tabs/selected/hover/label, value: "#ededed" }
+        color: { token: tab-item/selected/hover/label, value: "#ededed" }
       underline:
-        background: { token: tabs/selected/hover/underline, value: "#00b450" }
+        background: { token: tab-item/selected/hover/underline, value: "#00b450" }
   - when: { state: Pressed, selected: true }
     figmaNode: "442:20"
     elements:
       root:
-        color: { token: tabs/selected/pressed/label, value: "#ededed" }
+        color: { token: tab-item/selected/pressed/label, value: "#ededed" }
       underline:
-        background: { token: tabs/selected/pressed/underline, value: "#00913a" }
+        background: { token: tab-item/selected/pressed/underline, value: "#00913a" }
   - when: { state: Focus, selected: true }
     figmaNode: "442:29"
     elements:
       root:
-        color: { token: tabs/selected/focus/label, value: "#ededed" }
+        color: { token: tab-item/selected/focus/label, value: "#ededed" }
       underline:
-        background: { token: tabs/selected/focus/underline, value: "#00d669" }
+        background: { token: tab-item/selected/focus/underline, value: "#00d669" }
       focus-ring:
         display: { value: block, assert: false }
-        border-color: { token: tabs/selected/focus/focus-ring, value: "#b6ffda" }
+        border-color: { token: tab-item/selected/focus/focus-ring, value: "#b6ffda" }
   - when: { state: Disabled, selected: true }
     figmaNode: "442:39"
     elements:
       root:
-        color: { token: tabs/selected/disabled/label, value: "#d3d9d5" }
+        color: { token: tab-item/selected/disabled/label, value: "#d3d9d5" }
         opacity: { token: opacity/medium, value: "0.48" }
       underline:
-        background: { token: tabs/selected/disabled/underline, value: "#00d669" }
+        background: { token: tab-item/selected/disabled/underline, value: "#00d669" }
   - when: { state: Default, selected: false }
     figmaNode: "442:48"
     elements:
       root:
-        color: { token: tabs/unselected/default/label, value: "#999999" }
+        color: { token: tab-item/unselected/default/label, value: "#999999" }
   - when: { state: Hover, selected: false }
     figmaNode: "442:57"
     elements:
       root:
-        color: { token: tabs/unselected/hover/label, value: "#ededed" }
+        color: { token: tab-item/unselected/hover/label, value: "#ededed" }
       underline:
-        background: { token: tabs/unselected/hover/underline, value: "#3a3a3a" }
+        background: { token: tab-item/unselected/hover/underline, value: "#3a3a3a" }
   - when: { state: Pressed, selected: false }
     figmaNode: "442:66"
     elements:
       root:
-        color: { token: tabs/unselected/pressed/label, value: "#d3d9d5" }
+        color: { token: tab-item/unselected/pressed/label, value: "#d3d9d5" }
       underline:
-        background: { token: tabs/unselected/pressed/underline, value: "#747573" }
+        background: { token: tab-item/unselected/pressed/underline, value: "#747573" }
   - when: { state: Focus, selected: false }
     figmaNode: "442:75"
     elements:
       root:
-        color: { token: tabs/unselected/focus/label, value: "#d3d9d5" }
+        color: { token: tab-item/unselected/focus/label, value: "#d3d9d5" }
       focus-ring:
         display: { value: block, assert: false }
-        border-color: { token: tabs/unselected/focus/focus-ring, value: "#999999" }
+        border-color: { token: tab-item/unselected/focus/focus-ring, value: "#999999" }
   - when: { state: Disabled, selected: false }
     figmaNode: "442:85"
     elements:
       root:
-        color: { token: tabs/unselected/disabled/label, value: "#999999" }
+        color: { token: tab-item/unselected/disabled/label, value: "#999999" }
         opacity: { token: opacity/medium, value: "0.48" }
 guidance:
   status: agreed

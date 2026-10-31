@@ -68,21 +68,26 @@ Every token this component uses, across all its variants.
 
 | Token | Resolves to |
 |---|---|
+| `carousel/default/label` | `#d3d9d5` |
+| `carousel/default/number` | `#999` |
+| `carousel/default/sub-label` | `#999` |
+| `carousel/disabled/label` | `#d3d9d5` |
+| `carousel/disabled/number` | `#999` |
+| `carousel/disabled/sub-label` | `#999` |
+| `carousel/focus-ring` | `#999` |
+| `carousel/focus/label` | `#d3d9d5` |
+| `carousel/focus/number` | `#999` |
+| `carousel/focus/sub-label` | `#999` |
+| `carousel/hover/label` | `#00d669` |
+| `carousel/hover/number` | `#00d669` |
+| `carousel/hover/sub-label` | `#ededed` |
+| `carousel/pressed/label` | `#00d669` |
+| `carousel/pressed/number` | `#00d669` |
+| `carousel/pressed/sub-label` | `#c2c7c3` |
 | `effect/thumb` | `blur(12px)` |
 | `font-family/base` | `'General Sans Variable'` |
 | `opacity/mild` | `0.32` |
 | `opacity/strong` | `0.64` |
-| `project/default/label` | `#d3d9d5` |
-| `project/default/sub-label` | `#999` |
-| `project/disabled/label` | `#d3d9d5` |
-| `project/disabled/sub-label` | `#999` |
-| `project/focus/focus-ring` | `#999` |
-| `project/focus/label` | `#d3d9d5` |
-| `project/focus/sub-label` | `#999` |
-| `project/hover/label` | `#00d669` |
-| `project/hover/sub-label` | `#ededed` |
-| `project/pressed/label` | `#00d669` |
-| `project/pressed/sub-label` | `#c2c7c3` |
 | `spacing/gap/large` | `24px` |
 | `spacing/gap/medium` | `16px` |
 | `spacing/gap/none` | `0px` |
@@ -107,7 +112,7 @@ Every token this component uses, across all its variants.
 
 | Part | Property | Value | Why |
 |---|---|---|---|
-| `background` | `background` | `color-mix(in srgb, var(--non-interactive-background-tertiary) calc(var(--opacity-medium) * 100%), transparent)` | Composed from tokens: non-interactive/background/tertiary at opacity/medium. |
+| `background` | `background` | `color-mix(in srgb, var(--carousel-background) calc(var(--opacity-medium) * 100%), transparent)` | Composed from tokens: non-interactive/background/tertiary at opacity/medium. |
 | `focus-ring` | `inset` | `calc(-1 * var(--spacing-gap-2xsmall))` | Composed from a token: the ring sits spacing/gap/2xsmall outside the element. |
 | `focus-ring` | `border-radius` | `calc(var(--spacing-radius-xlarge) + var(--spacing-gap-2xsmall))` | Composed from tokens: the element's spacing/radius/xlarge plus the ring's spacing/gap/2xsmall. |
 

@@ -38,7 +38,7 @@ elements:
       padding-left: { token: spacing/gap/small, value: 8px }
       padding-right: { token: spacing/gap/small, value: 8px }
       border-radius: { token: spacing/radius/xsmall, value: 4px }
-      background: { token: actions/secondary/regular/default/background, value: "#3a3a3a" }
+      background: { token: tag/background, value: "#3a3a3a" }
       outline: { value: none, assert: false }
   label:
     notes: Figma calls it `text` in every state but Default. It's the same layer.
@@ -50,7 +50,7 @@ elements:
       font-family: { token: font-family/base, value: "'General Sans Variable'" }
       font-weight: { token: typography/label/font-weight/medium, value: "500" }
       line-height: { token: typography/label/line-height, value: 14px }
-      color: { token: actions/secondary/regular/default/label, value: "#d3d9d5" }
+      color: { token: tag/label, value: "#d3d9d5" }
       font-size: { token: typography/label/font-size, value: 12px }
       letter-spacing: { token: typography/label/letter-spacing, value: 0px }
   focus-ring:
@@ -60,7 +60,7 @@ elements:
       inset: { value: "calc(-1 * var(--spacing-gap-2xsmall))", untokenised: "Composed from a token: the ring sits spacing/gap/2xsmall outside the element." }
       border-style: { value: solid }
       border-width: { token: spacing/outline/medium, value: 2px }
-      border-color: { token: actions/secondary/regular/focus/focus-ring, value: "#999" }
+      border-color: { token: tag/focus-ring, value: "#999" }
       border-radius: { token: spacing/radius/small, value: 8px }
       pointer-events: { value: none, assert: false }
 variants:
@@ -70,33 +70,33 @@ variants:
     figmaNode: "91:372"
     elements:
       root:
-        background: { token: actions/secondary/regular/hover/background, value: "#747573" }
+        background: { token: tag/hover/background, value: "#747573" }
       label:
-        color: { token: actions/secondary/regular/hover/label, value: "#ededed" }
+        color: { token: tag/hover/label, value: "#ededed" }
   - when: { type: Primary, state: Pressed }
     figmaNode: "91:383"
     elements:
       root:
-        background: { token: actions/secondary/regular/pressed/background, value: "#999" }
+        background: { token: tag/pressed/background, value: "#999" }
       label:
-        color: { token: actions/secondary/regular/pressed/label, value: "#d3d9d5" }
+        color: { token: tag/pressed/label, value: "#d3d9d5" }
   - when: { type: Primary, state: Focus }
     figmaNode: "91:403"
     elements:
       root:
-        background: { token: actions/secondary/regular/focus/background, value: "#3a3a3a" }
+        background: { token: tag/focus/background, value: "#3a3a3a" }
       label:
-        color: { token: actions/secondary/regular/focus/label, value: "#d3d9d5" }
+        color: { token: tag/focus/label, value: "#d3d9d5" }
       focus-ring:
         display: { value: block, assert: false }
   - when: { type: Primary, state: Disabled }
     figmaNode: "91:394"
     elements:
       root:
-        background: { token: actions/secondary/regular/disabled/background, value: "#3a3a3a" }
+        background: { token: tag/disabled/background, value: "#3a3a3a" }
         opacity: { token: opacity/gentle, value: "0.24" }
       label:
-        color: { token: actions/secondary/regular/disabled/label, value: "#d3d9d5" }
+        color: { token: tag/disabled/label, value: "#d3d9d5" }
 guidance:
   status: agreed
   use:

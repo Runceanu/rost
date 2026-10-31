@@ -49,47 +49,47 @@
   inset: var(--spacing-gap-medium-large) calc(-1 * var(--spacing-gap-2xsmall));
   border-style: solid;
   border-width: var(--spacing-outline-medium);
-  border-color: var(--actions-primary-focus-focus-ring);
+  border-color: var(--menu-focus-ring);
   pointer-events: none;
 }
 
 .rost-menu .rost-menu__title {
-  color: var(--non-interactive-foreground-primary);
+  color: var(--menu-default-label);
 }
 
 .rost-menu .rost-menu__description {
-  color: var(--non-interactive-foreground-tertiary);
+  color: var(--menu-default-sub-label);
   font-size: var(--typography-paragraph-font-size);
   line-height: var(--typography-paragraph-line-height);
 }
 
 .rost-menu:hover:where(:not(:disabled, [aria-disabled="true"])) .rost-menu__title {
-  color: var(--non-interactive-foreground-primary);
+  color: var(--menu-hover-label);
 }
 
 .rost-menu:hover:where(:not(:disabled, [aria-disabled="true"])) .rost-menu__description {
-  color: var(--non-interactive-foreground-primary);
+  color: var(--menu-hover-sub-label);
   font-size: var(--typography-paragraph-font-size);
   line-height: var(--typography-paragraph-line-height);
 }
 
 .rost-menu:active:where(:not(:disabled, [aria-disabled="true"])) .rost-menu__title {
-  color: var(--non-interactive-foreground-primary);
+  color: var(--menu-pressed-label);
 }
 
 .rost-menu:active:where(:not(:disabled, [aria-disabled="true"])) .rost-menu__description {
-  color: var(--non-interactive-foreground-primary);
+  color: var(--menu-pressed-sub-label);
   font-weight: var(--typography-body-font-weight-medium);
   font-size: var(--typography-body-font-size);
   line-height: var(--typography-body-line-height);
 }
 
 .rost-menu:focus-visible .rost-menu__title {
-  color: var(--non-interactive-foreground-primary);
+  color: var(--menu-focus-label);
 }
 
 .rost-menu:focus-visible .rost-menu__description {
-  color: var(--non-interactive-foreground-tertiary);
+  color: var(--menu-focus-sub-label);
   font-size: var(--typography-paragraph-font-size);
   line-height: var(--typography-paragraph-line-height);
 }
@@ -99,11 +99,11 @@
 }
 
 .rost-menu:is(:disabled, [aria-disabled="true"]) .rost-menu__title {
-  color: var(--non-interactive-foreground-quadruple);
+  color: var(--menu-disabled-label);
 }
 
 .rost-menu:is(:disabled, [aria-disabled="true"]) .rost-menu__description {
-  color: var(--non-interactive-foreground-quadruple);
+  color: var(--menu-disabled-sub-label);
   font-size: var(--typography-paragraph-font-size);
   line-height: var(--typography-paragraph-line-height);
 }
@@ -113,16 +113,16 @@
 }
 
 .rost-menu[aria-current="page"] .rost-menu__title {
-  color: var(--non-interactive-foreground-primary);
+  color: var(--menu-current-label);
 }
 
 .rost-menu[aria-current="page"] .rost-menu__description {
-  color: var(--non-interactive-foreground-primary);
+  color: var(--menu-current-sub-label);
   font-weight: var(--typography-body-font-weight-medium);
   font-size: var(--typography-paragraph-font-size);
   line-height: var(--typography-paragraph-line-height);
 }
 
 .rost-menu[aria-current="page"] .rost-menu__divider {
-  background: var(--non-interactive-foreground-primary);
+  background: var(--menu-current-divider);
 }

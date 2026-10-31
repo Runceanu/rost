@@ -64,7 +64,7 @@ elements:
       width: { value: 100% }
       position: { value: relative, assert: false }
       overflow: { value: hidden, assert: false, notes: An image inside keeps the card's corners. }
-      background: { token: non-interactive/background/secondary, value: "#171717" }
+      background: { token: thumbs/slot, value: "#171717" }
       border-radius: { token: spacing/radius/xlarge, value: 24px }
   shadow:
     styles:
@@ -76,7 +76,7 @@ elements:
         value: 50%
         notes: 167px in Figma, half of the 334px frame. Half is the decision, so it holds at any size.
       background:
-        value: linear-gradient(to bottom, rgba(6,8,5,0), var(--non-interactive-background-primary))
+        value: linear-gradient(to bottom, rgba(6,8,5,0), var(--thumbs-shade))
         untokenised: A gradient from the page background, transparent, to the page background. The colour is the token; the ramp is the effect.
       opacity: { token: opacity/medium, value: "0.48" }
       border-bottom-left-radius: { token: spacing/radius/xlarge, value: 24px }
@@ -91,7 +91,7 @@ elements:
       display: { value: flex, assert: false }
       flex-direction: { value: column, assert: false }
       align-items: { value: flex-start }
-      background: { value: "color-mix(in srgb, var(--non-interactive-background-primary) calc(var(--opacity-medium) * 100%), transparent)", untokenised: "Composed from tokens: the page background at opacity/medium. It was base/black, which stays black in light while the text on it goes dark." }
+      background: { value: "color-mix(in srgb, var(--thumbs-panel) calc(var(--opacity-medium) * 100%), transparent)", untokenised: "Composed from tokens: the page background at opacity/medium. It was base/black, which stays black in light while the text on it goes dark." }
       backdrop-filter: { token: effect/thumb, value: blur(12px) }
       gap: { token: spacing/gap/small, value: 8px }
       padding-bottom: { token: spacing/gap/large, value: 24px }
@@ -172,7 +172,7 @@ elements:
       inset: { value: "calc(-1 * var(--spacing-gap-2xsmall))", untokenised: "Composed from a token: the ring sits spacing/gap/2xsmall outside the element." }
       border-style: { value: solid }
       border-width: { token: spacing/outline/medium, value: 2px }
-      border-color: { token: project/focus/focus-ring, value: "#999" }
+      border-color: { token: thumbs/focus-ring, value: "#999" }
       border-radius:
         value: "calc(var(--spacing-radius-xlarge) + var(--spacing-gap-2xsmall))"
         untokenised: "Composed from tokens: the element's spacing/radius/xlarge plus the ring's spacing/gap/2xsmall."
@@ -193,7 +193,7 @@ elements:
       right: { token: spacing/gap/medium, value: 16px }
       align-items: { value: center }
       display: { value: flex, assert: false }
-      background: { token: non-interactive/background/positive/base, value: "#00d669" }
+      background: { token: thumbs/lock-plate, value: "#00d669" }
       gap: { token: spacing/gap/none, value: 0px }
       padding: { token: spacing/gap/small, value: 8px }
       border-radius: { token: spacing/radius/medium, value: 12px }
@@ -206,68 +206,68 @@ elements:
       position: { value: relative, assert: false }
       width: { value: 24px, token: spacing/size/small }
       height: { value: 24px, token: spacing/size/small }
-      background: { token: actions/primary/default/label, value: "#060805", notes: "Dark on the green in both themes, like a primary button's label. It was non-interactive/foreground/contrast, which turns white in light." }
+      background: { token: thumbs/lock, value: "#060805", notes: "Dark on the green in both themes, like a primary button's label. It was non-interactive/foreground/contrast, which turns white in light." }
       mask: { value: url(./icon-lock.svg) center / contain no-repeat, untokenised: The icon file itself. }
 variants:
   - when: { state: Default }
     figmaNode: "109:78"
     elements:
       number:
-        color: { token: project/default/sub-label, value: "#999" }
+        color: { token: thumbs/default/number, value: "#999" }
       text:
-        color: { token: project/default/label, value: "#d3d9d5" }
+        color: { token: thumbs/default/label, value: "#d3d9d5" }
       detail:
-        color: { token: project/default/sub-label, value: "#999" }
+        color: { token: thumbs/default/sub-label, value: "#999" }
       dot:
-        background: { token: project/default/icon, value: "#747573" }
+        background: { token: thumbs/default/dot, value: "#747573" }
   - when: { state: Hover }
     figmaNode: "109:77"
     elements:
       number:
-        color: { token: project/hover/label, value: "#00d669" }
+        color: { token: thumbs/hover/number, value: "#00d669" }
       text:
-        color: { token: project/hover/label, value: "#00d669" }
+        color: { token: thumbs/hover/label, value: "#00d669" }
       detail:
-        color: { token: project/hover/sub-label, value: "#ededed" }
+        color: { token: thumbs/hover/sub-label, value: "#ededed" }
       dot:
-        background: { token: project/hover/icon, value: "#ededed" }
+        background: { token: thumbs/hover/dot, value: "#ededed" }
   - when: { state: Pressed }
     figmaNode: "109:168"
     elements:
       number:
-        color: { token: project/pressed/label, value: "#00d669" }
+        color: { token: thumbs/pressed/number, value: "#00d669" }
       text:
-        color: { token: project/pressed/label, value: "#00d669" }
+        color: { token: thumbs/pressed/label, value: "#00d669" }
       detail:
-        color: { token: project/pressed/sub-label, value: "#c2c7c3" }
+        color: { token: thumbs/pressed/sub-label, value: "#c2c7c3" }
       dot:
-        background: { token: project/pressed/icon, value: "#c2c7c3" }
+        background: { token: thumbs/pressed/dot, value: "#c2c7c3" }
   - when: { state: Focus }
     figmaNode: "109:118"
     elements:
       number:
-        color: { token: project/focus/sub-label, value: "#999" }
+        color: { token: thumbs/focus/number, value: "#999" }
       text:
-        color: { token: project/focus/label, value: "#d3d9d5" }
+        color: { token: thumbs/focus/label, value: "#d3d9d5" }
       detail:
-        color: { token: project/focus/sub-label, value: "#999" }
+        color: { token: thumbs/focus/sub-label, value: "#999" }
       focus-ring:
         display: { value: block, assert: false }
       dot:
-        background: { token: project/focus/icon, value: "#747573" }
+        background: { token: thumbs/focus/dot, value: "#747573" }
   - when: { state: Disabled }
     figmaNode: "109:206"
     elements:
       root:
         cursor: { value: default, assert: false }
       number:
-        color: { token: project/disabled/sub-label, value: "#999" }
+        color: { token: thumbs/disabled/number, value: "#999" }
       text:
-        color: { token: project/disabled/label, value: "#d3d9d5" }
+        color: { token: thumbs/disabled/label, value: "#d3d9d5" }
       detail:
-        color: { token: project/disabled/sub-label, value: "#999" }
+        color: { token: thumbs/disabled/sub-label, value: "#999" }
       dot:
-        background: { token: project/disabled/icon, value: "#747573" }
+        background: { token: thumbs/disabled/dot, value: "#747573" }
       slot:
         opacity: { token: opacity/mild, value: "0.32" }
       content:
@@ -276,11 +276,11 @@ variants:
     figmaNode: "261:1232"
     elements:
       number:
-        color: { token: project/default/sub-label, value: "#999", notes: "Figma's Locked card uses the default tokens, not project/lock/*." }
+        color: { token: thumbs/locked/number, value: "#999", notes: "Figma's Locked card uses the default tokens, not project/lock/*." }
       text:
-        color: { token: project/default/label, value: "#d3d9d5" }
+        color: { token: thumbs/locked/label, value: "#d3d9d5" }
       detail:
-        color: { token: project/default/sub-label, value: "#999" }
+        color: { token: thumbs/locked/sub-label, value: "#999" }
 implementations:
   portfolio-site:
     component: src/rost/thumbs/Thumbs.tsx

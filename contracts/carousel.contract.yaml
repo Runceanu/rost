@@ -55,7 +55,7 @@ elements:
       display: { value: none, assert: false }
       position: { value: absolute }
       inset: { value: "0" }
-      background: { value: "color-mix(in srgb, var(--non-interactive-background-tertiary) calc(var(--opacity-medium) * 100%), transparent)", untokenised: "Composed from tokens: non-interactive/background/tertiary at opacity/medium." }
+      background: { value: "color-mix(in srgb, var(--carousel-background) calc(var(--opacity-medium) * 100%), transparent)", untokenised: "Composed from tokens: non-interactive/background/tertiary at opacity/medium." }
       backdrop-filter: { token: effect/thumb, value: blur(12px) }
       opacity: { token: opacity/strong, value: "0.64" }
       border-radius: { token: spacing/radius/xlarge, value: 24px }
@@ -115,7 +115,7 @@ elements:
       inset: { value: "calc(-1 * var(--spacing-gap-2xsmall))", untokenised: "Composed from a token: the ring sits spacing/gap/2xsmall outside the element." }
       border-style: { value: solid }
       border-width: { token: spacing/outline/medium, value: 2px }
-      border-color: { token: project/focus/focus-ring, value: "#999" }
+      border-color: { token: carousel/focus-ring, value: "#999" }
       border-radius:
         value: "calc(var(--spacing-radius-xlarge) + var(--spacing-gap-2xsmall))"
         untokenised: "Composed from tokens: the element's spacing/radius/xlarge plus the ring's spacing/gap/2xsmall."
@@ -125,42 +125,42 @@ variants:
     figmaNode: "157:303"
     elements:
       number:
-        color: { token: project/default/sub-label, value: "#999" }
+        color: { token: carousel/default/number, value: "#999" }
       text:
-        color: { token: project/default/label, value: "#d3d9d5" }
+        color: { token: carousel/default/label, value: "#d3d9d5" }
       description:
-        color: { token: project/default/sub-label, value: "#999" }
+        color: { token: carousel/default/sub-label, value: "#999" }
   - when: { state: Hover }
     figmaNode: "157:360"
     elements:
       number:
-        color: { token: project/hover/label, value: "#00d669" }
+        color: { token: carousel/hover/number, value: "#00d669" }
       text:
-        color: { token: project/hover/label, value: "#00d669" }
+        color: { token: carousel/hover/label, value: "#00d669" }
       description:
-        color: { token: project/hover/sub-label, value: "#ededed" }
+        color: { token: carousel/hover/sub-label, value: "#ededed" }
   - when: { state: Pressed }
     figmaNode: "157:331"
     elements:
       background:
         display: { value: block, assert: false }
       number:
-        color: { token: project/pressed/label, value: "#00d669" }
+        color: { token: carousel/pressed/number, value: "#00d669" }
       text:
-        color: { token: project/pressed/label, value: "#00d669" }
+        color: { token: carousel/pressed/label, value: "#00d669" }
       description:
-        color: { token: project/pressed/sub-label, value: "#c2c7c3" }
+        color: { token: carousel/pressed/sub-label, value: "#c2c7c3" }
   - when: { state: Focus }
     figmaNode: "157:345"
     elements:
       focus-ring:
         display: { value: block, assert: false }
       number:
-        color: { token: project/focus/sub-label, value: "#999" }
+        color: { token: carousel/focus/number, value: "#999" }
       text:
-        color: { token: project/focus/label, value: "#d3d9d5" }
+        color: { token: carousel/focus/label, value: "#d3d9d5" }
       description:
-        color: { token: project/focus/sub-label, value: "#999" }
+        color: { token: carousel/focus/sub-label, value: "#999" }
   - when: { state: Disabled }
     figmaNode: "157:317"
     elements:
@@ -168,11 +168,11 @@ variants:
         opacity: { token: opacity/mild, value: "0.32" }
         cursor: { value: default, assert: false }
       number:
-        color: { token: project/disabled/sub-label, value: "#999" }
+        color: { token: carousel/disabled/number, value: "#999" }
       text:
-        color: { token: project/disabled/label, value: "#d3d9d5" }
+        color: { token: carousel/disabled/label, value: "#d3d9d5" }
       description:
-        color: { token: project/disabled/sub-label, value: "#999" }
+        color: { token: carousel/disabled/sub-label, value: "#999" }
 implementations:
   portfolio-site:
     component: src/rost/carousel/Carousel.tsx

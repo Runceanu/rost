@@ -53,12 +53,12 @@
   padding-bottom: var(--spacing-gap-none);
   width: var(--spacing-size-medium-large);
   height: var(--spacing-size-medium-large);
-  background: var(--actions-primary-default-background);
-  box-shadow: inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-default-outline);
+  background: var(--icon-button-primary-default-background);
+  box-shadow: inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--icon-button-primary-default-outline);
 }
 
 .rost-icon-button.rost-icon-button--type-primary .rost-icon-button__icons-arrow-left {
-  color: var(--actions-primary-default-icon);
+  color: var(--icon-button-primary-default-icon);
 }
 
 .rost-icon-button.rost-icon-button--type-secondary {
@@ -74,9 +74,9 @@
   position: absolute;
   inset: 0;
   border-radius: var(--spacing-radius-full);
-  background: var(--actions-secondary-regular-default-background);
-  border-left-color: var(--actions-secondary-regular-default-outline);
-  border-top-color: var(--actions-secondary-regular-default-outline);
+  background: var(--icon-button-secondary-default-background);
+  border-left-color: var(--icon-button-secondary-default-outline);
+  border-top-color: var(--icon-button-secondary-default-outline);
   opacity: var(--opacity-gentle);
   border-left-style: solid;
   border-left-width: var(--spacing-outline-small);
@@ -85,7 +85,7 @@
 }
 
 .rost-icon-button.rost-icon-button--type-secondary .rost-icon-button__icons-arrow-left {
-  color: var(--actions-secondary-regular-default-icon);
+  color: var(--icon-button-secondary-default-icon);
 }
 
 .rost-icon-button.rost-icon-button--type-tertiary {
@@ -98,7 +98,7 @@
 }
 
 .rost-icon-button.rost-icon-button--type-tertiary .rost-icon-button__icons-arrow-left {
-  color: var(--actions-tertiary-default-icon);
+  color: var(--icon-button-tertiary-default-icon);
 }
 
 .rost-icon-button.rost-icon-button--type-primary:hover:where(:not(:disabled, [aria-disabled="true"])) {
@@ -108,12 +108,12 @@
   padding-bottom: var(--spacing-gap-none);
   width: var(--spacing-size-medium-large);
   height: var(--spacing-size-medium-large);
-  background: var(--actions-primary-hover-background);
-  box-shadow: inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-hover-outline);
+  background: var(--icon-button-primary-hover-background);
+  box-shadow: inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--icon-button-primary-hover-outline);
 }
 
 .rost-icon-button.rost-icon-button--type-primary:hover:where(:not(:disabled, [aria-disabled="true"])) .rost-icon-button__icons-arrow-left {
-  color: var(--actions-primary-hover-icon);
+  color: var(--icon-button-primary-hover-icon);
 }
 
 .rost-icon-button.rost-icon-button--type-secondary:hover:where(:not(:disabled, [aria-disabled="true"])) {
@@ -129,9 +129,9 @@
   position: absolute;
   inset: 0;
   border-radius: var(--spacing-radius-full);
-  background: var(--actions-secondary-regular-hover-background);
-  border-left-color: var(--actions-secondary-regular-hover-outline);
-  border-top-color: var(--actions-secondary-regular-hover-outline);
+  background: var(--icon-button-secondary-hover-background);
+  border-left-color: var(--icon-button-secondary-hover-outline);
+  border-top-color: var(--icon-button-secondary-hover-outline);
   opacity: var(--opacity-mild);
   border-left-style: solid;
   border-left-width: var(--spacing-outline-small);
@@ -140,7 +140,7 @@
 }
 
 .rost-icon-button.rost-icon-button--type-secondary:hover:where(:not(:disabled, [aria-disabled="true"])) .rost-icon-button__icons-arrow-left {
-  color: var(--actions-secondary-regular-hover-icon);
+  color: var(--icon-button-secondary-hover-icon);
 }
 
 .rost-icon-button.rost-icon-button--type-tertiary:hover:where(:not(:disabled, [aria-disabled="true"])) {
@@ -155,13 +155,13 @@
 .rost-icon-button.rost-icon-button--type-tertiary:hover:where(:not(:disabled, [aria-disabled="true"])) .rost-icon-button__background {
   position: absolute;
   inset: 0;
-  background: var(--actions-tertiary-hover-background);
+  background: var(--icon-button-tertiary-hover-background);
   opacity: var(--opacity-mild);
   border-radius: var(--spacing-radius-full);
 }
 
 .rost-icon-button.rost-icon-button--type-tertiary:hover:where(:not(:disabled, [aria-disabled="true"])) .rost-icon-button__icons-arrow-left {
-  color: var(--actions-tertiary-hover-icon);
+  color: var(--icon-button-tertiary-hover-icon);
 }
 
 .rost-icon-button.rost-icon-button--type-primary:active:where(:not(:disabled, [aria-disabled="true"])) {
@@ -171,12 +171,12 @@
   padding-bottom: var(--spacing-gap-none);
   width: var(--spacing-size-medium-large);
   height: var(--spacing-size-medium-large);
-  background: var(--actions-primary-pressed-background);
-  box-shadow: inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-pressed-outline);
+  background: var(--icon-button-primary-pressed-background);
+  box-shadow: inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--icon-button-primary-pressed-outline);
 }
 
 .rost-icon-button.rost-icon-button--type-primary:active:where(:not(:disabled, [aria-disabled="true"])) .rost-icon-button__icons-arrow-left {
-  color: var(--actions-primary-pressed-icon);
+  color: var(--icon-button-primary-pressed-icon);
 }
 
 .rost-icon-button.rost-icon-button--type-secondary:active:where(:not(:disabled, [aria-disabled="true"])) {
@@ -192,9 +192,9 @@
   position: absolute;
   inset: 0;
   border-radius: var(--spacing-radius-full);
-  background: var(--actions-secondary-regular-pressed-background);
-  border-left-color: var(--actions-secondary-regular-pressed-outline);
-  border-top-color: var(--actions-secondary-regular-pressed-outline);
+  background: var(--icon-button-secondary-pressed-background);
+  border-left-color: var(--icon-button-secondary-pressed-outline);
+  border-top-color: var(--icon-button-secondary-pressed-outline);
   opacity: var(--opacity-mild);
   border-left-style: solid;
   border-left-width: var(--spacing-outline-small);
@@ -203,7 +203,7 @@
 }
 
 .rost-icon-button.rost-icon-button--type-secondary:active:where(:not(:disabled, [aria-disabled="true"])) .rost-icon-button__icons-arrow-left {
-  color: var(--actions-secondary-regular-pressed-icon);
+  color: var(--icon-button-secondary-pressed-icon);
 }
 
 .rost-icon-button.rost-icon-button--type-tertiary:active:where(:not(:disabled, [aria-disabled="true"])) {
@@ -218,13 +218,13 @@
 .rost-icon-button.rost-icon-button--type-tertiary:active:where(:not(:disabled, [aria-disabled="true"])) .rost-icon-button__background {
   position: absolute;
   inset: 0;
-  background: var(--actions-tertiary-pressed-background);
+  background: var(--icon-button-tertiary-pressed-background);
   opacity: var(--opacity-mild);
   border-radius: var(--spacing-radius-full);
 }
 
 .rost-icon-button.rost-icon-button--type-tertiary:active:where(:not(:disabled, [aria-disabled="true"])) .rost-icon-button__icons-arrow-left {
-  color: var(--actions-tertiary-pressed-icon);
+  color: var(--icon-button-tertiary-pressed-icon);
 }
 
 .rost-icon-button.rost-icon-button--type-primary:is(:disabled, [aria-disabled="true"]) {
@@ -236,12 +236,12 @@
   height: var(--spacing-size-medium-large);
   opacity: var(--opacity-gentle);
   cursor: default;
-  background: var(--actions-primary-disabled-background);
-  box-shadow: inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-disabled-outline);
+  background: var(--icon-button-primary-disabled-background);
+  box-shadow: inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--icon-button-primary-disabled-outline);
 }
 
 .rost-icon-button.rost-icon-button--type-primary:is(:disabled, [aria-disabled="true"]) .rost-icon-button__icons-arrow-left {
-  color: var(--actions-primary-disabled-icon);
+  color: var(--icon-button-primary-disabled-icon);
 }
 
 .rost-icon-button.rost-icon-button--type-secondary:is(:disabled, [aria-disabled="true"]) {
@@ -259,9 +259,9 @@
   position: absolute;
   inset: 0;
   border-radius: var(--spacing-radius-full);
-  background: var(--actions-secondary-regular-disabled-background);
-  border-left-color: var(--actions-secondary-regular-disabled-outline);
-  border-top-color: var(--actions-secondary-regular-disabled-outline);
+  background: var(--icon-button-secondary-disabled-background);
+  border-left-color: var(--icon-button-secondary-disabled-outline);
+  border-top-color: var(--icon-button-secondary-disabled-outline);
   opacity: var(--opacity-mild);
   border-left-style: solid;
   border-left-width: var(--spacing-outline-small);
@@ -270,7 +270,7 @@
 }
 
 .rost-icon-button.rost-icon-button--type-secondary:is(:disabled, [aria-disabled="true"]) .rost-icon-button__icons-arrow-left {
-  color: var(--actions-secondary-regular-disabled-icon);
+  color: var(--icon-button-secondary-disabled-icon);
 }
 
 .rost-icon-button.rost-icon-button--type-tertiary:is(:disabled, [aria-disabled="true"]) {
@@ -285,7 +285,7 @@
 }
 
 .rost-icon-button.rost-icon-button--type-tertiary:is(:disabled, [aria-disabled="true"]) .rost-icon-button__icons-arrow-left {
-  color: var(--actions-tertiary-disabled-icon);
+  color: var(--icon-button-tertiary-disabled-icon);
 }
 
 .rost-icon-button.rost-icon-button--type-primary:focus-visible {
@@ -295,8 +295,8 @@
   padding-bottom: var(--spacing-gap-none);
   width: var(--spacing-size-medium-large);
   height: var(--spacing-size-medium-large);
-  background: var(--actions-primary-focus-background);
-  box-shadow: inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-focus-outline);
+  background: var(--icon-button-primary-focus-background);
+  box-shadow: inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--icon-button-primary-focus-outline);
 }
 
 .rost-icon-button.rost-icon-button--type-primary:focus-visible .rost-icon-button__focus-ring {
@@ -304,13 +304,13 @@
   position: absolute;
   border-width: var(--spacing-outline-medium);
   border-radius: var(--spacing-radius-full);
-  border-color: var(--actions-primary-focus-focus-ring);
+  border-color: var(--icon-button-primary-focus-focus-ring);
   inset: calc(-1 * var(--spacing-gap-2xsmall));
   border-style: solid;
 }
 
 .rost-icon-button.rost-icon-button--type-primary:focus-visible .rost-icon-button__icons-arrow-left {
-  color: var(--actions-primary-focus-icon);
+  color: var(--icon-button-primary-focus-icon);
 }
 
 .rost-icon-button.rost-icon-button--type-secondary:focus-visible {
@@ -326,9 +326,9 @@
   position: absolute;
   inset: 0;
   border-radius: var(--spacing-radius-full);
-  background: var(--actions-secondary-regular-focus-background);
-  border-left-color: var(--actions-secondary-regular-focus-outline);
-  border-top-color: var(--actions-secondary-regular-focus-outline);
+  background: var(--icon-button-secondary-focus-background);
+  border-left-color: var(--icon-button-secondary-focus-outline);
+  border-top-color: var(--icon-button-secondary-focus-outline);
   opacity: var(--opacity-gentle);
   border-left-style: solid;
   border-left-width: var(--spacing-outline-small);
@@ -341,13 +341,13 @@
   position: absolute;
   border-width: var(--spacing-outline-medium);
   border-radius: var(--spacing-radius-full);
-  border-color: var(--actions-secondary-regular-focus-focus-ring);
+  border-color: var(--icon-button-secondary-focus-focus-ring);
   inset: calc(-1 * var(--spacing-gap-2xsmall));
   border-style: solid;
 }
 
 .rost-icon-button.rost-icon-button--type-secondary:focus-visible .rost-icon-button__icons-arrow-left {
-  color: var(--actions-secondary-regular-focus-icon);
+  color: var(--icon-button-secondary-focus-icon);
 }
 
 .rost-icon-button.rost-icon-button--type-tertiary:focus-visible {
@@ -364,13 +364,13 @@
   position: absolute;
   border-width: var(--spacing-outline-medium);
   border-radius: var(--spacing-radius-full);
-  border-color: var(--actions-secondary-regular-focus-focus-ring);
+  border-color: var(--icon-button-tertiary-focus-focus-ring);
   inset: calc(-1 * var(--spacing-gap-2xsmall));
   border-style: solid;
 }
 
 .rost-icon-button.rost-icon-button--type-tertiary:focus-visible .rost-icon-button__icons-arrow-left {
-  color: var(--actions-tertiary-focus-icon);
+  color: var(--icon-button-tertiary-focus-icon);
 }
 
 .rost-icon-button.rost-icon-button--type-project {
@@ -382,7 +382,7 @@
 .rost-icon-button.rost-icon-button--type-project .rost-icon-button__icons-arrow-left {
   width: var(--spacing-size-2xsmall);
   height: var(--spacing-size-2xsmall);
-  color: var(--actions-borderless-default-icon);
+  color: var(--icon-button-project-default-icon);
 }
 
 .rost-icon-button.rost-icon-button--type-project:hover:where(:not(:disabled, [aria-disabled="true"])) {
@@ -394,13 +394,13 @@
 .rost-icon-button.rost-icon-button--type-project:hover:where(:not(:disabled, [aria-disabled="true"])) .rost-icon-button__icons-arrow-left {
   width: var(--spacing-size-2xsmall);
   height: var(--spacing-size-2xsmall);
-  color: var(--actions-borderless-hover-icon);
+  color: var(--icon-button-project-hover-icon);
 }
 
 .rost-icon-button.rost-icon-button--type-project:hover:where(:not(:disabled, [aria-disabled="true"])) .rost-icon-button__background {
   position: absolute;
   inset: 0;
-  background: var(--actions-tertiary-hover-background);
+  background: var(--icon-button-project-hover-background);
   opacity: var(--opacity-mild);
   border-radius: var(--spacing-radius-full);
 }
@@ -414,13 +414,13 @@
 .rost-icon-button.rost-icon-button--type-project:active:where(:not(:disabled, [aria-disabled="true"])) .rost-icon-button__icons-arrow-left {
   width: var(--spacing-size-2xsmall);
   height: var(--spacing-size-2xsmall);
-  color: var(--actions-borderless-pressed-icon);
+  color: var(--icon-button-project-pressed-icon);
 }
 
 .rost-icon-button.rost-icon-button--type-project:active:where(:not(:disabled, [aria-disabled="true"])) .rost-icon-button__background {
   position: absolute;
   inset: 0;
-  background: var(--actions-tertiary-pressed-background);
+  background: var(--icon-button-project-pressed-background);
   opacity: var(--opacity-mild);
   border-radius: var(--spacing-radius-full);
 }
@@ -436,7 +436,7 @@
 .rost-icon-button.rost-icon-button--type-project:is(:disabled, [aria-disabled="true"]) .rost-icon-button__icons-arrow-left {
   width: var(--spacing-size-2xsmall);
   height: var(--spacing-size-2xsmall);
-  color: var(--actions-borderless-disabled-icon);
+  color: var(--icon-button-project-disabled-icon);
 }
 
 .rost-icon-button.rost-icon-button--type-project:focus-visible {
@@ -448,7 +448,7 @@
 .rost-icon-button.rost-icon-button--type-project:focus-visible .rost-icon-button__icons-arrow-left {
   width: var(--spacing-size-2xsmall);
   height: var(--spacing-size-2xsmall);
-  color: var(--actions-borderless-focus-icon);
+  color: var(--icon-button-project-focus-icon);
 }
 
 .rost-icon-button.rost-icon-button--type-project:focus-visible .rost-icon-button__focus-ring {
@@ -456,7 +456,7 @@
   position: absolute;
   border-width: var(--spacing-outline-medium);
   border-radius: var(--spacing-radius-full);
-  border-color: var(--actions-secondary-regular-focus-focus-ring);
+  border-color: var(--icon-button-project-focus-focus-ring);
   inset: calc(-1 * var(--spacing-gap-2xsmall));
   border-style: solid;
 }

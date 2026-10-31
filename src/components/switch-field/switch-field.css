@@ -21,7 +21,7 @@
   font-size: var(--typography-paragraph-font-size);
   line-height: var(--typography-paragraph-line-height);
   letter-spacing: var(--typography-paragraph-letter-spacing);
-  color: var(--actions-secondary-regular-default-label);
+  color: var(--switch-field-label);
   cursor: pointer;
 }
 

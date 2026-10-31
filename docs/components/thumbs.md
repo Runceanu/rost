@@ -89,29 +89,10 @@ Every token this component uses, across all its variants.
 
 | Token | Resolves to |
 |---|---|
-| `actions/primary/default/label` | `#060805` |
 | `effect/thumb` | `blur(12px)` |
 | `font-family/base` | `'General Sans Variable'` |
-| `non-interactive/background/positive/base` | `#00d669` |
-| `non-interactive/background/secondary` | `#171717` |
 | `opacity/medium` | `0.48` |
 | `opacity/mild` | `0.32` |
-| `project/default/icon` | `#747573` |
-| `project/default/label` | `#d3d9d5` |
-| `project/default/sub-label` | `#999` |
-| `project/disabled/icon` | `#747573` |
-| `project/disabled/label` | `#d3d9d5` |
-| `project/disabled/sub-label` | `#999` |
-| `project/focus/focus-ring` | `#999` |
-| `project/focus/icon` | `#747573` |
-| `project/focus/label` | `#d3d9d5` |
-| `project/focus/sub-label` | `#999` |
-| `project/hover/icon` | `#ededed` |
-| `project/hover/label` | `#00d669` |
-| `project/hover/sub-label` | `#ededed` |
-| `project/pressed/icon` | `#c2c7c3` |
-| `project/pressed/label` | `#00d669` |
-| `project/pressed/sub-label` | `#c2c7c3` |
 | `spacing/gap/large` | `24px` |
 | `spacing/gap/medium` | `16px` |
 | `spacing/gap/none` | `0px` |
@@ -125,6 +106,33 @@ Every token this component uses, across all its variants.
 | `spacing/size/2xsmall` | `16px` |
 | `spacing/size/3xsmall` | `12px` |
 | `spacing/size/small` | `24px` |
+| `thumbs/default/dot` | `#747573` |
+| `thumbs/default/label` | `#d3d9d5` |
+| `thumbs/default/number` | `#999` |
+| `thumbs/default/sub-label` | `#999` |
+| `thumbs/disabled/dot` | `#747573` |
+| `thumbs/disabled/label` | `#d3d9d5` |
+| `thumbs/disabled/number` | `#999` |
+| `thumbs/disabled/sub-label` | `#999` |
+| `thumbs/focus-ring` | `#999` |
+| `thumbs/focus/dot` | `#747573` |
+| `thumbs/focus/label` | `#d3d9d5` |
+| `thumbs/focus/number` | `#999` |
+| `thumbs/focus/sub-label` | `#999` |
+| `thumbs/hover/dot` | `#ededed` |
+| `thumbs/hover/label` | `#00d669` |
+| `thumbs/hover/number` | `#00d669` |
+| `thumbs/hover/sub-label` | `#ededed` |
+| `thumbs/lock` | `#060805` |
+| `thumbs/lock-plate` | `#00d669` |
+| `thumbs/locked/label` | `#d3d9d5` |
+| `thumbs/locked/number` | `#999` |
+| `thumbs/locked/sub-label` | `#999` |
+| `thumbs/pressed/dot` | `#c2c7c3` |
+| `thumbs/pressed/label` | `#00d669` |
+| `thumbs/pressed/number` | `#00d669` |
+| `thumbs/pressed/sub-label` | `#c2c7c3` |
+| `thumbs/slot` | `#171717` |
 | `typography/label/font-size` | `12px` |
 | `typography/label/font-weight/regular` | `400` |
 | `typography/label/letter-spacing` | `0px` |
@@ -138,8 +146,8 @@ Every token this component uses, across all its variants.
 
 | Part | Property | Value | Why |
 |---|---|---|---|
-| `shadow` | `background` | `linear-gradient(to bottom, rgba(6,8,5,0), var(--non-interactive-background-primary))` | A gradient from the page background, transparent, to the page background. The colour is the token; the ramp is the effect. |
-| `content` | `background` | `color-mix(in srgb, var(--non-interactive-background-primary) calc(var(--opacity-medium) * 100%), transparent)` | Composed from tokens: the page background at opacity/medium. It was base/black, which stays black in light while the text on it goes dark. |
+| `shadow` | `background` | `linear-gradient(to bottom, rgba(6,8,5,0), var(--thumbs-shade))` | A gradient from the page background, transparent, to the page background. The colour is the token; the ramp is the effect. |
+| `content` | `background` | `color-mix(in srgb, var(--thumbs-panel) calc(var(--opacity-medium) * 100%), transparent)` | Composed from tokens: the page background at opacity/medium. It was base/black, which stays black in light while the text on it goes dark. |
 | `dot` | `width` | `3px` | The dot's own size inside the icon. |
 | `dot` | `height` | `3px` | The dot's own size inside the icon. |
 | `focus-ring` | `inset` | `calc(-1 * var(--spacing-gap-2xsmall))` | Composed from a token: the ring sits spacing/gap/2xsmall outside the element. |

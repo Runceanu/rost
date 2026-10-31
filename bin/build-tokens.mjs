@@ -174,6 +174,8 @@ for (const [name, raw] of rawValues) {
 
 // ── Writing ────────────────────────────────────────────────────────────────
 
+// The interactive components with a token family of their own (Input's is `input/`, above).
+const COMPONENT_FAMILIES = ['button', 'icon-button', 'toggle', 'chip', 'tag', 'switch', 'switch-field', 'textarea', 'list-item', 'menu', 'tab-item', 'table-row', 'table-item', 'carousel', 'projects', 'thumbs', 'testimonials']
 const SECTIONS = [
   ['Typography', (n) => n.startsWith('font-family/') || n.startsWith('typography/')],
   ['Colour primitives (base)', (n) => n.startsWith('color/') || tokens[n].collection === 'library'],
@@ -183,6 +185,9 @@ const SECTIONS = [
   ['Interactive (things you pick from a list)', (n) => n.startsWith('interactive/')],
   ['Projects', (n) => n.startsWith('project/')],
   ['Tabs', (n) => n.startsWith('tabs/')],
+  // One family per interactive component, each aliasing the semantic tokens
+  // above, so a component can change without taking its neighbours with it.
+  ...COMPONENT_FAMILIES.map((c) => [`Component: ${c}`, (n) => n.startsWith(`${c}/`)]),
   ['Generic colours (no family in Figma)', (n) => !n.includes('/') && tokens[n].source === 'figma'],
   ['Spacing / base (the primitives)', (n) => n.startsWith('spacing/base')],
   ['Spacing / gap', (n) => n.startsWith('spacing/gap/')],

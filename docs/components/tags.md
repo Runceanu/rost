@@ -56,17 +56,6 @@ Every token this component uses, across all its variants.
 
 | Token | Resolves to |
 |---|---|
-| `actions/secondary/regular/default/background` | `#3a3a3a` |
-| `actions/secondary/regular/default/label` | `#d3d9d5` |
-| `actions/secondary/regular/disabled/background` | `#3a3a3a` |
-| `actions/secondary/regular/disabled/label` | `#d3d9d5` |
-| `actions/secondary/regular/focus/background` | `#3a3a3a` |
-| `actions/secondary/regular/focus/focus-ring` | `#999` |
-| `actions/secondary/regular/focus/label` | `#d3d9d5` |
-| `actions/secondary/regular/hover/background` | `#747573` |
-| `actions/secondary/regular/hover/label` | `#ededed` |
-| `actions/secondary/regular/pressed/background` | `#999` |
-| `actions/secondary/regular/pressed/label` | `#d3d9d5` |
 | `font-family/base` | `'General Sans Variable'` |
 | `opacity/gentle` | `0.24` |
 | `spacing/gap/3xsmall` | `2px` |
@@ -76,6 +65,17 @@ Every token this component uses, across all its variants.
 | `spacing/radius/small` | `8px` |
 | `spacing/radius/xsmall` | `4px` |
 | `spacing/size/xsmall` | `20px` |
+| `tag/background` | `#3a3a3a` |
+| `tag/disabled/background` | `#3a3a3a` |
+| `tag/disabled/label` | `#d3d9d5` |
+| `tag/focus-ring` | `#999` |
+| `tag/focus/background` | `#3a3a3a` |
+| `tag/focus/label` | `#d3d9d5` |
+| `tag/hover/background` | `#747573` |
+| `tag/hover/label` | `#ededed` |
+| `tag/label` | `#d3d9d5` |
+| `tag/pressed/background` | `#999` |
+| `tag/pressed/label` | `#d3d9d5` |
 | `typography/label/font-size` | `12px` |
 | `typography/label/font-weight/medium` | `500` |
 | `typography/label/letter-spacing` | `0px` |

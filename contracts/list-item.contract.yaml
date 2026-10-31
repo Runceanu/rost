@@ -117,7 +117,7 @@ elements:
       width: { value: 8px, untokenised: "The small Badge's own 8px dot." }
       height: { value: 8px, untokenised: "The small Badge's own 8px dot." }
       border-radius: { token: spacing/radius/full, value: 10000px }
-      background: { token: non-interactive/background/contrast, value: "#ededed" }
+      background: { token: list-item/dot, value: "#ededed" }
   action:
     optional: true
     styles:
@@ -144,153 +144,153 @@ variants:
     figmaNode: "346:3862"
     elements:
       background:
-        background: { token: interactive/active/default/background, value: "#00d669" }
+        background: { token: list-item/selected/default/background, value: "#00d669" }
         opacity: { token: opacity/solid, value: "1" }
       leading:
-        color: { token: interactive/active/default/icon, value: "#060805" }
+        color: { token: list-item/selected/default/icon, value: "#060805" }
       label:
-        color: { token: interactive/active/default/label, value: "#060805" }
+        color: { token: list-item/selected/default/label, value: "#060805" }
       description:
-        color: { token: interactive/active/default/sub-label, value: "#282828" }
+        color: { token: list-item/selected/default/sub-label, value: "#282828" }
       action:
-        color: { token: interactive/active/default/icon, value: "#060805" }
+        color: { token: list-item/selected/default/icon, value: "#060805" }
       dot:
-        background: { token: non-interactive/background/primary, value: "#060805", notes: "Figma sets the badge to the light theme on a selected row, where `contrast` comes out as #060805; in the dark theme that's `background/primary`." }
+        background: { token: list-item/selected/default/dot, value: "#060805", notes: "Figma sets the badge to the light theme on a selected row, where `contrast` comes out as #060805; in the dark theme that's `background/primary`." }
   - when: { state: Hover, selected: true }
     figmaNode: "346:3903"
     elements:
       background:
-        background: { token: interactive/active/hover/background, value: "#00b450" }
+        background: { token: list-item/selected/hover/background, value: "#00b450" }
         opacity: { token: opacity/solid, value: "1" }
       leading:
-        color: { token: interactive/active/hover/icon, value: "#060805" }
+        color: { token: list-item/selected/hover/icon, value: "#060805" }
       label:
-        color: { token: interactive/active/hover/label, value: "#060805" }
+        color: { token: list-item/selected/hover/label, value: "#060805" }
       description:
-        color: { token: interactive/active/hover/sub-label, value: "#3a3a3a" }
+        color: { token: list-item/selected/hover/sub-label, value: "#3a3a3a" }
       action:
-        color: { token: interactive/active/hover/icon, value: "#060805" }
+        color: { token: list-item/selected/hover/icon, value: "#060805" }
       dot:
-        background: { token: non-interactive/background/primary, value: "#060805", notes: "Figma sets the badge to the light theme on a selected row, where `contrast` comes out as #060805; in the dark theme that's `background/primary`." }
+        background: { token: list-item/selected/hover/dot, value: "#060805", notes: "Figma sets the badge to the light theme on a selected row, where `contrast` comes out as #060805; in the dark theme that's `background/primary`." }
   - when: { state: Pressed, selected: true }
     figmaNode: "346:3882"
     elements:
       background:
-        background: { token: interactive/active/pressed/background, value: "#00913a" }
+        background: { token: list-item/selected/pressed/background, value: "#00913a" }
         opacity: { token: opacity/solid, value: "1" }
       leading:
-        color: { token: interactive/active/pressed/icon, value: "#060805" }
+        color: { token: list-item/selected/pressed/icon, value: "#060805" }
       label:
-        color: { token: interactive/active/pressed/label, value: "#060805" }
+        color: { token: list-item/selected/pressed/label, value: "#060805" }
       description:
-        color: { token: interactive/active/pressed/sub-label, value: "#3a3a3a" }
+        color: { token: list-item/selected/pressed/sub-label, value: "#3a3a3a" }
       action:
-        color: { token: interactive/active/pressed/icon, value: "#060805" }
+        color: { token: list-item/selected/pressed/icon, value: "#060805" }
       dot:
-        background: { token: non-interactive/background/primary, value: "#060805", notes: "Figma sets the badge to the light theme on a selected row, where `contrast` comes out as #060805; in the dark theme that's `background/primary`." }
+        background: { token: list-item/selected/pressed/dot, value: "#060805", notes: "Figma sets the badge to the light theme on a selected row, where `contrast` comes out as #060805; in the dark theme that's `background/primary`." }
   - when: { state: Focus, selected: true }
     figmaNode: "346:3892"
     elements:
       background:
-        background: { token: interactive/active/focus/background, value: "#00d669" }
+        background: { token: list-item/selected/focus/background, value: "#00d669" }
         opacity: { token: opacity/solid, value: "1" }
       leading:
-        color: { token: interactive/active/focus/icon, value: "#060805" }
+        color: { token: list-item/selected/focus/icon, value: "#060805" }
       label:
-        color: { token: interactive/active/focus/label, value: "#060805" }
+        color: { token: list-item/selected/focus/label, value: "#060805" }
       description:
-        color: { token: interactive/active/focus/sub-label, value: "#3a3a3a" }
+        color: { token: list-item/selected/focus/sub-label, value: "#3a3a3a" }
       action:
-        color: { token: interactive/active/focus/icon, value: "#060805" }
+        color: { token: list-item/selected/focus/icon, value: "#060805" }
       dot:
-        background: { token: non-interactive/background/primary, value: "#060805", notes: "Figma sets the badge to the light theme on a selected row, where `contrast` comes out as #060805; in the dark theme that's `background/primary`." }
+        background: { token: list-item/selected/focus/dot, value: "#060805", notes: "Figma sets the badge to the light theme on a selected row, where `contrast` comes out as #060805; in the dark theme that's `background/primary`." }
       focus-ring:
         display: { value: block, assert: false }
-        border-color: { token: interactive/active/focus/focus-ring, value: "#b6ffda" }
+        border-color: { token: list-item/selected/focus/focus-ring, value: "#b6ffda" }
   - when: { state: Disabled, selected: true }
     figmaNode: "346:3872"
     elements:
       root:
         opacity: { token: opacity/gentle, value: "0.24" }
       background:
-        background: { token: interactive/active/disabled/background, value: "#00d669" }
+        background: { token: list-item/selected/disabled/background, value: "#00d669" }
         opacity: { token: opacity/solid, value: "1" }
       leading:
-        color: { token: interactive/active/disabled/icon, value: "#060805" }
+        color: { token: list-item/selected/disabled/icon, value: "#060805" }
       label:
-        color: { token: interactive/active/disabled/label, value: "#060805" }
+        color: { token: list-item/selected/disabled/label, value: "#060805" }
       description:
-        color: { token: interactive/active/disabled/sub-label, value: "#3a3a3a" }
+        color: { token: list-item/selected/disabled/sub-label, value: "#3a3a3a" }
       action:
-        color: { token: interactive/active/disabled/icon, value: "#060805" }
+        color: { token: list-item/selected/disabled/icon, value: "#060805" }
       dot:
-        background: { token: non-interactive/background/primary, value: "#060805", notes: "Figma sets the badge to the light theme on a selected row, where `contrast` comes out as #060805; in the dark theme that's `background/primary`." }
+        background: { token: list-item/selected/disabled/dot, value: "#060805", notes: "Figma sets the badge to the light theme on a selected row, where `contrast` comes out as #060805; in the dark theme that's `background/primary`." }
   - when: { state: Default, selected: false }
     figmaNode: "346:3367"
     elements:
       leading:
-        color: { token: interactive/inactive/default/icon, value: "#00d669" }
+        color: { token: list-item/unselected/default/icon, value: "#00d669" }
       label:
-        color: { token: interactive/inactive/default/label, value: "#d3d9d5" }
+        color: { token: list-item/unselected/default/label, value: "#d3d9d5" }
       description:
-        color: { token: interactive/inactive/default/sub-label, value: "#999999" }
+        color: { token: list-item/unselected/default/sub-label, value: "#999999" }
       action:
-        color: { token: interactive/inactive/default/icon, value: "#00d669" }
+        color: { token: list-item/unselected/default/icon, value: "#00d669" }
   - when: { state: Hover, selected: false }
     figmaNode: "346:3649"
     elements:
       background:
-        background: { token: interactive/inactive/hover/background, value: "#006f27" }
+        background: { token: list-item/unselected/hover/background, value: "#006f27" }
         opacity: { token: opacity/gentle, value: "0.24" }
       leading:
-        color: { token: interactive/inactive/hover/icon, value: "#00b450" }
+        color: { token: list-item/unselected/hover/icon, value: "#00b450" }
       label:
-        color: { token: interactive/inactive/hover/label, value: "#ededed" }
+        color: { token: list-item/unselected/hover/label, value: "#ededed" }
       description:
-        color: { token: interactive/inactive/hover/sub-label, value: "#d3d9d5" }
+        color: { token: list-item/unselected/hover/sub-label, value: "#d3d9d5" }
       action:
-        color: { token: interactive/inactive/hover/icon, value: "#00b450" }
+        color: { token: list-item/unselected/hover/icon, value: "#00b450" }
   - when: { state: Pressed, selected: false }
     figmaNode: "346:3725"
     elements:
       background:
-        background: { token: interactive/inactive/pressed/background, value: "#00913a" }
+        background: { token: list-item/unselected/pressed/background, value: "#00913a" }
         opacity: { token: opacity/gentle, value: "0.24" }
       leading:
-        color: { token: interactive/inactive/pressed/icon, value: "#00d669" }
+        color: { token: list-item/unselected/pressed/icon, value: "#00d669" }
       label:
-        color: { token: interactive/inactive/pressed/label, value: "#d3d9d5" }
+        color: { token: list-item/unselected/pressed/label, value: "#d3d9d5" }
       description:
-        color: { token: interactive/inactive/pressed/sub-label, value: "#c2c7c3" }
+        color: { token: list-item/unselected/pressed/sub-label, value: "#c2c7c3" }
       action:
-        color: { token: interactive/inactive/pressed/icon, value: "#00d669" }
+        color: { token: list-item/unselected/pressed/icon, value: "#00d669" }
   - when: { state: Focus, selected: false }
     figmaNode: "346:3689"
     elements:
       leading:
-        color: { token: interactive/inactive/focus/icon, value: "#00d669" }
+        color: { token: list-item/unselected/focus/icon, value: "#00d669" }
       label:
-        color: { token: interactive/inactive/focus/label, value: "#d3d9d5" }
+        color: { token: list-item/unselected/focus/label, value: "#d3d9d5" }
       description:
-        color: { token: interactive/inactive/focus/sub-label, value: "#999999" }
+        color: { token: list-item/unselected/focus/sub-label, value: "#999999" }
       action:
-        color: { token: interactive/inactive/focus/icon, value: "#00d669" }
+        color: { token: list-item/unselected/focus/icon, value: "#00d669" }
       focus-ring:
         display: { value: block, assert: false }
-        border-color: { token: interactive/inactive/focus/focus-ring, value: "#999999" }
+        border-color: { token: list-item/unselected/focus/focus-ring, value: "#999999" }
   - when: { state: Disabled, selected: false }
     figmaNode: "346:3759"
     elements:
       root:
         opacity: { token: opacity/gentle, value: "0.24" }
       leading:
-        color: { token: interactive/inactive/disabled/icon, value: "#00d669" }
+        color: { token: list-item/unselected/disabled/icon, value: "#00d669" }
       label:
-        color: { token: interactive/inactive/disabled/label, value: "#d3d9d5" }
+        color: { token: list-item/unselected/disabled/label, value: "#d3d9d5" }
       description:
-        color: { token: interactive/inactive/disabled/sub-label, value: "#999999" }
+        color: { token: list-item/unselected/disabled/sub-label, value: "#999999" }
       action:
-        color: { token: interactive/inactive/disabled/icon, value: "#00d669" }
+        color: { token: list-item/unselected/disabled/icon, value: "#00d669" }
   - when: { iconOnly: true }
     elements:
       root:
@@ -300,15 +300,15 @@ variants:
   - when: { badgeStatus: Negative }
     elements:
       dot:
-        background: { token: non-interactive/background/negative/base, value: "#e93120", notes: "Badge's small Negative dot." }
+        background: { token: list-item/badge/negative/dot, value: "#e93120", notes: "Badge's small Negative dot." }
   - when: { badgeStatus: Positive }
     elements:
       dot:
-        background: { token: non-interactive/background/positive/base, value: "#00d669", notes: "Badge's small Positive dot." }
+        background: { token: list-item/badge/positive/dot, value: "#00d669", notes: "Badge's small Positive dot." }
   - when: { badgeStatus: Warning }
     elements:
       dot:
-        background: { token: non-interactive/background/warning/base, value: "#fda50d", notes: "Badge's small Warning dot." }
+        background: { token: list-item/badge/warning/dot, value: "#fda50d", notes: "Badge's small Warning dot." }
 guidance:
   status: agreed
   use:

@@ -93,7 +93,7 @@
   width: 8px;
   height: 8px;
   border-radius: var(--spacing-radius-full);
-  background: var(--non-interactive-background-contrast);
+  background: var(--list-item-dot);
 }
 
 .rost-list-item__action {
@@ -115,116 +115,116 @@
 
 .rost-list-item.rost-list-item--selected .rost-list-item__label {
   font-weight: var(--typography-paragraph-font-weight-medium);
-  color: var(--interactive-active-default-label);
+  color: var(--list-item-selected-default-label);
 }
 
 .rost-list-item.rost-list-item--selected .rost-list-item__background {
-  background: var(--interactive-active-default-background);
+  background: var(--list-item-selected-default-background);
   opacity: var(--opacity-solid);
 }
 
 .rost-list-item.rost-list-item--selected .rost-list-item__leading {
-  color: var(--interactive-active-default-icon);
+  color: var(--list-item-selected-default-icon);
 }
 
 .rost-list-item.rost-list-item--selected .rost-list-item__description {
-  color: var(--interactive-active-default-sub-label);
+  color: var(--list-item-selected-default-sub-label);
 }
 
 .rost-list-item.rost-list-item--selected .rost-list-item__action {
-  color: var(--interactive-active-default-icon);
+  color: var(--list-item-selected-default-icon);
 }
 
 .rost-list-item.rost-list-item--selected .rost-list-item__dot {
-  background: var(--non-interactive-background-primary);
+  background: var(--list-item-selected-default-dot);
 }
 
 .rost-list-item:hover:where(:not(:disabled, [aria-disabled="true"])).rost-list-item--selected .rost-list-item__label {
   font-weight: var(--typography-paragraph-font-weight-medium);
-  color: var(--interactive-active-hover-label);
+  color: var(--list-item-selected-hover-label);
 }
 
 .rost-list-item:hover:where(:not(:disabled, [aria-disabled="true"])).rost-list-item--selected .rost-list-item__background {
-  background: var(--interactive-active-hover-background);
+  background: var(--list-item-selected-hover-background);
   opacity: var(--opacity-solid);
 }
 
 .rost-list-item:hover:where(:not(:disabled, [aria-disabled="true"])).rost-list-item--selected .rost-list-item__leading {
-  color: var(--interactive-active-hover-icon);
+  color: var(--list-item-selected-hover-icon);
 }
 
 .rost-list-item:hover:where(:not(:disabled, [aria-disabled="true"])).rost-list-item--selected .rost-list-item__description {
-  color: var(--interactive-active-hover-sub-label);
+  color: var(--list-item-selected-hover-sub-label);
 }
 
 .rost-list-item:hover:where(:not(:disabled, [aria-disabled="true"])).rost-list-item--selected .rost-list-item__action {
-  color: var(--interactive-active-hover-icon);
+  color: var(--list-item-selected-hover-icon);
 }
 
 .rost-list-item:hover:where(:not(:disabled, [aria-disabled="true"])).rost-list-item--selected .rost-list-item__dot {
-  background: var(--non-interactive-background-primary);
+  background: var(--list-item-selected-hover-dot);
 }
 
 .rost-list-item:active:where(:not(:disabled, [aria-disabled="true"])).rost-list-item--selected .rost-list-item__label {
   font-weight: var(--typography-paragraph-font-weight-medium);
-  color: var(--interactive-active-pressed-label);
+  color: var(--list-item-selected-pressed-label);
 }
 
 .rost-list-item:active:where(:not(:disabled, [aria-disabled="true"])).rost-list-item--selected .rost-list-item__background {
-  background: var(--interactive-active-pressed-background);
+  background: var(--list-item-selected-pressed-background);
   opacity: var(--opacity-solid);
 }
 
 .rost-list-item:active:where(:not(:disabled, [aria-disabled="true"])).rost-list-item--selected .rost-list-item__leading {
-  color: var(--interactive-active-pressed-icon);
+  color: var(--list-item-selected-pressed-icon);
 }
 
 .rost-list-item:active:where(:not(:disabled, [aria-disabled="true"])).rost-list-item--selected .rost-list-item__description {
-  color: var(--interactive-active-pressed-sub-label);
+  color: var(--list-item-selected-pressed-sub-label);
 }
 
 .rost-list-item:active:where(:not(:disabled, [aria-disabled="true"])).rost-list-item--selected .rost-list-item__action {
-  color: var(--interactive-active-pressed-icon);
+  color: var(--list-item-selected-pressed-icon);
 }
 
 .rost-list-item:active:where(:not(:disabled, [aria-disabled="true"])).rost-list-item--selected .rost-list-item__dot {
-  background: var(--non-interactive-background-primary);
+  background: var(--list-item-selected-pressed-dot);
 }
 
 .rost-list-item:focus-visible.rost-list-item--selected .rost-list-item__label {
   font-weight: var(--typography-paragraph-font-weight-medium);
-  color: var(--interactive-active-focus-label);
+  color: var(--list-item-selected-focus-label);
 }
 
 .rost-list-item:focus-visible.rost-list-item--selected .rost-list-item__background {
-  background: var(--interactive-active-focus-background);
+  background: var(--list-item-selected-focus-background);
   opacity: var(--opacity-solid);
 }
 
 .rost-list-item:focus-visible.rost-list-item--selected .rost-list-item__leading {
-  color: var(--interactive-active-focus-icon);
+  color: var(--list-item-selected-focus-icon);
 }
 
 .rost-list-item:focus-visible.rost-list-item--selected .rost-list-item__description {
-  color: var(--interactive-active-focus-sub-label);
+  color: var(--list-item-selected-focus-sub-label);
 }
 
 .rost-list-item:focus-visible.rost-list-item--selected .rost-list-item__action {
-  color: var(--interactive-active-focus-icon);
+  color: var(--list-item-selected-focus-icon);
 }
 
 .rost-list-item:focus-visible.rost-list-item--selected .rost-list-item__dot {
-  background: var(--non-interactive-background-primary);
+  background: var(--list-item-selected-focus-dot);
 }
 
 .rost-list-item:focus-visible.rost-list-item--selected .rost-list-item__focus-ring {
   display: block;
-  border-color: var(--interactive-active-focus-focus-ring);
+  border-color: var(--list-item-selected-focus-focus-ring);
 }
 
 .rost-list-item:is(:disabled, [aria-disabled="true"]).rost-list-item--selected .rost-list-item__label {
   font-weight: var(--typography-paragraph-font-weight-medium);
-  color: var(--interactive-active-disabled-label);
+  color: var(--list-item-selected-disabled-label);
 }
 
 .rost-list-item:is(:disabled, [aria-disabled="true"]).rost-list-item--selected {
@@ -232,103 +232,103 @@
 }
 
 .rost-list-item:is(:disabled, [aria-disabled="true"]).rost-list-item--selected .rost-list-item__background {
-  background: var(--interactive-active-disabled-background);
+  background: var(--list-item-selected-disabled-background);
   opacity: var(--opacity-solid);
 }
 
 .rost-list-item:is(:disabled, [aria-disabled="true"]).rost-list-item--selected .rost-list-item__leading {
-  color: var(--interactive-active-disabled-icon);
+  color: var(--list-item-selected-disabled-icon);
 }
 
 .rost-list-item:is(:disabled, [aria-disabled="true"]).rost-list-item--selected .rost-list-item__description {
-  color: var(--interactive-active-disabled-sub-label);
+  color: var(--list-item-selected-disabled-sub-label);
 }
 
 .rost-list-item:is(:disabled, [aria-disabled="true"]).rost-list-item--selected .rost-list-item__action {
-  color: var(--interactive-active-disabled-icon);
+  color: var(--list-item-selected-disabled-icon);
 }
 
 .rost-list-item:is(:disabled, [aria-disabled="true"]).rost-list-item--selected .rost-list-item__dot {
-  background: var(--non-interactive-background-primary);
+  background: var(--list-item-selected-disabled-dot);
 }
 
 .rost-list-item:not(.rost-list-item--selected) .rost-list-item__leading {
-  color: var(--interactive-inactive-default-icon);
+  color: var(--list-item-unselected-default-icon);
 }
 
 .rost-list-item:not(.rost-list-item--selected) .rost-list-item__label {
-  color: var(--interactive-inactive-default-label);
+  color: var(--list-item-unselected-default-label);
 }
 
 .rost-list-item:not(.rost-list-item--selected) .rost-list-item__description {
-  color: var(--interactive-inactive-default-sub-label);
+  color: var(--list-item-unselected-default-sub-label);
 }
 
 .rost-list-item:not(.rost-list-item--selected) .rost-list-item__action {
-  color: var(--interactive-inactive-default-icon);
+  color: var(--list-item-unselected-default-icon);
 }
 
 .rost-list-item:hover:where(:not(:disabled, [aria-disabled="true"])):not(.rost-list-item--selected) .rost-list-item__background {
-  background: var(--interactive-inactive-hover-background);
+  background: var(--list-item-unselected-hover-background);
   opacity: var(--opacity-gentle);
 }
 
 .rost-list-item:hover:where(:not(:disabled, [aria-disabled="true"])):not(.rost-list-item--selected) .rost-list-item__leading {
-  color: var(--interactive-inactive-hover-icon);
+  color: var(--list-item-unselected-hover-icon);
 }
 
 .rost-list-item:hover:where(:not(:disabled, [aria-disabled="true"])):not(.rost-list-item--selected) .rost-list-item__label {
-  color: var(--interactive-inactive-hover-label);
+  color: var(--list-item-unselected-hover-label);
 }
 
 .rost-list-item:hover:where(:not(:disabled, [aria-disabled="true"])):not(.rost-list-item--selected) .rost-list-item__description {
-  color: var(--interactive-inactive-hover-sub-label);
+  color: var(--list-item-unselected-hover-sub-label);
 }
 
 .rost-list-item:hover:where(:not(:disabled, [aria-disabled="true"])):not(.rost-list-item--selected) .rost-list-item__action {
-  color: var(--interactive-inactive-hover-icon);
+  color: var(--list-item-unselected-hover-icon);
 }
 
 .rost-list-item:active:where(:not(:disabled, [aria-disabled="true"])):not(.rost-list-item--selected) .rost-list-item__background {
-  background: var(--interactive-inactive-pressed-background);
+  background: var(--list-item-unselected-pressed-background);
   opacity: var(--opacity-gentle);
 }
 
 .rost-list-item:active:where(:not(:disabled, [aria-disabled="true"])):not(.rost-list-item--selected) .rost-list-item__leading {
-  color: var(--interactive-inactive-pressed-icon);
+  color: var(--list-item-unselected-pressed-icon);
 }
 
 .rost-list-item:active:where(:not(:disabled, [aria-disabled="true"])):not(.rost-list-item--selected) .rost-list-item__label {
-  color: var(--interactive-inactive-pressed-label);
+  color: var(--list-item-unselected-pressed-label);
 }
 
 .rost-list-item:active:where(:not(:disabled, [aria-disabled="true"])):not(.rost-list-item--selected) .rost-list-item__description {
-  color: var(--interactive-inactive-pressed-sub-label);
+  color: var(--list-item-unselected-pressed-sub-label);
 }
 
 .rost-list-item:active:where(:not(:disabled, [aria-disabled="true"])):not(.rost-list-item--selected) .rost-list-item__action {
-  color: var(--interactive-inactive-pressed-icon);
+  color: var(--list-item-unselected-pressed-icon);
 }
 
 .rost-list-item:focus-visible:not(.rost-list-item--selected) .rost-list-item__leading {
-  color: var(--interactive-inactive-focus-icon);
+  color: var(--list-item-unselected-focus-icon);
 }
 
 .rost-list-item:focus-visible:not(.rost-list-item--selected) .rost-list-item__label {
-  color: var(--interactive-inactive-focus-label);
+  color: var(--list-item-unselected-focus-label);
 }
 
 .rost-list-item:focus-visible:not(.rost-list-item--selected) .rost-list-item__description {
-  color: var(--interactive-inactive-focus-sub-label);
+  color: var(--list-item-unselected-focus-sub-label);
 }
 
 .rost-list-item:focus-visible:not(.rost-list-item--selected) .rost-list-item__action {
-  color: var(--interactive-inactive-focus-icon);
+  color: var(--list-item-unselected-focus-icon);
 }
 
 .rost-list-item:focus-visible:not(.rost-list-item--selected) .rost-list-item__focus-ring {
   display: block;
-  border-color: var(--interactive-inactive-focus-focus-ring);
+  border-color: var(--list-item-unselected-focus-focus-ring);
 }
 
 .rost-list-item:is(:disabled, [aria-disabled="true"]):not(.rost-list-item--selected) {
@@ -336,19 +336,19 @@
 }
 
 .rost-list-item:is(:disabled, [aria-disabled="true"]):not(.rost-list-item--selected) .rost-list-item__leading {
-  color: var(--interactive-inactive-disabled-icon);
+  color: var(--list-item-unselected-disabled-icon);
 }
 
 .rost-list-item:is(:disabled, [aria-disabled="true"]):not(.rost-list-item--selected) .rost-list-item__label {
-  color: var(--interactive-inactive-disabled-label);
+  color: var(--list-item-unselected-disabled-label);
 }
 
 .rost-list-item:is(:disabled, [aria-disabled="true"]):not(.rost-list-item--selected) .rost-list-item__description {
-  color: var(--interactive-inactive-disabled-sub-label);
+  color: var(--list-item-unselected-disabled-sub-label);
 }
 
 .rost-list-item:is(:disabled, [aria-disabled="true"]):not(.rost-list-item--selected) .rost-list-item__action {
-  color: var(--interactive-inactive-disabled-icon);
+  color: var(--list-item-unselected-disabled-icon);
 }
 
 .rost-list-item.rost-list-item--icon-only {
@@ -360,13 +360,13 @@
 }
 
 .rost-list-item.rost-list-item--badge-status-negative .rost-list-item__dot {
-  background: var(--non-interactive-background-negative-base);
+  background: var(--list-item-badge-negative-dot);
 }
 
 .rost-list-item.rost-list-item--badge-status-positive .rost-list-item__dot {
-  background: var(--non-interactive-background-positive-base);
+  background: var(--list-item-badge-positive-dot);
 }
 
 .rost-list-item.rost-list-item--badge-status-warning .rost-list-item__dot {
-  background: var(--non-interactive-background-warning-base);
+  background: var(--list-item-badge-warning-dot);
 }
