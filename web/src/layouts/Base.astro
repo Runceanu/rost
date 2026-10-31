@@ -33,9 +33,10 @@ const NAV: [string, string][] = [['/components/', 'Components'], ['/tokens/', 'T
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap" />
     <script is:inline>
-      // Before anything paints: the theme you picked last time, if you picked one.
-      // Without one there's no data-theme, and tokens.css stays dark.
-      try { const t = localStorage.getItem('rost-theme'); if (t === 'light' || t === 'dark') document.documentElement.dataset.theme = t } catch {}
+      // Before anything paints: the theme you picked earlier in this visit, if you
+      // picked one. A new visit has none, so tokens.css stays dark. The old
+      // remembered choice in localStorage goes, so it can't open light again.
+      try { localStorage.removeItem('rost-theme'); const t = sessionStorage.getItem('rost-theme'); if (t === 'light' || t === 'dark') document.documentElement.dataset.theme = t } catch {}
     </script>
   </head>
   <body>
@@ -124,7 +125,7 @@ const NAV: [string, string][] = [['/components/', 'Components'], ['/tokens/', 'T
     </script>
     <script>
       // Light or dark. The switch says what it will do, flips data-theme on
-      // <html> and remembers it. Until you use it the site is dark.
+      // <html> and remembers it for this visit only. Every new visit opens dark.
       const html = document.documentElement
       const current = () => (html.dataset.theme === 'light' ? 'light' : 'dark')
       const changed = () => {
@@ -135,7 +136,7 @@ const NAV: [string, string][] = [['/components/', 'Components'], ['/tokens/', 'T
       for (const b of document.querySelectorAll<HTMLElement>('[data-theme-switch]'))
         b.addEventListener('click', () => {
           html.dataset.theme = current() === 'light' ? 'dark' : 'light'
-          try { localStorage.setItem('rost-theme', html.dataset.theme) } catch {}
+          try { sessionStorage.setItem('rost-theme', html.dataset.theme) } catch {}
           changed()
         })
       changed()

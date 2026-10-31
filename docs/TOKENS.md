@@ -207,7 +207,7 @@ Dark is the default. It's what Figma draws first and what both apps use. Light i
 
 So an app can update without looking at light first. Neither has been checked in light yet.
 
-rost.build has a switch in the header. It remembers your pick in `localStorage` (`rost-theme`); until you use it, the site is dark.
+rost.build has a switch in the header. It always opens dark. A light pick holds while you move around, and the next visit opens dark again.
 
 ### Where the light values come from
 
