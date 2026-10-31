@@ -44,6 +44,14 @@ elements:
       min-width: { token: spacing/size/small, value: 24px }
   label: {}
   outline: {}
+  dot:
+    optional: true
+    notes: "Small only: the whole badge is the dot. Drawn as a mask in the status colour, so it follows the theme. It was an SVG file with its colour in it."
+    styles:
+      display: { value: block, assert: false }
+      width: { value: 24px, token: spacing/size/small }
+      height: { value: 24px, token: spacing/size/small }
+      mask: { value: url(./dot.svg) center / contain no-repeat, untokenised: "The dot's shape. The colour is the token." }
   icon:
     optional: true
   icons-dot:
@@ -91,16 +99,31 @@ variants:
       icons-dot:
         flex-shrink: { value: "0", assert: false }
         position: { value: relative, assert: false }
+        display: { value: block, assert: false }
         width: { value: 16px, token: spacing/size/2xsmall }
         height: { value: 16px, token: spacing/size/2xsmall }
+        background: { token: non-interactive/foreground/tertiary, value: "#999", notes: "The label's colour, as a mask, so it follows the theme." }
+        mask: { value: url(./icon-dot.svg) center / contain no-repeat, untokenised: "The dot's shape. The colour is the token." }
   - when: { status: Default, size: Small }
     figmaNode: "139:396"
+    elements:
+      dot:
+        background: { token: non-interactive/foreground/primary, value: "#ededed" }
   - when: { status: Negative, size: Small }
     figmaNode: "139:433"
+    elements:
+      dot:
+        background: { token: non-interactive/foreground/negative/base, value: "#e93120" }
   - when: { status: Positive, size: Small }
     figmaNode: "139:439"
+    elements:
+      dot:
+        background: { token: non-interactive/foreground/positive/base, value: "#00d669" }
   - when: { status: Warning, size: Small }
     figmaNode: "139:445"
+    elements:
+      dot:
+        background: { token: non-interactive/foreground/warning/base, value: "#fda50d" }
   - when: { status: Default, size: Medium }
     figmaNode: "346:3994"
     elements:

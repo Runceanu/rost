@@ -7,8 +7,8 @@
 | | |
 |---|---|
 | Kind | pattern |
-| Contract | `draft` · [switch-field.contract.yaml](../../contracts/switch-field.contract.yaml) |
-| Guidance | `proposed` |
+| Contract | `review` · [switch-field.contract.yaml](../../contracts/switch-field.contract.yaml) |
+| Guidance | `agreed` |
 | Source | [Figma 545:57](https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=545-57) · read 2026-10-31 · frozen 2026-10-31 |
 | Implemented in | nowhere yet |
 
@@ -41,7 +41,7 @@
 
 The label is a `<label>` tied to the switch, so a click anywhere on the words flips it, the way a checkbox's label does. Hover, press and focus are the switch's own. Disabled fades both.
 
-It's my draft, made when I took the label out of Switch so it could go on either side. In Figma it's on the switch page, next to Switch, with a real Switch instance inside that you can set on or off.
+I made it when I took the label out of Switch so it could go on either side. In Figma it's on the switch page, next to Switch, with a real Switch instance inside that you can set on or off.
 
 ## Accessibility
 

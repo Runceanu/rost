@@ -2,7 +2,7 @@
 
 # Illustration
 
-> One of Rost's 24 small drawings, 72px, in its own greys and green.
+> One of Rost's 24 small drawings, 72px, in two greys and a green that follow the theme.
 
 | | |
 |---|---|
@@ -21,7 +21,11 @@
 
 ## Anatomy
 
-- `root`: A `<span>` with the drawing as its background. It keeps its own colours, so unlike an Icon it doesn't follow the text.
+- `root`: A `<span>` holding the drawing, inline. Unlike an Icon it doesn't take the text colour: its three colours are its own tokens.
+- `drawing`: The SVG itself, from `assets/illustrations/`, made inline by `bin/build-illustrations.mjs` so its colours can follow the theme.
+- `shade`: The darkest shapes, a step off the page. Every drawing is made of these three colours and nothing else.
+- `form`: The mid grey, the main shapes.
+- `accent`: The one green. A step deeper in light, where the bright green reads as a sticker.
 
 ## When to use
 
@@ -34,7 +38,7 @@
 
 ## Behaviour
 
-A fixed 72px square. The drawing's colours are baked in, Figma's greys with one green, and they're made for a dark ground.
+A fixed 72px square. Every drawing uses the same three colours: `illustration/shade`, the darkest, a step off the page; `illustration/form`, the mid grey; and `illustration/accent`, the green. In dark they're Figma's own. In light I picked the step that sits as far from the white page as the dark one sits from the black: shade and form are light greys, and the green goes one step deeper.
 
 ## Accessibility
 
@@ -51,35 +55,16 @@ Every token this component uses, across all its variants.
 
 | Token | Resolves to |
 |---|---|
+| `illustration/accent` | `#37d273` |
+| `illustration/form` | `#454545` |
+| `illustration/shade` | `#232423` |
 | `spacing/size/2xlarge` | `72px` |
 
 ## No token, on purpose
 
 | Part | Property | Value | Why |
 |---|---|---|---|
-| `root` | `background-image` | `url(./svg/activation-and-conversion.svg)` | The drawing, `assets/illustrations/activation-and-conversion.svg` (Figma's "Activation & conversion"). Its colours are Figma's own. |
-| `root` | `background-image` | `url(./svg/alignment.svg)` | The drawing, `assets/illustrations/alignment.svg` (Figma's "Alignment"). Its colours are Figma's own. |
-| `root` | `background-image` | `url(./svg/art.svg)` | The drawing, `assets/illustrations/art.svg` (Figma's "Art"). Its colours are Figma's own. |
-| `root` | `background-image` | `url(./svg/audit-and-strategy.svg)` | The drawing, `assets/illustrations/audit-and-strategy.svg` (Figma's "Audit & Strategy"). Its colours are Figma's own. |
-| `root` | `background-image` | `url(./svg/best-idea.svg)` | The drawing, `assets/illustrations/best-idea.svg` (Figma's "Best idea"). Its colours are Figma's own. |
-| `root` | `background-image` | `url(./svg/bridging-the-gaps.svg)` | The drawing, `assets/illustrations/bridging-the-gaps.svg` (Figma's "Bridging the gaps"). Its colours are Figma's own. |
-| `root` | `background-image` | `url(./svg/design-partner.svg)` | The drawing, `assets/illustrations/design-partner.svg` (Figma's "Design partner"). Its colours are Figma's own. |
-| `root` | `background-image` | `url(./svg/design-system.svg)` | The drawing, `assets/illustrations/design-system.svg` (Figma's "Design system"). Its colours are Figma's own. |
-| `root` | `background-image` | `url(./svg/design-system-leadership.svg)` | The drawing, `assets/illustrations/design-system-leadership.svg` (Figma's "Design system leadership"). Its colours are Figma's own. |
-| `root` | `background-image` | `url(./svg/efficiency.svg)` | The drawing, `assets/illustrations/efficiency.svg` (Figma's "Efficiency"). Its colours are Figma's own. |
-| `root` | `background-image` | `url(./svg/goal-focused.svg)` | The drawing, `assets/illustrations/goal-focused.svg` (Figma's "Goal focused"). Its colours are Figma's own. |
-| `root` | `background-image` | `url(./svg/implementing.svg)` | The drawing, `assets/illustrations/implementing.svg` (Figma's "Implementing"). Its colours are Figma's own. |
-| `root` | `background-image` | `url(./svg/interactive-showcase.svg)` | The drawing, `assets/illustrations/interactive-showcase.svg` (Figma's "Interactive showcase"). Its colours are Figma's own. |
-| `root` | `background-image` | `url(./svg/long-term-projects.svg)` | The drawing, `assets/illustrations/long-term-projects.svg` (Figma's "Long term projects"). Its colours are Figma's own. |
-| `root` | `background-image` | `url(./svg/mentoring.svg)` | The drawing, `assets/illustrations/mentoring.svg` (Figma's "Mentoring"). Its colours are Figma's own. |
-| `root` | `background-image` | `url(./svg/part-of-the-team.svg)` | The drawing, `assets/illustrations/part-of-the-team.svg` (Figma's "Part of the team"). Its colours are Figma's own. |
-| `root` | `background-image` | `url(./svg/product-design.svg)` | The drawing, `assets/illustrations/product-design.svg` (Figma's "Product design"). Its colours are Figma's own. |
-| `root` | `background-image` | `url(./svg/retention.svg)` | The drawing, `assets/illustrations/retention.svg` (Figma's "Retention"). Its colours are Figma's own. |
-| `root` | `background-image` | `url(./svg/scale-team.svg)` | The drawing, `assets/illustrations/scale-team.svg` (Figma's "Scale team"). Its colours are Figma's own. |
-| `root` | `background-image` | `url(./svg/ship-best.svg)` | The drawing, `assets/illustrations/ship-best.svg` (Figma's "Ship best"). Its colours are Figma's own. |
-| `root` | `background-image` | `url(./svg/simplicity-v-complexity.svg)` | The drawing, `assets/illustrations/simplicity-v-complexity.svg` (Figma's "Simplicity v Complexity"). Its colours are Figma's own. |
-| `root` | `background-image` | `url(./svg/structured-system.svg)` | The drawing, `assets/illustrations/structured-system.svg` (Figma's "Structured system"). Its colours are Figma's own. |
-| `root` | `background-image` | `url(./svg/timezones.svg)` | The drawing, `assets/illustrations/timezones.svg` (Figma's "Timezones"). Its colours are Figma's own. |
-| `root` | `background-image` | `url(./svg/ui.svg)` | The drawing, `assets/illustrations/ui.svg` (Figma's "UI"). Its colours are Figma's own. |
+| `drawing` | `width` | `100%` | The drawing fills the 72px box. |
+| `drawing` | `height` | `100%` | The drawing fills the 72px box. |
 
 See it live, with every value of every variant: [rost.build/components/illustration](https://rost.build/components/illustration/)

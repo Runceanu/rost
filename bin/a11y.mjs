@@ -9,7 +9,8 @@
  *           and opacity layers.
  *   focus   2.4.7 and 1.4.11. Each control is focused from the keyboard. Some
  *           pixels have to change, and the colour they change to has to reach
- *           3:1 against the colour they were.
+ *           3:1 against the colour they were. A control that draws its own
+ *           ring element is judged by that ring's colour against the page.
  *   edges   1.4.11. A field, a switch, a toggle, or whatever marks the
  *           current or selected item, has to be told apart from the page by
  *           its edge or its fill, at 3:1. A button is named by its
@@ -168,12 +169,30 @@ for (const id of components) {
         const reached = await page.$eval(sel, (el) => document.activeElement === el || el.contains(document.activeElement))
         await page.evaluate(() => window.getSelection()?.removeAllRanges())
         const after = PNG.sync.read(await page.screenshot({ clip }))
+        // Most Rost controls draw focus as their own ring element. Read its
+        // colour while it shows, so a thin round ring isn't judged by how its
+        // antialiased pixels count up.
+        const ringEl = await page.$eval(sel, (el) => {
+          const top = el.closest(`[class^="rost-"]:not([class*="__"])`) ?? el
+          const r = [top, ...top.querySelectorAll('[class*="focus-ring"]')].find((n) => /focus-ring/.test(n.className) && getComputedStyle(n).display !== 'none')
+          if (!r) return null
+          const cs = getComputedStyle(r)
+          let o = 1; for (let q = r; q; q = q.parentElement) o *= Number(cs && getComputedStyle(q).opacity)
+          return { color: cs.borderTopColor, width: parseFloat(cs.borderTopWidth), opacity: o }
+        })
         await page.evaluate(() => document.getElementById('a11y-before')?.remove())
         const name = `${c.cls}${c.role ? ` role=${c.role}` : ''}`
         if (!reached) { add({ id, theme, check: 'keyboard', fixture: meta.name, what: `${name} can't be reached with Tab`, sc: '2.1.1' }); continue }
         // A field whose fixture sets `selected` has its look pinned; its 'follows focus' fixture is the one to check.
         const pinned = /selected=/.test(meta.name) && ['input', 'textarea'].includes(id)
-        const ch = pinned ? { changed: 1, ok: true } : focusChange(before, after, ring)
+        let ch = pinned ? { changed: 1, ok: true } : focusChange(before, after, ring)
+        if (ch.changed && !ch.ok && ringEl && ringEl.width >= 1) {
+          const m = ringEl.color.match(/[\d.]+/g).map(Number), a = (m[3] ?? 1) * ringEl.opacity
+          const bg = px(after, 0)
+          const seen = m.slice(0, 3).map((v, i) => v * a + bg[i] * (1 - a))
+          if (ratio(seen, bg) >= 3) ch = { ...ch, ok: true }
+          else ch = { ...ch, ratio: ratio(seen, bg), to: hex(seen), from: hex(bg) }
+        }
         if (!ch.changed) add({ id, theme, check: 'focus', fixture: meta.name, what: `${name}: nothing changes on focus`, sc: '2.4.7' })
         else if (!ch.ok) add({ id, theme, check: 'focus', fixture: meta.name, what: `${name}: ${ch.strong} of a ${ch.ring}px ring reach 3:1; most of the change is ${ch.to} over ${ch.from}`, sc: '1.4.11', ratio: ch.ratio })
 

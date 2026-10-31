@@ -3,7 +3,7 @@ schemaVersion: 2
 id: switch-field
 name: SwitchField
 kind: pattern
-status: draft
+status: review
 summary: A Switch with its label beside it, on the left or the right. A click on the words flips it too.
 category: selection
 related: [ switch ]
@@ -58,7 +58,7 @@ variants:
         opacity: { token: opacity/gentle, value: "0.24", notes: "The same fade as the disabled switch beside it." }
         cursor: { value: default, assert: false }
 guidance:
-  status: proposed
+  status: agreed
   use:
     - title: A setting with its name
       text: "Any switch that people read before they flip: email me receipts, show cents, dark charts."
@@ -74,7 +74,7 @@ guidance:
   behaviour: |-
     The label is a `<label>` tied to the switch, so a click anywhere on the words flips it, the way a checkbox's label does. Hover, press and focus are the switch's own. Disabled fades both.
 
-    It's my draft, made when I took the label out of Switch so it could go on either side. In Figma it's on the switch page, next to Switch, with a real Switch instance inside that you can set on or off.
+    I made it when I took the label out of Switch so it could go on either side. In Figma it's on the switch page, next to Switch, with a real Switch instance inside that you can set on or off.
   accessibility:
     element: "A `<span>` holding the Switch's `<button role=\"switch\">` and a `<label for>` it."
     name: "The label. SwitchField ties the two with an id, so you don't."

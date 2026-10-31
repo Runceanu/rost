@@ -27,12 +27,12 @@
 - `root`
 - `background`
 - `slot`
-- `icons-plus`
+- `icons-plus`: The glyph, as a mask in its status colour, so it follows the theme. It was an SVG file with its colour in it.
 - `label`
 - `text`
-- `icons-alarm`
-- `icons-positive`
-- `icons-warning`
+- `icons-alarm`: The glyph, as a mask in its status colour, so it follows the theme. It was an SVG file with its colour in it.
+- `icons-positive`: The glyph, as a mask in its status colour, so it follows the theme. It was an SVG file with its colour in it.
+- `icons-warning`: The glyph, as a mask in its status colour, so it follows the theme. It was an SVG file with its colour in it.
 
 ## When to use
 
@@ -73,7 +73,11 @@ Every token this component uses, across all its variants.
 |---|---|
 | `font-family/base` | `'General Sans Variable'` |
 | `non-interactive/background/tertiary` | `#3a3a3a` |
+| `non-interactive/foreground/negative/base` | `#e93120` |
+| `non-interactive/foreground/positive/base` | `#00d669` |
 | `non-interactive/foreground/secondary` | `#d3d9d5` |
+| `non-interactive/foreground/tertiary` | `#999` |
+| `non-interactive/foreground/warning/base` | `#fda50d` |
 | `opacity/mild` | `0.32` |
 | `opacity/solid` | `1` |
 | `spacing/gap/2xsmall` | `4px` |
@@ -91,5 +95,18 @@ Every token this component uses, across all its variants.
 | `typography/label/font-weight/medium` | `500` |
 | `typography/label/letter-spacing` | `0px` |
 | `typography/label/line-height` | `14px` |
+
+## No token, on purpose
+
+| Part | Property | Value | Why |
+|---|---|---|---|
+| `icons-plus` | `mask` | `url(./icons/plus-small.svg) center / contain no-repeat` | The glyph's shape. The colour is the token. |
+| `icons-alarm` | `mask` | `url(./icons/alarm-small.svg) center / contain no-repeat` | The glyph's shape. The colour is the token. |
+| `icons-positive` | `mask` | `url(./icons/positive-small.svg) center / contain no-repeat` | The glyph's shape. The colour is the token. |
+| `icons-warning` | `mask` | `url(./icons/warning-small.svg) center / contain no-repeat` | The glyph's shape. The colour is the token. |
+| `icons-plus` | `mask` | `url(./icons/plus-medium.svg) center / contain no-repeat` | The glyph's shape. The colour is the token. |
+| `icons-alarm` | `mask` | `url(./icons/alarm-medium.svg) center / contain no-repeat` | The glyph's shape. The colour is the token. |
+| `icons-positive` | `mask` | `url(./icons/positive-medium.svg) center / contain no-repeat` | The glyph's shape. The colour is the token. |
+| `icons-warning` | `mask` | `url(./icons/warning-medium.svg) center / contain no-repeat` | The glyph's shape. The colour is the token. |
 
 See it live, with every value of every variant: [rost.build/components/inline-banner](https://rost.build/components/inline-banner/)

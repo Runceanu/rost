@@ -21,6 +21,11 @@
   border-radius: var(--spacing-radius-small);
 }
 
+.rost-inline-banner__icons-plus {
+  display: block;
+  background: var(--non-interactive-foreground-tertiary);
+}
+
 .rost-inline-banner__label {
   overflow: clip;
   justify-content: center;
@@ -39,6 +44,21 @@
   color: var(--non-interactive-foreground-secondary);
 }
 
+.rost-inline-banner__icons-alarm {
+  display: block;
+  background: var(--non-interactive-foreground-negative-base);
+}
+
+.rost-inline-banner__icons-positive {
+  display: block;
+  background: var(--non-interactive-foreground-positive-base);
+}
+
+.rost-inline-banner__icons-warning {
+  display: block;
+  background: var(--non-interactive-foreground-warning-base);
+}
+
 .rost-inline-banner.rost-inline-banner--status-default.rost-inline-banner--size-small .rost-inline-banner__slot {
   align-items: center;
   display: flex;
@@ -53,6 +73,7 @@
   position: relative;
   width: var(--spacing-size-2xsmall);
   height: var(--spacing-size-2xsmall);
+  mask: url(./icons/plus-small.svg) center / contain no-repeat;
 }
 
 .rost-inline-banner.rost-inline-banner--status-default.rost-inline-banner--size-small {
@@ -91,6 +112,7 @@
   position: relative;
   width: var(--spacing-size-2xsmall);
   height: var(--spacing-size-2xsmall);
+  mask: url(./icons/alarm-small.svg) center / contain no-repeat;
 }
 
 .rost-inline-banner.rost-inline-banner--status-positive.rost-inline-banner--size-small {
@@ -114,6 +136,7 @@
   position: relative;
   width: var(--spacing-size-2xsmall);
   height: var(--spacing-size-2xsmall);
+  mask: url(./icons/positive-small.svg) center / contain no-repeat;
 }
 
 .rost-inline-banner.rost-inline-banner--status-warning.rost-inline-banner--size-small {
@@ -137,6 +160,7 @@
   position: relative;
   width: var(--spacing-size-2xsmall);
   height: var(--spacing-size-2xsmall);
+  mask: url(./icons/warning-small.svg) center / contain no-repeat;
 }
 
 .rost-inline-banner.rost-inline-banner--status-default.rost-inline-banner--size-medium .rost-inline-banner__slot {
@@ -153,6 +177,7 @@
   position: relative;
   width: var(--spacing-size-xsmall);
   height: var(--spacing-size-xsmall);
+  mask: url(./icons/plus-medium.svg) center / contain no-repeat;
 }
 
 .rost-inline-banner.rost-inline-banner--status-default.rost-inline-banner--size-medium {
@@ -193,6 +218,7 @@
   position: relative;
   width: var(--spacing-size-xsmall);
   height: var(--spacing-size-xsmall);
+  mask: url(./icons/alarm-medium.svg) center / contain no-repeat;
 }
 
 .rost-inline-banner.rost-inline-banner--status-positive.rost-inline-banner--size-medium {
@@ -217,6 +243,7 @@
   position: relative;
   width: var(--spacing-size-xsmall);
   height: var(--spacing-size-xsmall);
+  mask: url(./icons/positive-medium.svg) center / contain no-repeat;
 }
 
 .rost-inline-banner.rost-inline-banner--status-warning.rost-inline-banner--size-medium {
@@ -241,4 +268,5 @@
   position: relative;
   width: var(--spacing-size-xsmall);
   height: var(--spacing-size-xsmall);
+  mask: url(./icons/warning-medium.svg) center / contain no-repeat;
 }

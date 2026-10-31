@@ -1,13 +1,5 @@
 import type { HTMLAttributes, ReactNode } from 'react'
 import './inline-banner.css'
-import plusSmall from './icons/plus-small.svg?url'
-import plusMedium from './icons/plus-medium.svg?url'
-import alarmSmall from './icons/alarm-small.svg?url'
-import alarmMedium from './icons/alarm-medium.svg?url'
-import positiveSmall from './icons/positive-small.svg?url'
-import positiveMedium from './icons/positive-medium.svg?url'
-import warningSmall from './icons/warning-small.svg?url'
-import warningMedium from './icons/warning-medium.svg?url'
 
 export type InlineBannerStatus = 'default' | 'negative' | 'positive' | 'warning'
 export type InlineBannerSize = 'small' | 'medium'
@@ -23,12 +15,12 @@ export interface InlineBannerProps extends Omit<HTMLAttributes<HTMLSpanElement>,
   readonly children: ReactNode
 }
 
-// The exact icons Figma exports for each status and size.
-const GLYPH: Record<InlineBannerStatus, { part: string; small: string; medium: string }> = {
-  default: { part: 'icons-plus', small: plusSmall, medium: plusMedium },
-  negative: { part: 'icons-alarm', small: alarmSmall, medium: alarmMedium },
-  positive: { part: 'icons-positive', small: positiveSmall, medium: positiveMedium },
-  warning: { part: 'icons-warning', small: warningSmall, medium: warningMedium },
+// Which glyph each status draws. Its shape is a mask in the contract; its colour, the status token.
+const GLYPH: Record<InlineBannerStatus, string> = {
+  default: 'icons-plus',
+  negative: 'icons-alarm',
+  positive: 'icons-positive',
+  warning: 'icons-warning',
 }
 
 const b = 'rost-inline-banner'
@@ -44,11 +36,8 @@ const b = 'rost-inline-banner'
  */
 export function InlineBanner({ status = 'default', size = 'small', icon, showSlot = true, children, className, ...rest }: InlineBannerProps) {
   const g = GLYPH[status]
-  const glyph = (
-    <span className={`${b}__${g.part}`} aria-hidden="true">
-      <img src={g[size]} alt="" />
-    </span>
-  )
+  // A mask in the status colour; the shape is the contract's.
+  const glyph = <span className={`${b}__${g}`} aria-hidden="true" />
   return (
     <span className={[b, `${b}--status-${status}`, `${b}--size-${size}`, className].filter(Boolean).join(' ')} {...rest}>
       <span className={`${b}__background`} />

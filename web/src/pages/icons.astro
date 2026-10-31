@@ -6,6 +6,7 @@ import { Icon, ICON_NAMES } from '../../../src/components/icon/Icon'
 import { Illustration, ILLUSTRATION_NAMES } from '../../../src/components/illustration/Illustration'
 import { usage as iconUsage } from '../../../src/components/icon/icon.fixtures'
 import { usage as illoUsage } from '../../../src/components/illustration/illustration.fixtures'
+import { DRAWINGS } from '../../../src/components/illustration/drawings'
 
 const sets = JSON.parse(readRepo('registry/component-sets.json'))
 const slug = (s: string) => s.replace(/&/g, 'and').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')
@@ -26,12 +27,12 @@ const illustrations = ILLUSTRATION_NAMES.map((name) => ({
   name,
   figma: figmaIllo[name],
   react: `import { Illustration } from 'rost/components/illustration/Illustration'\n\n<Illustration name="${name}" />`,
-  html: `<!-- with rost/components/illustration/illustration.css loaded -->\n<span class="rost-illustration rost-illustration--name-${name}" aria-hidden="true"></span>`,
+  html: `<!-- with rost/components/illustration/illustration.css and the tokens loaded -->\n<span class="rost-illustration" aria-hidden="true">${DRAWINGS[name]}</span>`,
   svg: svg(`assets/illustrations/${name}.svg`),
 }))
 const kinds = [
   { id: 'icon', title: 'Icons', items: icons, usage: iconUsage, file: 'assets/icons', blurb: 'Each one is a mask filled with the text colour, so it follows a button through its states. 24px by default; `size="small"` is the 20px slot Button and IconButton use.' },
-  { id: 'illustration', title: 'Illustrations', items: illustrations, usage: illoUsage, file: 'assets/illustrations', blurb: 'Drawn at 72px in Figma\'s greys and one green, for a dark ground. They keep their own colours.' },
+  { id: 'illustration', title: 'Illustrations', items: illustrations, usage: illoUsage, file: 'assets/illustrations', blurb: 'Drawn at 72px in two greys and a green, the illustration tokens, so they follow the theme.' },
 ]
 ---
 <Base title="Icons · Rost">

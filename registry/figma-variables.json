@@ -1,8 +1,8 @@
 {
-  "$comment": "Every local variable in the UI Kit, read with use_figma. First read on 2026-10-26, after the freeze; read again on 2026-10-30, after Rost's light values (registry/light.json) and the motion variables went into Figma. A value starting with @ is an alias to another variable. theme has two modes, dark (Rost's default) and light; base has one. On 2026-10-31, 21 values changed in Figma to pass WCAG 2.1 AA (docs/ACCESSIBILITY.md says which and why), and the same 21 here. Also on 2026-10-31, 431 component variables went into the theme collection, one family per interactive component, each an alias of the semantic variable it replaced; they are here too. bin/build-tokens.mjs builds tokens/ from this.",
+  "$comment": "Every local variable in the UI Kit, read with use_figma. First read on 2026-10-26, after the freeze; read again on 2026-10-30, after Rost's light values (registry/light.json) and the motion variables went into Figma. A value starting with @ is an alias to another variable. theme has two modes, dark (Rost's default) and light; base has one. On 2026-10-31, 21 values changed in Figma to pass WCAG 2.1 AA (docs/ACCESSIBILITY.md says which and why), and the same 21 here. Also on 2026-10-31, 431 component variables went into the theme collection, one family per interactive component, each an alias of the semantic variable it replaced; they are here too. The three illustration colours were added the same day. Then all 1105 were read back out of Figma and compared one by one: identical. bin/build-tokens.mjs builds tokens/ from this.",
   "fileKey": "1Zy0wiWKXQAvsfDBX3KR0d",
   "readOn": "2026-10-31",
-  "count": 1102,
+  "count": 1105,
   "variables": {
     "actions/borderless/default/icon": {"collection":"theme","type":"COLOR","dark":"@color/dark/primary/500","light":"@color/light/primary/800"},
     "actions/borderless/default/label": {"collection":"theme","type":"COLOR","dark":"@color/dark/neutral/800","light":"@color/light/neutral/800"},
@@ -423,6 +423,9 @@
     "icon-button/tertiary/hover/icon": {"collection":"theme","type":"COLOR","dark":"@actions/tertiary/hover/icon","light":"@actions/tertiary/hover/icon"},
     "icon-button/tertiary/pressed/background": {"collection":"theme","type":"COLOR","dark":"@actions/tertiary/pressed/background","light":"@actions/tertiary/pressed/background"},
     "icon-button/tertiary/pressed/icon": {"collection":"theme","type":"COLOR","dark":"@actions/tertiary/pressed/icon","light":"@actions/tertiary/pressed/icon"},
+    "illustration/accent": {"collection":"theme","type":"COLOR","dark":"#37d273","light":"@color/light/primary/700"},
+    "illustration/form": {"collection":"theme","type":"COLOR","dark":"#454545","light":"@color/light/neutral/400"},
+    "illustration/shade": {"collection":"theme","type":"COLOR","dark":"#232423","light":"@color/light/neutral/250"},
     "input/negative/default/background": {"collection":"theme","type":"COLOR","dark":"@color/dark/neutral/100","light":"@color/light/neutral/100"},
     "input/negative/default/icon": {"collection":"theme","type":"COLOR","dark":"@color/dark/negative/500","light":"@color/light/negative/500"},
     "input/negative/default/label": {"collection":"theme","type":"COLOR","dark":"@color/dark/negative/500","light":"@color/light/negative/600"},

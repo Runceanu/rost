@@ -146,7 +146,7 @@ Every token this component uses, across all its variants.
 
 | Part | Property | Value | Why |
 |---|---|---|---|
-| `shadow` | `background` | `linear-gradient(to bottom, rgba(6,8,5,0), var(--thumbs-shade))` | A gradient from the page background, transparent, to the page background. The colour is the token; the ramp is the effect. |
+| `shadow` | `background` | `linear-gradient(to bottom, transparent, var(--thumbs-shade))` | A gradient from nothing to the page colour. It starts at `transparent`, which browsers blend with the alpha first, so it fades into the page in either theme. The colour is the token; the ramp is the effect. |
 | `content` | `background` | `color-mix(in srgb, var(--thumbs-panel) calc(var(--opacity-medium) * 100%), transparent)` | Composed from tokens: the page background at opacity/medium. It was base/black, which stays black in light while the text on it goes dark. |
 | `dot` | `width` | `3px` | The dot's own size inside the icon. |
 | `dot` | `height` | `3px` | The dot's own size inside the icon. |

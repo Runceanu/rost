@@ -3,7 +3,7 @@ schemaVersion: 2
 id: toggle-group
 name: ToggleGroup
 kind: component
-status: draft
+status: review
 summary: A row of Toggles where one is chosen, like a year switcher. Arrow keys move the choice, and the row is one stop for Tab.
 category: selection
 related: [ toggle, tabs ]
@@ -30,7 +30,7 @@ implementations:
     component: src/rost/toggle-group/ToggleGroup.tsx
     root: .rost-toggle-group
 guidance:
-  status: proposed
+  status: agreed
   use:
     - title: One of a few, straight away
       text: "Picking one of a few options that all fit on a line, where the choice applies straight away: a year, a view, a period."

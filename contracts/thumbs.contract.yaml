@@ -76,8 +76,8 @@ elements:
         value: 50%
         notes: 167px in Figma, half of the 334px frame. Half is the decision, so it holds at any size.
       background:
-        value: linear-gradient(to bottom, rgba(6,8,5,0), var(--thumbs-shade))
-        untokenised: A gradient from the page background, transparent, to the page background. The colour is the token; the ramp is the effect.
+        value: linear-gradient(to bottom, transparent, var(--thumbs-shade))
+        untokenised: "A gradient from nothing to the page colour. It starts at `transparent`, which browsers blend with the alpha first, so it fades into the page in either theme. The colour is the token; the ramp is the effect."
       opacity: { token: opacity/medium, value: "0.48" }
       border-bottom-left-radius: { token: spacing/radius/xlarge, value: 24px }
       border-bottom-right-radius: { token: spacing/radius/xlarge, value: 24px }

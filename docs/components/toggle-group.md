@@ -7,8 +7,8 @@
 | | |
 |---|---|
 | Kind | component |
-| Contract | `draft` · [toggle-group.contract.yaml](../../contracts/toggle-group.contract.yaml) |
-| Guidance | `proposed` |
+| Contract | `review` · [toggle-group.contract.yaml](../../contracts/toggle-group.contract.yaml) |
+| Guidance | `agreed` |
 | Source | [Figma 528:742](https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=528-742) · read 2026-10-30 · frozen 2026-10-30 |
 | Implemented in | Accounting app (`src/rost/toggle-group/ToggleGroup.tsx`, `.rost-toggle-group`) |
 

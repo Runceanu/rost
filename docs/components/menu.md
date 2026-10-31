@@ -45,7 +45,7 @@
 
 ## Behaviour
 
-Six states. The sixth, `Current`, I added in code first and then in Figma, the page you're on. It comes from `aria-current="page"`, not from the mouse. The description turns bright and medium, as when you press it, and the divider underneath goes as bright as the text. It's still my proposal, not signed off.
+Six states. The sixth, `Current`, I added in code first and then in Figma, the page you're on. It comes from `aria-current="page"`, not from the mouse. The description turns bright and medium, as when you press it, and the divider underneath goes as bright as the text.
 
 ## Accessibility
 

@@ -578,6 +578,11 @@
   --tabs-unselected-pressed-label: #d3d9d5;
   --tabs-unselected-pressed-underline: #747573;
 
+  /* ── Illustrations (the three colours every drawing is made of) ──────────── */
+  --illustration-accent: #37d273;
+  --illustration-form: #454545;
+  --illustration-shade: #232423;
+
   /* ── Component: button ───────────────────────────────────────────────────── */
   --button-borderless-default-label: #d3d9d5;
   --button-borderless-disabled-label: #d3d9d5;
@@ -1199,7 +1204,7 @@
 }
 
 /* ── Light ──────────────────────────────────────────────────────────────────
- * Only the colours change, 693 of them. Figma's light mode, with Rost's own
+ * Only the colours change, 696 of them. Figma's light mode, with Rost's own
  * corrections from registry/light.json where Figma's value fails contrast.
  * Set data-theme="light" on <html> (or any element). Without it you get dark,
  * whatever the system says. data-theme="dark" brings dark back inside a light page.
@@ -1484,6 +1489,9 @@
   --icon-button-tertiary-hover-icon: #004c19;
   --icon-button-tertiary-pressed-background: #999999;
   --icon-button-tertiary-pressed-icon: #006f27;
+  --illustration-accent: #00913a;
+  --illustration-form: #c2c7c3;
+  --illustration-shade: #e0e3e1;
   --input-negative-default-background: #fcfcfc;
   --input-negative-default-label: #ae1b13;
   --input-negative-default-outline: #e93120;
@@ -2181,6 +2189,9 @@
   --icon-button-tertiary-hover-icon: #00b450;
   --icon-button-tertiary-pressed-background: #454545;
   --icon-button-tertiary-pressed-icon: #00d669;
+  --illustration-accent: #37d273;
+  --illustration-form: #454545;
+  --illustration-shade: #232423;
   --input-negative-default-background: #060805;
   --input-negative-default-label: #e93120;
   --input-negative-default-outline: #f2705f;

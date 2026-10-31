@@ -131,12 +131,12 @@ variants:
       title:
         color: { token: menu/current/label, value: "#ededed" }
       description:
-        color: { token: menu/current/sub-label, value: "#ededed", notes: "Proposed, in Figma since 2026-10-30. The page you're on, set by `aria-current=\"page\"`. It wears Pressed's colour and weight, the way Button's nav wears its pressed look. It keeps the resting size, though: Pressed grows the description to body size, and the current row would come out taller than its neighbours." }
+        color: { token: menu/current/sub-label, value: "#ededed", notes: "In Figma since 2026-10-30. The page you're on, set by `aria-current=\"page\"`. It wears Pressed's colour and weight, the way Button's nav wears its pressed look. It keeps the resting size, though: Pressed grows the description to body size, and the current row would come out taller than its neighbours." }
         font-weight: { token: typography/body/font-weight/medium, value: "500" }
         font-size: { token: typography/paragraph/font-size, value: 14px }
         line-height: { token: typography/paragraph/line-height, value: 20px }
       divider:
-        background: { token: menu/current/divider, value: "#ededed", notes: "Proposed. The line under the page you're on is as bright as its text, so the row reads as \"you are here\" at a glance, not only by its weight." }
+        background: { token: menu/current/divider, value: "#ededed", notes: "The line under the page you're on is as bright as its text, so the row reads as \"you are here\" at a glance, not only by its weight." }
 guidance:
   status: agreed
   use:
@@ -149,7 +149,7 @@ guidance:
     - title: The frosted surface
       text: Mixing it up with the **Menu effect** (`effect-menu`), which is the frosted surface the nav sits on.
   behaviour: |-
-    Six states. The sixth, `Current`, I added in code first and then in Figma, the page you're on. It comes from `aria-current="page"`, not from the mouse. The description turns bright and medium, as when you press it, and the divider underneath goes as bright as the text. It's still my proposal, not signed off.
+    Six states. The sixth, `Current`, I added in code first and then in Figma, the page you're on. It comes from `aria-current="page"`, not from the mouse. The description turns bright and medium, as when you press it, and the divider underneath goes as bright as the text.
   accessibility:
     element: "`<a>`, inside `<nav aria-label=\"Main\">` and a list."
     currentPage: |-

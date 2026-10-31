@@ -3,7 +3,7 @@ schemaVersion: 2
 id: switch
 name: Switch
 kind: component
-status: draft
+status: review
 summary: A setting that's on or off and takes effect straight away. A pill track with a thumb that moves across. The label is SwitchField's.
 category: selection
 related: [ switch-field, toggle, chips ]
@@ -177,7 +177,7 @@ variants:
       thumb:
         background: { token: switch/on/disabled/thumb, value: "#060805" }
 guidance:
-  status: proposed
+  status: agreed
   use:
     - title: A setting that works at once
       text: "A setting that's on or off and works the moment you flip it: email me receipts, show cents, dark charts."
@@ -193,7 +193,7 @@ guidance:
   behaviour: |-
     Off is a faded track with the thumb on the left, the way an off Toggle is faded. On is a solid primary green track with a dark thumb on the right. Hover, press and focus come from the browser and follow Toggle's colours. Disabled fades it.
 
-    It's my draft. I built it in code from Toggle's and Button's tokens, then drew it in the kit, on a page of its own, bound to the same variables. Its label moved to SwitchField on 2026-10-31. The ten variants match Figma.
+    I built it in code from Toggle's and Button's tokens, then drew it in the kit, on a page of its own, bound to the same variables. Its label moved to SwitchField on 2026-10-31. The ten variants match Figma.
   accessibility:
     element: "`<button type=\"button\" role=\"switch\">` with `aria-checked`. Switch sets both."
     name: "It has no text of its own. In a SwitchField the label names it; on its own it needs an `aria-label`."

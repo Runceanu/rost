@@ -1,4 +1,5 @@
 import type { HTMLAttributes } from 'react'
+import { DRAWINGS } from './drawings'
 import './illustration.css'
 
 export const ILLUSTRATION_NAMES = ['activation-and-conversion', 'alignment', 'art', 'audit-and-strategy', 'best-idea', 'bridging-the-gaps', 'design-partner', 'design-system', 'design-system-leadership', 'efficiency', 'goal-focused', 'implementing', 'interactive-showcase', 'long-term-projects', 'mentoring', 'part-of-the-team', 'product-design', 'retention', 'scale-team', 'ship-best', 'simplicity-v-complexity', 'structured-system', 'timezones', 'ui'] as const
@@ -14,10 +15,11 @@ export interface IllustrationProps extends Omit<HTMLAttributes<HTMLSpanElement>,
 const b = 'rost-illustration'
 
 /**
- * A 72px drawing in its own colours. Built from
- * contracts/illustration.contract.yaml.
+ * A 72px drawing in two greys and a green, the illustration tokens, so it
+ * follows the theme. The SVG is inline (drawings.ts, from
+ * bin/build-illustrations.mjs). Built from contracts/illustration.contract.yaml.
  */
 export function Illustration({ name, label, className, ...rest }: IllustrationProps) {
   const a11y = label ? { role: 'img', 'aria-label': label } : { 'aria-hidden': true }
-  return <span className={[b, `${b}--name-${name}`, className].filter(Boolean).join(' ')} {...a11y} {...rest} />
+  return <span className={[b, `${b}--name-${name}`, className].filter(Boolean).join(' ')} {...a11y} {...rest} dangerouslySetInnerHTML={{ __html: DRAWINGS[name] }} />
 }

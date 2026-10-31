@@ -4,7 +4,7 @@ id: table-row
 name: TableRow
 partOf: table
 kind: component
-status: draft
+status: review
 summary: One row of a Table, with a hairline under it. It can be a link or something you pick, through its header cell.
 category: display
 related: [ table, table-item, list-item ]
@@ -63,7 +63,7 @@ variants:
         outline-offset: { value: -2px, untokenised: "Inside the row, the ring's own width, so it isn't cut by the rows around it." }
         outline-color: { token: table-row/focus/focus-ring, value: "#999999" }
 guidance:
-  status: proposed
+  status: agreed
   use:
     - title: Every row
       text: Every row of a Table, the header row too.

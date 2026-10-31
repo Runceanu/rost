@@ -3,7 +3,7 @@ schemaVersion: 2
 id: table
 name: Table
 kind: component
-status: draft
+status: review
 summary: Rows of the same kind of thing, side by side in columns, like the accounting app's payments. No box, a hairline between rows.
 category: display
 related: [ table-row, table-item, list-item ]
@@ -52,7 +52,7 @@ elements:
     styles:
       vertical-align: { value: middle, assert: false }
 guidance:
-  status: proposed
+  status: agreed
   use:
     - title: Data read across
       text: "Several things of the same kind with the same few facts each, read across: payments with a date, what they're for and an amount."

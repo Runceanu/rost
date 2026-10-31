@@ -11,9 +11,20 @@
   min-width: var(--spacing-size-small);
 }
 
+.rost-badge__dot {
+  display: block;
+  width: var(--spacing-size-small);
+  height: var(--spacing-size-small);
+  mask: url(./dot.svg) center / contain no-repeat;
+}
+
 .rost-badge.rost-badge--status-default.rost-badge--size-small {
   width: var(--spacing-size-small);
   height: var(--spacing-size-small);
+}
+
+.rost-badge.rost-badge--status-default.rost-badge--size-small .rost-badge__dot {
+  background: var(--non-interactive-foreground-primary);
 }
 
 .rost-badge.rost-badge--status-negative.rost-badge--size-small {
@@ -21,14 +32,26 @@
   height: var(--spacing-size-small);
 }
 
+.rost-badge.rost-badge--status-negative.rost-badge--size-small .rost-badge__dot {
+  background: var(--non-interactive-foreground-negative-base);
+}
+
 .rost-badge.rost-badge--status-positive.rost-badge--size-small {
   width: var(--spacing-size-small);
   height: var(--spacing-size-small);
 }
 
+.rost-badge.rost-badge--status-positive.rost-badge--size-small .rost-badge__dot {
+  background: var(--non-interactive-foreground-positive-base);
+}
+
 .rost-badge.rost-badge--status-warning.rost-badge--size-small {
   width: var(--spacing-size-small);
   height: var(--spacing-size-small);
+}
+
+.rost-badge.rost-badge--status-warning.rost-badge--size-small .rost-badge__dot {
+  background: var(--non-interactive-foreground-warning-base);
 }
 
 .rost-badge.rost-badge--status-default.rost-badge--size-medium {
@@ -77,8 +100,11 @@
 .rost-badge.rost-badge--status-default.rost-badge--size-medium .rost-badge__icons-dot {
   flex-shrink: 0;
   position: relative;
+  display: block;
   width: var(--spacing-size-2xsmall);
   height: var(--spacing-size-2xsmall);
+  background: var(--non-interactive-foreground-tertiary);
+  mask: url(./icon-dot.svg) center / contain no-repeat;
 }
 
 .rost-badge.rost-badge--status-negative.rost-badge--size-medium {
@@ -127,8 +153,11 @@
 .rost-badge.rost-badge--status-negative.rost-badge--size-medium .rost-badge__icons-dot {
   flex-shrink: 0;
   position: relative;
+  display: block;
   width: var(--spacing-size-2xsmall);
   height: var(--spacing-size-2xsmall);
+  background: var(--non-interactive-foreground-tertiary);
+  mask: url(./icon-dot.svg) center / contain no-repeat;
 }
 
 .rost-badge.rost-badge--status-positive.rost-badge--size-medium {
@@ -177,8 +206,11 @@
 .rost-badge.rost-badge--status-positive.rost-badge--size-medium .rost-badge__icons-dot {
   flex-shrink: 0;
   position: relative;
+  display: block;
   width: var(--spacing-size-2xsmall);
   height: var(--spacing-size-2xsmall);
+  background: var(--non-interactive-foreground-tertiary);
+  mask: url(./icon-dot.svg) center / contain no-repeat;
 }
 
 .rost-badge.rost-badge--status-warning.rost-badge--size-medium {
@@ -227,6 +259,9 @@
 .rost-badge.rost-badge--status-warning.rost-badge--size-medium .rost-badge__icons-dot {
   flex-shrink: 0;
   position: relative;
+  display: block;
   width: var(--spacing-size-2xsmall);
   height: var(--spacing-size-2xsmall);
+  background: var(--non-interactive-foreground-tertiary);
+  mask: url(./icon-dot.svg) center / contain no-repeat;
 }

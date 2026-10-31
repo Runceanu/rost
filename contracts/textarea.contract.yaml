@@ -3,7 +3,7 @@ schemaVersion: 2
 id: textarea
 name: Textarea
 kind: component
-status: draft
+status: review
 summary: A text field for several lines, with Input's label, help line, error and focus ring.
 category: inputs
 related: [ input ]
@@ -216,7 +216,7 @@ variants:
         display: { value: block, assert: false }
         border-color: { token: textarea/negative/focus/focus-ring, value: "#00d669" }
 guidance:
-  status: proposed
+  status: agreed
   use:
     - title: More than a line
       text: "Text that runs to more than a line: a note on a payment, a message, a description."
@@ -236,7 +236,7 @@ guidance:
 
     One difference from Input: the label always sits small at the top. Input's label sits large in an empty field, but in a box three lines tall it would float alone in the middle. It starts three lines tall (`rows`), and you can drag it taller.
 
-    It's my draft. I built it in code from Input's contract, then drew it in the kit, on a page of its own, with Input's variables. The seven variants match Figma.
+    I built it in code from Input's contract, then drew it in the kit, on a page of its own, with Input's variables. The seven variants match Figma.
   accessibility:
     element: "a real `<textarea>` with a `<label for>`. Never a `placeholder` instead of the label."
     supportiveText: connected with `aria-describedby`.

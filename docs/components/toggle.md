@@ -30,7 +30,7 @@
 - `root`
 - `background`: The see-through plate when it's off, on its own layer so the icon stays solid.
 - `icons-arrow-left`: The 20px icon slot. Its colour is the action's `icon` token: primary when it's on, secondary when it's off.
-- `label`: Not in Figma, which has no labelled toggle. Body type, medium, with tabular numbers so years line up. Its colour follows the state, the way a button's label does.
+- `label`: Not a Figma variant: Figma shows a labelled toggle as an example next to the set, built from the same variables. The label is `body/medium` (16/22), with tabular figures so years line up, in `toggle/<on\|off>/<state>/label`. The plate hugs it, 20px each side, 40px tall and never narrower than 40. On is fully round with its ring; off keeps the 12px corners and the faded plate.
 - `glyph`: Figma's arrow, drawn as a mask in the icon's colour. A caller's own icon replaces it and should use `currentColor`.
 - `focus-ring`
 

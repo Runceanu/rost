@@ -11,7 +11,7 @@ Disabled states are left out, as WCAG leaves them out. Hover, pressed and focus 
 
 - **axe finds nothing,** in either theme. Every control has a name, a role and its state (`aria-pressed`, `aria-checked`, `aria-current`), fields have labels, and nothing uses ARIA wrong.
 - **Every control can be reached with Tab and shows focus.** The ring is 2px, sits outside the control, and is 3:1 or more against the page.
-- **All 427 pieces of text and icons pass,** in both themes, at rest, on hover, pressed and focused.
+- **All 431 pieces of text and icons pass,** in both themes, at rest, on hover, pressed and focused.
 - **Every field, switch and selected thing can be told apart from the page** at 3:1.
 
 ## What I changed to get there
@@ -43,8 +43,9 @@ The first review, on 2026-10-30, found 23 failures in dark and 20 in light. Most
 
 ## Not measured, or not counted
 
-- Badge's dots and InlineBanner's icons are SVG files with their colour in them. They don't follow the theme, so they aren't measured. Next to their label they read, but the bright green and orange are under 3:1 on InlineBanner's light grey. They should be masks in a theme colour, the way Icon is.
+- Navigation's logo is a picture with its own colours, so it isn't measured. Badge's dots and InlineBanner's glyphs used to be pictures too; since 2026-10-31 they're masks in the status colours (`non-interactive/foreground/<status>/base`), measured with the rest, and they pass.
+- Illustrations are decoration, so the contrast check leaves them out. Their three colours follow the theme now; [Token coverage](TOKENS.md#illustrations) says how the light ones were picked.
 - An off Toggle has no plate to speak of. Its glyph names it, the way a Tertiary IconButton's does, and the contrast check measures the glyph. What has to stand out is the on state, and it does.
-- The check flags a Tertiary IconButton's focus in light: 78 of the pixels round it reach 3:1. Its ring is `#747573` on `#fcfcfc`, 4.6:1, so I count it as passing. A thin round ring gets antialiased, and the check counts pixels.
+- Where a control draws its own focus ring, the check reads that ring's colour against the page. Counting pixels wrongly failed the thin round ring on a Tertiary IconButton, at 4.6:1.
 - Target size (2.5.5) is AAA in WCAG 2.1, so it isn't here.
 - Neither app has been checked. This is the components on their own.

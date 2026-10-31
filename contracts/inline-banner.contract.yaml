@@ -52,7 +52,11 @@ elements:
       opacity: { token: opacity/mild, value: "0.32" }
       border-radius: { token: spacing/radius/small, value: 8px }
   slot: {}
-  icons-plus: {}
+  icons-plus:
+    notes: "The glyph, as a mask in its status colour, so it follows the theme. It was an SVG file with its colour in it."
+    styles:
+      display: { value: block, assert: false }
+      background: { token: non-interactive/foreground/tertiary, value: "#999" }
   label:
     styles:
       overflow: { value: clip }
@@ -69,9 +73,21 @@ elements:
       position: { value: relative, assert: false }
       font-family: { token: font-family/base, value: "'General Sans Variable'" }
       color: { token: non-interactive/foreground/secondary, value: "#d3d9d5" }
-  icons-alarm: {}
-  icons-positive: {}
-  icons-warning: {}
+  icons-alarm:
+    notes: "The glyph, as a mask in its status colour, so it follows the theme. It was an SVG file with its colour in it."
+    styles:
+      display: { value: block, assert: false }
+      background: { token: non-interactive/foreground/negative/base, value: "#e93120" }
+  icons-positive:
+    notes: "The glyph, as a mask in its status colour, so it follows the theme. It was an SVG file with its colour in it."
+    styles:
+      display: { value: block, assert: false }
+      background: { token: non-interactive/foreground/positive/base, value: "#00d669" }
+  icons-warning:
+    notes: "The glyph, as a mask in its status colour, so it follows the theme. It was an SVG file with its colour in it."
+    styles:
+      display: { value: block, assert: false }
+      background: { token: non-interactive/foreground/warning/base, value: "#fda50d" }
 variants:
   - when: { status: Default }
     elements:
@@ -114,6 +130,7 @@ variants:
       icons-plus:
         width: { value: 16px, token: spacing/size/2xsmall }
         height: { value: 16px, token: spacing/size/2xsmall }
+        mask: { value: url(./icons/plus-small.svg) center / contain no-repeat, untokenised: "The glyph's shape. The colour is the token." }
   - when: { status: Negative, size: Small }
     figmaNode: "205:722"
     elements:
@@ -124,6 +141,7 @@ variants:
         position: { value: relative, assert: false }
         width: { value: 16px, token: spacing/size/2xsmall }
         height: { value: 16px, token: spacing/size/2xsmall }
+        mask: { value: url(./icons/alarm-small.svg) center / contain no-repeat, untokenised: "The glyph's shape. The colour is the token." }
   - when: { status: Positive, size: Small }
     figmaNode: "207:32"
     elements:
@@ -134,6 +152,7 @@ variants:
         position: { value: relative, assert: false }
         width: { value: 16px, token: spacing/size/2xsmall }
         height: { value: 16px, token: spacing/size/2xsmall }
+        mask: { value: url(./icons/positive-small.svg) center / contain no-repeat, untokenised: "The glyph's shape. The colour is the token." }
   - when: { status: Warning, size: Small }
     figmaNode: "207:48"
     elements:
@@ -144,12 +163,14 @@ variants:
         position: { value: relative, assert: false }
         width: { value: 16px, token: spacing/size/2xsmall }
         height: { value: 16px, token: spacing/size/2xsmall }
+        mask: { value: url(./icons/warning-small.svg) center / contain no-repeat, untokenised: "The glyph's shape. The colour is the token." }
   - when: { status: Default, size: Medium }
     figmaNode: "233:126"
     elements:
       icons-plus:
         width: { value: 20px, token: spacing/size/xsmall }
         height: { value: 20px, token: spacing/size/xsmall }
+        mask: { value: url(./icons/plus-medium.svg) center / contain no-repeat, untokenised: "The glyph's shape. The colour is the token." }
   - when: { status: Negative, size: Medium }
     figmaNode: "233:131"
     elements:
@@ -160,6 +181,7 @@ variants:
         position: { value: relative, assert: false }
         width: { value: 20px, token: spacing/size/xsmall }
         height: { value: 20px, token: spacing/size/xsmall }
+        mask: { value: url(./icons/alarm-medium.svg) center / contain no-repeat, untokenised: "The glyph's shape. The colour is the token." }
   - when: { status: Positive, size: Medium }
     figmaNode: "233:136"
     elements:
@@ -170,6 +192,7 @@ variants:
         position: { value: relative, assert: false }
         width: { value: 20px, token: spacing/size/xsmall }
         height: { value: 20px, token: spacing/size/xsmall }
+        mask: { value: url(./icons/positive-medium.svg) center / contain no-repeat, untokenised: "The glyph's shape. The colour is the token." }
   - when: { status: Warning, size: Medium }
     figmaNode: "233:141"
     elements:
@@ -180,6 +203,7 @@ variants:
         position: { value: relative, assert: false }
         width: { value: 20px, token: spacing/size/xsmall }
         height: { value: 20px, token: spacing/size/xsmall }
+        mask: { value: url(./icons/warning-medium.svg) center / contain no-repeat, untokenised: "The glyph's shape. The colour is the token." }
 guidance:
   status: agreed
   use:

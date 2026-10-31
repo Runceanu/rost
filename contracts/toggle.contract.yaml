@@ -62,7 +62,7 @@ elements:
       width: { value: 20px, token: spacing/size/xsmall }
       height: { value: 20px, token: spacing/size/xsmall }
   label:
-    notes: Not in Figma, which has no labelled toggle. Body type, medium, with tabular numbers so years line up. Its colour follows the state, the way a button's label does.
+    notes: "Not a Figma variant: Figma shows a labelled toggle as an example next to the set, built from the same variables. The label is `body/medium` (16/22), with tabular figures so years line up, in `toggle/<on|off>/<state>/label`. The plate hugs it, 20px each side, 40px tall and never narrower than 40. On is fully round with its ring; off keeps the 12px corners and the faded plate."
     styles:
       position: { value: relative, assert: false }
       white-space: { value: nowrap, assert: false }

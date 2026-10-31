@@ -4,7 +4,7 @@ id: table-item
 name: TableItem
 partOf: table
 kind: component
-status: draft
+status: review
 summary: One cell of a TableRow. Its content with an optional line under it, and leading and trailing slots for a Badge or an icon.
 category: display
 related: [ table, table-row, badge ]
@@ -134,7 +134,7 @@ variants:
       label:
         white-space: { value: nowrap, assert: false, notes: "An amount stays on one line, its minus sign too. General Sans has no tabular figures, so amounts line up on their right edge, not digit by digit." }
 guidance:
-  status: proposed
+  status: agreed
   use:
     - title: Every cell
       text: Every cell of a TableRow.

@@ -162,15 +162,9 @@ for (const [name, value, note] of ROST) {
   notes.set(name, { css: value, note })
 }
 
-// The per-component reads and the full read should agree. Say so when they don't.
-let disagree = 0
-for (const [name, raw] of rawValues) {
-  const t = tokens[name]
-  if (!t || vars.get(name).type === 'STRING') continue
-  const ours = t.value.replace(/px$/, '')
-  const theirs = name.startsWith('opacity/') ? String(Number(raw) / 100) : String(raw).toLowerCase()
-  if (ours !== theirs && t.source === 'figma') { disagree++; console.warn(`  ${name}: ${t.value} here, ${raw} in an older read`) }
-}
+// The per-component reads in raw/ are from 2026-10-19. They're kept for the one
+// library variable they hold (Base/Black), not as a check: registry/figma-variables.json
+// is a full read, compared with Figma variable by variable on 2026-10-31.
 
 // ── Writing ────────────────────────────────────────────────────────────────
 
@@ -185,6 +179,7 @@ const SECTIONS = [
   ['Interactive (things you pick from a list)', (n) => n.startsWith('interactive/')],
   ['Projects', (n) => n.startsWith('project/')],
   ['Tabs', (n) => n.startsWith('tabs/')],
+  ['Illustrations (the three colours every drawing is made of)', (n) => n.startsWith('illustration/')],
   // One family per interactive component, each aliasing the semantic tokens
   // above, so a component can change without taking its neighbours with it.
   ...COMPONENT_FAMILIES.map((c) => [`Component: ${c}`, (n) => n.startsWith(`${c}/`)]),
@@ -259,6 +254,6 @@ if (check) {
   console.log(`tokens: up to date (${sorted.length})`)
 } else {
   for (const [p, s] of outputs) writeFileSync(join(root, p), s)
-  console.log(`tokens: ${figma.length} from Figma, ${ROST.length} of Rost's own${disagree ? `, ${disagree} disagree with an older read` : ''}`)
+  console.log(`tokens: ${figma.length} from Figma, ${ROST.length} of Rost's own`)
   if (notInFigma.size) console.log(`  ${notInFigma.size} light value(s) from registry/light.json aren't in Figma yet: ${[...notInFigma].join(', ')}`)
 }

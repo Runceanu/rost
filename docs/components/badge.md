@@ -27,6 +27,7 @@
 - `root`
 - `label`
 - `outline`
+- `dot` (optional): Small only: the whole badge is the dot. Drawn as a mask in the status colour, so it follows the theme. It was an SVG file with its colour in it.
 - `icon` (optional)
 - `icons-dot` (optional)
 
@@ -67,8 +68,12 @@ Every token this component uses, across all its variants.
 | `non-interactive/background/negative/light` | `#48050c` |
 | `non-interactive/background/positive/light` | `#004c19` |
 | `non-interactive/background/warning/light` | `#492604` |
+| `non-interactive/foreground/negative/base` | `#e93120` |
+| `non-interactive/foreground/positive/base` | `#00d669` |
+| `non-interactive/foreground/primary` | `#ededed` |
 | `non-interactive/foreground/quadruple` | `#3a3a3a` |
 | `non-interactive/foreground/tertiary` | `#999` |
+| `non-interactive/foreground/warning/base` | `#fda50d` |
 | `opacity/solid` | `1` |
 | `spacing/gap/3xsmall` | `2px` |
 | `spacing/gap/none` | `0px` |
@@ -80,5 +85,12 @@ Every token this component uses, across all its variants.
 | `typography/label/font-weight/medium` | `500` |
 | `typography/label/letter-spacing` | `0px` |
 | `typography/label/line-height` | `14px` |
+
+## No token, on purpose
+
+| Part | Property | Value | Why |
+|---|---|---|---|
+| `dot` | `mask` | `url(./dot.svg) center / contain no-repeat` | The dot's shape. The colour is the token. |
+| `icons-dot` | `mask` | `url(./icon-dot.svg) center / contain no-repeat` | The dot's shape. The colour is the token. |
 
 See it live, with every value of every variant: [rost.build/components/badge](https://rost.build/components/badge/)

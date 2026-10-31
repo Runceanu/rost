@@ -248,12 +248,11 @@ ${lightRules.map((r) => `| ${r.tokens.map((t) => `\`${t}\``).join(', ')} | ${r.f
 On 2026-10-31 nothing fails in either theme. Twenty-one values changed that day to get there, in Figma and here, and [Accessibility](ACCESSIBILITY.md) says which. What's still wrong:
 
 - **Pictures with their colour baked in.** Badge's small dots and InlineBanner's icons are SVG files with a fill, so they don't follow the theme. I looked at both in light: they read, because the label next to them says the same thing, but the bright green and orange are under 3:1 on InlineBanner's light grey. They'd need to be masks in a theme colour, the way Icon does it.
-- **Borderless in Figma.** Its hover and pressed fill is drawn as a square, with no corner radius. In dark the hover fill is the page colour, so it never showed; in light it's a grey box behind the label. Code has its own background layer and isn't affected. The Figma component needs a radius on that layer.
-- Thumbs' bottom shade is a gradient from \`rgba(6,8,5,0)\`, a transparent dark. Browsers blend gradients with the alpha first, so it looks the same on a light ground, but it's still a dark-only value in a contract.
+- **Borderless is square on purpose.** Its hover and pressed fill has no corner radius, in Figma and in code. In dark it never shows; in light it's a grey box behind the label, and that's the look.
 
 ### Illustrations
 
-The illustrations are drawn for a dark ground, and they stay that way. Their greys are dark greys picked to sit a step or two above near-black. On a near-white page they turn into heavy dark blots, and the green reads as a sticker on top rather than part of the drawing. I'm not recolouring them in code. They need light versions drawn in Figma, and until then a light page should put them on a dark panel (\`data-theme="dark"\` on the panel does that).
+Every drawing is made of three colours, and since 2026-10-31 each is a token: \`illustration/shade\`, the darkest, a step off the page; \`illustration/form\`, the mid grey; and \`illustration/accent\`, the green. Dark keeps Figma's own values. For light I picked the step that sits as far from the white page as the dark one does from the black: shade is 1.27:1 off the page in dark and \`light/neutral/250\` is 1.26 in light, form takes \`light/neutral/400\`, and the green goes one step deeper, \`light/primary/700\`, where the bright one read as a sticker. The drawings are inline SVG now (\`bin/build-illustrations.mjs\`), so their shapes take those tokens.
 
 ## Motion
 

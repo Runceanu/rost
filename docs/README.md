@@ -14,7 +14,7 @@ Rost started as a design system for my own needs and grew into a product of its 
 | [Roadmap](ROADMAP.md) | What I'm doing next |
 | [Release notes](CHANGELOG.md) | What changed in each release |
 
-**35** contracts, **5** stable. **35** have guidance, and I've signed off **25** of those.
+**35** contracts, **5** stable. **35** have guidance, and I've signed off **32** of those.
 
 ## Catalogue
 
@@ -29,26 +29,26 @@ Rost started as a design system for my own needs and grew into a product of its 
 | [Divider](components/divider.md) | A thin line between things. | `stable` | `agreed` | Portfolio site, Accounting app |
 | [Icon](components/icon.md) | One of Rost's 18 glyphs, 24px, in the colour of the text around it. | `review` | `proposed` | · |
 | [IconButton](components/icon-button.md) | A round button with only an icon, including a Project type for sitting on top of images. | `review` | `agreed` | Portfolio site |
-| [Illustration](components/illustration.md) | One of Rost's 24 small drawings, 72px, in its own greys and green. | `review` | `proposed` | · |
+| [Illustration](components/illustration.md) | One of Rost's 24 small drawings, 72px, in two greys and a green that follow the theme. | `review` | `proposed` | · |
 | [InlineBanner](components/inline-banner.md) | A filled status pill with an icon and a label, in four statuses and two sizes. | `stable` | `agreed` | Portfolio site, Accounting app |
 | [Input](components/input.md) | A 56px text field with a floating label, an optional lock icon, a line of help text and an error state. | `review` | `agreed` | Portfolio site, Accounting app |
 | [ListItem](components/list-item.md) | One row you can pick in a list or a nav. A label, an optional line under it, and optional icons and a status dot. | `review` | `agreed` | · |
 | [Menu](components/menu.md) | A navigation item: a label with a line underneath, used in the main nav. | `review` | `agreed` | · |
 | [Navigation](components/navigation.md) | A side navigation on frosted glass. The logo at the top, the main items below it, one action at the bottom. Collapsed to icons, or open with labels. | `review` | `agreed` | · |
 | [Projects](components/projects.md) | One row in the project list: number, name, and industry, type and period on the right. | `review` | `agreed` | Portfolio site |
-| [Switch](components/switch.md) | A setting that's on or off and takes effect straight away. A pill track with a thumb that moves across. The label is SwitchField's. | `draft` | `proposed` | · |
+| [Switch](components/switch.md) | A setting that's on or off and takes effect straight away. A pill track with a thumb that moves across. The label is SwitchField's. | `review` | `agreed` | · |
 | [TabItem](components/tab-item.md) | One tab in a row of tabs. A label, optional icons before and after it, and a green underline when it's the one selected. | `review` | `agreed` | · |
-| [Table](components/table.md) | Rows of the same kind of thing, side by side in columns, like the accounting app's payments. No box, a hairline between rows. | `draft` | `proposed` | · |
-| [TableItem](components/table-item.md) | One cell of a TableRow. Its content with an optional line under it, and leading and trailing slots for a Badge or an icon. | `draft` | `proposed` | · |
-| [TableRow](components/table-row.md) | One row of a Table, with a hairline under it. It can be a link or something you pick, through its header cell. | `draft` | `proposed` | · |
+| [Table](components/table.md) | Rows of the same kind of thing, side by side in columns, like the accounting app's payments. No box, a hairline between rows. | `review` | `agreed` | · |
+| [TableItem](components/table-item.md) | One cell of a TableRow. Its content with an optional line under it, and leading and trailing slots for a Badge or an icon. | `review` | `agreed` | · |
+| [TableRow](components/table-row.md) | One row of a Table, with a hairline under it. It can be a link or something you pick, through its header cell. | `review` | `agreed` | · |
 | [Tabs](components/tabs.md) | A row of tabs on a 1px line. One is selected, and its panel shows below. | `review` | `agreed` | · |
 | [Tag](components/tags.md) | A compact 20px label with small corners, for what a piece of content is about. | `review` | `agreed` | · |
 | [TestimonialPicture](components/testimonials-pics.md) | The photo of the person behind a testimonial. | `review` | `proposed` | Portfolio site |
 | [Testimonials](components/testimonials.md) | A testimonial you can open and close: name and role, with the quote underneath. | `review` | `agreed` | Portfolio site |
-| [Textarea](components/textarea.md) | A text field for several lines, with Input's label, help line, error and focus ring. | `draft` | `proposed` | · |
+| [Textarea](components/textarea.md) | A text field for several lines, with Input's label, help line, error and focus ring. | `review` | `agreed` | · |
 | [Thumbs](components/thumbs.md) | A project thumbnail card, with the project name and details on a frosted panel at the bottom. | `review` | `agreed` | Portfolio site |
 | [Toggle](components/toggle.md) | A 40×40 icon button that stays on or off, alone or as one choice in a group. | `stable` | `agreed` | Accounting app |
-| [ToggleGroup](components/toggle-group.md) | A row of Toggles where one is chosen, like a year switcher. Arrow keys move the choice, and the row is one stop for Tab. | `draft` | `proposed` | Accounting app |
+| [ToggleGroup](components/toggle-group.md) | A row of Toggles where one is chosen, like a year switcher. Arrow keys move the choice, and the row is one stop for Tab. | `review` | `agreed` | Accounting app |
 | [Tooltip](components/tooltip.md) | A small label that explains something when you point at it or focus it. | `review` | `agreed` | Portfolio site |
 
 ### Patterns
@@ -56,7 +56,7 @@ Rost started as a design system for my own needs and grew into a product of its 
 | | Summary | Contract | Guidance | Used in |
 |---|---|---|---|---|
 | [Hero Media](components/hero-media.md) | A full-width hero: artwork pinned behind a 16px frame and dimmed, with the content on top. | `review` | `agreed` | Portfolio site |
-| [SwitchField](components/switch-field.md) | A Switch with its label beside it, on the left or the right. A click on the words flips it too. | `draft` | `proposed` | · |
+| [SwitchField](components/switch-field.md) | A Switch with its label beside it, on the left or the right. A click on the words flips it too. | `review` | `agreed` | · |
 
 ### Effects
 

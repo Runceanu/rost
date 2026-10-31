@@ -23,7 +23,7 @@ props:
   selected:
     type: boolean
     default: false
-    notes: "Proposed, and in Figma since 2026-10-30 (the set's second column). The chip that's on, in a row of filters: ListItem's solid green plate, with the same `interactive/active` tokens. In code it also sets `aria-pressed`."
+    notes: "In Figma since 2026-10-30 (the set's second column). The chip that's on, in a row of filters: ListItem's solid green plate, with the same `interactive/active` tokens. In code it also sets `aria-pressed`."
 states: [ Default, Hover, Pressed, Focus, Disabled ]
 elements:
   root:
@@ -57,7 +57,7 @@ elements:
       font-size: { token: typography/label/font-size, value: 12px }
       letter-spacing: { token: typography/label/letter-spacing, value: 0px }
   background:
-    notes: "Proposed, in Figma since 2026-10-30. The plate behind a selected chip, the full size of the pill. An unselected chip leaves it empty, so the Figma states don't change."
+    notes: "In Figma since 2026-10-30. The plate behind a selected chip, the full size of the pill. An unselected chip leaves it empty, so the Figma states don't change."
     styles:
       position: { value: absolute }
       inset: { value: "0" }
@@ -136,7 +136,7 @@ variants:
         opacity: { token: opacity/gentle, value: "0.24" }
       focus-ring:
         display: { value: block, assert: false }
-  # Proposed: the selected chip, drawn after ListItem's selected row. Drawn in code first, in Figma since 2026-10-30.
+  # The selected chip, drawn after ListItem's selected row. Drawn in code first, in Figma since 2026-10-30.
   # These come after the Figma states so they win over them.
   - when: { state: Default, selected: true }
     figmaNode: "527:484"
@@ -208,7 +208,7 @@ guidance:
   behaviour: |-
     One `status` (`Default`) and five states. Hover, pressed and focus come from the browser.
 
-    `selected` is the chip that's on: a solid green plate with a dark label, the same look and tokens as a selected ListItem, and no edge. It's my proposal. I drew it in code first and then in the kit, in the Chip set's second column. Use it, but it isn't signed off yet. Don't improvise another fill.
+    `selected` is the chip that's on: a solid green plate with a dark label, the same look as a selected ListItem, with a 1px ring in the positive green that only shows in light, where the bright plate alone is too faint. I drew it in code first and then in the kit, in the Chip set's second column. Don't improvise another fill.
   accessibility:
     element: |-
       `<button type="button">`, with `aria-pressed` when it filters. Pass `selected` (true or false) and Chip sets `aria-pressed` for you. Leave it out on a chip that just does something, and there's no `aria-pressed` at all.

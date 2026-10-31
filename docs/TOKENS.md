@@ -6,18 +6,18 @@ Every value in every contract, sorted by why it has a token or doesn't. A value 
 
 | | Values | Share | Meaning |
 |---|---|---|---|
-| Has a token | 1203 | 58% | Uses a token, and the check tests it. |
+| Has a token | 1217 | 59% | Uses a token, and the check tests it. |
 | Token suggested | 0 | 0% | A token I want that doesn't exist yet. The freeze turned every other suggestion into a token. |
-| How Figma builds it | 545 | 26% | How Figma builds the layer (position, inset, which sides get a stroke). Nothing to tokenise. |
-| Figma frame size | 178 | 9% | A root size that is just the Figma frame. Written down, not checked. |
-| No token, on purpose | 106 | 5% | Plain on purpose, and the contract says why. |
+| How Figma builds it | 554 | 27% | How Figma builds the layer (position, inset, which sides get a stroke). Nothing to tokenise. |
+| Figma frame size | 175 | 8% | A root size that is just the Figma frame. Written down, not checked. |
+| No token, on purpose | 92 | 4% | Plain on purpose, and the contract says why. |
 | Open gap | 32 | 2% | No token and no reason. Each one needs a decision from me. |
 
 ## By contract
 
 | | Has a token | Token suggested | How Figma builds it | Figma frame size | No token, on purpose | Open gap |
 |---|---:|---:|---:|---:|---:|---:|
-| [Badge](components/badge.md) | 25 | · | 21 | · | · | · |
+| [Badge](components/badge.md) | 32 | · | 23 | · | 2 | · |
 | [Button](components/button.md) | 83 | · | 38 | 9 | 5 | 1 |
 | [Carousel](components/carousel.md) | 43 | · | 28 | 13 | 2 | 1 |
 | [Chip](components/chips.md) | 45 | · | 18 | 10 | 10 | 1 |
@@ -26,8 +26,8 @@ Every value in every contract, sorted by why it has a token or doesn't. A value 
 | [Hero Media](components/hero-media.md) | 6 | · | 9 | 2 | · | · |
 | [Icon](components/icon.md) | 6 | · | 3 | 3 | 18 | 1 |
 | [IconButton](components/icon-button.md) | 87 | · | 32 | 7 | 6 | 2 |
-| [Illustration](components/illustration.md) | 2 | · | 3 | 3 | 24 | · |
-| [InlineBanner](components/inline-banner.md) | 44 | · | 34 | · | · | · |
+| [Illustration](components/illustration.md) | 5 | · | 6 | · | · | · |
+| [InlineBanner](components/inline-banner.md) | 48 | · | 38 | · | 8 | · |
 | [Input](components/input.md) | 155 | · | 35 | 20 | 4 | 3 |
 | [ListItem](components/list-item.md) | 99 | · | 32 | 10 | 2 | 1 |
 | [Lock frame effect](components/effect-lock-frame.md) | 1 | · | · | · | · | · |
@@ -90,7 +90,7 @@ A colour token at an opacity token. A token can't hold both, so `color-mix()` pu
 |---|---|---|
 | [Carousel](components/carousel.md) | `background.background` | `color-mix(in srgb, var(--carousel-background) calc(var(--opacity-medium) * 100%), transparent)` |
 | [Navigation](components/navigation.md) | `background.background` | `color-mix(in srgb, var(--non-interactive-background-primary) 48%, transparent)` |
-| [Thumbs](components/thumbs.md) | `shadow.background` | `linear-gradient(to bottom, rgba(6,8,5,0), var(--thumbs-shade))` |
+| [Thumbs](components/thumbs.md) | `shadow.background` | `linear-gradient(to bottom, transparent, var(--thumbs-shade))` |
 | [Thumbs](components/thumbs.md) | `content.background` | `color-mix(in srgb, var(--thumbs-panel) calc(var(--opacity-medium) * 100%), transparent)` |
 
 ### Icon files
@@ -99,7 +99,13 @@ An icon is its SVG file, drawn as a mask so it takes the text colour. The file i
 
 | Where | Part | Value |
 |---|---|---|
+| [Badge](components/badge.md) | `dot.mask` | `url(./dot.svg) center / contain no-repeat` |
+| [Badge](components/badge.md) | `icons-dot.mask` | `url(./icon-dot.svg) center / contain no-repeat` |
 | [IconButton](components/icon-button.md), [Toggle](components/toggle.md) | `glyph.mask` | `url(./icon-arrow-left.svg) center / contain no-repeat` |
+| [InlineBanner](components/inline-banner.md) | `icons-plus.mask` | `url(./icons/plus-small.svg) center / contain no-repeat` and 1 more, one per state |
+| [InlineBanner](components/inline-banner.md) | `icons-alarm.mask` | `url(./icons/alarm-small.svg) center / contain no-repeat` and 1 more, one per state |
+| [InlineBanner](components/inline-banner.md) | `icons-positive.mask` | `url(./icons/positive-small.svg) center / contain no-repeat` and 1 more, one per state |
+| [InlineBanner](components/inline-banner.md) | `icons-warning.mask` | `url(./icons/warning-small.svg) center / contain no-repeat` and 1 more, one per state |
 | [Input](components/input.md), [Projects](components/projects.md), [Thumbs](components/thumbs.md) | `icons-lock.mask` | `url(./icon-lock.svg) center / contain no-repeat` |
 | [Input](components/input.md) | `clear-glyph.mask` | `url(./icon-clear.svg) center / contain no-repeat` |
 | [Input](components/input.md), [Textarea](components/textarea.md) | `icons-alarm.mask` | `url(./icon-alarm.svg) center / contain no-repeat` |
@@ -113,7 +119,8 @@ Sizes and offsets that belong to one component, at a number no size token has.
 | Where | Part | Value | Why |
 |---|---|---|---|
 | [Icon](components/icon.md) | `root.mask-image` | `url(./svg/arrow-down.svg)` and 17 more, one per state | The icon file, `assets/icons/arrow-down.svg`. |
-| [Illustration](components/illustration.md) | `root.background-image` | `url(./svg/activation-and-conversion.svg)` and 23 more, one per state | The drawing, `assets/illustrations/activation-and-conversion.svg` (Figma's "Activation & conversion"). Its colours are Figma's own. |
+| [Illustration](components/illustration.md) | `drawing.width` | `100%` | The drawing fills the 72px box. |
+| [Illustration](components/illustration.md) | `drawing.height` | `100%` | The drawing fills the 72px box. |
 | [Input](components/input.md) | `supportive.top` | `calc(var(--spacing-size-large) + var(--spacing-gap-2xsmall))` | Composed from tokens: the field's height plus spacing/gap/2xsmall. |
 | [ListItem](components/list-item.md) | `root.width` | `100%` | As wide as its list. Figma's sample is 208px. |
 | [ListItem](components/list-item.md) | `background.inset` | `4px` | Figma's own 4px inset of the plate. |
@@ -197,7 +204,7 @@ When a component needs a colour no other has, change its own token to point some
 
 ## Two themes
 
-Dark is the default. It's what Figma draws first and what both apps use. Light is new (2026-10-30). Only colours change: 693 theme colours have a light value of their own. Every other token, and every component, is the same in both.
+Dark is the default. It's what Figma draws first and what both apps use. Light is new (2026-10-30). Only colours change: 696 theme colours have a light value of their own. Every other token, and every component, is the same in both.
 
 `tokens/tokens.css` puts dark on `:root`. Light applies under `[data-theme="light"]` and nowhere else. A system set to light doesn't change it: with no `data-theme` you get dark. `[data-theme="dark"]` brings dark back inside a light page, so a dark panel can sit in a light one. Set it on `<html>` for the whole page:
 
@@ -240,12 +247,11 @@ Figma already had a light mode for every theme colour, mostly the dark scale tur
 On 2026-10-31 nothing fails in either theme. Twenty-one values changed that day to get there, in Figma and here, and [Accessibility](ACCESSIBILITY.md) says which. What's still wrong:
 
 - **Pictures with their colour baked in.** Badge's small dots and InlineBanner's icons are SVG files with a fill, so they don't follow the theme. I looked at both in light: they read, because the label next to them says the same thing, but the bright green and orange are under 3:1 on InlineBanner's light grey. They'd need to be masks in a theme colour, the way Icon does it.
-- **Borderless in Figma.** Its hover and pressed fill is drawn as a square, with no corner radius. In dark the hover fill is the page colour, so it never showed; in light it's a grey box behind the label. Code has its own background layer and isn't affected. The Figma component needs a radius on that layer.
-- Thumbs' bottom shade is a gradient from `rgba(6,8,5,0)`, a transparent dark. Browsers blend gradients with the alpha first, so it looks the same on a light ground, but it's still a dark-only value in a contract.
+- **Borderless is square on purpose.** Its hover and pressed fill has no corner radius, in Figma and in code. In dark it never shows; in light it's a grey box behind the label, and that's the look.
 
 ### Illustrations
 
-The illustrations are drawn for a dark ground, and they stay that way. Their greys are dark greys picked to sit a step or two above near-black. On a near-white page they turn into heavy dark blots, and the green reads as a sticker on top rather than part of the drawing. I'm not recolouring them in code. They need light versions drawn in Figma, and until then a light page should put them on a dark panel (`data-theme="dark"` on the panel does that).
+Every drawing is made of three colours, and since 2026-10-31 each is a token: `illustration/shade`, the darkest, a step off the page; `illustration/form`, the mid grey; and `illustration/accent`, the green. Dark keeps Figma's own values. For light I picked the step that sits as far from the white page as the dark one does from the black: shade is 1.27:1 off the page in dark and `light/neutral/250` is 1.26 in light, form takes `light/neutral/400`, and the green goes one step deeper, `light/primary/700`, where the bright one read as a sticker. The drawings are inline SVG now (`bin/build-illustrations.mjs`), so their shapes take those tokens.
 
 ## Motion
 
@@ -270,4 +276,4 @@ rost.build's own transitions use the tokens now. No component in Rost animates y
 
 ## Figma variables
 
-The Figma file has **1102** variables (`registry/figma-variables.json`, read on 2026-10-31) and `tokens/tokens.css` has **1102** of them. `npm run tokens` builds it from that read, so they can't come apart.
+The Figma file has **1105** variables (`registry/figma-variables.json`, read on 2026-10-31) and `tokens/tokens.css` has **1105** of them. `npm run tokens` builds it from that read, so they can't come apart.
