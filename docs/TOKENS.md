@@ -6,11 +6,11 @@ Every value in every contract, sorted by why it has a token or doesn't. A value 
 
 | | Values | Share | Meaning |
 |---|---|---|---|
-| Has a token | 1202 | 59% | Uses a token, and the check tests it. |
+| Has a token | 1206 | 59% | Uses a token, and the check tests it. |
 | Token suggested | 0 | 0% | A token I want that doesn't exist yet. The freeze turned every other suggestion into a token. |
 | How Figma builds it | 540 | 26% | How Figma builds the layer (position, inset, which sides get a stroke). Nothing to tokenise. |
-| Figma frame size | 173 | 8% | A root size that is just the Figma frame. Written down, not checked. |
-| No token, on purpose | 100 | 5% | Plain on purpose, and the contract says why. |
+| Figma frame size | 176 | 9% | A root size that is just the Figma frame. Written down, not checked. |
+| No token, on purpose | 106 | 5% | Plain on purpose, and the contract says why. |
 | Open gap | 32 | 2% | No token and no reason. Each one needs a decision from me. |
 
 ## By contract
@@ -20,7 +20,7 @@ Every value in every contract, sorted by why it has a token or doesn't. A value 
 | [Badge](components/badge.md) | 25 | · | 21 | · | · | · |
 | [Button](components/button.md) | 83 | · | 38 | 9 | 5 | 1 |
 | [Carousel](components/carousel.md) | 43 | · | 28 | 13 | 2 | 1 |
-| [Chip](components/chips.md) | 45 | · | 18 | 10 | 5 | 1 |
+| [Chip](components/chips.md) | 45 | · | 18 | 10 | 10 | 1 |
 | [Divider](components/divider.md) | 2 | · | 2 | 2 | · | · |
 | [Floating effect](components/effect-floating.md) | 1 | · | · | · | · | · |
 | [Hero Media](components/hero-media.md) | 6 | · | 9 | 2 | · | · |
@@ -36,10 +36,10 @@ Every value in every contract, sorted by why it has a token or doesn't. A value 
 | [Navigation](components/navigation.md) | 13 | · | 21 | 1 | 2 | · |
 | [Paper effect](components/effect-paper.md) | 6 | · | · | · | 7 | · |
 | [Projects](components/projects.md) | 77 | · | 33 | 8 | 5 | 4 |
-| [Switch](components/switch.md) | 56 | · | 15 | 9 | 2 | 1 |
+| [Switch](components/switch.md) | 59 | · | 15 | 12 | 2 | 1 |
 | [TabItem](components/tab-item.md) | 37 | · | 15 | 12 | · | 1 |
 | [Table](components/table.md) | 11 | · | 4 | 2 | · | · |
-| [TableItem](components/table-item.md) | 18 | · | 21 | 11 | · | · |
+| [TableItem](components/table-item.md) | 19 | · | 21 | 11 | 1 | · |
 | [TableRow](components/table-row.md) | 9 | · | 2 | 1 | 1 | · |
 | [Tabs](components/tabs.md) | · | · | 2 | 1 | 1 | · |
 | [Tag](components/tags.md) | 26 | · | 13 | 3 | · | 1 |
@@ -64,10 +64,11 @@ Figma draws a stroke inside the shape. A CSS border takes up space, so the butto
 
 | Where | Part | Value |
 |---|---|---|
-| [Button](components/button.md), [IconButton](components/icon-button.md), [Toggle](components/toggle.md) | `root.box-shadow` | `inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-default-outline)` and 4 more, one per state |
-| [Chip](components/chips.md) | `outline.box-shadow` | `inset 0 0 0 var(--spacing-outline-small) var(--actions-secondary-regular-default-outline)` and 4 more, one per state |
-| [Switch](components/switch.md) | `background.box-shadow` | `inset 0 0 0 var(--spacing-outline-small) var(--actions-secondary-regular-default-outline)` |
+| [Button](components/button.md), [IconButton](components/icon-button.md) | `root.box-shadow` | `inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-default-outline)` and 4 more, one per state |
+| [Chip](components/chips.md) | `outline.box-shadow` | `inset 0 0 0 var(--spacing-outline-small) var(--actions-secondary-regular-default-outline)` and 5 more, one per state |
+| [TableItem](components/table-item.md) | `root.box-shadow` | `inset var(--spacing-outline-medium) 0 0 0 var(--non-interactive-foreground-positive-base)` |
 | [Tabs](components/tabs.md) | `root.box-shadow` | `inset 0 calc(-1 * var(--spacing-outline-small)) 0 0 var(--tabs-line)` |
+| [Toggle](components/toggle.md) | `root.box-shadow` | `inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-default-outline), inset 0 0 0 var(--spacing-outline-small) var(--non-interactive-foreground-positive-base)` and 4 more, one per state |
 
 ### Focus rings
 
@@ -123,6 +124,7 @@ Sizes and offsets that belong to one component, at a number no size token has.
 | [Projects](components/projects.md) | `number.min-width` | `2ch` | Two zeros in the number's own font: 14px at label size. It follows the font, so it isn't a size token. |
 | [Projects](components/projects.md), [Thumbs](components/thumbs.md) | `dot.width` | `3px` | The dot's own size inside the icon. |
 | [Projects](components/projects.md), [Thumbs](components/thumbs.md) | `dot.height` | `3px` | The dot's own size inside the icon. |
+| [Switch](components/switch.md) | `track.outline-offset` | `calc(-1 * var(--spacing-outline-small))` | Composed from a token: the edge sits inside the track. |
 | [Switch](components/switch.md) | `thumb.left` | `calc(100% - var(--spacing-size-2xsmall) - var(--spacing-gap-2xsmall))` | Composed from tokens: the far end of the track, less the thumb and its 4px. |
 | [Table](components/table.md) | `root.width` | `100%` | As wide as where it sits. |
 | [TableItem](components/table-item.md) | `action.width` | `100%` | As wide as its cell. |
@@ -221,11 +223,9 @@ Figma already had a light mode for every theme colour, mostly the dark scale tur
 
 `node bin/contrast.mjs` renders every fixture of every component in both themes, with hover, pressed and focus forced, and measures each piece of text and each icon against the pixels behind it. It measures what's drawn rather than pairs of tokens, because a lot of backgrounds here are a token at an opacity on their own layer. WCAG AA: 4.5 for text, 3 for large text and icons. Disabled states are listed and not counted.
 
-On 2026-10-30, with these values, nothing fails in light that passes in dark, except the details on Thumbs. What's still wrong:
+On 2026-10-31 nothing fails in either theme. Twenty-one values changed that day to get there, in Figma and here, and [Accessibility](ACCESSIBILITY.md) says which. What's still wrong:
 
-- **Thumbs' details in light.** The panel used to be `base/black`, which stayed black in light under dark text. It's the page colour now, `non-interactive/background/primary` at medium opacity, in the contract and in Figma, so it turns light with the theme. The lock on a Locked thumb is `actions/primary/default/label` now, dark on the green in both themes. What's left: the grey details (`project/*/sub-label`, `#747573` in light) come out at 4.3:1 on the panel, just under 4.5. A darker light value would fix it, but Projects uses the same tokens, so I haven't changed it yet.
 - **Pictures with their colour baked in.** Badge's small dots and InlineBanner's icons are SVG files with a fill, so they don't follow the theme. I looked at both in light: they read, because the label next to them says the same thing, but the bright green and orange are under 3:1 on InlineBanner's light grey. They'd need to be masks in a theme colour, the way Icon does it.
-- **Already failing in dark.** The pressed primary icon (`#3a3a3a` on the pressed green, 2.8:1), a selected ListItem's description when pressed or hovered, the hover and pressed Tag, an Input's hover icon and error text when the field has an error. These come from Figma's dark values. Light fixes the ones it can.
 - **Borderless in Figma.** Its hover and pressed fill is drawn as a square, with no corner radius. In dark the hover fill is the page colour, so it never showed; in light it's a grey box behind the label. Code has its own background layer and isn't affected. The Figma component needs a radius on that layer.
 - Thumbs' bottom shade is a gradient from `rgba(6,8,5,0)`, a transparent dark. Browsers blend gradients with the alpha first, so it looks the same on a light ground, but it's still a dark-only value in a contract.
 
@@ -256,4 +256,4 @@ rost.build's own transitions use the tokens now. No component in Rost animates y
 
 ## Figma variables
 
-The Figma file has **671** variables (`registry/figma-variables.json`, read on 2026-10-30) and `tokens/tokens.css` has **671** of them. `npm run tokens` builds it from that read, so they can't come apart.
+The Figma file has **671** variables (`registry/figma-variables.json`, read on 2026-10-31) and `tokens/tokens.css` has **671** of them. `npm run tokens` builds it from that read, so they can't come apart.

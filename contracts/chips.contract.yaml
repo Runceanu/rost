@@ -146,7 +146,8 @@ variants:
       label:
         color: { token: interactive/active/default/label, value: "#060805" }
       outline:
-        opacity: { token: opacity/transparent, value: "0", notes: "A selected chip has no edge, like a selected ListItem. The plate is the edge." }
+        opacity: { token: opacity/solid, value: "1" }
+        box-shadow: { value: "inset 0 0 0 var(--spacing-outline-small) var(--non-interactive-foreground-positive-base)", untokenised: "Composed from tokens: a 1px edge in the positive green. In dark it's the plate's own colour, so it only shows on hover and press. In light it's a dark green, because the bright plate is 1.9:1 on white and a selected chip has to be seen (WCAG 1.4.11)." }
   - when: { state: Hover, selected: true }
     figmaNode: "527:488"
     elements:
@@ -155,7 +156,8 @@ variants:
       label:
         color: { token: interactive/active/hover/label, value: "#060805" }
       outline:
-        opacity: { token: opacity/transparent, value: "0", notes: "A selected chip has no edge, like a selected ListItem. The plate is the edge." }
+        opacity: { token: opacity/solid, value: "1" }
+        box-shadow: { value: "inset 0 0 0 var(--spacing-outline-small) var(--non-interactive-foreground-positive-base)", untokenised: "Composed from tokens: a 1px edge in the positive green. In dark it's the plate's own colour, so it only shows on hover and press. In light it's a dark green, because the bright plate is 1.9:1 on white and a selected chip has to be seen (WCAG 1.4.11)." }
   - when: { state: Pressed, selected: true }
     figmaNode: "527:492"
     elements:
@@ -164,7 +166,8 @@ variants:
       label:
         color: { token: interactive/active/pressed/label, value: "#060805" }
       outline:
-        opacity: { token: opacity/transparent, value: "0", notes: "A selected chip has no edge, like a selected ListItem. The plate is the edge." }
+        opacity: { token: opacity/solid, value: "1" }
+        box-shadow: { value: "inset 0 0 0 var(--spacing-outline-small) var(--non-interactive-foreground-positive-base)", untokenised: "Composed from tokens: a 1px edge in the positive green. In dark it's the plate's own colour, so it only shows on hover and press. In light it's a dark green, because the bright plate is 1.9:1 on white and a selected chip has to be seen (WCAG 1.4.11)." }
   - when: { state: Focus, selected: true }
     figmaNode: "527:496"
     elements:
@@ -173,7 +176,8 @@ variants:
       label:
         color: { token: interactive/active/focus/label, value: "#060805" }
       outline:
-        opacity: { token: opacity/transparent, value: "0", notes: "A selected chip has no edge, like a selected ListItem. The plate is the edge." }
+        opacity: { token: opacity/solid, value: "1" }
+        box-shadow: { value: "inset 0 0 0 var(--spacing-outline-small) var(--non-interactive-foreground-positive-base)", untokenised: "Composed from tokens: a 1px edge in the positive green. In dark it's the plate's own colour, so it only shows on hover and press. In light it's a dark green, because the bright plate is 1.9:1 on white and a selected chip has to be seen (WCAG 1.4.11)." }
       focus-ring:
         display: { value: block, assert: false }
         border-color: { token: interactive/active/focus/focus-ring, value: "#b6ffda" }
@@ -185,7 +189,8 @@ variants:
       label:
         color: { token: interactive/active/disabled/label, value: "#060805" }
       outline:
-        opacity: { token: opacity/transparent, value: "0", notes: "A selected chip has no edge, like a selected ListItem. The plate is the edge." }
+        opacity: { token: opacity/solid, value: "1" }
+        box-shadow: { value: "inset 0 0 0 var(--spacing-outline-small) var(--non-interactive-foreground-positive-base)", untokenised: "Composed from tokens: a 1px edge in the positive green. In dark it's the plate's own colour, so it only shows on hover and press. In light it's a dark green, because the bright plate is 1.9:1 on white and a selected chip has to be seen (WCAG 1.4.11)." }
       root:
         opacity: { token: opacity/gentle, value: "0.24" }
         cursor: { value: default, assert: false }

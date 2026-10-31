@@ -25,6 +25,10 @@
   width: var(--spacing-size-medium);
   height: var(--spacing-size-small);
   border-radius: var(--spacing-radius-full);
+  outline-style: solid;
+  outline-width: var(--spacing-outline-small);
+  outline-offset: calc(-1 * var(--spacing-outline-small));
+  isolation: isolate;
 }
 
 .rost-switch__background {
@@ -32,6 +36,7 @@
   inset: 0;
   border-radius: var(--spacing-radius-full);
   pointer-events: none;
+  z-index: -1;
 }
 
 .rost-switch__thumb {
@@ -63,52 +68,59 @@
   pointer-events: none;
 }
 
-.rost-switch:not(.rost-switch--checked) .rost-switch__background {
-  box-shadow: inset 0 0 0 var(--spacing-outline-small) var(--actions-secondary-regular-default-outline);
-  background: var(--actions-secondary-regular-default-background);
-  opacity: var(--opacity-gentle);
+.rost-switch:not(.rost-switch--checked) .rost-switch__track {
+  outline-color: var(--input-regular-default-outline);
 }
 
 .rost-switch:not(.rost-switch--checked) .rost-switch__label {
   color: var(--actions-secondary-regular-default-label);
 }
 
+.rost-switch:not(.rost-switch--checked) .rost-switch__background {
+  background: var(--actions-secondary-regular-default-background);
+  opacity: var(--opacity-gentle);
+}
+
 .rost-switch:not(.rost-switch--checked) .rost-switch__thumb {
   background: var(--actions-secondary-regular-default-label);
 }
 
-.rost-switch:hover:where(:not(:disabled, [aria-disabled="true"])):not(.rost-switch--checked) .rost-switch__background {
-  box-shadow: inset 0 0 0 var(--spacing-outline-small) var(--actions-secondary-regular-default-outline);
-  background: var(--actions-secondary-regular-hover-background);
-  opacity: var(--opacity-mild);
+.rost-switch:hover:where(:not(:disabled, [aria-disabled="true"])):not(.rost-switch--checked) .rost-switch__track {
+  outline-color: var(--input-regular-default-outline);
 }
 
 .rost-switch:hover:where(:not(:disabled, [aria-disabled="true"])):not(.rost-switch--checked) .rost-switch__label {
   color: var(--actions-secondary-regular-hover-label);
 }
 
+.rost-switch:hover:where(:not(:disabled, [aria-disabled="true"])):not(.rost-switch--checked) .rost-switch__background {
+  background: var(--actions-secondary-regular-hover-background);
+  opacity: var(--opacity-mild);
+}
+
 .rost-switch:hover:where(:not(:disabled, [aria-disabled="true"])):not(.rost-switch--checked) .rost-switch__thumb {
   background: var(--actions-secondary-regular-hover-label);
 }
 
-.rost-switch:active:where(:not(:disabled, [aria-disabled="true"])):not(.rost-switch--checked) .rost-switch__background {
-  box-shadow: inset 0 0 0 var(--spacing-outline-small) var(--actions-secondary-regular-default-outline);
-  background: var(--actions-secondary-regular-pressed-background);
-  opacity: var(--opacity-mild);
+.rost-switch:active:where(:not(:disabled, [aria-disabled="true"])):not(.rost-switch--checked) .rost-switch__track {
+  outline-color: var(--input-regular-default-outline);
 }
 
 .rost-switch:active:where(:not(:disabled, [aria-disabled="true"])):not(.rost-switch--checked) .rost-switch__label {
   color: var(--actions-secondary-regular-pressed-label);
 }
 
+.rost-switch:active:where(:not(:disabled, [aria-disabled="true"])):not(.rost-switch--checked) .rost-switch__background {
+  background: var(--actions-secondary-regular-pressed-background);
+  opacity: var(--opacity-mild);
+}
+
 .rost-switch:active:where(:not(:disabled, [aria-disabled="true"])):not(.rost-switch--checked) .rost-switch__thumb {
   background: var(--actions-secondary-regular-pressed-label);
 }
 
-.rost-switch:focus-visible:not(.rost-switch--checked) .rost-switch__background {
-  box-shadow: inset 0 0 0 var(--spacing-outline-small) var(--actions-secondary-regular-default-outline);
-  background: var(--actions-secondary-regular-focus-background);
-  opacity: var(--opacity-gentle);
+.rost-switch:focus-visible:not(.rost-switch--checked) .rost-switch__track {
+  outline-color: var(--input-regular-default-outline);
 }
 
 .rost-switch:focus-visible:not(.rost-switch--checked) .rost-switch__label {
@@ -120,14 +132,17 @@
   border-color: var(--actions-secondary-regular-focus-focus-ring);
 }
 
+.rost-switch:focus-visible:not(.rost-switch--checked) .rost-switch__background {
+  background: var(--actions-secondary-regular-focus-background);
+  opacity: var(--opacity-gentle);
+}
+
 .rost-switch:focus-visible:not(.rost-switch--checked) .rost-switch__thumb {
   background: var(--actions-secondary-regular-focus-label);
 }
 
-.rost-switch:is(:disabled, [aria-disabled="true"]):not(.rost-switch--checked) .rost-switch__background {
-  box-shadow: inset 0 0 0 var(--spacing-outline-small) var(--actions-secondary-regular-default-outline);
-  background: var(--actions-secondary-regular-disabled-background);
-  opacity: var(--opacity-gentle);
+.rost-switch:is(:disabled, [aria-disabled="true"]):not(.rost-switch--checked) .rost-switch__track {
+  outline-color: var(--input-regular-default-outline);
 }
 
 .rost-switch:is(:disabled, [aria-disabled="true"]):not(.rost-switch--checked) {
@@ -139,8 +154,17 @@
   color: var(--actions-secondary-regular-disabled-label);
 }
 
+.rost-switch:is(:disabled, [aria-disabled="true"]):not(.rost-switch--checked) .rost-switch__background {
+  background: var(--actions-secondary-regular-disabled-background);
+  opacity: var(--opacity-gentle);
+}
+
 .rost-switch:is(:disabled, [aria-disabled="true"]):not(.rost-switch--checked) .rost-switch__thumb {
   background: var(--actions-secondary-regular-disabled-label);
+}
+
+.rost-switch.rost-switch--checked .rost-switch__track {
+  outline-color: var(--non-interactive-foreground-positive-base);
 }
 
 .rost-switch.rost-switch--checked .rost-switch__thumb {
@@ -157,6 +181,10 @@
   opacity: var(--opacity-solid);
 }
 
+.rost-switch:hover:where(:not(:disabled, [aria-disabled="true"])).rost-switch--checked .rost-switch__track {
+  outline-color: var(--non-interactive-foreground-positive-base);
+}
+
 .rost-switch:hover:where(:not(:disabled, [aria-disabled="true"])).rost-switch--checked .rost-switch__thumb {
   left: calc(100% - var(--spacing-size-2xsmall) - var(--spacing-gap-2xsmall));
   background: var(--actions-primary-hover-label);
@@ -171,6 +199,10 @@
   opacity: var(--opacity-solid);
 }
 
+.rost-switch:active:where(:not(:disabled, [aria-disabled="true"])).rost-switch--checked .rost-switch__track {
+  outline-color: var(--non-interactive-foreground-positive-base);
+}
+
 .rost-switch:active:where(:not(:disabled, [aria-disabled="true"])).rost-switch--checked .rost-switch__thumb {
   left: calc(100% - var(--spacing-size-2xsmall) - var(--spacing-gap-2xsmall));
   background: var(--actions-primary-pressed-label);
@@ -183,6 +215,10 @@
 .rost-switch:active:where(:not(:disabled, [aria-disabled="true"])).rost-switch--checked .rost-switch__background {
   background: var(--actions-primary-pressed-background);
   opacity: var(--opacity-solid);
+}
+
+.rost-switch:focus-visible.rost-switch--checked .rost-switch__track {
+  outline-color: var(--non-interactive-foreground-positive-base);
 }
 
 .rost-switch:focus-visible.rost-switch--checked .rost-switch__thumb {
@@ -202,6 +238,10 @@
 .rost-switch:focus-visible.rost-switch--checked .rost-switch__background {
   background: var(--actions-primary-focus-background);
   opacity: var(--opacity-solid);
+}
+
+.rost-switch:is(:disabled, [aria-disabled="true"]).rost-switch--checked .rost-switch__track {
+  outline-color: var(--non-interactive-foreground-positive-base);
 }
 
 .rost-switch:is(:disabled, [aria-disabled="true"]).rost-switch--checked .rost-switch__thumb {

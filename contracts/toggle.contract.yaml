@@ -117,8 +117,8 @@ variants:
       root:
         background: { token: actions/primary/default/background, value: "#00d669" }
         box-shadow:
-          value: inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-default-outline)
-          untokenised: "Figma's 1px left and top stroke, drawn inside the shape as Figma draws it. The width and colour are tokens."
+          value: inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-default-outline), inset 0 0 0 var(--spacing-outline-small) var(--non-interactive-foreground-positive-base)
+          untokenised: "Figma's 1px left and top stroke, drawn inside the shape as Figma draws it, over a 1px ring in the positive green. The ring is the fill's own colour in dark; in light it's a dark green, because the bright fill is 1.8:1 on white and an on toggle has to be seen (WCAG 1.4.11). The widths and colours are tokens."
       icons-arrow-left:
         color: { token: actions/primary/default/icon, value: "#3a3a3a" }
       label:
@@ -140,8 +140,8 @@ variants:
       root:
         background: { token: actions/primary/hover/background, value: "#00b450" }
         box-shadow:
-          value: inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-hover-outline)
-          untokenised: "Figma's 1px left and top stroke, drawn inside the shape as Figma draws it. The width and colour are tokens."
+          value: inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-hover-outline), inset 0 0 0 var(--spacing-outline-small) var(--non-interactive-foreground-positive-base)
+          untokenised: "Figma's 1px left and top stroke, drawn inside the shape as Figma draws it, over a 1px ring in the positive green. The ring is the fill's own colour in dark; in light it's a dark green, because the bright fill is 1.8:1 on white and an on toggle has to be seen (WCAG 1.4.11). The widths and colours are tokens."
       icons-arrow-left:
         color: { token: actions/primary/hover/icon, value: "#3a3a3a" }
       label:
@@ -163,8 +163,8 @@ variants:
       root:
         background: { token: actions/primary/pressed/background, value: "#00913a" }
         box-shadow:
-          value: inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-pressed-outline)
-          untokenised: "Figma's 1px left and top stroke, drawn inside the shape as Figma draws it. The width and colour are tokens."
+          value: inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-pressed-outline), inset 0 0 0 var(--spacing-outline-small) var(--non-interactive-foreground-positive-base)
+          untokenised: "Figma's 1px left and top stroke, drawn inside the shape as Figma draws it, over a 1px ring in the positive green. The ring is the fill's own colour in dark; in light it's a dark green, because the bright fill is 1.8:1 on white and an on toggle has to be seen (WCAG 1.4.11). The widths and colours are tokens."
       icons-arrow-left:
         color: { token: actions/primary/pressed/icon, value: "#3a3a3a" }
       label:
@@ -186,8 +186,8 @@ variants:
       root:
         background: { token: actions/primary/disabled/background, value: "#00d669" }
         box-shadow:
-          value: inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-disabled-outline)
-          untokenised: "Figma's 1px left and top stroke, drawn inside the shape as Figma draws it. The width and colour are tokens."
+          value: inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-disabled-outline), inset 0 0 0 var(--spacing-outline-small) var(--non-interactive-foreground-positive-base)
+          untokenised: "Figma's 1px left and top stroke, drawn inside the shape as Figma draws it, over a 1px ring in the positive green. The ring is the fill's own colour in dark; in light it's a dark green, because the bright fill is 1.8:1 on white and an on toggle has to be seen (WCAG 1.4.11). The widths and colours are tokens."
       icons-arrow-left:
         color: { token: actions/primary/disabled/icon, value: "#3a3a3a" }
       label:
@@ -209,8 +209,8 @@ variants:
       root:
         background: { token: actions/primary/focus/background, value: "#00d669" }
         box-shadow:
-          value: inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-focus-outline)
-          untokenised: "Figma's 1px left and top stroke, drawn inside the shape as Figma draws it. The width and colour are tokens."
+          value: inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-focus-outline), inset 0 0 0 var(--spacing-outline-small) var(--non-interactive-foreground-positive-base)
+          untokenised: "Figma's 1px left and top stroke, drawn inside the shape as Figma draws it, over a 1px ring in the positive green. The ring is the fill's own colour in dark; in light it's a dark green, because the bright fill is 1.8:1 on white and an on toggle has to be seen (WCAG 1.4.11). The widths and colours are tokens."
       icons-arrow-left:
         color: { token: actions/primary/focus/icon, value: "#3a3a3a" }
       focus-ring:

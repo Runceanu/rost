@@ -2,6 +2,15 @@
 
 What changed each time I merged into `master` and put rost.build live. Newest first. The commits have the details; this is what it means for a component or an app.
 
+## 2026-10-31
+
+- **Every component passes WCAG 2.1 AA, in both themes.** Yesterday's review found 23 failures in dark and 20 in light. Now there are none: all 427 pieces of text and icons pass, every control shows focus, and every field, switch and selected thing stands out from the page at 3:1. It took 21 token values, changed in Figma's variables and here at once, and four components redrawn in Figma and code. [Accessibility](ACCESSIBILITY.md) has the table.
+  - **What you'll see:** field edges you can actually see (`#747573` in both themes), the error red brighter in dark, dark icons and descriptions on pressed and selected greens, Tag's hover and pressed fills darker, Thumbs' details darker in light.
+  - **Switch** has its edge on the track now, at full strength, instead of inside the faded fill.
+  - **Chip** and **Toggle**, selected or on, have a 1px ring in the positive green. It's the plate's own colour in dark, and dark green in light.
+  - **TableItem** takes the label's colour for its description on a highlighted row, and a selected row's first cell has a 2px green bar.
+  - `bin/a11y.mjs` also measures what marks the current or selected item now, takes the best side of a control's edge, and lets an off toggle be named by its glyph.
+
 ## 2026-10-30
 
 - **An accessibility review, in both themes.** `node bin/a11y.mjs` is new: axe-core's WCAG 2.1 A and AA rules on every fixture, a Tab to every control to check focus shows at 3:1, and the edges of fields, switches and toggles against the page. With `bin/contrast.mjs` that covers what a component can get wrong on its own. axe finds nothing, and every control shows focus. What fails is token values: field edges and the off Switch and Toggle track in both themes, the error red and a few pressed and hover states in dark, TableItem's description on a hovered or selected row, Thumbs' details in light. [Accessibility](ACCESSIBILITY.md) lists each one with its numbers. I haven't changed the tokens yet. Input and Textarea have a fixture with no `selected` now, so the check can tab to one that follows focus; the visual test skips it.

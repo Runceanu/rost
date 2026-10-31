@@ -43,13 +43,18 @@ elements:
       width: { token: spacing/size/medium, value: 40px }
       height: { token: spacing/size/small, value: 24px }
       border-radius: { token: spacing/radius/full, value: 10000px }
+      outline-style: { value: solid, assert: false, notes: "The track's 1px edge, drawn inside it at full strength over the faded fill, so the switch can be seen against the page (WCAG 1.4.11, 3:1). It used to be part of the faded layer, which left it at 1.9:1 in dark and nothing in light." }
+      outline-width: { token: spacing/outline/small, value: 1px }
+      outline-offset: { value: "calc(-1 * var(--spacing-outline-small))", untokenised: "Composed from a token: the edge sits inside the track." }
+      isolation: { value: isolate, assert: false, notes: "So the fill can sit under the track's edge: the fill is absolutely placed and would otherwise paint over the outline." }
   background:
-    notes: "The track's fill and its 1px edge, on their own layer. Off, it's faded the way an off Toggle's plate is, so the thumb on top stays solid."
+    notes: "The track's fill, on its own layer. Off, it's faded the way an off Toggle's plate is, so the thumb on top stays solid. The edge is the track's."
     styles:
       position: { value: absolute }
       inset: { value: "0" }
       border-radius: { token: spacing/radius/full, value: 10000px }
       pointer-events: { value: none, assert: false }
+      z-index: { value: "-1", assert: false }
   thumb:
     notes: "The 16px dot, 4px in from the track's edge. It sits left when off and right when on. It jumps for now: there are no motion tokens yet, and when there are it should slide."
     styles:
@@ -82,14 +87,14 @@ elements:
 variants:
   - when: { checked: true }
     elements:
+      track:
+        outline-color: { token: non-interactive/foreground/positive/base, value: "#00d669", notes: "The fill's own green in dark, where the fill already stands out. In light it's a dark green, because the bright fill is 1.9:1 on white." }
       thumb:
         left: { value: "calc(100% - var(--spacing-size-2xsmall) - var(--spacing-gap-2xsmall))", untokenised: "Composed from tokens: the far end of the track, less the thumb and its 4px." }
   - when: { checked: false }
     elements:
-      background:
-        box-shadow:
-          value: inset 0 0 0 var(--spacing-outline-small) var(--actions-secondary-regular-default-outline)
-          untokenised: "A 1px edge drawn inside the pill, as Chip draws its edge. The width and colour are tokens."
+      track:
+        outline-color: { token: input/regular/default/outline, value: "#747573", notes: "A field's edge: 4.3:1 on the dark page, 4.5:1 on the light one." }
   - when: { state: Default }
     elements:
       label:

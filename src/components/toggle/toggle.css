@@ -68,7 +68,7 @@
 .rost-toggle.rost-toggle--selected {
   border-radius: var(--spacing-radius-full);
   background: var(--actions-primary-default-background);
-  box-shadow: inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-default-outline);
+  box-shadow: inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-default-outline), inset 0 0 0 var(--spacing-outline-small) var(--non-interactive-foreground-positive-base);
 }
 
 .rost-toggle.rost-toggle--selected .rost-toggle__icons-arrow-left {
@@ -106,7 +106,7 @@
 .rost-toggle:hover:where(:not(:disabled, [aria-disabled="true"])).rost-toggle--selected {
   border-radius: var(--spacing-radius-full);
   background: var(--actions-primary-hover-background);
-  box-shadow: inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-hover-outline);
+  box-shadow: inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-hover-outline), inset 0 0 0 var(--spacing-outline-small) var(--non-interactive-foreground-positive-base);
 }
 
 .rost-toggle:hover:where(:not(:disabled, [aria-disabled="true"])).rost-toggle--selected .rost-toggle__icons-arrow-left {
@@ -144,7 +144,7 @@
 .rost-toggle:active:where(:not(:disabled, [aria-disabled="true"])).rost-toggle--selected {
   border-radius: var(--spacing-radius-full);
   background: var(--actions-primary-pressed-background);
-  box-shadow: inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-pressed-outline);
+  box-shadow: inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-pressed-outline), inset 0 0 0 var(--spacing-outline-small) var(--non-interactive-foreground-positive-base);
 }
 
 .rost-toggle:active:where(:not(:disabled, [aria-disabled="true"])).rost-toggle--selected .rost-toggle__icons-arrow-left {
@@ -184,7 +184,7 @@
   opacity: var(--opacity-gentle);
   cursor: default;
   background: var(--actions-primary-disabled-background);
-  box-shadow: inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-disabled-outline);
+  box-shadow: inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-disabled-outline), inset 0 0 0 var(--spacing-outline-small) var(--non-interactive-foreground-positive-base);
 }
 
 .rost-toggle:is(:disabled, [aria-disabled="true"]).rost-toggle--selected .rost-toggle__icons-arrow-left {
@@ -224,7 +224,7 @@
 .rost-toggle:focus-visible.rost-toggle--selected {
   border-radius: var(--spacing-radius-full);
   background: var(--actions-primary-focus-background);
-  box-shadow: inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-focus-outline);
+  box-shadow: inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--actions-primary-focus-outline), inset 0 0 0 var(--spacing-outline-small) var(--non-interactive-foreground-positive-base);
 }
 
 .rost-toggle:focus-visible.rost-toggle--selected .rost-toggle__focus-ring {

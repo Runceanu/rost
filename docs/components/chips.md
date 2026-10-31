@@ -89,7 +89,6 @@ Every token this component uses, across all its variants.
 | `opacity/gentle` | `0.24` |
 | `opacity/solid` | `1` |
 | `opacity/strong` | `0.64` |
-| `opacity/transparent` | `0` |
 | `spacing/gap/3xsmall` | `2px` |
 | `spacing/gap/none` | `0px` |
 | `spacing/gap/small` | `8px` |
@@ -111,5 +110,10 @@ Every token this component uses, across all its variants.
 | `outline` | `box-shadow` | `inset 0 0 0 var(--spacing-outline-small) var(--actions-secondary-regular-pressed-outline)` | Figma's 1px stroke, drawn inside the shape. The width and colour are tokens (spacing/outline/small, actions/secondary/regular/pressed/outline). |
 | `outline` | `box-shadow` | `inset 0 0 0 var(--spacing-outline-small) var(--actions-secondary-regular-disabled-outline)` | Figma's 1px stroke, drawn inside the shape. The width and colour are tokens (spacing/outline/small, actions/secondary/regular/disabled/outline). |
 | `outline` | `box-shadow` | `inset 0 0 0 var(--spacing-outline-small) var(--actions-secondary-regular-focus-outline)` | Figma's 1px stroke, drawn inside the shape. The width and colour are tokens (spacing/outline/small, actions/secondary/regular/focus/outline). |
+| `outline` | `box-shadow` | `inset 0 0 0 var(--spacing-outline-small) var(--non-interactive-foreground-positive-base)` | Composed from tokens: a 1px edge in the positive green. In dark it's the plate's own colour, so it only shows on hover and press. In light it's a dark green, because the bright plate is 1.9:1 on white and a selected chip has to be seen (WCAG 1.4.11). |
+| `outline` | `box-shadow` | `inset 0 0 0 var(--spacing-outline-small) var(--non-interactive-foreground-positive-base)` | Composed from tokens: a 1px edge in the positive green. In dark it's the plate's own colour, so it only shows on hover and press. In light it's a dark green, because the bright plate is 1.9:1 on white and a selected chip has to be seen (WCAG 1.4.11). |
+| `outline` | `box-shadow` | `inset 0 0 0 var(--spacing-outline-small) var(--non-interactive-foreground-positive-base)` | Composed from tokens: a 1px edge in the positive green. In dark it's the plate's own colour, so it only shows on hover and press. In light it's a dark green, because the bright plate is 1.9:1 on white and a selected chip has to be seen (WCAG 1.4.11). |
+| `outline` | `box-shadow` | `inset 0 0 0 var(--spacing-outline-small) var(--non-interactive-foreground-positive-base)` | Composed from tokens: a 1px edge in the positive green. In dark it's the plate's own colour, so it only shows on hover and press. In light it's a dark green, because the bright plate is 1.9:1 on white and a selected chip has to be seen (WCAG 1.4.11). |
+| `outline` | `box-shadow` | `inset 0 0 0 var(--spacing-outline-small) var(--non-interactive-foreground-positive-base)` | Composed from tokens: a 1px edge in the positive green. In dark it's the plate's own colour, so it only shows on hover and press. In light it's a dark green, because the bright plate is 1.9:1 on white and a selected chip has to be seen (WCAG 1.4.11). |
 
 See it live, with every value of every variant: [rost.build/components/chips](https://rost.build/components/chips/)

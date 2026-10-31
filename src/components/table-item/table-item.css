@@ -69,6 +69,14 @@
   flex-shrink: 0;
 }
 
+.rost-table-item:is(.rost-table-row--selected *, .rost-table-row:has(.rost-table-item__action:is(:hover, :active, :focus-visible)) *) .rost-table-item__description {
+  color: var(--non-interactive-foreground-primary);
+}
+
+.rost-table-item:is(.rost-table-row--selected > :first-child) {
+  box-shadow: inset var(--spacing-outline-medium) 0 0 0 var(--non-interactive-foreground-positive-base);
+}
+
 .rost-table-item.rost-table-item--header-row .rost-table-item__label {
   font-weight: var(--typography-paragraph-font-weight-medium);
 }

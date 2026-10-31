@@ -27,7 +27,7 @@
 
 - `root`: A `<button role="switch">`. The browser's own look goes. It holds the track and the label, so a click on either flips it.
 - `track`: The pill. 40 by 24, the size of a Toggle across and a Chip down.
-- `background`: The track's fill and its 1px edge, on their own layer. Off, it's faded the way an off Toggle's plate is, so the thumb on top stays solid.
+- `background`: The track's fill, on its own layer. Off, it's faded the way an off Toggle's plate is, so the thumb on top stays solid. The edge is the track's.
 - `thumb`: The 16px dot, 4px in from the track's edge. It sits left when off and right when on. It jumps for now: there are no motion tokens yet, and when there are it should slide.
 - `label`: Paragraph type, in the colour a secondary action's label has in each state. It doesn't change with on and off: the track says that.
 - `focus-ring`: Around the track only, not the label, so it keeps the pill's shape.
@@ -89,6 +89,8 @@ Every token this component uses, across all its variants.
 | `actions/secondary/regular/pressed/background` | `#999` |
 | `actions/secondary/regular/pressed/label` | `#d3d9d5` |
 | `font-family/base` | `'General Sans Variable'` |
+| `input/regular/default/outline` | `#747573` |
+| `non-interactive/foreground/positive/base` | `#00d669` |
 | `opacity/gentle` | `0.24` |
 | `opacity/mild` | `0.32` |
 | `opacity/solid` | `1` |
@@ -96,6 +98,7 @@ Every token this component uses, across all its variants.
 | `spacing/gap/none` | `0px` |
 | `spacing/gap/small` | `8px` |
 | `spacing/outline/medium` | `2px` |
+| `spacing/outline/small` | `1px` |
 | `spacing/radius/full` | `10000px` |
 | `spacing/size/2xsmall` | `16px` |
 | `spacing/size/medium` | `40px` |
@@ -109,8 +112,8 @@ Every token this component uses, across all its variants.
 
 | Part | Property | Value | Why |
 |---|---|---|---|
+| `track` | `outline-offset` | `calc(-1 * var(--spacing-outline-small))` | Composed from a token: the edge sits inside the track. |
 | `focus-ring` | `inset` | `calc(-1 * var(--spacing-gap-2xsmall))` | Composed from a token: the ring sits spacing/gap/2xsmall outside the track. |
 | `thumb` | `left` | `calc(100% - var(--spacing-size-2xsmall) - var(--spacing-gap-2xsmall))` | Composed from tokens: the far end of the track, less the thumb and its 4px. |
-| `background` | `box-shadow` | `inset 0 0 0 var(--spacing-outline-small) var(--actions-secondary-regular-default-outline)` | A 1px edge drawn inside the pill, as Chip draws its edge. The width and colour are tokens. |
 
 See it live, with every value of every variant: [rost.build/components/switch](https://rost.build/components/switch/)

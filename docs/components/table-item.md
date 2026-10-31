@@ -23,6 +23,10 @@
 | `header` | enum | `None` `Row` `Column` | `None` |
 | `numeric` | boolean |  | `false` |
 
+## States
+
+`Default` · `Highlighted` · `SelectedRow`
+
 ## Anatomy
 
 - `root`: A `<td>` or a `<th>`. 12px at the sides, as ListItem, so the text lines up with a ListItem's above or below the table.
@@ -67,6 +71,7 @@ Every token this component uses, across all its variants.
 
 | Token | Resolves to |
 |---|---|
+| `non-interactive/foreground/primary` | `#ededed` |
 | `non-interactive/foreground/tertiary` | `#999999` |
 | `spacing/gap/2xsmall` | `4px` |
 | `spacing/gap/3xsmall` | `2px` |
@@ -84,5 +89,6 @@ Every token this component uses, across all its variants.
 | Part | Property | Value | Why |
 |---|---|---|---|
 | `action` | `width` | `100%` | As wide as its cell. |
+| `root` | `box-shadow` | `inset var(--spacing-outline-medium) 0 0 0 var(--non-interactive-foreground-positive-base)` | Composed from tokens: a 2px bar down the left of a selected row's first cell. The row's dark green fill is 2:1 against the page, under the 3:1 a selected row needs to be seen (WCAG 1.4.11); the bar is 10:1 in dark and 6:1 in light. A `<tr>` can't draw it, so its first cell does. |
 
 See it live, with every value of every variant: [rost.build/components/table-item](https://rost.build/components/table-item/)

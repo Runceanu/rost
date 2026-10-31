@@ -10,8 +10,9 @@
  *   focus   2.4.7 and 1.4.11. Each control is focused from the keyboard. Some
  *           pixels have to change, and the colour they change to has to reach
  *           3:1 against the colour they were.
- *   edges   1.4.11. A field, a switch or a toggle has to be told apart from
- *           the page by its edge or its fill, at 3:1. A button is named by its
+ *   edges   1.4.11. A field, a switch, a toggle, or whatever marks the
+ *           current or selected item, has to be told apart from the page by
+ *           its edge or its fill, at 3:1. A button is named by its
  *           label, so it isn't measured.
  *
  * Disabled fixtures and the forced hover, pressed and focus ones are skipped:
@@ -84,17 +85,19 @@ function dominant(cols) {
   const [k] = [...count].sort((a, b) => b[1] - a[1])[0]
   return k.split(',').map((v) => (Number(v) << 2) + 2)
 }
-/** The pixels just inside a box's outline, from a full-page screenshot. */
-function outline(png, r) {
-  const out = []
-  const at = (x, y) => { x = Math.round(x); y = Math.round(y); if (x < 0 || y < 0 || x >= png.width || y >= png.height) return; out.push(px(png, (y * png.width + x) * 4)) }
-  const inset = 0, x0 = r.x + inset, y0 = r.y + inset, x1 = r.x + r.width - 1 - inset, y1 = r.y + r.height - 1 - inset
-  // Skip the corners, where the radius shows the page through.
-  const rad = Math.min(r.radius, r.width / 2, r.height / 2)
-  for (let x = x0 + rad; x <= x1 - rad; x++) { at(x, y0); at(x, y1) }
-  for (let y = y0 + rad; y <= y1 - rad; y++) { at(x0, y); at(x1, y) }
-  return out
+/** The pixels just inside a box's outline, one list per side, from a full-page screenshot. */
+function sides(png, r) {
+  const at = (out, x, y) => { x = Math.round(x); y = Math.round(y); if (x < 0 || y < 0 || x >= png.width || y >= png.height) return; out.push(px(png, (y * png.width + x) * 4)) }
+  const x0 = r.x, y0 = r.y, x1 = r.x + r.width - 1, y1 = r.y + r.height - 1
+  // Skip the corners, where the radius shows the page through, but keep the
+  // middle of each side even on a circle.
+  const rad = Math.max(0, Math.min(r.radius, r.width / 2 - 2, r.height / 2 - 2))
+  const top = [], bottom = [], left = [], right = []
+  for (let x = x0 + rad; x <= x1 - rad; x++) { at(top, x, y0); at(bottom, x, y1) }
+  for (let y = y0 + rad; y <= y1 - rad; y++) { at(left, x0, y); at(right, x1, y) }
+  return [top, bottom, left, right].filter((l) => l.length)
 }
+const outline = (png, r) => sides(png, r).flat()
 
 const browser = await chromium.launch()
 const found = []
@@ -139,7 +142,7 @@ for (const id of components) {
       const controls = await page.$$eval(`[data-fixture="${f}"] :is(a[href], button, input, textarea, select, [tabindex]):not([tabindex="-1"]):not([disabled]):not([aria-disabled="true"])`, (els) => els.map((el, i) => {
         el.dataset.ctl = String(i)
         const cs = getComputedStyle(el)
-        return { i, tag: el.tagName.toLowerCase(), role: el.getAttribute('role'), pressed: el.getAttribute('aria-pressed'), checked: el.getAttribute('aria-checked'), cls: [...el.classList][0] ?? el.tagName.toLowerCase(), border: parseFloat(cs.borderTopWidth) || 0 }
+        return { i, tag: el.tagName.toLowerCase(), role: el.getAttribute('role'), pressed: el.getAttribute('aria-pressed'), current: el.getAttribute('aria-current') ?? el.getAttribute('aria-selected'), checked: el.getAttribute('aria-checked'), cls: [...el.classList][0] ?? el.tagName.toLowerCase(), border: parseFloat(cs.borderTopWidth) || 0 }
       }))
       for (const c of controls) {
         const sel = `[data-fixture="${f}"] [data-ctl="${c.i}"]`
@@ -176,7 +179,9 @@ for (const id of components) {
 
         // Edges: fields, switches and toggles, against the page. The box that
         // draws it is the biggest one in the component with an edge or a fill.
-        const field = ['input', 'textarea', 'select'].includes(c.tag) || c.role === 'switch' || c.pressed !== null
+        // An off toggle is named by its glyph, like an icon button, and contrast.mjs
+        // measures that. What has to stand out is the on state.
+        const field = ['input', 'textarea', 'select'].includes(c.tag) || c.role === 'switch' || c.pressed === 'true' || (c.current && c.current !== 'false')
         if (field) {
           await page.evaluate(() => document.activeElement?.blur())
           await page.mouse.move(0, 0)
@@ -185,18 +190,21 @@ for (const id of components) {
             const all = [top, ...top.querySelectorAll('*')].filter((p) => {
               const cs = getComputedStyle(p)
               if (cs.visibility === 'hidden' || cs.display === 'none' || cs.position === 'absolute' && /focus/.test(p.className)) return false
-              return (parseFloat(cs.borderTopWidth) && cs.borderTopStyle !== 'none') || cs.backgroundColor !== 'rgba(0, 0, 0, 0)'
+              return (parseFloat(cs.borderTopWidth) && cs.borderTopStyle !== 'none') || cs.backgroundColor !== 'rgba(0, 0, 0, 0)' || (cs.outlineStyle !== 'none' && parseFloat(cs.outlineWidth)) || cs.boxShadow !== 'none'
             })
             const rect = (p) => { const r = p.getBoundingClientRect(); return { x: r.x + scrollX, y: r.y + scrollY, width: r.width, height: r.height, radius: parseFloat(getComputedStyle(p).borderTopLeftRadius) || 0, cls: [...p.classList].find((k) => k.includes('__')) ?? p.className } }
             const sorted = all.map(rect).sort((a, b) => b.width * b.height - a.width * a.height)
+            // The boxes that make up the control, not the small things in it, like a switch's thumb.
+            const big = sorted.filter((r) => r.width * r.height >= 0.6 * sorted[0].width * sorted[0].height)
             const thumb = top.querySelector('[class*="__thumb"]'), track = top.querySelector('[class*="__background"]')
-            return { box: sorted[0] ?? null, thumb: thumb && rect(thumb), track: track && rect(track) }
+            return { boxes: big, thumb: thumb && rect(thumb), track: track && rect(track) }
           })
           const shot = PNG.sync.read(await page.screenshot({ fullPage: true }))
           const pageBg = dominant(outline(shot, { x: 2, y: 2, width: 40, height: 40, radius: 0 }))
-          const drawn = boxes.box && dominant(outline(shot, boxes.box))
-          const edge = drawn ? ratio(drawn, pageBg) : 0
-          if (boxes.box && !drawn) { /* too small to sample */ } else if (edge < 3) add({ id, theme, check: 'edges', fixture: meta.name, what: `${name}: its edge (${boxes.box?.cls ?? 'none'}) reaches ${edge.toFixed(2)}:1 against the page`, sc: '1.4.11', ratio: edge })
+          // The best side of the best box: a bar down one side is enough.
+          let edge = 0, by = 'none'
+          for (const b of boxes.boxes) for (const side of sides(shot, b)) { const r = ratio(dominant(side), pageBg); if (r > edge) { edge = r; by = b.cls } }
+          if (edge < 3) add({ id, theme, check: 'edges', fixture: meta.name, what: `${name}: its edge (${by}) reaches ${edge.toFixed(2)}:1 against the page`, sc: '1.4.11', ratio: edge })
           if (boxes.thumb && boxes.track) {
             const centre = (r) => px(shot, (Math.round(r.y + r.height / 2) * shot.width + Math.round(r.x + r.width / 2)) * 4)
             const t = centre(boxes.thumb)

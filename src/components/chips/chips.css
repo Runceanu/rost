@@ -124,7 +124,8 @@
 }
 
 .rost-chips.rost-chips--selected .rost-chips__outline {
-  opacity: var(--opacity-transparent);
+  opacity: var(--opacity-solid);
+  box-shadow: inset 0 0 0 var(--spacing-outline-small) var(--non-interactive-foreground-positive-base);
 }
 
 .rost-chips:hover:where(:not(:disabled, [aria-disabled="true"])).rost-chips--selected .rost-chips__background {
@@ -136,7 +137,8 @@
 }
 
 .rost-chips:hover:where(:not(:disabled, [aria-disabled="true"])).rost-chips--selected .rost-chips__outline {
-  opacity: var(--opacity-transparent);
+  opacity: var(--opacity-solid);
+  box-shadow: inset 0 0 0 var(--spacing-outline-small) var(--non-interactive-foreground-positive-base);
 }
 
 .rost-chips:active:where(:not(:disabled, [aria-disabled="true"])).rost-chips--selected .rost-chips__background {
@@ -148,7 +150,8 @@
 }
 
 .rost-chips:active:where(:not(:disabled, [aria-disabled="true"])).rost-chips--selected .rost-chips__outline {
-  opacity: var(--opacity-transparent);
+  opacity: var(--opacity-solid);
+  box-shadow: inset 0 0 0 var(--spacing-outline-small) var(--non-interactive-foreground-positive-base);
 }
 
 .rost-chips:focus-visible.rost-chips--selected .rost-chips__background {
@@ -160,7 +163,8 @@
 }
 
 .rost-chips:focus-visible.rost-chips--selected .rost-chips__outline {
-  opacity: var(--opacity-transparent);
+  opacity: var(--opacity-solid);
+  box-shadow: inset 0 0 0 var(--spacing-outline-small) var(--non-interactive-foreground-positive-base);
 }
 
 .rost-chips:focus-visible.rost-chips--selected .rost-chips__focus-ring {
@@ -177,7 +181,8 @@
 }
 
 .rost-chips:is(:disabled, [aria-disabled="true"]).rost-chips--selected .rost-chips__outline {
-  opacity: var(--opacity-transparent);
+  opacity: var(--opacity-solid);
+  box-shadow: inset 0 0 0 var(--spacing-outline-small) var(--non-interactive-foreground-positive-base);
 }
 
 .rost-chips:is(:disabled, [aria-disabled="true"]).rost-chips--selected {

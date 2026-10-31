@@ -27,6 +27,10 @@ props:
     default: None
     notes: "None is a data cell, a `<td>`. Row is the cell that names its row, a `<th scope=\"row\">`, in medium weight; in a row with `href` or `onSelect` it holds the link or button. Column is a column header in the table's `head`, a `<th scope=\"col\">`, in the smaller label size."
   numeric: { type: boolean, default: false, notes: "For amounts: lined up on the right and kept on one line, so a minus sign never breaks off. Its column header should be numeric too." }
+states: [ Default, Highlighted, SelectedRow ]
+stateSelectors:
+  Highlighted: ":is(.rost-table-row--selected *, .rost-table-row:has(.rost-table-item__action:is(:hover, :active, :focus-visible)) *)"
+  SelectedRow: ":is(.rost-table-row--selected > :first-child)"
 elements:
   root:
     notes: "A `<td>` or a `<th>`. 12px at the sides, as ListItem, so the text lines up with a ListItem's above or below the table."
@@ -96,6 +100,14 @@ elements:
       align-items: { value: center }
       flex-shrink: { value: "0", assert: false }
 variants:
+  - when: { state: Highlighted }
+    elements:
+      description:
+        color: { token: non-interactive/foreground/primary, value: "#ededed", notes: "Highlighted isn't something you set: a cell is highlighted when its row is selected, hovered, pressed or focused. The quiet grey is under 4.5:1 on those fills, so the description takes the label's colour there." }
+  - when: { state: SelectedRow }
+    elements:
+      root:
+        box-shadow: { value: "inset var(--spacing-outline-medium) 0 0 0 var(--non-interactive-foreground-positive-base)", untokenised: "Composed from tokens: a 2px bar down the left of a selected row's first cell. The row's dark green fill is 2:1 against the page, under the 3:1 a selected row needs to be seen (WCAG 1.4.11); the bar is 10:1 in dark and 6:1 in light. A `<tr>` can't draw it, so its first cell does." }
   - when: { header: Row }
     elements:
       label:
