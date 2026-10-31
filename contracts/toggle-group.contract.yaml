@@ -46,7 +46,7 @@ guidance:
   behaviour: |-
     One toggle is on at a time. Choosing another turns the last one off. The group draws nothing itself; each Toggle shows its own on and off.
 
-    In Figma it sits under Toggle, a component with a `toggles` slot of Toggle instances. Figma's Toggle has no label yet, so the Figma group shows three icon toggles, not years.
+    In Figma it has a page of its own: a component with a `toggles` slot of Toggle instances. Figma's Toggle has no label yet, so the Figma group shows three icon toggles, not years.
   accessibility:
     element: "`role=\"radiogroup\"` holding Toggles with `role=\"radio\"` and `aria-checked`. Toggle sets `aria-checked` itself when it has `role=\"radio\"`."
     name: "`label` becomes the group's `aria-label`. A Toggle with only an icon still needs its own `aria-label`."

@@ -2,7 +2,7 @@
 
 # Switch
 
-> A setting that's on or off and takes effect straight away. A pill track with a thumb that moves across, and a label beside it.
+> A setting that's on or off and takes effect straight away. A pill track with a thumb that moves across. The label is SwitchField's.
 
 | | |
 |---|---|
@@ -17,7 +17,6 @@
 | Prop | Type | Values | Default |
 |---|---|---|---|
 | `checked` | boolean |  | `false` |
-| `label` | slot |  |  |
 
 ## States
 
@@ -25,12 +24,11 @@
 
 ## Anatomy
 
-- `root`: A `<button role="switch">`. The browser's own look goes. It holds the track and the label, so a click on either flips it.
+- `root`: A `<button role="switch">` holding the track. The browser's own look goes. It has no words of its own: SwitchField puts a label beside it, or give it an `aria-label`.
 - `track`: The pill. 40 by 24, the size of a Toggle across and a Chip down.
 - `background`: The track's fill, on its own layer. Off, it's faded the way an off Toggle's plate is, so the thumb on top stays solid. The edge is the track's.
 - `thumb`: The 16px dot, 4px in from the track's edge. It sits left when off and right when on. It jumps for now: there are no motion tokens yet, and when there are it should slide.
-- `label`: Paragraph type, in the colour a secondary action's label has in each state. It doesn't change with on and off: the track says that.
-- `focus-ring`: Around the track only, not the label, so it keeps the pill's shape.
+- `focus-ring`: Around the track, keeping the pill's shape.
 
 ## When to use
 
@@ -44,21 +42,21 @@
 
 ## Behaviour
 
-Off is a faded track with the thumb on the left, the way an off Toggle is faded. On is a solid primary green track with a dark thumb on the right. Hover, press and focus come from the browser and follow Toggle's colours. Disabled fades the whole thing, label too.
+Off is a faded track with the thumb on the left, the way an off Toggle is faded. On is a solid primary green track with a dark thumb on the right. Hover, press and focus come from the browser and follow Toggle's colours. Disabled fades it.
 
-It's my draft. I built it in code from Toggle's and Button's tokens, then drew it in the kit next to Toggle, bound to the same variables. The ten variants match Figma.
+It's my draft. I built it in code from Toggle's and Button's tokens, then drew it in the kit, on a page of its own, bound to the same variables. Its label moved to SwitchField on 2026-10-31. The ten variants match Figma.
 
 ## Accessibility
 
 - **Element**: `<button type="button" role="switch">` with `aria-checked`. Switch sets both.
-- **Name**: The label inside the button is its name. A switch with no label needs an `aria-label`.
+- **Name**: It has no text of its own. In a SwitchField the label names it; on its own it needs an `aria-label`.
 - **Keyboard**: Tab reaches it. Space flips it, and so does Enter, since it's a button.
 - **Focus**: `focus-ring` around the track, on `:focus-visible`.
 - **Colour**: On and off aren't only green and grey: the thumb moves from one end to the other.
 
 ## Content
 
-Say what's on when it's on, as a short phrase in sentence case: "Email me receipts", not "Receipts: on/off". The label doesn't change when you flip it.
+The words go in SwitchField's label, or in `aria-label`. Say what's on when it's on, as a short phrase in sentence case: "Email me receipts", not "Receipts: on/off".
 
 ## Tokens
 
@@ -88,7 +86,6 @@ Every token this component uses, across all its variants.
 | `actions/secondary/regular/hover/label` | `#ededed` |
 | `actions/secondary/regular/pressed/background` | `#999` |
 | `actions/secondary/regular/pressed/label` | `#d3d9d5` |
-| `font-family/base` | `'General Sans Variable'` |
 | `input/regular/default/outline` | `#747573` |
 | `non-interactive/foreground/positive/base` | `#00d669` |
 | `opacity/gentle` | `0.24` |
@@ -96,17 +93,12 @@ Every token this component uses, across all its variants.
 | `opacity/solid` | `1` |
 | `spacing/gap/2xsmall` | `4px` |
 | `spacing/gap/none` | `0px` |
-| `spacing/gap/small` | `8px` |
 | `spacing/outline/medium` | `2px` |
 | `spacing/outline/small` | `1px` |
 | `spacing/radius/full` | `10000px` |
 | `spacing/size/2xsmall` | `16px` |
 | `spacing/size/medium` | `40px` |
 | `spacing/size/small` | `24px` |
-| `typography/paragraph/font-size` | `14px` |
-| `typography/paragraph/font-weight/regular` | `400` |
-| `typography/paragraph/letter-spacing` | `0px` |
-| `typography/paragraph/line-height` | `20px` |
 
 ## No token, on purpose
 

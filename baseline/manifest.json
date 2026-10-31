@@ -1533,70 +1533,70 @@
       "nodeId": "528:350",
       "name": "state=Default, checked=False",
       "file": "528-350.png",
-      "width": 161,
+      "width": 40,
       "height": 24
     },
     {
       "nodeId": "528:355",
       "name": "state=Hover, checked=False",
       "file": "528-355.png",
-      "width": 161,
+      "width": 40,
       "height": 24
     },
     {
       "nodeId": "528:360",
       "name": "state=Pressed, checked=False",
       "file": "528-360.png",
-      "width": 161,
+      "width": 40,
       "height": 24
     },
     {
       "nodeId": "528:365",
       "name": "state=Focus, checked=False",
       "file": "528-365.png",
-      "width": 161,
-      "height": 24
+      "width": 48,
+      "height": 32
     },
     {
       "nodeId": "528:371",
       "name": "state=Disabled, checked=False",
       "file": "528-371.png",
-      "width": 161,
+      "width": 40,
       "height": 24
     },
     {
       "nodeId": "528:376",
       "name": "state=Default, checked=True",
       "file": "528-376.png",
-      "width": 161,
+      "width": 40,
       "height": 24
     },
     {
       "nodeId": "528:381",
       "name": "state=Hover, checked=True",
       "file": "528-381.png",
-      "width": 161,
+      "width": 40,
       "height": 24
     },
     {
       "nodeId": "528:386",
       "name": "state=Pressed, checked=True",
       "file": "528-386.png",
-      "width": 161,
+      "width": 40,
       "height": 24
     },
     {
       "nodeId": "528:391",
       "name": "state=Focus, checked=True",
       "file": "528-391.png",
-      "width": 161,
-      "height": 24
+      "width": 48,
+      "height": 32
     },
     {
       "nodeId": "528:397",
       "name": "state=Disabled, checked=True",
       "file": "528-397.png",
-      "width": 161,
+      "width": 40,
       "height": 24
     }
   ],
@@ -1658,6 +1658,36 @@
       "file": "528-742.png",
       "width": 124,
       "height": 40
+    }
+  ],
+  "switch-field": [
+    {
+      "nodeId": "545:33",
+      "name": "side=Right, disabled=False",
+      "file": "545-33.png",
+      "width": 161,
+      "height": 24
+    },
+    {
+      "nodeId": "545:39",
+      "name": "side=Left, disabled=False",
+      "file": "545-39.png",
+      "width": 161,
+      "height": 24
+    },
+    {
+      "nodeId": "545:45",
+      "name": "side=Right, disabled=True",
+      "file": "545-45.png",
+      "width": 161,
+      "height": 24
+    },
+    {
+      "nodeId": "545:51",
+      "name": "side=Left, disabled=True",
+      "file": "545-51.png",
+      "width": 161,
+      "height": 24
     }
   ]
 }

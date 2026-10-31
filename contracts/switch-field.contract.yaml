@@ -1,0 +1,83 @@
+# yaml-language-server: $schema=../schema/component-contract.schema.json
+schemaVersion: 2
+id: switch-field
+name: SwitchField
+kind: pattern
+status: draft
+summary: A Switch with its label beside it, on the left or the right. A click on the words flips it too.
+category: selection
+related: [ switch ]
+source:
+  tool: figma
+  fileKey: 1Zy0wiWKXQAvsfDBX3KR0d
+  nodeId: "545:57"
+  url: https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=545-57
+  extractedAt: "2026-10-31"
+  extractedBy: hand
+  frozenAt: "2026-10-31"
+props:
+  label: { type: slot, notes: "What it turns on: \"Email me receipts\". In React, the children. It's a `<label>` for the switch, so it's the switch's name and a click on it flips it." }
+  side: { type: enum, values: [ Left, Right ], default: Right, notes: "Which side of the switch the label sits. Right reads like a checkbox, in a list of settings. Left lines the switches up on the right edge, for a settings panel with long labels." }
+  switch: { type: node, notes: "A Switch. In React, SwitchField draws it from `checked`, `defaultChecked`, `onCheckedChange` and `disabled`." }
+  disabled: { type: boolean, default: false, notes: "Disables the switch and fades the label with it." }
+elements:
+  root:
+    notes: "A row: the switch and its label, centred on each other."
+    styles:
+      display: { value: inline-flex, assert: false }
+      align-items: { value: center }
+      gap: { token: spacing/gap/small, value: 8px }
+      vertical-align: { value: middle, assert: false }
+  switch:
+    notes: "A Switch, as it is. Its own states do the work: hover, press and focus are the switch's."
+    styles:
+      flex-shrink: { value: "0", assert: false }
+  label:
+    notes: "A `<label for>` the switch. Paragraph type, in the colour a secondary action's label has. It doesn't change with on and off: the track says that."
+    styles:
+      font-family: { token: font-family/base, value: "'General Sans Variable'" }
+      font-weight: { token: typography/paragraph/font-weight/regular, value: "400" }
+      font-size: { token: typography/paragraph/font-size, value: 14px }
+      line-height: { token: typography/paragraph/line-height, value: 20px }
+      letter-spacing: { token: typography/paragraph/letter-spacing, value: 0px }
+      color: { token: actions/secondary/regular/default/label, value: "#d3d9d5" }
+      cursor: { value: pointer, assert: false }
+variants:
+  - when: { side: Left }
+    elements:
+      root:
+        flex-direction: { value: row-reverse, assert: false, notes: "The switch comes first in the DOM either way; only where the label is drawn changes." }
+        justify-content: { value: flex-end, notes: "Packs the pair to the left in a reversed row, so the label starts at the edge like it does on the right." }
+  - when: { side: Right }
+    elements:
+      root:
+        flex-direction: { value: row, assert: false }
+  - when: { disabled: true }
+    elements:
+      label:
+        opacity: { token: opacity/gentle, value: "0.24", notes: "The same fade as the disabled switch beside it." }
+        cursor: { value: default, assert: false }
+guidance:
+  status: proposed
+  use:
+    - title: A setting with its name
+      text: "Any switch that people read before they flip: email me receipts, show cents, dark charts."
+      show: side=Right, disabled=False
+    - title: Label on the left
+      text: "A settings panel where the labels are long: the switches line up down the right edge, where the eye finds them."
+      show: side=Left, disabled=False
+  avoid:
+    - title: A switch with no words
+      text: "A switch whose meaning comes from what's around it, like a row in a table. Use **Switch** with an `aria-label`."
+    - title: A label that changes
+      text: "\"On\" and \"Off\" as the label. The track says that; the label says what it's for."
+  behaviour: |-
+    The label is a `<label>` tied to the switch, so a click anywhere on the words flips it, the way a checkbox's label does. Hover, press and focus are the switch's own. Disabled fades both.
+
+    It's my draft, made when I took the label out of Switch so it could go on either side. In Figma it's on the switch page, next to Switch, with a real Switch instance inside that you can set on or off.
+  accessibility:
+    element: "A `<span>` holding the Switch's `<button role=\"switch\">` and a `<label for>` it."
+    name: "The label. SwitchField ties the two with an id, so you don't."
+    keyboard: "The switch's: Tab reaches it, Space and Enter flip it."
+    focus: "The switch's ring, around the track."
+  content: "A short phrase in sentence case, saying what's on when it's on: \"Email me receipts\", not \"Receipts: on/off\"."

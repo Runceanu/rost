@@ -37,7 +37,7 @@
 
 One toggle is on at a time. Choosing another turns the last one off. The group draws nothing itself; each Toggle shows its own on and off.
 
-In Figma it sits under Toggle, a component with a `toggles` slot of Toggle instances. Figma's Toggle has no label yet, so the Figma group shows three icon toggles, not years.
+In Figma it has a page of its own: a component with a `toggles` slot of Toggle instances. Figma's Toggle has no label yet, so the Figma group shows three icon toggles, not years.
 
 ## Accessibility
 

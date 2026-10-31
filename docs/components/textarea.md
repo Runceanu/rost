@@ -57,7 +57,7 @@ It's Input grown down, with the same tokens for the fill, the edge, the label, t
 
 One difference from Input: the label always sits small at the top. Input's label sits large in an empty field, but in a box three lines tall it would float alone in the middle. It starts three lines tall (`rows`), and you can drag it taller.
 
-It's my draft. I built it in code from Input's contract, then drew it in the kit next to Input, with Input's variables. The seven variants match Figma.
+It's my draft. I built it in code from Input's contract, then drew it in the kit, on a page of its own, with Input's variables. The seven variants match Figma.
 
 ## Accessibility
 

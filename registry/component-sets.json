@@ -371,16 +371,16 @@
     "name": "Switch",
     "setNodeId": "528:402",
     "variants": [
-      { "nodeId": "528:350", "name": "state=Default, checked=False", "width": 161, "height": 24 },
-      { "nodeId": "528:355", "name": "state=Hover, checked=False", "width": 161, "height": 24 },
-      { "nodeId": "528:360", "name": "state=Pressed, checked=False", "width": 161, "height": 24 },
-      { "nodeId": "528:365", "name": "state=Focus, checked=False", "width": 161, "height": 24 },
-      { "nodeId": "528:371", "name": "state=Disabled, checked=False", "width": 161, "height": 24 },
-      { "nodeId": "528:376", "name": "state=Default, checked=True", "width": 161, "height": 24 },
-      { "nodeId": "528:381", "name": "state=Hover, checked=True", "width": 161, "height": 24 },
-      { "nodeId": "528:386", "name": "state=Pressed, checked=True", "width": 161, "height": 24 },
-      { "nodeId": "528:391", "name": "state=Focus, checked=True", "width": 161, "height": 24 },
-      { "nodeId": "528:397", "name": "state=Disabled, checked=True", "width": 161, "height": 24 }
+      { "nodeId": "528:350", "name": "state=Default, checked=False", "width": 40, "height": 24 },
+      { "nodeId": "528:355", "name": "state=Hover, checked=False", "width": 40, "height": 24 },
+      { "nodeId": "528:360", "name": "state=Pressed, checked=False", "width": 40, "height": 24 },
+      { "nodeId": "528:365", "name": "state=Focus, checked=False", "width": 48, "height": 32 },
+      { "nodeId": "528:371", "name": "state=Disabled, checked=False", "width": 40, "height": 24 },
+      { "nodeId": "528:376", "name": "state=Default, checked=True", "width": 40, "height": 24 },
+      { "nodeId": "528:381", "name": "state=Hover, checked=True", "width": 40, "height": 24 },
+      { "nodeId": "528:386", "name": "state=Pressed, checked=True", "width": 40, "height": 24 },
+      { "nodeId": "528:391", "name": "state=Focus, checked=True", "width": 48, "height": 32 },
+      { "nodeId": "528:397", "name": "state=Disabled, checked=True", "width": 40, "height": 24 }
     ]
   },
   "textarea": {
@@ -401,6 +401,16 @@
     "setNodeId": "528:742",
     "variants": [
       { "nodeId": "528:742", "name": "toggle-group", "width": 124, "height": 40 }
+    ]
+  },
+  "switch-field": {
+    "name": "SwitchField",
+    "setNodeId": "545:57",
+    "variants": [
+      { "nodeId": "545:33", "name": "side=Right, disabled=False", "width": 161, "height": 24 },
+      { "nodeId": "545:39", "name": "side=Left, disabled=False", "width": 161, "height": 24 },
+      { "nodeId": "545:45", "name": "side=Right, disabled=True", "width": 161, "height": 24 },
+      { "nodeId": "545:51", "name": "side=Left, disabled=True", "width": 161, "height": 24 }
     ]
   }
 }

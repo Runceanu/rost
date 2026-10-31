@@ -4,9 +4,9 @@ id: switch
 name: Switch
 kind: component
 status: draft
-summary: A setting that's on or off and takes effect straight away. A pill track with a thumb that moves across, and a label beside it.
+summary: A setting that's on or off and takes effect straight away. A pill track with a thumb that moves across. The label is SwitchField's.
 category: selection
-related: [ toggle, chips ]
+related: [ switch-field, toggle, chips ]
 source:
   tool: figma
   fileKey: 1Zy0wiWKXQAvsfDBX3KR0d
@@ -17,22 +17,19 @@ source:
   frozenAt: "2026-10-30"
 props:
   checked: { type: boolean, default: false, notes: "On or off. It's the switch's `aria-checked`. In React, controlled with `checked` or left to itself with `defaultChecked`." }
-  label: { type: slot, notes: "What it turns on, drawn after the track: \"Email me receipts\". In React, the children. Without one, give it an `aria-label`." }
 states: [ Default, Hover, Pressed, Focus, Disabled ]
 elements:
   root:
-    notes: "A `<button role=\"switch\">`. The browser's own look goes. It holds the track and the label, so a click on either flips it."
+    notes: "A `<button role=\"switch\">` holding the track. The browser's own look goes. It has no words of its own: SwitchField puts a label beside it, or give it an `aria-label`."
     styles:
       display: { value: inline-flex, assert: false }
       align-items: { value: center }
       vertical-align: { value: middle, assert: false }
       position: { value: relative, assert: false }
-      gap: { token: spacing/gap/small, value: 8px }
       padding: { token: spacing/gap/none, value: 0px }
       background: { value: none, assert: false }
       border: { value: none, assert: false }
       font: { value: inherit, assert: false }
-      text-align: { value: start }
       cursor: { value: pointer, assert: false }
       outline: { value: none, assert: false }
   track:
@@ -65,17 +62,8 @@ elements:
       height: { token: spacing/size/2xsmall, value: 16px }
       border-radius: { token: spacing/radius/full, value: 10000px }
       pointer-events: { value: none, assert: false }
-  label:
-    notes: "Paragraph type, in the colour a secondary action's label has in each state. It doesn't change with on and off: the track says that."
-    styles:
-      position: { value: relative, assert: false }
-      font-family: { token: font-family/base, value: "'General Sans Variable'" }
-      font-weight: { token: typography/paragraph/font-weight/regular, value: "400" }
-      font-size: { token: typography/paragraph/font-size, value: 14px }
-      line-height: { token: typography/paragraph/line-height, value: 20px }
-      letter-spacing: { token: typography/paragraph/letter-spacing, value: 0px }
   focus-ring:
-    notes: "Around the track only, not the label, so it keeps the pill's shape."
+    notes: "Around the track, keeping the pill's shape."
     styles:
       display: { value: none, assert: false }
       position: { value: absolute }
@@ -95,22 +83,8 @@ variants:
     elements:
       track:
         outline-color: { token: input/regular/default/outline, value: "#747573", notes: "A field's edge: 4.3:1 on the dark page, 4.5:1 on the light one." }
-  - when: { state: Default }
-    elements:
-      label:
-        color: { token: actions/secondary/regular/default/label, value: "#d3d9d5" }
-  - when: { state: Hover }
-    elements:
-      label:
-        color: { token: actions/secondary/regular/hover/label, value: "#ededed" }
-  - when: { state: Pressed }
-    elements:
-      label:
-        color: { token: actions/secondary/regular/pressed/label, value: "#d3d9d5" }
   - when: { state: Focus }
     elements:
-      label:
-        color: { token: actions/secondary/regular/focus/label, value: "#d3d9d5" }
       focus-ring:
         display: { value: block, assert: false }
   - when: { state: Disabled }
@@ -118,8 +92,6 @@ variants:
       root:
         opacity: { token: opacity/gentle, value: "0.24" }
         cursor: { value: default, assert: false }
-      label:
-        color: { token: actions/secondary/regular/disabled/label, value: "#d3d9d5" }
   - when: { state: Default, checked: false }
     figmaNode: "528:350"
     elements:
@@ -219,13 +191,13 @@ guidance:
     - title: A button that stays pressed
       text: An icon button that stays pressed, like bold in an editor. That's **Toggle**.
   behaviour: |-
-    Off is a faded track with the thumb on the left, the way an off Toggle is faded. On is a solid primary green track with a dark thumb on the right. Hover, press and focus come from the browser and follow Toggle's colours. Disabled fades the whole thing, label too.
+    Off is a faded track with the thumb on the left, the way an off Toggle is faded. On is a solid primary green track with a dark thumb on the right. Hover, press and focus come from the browser and follow Toggle's colours. Disabled fades it.
 
-    It's my draft. I built it in code from Toggle's and Button's tokens, then drew it in the kit next to Toggle, bound to the same variables. The ten variants match Figma.
+    It's my draft. I built it in code from Toggle's and Button's tokens, then drew it in the kit, on a page of its own, bound to the same variables. Its label moved to SwitchField on 2026-10-31. The ten variants match Figma.
   accessibility:
     element: "`<button type=\"button\" role=\"switch\">` with `aria-checked`. Switch sets both."
-    name: "The label inside the button is its name. A switch with no label needs an `aria-label`."
+    name: "It has no text of its own. In a SwitchField the label names it; on its own it needs an `aria-label`."
     keyboard: "Tab reaches it. Space flips it, and so does Enter, since it's a button."
     focus: "`focus-ring` around the track, on `:focus-visible`."
     colour: "On and off aren't only green and grey: the thumb moves from one end to the other."
-  content: "Say what's on when it's on, as a short phrase in sentence case: \"Email me receipts\", not \"Receipts: on/off\". The label doesn't change when you flip it."
+  content: "The words go in SwitchField's label, or in `aria-label`. Say what's on when it's on, as a short phrase in sentence case: \"Email me receipts\", not \"Receipts: on/off\"."

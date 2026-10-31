@@ -14,7 +14,7 @@ Rost started as a design system for my own needs and grew into a product of its 
 | [Roadmap](ROADMAP.md) | What I'm doing next |
 | [Release notes](CHANGELOG.md) | What changed in each release |
 
-**34** contracts, **5** stable. **34** have guidance, and I've signed off **25** of those.
+**35** contracts, **5** stable. **35** have guidance, and I've signed off **25** of those.
 
 ## Catalogue
 
@@ -36,7 +36,7 @@ Rost started as a design system for my own needs and grew into a product of its 
 | [Menu](components/menu.md) | A navigation item: a label with a line underneath, used in the main nav. | `review` | `agreed` | · |
 | [Navigation](components/navigation.md) | A side navigation on frosted glass. The logo at the top, the main items below it, one action at the bottom. Collapsed to icons, or open with labels. | `review` | `agreed` | · |
 | [Projects](components/projects.md) | One row in the project list: number, name, and industry, type and period on the right. | `review` | `agreed` | Portfolio site |
-| [Switch](components/switch.md) | A setting that's on or off and takes effect straight away. A pill track with a thumb that moves across, and a label beside it. | `draft` | `proposed` | · |
+| [Switch](components/switch.md) | A setting that's on or off and takes effect straight away. A pill track with a thumb that moves across. The label is SwitchField's. | `draft` | `proposed` | · |
 | [TabItem](components/tab-item.md) | One tab in a row of tabs. A label, optional icons before and after it, and a green underline when it's the one selected. | `review` | `agreed` | · |
 | [Table](components/table.md) | Rows of the same kind of thing, side by side in columns, like the accounting app's payments. No box, a hairline between rows. | `draft` | `proposed` | · |
 | [TableItem](components/table-item.md) | One cell of a TableRow. Its content with an optional line under it, and leading and trailing slots for a Badge or an icon. | `draft` | `proposed` | · |
@@ -56,6 +56,7 @@ Rost started as a design system for my own needs and grew into a product of its 
 | | Summary | Contract | Guidance | Used in |
 |---|---|---|---|---|
 | [Hero Media](components/hero-media.md) | A full-width hero: artwork pinned behind a 16px frame and dimmed, with the content on top. | `review` | `agreed` | Portfolio site |
+| [SwitchField](components/switch-field.md) | A Switch with its label beside it, on the left or the right. A click on the words flips it too. | `draft` | `proposed` | · |
 
 ### Effects
 

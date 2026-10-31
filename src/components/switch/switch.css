@@ -9,12 +9,10 @@
   align-items: center;
   vertical-align: middle;
   position: relative;
-  gap: var(--spacing-gap-small);
   padding: var(--spacing-gap-none);
   background: none;
   border: none;
   font: inherit;
-  text-align: start;
   cursor: pointer;
   outline: none;
 }
@@ -49,15 +47,6 @@
   pointer-events: none;
 }
 
-.rost-switch__label {
-  position: relative;
-  font-family: var(--font-family-base);
-  font-weight: var(--typography-paragraph-font-weight-regular);
-  font-size: var(--typography-paragraph-font-size);
-  line-height: var(--typography-paragraph-line-height);
-  letter-spacing: var(--typography-paragraph-letter-spacing);
-}
-
 .rost-switch__focus-ring {
   display: none;
   position: absolute;
@@ -70,10 +59,6 @@
 
 .rost-switch:not(.rost-switch--checked) .rost-switch__track {
   outline-color: var(--input-regular-default-outline);
-}
-
-.rost-switch:not(.rost-switch--checked) .rost-switch__label {
-  color: var(--actions-secondary-regular-default-label);
 }
 
 .rost-switch:not(.rost-switch--checked) .rost-switch__background {
@@ -89,10 +74,6 @@
   outline-color: var(--input-regular-default-outline);
 }
 
-.rost-switch:hover:where(:not(:disabled, [aria-disabled="true"])):not(.rost-switch--checked) .rost-switch__label {
-  color: var(--actions-secondary-regular-hover-label);
-}
-
 .rost-switch:hover:where(:not(:disabled, [aria-disabled="true"])):not(.rost-switch--checked) .rost-switch__background {
   background: var(--actions-secondary-regular-hover-background);
   opacity: var(--opacity-mild);
@@ -106,10 +87,6 @@
   outline-color: var(--input-regular-default-outline);
 }
 
-.rost-switch:active:where(:not(:disabled, [aria-disabled="true"])):not(.rost-switch--checked) .rost-switch__label {
-  color: var(--actions-secondary-regular-pressed-label);
-}
-
 .rost-switch:active:where(:not(:disabled, [aria-disabled="true"])):not(.rost-switch--checked) .rost-switch__background {
   background: var(--actions-secondary-regular-pressed-background);
   opacity: var(--opacity-mild);
@@ -121,10 +98,6 @@
 
 .rost-switch:focus-visible:not(.rost-switch--checked) .rost-switch__track {
   outline-color: var(--input-regular-default-outline);
-}
-
-.rost-switch:focus-visible:not(.rost-switch--checked) .rost-switch__label {
-  color: var(--actions-secondary-regular-focus-label);
 }
 
 .rost-switch:focus-visible:not(.rost-switch--checked) .rost-switch__focus-ring {
@@ -150,10 +123,6 @@
   cursor: default;
 }
 
-.rost-switch:is(:disabled, [aria-disabled="true"]):not(.rost-switch--checked) .rost-switch__label {
-  color: var(--actions-secondary-regular-disabled-label);
-}
-
 .rost-switch:is(:disabled, [aria-disabled="true"]):not(.rost-switch--checked) .rost-switch__background {
   background: var(--actions-secondary-regular-disabled-background);
   opacity: var(--opacity-gentle);
@@ -172,10 +141,6 @@
   background: var(--actions-primary-default-label);
 }
 
-.rost-switch.rost-switch--checked .rost-switch__label {
-  color: var(--actions-secondary-regular-default-label);
-}
-
 .rost-switch.rost-switch--checked .rost-switch__background {
   background: var(--actions-primary-default-background);
   opacity: var(--opacity-solid);
@@ -188,10 +153,6 @@
 .rost-switch:hover:where(:not(:disabled, [aria-disabled="true"])).rost-switch--checked .rost-switch__thumb {
   left: calc(100% - var(--spacing-size-2xsmall) - var(--spacing-gap-2xsmall));
   background: var(--actions-primary-hover-label);
-}
-
-.rost-switch:hover:where(:not(:disabled, [aria-disabled="true"])).rost-switch--checked .rost-switch__label {
-  color: var(--actions-secondary-regular-hover-label);
 }
 
 .rost-switch:hover:where(:not(:disabled, [aria-disabled="true"])).rost-switch--checked .rost-switch__background {
@@ -208,10 +169,6 @@
   background: var(--actions-primary-pressed-label);
 }
 
-.rost-switch:active:where(:not(:disabled, [aria-disabled="true"])).rost-switch--checked .rost-switch__label {
-  color: var(--actions-secondary-regular-pressed-label);
-}
-
 .rost-switch:active:where(:not(:disabled, [aria-disabled="true"])).rost-switch--checked .rost-switch__background {
   background: var(--actions-primary-pressed-background);
   opacity: var(--opacity-solid);
@@ -224,10 +181,6 @@
 .rost-switch:focus-visible.rost-switch--checked .rost-switch__thumb {
   left: calc(100% - var(--spacing-size-2xsmall) - var(--spacing-gap-2xsmall));
   background: var(--actions-primary-focus-label);
-}
-
-.rost-switch:focus-visible.rost-switch--checked .rost-switch__label {
-  color: var(--actions-secondary-regular-focus-label);
 }
 
 .rost-switch:focus-visible.rost-switch--checked .rost-switch__focus-ring {
@@ -252,10 +205,6 @@
 .rost-switch:is(:disabled, [aria-disabled="true"]).rost-switch--checked {
   opacity: var(--opacity-gentle);
   cursor: default;
-}
-
-.rost-switch:is(:disabled, [aria-disabled="true"]).rost-switch--checked .rost-switch__label {
-  color: var(--actions-secondary-regular-disabled-label);
 }
 
 .rost-switch:is(:disabled, [aria-disabled="true"]).rost-switch--checked .rost-switch__background {

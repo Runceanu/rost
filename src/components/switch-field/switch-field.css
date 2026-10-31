@@ -1,0 +1,40 @@
+/* Generated from contracts/switch-field.contract.yaml by bin/build-css.mjs. Don't edit: change the contract and rebuild. */
+
+.rost-switch-field, .rost-switch-field * { box-sizing: border-box; margin: 0; }
+.rost-switch-field > img, .rost-switch-field [class*="__icons-"] > img { display: block; position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; }
+.rost-switch-field ::placeholder { color: inherit; opacity: 1; }
+
+.rost-switch-field {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-gap-small);
+  vertical-align: middle;
+}
+
+.rost-switch-field__switch {
+  flex-shrink: 0;
+}
+
+.rost-switch-field__label {
+  font-family: var(--font-family-base);
+  font-weight: var(--typography-paragraph-font-weight-regular);
+  font-size: var(--typography-paragraph-font-size);
+  line-height: var(--typography-paragraph-line-height);
+  letter-spacing: var(--typography-paragraph-letter-spacing);
+  color: var(--actions-secondary-regular-default-label);
+  cursor: pointer;
+}
+
+.rost-switch-field.rost-switch-field--side-left {
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+}
+
+.rost-switch-field.rost-switch-field--side-right {
+  flex-direction: row;
+}
+
+.rost-switch-field.rost-switch-field--disabled .rost-switch-field__label {
+  opacity: var(--opacity-gentle);
+  cursor: default;
+}

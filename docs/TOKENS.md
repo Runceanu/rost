@@ -6,10 +6,10 @@ Every value in every contract, sorted by why it has a token or doesn't. A value 
 
 | | Values | Share | Meaning |
 |---|---|---|---|
-| Has a token | 1206 | 59% | Uses a token, and the check tests it. |
+| Has a token | 1203 | 58% | Uses a token, and the check tests it. |
 | Token suggested | 0 | 0% | A token I want that doesn't exist yet. The freeze turned every other suggestion into a token. |
-| How Figma builds it | 540 | 26% | How Figma builds the layer (position, inset, which sides get a stroke). Nothing to tokenise. |
-| Figma frame size | 176 | 9% | A root size that is just the Figma frame. Written down, not checked. |
+| How Figma builds it | 545 | 26% | How Figma builds the layer (position, inset, which sides get a stroke). Nothing to tokenise. |
+| Figma frame size | 178 | 9% | A root size that is just the Figma frame. Written down, not checked. |
 | No token, on purpose | 106 | 5% | Plain on purpose, and the contract says why. |
 | Open gap | 32 | 2% | No token and no reason. Each one needs a decision from me. |
 
@@ -36,7 +36,8 @@ Every value in every contract, sorted by why it has a token or doesn't. A value 
 | [Navigation](components/navigation.md) | 13 | · | 21 | 1 | 2 | · |
 | [Paper effect](components/effect-paper.md) | 6 | · | · | · | 7 | · |
 | [Projects](components/projects.md) | 77 | · | 33 | 8 | 5 | 4 |
-| [Switch](components/switch.md) | 59 | · | 15 | 12 | 2 | 1 |
+| [Switch](components/switch.md) | 48 | · | 13 | 12 | 2 | 1 |
+| [SwitchField](components/switch-field.md) | 8 | · | 7 | 2 | · | · |
 | [TabItem](components/tab-item.md) | 37 | · | 15 | 12 | · | 1 |
 | [Table](components/table.md) | 11 | · | 4 | 2 | · | · |
 | [TableItem](components/table-item.md) | 19 | · | 21 | 11 | 1 | · |
