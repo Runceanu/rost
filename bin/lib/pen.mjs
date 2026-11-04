@@ -16,6 +16,79 @@ export const hex = (v) => {
 }
 export const numeric = (v) => (/^-?\d*\.?\d+(px)?$/.test(String(v).trim()) ? parseFloat(v) : null)
 
+/** A component root's own classes, sorted: `rost-button rost-button--type-secondary`. Parts (`__label`) aren't in it. */
+export const classKey = (cls) => String(cls ?? '').split(/\s+/).filter((c) => /^rost-[a-z0-9-]+(--[a-z0-9-]+)?$/.test(c)).sort().join(' ')
+
+/** Gives a component and everything in it ids made from its name, the same on every build. */
+export function stableIds(node, name) {
+  let h = 2166136261
+  for (const ch of name) h = Math.imul(h ^ ch.charCodeAt(0), 16777619) >>> 0
+  const base = `c${h.toString(36)}`
+  let n = 0
+  const walk = (x, top) => { x.id = top ? base : `${base}x${(n++).toString(36)}`; for (const c of x.children ?? []) walk(c, false) }
+  walk(node, true)
+  return node
+}
+
+/**
+ * What a drawn component is made of, for matching a page's component to a library variant:
+ * every node in order, by kind and name, with its parent. The root goes by its kind alone (the
+ * library names it after the variant), a childless frame is a paint layer (a background, an
+ * outline) that either side may have folded into its fill, and a slot counts but not what's in it.
+ */
+export function shapeOf(node) {
+  const out = []
+  const walk = (n, parent, top) => {
+    if (!top && n.type === 'frame' && !n.children?.length && n.name !== 'slot') return
+    const item = { key: top ? n.type : `${n.type}:${n.name ?? ''}`, node: n, parent }
+    out.push(item)
+    if (n.name !== 'slot') for (const c of n.children ?? []) walk(c, item, false)
+  }
+  walk(node, null, true)
+  return out
+}
+
+/** The library's variants by their root's classes, from design/rost.pen, for bin/build-pen-pages.mjs. */
+export function libraryIndex(doc) {
+  const index = new Map()
+  const walk = (n) => {
+    if (n.reusable && n.metadata?.type === 'rost-variant' && !n.metadata.forced) {
+      const list = index.get(n.metadata.classes) ?? []
+      list.push({ id: n.id, name: n.name, shape: shapeOf(n), width: n.width, height: n.height })
+      index.set(n.metadata.classes, list)
+    }
+    for (const c of n.children ?? []) walk(c)
+  }
+  for (const c of doc.children ?? []) walk(c)
+  return index
+}
+
+/**
+ * Lines a page's component up with a library variant: the page's parts must be the variant's, in
+ * order, with some left out (a detail the page doesn't show). Returns the pairs and the variant's
+ * parts the page left out, or null when they don't line up.
+ */
+/**
+ * How many paints and type settings differ between the lined-up parts, tokens compared by name.
+ * A state that's an attribute, not a class (a disabled field), only shows up here.
+ */
+const LOOK = ['fill', 'stroke', 'strokeWidth', 'opacity', 'fontSize', 'fontWeight', 'fontFamily', 'letterSpacing', 'cornerRadius', 'effect', 'enabled']
+function looksDiffer(pairs, prefix) {
+  const norm = (v) => JSON.stringify(v ?? null).split(`"$${prefix}`).join('"$')
+  let n = 0
+  for (const [pg, lb] of pairs) for (const k of LOOK) if (norm(pg.node[k]) !== norm(lb.node[k])) n++
+  return n
+}
+
+function align(page, lib) {
+  const pairs = [], left = []
+  let k = 0
+  for (const l of lib) {
+    if (k < page.length && page[k].key === l.key) pairs.push([page[k++], l]); else left.push(l)
+  }
+  return k === page.length ? { pairs, left } : null
+}
+
 /** tokens.json's tokens as pen.dev variables, and what kind each one is. */
 export function penTokens(tokens) {
   const hex = (v) => {
@@ -76,7 +149,7 @@ export async function capture(page, cdp, scope, doc) {
     ;[...el.childNodes].forEach((n, j) => {
       const last = runs[runs.length - 1]
       // A <br> is a line break inside the text around it ("Zero<br>to system").
-      if (n.nodeName === 'BR') { if (last && last.end === j - 1) { last.text += '\n'; last.end = j } return }
+      if (n.nodeName === 'BR') { if (last && last.end === j - 1) { last.text += '\n'; last.head = last.text; last.raw = ''; last.end = j } return }
       if (n.nodeType !== 3 || !n.textContent.trim()) return
       // Text nodes next to each other are one run, joined as written: React writes `+{amount}` as two.
       if (last && last.end === j - 1 && last.raw !== undefined) { last.raw += n.textContent; last.text = last.head + last.raw.replace(/\s+/g, ' ').trim(); last.end = j; return }
@@ -132,7 +205,9 @@ export async function capture(page, cdp, scope, doc) {
 }
 
 // ── DOM to pen.dev ──────────────────────────────────────────────────────
-export function toPen(top, els, { kinds, prefix = '', nid, image }) {
+export function toPen(top, els, { kinds, prefix = '', nid, image, library }) {
+  // Set while a component is drawn to compare it with the library, so it isn't matched twice.
+  let drawing = false
   // A variable as this file names it: `$name` in Rost's own file, `$rost:name` in a file that imports it.
   const bare = (v) => v.slice(1 + prefix.length)
   const kids = (e) => els.filter((c) => c.parent === String(e.k) && c.s.display !== 'none' && c.tag !== 'br')
@@ -243,6 +318,54 @@ export function toPen(top, els, { kinds, prefix = '', nid, image }) {
   }
 
   const node = (e, parentFlex) => {
+    // A Rost component on a page becomes an instance of the library's variant when one has the
+    // same classes and is made of the same parts: the page's text goes in as overrides, the page's
+    // picture into the slot. Anything else (a state the library doesn't draw) stays drawn.
+    if (library && !drawing && !e.snapshot) {
+      const options = library.get(classKey(e.cls))
+      if (options) {
+        drawing = true
+        const drawn = node(e, parentFlex)
+        drawing = false
+        const shape = drawn && shapeOf(drawn)
+        // The closest variant: the one that leaves out the fewest parts.
+        // And the same size, unless the variant hugs its content: a variant drawn at its fixture's
+        // size has inner layers at that size too, which an instance stretched wider wouldn't move.
+        const size = drawn && measured.get(drawn)
+        const sameSize = (o) => ['width', 'height'].every((k) => typeof o[k] !== 'number' || Math.abs(o[k] - (size?.[k] ?? o[k])) <= 2)
+        // Only a variant that looks exactly like the page's component, paint for paint, is used.
+        const fits = drawn ? options.filter(sameSize).map((o) => ({ o, a: align(shape, o.shape) })).filter((x) => x.a && looksDiffer(x.a.pairs.filter(([pg]) => pg.node !== drawn), prefix) === 0).sort((x, y) => x.a.left.length - y.a.left.length) : []
+        if (!fits.length) return drawn
+        const { o: match, a } = fits[0]
+        const inst = { type: 'ref', id: nid(), ref: `${prefix}${match.id}`, name: drawn.name }
+        for (const k of ['x', 'y', 'layoutPosition', 'opacity', 'enabled', 'rotation']) if (drawn[k] !== undefined) inst[k] = drawn[k]
+        for (const k of ['width', 'height']) if (typeof drawn[k] === 'number' || drawn[k] === 'fill_container') inst[k] = drawn[k]
+        const descendants = {}
+        const key = (n) => `${prefix}${n.id}`
+        for (const [pg, lb] of a.pairs) {
+          // A component that is a text (Rost's Text) takes the page's words on the instance itself.
+          if (pg.node === drawn) {
+            if (drawn.type === 'text') {
+              if (drawn.content !== lb.node.content) inst.content = drawn.content
+              // And wraps where the page wraps it.
+              if (drawn.textGrowth) { inst.textGrowth = drawn.textGrowth; if (drawn.width !== undefined) inst.width = drawn.width }
+            }
+            continue
+          }
+          // The page's text in place of the sample's.
+          if (pg.node.type === 'text' && pg.node.content !== lb.node.content) descendants[key(lb.node)] = { content: pg.node.content }
+          // The page's picture in the slot, at the slot's size.
+          if (lb.node.name === 'slot' && pg.node.children?.length) descendants[key(lb.node)] = { ...pg.node, width: lb.node.width, height: lb.node.height }
+        }
+        // A part the page doesn't show is switched off on the instance (the top one; its children go with it).
+        const off = new Set(a.left)
+        for (const l of a.left) if (!l.parent || !off.has(l.parent)) descendants[key(l.node)] = { enabled: false }
+        if (Object.keys(descendants).length) inst.descendants = descendants
+        measured.set(inst, measured.get(drawn))
+        if (singleLine.has(drawn)) singleLine.add(inst)
+        return inst
+      }
+    }
     // Something the page draws scaled (a preview in a card) is a picture of itself: pen.dev can't scale.
     if (e.snapshot) return place({ type: 'frame', id: nid(), name: 'Preview', layout: 'none', width: Math.round(e.box.w * 100) / 100, height: Math.round(e.box.h * 100) / 100, fill: { type: 'image', url: e.snapshot, mode: 'stretch' } }, e, parentFlex)
     const sizeDeclared = (p) => e.won?.[p] && !/auto|fit-content|max-content|min-content/.test(e.won[p])
@@ -250,10 +373,14 @@ export function toPen(top, els, { kinds, prefix = '', nid, image }) {
     let childEls = kids(e)
     // A sentence made of inline spans (a headline with a bright phrase) is one text in pen.dev,
     // in the paragraph's own colour: a pen.dev text has one fill, and separate blocks wouldn't wrap as one.
-    // A Rost component (a Link in a sentence) stays itself.
-    const inline = (c) => /^inline$/.test(c.s.display) && !c.svg && !c.src && !els.some((d) => d.parent === String(c.k)) && !/(^|\s)rost-[a-z0-9-]+(\s|$)/.test(String(c.cls))
+    // So is a paragraph with a link or a bit of code in it, links and code included: pen.dev has no
+    // rich text. A Rost component with no words around it (a Link on its own) stays itself.
+    const under = (c) => els.filter((d) => d.parent === String(c.k))
+    const inline = (c) => /^inline$/.test(c.s.display) && !c.svg && !c.src && under(c).every(inline)
+      && (e.runs.length || !/(^|\s)rost-[a-z0-9-]+(\s|$)/.test(String(c.cls)))
+    const words = (c) => [...c.runs.map((r) => ({ idx: r.idx, text: r.text })), ...under(c).map((d) => ({ idx: d.idx, text: words(d) }))].sort((a, b) => a.idx - b.idx).map((x) => x.text).join(' ')
     if (childEls.length && childEls.every(inline) && !/flex|grid/.test(e.s.display)) {
-      const parts = [...e.runs.map((r) => ({ idx: r.idx, text: r.text })), ...childEls.map((c) => ({ idx: c.idx, text: c.text }))].sort((a, b) => a.idx - b.idx)
+      const parts = [...e.runs.map((r) => ({ idx: r.idx, text: r.text })), ...childEls.map((c) => ({ idx: c.idx, text: words(c) }))].sort((a, b) => a.idx - b.idx)
       e.runs = [{ idx: 0, end: 0, text: parts.map((x) => x.text).join(' ').replace(/\s+([.,;:!?])/g, '$1') }]
       e.text = e.runs[0].text
       childEls = []
@@ -404,7 +531,7 @@ export function toPen(top, els, { kinds, prefix = '', nid, image }) {
           const n = node(c, null)
           if (!n) continue
           n.x = Math.round((c.box.x - e.box.x) * 100) / 100; n.y = Math.round((c.box.y - e.box.y) * 100) / 100
-          if (n.type === 'frame') { n.width = Math.round(c.box.w * 100) / 100; n.height = Math.round(c.box.h * 100) / 100 }
+          if (n.type === 'frame' || n.type === 'ref') { n.width = Math.round(c.box.w * 100) / 100; n.height = Math.round(c.box.h * 100) / 100 }
           if (n.type === 'text' && !singleLine.has(n)) { n.textGrowth = 'fixed-width'; n.width = Math.round(c.box.w * 100) / 100 }
           delete n.layoutPosition
           const placedNode = cell(n, c.box)
@@ -420,7 +547,7 @@ export function toPen(top, els, { kinds, prefix = '', nid, image }) {
         for (const c of r.items.sort((a, b) => a.box.x - b.box.x)) {
           const n = node(c, { dir: 'horizontal', align: 'start', box: e.box, pad })
           if (!n) continue
-          if (n.type === 'frame') { n.width = Math.round(c.box.w * 100) / 100; n.height = Math.round(c.box.h * 100) / 100 }
+          if (n.type === 'frame' || n.type === 'ref') { n.width = Math.round(c.box.w * 100) / 100; n.height = Math.round(c.box.h * 100) / 100 }
           if (n.type === 'text' && !singleLine.has(n)) { n.textGrowth = 'fixed-width'; n.width = Math.round(c.box.w * 100) / 100 }
           row.children.push(cell(n, c.box))
         }
@@ -434,6 +561,13 @@ export function toPen(top, els, { kinds, prefix = '', nid, image }) {
           t.name = 'Label'
           // A field's text wraps inside the field, as wide as the box.
           if (/^(textarea|input)$/.test(e.tag)) { t.textGrowth = 'fixed-width'; t.width = 'fill_container' }
+          // A paragraph that wrapped in the browser wraps here too: it fills its box, or takes the
+          // box's width where the box hugs its content.
+          else if (!singleLine.has(t)) {
+            const side = (k) => px(e.s[`padding-${k}`]) + px(e.s[`border-${k}-width`])
+            t.textGrowth = 'fixed-width'; t.width = 'fill_container'
+            measured.set(t, { width: Math.round((e.box.w - side('left') - side('right')) * 100) / 100, height: Math.round((e.box.h - side('top') - side('bottom')) * 100) / 100 })
+          }
           children.push(t)
         } else { const n = node(it.el, flow); if (n) { children.push(n); flowed.push({ n, el: it.el }) } }
       }
@@ -476,7 +610,7 @@ export function toPen(top, els, { kinds, prefix = '', nid, image }) {
         for (const { n, el } of inFlowPairs) {
           n.x = Math.round((el.box.x - e.box.x) * 100) / 100
           n.y = Math.round((el.box.y - e.box.y) * 100) / 100
-          if (n.type === 'frame' || n.type === 'path') { n.width = Math.round(el.box.w * 100) / 100; n.height = Math.round(el.box.h * 100) / 100 }
+          if (n.type === 'frame' || n.type === 'path' || n.type === 'ref') { n.width = Math.round(el.box.w * 100) / 100; n.height = Math.round(el.box.h * 100) / 100 }
           if (n.type === 'text' && (n.width === 'fill_container' || n.textGrowth === 'fixed-width')) {
             if (singleLine.has(n)) { const w = cell(n, el.box); w.x = n.x; w.y = n.y; delete n.x; delete n.y; children[children.indexOf(n)] = w }
             else { n.textGrowth = 'fixed-width'; n.width = Math.round(el.box.w * 100) / 100 }
@@ -523,7 +657,7 @@ export function toPen(top, els, { kinds, prefix = '', nid, image }) {
       n.layoutPosition = parent ? 'absolute' : undefined
       n.x = Math.round((e.box.x - p.box.x) * 100) / 100
       n.y = Math.round((e.box.y - p.box.y) * 100) / 100
-      if (n.type === 'frame' || n.type === 'path') { n.width = Math.round(e.box.w * 100) / 100; n.height = Math.round(e.box.h * 100) / 100 }
+      if (n.type === 'frame' || n.type === 'path' || n.type === 'ref') { n.width = Math.round(e.box.w * 100) / 100; n.height = Math.round(e.box.h * 100) / 100 }
       if (!parent) delete n.layoutPosition
       return n
     }

@@ -34,7 +34,7 @@ import { homedir } from 'node:os'
 import { join, extname } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { createServer } from 'node:http'
-import { penTokens, capture, toPen } from './lib/pen.mjs'
+import { penTokens, capture, toPen, classKey, stableIds } from './lib/pen.mjs'
 
 const root = fileURLToPath(new URL('../', import.meta.url))
 const font = process.env.ROST_FONT ?? join(homedir(), 'Library/Fonts/GeneralSans-Variable.ttf')
@@ -118,7 +118,11 @@ for (const id of ids) {
     let top = els.find((e) => e.parent === null || !by.has(e.parent))
     while (top && !/(^|\s)rost-/.test(String(top.cls)) && els.filter((c) => c.parent === String(top.k)).length === 1) top = els.find((c) => c.parent === String(top.k))
     if (!top) continue
-    const pen = toPen(top, els, { kinds, nid })
+    // Ids from the variant's name, so a rebuilt library keeps them and the apps' instances still
+    // point somewhere. The root's classes say which variant a page's component is.
+    const title = id.split('-').map((w) => w[0].toUpperCase() + w.slice(1)).join(' ')
+    const pen = stableIds(toPen(top, els, { kinds, nid }), `${title}/${meta.name || 'Default'}`)
+    pen.metadata = { type: 'rost-variant', component: id, classes: classKey(top.cls), forced: meta.force.join(' ') }
     shots[pen.id] = shot
     components.push({ name: meta.name, node: pen, h: top.box.h })
   }

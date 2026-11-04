@@ -55,7 +55,18 @@ Pages need a few things components don't:
 - **A sentence made of styled spans** (a headline with one bright phrase) is one text in the paragraph's colour. A pen.dev text has one fill, so the bright phrase loses its colour.
 - **What moves doesn't come across:** canvas drawings, animations and video. A slideshow shows whichever slide was up.
 
-The page frames draw Rost's components in place, with Rost's tokens, but they aren't instances of the library's components yet. Matching each one to its variant is the next step.
+### Instances
+
+A Rost component on a page is an instance of the library's variant, so a change to Button in the library shows up on every page's buttons. The script picks the variant by four things:
+
+- **Classes.** The root's own classes (`rost-button rost-button--type-secondary`). Each variant in `rost.pen` records its root's classes.
+- **Parts.** The page's parts must be the variant's, in order. A part the page leaves out (a project row with no period) is switched off on the instance.
+- **Size.** The page draws it at the variant's size, unless the variant hugs its content. A library variant is drawn at its fixture's size, and its inner layers are that size too, so an instance stretched wider wouldn't move them. That's why the portfolio site's project cards (464 by 376 on the page) stay drawn.
+- **Look.** Every paint and type setting has to be the same token. A state that's an attribute, not a class (a disabled field), only shows up here.
+
+The instance gets the page's text as overrides, and the page's picture in a slot. Anything that doesn't match on all four stays drawn, with Rost's tokens. Across the portfolio site's nine pages that's about a hundred instances, and on the accounting app's four screens 37.
+
+The library's variants have ids made from their names (`c1hlr87e` is `Badge/status=default, size=medium`), so rebuilding the library doesn't break the instances that point at it. Renaming a variant does: rebuild the apps' files after that.
 
 ## What's different from code
 

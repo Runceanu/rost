@@ -21,7 +21,7 @@ import { execSync } from 'node:child_process'
 import { join, extname, dirname, relative, resolve, basename } from 'node:path'
 import { fileURLToPath, pathToFileURL } from 'node:url'
 import { createServer } from 'node:http'
-import { penTokens, capture, toPen } from './lib/pen.mjs'
+import { penTokens, capture, toPen, libraryIndex } from './lib/pen.mjs'
 
 const root = fileURLToPath(new URL('../', import.meta.url))
 const [appArg, siteArg, outArg, ...routes] = process.argv.slice(2)
@@ -45,6 +45,8 @@ const WIDTH = 1440
 const { kinds } = penTokens(JSON.parse(readFileSync(join(root, 'tokens/tokens.json'), 'utf8')).tokens)
 // The library, as the app's file reaches it.
 const library = relative(dirname(out), join(root, 'design/rost.pen'))
+// Its variants, so a page's Rost components become instances of them.
+const variants = libraryIndex(JSON.parse(readFileSync(join(root, 'design/rost.pen'), 'utf8')))
 
 // A plain static server with the app's own fallback: an unknown path is the SPA's index.html.
 const TYPES = { '.html': 'text/html', '.js': 'text/javascript', '.css': 'text/css', '.svg': 'image/svg+xml', '.png': 'image/png', '.jpg': 'image/jpeg', '.jpeg': 'image/jpeg', '.webp': 'image/webp', '.woff2': 'font/woff2', '.json': 'application/json', '.mp4': 'video/mp4' }
@@ -165,11 +167,14 @@ for (const step of steps) {
     await p.close()
     pictures.set(svg, relative(dirname(out), file))
   }
-  const node = toPen(top, els, { kinds, prefix: 'rost:', nid, image: (url) => pictures.get(url) ?? image(url) })
+  const node = toPen(top, els, { kinds, prefix: 'rost:', nid, image: (url) => pictures.get(url) ?? image(url), library: variants })
+  let used = 0
+  const count = (n) => { if (n.type === 'ref') used++; for (const c of n.children ?? []) count(c) }
+  count(node)
   const title = await page.title()
   frames.push({ ...node, name: step.name, x, y: 0, width: WIDTH, clip: true, theme: { mode: 'dark' }, context: `${title} (${step.route ?? step.name})` })
   x += WIDTH + 200
-  console.log(`${route}: ${els.length} elements`)
+  console.log(`${route}: ${els.length} elements, ${used} library instance(s)`)
   await page.close()
 }
 await browser.close()
