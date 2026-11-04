@@ -31,7 +31,8 @@
     "css": "node bin/build-css.mjs",
     "test:visual": "node bin/visual-test.mjs",
     "site:dev": "astro dev --root web --port 4321",
-    "site:preview": "astro preview --root web --port 4321"
+    "site:preview": "astro preview --root web --port 4321",
+    "pen": "node bin/build-pen.mjs"
   },
   "dependencies": {
     "ajv": "8.20.0",

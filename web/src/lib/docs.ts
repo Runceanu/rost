@@ -5,5 +5,6 @@ export const DOCS = {
   roadmap: { file: 'docs/ROADMAP.md', title: "What's next" },
   tokens: { file: 'docs/TOKENS.md', title: 'Token coverage' },
   accessibility: { file: 'docs/ACCESSIBILITY.md', title: 'Accessibility' },
+  pen: { file: 'docs/PEN.md', title: 'Rost in pen.dev' },
   releases: { file: 'docs/CHANGELOG.md', title: 'Release notes' },
 } as const

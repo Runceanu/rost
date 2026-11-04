@@ -16,6 +16,7 @@ src/        the components built in code (src/components/), the effects, and the
 registry/   what exists in the Figma file: components, variants, node ids, variables
 baseline/   Figma's own render of each variant, the target for the coded versions
 assets/     icons and vector parts exported from Figma
+design/     rost.pen, Rost as a pen.dev library for the apps' design files (built, see docs/PEN.md)
 docs/       written by hand: CONTRACT.md, ROADMAP.md, CHANGELOG.md. Generated: the rest
 web/        the website at rost.build, built from everything above
 raw/        what the Figma reads returned, before parsing
@@ -29,6 +30,7 @@ npm run validate                 # schema, links between files, token names
 npm run docs                     # validate, then rebuild docs/
 npm run css -- thumbs            # write a component's CSS from its contract
 npm run test:visual -- thumbs    # render every variant and compare it with Figma's screenshot
+npm run pen                      # rebuild design/rost.pen, the pen.dev library
 npm run site:dev                 # the website, live, on http://localhost:4321
 npm run deploy                   # build it and publish it to rost.build
 ```
