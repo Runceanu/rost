@@ -111,7 +111,7 @@ a { color: inherit; }
 @media (max-width: 768px) { .prose .rost-table { display: block; overflow-x: auto; } }
 .prose .rost-code--block { margin: 0 0 var(--spacing-gap-medium); }
 /* Code blocks are Rost's Code. Shiki colours the words with vesper inline,
-   and carries github-light's colours as --shiki-light for the light theme. */
+   and carries GitHub's high-contrast light colours as --shiki-light. */
 [data-theme="light"] .rost-code span { color: var(--shiki-light) !important; }
 
 /* Bits */

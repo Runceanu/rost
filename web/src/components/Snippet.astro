@@ -1,12 +1,21 @@
 ---
-// A block of code on the site: Shiki colours it (vesper in dark, github-light
-// in light), Rost's Code draws it. Rost has no syntax colours of its own.
+// A block of code on the site: Shiki colours it (vesper in dark, GitHub's
+// high-contrast light in light), Rost's Code draws it. Rost has no syntax colours of its own.
 import { codeToHtml } from 'shiki'
 import { Code } from '../../../src/components/code/Code'
 interface Props { code: string; lang: string; class?: string }
 const { code, lang, class: cls } = Astro.props
 // Shiki's bundle has no `svg`; it's XML.
-const html = await codeToHtml(code, { lang: lang === 'svg' ? 'xml' : lang, themes: { dark: 'vesper', light: 'github-light' }, defaultColor: 'dark' })
+// On Code's grey plate a few theme colours miss AA: Vesper's comments are a
+// see-through grey (2.6:1), and GitHub's light greens and reds sit at 3.9.
+// The high-contrast light theme fixes those, and the two comment greys are
+// made solid and a step darker, so every word is 4.5:1 or better.
+const html = await codeToHtml(code, {
+  lang: lang === 'svg' ? 'xml' : lang,
+  themes: { dark: 'vesper', light: 'github-light-high-contrast' },
+  defaultColor: 'dark',
+  colorReplacements: { vesper: { '#8b8b8b94': '#8b8b8b' }, 'github-light-high-contrast': { '#66707b': '#59616b' } },
+})
 // Only what's inside Shiki's <code>: the plate, the padding and the font are Code's.
 const inner = html.match(/<code[^>]*>([\s\S]*)<\/code>/)?.[1] ?? ''
 ---

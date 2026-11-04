@@ -68,7 +68,7 @@ Every token this component uses, across all its variants.
 | `non-interactive/background/negative/light` | `#48050c` |
 | `non-interactive/background/positive/light` | `#004c19` |
 | `non-interactive/background/warning/light` | `#492604` |
-| `non-interactive/foreground/negative/base` | `#e93120` |
+| `non-interactive/foreground/negative/base` | `#f2705f` |
 | `non-interactive/foreground/positive/base` | `#00d669` |
 | `non-interactive/foreground/primary` | `#ededed` |
 | `non-interactive/foreground/quadruple` | `#3a3a3a` |

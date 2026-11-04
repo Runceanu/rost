@@ -77,7 +77,7 @@ elements:
     notes: "The glyph, as a mask in its status colour, so it follows the theme. It was an SVG file with its colour in it."
     styles:
       display: { value: block, assert: false }
-      background: { token: non-interactive/foreground/negative/base, value: "#e93120" }
+      background: { token: non-interactive/foreground/negative/base, value: "#f2705f" }
   icons-positive:
     notes: "The glyph, as a mask in its status colour, so it follows the theme. It was an SVG file with its colour in it."
     styles:

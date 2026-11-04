@@ -166,6 +166,7 @@
   --color-light-neutral-400: #c2c7c3;
   --color-light-neutral-500: #999999;
   --color-light-neutral-600: #747573;
+  --color-light-neutral-650: #6a6b69;
   --color-light-neutral-700: #454545;
   --color-light-neutral-800: #171717;
   --color-light-neutral-900: #060805;
@@ -213,7 +214,7 @@
   --non-interactive-background-warning-dark: #fef8e1;
   --non-interactive-background-warning-light: #492604;
   --non-interactive-foreground-contrast: #060805;
-  --non-interactive-foreground-negative-base: #e93120;
+  --non-interactive-foreground-negative-base: #f2705f;
   --non-interactive-foreground-negative-dark: #fee6e1;
   --non-interactive-foreground-negative-light: #48050c;
   --non-interactive-foreground-positive-base: #00d669;
@@ -1614,12 +1615,12 @@
   --menu-current-label: #060805;
   --menu-current-sub-label: #060805;
   --menu-default-label: #060805;
-  --menu-default-sub-label: #747573;
+  --menu-default-sub-label: #6a6b69;
   --menu-disabled-label: #d3d9d5;
   --menu-disabled-sub-label: #d3d9d5;
   --menu-focus-ring: #006f27;
   --menu-focus-label: #060805;
-  --menu-focus-sub-label: #747573;
+  --menu-focus-sub-label: #6a6b69;
   --menu-hover-label: #060805;
   --menu-hover-sub-label: #060805;
   --menu-pressed-label: #060805;
@@ -1646,7 +1647,7 @@
   --non-interactive-foreground-quadruple: #d3d9d5;
   --non-interactive-foreground-quinary: #e0e3e1;
   --non-interactive-foreground-secondary: #171717;
-  --non-interactive-foreground-tertiary: #747573;
+  --non-interactive-foreground-tertiary: #6a6b69;
   --non-interactive-foreground-warning-base: #7a4805;
   --non-interactive-foreground-warning-dark: #492604;
   --non-interactive-foreground-warning-light: #fef8e1;
@@ -1753,7 +1754,7 @@
   --tab-item-unselected-pressed-underline: #999999;
   --table-item-highlighted-sub-label: #060805;
   --table-item-selected-row-edge: #0e7118;
-  --table-item-sub-label: #747573;
+  --table-item-sub-label: #6a6b69;
   --table-row-divider: #e0e3e1;
   --table-row-focus-focus-ring: #747573;
   --table-row-selected-default-background: #b6ffda;
@@ -2336,7 +2337,7 @@
   --non-interactive-background-warning-dark: #fef8e1;
   --non-interactive-background-warning-light: #492604;
   --non-interactive-foreground-contrast: #060805;
-  --non-interactive-foreground-negative-base: #e93120;
+  --non-interactive-foreground-negative-base: #f2705f;
   --non-interactive-foreground-negative-dark: #fee6e1;
   --non-interactive-foreground-negative-light: #48050c;
   --non-interactive-foreground-positive-base: #00d669;

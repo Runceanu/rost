@@ -73,7 +73,7 @@ Every token this component uses, across all its variants.
 |---|---|
 | `font-family/base` | `'General Sans Variable'` |
 | `non-interactive/background/tertiary` | `#3a3a3a` |
-| `non-interactive/foreground/negative/base` | `#e93120` |
+| `non-interactive/foreground/negative/base` | `#f2705f` |
 | `non-interactive/foreground/positive/base` | `#00d669` |
 | `non-interactive/foreground/secondary` | `#d3d9d5` |
 | `non-interactive/foreground/tertiary` | `#999` |

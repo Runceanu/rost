@@ -92,6 +92,11 @@
       "tokens": ["actions/secondary/warning/hover/icon"],
       "light": "@color/light/warning/800",
       "why": "Hover darker."
+    },
+    {
+      "tokens": ["non-interactive/foreground/tertiary"],
+      "light": "@color/light/neutral/650",
+      "why": "Quiet text sits on the grey plate as often as on the page. #747573 is 4.5:1 on the page but 3.96:1 on #ededed. #6a6b69, a step Figma didn't have, is 4.6:1 there and 5.2:1 on the page, and still reads as quieter than secondary."
     }
   ]
 }

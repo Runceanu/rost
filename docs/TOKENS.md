@@ -234,7 +234,7 @@ rost.build has a switch in the header. It always opens dark. A light pick holds 
 
 ### Where the light values come from
 
-Figma already had a light mode for every theme colour, mostly the dark scale turned upside down. I started from that. Where it failed contrast I picked another step of the same family, in `registry/light.json`. 17 rules, 89 tokens. On 2026-10-30 those went into Figma too: the theme collection's light mode has them, as aliases to the same primitives, so switching an instance to light in Figma shows what the code shows. `registry/light.json` stays as the record of what I changed and why, and the token build checks that Figma still agrees with it. The bright green `#00d669` stays: it's still the primary button, the selected chip and every green fill. What changes is green used as text, an icon or a line on a light ground, where it was 1.9:1.
+Figma already had a light mode for every theme colour, mostly the dark scale turned upside down. I started from that. Where it failed contrast I picked another step of the same family, in `registry/light.json`. 18 rules, 90 tokens. On 2026-10-30 those went into Figma too: the theme collection's light mode has them, as aliases to the same primitives, so switching an instance to light in Figma shows what the code shows. `registry/light.json` stays as the record of what I changed and why, and the token build checks that Figma still agrees with it. The bright green `#00d669` stays: it's still the primary button, the selected chip and every green fill. What changes is green used as text, an icon or a line on a light ground, where it was 1.9:1.
 
 | Tokens | Figma's light | Rost's light | Why |
 |---|---|---|---|
@@ -255,6 +255,7 @@ Figma already had a light mode for every theme colour, mostly the dark scale tur
 | `actions/secondary/positive/hover/icon` | whatever Figma has | `positive/800` | Hover darker. |
 | `actions/secondary/warning/*/icon`, `non-interactive/foreground/warning/base` | `warning/500` | `warning/700` | Orange can't be text on white and stay orange. #fda50d is 1.9:1; #7a4805 is 7.4:1, a dark amber. |
 | `actions/secondary/warning/hover/icon` | whatever Figma has | `warning/800` | Hover darker. |
+| `non-interactive/foreground/tertiary` | whatever Figma has | `neutral/650` | Quiet text sits on the grey plate as often as on the page. #747573 is 4.5:1 on the page but 3.96:1 on #ededed. #6a6b69, a step Figma didn't have, is 4.6:1 there and 5.2:1 on the page, and still reads as quieter than secondary. |
 
 ### Checking it
 
@@ -292,4 +293,4 @@ rost.build's own transitions use the tokens now. No component in Rost animates y
 
 ## Figma variables
 
-The Figma file has **1105** variables (`registry/figma-variables.json`, read on 2026-10-31) and `tokens/tokens.css` has **1105** of them. `npm run tokens` builds it from that read, so they can't come apart.
+The Figma file has **1106** variables (`registry/figma-variables.json`, read on 2026-11-04) and `tokens/tokens.css` has **1106** of them. `npm run tokens` builds it from that read, so they can't come apart.

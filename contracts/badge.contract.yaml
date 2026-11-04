@@ -113,7 +113,7 @@ variants:
     figmaNode: "139:433"
     elements:
       dot:
-        background: { token: non-interactive/foreground/negative/base, value: "#e93120" }
+        background: { token: non-interactive/foreground/negative/base, value: "#f2705f" }
   - when: { status: Positive, size: Small }
     figmaNode: "139:439"
     elements:

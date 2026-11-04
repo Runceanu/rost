@@ -45,7 +45,7 @@ Not done yet: the ramp doesn't step down on a phone. 64px is a lot on a 375px sc
 ## Accessibility
 
 - **Element**: whatever `as` says. Headings go in order: one `h1`, then `h2`, then `h3`.
-- **Colour**: `tertiary` is 4.5:1 on the page in both themes, but only 3.96:1 on the secondary plate in light (#747573 on #ededed), and `negative` is 4.2:1 on that plate in dark. Both miss AA there. Until the tokens move, use `secondary` for small text on a card.
+- **Colour**: Every tone is 4.5:1 or better on the page and on the secondary plate, in both themes. The tightest are `tertiary` in light, 4.6:1 on the plate, and `negative` in dark, 6.2:1.
 
 ## Content
 
@@ -58,7 +58,7 @@ Every token this component uses, across all its variants.
 | Token | Resolves to |
 |---|---|
 | `font-family/base` | `'General Sans Variable'` |
-| `non-interactive/foreground/negative/base` | `#e93120` |
+| `non-interactive/foreground/negative/base` | `#f2705f` |
 | `non-interactive/foreground/positive/base` | `#00d669` |
 | `non-interactive/foreground/primary` | `#ededed` |
 | `non-interactive/foreground/secondary` | `#d3d9d5` |

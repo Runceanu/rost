@@ -68,7 +68,7 @@ guidance:
   behaviour: |-
     In a sentence it's the mono family at a slightly smaller size, with no plate, so a line full of token paths stays calm. A block gets the secondary plate, 16px inside and 12px corners, and scrolls sideways rather than wrapping.
 
-    The colours inside a block come from the highlighter, not from Rost. On the Rost site that's Shiki's vesper in dark and github-light in light. Syntax colours as tokens would be the next step, and I haven't needed them in an app yet.
+    The colours inside a block come from the highlighter, not from Rost. On the Rost site that's Shiki's vesper in dark and GitHub's high-contrast theme in light, with the comment greys made solid, so every word is 4.5:1 on the plate. Syntax colours as tokens would be the next step, and I haven't needed them in an app yet.
   accessibility:
     element: "`<code>`, and `<pre>` around it for a block, so a screen reader keeps the spacing."
     keyboard: "A block that scrolls gets `tabindex=\"0\"`, so it can be scrolled without a mouse."
