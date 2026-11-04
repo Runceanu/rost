@@ -13,3 +13,8 @@ test-results/
 .claude/
 web/dist/
 web/.astro/
+
+# What bin/build-pen-pages.mjs draws as PNG (SVG pictures, scaled previews); it makes them again
+design/images/
+# rost.build as a pen.dev file, about 30 MB (npm run pen:site makes it)
+design/rost-build.pen

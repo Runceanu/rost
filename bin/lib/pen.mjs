@@ -61,7 +61,7 @@ export async function capture(page, cdp, scope, doc) {
     return won
   }
   // Every element in the fixture, numbered, with its computed style and box.
-  const els = await page.$$eval(`${scope} *`, (list) => list.filter((el) => !el.parentElement?.closest('svg') && (el.checkVisibility?.() ?? true)).map((el, k) => {
+  const els = await page.$$eval(`${scope} *`, (list) => list.filter((el) => !el.parentElement?.closest('svg, pre') && (el.checkVisibility?.() ?? true)).map((el, k) => {
     el.dataset.pk = String(k)
     const cs = getComputedStyle(el), r = el.getBoundingClientRect()
     const pick = ['display', 'position', 'flex-direction', 'flex-grow', 'align-items', 'justify-content', 'align-self', 'row-gap', 'column-gap',
@@ -81,11 +81,17 @@ export async function capture(page, cdp, scope, doc) {
       const t = n.textContent.replace(/\s+/g, ' ').trim()
       if (last && last.end === j - 1 && last.text.endsWith('\n')) { last.text += t; last.end = j } else runs.push({ idx: j, end: j, text: t })
     })
+    // A code block is one text with its lines and indents as they are. Its highlighting spans go:
+    // a pen.dev text has one colour.
+    if (el.tagName === 'PRE') runs.splice(0, runs.length, { idx: 0, end: 0, text: el.innerText.replace(/\n+$/, '') })
     // A field's text is its value, not a text node.
     if (/^(textarea|input)$/i.test(el.tagName) && (el.value || el.placeholder)) runs.push({ idx: 0, text: el.value || el.placeholder })
     const text = runs.map((r) => r.text).join(' ')
     const idx = el.parentElement ? [...el.parentElement.childNodes].indexOf(el) : 0
-    const parent = el.parentElement?.dataset.pk ?? null
+    // The nearest ancestor that's kept: a display: contents wrapper has no box, so its children move up.
+    let up = el.parentElement
+    while (up && up.dataset?.pk === undefined && getComputedStyle(up).display === 'contents') up = up.parentElement
+    const parent = up?.dataset?.pk ?? null
     // An inline <svg> is one shape, read from its own markup, colours resolved.
     let inline = null
     if (el.tagName.toLowerCase() === 'svg') {
@@ -106,11 +112,13 @@ export async function capture(page, cdp, scope, doc) {
   const svgs = {}
   for (const e of els) {
     // An icon-sized SVG becomes shapes; a bigger SVG picture (a project's preview) stays a picture.
-    if (e.src?.endsWith('.svg') && Math.max(e.box.w, e.box.h) > 64) e.picture = true
+    // An SVG, as a file or inlined by the build.
+    e.svgSrc = !!e.src && (/\.svg$/.test(e.src) || /^data:image\/svg\+xml/.test(e.src))
+    if (e.svgSrc && Math.max(e.box.w, e.box.h) > 64) e.picture = true
     // A quoted URL runs to its closing quote: an inlined SVG has brackets of its own inside.
     const mask = e.s['mask-image'] || e.s['-webkit-mask-image'] || ''
     const masked = mask.match(/url\("([^"]+)"\)/)?.[1] ?? mask.match(/url\(([^)"]+)\)/)?.[1]
-    const url = e.src?.endsWith('.svg') && !e.picture ? e.src : masked && /^data:image\/svg\+xml|\.svg$/.test(masked) ? masked : undefined
+    const url = e.svgSrc && !e.picture ? e.src : masked && /^data:image\/svg\+xml|\.svg$/.test(masked) ? masked : undefined
     // An inlined SVG (data:image/svg+xml,...) is read from the URL itself.
     const inlined = url?.match(/^data:image\/svg\+xml(;base64)?,(.*)$/s)
     if (inlined && !svgs[url]) svgs[url] = inlined[1] ? Buffer.from(inlined[2], 'base64').toString('utf8') : decodeURIComponent(inlined[2])
@@ -223,6 +231,8 @@ export function toPen(top, els, { kinds, prefix = '', nid, image }) {
   }
 
   const node = (e, parentFlex) => {
+    // Something the page draws scaled (a preview in a card) is a picture of itself: pen.dev can't scale.
+    if (e.snapshot) return place({ type: 'frame', id: nid(), name: 'Preview', layout: 'none', width: Math.round(e.box.w * 100) / 100, height: Math.round(e.box.h * 100) / 100, fill: { type: 'image', url: e.snapshot, mode: 'stretch' } }, e, parentFlex)
     const sizeDeclared = (p) => e.won?.[p] && !/auto|fit-content|max-content|min-content/.test(e.won[p])
     const flex = /flex/.test(e.s.display)
     let childEls = kids(e)
@@ -270,7 +280,7 @@ export function toPen(top, els, { kinds, prefix = '', nid, image }) {
     }
     // A photo (an <img>, a video's poster, a CSS background) is an image fill, placed the way
     // object-fit or background-size places it. `image` says where the file is from the .pen file.
-    const raster = e.src && (!e.src.endsWith('.svg') || e.picture) ? e.src : !e.svg ? e.s['background-image'].match(/url\("?([^")]+)"?\)/)?.[1] : null
+    const raster = e.src && (!e.svgSrc || e.picture) ? e.src : !e.svg ? e.s['background-image'].match(/url\("?([^")]+)"?\)/)?.[1] : null
     const img = raster && image?.(raster)
     if (img) {
       const how = e.src ? e.s['object-fit'] : e.s['background-size']
@@ -428,7 +438,8 @@ export function toPen(top, els, { kinds, prefix = '', nid, image }) {
       }
     }
     // pen.dev draws later siblings on top. Something raised (z-index) or fixed, a nav over the page, goes last.
-    const raised = (n) => { const el = flowed.find((x) => x.n === n)?.el ?? null; return el && (el.s.position === 'fixed' || (el.s.position !== 'static' && Number(el.s['z-index']) > 0)) }
+    // Only what's placed by position moves: a sticky header is in the flow and keeps its place.
+    const raised = (n) => { const el = flowed.find((x) => x.n === n)?.el ?? null; return n.layoutPosition === 'absolute' && el && (el.s.position === 'fixed' || (el.s.position !== 'static' && Number(el.s['z-index']) > 0)) }
     children.sort((a, b) => Number(!!raised(a)) - Number(!!raised(b)))
     if (children.length) f.children = children
     if (e.svg && f.layout !== 'none') f.layout = 'none'

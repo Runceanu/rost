@@ -17234,7 +17234,7 @@
            "type": "text",
            "id": "n4w",
            "name": "Label",
-           "content": "<Link href=\"/docs/\">Docs</Link> <Link tone=\"quiet\">GitHub</Link>",
+           "content": "<Link href=\"/docs/\">Docs</Link>\n<Link tone=\"quiet\">GitHub</Link>",
            "fill": "$non-interactive-foreground-primary",
            "fontFamily": "JetBrains Mono",
            "fontSize": "$typography-label-font-size",

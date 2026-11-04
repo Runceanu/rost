@@ -26,13 +26,20 @@ pen.dev reads the library when it opens the app's file. After `npm run pen`, clo
 
 ```bash
 node ../rost/bin/build-pen-pages.mjs <app> <built site> <out.pen> / /work /about
+node bin/build-pen-pages.mjs web dist ../design/rost-build.pen --all
 ```
 
-The portfolio site runs it as `npm run design`, which builds the site first and writes `design/portfolio.pen`, one frame per page. Pages need a few things components don't:
+`--all` takes every page of a static site, from the `index.html` files in its build.
+
+The portfolio site runs it as `npm run design`, which builds the site first and writes `design/portfolio.pen`, one frame per page. rost.build runs it as `npm run pen:site`, which writes `design/rost-build.pen`: all 46 pages, the home page, every component's page, the tokens, the icons and the docs. That file is about 30 MB and takes ten minutes to make, so it stays out of git like the images; run `npm run pen:site` to have it.
+
+Pages need a few things components don't:
 
 - **Margins and centring.** Flex can't say what a margin says. Where a gap that's the same between every child doesn't put the children where the browser put them, that frame places its children at their own positions instead. Rost's components use gaps, so they keep their flex layout.
 - **Grids** become rows, each item as big as the grid made it.
-- **Photos** are image fills that point at the app's own files in `public/`. An SVG picture (a project's preview, a client's logo) is drawn once as a PNG in `design/images/`, because pen.dev's image fills don't draw SVG. Those PNGs stay out of git (the portfolio site's came to 16 MB), so after a fresh clone run `npm run design` once, or the pictures show empty.
+- **Photos** are image fills that point at the app's own files: in `public/`, or the file in the repo that the build copied under a new name (rost.build's Figma renders come from `baseline/`). An image the build inlined as a `data:` URL is written out once, named by its bytes. An SVG picture (a project's preview, a client's logo) is drawn once as a PNG in `design/images/`, because pen.dev's image fills don't draw SVG. Those PNGs stay out of git (the portfolio site's came to 16 MB), so after a fresh clone run `npm run design` once, or the pictures show empty.
+- **Code blocks** are one text with their lines and indents as they are. Their highlighting doesn't come across.
+- **Something the page scales** (each component's preview in its card on rost.build) is a picture of itself, taken by Chromium, because pen.dev can't scale.
 - **A sentence made of styled spans** (a headline with one bright phrase) is one text in the paragraph's colour. A pen.dev text has one fill, so the bright phrase loses its colour.
 - **What moves doesn't come across:** canvas drawings, animations and video. A slideshow shows whichever slide was up.
 
