@@ -8,10 +8,13 @@ summary: A line that opens to show more, for things most people won't need.
 category: display
 related: [ code, text ]
 source:
-  tool: code
-  repo: rost
-  path: src/components/disclosure/Disclosure.tsx
+  tool: figma
+  fileKey: 1Zy0wiWKXQAvsfDBX3KR0d
+  nodeId: "705:142"
+  url: https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=705-142
   extractedAt: "2026-11-04"
+  extractedBy: hand
+  frozenAt: "2026-11-04"
 props:
   summary: { type: slot, notes: "What's inside, in a few words. Always shown." }
   open:
@@ -32,7 +35,8 @@ elements:
   summary:
     notes: "The `<summary>`: the chevron, then the words."
     styles:
-      display: { value: inline-flex, assert: false }
+      display: { value: flex, assert: false, notes: "A row, not inline: inline it sits on a line of text and takes the room under the baseline." }
+      width: { value: fit-content, assert: false, notes: "As wide as the chevron and the words, so the click area is too." }
       align-items: { value: center }
       gap: { token: spacing/gap/2xsmall, value: 4px }
       list-style: { value: none, assert: false, notes: "The browser's triangle goes. The chevron replaces it." }
@@ -59,10 +63,12 @@ elements:
       padding-top: { token: spacing/gap/small, value: 8px }
 variants:
   - when: { state: Hover }
+    figmaNode: "705:122"
     elements:
       summary:
         color: { token: non-interactive/foreground/primary, value: "#ededed" }
   - when: { state: Focus }
+    figmaNode: "705:128"
     elements:
       summary:
         outline-style: { value: solid }
@@ -70,6 +76,7 @@ variants:
         outline-color: { token: actions/primary/focus/focus-ring, value: "#b6ffda" }
         outline-offset: { value: 2px }
   - when: { state: Open }
+    figmaNode: "705:135"
     elements:
       summary:
         color: { token: non-interactive/foreground/primary, value: "#ededed" }

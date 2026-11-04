@@ -184,6 +184,7 @@ for (const id of ids) {
   // Figma's frames are the dark theme. data-theme pins it, whatever the system says.
   writeFileSync(join(work, 'index.html'), `<!doctype html><html data-theme="dark"><meta charset="utf-8">
     <link rel="stylesheet" href="${origin}/repo/tokens/tokens.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=block">
     <style>${face} body { margin: 0; background: var(--non-interactive-background-primary); -webkit-font-smoothing: antialiased; }</style>
     <link rel="stylesheet" href="entry.css"><div id="root"></div><script src="entry.js"></script>`)
 

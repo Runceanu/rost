@@ -9,7 +9,7 @@ Every value in every contract, sorted by why it has a token or doesn't. A value 
 | Has a token | 1297 | 59% | Uses a token, and the check tests it. |
 | Token suggested | 0 | 0% | A token I want that doesn't exist yet. The freeze turned every other suggestion into a token. |
 | How Figma builds it | 563 | 26% | How Figma builds the layer (position, inset, which sides get a stroke). Nothing to tokenise. |
-| Figma frame size | 198 | 9% | A root size that is just the Figma frame. Written down, not checked. |
+| Figma frame size | 200 | 9% | A root size that is just the Figma frame. Written down, not checked. |
 | No token, on purpose | 95 | 4% | Plain on purpose, and the contract says why. |
 | Open gap | 41 | 2% | No token and no reason. Each one needs a decision from me. |
 
@@ -21,8 +21,8 @@ Every value in every contract, sorted by why it has a token or doesn't. A value 
 | [Button](components/button.md) | 83 | · | 38 | 9 | 5 | 1 |
 | [Carousel](components/carousel.md) | 43 | · | 28 | 13 | 2 | 1 |
 | [Chip](components/chips.md) | 45 | · | 18 | 10 | 10 | 1 |
-| [Code](components/code.md) | 9 | · | 2 | 4 | 2 | · |
-| [Disclosure](components/disclosure.md) | 16 | · | 4 | 4 | · | 3 |
+| [Code](components/code.md) | 9 | · | 2 | 5 | 2 | · |
+| [Disclosure](components/disclosure.md) | 16 | · | 4 | 5 | · | 3 |
 | [Divider](components/divider.md) | 2 | · | 2 | 2 | · | · |
 | [Floating effect](components/effect-floating.md) | 1 | · | · | · | · | · |
 | [Hero Media](components/hero-media.md) | 6 | · | 9 | 2 | · | · |

@@ -9,7 +9,7 @@
 | Kind | component |
 | Contract | `review` · [text.contract.yaml](../../contracts/text.contract.yaml) |
 | Guidance | `proposed` |
-| Source | `rost/src/components/text/Text.tsx` · read 2026-11-04 |
+| Source | [Figma 705:29](https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=705-29) · read 2026-11-04 · frozen 2026-11-04 |
 | Implemented in | nowhere yet |
 
 ## Props

@@ -8,10 +8,13 @@ summary: A link inside text. Green and underlined, or quiet in the text's own co
 category: navigation
 related: [ button, text ]
 source:
-  tool: code
-  repo: rost
-  path: src/components/link/Link.tsx
+  tool: figma
+  fileKey: 1Zy0wiWKXQAvsfDBX3KR0d
+  nodeId: "705:81"
+  url: https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=705-81
   extractedAt: "2026-11-04"
+  extractedBy: hand
+  frozenAt: "2026-11-04"
 props:
   href: { type: string, required: true }
   tone:
@@ -49,15 +52,18 @@ elements:
       white-space: { value: nowrap, assert: false }
 variants:
   - when: { tone: quiet, state: Default }
+    figmaNode: "705:65"
     elements:
       root:
         color: { value: inherit, assert: false, notes: "The text's own colour." }
         text-decoration-color: { value: transparent, assert: false, notes: The underline comes on hover. }
   - when: { tone: accent, state: Hover }
+    figmaNode: "705:67"
     elements:
       root:
         color: { token: non-interactive/foreground/positive/dark, value: "#b6ffda" }
   - when: { tone: quiet, state: Hover }
+    figmaNode: "705:69"
     elements:
       root:
         color: { token: non-interactive/foreground/primary, value: "#ededed" }
@@ -78,10 +84,10 @@ guidance:
   use:
     - title: In a sentence
       text: Pointing somewhere from inside a sentence, a note or a table cell.
-      show: tone=accent
+      show: tone=accent, state=Default
     - title: A row of sources
       text: "`quiet` for a footer or a line of links under a section, where every word is a link."
-      show: tone=quiet
+      show: tone=quiet, state=Default
   avoid:
     - title: Doing something
       text: Starting an action, like saving or sending. That's **Button**.

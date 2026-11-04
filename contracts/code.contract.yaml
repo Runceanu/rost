@@ -8,10 +8,13 @@ summary: Code in a sentence, or a block of it on its own plate.
 category: display
 related: [ text ]
 source:
-  tool: code
-  repo: rost
-  path: src/components/code/Code.tsx
+  tool: figma
+  fileKey: 1Zy0wiWKXQAvsfDBX3KR0d
+  nodeId: "705:104"
+  url: https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=705-104
   extractedAt: "2026-11-04"
+  extractedBy: hand
+  frozenAt: "2026-11-04"
 props:
   block:
     type: boolean
@@ -30,12 +33,14 @@ elements:
         untokenised: "Rost has no mono family token yet. Where JetBrains Mono isn't loaded, the system mono stands in."
       font-size: { value: 0.88em, untokenised: "In a sentence it follows the text around it. Mono looks bigger than General Sans at the same size, so a little smaller." }
       overflow-wrap: { value: anywhere, assert: false, notes: A long token path breaks instead of pushing the page wider. }
+      line-height: { value: "1", assert: false, notes: "Mono sits on a different baseline from General Sans, so on the text's own line height it pushed the line a pixel taller. At 1 it stays inside the line." }
   text:
     notes: The `<code>` inside a block.
     styles:
       font: { value: inherit, assert: false }
 variants:
   - when: { block: true }
+    figmaNode: "705:102"
     elements:
       root:
         display: { value: block }

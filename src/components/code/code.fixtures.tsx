@@ -1,9 +1,10 @@
 import { Code } from './Code'
 import { Text } from '../text/Text'
 
+// Figma's code set (705:104): inline in body text, and a block 360 wide.
 export const fixtures = [
-  { node: 'code:inline', name: 'block=false', element: <Text tone="secondary">Its colour is <Code>non-interactive/foreground/positive/base</Code>.</Text> },
-  { node: 'code:block', name: 'block=true', element: <div style={{ width: 360 }}><Code block>{`import { Link } from 'rost/components/link/Link'\n\n<Link href="/docs/">Docs</Link>`}</Code></div> },
+  { node: '705:100', name: 'block=false', element: <Text as="span" tone="secondary" style={{ display: 'inline-block' }}><Code>non-interactive/foreground/positive/base</Code></Text> },
+  { node: '705:102', name: 'block=true', element: <div style={{ width: 360 }}><Code block>{`<Link href="/docs/">Docs</Link>\n<Link tone="quiet">GitHub</Link>`}</Code></div> },
 ]
 
 /** What a caller writes. Shown on the component's page. */

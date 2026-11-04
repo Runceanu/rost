@@ -9,7 +9,8 @@
 }
 
 .rost-disclosure__summary {
-  display: inline-flex;
+  display: flex;
+  width: fit-content;
   align-items: center;
   gap: var(--spacing-gap-2xsmall);
   list-style: none;

@@ -1689,5 +1689,167 @@
       "width": 161,
       "height": 24
     }
+  ],
+  "text": [
+    {
+      "nodeId": "705:13",
+      "name": "variant=display",
+      "file": "705-13.png",
+      "width": 138,
+      "height": 72
+    },
+    {
+      "nodeId": "705:15",
+      "name": "variant=headline",
+      "file": "705-15.png",
+      "width": 343,
+      "height": 64
+    },
+    {
+      "nodeId": "705:17",
+      "name": "variant=sub-headline",
+      "file": "705-17.png",
+      "width": 123,
+      "height": 48
+    },
+    {
+      "nodeId": "705:19",
+      "name": "variant=lede",
+      "file": "705-19.png",
+      "width": 211,
+      "height": 32
+    },
+    {
+      "nodeId": "705:21",
+      "name": "variant=body",
+      "file": "705-21.png",
+      "width": 232,
+      "height": 22
+    },
+    {
+      "nodeId": "705:23",
+      "name": "variant=paragraph",
+      "file": "705-23.png",
+      "width": 203,
+      "height": 20
+    },
+    {
+      "nodeId": "705:25",
+      "name": "variant=label",
+      "file": "705-25.png",
+      "width": 85,
+      "height": 14
+    },
+    {
+      "nodeId": "705:27",
+      "name": "variant=eyebrow",
+      "file": "705-27.png",
+      "width": 84,
+      "height": 14
+    }
+  ],
+  "link": [
+    {
+      "nodeId": "705:63",
+      "name": "tone=accent, state=Default",
+      "file": "705-63.png",
+      "width": 106,
+      "height": 22
+    },
+    {
+      "nodeId": "705:65",
+      "name": "tone=quiet, state=Default",
+      "file": "705-65.png",
+      "width": 106,
+      "height": 22
+    },
+    {
+      "nodeId": "705:67",
+      "name": "tone=accent, state=Hover",
+      "file": "705-67.png",
+      "width": 106,
+      "height": 22
+    },
+    {
+      "nodeId": "705:69",
+      "name": "tone=quiet, state=Hover",
+      "file": "705-69.png",
+      "width": 106,
+      "height": 22
+    },
+    {
+      "nodeId": "705:71",
+      "name": "tone=accent, state=Pressed",
+      "file": "705-71.png",
+      "width": 106,
+      "height": 22
+    },
+    {
+      "nodeId": "705:73",
+      "name": "tone=quiet, state=Pressed",
+      "file": "705-73.png",
+      "width": 106,
+      "height": 22
+    },
+    {
+      "nodeId": "705:75",
+      "name": "tone=accent, state=Focus",
+      "file": "705-75.png",
+      "width": 106,
+      "height": 22
+    },
+    {
+      "nodeId": "705:78",
+      "name": "tone=quiet, state=Focus",
+      "file": "705-78.png",
+      "width": 106,
+      "height": 22
+    }
+  ],
+  "code": [
+    {
+      "nodeId": "705:100",
+      "name": "block=false",
+      "file": "705-100.png",
+      "width": 338,
+      "height": 22
+    },
+    {
+      "nodeId": "705:102",
+      "name": "block=true",
+      "file": "705-102.png",
+      "width": 360,
+      "height": 72
+    }
+  ],
+  "disclosure": [
+    {
+      "nodeId": "705:116",
+      "name": "state=Default",
+      "file": "705-116.png",
+      "width": 81,
+      "height": 20
+    },
+    {
+      "nodeId": "705:122",
+      "name": "state=Hover",
+      "file": "705-122.png",
+      "width": 81,
+      "height": 20
+    },
+    {
+      "nodeId": "705:128",
+      "name": "state=Focus",
+      "file": "705-128.png",
+      "width": 81,
+      "height": 20
+    },
+    {
+      "nodeId": "705:135",
+      "name": "state=Open",
+      "file": "705-135.png",
+      "width": 239,
+      "height": 48
+    }
   ]
 }

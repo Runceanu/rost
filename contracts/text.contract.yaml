@@ -8,10 +8,13 @@ summary: Rost's type ramp as one component, from the 64px page title down to the
 category: display
 related: [ link, code ]
 source:
-  tool: code
-  repo: rost
-  path: src/components/text/Text.tsx
+  tool: figma
+  fileKey: 1Zy0wiWKXQAvsfDBX3KR0d
+  nodeId: "705:29"
+  url: https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=705-29
   extractedAt: "2026-11-04"
+  extractedBy: hand
+  frozenAt: "2026-11-04"
 props:
   variant:
     type: enum
@@ -42,6 +45,7 @@ elements:
       font-weight: { token: typography/body/font-weight/regular, value: "400" }
 variants:
   - when: { variant: display }
+    figmaNode: "705:13"
     elements:
       root:
         font-size: { token: typography/display/font-size, value: "64px" }
@@ -50,6 +54,7 @@ variants:
         font-weight: { token: typography/display/font-weight/medium, value: "500" }
         text-wrap: { value: "balance", assert: false }
   - when: { variant: headline }
+    figmaNode: "705:15"
     elements:
       root:
         font-size: { token: typography/headline/font-size, value: "56px" }
@@ -58,6 +63,7 @@ variants:
         font-weight: { token: typography/headline/font-weight/medium, value: "500" }
         text-wrap: { value: "balance", assert: false }
   - when: { variant: sub-headline }
+    figmaNode: "705:17"
     elements:
       root:
         font-size: { token: typography/sub-headline/font-size, value: "40px" }
@@ -66,6 +72,7 @@ variants:
         font-weight: { token: typography/sub-headline/font-weight/medium, value: "500" }
         text-wrap: { value: "balance", assert: false }
   - when: { variant: lede }
+    figmaNode: "705:19"
     elements:
       root:
         font-size: { token: typography/font-size/22, value: "22px" }
@@ -75,6 +82,7 @@ variants:
         text-wrap: { value: "pretty", assert: false }
         max-width: { value: "40ch", assert: false, notes: "An opening line reads best short." }
   - when: { variant: body }
+    figmaNode: "705:21"
     elements:
       root:
         font-size: { token: typography/body/font-size, value: "16px" }
@@ -83,6 +91,7 @@ variants:
         font-weight: { token: typography/body/font-weight/regular, value: "400" }
         text-wrap: { value: "pretty", assert: false }
   - when: { variant: paragraph }
+    figmaNode: "705:23"
     elements:
       root:
         font-size: { token: typography/paragraph/font-size, value: "14px" }
@@ -91,6 +100,7 @@ variants:
         font-weight: { token: typography/paragraph/font-weight/regular, value: "400" }
         text-wrap: { value: "pretty", assert: false }
   - when: { variant: label }
+    figmaNode: "705:25"
     elements:
       root:
         font-size: { token: typography/label/font-size, value: "12px" }
@@ -98,6 +108,7 @@ variants:
         letter-spacing: { token: typography/label/letter-spacing, value: "0px" }
         font-weight: { token: typography/label/font-weight/regular, value: "400" }
   - when: { variant: eyebrow }
+    figmaNode: "705:27"
     elements:
       root:
         font-family: { value: "'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace", notes: "Rost has no mono family token yet. Where JetBrains Mono isn't loaded, the system mono stands in." }
