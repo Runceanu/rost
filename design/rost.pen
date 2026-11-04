@@ -16003,6 +16003,7 @@
            "type": "frame",
            "id": "n31",
            "name": "background",
+           "fill": "#3a3a3a7a",
            "cornerRadius": "$spacing-radius-xlarge",
            "effect": [
             {
@@ -17178,7 +17179,7 @@
          "type": "frame",
          "id": "n4t",
          "name": "Code/block=false",
-         "layout": "vertical",
+         "layout": "none",
          "children": [
           {
            "type": "text",
@@ -17190,11 +17191,15 @@
            "fontSize": 14.08,
            "fontWeight": "$typography-body-font-weight-regular",
            "lineHeight": 1,
-           "letterSpacing": "$typography-body-letter-spacing"
+           "letterSpacing": "$typography-body-letter-spacing",
+           "textGrowth": "fixed-width",
+           "width": 339.08,
+           "x": 0,
+           "y": 4
           }
          ],
-         "width": "fit_content",
-         "height": "fit_content",
+         "width": 339.08,
+         "height": 22,
          "reusable": true
         },
         {
@@ -17222,20 +17227,19 @@
          "fill": "$non-interactive-background-secondary",
          "cornerRadius": "$spacing-radius-medium",
          "padding": "$spacing-gap-medium",
-         "layout": "vertical",
+         "layout": "horizontal",
+         "alignItems": "center",
          "children": [
           {
            "type": "text",
            "id": "n4w",
-           "name": "text",
+           "name": "Label",
            "content": "<Link href=\"/docs/\">Docs</Link> <Link tone=\"quiet\">GitHub</Link>",
            "fill": "$non-interactive-foreground-primary",
            "fontFamily": "JetBrains Mono",
-           "fontSize": 12,
+           "fontSize": "$typography-label-font-size",
            "fontWeight": "400",
-           "lineHeight": 1.667,
-           "textGrowth": "fixed-width",
-           "width": 231.19
+           "lineHeight": 1.667
           }
          ],
          "width": "fit_content",
@@ -27545,7 +27549,7 @@
           }
          ],
          "width": 208,
-         "height": "fit_content",
+         "height": 52,
          "reusable": true
         },
         {
@@ -27760,7 +27764,7 @@
           }
          ],
          "width": 208,
-         "height": "fit_content",
+         "height": 52,
          "reusable": true
         },
         {
@@ -27975,7 +27979,7 @@
           }
          ],
          "width": 208,
-         "height": "fit_content",
+         "height": 52,
          "reusable": true
         },
         {
@@ -28191,7 +28195,7 @@
           }
          ],
          "width": 208,
-         "height": "fit_content",
+         "height": 52,
          "reusable": true
         },
         {
@@ -28417,7 +28421,7 @@
           }
          ],
          "width": 208,
-         "height": "fit_content",
+         "height": 52,
          "reusable": true
         },
         {
@@ -28632,7 +28636,7 @@
           }
          ],
          "width": 208,
-         "height": "fit_content",
+         "height": 52,
          "reusable": true
         },
         {
@@ -28849,7 +28853,7 @@
           }
          ],
          "width": 208,
-         "height": "fit_content",
+         "height": 52,
          "reusable": true
         },
         {
@@ -29067,7 +29071,7 @@
           }
          ],
          "width": 208,
-         "height": "fit_content",
+         "height": 52,
          "reusable": true
         },
         {
@@ -29293,7 +29297,7 @@
           }
          ],
          "width": 208,
-         "height": "fit_content",
+         "height": 52,
          "reusable": true
         },
         {
@@ -29508,7 +29512,7 @@
           }
          ],
          "width": 208,
-         "height": "fit_content",
+         "height": 52,
          "reusable": true
         },
         {
@@ -30264,11 +30268,13 @@
          "layout": "vertical",
          "justifyContent": "space_between",
          "alignItems": "center",
+         "gap": 64,
          "children": [
           {
            "type": "frame",
            "id": "npj",
            "name": "background",
+           "fill": "#0608057a",
            "effect": [
             {
              "type": "background_blur",
@@ -30444,7 +30450,7 @@
               }
              ],
              "width": 48,
-             "height": "fit_content"
+             "height": 48
             },
             {
              "type": "frame",
@@ -30525,7 +30531,7 @@
               }
              ],
              "width": 48,
-             "height": "fit_content"
+             "height": 48
             },
             {
              "type": "frame",
@@ -30606,7 +30612,7 @@
               }
              ],
              "width": 48,
-             "height": "fit_content"
+             "height": 48
             }
            ],
            "width": 48,
@@ -30752,11 +30758,13 @@
          "padding": "$spacing-gap-medium",
          "layout": "vertical",
          "justifyContent": "space_between",
+         "gap": 64,
          "children": [
           {
            "type": "frame",
            "id": "nqf",
            "name": "background",
+           "fill": "#0608057a",
            "effect": [
             {
              "type": "background_blur",
@@ -30960,7 +30968,7 @@
               }
              ],
              "width": 128,
-             "height": "fit_content"
+             "height": 48
             },
             {
              "type": "frame",
@@ -31069,7 +31077,7 @@
               }
              ],
              "width": 128,
-             "height": "fit_content"
+             "height": 48
             },
             {
              "type": "frame",
@@ -31178,7 +31186,7 @@
               }
              ],
              "width": 128,
-             "height": "fit_content"
+             "height": 48
             }
            ],
            "width": 128,
@@ -42701,7 +42709,7 @@
             }
            ],
            "width": 256,
-           "height": "fit_content"
+           "height": 16
           },
           {
            "type": "frame",
@@ -42816,7 +42824,7 @@
             }
            ],
            "width": 256,
-           "height": "fit_content"
+           "height": 16
           },
           {
            "type": "frame",
@@ -42931,7 +42939,7 @@
             }
            ],
            "width": 256,
-           "height": "fit_content"
+           "height": 16
           },
           {
            "type": "frame",
@@ -43061,7 +43069,7 @@
             }
            ],
            "width": 256,
-           "height": "fit_content"
+           "height": 16
           },
           {
            "type": "frame",
@@ -43215,7 +43223,7 @@
             }
            ],
            "width": 256,
-           "height": "fit_content"
+           "height": 16
           },
           {
            "type": "frame",
@@ -43359,7 +43367,7 @@
             }
            ],
            "width": 256,
-           "height": "fit_content"
+           "height": 16
           },
           {
            "type": "frame",
@@ -43503,7 +43511,7 @@
             }
            ],
            "width": 256,
-           "height": "fit_content"
+           "height": 16
           },
           {
            "type": "frame",
@@ -43633,7 +43641,7 @@
             }
            ],
            "width": 256,
-           "height": "fit_content"
+           "height": 16
           },
           {
            "type": "frame",
@@ -43741,6 +43749,23 @@
            "type": "frame",
            "id": "n1dy",
            "name": "shadow",
+           "fill": [
+            {
+             "type": "gradient",
+             "gradientType": "linear",
+             "rotation": 180,
+             "colors": [
+              {
+               "color": "#00000000",
+               "position": 0
+              },
+              {
+               "color": "$thumbs-shade",
+               "position": 1
+              }
+             ]
+            }
+           ],
            "cornerRadius": [
             0,
             0,
@@ -43759,6 +43784,7 @@
            "type": "frame",
            "id": "n1dz",
            "name": "content",
+           "fill": "#0608057a",
            "cornerRadius": "$spacing-radius-large",
            "effect": [
             {
@@ -43977,6 +44003,23 @@
            "type": "frame",
            "id": "n1ee",
            "name": "shadow",
+           "fill": [
+            {
+             "type": "gradient",
+             "gradientType": "linear",
+             "rotation": 180,
+             "colors": [
+              {
+               "color": "#00000000",
+               "position": 0
+              },
+              {
+               "color": "$thumbs-shade",
+               "position": 1
+              }
+             ]
+            }
+           ],
            "cornerRadius": [
             0,
             0,
@@ -43995,6 +44038,7 @@
            "type": "frame",
            "id": "n1ef",
            "name": "content",
+           "fill": "#0608057a",
            "cornerRadius": "$spacing-radius-large",
            "effect": [
             {
@@ -44213,6 +44257,23 @@
            "type": "frame",
            "id": "n1eu",
            "name": "shadow",
+           "fill": [
+            {
+             "type": "gradient",
+             "gradientType": "linear",
+             "rotation": 180,
+             "colors": [
+              {
+               "color": "#00000000",
+               "position": 0
+              },
+              {
+               "color": "$thumbs-shade",
+               "position": 1
+              }
+             ]
+            }
+           ],
            "cornerRadius": [
             0,
             0,
@@ -44231,6 +44292,7 @@
            "type": "frame",
            "id": "n1ev",
            "name": "content",
+           "fill": "#0608057a",
            "cornerRadius": "$spacing-radius-large",
            "effect": [
             {
@@ -44449,6 +44511,23 @@
            "type": "frame",
            "id": "n1fa",
            "name": "shadow",
+           "fill": [
+            {
+             "type": "gradient",
+             "gradientType": "linear",
+             "rotation": 180,
+             "colors": [
+              {
+               "color": "#00000000",
+               "position": 0
+              },
+              {
+               "color": "$thumbs-shade",
+               "position": 1
+              }
+             ]
+            }
+           ],
            "cornerRadius": [
             0,
             0,
@@ -44482,6 +44561,7 @@
            "type": "frame",
            "id": "n1fc",
            "name": "content",
+           "fill": "#0608057a",
            "cornerRadius": "$spacing-radius-large",
            "effect": [
             {
@@ -44711,6 +44791,23 @@
            "type": "frame",
            "id": "n1fr",
            "name": "shadow",
+           "fill": [
+            {
+             "type": "gradient",
+             "gradientType": "linear",
+             "rotation": 180,
+             "colors": [
+              {
+               "color": "#00000000",
+               "position": 0
+              },
+              {
+               "color": "$thumbs-shade",
+               "position": 1
+              }
+             ]
+            }
+           ],
            "cornerRadius": [
             0,
             0,
@@ -44729,6 +44826,7 @@
            "type": "frame",
            "id": "n1fs",
            "name": "content",
+           "fill": "#0608057a",
            "cornerRadius": "$spacing-radius-large",
            "effect": [
             {
@@ -44998,6 +45096,23 @@
            "type": "frame",
            "id": "n1gb",
            "name": "shadow",
+           "fill": [
+            {
+             "type": "gradient",
+             "gradientType": "linear",
+             "rotation": 180,
+             "colors": [
+              {
+               "color": "#00000000",
+               "position": 0
+              },
+              {
+               "color": "$thumbs-shade",
+               "position": 1
+              }
+             ]
+            }
+           ],
            "cornerRadius": [
             0,
             0,
@@ -45016,6 +45131,7 @@
            "type": "frame",
            "id": "n1gc",
            "name": "content",
+           "fill": "#0608057a",
            "cornerRadius": "$spacing-radius-large",
            "effect": [
             {

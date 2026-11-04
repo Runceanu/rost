@@ -20,6 +20,24 @@ Then the tokens are `$rost:<token>` (`$rost:actions-primary-default-background`)
 
 pen.dev reads the library when it opens the app's file. After `npm run pen`, close the app's file and open it again to see the new version.
 
+## An app's pages
+
+`bin/build-pen-pages.mjs` does for an app's pages what `npm run pen` does for the components: it renders each page in Chromium, 1440 wide and whole, and writes a `.pen` file that imports the library, with every value the app takes from a token written as `$rost:<token>`.
+
+```bash
+node ../rost/bin/build-pen-pages.mjs <app> <built site> <out.pen> / /work /about
+```
+
+The portfolio site runs it as `npm run design`, which builds the site first and writes `design/portfolio.pen`, one frame per page. Pages need a few things components don't:
+
+- **Margins and centring.** Flex can't say what a margin says. Where a gap that's the same between every child doesn't put the children where the browser put them, that frame places its children at their own positions instead. Rost's components use gaps, so they keep their flex layout.
+- **Grids** become rows, each item as big as the grid made it.
+- **Photos** are image fills that point at the app's own files in `public/`. An SVG picture (a project's preview, a client's logo) is drawn once as a PNG in `design/images/`, because pen.dev's image fills don't draw SVG.
+- **A sentence made of styled spans** (a headline with one bright phrase) is one text in the paragraph's colour. A pen.dev text has one fill, so the bright phrase loses its colour.
+- **What moves doesn't come across:** canvas drawings, animations and video. A slideshow shows whichever slide was up.
+
+The page frames draw Rost's components in place, with Rost's tokens, but they aren't instances of the library's components yet. Matching each one to its variant is the next step.
+
 ## What's different from code
 
 - **The font.** pen.dev only draws Google fonts, and Rost uses General Sans. The variable still says General Sans Variable, so anything built from the file is right, but pen.dev shows a fallback, and text runs a little wider or narrower than it will.
