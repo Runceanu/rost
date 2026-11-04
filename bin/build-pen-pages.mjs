@@ -10,7 +10,7 @@
  *
  * Each route is rendered in Chromium at 1440 wide, the whole page, with
  * animations stopped, and becomes one frame in the file. The conversion is
- * bin/lib/pen.mjs, the same one that builds design/rost.pen. A photo points
+ * bin/lib/pen.mjs, the same one that builds design/rost.lib.pen. A photo points
  * at the app's own file: in `public/`, or the file in the repo the build copied
  * it from, so the design file doesn't hold a second copy of any image.
  */
@@ -44,9 +44,9 @@ if (routes.length === 1 && routes[0] === '--all') {
 const WIDTH = 1440
 const { kinds } = penTokens(JSON.parse(readFileSync(join(root, 'tokens/tokens.json'), 'utf8')).tokens)
 // The library, as the app's file reaches it.
-const library = relative(dirname(out), join(root, 'design/rost.pen'))
+const library = relative(dirname(out), join(root, 'design/rost.lib.pen'))
 // Its variants, so a page's Rost components become instances of them.
-const variants = libraryIndex(JSON.parse(readFileSync(join(root, 'design/rost.pen'), 'utf8')))
+const variants = libraryIndex(JSON.parse(readFileSync(join(root, 'design/rost.lib.pen'), 'utf8')))
 
 // A plain static server with the app's own fallback: an unknown path is the SPA's index.html.
 const TYPES = { '.html': 'text/html', '.js': 'text/javascript', '.css': 'text/css', '.svg': 'image/svg+xml', '.png': 'image/png', '.jpg': 'image/jpeg', '.jpeg': 'image/jpeg', '.webp': 'image/webp', '.woff2': 'font/woff2', '.json': 'application/json', '.mp4': 'video/mp4' }

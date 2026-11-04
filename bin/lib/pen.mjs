@@ -106,7 +106,18 @@ export function penTokens(tokens) {
   for (const t of Object.values(tokens)) {
     const name = t.cssVar.replace(/^--/, '')
     const dark = String(t.value), light = t.light !== undefined ? String(t.light) : null
-    const themed = (a, b) => (b === null || b === a ? a : [{ value: a, theme: { mode: 'dark' } }, { value: b, theme: { mode: 'light' } }])
+    const plain = (a, b) => (b === null || b === a ? a : [{ value: a, theme: { mode: 'dark' } }, { value: b, theme: { mode: 'light' } }])
+    // Where Figma's variable is an alias (`actions/.../icon` is `color/dark/primary/500`), this
+    // one points at that variable too, so the Variables panel shows the same chain. Only when the
+    // alias gives the same value: a token that adds alpha to its alias keeps its own value.
+    const via = (alias, value) => (alias && tokens[alias] && String(tokens[alias].value) === value ? `$${tokens[alias].cssVar.slice(2)}` : null)
+    const themed = (a, b) => {
+      const da = via(t.alias, dark)
+      const la = light === null ? da : t.lightAlias && tokens[t.lightAlias] && String(tokens[t.lightAlias].light ?? tokens[t.lightAlias].value) === light ? `$${tokens[t.lightAlias].cssVar.slice(2)}` : null
+      if (!da && !la) return plain(a, b)
+      const A = da ?? a, B = b === null ? A : la ?? b
+      return A === B ? A : [{ value: A, theme: { mode: 'dark' } }, { value: B, theme: { mode: 'light' } }]
+    }
     if (hex(dark)) { variables[name] = { type: 'color', value: themed(hex(dark), light && hex(light)) }; kinds[name] = 'color' }
     // Weights are strings in pen.dev ("500"); every other number is a plain number.
     else if (/font-weight/.test(name) && numeric(dark) !== null) { variables[name] = { type: 'string', value: themed(dark, light) }; kinds[name] = 'string' }

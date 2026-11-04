@@ -1,17 +1,21 @@
 # Rost in pen.dev
 
-`design/rost.pen` is Rost as a pen.dev library: every token as a variable, in the dark theme and the light one, and every component variant as a reusable component. The apps' own design files import it, the way a Figma file uses a library.
+`design/rost.lib.pen` is Rost as a pen.dev library: every token as a variable, in the dark theme and the light one, and every component variant as a reusable component. The apps' own design files import it, the way a Figma file uses a library. The `.lib.pen` ending is what makes it a library in pen.dev: it shows under **Libraries** in the left sidebar, and its components under **Components** in any file that imports it.
+
+It's laid out like the Figma file. Along the top are the token pages: the palette, the semantic colours and each component's own colours (each one with its dark value, its light value and the colour it points at), type, spacing, radius and outline, then opacity, effects and motion. Every swatch, radius and stroke there is bound to its variable. Under them is one page per Figma page (badge, buttons, chip and the rest), each with its component sets drawn the way Figma draws a variant set: one property across, the others down, every row and column labelled. The components that only exist in code come last.
+
+The variables are in pen.dev's **Variables** panel too, named as in code (`actions-primary-default-background`). Where a Figma variable is an alias, this one is too: `actions-borderless-default-icon` points at `color-dark-primary-500` in the dark theme and `color-light-primary-800` in the light one.
 
 It's built, not drawn. `npm run pen` renders each component's fixtures in Chromium (the same ones the visual test uses, with hover, press and focus forced), and turns what the browser draws into pen.dev frames, text and shapes. Every value the CSS takes from a token stays bound to that token, because Chrome says which `var(--...)` won for each property. So two tokens that both come out as `#3a3a3a` stay two tokens in the design too.
 
-Don't edit `rost.pen` by hand. Change the contract or the component, then run `npm run pen` again. The code is the source; this file is a picture of it that designers can use.
+Don't edit `rost.lib.pen` by hand. Change the contract or the component, then run `npm run pen` again. The code is the source; this file is a picture of it that designers can use.
 
 ## Using it in an app
 
 In the app's own `.pen` file, next to its code:
 
 ```json
-{ "version": "2.21", "imports": { "rost": "../rost/design/rost.pen" }, "children": [] }
+{ "version": "2.21", "imports": { "rost": "../rost/design/rost.lib.pen" }, "children": [] }
 ```
 
 Then the tokens are `$rost:<token>` (`$rost:actions-primary-default-background`) and the components are `rost:<id>`. A component's name says which variant it is: `Button/type=Secondary, state=Hover`. An instance can change its text and hide parts, like any pen.dev instance.
@@ -59,7 +63,7 @@ Pages need a few things components don't:
 
 A Rost component on a page is an instance of the library's variant, so a change to Button in the library shows up on every page's buttons. The script picks the variant by four things:
 
-- **Classes.** The root's own classes (`rost-button rost-button--type-secondary`). Each variant in `rost.pen` records its root's classes.
+- **Classes.** The root's own classes (`rost-button rost-button--type-secondary`). Each variant in `rost.lib.pen` records its root's classes.
 - **Parts.** The page's parts must be the variant's, in order. A part the page leaves out (a project row with no period) is switched off on the instance.
 - **Size.** The page draws it at the variant's size, unless the variant hugs its content. A library variant is drawn at its fixture's size, and its inner layers are that size too, so an instance stretched wider wouldn't move them. That's why the portfolio site's project cards (464 by 376 on the page) stay drawn.
 - **Look.** Every paint and type setting has to be the same token. A state that's an attribute, not a class (a disabled field), only shows up here.
@@ -73,7 +77,7 @@ The library's variants have ids made from their names (`c1hlr87e` is `Badge/stat
 - **The font.** pen.dev only draws Google fonts, and Rost uses General Sans. The variable still says General Sans Variable, so anything built from the file is right, but pen.dev shows a fallback, and text runs a little wider or narrower than it will.
 - **Sizes are numbers.** pen.dev drops a variable on a width or a height, so a 48px button is 48, not `spacing/size/medium-large`. Each frame that had a size token says which one in its context. Padding, gaps, radii, colours, strokes and type keep their tokens.
 - **Opacity is a percentage.** pen.dev reads an opacity variable as a percentage, so `opacity-gentle` is 24 there, where code has 0.24. It draws the same.
-- **No variant switcher.** pen.dev has no Figma-style variant axes. Each variant is its own component, named the way Figma named it.
+- **No variant switcher.** pen.dev has no Figma-style variant axes. Each variant is its own component, named the way Figma named it, and the sets are drawn as grids so you can still read them by property.
 - **A component inside another** (the Badge in a Thumb) is drawn in place, not as an instance of Badge.
 - **Text sizes follow the browser.** A line that fits on one line in Chromium stays one line, and a frame keeps the width it had where pen.dev couldn't stretch it. With the fallback font some labels come out a little wider or narrower.
 - **A full-size layer becomes the component's own paint.** Button's background and Chip's outline are separate layers in the code. Here they're the component's own fill and stroke, so the component grows with its label. Where that layer had its own opacity, the paint is a one-colour gradient, the only paint in pen.dev that takes one.

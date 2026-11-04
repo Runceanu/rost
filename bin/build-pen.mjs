@@ -35,10 +35,11 @@ import { join, extname } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { createServer } from 'node:http'
 import { penTokens, capture, toPen, classKey, stableIds } from './lib/pen.mjs'
+import { foundations } from './lib/pen-foundations.mjs'
 
 const root = fileURLToPath(new URL('../', import.meta.url))
 const font = process.env.ROST_FONT ?? join(homedir(), 'Library/Fonts/GeneralSans-Variable.ttf')
-const out = join(root, 'design/rost.pen')
+const out = join(root, 'design/rost.lib.pen')
 const work = join(root, 'test-results/pen')
 
 // ── Tokens ──────────────────────────────────────────────────────────────
@@ -124,7 +125,7 @@ for (const id of ids) {
     const pen = stableIds(toPen(top, els, { kinds, nid }), `${title}/${meta.name || 'Default'}`)
     pen.metadata = { type: 'rost-variant', component: id, classes: classKey(top.cls), forced: meta.force.join(' ') }
     shots[pen.id] = shot
-    components.push({ name: meta.name, node: pen, h: top.box.h })
+    components.push({ name: meta.name, node: pen, w: top.box.w, h: top.box.h })
   }
   await page.close()
   const title = id.split('-').map((w) => w[0].toUpperCase() + w.slice(1)).join(' ')
@@ -136,32 +137,115 @@ server.close()
 
 
 // ── The file ────────────────────────────────────────────────────────────
-// One board per component, the variants in rows of four, each one reusable.
-const GAP = 48
-let y = 0
-const children = []
-for (const b of boards) {
-  const rows = []
-  for (let i = 0; i < b.components.length; i += 4) rows.push(b.components.slice(i, i + 4))
-  const board = {
-    type: 'frame', id: nid(), name: b.title, x: 0, y, layout: 'vertical', gap: 24, padding: 40, fill: '$non-interactive-background-primary', theme: { mode: 'dark' }, cornerRadius: 24,
-    children: [
-      { type: 'text', id: nid(), name: 'Title', content: b.title, fontFamily: '$font-family-base', fontSize: 32, fontWeight: '500', fill: '$non-interactive-foreground-primary' },
-      ...rows.map((row) => ({ type: 'frame', id: nid(), name: 'Row', layout: 'horizontal', gap: 40, alignItems: 'start', children: row.map((c) => ({
-        type: 'frame', id: nid(), name: 'Variant', layout: 'vertical', gap: 12, children: [
-          { ...c.node, name: `${b.title}/${c.name || 'Default'}`, reusable: true },
-          { type: 'text', id: nid(), name: 'Caption', content: c.name || 'Default', fontFamily: 'JetBrains Mono', fontSize: 11, fill: '$non-interactive-foreground-tertiary' },
-        ],
-      })) })),
-    ],
+// Laid out like the Figma file: the token pages first, then one page per Figma
+// page (badge, buttons, chip...), each holding its component sets. A set is a
+// grid like Figma's variant sets: one property across, the others down, each
+// row and column labelled. Components that only exist in code come after.
+const FIGMA = { badge: 'badge', button: 'buttons', 'icon-button': 'buttons', carousel: 'carousel', chips: 'chip', divider: 'divider', icon: 'iconography', illustration: 'illustrations', 'inline-banner': 'inline banner', input: 'input', textarea: 'input', menu: 'menu', projects: 'projects', tags: 'tags', testimonials: 'testimonials', 'testimonials-pics': 'testimonials', thumbs: 'thumbs', toggle: 'toggle', 'toggle-group': 'toggle', tooltip: 'tooltip' }
+const MONO = 'JetBrains Mono'
+const txt = (content, o = {}) => ({ type: 'text', id: nid(), name: o.name ?? 'Label', content, fontFamily: o.font ?? MONO, fontSize: o.size ?? 11, fill: o.fill ?? '$non-interactive-foreground-tertiary', ...(o.weight ? { fontWeight: o.weight } : {}), ...(o.width ? { textGrowth: 'fixed-width', width: o.width } : {}) })
+
+// A variant's properties from its name: "type=Primary, state=Hover" -> [["type","Primary"],["state","Hover"]].
+const props = (name) => (/=/.test(name ?? '') && name.split(', ').every((p) => p.includes('=')) ? name.split(', ').map((p) => p.split('=')) : null)
+
+// One component set: the grid, and how big it comes out.
+function variantSet(b) {
+  const LABEL = 200, PAD = 32, GAPX = 32, GAPY = 32
+  const named = b.components.filter((c) => props(c.name))
+  const loose = b.components.filter((c) => !props(c.name))
+  const keys = named.length ? props(named[0].name).map(([k]) => k) : []
+  // Across: `state` when there is one (Figma's sets read that way), or the last property.
+  const across = keys.includes('state') ? 'state' : keys.at(-1)
+  const down = keys.filter((k) => k !== across)
+  const value = (c, k) => Object.fromEntries(props(c.name))[k]
+  let cols = [...new Set(named.map((c) => value(c, across)))]
+  let rows = [...new Set(named.map((c) => down.map((k) => `${k}=${value(c, k)}`).join(', ')))]
+  let at = (r, col) => named.find((c) => value(c, across) === col && down.map((k) => `${k}=${value(c, k)}`).join(', ') === r)
+  // One property and many values (24 illustrations, 17 icons) wraps, eight to a row.
+  if (!down.length && cols.length > 8) {
+    const all = cols
+    cols = Array.from({ length: 8 }, (_, i) => String(i))
+    rows = Array.from({ length: Math.ceil(all.length / 8) }, (_, i) => String(i))
+    const pick = (r, col) => all[Number(r) * 8 + Number(col)]
+    at = (r, col) => named.find((c) => value(c, across) === pick(r, col))
   }
-  children.push(board)
-  // The board's height, from what each variant measured in the browser: the tallest per row, its caption and the gaps.
-  y += 40 * 2 + 44 + rows.reduce((h, row) => h + 24 + Math.max(...row.map((c) => c.h)) + 12 + 16, 0) + GAP
+  const wrapped = !down.length && cols.length === 8 && rows.length > 1 && cols[0] === '0'
+  const colW = cols.map((col) => Math.max(80, ...rows.map((r) => at(r, col)?.w ?? 0)))
+  const rowH = rows.map((r) => Math.max(...cols.map((col) => at(r, col)?.h ?? 0)) + (wrapped ? 20 : 0))
+  const labelW = down.length ? LABEL : 0
+  const cell = (c, w, h, caption) => ({ type: 'frame', id: nid(), name: 'Cell', width: w, height: h, layout: 'vertical', gap: 8, children: c ? [{ ...c.node, name: `${b.title}/${c.name || 'Default'}`, reusable: true }, ...(caption ? [txt(caption)] : [])] : [] })
+  const grid = []
+  if (named.length) {
+    if (!wrapped) grid.push({ type: 'frame', id: nid(), name: 'Columns', layout: 'horizontal', gap: GAPX, children: [
+      ...(labelW ? [{ type: 'frame', id: nid(), name: 'Corner', width: labelW, height: 16 }] : []),
+      ...cols.map((col, i) => txt(`${across}=${col}`, { width: colW[i] })),
+    ] })
+    rows.forEach((r, ri) => grid.push({ type: 'frame', id: nid(), name: 'Row', layout: 'horizontal', gap: GAPX, alignItems: 'start', children: [
+      ...(labelW ? [txt(r, { width: labelW, fill: '$non-interactive-foreground-secondary' })] : []),
+      ...cols.map((col, ci) => { const c = at(r, col); return cell(c, colW[ci], rowH[ri], wrapped && c ? value(c, across) : null) }),
+    ] }))
+  }
+  // Variants named in words, not properties ("with an icon"): a row of their own, captioned.
+  if (loose.length) grid.push({ type: 'frame', id: nid(), name: 'Other', layout: 'horizontal', gap: GAPX, alignItems: 'start', children: loose.map((c) => cell(c, Math.max(80, c.w), c.h + 28, c.name || 'Default')) })
+  const gridW = Math.max(
+    named.length ? labelW + (labelW ? GAPX : 0) + colW.reduce((s, w) => s + w, 0) + GAPX * (cols.length - 1) : 0,
+    loose.reduce((s, c) => s + Math.max(80, c.w), 0) + GAPX * Math.max(0, loose.length - 1),
+  )
+  const gridH = (named.length && !wrapped ? 16 + GAPY : 0) + rowH.reduce((s, h) => s + h, 0) * (named.length ? 1 : 0) + GAPY * Math.max(0, (named.length ? rows.length : 0) - 1) + (loose.length ? (named.length ? GAPY : 0) + Math.max(...loose.map((c) => c.h + 28)) : 0)
+  const w = gridW + 2 * PAD, h = gridH + 2 * PAD
+  // The set: Figma draws its component sets with a purple outline, so this does too.
+  const set = { type: 'frame', id: nid(), name: b.title, layout: 'vertical', gap: GAPY, padding: PAD, cornerRadius: 8, stroke: '#9747ff', strokeWidth: 1, children: grid, context: `${b.components.length} variants of ${b.title}. Properties: ${keys.join(', ') || 'none'}.` }
+  return { set, w, h }
 }
+
+const PAGE_PAD = 64
+const page = (name, intro, blocks) => {
+  // A page: a title, a line under it, then each set under its own name.
+  const w = Math.max(720, ...blocks.map((x) => x.w)) + 2 * PAGE_PAD
+  const h = 2 * PAGE_PAD + 96 + blocks.reduce((s, x) => s + 40 + 36 + x.h, 0)
+  return { w, h, frame: {
+    type: 'frame', id: nid(), name, width: w, layout: 'vertical', gap: 40, padding: PAGE_PAD, fill: '$non-interactive-background-primary', theme: { mode: 'dark' }, cornerRadius: 24,
+    metadata: { type: 'rost-page', page: name },
+    children: [
+      { type: 'frame', id: nid(), name: 'Header', layout: 'vertical', gap: 8, children: [
+        txt(name, { name: 'Title', font: '$font-family-base', size: 40, weight: '500', fill: '$non-interactive-foreground-primary' }),
+        txt(intro, { name: 'Intro', font: '$font-family-base', size: 16, width: w - 2 * PAGE_PAD }),
+      ] },
+      ...blocks.map((x) => ({ type: 'frame', id: nid(), name: x.title, layout: 'vertical', gap: 16, children: [txt(x.title, { name: 'Set name', font: '$font-family-base', size: 24, weight: '500', fill: '$non-interactive-foreground-secondary' }), x.set] })),
+    ],
+  } }
+}
+
+const byId = new Map(boards.map((b) => [b.id, b]))
+const figmaPages = [...new Set(Object.values(FIGMA))].sort()
+const pages = []
+for (const fp of figmaPages) {
+  const here = Object.keys(FIGMA).filter((id) => FIGMA[id] === fp && byId.has(id)).map((id) => byId.get(id))
+  if (!here.length) continue
+  const blocks = here.map((b) => ({ title: b.title, ...variantSet(b) }))
+  const count = here.reduce((n, b) => n + b.components.length, 0)
+  pages.push(page(fp[0].toUpperCase() + fp.slice(1), `The Figma page “${fp}”. ${count} variant${count === 1 ? '' : 's'}, each one a reusable component.`, blocks))
+}
+const codeOnly = boards.filter((b) => !FIGMA[b.id])
+for (const b of codeOnly) pages.push(page(b.title, `Only in code, not in the Figma file. ${b.components.length} variant${b.components.length === 1 ? '' : 's'}.`, [{ title: b.title, ...variantSet(b) }]))
+
+// On the canvas: the token pages along the top, the component pages in rows under them.
+const children = []
+const SPACE = 160, ROW = 7200
+let x = 0, y = 0, tall = 0
+const place = (p) => {
+  if (x > 0 && x + p.w > ROW) { x = 0; y += tall + SPACE; tall = 0 }
+  children.push({ ...p.frame, x, y })
+  x += p.w + SPACE
+  tall = Math.max(tall, p.h)
+}
+const tokenPages = foundations(tokens, nid)
+for (const p of tokenPages) place(p)
+x = ROW // the components start on a row of their own
+for (const p of pages) place(p)
 
 const doc = { version: '2.21', themes: { mode: ['dark', 'light'] }, variables, children }
 mkdirSync(join(root, 'design'), { recursive: true })
 writeFileSync(out, JSON.stringify(doc, null, 1) + '\n')
 writeFileSync(join(work, 'shots.json'), JSON.stringify(shots, null, 1))
-console.log(`\n${Object.keys(variables).length} variables, ${boards.reduce((n, b) => n + b.components.length, 0)} components -> design/rost.pen`)
+console.log(`\n${Object.keys(variables).length} variables, ${tokenPages.length} token pages, ${pages.length} component pages, ${boards.reduce((n, b) => n + b.components.length, 0)} components -> design/rost.lib.pen`)
