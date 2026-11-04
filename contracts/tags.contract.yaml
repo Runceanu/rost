@@ -70,14 +70,14 @@ variants:
     figmaNode: "91:372"
     elements:
       root:
-        background: { token: tag/hover/background, value: "#747573" }
+        background: { token: tag/hover/background, value: "#555555" }
       label:
         color: { token: tag/hover/label, value: "#ededed" }
   - when: { type: Primary, state: Pressed }
     figmaNode: "91:383"
     elements:
       root:
-        background: { token: tag/pressed/background, value: "#999" }
+        background: { token: tag/pressed/background, value: "#282828" }
       label:
         color: { token: tag/pressed/label, value: "#d3d9d5" }
   - when: { type: Primary, state: Focus }

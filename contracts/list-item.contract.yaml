@@ -167,7 +167,7 @@ variants:
       label:
         color: { token: list-item/selected/hover/label, value: "#060805" }
       description:
-        color: { token: list-item/selected/hover/sub-label, value: "#3a3a3a" }
+        color: { token: list-item/selected/hover/sub-label, value: "#060805" }
       action:
         color: { token: list-item/selected/hover/icon, value: "#060805" }
       dot:
@@ -183,7 +183,7 @@ variants:
       label:
         color: { token: list-item/selected/pressed/label, value: "#060805" }
       description:
-        color: { token: list-item/selected/pressed/sub-label, value: "#3a3a3a" }
+        color: { token: list-item/selected/pressed/sub-label, value: "#060805" }
       action:
         color: { token: list-item/selected/pressed/icon, value: "#060805" }
       dot:

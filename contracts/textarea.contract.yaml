@@ -124,7 +124,7 @@ variants:
     elements:
       outline:
         background: { token: textarea/regular/default/background, value: "#060805" }
-        border-color: { token: textarea/regular/default/outline, value: "#555555" }
+        border-color: { token: textarea/regular/default/outline, value: "#747573" }
       label:
         color: { token: textarea/regular/default/label, value: "#999999" }
       value:
@@ -148,7 +148,7 @@ variants:
     elements:
       outline:
         background: { token: textarea/regular/focus/background, value: "#060805" }
-        border-color: { token: textarea/regular/focus/outline, value: "#555555" }
+        border-color: { token: textarea/regular/focus/outline, value: "#747573" }
       label:
         color: { token: textarea/regular/focus/label, value: "#999999" }
       value:
@@ -191,13 +191,13 @@ variants:
         background: { token: textarea/negative/hover/background, value: "#171717" }
         border-color: { token: textarea/negative/hover/outline, value: "#e93120" }
       label:
-        color: { token: textarea/negative/hover/label, value: "#e93120" }
+        color: { token: textarea/negative/hover/label, value: "#f2705f" }
       value:
-        color: { token: textarea/negative/hover/placeholder, value: "#555555" }
+        color: { token: textarea/negative/hover/placeholder, value: "#999999" }
       supportive:
-        color: { token: textarea/negative/hover/supportive, value: "#ae1b13" }
+        color: { token: textarea/negative/hover/supportive, value: "#e93120" }
       icons-alarm:
-        background: { token: textarea/negative/hover/icon, value: "#ae1b13" }
+        background: { token: textarea/negative/hover/icon, value: "#e93120" }
   - when: { state: Default, selected: true, error: true }
     figmaNode: "528:804"
     elements:

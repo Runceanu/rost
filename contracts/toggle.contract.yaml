@@ -150,7 +150,7 @@ variants:
     figmaNode: "168:1161"
     elements:
       background:
-        background: { token: toggle/off/hover/background, value: "#747573" }
+        background: { token: toggle/off/hover/background, value: "#555555" }
         border-color: { token: toggle/off/hover/outline, value: "#ededed" }
         opacity: { token: opacity/mild, value: "0.32" }
       icons-arrow-left:
@@ -166,14 +166,14 @@ variants:
           value: inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--toggle-on-pressed-outline), inset 0 0 0 var(--spacing-outline-small) var(--toggle-on-pressed-edge)
           untokenised: "Figma's 1px left and top stroke, drawn inside the shape as Figma draws it, over a 1px ring in the positive green. The ring is the fill's own colour in dark; in light it's a dark green, because the bright fill is 1.8:1 on white and an on toggle has to be seen (WCAG 1.4.11). The widths and colours are tokens."
       icons-arrow-left:
-        color: { token: toggle/on/pressed/icon, value: "#3a3a3a" }
+        color: { token: toggle/on/pressed/icon, value: "#060805" }
       label:
         color: { token: toggle/on/pressed/label, value: "#060805" }
   - when: { state: Pressed, selected: false }
     figmaNode: "168:1172"
     elements:
       background:
-        background: { token: toggle/off/pressed/background, value: "#999" }
+        background: { token: toggle/off/pressed/background, value: "#282828" }
         border-color: { token: toggle/off/pressed/outline, value: "#ededed" }
         opacity: { token: opacity/mild, value: "0.32" }
       icons-arrow-left:

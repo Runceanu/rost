@@ -7,12 +7,14 @@
 import { readFileSync } from 'node:fs'
 import Ajv from 'ajv/dist/2020.js'
 import { read, ids } from './lib/contract-io.mjs'
-import { loadTokens, valuesOf, variantsOf } from './lib/kit.mjs'
+import { loadTokens, valuesOf, variantsOf, isColour } from './lib/kit.mjs'
 
 const schema = JSON.parse(readFileSync(new URL('../schema/component-contract.schema.json', import.meta.url), 'utf8'))
 const validate = new Ajv({ allErrors: true, validateFormats: false, allowUnionTypes: true }).compile(schema)
 
-const { resolves } = loadTokens()
+const { tokens, resolves } = loadTokens()
+// #999 and #999999 are the same colour.
+const longHex = (h) => { const s = String(h).trim().toLowerCase(); return /^#[0-9a-f]{3}$/.test(s) ? `#${[...s.slice(1)].map((c) => c + c).join('')}` : s }
 
 const all = ids()
 const errors = []
@@ -45,6 +47,13 @@ for (const id of all) {
 
   const values = valuesOf(c)
   for (const t of new Set(values.map(({ v }) => v.token).filter(Boolean))) if (!resolves(t)) warnings.push(`${id}: token ${t} isn't in tokens.css`)
+  // A colour's value is what its token gives in dark. When a token changes and
+  // the contract keeps the old hex, an app's conform test fails on the new one.
+  for (const { part, prop, v, variant } of values) {
+    const now = v.token && tokens[v.token]?.value
+    if (now && isColour(now) && isColour(v.value) && longHex(now) !== longHex(v.value))
+      err(`${variant ? `${variant} ` : ''}${part}.${prop}: value ${v.value}, but ${v.token} is ${now}`)
+  }
   // A suggestion of a token that doesn't exist is a proposal for a new one.
   for (const t of new Set(values.map(({ v }) => v.suggest).filter(Boolean))) if (!resolves(t)) proposals.push(`${id}: proposes new token ${t}`)
 

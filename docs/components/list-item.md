@@ -99,12 +99,12 @@ Every token this component uses, across all its variants.
 | `list-item/selected/hover/dot` | `#060805` |
 | `list-item/selected/hover/icon` | `#060805` |
 | `list-item/selected/hover/label` | `#060805` |
-| `list-item/selected/hover/sub-label` | `#3a3a3a` |
+| `list-item/selected/hover/sub-label` | `#060805` |
 | `list-item/selected/pressed/background` | `#00913a` |
 | `list-item/selected/pressed/dot` | `#060805` |
 | `list-item/selected/pressed/icon` | `#060805` |
 | `list-item/selected/pressed/label` | `#060805` |
-| `list-item/selected/pressed/sub-label` | `#3a3a3a` |
+| `list-item/selected/pressed/sub-label` | `#060805` |
 | `list-item/unselected/default/icon` | `#00d669` |
 | `list-item/unselected/default/label` | `#d3d9d5` |
 | `list-item/unselected/default/sub-label` | `#999999` |

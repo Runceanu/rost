@@ -104,7 +104,7 @@ variants:
     figmaNode: "528:355"
     elements:
       background:
-        background: { token: switch/off/hover/track, value: "#747573" }
+        background: { token: switch/off/hover/track, value: "#555555" }
         opacity: { token: opacity/mild, value: "0.32" }
       thumb:
         background: { token: switch/off/hover/thumb, value: "#ededed" }
@@ -112,7 +112,7 @@ variants:
     figmaNode: "528:360"
     elements:
       background:
-        background: { token: switch/off/pressed/track, value: "#999" }
+        background: { token: switch/off/pressed/track, value: "#282828" }
         opacity: { token: opacity/mild, value: "0.32" }
       thumb:
         background: { token: switch/off/pressed/thumb, value: "#d3d9d5" }

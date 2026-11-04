@@ -71,10 +71,10 @@ Every token this component uses, across all its variants.
 | `tag/focus-ring` | `#999` |
 | `tag/focus/background` | `#3a3a3a` |
 | `tag/focus/label` | `#d3d9d5` |
-| `tag/hover/background` | `#747573` |
+| `tag/hover/background` | `#555555` |
 | `tag/hover/label` | `#ededed` |
 | `tag/label` | `#d3d9d5` |
-| `tag/pressed/background` | `#999` |
+| `tag/pressed/background` | `#282828` |
 | `tag/pressed/label` | `#d3d9d5` |
 | `typography/label/font-size` | `12px` |
 | `typography/label/font-weight/medium` | `500` |

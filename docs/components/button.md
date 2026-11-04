@@ -103,10 +103,10 @@ Every token this component uses, across all its variants.
 | `button/secondary/focus/focus-ring` | `#999` |
 | `button/secondary/focus/label` | `#d3d9d5` |
 | `button/secondary/focus/outline` | `#ededed` |
-| `button/secondary/hover/background` | `#747573` |
+| `button/secondary/hover/background` | `#555555` |
 | `button/secondary/hover/label` | `#ededed` |
 | `button/secondary/hover/outline` | `#ededed` |
-| `button/secondary/pressed/background` | `#999` |
+| `button/secondary/pressed/background` | `#282828` |
 | `button/secondary/pressed/label` | `#d3d9d5` |
 | `button/secondary/pressed/outline` | `#ededed` |
 | `button/tertiary/default/label` | `#d3d9d5` |

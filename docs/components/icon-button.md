@@ -73,7 +73,7 @@ Every token this component uses, across all its variants.
 | `icon-button/primary/hover/background` | `#00b450` |
 | `icon-button/primary/hover/icon` | `#3a3a3a` |
 | `icon-button/primary/pressed/background` | `#00913a` |
-| `icon-button/primary/pressed/icon` | `#3a3a3a` |
+| `icon-button/primary/pressed/icon` | `#060805` |
 | `icon-button/project/default/icon` | `#00d669` |
 | `icon-button/project/disabled/icon` | `#00d669` |
 | `icon-button/project/focus/focus-ring` | `#999` |
@@ -92,10 +92,10 @@ Every token this component uses, across all its variants.
 | `icon-button/secondary/focus/focus-ring` | `#999` |
 | `icon-button/secondary/focus/icon` | `#00d669` |
 | `icon-button/secondary/focus/outline` | `#ededed` |
-| `icon-button/secondary/hover/background` | `#747573` |
+| `icon-button/secondary/hover/background` | `#555555` |
 | `icon-button/secondary/hover/icon` | `#00b450` |
 | `icon-button/secondary/hover/outline` | `#ededed` |
-| `icon-button/secondary/pressed/background` | `#999` |
+| `icon-button/secondary/pressed/background` | `#282828` |
 | `icon-button/secondary/pressed/icon` | `#00d669` |
 | `icon-button/secondary/pressed/outline` | `#ededed` |
 | `icon-button/tertiary/default/icon` | `#00d669` |

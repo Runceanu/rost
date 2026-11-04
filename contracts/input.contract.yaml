@@ -164,7 +164,7 @@ variants:
     elements:
       outline:
         background: { token: input/regular/default/background, value: "#060805" }
-        border-color: { token: input/regular/default/outline, value: "#555555" }
+        border-color: { token: input/regular/default/outline, value: "#747573" }
       icons-lock:
         background: { token: input/regular/default/icon, value: "#00d669" }
       label:
@@ -194,7 +194,7 @@ variants:
     elements:
       outline:
         background: { token: input/regular/focus/background, value: "#060805" }
-        border-color: { token: input/regular/focus/outline, value: "#555555" }
+        border-color: { token: input/regular/focus/outline, value: "#747573" }
       icons-lock:
         background: { token: input/regular/focus/icon, value: "#00d669" }
       label:
@@ -312,16 +312,16 @@ variants:
         background: { token: input/negative/hover/background, value: "#171717" }
         border-color: { token: input/negative/hover/outline, value: "#e93120" }
       icons-lock:
-        background: { token: input/negative/hover/icon, value: "#ae1b13" }
+        background: { token: input/negative/hover/icon, value: "#e93120" }
       label:
-        color: { token: input/negative/hover/label, value: "#e93120" }
+        color: { token: input/negative/hover/label, value: "#f2705f" }
       value:
         height: { value: "0", assert: false, notes: "Empty and not focused: only the label shows. The input is still there, so you can tab into it." }
         opacity: { value: "0", assert: false }
       supportive:
-        color: { token: input/negative/hover/supportive, value: "#ae1b13" }
+        color: { token: input/negative/hover/supportive, value: "#e93120" }
       icons-alarm:
-        background: { token: input/negative/hover/icon, value: "#ae1b13" }
+        background: { token: input/negative/hover/icon, value: "#e93120" }
   - when: { state: Hover, configuration: Filled, selected: false, error: true }
     figmaNode: "252:1086"
     elements:
@@ -329,24 +329,24 @@ variants:
         background: { token: input/negative/hover/background, value: "#171717" }
         border-color: { token: input/negative/hover/outline, value: "#e93120" }
       icons-lock:
-        background: { token: input/negative/hover/icon, value: "#ae1b13" }
+        background: { token: input/negative/hover/icon, value: "#e93120" }
       label:
-        color: { token: input/negative/hover/label, value: "#e93120" }
+        color: { token: input/negative/hover/label, value: "#f2705f" }
         font-size: { token: typography/placeholder/font-size, value: 10px }
         line-height: { token: typography/placeholder/line-height, value: 12px }
         letter-spacing: { token: typography/placeholder/letter-spacing, value: 0px }
       value:
-        color: { token: input/negative/hover/placeholder, value: "#555555" }
+        color: { token: input/negative/hover/placeholder, value: "#999999" }
       supportive:
-        color: { token: input/negative/hover/supportive, value: "#ae1b13" }
+        color: { token: input/negative/hover/supportive, value: "#e93120" }
       icons-alarm:
-        background: { token: input/negative/hover/icon, value: "#ae1b13" }
+        background: { token: input/negative/hover/icon, value: "#e93120" }
   - when: { state: Default, configuration: Filled, selected: false, error: false }
     figmaNode: "252:836"
     elements:
       outline:
         background: { token: input/regular/default/background, value: "#060805" }
-        border-color: { token: input/regular/default/outline, value: "#555555" }
+        border-color: { token: input/regular/default/outline, value: "#747573" }
       icons-lock:
         background: { token: input/regular/default/icon, value: "#00d669" }
       label:
@@ -381,7 +381,7 @@ variants:
     elements:
       outline:
         background: { token: input/regular/focus/background, value: "#060805" }
-        border-color: { token: input/regular/focus/outline, value: "#555555" }
+        border-color: { token: input/regular/focus/outline, value: "#747573" }
       icons-lock:
         background: { token: input/regular/focus/icon, value: "#00d669" }
       label:

@@ -84,9 +84,9 @@ Every token this component uses, across all its variants.
 | `switch/off/focus/thumb` | `#d3d9d5` |
 | `switch/off/focus/track` | `#3a3a3a` |
 | `switch/off/hover/thumb` | `#ededed` |
-| `switch/off/hover/track` | `#747573` |
+| `switch/off/hover/track` | `#555555` |
 | `switch/off/pressed/thumb` | `#d3d9d5` |
-| `switch/off/pressed/track` | `#999` |
+| `switch/off/pressed/track` | `#282828` |
 | `switch/on/default/thumb` | `#060805` |
 | `switch/on/default/track` | `#00d669` |
 | `switch/on/disabled/thumb` | `#060805` |

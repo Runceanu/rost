@@ -159,7 +159,7 @@ variants:
     figmaNode: "93:604"
     elements:
       background:
-        background: { token: icon-button/secondary/hover/background, value: "#747573" }
+        background: { token: icon-button/secondary/hover/background, value: "#555555" }
         border-color: { token: icon-button/secondary/hover/outline, value: "#ededed" }
         opacity: { token: opacity/mild, value: "0.32" }
       icons-arrow-left:
@@ -184,12 +184,12 @@ variants:
           value: inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--icon-button-primary-pressed-outline)
           untokenised: "Figma's 1px left and top stroke, drawn inside the shape as Figma draws it. The width and colour are tokens."
       icons-arrow-left:
-        color: { token: icon-button/primary/pressed/icon, value: "#3a3a3a" }
+        color: { token: icon-button/primary/pressed/icon, value: "#060805" }
   - when: { type: Secondary, state: Pressed }
     figmaNode: "93:619"
     elements:
       background:
-        background: { token: icon-button/secondary/pressed/background, value: "#999" }
+        background: { token: icon-button/secondary/pressed/background, value: "#282828" }
         border-color: { token: icon-button/secondary/pressed/outline, value: "#ededed" }
         opacity: { token: opacity/mild, value: "0.32" }
       icons-arrow-left:

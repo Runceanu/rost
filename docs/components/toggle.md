@@ -91,11 +91,11 @@ Every token this component uses, across all its variants.
 | `toggle/off/focus/icon` | `#00d669` |
 | `toggle/off/focus/label` | `#d3d9d5` |
 | `toggle/off/focus/outline` | `#ededed` |
-| `toggle/off/hover/background` | `#747573` |
+| `toggle/off/hover/background` | `#555555` |
 | `toggle/off/hover/icon` | `#00b450` |
 | `toggle/off/hover/label` | `#ededed` |
 | `toggle/off/hover/outline` | `#ededed` |
-| `toggle/off/pressed/background` | `#999` |
+| `toggle/off/pressed/background` | `#282828` |
 | `toggle/off/pressed/icon` | `#00d669` |
 | `toggle/off/pressed/label` | `#d3d9d5` |
 | `toggle/off/pressed/outline` | `#ededed` |
@@ -113,7 +113,7 @@ Every token this component uses, across all its variants.
 | `toggle/on/hover/icon` | `#3a3a3a` |
 | `toggle/on/hover/label` | `#060805` |
 | `toggle/on/pressed/background` | `#00913a` |
-| `toggle/on/pressed/icon` | `#3a3a3a` |
+| `toggle/on/pressed/icon` | `#060805` |
 | `toggle/on/pressed/label` | `#060805` |
 | `typography/body/font-size` | `16px` |
 | `typography/body/font-weight/medium` | `500` |

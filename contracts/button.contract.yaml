@@ -271,7 +271,7 @@ variants:
       label:
         color: { token: button/secondary/hover/label, value: "#ededed" }
       background:
-        background: { token: button/secondary/hover/background, value: "#747573" }
+        background: { token: button/secondary/hover/background, value: "#555555" }
         opacity: { token: opacity/mild, value: "0.32" }
         border-color: { token: button/secondary/hover/outline, value: "#ededed" }
   - when: { type: Secondary, state: Pressed }
@@ -280,7 +280,7 @@ variants:
       label:
         color: { token: button/secondary/pressed/label, value: "#d3d9d5" }
       background:
-        background: { token: button/secondary/pressed/background, value: "#999" }
+        background: { token: button/secondary/pressed/background, value: "#282828" }
         opacity: { token: opacity/mild, value: "0.32" }
         border-color: { token: button/secondary/pressed/outline, value: "#ededed" }
   - when: { type: Secondary, state: Disabled }
