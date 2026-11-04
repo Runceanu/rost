@@ -2,6 +2,10 @@
 
 What changed each time I merged into `master` and put rost.build live. Newest first. The commits have the details; this is what it means for a component or an app.
 
+## 2026-11-04
+
+- **The Figma screenshots are fresh.** I recaptured 200 of the 232 from Figma before its daily limit stopped me; the other 32 (TableRow onwards) keep their copies from before. Most came back identical, a handful moved by a few antialiased pixels, and Navigation and Thumbs changed more, but every variant of every component still matches Figma in the visual test. Two I kept as they were: TabItem's component set is at 30% opacity in Figma, which fades its screenshots but not its instances, and Table came back at the wrong size, 1024 by 687 for a 360 by 187 component.
+
 ## 2026-10-31
 
 - **Illustrations follow the theme.** Every drawing is made of three colours, and each is a token now: `illustration/shade`, `illustration/form` and `illustration/accent`, in Figma and in code. Dark keeps Figma's own values, so nothing moves there. For light I matched how far each sits from the page: shade is `light/neutral/250` (1.26:1 off the white page, as it's 1.27 off the black), form `light/neutral/400`, and the green one step deeper, `light/primary/700`, where the bright one read as a sticker. The drawings are inline SVG now, made by `node bin/build-illustrations.mjs`, so their shapes can take the tokens. The Icons page shows that markup for plain HTML.
