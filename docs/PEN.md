@@ -32,7 +32,7 @@ The portfolio site runs it as `npm run design`, which builds the site first and 
 
 - **Margins and centring.** Flex can't say what a margin says. Where a gap that's the same between every child doesn't put the children where the browser put them, that frame places its children at their own positions instead. Rost's components use gaps, so they keep their flex layout.
 - **Grids** become rows, each item as big as the grid made it.
-- **Photos** are image fills that point at the app's own files in `public/`. An SVG picture (a project's preview, a client's logo) is drawn once as a PNG in `design/images/`, because pen.dev's image fills don't draw SVG.
+- **Photos** are image fills that point at the app's own files in `public/`. An SVG picture (a project's preview, a client's logo) is drawn once as a PNG in `design/images/`, because pen.dev's image fills don't draw SVG. Those PNGs stay out of git (the portfolio site's came to 16 MB), so after a fresh clone run `npm run design` once, or the pictures show empty.
 - **A sentence made of styled spans** (a headline with one bright phrase) is one text in the paragraph's colour. A pen.dev text has one fill, so the bright phrase loses its colour.
 - **What moves doesn't come across:** canvas drawings, animations and video. A slideshow shows whichever slide was up.
 
