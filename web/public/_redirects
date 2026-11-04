@@ -6,3 +6,5 @@
 /components/table-row /components/table/#table-row 301
 /components/table-item/ /components/table/#table-item 301
 /components/table-item /components/table/#table-item 301
+/docs/ /docs/contract/ 302
+/docs /docs/contract/ 302
