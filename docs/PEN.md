@@ -33,10 +33,22 @@ node bin/build-pen-pages.mjs web dist ../design/rost-build.pen --all
 
 The portfolio site runs it as `npm run design`, which builds the site first and writes `design/portfolio.pen`, one frame per page. rost.build runs it as `npm run pen:site`, which writes `design/rost-build.pen`: all 46 pages, the home page, every component's page, the tokens, the icons and the docs. That file is about 30 MB and takes ten minutes to make, so it stays out of git like the images; run `npm run pen:site` to have it.
 
+The accounting app is different: its screens aren't addresses, they're states behind a passphrase. For an app like that the site can be a running dev server, and the routes a module of steps, each of which leaves the page on one screen:
+
+```js
+export default [
+  { name: 'Locked', fresh: true, run: async (page, origin) => { /* make a throwaway vault */ } },
+  { name: '2026', run: async (page, origin) => { /* unlock it */ } },
+]
+```
+
+`fresh` starts a step in a new browser profile, with nothing stored. The accounting app's steps, in `scripts/pen-screens.mjs`, make a vault with invented clients and figures through the app's own vault code, so no real document or number goes anywhere near the design. With `npm run dev` running, its `npm run design` writes `design/accounting.pen`: setting up, locked, and the 2026 and 2025 dashboards.
+
 Pages need a few things components don't:
 
 - **Margins and centring.** Flex can't say what a margin says. Where a gap that's the same between every child doesn't put the children where the browser put them, that frame places its children at their own positions instead. Rost's components use gaps, so they keep their flex layout.
-- **Grids** become rows, each item as big as the grid made it.
+- **Grids** become rows, each item as big as the grid made it. A grid that centres its items (a sign-in card in the middle of the page) places each one where it was. A one-line text that fills a grid cell sits in a frame as big as the cell, so it keeps its column without wrapping in the stand-in font.
+- **Inline things in a block** (figures side by side, a badge after a title) run along a row.
 - **Photos** are image fills that point at the app's own files: in `public/`, or the file in the repo that the build copied under a new name (rost.build's Figma renders come from `baseline/`). An image the build inlined as a `data:` URL is written out once, named by its bytes. An SVG picture (a project's preview, a client's logo) is drawn once as a PNG in `design/images/`, because pen.dev's image fills don't draw SVG. Those PNGs stay out of git (the portfolio site's came to 16 MB), so after a fresh clone run `npm run design` once, or the pictures show empty.
 - **Code blocks** are one text with their lines and indents as they are. Their highlighting doesn't come across.
 - **Something the page scales** (each component's preview in its card on rost.build) is a picture of itself, taken by Chromium, because pen.dev can't scale.

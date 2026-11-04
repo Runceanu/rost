@@ -17192,8 +17192,6 @@
            "fontWeight": "$typography-body-font-weight-regular",
            "lineHeight": 1,
            "letterSpacing": "$typography-body-letter-spacing",
-           "textGrowth": "fixed-width",
-           "width": 339.08,
            "x": 0,
            "y": 4
           }
@@ -26876,7 +26874,8 @@
          "type": "frame",
          "id": "njf",
          "name": "Link/tone=accent, state=Default",
-         "layout": "vertical",
+         "layout": "horizontal",
+         "alignItems": "center",
          "children": [
           {
            "type": "frame",
@@ -26900,8 +26899,8 @@
              "underline": true
             }
            ],
-           "width": 105.33,
-           "height": "fit_content"
+           "width": "fit_content",
+           "height": 21
           }
          ],
          "width": "fit_content",
@@ -26930,7 +26929,8 @@
          "type": "frame",
          "id": "nji",
          "name": "Link/tone=quiet, state=Default",
-         "layout": "vertical",
+         "layout": "horizontal",
+         "alignItems": "center",
          "children": [
           {
            "type": "frame",
@@ -26953,8 +26953,8 @@
              "letterSpacing": "$typography-body-letter-spacing"
             }
            ],
-           "width": 105.33,
-           "height": "fit_content"
+           "width": "fit_content",
+           "height": 21
           }
          ],
          "width": "fit_content",
@@ -26983,7 +26983,8 @@
          "type": "frame",
          "id": "njl",
          "name": "Link/tone=accent, state=Hover",
-         "layout": "vertical",
+         "layout": "horizontal",
+         "alignItems": "center",
          "children": [
           {
            "type": "frame",
@@ -27007,8 +27008,8 @@
              "underline": true
             }
            ],
-           "width": 105.33,
-           "height": "fit_content"
+           "width": "fit_content",
+           "height": 21
           }
          ],
          "width": "fit_content",
@@ -27037,7 +27038,8 @@
          "type": "frame",
          "id": "njo",
          "name": "Link/tone=quiet, state=Hover",
-         "layout": "vertical",
+         "layout": "horizontal",
+         "alignItems": "center",
          "children": [
           {
            "type": "frame",
@@ -27061,8 +27063,8 @@
              "underline": true
             }
            ],
-           "width": 105.33,
-           "height": "fit_content"
+           "width": "fit_content",
+           "height": 21
           }
          ],
          "width": "fit_content",
@@ -27101,7 +27103,8 @@
          "type": "frame",
          "id": "njr",
          "name": "Link/tone=accent, state=Pressed",
-         "layout": "vertical",
+         "layout": "horizontal",
+         "alignItems": "center",
          "children": [
           {
            "type": "frame",
@@ -27126,8 +27129,8 @@
              "underline": true
             }
            ],
-           "width": 105.33,
-           "height": "fit_content"
+           "width": "fit_content",
+           "height": 21
           }
          ],
          "width": "fit_content",
@@ -27156,7 +27159,8 @@
          "type": "frame",
          "id": "nju",
          "name": "Link/tone=quiet, state=Pressed",
-         "layout": "vertical",
+         "layout": "horizontal",
+         "alignItems": "center",
          "children": [
           {
            "type": "frame",
@@ -27180,8 +27184,8 @@
              "letterSpacing": "$typography-body-letter-spacing"
             }
            ],
-           "width": 105.33,
-           "height": "fit_content"
+           "width": "fit_content",
+           "height": 21
           }
          ],
          "width": "fit_content",
@@ -27210,7 +27214,8 @@
          "type": "frame",
          "id": "njx",
          "name": "Link/tone=accent, state=Focus",
-         "layout": "vertical",
+         "layout": "horizontal",
+         "alignItems": "center",
          "children": [
           {
            "type": "frame",
@@ -27237,8 +27242,8 @@
              "underline": true
             }
            ],
-           "width": 105.33,
-           "height": "fit_content"
+           "width": "fit_content",
+           "height": 21
           }
          ],
          "width": "fit_content",
@@ -27267,7 +27272,8 @@
          "type": "frame",
          "id": "nk0",
          "name": "Link/tone=quiet, state=Focus",
-         "layout": "vertical",
+         "layout": "horizontal",
+         "alignItems": "center",
          "children": [
           {
            "type": "frame",
@@ -27293,8 +27299,8 @@
              "letterSpacing": "$typography-body-letter-spacing"
             }
            ],
-           "width": 105.33,
-           "height": "fit_content"
+           "width": "fit_content",
+           "height": 21
           }
          ],
          "width": "fit_content",

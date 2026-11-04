@@ -19,17 +19,21 @@ import { mkdirSync, readFileSync, writeFileSync, existsSync, statSync, copyFileS
 import { createHash } from 'node:crypto'
 import { execSync } from 'node:child_process'
 import { join, extname, dirname, relative, resolve, basename } from 'node:path'
-import { fileURLToPath } from 'node:url'
+import { fileURLToPath, pathToFileURL } from 'node:url'
 import { createServer } from 'node:http'
 import { penTokens, capture, toPen } from './lib/pen.mjs'
 
 const root = fileURLToPath(new URL('../', import.meta.url))
 const [appArg, siteArg, outArg, ...routes] = process.argv.slice(2)
 if (!appArg || !siteArg || !outArg || !routes.length) {
-  console.log('Usage: node bin/build-pen-pages.mjs <app-dir> <built-site-dir> <out.pen> <route> [<route> ...]')
+  console.log('Usage: node bin/build-pen-pages.mjs <app-dir> <built-site-dir | http://dev-server> <out.pen> <route ... | --all | steps.mjs>')
   process.exit(1)
 }
-const app = resolve(appArg), site = resolve(app, siteArg), out = resolve(app, outArg)
+// The site is a built folder, served here, or the URL of one already running (an app's dev
+// server, for screens that need its own code to set them up). Then the app folder stands in
+// for the build when looking for an image's file.
+const live = /^https?:\/\//.test(siteArg)
+const app = resolve(appArg), site = live ? app : resolve(app, siteArg), out = resolve(app, outArg)
 // `--all`: every page of a static site, from the index.html files in its build.
 if (routes.length === 1 && routes[0] === '--all') {
   routes.length = 0
@@ -44,15 +48,15 @@ const library = relative(dirname(out), join(root, 'design/rost.pen'))
 
 // A plain static server with the app's own fallback: an unknown path is the SPA's index.html.
 const TYPES = { '.html': 'text/html', '.js': 'text/javascript', '.css': 'text/css', '.svg': 'image/svg+xml', '.png': 'image/png', '.jpg': 'image/jpeg', '.jpeg': 'image/jpeg', '.webp': 'image/webp', '.woff2': 'font/woff2', '.json': 'application/json', '.mp4': 'video/mp4' }
-const server = createServer((req, res) => {
+const server = live ? null : createServer((req, res) => {
   let file = join(site, decodeURIComponent(new URL(req.url, 'http://x').pathname))
   // A folder is its own index.html (a static site's /docs/); anything unknown is the app's index.html (an SPA's route).
   if (existsSync(file) && statSync(file).isDirectory()) file = join(file, 'index.html')
   if (!file.startsWith(site) || !existsSync(file)) file = join(site, 'index.html')
   res.writeHead(200, { 'Content-Type': TYPES[extname(file)] ?? 'application/octet-stream' }).end(readFileSync(file))
 })
-await new Promise((ok) => server.listen(0, '127.0.0.1', ok))
-const origin = `http://127.0.0.1:${server.address().port}`
+if (server) await new Promise((ok) => server.listen(0, '127.0.0.1', ok))
+const origin = live ? siteArg.replace(/\/$/, '') : `http://127.0.0.1:${server.address().port}`
 
 // Where a photo is, from the .pen file: the app's public/ copy when there is one, else copied next to it.
 const images = join(dirname(out), 'images')
@@ -104,9 +108,20 @@ let seq = 0
 const nid = () => `p${(seq++).toString(36)}`
 const frames = []
 let x = 0
-for (const route of routes) {
-  const page = await browser.newPage({ viewport: { width: WIDTH, height: 900 }, deviceScaleFactor: 1, reducedMotion: 'reduce' })
-  await page.goto(origin + route, { waitUntil: 'networkidle' })
+// Routes, or a module of steps for an app whose screens are states, not addresses:
+//   export default [{ name: 'Locked', fresh: true, run: async (page, origin) => { ... } }, ...]
+// Each step leaves the page on a screen; `fresh` starts it in a new browser profile (no storage).
+const steps = routes.length === 1 && routes[0].endsWith('.mjs')
+  ? (await import(pathToFileURL(resolve(app, routes[0])).href)).default
+  : routes.map((r) => ({ name: r === '/' ? 'Home' : r, route: r }))
+const contextOptions = { viewport: { width: WIDTH, height: 900 }, deviceScaleFactor: 1, reducedMotion: 'reduce' }
+let context = await browser.newContext(contextOptions)
+for (const step of steps) {
+  if (step.fresh) { await context.close(); context = await browser.newContext(contextOptions) }
+  const route = step.route ?? step.name
+  const page = await context.newPage()
+  if (step.route) await page.goto(origin + step.route, { waitUntil: 'networkidle' })
+  if (step.run) await step.run(page, origin)
   // Stop what moves, then walk the page once so lazy images load.
   await page.addStyleTag({ content: '*,*::before,*::after{animation:none!important;transition:none!important}' })
   await page.evaluate(async () => { for (let y = 0; y < document.body.scrollHeight; y += 700) { window.scrollTo(0, y); await new Promise((r) => setTimeout(r, 40)) } window.scrollTo(0, 0) })
@@ -152,13 +167,13 @@ for (const route of routes) {
   }
   const node = toPen(top, els, { kinds, prefix: 'rost:', nid, image: (url) => pictures.get(url) ?? image(url) })
   const title = await page.title()
-  frames.push({ ...node, name: route === '/' ? 'Home' : route, x, y: 0, width: WIDTH, clip: true, theme: { mode: 'dark' }, context: `${title} (${route})` })
+  frames.push({ ...node, name: step.name, x, y: 0, width: WIDTH, clip: true, theme: { mode: 'dark' }, context: `${title} (${step.route ?? step.name})` })
   x += WIDTH + 200
   console.log(`${route}: ${els.length} elements`)
   await page.close()
 }
 await browser.close()
-server.close()
+server?.close()
 
 mkdirSync(dirname(out), { recursive: true })
 writeFileSync(out, JSON.stringify({ version: '2.21', imports: { rost: library }, children: frames }, null, 1) + '\n')

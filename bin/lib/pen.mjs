@@ -78,8 +78,10 @@ export async function capture(page, cdp, scope, doc) {
       // A <br> is a line break inside the text around it ("Zero<br>to system").
       if (n.nodeName === 'BR') { if (last && last.end === j - 1) { last.text += '\n'; last.end = j } return }
       if (n.nodeType !== 3 || !n.textContent.trim()) return
+      // Text nodes next to each other are one run, joined as written: React writes `+{amount}` as two.
+      if (last && last.end === j - 1 && last.raw !== undefined) { last.raw += n.textContent; last.text = last.head + last.raw.replace(/\s+/g, ' ').trim(); last.end = j; return }
       const t = n.textContent.replace(/\s+/g, ' ').trim()
-      if (last && last.end === j - 1 && last.text.endsWith('\n')) { last.text += t; last.end = j } else runs.push({ idx: j, end: j, text: t })
+      if (last && last.end === j - 1 && last.text.endsWith('\n')) { last.head = last.text; last.raw = n.textContent; last.text += t; last.end = j } else runs.push({ idx: j, end: j, text: t, head: '', raw: n.textContent })
     })
     // A code block is one text with its lines and indents as they are. Its highlighting spans go:
     // a pen.dev text has one colour.
@@ -153,6 +155,16 @@ export function toPen(top, els, { kinds, prefix = '', nid, image }) {
   const inherited = (e, prop) => { for (let x = e; x; x = by(x.parent)) if (x.won?.[prop]) return x; return e }
   const by = (k) => (k === null ? null : els.find((c) => String(c.k) === k))
   const measured = new WeakMap()
+  // A one-line text that fills a cell (a grid's 1fr column) keeps the cell's size without being
+  // allowed to wrap: it sits, unwrapped, in a frame as big as the cell, aligned as its text-align says.
+  const cell = (n, box) => {
+    if (n.type !== 'text' || !singleLine.has(n)) return n
+    delete n.width; delete n.textGrowth
+    const f = { type: 'frame', id: nid(), name: n.name, layout: 'horizontal', alignItems: 'center', width: Math.round(box.w * 100) / 100, height: Math.round(box.h * 100) / 100, children: [n] }
+    if (n.textAlign === 'right') f.justifyContent = 'end'
+    if (n.textAlign === 'center') f.justifyContent = 'center'
+    return f
+  }
   // Whether flex layout, as converted, puts these children where the browser put them.
   const explains = (f, e, pairs) => {
     const H = f.layout === 'horizontal'
@@ -345,6 +357,10 @@ export function toPen(top, els, { kinds, prefix = '', nid, image }) {
       f.layout = 'vertical'
       if (e.s['vertical-align'] === 'middle') f.justifyContent = 'center'
       if (e.s['vertical-align'] === 'bottom') f.justifyContent = 'end'
+    } else if (inFlow.length && inFlow.every((c) => /^inline/.test(c.s.display))) {
+      // Inline things in a block run along a line: figures side by side, a badge after a title.
+      f.layout = 'horizontal'
+      f.alignItems = 'center'
     } else if (inFlow.length > 1 || (inFlow.length && !e.text)) {
       f.layout = 'vertical'
     } else if (!inFlow.length && !e.text) {
@@ -370,6 +386,34 @@ export function toPen(top, els, { kinds, prefix = '', nid, image }) {
         const r = rows.find((r) => c.box.y < r.y1 - 1 && c.box.y + c.box.h > r.y + 1)
         if (r) { r.items.push(c); r.y1 = Math.max(r.y1, c.box.y + c.box.h) } else rows.push({ y: c.box.y, y1: c.box.y + c.box.h, items: [c] })
       }
+      // Rows reproduce the grid only when it starts top left and steps by its gaps. A grid that
+      // centres its items (a sign-in card in the middle of the page) places each item where it was.
+      const pads = ['top', 'right', 'bottom', 'left'].map((side) => px(e.s[`padding-${side}`]) + px(e.s[`border-${side}-width`]))
+      const cx = e.box.x + pads[3], cy = e.box.y + pads[0], cg = px(e.s['column-gap']), rg = px(e.s['row-gap'])
+      let rowsWork = true, at = cy
+      for (const r of rows) {
+        const items = [...r.items].sort((a, b) => a.box.x - b.box.x)
+        if (Math.abs(items[0].box.x - cx) > 1.5 || Math.abs(Math.min(...items.map((c) => c.box.y)) - at) > 1.5) rowsWork = false
+        items.slice(1).forEach((c, i) => { if (Math.abs(c.box.x - (items[i].box.x + items[i].box.w) - cg) > 1.5) rowsWork = false })
+        at = r.y1 + rg
+      }
+      if (!rowsWork) {
+        f.layout = 'none'
+        delete f.gap
+        for (const c of placed) {
+          const n = node(c, null)
+          if (!n) continue
+          n.x = Math.round((c.box.x - e.box.x) * 100) / 100; n.y = Math.round((c.box.y - e.box.y) * 100) / 100
+          if (n.type === 'frame') { n.width = Math.round(c.box.w * 100) / 100; n.height = Math.round(c.box.h * 100) / 100 }
+          if (n.type === 'text' && !singleLine.has(n)) { n.textGrowth = 'fixed-width'; n.width = Math.round(c.box.w * 100) / 100 }
+          delete n.layoutPosition
+          const placedNode = cell(n, c.box)
+          placedNode.x = n.x; placedNode.y = n.y
+          if (placedNode !== n) { delete n.x; delete n.y }
+          children.push(placedNode)
+        }
+        rows.length = 0
+      }
       for (const r of rows) {
         const row = { type: 'frame', id: nid(), name: 'Row', layout: 'horizontal', children: [] }
         if (px(e.s['column-gap'])) row.gap = num(e, ['column-gap', 'gap'], e.s['column-gap'])
@@ -377,8 +421,8 @@ export function toPen(top, els, { kinds, prefix = '', nid, image }) {
           const n = node(c, { dir: 'horizontal', align: 'start', box: e.box, pad })
           if (!n) continue
           if (n.type === 'frame') { n.width = Math.round(c.box.w * 100) / 100; n.height = Math.round(c.box.h * 100) / 100 }
-          if (n.type === 'text') { n.textGrowth = 'fixed-width'; n.width = Math.round(c.box.w * 100) / 100 }
-          row.children.push(n)
+          if (n.type === 'text' && !singleLine.has(n)) { n.textGrowth = 'fixed-width'; n.width = Math.round(c.box.w * 100) / 100 }
+          row.children.push(cell(n, c.box))
         }
         children.push(row)
       }
@@ -433,7 +477,10 @@ export function toPen(top, els, { kinds, prefix = '', nid, image }) {
           n.x = Math.round((el.box.x - e.box.x) * 100) / 100
           n.y = Math.round((el.box.y - e.box.y) * 100) / 100
           if (n.type === 'frame' || n.type === 'path') { n.width = Math.round(el.box.w * 100) / 100; n.height = Math.round(el.box.h * 100) / 100 }
-          if (n.type === 'text' && (n.width === 'fill_container' || n.textGrowth === 'fixed-width')) { n.textGrowth = 'fixed-width'; n.width = Math.round(el.box.w * 100) / 100 }
+          if (n.type === 'text' && (n.width === 'fill_container' || n.textGrowth === 'fixed-width')) {
+            if (singleLine.has(n)) { const w = cell(n, el.box); w.x = n.x; w.y = n.y; delete n.x; delete n.y; children[children.indexOf(n)] = w }
+            else { n.textGrowth = 'fixed-width'; n.width = Math.round(el.box.w * 100) / 100 }
+          }
         }
       }
     }
