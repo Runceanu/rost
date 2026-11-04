@@ -19,6 +19,8 @@ export const inCode = (id: string) => existsSync(new URL(`src/components/${id}/`
 export const built = kit.filter((e) => inCode(e.id))
 /** The contracts shown on another's page (a tab-item under tabs). */
 export const partsOf = (id: string) => kit.filter((e) => e.c.partOf === id)
+/** Where a contract's page is: its own, or for a part, its whole's page at the part's heading. */
+export const pageOf = (id: string) => { const of = byId(id)?.c.partOf; return of ? `/components/${of}/#${id}` : `/components/${id}/` }
 /** Components, patterns and effects, each with its entries, leaving out a kind that has none and the parts, which live on their whole's page. */
 export const groups: [string, string, any[]][] = KINDS
   .map(([k, label]: [string, string]) => [k, label, kit.filter((e) => e.kind === k && !e.c.partOf)])

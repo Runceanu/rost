@@ -12,7 +12,7 @@ const payments = [
 ] as const
 
 const rows = (linked: boolean) => payments.map((p) => (
-  <TableRow key={p.date} href={linked ? `#${p.date}` : undefined}>
+  <TableRow key={p.date} href={linked ? '#table-row' : undefined}>
     <TableItem header="row" leading={<Badge status={p.status}>{p.kind}</Badge>} trailing={'estimate' in p && <Badge>estimate</Badge>} description={p.what}>{p.date}</TableItem>
     <TableItem numeric>{p.amount}</TableItem>
   </TableRow>

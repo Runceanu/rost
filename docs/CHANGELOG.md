@@ -4,6 +4,7 @@ What changed each time I merged into `master` and put rost.build live. Newest fi
 
 ## 2026-11-04
 
+- **Every link on rost.build lands.** A full check of all 41 pages found links to TableRow, TableItem and TabItem pages that don't exist: those are parts, shown on Table's and Tabs' pages. Links to a part go to its heading on the whole's page now, and the old addresses redirect there. Table's example rows link to a real heading instead of a date.
 - **Long values don't crush their names.** On a component page a value as long as Switch's `calc()` for the thumb squeezed its property name down to one letter a line. The name keeps its width now, up to half the card, and the value wraps beside it.
 - **The Figma screenshots are fresh.** I recaptured 200 of the 232 from Figma before its daily limit stopped me; the other 32 (TableRow onwards) keep their copies from before. Most came back identical, a handful moved by a few antialiased pixels, and Navigation and Thumbs changed more, but every variant of every component still matches Figma in the visual test. Two I kept as they were: TabItem's component set is at 30% opacity in Figma, which fades its screenshots but not its instances, and Table came back at the wrong size, 1024 by 687 for a 360 by 187 component.
 

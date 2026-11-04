@@ -4,7 +4,7 @@
 // component it points at in bold, or this component's own preview. Accessibility
 // is a card per concern. The words are the contract's own; docs/components/*.md
 // keeps them as text.
-import { kit, title, mdInline, inCode } from '../lib/kit'
+import { kit, title, mdInline, inCode, pageOf } from '../lib/kit'
 import { Preview, Shot } from './Fixtures'
 
 interface Item { title: string; text: string; show?: string }
@@ -26,11 +26,11 @@ const wide = ['table', 'table-row', 'table-item'].includes(id)
       {list.map((c: any) => (
         <li class={`g-card g-card--pic ${kind}`}>
           {c.instead
-            ? <a class="stage" href={`/components/${c.instead.id}/`} tabindex="-1" aria-hidden="true"><span inert><Preview id={c.instead.id} /></span></a>
+            ? <a class="stage" href={pageOf(c.instead.id)} tabindex="-1" aria-hidden="true"><span inert><Preview id={c.instead.id} /></span></a>
             : <span class="stage" aria-hidden="true" inert>{c.show ? <Shot id={id} name={c.show} /> : <Preview id={id} />}</span>}
           <h3 class="g-title">{c.title}</h3>
           <p set:html={mdInline(c.text)} />
-          {c.instead && <a class="instead-name" href={`/components/${c.instead.id}/`}>Use {title(c.instead)}</a>}
+          {c.instead && <a class="instead-name" href={pageOf(c.instead.id)}>Use {title(c.instead)}</a>}
         </li>
       ))}
     </ul>

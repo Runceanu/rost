@@ -1,6 +1,6 @@
 ---
 import Base from '../../layouts/Base.astro'
-import { md, readRepo, GITHUB } from '../../lib/kit'
+import { md, readRepo, GITHUB, pageOf } from '../../lib/kit'
 import { DOCS } from '../../lib/docs'
 import PlainValues from '../../components/PlainValues.astro'
 import ContractVisuals from '../../components/ContractVisuals.astro'
@@ -23,7 +23,7 @@ const fix = (href: string) => {
   const [path, hash = ''] = href.replace(/^\.\//, '').split('#')
   const anchor = hash && `#${hash}`
   const comp = path.match(/^components\/([a-z0-9-]+)\.md$/)
-  if (comp) return `/components/${comp[1]}/${anchor}`
+  if (comp) return anchor ? `/components/${comp[1]}/${anchor}` : pageOf(comp[1])
   if (route[path]) return route[path] + anchor
   // Anything else is a file in the repo. Paths are relative to docs/.
   const repoPath = path.startsWith('../') ? path.slice(3) : `docs/${path}`

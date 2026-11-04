@@ -1,7 +1,7 @@
 ---
 // "No token, on purpose", grouped by why, each group with a picture of what
 // the plain value does. The rows are the same ones TOKENS.md lists.
-import { kit, plainGroups, title, readRepo } from '../lib/kit'
+import { kit, plainGroups, title, readRepo, pageOf } from '../lib/kit'
 import { Button } from '../../../src/components/button/Button'
 
 const groups = plainGroups(kit)
@@ -65,7 +65,7 @@ const mixes = groups.find((g: any) => g.kind === 'mix')?.rows.map((r: any) => ({
         <ul class="rows">
           {g.rows.map((r: any) => (
             <li>
-              <span class="where">{r.where.map((e: any) => <a href={`/components/${e.id}/`}>{title(e)}</a>)}</span>
+              <span class="where">{r.where.map((e: any) => <a href={pageOf(e.id)}>{title(e)}</a>)}</span>
               <span class="what">
                 <code class="prop">{r.part}.{r.prop}</code>
                 <code class="value">{valueText(r)}</code>

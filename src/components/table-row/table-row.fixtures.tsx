@@ -26,7 +26,7 @@ const frame = (r: React.ReactNode, width = 360) => <div style={{ width, maxWidth
 export const fixtures = NODES.map(([state, selected, node]) => ({
   node,
   name: `state=${state}, selected=${selected ? 'True' : 'False'}`,
-  element: frame(row({ href: '#15-nov', selected })),
+  element: frame(row({ href: '#table-row', selected })),
   ...(FORCE[state] ? { force: FORCE[state], forceOn: '.rost-table-item__action' } : {}),
 }))
 
