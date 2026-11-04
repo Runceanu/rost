@@ -1,9 +1,8 @@
 /* The site is dressed in Rost itself: its tokens, its font, its surfaces.
    Every colour here points at a theme token, so the light theme comes from
    tokens.css with nothing to add: --ground, --surface, --fg and the rest
-   follow data-theme on <html>. Spaces and corners come off the kit's scales.
-   Type sizes don't yet: the kit has no type tokens, so those are plain
-   numbers until it does. */
+   follow data-theme on <html>. Spaces and corners come off the kit's scales,
+   and the words are Rost's own components: Text, Link, Code and Table. */
 :root {
   --ground: var(--non-interactive-background-primary);
   --surface: var(--non-interactive-background-secondary);
@@ -26,7 +25,6 @@ body {
   min-height: 100vh; display: flex; flex-direction: column;
 }
 a { color: inherit; }
-code { font-family: var(--mono); font-size: .88em; }
 :focus-visible { outline: var(--spacing-outline-medium) solid var(--accent); outline-offset: 2px; border-radius: var(--spacing-radius-xsmall); }
 .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
 .skip { position: absolute; left: var(--spacing-gap-medium); top: -100px; z-index: 20; padding: var(--spacing-gap-small) var(--spacing-gap-medium); border-radius: var(--spacing-radius-full); background: var(--accent); color: var(--actions-primary-default-label); text-decoration: none; font-weight: 500; }
@@ -60,7 +58,7 @@ code { font-family: var(--mono); font-size: .88em; }
    to the page and a link back to the list. */
 .side { display: none; }
 .docs-phone { margin-bottom: var(--spacing-gap-large); }
-.back { display: inline-block; font-size: 14px; color: var(--fg-3); text-decoration: none; margin-bottom: var(--spacing-gap-medium-large); }
+.back { margin-bottom: var(--spacing-gap-medium-large); color: var(--fg-3); }
 @media (min-width: 960px) {
   .shell { grid-template-columns: 232px minmax(0, 1fr); }
   .side { display: block; position: sticky; top: var(--header); align-self: start; height: calc(100vh - var(--header)); border-right: 1px solid var(--line); }
@@ -75,41 +73,46 @@ code { font-family: var(--mono); font-size: .88em; }
   .back, nav.docs-phone { display: none; }
 }
 .side-group + .side-group { margin-top: var(--spacing-gap-large); }
-.side-title { font-family: var(--mono); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--fg-3); margin-bottom: var(--spacing-gap-xsmall); padding-left: var(--spacing-gap-small-medium); }
+.side-title { margin-bottom: var(--spacing-gap-xsmall); padding-left: var(--spacing-gap-small-medium); }
 /* The rows are Rost's ListItem, stacked as they come. */
 .side-group { display: flex; flex-direction: column; }
 /* The dot's tooltip shows above the row while the dot is hovered, or the row has focus. */
 .side-row { position: relative; display: block; }
 .side-row .rost-tooltip { position: absolute; bottom: 100%; right: 0; translate: 0 4px; opacity: 0; pointer-events: none; transition: opacity var(--motion-duration-fast) var(--motion-easing-standard), translate var(--motion-duration-fast) var(--motion-easing-standard); z-index: 1; }
 .side-row:has(.rost-list-item__badge:hover) .rost-tooltip, .side-row:has(:focus-visible) .rost-tooltip { opacity: 1; translate: 0 0; }
-.foot { display: flex; justify-content: space-between; gap: var(--spacing-gap-medium); flex-wrap: wrap; padding: var(--spacing-gap-large); border-top: 1px solid var(--line); color: var(--fg-3); font-size: 13px; }
+.foot { display: flex; justify-content: space-between; gap: var(--spacing-gap-medium); flex-wrap: wrap; padding: var(--spacing-gap-large); border-top: 1px solid var(--line); }
 
 /* Type */
-/* Titles match the portfolio site's: 64/72 for a page, 40/48 (typography/sub-headline)
-   for a section, weight 500, no extra letter spacing, stepping down at 768px
-   and 480px the way the portfolio site does. 64/72 isn't a kit token yet. */
-h1 { font-weight: 500; font-size: 64px; line-height: 72px; margin: 0 0 var(--spacing-gap-medium); text-wrap: balance; }
-h2 { color: var(--fg); font-weight: 500; font-size: var(--typography-sub-headline-font-size); line-height: var(--typography-sub-headline-line-height); margin: var(--spacing-gap-4xlarge) 0 var(--spacing-gap-small-medium); }
-@media (max-width: 768px) { h1 { font-size: 48px; line-height: 56px; } h2 { font-size: 34px; line-height: 42px; } }
-@media (max-width: 480px) { h1 { font-size: 36px; line-height: 44px; } h2 { font-size: 28px; line-height: 36px; } }
-h3 { font-family: var(--mono); font-weight: 400; font-size: 12px; letter-spacing: .09em; text-transform: uppercase; color: var(--fg-3); margin: var(--spacing-gap-xlarge) 0 var(--spacing-gap-small-medium); }
-.kicker { font-family: var(--mono); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--fg-3); margin-bottom: var(--spacing-gap-small); }
-.lede { font-size: clamp(18px, 2.4vw, 22px); line-height: 1.45; color: var(--fg); max-width: 40ch; margin: 0 0 var(--spacing-gap-medium); text-wrap: pretty; }
-.muted { color: var(--fg-2); max-width: 64ch; }
+/* The words are Rost's Text: titles, paragraphs, captions, the small capitals.
+   What's left here is the space between them, and the step down on a phone,
+   which the ramp doesn't have yet. Those steps use the size tokens. */
+.page h1, .main h1 { margin: 0 0 var(--spacing-gap-medium); }
+.page h2, .main h2 { margin: var(--spacing-gap-4xlarge) 0 var(--spacing-gap-small-medium); }
+.page h3, .main h3 { margin: var(--spacing-gap-xlarge) 0 var(--spacing-gap-small-medium); }
+.page h4, .main h4 { margin: var(--spacing-gap-medium) 0 var(--spacing-gap-xsmall); }
+@media (max-width: 768px) {
+  html body .rost-text.rost-text--variant-display { font-size: var(--typography-font-size-48); line-height: var(--typography-line-height-56); }
+  html body .rost-text.rost-text--variant-sub-headline { font-size: var(--typography-font-size-32); line-height: var(--typography-line-height-40); }
+}
+@media (max-width: 480px) {
+  html body .rost-text.rost-text--variant-display { font-size: var(--typography-font-size-40); line-height: var(--typography-line-height-48); }
+  html body .rost-text.rost-text--variant-sub-headline { font-size: var(--typography-font-size-28); line-height: var(--typography-line-height-32); }
+  html body .rost-text.rost-text--variant-lede { font-size: var(--typography-font-size-18); line-height: var(--typography-line-height-28); }
+}
+.kicker { display: block; margin-bottom: var(--spacing-gap-small); }
+.page .lede, .main .lede { margin: 0 0 var(--spacing-gap-medium); }
+.muted { max-width: 64ch; }
 .prose { color: var(--fg-2); }
-.prose p, .prose ul { margin: 0 0 var(--spacing-gap-small-medium); }
-.prose ul { padding-left: var(--spacing-gap-medium-large); }
+.prose p, .prose ul, .prose ol { margin: 0 0 var(--spacing-gap-small-medium); }
+.prose ul, .prose ol { padding-left: var(--spacing-gap-medium-large); }
 .prose strong { color: var(--fg); font-weight: 600; }
-.prose a { color: var(--accent); }
-.prose table { border-collapse: collapse; font-size: 14px; margin: var(--spacing-gap-small) 0 var(--spacing-gap-medium-large); width: 100%; }
+.prose .rost-table { margin: var(--spacing-gap-small) 0 var(--spacing-gap-medium-large); }
 /* On a phone a wide table scrolls sideways instead of squeezing. */
-@media (max-width: 768px) { .prose table { display: block; overflow-x: auto; } }
-.prose th, .prose td { text-align: left; padding: var(--spacing-gap-small) var(--spacing-gap-small-medium) var(--spacing-gap-small) 0; border-bottom: 1px solid color-mix(in srgb, var(--fg) 6%, transparent); vertical-align: top; }
-.prose th { font-weight: 500; font-size: 13px; color: var(--fg); border-bottom-color: var(--line); }
-/* Shiki paints its theme's own background inline; the site's surface wins. */
-.prose pre, pre.astro-code { background-color: var(--surface) !important; border-radius: var(--spacing-radius-medium); padding: var(--spacing-gap-medium); overflow-x: auto; font-size: 13px; }
-/* Code is coloured with vesper inline, and carries github-light's colours as --shiki-light for the light theme. */
-[data-theme="light"] .astro-code, [data-theme="light"] .astro-code span { color: var(--shiki-light) !important; }
+@media (max-width: 768px) { .prose .rost-table { display: block; overflow-x: auto; } }
+.prose .rost-code--block { margin: 0 0 var(--spacing-gap-medium); }
+/* Code blocks are Rost's Code. Shiki colours the words with vesper inline,
+   and carries github-light's colours as --shiki-light for the light theme. */
+[data-theme="light"] .rost-code span { color: var(--shiki-light) !important; }
 
 /* Bits */
 .btns { display: flex; flex-wrap: wrap; gap: var(--spacing-gap-small); margin: var(--spacing-gap-large) 0 0; }
@@ -119,8 +122,8 @@ h3 { font-family: var(--mono); font-weight: 400; font-size: 12px; letter-spacing
 /* The numbers are facts, not links: plain text, no green. */
 .count { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--spacing-gap-small); max-width: 640px; margin: var(--spacing-gap-2xlarge) 0 0; }
 .count > div { padding: var(--spacing-gap-medium); border-radius: var(--spacing-radius-xlarge); background: var(--non-interactive-background-secondary); }
-.count b { display: block; font-weight: 500; font-size: 28px; line-height: 1.15; color: var(--non-interactive-foreground-primary); font-variant-numeric: tabular-nums; }
-.count span { display: block; margin-top: var(--spacing-gap-2xsmall); font-size: 14px; line-height: 1.4; color: var(--fg-3); }
+.count .rost-text { display: block; font-variant-numeric: tabular-nums; }
+.count .rost-text + .rost-text { margin-top: var(--spacing-gap-2xsmall); }
 @media (max-width: 520px) { .count { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 /* Tables sit on the page: no box, no outline, only a hairline between rows. */
 .scroll { overflow-x: auto; }

@@ -36,9 +36,32 @@ const withIds = (html: string) => {
     return `<h${n} id="${k ? `${base}-${k}` : base}">${inner}</h${n}>`
   })
 }
+/**
+ * Markdown comes out as plain HTML. This dresses it in Rost: Link, Code, Text
+ * and Table by their classes, the way a page without React would use them.
+ * Anything already carrying a class is left alone.
+ */
+export const rostHtml = (html: string) => html
+  .replace(/<pre>\s*<code([^>]*)>/g, (_, a) => `<pre class="rost-code rost-code--block" tabindex="0"><code${a.includes('class="') ? a.replace('class="', 'class="rost-code__text ') : ` class="rost-code__text"${a}`}>`)
+  .replace(/<code>/g, '<code class="rost-code">')
+  .replace(/<a href=/g, '<a class="rost-link rost-link--tone-accent" href=')
+  .replace(/<h1(?=[ >])/g, '<h1 class="rost-text rost-text--variant-display"')
+  .replace(/<h2(?=[ >])/g, '<h2 class="rost-text rost-text--variant-sub-headline"')
+  .replace(/<h3(?=[ >])/g, '<h3 class="rost-text rost-text--variant-eyebrow"')
+  .replace(/<h4(?=[ >])/g, '<h4 class="rost-text rost-text--variant-body rost-text--weight-medium"')
+  .replace(/<(p|ul|ol)>/g, '<$1 class="rost-text rost-text--variant-body">')
+  .replace(/<table>/g, '<table class="rost-table" tabindex="0">')
+  .replace(/<thead>/g, '<thead class="rost-table__head">')
+  .replace(/<tbody>/g, '<tbody class="rost-table__body">')
+  .replace(/<tr>/g, '<tr class="rost-table-row">')
+  .replace(/<th(?=[ >])/g, '<th scope="col" class="rost-table-item rost-table-item--header-column"')
+  .replace(/<td(?=[ >])/g, '<td class="rost-table-item"')
+  // A task list's boxes are read-only marks; say what they mean.
+  .replace(/<input checked="" disabled="" type="checkbox">/g, '<input checked="" disabled="" type="checkbox" aria-label="Done">')
+  .replace(/<input disabled="" type="checkbox">/g, '<input disabled="" type="checkbox" aria-label="Not done">')
 export const md = (src: string) => withIds(marked.parse(src, { async: false }) as string)
-export const mdInline = (src: string) => marked.parseInline(src, { async: false }) as string
-export const guidanceHtml = (g: any) => (g ? md(guidanceMarkdown(g)) : '')
+export const mdInline = (src: string) => rostHtml(marked.parseInline(src, { async: false }) as string)
+export const guidanceHtml = (g: any) => (g ? rostHtml(md(guidanceMarkdown(g))) : '')
 export const readRepo = (path: string) => readFileSync(new URL(path, repo), 'utf8')
 
 export const tokens: Record<string, { cssVar: string; value: string }> = JSON.parse(readRepo('tokens/tokens.json')).tokens

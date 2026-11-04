@@ -1,0 +1,75 @@
+# yaml-language-server: $schema=../schema/component-contract.schema.json
+schemaVersion: 2
+id: code
+name: Code
+kind: component
+status: review
+summary: Code in a sentence, or a block of it on its own plate.
+category: display
+related: [ text ]
+source:
+  tool: code
+  repo: rost
+  path: src/components/code/Code.tsx
+  extractedAt: "2026-11-04"
+props:
+  block:
+    type: boolean
+    default: false
+    notes: A block of lines on its own plate, scrolling sideways when a line is too long. Without it, code inside a sentence.
+  html:
+    type: string
+    notes: "Code already coloured by a highlighter (the Rost site uses Shiki), as HTML. Rost has no syntax colours of its own."
+  children: { type: slot, notes: "The code as plain text, when there's no `html`." }
+elements:
+  root:
+    notes: "A `<code>`, or for a block a `<pre>` with the `<code>` inside."
+    styles:
+      font-family:
+        value: "'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace"
+        untokenised: "Rost has no mono family token yet. Where JetBrains Mono isn't loaded, the system mono stands in."
+      font-size: { value: 0.88em, untokenised: "In a sentence it follows the text around it. Mono looks bigger than General Sans at the same size, so a little smaller." }
+      overflow-wrap: { value: anywhere, assert: false, notes: A long token path breaks instead of pushing the page wider. }
+  text:
+    notes: The `<code>` inside a block.
+    styles:
+      font: { value: inherit, assert: false }
+variants:
+  - when: { block: true }
+    elements:
+      root:
+        display: { value: block }
+        overflow-x: { value: auto, assert: false }
+        overflow-wrap: { value: normal, assert: false, notes: "A block scrolls instead, so the lines keep their shape." }
+        padding-top: { token: spacing/gap/medium, value: 16px }
+        padding-bottom: { token: spacing/gap/medium, value: 16px }
+        padding-left: { token: spacing/gap/medium, value: 16px }
+        padding-right: { token: spacing/gap/medium, value: 16px }
+        border-radius: { token: spacing/radius/medium, value: 12px }
+        background: { token: non-interactive/background/secondary, value: "#171717" }
+        color: { token: non-interactive/foreground/primary, value: "#ededed" }
+        font-size: { token: typography/label/font-size, value: 12px }
+        line-height: { token: typography/line-height/20, value: 20px }
+        white-space: { value: pre, assert: false }
+guidance:
+  status: proposed
+  use:
+    - title: A name in a sentence
+      text: "A prop, a token path or a file name inside running text: `tone=quiet`, `contracts/link.contract.yaml`."
+      show: block=false
+    - title: What to write
+      text: A few lines someone will copy. Coloured by a highlighter, or plain.
+      show: block=true
+  avoid:
+    - title: Emphasis
+      text: Making a word stand out. Code means the word is exactly what you type.
+    - title: Very long files
+      text: "A whole file on a page. Show the part that matters, and link to the rest."
+  behaviour: |-
+    In a sentence it's the mono family at a slightly smaller size, with no plate, so a line full of token paths stays calm. A block gets the secondary plate, 16px inside and 12px corners, and scrolls sideways rather than wrapping.
+
+    The colours inside a block come from the highlighter, not from Rost. On the Rost site that's Shiki's vesper in dark and github-light in light. Syntax colours as tokens would be the next step, and I haven't needed them in an app yet.
+  accessibility:
+    element: "`<code>`, and `<pre>` around it for a block, so a screen reader keeps the spacing."
+    keyboard: "A block that scrolls gets `tabindex=\"0\"`, so it can be scrolled without a mouse."
+  content: Exactly what someone types. No ellipsis inside a line they'd copy.

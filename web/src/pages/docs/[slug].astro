@@ -1,10 +1,11 @@
 ---
 import Base from '../../layouts/Base.astro'
-import { md, readRepo, GITHUB, pageOf } from '../../lib/kit'
+import { md, rostHtml, readRepo, GITHUB, pageOf } from '../../lib/kit'
 import { DOCS } from '../../lib/docs'
 import PlainValues from '../../components/PlainValues.astro'
 import ContractVisuals from '../../components/ContractVisuals.astro'
 import { ListItem } from '../../../../src/components/list-item/ListItem'
+import { Text } from '../../../../src/components/text/Text'
 
 export function getStaticPaths() {
   return Object.keys(DOCS).map((slug) => ({ params: { slug } }))
@@ -32,9 +33,9 @@ const fix = (href: string) => {
 const html = md(readRepo(doc.file).replace(/^<!--[\s\S]*?-->\s*/, ''))
   .replace(/href="([^"]+)"/g, (_, h) => `href="${fix(h)}"`)
   // On How a contract works, a list whose items open with a bold word reads as cards; on GitHub it stays a list.
-  .replace(/<ul>(\s*<li><strong>[^<]+<\/strong>)/g, (m, first) => (slug === 'contract' ? `<ul class="cards">${first}` : m))
+  .replace(/<ul>(\s*<li><strong>[^<]+<\/strong>)/g, (m, first) => (slug === 'contract' ? `<ul class="cards rost-text rost-text--variant-body">${first}` : m))
   // The label sits on its own line there, so the full stop after it goes.
-  .replace(/(<li><strong>[^<]+<\/strong>)\.\s*/g, (m, label) => (slug === 'contract' ? label : m))
+  .replace(/(<li>)<strong>([^<]+<\/strong>)\.\s*/g, (m, li, label) => (slug === 'contract' ? `${li}<strong class="rost-text rost-text--variant-eyebrow">${label}` : m))
 
 // How a contract works gets drawn parts after the headings they belong to. The words stay in the markdown.
 const DRAWN: Record<string, [string, 'stats' | 'pipeline' | 'lifecycle'][]> = {
@@ -50,7 +51,7 @@ for (const [marker, part] of DRAWN[slug] ?? []) {
 }
 pieces.push({ html: rest })
 // On the site, "No token, on purpose" is drawn instead of listed: the same rows, grouped, each group with a picture.
-const PLAIN = '<h2>No token, on purpose</h2>'
+const PLAIN = html.match(/<h2[^>]*>No token, on purpose<\/h2>/)?.[0] ?? '<h2>No token, on purpose</h2>'
 const at = html.indexOf(PLAIN)
 const end = at < 0 ? -1 : html.indexOf('<h2', at + PLAIN.length)
 const rows = Object.entries(DOCS).map(([s, d]) => ({ href: `/docs/${s}/`, title: d.title, here: s === slug }))
@@ -58,22 +59,21 @@ const [before, after] = at < 0 ? [html, ''] : [html.slice(0, at + PLAIN.length),
 ---
 <Base title={`${doc.title} · Rost`} sidebar sideLabel="Docs">
   <div slot="side" class="side-group">
-    <div class="side-title">Docs</div>
+    <Text variant="eyebrow" className="side-title">Docs</Text>
     {rows.map((r) => <ListItem href={r.href} selected={r.here} aria-current={r.here ? 'page' : undefined}>{r.title}</ListItem>)}
   </div>
   <nav class="docs-phone side-group" aria-label="Docs">{rows.map((r) => <ListItem href={r.href} selected={r.here} aria-current={r.here ? 'page' : undefined}>{r.title}</ListItem>)}</nav>
   <article class="prose">
-    {after ? <><Fragment set:html={before} /><PlainValues /><Fragment set:html={after} /></>
-      : pieces.map((p) => <><Fragment set:html={p.html} />{p.part && <ContractVisuals part={p.part} />}</>)}
+    {after ? <><Fragment set:html={rostHtml(before)} /><PlainValues /><Fragment set:html={rostHtml(after)} /></>
+      : pieces.map((p) => <><Fragment set:html={rostHtml(p.html)} />{p.part && <ContractVisuals part={p.part} />}</>)}
   </article>
 </Base>
 <style>
   .prose :global(h1) { color: var(--fg); }
   .prose :global(h3) { margin: var(--spacing-gap-xlarge) 0 var(--spacing-gap-small); }
-  .prose :global(code) { color: var(--fg); }
   .prose :global(li) { margin: var(--spacing-gap-2xsmall) 0; }
   /* A list of bold-led points, drawn as cards: the bold word is the card's label. */
   .prose :global(ul.cards) { list-style: none; padding: 0; margin: var(--spacing-gap-medium) 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: var(--spacing-gap-small); }
-  .prose :global(ul.cards li) { margin: 0; padding: var(--spacing-gap-medium); border-radius: var(--spacing-radius-large); background: var(--surface); color: var(--fg-2); font-size: 15px; line-height: 1.5; }
-  .prose :global(ul.cards li strong:first-child) { display: block; margin-bottom: var(--spacing-gap-2xsmall); font-family: var(--mono); font-size: 11px; font-weight: 400; letter-spacing: .1em; text-transform: uppercase; color: var(--accent); }
+  .prose :global(ul.cards li) { margin: 0; padding: var(--spacing-gap-medium); border-radius: var(--spacing-radius-large); background: var(--surface); color: var(--fg-2); }
+  .prose :global(ul.cards li strong:first-child) { display: block; margin-bottom: var(--spacing-gap-2xsmall); }
 </style>

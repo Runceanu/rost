@@ -1,3 +1,5 @@
+import { Text } from '../../../src/components/text/Text'
+import { Code } from '../../../src/components/code/Code'
 // Every variant of a built component, rendered from the same fixtures the
 // visual test uses. What you see on the site is what gets compared with Figma.
 // `display` is what the page shows when the tested element is an empty Figma frame.
@@ -36,11 +38,11 @@ export function Fixtures({ id }: { id: string }) {
         {still.map((f) => (
           <figure key={f.node} className="fixture">
             <div className="fixture-stage">{f.display ?? f.element}</div>
-            <figcaption>{caption(f.name, id)}</figcaption>
+            <Text variant="label" as="figcaption" tone="tertiary"><Code>{caption(f.name, id)}</Code></Text>
           </figure>
         ))}
       </div>
-      {live > 0 && <p className="fixture-note">Hover, press or tab to one to see the other {live} states.</p>}
+      {live > 0 && <Text variant="paragraph" tone="tertiary" className="fixture-note">Hover, press or tab to one to see the other {live} states.</Text>}
     </>
   )
 }

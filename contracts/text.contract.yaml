@@ -1,0 +1,163 @@
+# yaml-language-server: $schema=../schema/component-contract.schema.json
+schemaVersion: 2
+id: text
+name: Text
+kind: component
+status: review
+summary: Rost's type ramp as one component, from the 64px page title down to the 12px label.
+category: display
+related: [ link, code ]
+source:
+  tool: code
+  repo: rost
+  path: src/components/text/Text.tsx
+  extractedAt: "2026-11-04"
+props:
+  variant:
+    type: enum
+    values: [ display, headline, sub-headline, lede, body, paragraph, label, eyebrow ]
+    default: body
+    notes: "The size. Figma's text styles, plus `lede` for a page's opening line and `eyebrow` for the small capitals over a title."
+  tone:
+    type: enum
+    values: [ primary, secondary, tertiary, positive, warning, negative ]
+    notes: "The colour, from `non-interactive/foreground`. Left out, it's the colour around it. The last three are for words that carry a status, like a value with a token, one with a suggested token, and a gap."
+  weight:
+    type: enum
+    values: [ regular, medium ]
+    notes: Left out, the variant's own weight. Medium for titles, regular for the rest.
+  as:
+    type: string
+    default: p
+    notes: "The element. Pick by meaning (`h1`, `h2`, `p`, `span`), not by size: the variant does the size."
+  children: { type: slot }
+elements:
+  root:
+    notes: "Whatever `as` says. No margins: the layout around it does the spacing."
+    styles:
+      font-family: { token: font-family/base, value: "'General Sans Variable'" }
+      font-size: { token: typography/body/font-size, value: 16px }
+      line-height: { token: typography/body/line-height, value: 22px }
+      letter-spacing: { token: typography/body/letter-spacing, value: 0px }
+      font-weight: { token: typography/body/font-weight/regular, value: "400" }
+variants:
+  - when: { variant: display }
+    elements:
+      root:
+        font-size: { token: typography/display/font-size, value: "64px" }
+        line-height: { token: typography/display/line-height, value: "72px" }
+        letter-spacing: { token: typography/display/letter-spacing, value: "0px" }
+        font-weight: { token: typography/display/font-weight/medium, value: "500" }
+        text-wrap: { value: "balance", assert: false }
+  - when: { variant: headline }
+    elements:
+      root:
+        font-size: { token: typography/headline/font-size, value: "56px" }
+        line-height: { token: typography/headline/line-height, value: "64px" }
+        letter-spacing: { token: typography/headline/letter-spacing, value: "0px" }
+        font-weight: { token: typography/headline/font-weight/medium, value: "500" }
+        text-wrap: { value: "balance", assert: false }
+  - when: { variant: sub-headline }
+    elements:
+      root:
+        font-size: { token: typography/sub-headline/font-size, value: "40px" }
+        line-height: { token: typography/sub-headline/line-height, value: "48px" }
+        letter-spacing: { token: typography/sub-headline/letter-spacing, value: "0px" }
+        font-weight: { token: typography/sub-headline/font-weight/medium, value: "500" }
+        text-wrap: { value: "balance", assert: false }
+  - when: { variant: lede }
+    elements:
+      root:
+        font-size: { token: typography/font-size/22, value: "22px" }
+        line-height: { token: typography/line-height/32, value: "32px" }
+        letter-spacing: { token: typography/letter-spacing/letter-spacing, value: "0px" }
+        font-weight: { token: typography/font-weight/regular, value: "400" }
+        text-wrap: { value: "pretty", assert: false }
+        max-width: { value: "40ch", assert: false, notes: "An opening line reads best short." }
+  - when: { variant: body }
+    elements:
+      root:
+        font-size: { token: typography/body/font-size, value: "16px" }
+        line-height: { token: typography/body/line-height, value: "22px" }
+        letter-spacing: { token: typography/body/letter-spacing, value: "0px" }
+        font-weight: { token: typography/body/font-weight/regular, value: "400" }
+        text-wrap: { value: "pretty", assert: false }
+  - when: { variant: paragraph }
+    elements:
+      root:
+        font-size: { token: typography/paragraph/font-size, value: "14px" }
+        line-height: { token: typography/paragraph/line-height, value: "20px" }
+        letter-spacing: { token: typography/paragraph/letter-spacing, value: "0px" }
+        font-weight: { token: typography/paragraph/font-weight/regular, value: "400" }
+        text-wrap: { value: "pretty", assert: false }
+  - when: { variant: label }
+    elements:
+      root:
+        font-size: { token: typography/label/font-size, value: "12px" }
+        line-height: { token: typography/label/line-height, value: "14px" }
+        letter-spacing: { token: typography/label/letter-spacing, value: "0px" }
+        font-weight: { token: typography/label/font-weight/regular, value: "400" }
+  - when: { variant: eyebrow }
+    elements:
+      root:
+        font-family: { value: "'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace", notes: "Rost has no mono family token yet. Where JetBrains Mono isn't loaded, the system mono stands in." }
+        font-size: { token: typography/label/font-size, value: "12px" }
+        line-height: { token: typography/label/line-height, value: "14px" }
+        font-weight: { token: typography/font-weight/regular, value: "400" }
+        letter-spacing: { value: "0.1em", notes: "Capitals need air. In em so it follows the size." }
+        text-transform: { value: "uppercase" }
+        color: { token: non-interactive/foreground/tertiary, value: "#999999" }
+  - when: { tone: primary }
+    elements:
+      root:
+        color: { token: non-interactive/foreground/primary, value: "#ededed" }
+  - when: { tone: secondary }
+    elements:
+      root:
+        color: { token: non-interactive/foreground/secondary, value: "#d3d9d5" }
+  - when: { tone: tertiary }
+    elements:
+      root:
+        color: { token: non-interactive/foreground/tertiary, value: "#999999" }
+  - when: { tone: positive }
+    elements:
+      root:
+        color: { token: non-interactive/foreground/positive/base, value: "#00d669" }
+  - when: { tone: warning }
+    elements:
+      root:
+        color: { token: non-interactive/foreground/warning/base, value: "#fda50d" }
+  - when: { tone: negative }
+    elements:
+      root:
+        color: { token: non-interactive/foreground/negative/base, value: "#e93120" }
+  - when: { weight: regular }
+    elements:
+      root:
+        font-weight: { token: typography/font-weight/regular, value: "400" }
+  - when: { weight: medium }
+    elements:
+      root:
+        font-weight: { token: typography/font-weight/medium, value: "500" }
+guidance:
+  status: proposed
+  use:
+    - title: Every line of words
+      text: "Titles, paragraphs, captions, the small print under a table. If it's words on a page and not inside another component, it's Text."
+      show: variant=body
+    - title: Titles by meaning
+      text: "`as=\"h1\"` for the page's title, `h2` for its sections, whatever their size. A small section title is `variant=eyebrow as=h3`."
+      show: variant=display
+  avoid:
+    - title: Words inside a component
+      text: "Inside a Button, a Badge or a TableItem. They bring their own type."
+    - title: Making up a size
+      text: "A font size of your own. If none of these fits, the ramp is missing a step, and I'd rather add it here."
+  behaviour: |-
+    One element, one size from the ramp, and no margins. `tone` and `weight` change only what they say. `display`, `headline` and `sub-headline` balance their lines, the longer ones wrap without leaving one word alone.
+
+    Not done yet: the ramp doesn't step down on a phone. 64px is a lot on a 375px screen, so the Rost site steps `display` and `sub-headline` down itself for now. That belongs here, once I know the steps for the apps too.
+  accessibility:
+    element: "whatever `as` says. Headings go in order: one `h1`, then `h2`, then `h3`."
+    colour: "`tertiary` is 4.5:1 on the page in both themes, but only 3.96:1 on the secondary plate in light (#747573 on #ededed), and `negative` is 4.2:1 on that plate in dark. Both miss AA there. Until the tokens move, use `secondary` for small text on a card."
+  content: Sentence case everywhere, titles too. `eyebrow` is written in sentence case and drawn in capitals, so screen readers don't spell it out.

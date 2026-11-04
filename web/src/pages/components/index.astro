@@ -2,11 +2,12 @@
 import Base from '../../layouts/Base.astro'
 import ComponentGrid from '../../components/ComponentGrid.astro'
 import { kit, built } from '../../lib/kit'
+import { Text } from '../../../../src/components/text/Text'
 ---
 <Base title="Components · Rost" sidebar>
-  <div class="kicker">Components</div>
-  <h1>Everything in Rost</h1>
-  <p class="lede">{kit.length} components, patterns and effects.</p>
-  <p class="muted">{built.length} are built in code so far, and you can try them live. The others show Figma's own renders where I can share them, with the contract they'll be built from.</p>
+  <Text variant="eyebrow" className="kicker">Components</Text>
+  <Text variant="display" as="h1" tone="primary">Everything in Rost</Text>
+  <Text variant="lede" tone="primary" className="lede">{kit.length} components, patterns and effects.</Text>
+  <Text tone="secondary" className="muted">{built.length} are built in code so far, and you can try them live. The others show Figma's own renders where I can share them, with the contract they'll be built from.</Text>
   <ComponentGrid level={2} />
 </Base>

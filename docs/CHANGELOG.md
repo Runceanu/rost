@@ -4,6 +4,18 @@ What changed each time I merged into `master` and put rost.build live. Newest fi
 
 ## 2026-11-04
 
+- **rost.build is made of Rost.** I checked whether every link, line of text and bit of code on the site was a Rost component. It wasn't: the nav, badges and cards were, but most of the words were plain HTML with the site's own sizes, 11px to 22px and none of them tokens. Now they're Rost's. Four new components made that possible, all `review`, drafted in code and not yet in Figma:
+  - **Text**, the type ramp as one component: `display`, `headline`, `sub-headline`, `lede`, `body`, `paragraph`, `label` and `eyebrow`, in six tones. Page titles were already 64/72 and section titles 40/48; they use the tokens now.
+  - **Link**, green and underlined in a sentence, or `quiet` where every word is a link. The green is `non-interactive/foreground/positive/base`, so in light it's the dark green, 6:1, where the site used the bright one at 1.9:1.
+  - **Code**, inline or as a block on its own plate. Shiki still colours the words; Rost has no syntax colours.
+  - **Disclosure**, for the "show the SVG" and "show the source" lines.
+- **Tables are Rost's Table.** The props table, the variant tables and the token rows are Table, TableRow and TableItem now, and so is every table in the docs.
+- **The icon pickers are ListItems.** Picking an icon or an illustration wears ListItem's selected plate. I'd thought of ToggleGroup, but its own guidance says no to more options than fit on a line.
+- **The markdown wears Rost too.** Docs, guidance and notes come out of markdown as plain HTML; one function gives their links, code, headings, paragraphs and tables Rost's classes.
+- **Fixed on the way:** the drawn "No token, on purpose" section on Token coverage never showed (it looked for a heading that had grown an id); the logo link had no name on a phone; wide tables and previews that scroll can be reached with Tab; the contract doc's checkboxes say whether they're done; the token rows fit a 375px screen.
+- **Not fixed: two colours on the grey card miss AA.** I ran axe on every page of the site, not only the components, for the first time. In light, `non-interactive/foreground/tertiary` on `non-interactive/background/secondary` is 3.96:1, and in dark `negative/base` on it is 4.2:1. The site had both before today. It's a token decision, so it's waiting on me.
+- **In Figma:** the labelled toggle example had its two off plates shifted 36px right inside a frame that clips, so only 40px of each showed. They fill their frames again.
+
 - **Contracts say the colours the tokens give.** The accessibility pass changed some colour tokens (Secondary's hover is `#555555` now, not `#747573`) but 33 values in 8 contracts kept the old hex. Rost's own tests compare with Figma, so they didn't notice; the accounting app's contract test did. The values are right now, and `npm run validate` fails when a contract's colour and its token disagree.
 - **Every link on rost.build lands.** A full check of all 41 pages found links to TableRow, TableItem and TabItem pages that don't exist: those are parts, shown on Table's and Tabs' pages. Links to a part go to its heading on the whole's page now, and the old addresses redirect there. Table's example rows link to a real heading instead of a date.
 - **Long values don't crush their names.** On a component page a value as long as Switch's `calc()` for the thumb squeezed its property name down to one letter a line. The name keeps its width now, up to half the card, and the value wraps beside it.

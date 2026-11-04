@@ -1,0 +1,95 @@
+# yaml-language-server: $schema=../schema/component-contract.schema.json
+schemaVersion: 2
+id: disclosure
+name: Disclosure
+kind: component
+status: review
+summary: A line that opens to show more, for things most people won't need.
+category: display
+related: [ code, text ]
+source:
+  tool: code
+  repo: rost
+  path: src/components/disclosure/Disclosure.tsx
+  extractedAt: "2026-11-04"
+props:
+  summary: { type: slot, notes: "What's inside, in a few words. Always shown." }
+  open:
+    type: boolean
+    default: false
+    notes: Starts open. After that the browser keeps track.
+  children: { type: slot, notes: What opens. }
+stateSelectors:
+  Hover: ":has(> .rost-disclosure__summary:hover)"
+  Focus: ":has(> .rost-disclosure__summary:focus-visible)"
+  Open: "[open]"
+states: [ Default, Hover, Focus, Open ]
+elements:
+  root:
+    notes: "A `<details>`, so it opens without any script."
+    styles:
+      display: { value: block, assert: false }
+  summary:
+    notes: "The `<summary>`: the chevron, then the words."
+    styles:
+      display: { value: inline-flex, assert: false }
+      align-items: { value: center }
+      gap: { token: spacing/gap/2xsmall, value: 4px }
+      list-style: { value: none, assert: false, notes: "The browser's triangle goes. The chevron replaces it." }
+      cursor: { value: pointer, assert: false }
+      border-radius: { token: spacing/radius/xsmall, value: 4px }
+      font-family: { token: font-family/base, value: "'General Sans Variable'" }
+      font-size: { token: typography/paragraph/font-size, value: 14px }
+      line-height: { token: typography/paragraph/line-height, value: 20px }
+      font-weight: { token: typography/paragraph/font-weight/medium, value: "500" }
+      color: { token: non-interactive/foreground/secondary, value: "#d3d9d5" }
+      transition-property: { value: color, assert: false }
+      transition-duration: { token: motion/duration/fast, value: 150ms }
+      transition-timing-function: { token: motion/easing/standard, value: ease }
+  icon:
+    notes: "Icon's `chevron-right`, turning down when it's open."
+    styles:
+      flex-shrink: { value: "0", assert: false }
+      transition-property: { value: transform, assert: false }
+      transition-duration: { token: motion/duration/fast, value: 150ms }
+      transition-timing-function: { token: motion/easing/standard, value: ease }
+  panel:
+    notes: What opens, under the summary.
+    styles:
+      padding-top: { token: spacing/gap/small, value: 8px }
+variants:
+  - when: { state: Hover }
+    elements:
+      summary:
+        color: { token: non-interactive/foreground/primary, value: "#ededed" }
+  - when: { state: Focus }
+    elements:
+      summary:
+        outline-style: { value: solid }
+        outline-width: { token: spacing/outline/medium, value: 2px }
+        outline-color: { token: actions/primary/focus/focus-ring, value: "#b6ffda" }
+        outline-offset: { value: 2px }
+  - when: { state: Open }
+    elements:
+      summary:
+        color: { token: non-interactive/foreground/primary, value: "#ededed" }
+      icon:
+        transform: { value: rotate(90deg) }
+guidance:
+  status: proposed
+  use:
+    - title: The long version
+      text: "A component's full source, a whole contract, the raw SVG. There for the few who want it, out of the way for the rest."
+      show: state=Default
+  avoid:
+    - title: Things everyone needs
+      text: Hiding what most people came for. If they'd open it every time, show it.
+    - title: Switching views
+      text: "Choosing between views of the same thing. That's **Tabs**."
+  behaviour: |-
+    A line with a chevron. Clicking it, or Enter and Space on it, opens what's under it and turns the chevron down. It's a `<details>`, so it works before any script runs and the browser's find-in-page opens it when there's a match inside.
+  accessibility:
+    element: "`<details>` and `<summary>`. The browser says whether it's open."
+    keyboard: Tab to the summary, Enter or Space to open and close.
+    icon: "`aria-hidden`. The open state is said by the element, not by the chevron."
+  content: A few words saying what's inside, as a noun ("The SVG", "Source"). Not "Click to show".

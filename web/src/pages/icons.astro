@@ -1,7 +1,12 @@
 ---
 import Base from '../layouts/Base.astro'
-import { Code } from 'astro:components'
 import { GITHUB, readRepo } from '../lib/kit'
+import Snippet from '../components/Snippet.astro'
+import { Text } from '../../../src/components/text/Text'
+import { Link } from '../../../src/components/link/Link'
+import { Code } from '../../../src/components/code/Code'
+import { ListItem } from '../../../src/components/list-item/ListItem'
+import { Disclosure } from '../../../src/components/disclosure/Disclosure'
 import { Icon, ICON_NAMES } from '../../../src/components/icon/Icon'
 import { Illustration, ILLUSTRATION_NAMES } from '../../../src/components/illustration/Illustration'
 import { usage as iconUsage } from '../../../src/components/icon/icon.fixtures'
@@ -31,55 +36,52 @@ const illustrations = ILLUSTRATION_NAMES.map((name) => ({
   svg: svg(`assets/illustrations/${name}.svg`),
 }))
 const kinds = [
-  { id: 'icon', title: 'Icons', items: icons, usage: iconUsage, file: 'assets/icons', blurb: 'Each one is a mask filled with the text colour, so it follows a button through its states. 24px by default; `size="small"` is the 20px slot Button and IconButton use.' },
-  { id: 'illustration', title: 'Illustrations', items: illustrations, usage: illoUsage, file: 'assets/illustrations', blurb: 'Drawn at 72px in two greys and a green, the illustration tokens, so they follow the theme.' },
+  { id: 'icon', title: 'Icons', items: icons, usage: iconUsage, file: 'assets/icons', blurb: ['Each one is a mask filled with the text colour, so it follows a button through its states. 24px by default; ', 'size="small"', ' is the 20px slot Button and IconButton use.'] },
+  { id: 'illustration', title: 'Illustrations', items: illustrations, usage: illoUsage, file: 'assets/illustrations', blurb: ['Drawn at 72px in two greys and a green, the illustration tokens, so they follow the theme.'] },
 ]
 ---
 <Base title="Icons · Rost">
-  <div class="kicker">Foundations</div>
-  <h1>Icons and illustrations</h1>
-  <p class="lede">{icons.length} icons and {illustrations.length} illustrations from Figma, each a Rost component with a contract. Pick one to see how to use it.</p>
+  <Text variant="eyebrow" className="kicker">Foundations</Text>
+  <Text variant="display" as="h1" tone="primary">Icons and illustrations</Text>
+  <Text variant="lede" tone="primary" className="lede">{icons.length} icons and {illustrations.length} illustrations from Figma, each a Rost component with a contract. Pick one to see how to use it.</Text>
 
   {kinds.map((k) => (
     <section class="set" data-set={k.id}>
-      <h2>{k.title}</h2>
-      <p class="blurb" set:html={k.blurb.replace(/`([^`]+)`/g, '<code>$1</code>')} />
+      <Text variant="sub-headline" as="h2" tone="primary">{k.title}</Text>
+      <Text tone="secondary" className="blurb">{k.blurb.map((b, i) => (i % 2 ? <Code>{b}</Code> : b))}</Text>
       <div class="how">
-        <Code code={k.usage} lang="tsx" themes={{ dark: 'vesper', light: 'github-light' }} defaultColor="dark" />
-        <p class="links">
-          <a href={`/components/${k.id}/`}>The {k.id === 'icon' ? 'Icon' : 'Illustration'} contract</a>
-          <a href={`${GITHUB}/tree/master/${k.file}`} target="_blank" rel="noreferrer"><code>{k.file}/</code> on GitHub</a>
-        </p>
+        <Snippet code={k.usage} lang="tsx" />
+        <Text variant="paragraph" className="links">
+          <Link href={`/components/${k.id}/`}>The {k.id === 'icon' ? 'Icon' : 'Illustration'} contract</Link>
+          <Link href={`${GITHUB}/tree/master/${k.file}`} external><Code>{k.file}/</Code> on GitHub</Link>
+        </Text>
       </div>
 
-      <div class={`tiles tiles--${k.id}`} role="listbox" aria-label={k.title}>
+      <!-- A list of ListItems to pick from: the picked one wears ListItem's selected plate. -->
+      <ul class={`picks picks--${k.id}`} aria-label={k.title}>
         {k.items.map((i, n) => (
-          <button type="button" class="tile" role="option" aria-selected={n === 0 ? 'true' : 'false'} data-pick={i.name}>
-            <span class="art">{k.id === 'icon' ? <Icon name={i.name as any} /> : <Illustration name={i.name as any} />}</span>
-            <span class="tname">{i.name}</span>
-          </button>
+          <li><ListItem selected={n === 0} aria-pressed={n === 0 ? 'true' : 'false'} data-pick={i.name} leading={k.id === 'icon' ? Icon({ name: i.name as any }) : undefined}>{i.name}</ListItem></li>
         ))}
-      </div>
+      </ul>
 
       {k.items.map((i, n) => (
         <div class="detail" data-detail={i.name} hidden={n !== 0}>
           <div class="big">{k.id === 'icon' ? <span class="big-icon"><Icon name={i.name as any} /></span> : <Illustration name={i.name as any} />}</div>
           <div class="info">
-            <h3><code>{i.name}</code></h3>
-            <p class="meta">
+            <Text variant="body" as="h3" weight="medium" tone="primary"><Code>{i.name}</Code></Text>
+            <Text variant="paragraph" tone="tertiary" className="meta">
               {i.figma
-                ? <a href={figma(i.figma.nodeId)} target="_blank" rel="noreferrer">Figma <code>{i.figma.name}</code></a>
+                ? <Link href={figma(i.figma.nodeId)} external>Figma <Code>{i.figma.name}</Code></Link>
                 : <span>No frame in Figma's set yet.</span>}
-              <a href={`${GITHUB}/blob/master/${k.file}/${i.name}.svg`} target="_blank" rel="noreferrer"><code>{i.name}.svg</code></a>
-            </p>
-            <h4>React</h4>
-            <Code code={i.react} lang="tsx" themes={{ dark: 'vesper', light: 'github-light' }} defaultColor="dark" />
-            <h4>HTML and CSS</h4>
-            <Code code={i.html} lang="html" themes={{ dark: 'vesper', light: 'github-light' }} defaultColor="dark" />
-            <details>
-              <summary>The SVG</summary>
-              <Code code={i.svg} lang="svg" themes={{ dark: 'vesper', light: 'github-light' }} defaultColor="dark" />
-            </details>
+              <Link href={`${GITHUB}/blob/master/${k.file}/${i.name}.svg`} external><Code>{i.name}.svg</Code></Link>
+            </Text>
+            <Text variant="paragraph" as="h4" weight="medium" tone="primary">React</Text>
+            <Snippet code={i.react} lang="tsx" />
+            <Text variant="paragraph" as="h4" weight="medium" tone="primary">HTML and CSS</Text>
+            <Snippet code={i.html} lang="html" />
+            <Disclosure summary="The SVG" className="svg">
+              <Snippet code={i.svg} lang="svg" />
+            </Disclosure>
           </div>
         </div>
       ))}
@@ -89,38 +91,32 @@ const kinds = [
 <script>
   for (const set of document.querySelectorAll<HTMLElement>('.set')) {
     set.addEventListener('click', (e) => {
-      const tile = (e.target as HTMLElement).closest<HTMLElement>('[data-pick]')
-      if (!tile) return
-      for (const t of set.querySelectorAll('[data-pick]')) t.setAttribute('aria-selected', String(t === tile))
-      for (const d of set.querySelectorAll<HTMLElement>('[data-detail]')) d.hidden = d.dataset.detail !== tile.dataset.pick
+      const pick = (e.target as HTMLElement).closest<HTMLElement>('[data-pick]')
+      if (!pick) return
+      for (const t of set.querySelectorAll('[data-pick]')) {
+        t.setAttribute('aria-pressed', String(t === pick))
+        t.classList.toggle('rost-list-item--selected', t === pick)
+      }
+      for (const d of set.querySelectorAll<HTMLElement>('[data-detail]')) d.hidden = d.dataset.detail !== pick.dataset.pick
     })
   }
 </script>
 <style>
-  .blurb { max-width: 70ch; color: var(--fg-2); }
+  .set :global(.blurb) { max-width: 70ch; }
   .how { display: grid; gap: var(--spacing-gap-small); margin: var(--spacing-gap-medium) 0 var(--spacing-gap-large); }
-  .links { display: flex; flex-wrap: wrap; gap: var(--spacing-gap-medium); margin: 0; font-size: 14px; }
-  .links a, .meta a { color: var(--accent); }
-  .tiles { display: grid; gap: var(--spacing-gap-small); grid-template-columns: repeat(auto-fill, minmax(112px, 1fr)); }
-  .tiles--illustration { grid-template-columns: repeat(auto-fill, minmax(148px, 1fr)); }
-  .tile { display: flex; flex-direction: column; align-items: center; gap: var(--spacing-gap-small); padding: var(--spacing-gap-medium) var(--spacing-gap-small); border: 0; border-radius: var(--spacing-radius-medium); background: var(--surface); color: var(--fg-3); font: 11.5px var(--mono); text-align: center; cursor: pointer; min-width: 0; }
-  .tile .art { color: var(--non-interactive-foreground-tertiary); }
-  .tile:hover, .tile[aria-selected="true"] { color: var(--fg); }
-  .tile:hover .art, .tile[aria-selected="true"] .art { color: var(--fg); }
-  .tile[aria-selected="true"] { box-shadow: inset 0 0 0 1px var(--accent); }
-  .tile:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
-  .tname { overflow-wrap: anywhere; }
-  .art { display: grid; place-items: center; min-height: var(--spacing-size-2xlarge); }
+  .how :global(.links) { display: flex; flex-wrap: wrap; gap: var(--spacing-gap-medium); }
+  .picks { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--spacing-gap-3xsmall) var(--spacing-gap-small); grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); }
+  .picks li { margin: 0; min-width: 0; }
+  .picks :global(.rost-list-item) { width: 100%; }
   .detail { display: grid; grid-template-columns: 200px minmax(0, 1fr); gap: var(--spacing-gap-large); margin-top: var(--spacing-gap-medium); padding: var(--spacing-gap-large); border-radius: var(--spacing-radius-large); background: var(--surface); }
   .detail[hidden] { display: none; }
   .big { display: grid; place-items: center; min-height: 200px; border-radius: var(--spacing-radius-medium); background: var(--ground); color: var(--fg); }
   .big-icon { display: contents; }
   .big-icon :global(.rost-icon) { width: 96px; height: 96px; }
   .info { min-width: 0; }
-  .info h3 { margin: 0; }
-  .info h4 { margin: var(--spacing-gap-medium) 0 var(--spacing-gap-xsmall); font-size: 13px; font-weight: 500; color: var(--fg); }
-  .meta { display: flex; flex-wrap: wrap; gap: var(--spacing-gap-medium); margin: var(--spacing-gap-xsmall) 0 0; font-size: 14px; color: var(--fg-3); }
-  details { margin-top: var(--spacing-gap-medium); }
-  summary { cursor: pointer; font-size: 13px; color: var(--fg-2); }
+  .info :global(h3) { margin: 0; }
+  .info :global(h4) { margin: var(--spacing-gap-medium) 0 var(--spacing-gap-xsmall); }
+  .info :global(.meta) { display: flex; flex-wrap: wrap; gap: var(--spacing-gap-medium); margin-top: var(--spacing-gap-xsmall); }
+  .info :global(.svg) { margin-top: var(--spacing-gap-medium); }
   @media (max-width: 640px) { .detail { grid-template-columns: 1fr; padding: var(--spacing-gap-medium); } .big { min-height: 140px; } }
 </style>

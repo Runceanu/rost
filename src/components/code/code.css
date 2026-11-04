@@ -1,0 +1,31 @@
+/* Generated from contracts/code.contract.yaml by bin/build-css.mjs. Don't edit: change the contract and rebuild. */
+
+.rost-code, .rost-code * { box-sizing: border-box; margin: 0; }
+.rost-code > img, .rost-code [class*="__icons-"] > img { display: block; position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; }
+.rost-code ::placeholder { color: inherit; opacity: 1; }
+
+.rost-code {
+  font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.88em;
+  overflow-wrap: anywhere;
+}
+
+.rost-code__text {
+  font: inherit;
+}
+
+.rost-code.rost-code--block {
+  display: block;
+  overflow-x: auto;
+  overflow-wrap: normal;
+  padding-top: var(--spacing-gap-medium);
+  padding-bottom: var(--spacing-gap-medium);
+  padding-left: var(--spacing-gap-medium);
+  padding-right: var(--spacing-gap-medium);
+  border-radius: var(--spacing-radius-medium);
+  background: var(--non-interactive-background-secondary);
+  color: var(--non-interactive-foreground-primary);
+  font-size: var(--typography-label-font-size);
+  line-height: var(--typography-line-height-20);
+  white-space: pre;
+}

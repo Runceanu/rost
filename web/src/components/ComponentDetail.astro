@@ -2,7 +2,7 @@
 // One component's page body: what it is, its variants, guidance, props and
 // values. A contract that's part of another (a tab-item in tabs) is shown on
 // that one's page, under it, with `nested`.
-import { Code } from 'astro:components'
+import Snippet from './Snippet.astro'
 import Guidance from './Guidance.astro'
 import { Fixtures, fixturesFor, caption } from './Fixtures'
 import { byId, title, inCode, guidanceHtml, mdInline, componentSource, sourceLink, tokenCell, isColour, readRepo, APP_LABEL, GITHUB } from '../lib/kit'
@@ -12,6 +12,14 @@ import { Badge } from '../../../src/components/badge/Badge'
 import { Tag } from '../../../src/components/tags/Tag'
 import { Tabs } from '../../../src/components/tabs/Tabs'
 import { TabItem } from '../../../src/components/tab-item/TabItem'
+import { Text } from '../../../src/components/text/Text'
+import { Link } from '../../../src/components/link/Link'
+import { Code } from '../../../src/components/code/Code'
+import { Disclosure } from '../../../src/components/disclosure/Disclosure'
+import { Table } from '../../../src/components/table/Table'
+import { TableRow } from '../../../src/components/table-row/TableRow'
+import { TableItem } from '../../../src/components/table-item/TableItem'
+import { createElement as h } from 'react'
 
 const { id, nested = false } = Astro.props as { id: string; nested?: boolean }
 // Ids for the Preview/Code tabs, unique per component, since a page can show two.
@@ -27,8 +35,9 @@ const usage = fixturesFor(id)?.usage
 const { shots: figma, blanks } = built ? { shots: [], blanks: 0 } : shotsFor(id)
 
 // The same words the markdown docs use, with a colour for each kind.
-const CELL: Record<string, string> = { token: 'tk', suggested: 'tk--warn', layout: 'tk--none', sample: 'tk--none', reasoned: 'tk--none', gap: 'tk--gap' }
-const cell = (prop: string, v: any) => { const t = tokenCell(prop, v); return { cls: CELL[t.kind] ?? 'tk--gap', text: t.text } }
+// A token is green, a suggested one amber, a gap red, the rest quiet: Text's tones.
+const TONE: Record<string, 'positive' | 'warning' | 'negative' | 'tertiary'> = { token: 'positive', suggested: 'warning', layout: 'tertiary', sample: 'tertiary', reasoned: 'tertiary', gap: 'negative' }
+const cell = (prop: string, v: any) => { const t = tokenCell(prop, v); return { tone: TONE[t.kind] ?? 'negative', text: t.text } }
 // Never changes: one card per part. The values with a token (or missing one)
 // are rows; plain layout (display, position) folds into one quiet line.
 const QUIET = new Set(['layout', 'sample'])
@@ -51,19 +60,28 @@ const apps = e.implementations.map((i: any) => ({
 const everywhere = e.deviations.filter((d: any) => !d.app)
 const initials = (s: string) => s.split(/\s+/).map((w) => w[0]).join('').slice(0, 2).toUpperCase()
 const props = Object.entries(c.props ?? {}) as [string, any][]
+// Props given to a React component are built with createElement: JSX inside
+// an Astro attribute doesn't compile when it has expressions of its own.
+const specHead = (gr: any, t: any) => h(TableRow, null,
+  h(TableItem, { header: 'column', key: '' }, h('span', { className: 'sr-only' }, 'Property')),
+  ...t.columns.map((col: string) => h(TableItem, { header: 'column', key: col }, caption(`${gr.column}=${col}`))))
+// What a screen reader hears for each variant table.
+const specLabel = (gr: any, t: any) => [title(e), gr.axes.join(' and '), t.heading && label(t.heading)].filter(Boolean).join(', ')
 ---
   {nested ? (
     <>
-      <div class="kicker">Part of {title(byId(c.partOf))}</div>
-      <h2 class="part-title" id={id}>{title(e)}</h2>
+      <Text variant="eyebrow" className="kicker">Part of {title(byId(c.partOf))}</Text>
+      <Text variant="sub-headline" as="h2" tone="primary" className="part-title" id={id}>{title(e)}</Text>
     </>
   ) : (
     <>
-      <div class="kicker">{e.kind}</div>
-      <h1>{title(e)}</h1>
+      <Text variant="eyebrow" className="kicker">{e.kind}</Text>
+      <Text variant="display" as="h1" tone="primary">{title(e)}</Text>
     </>
   )}
-  {c.summary && <p class={nested ? 'muted' : 'lede'}>{c.summary}</p>}
+  {c.summary && (nested
+    ? <Text tone="secondary" className="muted">{c.summary}</Text>
+    : <Text variant="lede" tone="primary" className="lede">{c.summary}</Text>)}
   <div class="meta">
     <Badge status={built ? 'positive' : 'default'}>{built ? 'In code' : 'Not in code yet'}</Badge>
     <Badge status={c.status === 'stable' ? 'positive' : 'default'}>Contract: {c.status}</Badge>
@@ -80,11 +98,11 @@ const props = Object.entries(c.props ?? {}) as [string, any][]
     </Tabs>
     <div class="tab-panel" role="tabpanel" id={k('panel-preview')} aria-labelledby={k('tab-preview')} tabindex="0">
       {built ? (
-        <div class="stage"><Fixtures id={id} /></div>
+        <div class="stage" tabindex="0" role="region" aria-label={`${title(e)} preview`}><Fixtures id={id} /></div>
       ) : blanks > 0 && figma.length === 0 ? (
-        <p class="note">Figma's renders of this one came back empty, so there's nothing to show yet. The contract is complete. I'll capture the pictures again next time I have Figma open.</p>
+        <Text variant="paragraph" tone="tertiary" className="note">Figma's renders of this one came back empty, so there's nothing to show yet. The contract is complete. I'll capture the pictures again next time I have Figma open.</Text>
       ) : figma.length === 0 ? (
-        <p class="note">{e.kind.startsWith('effect') || e.kind === 'pattern' ? "There's no picture of this one. The contract is complete." : "Figma's renders of this one have real people's photos in them, so they stay off the site. The contract is complete."}</p>
+        <Text variant="paragraph" tone="tertiary" className="note">{e.kind.startsWith('effect') || e.kind === 'pattern' ? "There's no picture of this one. The contract is complete." : "Figma's renders of this one have real people's photos in them, so they stay off the site. The contract is complete."}</Text>
       ) : (
         <>
           <div class="stage">
@@ -92,29 +110,28 @@ const props = Object.entries(c.props ?? {}) as [string, any][]
               {figma.map((v) => (
                 <figure class="fixture">
                   <div class="fixture-stage"><img class="shot" src={v.url} alt={`${title(e)}, ${v.name}, as drawn in Figma`} loading="lazy" /></div>
-                  <figcaption>{caption(v.name, id)}</figcaption>
+                  <Text variant="label" as="figcaption" tone="tertiary"><Code>{caption(v.name, id)}</Code></Text>
                 </figure>
               ))}
             </div>
           </div>
-          <p class="note">These are Figma's own renders. It isn't built in code yet. The contract is what I'll build it from.</p>
+          <Text variant="paragraph" tone="tertiary" className="note">These are Figma's own renders. It isn't built in code yet. The contract is what I'll build it from.</Text>
         </>
       )}
     </div>
     {built && (
       <div class="tab-panel" role="tabpanel" id={k('panel-code')} aria-labelledby={k('tab-code')} tabindex="0" hidden>
-        {usage && <Code code={usage} lang={e.kind === 'effect' ? 'css' : 'tsx'} themes={{ dark: 'vesper', light: 'github-light' }} defaultColor="dark" />}
+        {usage && <Snippet code={usage} lang={e.kind === 'effect' ? 'css' : 'tsx'} />}
         {source && (
-          <details class="source">
-            <summary>{source.file}</summary>
-            <Code code={source.code} lang="tsx" themes={{ dark: 'vesper', light: 'github-light' }} defaultColor="dark" />
-          </details>
+          <Disclosure className="source" summary={h(Code, null, source.file)}>
+            <Snippet code={source.code} lang="tsx" />
+          </Disclosure>
         )}
       </div>
     )}
     <div class="tab-panel" role="tabpanel" id={k('panel-contract')} aria-labelledby={k('tab-contract')} tabindex="0" hidden>
-      <p class="note contract-note">The source for everything on this page: <a href={`${GITHUB}/blob/master/contracts/${e.file}`} target="_blank" rel="noreferrer"><code>contracts/{e.file}</code></a>. The CSS, the docs and the checks in each app are built from it.</p>
-      <div class="contract"><Code code={contract} lang="yaml" themes={{ dark: 'vesper', light: 'github-light' }} defaultColor="dark" /></div>
+      <Text variant="paragraph" tone="tertiary" className="note contract-note">The source for everything on this page: <Link href={`${GITHUB}/blob/master/contracts/${e.file}`} external><Code>contracts/{e.file}</Code></Link>. The CSS, the docs and the checks in each app are built from it.</Text>
+      <div class="contract"><Snippet code={contract} lang="yaml" /></div>
     </div>
   </section>
 
@@ -122,38 +139,46 @@ const props = Object.entries(c.props ?? {}) as [string, any][]
 
   {props.length > 0 && (
     <>
-      <h2>Props</h2>
-      <div class="scroll"><table class="t">
-        <thead><tr><th>Prop</th><th>Type</th><th>Values</th><th>Default</th></tr></thead>
-        <tbody>{props.map(([k, v]) => <tr><td>{k}</td><td>{v.type}</td><td>{(v.values ?? []).join(' · ')}</td><td>{v.default !== undefined ? String(v.default) : ''}</td></tr>)}</tbody>
-      </table></div>
+      <Text variant="sub-headline" as="h2" tone="primary">Props</Text>
+      <div class="scroll" tabindex="0" role="region" aria-label={`${title(e)} props`}>
+        <Table className="props" aria-label={`${title(e)} props`} head={h(TableRow, null, ...['Prop', 'Type', 'Values', 'Default'].map((x) => h(TableItem, { header: 'column', key: x }, x)))}>
+          {props.map(([k, v]) => (
+            <TableRow>
+              <TableItem header="row"><Code>{k}</Code></TableItem>
+              <TableItem><Code>{v.type}</Code></TableItem>
+              <TableItem><Code>{(v.values ?? []).join(' · ')}</Code></TableItem>
+              <TableItem><Code>{v.default !== undefined ? String(v.default) : ''}</Code></TableItem>
+            </TableRow>
+          ))}
+        </Table>
+      </div>
     </>
   )}
-  {c.states?.length > 0 && <p class="muted">States: {c.states.join(', ')}.</p>}
+  {c.states?.length > 0 && <Text tone="secondary" className="muted states">States: {c.states.join(', ')}.</Text>}
 
   {apps.length > 0 && (
     <>
-      <h2>Where it's used</h2>
+      <Text variant="sub-headline" as="h2" tone="primary">Where it's used</Text>
       <div class="apps">
         {apps.map((i: any) => (
           <article class="app">
             <header>
-              <span class="avatar" aria-hidden="true">{initials(i.label)}</span>
+              <Text variant="label" as="span" weight="medium" tone="primary" className="avatar" aria-hidden="true">{initials(i.label)}</Text>
               <div class="app-name">
-                <b>{i.label}</b>
-                <span class={`own ${i.own ? 'own--rost' : 'own--app'}`}>{i.own ? "Rost's own copy" : 'Its own version'}</span>
+                <Text variant="body" as="b" weight="medium" tone="primary">{i.label}</Text>
+                <Text variant="label" as="span" tone={i.own ? 'positive' : 'warning'} className="own">{i.own ? "Rost's own copy" : 'Its own version'}</Text>
               </div>
             </header>
-            <dl class="where">
-              <dt>File</dt><dd><code>{i.component}</code></dd>
-              {i.root && <><dt>Class</dt><dd><code>{i.root}</code></dd></>}
-            </dl>
+            <Text variant="paragraph" as="dl" tone="secondary" className="where">
+              <Text variant="paragraph" as="dt" tone="tertiary">File</Text><dd><Code>{i.component}</Code></dd>
+              {i.root && <><Text variant="paragraph" as="dt" tone="tertiary">Class</Text><dd><Code>{i.root}</Code></dd></>}
+            </Text>
             {i.deviations.length > 0 ? (
               <div class="diffs">
-                <span class="diffs-title">Differs on purpose</span>
-                <ul>{i.deviations.map((d: any) => <li><Fragment set:html={mdInline(d.what)} />{d.why && <span class="why" set:html={mdInline(d.why)} />}</li>)}</ul>
+                <Text variant="label" as="span" tone="warning">Differs on purpose</Text>
+                <Text variant="paragraph" as="ul" tone="secondary">{i.deviations.map((d: any) => <li><Fragment set:html={mdInline(d.what)} />{d.why && <Text variant="label" as="span" tone="tertiary" className="why"><Fragment set:html={mdInline(d.why)} /></Text>}</li>)}</Text>
               </div>
-            ) : <p class="matches">Matches the contract.</p>}
+            ) : <Text variant="paragraph" tone="tertiary">Matches the contract.</Text>}
           </article>
         ))}
       </div>
@@ -161,55 +186,58 @@ const props = Object.entries(c.props ?? {}) as [string, any][]
   )}
   {everywhere.length > 0 && (
     <>
-      <h2>Where Rost differs from Figma</h2>
-      <ul class="plain">{everywhere.map((d: any) => <li><Fragment set:html={mdInline(d.what)} />{' '}<span class="muted" set:html={mdInline(d.why ?? '')} /></li>)}</ul>
+      <Text variant="sub-headline" as="h2" tone="primary">Where Rost differs from Figma</Text>
+      <Text as="ul" tone="secondary" className="plain">{everywhere.map((d: any) => <li><Fragment set:html={mdInline(d.what)} />{' '}<Text as="span" tone="tertiary"><Fragment set:html={mdInline(d.why ?? '')} /></Text></li>)}</Text>
     </>
   )}
 
-  <h2>Values</h2>
-  <p class="muted">Straight from the contract. Each value sits next to its token, because six tokens here all come out as <code>#3a3a3a</code> and the colour alone can't tell you which one is right.</p>
-  <h3>Never changes</h3>
+  <Text variant="sub-headline" as="h2" tone="primary">Values</Text>
+  <Text tone="secondary" className="muted">Straight from the contract. Each value sits next to its token, because six tokens here all come out as <Code>#3a3a3a</Code> and the colour alone can't tell you which one is right.</Text>
+  <Text variant="eyebrow" as="h3">Never changes</Text>
   <div class="parts">
     {partsFixed.map(({ part, rows, quiet }) => (
       <section class="part-card">
-        <h4><code>{part}</code></h4>
+        <Text variant="body" as="h4" weight="medium" tone="primary"><Code>{part}</Code></Text>
         {rows.length > 0 && (
           <ul class="vals">
             {rows.map(({ prop, v }) => { const t = cell(prop, v); return (
               <li>
-                <span class="prop">{prop}</span>
-                <span class="val">{isColour(v.value) && <span class="sw" style={`--c:${v.value}`} />}{String(v.value).replace(/\s+/g, ' ')}</span>
-                <span class={`tok ${t.cls}`}>{t.text}</span>
+                <Text variant="label" as="span" tone="secondary" className="prop"><Code>{prop}</Code></Text>
+                <Text variant="label" as="span" tone="primary" className="val">{isColour(v.value) && <span class="sw" style={`--c:${v.value}`} />}<Code>{String(v.value).replace(/\s+/g, ' ')}</Code></Text>
+                <Text variant="label" as="span" tone={t.tone} className="tok"><Code>{t.text}</Code></Text>
               </li>
             ) })}
           </ul>
         )}
-        {quiet.length > 0 && <p class="quiet">{quiet.map(({ prop, v }, n) => <>{n > 0 && ' · '}<span>{prop}</span> {v.value}</>)}</p>}
+        {quiet.length > 0 && <Text variant="label" tone="tertiary" className="quiet">{quiet.map(({ prop, v }, n) => <>{n > 0 && ' · '}<Code>{prop} {v.value}</Code></>)}</Text>}
       </section>
     ))}
   </div>
 
   {vt.groups.length > 0 && (
     <>
-      <h3>Changes by variant</h3>
-      <p class="muted">{vt.count} variants. Each table is what one thing changes with: a column per {vt.groups[0].column}, a row per property. Where every row starts with the same token path, it's written once, under the property.</p>
+      <Text variant="eyebrow" as="h3">Changes by variant</Text>
+      <Text tone="secondary" className="muted">{vt.count} variants. Each table is what one thing changes with: a column per {vt.groups[0].column}, a row per property. Where every row starts with the same token path, it's written once, under the property.</Text>
       {vt.groups.map((gr) => (
         <section class="spec">
-          <p class="follows">Follows <b>{gr.axes.join(' and ')}</b></p>
+          <Text variant="paragraph" tone="tertiary" className="follows">Follows <Text variant="paragraph" as="b" weight="medium" tone="primary">{gr.axes.join(' and ')}</Text></Text>
           {gr.tables.map((t) => (
             <div class="spec-table">
-              {t.heading && <p class="spec-head">{label(t.heading)}</p>}
-              <div class="scroll"><table class="spec-grid" style={`--cols:${t.columns.length}`}>
-                <thead><tr><th></th>{t.columns.map((c) => <th>{caption(`${gr.column}=${c}`)}</th>)}</tr></thead>
-                <tbody>{t.rows.map((r) => (
-                  <tr>
-                    <th scope="row"><code>{r.key}</code>{r.prefix && <span class="prefix">{r.prefix}</span>}</th>
-                    {r.cells.map((cl) => cl ? (
-                      <td><span class={`cv${cl.token ? '' : ' cv--plain'}`}>{isColour(cl.value) && <span class="sw" style={`--c:${cl.value}`} />}{cl.token ?? cl.value}</span>{cl.token && cl.value && <span class="raw">{cl.value}</span>}</td>
-                    ) : <td class="none">·</td>)}
-                  </tr>
-                ))}</tbody>
-              </table></div>
+              {t.heading && <Text variant="paragraph" weight="medium" tone="primary" className="spec-head">{label(t.heading)}</Text>}
+              <div class="scroll" tabindex="0" role="region" aria-label={specLabel(gr, t)}>
+                <Table className="spec-grid" style={{ '--cols': t.columns.length }} aria-label={specLabel(gr, t)} head={specHead(gr, t)}>
+                  {t.rows.map((r) => (
+                    <TableRow>
+                      <TableItem header="row" description={r.prefix ? h(Code, null, r.prefix) : undefined}><Code>{r.key}</Code></TableItem>
+                      {r.cells.map((cl) => cl ? (
+                        <TableItem leading={isColour(cl.value) ? h('span', { className: 'sw', style: { '--c': cl.value } }) : undefined} description={cl.token && cl.value ? h(Code, null, cl.value) : undefined}>
+                          <Text variant="label" as="span" tone={cl.token ? 'positive' : 'secondary'}><Code>{cl.token ?? cl.value}</Code></Text>
+                        </TableItem>
+                      ) : <TableItem><Text variant="label" as="span" tone="tertiary">·</Text></TableItem>)}
+                    </TableRow>
+                  ))}
+                </Table>
+              </div>
             </div>
           ))}
         </section>
@@ -218,18 +246,18 @@ const props = Object.entries(c.props ?? {}) as [string, any][]
   )}
   {vt.only.length > 0 && (
     <>
-      <h3>Only in some variants</h3>
-      <p class="muted">These don't change: they're just set in some variants and not others.</p>
+      <Text variant="eyebrow" as="h3">Only in some variants</Text>
+      <Text tone="secondary" className="muted">These don't change: they're just set in some variants and not others.</Text>
       <div class="parts">
         {vt.only.map((o) => (
           <section class="part-card">
-            <h4>{label(o.label)}</h4>
+            <Text variant="body" as="h4" weight="medium" tone="primary">{label(o.label)}</Text>
             <ul class="vals">
               {o.rows.map(({ key, v }) => { const t = cell(key.split('.')[1], v); return (
                 <li>
-                  <span class="prop">{key}</span>
-                  <span class="val">{isColour(v.value) && <span class="sw" style={`--c:${v.value}`} />}{String(v.value).replace(/\s+/g, ' ')}</span>
-                  <span class={`tok ${t.cls}`}>{t.text}</span>
+                  <Text variant="label" as="span" tone="secondary" className="prop"><Code>{key}</Code></Text>
+                  <Text variant="label" as="span" tone="primary" className="val">{isColour(v.value) && <span class="sw" style={`--c:${v.value}`} />}<Code>{String(v.value).replace(/\s+/g, ' ')}</Code></Text>
+                  <Text variant="label" as="span" tone={t.tone} className="tok"><Code>{t.text}</Code></Text>
                 </li>
               ) })}
             </ul>
@@ -241,81 +269,59 @@ const props = Object.entries(c.props ?? {}) as [string, any][]
 
 <style>
   .part-title { margin-top: 0; }
+  :global(.main .part-title) { margin-top: 0; }
   .tabs { margin: var(--spacing-gap-small) 0; }
   /* The same space under the tabs for both panels. Scoped under .tabs so it
      outweighs the margin reset in Tabs' own CSS, which loads later. */
   .tabs :global(.tab-bar) { margin-bottom: var(--spacing-gap-small-medium); }
-  .tabs :global(.tab-panel > pre.astro-code) { margin-top: 0; }
+  .tabs :global(.tab-panel > pre.rost-code) { margin-top: 0; }
   .stage { background: var(--ground); border: 1px solid var(--line); border-radius: var(--spacing-radius-large); padding: var(--spacing-gap-xlarge); overflow-x: auto; }
   @media (max-width: 520px) { .stage { padding: var(--spacing-gap-medium-large); } }
-  .source { margin-top: var(--spacing-gap-small-medium); }
-  .source summary { cursor: pointer; color: var(--fg-3); font-family: var(--mono); font-size: 12.5px; margin-bottom: var(--spacing-gap-small); }
-  .note { color: var(--fg-3); font-size: 13.5px; margin: var(--spacing-gap-small) 0 0; }
-  .plain { padding-left: var(--spacing-gap-medium-large); color: var(--fg-2); overflow-wrap: anywhere; }
-  .plain li { margin: var(--spacing-gap-2xsmall) 0; }
-  .tk--warn { color: var(--warn); }
-  .contract-note { margin: 0 0 var(--spacing-gap-small); }
-  .contract-note a { color: var(--accent); }
+  .tabs :global(.source) { margin-top: var(--spacing-gap-small-medium); }
+  .tabs :global(.note) { margin: var(--spacing-gap-small) 0 0; }
+  .tabs :global(.contract-note) { margin: 0 0 var(--spacing-gap-small); }
   .contract { max-height: 640px; overflow: auto; border-radius: var(--spacing-radius-medium); }
-  .contract :global(pre.astro-code) { margin: 0; }
+  .contract :global(pre.rost-code) { margin: 0; }
+  :global(.main .plain) { padding-left: var(--spacing-gap-medium-large); overflow-wrap: anywhere; }
+  :global(.main .plain li) { margin: var(--spacing-gap-2xsmall) 0; }
+  :global(.main .states) { margin-top: var(--spacing-gap-small-medium); }
 
   /* Where it's used: a card per app. */
   .apps { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--spacing-gap-small-medium); }
   .app { display: grid; align-content: start; gap: var(--spacing-gap-medium); padding: var(--spacing-gap-medium-large); border-radius: var(--spacing-radius-large); background: var(--surface); min-width: 0; }
   .app header { display: flex; align-items: center; gap: var(--spacing-gap-small-medium); }
-  .avatar { display: grid; place-items: center; flex-shrink: 0; width: 40px; height: 40px; border-radius: var(--spacing-radius-full); background: var(--ground); color: var(--fg); font-size: 13px; font-weight: 600; letter-spacing: .02em; box-shadow: inset 0 0 0 1px var(--line); }
+  .app :global(.avatar) { display: grid; place-items: center; flex-shrink: 0; width: 40px; height: 40px; border-radius: var(--spacing-radius-full); background: var(--ground); box-shadow: inset 0 0 0 1px var(--line); }
   .app-name { display: grid; gap: 2px; }
-  .app-name b { font-weight: 500; font-size: 17px; color: var(--fg); }
-  .own { font-size: 12.5px; display: inline-flex; align-items: center; gap: 6px; }
-  .own::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
-  .own--rost { color: var(--accent); }
-  .own--app { color: var(--warn); }
-  .where { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 4px var(--spacing-gap-small-medium); margin: 0; font-size: 13px; }
-  .where dt { color: var(--fg-3); }
-  .where dd { margin: 0; overflow-wrap: anywhere; }
-  .where code { font-size: 12px; color: var(--fg-2); }
-  .matches { margin: 0; font-size: 13px; color: var(--fg-3); }
+  .app :global(.own) { display: inline-flex; align-items: center; gap: 6px; }
+  .app :global(.own)::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+  .app :global(.where) { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 4px var(--spacing-gap-small-medium); }
+  .app :global(.where dd) { margin: 0; overflow-wrap: anywhere; }
   .diffs { border-top: 1px solid var(--line); padding-top: var(--spacing-gap-small-medium); }
-  .diffs-title { font-size: 12.5px; color: var(--warn); }
-  .diffs ul { margin: var(--spacing-gap-xsmall) 0 0; padding-left: var(--spacing-gap-medium); font-size: 13.5px; color: var(--fg-2); }
-  .diffs li { margin: 0 0 var(--spacing-gap-xsmall); }
-  .diffs .why { display: block; color: var(--fg-3); font-size: 13px; margin-top: 2px; }
+  .diffs :global(ul) { margin: var(--spacing-gap-xsmall) 0 0; padding-left: var(--spacing-gap-medium); }
+  .diffs :global(li) { margin: 0 0 var(--spacing-gap-xsmall); }
+  .diffs :global(.why) { display: block; margin-top: 2px; }
 
   /* Never changes, and Only in some variants: a card per part. */
   .parts { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: var(--spacing-gap-small-medium); }
   .part-card { padding: var(--spacing-gap-medium) var(--spacing-gap-medium-large); border-radius: var(--spacing-radius-large); background: var(--surface); min-width: 0; }
-  .part-card h4 { margin: 0 0 var(--spacing-gap-small); font-size: 15px; font-weight: 500; color: var(--fg); }
-  .part-card h4 code { font-size: 14px; color: var(--fg); }
+  .part-card :global(h4) { margin: 0 0 var(--spacing-gap-small); }
   .vals { list-style: none; margin: 0; padding: 0; }
-  .vals li { display: grid; grid-template-columns: fit-content(50%) minmax(0, 1fr); gap: 0 var(--spacing-gap-small-medium); padding: 6px 0; margin: 0; border-top: 1px solid color-mix(in srgb, var(--fg) 6%, transparent); font-size: 13px; }
+  .vals li { display: grid; grid-template-columns: fit-content(50%) minmax(0, 1fr); gap: 0 var(--spacing-gap-small-medium); padding: 6px 0; margin: 0; border-top: 1px solid color-mix(in srgb, var(--fg) 6%, transparent); }
   .vals li:first-child { border-top: none; }
-  .prop { color: var(--fg-2); font-family: var(--mono); font-size: 12px; overflow-wrap: break-word; }
-  .val { color: var(--fg); font-family: var(--mono); font-size: 12px; text-align: right; overflow-wrap: anywhere; }
-  .tok { grid-column: 1 / -1; font-family: var(--mono); font-size: 11.5px; color: var(--accent); overflow-wrap: anywhere; }
-  .tok.tk--none { color: var(--fg-3); font-style: italic; }
-  .tok.tk--gap { color: var(--bad); }
-  .tok.tk--warn { color: var(--warn); }
-  .quiet { margin: var(--spacing-gap-small) 0 0; font-family: var(--mono); font-size: 11.5px; line-height: 1.7; color: var(--fg-3); }
-  .quiet span { color: var(--fg-2); }
+  .vals :global(.prop) { overflow-wrap: break-word; }
+  .vals :global(.val) { text-align: right; overflow-wrap: anywhere; }
+  .vals :global(.tok) { grid-column: 1 / -1; overflow-wrap: anywhere; }
+  .part-card :global(.quiet) { margin: var(--spacing-gap-small) 0 0; }
 
-  /* Changes by variant: spec tables, a column per state. */
+  /* Changes by variant: Rost's Table, a column per state. */
   .spec { margin: 0 0 var(--spacing-gap-large); }
-  .follows { margin: 0 0 var(--spacing-gap-small); font-size: 14px; color: var(--fg-3); }
-  .follows b { color: var(--fg); font-weight: 500; }
+  .spec :global(.follows) { margin: 0 0 var(--spacing-gap-small); }
   .spec-table { margin: 0 0 var(--spacing-gap-small-medium); }
-  .spec-head { margin: 0 0 var(--spacing-gap-xsmall); font-size: 14px; font-weight: 500; color: var(--fg); }
-  .spec-grid { width: 100%; border-collapse: collapse; table-layout: fixed; min-width: calc(200px + var(--cols) * 150px); }
-  .spec-grid th, .spec-grid td { text-align: left; vertical-align: top; padding: var(--spacing-gap-small) var(--spacing-gap-small-medium) var(--spacing-gap-small) 0; border-top: 1px solid color-mix(in srgb, var(--fg) 6%, transparent); }
-  .spec-grid thead th { border-top: none; border-bottom: 1px solid var(--line); font-size: 13px; font-weight: 500; color: var(--fg); }
-  .spec-grid thead th:first-child { width: 200px; }
-  .spec-grid tbody th { font-weight: 400; }
-  .spec-grid tbody th code { display: block; font-size: 12px; color: var(--fg); overflow-wrap: anywhere; }
-  .prefix { display: block; margin-top: 2px; font-family: var(--mono); font-size: 11px; color: var(--fg-3); overflow-wrap: anywhere; }
-  .cv { display: flex; align-items: center; gap: 6px; font-family: var(--mono); font-size: 12px; color: var(--accent); overflow-wrap: anywhere; min-width: 0; }
-  .cv .sw { margin: 0; flex-shrink: 0; }
-  .raw { display: block; margin-top: 2px; font-family: var(--mono); font-size: 11px; color: var(--fg-3); overflow-wrap: anywhere; }
-  .cv--plain { color: var(--fg-2); }
-  .none { color: var(--fg-3); }
+  .spec-table :global(.spec-head) { margin: 0 0 var(--spacing-gap-xsmall); }
+  .spec-table :global(.spec-grid) { table-layout: fixed; min-width: calc(200px + var(--cols) * 150px); }
+  .spec-table :global(.spec-grid thead th:first-child) { width: 200px; }
+  .spec-table :global(.spec-grid .rost-table-item) { vertical-align: top; }
+  .spec-table :global(.spec-grid .sw) { margin: 0; }
   :global(.fixtures) { display: flex; flex-wrap: wrap; gap: var(--spacing-gap-large) var(--spacing-gap-2xlarge); align-items: flex-end; }
   :global(.fixture) { margin: 0; display: flex; flex-direction: column; gap: var(--spacing-gap-small); align-items: flex-start; max-width: 100%; min-width: 0; }
   :global(.fixture-stage) { min-height: var(--spacing-size-small); max-width: 100%; }
@@ -325,6 +331,5 @@ const props = Object.entries(c.props ?? {}) as [string, any][]
      so the panel scrolls rather than the text piling up. */
   :global(.fixture-stage > [class^='rost-']) { max-width: 100%; min-width: max-content; }
   :global(.shot) { display: block; max-width: 100%; height: auto; }
-  :global(.fixture-note) { margin: var(--spacing-gap-medium-large) 0 0; color: var(--fg-3); font-size: 13.5px; }
-  :global(.fixture figcaption) { font-family: var(--mono); font-size: 11px; color: var(--fg-3); }
+  :global(.fixture-note) { margin: var(--spacing-gap-medium-large) 0 0; }
 </style>

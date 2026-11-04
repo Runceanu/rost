@@ -1,0 +1,13 @@
+---
+// A block of code on the site: Shiki colours it (vesper in dark, github-light
+// in light), Rost's Code draws it. Rost has no syntax colours of its own.
+import { codeToHtml } from 'shiki'
+import { Code } from '../../../src/components/code/Code'
+interface Props { code: string; lang: string; class?: string }
+const { code, lang, class: cls } = Astro.props
+// Shiki's bundle has no `svg`; it's XML.
+const html = await codeToHtml(code, { lang: lang === 'svg' ? 'xml' : lang, themes: { dark: 'vesper', light: 'github-light' }, defaultColor: 'dark' })
+// Only what's inside Shiki's <code>: the plate, the padding and the font are Code's.
+const inner = html.match(/<code[^>]*>([\s\S]*)<\/code>/)?.[1] ?? ''
+---
+<Code block html={inner} className={cls} />

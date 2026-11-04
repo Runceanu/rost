@@ -1,0 +1,51 @@
+/* Generated from contracts/link.contract.yaml by bin/build-css.mjs. Don't edit: change the contract and rebuild. */
+
+.rost-link, .rost-link * { box-sizing: border-box; margin: 0; }
+.rost-link > img, .rost-link [class*="__icons-"] > img { display: block; position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; }
+.rost-link ::placeholder { color: inherit; opacity: 1; }
+
+.rost-link {
+  color: var(--non-interactive-foreground-positive-base);
+  text-decoration-line: underline;
+  text-decoration-thickness: var(--spacing-outline-small);
+  text-underline-offset: 0.2em;
+  text-decoration-color: currentColor;
+  border-radius: var(--spacing-radius-xsmall);
+  transition-property: color, text-decoration-color;
+  transition-duration: var(--motion-duration-fast);
+  transition-timing-function: var(--motion-easing-standard);
+}
+
+.rost-link__label {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.rost-link.rost-link--tone-quiet {
+  color: inherit;
+  text-decoration-color: transparent;
+}
+
+.rost-link.rost-link--tone-accent:hover {
+  color: var(--non-interactive-foreground-positive-dark);
+}
+
+.rost-link.rost-link--tone-quiet:hover {
+  color: var(--non-interactive-foreground-primary);
+  text-decoration-color: currentColor;
+}
+
+.rost-link:active {
+  opacity: var(--opacity-hard);
+}
+
+.rost-link:focus-visible {
+  outline-style: solid;
+  outline-width: var(--spacing-outline-medium);
+  outline-color: var(--actions-primary-focus-focus-ring);
+  outline-offset: 2px;
+}

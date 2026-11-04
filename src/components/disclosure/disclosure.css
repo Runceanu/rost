@@ -1,0 +1,56 @@
+/* Generated from contracts/disclosure.contract.yaml by bin/build-css.mjs. Don't edit: change the contract and rebuild. */
+
+.rost-disclosure, .rost-disclosure * { box-sizing: border-box; margin: 0; }
+.rost-disclosure > img, .rost-disclosure [class*="__icons-"] > img { display: block; position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; }
+.rost-disclosure ::placeholder { color: inherit; opacity: 1; }
+
+.rost-disclosure {
+  display: block;
+}
+
+.rost-disclosure__summary {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-gap-2xsmall);
+  list-style: none;
+  cursor: pointer;
+  border-radius: var(--spacing-radius-xsmall);
+  font-family: var(--font-family-base);
+  font-size: var(--typography-paragraph-font-size);
+  line-height: var(--typography-paragraph-line-height);
+  font-weight: var(--typography-paragraph-font-weight-medium);
+  color: var(--non-interactive-foreground-secondary);
+  transition-property: color;
+  transition-duration: var(--motion-duration-fast);
+  transition-timing-function: var(--motion-easing-standard);
+}
+
+.rost-disclosure__icon {
+  flex-shrink: 0;
+  transition-property: transform;
+  transition-duration: var(--motion-duration-fast);
+  transition-timing-function: var(--motion-easing-standard);
+}
+
+.rost-disclosure__panel {
+  padding-top: var(--spacing-gap-small);
+}
+
+.rost-disclosure:has(> .rost-disclosure__summary:hover) .rost-disclosure__summary {
+  color: var(--non-interactive-foreground-primary);
+}
+
+.rost-disclosure:has(> .rost-disclosure__summary:focus-visible) .rost-disclosure__summary {
+  outline-style: solid;
+  outline-width: var(--spacing-outline-medium);
+  outline-color: var(--actions-primary-focus-focus-ring);
+  outline-offset: 2px;
+}
+
+.rost-disclosure[open] .rost-disclosure__summary {
+  color: var(--non-interactive-foreground-primary);
+}
+
+.rost-disclosure[open] .rost-disclosure__icon {
+  transform: rotate(90deg);
+}

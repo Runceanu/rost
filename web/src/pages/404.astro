@@ -1,11 +1,12 @@
 ---
 import Base from '../layouts/Base.astro'
 import { Button } from '../../../src/components/button/Button'
+import { Text } from '../../../src/components/text/Text'
 ---
 <Base title="Not here · Rost">
-  <div class="kicker">404</div>
-  <h1>Nothing here</h1>
-  <p class="lede">This page doesn't exist, or it moved when the site did.</p>
+  <Text variant="eyebrow" className="kicker">404</Text>
+  <Text variant="display" as="h1" tone="primary">Nothing here</Text>
+  <Text variant="lede" tone="primary" className="lede">This page doesn't exist, or it moved when the site did.</Text>
   <div class="btns">
     <Button href="/components/">All components</Button>
     <Button variant="secondary" href="/">Home</Button>

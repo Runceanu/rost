@@ -14,7 +14,7 @@ Rost started as a design system for my own needs and grew into a product of its 
 | [Roadmap](ROADMAP.md) | What I'm doing next |
 | [Release notes](CHANGELOG.md) | What changed in each release |
 
-**35** contracts, **5** stable. **35** have guidance, and I've signed off **32** of those.
+**39** contracts, **5** stable. **39** have guidance, and I've signed off **32** of those.
 
 ## Catalogue
 
@@ -26,12 +26,15 @@ Rost started as a design system for my own needs and grew into a product of its 
 | [Button](components/button.md) | A 48px button with a label and, if it helps, an icon in front. In four levels of emphasis. | `stable` | `agreed` | Portfolio site, Accounting app |
 | [Carousel](components/carousel.md) | A card for a carousel: a number, a title and a short description. | `review` | `agreed` | Portfolio site |
 | [Chip](components/chips.md) | A small outlined label you can click, for filters and quick choices. | `review` | `agreed` | Portfolio site |
+| [Code](components/code.md) | Code in a sentence, or a block of it on its own plate. | `review` | `proposed` | · |
+| [Disclosure](components/disclosure.md) | A line that opens to show more, for things most people won't need. | `review` | `proposed` | · |
 | [Divider](components/divider.md) | A thin line between things. | `stable` | `agreed` | Portfolio site, Accounting app |
 | [Icon](components/icon.md) | One of Rost's 18 glyphs, 24px, in the colour of the text around it. | `review` | `proposed` | · |
 | [IconButton](components/icon-button.md) | A round button with only an icon, including a Project type for sitting on top of images. | `review` | `agreed` | Portfolio site |
 | [Illustration](components/illustration.md) | One of Rost's 24 small drawings, 72px, in two greys and a green that follow the theme. | `review` | `proposed` | · |
 | [InlineBanner](components/inline-banner.md) | A filled status pill with an icon and a label, in four statuses and two sizes. | `stable` | `agreed` | Portfolio site, Accounting app |
 | [Input](components/input.md) | A 56px text field with a floating label, an optional lock icon, a line of help text and an error state. | `review` | `agreed` | Portfolio site, Accounting app |
+| [Link](components/link.md) | A link inside text. Green and underlined, or quiet in the text's own colour. | `review` | `proposed` | · |
 | [ListItem](components/list-item.md) | One row you can pick in a list or a nav. A label, an optional line under it, and optional icons and a status dot. | `review` | `agreed` | · |
 | [Menu](components/menu.md) | A navigation item: a label with a line underneath, used in the main nav. | `review` | `agreed` | · |
 | [Navigation](components/navigation.md) | A side navigation on frosted glass. The logo at the top, the main items below it, one action at the bottom. Collapsed to icons, or open with labels. | `review` | `agreed` | · |
@@ -45,6 +48,7 @@ Rost started as a design system for my own needs and grew into a product of its 
 | [Tag](components/tags.md) | A compact 20px label with small corners, for what a piece of content is about. | `review` | `agreed` | · |
 | [TestimonialPicture](components/testimonials-pics.md) | The photo of the person behind a testimonial. | `review` | `proposed` | Portfolio site |
 | [Testimonials](components/testimonials.md) | A testimonial you can open and close: name and role, with the quote underneath. | `review` | `agreed` | Portfolio site |
+| [Text](components/text.md) | Rost's type ramp as one component, from the 64px page title down to the 12px label. | `review` | `proposed` | · |
 | [Textarea](components/textarea.md) | A text field for several lines, with Input's label, help line, error and focus ring. | `review` | `agreed` | · |
 | [Thumbs](components/thumbs.md) | A project thumbnail card, with the project name and details on a frosted panel at the bottom. | `review` | `agreed` | Portfolio site |
 | [Toggle](components/toggle.md) | A 40×40 icon button that stays on or off, alone or as one choice in a group. | `stable` | `agreed` | Accounting app |

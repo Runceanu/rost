@@ -2,10 +2,20 @@
 import '../../../tokens/tokens.css'
 import '../../../tokens/fonts.css'
 import '../styles/site.css'
+// Markdown on the site wears these by their classes (kit.ts, rostHtml), so
+// their CSS is loaded on every page, not only where React renders one.
+import '../../../src/components/text/text.css'
+import '../../../src/components/link/link.css'
+import '../../../src/components/code/code.css'
+import '../../../src/components/table/table.css'
+import '../../../src/components/table-row/table-row.css'
+import '../../../src/components/table-item/table-item.css'
+import { Link } from '../../../src/components/link/Link'
 import Logo from '../components/Logo.astro'
 import { Button } from '../../../src/components/button/Button'
 import { Tooltip } from '../../../src/components/tooltip/Tooltip'
 import { ListItem } from '../../../src/components/list-item/ListItem'
+import { Text } from '../../../src/components/text/Text'
 import { ThemeSwitch } from '../components/ThemeSwitch'
 import { groups, title, attention, GITHUB } from '../lib/kit'
 
@@ -42,7 +52,7 @@ const NAV: [string, string][] = [['/components/', 'Components'], ['/tokens/', 'T
   <body>
     <a class="skip" href="#content">Skip to content</a>
     <header class="top">
-      <a class="brand" href="/" aria-current={path === '/' ? 'page' : undefined}><Logo /><span>Rost</span></a>
+      <a class="brand" href="/" aria-label="Rost, home" aria-current={path === '/' ? 'page' : undefined}><Logo /><span>Rost</span></a>
       <div class="top-end">
         <nav class="top-nav" aria-label="Main">
           {NAV.map(([href, label]) => path === href
@@ -59,7 +69,7 @@ const NAV: [string, string][] = [['/components/', 'Components'], ['/tokens/', 'T
           <div class="side-scroll">
             {ownSide ? <slot name="side" /> : groups.map(([, label, list]) => (
               <div class="side-group">
-                <div class="side-title">{label}</div>
+                <Text variant="eyebrow" className="side-title">{label}</Text>
                 {list.map((e) => {
                   // A dot only when something needs looking at; hovering it says what.
                   const a = attention(e)
@@ -77,14 +87,14 @@ const NAV: [string, string][] = [['/components/', 'Components'], ['/tokens/', 'T
           </div>
           <span class="side-thumb" aria-hidden="true"></span>
         </nav>
-        <main class="main" id="content">{current && <a class="back" href="/components/">&larr; All components</a>}<slot /></main>
+        <main class="main" id="content">{current && <Text variant="paragraph" className="back"><Link href="/components/" tone="quiet">&larr; All components</Link></Text>}<slot /></main>
       </div>
     ) : (
       <main class="page" id="content"><slot /></main>
     )}
     <footer class="foot">
-      <span>Rost serves products across different industries.</span>
-      <a href={GITHUB} target="_blank" rel="noreferrer">GitHub</a>
+      <Text variant="paragraph" as="span" tone="tertiary">Rost serves products across different industries.</Text>
+      <Text variant="paragraph" as="span"><Link href={GITHUB} tone="quiet" external>GitHub</Link></Text>
     </footer>
     <script>
       // The sidebar's scrollbar floats over the rows instead of taking 12px

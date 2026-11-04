@@ -1,0 +1,111 @@
+/* Generated from contracts/text.contract.yaml by bin/build-css.mjs. Don't edit: change the contract and rebuild. */
+
+.rost-text, .rost-text * { box-sizing: border-box; margin: 0; }
+.rost-text > img, .rost-text [class*="__icons-"] > img { display: block; position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; }
+.rost-text ::placeholder { color: inherit; opacity: 1; }
+
+.rost-text {
+  font-family: var(--font-family-base);
+  font-size: var(--typography-body-font-size);
+  line-height: var(--typography-body-line-height);
+  letter-spacing: var(--typography-body-letter-spacing);
+  font-weight: var(--typography-body-font-weight-regular);
+}
+
+.rost-text.rost-text--variant-display {
+  font-size: var(--typography-display-font-size);
+  line-height: var(--typography-display-line-height);
+  letter-spacing: var(--typography-display-letter-spacing);
+  font-weight: var(--typography-display-font-weight-medium);
+  text-wrap: balance;
+}
+
+.rost-text.rost-text--variant-headline {
+  font-size: var(--typography-headline-font-size);
+  line-height: var(--typography-headline-line-height);
+  letter-spacing: var(--typography-headline-letter-spacing);
+  font-weight: var(--typography-headline-font-weight-medium);
+  text-wrap: balance;
+}
+
+.rost-text.rost-text--variant-sub-headline {
+  font-size: var(--typography-sub-headline-font-size);
+  line-height: var(--typography-sub-headline-line-height);
+  letter-spacing: var(--typography-sub-headline-letter-spacing);
+  font-weight: var(--typography-sub-headline-font-weight-medium);
+  text-wrap: balance;
+}
+
+.rost-text.rost-text--variant-lede {
+  font-size: var(--typography-font-size-22);
+  line-height: var(--typography-line-height-32);
+  letter-spacing: var(--typography-letter-spacing-letter-spacing);
+  font-weight: var(--typography-font-weight-regular);
+  text-wrap: pretty;
+  max-width: 40ch;
+}
+
+.rost-text.rost-text--variant-body {
+  font-size: var(--typography-body-font-size);
+  line-height: var(--typography-body-line-height);
+  letter-spacing: var(--typography-body-letter-spacing);
+  font-weight: var(--typography-body-font-weight-regular);
+  text-wrap: pretty;
+}
+
+.rost-text.rost-text--variant-paragraph {
+  font-size: var(--typography-paragraph-font-size);
+  line-height: var(--typography-paragraph-line-height);
+  letter-spacing: var(--typography-paragraph-letter-spacing);
+  font-weight: var(--typography-paragraph-font-weight-regular);
+  text-wrap: pretty;
+}
+
+.rost-text.rost-text--variant-label {
+  font-size: var(--typography-label-font-size);
+  line-height: var(--typography-label-line-height);
+  letter-spacing: var(--typography-label-letter-spacing);
+  font-weight: var(--typography-label-font-weight-regular);
+}
+
+.rost-text.rost-text--variant-eyebrow {
+  font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: var(--typography-label-font-size);
+  line-height: var(--typography-label-line-height);
+  font-weight: var(--typography-font-weight-regular);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--non-interactive-foreground-tertiary);
+}
+
+.rost-text.rost-text--tone-primary {
+  color: var(--non-interactive-foreground-primary);
+}
+
+.rost-text.rost-text--tone-secondary {
+  color: var(--non-interactive-foreground-secondary);
+}
+
+.rost-text.rost-text--tone-tertiary {
+  color: var(--non-interactive-foreground-tertiary);
+}
+
+.rost-text.rost-text--tone-positive {
+  color: var(--non-interactive-foreground-positive-base);
+}
+
+.rost-text.rost-text--tone-warning {
+  color: var(--non-interactive-foreground-warning-base);
+}
+
+.rost-text.rost-text--tone-negative {
+  color: var(--non-interactive-foreground-negative-base);
+}
+
+.rost-text.rost-text--weight-regular {
+  font-weight: var(--typography-font-weight-regular);
+}
+
+.rost-text.rost-text--weight-medium {
+  font-weight: var(--typography-font-weight-medium);
+}

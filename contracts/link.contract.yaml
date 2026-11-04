@@ -1,0 +1,96 @@
+# yaml-language-server: $schema=../schema/component-contract.schema.json
+schemaVersion: 2
+id: link
+name: Link
+kind: component
+status: review
+summary: A link inside text. Green and underlined, or quiet in the text's own colour.
+category: navigation
+related: [ button, text ]
+source:
+  tool: code
+  repo: rost
+  path: src/components/link/Link.tsx
+  extractedAt: "2026-11-04"
+props:
+  href: { type: string, required: true }
+  tone:
+    type: enum
+    values: [ accent, quiet ]
+    default: accent
+    notes: "`accent` for a link in a sentence. `quiet` where links are all there is, like a footer or a row of sources, and green everywhere would be noise."
+  external:
+    type: boolean
+    default: false
+    notes: Opens in a new tab, and says so to screen readers.
+  children: { type: slot, notes: "The words. Say where it goes, never \"here\"." }
+states: [ Default, Hover, Pressed, Focus ]
+elements:
+  root:
+    notes: An `<a>`. It sits in a line of text, so it takes the text's size and weight.
+    styles:
+      color: { token: non-interactive/foreground/positive/base, value: "#00d669", notes: "#0e7118 in light, so it keeps AA on the light page." }
+      text-decoration-line: { value: underline }
+      text-decoration-thickness: { token: spacing/outline/small, value: 1px }
+      text-underline-offset: { value: 0.2em, untokenised: "Follows the text's size, so it's in em, not a space token." }
+      text-decoration-color: { value: currentColor, assert: false }
+      border-radius: { token: spacing/radius/xsmall, value: 4px, notes: Only shows with the focus ring. }
+      transition-property: { value: "color, text-decoration-color", assert: false }
+      transition-duration: { token: motion/duration/fast, value: 150ms }
+      transition-timing-function: { token: motion/easing/standard, value: ease }
+  label:
+    notes: The visually hidden "(opens in a new tab)" of an external link.
+    styles:
+      position: { value: absolute, assert: false }
+      width: { value: 1px, assert: false }
+      height: { value: 1px, assert: false }
+      overflow: { value: hidden, assert: false }
+      clip-path: { value: inset(50%), assert: false }
+      white-space: { value: nowrap, assert: false }
+variants:
+  - when: { tone: quiet, state: Default }
+    elements:
+      root:
+        color: { value: inherit, assert: false, notes: "The text's own colour." }
+        text-decoration-color: { value: transparent, assert: false, notes: The underline comes on hover. }
+  - when: { tone: accent, state: Hover }
+    elements:
+      root:
+        color: { token: non-interactive/foreground/positive/dark, value: "#b6ffda" }
+  - when: { tone: quiet, state: Hover }
+    elements:
+      root:
+        color: { token: non-interactive/foreground/primary, value: "#ededed" }
+        text-decoration-color: { value: currentColor, assert: false }
+  - when: { state: Pressed }
+    elements:
+      root:
+        opacity: { token: opacity/hard, value: "0.72" }
+  - when: { state: Focus }
+    elements:
+      root:
+        outline-style: { value: solid }
+        outline-width: { token: spacing/outline/medium, value: 2px }
+        outline-color: { token: actions/primary/focus/focus-ring, value: "#b6ffda" }
+        outline-offset: { value: 2px, notes: "Clear of the letters, the same 2px every focus ring here uses." }
+guidance:
+  status: proposed
+  use:
+    - title: In a sentence
+      text: Pointing somewhere from inside a sentence, a note or a table cell.
+      show: tone=accent
+    - title: A row of sources
+      text: "`quiet` for a footer or a line of links under a section, where every word is a link."
+      show: tone=quiet
+  avoid:
+    - title: Doing something
+      text: Starting an action, like saving or sending. That's **Button**.
+    - title: Standing alone
+      text: A link on its own line that's the main way on. A **Button** with `href` reads as the next step, a Link doesn't.
+  behaviour: |-
+    The underline is always there on `accent`, so a link never relies on colour alone. `quiet` takes the text's colour and shows the underline on hover. An external link opens a new tab and gets a hidden "(opens in a new tab)". I didn't add an arrow icon: in running text it was more noise than help.
+  accessibility:
+    element: an `<a href>`. Without an href it isn't a link, so don't render one.
+    name: the words inside. "here" or "more" tell a screen reader nothing out of context.
+    colour: "`accent` is `non-interactive/foreground/positive/base`: 6:1 on the light page and 5.3:1 on the light card, 9:1 or more in dark."
+  content: Say where it goes, in a few words. Sentence case.

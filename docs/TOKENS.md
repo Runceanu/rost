@@ -6,12 +6,12 @@ Every value in every contract, sorted by why it has a token or doesn't. A value 
 
 | | Values | Share | Meaning |
 |---|---|---|---|
-| Has a token | 1217 | 59% | Uses a token, and the check tests it. |
+| Has a token | 1297 | 59% | Uses a token, and the check tests it. |
 | Token suggested | 0 | 0% | A token I want that doesn't exist yet. The freeze turned every other suggestion into a token. |
-| How Figma builds it | 554 | 27% | How Figma builds the layer (position, inset, which sides get a stroke). Nothing to tokenise. |
-| Figma frame size | 175 | 8% | A root size that is just the Figma frame. Written down, not checked. |
-| No token, on purpose | 92 | 4% | Plain on purpose, and the contract says why. |
-| Open gap | 32 | 2% | No token and no reason. Each one needs a decision from me. |
+| How Figma builds it | 563 | 26% | How Figma builds the layer (position, inset, which sides get a stroke). Nothing to tokenise. |
+| Figma frame size | 198 | 9% | A root size that is just the Figma frame. Written down, not checked. |
+| No token, on purpose | 95 | 4% | Plain on purpose, and the contract says why. |
+| Open gap | 41 | 2% | No token and no reason. Each one needs a decision from me. |
 
 ## By contract
 
@@ -21,6 +21,8 @@ Every value in every contract, sorted by why it has a token or doesn't. A value 
 | [Button](components/button.md) | 83 | · | 38 | 9 | 5 | 1 |
 | [Carousel](components/carousel.md) | 43 | · | 28 | 13 | 2 | 1 |
 | [Chip](components/chips.md) | 45 | · | 18 | 10 | 10 | 1 |
+| [Code](components/code.md) | 9 | · | 2 | 4 | 2 | · |
+| [Disclosure](components/disclosure.md) | 16 | · | 4 | 4 | · | 3 |
 | [Divider](components/divider.md) | 2 | · | 2 | 2 | · | · |
 | [Floating effect](components/effect-floating.md) | 1 | · | · | · | · | · |
 | [Hero Media](components/hero-media.md) | 6 | · | 9 | 2 | · | · |
@@ -29,6 +31,7 @@ Every value in every contract, sorted by why it has a token or doesn't. A value 
 | [Illustration](components/illustration.md) | 5 | · | 6 | · | · | · |
 | [InlineBanner](components/inline-banner.md) | 48 | · | 38 | · | 8 | · |
 | [Input](components/input.md) | 155 | · | 35 | 20 | 4 | 3 |
+| [Link](components/link.md) | 10 | · | 3 | 8 | 1 | 3 |
 | [ListItem](components/list-item.md) | 99 | · | 32 | 10 | 2 | 1 |
 | [Lock frame effect](components/effect-lock-frame.md) | 1 | · | · | · | · | · |
 | [Menu effect](components/effect-menu.md) | 1 | · | · | · | · | · |
@@ -46,6 +49,7 @@ Every value in every contract, sorted by why it has a token or doesn't. A value 
 | [Tag](components/tags.md) | 26 | · | 13 | 3 | · | 1 |
 | [TestimonialPicture](components/testimonials-pics.md) | 2 | · | 8 | 1 | · | · |
 | [Testimonials](components/testimonials.md) | 81 | · | 37 | 13 | 2 | 4 |
+| [Text](components/text.md) | 45 | · | · | 7 | · | 3 |
 | [Textarea](components/textarea.md) | 72 | · | 21 | 9 | 2 | 2 |
 | [Thumb effect](components/effect-thumb.md) | 1 | · | · | · | · | · |
 | [Thumbs](components/thumbs.md) | 77 | · | 51 | 9 | 6 | 5 |
@@ -118,10 +122,13 @@ Sizes and offsets that belong to one component, at a number no size token has.
 
 | Where | Part | Value | Why |
 |---|---|---|---|
+| [Code](components/code.md) | `root.font-family` | `'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace` | Rost has no mono family token yet. Where JetBrains Mono isn't loaded, the system mono stands in. |
+| [Code](components/code.md) | `root.font-size` | `0.88em` | In a sentence it follows the text around it. Mono looks bigger than General Sans at the same size, so a little smaller. |
 | [Icon](components/icon.md) | `root.mask-image` | `url(./svg/arrow-down.svg)` and 17 more, one per state | The icon file, `assets/icons/arrow-down.svg`. |
 | [Illustration](components/illustration.md) | `drawing.width` | `100%` | The drawing fills the 72px box. |
 | [Illustration](components/illustration.md) | `drawing.height` | `100%` | The drawing fills the 72px box. |
 | [Input](components/input.md) | `supportive.top` | `calc(var(--spacing-size-large) + var(--spacing-gap-2xsmall))` | Composed from tokens: the field's height plus spacing/gap/2xsmall. |
+| [Link](components/link.md) | `root.text-underline-offset` | `0.2em` | Follows the text's size, so it's in em, not a space token. |
 | [ListItem](components/list-item.md) | `root.width` | `100%` | As wide as its list. Figma's sample is 208px. |
 | [ListItem](components/list-item.md) | `background.inset` | `4px` | Figma's own 4px inset of the plate. |
 | [ListItem](components/list-item.md) | `dot.width` | `8px` | The small Badge's own 8px dot. |
@@ -160,12 +167,18 @@ The paper effect's numbers, tuned for how the dots move. Only the paper uses the
 - [Button](components/button.md) `focus-ring.border-style` = `solid`
 - [Carousel](components/carousel.md) `focus-ring.border-style` = `solid`
 - [Chip](components/chips.md) `focus-ring.border-style` = `solid`
+- [Disclosure](components/disclosure.md) `summary.outline-style` = `solid`
+- [Disclosure](components/disclosure.md) `summary.outline-offset` = `2px`
+- [Disclosure](components/disclosure.md) `icon.transform` = `rotate(90deg)`
 - [Icon](components/icon.md) `root.background` = `currentColor`
 - [IconButton](components/icon-button.md) `glyph.background` = `currentColor`
 - [IconButton](components/icon-button.md) `focus-ring.border-style` = `solid`
 - [Input](components/input.md) `outline.border-style` = `solid`
 - [Input](components/input.md) `clear-glyph.background` = `currentColor`
 - [Input](components/input.md) `focus-ring.border-style` = `solid`
+- [Link](components/link.md) `root.text-decoration-line` = `underline`
+- [Link](components/link.md) `root.outline-style` = `solid`
+- [Link](components/link.md) `root.outline-offset` = `2px`
 - [ListItem](components/list-item.md) `focus-ring.border-style` = `solid`
 - [Menu](components/menu.md) `focus-ring.border-style` = `solid`
 - [Projects](components/projects.md) `outline.left` = `0`
@@ -179,6 +192,9 @@ The paper effect's numbers, tuned for how the dots move. Only the paper uses the
 - [Testimonials](components/testimonials.md) `outline.right` = `0`
 - [Testimonials](components/testimonials.md) `outline.bottom` = `0`
 - [Testimonials](components/testimonials.md) `focus-ring.border-style` = `solid`
+- [Text](components/text.md) `root.font-family` = `'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace`
+- [Text](components/text.md) `root.letter-spacing` = `0.1em`
+- [Text](components/text.md) `root.text-transform` = `uppercase`
 - [Textarea](components/textarea.md) `outline.border-style` = `solid`
 - [Textarea](components/textarea.md) `focus-ring.border-style` = `solid`
 - [Thumbs](components/thumbs.md) `shadow.left` = `0`
