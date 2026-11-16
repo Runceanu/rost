@@ -61,6 +61,9 @@ for (const id of all) {
   for (const [app, impl] of Object.entries(c.implementations ?? {}))
     for (const part of Object.keys(impl.parts ?? {})) if (!c.elements?.[part]) err(`implementations.${app}.parts names "${part}", which is not in elements`)
 
+  // Motion has to have its quieter version, and only on parts that exist.
+  if (c.keyframes && !c.reducedMotion) err('has keyframes but no reducedMotion')
+  for (const part of Object.keys(c.reducedMotion?.elements ?? {})) if (!c.elements?.[part]) err(`reducedMotion styles "${part}", which is not in elements`)
   if (c.status === 'stable' && c.guidance?.status !== 'agreed') err('is stable, but its guidance is not agreed')
   if (c.status === 'stable' && c.pending) err('is stable, but still has pending reads')
 }

@@ -71,6 +71,12 @@ elements:                   # every part, in DOM order, and what never changes
   backdrop:                 # a part the browser draws itself: .rost-<id>::backdrop, not .rost-<id>__backdrop
     pseudo: "::backdrop"    # Dialog's dim layer. ::before and ::after work the same way
 
+keyframes:                  # named animations: @keyframes rost-<id>-<name>, used with animation-name
+  turn: { from: { transform: "rotate(0deg)" }, to: { transform: "rotate(360deg)" } }
+reducedMotion:              # what changes under prefers-reduced-motion. Required when there are keyframes
+  elements:
+    arc: { animation-duration: { value: 3s } }
+
 variants:                   # when each applies, and only what differs. Layers first, then one per Figma variant
   - when: { selected: false }   # a layer: every variant that's off
     elements:

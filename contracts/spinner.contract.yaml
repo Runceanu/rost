@@ -1,0 +1,98 @@
+# yaml-language-server: $schema=../schema/component-contract.schema.json
+schemaVersion: 2
+id: spinner
+name: Spinner
+kind: component
+status: review
+summary: Something is working and you can't tell how long it'll take. A grey ring with a green quarter that turns.
+category: feedback
+related: [ progress, skeleton, button ]
+source:
+  tool: figma
+  fileKey: 1Zy0wiWKXQAvsfDBX3KR0d
+  nodeId: "742:21"
+  url: https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=742-21
+  extractedAt: "2026-11-16"
+  extractedBy: hand
+  frozenAt: "2026-11-16"
+props:
+  size:
+    type: enum
+    values: [ small, medium ]
+    default: medium
+    notes: "`small` (16) inside a button or a line of text, `medium` (20) on its own."
+  label: { type: string, default: Loading, notes: "What's working, for screen readers: \"Saving\", \"Syncing with the bank\"." }
+elements:
+  root:
+    notes: "A `<span role=\"status\">` with the label. It holds the ring and its turning arc."
+    styles:
+      display: { value: inline-block, assert: false }
+      position: { value: relative, assert: false }
+      flex-shrink: { value: "0", assert: false }
+      vertical-align: { value: middle, assert: false }
+  track:
+    notes: The whole ring, in the tertiary grey.
+    styles:
+      position: { value: absolute }
+      inset: { value: "0" }
+      border-style: { value: solid }
+      border-width: { token: spacing/outline/medium, value: 2px }
+      border-color: { token: spinner/track, value: "#3a3a3a" }
+      border-radius: { token: spacing/radius/full, value: 10000px }
+  arc:
+    notes: "A quarter of the ring in the positive green, over the track. It's what turns: one turn every 600ms, at an even speed."
+    styles:
+      position: { value: absolute }
+      inset: { value: "0" }
+      border-style: { value: solid }
+      border-width: { token: spacing/outline/medium, value: 2px }
+      border-color: { value: transparent, assert: false }
+      border-top-color: { token: spinner/arc, value: "#00d669" }
+      border-radius: { token: spacing/radius/full, value: 10000px }
+      animation-name: { value: rost-spinner-turn, assert: false }
+      animation-duration: { token: motion/duration/slower, value: 600ms }
+      animation-timing-function: { value: linear, assert: false, notes: "No easing: a turn that speeds up and slows down reads as stuck." }
+      animation-iteration-count: { value: infinite, assert: false }
+keyframes:
+  turn:
+    from: { transform: "rotate(0deg)" }
+    to: { transform: "rotate(360deg)" }
+reducedMotion:
+  notes: "For someone who asks for less motion, it turns five times slower. Stopped, it would look broken."
+  elements:
+    arc:
+      animation-duration: { value: 3s, notes: "Five of motion/duration/slower." }
+variants:
+  - when: { size: small }
+    figmaNode: "742:14"
+    elements:
+      root:
+        width: { token: spacing/size/2xsmall, value: 16px }
+        height: { token: spacing/size/2xsmall, value: 16px }
+  - when: { size: medium }
+    figmaNode: "742:17"
+    elements:
+      root:
+        width: { token: spacing/size/xsmall, value: 20px }
+        height: { token: spacing/size/xsmall, value: 20px }
+guidance:
+  status: proposed
+  use:
+    - title: A short wait you can't measure
+      text: "Saving, sending, signing in: a second or two with no way to say how far along it is."
+      show: size=medium
+    - title: Inside a button
+      text: "In place of the button's icon while its action runs, at `small`. Keep the label, and disable the button."
+      show: size=small
+  avoid:
+    - title: Waits you can measure
+      text: "An upload or an import with a count. That's **Progress**."
+    - title: Content that's loading
+      text: "A list or a card on its way. Show its shape with **Skeleton**, so the page doesn't jump."
+  behaviour: |-
+    A grey ring with a green quarter turning once every 600ms. For someone who's asked for less motion it turns five times slower; I didn't stop it, because a still spinner looks like something broke. The picture in Figma is its first frame.
+  accessibility:
+    element: "`<span role=\"status\">`, so the label is read when it appears."
+    name: "`label`. Say what's happening, not \"Spinner\"."
+    colour: "The green arc is 9:1 on the dark page. The grey ring is decoration."
+  content: "The label in sentence case, as a present participle: \"Saving\"."

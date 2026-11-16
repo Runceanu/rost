@@ -17,6 +17,9 @@
   display: block;
   height: 100%;
   border-radius: var(--spacing-radius-full);
+  transition-property: width;
+  transition-duration: var(--motion-duration-slow);
+  transition-timing-function: var(--motion-easing-move);
 }
 
 .rost-progress.rost-progress--tone-positive .rost-progress__fill {
@@ -29,4 +32,8 @@
 
 .rost-progress.rost-progress--tone-negative .rost-progress__fill {
   background: var(--progress-fill-negative);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rost-progress__fill { transition-duration: 0s; }
 }

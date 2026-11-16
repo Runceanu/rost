@@ -34,7 +34,7 @@ Then import `src/rost/fonts.css` and `src/rost/tokens.css` once, at the root of 
 ## Anatomy
 
 - `root`: A `<div role="progressbar">` with `aria-valuenow`, `aria-valuemin` and `aria-valuemax`. It is the track: a 4px pill, as wide as its parent.
-- `fill`: How far along, as a share of the track's width, set from `value`.
+- `fill`: How far along, as a share of the track's width, set from `value`. It eases to a new value instead of jumping.
 
 ## When to use
 
@@ -48,7 +48,7 @@ Then import `src/rost/fonts.css` and `src/rost/tokens.css` once, at the root of 
 
 ## Behaviour
 
-A 4px grey track with the fill on top, as wide as `value` out of `max`. It doesn't animate between values yet, for the same reason Skeleton doesn't pulse. Write the number or the words next to it too: a thin bar is hard to read exactly.
+A 4px grey track with the fill on top, as wide as `value` out of `max`. It eases to a new value over 450ms, or jumps there for someone who asks for less motion. Write the number or the words next to it too: a thin bar is hard to read exactly.
 
 ## Accessibility
 
@@ -66,6 +66,8 @@ Every token this component uses, across all its variants.
 
 | Token | Resolves to |
 |---|---|
+| `motion/duration/slow` | `450ms` |
+| `motion/easing/move` | `cubic-bezier(0.4, 0, 0.2, 1)` |
 | `progress/fill/negative` | `#f2705f` |
 | `progress/fill/positive` | `#00d669` |
 | `progress/fill/warning` | `#fda50d` |

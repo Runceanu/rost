@@ -36,11 +36,19 @@ elements:
       border-radius: { token: spacing/radius/full, value: 10000px }
       background: { token: progress/track, value: "#3a3a3a" }
   fill:
-    notes: "How far along, as a share of the track's width, set from `value`."
+    notes: "How far along, as a share of the track's width, set from `value`. It eases to a new value instead of jumping."
     styles:
       display: { value: block, assert: false }
       height: { value: 100%, assert: false }
       border-radius: { token: spacing/radius/full, value: 10000px }
+      transition-property: { value: width, assert: false }
+      transition-duration: { token: motion/duration/slow, value: 450ms }
+      transition-timing-function: { token: motion/easing/move, value: "cubic-bezier(0.4, 0, 0.2, 1)" }
+reducedMotion:
+  notes: "It jumps to the new value for someone who asks for less motion."
+  elements:
+    fill:
+      transition-duration: { value: 0s, assert: false }
 variants:
   - when: { tone: positive }
     figmaNode: "733:165"
@@ -72,7 +80,7 @@ guidance:
     - title: A score
       text: "A rating or a level that isn't going anywhere. Write the number."
   behaviour: |-
-    A 4px grey track with the fill on top, as wide as `value` out of `max`. It doesn't animate between values yet, for the same reason Skeleton doesn't pulse. Write the number or the words next to it too: a thin bar is hard to read exactly.
+    A 4px grey track with the fill on top, as wide as `value` out of `max`. It eases to a new value over 450ms, or jumps there for someone who asks for less motion. Write the number or the words next to it too: a thin bar is hard to read exactly.
   accessibility:
     element: "`<div role=\"progressbar\">` with `aria-valuenow`, `aria-valuemin=\"0\"` and `aria-valuemax`. Progress sets them."
     name: "`label`, as `aria-label`."

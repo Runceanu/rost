@@ -14,7 +14,7 @@ Rost started as a design system for my own needs and grew into a product of its 
 | [Roadmap](ROADMAP.md) | What I'm doing next |
 | [Release notes](CHANGELOG.md) | What changed in each release |
 
-**50** contracts, **5** stable. **50** have guidance, and I've signed off **32** of those.
+**55** contracts, **5** stable. **55** have guidance, and I've signed off **32** of those.
 
 ## Catalogue
 
@@ -24,6 +24,7 @@ Rost started as a design system for my own needs and grew into a product of its 
 |---|---|---|---|---|
 | [Avatar](components/avatar.md) | A person or a client as a small circle. Their photo, or their initials on grey when there's no photo. | `review` | `proposed` | · |
 | [Badge](components/badge.md) | A small status marker: a coloured dot on its own, or an outlined label. The colour sits in the dot and the outline, never in the text. | `stable` | `agreed` | Portfolio site, Accounting app |
+| [Breadcrumb](components/breadcrumb.md) | Where this page sits, from the top down. Links to the pages above it, a small chevron between, and this page's name last. | `review` | `proposed` | · |
 | [Button](components/button.md) | A 48px button with a label and, if it helps, an icon in front. In four levels of emphasis. | `stable` | `agreed` | Portfolio site, Accounting app |
 | [Card](components/card.md) | A plate that holds one thing together, like a summary, a setting or a figure. Filled grey, or just an edge. | `review` | `proposed` | · |
 | [Carousel](components/carousel.md) | A card for a carousel: a number, a title and a short description. | `review` | `agreed` | Portfolio site |
@@ -33,21 +34,25 @@ Rost started as a design system for my own needs and grew into a product of its 
 | [Dialog](components/dialog.md) | A question or a short task that stops everything else until it's answered. A grey plate over the page with a title, a few words and its buttons. | `review` | `proposed` | · |
 | [Disclosure](components/disclosure.md) | A line that opens to show more, for things most people won't need. | `review` | `proposed` | · |
 | [Divider](components/divider.md) | A thin line between things. | `stable` | `agreed` | Portfolio site, Accounting app |
+| [EmptyState](components/empty-state.md) | What a screen says when there's nothing on it yet. One of Rost's drawings, a line saying why, a sentence on what to do, and the button that does it. | `review` | `proposed` | · |
 | [Icon](components/icon.md) | One of Rost's 18 glyphs, 24px, in the colour of the text around it. | `review` | `proposed` | · |
 | [IconButton](components/icon-button.md) | A round button with only an icon, including a Project type for sitting on top of images. | `review` | `agreed` | Portfolio site |
 | [Illustration](components/illustration.md) | One of Rost's 24 small drawings, 72px, in two greys and a green that follow the theme. | `review` | `proposed` | · |
 | [InlineBanner](components/inline-banner.md) | A filled status pill with an icon and a label, in four statuses and two sizes. | `stable` | `agreed` | Portfolio site, Accounting app |
 | [Input](components/input.md) | A 56px text field with a floating label, an optional lock icon, a line of help text and an error state. | `review` | `agreed` | Portfolio site, Accounting app |
+| [Kbd](components/kbd.md) | A key on the keyboard, written in the text. A small grey cap with the key's name in mono. | `review` | `proposed` | · |
 | [Link](components/link.md) | A link inside text. Green and underlined, or quiet in the text's own colour. | `review` | `proposed` | · |
 | [ListItem](components/list-item.md) | One row you can pick in a list or a nav. A label, an optional line under it, and optional icons and a status dot. | `review` | `agreed` | · |
 | [Menu](components/menu.md) | A navigation item: a label with a line underneath, used in the main nav. | `review` | `agreed` | · |
 | [Navigation](components/navigation.md) | A side navigation on frosted glass. The logo at the top, the main items below it, one action at the bottom. Collapsed to icons, or open with labels. | `review` | `agreed` | · |
+| [Pagination](components/pagination.md) | Moving through a long list a page at a time. Back and forward buttons with where you are between them. | `review` | `proposed` | · |
 | [Popover](components/popover.md) | A small plate that opens over the page with more about something, and closes when you click away. Card's grey, with an edge and the floating shadow. | `review` | `proposed` | · |
 | [Progress](components/progress.md) | How far along something is, as a thin bar that fills. Green as it goes, amber or red when it needs a look. | `review` | `proposed` | · |
 | [Projects](components/projects.md) | One row in the project list: number, name, and industry, type and period on the right. | `review` | `agreed` | Portfolio site |
 | [Radio](components/radio.md) | One choice out of a few, all on show. A 20px circle with a dot in the picked one, and the words beside it. | `review` | `proposed` | · |
 | [Select](components/select.md) | One choice from a list that's too long to show. Input's filled field, with a chevron, and the browser's own list when it opens. | `review` | `proposed` | · |
 | [Skeleton](components/skeleton.md) | Grey shapes where content is about to be, so the page doesn't jump when it arrives. A line of text, a circle or a block. | `review` | `proposed` | · |
+| [Spinner](components/spinner.md) | Something is working and you can't tell how long it'll take. A grey ring with a green quarter that turns. | `review` | `proposed` | · |
 | [Switch](components/switch.md) | A setting that's on or off and takes effect straight away. A pill track with a thumb that moves across. The label is SwitchField's. | `review` | `agreed` | · |
 | [TabItem](components/tab-item.md) | One tab in a row of tabs. A label, optional icons before and after it, and a green underline when it's the one selected. | `review` | `agreed` | · |
 | [Table](components/table.md) | Rows of the same kind of thing, side by side in columns, like the accounting app's payments. No box, a hairline between rows. | `review` | `agreed` | · |

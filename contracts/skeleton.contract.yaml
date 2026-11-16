@@ -30,6 +30,20 @@ elements:
       display: { value: block, assert: false }
       flex-shrink: { value: "0", assert: false }
       background: { token: skeleton/background, value: "#3a3a3a" }
+      animation-name: { value: rost-skeleton-pulse, assert: false }
+      animation-duration: { value: 1.8s, notes: "Three of motion/duration/slower: slow enough to read as waiting, not as an alarm." }
+      animation-timing-function: { token: motion/easing/in-out, value: ease-in-out }
+      animation-iteration-count: { value: infinite, assert: false }
+      animation-direction: { value: alternate, assert: false }
+keyframes:
+  pulse:
+    from: { opacity: "1" }
+    to: { opacity: "var(--opacity-medium)" }
+reducedMotion:
+  notes: "Still, for someone who asks for less motion. A grey shape says enough."
+  elements:
+    root:
+      animation-name: { value: none, assert: false }
 variants:
   - when: { shape: text }
     figmaNode: "733:156"
@@ -64,7 +78,7 @@ guidance:
     - title: Buttons
       text: "A button that's working on something keeps its place and says so itself."
   behaviour: |-
-    Plain grey shapes, matched to what's coming: give text lines uneven widths, the last one shorter. They don't pulse yet. Contracts can't hold an animation, and I'd rather have them still than fake it in CSS nobody checks. When they can, it'll be a slow fade that stops for people who ask for less motion.
+    Plain grey shapes, matched to what's coming: give text lines uneven widths, the last one shorter. They fade slowly between full and 48%, and back, every 1.8 seconds. For someone who asks for less motion they stay still.
   accessibility:
     element: "A `<span aria-hidden=\"true\">`. Screen readers skip them."
     name: "None. Put `aria-busy=\"true\"` on the part of the page that's loading, and take it off when the content is in."

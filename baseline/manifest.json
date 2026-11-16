@@ -2195,5 +2195,57 @@
       "width": 192,
       "height": 120
     }
+  ],
+  "spinner": [
+    {
+      "nodeId": "742:14",
+      "name": "size=small",
+      "file": "742-14.png",
+      "width": 16,
+      "height": 16
+    },
+    {
+      "nodeId": "742:17",
+      "name": "size=medium",
+      "file": "742-17.png",
+      "width": 20,
+      "height": 20
+    }
+  ],
+  "kbd": [
+    {
+      "nodeId": "742:25",
+      "name": "kbd",
+      "file": "742-25.png",
+      "width": 34,
+      "height": 20
+    }
+  ],
+  "breadcrumb": [
+    {
+      "nodeId": "742:29",
+      "name": "breadcrumb",
+      "file": "742-29.png",
+      "width": 265,
+      "height": 20
+    }
+  ],
+  "pagination": [
+    {
+      "nodeId": "742:43",
+      "name": "pagination",
+      "file": "742-43.png",
+      "width": 201,
+      "height": 48
+    }
+  ],
+  "empty-state": [
+    {
+      "nodeId": "742:62",
+      "name": "empty-state",
+      "file": "742-62.png",
+      "width": 400,
+      "height": 316
+    }
   ]
 }

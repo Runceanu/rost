@@ -1,0 +1,41 @@
+/* Generated from contracts/empty-state.contract.yaml by bin/build-css.mjs. Don't edit: change the contract and rebuild. */
+
+.rost-empty-state, .rost-empty-state * { box-sizing: border-box; margin: 0; }
+.rost-empty-state > img, .rost-empty-state [class*="__icons-"] > img { display: block; position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; }
+.rost-empty-state ::placeholder { color: inherit; opacity: 1; }
+
+.rost-empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--spacing-gap-medium);
+  padding: var(--spacing-gap-2xlarge);
+}
+
+.rost-empty-state__illustration {
+  flex-shrink: 0;
+}
+
+.rost-empty-state__title {
+  font-family: var(--font-family-base);
+  font-weight: var(--typography-sub-title-font-weight-medium);
+  font-size: var(--typography-sub-title-font-size);
+  line-height: var(--typography-sub-title-line-height);
+  letter-spacing: var(--typography-sub-title-letter-spacing);
+  color: var(--empty-state-title);
+}
+
+.rost-empty-state__body {
+  max-width: 320px;
+  font-family: var(--font-family-base);
+  font-weight: var(--typography-paragraph-font-weight-regular);
+  font-size: var(--typography-paragraph-font-size);
+  line-height: var(--typography-paragraph-line-height);
+  letter-spacing: var(--typography-paragraph-letter-spacing);
+  color: var(--empty-state-body);
+}
+
+.rost-empty-state__action {
+  flex-shrink: 0;
+}

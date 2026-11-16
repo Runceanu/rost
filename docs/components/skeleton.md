@@ -45,7 +45,7 @@ Then import `src/rost/fonts.css` and `src/rost/tokens.css` once, at the root of 
 
 ## Behaviour
 
-Plain grey shapes, matched to what's coming: give text lines uneven widths, the last one shorter. They don't pulse yet. Contracts can't hold an animation, and I'd rather have them still than fake it in CSS nobody checks. When they can, it'll be a slow fade that stops for people who ask for less motion.
+Plain grey shapes, matched to what's coming: give text lines uneven widths, the last one shorter. They fade slowly between full and 48%, and back, every 1.8 seconds. For someone who asks for less motion they stay still.
 
 ## Accessibility
 
@@ -59,6 +59,7 @@ Every token this component uses, across all its variants.
 
 | Token | Resolves to |
 |---|---|
+| `motion/easing/in-out` | `ease-in-out` |
 | `skeleton/background` | `#3a3a3a` |
 | `spacing/radius/full` | `10000px` |
 | `spacing/radius/medium` | `12px` |

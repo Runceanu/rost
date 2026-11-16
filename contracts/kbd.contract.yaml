@@ -1,0 +1,56 @@
+# yaml-language-server: $schema=../schema/component-contract.schema.json
+schemaVersion: 2
+id: kbd
+name: Kbd
+kind: component
+status: review
+summary: A key on the keyboard, written in the text. A small grey cap with the key's name in mono.
+category: display
+related: [ code, text ]
+source:
+  tool: figma
+  fileKey: 1Zy0wiWKXQAvsfDBX3KR0d
+  nodeId: "742:25"
+  url: https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=742-25
+  extractedAt: "2026-11-16"
+  extractedBy: hand
+  frozenAt: "2026-11-16"
+props:
+  children: { type: slot, required: true, notes: "The key: Esc, Enter, ⌘, K. One Kbd per key; put a plus between them in the text." }
+elements:
+  root:
+    notes: "A `<kbd>`. 20px tall, at least as wide, so a single letter is a square."
+    styles:
+      display: { value: inline-flex, assert: false }
+      align-items: { value: center }
+      justify-content: { value: center }
+      vertical-align: { value: middle, assert: false }
+      min-width: { token: spacing/size/xsmall, value: 20px }
+      height: { token: spacing/size/xsmall, value: 20px }
+      padding-left: { token: spacing/gap/xsmall, value: 6px }
+      padding-right: { token: spacing/gap/xsmall, value: 6px }
+      border-radius: { token: spacing/radius/xsmall, value: 4px }
+      background: { token: kbd/background, value: "#171717" }
+      outline-style: { value: solid, assert: false }
+      outline-width: { token: spacing/outline/small, value: 1px }
+      outline-offset: { value: "calc(-1 * var(--spacing-outline-small))", untokenised: "Composed from a token: the edge sits inside." }
+      outline-color: { token: kbd/edge, value: "#3a3a3a" }
+      font-family: { value: "'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace", notes: "Code's mono. Rost has no mono family token yet." }
+      font-weight: { token: typography/label/font-weight/medium, value: "500" }
+      font-size: { token: typography/label/font-size, value: 12px }
+      line-height: { token: typography/label/line-height, value: 14px }
+      color: { token: kbd/label, value: "#d3d9d5" }
+guidance:
+  status: proposed
+  use:
+    - title: Shortcuts
+      text: "Telling someone which keys do something: Press ⌘ + K to search."
+  avoid:
+    - title: Code
+      text: "Something you type, like a command or a value. That's **Code**."
+  behaviour: "A cap per key. It doesn't press: it's text."
+  accessibility:
+    element: "`<kbd>`, which screen readers know as keyboard input."
+    name: "The key's name. Write symbols out in an `aria-label` when they'd be read oddly (⌘ is \"Command\")."
+    colour: "The key's name is 11:1 on its cap in dark."
+  content: "The key as it's printed on the keyboard: Esc, Enter, Tab, ⌘."

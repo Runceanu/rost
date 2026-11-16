@@ -1,0 +1,27 @@
+/* Generated from contracts/kbd.contract.yaml by bin/build-css.mjs. Don't edit: change the contract and rebuild. */
+
+.rost-kbd, .rost-kbd * { box-sizing: border-box; margin: 0; }
+.rost-kbd > img, .rost-kbd [class*="__icons-"] > img { display: block; position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; }
+.rost-kbd ::placeholder { color: inherit; opacity: 1; }
+
+.rost-kbd {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+  min-width: var(--spacing-size-xsmall);
+  height: var(--spacing-size-xsmall);
+  padding-left: var(--spacing-gap-xsmall);
+  padding-right: var(--spacing-gap-xsmall);
+  border-radius: var(--spacing-radius-xsmall);
+  background: var(--kbd-background);
+  outline-style: solid;
+  outline-width: var(--spacing-outline-small);
+  outline-offset: calc(-1 * var(--spacing-outline-small));
+  outline-color: var(--kbd-edge);
+  font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-weight: var(--typography-label-font-weight-medium);
+  font-size: var(--typography-label-font-size);
+  line-height: var(--typography-label-line-height);
+  color: var(--kbd-label);
+}

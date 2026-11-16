@@ -8,6 +8,11 @@
   display: block;
   flex-shrink: 0;
   background: var(--skeleton-background);
+  animation-name: rost-skeleton-pulse;
+  animation-duration: 1.8s;
+  animation-timing-function: var(--motion-easing-in-out);
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
 }
 
 .rost-skeleton.rost-skeleton--shape-text {
@@ -24,4 +29,13 @@
 .rost-skeleton.rost-skeleton--shape-block {
   height: var(--spacing-size-3xlarge);
   border-radius: var(--spacing-radius-medium);
+}
+
+@keyframes rost-skeleton-pulse {
+  from { opacity: 1; }
+  to { opacity: var(--opacity-medium); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rost-skeleton { animation-name: none; }
 }

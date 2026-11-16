@@ -1,0 +1,64 @@
+# yaml-language-server: $schema=../schema/component-contract.schema.json
+schemaVersion: 2
+id: pagination
+name: Pagination
+kind: component
+status: review
+summary: Moving through a long list a page at a time. Back and forward buttons with where you are between them.
+category: navigation
+related: [ table, icon-button ]
+source:
+  tool: figma
+  fileKey: 1Zy0wiWKXQAvsfDBX3KR0d
+  nodeId: "742:43"
+  url: https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=742-43
+  extractedAt: "2026-11-16"
+  extractedBy: hand
+  frozenAt: "2026-11-16"
+props:
+  page: { type: number, required: true, notes: "The page shown, from 1." }
+  pages: { type: number, required: true, notes: "How many there are." }
+elements:
+  root:
+    notes: "A `<nav aria-label=\"Pagination\">`: the back button, where you are, the forward button, 8px apart."
+    styles:
+      display: { value: inline-flex, assert: false }
+      align-items: { value: center }
+      gap: { token: spacing/gap/small, value: 8px }
+  previous:
+    notes: "An IconButton, Secondary, with its own arrow-left. Disabled on the first page."
+    styles:
+      flex-shrink: { value: "0", assert: false }
+  label:
+    notes: "\"Page 3 of 12\" in paragraph type, the secondary text colour, 8px clear of the buttons."
+    styles:
+      padding-left: { token: spacing/gap/small, value: 8px }
+      padding-right: { token: spacing/gap/small, value: 8px }
+      font-family: { token: font-family/base, value: "'General Sans Variable'" }
+      font-weight: { token: typography/paragraph/font-weight/regular, value: "400" }
+      font-size: { token: typography/paragraph/font-size, value: 14px }
+      line-height: { token: typography/paragraph/line-height, value: 20px }
+      letter-spacing: { token: typography/paragraph/letter-spacing, value: 0px }
+      color: { token: pagination/label, value: "#d3d9d5" }
+      white-space: { value: nowrap, assert: false }
+  next:
+    notes: "An IconButton, Secondary, with Rost's arrow-right Icon. Disabled on the last page."
+    styles:
+      flex-shrink: { value: "0", assert: false }
+guidance:
+  status: proposed
+  use:
+    - title: Long lists
+      text: "Invoices, transactions, clients: anything longer than a screen where the order matters and people go back and forth."
+  avoid:
+    - title: Short lists
+      text: "Under fifty rows, show them all."
+    - title: Feeds
+      text: "Something people scroll through once. Load more as they reach the end."
+  behaviour: "Back, where you are, forward. I left out page numbers to jump to: in the apps people go one page at a time, and \"Page 3 of 12\" says enough. The buttons are disabled at either end."
+  accessibility:
+    element: "`<nav aria-label=\"Pagination\">`, with two IconButtons labelled Previous page and Next page."
+    name: "The buttons by what they do. The label says where you are, and `aria-live` reads the new page when it changes."
+    keyboard: "Tab reaches the buttons; Enter or Space turns the page."
+    colour: "The label is 11:1 on the dark page."
+  content: "\"Page 3 of 12\", in numbers."

@@ -1,0 +1,75 @@
+# yaml-language-server: $schema=../schema/component-contract.schema.json
+schemaVersion: 2
+id: empty-state
+name: EmptyState
+kind: component
+status: review
+summary: What a screen says when there's nothing on it yet. One of Rost's drawings, a line saying why, a sentence on what to do, and the button that does it.
+category: feedback
+related: [ illustration, button, card ]
+source:
+  tool: figma
+  fileKey: 1Zy0wiWKXQAvsfDBX3KR0d
+  nodeId: "742:62"
+  url: https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=742-62
+  extractedAt: "2026-11-16"
+  extractedBy: hand
+  frozenAt: "2026-11-16"
+props:
+  illustration: { type: slot, notes: "One of Rost's Illustrations. Leave it out where the screen is small." }
+  title: { type: slot, required: true, notes: "Why it's empty, in a few words." }
+  children: { type: slot, notes: "A sentence on what to do about it." }
+  action: { type: slot, notes: "The Button that does it, usually Primary." }
+elements:
+  root:
+    notes: "A column, centred, 16px between its parts and 40px around them."
+    styles:
+      display: { value: flex, assert: false }
+      flex-direction: { value: column, assert: false }
+      align-items: { value: center }
+      text-align: { value: center, assert: false }
+      gap: { token: spacing/gap/medium, value: 16px }
+      padding: { token: spacing/gap/2xlarge, value: 40px }
+  illustration:
+    notes: An Illustration, as it is, 72px.
+    styles:
+      flex-shrink: { value: "0", assert: false }
+  title:
+    notes: "Sub-title type, medium weight, in the main text colour."
+    styles:
+      font-family: { token: font-family/base, value: "'General Sans Variable'" }
+      font-weight: { token: typography/sub-title/font-weight/medium, value: "500" }
+      font-size: { token: typography/sub-title/font-size, value: 20px }
+      line-height: { token: typography/sub-title/line-height, value: 28px }
+      letter-spacing: { token: typography/sub-title/letter-spacing, value: 0px }
+      color: { token: empty-state/title, value: "#ededed" }
+  body:
+    notes: "Paragraph type, a step quieter, no wider than 320px so it stays a short block."
+    styles:
+      max-width: { value: 320px, notes: "About two lines of paragraph text." }
+      font-family: { token: font-family/base, value: "'General Sans Variable'" }
+      font-weight: { token: typography/paragraph/font-weight/regular, value: "400" }
+      font-size: { token: typography/paragraph/font-size, value: 14px }
+      line-height: { token: typography/paragraph/line-height, value: 20px }
+      letter-spacing: { token: typography/paragraph/letter-spacing, value: 0px }
+      color: { token: empty-state/body, value: "#d3d9d5" }
+  action:
+    notes: A Button, as it is.
+    styles:
+      flex-shrink: { value: "0", assert: false }
+guidance:
+  status: proposed
+  use:
+    - title: Nothing here yet
+      text: "A list or a screen before its first item: no clients, no invoices this month. Say why, and offer the way to the first one."
+  avoid:
+    - title: No results
+      text: "A search that found nothing needs one line in place of the results, not a drawing."
+    - title: Errors
+      text: "Something that failed. That's **InlineBanner**, with what to do."
+  behaviour: "A drawing, a title, a sentence and at most one Button, centred. It adds nothing to the drawing or the Button: they're Rost's own."
+  accessibility:
+    element: "A `<div>`. The title is a heading (`h2` by default, `as` changes it) so it's found by headings."
+    name: "The title."
+    colour: "The title is 14:1 and the sentence 11:1 on the dark page. The drawing is decoration and is hidden from screen readers."
+  content: "The title says why (\"No invoices yet\"), the sentence what to do, the button the verb (\"New invoice\")."

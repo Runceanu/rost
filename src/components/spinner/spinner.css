@@ -1,0 +1,54 @@
+/* Generated from contracts/spinner.contract.yaml by bin/build-css.mjs. Don't edit: change the contract and rebuild. */
+
+.rost-spinner, .rost-spinner * { box-sizing: border-box; margin: 0; }
+.rost-spinner > img, .rost-spinner [class*="__icons-"] > img { display: block; position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; }
+.rost-spinner ::placeholder { color: inherit; opacity: 1; }
+
+.rost-spinner {
+  display: inline-block;
+  position: relative;
+  flex-shrink: 0;
+  vertical-align: middle;
+}
+
+.rost-spinner__track {
+  position: absolute;
+  inset: 0;
+  border-style: solid;
+  border-width: var(--spacing-outline-medium);
+  border-color: var(--spinner-track);
+  border-radius: var(--spacing-radius-full);
+}
+
+.rost-spinner__arc {
+  position: absolute;
+  inset: 0;
+  border-style: solid;
+  border-width: var(--spacing-outline-medium);
+  border-color: transparent;
+  border-top-color: var(--spinner-arc);
+  border-radius: var(--spacing-radius-full);
+  animation-name: rost-spinner-turn;
+  animation-duration: var(--motion-duration-slower);
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+.rost-spinner.rost-spinner--size-small {
+  width: var(--spacing-size-2xsmall);
+  height: var(--spacing-size-2xsmall);
+}
+
+.rost-spinner.rost-spinner--size-medium {
+  width: var(--spacing-size-xsmall);
+  height: var(--spacing-size-xsmall);
+}
+
+@keyframes rost-spinner-turn {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rost-spinner__arc { animation-duration: 3s; }
+}

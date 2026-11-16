@@ -238,7 +238,8 @@ for (const id of ids) {
     const on = await page.$eval(`[data-node="${node}"]`, (e) => e.dataset.forceOn)
     const forcedOn = forced.length ? await force(node, forced, on) : 0
     if (forced.length) await page.waitForTimeout(SETTLE_MS)
-    const shot = PNG.sync.read(await el.screenshot())
+    // Animations stopped: a spinner is compared at its first frame, as Figma draws it.
+    const shot = PNG.sync.read(await el.screenshot({ animations: 'disabled' }))
     if (forcedOn) await cdp.send('CSS.forcePseudoState', { nodeId: forcedOn, forcedPseudoClasses: [] })
     const base = PNG.sync.read(readFileSync(basePath))
     const label = target.name.padEnd(30)

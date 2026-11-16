@@ -88,6 +88,21 @@ function build(id) {
       rule(p === 'root' ? root : pseudo(p) ? `${root}${pseudo(p)}` : `${root} ${part(p)}`, declarations(styles, { root: p === 'root' }))
   }
 
+  // Named animations, and what they become for someone who asks for less motion.
+  for (const [name, steps] of Object.entries(c.keyframes ?? {})) {
+    rules.push('', `@keyframes ${base}-${name} {`)
+    for (const [at, decls] of Object.entries(steps)) rules.push(`  ${at} { ${Object.entries(decls).map(([k, v]) => `${k}: ${v};`).join(' ')} }`)
+    rules.push('}')
+  }
+  if (c.reducedMotion) {
+    rules.push('', '@media (prefers-reduced-motion: reduce) {')
+    for (const [p, styles] of Object.entries(c.reducedMotion.elements)) {
+      const decls = declarations(styles, { root: p === 'root' })
+      if (decls.length) rules.push(`  ${part(p)} { ${decls.join(' ')} }`)
+    }
+    rules.push('}')
+  }
+
   const dir = new URL(`../src/components/${id}/`, import.meta.url)
   mkdirSync(dir, { recursive: true })
   writeFileSync(new URL(`${id}.css`, dir), rules.join('\n') + '\n')

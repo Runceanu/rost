@@ -1180,6 +1180,27 @@
   --toast-edge: #3a3a3a;
   --toast-message: #ededed;
 
+  /* ── Component: spinner ──────────────────────────────────────────────────── */
+  --spinner-arc: #00d669;
+  --spinner-track: #3a3a3a;
+
+  /* ── Component: kbd ──────────────────────────────────────────────────────── */
+  --kbd-background: #171717;
+  --kbd-edge: #3a3a3a;
+  --kbd-label: #d3d9d5;
+
+  /* ── Component: breadcrumb ───────────────────────────────────────────────── */
+  --breadcrumb-current: #ededed;
+  --breadcrumb-link: #d3d9d5;
+  --breadcrumb-separator: #999999;
+
+  /* ── Component: pagination ───────────────────────────────────────────────── */
+  --pagination-label: #d3d9d5;
+
+  /* ── Component: empty-state ──────────────────────────────────────────────── */
+  --empty-state-body: #d3d9d5;
+  --empty-state-title: #ededed;
+
   /* ── Generic colours (no family in Figma) ────────────────────────────────── */
   --background: #3a3a3a;
   --focus-ring: #999999;
@@ -1336,7 +1357,7 @@
 }
 
 /* ── Light ──────────────────────────────────────────────────────────────────
- * Only the colours change, 775 of them. Figma's light mode, with Rost's own
+ * Only the colours change, 786 of them. Figma's light mode, with Rost's own
  * corrections from registry/light.json where Figma's value fails contrast.
  * Set data-theme="light" on <html> (or any element). Without it you get dark,
  * whatever the system says. data-theme="dark" brings dark back inside a light page.
@@ -1507,6 +1528,9 @@
   --avatar-background: #d3d9d5;
   --avatar-initials: #060805;
   --background: #c2c7c3;
+  --breadcrumb-current: #060805;
+  --breadcrumb-link: #171717;
+  --breadcrumb-separator: #6a6b69;
   --button-borderless-default-label: #171717;
   --button-borderless-disabled-label: #171717;
   --button-borderless-focus-focus-ring: #747573;
@@ -1597,6 +1621,8 @@
   --dialog-body: #171717;
   --dialog-edge: #d3d9d5;
   --dialog-title: #060805;
+  --empty-state-body: #171717;
+  --empty-state-title: #060805;
   --focus-ring: #747573;
   --icon: #006f27;
   --icon-button-primary-default-icon: #171717;
@@ -1728,6 +1754,9 @@
   --interactive-inactive-pressed-label: #171717;
   --interactive-inactive-pressed-outline: #fcfcfc;
   --interactive-inactive-pressed-sub-label: #454545;
+  --kbd-background: #ededed;
+  --kbd-edge: #d3d9d5;
+  --kbd-label: #171717;
   --label: #171717;
   --list-item-dot: #060805;
   --list-item-selected-default-dot: #fcfcfc;
@@ -1803,6 +1832,7 @@
   --non-interactive-foreground-warning-dark: #492604;
   --non-interactive-foreground-warning-light: #fef8e1;
   --outline: #fcfcfc;
+  --pagination-label: #171717;
   --popover-background: #ededed;
   --popover-edge: #d3d9d5;
   --progress-fill-negative: #ae1b13;
@@ -1925,6 +1955,8 @@
   --select-negative-hover-supportive: #ae1b13;
   --select-negative-hover-value: #454545;
   --skeleton-background: #d3d9d5;
+  --spinner-arc: #0e7118;
+  --spinner-track: #d3d9d5;
   --sub-label: #747573;
   --switch-field-label: #171717;
   --switch-off-default-thumb: #171717;
@@ -2286,6 +2318,9 @@
   --avatar-background: #3a3a3a;
   --avatar-initials: #ededed;
   --background: #3a3a3a;
+  --breadcrumb-current: #ededed;
+  --breadcrumb-link: #d3d9d5;
+  --breadcrumb-separator: #999999;
   --button-borderless-default-label: #d3d9d5;
   --button-borderless-disabled-label: #d3d9d5;
   --button-borderless-focus-focus-ring: #999999;
@@ -2376,6 +2411,8 @@
   --dialog-body: #d3d9d5;
   --dialog-edge: #3a3a3a;
   --dialog-title: #ededed;
+  --empty-state-body: #d3d9d5;
+  --empty-state-title: #ededed;
   --focus-ring: #999999;
   --icon: #00d669;
   --icon-button-primary-default-icon: #3a3a3a;
@@ -2507,6 +2544,9 @@
   --interactive-inactive-pressed-label: #d3d9d5;
   --interactive-inactive-pressed-outline: #ededed;
   --interactive-inactive-pressed-sub-label: #c2c7c3;
+  --kbd-background: #171717;
+  --kbd-edge: #3a3a3a;
+  --kbd-label: #d3d9d5;
   --label: #d3d9d5;
   --list-item-dot: #ededed;
   --list-item-selected-default-dot: #060805;
@@ -2582,6 +2622,7 @@
   --non-interactive-foreground-warning-dark: #fef8e1;
   --non-interactive-foreground-warning-light: #492604;
   --outline: #ededed;
+  --pagination-label: #d3d9d5;
   --popover-background: #171717;
   --popover-edge: #3a3a3a;
   --progress-fill-negative: #f2705f;
@@ -2704,6 +2745,8 @@
   --select-negative-hover-supportive: #e93120;
   --select-negative-hover-value: #999999;
   --skeleton-background: #3a3a3a;
+  --spinner-arc: #00d669;
+  --spinner-track: #3a3a3a;
   --sub-label: #999999;
   --switch-field-label: #d3d9d5;
   --switch-off-default-thumb: #d3d9d5;

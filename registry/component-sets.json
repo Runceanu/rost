@@ -570,5 +570,41 @@
     "variants": [
       { "nodeId": "741:84", "name": "placement=inline", "width": 192, "height": 120 }
     ]
+  },
+  "spinner": {
+    "name": "Spinner",
+    "setNodeId": "742:21",
+    "variants": [
+      { "nodeId": "742:14", "name": "size=small", "width": 16, "height": 16 },
+      { "nodeId": "742:17", "name": "size=medium", "width": 20, "height": 20 }
+    ]
+  },
+  "kbd": {
+    "name": "Kbd",
+    "setNodeId": "742:25",
+    "variants": [
+      { "nodeId": "742:25", "name": "kbd", "width": 34, "height": 20 }
+    ]
+  },
+  "breadcrumb": {
+    "name": "Breadcrumb",
+    "setNodeId": "742:29",
+    "variants": [
+      { "nodeId": "742:29", "name": "breadcrumb", "width": 265, "height": 20 }
+    ]
+  },
+  "pagination": {
+    "name": "Pagination",
+    "setNodeId": "742:43",
+    "variants": [
+      { "nodeId": "742:43", "name": "pagination", "width": 201, "height": 48 }
+    ]
+  },
+  "empty-state": {
+    "name": "EmptyState",
+    "setNodeId": "742:62",
+    "variants": [
+      { "nodeId": "742:62", "name": "empty-state", "width": 400, "height": 316 }
+    ]
   }
 }

@@ -206,7 +206,9 @@
     "stateSelectors": {
       "description": "Replaces the pseudo-class for a state, when the state belongs to a part inside, e.g. { Focus: ':has(> .rost-testimonials__top:focus-visible)' } for a disclosure whose header is the button.",
       "type": "object",
-      "additionalProperties": { "type": "string" }
+      "additionalProperties": {
+        "type": "string"
+      }
     },
     "statesOn": {
       "description": "The element the interaction states need, as a selector, e.g. `:is(a[href], button)`. Without it, Hover and the rest apply to the root whatever it is. With it, a static one (a `<span>` tag) never reacts.",
@@ -234,7 +236,11 @@
           },
           "pseudo": {
             "description": "The part is a pseudo-element of the root, not an element of its own: `.rost-<id>::backdrop`, not `.rost-<id>__<part>`. For what the browser draws itself, like a dialog's backdrop.",
-            "enum": ["::backdrop", "::before", "::after"]
+            "enum": [
+              "::backdrop",
+              "::before",
+              "::after"
+            ]
           },
           "notes": {
             "type": "string"
@@ -279,6 +285,38 @@
         }
       }
     },
+    "keyframes": {
+      "description": "Named animations, for motion a state alone can't show (a spinner's turn, a skeleton's pulse). Each becomes `@keyframes rost-<id>-<name>`; a part uses it with `animation-name: rost-<id>-<name>`. Steps are `from`, `to` or percentages, each a map of CSS properties to plain values.",
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "reducedMotion": {
+      "description": "What changes for someone who asks for less motion (`prefers-reduced-motion: reduce`). Every contract with keyframes has one.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "elements"
+      ],
+      "properties": {
+        "notes": {
+          "type": "string"
+        },
+        "elements": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/$defs/styles"
+          }
+        }
+      }
+    },
     "guidance": {
       "description": "Authored, never generated. Survives every re-read of Figma.",
       "type": "object",
@@ -298,12 +336,23 @@
           "type": "array",
           "items": {
             "type": "object",
-            "required": ["title", "text"],
+            "required": [
+              "title",
+              "text"
+            ],
             "additionalProperties": false,
             "properties": {
-              "title": { "type": "string", "description": "A few words for the card, about this case. Not 'Use it'." },
-              "text": { "type": "string" },
-              "show": { "type": "string", "description": "The name of one of this component's fixtures, drawn on the card. Leave it out when the text points at another component in bold: the card shows that one." }
+              "title": {
+                "type": "string",
+                "description": "A few words for the card, about this case. Not 'Use it'."
+              },
+              "text": {
+                "type": "string"
+              },
+              "show": {
+                "type": "string",
+                "description": "The name of one of this component's fixtures, drawn on the card. Leave it out when the text points at another component in bold: the card shows that one."
+              }
             }
           }
         },
@@ -311,12 +360,23 @@
           "type": "array",
           "items": {
             "type": "object",
-            "required": ["title", "text"],
+            "required": [
+              "title",
+              "text"
+            ],
             "additionalProperties": false,
             "properties": {
-              "title": { "type": "string", "description": "A few words for the card, about this case. Not 'Use it'." },
-              "text": { "type": "string" },
-              "show": { "type": "string", "description": "The name of one of this component's fixtures, drawn on the card. Leave it out when the text points at another component in bold: the card shows that one." }
+              "title": {
+                "type": "string",
+                "description": "A few words for the card, about this case. Not 'Use it'."
+              },
+              "text": {
+                "type": "string"
+              },
+              "show": {
+                "type": "string",
+                "description": "The name of one of this component's fixtures, drawn on the card. Leave it out when the text points at another component in bold: the card shows that one."
+              }
             }
           }
         },

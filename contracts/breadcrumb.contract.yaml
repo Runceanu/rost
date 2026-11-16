@@ -1,0 +1,74 @@
+# yaml-language-server: $schema=../schema/component-contract.schema.json
+schemaVersion: 2
+id: breadcrumb
+name: Breadcrumb
+kind: component
+status: review
+summary: Where this page sits, from the top down. Links to the pages above it, a small chevron between, and this page's name last.
+category: navigation
+related: [ link, navigation, tabs ]
+source:
+  tool: figma
+  fileKey: 1Zy0wiWKXQAvsfDBX3KR0d
+  nodeId: "742:29"
+  url: https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=742-29
+  extractedAt: "2026-11-16"
+  extractedBy: hand
+  frozenAt: "2026-11-16"
+props:
+  items: { type: slot, required: true, notes: "The pages from the top down, each a label and an href. The last is this page and has no href." }
+elements:
+  root:
+    notes: "A `<nav aria-label=\"Breadcrumb\">` in paragraph type."
+    styles:
+      display: { value: block, assert: false }
+      font-family: { token: font-family/base, value: "'General Sans Variable'" }
+      font-weight: { token: typography/paragraph/font-weight/regular, value: "400" }
+      font-size: { token: typography/paragraph/font-size, value: 14px }
+      line-height: { token: typography/paragraph/line-height, value: 20px }
+      letter-spacing: { token: typography/paragraph/letter-spacing, value: 0px }
+  list:
+    notes: "An `<ol>` in a row that wraps, 4px between its parts."
+    styles:
+      display: { value: flex, assert: false }
+      flex-wrap: { value: wrap, assert: false }
+      align-items: { value: center }
+      gap: { token: spacing/gap/2xsmall, value: 4px }
+      padding: { token: spacing/gap/none, value: 0px }
+      list-style: { value: none, assert: false }
+  item:
+    notes: "A page above this one: a quiet Link, in the secondary text colour, then a separator."
+    styles:
+      display: { value: inline-flex, assert: false }
+      align-items: { value: center }
+      gap: { token: spacing/gap/2xsmall, value: 4px }
+      color: { token: breadcrumb/link, value: "#d3d9d5" }
+  separator:
+    notes: "Rost's chevron-right, 16px, as a mask in the tertiary colour. Hidden from screen readers: the list says the order."
+    styles:
+      display: { value: block, assert: false }
+      width: { token: spacing/size/2xsmall, value: 16px }
+      height: { token: spacing/size/2xsmall, value: 16px }
+      background: { token: breadcrumb/separator, value: "#999999" }
+      mask: { value: url(./icon-chevron-right.svg) center / contain no-repeat, untokenised: The icon file itself. }
+  current:
+    notes: "This page, in the main text colour. Not a link: `aria-current=\"page\"`."
+    styles:
+      color: { token: breadcrumb/current, value: "#ededed" }
+guidance:
+  status: proposed
+  use:
+    - title: Deep pages
+      text: "A page three or more levels down, like an invoice inside a client inside a year, so getting back up is one click."
+  avoid:
+    - title: The main way around
+      text: "Moving between the top sections of an app. That's **Navigation**."
+    - title: Steps
+      text: "Steps in a form, one after another. That's a stepper, and Rost doesn't have one yet."
+  behaviour: "Every page above this one is a link; this page is last and isn't. On a narrow screen the row wraps. I don't shorten long trails yet: if a trail is longer than four, it probably needs a different structure."
+  accessibility:
+    element: "`<nav aria-label=\"Breadcrumb\">` around an `<ol>`, so it's a landmark and the order is a list."
+    name: "Breadcrumb."
+    keyboard: "Tab goes through the links, the way it does through any links."
+    colour: "The links are 11:1 on the dark page, this page's name 14:1."
+  content: "Each page by the name it has on its own page, in sentence case."
