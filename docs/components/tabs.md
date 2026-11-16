@@ -12,6 +12,16 @@
 | Source | [Figma 448:56](https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=448-56) · read 2026-10-23 |
 | Implemented in | nowhere yet |
 
+## Install
+
+It lands in `src/rost/tabs/`, with what it needs and its contract. In an app that uses shadcn:
+
+```sh
+npx shadcn add https://rost.build/r/tabs.json
+```
+
+Then import `src/rost/fonts.css` and `src/rost/tokens.css` once, at the root of the app. More on this in [Install](../INSTALL.md).
+
 ## Props
 
 | Prop | Type | Values | Default |
@@ -51,4 +61,4 @@ Tabs that belong together, in the order people need them.
 |---|---|---|---|
 | `root` | `box-shadow` | `inset 0 calc(-1 * var(--spacing-outline-small)) 0 0 var(--tabs-line)` | Figma's 1px line along the bottom, drawn inside so the row stays 40px tall and the selected tab's underline sits on top of it. The width and colour are tokens (spacing/outline/small, tabs/line). |
 
-See it live, with every value of every variant: [rost.build/components/tabs](https://rost.build/components/tabs/)
+See it live, with every value of every variant: [rost.build/components/tabs/](https://rost.build/components/tabs/)

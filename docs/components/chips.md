@@ -12,6 +12,16 @@
 | Source | [Figma 139:317](https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=139-317) · read 2026-08-19 · frozen 2026-10-20 |
 | Implemented in | Portfolio site (`src/rost/chips/Chip.tsx`, `.rost-chips`) |
 
+## Install
+
+It lands in `src/rost/chips/`, with what it needs and its contract. In an app that uses shadcn:
+
+```sh
+npx shadcn add https://rost.build/r/chips.json
+```
+
+Then import `src/rost/fonts.css` and `src/rost/tokens.css` once, at the root of the app. More on this in [Install](../INSTALL.md).
+
 ## Props
 
 | Prop | Type | Values | Default |
@@ -116,4 +126,4 @@ Every token this component uses, across all its variants.
 | `outline` | `box-shadow` | `inset 0 0 0 var(--spacing-outline-small) var(--chip-selected-focus-edge)` | Composed from tokens: a 1px edge in the positive green. In dark it's the plate's own colour, so it only shows on hover and press. In light it's a dark green, because the bright plate is 1.9:1 on white and a selected chip has to be seen (WCAG 1.4.11). |
 | `outline` | `box-shadow` | `inset 0 0 0 var(--spacing-outline-small) var(--chip-selected-disabled-edge)` | Composed from tokens: a 1px edge in the positive green. In dark it's the plate's own colour, so it only shows on hover and press. In light it's a dark green, because the bright plate is 1.9:1 on white and a selected chip has to be seen (WCAG 1.4.11). |
 
-See it live, with every value of every variant: [rost.build/components/chips](https://rost.build/components/chips/)
+See it live, with every value of every variant: [rost.build/components/chips/](https://rost.build/components/chips/)

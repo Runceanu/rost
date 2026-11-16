@@ -46,4 +46,4 @@ Every token this component uses, across all its variants.
 |---|---|
 | `effect/menu` | `blur(12px)` |
 
-See it live, with every value of every variant: [rost.build/components/effect-menu](https://rost.build/components/effect-menu/)
+See it live, with every value of every variant: [rost.build/components/effect-menu/](https://rost.build/components/effect-menu/)

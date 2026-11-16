@@ -40,4 +40,4 @@ Every token this component uses, across all its variants.
 |---|---|
 | `effect/thumb` | `blur(12px)` |
 
-See it live, with every value of every variant: [rost.build/components/effect-thumb](https://rost.build/components/effect-thumb/)
+See it live, with every value of every variant: [rost.build/components/effect-thumb/](https://rost.build/components/effect-thumb/)

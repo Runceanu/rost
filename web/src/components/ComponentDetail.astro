@@ -15,6 +15,7 @@ import { TabItem } from '../../../src/components/tab-item/TabItem'
 import { Text } from '../../../src/components/text/Text'
 import { Link } from '../../../src/components/link/Link'
 import { Code } from '../../../src/components/code/Code'
+import { registryIds } from '../lib/registry'
 import { Disclosure } from '../../../src/components/disclosure/Disclosure'
 import { Table } from '../../../src/components/table/Table'
 import { TableRow } from '../../../src/components/table-row/TableRow'
@@ -31,6 +32,7 @@ const built = inCode(id)
 const src = sourceLink(c)
 const source = componentSource(id)
 const usage = fixturesFor(id)?.usage
+const installable = registryIds.includes(id)
 
 const { shots: figma, blanks } = built ? { shots: [], blanks: 0 } : shotsFor(id)
 
@@ -88,6 +90,7 @@ const specLabel = (gr: any, t: any) => [title(e), gr.axes.join(' and '), t.headi
     <Badge status={g?.status === 'agreed' ? 'positive' : g ? 'warning' : 'default'}>Guidance: {g?.status ?? 'none yet'}</Badge>
     <Tag href={`${GITHUB}/blob/master/contracts/${e.file}`} target="_blank" rel="noreferrer">Contract on GitHub</Tag>
     {src.href && <Tag href={src.href} target="_blank" rel="noreferrer">{src.label}</Tag>}
+    <Tag href={`/components/${id}.md`}>As markdown</Tag>
   </div>
 
   <section class="tabs" data-tabs>
@@ -134,6 +137,14 @@ const specLabel = (gr: any, t: any) => [title(e), gr.axes.join(' and '), t.headi
       <div class="contract"><Snippet code={contract} lang="yaml" /></div>
     </div>
   </section>
+
+  {installable && (
+    <>
+      <Text variant="sub-headline" as="h2" tone="primary" id={k('install')}>Install</Text>
+      <Snippet code={`npx shadcn add https://rost.build/r/${id}.json`} lang="sh" />
+      <Text tone="secondary" className="muted">It lands in <Code>src/rost/{id}/</Code>, with what it needs and its contract. No shadcn in your app? <Link href="/docs/install/">Install</Link> says how.</Text>
+    </>
+  )}
 
   {g && <Guidance g={g} id={e.id} />}
 

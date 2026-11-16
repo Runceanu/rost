@@ -12,6 +12,16 @@
 | Source | [Figma 41:259](https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=41-259) · read 2026-08-19 · frozen 2026-10-20 |
 | Implemented in | nowhere yet |
 
+## Install
+
+It lands in `src/rost/menu/`, with what it needs and its contract. In an app that uses shadcn:
+
+```sh
+npx shadcn add https://rost.build/r/menu.json
+```
+
+Then import `src/rost/fonts.css` and `src/rost/tokens.css` once, at the root of the app. More on this in [Install](../INSTALL.md).
+
 ## Props
 
 | Prop | Type | Values | Default |
@@ -96,4 +106,4 @@ Every token this component uses, across all its variants.
 |---|---|---|---|
 | `focus-ring` | `inset` | `var(--spacing-gap-medium-large) calc(-1 * var(--spacing-gap-2xsmall))` | Composed from tokens: around the text only, spacing/gap/medium-large in from the top and bottom, spacing/gap/2xsmall out to each side. |
 
-See it live, with every value of every variant: [rost.build/components/menu](https://rost.build/components/menu/)
+See it live, with every value of every variant: [rost.build/components/menu/](https://rost.build/components/menu/)

@@ -62,4 +62,4 @@ Every token this component uses, across all its variants.
 | `lens` | `press` | `radius 330px, power 1.7` | Tuned by eye: how wide the lens is, and how fast it fades. Only the paper uses it. |
 | `pen` | `cadence` | `2s between sketches, each one 3.2s from first line to gone` | How often the pen draws. There are no motion tokens yet. |
 
-See it live, with every value of every variant: [rost.build/components/effect-paper](https://rost.build/components/effect-paper/)
+See it live, with every value of every variant: [rost.build/components/effect-paper/](https://rost.build/components/effect-paper/)

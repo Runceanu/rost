@@ -12,6 +12,16 @@
 | Source | [Figma 545:57](https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=545-57) · read 2026-10-31 · frozen 2026-10-31 |
 | Implemented in | nowhere yet |
 
+## Install
+
+It lands in `src/rost/switch-field/`, with what it needs and its contract. In an app that uses shadcn:
+
+```sh
+npx shadcn add https://rost.build/r/switch-field.json
+```
+
+Then import `src/rost/fonts.css` and `src/rost/tokens.css` once, at the root of the app. More on this in [Install](../INSTALL.md).
+
 ## Props
 
 | Prop | Type | Values | Default |
@@ -69,4 +79,4 @@ Every token this component uses, across all its variants.
 | `typography/paragraph/letter-spacing` | `0px` |
 | `typography/paragraph/line-height` | `20px` |
 
-See it live, with every value of every variant: [rost.build/components/switch-field](https://rost.build/components/switch-field/)
+See it live, with every value of every variant: [rost.build/components/switch-field/](https://rost.build/components/switch-field/)

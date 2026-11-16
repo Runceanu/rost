@@ -12,6 +12,16 @@
 | Source | [Figma 527:126](https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=527-126) · read 2026-10-30 · frozen 2026-10-30 |
 | Implemented in | nowhere yet |
 
+## Install
+
+It lands in `src/rost/table-item/`, with what it needs and its contract. In an app that uses shadcn:
+
+```sh
+npx shadcn add https://rost.build/r/table-item.json
+```
+
+Then import `src/rost/fonts.css` and `src/rost/tokens.css` once, at the root of the app. More on this in [Install](../INSTALL.md).
+
 ## Props
 
 | Prop | Type | Values | Default |
@@ -91,4 +101,4 @@ Every token this component uses, across all its variants.
 | `action` | `width` | `100%` | As wide as its cell. |
 | `root` | `box-shadow` | `inset var(--spacing-outline-medium) 0 0 0 var(--table-item-selected-row-edge)` | Composed from tokens: a 2px bar down the left of a selected row's first cell. The row's dark green fill is 2:1 against the page, under the 3:1 a selected row needs to be seen (WCAG 1.4.11); the bar is 10:1 in dark and 6:1 in light. A `<tr>` can't draw it, so its first cell does. |
 
-See it live, with every value of every variant: [rost.build/components/table-item](https://rost.build/components/table-item/)
+See it live, with every value of every variant: [rost.build/components/table/#table-item](https://rost.build/components/table/#table-item)

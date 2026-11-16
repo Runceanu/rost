@@ -12,6 +12,16 @@
 | Source | [Figma 39:111](https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=39-111) · read 2026-10-19 · frozen 2026-10-20 |
 | Implemented in | Portfolio site (`src/rost/divider/Divider.tsx`, `.rost-divider`)<br>Accounting app (`src/rost/divider/Divider.tsx`, `.rost-divider`) |
 
+## Install
+
+It lands in `src/rost/divider/`, with what it needs and its contract. In an app that uses shadcn:
+
+```sh
+npx shadcn add https://rost.build/r/divider.json
+```
+
+Then import `src/rost/fonts.css` and `src/rost/tokens.css` once, at the root of the app. More on this in [Install](../INSTALL.md).
+
 ## Anatomy
 
 - `root`
@@ -46,4 +56,4 @@ Every token this component uses, across all its variants.
 | `non-interactive/foreground/quinary` | `#282828` |
 | `spacing/outline/small` | `1px` |
 
-See it live, with every value of every variant: [rost.build/components/divider](https://rost.build/components/divider/)
+See it live, with every value of every variant: [rost.build/components/divider/](https://rost.build/components/divider/)

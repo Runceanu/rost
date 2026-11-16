@@ -12,6 +12,16 @@
 | Source | [Figma 157:302](https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=157-302) · read 2026-10-19 · frozen 2026-10-20 |
 | Implemented in | Portfolio site (`src/rost/carousel/Carousel.tsx`, `.rost-carousel`) |
 
+## Install
+
+It lands in `src/rost/carousel/`, with what it needs and its contract. In an app that uses shadcn:
+
+```sh
+npx shadcn add https://rost.build/r/carousel.json
+```
+
+Then import `src/rost/fonts.css` and `src/rost/tokens.css` once, at the root of the app. More on this in [Install](../INSTALL.md).
+
 ## Props
 
 | Prop | Type | Values | Default |
@@ -116,4 +126,4 @@ Every token this component uses, across all its variants.
 | `focus-ring` | `inset` | `calc(-1 * var(--spacing-gap-2xsmall))` | Composed from a token: the ring sits spacing/gap/2xsmall outside the element. |
 | `focus-ring` | `border-radius` | `calc(var(--spacing-radius-xlarge) + var(--spacing-gap-2xsmall))` | Composed from tokens: the element's spacing/radius/xlarge plus the ring's spacing/gap/2xsmall. |
 
-See it live, with every value of every variant: [rost.build/components/carousel](https://rost.build/components/carousel/)
+See it live, with every value of every variant: [rost.build/components/carousel/](https://rost.build/components/carousel/)

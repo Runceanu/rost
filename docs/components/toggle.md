@@ -12,6 +12,16 @@
 | Source | [Figma 168:1149](https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=168-1149) · read 2026-08-19 · frozen 2026-10-20 |
 | Implemented in | Accounting app (`src/rost/toggle/Toggle.tsx`, `.rost-toggle`) |
 
+## Install
+
+It lands in `src/rost/toggle/`, with what it needs and its contract. In an app that uses shadcn:
+
+```sh
+npx shadcn add https://rost.build/r/toggle.json
+```
+
+Then import `src/rost/fonts.css` and `src/rost/tokens.css` once, at the root of the app. More on this in [Install](../INSTALL.md).
+
 ## Props
 
 | Prop | Type | Values | Default |
@@ -132,4 +142,4 @@ Every token this component uses, across all its variants.
 | `root` | `box-shadow` | `inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--toggle-on-disabled-outline), inset 0 0 0 var(--spacing-outline-small) var(--toggle-on-disabled-edge)` | Figma's 1px left and top stroke, drawn inside the shape as Figma draws it, over a 1px ring in the positive green. The ring is the fill's own colour in dark; in light it's a dark green, because the bright fill is 1.8:1 on white and an on toggle has to be seen (WCAG 1.4.11). The widths and colours are tokens. |
 | `root` | `box-shadow` | `inset var(--spacing-outline-small) var(--spacing-outline-small) 0 0 var(--toggle-on-focus-outline), inset 0 0 0 var(--spacing-outline-small) var(--toggle-on-focus-edge)` | Figma's 1px left and top stroke, drawn inside the shape as Figma draws it, over a 1px ring in the positive green. The ring is the fill's own colour in dark; in light it's a dark green, because the bright fill is 1.8:1 on white and an on toggle has to be seen (WCAG 1.4.11). The widths and colours are tokens. |
 
-See it live, with every value of every variant: [rost.build/components/toggle](https://rost.build/components/toggle/)
+See it live, with every value of every variant: [rost.build/components/toggle/](https://rost.build/components/toggle/)

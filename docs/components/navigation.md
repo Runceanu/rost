@@ -12,6 +12,16 @@
 | Source | [Figma 356:949](https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=356-949) · read 2026-10-26 |
 | Implemented in | nowhere yet |
 
+## Install
+
+It lands in `src/rost/navigation/`, with what it needs and its contract. In an app that uses shadcn:
+
+```sh
+npx shadcn add https://rost.build/r/navigation.json
+```
+
+Then import `src/rost/fonts.css` and `src/rost/tokens.css` once, at the root of the app. More on this in [Install](../INSTALL.md).
+
 ## Props
 
 | Prop | Type | Values | Default |
@@ -79,4 +89,4 @@ Every token this component uses, across all its variants.
 | `action` | `width` | `100%` | Fills the panel inside its padding. |
 | `root` | `width` | `160px` | Figma's own 160px; no size token is 160. |
 
-See it live, with every value of every variant: [rost.build/components/navigation](https://rost.build/components/navigation/)
+See it live, with every value of every variant: [rost.build/components/navigation/](https://rost.build/components/navigation/)

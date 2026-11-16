@@ -12,6 +12,16 @@
 | Source | [Figma 92:15](https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=92-15) · read 2026-10-30 · frozen 2026-10-30 |
 | Implemented in | nowhere yet |
 
+## Install
+
+It lands in `src/rost/icon/`, with what it needs and its contract. In an app that uses shadcn:
+
+```sh
+npx shadcn add https://rost.build/r/icon.json
+```
+
+Then import `src/rost/fonts.css` and `src/rost/tokens.css` once, at the root of the app. More on this in [Install](../INSTALL.md).
+
 ## Props
 
 | Prop | Type | Values | Default |
@@ -81,4 +91,4 @@ Every token this component uses, across all its variants.
 | `root` | `mask-image` | `url(./svg/up-left.svg)` | The icon file, `assets/icons/up-left.svg`. |
 | `root` | `mask-image` | `url(./svg/up-right.svg)` | The icon file, `assets/icons/up-right.svg`. |
 
-See it live, with every value of every variant: [rost.build/components/icon](https://rost.build/components/icon/)
+See it live, with every value of every variant: [rost.build/components/icon/](https://rost.build/components/icon/)

@@ -41,4 +41,4 @@ Every token this component uses, across all its variants.
 |---|---|
 | `effect/lock-frame` | `blur(8px)` |
 
-See it live, with every value of every variant: [rost.build/components/effect-lock-frame](https://rost.build/components/effect-lock-frame/)
+See it live, with every value of every variant: [rost.build/components/effect-lock-frame/](https://rost.build/components/effect-lock-frame/)

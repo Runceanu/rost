@@ -35,7 +35,14 @@ npm run site:dev                 # the website, live, on http://localhost:4321
 npm run deploy                   # build it and publish it to rost.build
 ```
 
-In an app:
+In any app, from rost.build's registry (more in [Install](docs/INSTALL.md)):
+
+```bash
+npx shadcn add https://rost.build/r/button.json   # an app that uses shadcn
+node bin/rost.mjs add button --cwd <app-dir>       # any app; npx rost add button once it's on npm
+```
+
+In an app that sits next to this repo:
 
 ```bash
 npm run add -- <app-dir> badge             # copy a component, its contract and the check into an app

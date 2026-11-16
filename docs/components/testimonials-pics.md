@@ -12,6 +12,16 @@
 | Source | [Figma 438:72](https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=438-72) · read 2026-10-19 · frozen 2026-10-20 |
 | Implemented in | Portfolio site (`src/rost/testimonials-pics/TestimonialPicture.tsx`, `.rost-testimonials-pics`) |
 
+## Install
+
+It lands in `src/rost/testimonials-pics/`, with what it needs and its contract. In an app that uses shadcn:
+
+```sh
+npx shadcn add https://rost.build/r/testimonials-pics.json
+```
+
+Then import `src/rost/fonts.css` and `src/rost/tokens.css` once, at the root of the app. More on this in [Install](../INSTALL.md).
+
 ## Props
 
 | Prop | Type | Values | Default |
@@ -54,4 +64,4 @@ Every token this component uses, across all its variants.
 |---|---|
 | `spacing/size/large` | `56px` |
 
-See it live, with every value of every variant: [rost.build/components/testimonials-pics](https://rost.build/components/testimonials-pics/)
+See it live, with every value of every variant: [rost.build/components/testimonials-pics/](https://rost.build/components/testimonials-pics/)

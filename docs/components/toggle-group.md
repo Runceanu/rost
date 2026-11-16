@@ -12,6 +12,16 @@
 | Source | [Figma 528:742](https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=528-742) · read 2026-10-30 · frozen 2026-10-30 |
 | Implemented in | Accounting app (`src/rost/toggle-group/ToggleGroup.tsx`, `.rost-toggle-group`) |
 
+## Install
+
+It lands in `src/rost/toggle-group/`, with what it needs and its contract. In an app that uses shadcn:
+
+```sh
+npx shadcn add https://rost.build/r/toggle-group.json
+```
+
+Then import `src/rost/fonts.css` and `src/rost/tokens.css` once, at the root of the app. More on this in [Install](../INSTALL.md).
+
 ## Props
 
 | Prop | Type | Values | Default |
@@ -58,4 +68,4 @@ Every token this component uses, across all its variants.
 |---|---|
 | `spacing/gap/3xsmall` | `2px` |
 
-See it live, with every value of every variant: [rost.build/components/toggle-group](https://rost.build/components/toggle-group/)
+See it live, with every value of every variant: [rost.build/components/toggle-group/](https://rost.build/components/toggle-group/)

@@ -12,6 +12,16 @@
 | Source | [Figma 442:94](https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=442-94) · read 2026-10-23 |
 | Implemented in | nowhere yet |
 
+## Install
+
+It lands in `src/rost/tab-item/`, with what it needs and its contract. In an app that uses shadcn:
+
+```sh
+npx shadcn add https://rost.build/r/tab-item.json
+```
+
+Then import `src/rost/fonts.css` and `src/rost/tokens.css` once, at the root of the app. More on this in [Install](../INSTALL.md).
+
 ## Props
 
 | Prop | Type | Values | Default |
@@ -97,4 +107,4 @@ Every token this component uses, across all its variants.
 | `typography/body/letter-spacing` | `0px` |
 | `typography/body/line-height` | `22px` |
 
-See it live, with every value of every variant: [rost.build/components/tab-item](https://rost.build/components/tab-item/)
+See it live, with every value of every variant: [rost.build/components/tabs/#tab-item](https://rost.build/components/tabs/#tab-item)

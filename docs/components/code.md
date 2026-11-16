@@ -12,6 +12,16 @@
 | Source | [Figma 705:104](https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=705-104) · read 2026-11-04 · frozen 2026-11-04 |
 | Implemented in | nowhere yet |
 
+## Install
+
+It lands in `src/rost/code/`, with what it needs and its contract. In an app that uses shadcn:
+
+```sh
+npx shadcn add https://rost.build/r/code.json
+```
+
+Then import `src/rost/fonts.css` and `src/rost/tokens.css` once, at the root of the app. More on this in [Install](../INSTALL.md).
+
 ## Props
 
 | Prop | Type | Values | Default |
@@ -70,4 +80,4 @@ Every token this component uses, across all its variants.
 | `root` | `font-family` | `'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace` | Rost has no mono family token yet. Where JetBrains Mono isn't loaded, the system mono stands in. |
 | `root` | `font-size` | `0.88em` | In a sentence it follows the text around it. Mono looks bigger than General Sans at the same size, so a little smaller. |
 
-See it live, with every value of every variant: [rost.build/components/code](https://rost.build/components/code/)
+See it live, with every value of every variant: [rost.build/components/code/](https://rost.build/components/code/)

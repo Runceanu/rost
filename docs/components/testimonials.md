@@ -12,6 +12,16 @@
 | Source | [Figma 144:67](https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=144-67) · read 2026-10-19 · frozen 2026-10-20 |
 | Implemented in | Portfolio site (`src/rost/testimonials/Testimonials.tsx`, `.rost-testimonials`) |
 
+## Install
+
+It lands in `src/rost/testimonials/`, with what it needs and its contract. In an app that uses shadcn:
+
+```sh
+npx shadcn add https://rost.build/r/testimonials.json
+```
+
+Then import `src/rost/fonts.css` and `src/rost/tokens.css` once, at the root of the app. More on this in [Install](../INSTALL.md).
+
 ## Props
 
 | Prop | Type | Values | Default |
@@ -136,4 +146,4 @@ Every token this component uses, across all its variants.
 | `focus-ring` | `inset` | `calc(-1 * var(--spacing-gap-2xsmall))` | Composed from a token: the ring sits spacing/gap/2xsmall outside the element. |
 | `icons-chevron` | `mask` | `url(./icon-chevron-up.svg) center / contain no-repeat` | The icon file itself. |
 
-See it live, with every value of every variant: [rost.build/components/testimonials](https://rost.build/components/testimonials/)
+See it live, with every value of every variant: [rost.build/components/testimonials/](https://rost.build/components/testimonials/)

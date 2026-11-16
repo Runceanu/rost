@@ -12,6 +12,16 @@
 | Source | [Figma 705:81](https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=705-81) · read 2026-11-04 · frozen 2026-11-04 |
 | Implemented in | nowhere yet |
 
+## Install
+
+It lands in `src/rost/link/`, with what it needs and its contract. In an app that uses shadcn:
+
+```sh
+npx shadcn add https://rost.build/r/link.json
+```
+
+Then import `src/rost/fonts.css` and `src/rost/tokens.css` once, at the root of the app. More on this in [Install](../INSTALL.md).
+
 ## Props
 
 | Prop | Type | Values | Default |
@@ -77,4 +87,4 @@ Every token this component uses, across all its variants.
 |---|---|---|---|
 | `root` | `text-underline-offset` | `0.2em` | Follows the text's size, so it's in em, not a space token. |
 
-See it live, with every value of every variant: [rost.build/components/link](https://rost.build/components/link/)
+See it live, with every value of every variant: [rost.build/components/link/](https://rost.build/components/link/)

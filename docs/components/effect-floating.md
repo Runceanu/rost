@@ -40,4 +40,4 @@ Every token this component uses, across all its variants.
 |---|---|
 | `shadow/floating` | `0px 16px 24px 0px rgba(0, 0, 0, 0.16)` |
 
-See it live, with every value of every variant: [rost.build/components/effect-floating](https://rost.build/components/effect-floating/)
+See it live, with every value of every variant: [rost.build/components/effect-floating/](https://rost.build/components/effect-floating/)

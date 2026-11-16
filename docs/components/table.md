@@ -12,6 +12,16 @@
 | Source | [Figma 527:596](https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=527-596) · read 2026-10-30 · frozen 2026-10-30 |
 | Implemented in | nowhere yet |
 
+## Install
+
+It lands in `src/rost/table/`, with what it needs and its contract. In an app that uses shadcn:
+
+```sh
+npx shadcn add https://rost.build/r/table.json
+```
+
+Then import `src/rost/fonts.css` and `src/rost/tokens.css` once, at the root of the app. More on this in [Install](../INSTALL.md).
+
 ## Props
 
 | Prop | Type | Values | Default |
@@ -75,4 +85,4 @@ Every token this component uses, across all its variants.
 |---|---|---|---|
 | `root` | `width` | `100%` | As wide as where it sits. |
 
-See it live, with every value of every variant: [rost.build/components/table](https://rost.build/components/table/)
+See it live, with every value of every variant: [rost.build/components/table/](https://rost.build/components/table/)

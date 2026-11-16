@@ -12,6 +12,16 @@
 | Source | [Figma 240:273](https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=240-273) · read 2026-08-19 · frozen 2026-10-20 |
 | Implemented in | Portfolio site (`src/rost/input/Input.tsx`, `.rost-input`)<br>Accounting app (`src/rost/input/Input.tsx`, `.rost-input`) |
 
+## Install
+
+It lands in `src/rost/input/`, with what it needs and its contract. In an app that uses shadcn:
+
+```sh
+npx shadcn add https://rost.build/r/input.json
+```
+
+Then import `src/rost/fonts.css` and `src/rost/tokens.css` once, at the root of the app. More on this in [Install](../INSTALL.md).
+
 ## Props
 
 | Prop | Type | Values | Default |
@@ -161,4 +171,4 @@ Every token this component uses, across all its variants.
 | `supportive` | `top` | `calc(var(--spacing-size-large) + var(--spacing-gap-2xsmall))` | Composed from tokens: the field's height plus spacing/gap/2xsmall. |
 | `focus-ring` | `inset` | `calc(-1 * var(--spacing-gap-2xsmall))` | Composed from a token: the ring sits spacing/gap/2xsmall outside the field. |
 
-See it live, with every value of every variant: [rost.build/components/input](https://rost.build/components/input/)
+See it live, with every value of every variant: [rost.build/components/input/](https://rost.build/components/input/)

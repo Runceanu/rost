@@ -15,6 +15,7 @@
     "./components/*": "./src/components/*"
   },
   "bin": {
+    "rost": "./bin/rost.mjs",
     "rost-audit": "./bin/audit.mjs"
   },
   "scripts": {

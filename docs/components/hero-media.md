@@ -12,6 +12,16 @@
 | Source | [Figma 793:2345](https://www.figma.com/design/pg02BcqlCQCVt6LzTAiPhD/?node-id=793-2345) · read 2026-10-18 · frozen 2026-10-20 |
 | Implemented in | Portfolio site (`src/rost/hero-media/HeroMedia.tsx`, `.rost-hero-media`) |
 
+## Install
+
+It lands in `src/rost/hero-media/`, with what it needs and its contract. In an app that uses shadcn:
+
+```sh
+npx shadcn add https://rost.build/r/hero-media.json
+```
+
+Then import `src/rost/fonts.css` and `src/rost/tokens.css` once, at the root of the app. More on this in [Install](../INSTALL.md).
+
 ## Props
 
 | Prop | Type | Values | Default |
@@ -64,4 +74,4 @@ Every token this component uses, across all its variants.
 | `spacing/layout/hero-height` | `630px` |
 | `spacing/radius/xlarge` | `24px` |
 
-See it live, with every value of every variant: [rost.build/components/hero-media](https://rost.build/components/hero-media/)
+See it live, with every value of every variant: [rost.build/components/hero-media/](https://rost.build/components/hero-media/)

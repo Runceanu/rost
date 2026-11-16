@@ -12,6 +12,16 @@
 | Source | [Figma 527:483](https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=527-483) · read 2026-10-30 · frozen 2026-10-30 |
 | Implemented in | nowhere yet |
 
+## Install
+
+It lands in `src/rost/table-row/`, with what it needs and its contract. In an app that uses shadcn:
+
+```sh
+npx shadcn add https://rost.build/r/table-row.json
+```
+
+Then import `src/rost/fonts.css` and `src/rost/tokens.css` once, at the root of the app. More on this in [Install](../INSTALL.md).
+
 ## Props
 
 | Prop | Type | Values | Default |
@@ -75,4 +85,4 @@ Every token this component uses, across all its variants.
 |---|---|---|---|
 | `root` | `outline-offset` | `-2px` | Inside the row, the ring's own width, so it isn't cut by the rows around it. |
 
-See it live, with every value of every variant: [rost.build/components/table-row](https://rost.build/components/table-row/)
+See it live, with every value of every variant: [rost.build/components/table/#table-row](https://rost.build/components/table/#table-row)

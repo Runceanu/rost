@@ -12,6 +12,16 @@
 | Source | [Figma 139:395](https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=139-395) · read 2026-10-20 · frozen 2026-10-20 |
 | Implemented in | Portfolio site (`src/rost/badge/Badge.tsx`, `.rost-badge`)<br>Accounting app (`src/rost/badge/Badge.tsx`, `.rost-badge`) |
 
+## Install
+
+It lands in `src/rost/badge/`, with what it needs and its contract. In an app that uses shadcn:
+
+```sh
+npx shadcn add https://rost.build/r/badge.json
+```
+
+Then import `src/rost/fonts.css` and `src/rost/tokens.css` once, at the root of the app. More on this in [Install](../INSTALL.md).
+
 ## Props
 
 | Prop | Type | Values | Default |
@@ -93,4 +103,4 @@ Every token this component uses, across all its variants.
 | `dot` | `mask` | `url(./dot.svg) center / contain no-repeat` | The dot's shape. The colour is the token. |
 | `icons-dot` | `mask` | `url(./icon-dot.svg) center / contain no-repeat` | The dot's shape. The colour is the token. |
 
-See it live, with every value of every variant: [rost.build/components/badge](https://rost.build/components/badge/)
+See it live, with every value of every variant: [rost.build/components/badge/](https://rost.build/components/badge/)

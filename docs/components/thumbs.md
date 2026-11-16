@@ -12,6 +12,16 @@
 | Source | [Figma 109:79](https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=109-79) · read 2026-10-19 · frozen 2026-10-20 |
 | Implemented in | Portfolio site (`src/rost/thumbs/Thumbs.tsx`, `.rost-thumbs`) |
 
+## Install
+
+It lands in `src/rost/thumbs/`, with what it needs and its contract. In an app that uses shadcn:
+
+```sh
+npx shadcn add https://rost.build/r/thumbs.json
+```
+
+Then import `src/rost/fonts.css` and `src/rost/tokens.css` once, at the root of the app. More on this in [Install](../INSTALL.md).
+
 ## Props
 
 | Prop | Type | Values | Default |
@@ -154,4 +164,4 @@ Every token this component uses, across all its variants.
 | `focus-ring` | `border-radius` | `calc(var(--spacing-radius-xlarge) + var(--spacing-gap-2xsmall))` | Composed from tokens: the element's spacing/radius/xlarge plus the ring's spacing/gap/2xsmall. |
 | `icons-lock` | `mask` | `url(./icon-lock.svg) center / contain no-repeat` | The icon file itself. |
 
-See it live, with every value of every variant: [rost.build/components/thumbs](https://rost.build/components/thumbs/)
+See it live, with every value of every variant: [rost.build/components/thumbs/](https://rost.build/components/thumbs/)

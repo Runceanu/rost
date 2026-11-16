@@ -12,6 +12,16 @@
 | Source | [Figma 205:614](https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=205-614) · read 2026-10-20 · frozen 2026-10-20 |
 | Implemented in | Portfolio site (`src/rost/inline-banner/InlineBanner.tsx`, `.rost-inline-banner`)<br>Accounting app (`src/rost/inline-banner/InlineBanner.tsx`, `.rost-inline-banner`) |
 
+## Install
+
+It lands in `src/rost/inline-banner/`, with what it needs and its contract. In an app that uses shadcn:
+
+```sh
+npx shadcn add https://rost.build/r/inline-banner.json
+```
+
+Then import `src/rost/fonts.css` and `src/rost/tokens.css` once, at the root of the app. More on this in [Install](../INSTALL.md).
+
 ## Props
 
 | Prop | Type | Values | Default |
@@ -109,4 +119,4 @@ Every token this component uses, across all its variants.
 | `icons-positive` | `mask` | `url(./icons/positive-medium.svg) center / contain no-repeat` | The glyph's shape. The colour is the token. |
 | `icons-warning` | `mask` | `url(./icons/warning-medium.svg) center / contain no-repeat` | The glyph's shape. The colour is the token. |
 
-See it live, with every value of every variant: [rost.build/components/inline-banner](https://rost.build/components/inline-banner/)
+See it live, with every value of every variant: [rost.build/components/inline-banner/](https://rost.build/components/inline-banner/)

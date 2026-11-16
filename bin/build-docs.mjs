@@ -4,7 +4,7 @@
  * catalogue. Markdown so it reads in the repo and in an agent's context alike;
  * rost.build (web/) renders the same model for browsing.
  */
-import { mkdirSync, writeFileSync, readdirSync, rmSync, readFileSync } from 'node:fs'
+import { mkdirSync, writeFileSync, readdirSync, rmSync, readFileSync, existsSync } from 'node:fs'
 import { loadKit, loadTokens, KINDS, APP_LABEL, title, sourceLink, guidanceMarkdown, COVERAGE, classify, plainGroups } from './lib/kit.mjs'
 
 const kit = loadKit()
@@ -39,6 +39,14 @@ function page(e) {
   if (c.pending?.reason) problems.push(`Still to read: ${c.pending.reason}`)
   if (!g) problems.push(`No guidance yet. It needs a \`guidance\` block (there's one to copy in \`schema/template.contract.yaml\`).`)
   if (problems.length) lines.push('## Not right yet', '', ...problems.map((p) => `- ${p}`), '')
+
+  // Built components are in the registry on rost.build.
+  if (existsSync(new URL(`../src/components/${e.id}/`, import.meta.url))) lines.push(
+    '## Install', '',
+    `It lands in \`src/rost/${e.id}/\`, with what it needs and its contract. In an app that uses shadcn:`, '',
+    '```sh', `npx shadcn add https://rost.build/r/${e.id}.json`, '```', '',
+    `Then import \`src/rost/fonts.css\` and \`src/rost/tokens.css\` once, at the root of the app. More on this in [Install](../INSTALL.md).`, '',
+  )
 
   const props = Object.entries(c.props ?? {})
   if (props.length) {
@@ -82,7 +90,9 @@ function page(e) {
     lines.push('')
   }
 
-  lines.push(`See it live, with every value of every variant: [rost.build/components/${e.id}](https://rost.build/components/${e.id}/)`, '')
+  // A part (a tab-item) is shown on the page of the one it belongs to.
+  const live = c.partOf ? `components/${c.partOf}/#${e.id}` : `components/${e.id}/`
+  lines.push(`See it live, with every value of every variant: [rost.build/${live}](https://rost.build/${live})`, '')
   return lines.join('\n')
 }
 

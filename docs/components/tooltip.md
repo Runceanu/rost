@@ -12,6 +12,16 @@
 | Source | [Figma 138:276](https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=138-276) · read 2026-10-23 |
 | Implemented in | Portfolio site (`src/rost/tooltip/Tooltip.tsx`, `.rost-tooltip`) |
 
+## Install
+
+It lands in `src/rost/tooltip/`, with what it needs and its contract. In an app that uses shadcn:
+
+```sh
+npx shadcn add https://rost.build/r/tooltip.json
+```
+
+Then import `src/rost/fonts.css` and `src/rost/tokens.css` once, at the root of the app. More on this in [Install](../INSTALL.md).
+
 ## Props
 
 | Prop | Type | Values | Default |
@@ -66,4 +76,4 @@ Every token this component uses, across all its variants.
 | `typography/label/letter-spacing` | `0px` |
 | `typography/label/line-height` | `14px` |
 
-See it live, with every value of every variant: [rost.build/components/tooltip](https://rost.build/components/tooltip/)
+See it live, with every value of every variant: [rost.build/components/tooltip/](https://rost.build/components/tooltip/)
