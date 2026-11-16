@@ -2329,5 +2329,23 @@
       "width": 136,
       "height": 40
     }
+  ],
+  "fieldset": [
+    {
+      "nodeId": "745:6",
+      "name": "fieldset",
+      "file": "745-6.png",
+      "width": 199,
+      "height": 106
+    }
+  ],
+  "accordion": [
+    {
+      "nodeId": "745:29",
+      "name": "accordion",
+      "file": "745-29.png",
+      "width": 400,
+      "height": 135
+    }
   ]
 }

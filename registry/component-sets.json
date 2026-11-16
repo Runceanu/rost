@@ -652,5 +652,19 @@
     "variants": [
       { "nodeId": "744:48", "name": "avatar-group", "width": 136, "height": 40 }
     ]
+  },
+  "fieldset": {
+    "name": "Fieldset",
+    "setNodeId": "745:6",
+    "variants": [
+      { "nodeId": "745:6", "name": "fieldset", "width": 199, "height": 106 }
+    ]
+  },
+  "accordion": {
+    "name": "Accordion",
+    "setNodeId": "745:29",
+    "variants": [
+      { "nodeId": "745:29", "name": "accordion", "width": 400, "height": 135 }
+    ]
   }
 }

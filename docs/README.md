@@ -14,7 +14,7 @@ Rost started as a design system for my own needs and grew into a product of its 
 | [Roadmap](ROADMAP.md) | What I'm doing next |
 | [Release notes](CHANGELOG.md) | What changed in each release |
 
-**61** contracts, **5** stable. **61** have guidance, and I've signed off **32** of those.
+**63** contracts, **5** stable. **63** have guidance, and I've signed off **32** of those.
 
 ## Catalogue
 
@@ -22,6 +22,7 @@ Rost started as a design system for my own needs and grew into a product of its 
 
 | | Summary | Contract | Guidance | Used in |
 |---|---|---|---|---|
+| [Accordion](components/accordion.md) | Several things that open one by one, like questions and answers: Disclosures in a column, a line between each. | `review` | `proposed` | · |
 | [Avatar](components/avatar.md) | A person or a client as a small circle. Their photo, or their initials on grey when there's no photo. | `review` | `proposed` | · |
 | [AvatarGroup](components/avatar-group.md) | Who is involved, without a list. Medium Avatars overlapping by 8px, each ringed in the page colour, and how many more. | `review` | `proposed` | · |
 | [Badge](components/badge.md) | A small status marker: a coloured dot on its own, or an outlined label. The colour sits in the dot and the outline, never in the text. | `stable` | `agreed` | Portfolio site, Accounting app |
@@ -37,6 +38,7 @@ Rost started as a design system for my own needs and grew into a product of its 
 | [Disclosure](components/disclosure.md) | A line that opens to show more, for things most people won't need. | `review` | `proposed` | · |
 | [Divider](components/divider.md) | A thin line between things. | `stable` | `agreed` | Portfolio site, Accounting app |
 | [EmptyState](components/empty-state.md) | What a screen says when there's nothing on it yet. One of Rost's drawings, a line saying why, a sentence on what to do, and the button that does it. | `review` | `proposed` | · |
+| [Fieldset](components/fieldset.md) | A question with its choices: the question in medium paragraph type, the Radios or Checkboxes under it, and a line of help. | `review` | `proposed` | · |
 | [Icon](components/icon.md) | One of Rost's 18 glyphs, 24px, in the colour of the text around it. | `review` | `proposed` | · |
 | [IconButton](components/icon-button.md) | A round button with only an icon, including a Project type for sitting on top of images. | `review` | `agreed` | Portfolio site |
 | [Illustration](components/illustration.md) | One of Rost's 24 small drawings, 72px, in two greys and a green that follow the theme. | `review` | `proposed` | · |

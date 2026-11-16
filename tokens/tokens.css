@@ -1237,6 +1237,13 @@
   /* ── Component: avatar-group ─────────────────────────────────────────────── */
   --avatar-group-ring: #060805;
 
+  /* ── Component: fieldset ─────────────────────────────────────────────────── */
+  --fieldset-help: #999999;
+  --fieldset-legend: #ededed;
+
+  /* ── Component: accordion ────────────────────────────────────────────────── */
+  --accordion-divider: #3a3a3a;
+
   /* ── Generic colours (no family in Figma) ────────────────────────────────── */
   --background: #3a3a3a;
   --focus-ring: #999999;
@@ -1393,13 +1400,14 @@
 }
 
 /* ── Light ──────────────────────────────────────────────────────────────────
- * Only the colours change, 807 of them. Figma's light mode, with Rost's own
+ * Only the colours change, 810 of them. Figma's light mode, with Rost's own
  * corrections from registry/light.json where Figma's value fails contrast.
  * Set data-theme="light" on <html> (or any element). Without it you get dark,
  * whatever the system says. data-theme="dark" brings dark back inside a light page.
  */
 [data-theme="light"] {
   color-scheme: light;
+  --accordion-divider: #d3d9d5;
   --actions-borderless-default-icon: #006f27;
   --actions-borderless-default-label: #171717;
   --actions-borderless-default-sub-label: #747573;
@@ -1663,6 +1671,8 @@
   --dialog-title: #060805;
   --empty-state-body: #171717;
   --empty-state-title: #060805;
+  --fieldset-help: #6a6b69;
+  --fieldset-legend: #060805;
   --focus-ring: #747573;
   --icon: #006f27;
   --icon-button-primary-default-icon: #171717;
@@ -2211,6 +2221,7 @@
 
 [data-theme="dark"] {
   color-scheme: dark;
+  --accordion-divider: #3a3a3a;
   --actions-borderless-default-icon: #00d669;
   --actions-borderless-default-label: #d3d9d5;
   --actions-borderless-default-sub-label: #999999;
@@ -2474,6 +2485,8 @@
   --dialog-title: #ededed;
   --empty-state-body: #d3d9d5;
   --empty-state-title: #ededed;
+  --fieldset-help: #999999;
+  --fieldset-legend: #ededed;
   --focus-ring: #999999;
   --icon: #00d669;
   --icon-button-primary-default-icon: #3a3a3a;

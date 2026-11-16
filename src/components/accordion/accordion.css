@@ -1,0 +1,18 @@
+/* Generated from contracts/accordion.contract.yaml by bin/build-css.mjs. Don't edit: change the contract and rebuild. */
+
+.rost-accordion, .rost-accordion * { box-sizing: border-box; margin: 0; }
+.rost-accordion > img, .rost-accordion [class*="__icons-"] > img { display: block; position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; }
+.rost-accordion ::placeholder { color: inherit; opacity: 1; }
+
+.rost-accordion {
+  display: flex;
+  flex-direction: column;
+}
+
+.rost-accordion__item {
+  padding-top: var(--spacing-gap-small-medium);
+  padding-bottom: var(--spacing-gap-small-medium);
+  border-bottom-style: solid;
+  border-bottom-width: var(--spacing-outline-small);
+  border-bottom-color: var(--accordion-divider);
+}

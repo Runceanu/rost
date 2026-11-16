@@ -1,0 +1,73 @@
+# yaml-language-server: $schema=../schema/component-contract.schema.json
+schemaVersion: 2
+id: fieldset
+name: Fieldset
+kind: component
+status: review
+summary: "A question with its choices: the question in medium paragraph type, the Radios or Checkboxes under it, and a line of help."
+category: inputs
+related: [ radio, checkbox, switch-field ]
+source:
+  tool: figma
+  fileKey: 1Zy0wiWKXQAvsfDBX3KR0d
+  nodeId: "745:6"
+  url: https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=745-6
+  extractedAt: "2026-11-16"
+  extractedBy: hand
+  frozenAt: "2026-11-16"
+props:
+  legend: { type: slot, required: true, notes: "The question the choices answer." }
+  children: { type: slot, required: true, notes: "The Radios or Checkboxes." }
+  help: { type: slot, notes: "One line under the choices, when the question needs it." }
+elements:
+  root:
+    notes: "A `<fieldset>` with the browser's frame taken away. The question, the choices and the help, 12px apart."
+    styles:
+      display: { value: flex, assert: false }
+      flex-direction: { value: column, assert: false }
+      gap: { token: spacing/gap/small-medium, value: 12px }
+      margin: { token: spacing/gap/none, value: 0px }
+      padding: { token: spacing/gap/none, value: 0px }
+      border: { value: none, assert: false }
+      min-width: { value: "0", assert: false }
+  legend:
+    notes: "The `<legend>`, in paragraph type, medium weight, the main text colour. A legend isn't one of the column's items, so it keeps its own 12px below."
+    styles:
+      padding: { token: spacing/gap/none, value: 0px }
+      margin-bottom: { token: spacing/gap/small-medium, value: 12px }
+      font-family: { token: font-family/base, value: "'General Sans Variable'" }
+      font-weight: { token: typography/paragraph/font-weight/medium, value: "500" }
+      font-size: { token: typography/paragraph/font-size, value: 14px }
+      line-height: { token: typography/paragraph/line-height, value: 20px }
+      letter-spacing: { token: typography/paragraph/letter-spacing, value: 0px }
+      color: { token: fieldset/legend, value: "#ededed" }
+  options:
+    notes: The choices in a column, 8px apart.
+    styles:
+      display: { value: flex, assert: false }
+      flex-direction: { value: column, assert: false }
+      align-items: { value: flex-start }
+      gap: { token: spacing/gap/small, value: 8px }
+  help:
+    notes: "Label type in the tertiary colour."
+    styles:
+      font-family: { token: font-family/base, value: "'General Sans Variable'" }
+      font-weight: { token: typography/label/font-weight/regular, value: "400" }
+      font-size: { token: typography/label/font-size, value: 12px }
+      line-height: { token: typography/label/line-height, value: 14px }
+      letter-spacing: { token: typography/label/letter-spacing, value: 0px }
+      color: { token: fieldset/help, value: "#999999" }
+guidance:
+  status: proposed
+  use:
+    - title: One question, a few answers
+      text: "Radios that answer one question, or Checkboxes that belong together, like which months to include."
+  avoid:
+    - title: A single choice
+      text: "One Checkbox on its own needs no Fieldset: its words are its question."
+  behaviour: "It groups the choices under their question. Radios inside share a `name`, and the browser keeps one picked."
+  accessibility:
+    element: "`<fieldset>` with a `<legend>`, so screen readers say the question before each choice."
+    name: "The legend."
+    colour: "The question is 14:1 and the help 7:1 on the dark page."
+  content: "The legend is a question or a short label; the help says what happens with the answer."

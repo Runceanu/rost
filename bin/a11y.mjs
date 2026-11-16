@@ -140,7 +140,9 @@ for (const id of components) {
     for (let f = 0; f < count; f++) {
       const meta = await page.$eval(`[data-fixture="${f}"]`, (e) => ({ name: e.dataset.name, forced: !!e.dataset.force }))
       if (meta.forced || /disabled/i.test(meta.name)) continue
-      const controls = await page.$$eval(`[data-fixture="${f}"] :is(a[href], button, input, textarea, select, [tabindex]):not([tabindex="-1"]):not([disabled]):not([aria-disabled="true"])`, (els) => els.map((el, i) => {
+      // A radio that isn't picked, in a group where one is, is reached with the
+      // arrow keys, not Tab: that's how the browser does radio groups.
+      const controls = await page.$$eval(`[data-fixture="${f}"] :is(a[href], button, input, textarea, select, [tabindex]):not([tabindex="-1"]):not([disabled]):not([aria-disabled="true"])`, (els) => els.filter((el) => !(el.type === 'radio' && !el.checked && el.name && document.querySelector(`input[type="radio"][name="${CSS.escape(el.name)}"]:checked`))).map((el, i) => {
         el.dataset.ctl = String(i)
         const cs = getComputedStyle(el)
         return { i, tag: el.tagName.toLowerCase(), role: el.getAttribute('role'), pressed: el.getAttribute('aria-pressed'), current: el.getAttribute('aria-current') ?? el.getAttribute('aria-selected'), checked: el.getAttribute('aria-checked'), cls: [...el.classList][0] ?? el.tagName.toLowerCase(), border: parseFloat(cs.borderTopWidth) || 0 }
