@@ -3,13 +3,35 @@
   "version": "0.1.0",
   "description": "Rost: a design system that grew into a product of its own. Contracts, tokens and components, serving products across different industries.",
   "type": "module",
-  "private": true,
+  "keywords": [
+    "design-system",
+    "react",
+    "components",
+    "design-tokens",
+    "shadcn",
+    "registry"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "files": [
+    "bin/rost.mjs",
+    "bin/audit.mjs",
+    "tokens/",
+    "contracts/",
+    "schema/",
+    "registry/figma-variables.json",
+    "src/conform.ts",
+    "src/assets.d.ts",
+    "src/components/",
+    "!src/components/**/*.fixtures.tsx",
+    "README.md"
+  ],
   "exports": {
     "./tokens.css": "./tokens/tokens.css",
     "./fonts.css": "./tokens/fonts.css",
     "./tokens.json": "./tokens/tokens.json",
     "./contracts/*": "./contracts/*",
-    "./registry/*": "./registry/*",
     "./conform": "./src/conform.ts",
     "./schema/*": "./schema/*",
     "./components/*": "./src/components/*"
@@ -36,12 +58,9 @@
     "pen": "node bin/build-pen.mjs",
     "pen:site": "npm run site && node bin/build-pen-pages.mjs web dist ../design/rost-build.pen --all"
   },
-  "dependencies": {
-    "ajv": "8.20.0",
-    "yaml": "2.9.1"
-  },
   "devDependencies": {
     "@astrojs/react": "4.4.2",
+    "ajv": "8.20.0",
     "astro": "5.18.2",
     "axe-core": "^4.14.0",
     "esbuild": "0.28.2",
@@ -51,7 +70,8 @@
     "pngjs": "7.0.0",
     "react": "19.3.1",
     "react-dom": "19.3.1",
-    "wrangler": "4.151.2"
+    "wrangler": "4.151.2",
+    "yaml": "2.9.1"
   },
   "peerDependencies": {
     "react": ">=19"
@@ -60,5 +80,10 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/Runceanu/rost.git"
+  },
+  "peerDependenciesMeta": {
+    "react": {
+      "optional": true
+    }
   }
 }
