@@ -29,12 +29,21 @@ export function builtIds(repo) {
   return readdirSync(dir).filter((d) => statSync(join(dir, d)).isDirectory()).sort()
 }
 
-/** The other components a component imports (`from '../badge/Badge'`). */
+/**
+ * The other components a component needs: the ones it imports
+ * (`from '../badge/Badge'`), and its parts, the contracts that say they're
+ * `partOf` it. Tabs doesn't import TabItem, but you can't use one without the other.
+ */
 export function needsOf(repo, id) {
   const dir = join(repo, 'src/components', id)
-  return [...new Set(filesIn(dir).filter((f) => f.endsWith('.tsx'))
-    .flatMap((f) => [...readFileSync(join(dir, f), 'utf8').matchAll(/from '\.\.\/([\w-]+)\//g)].map((m) => m[1])))]
-    .filter((d) => d !== id).sort()
+  const imports = filesIn(dir).filter((f) => f.endsWith('.tsx'))
+    .flatMap((f) => [...readFileSync(join(dir, f), 'utf8').matchAll(/from '\.\.\/([\w-]+)\//g)].map((m) => m[1]))
+  const built = builtIds(repo)
+  const parts = built.filter((p) => {
+    const path = join(repo, 'contracts', `${p}.contract.yaml`)
+    return existsSync(path) && YAML.parse(readFileSync(path, 'utf8')).partOf === id
+  })
+  return [...new Set([...imports, ...parts])].filter((d) => d !== id && built.includes(d)).sort()
 }
 
 const file = (path, target, content) => ({ path, type: 'registry:file', target: `~/${target}`, content })

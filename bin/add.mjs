@@ -22,6 +22,7 @@ import { join, resolve } from 'node:path'
 import { homedir } from 'node:os'
 import { execSync } from 'node:child_process'
 import { fileURLToPath } from 'node:url'
+import { needsOf } from './lib/registry.mjs'
 
 const rost = fileURLToPath(new URL('..', import.meta.url))
 const args = process.argv.slice(2)
@@ -39,10 +40,9 @@ const unknown = wanted.filter((id) => !built.includes(id))
 if (unknown.length) { console.log(`Not built in Rost: ${unknown.join(', ')}. Built: ${built.join(', ')}`); process.exit(1) }
 if (!wanted.length) { console.log('Nothing to add: name a component, or run it on an app that already has some.'); process.exit(1) }
 
-// A component that imports another (`../badge/Badge`) brings it along.
-const needs = (id) => [...new Set(readdirSync(join(rost, 'src/components', id))
-  .filter((f) => f.endsWith('.tsx') && !f.endsWith('.fixtures.tsx'))
-  .flatMap((f) => [...readFileSync(join(rost, 'src/components', id, f), 'utf8').matchAll(/from '\.\.\/([\w-]+)\//g)].map((m) => m[1])))]
+// A component brings what it imports (`../badge/Badge`) and its parts, the
+// same rule as the registry on rost.build.
+const needs = (id) => needsOf(rost, id)
 const all = new Set()
 const visit = (id) => { if (all.has(id)) return; all.add(id); needs(id).forEach(visit) }
 wanted.forEach(visit)
@@ -85,5 +85,5 @@ Don't edit these files here. Change them in Rost, then copy them again from the 
 `)
 
 console.log(`Rost ${from} -> ${app}`)
-console.log(`  components: ${[...all].sort().join(', ')}${[...all].length > wanted.length ? ` (${[...all].filter((i) => !wanted.includes(i)).join(', ')} came along as imports)` : ''}`)
+console.log(`  components: ${[...all].sort().join(', ')}${[...all].length > wanted.length ? ` (${[...all].filter((i) => !wanted.includes(i)).join(', ')} came along)` : ''}`)
 console.log(changed.length ? `  changed:\n${changed.map((c) => `    ${c}`).join('\n')}` : '  already up to date')
