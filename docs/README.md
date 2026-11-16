@@ -14,7 +14,7 @@ Rost started as a design system for my own needs and grew into a product of its 
 | [Roadmap](ROADMAP.md) | What I'm doing next |
 | [Release notes](CHANGELOG.md) | What changed in each release |
 
-**55** contracts, **5** stable. **55** have guidance, and I've signed off **32** of those.
+**61** contracts, **5** stable. **61** have guidance, and I've signed off **32** of those.
 
 ## Catalogue
 
@@ -23,6 +23,7 @@ Rost started as a design system for my own needs and grew into a product of its 
 | | Summary | Contract | Guidance | Used in |
 |---|---|---|---|---|
 | [Avatar](components/avatar.md) | A person or a client as a small circle. Their photo, or their initials on grey when there's no photo. | `review` | `proposed` | · |
+| [AvatarGroup](components/avatar-group.md) | Who is involved, without a list. Medium Avatars overlapping by 8px, each ringed in the page colour, and how many more. | `review` | `proposed` | · |
 | [Badge](components/badge.md) | A small status marker: a coloured dot on its own, or an outlined label. The colour sits in the dot and the outline, never in the text. | `stable` | `agreed` | Portfolio site, Accounting app |
 | [Breadcrumb](components/breadcrumb.md) | Where this page sits, from the top down. Links to the pages above it, a small chevron between, and this page's name last. | `review` | `proposed` | · |
 | [Button](components/button.md) | A 48px button with a label and, if it helps, an icon in front. In four levels of emphasis. | `stable` | `agreed` | Portfolio site, Accounting app |
@@ -31,6 +32,7 @@ Rost started as a design system for my own needs and grew into a product of its 
 | [Checkbox](components/checkbox.md) | A choice that's on or off and waits for the form. A 20px box that fills green with a tick, and the words beside it. | `review` | `proposed` | · |
 | [Chip](components/chips.md) | A small outlined label you can click, for filters and quick choices. | `review` | `agreed` | Portfolio site |
 | [Code](components/code.md) | Code in a sentence, or a block of it on its own plate. | `review` | `proposed` | · |
+| [DescriptionList](components/description-list.md) | Facts about one thing, as pairs: a term and its value, a row each, with a line between. For an invoice's details or a client's. | `review` | `proposed` | · |
 | [Dialog](components/dialog.md) | A question or a short task that stops everything else until it's answered. A grey plate over the page with a title, a few words and its buttons. | `review` | `proposed` | · |
 | [Disclosure](components/disclosure.md) | A line that opens to show more, for things most people won't need. | `review` | `proposed` | · |
 | [Divider](components/divider.md) | A thin line between things. | `stable` | `agreed` | Portfolio site, Accounting app |
@@ -51,8 +53,12 @@ Rost started as a design system for my own needs and grew into a product of its 
 | [Projects](components/projects.md) | One row in the project list: number, name, and industry, type and period on the right. | `review` | `agreed` | Portfolio site |
 | [Radio](components/radio.md) | One choice out of a few, all on show. A 20px circle with a dot in the picked one, and the words beside it. | `review` | `proposed` | · |
 | [Select](components/select.md) | One choice from a list that's too long to show. Input's filled field, with a chevron, and the browser's own list when it opens. | `review` | `proposed` | · |
+| [Sheet](components/sheet.md) | A panel that slides over the page from the right, for a task with more to it than a dialog: editing a client, an invoice's details. | `review` | `proposed` | · |
 | [Skeleton](components/skeleton.md) | Grey shapes where content is about to be, so the page doesn't jump when it arrives. A line of text, a circle or a block. | `review` | `proposed` | · |
 | [Spinner](components/spinner.md) | Something is working and you can't tell how long it'll take. A grey ring with a green quarter that turns. | `review` | `proposed` | · |
+| [Stat](components/stat.md) | One figure that matters, with what it is and how it moved. A label, the number in title type, and a line in green or red. | `review` | `proposed` | · |
+| [Step](components/step.md) | One step of a Stepper: a 24px marker and its name. A green tick when done, a green ring when current, grey when it is still to come. | `review` | `proposed` | · |
+| [Stepper](components/stepper.md) | Where someone is in a few steps, and how many are left. The steps in a row, a short line between each. | `review` | `proposed` | · |
 | [Switch](components/switch.md) | A setting that's on or off and takes effect straight away. A pill track with a thumb that moves across. The label is SwitchField's. | `review` | `agreed` | · |
 | [TabItem](components/tab-item.md) | One tab in a row of tabs. A label, optional icons before and after it, and a green underline when it's the one selected. | `review` | `agreed` | · |
 | [Table](components/table.md) | Rows of the same kind of thing, side by side in columns, like the accounting app's payments. No box, a hairline between rows. | `review` | `agreed` | · |

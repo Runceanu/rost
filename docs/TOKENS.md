@@ -6,18 +6,19 @@ Every value in every contract, sorted by why it has a token or doesn't. A value 
 
 | | Values | Share | Meaning |
 |---|---|---|---|
-| Has a token | 1608 | 59% | Uses a token, and the check tests it. |
+| Has a token | 1708 | 60% | Uses a token, and the check tests it. |
 | Token suggested | 0 | 0% | A token I want that doesn't exist yet. The freeze turned every other suggestion into a token. |
-| How Figma builds it | 678 | 25% | How Figma builds the layer (position, inset, which sides get a stroke). Nothing to tokenise. |
-| Figma frame size | 263 | 10% | A root size that is just the Figma frame. Written down, not checked. |
-| No token, on purpose | 106 | 4% | Plain on purpose, and the contract says why. |
-| Open gap | 54 | 2% | No token and no reason. Each one needs a decision from me. |
+| How Figma builds it | 706 | 25% | How Figma builds the layer (position, inset, which sides get a stroke). Nothing to tokenise. |
+| Figma frame size | 279 | 10% | A root size that is just the Figma frame. Written down, not checked. |
+| No token, on purpose | 113 | 4% | Plain on purpose, and the contract says why. |
+| Open gap | 56 | 2% | No token and no reason. Each one needs a decision from me. |
 
 ## By contract
 
 | | Has a token | Token suggested | How Figma builds it | Figma frame size | No token, on purpose | Open gap |
 |---|---:|---:|---:|---:|---:|---:|
 | [Avatar](components/avatar.md) | 22 | · | 11 | 3 | · | · |
+| [AvatarGroup](components/avatar-group.md) | 11 | · | 6 | · | 4 | · |
 | [Badge](components/badge.md) | 32 | · | 23 | · | 2 | · |
 | [Breadcrumb](components/breadcrumb.md) | 13 | · | 6 | 2 | 1 | · |
 | [Button](components/button.md) | 83 | · | 38 | 9 | 5 | 1 |
@@ -26,6 +27,7 @@ Every value in every contract, sorted by why it has a token or doesn't. A value 
 | [Checkbox](components/checkbox.md) | 38 | · | 14 | 12 | 1 | 1 |
 | [Chip](components/chips.md) | 45 | · | 18 | 10 | 10 | 1 |
 | [Code](components/code.md) | 9 | · | 2 | 5 | 2 | · |
+| [DescriptionList](components/description-list.md) | 12 | · | 2 | 1 | · | 1 |
 | [Dialog](components/dialog.md) | 23 | · | 5 | 6 | 1 | 1 |
 | [Disclosure](components/disclosure.md) | 16 | · | 4 | 5 | · | 3 |
 | [Divider](components/divider.md) | 2 | · | 2 | 2 | · | · |
@@ -51,8 +53,12 @@ Every value in every contract, sorted by why it has a token or doesn't. A value 
 | [Projects](components/projects.md) | 77 | · | 33 | 8 | 5 | 4 |
 | [Radio](components/radio.md) | 39 | · | 14 | 9 | 1 | 1 |
 | [Select](components/select.md) | 76 | · | 15 | 9 | 2 | 3 |
+| [Sheet](components/sheet.md) | 22 | · | 5 | 11 | 1 | 1 |
 | [Skeleton](components/skeleton.md) | 9 | · | 4 | 3 | · | 1 |
 | [Spinner](components/spinner.md) | 11 | · | 8 | 4 | · | 2 |
+| [Stat](components/stat.md) | 21 | · | 2 | · | · | · |
+| [Step](components/step.md) | 29 | · | 9 | 3 | 2 | · |
+| [Stepper](components/stepper.md) | 5 | · | 4 | 1 | · | · |
 | [Switch](components/switch.md) | 48 | · | 13 | 12 | 2 | 1 |
 | [SwitchField](components/switch-field.md) | 8 | · | 7 | 2 | · | · |
 | [TabItem](components/tab-item.md) | 37 | · | 15 | 12 | · | 1 |
@@ -132,6 +138,7 @@ An icon is its SVG file, drawn as a mask so it takes the text colour. The file i
 | [Input](components/input.md), [Textarea](components/textarea.md) | `icons-alarm.mask` | `url(./icon-alarm.svg) center / contain no-repeat` |
 | [Projects](components/projects.md) | `icons-arrow.mask` | `url(./icon-up-right.svg) center / contain no-repeat` |
 | [Select](components/select.md) | `chevron.mask` | `url(./icon-chevron.svg) center / contain no-repeat` |
+| [Step](components/step.md) | `check.mask` | `url(./icon-check.svg) center / contain no-repeat` |
 | [Testimonials](components/testimonials.md) | `icons-chevron.mask` | `url(./icon-chevron-down.svg) center / contain no-repeat` and 1 more, one per state |
 | [Toast](components/toast.md) | `close-glyph.mask` | `url(./icon-clear.svg) center / contain no-repeat` |
 
@@ -141,6 +148,10 @@ Sizes and offsets that belong to one component, at a number no size token has.
 
 | Where | Part | Value | Why |
 |---|---|---|---|
+| [AvatarGroup](components/avatar-group.md) | `avatar.margin-left` | `calc(-1 * var(--spacing-gap-small))` | Composed from a token: the overlap. |
+| [AvatarGroup](components/avatar-group.md) | `avatar.box-shadow` | `0 0 0 var(--spacing-outline-medium) var(--avatar-group-ring)` | Composed from tokens: a 2px ring in avatar-group/ring. |
+| [AvatarGroup](components/avatar-group.md) | `more.margin-left` | `calc(-1 * var(--spacing-gap-small))` | Composed from a token: the overlap. |
+| [AvatarGroup](components/avatar-group.md) | `more.box-shadow` | `0 0 0 var(--spacing-outline-medium) var(--avatar-group-ring)` | Composed from tokens: a 2px ring in avatar-group/ring. |
 | [Card](components/card.md) | `root.outline-offset` | `calc(-1 * var(--spacing-outline-small))` | Composed from a token: the edge sits inside the card. |
 | [Checkbox](components/checkbox.md), [Radio](components/radio.md) | `box.outline-offset` | `calc(-1 * var(--spacing-outline-small))` | Composed from a token: the edge sits inside the box. |
 | [Code](components/code.md) | `root.font-family` | `'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace` | Rost has no mono family token yet. Where JetBrains Mono isn't loaded, the system mono stands in. |
@@ -163,6 +174,8 @@ Sizes and offsets that belong to one component, at a number no size token has.
 | [Projects](components/projects.md) | `number.min-width` | `2ch` | Two zeros in the number's own font: 14px at label size. It follows the font, so it isn't a size token. |
 | [Projects](components/projects.md), [Thumbs](components/thumbs.md) | `dot.width` | `3px` | The dot's own size inside the icon. |
 | [Projects](components/projects.md), [Thumbs](components/thumbs.md) | `dot.height` | `3px` | The dot's own size inside the icon. |
+| [Sheet](components/sheet.md) | `panel.outline-offset` | `calc(-1 * var(--spacing-outline-small))` | Composed from a token: the edge sits inside. |
+| [Step](components/step.md) | `marker.outline-offset` | `calc(-1 * var(--spacing-outline-medium))` | Composed from a token: the edge sits inside the marker. |
 | [Switch](components/switch.md) | `track.outline-offset` | `calc(-1 * var(--spacing-outline-small))` | Composed from a token: the edge sits inside the track. |
 | [Switch](components/switch.md) | `thumb.left` | `calc(100% - var(--spacing-size-2xsmall) - var(--spacing-gap-2xsmall))` | Composed from tokens: the far end of the track, less the thumb and its 4px. |
 | [Table](components/table.md) | `root.width` | `100%` | As wide as where it sits. |
@@ -192,6 +205,7 @@ The paper effect's numbers, tuned for how the dots move. Only the paper uses the
 - [Carousel](components/carousel.md) `focus-ring.border-style` = `solid`
 - [Checkbox](components/checkbox.md) `focus-ring.border-style` = `solid`
 - [Chip](components/chips.md) `focus-ring.border-style` = `solid`
+- [DescriptionList](components/description-list.md) `row.grid-template-columns` = `160px minmax(0, 1fr)`
 - [Dialog](components/dialog.md) `panel.width` = `400px`
 - [Disclosure](components/disclosure.md) `summary.outline-style` = `solid`
 - [Disclosure](components/disclosure.md) `summary.outline-offset` = `2px`
@@ -218,6 +232,7 @@ The paper effect's numbers, tuned for how the dots move. Only the paper uses the
 - [Select](components/select.md) `root.width` = `208px`
 - [Select](components/select.md) `outline.border-style` = `solid`
 - [Select](components/select.md) `focus-ring.border-style` = `solid`
+- [Sheet](components/sheet.md) `panel.width` = `400px`
 - [Skeleton](components/skeleton.md) `root.animation-duration` = `1.8s`
 - [Spinner](components/spinner.md) `track.border-style` = `solid`
 - [Spinner](components/spinner.md) `arc.border-style` = `solid`
@@ -257,7 +272,7 @@ When a component needs a colour no other has, change its own token to point some
 
 ## Two themes
 
-Dark is the default. It's what Figma draws first and what both apps use. Light is new (2026-10-30). Only colours change: 786 theme colours have a light value of their own. Every other token, and every component, is the same in both.
+Dark is the default. It's what Figma draws first and what both apps use. Light is new (2026-10-30). Only colours change: 807 theme colours have a light value of their own. Every other token, and every component, is the same in both.
 
 `tokens/tokens.css` puts dark on `:root`. Light applies under `[data-theme="light"]` and nowhere else. A system set to light doesn't change it: with no `data-theme` you get dark. `[data-theme="dark"]` brings dark back inside a light page, so a dark panel can sit in a light one. Set it on `<html>` for the whole page:
 
@@ -330,4 +345,4 @@ rost.build's own transitions use the tokens now. No component in Rost animates y
 
 ## Figma variables
 
-The Figma file has **1228** variables (`registry/figma-variables.json`, read on 2026-11-04) and `tokens/tokens.css` has **1228** of them. `npm run tokens` builds it from that read, so they can't come apart.
+The Figma file has **1252** variables (`registry/figma-variables.json`, read on 2026-11-04) and `tokens/tokens.css` has **1252** of them. `npm run tokens` builds it from that read, so they can't come apart.

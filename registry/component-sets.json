@@ -606,5 +606,51 @@
     "variants": [
       { "nodeId": "742:62", "name": "empty-state", "width": 400, "height": 316 }
     ]
+  },
+  "stat": {
+    "name": "Stat",
+    "setNodeId": "743:40",
+    "variants": [
+      { "nodeId": "743:27", "name": "tone=positive", "width": 108, "height": 68 },
+      { "nodeId": "743:31", "name": "tone=negative", "width": 120, "height": 68 },
+      { "nodeId": "743:35", "name": "tone=neutral", "width": 97, "height": 68 }
+    ]
+  },
+  "description-list": {
+    "name": "DescriptionList",
+    "setNodeId": "743:45",
+    "variants": [
+      { "nodeId": "743:45", "name": "description-list", "width": 400, "height": 135 }
+    ]
+  },
+  "sheet": {
+    "name": "Sheet",
+    "setNodeId": "744:3",
+    "variants": [
+      { "nodeId": "744:3", "name": "sheet", "width": 400, "height": 360 }
+    ]
+  },
+  "step": {
+    "name": "Step",
+    "setNodeId": "744:30",
+    "variants": [
+      { "nodeId": "744:16", "name": "status=done", "width": 76, "height": 24 },
+      { "nodeId": "744:21", "name": "status=current", "width": 64, "height": 24 },
+      { "nodeId": "744:25", "name": "status=upcoming", "width": 77, "height": 24 }
+    ]
+  },
+  "stepper": {
+    "name": "Stepper",
+    "setNodeId": "744:31",
+    "variants": [
+      { "nodeId": "744:31", "name": "stepper", "width": 297, "height": 24 }
+    ]
+  },
+  "avatar-group": {
+    "name": "AvatarGroup",
+    "setNodeId": "744:48",
+    "variants": [
+      { "nodeId": "744:48", "name": "avatar-group", "width": 136, "height": 40 }
+    ]
   }
 }

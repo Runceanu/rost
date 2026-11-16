@@ -2247,5 +2247,87 @@
       "width": 400,
       "height": 316
     }
+  ],
+  "stat": [
+    {
+      "nodeId": "743:27",
+      "name": "tone=positive",
+      "file": "743-27.png",
+      "width": 108,
+      "height": 68
+    },
+    {
+      "nodeId": "743:31",
+      "name": "tone=negative",
+      "file": "743-31.png",
+      "width": 120,
+      "height": 68
+    },
+    {
+      "nodeId": "743:35",
+      "name": "tone=neutral",
+      "file": "743-35.png",
+      "width": 97,
+      "height": 68
+    }
+  ],
+  "description-list": [
+    {
+      "nodeId": "743:45",
+      "name": "description-list",
+      "file": "743-45.png",
+      "width": 400,
+      "height": 135
+    }
+  ],
+  "sheet": [
+    {
+      "nodeId": "744:3",
+      "name": "sheet",
+      "file": "744-3.png",
+      "width": 400,
+      "height": 360
+    }
+  ],
+  "step": [
+    {
+      "nodeId": "744:16",
+      "name": "status=done",
+      "file": "744-16.png",
+      "width": 76,
+      "height": 24
+    },
+    {
+      "nodeId": "744:21",
+      "name": "status=current",
+      "file": "744-21.png",
+      "width": 64,
+      "height": 24
+    },
+    {
+      "nodeId": "744:25",
+      "name": "status=upcoming",
+      "file": "744-25.png",
+      "width": 77,
+      "height": 24
+    }
+  ],
+  "stepper": [
+    {
+      "nodeId": "744:31",
+      "name": "stepper",
+      "file": "744-31.png",
+      "width": 297,
+      "height": 24
+    }
+  ],
+  "avatar-group": [
+    {
+      "nodeId": "744:48",
+      "name": "avatar-group",
+      "file": "744-48.png",
+      "width": 136,
+      "height": 40
+    }
   ]
 }

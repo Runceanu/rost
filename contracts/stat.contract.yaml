@@ -1,0 +1,88 @@
+# yaml-language-server: $schema=../schema/component-contract.schema.json
+schemaVersion: 2
+id: stat
+name: Stat
+kind: component
+status: review
+summary: "One figure that matters, with what it is and how it moved. A label, the number in title type, and a line in green or red."
+category: display
+related: [ card, badge, progress ]
+source:
+  tool: figma
+  fileKey: 1Zy0wiWKXQAvsfDBX3KR0d
+  nodeId: "743:40"
+  url: https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=743-40
+  extractedAt: "2026-11-16"
+  extractedBy: hand
+  frozenAt: "2026-11-16"
+props:
+  label: { type: slot, required: true, notes: "What the figure is: Paid this month." }
+  value: { type: slot, required: true, notes: "The figure, formatted: €12,480." }
+  delta: { type: slot, notes: "How it moved, in words: Up 12% on October." }
+  tone:
+    type: enum
+    values: [ positive, negative, neutral ]
+    default: neutral
+    notes: "The delta's colour. Good news is `positive` whichever way the number went: costs going down is positive."
+elements:
+  root:
+    notes: "A column, 4px between its lines. It sits in a Card or a row of them."
+    styles:
+      display: { value: flex, assert: false }
+      flex-direction: { value: column, assert: false }
+      gap: { token: spacing/gap/2xsmall, value: 4px }
+  label:
+    styles:
+      font-family: { token: font-family/base, value: "'General Sans Variable'" }
+      font-weight: { token: typography/label/font-weight/regular, value: "400" }
+      font-size: { token: typography/label/font-size, value: 12px }
+      line-height: { token: typography/label/line-height, value: 14px }
+      letter-spacing: { token: typography/label/letter-spacing, value: 0px }
+      color: { token: stat/label, value: "#d3d9d5" }
+  value:
+    styles:
+      font-family: { token: font-family/base, value: "'General Sans Variable'" }
+      font-weight: { token: typography/title/font-weight/medium, value: "500" }
+      font-size: { token: typography/title/font-size, value: 24px }
+      line-height: { token: typography/title/line-height, value: 32px }
+      letter-spacing: { token: typography/title/letter-spacing, value: 0px }
+      color: { token: stat/value, value: "#ededed" }
+  delta:
+    notes: "Label type, medium weight, in the tone's colour. The words say which way, so the colour isn't the only sign."
+    styles:
+      font-family: { token: font-family/base, value: "'General Sans Variable'" }
+      font-weight: { token: typography/label/font-weight/medium, value: "500" }
+      font-size: { token: typography/label/font-size, value: 12px }
+      line-height: { token: typography/label/line-height, value: 14px }
+      letter-spacing: { token: typography/label/letter-spacing, value: 0px }
+variants:
+  - when: { tone: positive }
+    figmaNode: "743:27"
+    elements:
+      delta:
+        color: { token: stat/delta/positive, value: "#00d669" }
+  - when: { tone: negative }
+    figmaNode: "743:31"
+    elements:
+      delta:
+        color: { token: stat/delta/negative, value: "#f2705f" }
+  - when: { tone: neutral }
+    figmaNode: "743:35"
+    elements:
+      delta:
+        color: { token: stat/delta/neutral, value: "#999999" }
+guidance:
+  status: proposed
+  use:
+    - title: A number to watch
+      text: "The few figures a dashboard is for: paid this month, tax set aside, outstanding."
+      show: tone=positive
+  avoid:
+    - title: Many numbers
+      text: "A dozen figures to compare. That's **Table**."
+  behaviour: "Three lines: what, how much, how it moved. The delta takes the tone's colour; its words carry the meaning."
+  accessibility:
+    element: "A `<div>`. Put it in a list (`<ul>`) when there are several, so they're counted."
+    name: "The label, read before the figure."
+    colour: "The delta is 9:1 green or 6:1 red on the dark page, and its words say up or down."
+  content: "Label in sentence case, figure formatted for the reader, delta as a sentence: Up 12% on October."

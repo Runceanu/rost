@@ -1,0 +1,50 @@
+# yaml-language-server: $schema=../schema/component-contract.schema.json
+schemaVersion: 2
+id: stepper
+name: Stepper
+kind: component
+status: review
+summary: "Where someone is in a few steps, and how many are left. The steps in a row, a short line between each."
+category: navigation
+related: [ step, progress, tabs ]
+source:
+  tool: figma
+  fileKey: 1Zy0wiWKXQAvsfDBX3KR0d
+  nodeId: "744:31"
+  url: https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=744-31
+  extractedAt: "2026-11-16"
+  extractedBy: hand
+  frozenAt: "2026-11-16"
+props:
+  children: { type: slot, required: true, notes: "The Steps, in order." }
+elements:
+  root:
+    notes: "An `<ol aria-label=\"Progress\">` in a row: each Step, then a connector, 8px apart."
+    styles:
+      display: { value: flex, assert: false }
+      align-items: { value: center }
+      gap: { token: spacing/gap/small, value: 8px }
+      padding: { token: spacing/gap/none, value: 0px }
+      list-style: { value: none, assert: false }
+  connector:
+    notes: "A 24px line between two steps, in the tertiary grey. Decoration: hidden from screen readers."
+    styles:
+      display: { value: block, assert: false }
+      flex-shrink: { value: "0", assert: false }
+      width: { token: spacing/size/small, value: 24px }
+      height: { token: spacing/outline/small, value: 1px }
+      background: { token: stepper/connector, value: "#3a3a3a" }
+guidance:
+  status: proposed
+  use:
+    - title: A few steps in order
+      text: "Three to five steps that build on each other: setting up a vault, closing a year."
+  avoid:
+    - title: Choosing a view
+      text: "Moving between views in any order. That's **Tabs**."
+    - title: Long progress
+      text: "Something with many steps or a count. That's **Progress**."
+  behaviour: "It lays out the Steps and the lines between them. Each Step knows whether it's done, current or still to come."
+  accessibility:
+    element: "`<ol>`, so the steps are counted. The current Step has `aria-current=\"step\"`."
+    name: "Progress, or what the steps are for."

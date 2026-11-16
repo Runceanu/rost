@@ -1201,6 +1201,42 @@
   --empty-state-body: #d3d9d5;
   --empty-state-title: #ededed;
 
+  /* ── Component: stat ─────────────────────────────────────────────────────── */
+  --stat-delta-negative: #f2705f;
+  --stat-delta-neutral: #999999;
+  --stat-delta-positive: #00d669;
+  --stat-label: #d3d9d5;
+  --stat-value: #ededed;
+
+  /* ── Component: description-list ─────────────────────────────────────────── */
+  --description-list-detail: #ededed;
+  --description-list-divider: #3a3a3a;
+  --description-list-term: #d3d9d5;
+
+  /* ── Component: sheet ────────────────────────────────────────────────────── */
+  --sheet-backdrop: #060805;
+  --sheet-background: #171717;
+  --sheet-body: #d3d9d5;
+  --sheet-edge: #3a3a3a;
+  --sheet-title: #ededed;
+
+  /* ── Component: step ─────────────────────────────────────────────────────── */
+  --step-current-edge: #00d669;
+  --step-current-label: #ededed;
+  --step-current-number: #00d669;
+  --step-done-check: #060805;
+  --step-done-label: #d3d9d5;
+  --step-done-marker: #00d669;
+  --step-upcoming-edge: #747573;
+  --step-upcoming-label: #999999;
+  --step-upcoming-number: #999999;
+
+  /* ── Component: stepper ──────────────────────────────────────────────────── */
+  --stepper-connector: #3a3a3a;
+
+  /* ── Component: avatar-group ─────────────────────────────────────────────── */
+  --avatar-group-ring: #060805;
+
   /* ── Generic colours (no family in Figma) ────────────────────────────────── */
   --background: #3a3a3a;
   --focus-ring: #999999;
@@ -1357,7 +1393,7 @@
 }
 
 /* ── Light ──────────────────────────────────────────────────────────────────
- * Only the colours change, 786 of them. Figma's light mode, with Rost's own
+ * Only the colours change, 807 of them. Figma's light mode, with Rost's own
  * corrections from registry/light.json where Figma's value fails contrast.
  * Set data-theme="light" on <html> (or any element). Without it you get dark,
  * whatever the system says. data-theme="dark" brings dark back inside a light page.
@@ -1525,6 +1561,7 @@
   --actions-tertiary-pressed-icon: #006f27;
   --actions-tertiary-pressed-label: #171717;
   --actions-tertiary-pressed-sub-label: #454545;
+  --avatar-group-ring: #fcfcfc;
   --avatar-background: #d3d9d5;
   --avatar-initials: #060805;
   --background: #c2c7c3;
@@ -1616,6 +1653,9 @@
   --chip-unselected-hover-outline: #fcfcfc;
   --chip-unselected-pressed-label: #171717;
   --chip-unselected-pressed-outline: #fcfcfc;
+  --description-list-detail: #060805;
+  --description-list-divider: #d3d9d5;
+  --description-list-term: #171717;
   --dialog-backdrop: #fcfcfc;
   --dialog-background: #ededed;
   --dialog-body: #171717;
@@ -1954,9 +1994,26 @@
   --select-negative-hover-label: #ae1b13;
   --select-negative-hover-supportive: #ae1b13;
   --select-negative-hover-value: #454545;
+  --sheet-backdrop: #fcfcfc;
+  --sheet-background: #ededed;
+  --sheet-body: #171717;
+  --sheet-edge: #d3d9d5;
+  --sheet-title: #060805;
   --skeleton-background: #d3d9d5;
   --spinner-arc: #0e7118;
   --spinner-track: #d3d9d5;
+  --stat-delta-negative: #ae1b13;
+  --stat-delta-neutral: #6a6b69;
+  --stat-delta-positive: #0e7118;
+  --stat-label: #171717;
+  --stat-value: #060805;
+  --step-current-edge: #0e7118;
+  --step-current-label: #060805;
+  --step-current-number: #0e7118;
+  --step-done-label: #171717;
+  --step-upcoming-label: #6a6b69;
+  --step-upcoming-number: #6a6b69;
+  --stepper-connector: #d3d9d5;
   --sub-label: #747573;
   --switch-field-label: #171717;
   --switch-off-default-thumb: #171717;
@@ -2315,6 +2372,7 @@
   --actions-tertiary-pressed-icon: #00d669;
   --actions-tertiary-pressed-label: #d3d9d5;
   --actions-tertiary-pressed-sub-label: #c2c7c3;
+  --avatar-group-ring: #060805;
   --avatar-background: #3a3a3a;
   --avatar-initials: #ededed;
   --background: #3a3a3a;
@@ -2406,6 +2464,9 @@
   --chip-unselected-hover-outline: #ededed;
   --chip-unselected-pressed-label: #d3d9d5;
   --chip-unselected-pressed-outline: #ededed;
+  --description-list-detail: #ededed;
+  --description-list-divider: #3a3a3a;
+  --description-list-term: #d3d9d5;
   --dialog-backdrop: #060805;
   --dialog-background: #171717;
   --dialog-body: #d3d9d5;
@@ -2744,9 +2805,26 @@
   --select-negative-hover-label: #f2705f;
   --select-negative-hover-supportive: #e93120;
   --select-negative-hover-value: #999999;
+  --sheet-backdrop: #060805;
+  --sheet-background: #171717;
+  --sheet-body: #d3d9d5;
+  --sheet-edge: #3a3a3a;
+  --sheet-title: #ededed;
   --skeleton-background: #3a3a3a;
   --spinner-arc: #00d669;
   --spinner-track: #3a3a3a;
+  --stat-delta-negative: #f2705f;
+  --stat-delta-neutral: #999999;
+  --stat-delta-positive: #00d669;
+  --stat-label: #d3d9d5;
+  --stat-value: #ededed;
+  --step-current-edge: #00d669;
+  --step-current-label: #ededed;
+  --step-current-number: #00d669;
+  --step-done-label: #d3d9d5;
+  --step-upcoming-label: #999999;
+  --step-upcoming-number: #999999;
+  --stepper-connector: #3a3a3a;
   --sub-label: #999999;
   --switch-field-label: #d3d9d5;
   --switch-off-default-thumb: #d3d9d5;

@@ -1,0 +1,21 @@
+/* Generated from contracts/stepper.contract.yaml by bin/build-css.mjs. Don't edit: change the contract and rebuild. */
+
+.rost-stepper, .rost-stepper * { box-sizing: border-box; margin: 0; }
+.rost-stepper > img, .rost-stepper [class*="__icons-"] > img { display: block; position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; }
+.rost-stepper ::placeholder { color: inherit; opacity: 1; }
+
+.rost-stepper {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-gap-small);
+  padding: var(--spacing-gap-none);
+  list-style: none;
+}
+
+.rost-stepper__connector {
+  display: block;
+  flex-shrink: 0;
+  width: var(--spacing-size-small);
+  height: var(--spacing-outline-small);
+  background: var(--stepper-connector);
+}

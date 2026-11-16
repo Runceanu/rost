@@ -1,0 +1,64 @@
+# yaml-language-server: $schema=../schema/component-contract.schema.json
+schemaVersion: 2
+id: avatar-group
+name: AvatarGroup
+kind: component
+status: review
+summary: "Who is involved, without a list. Medium Avatars overlapping by 8px, each ringed in the page colour, and how many more."
+category: display
+related: [ avatar ]
+source:
+  tool: figma
+  fileKey: 1Zy0wiWKXQAvsfDBX3KR0d
+  nodeId: "744:48"
+  url: https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=744-48
+  extractedAt: "2026-11-16"
+  extractedBy: hand
+  frozenAt: "2026-11-16"
+props:
+  people: { type: slot, required: true, notes: "The names, and photos if there are any." }
+  max: { type: number, default: 3, notes: "How many to show before the rest become +N." }
+elements:
+  root:
+    notes: "A row. It starts 8px in, so the first Avatar sits flush after each one pulls 8px back."
+    styles:
+      display: { value: inline-flex, assert: false }
+      align-items: { value: center }
+      padding-left: { token: spacing/gap/small, value: 8px }
+  avatar:
+    notes: "A medium Avatar, pulled 8px over the one before, with a 2px ring in the page colour to keep them apart."
+    styles:
+      margin-left: { value: "calc(-1 * var(--spacing-gap-small))", untokenised: "Composed from a token: the overlap." }
+      box-shadow: { value: "0 0 0 var(--spacing-outline-medium) var(--avatar-group-ring)", untokenised: "Composed from tokens: a 2px ring in avatar-group/ring." }
+  more:
+    notes: "How many more, in a 40px circle like a medium Avatar's."
+    styles:
+      position: { value: relative, assert: false, notes: "As an Avatar is, so it overlaps the last one the way each Avatar overlaps the one before." }
+      display: { value: inline-flex, assert: false }
+      align-items: { value: center }
+      justify-content: { value: center }
+      margin-left: { value: "calc(-1 * var(--spacing-gap-small))", untokenised: "Composed from a token: the overlap." }
+      width: { token: spacing/size/medium, value: 40px }
+      height: { token: spacing/size/medium, value: 40px }
+      border-radius: { token: spacing/radius/full, value: 10000px }
+      background: { token: avatar/background, value: "#3a3a3a" }
+      box-shadow: { value: "0 0 0 var(--spacing-outline-medium) var(--avatar-group-ring)", untokenised: "Composed from tokens: a 2px ring in avatar-group/ring." }
+      font-family: { token: font-family/base, value: "'General Sans Variable'" }
+      font-weight: { token: typography/paragraph/font-weight/medium, value: "500" }
+      font-size: { token: typography/paragraph/font-size, value: 14px }
+      line-height: { token: typography/paragraph/line-height, value: 20px }
+      letter-spacing: { token: typography/paragraph/letter-spacing, value: 0px }
+      color: { token: avatar/initials, value: "#ededed" }
+guidance:
+  status: proposed
+  use:
+    - title: Who's on it
+      text: "The people on a project or the clients in a group, where the count matters more than the names."
+  avoid:
+    - title: A list of people
+      text: "When the names matter, write them out, with a small Avatar beside each."
+  behaviour: "Up to `max` Avatars, overlapping, then +N for the rest."
+  accessibility:
+    element: "A `<div role=\"group\">` labelled with all the names, so the hidden ones are read too."
+    name: "Every name, in the group's label."
+    colour: "The +N is 9:1 on its grey."

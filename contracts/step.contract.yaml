@@ -1,0 +1,112 @@
+# yaml-language-server: $schema=../schema/component-contract.schema.json
+schemaVersion: 2
+id: step
+name: Step
+kind: component
+status: review
+partOf: stepper
+summary: "One step of a Stepper: a 24px marker and its name. A green tick when done, a green ring when current, grey when it is still to come."
+category: navigation
+related: [ stepper, checkbox ]
+source:
+  tool: figma
+  fileKey: 1Zy0wiWKXQAvsfDBX3KR0d
+  nodeId: "744:30"
+  url: https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=744-30
+  extractedAt: "2026-11-16"
+  extractedBy: hand
+  frozenAt: "2026-11-16"
+props:
+  status:
+    type: enum
+    values: [ done, current, upcoming ]
+    default: upcoming
+  number: { type: number, required: true, notes: "Its place, from 1. It shows in the marker until it's done." }
+  children: { type: slot, required: true, notes: "Its name, a word or two." }
+elements:
+  root:
+    notes: "An `<li>`: the marker and the name, 8px apart."
+    styles:
+      display: { value: inline-flex, assert: false }
+      align-items: { value: center }
+      gap: { token: spacing/gap/small, value: 8px }
+  marker:
+    notes: "The 24px circle with the number, or a tick when done."
+    styles:
+      display: { value: inline-flex, assert: false }
+      align-items: { value: center }
+      justify-content: { value: center }
+      position: { value: relative, assert: false }
+      flex-shrink: { value: "0", assert: false }
+      width: { token: spacing/size/small, value: 24px }
+      height: { token: spacing/size/small, value: 24px }
+      border-radius: { token: spacing/radius/full, value: 10000px }
+      outline-style: { value: solid, assert: false }
+      outline-offset: { value: "calc(-1 * var(--spacing-outline-medium))", untokenised: "Composed from a token: the edge sits inside the marker." }
+      font-family: { token: font-family/base, value: "'General Sans Variable'" }
+      font-weight: { token: typography/label/font-weight/medium, value: "500" }
+      font-size: { token: typography/label/font-size, value: 12px }
+      line-height: { token: typography/label/line-height, value: 14px }
+      letter-spacing: { token: typography/label/letter-spacing, value: 0px }
+  check:
+    optional: true
+    notes: "Checkbox's tick, 16px, as a mask in the colour of a primary button's label."
+    styles:
+      display: { value: block, assert: false }
+      width: { token: spacing/size/2xsmall, value: 16px }
+      height: { token: spacing/size/2xsmall, value: 16px }
+      mask: { value: url(./icon-check.svg) center / contain no-repeat, untokenised: The icon file itself. }
+  label:
+    notes: "The step's name in paragraph type."
+    styles:
+      font-family: { token: font-family/base, value: "'General Sans Variable'" }
+      font-weight: { token: typography/paragraph/font-weight/regular, value: "400" }
+      font-size: { token: typography/paragraph/font-size, value: 14px }
+      line-height: { token: typography/paragraph/line-height, value: 20px }
+      letter-spacing: { token: typography/paragraph/letter-spacing, value: 0px }
+      white-space: { value: nowrap, assert: false }
+variants:
+  - when: { status: done }
+    figmaNode: "744:16"
+    elements:
+      marker:
+        background: { token: step/done/marker, value: "#00d669" }
+        outline-width: { token: spacing/outline/medium, value: 2px }
+        outline-color: { token: step/done/marker, value: "#00d669" }
+      check:
+        background: { token: step/done/check, value: "#060805" }
+      label:
+        color: { token: step/done/label, value: "#d3d9d5" }
+  - when: { status: current }
+    figmaNode: "744:21"
+    elements:
+      marker:
+        background: { value: transparent, assert: false }
+        outline-width: { token: spacing/outline/medium, value: 2px }
+        outline-color: { token: step/current/edge, value: "#00d669" }
+        color: { token: step/current/number, value: "#00d669" }
+      label:
+        color: { token: step/current/label, value: "#ededed" }
+  - when: { status: upcoming }
+    figmaNode: "744:25"
+    elements:
+      marker:
+        background: { value: transparent, assert: false }
+        outline-width: { token: spacing/outline/small, value: 1px }
+        outline-color: { token: step/upcoming/edge, value: "#747573" }
+        color: { token: step/upcoming/number, value: "#999999" }
+      label:
+        color: { token: step/upcoming/label, value: "#999999" }
+guidance:
+  status: proposed
+  use:
+    - title: Done, here, to come
+      text: "Each step says which it is: a tick for done, a green ring for where you are, grey for what's left."
+      show: status=current
+  avoid:
+    - title: Steps you can press
+      text: "A Step isn't a button. If going back is allowed, put a Back button in the form."
+  behaviour: "Done shows a dark tick on green, current a green ring and number, upcoming a grey ring and number. The words say the same as the colours."
+  accessibility:
+    element: "`<li>`; the current one has `aria-current=\"step\"`. A done Step says Done in hidden text, since the tick replaces its number."
+    colour: "The upcoming ring is 4.3:1 on the dark page, the numbers and names 7:1 or more."

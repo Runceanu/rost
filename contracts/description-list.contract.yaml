@@ -1,0 +1,61 @@
+# yaml-language-server: $schema=../schema/component-contract.schema.json
+schemaVersion: 2
+id: description-list
+name: DescriptionList
+kind: component
+status: review
+summary: "Facts about one thing, as pairs: a term and its value, a row each, with a line between. For an invoice's details or a client's."
+category: display
+related: [ table, card ]
+source:
+  tool: figma
+  fileKey: 1Zy0wiWKXQAvsfDBX3KR0d
+  nodeId: "743:45"
+  url: https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=743-45
+  extractedAt: "2026-11-16"
+  extractedBy: hand
+  frozenAt: "2026-11-16"
+props:
+  items: { type: slot, required: true, notes: "The pairs, each a term and its detail." }
+elements:
+  root:
+    notes: "A `<dl>` in paragraph type."
+    styles:
+      display: { value: block, assert: false }
+      font-family: { token: font-family/base, value: "'General Sans Variable'" }
+      font-weight: { token: typography/paragraph/font-weight/regular, value: "400" }
+      font-size: { token: typography/paragraph/font-size, value: 14px }
+      line-height: { token: typography/paragraph/line-height, value: 20px }
+      letter-spacing: { token: typography/paragraph/letter-spacing, value: 0px }
+  row:
+    notes: "A `<div>` holding one term and its detail, side by side, with a 1px line under it."
+    styles:
+      display: { value: grid, assert: false }
+      grid-template-columns: { value: "160px minmax(0, 1fr)", notes: "The term column fits most terms on one line." }
+      column-gap: { token: spacing/gap/large, value: 24px }
+      padding-top: { token: spacing/gap/small-medium, value: 12px }
+      padding-bottom: { token: spacing/gap/small-medium, value: 12px }
+      border-bottom-style: { value: solid, assert: false }
+      border-bottom-width: { token: spacing/outline/small, value: 1px }
+      border-bottom-color: { token: description-list/divider, value: "#3a3a3a" }
+  term:
+    notes: "A `<dt>`, in the secondary text colour."
+    styles:
+      color: { token: description-list/term, value: "#d3d9d5" }
+  detail:
+    notes: "A `<dd>`, in the main text colour."
+    styles:
+      color: { token: description-list/detail, value: "#ededed" }
+guidance:
+  status: proposed
+  use:
+    - title: One thing's details
+      text: "An invoice's number, date, client and total. A client's address and VAT number."
+  avoid:
+    - title: Several things
+      text: "The same details for many items. That's **Table**."
+  behaviour: "A row per pair, the term on the left and its detail on the right, a line under each."
+  accessibility:
+    element: "`<dl>` with `<dt>` and `<dd>` in a `<div>` per pair, so screen readers say them as pairs."
+    colour: "Terms are 11:1 and details 14:1 on the dark page."
+  content: "Terms are short nouns in sentence case; details are values, formatted for the reader."

@@ -1,0 +1,101 @@
+# yaml-language-server: $schema=../schema/component-contract.schema.json
+schemaVersion: 2
+id: sheet
+name: Sheet
+kind: component
+status: review
+summary: "A panel that slides over the page from the right, for a task with more to it than a dialog: editing a client, an invoice's details."
+category: surfaces
+related: [ dialog, popover ]
+source:
+  tool: figma
+  fileKey: 1Zy0wiWKXQAvsfDBX3KR0d
+  nodeId: "744:3"
+  url: https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=744-3
+  extractedAt: "2026-11-16"
+  extractedBy: hand
+  frozenAt: "2026-11-16"
+props:
+  open: { type: boolean, default: false, notes: "Shows it as a modal, with `showModal()`." }
+  title: { type: slot, required: true, notes: "What it's for. It names the sheet." }
+  children: { type: slot, notes: "A form or details. It scrolls when it's taller than the window." }
+  actions: { type: slot, notes: "Its Buttons, at the bottom, the main one last." }
+elements:
+  root:
+    notes: "The browser's `<dialog>`, its own look taken away and moved to the window's right edge, full height."
+    styles:
+      padding: { token: spacing/gap/none, value: 0px }
+      border: { value: none, assert: false }
+      background: { value: transparent, assert: false }
+      color: { value: inherit, assert: false }
+      margin: { value: "0 0 0 auto", assert: false, notes: "Against the right edge instead of the middle." }
+      block-size: { value: 100%, assert: false, notes: "A modal dialog sits in the window, so this is the window's full height." }
+      max-height: { value: none, assert: false }
+      max-width: { value: none, assert: false }
+  backdrop:
+    pseudo: "::backdrop"
+    notes: "The page behind, dimmed to 72% of its own colour, as Dialog's is."
+    styles:
+      background: { token: sheet/backdrop, value: "#060805" }
+      opacity: { token: opacity/hard, value: "0.72" }
+  panel:
+    notes: "The plate: the full height, 400px wide, the title at the top and the buttons pinned to the bottom."
+    styles:
+      display: { value: flex, assert: false }
+      flex-direction: { value: column, assert: false }
+      gap: { token: spacing/gap/medium, value: 16px }
+      width: { value: 400px, notes: "A form's width. On a phone it's the screen less 16px." }
+      max-width: { value: calc(100vw - 16px), assert: false }
+      height: { value: 100%, assert: false }
+      padding: { token: spacing/gap/large, value: 24px }
+      background: { token: sheet/background, value: "#171717" }
+      outline-style: { value: solid, assert: false }
+      outline-width: { token: spacing/outline/small, value: 1px }
+      outline-offset: { value: "calc(-1 * var(--spacing-outline-small))", untokenised: "Composed from a token: the edge sits inside." }
+      outline-color: { token: sheet/edge, value: "#3a3a3a" }
+      box-shadow: { token: shadow/floating, value: "0px 16px 24px 0px rgba(0, 0, 0, 0.16)" }
+  title:
+    notes: "An `<h2>` in title type, medium weight."
+    styles:
+      font-family: { token: font-family/base, value: "'General Sans Variable'" }
+      font-weight: { token: typography/title/font-weight/medium, value: "500" }
+      font-size: { token: typography/title/font-size, value: 24px }
+      line-height: { token: typography/title/line-height, value: 32px }
+      letter-spacing: { token: typography/title/letter-spacing, value: 0px }
+      color: { token: sheet/title, value: "#ededed" }
+  body:
+    notes: "Paragraph type. It takes the room there is and scrolls."
+    styles:
+      flex-grow: { value: "1", assert: false }
+      overflow-y: { value: auto, assert: false }
+      font-family: { token: font-family/base, value: "'General Sans Variable'" }
+      font-weight: { token: typography/paragraph/font-weight/regular, value: "400" }
+      font-size: { token: typography/paragraph/font-size, value: 14px }
+      line-height: { token: typography/paragraph/line-height, value: 20px }
+      letter-spacing: { token: typography/paragraph/letter-spacing, value: 0px }
+      color: { token: sheet/body, value: "#d3d9d5" }
+  actions:
+    notes: "The Buttons in a row on the right, 8px apart, at the bottom."
+    styles:
+      display: { value: flex, assert: false }
+      justify-content: { value: flex-end }
+      gap: { token: spacing/gap/small, value: 8px }
+guidance:
+  status: proposed
+  use:
+    - title: A task beside the page
+      text: "Editing something from a list without leaving it: a client, an invoice's details. The list stays in sight behind it."
+  avoid:
+    - title: A quick question
+      text: "Yes or no, or two fields. That's **Dialog**."
+    - title: A whole job
+      text: "Something that takes several screens. Give it a page."
+  behaviour: |-
+    It's a `<dialog>` opened as a modal and moved to the right edge, full height: the browser does focus, Esc and the page behind. The page dims as it does for Dialog. It doesn't slide in yet; it appears.
+  accessibility:
+    element: "`<dialog>` opened with `showModal()`, labelled by its title."
+    name: "The title."
+    keyboard: "Focus starts inside and stays there until it closes. Esc closes it."
+    focus: "When it closes, focus goes back to what opened it."
+    colour: "The title is 14:1 and the words 11:1 on the plate, in dark."
+  content: "The title says what's being done (Edit client); the buttons say how it ends (Cancel, Save)."
