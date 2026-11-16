@@ -39,8 +39,13 @@
   text-decoration-color: currentColor;
 }
 
-.rost-link:active {
-  opacity: var(--opacity-hard);
+.rost-link.rost-link--tone-accent:active {
+  color: var(--non-interactive-foreground-positive-dark);
+}
+
+.rost-link.rost-link--tone-quiet:active {
+  color: var(--non-interactive-foreground-primary);
+  text-decoration-color: currentColor;
 }
 
 .rost-link:focus-visible {

@@ -68,10 +68,17 @@ variants:
       root:
         color: { token: non-interactive/foreground/primary, value: "#ededed" }
         text-decoration-color: { value: currentColor, assert: false }
-  - when: { state: Pressed }
+  - when: { tone: accent, state: Pressed }
+    figmaNode: "705:71"
     elements:
       root:
-        opacity: { token: opacity/hard, value: "0.72" }
+        color: { token: non-interactive/foreground/positive/dark, value: "#b6ffda", notes: "Hover's colour. Pressed used to fade to 72%, which took the light theme to 3.5:1 on white." }
+  - when: { tone: quiet, state: Pressed }
+    figmaNode: "705:73"
+    elements:
+      root:
+        color: { token: non-interactive/foreground/primary, value: "#ededed" }
+        text-decoration-color: { value: currentColor, assert: false }
   - when: { state: Focus }
     elements:
       root:
