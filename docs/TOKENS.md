@@ -6,20 +6,23 @@ Every value in every contract, sorted by why it has a token or doesn't. A value 
 
 | | Values | Share | Meaning |
 |---|---|---|---|
-| Has a token | 1297 | 59% | Uses a token, and the check tests it. |
+| Has a token | 1417 | 59% | Uses a token, and the check tests it. |
 | Token suggested | 0 | 0% | A token I want that doesn't exist yet. The freeze turned every other suggestion into a token. |
-| How Figma builds it | 563 | 26% | How Figma builds the layer (position, inset, which sides get a stroke). Nothing to tokenise. |
-| Figma frame size | 200 | 9% | A root size that is just the Figma frame. Written down, not checked. |
-| No token, on purpose | 95 | 4% | Plain on purpose, and the contract says why. |
-| Open gap | 41 | 2% | No token and no reason. Each one needs a decision from me. |
+| How Figma builds it | 614 | 26% | How Figma builds the layer (position, inset, which sides get a stroke). Nothing to tokenise. |
+| Figma frame size | 226 | 9% | A root size that is just the Figma frame. Written down, not checked. |
+| No token, on purpose | 98 | 4% | Plain on purpose, and the contract says why. |
+| Open gap | 43 | 2% | No token and no reason. Each one needs a decision from me. |
 
 ## By contract
 
 | | Has a token | Token suggested | How Figma builds it | Figma frame size | No token, on purpose | Open gap |
 |---|---:|---:|---:|---:|---:|---:|
+| [Avatar](components/avatar.md) | 22 | · | 11 | 3 | · | · |
 | [Badge](components/badge.md) | 32 | · | 23 | · | 2 | · |
 | [Button](components/button.md) | 83 | · | 38 | 9 | 5 | 1 |
+| [Card](components/card.md) | 6 | · | 2 | 2 | 1 | · |
 | [Carousel](components/carousel.md) | 43 | · | 28 | 13 | 2 | 1 |
+| [Checkbox](components/checkbox.md) | 38 | · | 14 | 12 | 1 | 1 |
 | [Chip](components/chips.md) | 45 | · | 18 | 10 | 10 | 1 |
 | [Code](components/code.md) | 9 | · | 2 | 5 | 2 | · |
 | [Disclosure](components/disclosure.md) | 16 | · | 4 | 5 | · | 3 |
@@ -38,7 +41,10 @@ Every value in every contract, sorted by why it has a token or doesn't. A value 
 | [Menu](components/menu.md) | 38 | · | 16 | 6 | · | 1 |
 | [Navigation](components/navigation.md) | 13 | · | 21 | 1 | 2 | · |
 | [Paper effect](components/effect-paper.md) | 6 | · | · | · | 7 | · |
+| [Progress](components/progress.md) | 7 | · | 6 | · | · | · |
 | [Projects](components/projects.md) | 77 | · | 33 | 8 | 5 | 4 |
+| [Radio](components/radio.md) | 39 | · | 14 | 9 | 1 | 1 |
+| [Skeleton](components/skeleton.md) | 8 | · | 4 | · | · | · |
 | [Switch](components/switch.md) | 48 | · | 13 | 12 | 2 | 1 |
 | [SwitchField](components/switch-field.md) | 8 | · | 7 | 2 | · | · |
 | [TabItem](components/tab-item.md) | 37 | · | 15 | 12 | · | 1 |
@@ -82,7 +88,7 @@ The ring sits `spacing/gap/2xsmall` outside the element, so its inset is that to
 
 | Where | Part | Value |
 |---|---|---|
-| [Button](components/button.md), [Carousel](components/carousel.md), [Chip](components/chips.md), [IconButton](components/icon-button.md), [Input](components/input.md), [Projects](components/projects.md), [Switch](components/switch.md), [Tag](components/tags.md), [Testimonials](components/testimonials.md), [Textarea](components/textarea.md), [Thumbs](components/thumbs.md), [Toggle](components/toggle.md) | `focus-ring.inset` | `calc(-1 * var(--spacing-gap-2xsmall))` |
+| [Button](components/button.md), [Carousel](components/carousel.md), [Checkbox](components/checkbox.md), [Chip](components/chips.md), [IconButton](components/icon-button.md), [Input](components/input.md), [Projects](components/projects.md), [Radio](components/radio.md), [Switch](components/switch.md), [Tag](components/tags.md), [Testimonials](components/testimonials.md), [Textarea](components/textarea.md), [Thumbs](components/thumbs.md), [Toggle](components/toggle.md) | `focus-ring.inset` | `calc(-1 * var(--spacing-gap-2xsmall))` |
 | [Carousel](components/carousel.md), [Thumbs](components/thumbs.md) | `focus-ring.border-radius` | `calc(var(--spacing-radius-xlarge) + var(--spacing-gap-2xsmall))` |
 | [Menu](components/menu.md) | `focus-ring.inset` | `var(--spacing-gap-medium-large) calc(-1 * var(--spacing-gap-2xsmall))` |
 
@@ -122,6 +128,8 @@ Sizes and offsets that belong to one component, at a number no size token has.
 
 | Where | Part | Value | Why |
 |---|---|---|---|
+| [Card](components/card.md) | `root.outline-offset` | `calc(-1 * var(--spacing-outline-small))` | Composed from a token: the edge sits inside the card. |
+| [Checkbox](components/checkbox.md), [Radio](components/radio.md) | `box.outline-offset` | `calc(-1 * var(--spacing-outline-small))` | Composed from a token: the edge sits inside the box. |
 | [Code](components/code.md) | `root.font-family` | `'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace` | Rost has no mono family token yet. Where JetBrains Mono isn't loaded, the system mono stands in. |
 | [Code](components/code.md) | `root.font-size` | `0.88em` | In a sentence it follows the text around it. Mono looks bigger than General Sans at the same size, so a little smaller. |
 | [Icon](components/icon.md) | `root.mask-image` | `url(./svg/arrow-down.svg)` and 17 more, one per state | The icon file, `assets/icons/arrow-down.svg`. |
@@ -166,6 +174,7 @@ The paper effect's numbers, tuned for how the dots move. Only the paper uses the
 
 - [Button](components/button.md) `focus-ring.border-style` = `solid`
 - [Carousel](components/carousel.md) `focus-ring.border-style` = `solid`
+- [Checkbox](components/checkbox.md) `focus-ring.border-style` = `solid`
 - [Chip](components/chips.md) `focus-ring.border-style` = `solid`
 - [Disclosure](components/disclosure.md) `summary.outline-style` = `solid`
 - [Disclosure](components/disclosure.md) `summary.outline-offset` = `2px`
@@ -185,6 +194,7 @@ The paper effect's numbers, tuned for how the dots move. Only the paper uses the
 - [Projects](components/projects.md) `outline.right` = `0`
 - [Projects](components/projects.md) `outline.bottom` = `0`
 - [Projects](components/projects.md) `focus-ring.border-style` = `solid`
+- [Radio](components/radio.md) `focus-ring.border-style` = `solid`
 - [Switch](components/switch.md) `focus-ring.border-style` = `solid`
 - [TabItem](components/tab-item.md) `focus-ring.border-style` = `solid`
 - [Tag](components/tags.md) `focus-ring.border-style` = `solid`
@@ -220,7 +230,7 @@ When a component needs a colour no other has, change its own token to point some
 
 ## Two themes
 
-Dark is the default. It's what Figma draws first and what both apps use. Light is new (2026-10-30). Only colours change: 696 theme colours have a light value of their own. Every other token, and every component, is the same in both.
+Dark is the default. It's what Figma draws first and what both apps use. Light is new (2026-10-30). Only colours change: 727 theme colours have a light value of their own. Every other token, and every component, is the same in both.
 
 `tokens/tokens.css` puts dark on `:root`. Light applies under `[data-theme="light"]` and nowhere else. A system set to light doesn't change it: with no `data-theme` you get dark. `[data-theme="dark"]` brings dark back inside a light page, so a dark panel can sit in a light one. Set it on `<html>` for the whole page:
 
@@ -293,4 +303,4 @@ rost.build's own transitions use the tokens now. No component in Rost animates y
 
 ## Figma variables
 
-The Figma file has **1106** variables (`registry/figma-variables.json`, read on 2026-11-04) and `tokens/tokens.css` has **1106** of them. `npm run tokens` builds it from that read, so they can't come apart.
+The Figma file has **1163** variables (`registry/figma-variables.json`, read on 2026-11-04) and `tokens/tokens.css` has **1163** of them. `npm run tokens` builds it from that read, so they can't come apart.

@@ -1,0 +1,174 @@
+/* Generated from contracts/radio.contract.yaml by bin/build-css.mjs. Don't edit: change the contract and rebuild. */
+
+.rost-radio, .rost-radio * { box-sizing: border-box; margin: 0; }
+.rost-radio > img, .rost-radio [class*="__icons-"] > img { display: block; position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; }
+.rost-radio ::placeholder { color: inherit; opacity: 1; }
+
+.rost-radio {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-gap-small);
+  vertical-align: middle;
+  position: relative;
+  cursor: pointer;
+}
+
+.rost-radio__input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.rost-radio__box {
+  position: relative;
+  flex-shrink: 0;
+  width: var(--spacing-size-xsmall);
+  height: var(--spacing-size-xsmall);
+  border-radius: var(--spacing-radius-full);
+  outline-style: solid;
+  outline-width: var(--spacing-outline-small);
+  outline-offset: calc(-1 * var(--spacing-outline-small));
+}
+
+.rost-radio__dot {
+  position: absolute;
+  inset: var(--spacing-gap-xsmall);
+  border-radius: var(--spacing-radius-full);
+  pointer-events: none;
+}
+
+.rost-radio__focus-ring {
+  display: none;
+  position: absolute;
+  inset: calc(-1 * var(--spacing-gap-2xsmall));
+  border-style: solid;
+  border-width: var(--spacing-outline-medium);
+  border-radius: var(--spacing-radius-full);
+  pointer-events: none;
+}
+
+.rost-radio__label {
+  font-family: var(--font-family-base);
+  font-weight: var(--typography-paragraph-font-weight-regular);
+  font-size: var(--typography-paragraph-font-size);
+  line-height: var(--typography-paragraph-line-height);
+  letter-spacing: var(--typography-paragraph-letter-spacing);
+  color: var(--radio-label);
+}
+
+.rost-radio:not(.rost-radio--checked) .rost-radio__dot {
+  display: none;
+}
+
+.rost-radio:not(.rost-radio--checked) .rost-radio__box {
+  background: var(--radio-off-default-box);
+  outline-color: var(--radio-off-default-edge);
+}
+
+.rost-radio:hover:where(:not(:has(> .rost-radio__input:disabled))):not(.rost-radio--checked) .rost-radio__dot {
+  display: none;
+}
+
+.rost-radio:hover:where(:not(:has(> .rost-radio__input:disabled))):not(.rost-radio--checked) .rost-radio__box {
+  background: var(--radio-off-hover-box);
+  outline-color: var(--radio-off-hover-edge);
+}
+
+.rost-radio:active:where(:not(:has(> .rost-radio__input:disabled))):not(.rost-radio--checked) .rost-radio__dot {
+  display: none;
+}
+
+.rost-radio:active:where(:not(:has(> .rost-radio__input:disabled))):not(.rost-radio--checked) .rost-radio__box {
+  background: var(--radio-off-pressed-box);
+  outline-color: var(--radio-off-pressed-edge);
+}
+
+.rost-radio:has(> .rost-radio__input:focus-visible):not(.rost-radio--checked) .rost-radio__dot {
+  display: none;
+}
+
+.rost-radio:has(> .rost-radio__input:focus-visible):not(.rost-radio--checked) .rost-radio__focus-ring {
+  display: block;
+  border-color: var(--radio-off-focus-focus-ring);
+}
+
+.rost-radio:has(> .rost-radio__input:focus-visible):not(.rost-radio--checked) .rost-radio__box {
+  background: var(--radio-off-focus-box);
+  outline-color: var(--radio-off-focus-edge);
+}
+
+.rost-radio:has(> .rost-radio__input:disabled):not(.rost-radio--checked) .rost-radio__dot {
+  display: none;
+}
+
+.rost-radio:has(> .rost-radio__input:disabled):not(.rost-radio--checked) {
+  opacity: var(--opacity-gentle);
+  cursor: default;
+}
+
+.rost-radio:has(> .rost-radio__input:disabled):not(.rost-radio--checked) .rost-radio__box {
+  background: var(--radio-off-disabled-box);
+  outline-color: var(--radio-off-disabled-edge);
+}
+
+.rost-radio.rost-radio--checked .rost-radio__box {
+  outline-color: var(--radio-on-edge);
+  background: var(--radio-on-default-box);
+}
+
+.rost-radio.rost-radio--checked .rost-radio__dot {
+  display: block;
+  background: var(--radio-on-default-dot);
+}
+
+.rost-radio:hover:where(:not(:has(> .rost-radio__input:disabled))).rost-radio--checked .rost-radio__box {
+  outline-color: var(--radio-on-edge);
+  background: var(--radio-on-hover-box);
+}
+
+.rost-radio:hover:where(:not(:has(> .rost-radio__input:disabled))).rost-radio--checked .rost-radio__dot {
+  display: block;
+  background: var(--radio-on-hover-dot);
+}
+
+.rost-radio:active:where(:not(:has(> .rost-radio__input:disabled))).rost-radio--checked .rost-radio__box {
+  outline-color: var(--radio-on-edge);
+  background: var(--radio-on-pressed-box);
+}
+
+.rost-radio:active:where(:not(:has(> .rost-radio__input:disabled))).rost-radio--checked .rost-radio__dot {
+  display: block;
+  background: var(--radio-on-pressed-dot);
+}
+
+.rost-radio:has(> .rost-radio__input:focus-visible).rost-radio--checked .rost-radio__box {
+  outline-color: var(--radio-on-edge);
+  background: var(--radio-on-focus-box);
+}
+
+.rost-radio:has(> .rost-radio__input:focus-visible).rost-radio--checked .rost-radio__dot {
+  display: block;
+  background: var(--radio-on-focus-dot);
+}
+
+.rost-radio:has(> .rost-radio__input:focus-visible).rost-radio--checked .rost-radio__focus-ring {
+  display: block;
+  border-color: var(--radio-on-focus-focus-ring);
+}
+
+.rost-radio:has(> .rost-radio__input:disabled).rost-radio--checked .rost-radio__box {
+  outline-color: var(--radio-on-edge);
+  background: var(--radio-on-disabled-box);
+}
+
+.rost-radio:has(> .rost-radio__input:disabled).rost-radio--checked .rost-radio__dot {
+  display: block;
+  background: var(--radio-on-disabled-dot);
+}
+
+.rost-radio:has(> .rost-radio__input:disabled).rost-radio--checked {
+  opacity: var(--opacity-gentle);
+  cursor: default;
+}

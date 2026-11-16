@@ -1,0 +1,80 @@
+# yaml-language-server: $schema=../schema/component-contract.schema.json
+schemaVersion: 2
+id: progress
+name: Progress
+kind: component
+status: review
+summary: How far along something is, as a thin bar that fills. Green as it goes, amber or red when it needs a look.
+category: feedback
+related: [ skeleton, inline-banner, badge ]
+source:
+  tool: figma
+  fileKey: 1Zy0wiWKXQAvsfDBX3KR0d
+  nodeId: "733:172"
+  url: https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=733-172
+  extractedAt: "2026-11-16"
+  extractedBy: hand
+  frozenAt: "2026-11-16"
+props:
+  value: { type: number, required: true, notes: "From 0 to `max`." }
+  max: { type: number, default: 100 }
+  tone:
+    type: enum
+    values: [ positive, warning, negative ]
+    default: positive
+    notes: "`warning` when it's close to a limit, `negative` when it's over or something failed. Say why in words too."
+  label: { type: string, required: true, notes: "What's progressing. It's the bar's accessible name." }
+elements:
+  root:
+    notes: "A `<div role=\"progressbar\">` with `aria-valuenow`, `aria-valuemin` and `aria-valuemax`. It is the track: a 4px pill, as wide as its parent."
+    styles:
+      display: { value: block, assert: false }
+      position: { value: relative, assert: false }
+      overflow: { value: hidden, assert: false }
+      width: { value: 100%, assert: false }
+      height: { token: spacing/gap/2xsmall, value: 4px }
+      border-radius: { token: spacing/radius/full, value: 10000px }
+      background: { token: progress/track, value: "#3a3a3a" }
+  fill:
+    notes: "How far along, as a share of the track's width, set from `value`."
+    styles:
+      display: { value: block, assert: false }
+      height: { value: 100%, assert: false }
+      border-radius: { token: spacing/radius/full, value: 10000px }
+variants:
+  - when: { tone: positive }
+    figmaNode: "733:165"
+    elements:
+      fill:
+        background: { token: progress/fill/positive, value: "#00d669" }
+  - when: { tone: warning }
+    figmaNode: "733:167"
+    elements:
+      fill:
+        background: { token: progress/fill/warning, value: "#fda50d" }
+  - when: { tone: negative }
+    figmaNode: "733:169"
+    elements:
+      fill:
+        background: { token: progress/fill/negative, value: "#f2705f" }
+guidance:
+  status: proposed
+  use:
+    - title: Known progress
+      text: "Something with a known end: an upload, how much of the year's tax is set aside, steps through a form."
+      show: tone=positive
+    - title: Near a limit
+      text: "`warning` when it's getting close, like 90% of a budget. The words beside it say what the limit is."
+      show: tone=warning
+  avoid:
+    - title: Unknown waits
+      text: "When you don't know how long it'll take, there's nothing to fill. Show a **Skeleton** of what's coming."
+    - title: A score
+      text: "A rating or a level that isn't going anywhere. Write the number."
+  behaviour: |-
+    A 4px grey track with the fill on top, as wide as `value` out of `max`. It doesn't animate between values yet, for the same reason Skeleton doesn't pulse. Write the number or the words next to it too: a thin bar is hard to read exactly.
+  accessibility:
+    element: "`<div role=\"progressbar\">` with `aria-valuenow`, `aria-valuemin=\"0\"` and `aria-valuemax`. Progress sets them."
+    name: "`label`, as `aria-label`."
+    colour: "The fill is a graphic that carries meaning, so it needs 3:1 against the track. The tone is never the only signal: say \"over budget\" in words."
+  content: "The label says what it measures: \"Tax set aside for 2026\", not \"Progress\"."

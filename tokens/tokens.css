@@ -1049,6 +1049,75 @@
   --testimonials-pressed-outline: #10ffa4;
   --testimonials-pressed-sub-label: #c2c7c3;
 
+  /* ── Component: checkbox ─────────────────────────────────────────────────── */
+  --checkbox-label: #d3d9d5;
+  --checkbox-off-default-box: #060805;
+  --checkbox-off-default-edge: #747573;
+  --checkbox-off-disabled-box: #060805;
+  --checkbox-off-disabled-edge: #747573;
+  --checkbox-off-focus-box: #060805;
+  --checkbox-off-focus-edge: #747573;
+  --checkbox-off-focus-focus-ring: #999999;
+  --checkbox-off-hover-box: #171717;
+  --checkbox-off-hover-edge: #999999;
+  --checkbox-off-pressed-box: #171717;
+  --checkbox-off-pressed-edge: #999999;
+  --checkbox-on-default-box: #00d669;
+  --checkbox-on-default-check: #060805;
+  --checkbox-on-disabled-box: #00d669;
+  --checkbox-on-disabled-check: #060805;
+  --checkbox-on-edge: #00d669;
+  --checkbox-on-focus-box: #00d669;
+  --checkbox-on-focus-check: #060805;
+  --checkbox-on-focus-focus-ring: #b6ffda;
+  --checkbox-on-hover-box: #00b450;
+  --checkbox-on-hover-check: #060805;
+  --checkbox-on-pressed-box: #00913a;
+  --checkbox-on-pressed-check: #060805;
+
+  /* ── Component: radio ────────────────────────────────────────────────────── */
+  --radio-label: #d3d9d5;
+  --radio-off-default-box: #060805;
+  --radio-off-default-edge: #747573;
+  --radio-off-disabled-box: #060805;
+  --radio-off-disabled-edge: #747573;
+  --radio-off-focus-box: #060805;
+  --radio-off-focus-edge: #747573;
+  --radio-off-focus-focus-ring: #999999;
+  --radio-off-hover-box: #171717;
+  --radio-off-hover-edge: #999999;
+  --radio-off-pressed-box: #171717;
+  --radio-off-pressed-edge: #999999;
+  --radio-on-default-box: #00d669;
+  --radio-on-default-dot: #060805;
+  --radio-on-disabled-box: #00d669;
+  --radio-on-disabled-dot: #060805;
+  --radio-on-edge: #00d669;
+  --radio-on-focus-box: #00d669;
+  --radio-on-focus-dot: #060805;
+  --radio-on-focus-focus-ring: #b6ffda;
+  --radio-on-hover-box: #00b450;
+  --radio-on-hover-dot: #060805;
+  --radio-on-pressed-box: #00913a;
+  --radio-on-pressed-dot: #060805;
+
+  /* ── Component: avatar ───────────────────────────────────────────────────── */
+  --avatar-background: #3a3a3a;
+  --avatar-initials: #ededed;
+
+  /* ── Component: card ─────────────────────────────────────────────────────── */
+  --card-filled-background: #171717;
+  --card-outlined-edge: #3a3a3a;
+
+  /* ── Component: skeleton ─────────────────────────────────────────────────── */
+  --skeleton-background: #3a3a3a;
+
+  /* ── Component: progress ─────────────────────────────────────────────────── */
+  --progress-fill-negative: #f2705f;
+  --progress-fill-positive: #00d669;
+  --progress-fill-warning: #fda50d;
+  --progress-track: #3a3a3a;
+
   /* ── Generic colours (no family in Figma) ────────────────────────────────── */
   --background: #3a3a3a;
   --focus-ring: #999999;
@@ -1205,7 +1274,7 @@
 }
 
 /* ── Light ──────────────────────────────────────────────────────────────────
- * Only the colours change, 696 of them. Figma's light mode, with Rost's own
+ * Only the colours change, 727 of them. Figma's light mode, with Rost's own
  * corrections from registry/light.json where Figma's value fails contrast.
  * Set data-theme="light" on <html> (or any element). Without it you get dark,
  * whatever the system says. data-theme="dark" brings dark back inside a light page.
@@ -1373,6 +1442,8 @@
   --actions-tertiary-pressed-icon: #006f27;
   --actions-tertiary-pressed-label: #171717;
   --actions-tertiary-pressed-sub-label: #454545;
+  --avatar-background: #d3d9d5;
+  --avatar-initials: #060805;
   --background: #c2c7c3;
   --button-borderless-default-label: #171717;
   --button-borderless-disabled-label: #171717;
@@ -1412,6 +1483,8 @@
   --button-tertiary-hover-label: #060805;
   --button-tertiary-pressed-background: #999999;
   --button-tertiary-pressed-label: #171717;
+  --card-filled-background: #ededed;
+  --card-outlined-edge: #d3d9d5;
   --carousel-background: #d3d9d5;
   --carousel-default-label: #171717;
   --carousel-default-number: #454545;
@@ -1429,6 +1502,17 @@
   --carousel-pressed-label: #006f27;
   --carousel-pressed-number: #006f27;
   --carousel-pressed-sub-label: #454545;
+  --checkbox-label: #171717;
+  --checkbox-off-default-box: #fcfcfc;
+  --checkbox-off-disabled-box: #fcfcfc;
+  --checkbox-off-focus-box: #fcfcfc;
+  --checkbox-off-focus-focus-ring: #747573;
+  --checkbox-off-hover-box: #ededed;
+  --checkbox-off-hover-edge: #747573;
+  --checkbox-off-pressed-box: #ededed;
+  --checkbox-off-pressed-edge: #747573;
+  --checkbox-on-edge: #0e7118;
+  --checkbox-on-focus-focus-ring: #006f27;
   --chip-focus-ring: #747573;
   --chip-selected-default-edge: #0e7118;
   --chip-selected-disabled-edge: #0e7118;
@@ -1652,6 +1736,10 @@
   --non-interactive-foreground-warning-dark: #492604;
   --non-interactive-foreground-warning-light: #fef8e1;
   --outline: #fcfcfc;
+  --progress-fill-negative: #ae1b13;
+  --progress-fill-positive: #0e7118;
+  --progress-fill-warning: #7a4805;
+  --progress-track: #d3d9d5;
   --project-default-background: #c2c7c3;
   --project-default-icon: #d3d9d5;
   --project-default-label: #171717;
@@ -1718,6 +1806,18 @@
   --projects-pressed-number: #006f27;
   --projects-pressed-outline: #00913a;
   --projects-pressed-sub-label: #454545;
+  --radio-label: #171717;
+  --radio-off-default-box: #fcfcfc;
+  --radio-off-disabled-box: #fcfcfc;
+  --radio-off-focus-box: #fcfcfc;
+  --radio-off-focus-focus-ring: #747573;
+  --radio-off-hover-box: #ededed;
+  --radio-off-hover-edge: #747573;
+  --radio-off-pressed-box: #ededed;
+  --radio-off-pressed-edge: #747573;
+  --radio-on-edge: #0e7118;
+  --radio-on-focus-focus-ring: #006f27;
+  --skeleton-background: #d3d9d5;
   --sub-label: #747573;
   --switch-field-label: #171717;
   --switch-off-default-thumb: #171717;
@@ -2073,6 +2173,8 @@
   --actions-tertiary-pressed-icon: #00d669;
   --actions-tertiary-pressed-label: #d3d9d5;
   --actions-tertiary-pressed-sub-label: #c2c7c3;
+  --avatar-background: #3a3a3a;
+  --avatar-initials: #ededed;
   --background: #3a3a3a;
   --button-borderless-default-label: #d3d9d5;
   --button-borderless-disabled-label: #d3d9d5;
@@ -2112,6 +2214,8 @@
   --button-tertiary-hover-label: #ededed;
   --button-tertiary-pressed-background: #454545;
   --button-tertiary-pressed-label: #d3d9d5;
+  --card-filled-background: #171717;
+  --card-outlined-edge: #3a3a3a;
   --carousel-background: #3a3a3a;
   --carousel-default-label: #d3d9d5;
   --carousel-default-number: #999999;
@@ -2129,6 +2233,17 @@
   --carousel-pressed-label: #00d669;
   --carousel-pressed-number: #00d669;
   --carousel-pressed-sub-label: #c2c7c3;
+  --checkbox-label: #d3d9d5;
+  --checkbox-off-default-box: #060805;
+  --checkbox-off-disabled-box: #060805;
+  --checkbox-off-focus-box: #060805;
+  --checkbox-off-focus-focus-ring: #999999;
+  --checkbox-off-hover-box: #171717;
+  --checkbox-off-hover-edge: #999999;
+  --checkbox-off-pressed-box: #171717;
+  --checkbox-off-pressed-edge: #999999;
+  --checkbox-on-edge: #00d669;
+  --checkbox-on-focus-focus-ring: #b6ffda;
   --chip-focus-ring: #999999;
   --chip-selected-default-edge: #00d669;
   --chip-selected-disabled-edge: #00d669;
@@ -2352,6 +2467,10 @@
   --non-interactive-foreground-warning-dark: #fef8e1;
   --non-interactive-foreground-warning-light: #492604;
   --outline: #ededed;
+  --progress-fill-negative: #f2705f;
+  --progress-fill-positive: #00d669;
+  --progress-fill-warning: #fda50d;
+  --progress-track: #3a3a3a;
   --project-default-background: #454545;
   --project-default-icon: #747573;
   --project-default-label: #d3d9d5;
@@ -2418,6 +2537,18 @@
   --projects-pressed-number: #00d669;
   --projects-pressed-outline: #10ffa4;
   --projects-pressed-sub-label: #c2c7c3;
+  --radio-label: #d3d9d5;
+  --radio-off-default-box: #060805;
+  --radio-off-disabled-box: #060805;
+  --radio-off-focus-box: #060805;
+  --radio-off-focus-focus-ring: #999999;
+  --radio-off-hover-box: #171717;
+  --radio-off-hover-edge: #999999;
+  --radio-off-pressed-box: #171717;
+  --radio-off-pressed-edge: #999999;
+  --radio-on-edge: #00d669;
+  --radio-on-focus-focus-ring: #b6ffda;
+  --skeleton-background: #3a3a3a;
   --sub-label: #999999;
   --switch-field-label: #d3d9d5;
   --switch-off-default-thumb: #d3d9d5;

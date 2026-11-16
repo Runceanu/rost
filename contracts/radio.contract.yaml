@@ -1,0 +1,188 @@
+# yaml-language-server: $schema=../schema/component-contract.schema.json
+schemaVersion: 2
+id: radio
+name: Radio
+kind: component
+status: review
+summary: One choice out of a few, all on show. A 20px circle with a dot in the picked one, and the words beside it.
+category: selection
+related: [ checkbox, toggle-group, chips ]
+source:
+  tool: figma
+  fileKey: 1Zy0wiWKXQAvsfDBX3KR0d
+  nodeId: "733:124"
+  url: https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=733-124
+  extractedAt: "2026-11-16"
+  extractedBy: hand
+  frozenAt: "2026-11-16"
+props:
+  checked: { type: boolean, default: false, notes: "Picked or not. Radios with the same `name` are one group, and the browser keeps only one of them picked." }
+  children: { type: slot, notes: "The label, beside the circle. Leave it out only when something else names it (`aria-label`)." }
+states: [ Default, Hover, Pressed, Focus, Disabled ]
+stateSelectors:
+  Focus: ":has(> .rost-radio__input:focus-visible)"
+  Disabled: ":has(> .rost-radio__input:disabled)"
+elements:
+  root:
+    notes: "A `<label>` around the input, the circle and the words, so a press anywhere on it counts. Hover and press come from the label."
+    styles:
+      display: { value: inline-flex, assert: false }
+      align-items: { value: center }
+      gap: { token: spacing/gap/small, value: 8px }
+      vertical-align: { value: middle, assert: false }
+      position: { value: relative, assert: false }
+      cursor: { value: pointer, assert: false }
+  input:
+    notes: "The real `<input type=\"radio\">`, there for the keyboard, forms and screen readers, and hidden from sight. The circle draws what it says."
+    styles:
+      position: { value: absolute, assert: false }
+      width: { value: 1px, assert: false }
+      height: { value: 1px, assert: false }
+      opacity: { value: "0", assert: false }
+      pointer-events: { value: none, assert: false }
+  box:
+    notes: "The 20px circle. Empty it's the page's colour inside a field's edge. Picked it's filled with the primary green."
+    styles:
+      position: { value: relative, assert: false }
+      flex-shrink: { value: "0", assert: false }
+      width: { token: spacing/size/xsmall, value: 20px }
+      height: { token: spacing/size/xsmall, value: 20px }
+      border-radius: { token: spacing/radius/full, value: 10000px }
+      outline-style: { value: solid, assert: false, notes: "Drawn inside the box, like Switch's track, so it can be seen against the page." }
+      outline-width: { token: spacing/outline/small, value: 1px }
+      outline-offset: { value: "calc(-1 * var(--spacing-outline-small))", untokenised: "Composed from a token: the edge sits inside the box." }
+  dot:
+    notes: "The 8px dot in the middle, in the colour of a primary button's label: 6px in from the edge."
+    styles:
+      position: { value: absolute }
+      inset: { token: spacing/gap/xsmall, value: 6px }
+      border-radius: { token: spacing/radius/full, value: 10000px }
+      pointer-events: { value: none, assert: false }
+  focus-ring:
+    notes: "Around the circle, keeping its shape."
+    styles:
+      display: { value: none, assert: false }
+      position: { value: absolute }
+      inset: { value: "calc(-1 * var(--spacing-gap-2xsmall))", untokenised: "Composed from a token: the ring sits spacing/gap/2xsmall outside the circle." }
+      border-style: { value: solid }
+      border-width: { token: spacing/outline/medium, value: 2px }
+      border-radius: { token: spacing/radius/full, value: 10000px }
+      pointer-events: { value: none, assert: false }
+  label:
+    notes: "The words. Paragraph type, in the colour SwitchField's label has. It doesn't change when it's picked: the circle says that."
+    styles:
+      font-family: { token: font-family/base, value: "'General Sans Variable'" }
+      font-weight: { token: typography/paragraph/font-weight/regular, value: "400" }
+      font-size: { token: typography/paragraph/font-size, value: 14px }
+      line-height: { token: typography/paragraph/line-height, value: 20px }
+      letter-spacing: { token: typography/paragraph/letter-spacing, value: 0px }
+      color: { token: radio/label, value: "#d3d9d5" }
+variants:
+  - when: { checked: false }
+    elements:
+      dot:
+        display: { value: none, assert: false }
+  - when: { checked: true }
+    elements:
+      box:
+        outline-color: { token: radio/on/edge, value: "#00d669", notes: "The fill's own green in dark. In light it's a dark green, because the bright fill is 1.9:1 on white, the way Switch's track does it." }
+      dot:
+        display: { value: block, assert: false }
+  - when: { state: Focus }
+    elements:
+      focus-ring:
+        display: { value: block, assert: false }
+  - when: { state: Disabled }
+    elements:
+      root:
+        opacity: { token: opacity/gentle, value: "0.24" }
+        cursor: { value: default, assert: false }
+  - when: { state: Default, checked: false }
+    figmaNode: "733:73"
+    elements:
+      box:
+        background: { token: radio/off/default/box, value: "#060805" }
+        outline-color: { token: radio/off/default/edge, value: "#747573" }
+  - when: { state: Hover, checked: false }
+    figmaNode: "733:78"
+    elements:
+      box:
+        background: { token: radio/off/hover/box, value: "#171717" }
+        outline-color: { token: radio/off/hover/edge, value: "#999999" }
+  - when: { state: Pressed, checked: false }
+    figmaNode: "733:83"
+    elements:
+      box:
+        background: { token: radio/off/pressed/box, value: "#171717" }
+        outline-color: { token: radio/off/pressed/edge, value: "#999999" }
+  - when: { state: Focus, checked: false }
+    figmaNode: "733:88"
+    elements:
+      box:
+        background: { token: radio/off/focus/box, value: "#060805" }
+        outline-color: { token: radio/off/focus/edge, value: "#747573" }
+      focus-ring:
+        border-color: { token: radio/off/focus/focus-ring, value: "#999" }
+  - when: { state: Disabled, checked: false }
+    figmaNode: "733:93"
+    elements:
+      box:
+        background: { token: radio/off/disabled/box, value: "#060805" }
+        outline-color: { token: radio/off/disabled/edge, value: "#747573" }
+  - when: { state: Default, checked: true }
+    figmaNode: "733:98"
+    elements:
+      box:
+        background: { token: radio/on/default/box, value: "#00d669" }
+      dot:
+        background: { token: radio/on/default/dot, value: "#060805" }
+  - when: { state: Hover, checked: true }
+    figmaNode: "733:103"
+    elements:
+      box:
+        background: { token: radio/on/hover/box, value: "#00b450" }
+      dot:
+        background: { token: radio/on/hover/dot, value: "#060805" }
+  - when: { state: Pressed, checked: true }
+    figmaNode: "733:108"
+    elements:
+      box:
+        background: { token: radio/on/pressed/box, value: "#00913a" }
+      dot:
+        background: { token: radio/on/pressed/dot, value: "#060805" }
+  - when: { state: Focus, checked: true }
+    figmaNode: "733:113"
+    elements:
+      box:
+        background: { token: radio/on/focus/box, value: "#00d669" }
+      dot:
+        background: { token: radio/on/focus/dot, value: "#060805" }
+      focus-ring:
+        border-color: { token: radio/on/focus/focus-ring, value: "#b6ffda" }
+  - when: { state: Disabled, checked: true }
+    figmaNode: "733:118"
+    elements:
+      box:
+        background: { token: radio/on/disabled/box, value: "#00d669" }
+      dot:
+        background: { token: radio/on/disabled/dot, value: "#060805" }
+guidance:
+  status: proposed
+  use:
+    - title: One out of a few
+      text: "Two to five choices where seeing them all helps you pick: how often to invoice, which currency."
+      show: state=Default, checked=True
+  avoid:
+    - title: Many choices
+      text: "More than five or six, or a list that changes. That's a select, and Rost doesn't have one yet."
+    - title: Switching a view
+      text: "Picking which view the screen shows. That's **ToggleGroup** or **Tabs**."
+  behaviour: |-
+    Put the radios of one question in a `<fieldset>` with a `<legend>` that asks it, and give them the same `name`. The browser does the rest: one picked at a time, and the arrow keys move between them. Empty is a field's edge around the page colour. Picked fills with the primary green, with a dark dot. Disabled fades the row.
+  accessibility:
+    element: "A real `<input type=\"radio\">` inside a `<label>`. The input is hidden from sight, not from screen readers."
+    name: "The words beside it. The `<legend>` names the group."
+    keyboard: "Tab reaches the group, on the picked one. The arrow keys move the pick."
+    focus: "`focus-ring` around the circle, on `:focus-visible`."
+    colour: "Picked isn't only green: the dot is there too. Picked, the edge is the fill's green in dark and a dark green in light, so the circle stands out at 3:1 or more on both."
+  content: "Short, parallel answers to the legend's question, in sentence case."

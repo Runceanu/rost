@@ -1,0 +1,32 @@
+/* Generated from contracts/progress.contract.yaml by bin/build-css.mjs. Don't edit: change the contract and rebuild. */
+
+.rost-progress, .rost-progress * { box-sizing: border-box; margin: 0; }
+.rost-progress > img, .rost-progress [class*="__icons-"] > img { display: block; position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; }
+.rost-progress ::placeholder { color: inherit; opacity: 1; }
+
+.rost-progress {
+  display: block;
+  position: relative;
+  overflow: hidden;
+  height: var(--spacing-gap-2xsmall);
+  border-radius: var(--spacing-radius-full);
+  background: var(--progress-track);
+}
+
+.rost-progress__fill {
+  display: block;
+  height: 100%;
+  border-radius: var(--spacing-radius-full);
+}
+
+.rost-progress.rost-progress--tone-positive .rost-progress__fill {
+  background: var(--progress-fill-positive);
+}
+
+.rost-progress.rost-progress--tone-warning .rost-progress__fill {
+  background: var(--progress-fill-warning);
+}
+
+.rost-progress.rost-progress--tone-negative .rost-progress__fill {
+  background: var(--progress-fill-negative);
+}

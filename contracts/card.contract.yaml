@@ -1,0 +1,70 @@
+# yaml-language-server: $schema=../schema/component-contract.schema.json
+schemaVersion: 2
+id: card
+name: Card
+kind: component
+status: review
+summary: A plate that holds one thing together, like a summary, a setting or a figure. Filled grey, or just an edge.
+category: surfaces
+related: [ thumbs, table ]
+source:
+  tool: figma
+  fileKey: 1Zy0wiWKXQAvsfDBX3KR0d
+  nodeId: "733:152"
+  url: https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=733-152
+  extractedAt: "2026-11-16"
+  extractedBy: hand
+  frozenAt: "2026-11-16"
+props:
+  tone:
+    type: enum
+    values: [ filled, outlined ]
+    default: filled
+    notes: "`filled` on the page. `outlined` where it sits on something grey already, or where several in a row would be too much grey."
+  children: { type: slot, notes: Whatever belongs together. The card adds no type of its own. }
+elements:
+  root:
+    notes: "A `<div>`, or a `<section>` with `as` when it has a heading of its own. It lays its children out in a column, 16px apart."
+    styles:
+      display: { value: flex, assert: false }
+      flex-direction: { value: column, assert: false }
+      gap: { token: spacing/gap/medium, value: 16px }
+      padding: { token: spacing/gap/large, value: 24px }
+      border-radius: { token: spacing/radius/large, value: 16px }
+variants:
+  - when: { tone: filled }
+    figmaNode: "733:145"
+    elements:
+      root:
+        background: { token: card/filled/background, value: "#171717" }
+  - when: { tone: outlined }
+    figmaNode: "733:148"
+    elements:
+      root:
+        background: { value: transparent, assert: false }
+        outline-style: { value: solid, assert: false }
+        outline-width: { token: spacing/outline/small, value: 1px }
+        outline-offset: { value: "calc(-1 * var(--spacing-outline-small))", untokenised: "Composed from a token: the edge sits inside the card." }
+        outline-color: { token: card/outlined/edge, value: "#3a3a3a" }
+guidance:
+  status: proposed
+  use:
+    - title: Things that belong together
+      text: "A month's totals, one setting with its explanation, a client's details: one card each."
+      show: tone=filled
+    - title: On grey
+      text: "Inside a panel that's grey already, `outlined` keeps the edge without stacking grey on grey."
+      show: tone=outlined
+  avoid:
+    - title: Something to click
+      text: "A whole card that's a link. That's **Thumbs**, which has hover, press and focus."
+    - title: Rows of data
+      text: "Rows you compare. That's **Table**."
+    - title: Cards in cards
+      text: "One card inside another. Use spacing and a heading instead."
+  behaviour: |-
+    A plate with 24px inside it and 16px between what it holds. It doesn't do anything: no hover, no press. The edge on `outlined` is decoration, so it doesn't need 3:1 against the page; what's in the card has to carry itself.
+  accessibility:
+    element: "A `<div>` by default. Make it a `<section>` with an `aria-labelledby` pointing at its heading when it's a part of the page someone would jump to."
+    colour: "The filled plate is #171717 on the dark page. Text on it uses the same tokens as on the page and keeps AA."
+  content: A heading, if it needs one, in sentence case. Keep it to one idea.

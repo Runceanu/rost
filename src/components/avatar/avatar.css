@@ -1,0 +1,68 @@
+/* Generated from contracts/avatar.contract.yaml by bin/build-css.mjs. Don't edit: change the contract and rebuild. */
+
+.rost-avatar, .rost-avatar * { box-sizing: border-box; margin: 0; }
+.rost-avatar > img, .rost-avatar [class*="__icons-"] > img { display: block; position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; }
+.rost-avatar ::placeholder { color: inherit; opacity: 1; }
+
+.rost-avatar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  flex-shrink: 0;
+  overflow: hidden;
+  vertical-align: middle;
+  border-radius: var(--spacing-radius-full);
+  background: var(--avatar-background);
+}
+
+.rost-avatar__initials {
+  font-family: var(--font-family-base);
+  color: var(--avatar-initials);
+  text-transform: uppercase;
+  user-select: none;
+}
+
+.rost-avatar__image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.rost-avatar.rost-avatar--size-small {
+  width: var(--spacing-size-small-medium);
+  height: var(--spacing-size-small-medium);
+}
+
+.rost-avatar.rost-avatar--size-small .rost-avatar__initials {
+  font-size: var(--typography-label-font-size);
+  line-height: var(--typography-label-line-height);
+  font-weight: var(--typography-label-font-weight-medium);
+  letter-spacing: var(--typography-label-letter-spacing);
+}
+
+.rost-avatar.rost-avatar--size-medium {
+  width: var(--spacing-size-medium);
+  height: var(--spacing-size-medium);
+}
+
+.rost-avatar.rost-avatar--size-medium .rost-avatar__initials {
+  font-size: var(--typography-paragraph-font-size);
+  line-height: var(--typography-paragraph-line-height);
+  font-weight: var(--typography-paragraph-font-weight-medium);
+  letter-spacing: var(--typography-paragraph-letter-spacing);
+}
+
+.rost-avatar.rost-avatar--size-large {
+  width: var(--spacing-size-large);
+  height: var(--spacing-size-large);
+}
+
+.rost-avatar.rost-avatar--size-large .rost-avatar__initials {
+  font-size: var(--typography-body-font-size);
+  line-height: var(--typography-body-line-height);
+  font-weight: var(--typography-body-font-weight-medium);
+  letter-spacing: var(--typography-body-letter-spacing);
+}

@@ -1851,5 +1851,234 @@
       "width": 239,
       "height": 48
     }
+  ],
+  "checkbox": [
+    {
+      "nodeId": "733:3",
+      "name": "state=Default, checked=False",
+      "file": "733-3.png",
+      "width": 102,
+      "height": 20
+    },
+    {
+      "nodeId": "733:9",
+      "name": "state=Hover, checked=False",
+      "file": "733-9.png",
+      "width": 102,
+      "height": 20
+    },
+    {
+      "nodeId": "733:15",
+      "name": "state=Pressed, checked=False",
+      "file": "733-15.png",
+      "width": 102,
+      "height": 20
+    },
+    {
+      "nodeId": "733:21",
+      "name": "state=Focus, checked=False",
+      "file": "733-21.png",
+      "width": 110,
+      "height": 28
+    },
+    {
+      "nodeId": "733:27",
+      "name": "state=Disabled, checked=False",
+      "file": "733-27.png",
+      "width": 102,
+      "height": 20
+    },
+    {
+      "nodeId": "733:33",
+      "name": "state=Default, checked=True",
+      "file": "733-33.png",
+      "width": 102,
+      "height": 20
+    },
+    {
+      "nodeId": "733:39",
+      "name": "state=Hover, checked=True",
+      "file": "733-39.png",
+      "width": 102,
+      "height": 20
+    },
+    {
+      "nodeId": "733:45",
+      "name": "state=Pressed, checked=True",
+      "file": "733-45.png",
+      "width": 102,
+      "height": 20
+    },
+    {
+      "nodeId": "733:51",
+      "name": "state=Focus, checked=True",
+      "file": "733-51.png",
+      "width": 110,
+      "height": 28
+    },
+    {
+      "nodeId": "733:57",
+      "name": "state=Disabled, checked=True",
+      "file": "733-57.png",
+      "width": 102,
+      "height": 20
+    }
+  ],
+  "radio": [
+    {
+      "nodeId": "733:73",
+      "name": "state=Default, checked=False",
+      "file": "733-73.png",
+      "width": 108,
+      "height": 20
+    },
+    {
+      "nodeId": "733:78",
+      "name": "state=Hover, checked=False",
+      "file": "733-78.png",
+      "width": 108,
+      "height": 20
+    },
+    {
+      "nodeId": "733:83",
+      "name": "state=Pressed, checked=False",
+      "file": "733-83.png",
+      "width": 108,
+      "height": 20
+    },
+    {
+      "nodeId": "733:88",
+      "name": "state=Focus, checked=False",
+      "file": "733-88.png",
+      "width": 116,
+      "height": 28
+    },
+    {
+      "nodeId": "733:93",
+      "name": "state=Disabled, checked=False",
+      "file": "733-93.png",
+      "width": 108,
+      "height": 20
+    },
+    {
+      "nodeId": "733:98",
+      "name": "state=Default, checked=True",
+      "file": "733-98.png",
+      "width": 108,
+      "height": 20
+    },
+    {
+      "nodeId": "733:103",
+      "name": "state=Hover, checked=True",
+      "file": "733-103.png",
+      "width": 108,
+      "height": 20
+    },
+    {
+      "nodeId": "733:108",
+      "name": "state=Pressed, checked=True",
+      "file": "733-108.png",
+      "width": 108,
+      "height": 20
+    },
+    {
+      "nodeId": "733:113",
+      "name": "state=Focus, checked=True",
+      "file": "733-113.png",
+      "width": 116,
+      "height": 28
+    },
+    {
+      "nodeId": "733:118",
+      "name": "state=Disabled, checked=True",
+      "file": "733-118.png",
+      "width": 108,
+      "height": 20
+    }
+  ],
+  "avatar": [
+    {
+      "nodeId": "733:133",
+      "name": "size=small",
+      "file": "733-133.png",
+      "width": 32,
+      "height": 32
+    },
+    {
+      "nodeId": "733:135",
+      "name": "size=medium",
+      "file": "733-135.png",
+      "width": 40,
+      "height": 40
+    },
+    {
+      "nodeId": "733:137",
+      "name": "size=large",
+      "file": "733-137.png",
+      "width": 56,
+      "height": 56
+    }
+  ],
+  "card": [
+    {
+      "nodeId": "733:145",
+      "name": "tone=filled",
+      "file": "733-145.png",
+      "width": 280,
+      "height": 142
+    },
+    {
+      "nodeId": "733:148",
+      "name": "tone=outlined",
+      "file": "733-148.png",
+      "width": 280,
+      "height": 142
+    }
+  ],
+  "skeleton": [
+    {
+      "nodeId": "733:156",
+      "name": "shape=text",
+      "file": "733-156.png",
+      "width": 240,
+      "height": 12
+    },
+    {
+      "nodeId": "733:157",
+      "name": "shape=circle",
+      "file": "733-157.png",
+      "width": 40,
+      "height": 40
+    },
+    {
+      "nodeId": "733:158",
+      "name": "shape=block",
+      "file": "733-158.png",
+      "width": 240,
+      "height": 80
+    }
+  ],
+  "progress": [
+    {
+      "nodeId": "733:165",
+      "name": "tone=positive",
+      "file": "733-165.png",
+      "width": 240,
+      "height": 4
+    },
+    {
+      "nodeId": "733:167",
+      "name": "tone=warning",
+      "file": "733-167.png",
+      "width": 240,
+      "height": 4
+    },
+    {
+      "nodeId": "733:169",
+      "name": "tone=negative",
+      "file": "733-169.png",
+      "width": 240,
+      "height": 4
+    }
   ]
 }

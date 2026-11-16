@@ -1,0 +1,194 @@
+# yaml-language-server: $schema=../schema/component-contract.schema.json
+schemaVersion: 2
+id: checkbox
+name: Checkbox
+kind: component
+status: review
+summary: A choice that's on or off and waits for the form. A 20px box that fills green with a tick, and the words beside it.
+category: selection
+related: [ switch, radio, chips ]
+source:
+  tool: figma
+  fileKey: 1Zy0wiWKXQAvsfDBX3KR0d
+  nodeId: "733:64"
+  url: https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=733-64
+  extractedAt: "2026-11-16"
+  extractedBy: hand
+  frozenAt: "2026-11-16"
+props:
+  checked: { type: boolean, default: false, notes: "Ticked or not. It's the input's own `checked`, so a form sends it. In React, controlled with `checked` or left to itself with `defaultChecked`." }
+  children: { type: slot, notes: "The label, beside the box. Leave it out only when something else names it (`aria-label`)." }
+states: [ Default, Hover, Pressed, Focus, Disabled ]
+stateSelectors:
+  Focus: ":has(> .rost-checkbox__input:focus-visible)"
+  Disabled: ":has(> .rost-checkbox__input:disabled)"
+elements:
+  root:
+    notes: "A `<label>` around the input, the box and the words, so a press anywhere on it counts. Hover and press come from the label."
+    styles:
+      display: { value: inline-flex, assert: false }
+      align-items: { value: center }
+      gap: { token: spacing/gap/small, value: 8px }
+      vertical-align: { value: middle, assert: false }
+      position: { value: relative, assert: false }
+      cursor: { value: pointer, assert: false }
+  input:
+    notes: "The real `<input type=\"checkbox\">`, there for the keyboard, forms and screen readers, and hidden from sight. The box draws what it says."
+    styles:
+      position: { value: absolute, assert: false }
+      width: { value: 1px, assert: false }
+      height: { value: 1px, assert: false }
+      opacity: { value: "0", assert: false }
+      pointer-events: { value: none, assert: false }
+  box:
+    notes: "The 20px square, the size of a small icon, with 4px corners. Empty it's the page's colour inside a field's edge. Ticked it's filled with the primary green."
+    styles:
+      position: { value: relative, assert: false }
+      flex-shrink: { value: "0", assert: false }
+      width: { token: spacing/size/xsmall, value: 20px }
+      height: { token: spacing/size/xsmall, value: 20px }
+      border-radius: { token: spacing/radius/xsmall, value: 4px }
+      outline-style: { value: solid, assert: false, notes: "Drawn inside the box, like Switch's track, so it can be seen against the page." }
+      outline-width: { token: spacing/outline/small, value: 1px }
+      outline-offset: { value: "calc(-1 * var(--spacing-outline-small))", untokenised: "Composed from a token: the edge sits inside the box." }
+  check:
+    notes: "The tick, drawn with `icon-check.svg` as a mask in the colour of a primary button's label, 2px in from the box's edge."
+    styles:
+      position: { value: absolute }
+      inset: { token: spacing/gap/3xsmall, value: 2px }
+      mask-image: { value: "url(./icon-check.svg)", assert: false }
+      mask-size: { value: 100% 100%, assert: false }
+      mask-repeat: { value: no-repeat, assert: false }
+      pointer-events: { value: none, assert: false }
+  focus-ring:
+    notes: "Around the box, keeping its shape."
+    styles:
+      display: { value: none, assert: false }
+      position: { value: absolute }
+      inset: { value: "calc(-1 * var(--spacing-gap-2xsmall))", untokenised: "Composed from a token: the ring sits spacing/gap/2xsmall outside the box." }
+      border-style: { value: solid }
+      border-width: { token: spacing/outline/medium, value: 2px }
+      border-radius: { token: spacing/radius/small, value: 8px }
+      pointer-events: { value: none, assert: false }
+  label:
+    notes: "The words. Paragraph type, in the colour SwitchField's label has. It doesn't change when it's ticked: the box says that."
+    styles:
+      font-family: { token: font-family/base, value: "'General Sans Variable'" }
+      font-weight: { token: typography/paragraph/font-weight/regular, value: "400" }
+      font-size: { token: typography/paragraph/font-size, value: 14px }
+      line-height: { token: typography/paragraph/line-height, value: 20px }
+      letter-spacing: { token: typography/paragraph/letter-spacing, value: 0px }
+      color: { token: checkbox/label, value: "#d3d9d5" }
+variants:
+  - when: { checked: false }
+    elements:
+      check:
+        display: { value: none, assert: false }
+  - when: { checked: true }
+    elements:
+      box:
+        outline-color: { token: checkbox/on/edge, value: "#00d669", notes: "The fill's own green in dark. In light it's a dark green, because the bright fill is 1.9:1 on white, the way Switch's track does it." }
+      check:
+        display: { value: block, assert: false }
+  - when: { state: Focus }
+    elements:
+      focus-ring:
+        display: { value: block, assert: false }
+  - when: { state: Disabled }
+    elements:
+      root:
+        opacity: { token: opacity/gentle, value: "0.24" }
+        cursor: { value: default, assert: false }
+  - when: { state: Default, checked: false }
+    figmaNode: "733:3"
+    elements:
+      box:
+        background: { token: checkbox/off/default/box, value: "#060805" }
+        outline-color: { token: checkbox/off/default/edge, value: "#747573" }
+  - when: { state: Hover, checked: false }
+    figmaNode: "733:9"
+    elements:
+      box:
+        background: { token: checkbox/off/hover/box, value: "#171717" }
+        outline-color: { token: checkbox/off/hover/edge, value: "#999999" }
+  - when: { state: Pressed, checked: false }
+    figmaNode: "733:15"
+    elements:
+      box:
+        background: { token: checkbox/off/pressed/box, value: "#171717" }
+        outline-color: { token: checkbox/off/pressed/edge, value: "#999999" }
+  - when: { state: Focus, checked: false }
+    figmaNode: "733:21"
+    elements:
+      box:
+        background: { token: checkbox/off/focus/box, value: "#060805" }
+        outline-color: { token: checkbox/off/focus/edge, value: "#747573" }
+      focus-ring:
+        border-color: { token: checkbox/off/focus/focus-ring, value: "#999" }
+  - when: { state: Disabled, checked: false }
+    figmaNode: "733:27"
+    elements:
+      box:
+        background: { token: checkbox/off/disabled/box, value: "#060805" }
+        outline-color: { token: checkbox/off/disabled/edge, value: "#747573" }
+  - when: { state: Default, checked: true }
+    figmaNode: "733:33"
+    elements:
+      box:
+        background: { token: checkbox/on/default/box, value: "#00d669" }
+      check:
+        background: { token: checkbox/on/default/check, value: "#060805" }
+  - when: { state: Hover, checked: true }
+    figmaNode: "733:39"
+    elements:
+      box:
+        background: { token: checkbox/on/hover/box, value: "#00b450" }
+      check:
+        background: { token: checkbox/on/hover/check, value: "#060805" }
+  - when: { state: Pressed, checked: true }
+    figmaNode: "733:45"
+    elements:
+      box:
+        background: { token: checkbox/on/pressed/box, value: "#00913a" }
+      check:
+        background: { token: checkbox/on/pressed/check, value: "#060805" }
+  - when: { state: Focus, checked: true }
+    figmaNode: "733:51"
+    elements:
+      box:
+        background: { token: checkbox/on/focus/box, value: "#00d669" }
+      check:
+        background: { token: checkbox/on/focus/check, value: "#060805" }
+      focus-ring:
+        border-color: { token: checkbox/on/focus/focus-ring, value: "#b6ffda" }
+  - when: { state: Disabled, checked: true }
+    figmaNode: "733:57"
+    elements:
+      box:
+        background: { token: checkbox/on/disabled/box, value: "#00d669" }
+      check:
+        background: { token: checkbox/on/disabled/check, value: "#060805" }
+guidance:
+  status: proposed
+  use:
+    - title: Choices that wait for Save
+      text: "Settings in a form that only count when it's sent: what goes on an invoice, which months to include."
+      show: state=Default, checked=True
+    - title: Agreeing to something
+      text: "One box before a button, like \"I've checked these figures\"."
+  avoid:
+    - title: A setting that works at once
+      text: "If it changes something the moment you flip it, that's **Switch**."
+    - title: One choice out of several
+      text: "When picking one rules out the others, that's **Radio**."
+  behaviour: |-
+    Empty is a field's edge around the page colour. Ticked fills with the primary green, with a dark tick, the way a primary button looks. Hover, press and focus come from the browser. Disabled fades the whole row, words too.
+
+    I don't have a half-ticked state yet, for a box that stands for a group where only some are ticked. It's the next thing to add when a table needs it.
+  accessibility:
+    element: "A real `<input type=\"checkbox\">` inside a `<label>`. The input is hidden from sight, not from screen readers."
+    name: "The words beside it, through the label. Without words, give it an `aria-label`."
+    keyboard: "Tab reaches it. Space ticks and unticks it."
+    focus: "`focus-ring` around the box, on `:focus-visible`."
+    colour: "Ticked isn't only green: the tick is there too. The empty box's edge is 4.3:1 on the dark page. Ticked, the edge is the fill's green in dark and a dark green in light, so the box stands out at 3:1 or more on both."
+  content: "Say what's true when it's ticked, in sentence case: \"Include VAT\", not \"VAT: yes/no\"."

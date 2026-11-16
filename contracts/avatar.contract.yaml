@@ -1,0 +1,109 @@
+# yaml-language-server: $schema=../schema/component-contract.schema.json
+schemaVersion: 2
+id: avatar
+name: Avatar
+kind: component
+status: review
+summary: A person or a client as a small circle. Their photo, or their initials on grey when there's no photo.
+category: display
+related: [ testimonials-pics, badge ]
+source:
+  tool: figma
+  fileKey: 1Zy0wiWKXQAvsfDBX3KR0d
+  nodeId: "733:140"
+  url: https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=733-140
+  extractedAt: "2026-11-16"
+  extractedBy: hand
+  frozenAt: "2026-11-16"
+props:
+  name: { type: string, required: true, notes: "Who it is. The initials come from it (the first letter of the first two words), and it's the photo's alt text." }
+  src: { type: string, notes: "The photo. Without it, the initials." }
+  size:
+    type: enum
+    values: [ small, medium, large ]
+    default: medium
+    notes: "`small` (32) in a table row or a list, `medium` (40) beside a name, `large` (56) on its own, the size of a testimonial's picture."
+  decorative: { type: boolean, default: false, notes: "When the name is written right beside it. Screen readers skip it then, so the name isn't said twice." }
+elements:
+  root:
+    notes: "A `<span>`. With a photo it's the image's frame; without one it's `role=\"img\"` with the name as its label, so the initials aren't read out letter by letter."
+    styles:
+      display: { value: inline-flex, assert: false }
+      align-items: { value: center }
+      justify-content: { value: center }
+      position: { value: relative, assert: false }
+      flex-shrink: { value: "0", assert: false }
+      overflow: { value: hidden, assert: false }
+      vertical-align: { value: middle, assert: false }
+      border-radius: { token: spacing/radius/full, value: 10000px }
+      background: { token: avatar/background, value: "#3a3a3a" }
+  initials:
+    notes: Medium weight, in the main text colour. Hidden from screen readers, since the root says the whole name.
+    styles:
+      font-family: { token: font-family/base, value: "'General Sans Variable'" }
+      color: { token: avatar/initials, value: "#ededed" }
+      text-transform: { value: uppercase, assert: false }
+      user-select: { value: none, assert: false }
+  image:
+    notes: The photo, cropped to the circle.
+    styles:
+      position: { value: absolute, assert: false }
+      inset: { value: "0", assert: false }
+      width: { value: 100%, assert: false }
+      height: { value: 100%, assert: false }
+      object-fit: { value: cover, assert: false }
+variants:
+  - when: { size: small }
+    figmaNode: "733:133"
+    elements:
+      root:
+        width: { token: spacing/size/small-medium, value: 32px }
+        height: { token: spacing/size/small-medium, value: 32px }
+      initials:
+        font-size: { token: typography/label/font-size, value: 12px }
+        line-height: { token: typography/label/line-height, value: 14px }
+        font-weight: { token: typography/label/font-weight/medium, value: "500" }
+        letter-spacing: { token: typography/label/letter-spacing, value: 0px }
+  - when: { size: medium }
+    figmaNode: "733:135"
+    elements:
+      root:
+        width: { token: spacing/size/medium, value: 40px }
+        height: { token: spacing/size/medium, value: 40px }
+      initials:
+        font-size: { token: typography/paragraph/font-size, value: 14px }
+        line-height: { token: typography/paragraph/line-height, value: 20px }
+        font-weight: { token: typography/paragraph/font-weight/medium, value: "500" }
+        letter-spacing: { token: typography/paragraph/letter-spacing, value: 0px }
+  - when: { size: large }
+    figmaNode: "733:137"
+    elements:
+      root:
+        width: { token: spacing/size/large, value: 56px }
+        height: { token: spacing/size/large, value: 56px }
+      initials:
+        font-size: { token: typography/body/font-size, value: 16px }
+        line-height: { token: typography/body/line-height, value: 22px }
+        font-weight: { token: typography/body/font-weight/medium, value: "500" }
+        letter-spacing: { token: typography/body/letter-spacing, value: 0px }
+guidance:
+  status: proposed
+  use:
+    - title: Who did it
+      text: "Next to a name in a list, a comment or an activity line, so people find each other at a glance."
+      show: size=medium
+    - title: A client
+      text: "A client's logo or initials in a table row."
+      show: size=small
+  avoid:
+    - title: A testimonial
+      text: "The quote's picture. That's **TestimonialPicture**, which has its own frame."
+    - title: Status
+      text: "Saying if someone is online or late. Put a **Badge** beside it, not a colour on it."
+  behaviour: |-
+    A photo when there is one, initials on grey when there isn't. The grey is the same for everyone. I didn't give each person a colour of their own: it reads as meaning something when it doesn't.
+  accessibility:
+    element: "With a photo, an `<img>` with the name as `alt`. Without, a `<span role=\"img\">` labelled with the name."
+    name: "The person's or the client's name. If the name is written right beside it, pass `decorative` so it isn't said twice."
+    colour: "The initials are 9:1 on the grey in dark."
+  content: Initials come from the name, up to two letters. Don't pass them yourself.

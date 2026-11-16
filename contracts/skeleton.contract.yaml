@@ -1,0 +1,71 @@
+# yaml-language-server: $schema=../schema/component-contract.schema.json
+schemaVersion: 2
+id: skeleton
+name: Skeleton
+kind: component
+status: review
+summary: Grey shapes where content is about to be, so the page doesn't jump when it arrives. A line of text, a circle or a block.
+category: feedback
+related: [ progress, avatar, card ]
+source:
+  tool: figma
+  fileKey: 1Zy0wiWKXQAvsfDBX3KR0d
+  nodeId: "733:160"
+  url: https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=733-160
+  extractedAt: "2026-11-16"
+  extractedBy: hand
+  frozenAt: "2026-11-16"
+props:
+  shape:
+    type: enum
+    values: [ text, circle, block ]
+    default: text
+    notes: "`text` is a line of paragraph text, `circle` stands in for a medium Avatar, `block` for a picture or a chart."
+  width: { type: string, notes: "Any CSS width, so lines can be uneven like real text. A circle's size is fixed." }
+  height: { type: string, notes: "A block's height. 80px if you leave it." }
+elements:
+  root:
+    notes: "A `<span>`, hidden from screen readers. Whatever holds the skeletons says it's loading (`aria-busy`)."
+    styles:
+      display: { value: block, assert: false }
+      flex-shrink: { value: "0", assert: false }
+      background: { token: skeleton/background, value: "#3a3a3a" }
+variants:
+  - when: { shape: text }
+    figmaNode: "733:156"
+    elements:
+      root:
+        width: { value: 100%, assert: false }
+        height: { token: spacing/size/3xsmall, value: 12px, notes: "About the height of paragraph text's letters, not its line." }
+        border-radius: { token: spacing/radius/xsmall, value: 4px }
+  - when: { shape: circle }
+    figmaNode: "733:157"
+    elements:
+      root:
+        width: { token: spacing/size/medium, value: 40px }
+        height: { token: spacing/size/medium, value: 40px }
+        border-radius: { token: spacing/radius/full, value: 10000px }
+  - when: { shape: block }
+    figmaNode: "733:158"
+    elements:
+      root:
+        width: { value: 100%, assert: false }
+        height: { token: spacing/size/3xlarge, value: 80px }
+        border-radius: { token: spacing/radius/medium, value: 12px }
+guidance:
+  status: proposed
+  use:
+    - title: Content on its way
+      text: "A list, a card or a table whose shape you know before its data arrives. Draw the shape, then swap it."
+      show: shape=text
+  avoid:
+    - title: Long waits
+      text: "Anything that takes more than a few seconds, or where you know how far along it is. That's **Progress**."
+    - title: Buttons
+      text: "A button that's working on something keeps its place and says so itself."
+  behaviour: |-
+    Plain grey shapes, matched to what's coming: give text lines uneven widths, the last one shorter. They don't pulse yet. Contracts can't hold an animation, and I'd rather have them still than fake it in CSS nobody checks. When they can, it'll be a slow fade that stops for people who ask for less motion.
+  accessibility:
+    element: "A `<span aria-hidden=\"true\">`. Screen readers skip them."
+    name: "None. Put `aria-busy=\"true\"` on the part of the page that's loading, and take it off when the content is in."
+    colour: "Decoration, so no contrast minimum. It's the tertiary grey, which shows on the page and on a card."

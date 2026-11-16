@@ -458,5 +458,72 @@
       { "nodeId": "705:128", "name": "state=Focus", "width": 81, "height": 20 },
       { "nodeId": "705:135", "name": "state=Open", "width": 239, "height": 48 }
     ]
+  },
+  "checkbox": {
+    "name": "Checkbox",
+    "setNodeId": "733:64",
+    "variants": [
+      { "nodeId": "733:3", "name": "state=Default, checked=False", "width": 102, "height": 20 },
+      { "nodeId": "733:9", "name": "state=Hover, checked=False", "width": 102, "height": 20 },
+      { "nodeId": "733:15", "name": "state=Pressed, checked=False", "width": 102, "height": 20 },
+      { "nodeId": "733:21", "name": "state=Focus, checked=False", "width": 110, "height": 28 },
+      { "nodeId": "733:27", "name": "state=Disabled, checked=False", "width": 102, "height": 20 },
+      { "nodeId": "733:33", "name": "state=Default, checked=True", "width": 102, "height": 20 },
+      { "nodeId": "733:39", "name": "state=Hover, checked=True", "width": 102, "height": 20 },
+      { "nodeId": "733:45", "name": "state=Pressed, checked=True", "width": 102, "height": 20 },
+      { "nodeId": "733:51", "name": "state=Focus, checked=True", "width": 110, "height": 28 },
+      { "nodeId": "733:57", "name": "state=Disabled, checked=True", "width": 102, "height": 20 }
+    ]
+  },
+  "radio": {
+    "name": "Radio",
+    "setNodeId": "733:124",
+    "variants": [
+      { "nodeId": "733:73", "name": "state=Default, checked=False", "width": 108, "height": 20 },
+      { "nodeId": "733:78", "name": "state=Hover, checked=False", "width": 108, "height": 20 },
+      { "nodeId": "733:83", "name": "state=Pressed, checked=False", "width": 108, "height": 20 },
+      { "nodeId": "733:88", "name": "state=Focus, checked=False", "width": 116, "height": 28 },
+      { "nodeId": "733:93", "name": "state=Disabled, checked=False", "width": 108, "height": 20 },
+      { "nodeId": "733:98", "name": "state=Default, checked=True", "width": 108, "height": 20 },
+      { "nodeId": "733:103", "name": "state=Hover, checked=True", "width": 108, "height": 20 },
+      { "nodeId": "733:108", "name": "state=Pressed, checked=True", "width": 108, "height": 20 },
+      { "nodeId": "733:113", "name": "state=Focus, checked=True", "width": 116, "height": 28 },
+      { "nodeId": "733:118", "name": "state=Disabled, checked=True", "width": 108, "height": 20 }
+    ]
+  },
+  "avatar": {
+    "name": "Avatar",
+    "setNodeId": "733:140",
+    "variants": [
+      { "nodeId": "733:133", "name": "size=small", "width": 32, "height": 32 },
+      { "nodeId": "733:135", "name": "size=medium", "width": 40, "height": 40 },
+      { "nodeId": "733:137", "name": "size=large", "width": 56, "height": 56 }
+    ]
+  },
+  "card": {
+    "name": "Card",
+    "setNodeId": "733:152",
+    "variants": [
+      { "nodeId": "733:145", "name": "tone=filled", "width": 280, "height": 142 },
+      { "nodeId": "733:148", "name": "tone=outlined", "width": 280, "height": 142 }
+    ]
+  },
+  "skeleton": {
+    "name": "Skeleton",
+    "setNodeId": "733:160",
+    "variants": [
+      { "nodeId": "733:156", "name": "shape=text", "width": 240, "height": 12 },
+      { "nodeId": "733:157", "name": "shape=circle", "width": 40, "height": 40 },
+      { "nodeId": "733:158", "name": "shape=block", "width": 240, "height": 80 }
+    ]
+  },
+  "progress": {
+    "name": "Progress",
+    "setNodeId": "733:172",
+    "variants": [
+      { "nodeId": "733:165", "name": "tone=positive", "width": 240, "height": 4 },
+      { "nodeId": "733:167", "name": "tone=warning", "width": 240, "height": 4 },
+      { "nodeId": "733:169", "name": "tone=negative", "width": 240, "height": 4 }
+    ]
   }
 }

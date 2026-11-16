@@ -14,7 +14,7 @@ Rost started as a design system for my own needs and grew into a product of its 
 | [Roadmap](ROADMAP.md) | What I'm doing next |
 | [Release notes](CHANGELOG.md) | What changed in each release |
 
-**39** contracts, **5** stable. **39** have guidance, and I've signed off **32** of those.
+**45** contracts, **5** stable. **45** have guidance, and I've signed off **32** of those.
 
 ## Catalogue
 
@@ -22,9 +22,12 @@ Rost started as a design system for my own needs and grew into a product of its 
 
 | | Summary | Contract | Guidance | Used in |
 |---|---|---|---|---|
+| [Avatar](components/avatar.md) | A person or a client as a small circle. Their photo, or their initials on grey when there's no photo. | `review` | `proposed` | · |
 | [Badge](components/badge.md) | A small status marker: a coloured dot on its own, or an outlined label. The colour sits in the dot and the outline, never in the text. | `stable` | `agreed` | Portfolio site, Accounting app |
 | [Button](components/button.md) | A 48px button with a label and, if it helps, an icon in front. In four levels of emphasis. | `stable` | `agreed` | Portfolio site, Accounting app |
+| [Card](components/card.md) | A plate that holds one thing together, like a summary, a setting or a figure. Filled grey, or just an edge. | `review` | `proposed` | · |
 | [Carousel](components/carousel.md) | A card for a carousel: a number, a title and a short description. | `review` | `agreed` | Portfolio site |
+| [Checkbox](components/checkbox.md) | A choice that's on or off and waits for the form. A 20px box that fills green with a tick, and the words beside it. | `review` | `proposed` | · |
 | [Chip](components/chips.md) | A small outlined label you can click, for filters and quick choices. | `review` | `agreed` | Portfolio site |
 | [Code](components/code.md) | Code in a sentence, or a block of it on its own plate. | `review` | `proposed` | · |
 | [Disclosure](components/disclosure.md) | A line that opens to show more, for things most people won't need. | `review` | `proposed` | · |
@@ -38,7 +41,10 @@ Rost started as a design system for my own needs and grew into a product of its 
 | [ListItem](components/list-item.md) | One row you can pick in a list or a nav. A label, an optional line under it, and optional icons and a status dot. | `review` | `agreed` | · |
 | [Menu](components/menu.md) | A navigation item: a label with a line underneath, used in the main nav. | `review` | `agreed` | · |
 | [Navigation](components/navigation.md) | A side navigation on frosted glass. The logo at the top, the main items below it, one action at the bottom. Collapsed to icons, or open with labels. | `review` | `agreed` | · |
+| [Progress](components/progress.md) | How far along something is, as a thin bar that fills. Green as it goes, amber or red when it needs a look. | `review` | `proposed` | · |
 | [Projects](components/projects.md) | One row in the project list: number, name, and industry, type and period on the right. | `review` | `agreed` | Portfolio site |
+| [Radio](components/radio.md) | One choice out of a few, all on show. A 20px circle with a dot in the picked one, and the words beside it. | `review` | `proposed` | · |
+| [Skeleton](components/skeleton.md) | Grey shapes where content is about to be, so the page doesn't jump when it arrives. A line of text, a circle or a block. | `review` | `proposed` | · |
 | [Switch](components/switch.md) | A setting that's on or off and takes effect straight away. A pill track with a thumb that moves across. The label is SwitchField's. | `review` | `agreed` | · |
 | [TabItem](components/tab-item.md) | One tab in a row of tabs. A label, optional icons before and after it, and a green underline when it's the one selected. | `review` | `agreed` | · |
 | [Table](components/table.md) | Rows of the same kind of thing, side by side in columns, like the accounting app's payments. No box, a hairline between rows. | `review` | `agreed` | · |

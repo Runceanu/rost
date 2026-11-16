@@ -1,0 +1,176 @@
+/* Generated from contracts/checkbox.contract.yaml by bin/build-css.mjs. Don't edit: change the contract and rebuild. */
+
+.rost-checkbox, .rost-checkbox * { box-sizing: border-box; margin: 0; }
+.rost-checkbox > img, .rost-checkbox [class*="__icons-"] > img { display: block; position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; }
+.rost-checkbox ::placeholder { color: inherit; opacity: 1; }
+
+.rost-checkbox {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-gap-small);
+  vertical-align: middle;
+  position: relative;
+  cursor: pointer;
+}
+
+.rost-checkbox__input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.rost-checkbox__box {
+  position: relative;
+  flex-shrink: 0;
+  width: var(--spacing-size-xsmall);
+  height: var(--spacing-size-xsmall);
+  border-radius: var(--spacing-radius-xsmall);
+  outline-style: solid;
+  outline-width: var(--spacing-outline-small);
+  outline-offset: calc(-1 * var(--spacing-outline-small));
+}
+
+.rost-checkbox__check {
+  position: absolute;
+  inset: var(--spacing-gap-3xsmall);
+  mask-image: url(./icon-check.svg);
+  mask-size: 100% 100%;
+  mask-repeat: no-repeat;
+  pointer-events: none;
+}
+
+.rost-checkbox__focus-ring {
+  display: none;
+  position: absolute;
+  inset: calc(-1 * var(--spacing-gap-2xsmall));
+  border-style: solid;
+  border-width: var(--spacing-outline-medium);
+  border-radius: var(--spacing-radius-small);
+  pointer-events: none;
+}
+
+.rost-checkbox__label {
+  font-family: var(--font-family-base);
+  font-weight: var(--typography-paragraph-font-weight-regular);
+  font-size: var(--typography-paragraph-font-size);
+  line-height: var(--typography-paragraph-line-height);
+  letter-spacing: var(--typography-paragraph-letter-spacing);
+  color: var(--checkbox-label);
+}
+
+.rost-checkbox:not(.rost-checkbox--checked) .rost-checkbox__check {
+  display: none;
+}
+
+.rost-checkbox:not(.rost-checkbox--checked) .rost-checkbox__box {
+  background: var(--checkbox-off-default-box);
+  outline-color: var(--checkbox-off-default-edge);
+}
+
+.rost-checkbox:hover:where(:not(:has(> .rost-checkbox__input:disabled))):not(.rost-checkbox--checked) .rost-checkbox__check {
+  display: none;
+}
+
+.rost-checkbox:hover:where(:not(:has(> .rost-checkbox__input:disabled))):not(.rost-checkbox--checked) .rost-checkbox__box {
+  background: var(--checkbox-off-hover-box);
+  outline-color: var(--checkbox-off-hover-edge);
+}
+
+.rost-checkbox:active:where(:not(:has(> .rost-checkbox__input:disabled))):not(.rost-checkbox--checked) .rost-checkbox__check {
+  display: none;
+}
+
+.rost-checkbox:active:where(:not(:has(> .rost-checkbox__input:disabled))):not(.rost-checkbox--checked) .rost-checkbox__box {
+  background: var(--checkbox-off-pressed-box);
+  outline-color: var(--checkbox-off-pressed-edge);
+}
+
+.rost-checkbox:has(> .rost-checkbox__input:focus-visible):not(.rost-checkbox--checked) .rost-checkbox__check {
+  display: none;
+}
+
+.rost-checkbox:has(> .rost-checkbox__input:focus-visible):not(.rost-checkbox--checked) .rost-checkbox__focus-ring {
+  display: block;
+  border-color: var(--checkbox-off-focus-focus-ring);
+}
+
+.rost-checkbox:has(> .rost-checkbox__input:focus-visible):not(.rost-checkbox--checked) .rost-checkbox__box {
+  background: var(--checkbox-off-focus-box);
+  outline-color: var(--checkbox-off-focus-edge);
+}
+
+.rost-checkbox:has(> .rost-checkbox__input:disabled):not(.rost-checkbox--checked) .rost-checkbox__check {
+  display: none;
+}
+
+.rost-checkbox:has(> .rost-checkbox__input:disabled):not(.rost-checkbox--checked) {
+  opacity: var(--opacity-gentle);
+  cursor: default;
+}
+
+.rost-checkbox:has(> .rost-checkbox__input:disabled):not(.rost-checkbox--checked) .rost-checkbox__box {
+  background: var(--checkbox-off-disabled-box);
+  outline-color: var(--checkbox-off-disabled-edge);
+}
+
+.rost-checkbox.rost-checkbox--checked .rost-checkbox__box {
+  outline-color: var(--checkbox-on-edge);
+  background: var(--checkbox-on-default-box);
+}
+
+.rost-checkbox.rost-checkbox--checked .rost-checkbox__check {
+  display: block;
+  background: var(--checkbox-on-default-check);
+}
+
+.rost-checkbox:hover:where(:not(:has(> .rost-checkbox__input:disabled))).rost-checkbox--checked .rost-checkbox__box {
+  outline-color: var(--checkbox-on-edge);
+  background: var(--checkbox-on-hover-box);
+}
+
+.rost-checkbox:hover:where(:not(:has(> .rost-checkbox__input:disabled))).rost-checkbox--checked .rost-checkbox__check {
+  display: block;
+  background: var(--checkbox-on-hover-check);
+}
+
+.rost-checkbox:active:where(:not(:has(> .rost-checkbox__input:disabled))).rost-checkbox--checked .rost-checkbox__box {
+  outline-color: var(--checkbox-on-edge);
+  background: var(--checkbox-on-pressed-box);
+}
+
+.rost-checkbox:active:where(:not(:has(> .rost-checkbox__input:disabled))).rost-checkbox--checked .rost-checkbox__check {
+  display: block;
+  background: var(--checkbox-on-pressed-check);
+}
+
+.rost-checkbox:has(> .rost-checkbox__input:focus-visible).rost-checkbox--checked .rost-checkbox__box {
+  outline-color: var(--checkbox-on-edge);
+  background: var(--checkbox-on-focus-box);
+}
+
+.rost-checkbox:has(> .rost-checkbox__input:focus-visible).rost-checkbox--checked .rost-checkbox__check {
+  display: block;
+  background: var(--checkbox-on-focus-check);
+}
+
+.rost-checkbox:has(> .rost-checkbox__input:focus-visible).rost-checkbox--checked .rost-checkbox__focus-ring {
+  display: block;
+  border-color: var(--checkbox-on-focus-focus-ring);
+}
+
+.rost-checkbox:has(> .rost-checkbox__input:disabled).rost-checkbox--checked .rost-checkbox__box {
+  outline-color: var(--checkbox-on-edge);
+  background: var(--checkbox-on-disabled-box);
+}
+
+.rost-checkbox:has(> .rost-checkbox__input:disabled).rost-checkbox--checked .rost-checkbox__check {
+  display: block;
+  background: var(--checkbox-on-disabled-check);
+}
+
+.rost-checkbox:has(> .rost-checkbox__input:disabled).rost-checkbox--checked {
+  opacity: var(--opacity-gentle);
+  cursor: default;
+}
