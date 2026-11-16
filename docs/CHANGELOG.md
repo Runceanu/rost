@@ -136,7 +136,7 @@ What changed each time I merged into `master` and put rost.build live. Newest fi
   - Projects and Thumbs keep Rost's type at every width (40/48 and 24/32). They used to shrink on a phone; now a long name wraps.
   - The nav is Rost's Button (Tertiary, Secondary) and Tooltip, like rost.build's header. Under 420px it drops Book an intro, which every page has in its body.
   - The case-study steps are Rost's Carousel; the hand-built CarouselCard is gone. Their descriptions are `typography/paragraph` now.
-  - Roche's disclaimer is Rost's InlineBanner (Warning, Medium), with Rost's warning glyph.
+  - A client case study's disclaimer is Rost's InlineBanner (Warning, Medium), with Rost's warning glyph.
   - The app's tokens are Rost's `tokens.css`, whole. Its old partial copy had 308 of 670 tokens and the wrong `spacing/base-8`. One rule read a token that didn't exist (`--gap-7xlarge`); it reads `--spacing-gap-7xlarge` now.
   - 59 raw `rgba()` colours are Rost colour tokens at Rost opacity tokens. 25 of them weren't on the opacity scale and moved to the nearest step, most by 0.04 or less.
   - The app's copies are all on current Rost, and its contract test checks every whole variant (116), not the raw layers.
