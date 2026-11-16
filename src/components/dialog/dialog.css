@@ -13,6 +13,11 @@
   color: inherit;
 }
 
+.rost-dialog::backdrop {
+  background: var(--dialog-backdrop);
+  opacity: var(--opacity-hard);
+}
+
 .rost-dialog__panel {
   display: flex;
   flex-direction: column;

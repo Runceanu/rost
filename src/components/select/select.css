@@ -61,6 +61,18 @@
   pointer-events: none;
 }
 
+.rost-select__supportive {
+  position: absolute;
+  left: var(--spacing-gap-small-medium);
+  top: calc(var(--spacing-size-large) + var(--spacing-gap-2xsmall));
+  font-family: var(--font-family-base);
+  font-weight: var(--typography-label-font-weight-medium);
+  font-size: var(--typography-placeholder-font-size);
+  line-height: var(--typography-placeholder-line-height);
+  letter-spacing: var(--typography-placeholder-letter-spacing);
+  white-space: nowrap;
+}
+
 .rost-select__focus-ring {
   display: none;
   position: absolute;
@@ -71,76 +83,160 @@
   pointer-events: none;
 }
 
-.rost-select .rost-select__outline {
+.rost-select:not(.rost-select--error) .rost-select__outline {
   background: var(--select-default-background);
   border-color: var(--select-default-outline);
 }
 
-.rost-select .rost-select__label {
+.rost-select:not(.rost-select--error) .rost-select__label {
   color: var(--select-default-label);
 }
 
-.rost-select .rost-select__field {
+.rost-select:not(.rost-select--error) .rost-select__field {
   color: var(--select-default-value);
 }
 
-.rost-select .rost-select__chevron {
+.rost-select:not(.rost-select--error) .rost-select__chevron {
   background: var(--select-default-chevron);
 }
 
-.rost-select:hover:where(:not(:has(> .rost-select__field:disabled))) .rost-select__outline {
+.rost-select:not(.rost-select--error) .rost-select__supportive {
+  color: var(--select-default-supportive);
+}
+
+.rost-select:hover:where(:not(:has(> .rost-select__field:disabled))):not(.rost-select--error) .rost-select__outline {
   background: var(--select-hover-background);
   border-color: var(--select-hover-outline);
 }
 
-.rost-select:hover:where(:not(:has(> .rost-select__field:disabled))) .rost-select__label {
+.rost-select:hover:where(:not(:has(> .rost-select__field:disabled))):not(.rost-select--error) .rost-select__label {
   color: var(--select-hover-label);
 }
 
-.rost-select:hover:where(:not(:has(> .rost-select__field:disabled))) .rost-select__field {
+.rost-select:hover:where(:not(:has(> .rost-select__field:disabled))):not(.rost-select--error) .rost-select__field {
   color: var(--select-hover-value);
 }
 
-.rost-select:hover:where(:not(:has(> .rost-select__field:disabled))) .rost-select__chevron {
+.rost-select:hover:where(:not(:has(> .rost-select__field:disabled))):not(.rost-select--error) .rost-select__chevron {
   background: var(--select-hover-chevron);
 }
 
-.rost-select:has(> .rost-select__field:focus-visible) .rost-select__outline {
+.rost-select:hover:where(:not(:has(> .rost-select__field:disabled))):not(.rost-select--error) .rost-select__supportive {
+  color: var(--select-hover-supportive);
+}
+
+.rost-select:has(> .rost-select__field:focus-visible):not(.rost-select--error) .rost-select__outline {
   background: var(--select-focus-background);
   border-color: var(--select-focus-outline);
 }
 
-.rost-select:has(> .rost-select__field:focus-visible) .rost-select__label {
+.rost-select:has(> .rost-select__field:focus-visible):not(.rost-select--error) .rost-select__label {
   color: var(--select-focus-label);
 }
 
-.rost-select:has(> .rost-select__field:focus-visible) .rost-select__field {
+.rost-select:has(> .rost-select__field:focus-visible):not(.rost-select--error) .rost-select__field {
   color: var(--select-focus-value);
 }
 
-.rost-select:has(> .rost-select__field:focus-visible) .rost-select__chevron {
+.rost-select:has(> .rost-select__field:focus-visible):not(.rost-select--error) .rost-select__chevron {
   background: var(--select-focus-chevron);
 }
 
-.rost-select:has(> .rost-select__field:focus-visible) .rost-select__focus-ring {
+.rost-select:has(> .rost-select__field:focus-visible):not(.rost-select--error) .rost-select__supportive {
+  color: var(--select-focus-supportive);
+}
+
+.rost-select:has(> .rost-select__field:focus-visible):not(.rost-select--error) .rost-select__focus-ring {
   display: block;
   border-color: var(--select-focus-focus-ring);
 }
 
-.rost-select:has(> .rost-select__field:disabled) .rost-select__outline {
+.rost-select:has(> .rost-select__field:disabled):not(.rost-select--error) .rost-select__outline {
   background: var(--select-disabled-background);
   border-color: var(--select-disabled-outline);
 }
 
-.rost-select:has(> .rost-select__field:disabled) .rost-select__label {
+.rost-select:has(> .rost-select__field:disabled):not(.rost-select--error) .rost-select__label {
   color: var(--select-disabled-label);
 }
 
-.rost-select:has(> .rost-select__field:disabled) .rost-select__field {
+.rost-select:has(> .rost-select__field:disabled):not(.rost-select--error) .rost-select__field {
   color: var(--select-disabled-value);
 }
 
-.rost-select:has(> .rost-select__field:disabled) .rost-select__chevron {
+.rost-select:has(> .rost-select__field:disabled):not(.rost-select--error) .rost-select__chevron {
   background: var(--select-disabled-chevron);
   opacity: var(--opacity-soft);
+}
+
+.rost-select:has(> .rost-select__field:disabled):not(.rost-select--error) .rost-select__supportive {
+  color: var(--select-disabled-supportive);
+}
+
+.rost-select.rost-select--error .rost-select__outline {
+  background: var(--select-negative-default-background);
+  border-color: var(--select-negative-default-outline);
+}
+
+.rost-select.rost-select--error .rost-select__label {
+  color: var(--select-negative-default-label);
+}
+
+.rost-select.rost-select--error .rost-select__field {
+  color: var(--select-negative-default-value);
+}
+
+.rost-select.rost-select--error .rost-select__chevron {
+  background: var(--select-negative-default-chevron);
+}
+
+.rost-select.rost-select--error .rost-select__supportive {
+  color: var(--select-negative-default-supportive);
+}
+
+.rost-select:hover:where(:not(:has(> .rost-select__field:disabled))).rost-select--error .rost-select__outline {
+  background: var(--select-negative-hover-background);
+  border-color: var(--select-negative-hover-outline);
+}
+
+.rost-select:hover:where(:not(:has(> .rost-select__field:disabled))).rost-select--error .rost-select__label {
+  color: var(--select-negative-hover-label);
+}
+
+.rost-select:hover:where(:not(:has(> .rost-select__field:disabled))).rost-select--error .rost-select__field {
+  color: var(--select-negative-hover-value);
+}
+
+.rost-select:hover:where(:not(:has(> .rost-select__field:disabled))).rost-select--error .rost-select__chevron {
+  background: var(--select-negative-hover-chevron);
+}
+
+.rost-select:hover:where(:not(:has(> .rost-select__field:disabled))).rost-select--error .rost-select__supportive {
+  color: var(--select-negative-hover-supportive);
+}
+
+.rost-select:has(> .rost-select__field:focus-visible).rost-select--error .rost-select__outline {
+  background: var(--select-negative-focus-background);
+  border-color: var(--select-negative-focus-outline);
+}
+
+.rost-select:has(> .rost-select__field:focus-visible).rost-select--error .rost-select__label {
+  color: var(--select-negative-focus-label);
+}
+
+.rost-select:has(> .rost-select__field:focus-visible).rost-select--error .rost-select__field {
+  color: var(--select-negative-focus-value);
+}
+
+.rost-select:has(> .rost-select__field:focus-visible).rost-select--error .rost-select__chevron {
+  background: var(--select-negative-focus-chevron);
+}
+
+.rost-select:has(> .rost-select__field:focus-visible).rost-select--error .rost-select__supportive {
+  color: var(--select-negative-focus-supportive);
+}
+
+.rost-select:has(> .rost-select__field:focus-visible).rost-select--error .rost-select__focus-ring {
+  display: block;
+  border-color: var(--select-negative-focus-focus-ring);
 }

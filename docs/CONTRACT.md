@@ -68,6 +68,8 @@ elements:                   # every part, in DOM order, and what never changes
     styles:
       gap: { token: spacing/gap/small, value: 8px }
   focus-ring: {}
+  backdrop:                 # a part the browser draws itself: .rost-<id>::backdrop, not .rost-<id>__backdrop
+    pseudo: "::backdrop"    # Dialog's dim layer. ::before and ::after work the same way
 
 variants:                   # when each applies, and only what differs. Layers first, then one per Figma variant
   - when: { selected: false }   # a layer: every variant that's off

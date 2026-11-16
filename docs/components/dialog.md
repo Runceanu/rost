@@ -34,6 +34,7 @@ Then import `src/rost/fonts.css` and `src/rost/tokens.css` once, at the root of 
 ## Anatomy
 
 - `root`: The browser's `<dialog>`, with its own look taken away. The browser shows and hides it, and centres it, so the plate is a part inside it.
+- `backdrop`: The layer the browser puts between the dialog and the page. The page's own colour at 72%, so the page stays in view but steps back.
 - `panel`: The plate: the dialog's fill, a 1px edge and the floating shadow. It holds the title, the words and the buttons in a column, 16px apart.
 - `title`: An `<h2>` in title type, medium weight.
 - `body`: Paragraph type, a step quieter than the title.
@@ -52,7 +53,7 @@ Then import `src/rost/fonts.css` and `src/rost/tokens.css` once, at the root of 
 
 ## Behaviour
 
-It opens as a modal: focus moves into it, the page behind can't be reached, and Esc closes it. That's the browser's `<dialog>` doing the work, not mine. The plate is Card's grey with an edge and the floating shadow. The dim layer behind it is still the browser's own: contracts don't have a way to style `::backdrop` yet, and I want that before I call this finished.
+It opens as a modal: focus moves into it, the page behind can't be reached, and Esc closes it. That's the browser's `<dialog>` doing the work, not mine. The plate is Card's grey with an edge and the floating shadow. Behind it, the page dims to 72% of its own colour: the contract styles the browser's `::backdrop` as a part of its own.
 
 ## Accessibility
 
@@ -72,11 +73,13 @@ Every token this component uses, across all its variants.
 
 | Token | Resolves to |
 |---|---|
+| `dialog/backdrop` | `#060805` |
 | `dialog/background` | `#171717` |
 | `dialog/body` | `#d3d9d5` |
 | `dialog/edge` | `#3a3a3a` |
 | `dialog/title` | `#ededed` |
 | `font-family/base` | `'General Sans Variable'` |
+| `opacity/hard` | `0.72` |
 | `shadow/floating` | `0px 16px 24px 0px rgba(0, 0, 0, 0.16)` |
 | `spacing/gap/large` | `24px` |
 | `spacing/gap/medium` | `16px` |

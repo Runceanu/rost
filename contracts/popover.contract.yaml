@@ -27,6 +27,11 @@ elements:
       background: { value: transparent, assert: false }
       overflow: { value: visible, assert: false }
       color: { value: inherit, assert: false }
+      inset: { value: auto, assert: false, notes: "The browser centres a popover in the window. Rost places it at its button instead." }
+      margin: { token: spacing/gap/none, value: 0px }
+      margin-block-start: { token: spacing/gap/small, value: 8px, notes: "8px clear of the button." }
+      position-area: { value: block-end span-inline-end, assert: false, notes: "Under the button that opened it, lined up with its start. A popover opened with `popovertarget` is anchored to that button by the browser." }
+      position-try-fallbacks: { value: "flip-block, flip-inline", assert: false, notes: "Above the button when there's no room below, and the other way along when there's no room at the end." }
   panel:
     notes: "The plate: 16px inside, as wide as what it holds up to 280px."
     styles:
@@ -53,7 +58,7 @@ guidance:
     - title: Actions
       text: "A list of things to do. That's **Menu**."
   behaviour: |-
-    It's the browser's popover: a button with `popovertarget` opens and closes it, Esc and a click outside close it, and only one is open at a time. It adds no type of its own, like Card. It doesn't place itself next to its button yet. CSS anchor positioning will do that once the browsers agree on it; until then the page places it.
+    It's the browser's popover: a button with `popovertarget` opens and closes it, Esc and a click outside close it, and only one is open at a time. It adds no type of its own, like Card. It opens under its button, lined up with its start, and moves above it or the other way along when it doesn't fit: CSS anchor positioning, with the button as the anchor. A browser without anchor positioning puts it at the top left of the window, so check the browsers your app supports.
   accessibility:
     element: "A `<div popover>`, opened by a `<button popovertarget>`. The browser links the two for screen readers."
     name: "Give it an `aria-label` or a heading inside when it's more than a sentence."

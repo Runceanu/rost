@@ -232,6 +232,10 @@
           "optional": {
             "type": "boolean"
           },
+          "pseudo": {
+            "description": "The part is a pseudo-element of the root, not an element of its own: `.rost-<id>::backdrop`, not `.rost-<id>__<part>`. For what the browser draws itself, like a dialog's backdrop.",
+            "enum": ["::backdrop", "::before", "::after"]
+          },
           "notes": {
             "type": "string"
           },

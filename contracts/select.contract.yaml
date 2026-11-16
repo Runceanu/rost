@@ -18,6 +18,8 @@ source:
 props:
   label: { type: slot, required: true, notes: "The field's name. It sits small at the top, the way Input's label does once it has a value: a select always has one." }
   children: { type: slot, notes: "The `<option>`s, as in any `<select>`." }
+  supportive: { type: slot, notes: "One line under the field: help, or what to fix when `error` is on." }
+  error: { type: boolean, default: false, notes: "Input's red: the edge, the label, the chevron and the help line. Say what's wrong in `supportive`." }
 states: [ Default, Hover, Focus, Disabled ]
 stateSelectors:
   Focus: ":has(> .rost-select__field:focus-visible)"
@@ -80,6 +82,18 @@ elements:
       height: { token: spacing/size/xsmall, value: 20px }
       mask: { value: url(./icon-chevron.svg) center / contain no-repeat, untokenised: The icon file itself. }
       pointer-events: { value: none, assert: false }
+  supportive:
+    notes: "Input's help line, 4px under the field. It sits outside the field's box, so it doesn't change the field's height."
+    styles:
+      position: { value: absolute }
+      left: { token: spacing/gap/small-medium, value: 12px }
+      top: { value: "calc(var(--spacing-size-large) + var(--spacing-gap-2xsmall))", untokenised: "Composed from tokens: the field's height plus spacing/gap/2xsmall." }
+      font-family: { token: font-family/base, value: "'General Sans Variable'" }
+      font-weight: { token: typography/label/font-weight/medium, value: "500" }
+      font-size: { token: typography/placeholder/font-size, value: 10px }
+      line-height: { token: typography/placeholder/line-height, value: 12px }
+      letter-spacing: { token: typography/placeholder/letter-spacing, value: 0px }
+      white-space: { value: nowrap, assert: false }
   focus-ring:
     notes: Input's ring, 4px outside the field.
     styles:
@@ -91,7 +105,7 @@ elements:
       border-radius: { token: spacing/radius/large, value: 16px }
       pointer-events: { value: none, assert: false }
 variants:
-  - when: { state: Default }
+  - when: { state: Default, error: false }
     figmaNode: "738:3"
     elements:
       outline:
@@ -103,7 +117,9 @@ variants:
         color: { token: select/default/value, value: "#c2c7c3" }
       chevron:
         background: { token: select/default/chevron, value: "#00d669" }
-  - when: { state: Hover }
+      supportive:
+        color: { token: select/default/supportive, value: "#999999" }
+  - when: { state: Hover, error: false }
     figmaNode: "738:9"
     elements:
       outline:
@@ -115,7 +131,9 @@ variants:
         color: { token: select/hover/value, value: "#d3d9d5" }
       chevron:
         background: { token: select/hover/chevron, value: "#00b450" }
-  - when: { state: Focus }
+      supportive:
+        color: { token: select/hover/supportive, value: "#d3d9d5" }
+  - when: { state: Focus, error: false }
     figmaNode: "738:15"
     elements:
       outline:
@@ -127,10 +145,12 @@ variants:
         color: { token: select/focus/value, value: "#c2c7c3" }
       chevron:
         background: { token: select/focus/chevron, value: "#00d669" }
+      supportive:
+        color: { token: select/focus/supportive, value: "#999999" }
       focus-ring:
         display: { value: block, assert: false }
         border-color: { token: select/focus/focus-ring, value: "#00d669" }
-  - when: { state: Disabled }
+  - when: { state: Disabled, error: false }
     figmaNode: "738:22"
     elements:
       outline:
@@ -143,23 +163,71 @@ variants:
       chevron:
         background: { token: select/disabled/chevron, value: "#b6ffda" }
         opacity: { token: opacity/soft, value: "0.16", notes: "As Input's icon does when it's disabled." }
+      supportive:
+        color: { token: select/disabled/supportive, value: "#555555" }
+  - when: { state: Default, error: true }
+    figmaNode: "741:35"
+    elements:
+      outline:
+        background: { token: select/negative/default/background, value: "#060805" }
+        border-color: { token: select/negative/default/outline, value: "#f2705f" }
+      label:
+        color: { token: select/negative/default/label, value: "#e93120" }
+      field:
+        color: { token: select/negative/default/value, value: "#999999" }
+      chevron:
+        background: { token: select/negative/default/chevron, value: "#e93120" }
+      supportive:
+        color: { token: select/negative/default/supportive, value: "#e93120" }
+  - when: { state: Hover, error: true }
+    figmaNode: "741:42"
+    elements:
+      outline:
+        background: { token: select/negative/hover/background, value: "#171717" }
+        border-color: { token: select/negative/hover/outline, value: "#e93120" }
+      label:
+        color: { token: select/negative/hover/label, value: "#f2705f" }
+      field:
+        color: { token: select/negative/hover/value, value: "#999999" }
+      chevron:
+        background: { token: select/negative/hover/chevron, value: "#e93120" }
+      supportive:
+        color: { token: select/negative/hover/supportive, value: "#e93120" }
+  - when: { state: Focus, error: true }
+    figmaNode: "741:49"
+    elements:
+      outline:
+        background: { token: select/negative/focus/background, value: "#060805" }
+        border-color: { token: select/negative/focus/outline, value: "#f2705f" }
+      label:
+        color: { token: select/negative/focus/label, value: "#e93120" }
+      field:
+        color: { token: select/negative/focus/value, value: "#c2c7c3" }
+      chevron:
+        background: { token: select/negative/focus/chevron, value: "#e93120" }
+      supportive:
+        color: { token: select/negative/focus/supportive, value: "#e93120" }
+      focus-ring:
+        display: { value: block, assert: false }
+        border-color: { token: select/negative/focus/focus-ring, value: "#00d669" }
 guidance:
   status: proposed
   use:
     - title: One out of many
       text: "A choice from a list of six or more, or a list that changes: a country, a client, a currency."
-      show: state=Default
+      show: state=Default, error=False
   avoid:
     - title: A few choices
       text: "Five or fewer, where seeing them all helps. That's **Radio**."
     - title: Actions
       text: "A list of things to do, not a value to pick. That's **Menu**."
   behaviour: |-
-    It looks like Input once Input has a value: the label small at the top, the value under it, and a chevron on the right. The list that opens is the browser's own, so it works with the keyboard, on a phone and with a screen reader without any work of mine, but I can't style it. I don't have an error state for it yet; Input's red would carry over when a form needs it.
+    It looks like Input once Input has a value: the label small at the top, the value under it, and a chevron on the right. The list that opens is the browser's own, so it works with the keyboard, on a phone and with a screen reader without any work of mine, but I can't style it. With `error` it takes Input's red, and the help line under it says what to fix. A disabled select has no error look: there's nothing to fix in a field you can't change.
   accessibility:
     element: "A real `<select>`, named by its `<label>`."
     name: "`label`. Keep it short: it's the question the value answers."
     keyboard: "Tab reaches it. Space, Enter or the arrow keys open it and move through it, the browser's way."
     focus: "`focus-ring` around the field, on `:focus-visible`."
+    error: "`error` sets `aria-invalid`, and the help line is tied to the select with `aria-describedby`, so the reason is read out with it. Red is never the only sign: the words say what's wrong."
     colour: "The field's edge is 4.3:1 on the dark page, the same as Input's."
   content: "Options in sentence case, in an order that makes sense: alphabetical, or the most likely first."

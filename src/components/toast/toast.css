@@ -38,3 +38,15 @@
 .rost-toast__action {
   flex-shrink: 0;
 }
+
+.rost-toast__close {
+  flex-shrink: 0;
+}
+
+.rost-toast__close-glyph {
+  display: block;
+  width: var(--spacing-size-2xsmall);
+  height: var(--spacing-size-2xsmall);
+  background: currentColor;
+  mask: url(./icon-clear.svg) center / contain no-repeat;
+}

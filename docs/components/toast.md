@@ -29,6 +29,7 @@ Then import `src/rost/fonts.css` and `src/rost/tokens.css` once, at the root of 
 | `tone` | enum | `default` `positive` `warning` `negative` | `default` |
 | `children` | slot |  |  |
 | `action` | slot |  |  |
+| `dismissible` | boolean |  | `false` |
 
 ## Anatomy
 
@@ -36,6 +37,8 @@ Then import `src/rost/fonts.css` and `src/rost/tokens.css` once, at the root of 
 - `badge`: A small Badge, as it is: the 24px frame with the dot in the tone's colour.
 - `message`: Paragraph type in the main text colour, 8px clear of the action or the edge.
 - `action`: A Button with `variant="Borderless"`, as it is.
+- `close` (optional): An IconButton with `variant="tertiary"`, as it is: 48px, so it sits in the 56px plate with 4px around it, like the action.
+- `close-glyph` (optional): Input's clear icon, 16px, in the IconButton's own icon colour.
 
 ## When to use
 
@@ -49,7 +52,7 @@ Then import `src/rost/fonts.css` and `src/rost/tokens.css` once, at the root of 
 
 ## Behaviour
 
-A floating plate with Badge's dot, the message and at most one Borderless Button. Toast draws it; the app decides where it sits (bottom centre is a good default) and for how long. Five seconds is enough for a line; keep it up while a pointer is over it. I haven't built a queue for several at once, or a close button. An app with one toast at a time doesn't need either yet.
+A floating plate with Badge's dot, the message and at most one Borderless Button. Toast draws it; the app decides where it sits (bottom centre is a good default) and for how long. Five seconds is enough for a line; keep it up while a pointer is over it. With `onClose` it gets a close button at the end, for a message that should stay until it's read. Several at once go in a **ToastStack**, newest at the bottom, 8px apart.
 
 ## Accessibility
 
@@ -75,6 +78,7 @@ Every token this component uses, across all its variants.
 | `spacing/gap/small-medium` | `12px` |
 | `spacing/outline/small` | `1px` |
 | `spacing/radius/medium` | `12px` |
+| `spacing/size/2xsmall` | `16px` |
 | `spacing/size/large` | `56px` |
 | `toast/background` | `#171717` |
 | `toast/edge` | `#3a3a3a` |
@@ -89,5 +93,6 @@ Every token this component uses, across all its variants.
 | Part | Property | Value | Why |
 |---|---|---|---|
 | `root` | `outline-offset` | `calc(-1 * var(--spacing-outline-small))` | Composed from a token: the edge sits inside the plate. |
+| `close-glyph` | `mask` | `url(./icon-clear.svg) center / contain no-repeat` | The icon file itself. |
 
 See it live, with every value of every variant: [rost.build/components/toast/](https://rost.build/components/toast/)

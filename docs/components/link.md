@@ -76,7 +76,6 @@ Every token this component uses, across all its variants.
 | `non-interactive/foreground/positive/base` | `#00d669` |
 | `non-interactive/foreground/positive/dark` | `#b6ffda` |
 | `non-interactive/foreground/primary` | `#ededed` |
-| `opacity/hard` | `0.72` |
 | `spacing/outline/medium` | `2px` |
 | `spacing/outline/small` | `1px` |
 | `spacing/radius/xsmall` | `4px` |

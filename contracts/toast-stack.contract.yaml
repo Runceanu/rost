@@ -1,0 +1,60 @@
+# yaml-language-server: $schema=../schema/component-contract.schema.json
+schemaVersion: 2
+id: toast-stack
+name: ToastStack
+kind: component
+status: review
+partOf: toast
+summary: Where toasts go when there's more than one. A column, newest at the bottom, fixed to the bottom of the window or in place.
+category: feedback
+related: [ toast ]
+source:
+  tool: figma
+  fileKey: 1Zy0wiWKXQAvsfDBX3KR0d
+  nodeId: "741:102"
+  url: https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=741-102
+  extractedAt: "2026-11-16"
+  extractedBy: hand
+  frozenAt: "2026-11-16"
+props:
+  placement:
+    type: enum
+    values: [ bottom, inline ]
+    default: bottom
+    notes: "`bottom` floats over the page, centred, 24px from the bottom. `inline` stays where it's put, for a panel or a preview."
+  children: { type: slot, notes: "The Toasts, oldest first." }
+elements:
+  root:
+    notes: "A `<div>` labelled Notifications. It lays the toasts out in a column, centred, 8px apart. The toasts say themselves what they are."
+    styles:
+      display: { value: flex, assert: false }
+      flex-direction: { value: column, assert: false }
+      align-items: { value: center }
+      gap: { token: spacing/gap/small, value: 8px }
+variants:
+  - when: { placement: bottom }
+    elements:
+      root:
+        position: { value: fixed, assert: false }
+        bottom: { token: spacing/gap/large, value: 24px }
+        left: { value: 50%, assert: false }
+        transform: { value: translateX(-50%), assert: false, notes: "Centres the column on the window." }
+        z-index: { value: "100", assert: false, notes: "Over the page's own content. A modal Dialog still covers it: the browser puts that in a layer above everything." }
+  - when: { placement: inline }
+    figmaNode: "741:84"
+    elements:
+      root:
+        position: { value: static, assert: false }
+guidance:
+  status: proposed
+  use:
+    - title: More than one at a time
+      text: "Two things finished close together. The newer one goes at the bottom, nearest where the eye already is."
+      show: placement=inline
+  avoid:
+    - title: A list of everything
+      text: "A history of what happened belongs on a page, not in a stack that keeps growing. Three is plenty; let the oldest go."
+  behaviour: |-
+    It only lays toasts out. Which ones show and for how long is the app's: take each away after a few seconds, or when it's closed. At the bottom of the window it floats, centred, 24px up.
+  accessibility:
+    element: "A `<div role=\"region\" aria-label=\"Notifications\">`, so someone can find it from the landmarks. Each Toast announces itself."

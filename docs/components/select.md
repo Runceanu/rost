@@ -28,6 +28,8 @@ Then import `src/rost/fonts.css` and `src/rost/tokens.css` once, at the root of 
 |---|---|---|---|
 | `label` | slot |  |  |
 | `children` | slot |  |  |
+| `supportive` | slot |  |  |
+| `error` | boolean |  | `false` |
 
 ## States
 
@@ -40,6 +42,7 @@ Then import `src/rost/fonts.css` and `src/rost/tokens.css` once, at the root of 
 - `label`: Input's label once it's filled: placeholder type, 12px in from the edges. A `<label>` for the select.
 - `field`: The real `<select>`, over the whole box. Its own look goes; its value sits where Input's does, under the label.
 - `chevron`: Rost's chevron-down, 20px, drawn as a mask in Input's icon colour, 12px from the right edge.
+- `supportive`: Input's help line, 4px under the field. It sits outside the field's box, so it doesn't change the field's height.
 - `focus-ring`: Input's ring, 4px outside the field.
 
 ## When to use
@@ -53,7 +56,7 @@ Then import `src/rost/fonts.css` and `src/rost/tokens.css` once, at the root of 
 
 ## Behaviour
 
-It looks like Input once Input has a value: the label small at the top, the value under it, and a chevron on the right. The list that opens is the browser's own, so it works with the keyboard, on a phone and with a screen reader without any work of mine, but I can't style it. I don't have an error state for it yet; Input's red would carry over when a form needs it.
+It looks like Input once Input has a value: the label small at the top, the value under it, and a chevron on the right. The list that opens is the browser's own, so it works with the keyboard, on a phone and with a screen reader without any work of mine, but I can't style it. With `error` it takes Input's red, and the help line under it says what to fix. A disabled select has no error look: there's nothing to fix in a field you can't change.
 
 ## Accessibility
 
@@ -61,6 +64,7 @@ It looks like Input once Input has a value: the label small at the top, the valu
 - **Name**: `label`. Keep it short: it's the question the value answers.
 - **Keyboard**: Tab reaches it. Space, Enter or the arrow keys open it and move through it, the browser's way.
 - **Focus**: `focus-ring` around the field, on `:focus-visible`.
+- **Error**: `error` sets `aria-invalid`, and the help line is tied to the select with `aria-describedby`, so the reason is read out with it. Red is never the only sign: the words say what's wrong.
 - **Colour**: The field's edge is 4.3:1 on the dark page, the same as Input's.
 
 ## Content
@@ -79,23 +83,46 @@ Every token this component uses, across all its variants.
 | `select/default/chevron` | `#00d669` |
 | `select/default/label` | `#999999` |
 | `select/default/outline` | `#747573` |
+| `select/default/supportive` | `#999999` |
 | `select/default/value` | `#c2c7c3` |
 | `select/disabled/background` | `#171717` |
 | `select/disabled/chevron` | `#b6ffda` |
 | `select/disabled/label` | `#555555` |
 | `select/disabled/outline` | `#3a3a3a` |
+| `select/disabled/supportive` | `#555555` |
 | `select/disabled/value` | `#555555` |
 | `select/focus/background` | `#060805` |
 | `select/focus/chevron` | `#00d669` |
 | `select/focus/focus-ring` | `#00d669` |
 | `select/focus/label` | `#999999` |
 | `select/focus/outline` | `#747573` |
+| `select/focus/supportive` | `#999999` |
 | `select/focus/value` | `#c2c7c3` |
 | `select/hover/background` | `#171717` |
 | `select/hover/chevron` | `#00b450` |
 | `select/hover/label` | `#d3d9d5` |
 | `select/hover/outline` | `#999999` |
+| `select/hover/supportive` | `#d3d9d5` |
 | `select/hover/value` | `#d3d9d5` |
+| `select/negative/default/background` | `#060805` |
+| `select/negative/default/chevron` | `#e93120` |
+| `select/negative/default/label` | `#e93120` |
+| `select/negative/default/outline` | `#f2705f` |
+| `select/negative/default/supportive` | `#e93120` |
+| `select/negative/default/value` | `#999999` |
+| `select/negative/focus/background` | `#060805` |
+| `select/negative/focus/chevron` | `#e93120` |
+| `select/negative/focus/focus-ring` | `#00d669` |
+| `select/negative/focus/label` | `#e93120` |
+| `select/negative/focus/outline` | `#f2705f` |
+| `select/negative/focus/supportive` | `#e93120` |
+| `select/negative/focus/value` | `#c2c7c3` |
+| `select/negative/hover/background` | `#171717` |
+| `select/negative/hover/chevron` | `#e93120` |
+| `select/negative/hover/label` | `#f2705f` |
+| `select/negative/hover/outline` | `#e93120` |
+| `select/negative/hover/supportive` | `#e93120` |
+| `select/negative/hover/value` | `#999999` |
 | `spacing/gap/large` | `24px` |
 | `spacing/gap/medium-large` | `20px` |
 | `spacing/gap/small-medium` | `12px` |
@@ -106,6 +133,7 @@ Every token this component uses, across all its variants.
 | `spacing/size/large` | `56px` |
 | `spacing/size/medium` | `40px` |
 | `spacing/size/xsmall` | `20px` |
+| `typography/label/font-weight/medium` | `500` |
 | `typography/label/font-weight/regular` | `400` |
 | `typography/paragraph/font-size` | `14px` |
 | `typography/paragraph/font-weight/regular` | `400` |
@@ -120,6 +148,7 @@ Every token this component uses, across all its variants.
 | Part | Property | Value | Why |
 |---|---|---|---|
 | `chevron` | `mask` | `url(./icon-chevron.svg) center / contain no-repeat` | The icon file itself. |
+| `supportive` | `top` | `calc(var(--spacing-size-large) + var(--spacing-gap-2xsmall))` | Composed from tokens: the field's height plus spacing/gap/2xsmall. |
 | `focus-ring` | `inset` | `calc(-1 * var(--spacing-gap-2xsmall))` | Composed from a token: the ring sits spacing/gap/2xsmall outside the field. |
 
 See it live, with every value of every variant: [rost.build/components/select/](https://rost.build/components/select/)

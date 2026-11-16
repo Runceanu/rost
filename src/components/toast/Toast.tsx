@@ -1,5 +1,6 @@
 import type { HTMLAttributes, ReactNode } from 'react'
 import { Badge } from '../badge/Badge'
+import { IconButton } from '../icon-button/IconButton'
 import './toast.css'
 
 export type ToastTone = 'default' | 'positive' | 'warning' | 'negative'
@@ -10,6 +11,8 @@ export interface ToastProps extends Omit<HTMLAttributes<HTMLDivElement>, 'childr
   readonly children: ReactNode
   /** One Borderless Button, like Undo. */
   readonly action?: ReactNode
+  /** Shows a close button that calls this. */
+  readonly onClose?: () => void
 }
 
 const b = 'rost-toast'
@@ -20,12 +23,13 @@ const b = 'rost-toast'
  * The app decides where it sits and how long it stays. Built from
  * contracts/toast.contract.yaml.
  */
-export function Toast({ tone = 'default', children, action, className, ...rest }: ToastProps) {
+export function Toast({ tone = 'default', children, action, onClose, className, ...rest }: ToastProps) {
   return (
-    <div role={tone === 'negative' ? 'alert' : 'status'} className={[b, `${b}--tone-${tone}`, className].filter(Boolean).join(' ')} {...rest}>
+    <div role={tone === 'negative' ? 'alert' : 'status'} className={[b, `${b}--tone-${tone}`, onClose && `${b}--dismissible`, className].filter(Boolean).join(' ')} {...rest}>
       <Badge className={`${b}__badge`} status={tone} size="small" />
       <span className={`${b}__message`}>{children}</span>
       {action != null && <span className={`${b}__action`}>{action}</span>}
+      {onClose && <IconButton className={`${b}__close`} variant="tertiary" aria-label="Dismiss" icon={<span className={`${b}__close-glyph`} />} onClick={onClose} />}
     </div>
   )
 }

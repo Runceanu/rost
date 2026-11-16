@@ -1123,25 +1123,49 @@
   --select-default-chevron: #00d669;
   --select-default-label: #999999;
   --select-default-outline: #747573;
+  --select-default-supportive: #999999;
   --select-default-value: #c2c7c3;
   --select-disabled-background: #171717;
   --select-disabled-chevron: #b6ffda;
   --select-disabled-label: #555555;
   --select-disabled-outline: #3a3a3a;
+  --select-disabled-supportive: #555555;
   --select-disabled-value: #555555;
   --select-focus-background: #060805;
   --select-focus-chevron: #00d669;
   --select-focus-focus-ring: #00d669;
   --select-focus-label: #999999;
   --select-focus-outline: #747573;
+  --select-focus-supportive: #999999;
   --select-focus-value: #c2c7c3;
   --select-hover-background: #171717;
   --select-hover-chevron: #00b450;
   --select-hover-label: #d3d9d5;
   --select-hover-outline: #999999;
+  --select-hover-supportive: #d3d9d5;
   --select-hover-value: #d3d9d5;
+  --select-negative-default-background: #060805;
+  --select-negative-default-chevron: #e93120;
+  --select-negative-default-label: #e93120;
+  --select-negative-default-outline: #f2705f;
+  --select-negative-default-supportive: #e93120;
+  --select-negative-default-value: #999999;
+  --select-negative-focus-background: #060805;
+  --select-negative-focus-chevron: #e93120;
+  --select-negative-focus-focus-ring: #00d669;
+  --select-negative-focus-label: #e93120;
+  --select-negative-focus-outline: #f2705f;
+  --select-negative-focus-supportive: #e93120;
+  --select-negative-focus-value: #c2c7c3;
+  --select-negative-hover-background: #171717;
+  --select-negative-hover-chevron: #e93120;
+  --select-negative-hover-label: #f2705f;
+  --select-negative-hover-outline: #e93120;
+  --select-negative-hover-supportive: #e93120;
+  --select-negative-hover-value: #999999;
 
   /* ── Component: dialog ───────────────────────────────────────────────────── */
+  --dialog-backdrop: #060805;
   --dialog-background: #171717;
   --dialog-body: #d3d9d5;
   --dialog-edge: #3a3a3a;
@@ -1312,7 +1336,7 @@
 }
 
 /* ── Light ──────────────────────────────────────────────────────────────────
- * Only the colours change, 754 of them. Figma's light mode, with Rost's own
+ * Only the colours change, 775 of them. Figma's light mode, with Rost's own
  * corrections from registry/light.json where Figma's value fails contrast.
  * Set data-theme="light" on <html> (or any element). Without it you get dark,
  * whatever the system says. data-theme="dark" brings dark back inside a light page.
@@ -1568,6 +1592,7 @@
   --chip-unselected-hover-outline: #fcfcfc;
   --chip-unselected-pressed-label: #171717;
   --chip-unselected-pressed-outline: #fcfcfc;
+  --dialog-backdrop: #fcfcfc;
   --dialog-background: #ededed;
   --dialog-body: #171717;
   --dialog-edge: #d3d9d5;
@@ -1864,21 +1889,41 @@
   --select-default-background: #fcfcfc;
   --select-default-chevron: #006f27;
   --select-default-label: #747573;
+  --select-default-supportive: #747573;
   --select-default-value: #454545;
   --select-disabled-background: #ededed;
   --select-disabled-label: #c2c7c3;
   --select-disabled-outline: #d3d9d5;
+  --select-disabled-supportive: #c2c7c3;
   --select-disabled-value: #c2c7c3;
   --select-focus-background: #fcfcfc;
   --select-focus-chevron: #006f27;
   --select-focus-focus-ring: #006f27;
   --select-focus-label: #747573;
+  --select-focus-supportive: #747573;
   --select-focus-value: #454545;
   --select-hover-background: #ededed;
   --select-hover-chevron: #004c19;
   --select-hover-label: #171717;
   --select-hover-outline: #747573;
+  --select-hover-supportive: #171717;
   --select-hover-value: #171717;
+  --select-negative-default-background: #fcfcfc;
+  --select-negative-default-label: #ae1b13;
+  --select-negative-default-outline: #e93120;
+  --select-negative-default-supportive: #ae1b13;
+  --select-negative-default-value: #747573;
+  --select-negative-focus-background: #fcfcfc;
+  --select-negative-focus-focus-ring: #006f27;
+  --select-negative-focus-label: #ae1b13;
+  --select-negative-focus-outline: #e93120;
+  --select-negative-focus-supportive: #ae1b13;
+  --select-negative-focus-value: #454545;
+  --select-negative-hover-background: #ededed;
+  --select-negative-hover-chevron: #ae1b13;
+  --select-negative-hover-label: #ae1b13;
+  --select-negative-hover-supportive: #ae1b13;
+  --select-negative-hover-value: #454545;
   --skeleton-background: #d3d9d5;
   --sub-label: #747573;
   --switch-field-label: #171717;
@@ -2326,6 +2371,7 @@
   --chip-unselected-hover-outline: #ededed;
   --chip-unselected-pressed-label: #d3d9d5;
   --chip-unselected-pressed-outline: #ededed;
+  --dialog-backdrop: #060805;
   --dialog-background: #171717;
   --dialog-body: #d3d9d5;
   --dialog-edge: #3a3a3a;
@@ -2622,21 +2668,41 @@
   --select-default-background: #060805;
   --select-default-chevron: #00d669;
   --select-default-label: #999999;
+  --select-default-supportive: #999999;
   --select-default-value: #c2c7c3;
   --select-disabled-background: #171717;
   --select-disabled-label: #555555;
   --select-disabled-outline: #3a3a3a;
+  --select-disabled-supportive: #555555;
   --select-disabled-value: #555555;
   --select-focus-background: #060805;
   --select-focus-chevron: #00d669;
   --select-focus-focus-ring: #00d669;
   --select-focus-label: #999999;
+  --select-focus-supportive: #999999;
   --select-focus-value: #c2c7c3;
   --select-hover-background: #171717;
   --select-hover-chevron: #00b450;
   --select-hover-label: #d3d9d5;
   --select-hover-outline: #999999;
+  --select-hover-supportive: #d3d9d5;
   --select-hover-value: #d3d9d5;
+  --select-negative-default-background: #060805;
+  --select-negative-default-label: #e93120;
+  --select-negative-default-outline: #f2705f;
+  --select-negative-default-supportive: #e93120;
+  --select-negative-default-value: #999999;
+  --select-negative-focus-background: #060805;
+  --select-negative-focus-focus-ring: #00d669;
+  --select-negative-focus-label: #e93120;
+  --select-negative-focus-outline: #f2705f;
+  --select-negative-focus-supportive: #e93120;
+  --select-negative-focus-value: #c2c7c3;
+  --select-negative-hover-background: #171717;
+  --select-negative-hover-chevron: #e93120;
+  --select-negative-hover-label: #f2705f;
+  --select-negative-hover-supportive: #e93120;
+  --select-negative-hover-value: #999999;
   --skeleton-background: #3a3a3a;
   --sub-label: #999999;
   --switch-field-label: #d3d9d5;

@@ -44,7 +44,9 @@ function declarations(styles, { root }) {
 function build(id) {
   const c = read(id)
   const base = `rost-${id}`
-  const part = (p) => (p === 'root' ? `.${base}` : `.${base}__${kebab(p)}`)
+  // A part can be a pseudo-element of the root (`pseudo: ::backdrop`) instead of an element of its own.
+  const pseudo = (p) => c.elements?.[p]?.pseudo
+  const part = (p) => (p === 'root' ? `.${base}` : pseudo(p) ? `.${base}${pseudo(p)}` : `.${base}__${kebab(p)}`)
   const rules = [
     `/* Generated from contracts/${id}.contract.yaml by bin/build-css.mjs. Don't edit: change the contract and rebuild. */`,
     '',
@@ -83,7 +85,7 @@ function build(id) {
       if (prop === 'state' && (val === 'Hover' || val === 'Pressed') && c.states?.includes('Disabled')) root += `:where(:not(${disabledOf(c)}))`
     }
     for (const [p, styles] of Object.entries(v.elements ?? {}))
-      rule(p === 'root' ? root : `${root} ${part(p)}`, declarations(styles, { root: p === 'root' }))
+      rule(p === 'root' ? root : pseudo(p) ? `${root}${pseudo(p)}` : `${root} ${part(p)}`, declarations(styles, { root: p === 'root' }))
   }
 
   const dir = new URL(`../src/components/${id}/`, import.meta.url)

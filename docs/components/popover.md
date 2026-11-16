@@ -46,7 +46,7 @@ Then import `src/rost/fonts.css` and `src/rost/tokens.css` once, at the root of 
 
 ## Behaviour
 
-It's the browser's popover: a button with `popovertarget` opens and closes it, Esc and a click outside close it, and only one is open at a time. It adds no type of its own, like Card. It doesn't place itself next to its button yet. CSS anchor positioning will do that once the browsers agree on it; until then the page places it.
+It's the browser's popover: a button with `popovertarget` opens and closes it, Esc and a click outside close it, and only one is open at a time. It adds no type of its own, like Card. It opens under its button, lined up with its start, and moves above it or the other way along when it doesn't fit: CSS anchor positioning, with the button as the anchor. A browser without anchor positioning puts it at the top left of the window, so check the browsers your app supports.
 
 ## Accessibility
 
@@ -66,6 +66,7 @@ Every token this component uses, across all its variants.
 | `shadow/floating` | `0px 16px 24px 0px rgba(0, 0, 0, 0.16)` |
 | `spacing/gap/medium` | `16px` |
 | `spacing/gap/none` | `0px` |
+| `spacing/gap/small` | `8px` |
 | `spacing/outline/small` | `1px` |
 | `spacing/radius/large` | `16px` |
 

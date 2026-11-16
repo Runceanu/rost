@@ -23,6 +23,7 @@ props:
     notes: "The dot's colour, Badge's statuses. `negative` is read out at once (`role=\"alert\"`), the others when the screen reader has a moment."
   children: { type: slot, required: true, notes: "What happened, in one short line." }
   action: { type: slot, notes: "One Borderless Button, like Undo or View. Leave it out when there's nothing to do." }
+  dismissible: { type: boolean, default: false, notes: "A close button at the end. In React it's there when you pass `onClose`." }
 elements:
   root:
     notes: "A row: the dot, the words, the action. 56px tall, Input's height, so a Borderless Button fits with 4px around it."
@@ -59,31 +60,47 @@ elements:
     notes: "A Button with `variant=\"Borderless\"`, as it is."
     styles:
       flex-shrink: { value: "0", assert: false }
+  close:
+    optional: true
+    notes: "An IconButton with `variant=\"tertiary\"`, as it is: 48px, so it sits in the 56px plate with 4px around it, like the action."
+    styles:
+      flex-shrink: { value: "0", assert: false }
+  close-glyph:
+    optional: true
+    notes: "Input's clear icon, 16px, in the IconButton's own icon colour."
+    styles:
+      display: { value: block, assert: false }
+      width: { token: spacing/size/2xsmall, value: 16px }
+      height: { token: spacing/size/2xsmall, value: 16px }
+      background: { value: currentColor }
+      mask: { value: url(./icon-clear.svg) center / contain no-repeat, untokenised: The icon file itself. }
 variants:
-  - when: { tone: default }
+  - when: { tone: default, dismissible: false }
     figmaNode: "738:52"
-  - when: { tone: positive }
+  - when: { tone: positive, dismissible: false }
     figmaNode: "738:60"
-  - when: { tone: warning }
+  - when: { tone: warning, dismissible: false }
     figmaNode: "738:68"
-  - when: { tone: negative }
+  - when: { tone: negative, dismissible: false }
     figmaNode: "738:76"
+  - when: { tone: default, dismissible: true }
+    figmaNode: "741:69"
 guidance:
   status: proposed
   use:
     - title: Something happened
       text: "Saved, sent, paid, deleted. Say it in a few words, and offer Undo when you can."
-      show: tone=positive
+      show: tone=positive, dismissible=False
     - title: Something failed in the background
       text: "A sync that didn't go through. `negative`, with Retry."
-      show: tone=negative
+      show: tone=negative, dismissible=False
   avoid:
     - title: Something to decide
       text: "If they have to answer, that's **Dialog**."
     - title: A problem with the screen in front of them
       text: "An error in a form belongs next to the field, or in an **InlineBanner** at the top."
   behaviour: |-
-    A floating plate with Badge's dot, the message and at most one Borderless Button. Toast draws it; the app decides where it sits (bottom centre is a good default) and for how long. Five seconds is enough for a line; keep it up while a pointer is over it. I haven't built a queue for several at once, or a close button. An app with one toast at a time doesn't need either yet.
+    A floating plate with Badge's dot, the message and at most one Borderless Button. Toast draws it; the app decides where it sits (bottom centre is a good default) and for how long. Five seconds is enough for a line; keep it up while a pointer is over it. With `onClose` it gets a close button at the end, for a message that should stay until it's read. Several at once go in a **ToastStack**, newest at the bottom, 8px apart.
   accessibility:
     element: "A `<div role=\"status\">`, or `role=\"alert\"` when it's `negative`, so screen readers say it without moving focus."
     name: "The message is what's read. Don't rely on the dot's colour: the words say whether it worked."

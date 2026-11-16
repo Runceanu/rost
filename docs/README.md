@@ -14,7 +14,7 @@ Rost started as a design system for my own needs and grew into a product of its 
 | [Roadmap](ROADMAP.md) | What I'm doing next |
 | [Release notes](CHANGELOG.md) | What changed in each release |
 
-**49** contracts, **5** stable. **49** have guidance, and I've signed off **32** of those.
+**50** contracts, **5** stable. **50** have guidance, and I've signed off **32** of those.
 
 ## Catalogue
 
@@ -61,6 +61,7 @@ Rost started as a design system for my own needs and grew into a product of its 
 | [Textarea](components/textarea.md) | A text field for several lines, with Input's label, help line, error and focus ring. | `review` | `agreed` | · |
 | [Thumbs](components/thumbs.md) | A project thumbnail card, with the project name and details on a frosted panel at the bottom. | `review` | `agreed` | Portfolio site |
 | [Toast](components/toast.md) | A short message that something happened, with one thing you can do about it. Badge's dot, the words and a Borderless Button, on a floating plate. | `review` | `proposed` | · |
+| [ToastStack](components/toast-stack.md) | Where toasts go when there's more than one. A column, newest at the bottom, fixed to the bottom of the window or in place. | `review` | `proposed` | · |
 | [Toggle](components/toggle.md) | A 40×40 icon button that stays on or off, alone or as one choice in a group. | `stable` | `agreed` | Accounting app |
 | [ToggleGroup](components/toggle-group.md) | A row of Toggles where one is chosen, like a year switcher. Arrow keys move the choice, and the row is one stop for Tab. | `review` | `agreed` | Accounting app |
 | [Tooltip](components/tooltip.md) | A small label that explains something when you point at it or focus it. | `review` | `agreed` | Portfolio site |

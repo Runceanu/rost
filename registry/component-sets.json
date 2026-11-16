@@ -530,10 +530,13 @@
     "name": "Select",
     "setNodeId": "738:29",
     "variants": [
-      { "nodeId": "738:3", "name": "state=Default", "width": 208, "height": 56 },
-      { "nodeId": "738:9", "name": "state=Hover", "width": 208, "height": 56 },
-      { "nodeId": "738:15", "name": "state=Focus", "width": 216, "height": 64 },
-      { "nodeId": "738:22", "name": "state=Disabled", "width": 208, "height": 56 }
+      { "nodeId": "738:3", "name": "state=Default, error=False", "width": 208, "height": 56 },
+      { "nodeId": "738:9", "name": "state=Hover, error=False", "width": 208, "height": 56 },
+      { "nodeId": "738:15", "name": "state=Focus, error=False", "width": 216, "height": 64 },
+      { "nodeId": "738:22", "name": "state=Disabled, error=False", "width": 208, "height": 56 },
+      { "nodeId": "741:35", "name": "state=Default, error=True", "width": 208, "height": 56 },
+      { "nodeId": "741:42", "name": "state=Hover, error=True", "width": 208, "height": 56 },
+      { "nodeId": "741:49", "name": "state=Focus, error=True", "width": 216, "height": 64 }
     ]
   },
   "dialog": {
@@ -554,10 +557,18 @@
     "name": "Toast",
     "setNodeId": "738:85",
     "variants": [
-      { "nodeId": "738:52", "name": "tone=default", "width": 180, "height": 56 },
-      { "nodeId": "738:60", "name": "tone=positive", "width": 180, "height": 56 },
-      { "nodeId": "738:68", "name": "tone=warning", "width": 180, "height": 56 },
-      { "nodeId": "738:76", "name": "tone=negative", "width": 180, "height": 56 }
+      { "nodeId": "738:52", "name": "tone=default, dismissible=False", "width": 180, "height": 56 },
+      { "nodeId": "738:60", "name": "tone=positive, dismissible=False", "width": 180, "height": 56 },
+      { "nodeId": "738:68", "name": "tone=warning, dismissible=False", "width": 180, "height": 56 },
+      { "nodeId": "738:76", "name": "tone=negative, dismissible=False", "width": 180, "height": 56 },
+      { "nodeId": "741:69", "name": "tone=default, dismissible=True", "width": 272, "height": 56 }
+    ]
+  },
+  "toast-stack": {
+    "name": "ToastStack",
+    "setNodeId": "741:102",
+    "variants": [
+      { "nodeId": "741:84", "name": "placement=inline", "width": 192, "height": 120 }
     ]
   }
 }

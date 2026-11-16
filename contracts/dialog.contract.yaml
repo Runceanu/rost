@@ -30,6 +30,12 @@ elements:
       overflow: { value: visible, assert: false }
       max-width: { value: none, assert: false }
       color: { value: inherit, assert: false }
+  backdrop:
+    pseudo: "::backdrop"
+    notes: "The layer the browser puts between the dialog and the page. The page's own colour at 72%, so the page stays in view but steps back."
+    styles:
+      background: { token: dialog/backdrop, value: "#060805" }
+      opacity: { token: opacity/hard, value: "0.72" }
   panel:
     notes: "The plate: the dialog's fill, a 1px edge and the floating shadow. It holds the title, the words and the buttons in a column, 16px apart."
     styles:
@@ -85,7 +91,7 @@ guidance:
     - title: Long forms
       text: "Anything that scrolls. Give it a page."
   behaviour: |-
-    It opens as a modal: focus moves into it, the page behind can't be reached, and Esc closes it. That's the browser's `<dialog>` doing the work, not mine. The plate is Card's grey with an edge and the floating shadow. The dim layer behind it is still the browser's own: contracts don't have a way to style `::backdrop` yet, and I want that before I call this finished.
+    It opens as a modal: focus moves into it, the page behind can't be reached, and Esc closes it. That's the browser's `<dialog>` doing the work, not mine. The plate is Card's grey with an edge and the floating shadow. Behind it, the page dims to 72% of its own colour: the contract styles the browser's `::backdrop` as a part of its own.
   accessibility:
     element: "`<dialog>` opened with `showModal()`, labelled by its title (`aria-labelledby`)."
     name: "The title."
