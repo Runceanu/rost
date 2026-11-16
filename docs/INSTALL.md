@@ -1,6 +1,6 @@
 # Install
 
-Rost's components get copied into your app, the way shadcn's do. You own the copy. Nothing to import from a package, nothing to keep in step with a version number.
+Rost's components get copied into your app, the way shadcn's do. You own the copy, under [MIT-0](../LICENSE): no notice to keep, no credit owed. Nothing to import from a package, nothing to keep in step with a version number.
 
 Every component that's in code is in a registry on rost.build, at `https://rost.build/r/<id>.json`. The list of them is at [`/r/registry.json`](https://rost.build/r/registry.json).
 

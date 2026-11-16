@@ -51,3 +51,9 @@ npm run audit -- --strict <app-dir>        # undefined vars, raw hex, token name
 ```
 
 [Checking an app](docs/CONTRACT.md#checking-an-app) shows the test an app runs.
+
+## Licence
+
+[MIT-0](LICENSE). Copy it, change it, ship it, sell what you build with it. You don't have to keep my name in the files.
+
+That covers the code, the tokens, the contracts, the icons and the illustrations. Two things it doesn't cover: the Rost name and logo, which stay mine, and General Sans, which is Fontshare's and comes from their servers under their own licence.
