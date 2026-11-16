@@ -525,5 +525,39 @@
       { "nodeId": "733:167", "name": "tone=warning", "width": 240, "height": 4 },
       { "nodeId": "733:169", "name": "tone=negative", "width": 240, "height": 4 }
     ]
+  },
+  "select": {
+    "name": "Select",
+    "setNodeId": "738:29",
+    "variants": [
+      { "nodeId": "738:3", "name": "state=Default", "width": 208, "height": 56 },
+      { "nodeId": "738:9", "name": "state=Hover", "width": 208, "height": 56 },
+      { "nodeId": "738:15", "name": "state=Focus", "width": 216, "height": 64 },
+      { "nodeId": "738:22", "name": "state=Disabled", "width": 208, "height": 56 }
+    ]
+  },
+  "dialog": {
+    "name": "Dialog",
+    "setNodeId": "738:35",
+    "variants": [
+      { "nodeId": "738:35", "name": "dialog", "width": 400, "height": 180 }
+    ]
+  },
+  "popover": {
+    "name": "Popover",
+    "setNodeId": "738:48",
+    "variants": [
+      { "nodeId": "738:48", "name": "popover", "width": 269, "height": 52 }
+    ]
+  },
+  "toast": {
+    "name": "Toast",
+    "setNodeId": "738:85",
+    "variants": [
+      { "nodeId": "738:52", "name": "tone=default", "width": 180, "height": 56 },
+      { "nodeId": "738:60", "name": "tone=positive", "width": 180, "height": 56 },
+      { "nodeId": "738:68", "name": "tone=warning", "width": 180, "height": 56 },
+      { "nodeId": "738:76", "name": "tone=negative", "width": 180, "height": 56 }
+    ]
   }
 }

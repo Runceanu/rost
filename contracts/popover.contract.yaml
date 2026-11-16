@@ -1,0 +1,61 @@
+# yaml-language-server: $schema=../schema/component-contract.schema.json
+schemaVersion: 2
+id: popover
+name: Popover
+kind: component
+status: review
+summary: A small plate that opens over the page with more about something, and closes when you click away. Card's grey, with an edge and the floating shadow.
+category: surfaces
+related: [ tooltip, dialog, menu ]
+source:
+  tool: figma
+  fileKey: 1Zy0wiWKXQAvsfDBX3KR0d
+  nodeId: "738:48"
+  url: https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=738-48
+  extractedAt: "2026-11-16"
+  extractedBy: hand
+  frozenAt: "2026-11-16"
+props:
+  id: { type: string, required: true, notes: "What the button that opens it points at, with `popovertarget`." }
+  children: { type: slot, notes: "A few lines, a small form, a list of links." }
+elements:
+  root:
+    notes: "The browser's popover (`popover=\"auto\"`), with its own look taken away. The browser shows it, hides it and closes it on Esc or a click outside. Where it sits is the page's job."
+    styles:
+      padding: { token: spacing/gap/none, value: 0px }
+      border: { value: none, assert: false }
+      background: { value: transparent, assert: false }
+      overflow: { value: visible, assert: false }
+      color: { value: inherit, assert: false }
+  panel:
+    notes: "The plate: 16px inside, as wide as what it holds up to 280px."
+    styles:
+      display: { value: block, assert: false }
+      max-width: { value: 280px, notes: "About a sentence and a half of paragraph text a line." }
+      padding: { token: spacing/gap/medium, value: 16px }
+      border-radius: { token: spacing/radius/large, value: 16px }
+      background: { token: popover/background, value: "#171717" }
+      outline-style: { value: solid, assert: false }
+      outline-width: { token: spacing/outline/small, value: 1px }
+      outline-offset: { value: "calc(-1 * var(--spacing-outline-small))", untokenised: "Composed from a token: the edge sits inside the plate." }
+      outline-color: { token: popover/edge, value: "#3a3a3a" }
+      box-shadow: { token: shadow/floating, value: "0px 16px 24px 0px rgba(0, 0, 0, 0.16)", notes: "The kit's only drop shadow, for things that float above the page." }
+guidance:
+  status: proposed
+  use:
+    - title: More about something
+      text: "How a figure was worked out, the details of a payment, a few settings for one column."
+  avoid:
+    - title: A word of explanation
+      text: "A label for an icon or a few words on hover. That's **Tooltip**."
+    - title: Something that has to be answered
+      text: "If the page should wait for it, that's **Dialog**."
+    - title: Actions
+      text: "A list of things to do. That's **Menu**."
+  behaviour: |-
+    It's the browser's popover: a button with `popovertarget` opens and closes it, Esc and a click outside close it, and only one is open at a time. It adds no type of its own, like Card. It doesn't place itself next to its button yet. CSS anchor positioning will do that once the browsers agree on it; until then the page places it.
+  accessibility:
+    element: "A `<div popover>`, opened by a `<button popovertarget>`. The browser links the two for screen readers."
+    name: "Give it an `aria-label` or a heading inside when it's more than a sentence."
+    keyboard: "Enter or Space on its button opens it. Esc closes it and puts focus back on the button."
+    colour: "Text inside keeps the page's tokens and their contrast on the #171717 plate."

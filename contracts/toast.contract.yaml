@@ -1,0 +1,92 @@
+# yaml-language-server: $schema=../schema/component-contract.schema.json
+schemaVersion: 2
+id: toast
+name: Toast
+kind: component
+status: review
+summary: A short message that something happened, with one thing you can do about it. Badge's dot, the words and a Borderless Button, on a floating plate.
+category: feedback
+related: [ inline-banner, badge, button, dialog ]
+source:
+  tool: figma
+  fileKey: 1Zy0wiWKXQAvsfDBX3KR0d
+  nodeId: "738:85"
+  url: https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=738-85
+  extractedAt: "2026-11-16"
+  extractedBy: hand
+  frozenAt: "2026-11-16"
+props:
+  tone:
+    type: enum
+    values: [ default, positive, warning, negative ]
+    default: default
+    notes: "The dot's colour, Badge's statuses. `negative` is read out at once (`role=\"alert\"`), the others when the screen reader has a moment."
+  children: { type: slot, required: true, notes: "What happened, in one short line." }
+  action: { type: slot, notes: "One Borderless Button, like Undo or View. Leave it out when there's nothing to do." }
+elements:
+  root:
+    notes: "A row: the dot, the words, the action. 56px tall, Input's height, so a Borderless Button fits with 4px around it."
+    styles:
+      display: { value: inline-flex, assert: false }
+      align-items: { value: center }
+      gap: { token: spacing/gap/small, value: 8px }
+      height: { token: spacing/size/large, value: 56px }
+      padding-left: { token: spacing/gap/small-medium, value: 12px }
+      padding-right: { token: spacing/gap/2xsmall, value: 4px }
+      border-radius: { token: spacing/radius/medium, value: 12px }
+      background: { token: toast/background, value: "#171717" }
+      outline-style: { value: solid, assert: false }
+      outline-width: { token: spacing/outline/small, value: 1px }
+      outline-offset: { value: "calc(-1 * var(--spacing-outline-small))", untokenised: "Composed from a token: the edge sits inside the plate." }
+      outline-color: { token: toast/edge, value: "#3a3a3a" }
+      box-shadow: { token: shadow/floating, value: "0px 16px 24px 0px rgba(0, 0, 0, 0.16)", notes: "The kit's only drop shadow, for things that float above the page." }
+  badge:
+    notes: "A small Badge, as it is: the 24px frame with the dot in the tone's colour."
+    styles:
+      flex-shrink: { value: "0", assert: false }
+  message:
+    notes: "Paragraph type in the main text colour, 8px clear of the action or the edge."
+    styles:
+      padding-right: { token: spacing/gap/small, value: 8px }
+      font-family: { token: font-family/base, value: "'General Sans Variable'" }
+      font-weight: { token: typography/paragraph/font-weight/regular, value: "400" }
+      font-size: { token: typography/paragraph/font-size, value: 14px }
+      line-height: { token: typography/paragraph/line-height, value: 20px }
+      letter-spacing: { token: typography/paragraph/letter-spacing, value: 0px }
+      color: { token: toast/message, value: "#ededed" }
+      white-space: { value: nowrap, assert: false }
+  action:
+    notes: "A Button with `variant=\"Borderless\"`, as it is."
+    styles:
+      flex-shrink: { value: "0", assert: false }
+variants:
+  - when: { tone: default }
+    figmaNode: "738:52"
+  - when: { tone: positive }
+    figmaNode: "738:60"
+  - when: { tone: warning }
+    figmaNode: "738:68"
+  - when: { tone: negative }
+    figmaNode: "738:76"
+guidance:
+  status: proposed
+  use:
+    - title: Something happened
+      text: "Saved, sent, paid, deleted. Say it in a few words, and offer Undo when you can."
+      show: tone=positive
+    - title: Something failed in the background
+      text: "A sync that didn't go through. `negative`, with Retry."
+      show: tone=negative
+  avoid:
+    - title: Something to decide
+      text: "If they have to answer, that's **Dialog**."
+    - title: A problem with the screen in front of them
+      text: "An error in a form belongs next to the field, or in an **InlineBanner** at the top."
+  behaviour: |-
+    A floating plate with Badge's dot, the message and at most one Borderless Button. Toast draws it; the app decides where it sits (bottom centre is a good default) and for how long. Five seconds is enough for a line; keep it up while a pointer is over it. I haven't built a queue for several at once, or a close button. An app with one toast at a time doesn't need either yet.
+  accessibility:
+    element: "A `<div role=\"status\">`, or `role=\"alert\"` when it's `negative`, so screen readers say it without moving focus."
+    name: "The message is what's read. Don't rely on the dot's colour: the words say whether it worked."
+    keyboard: "The action is a Button and takes Tab like any other. Don't make it the only way to do the thing: Undo should be in the page too."
+    colour: "The message is 14:1 on the plate in dark."
+  content: "Past tense, short, no full stop: \"Invoice sent\", \"Couldn't sync, check your connection\"."

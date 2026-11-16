@@ -1,0 +1,146 @@
+/* Generated from contracts/select.contract.yaml by bin/build-css.mjs. Don't edit: change the contract and rebuild. */
+
+.rost-select, .rost-select * { box-sizing: border-box; margin: 0; }
+.rost-select > img, .rost-select [class*="__icons-"] > img { display: block; position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; }
+.rost-select ::placeholder { color: inherit; opacity: 1; }
+
+.rost-select {
+  display: block;
+  position: relative;
+  height: var(--spacing-size-large);
+  width: 208px;
+}
+
+.rost-select__outline {
+  position: absolute;
+  inset: 0;
+  border-style: solid;
+  border-width: var(--spacing-outline-small);
+  border-radius: var(--spacing-radius-medium);
+  pointer-events: none;
+}
+
+.rost-select__label {
+  position: absolute;
+  top: var(--spacing-gap-small-medium);
+  left: var(--spacing-gap-small-medium);
+  font-family: var(--font-family-base);
+  font-weight: var(--typography-label-font-weight-regular);
+  font-size: var(--typography-placeholder-font-size);
+  line-height: var(--typography-placeholder-line-height);
+  letter-spacing: var(--typography-placeholder-letter-spacing);
+  pointer-events: none;
+}
+
+.rost-select__field {
+  position: absolute;
+  inset: 0;
+  appearance: none;
+  background: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding-top: var(--spacing-gap-large);
+  padding-bottom: var(--spacing-gap-small-medium);
+  padding-left: var(--spacing-gap-small-medium);
+  padding-right: var(--spacing-size-medium);
+  font-family: var(--font-family-base);
+  font-weight: var(--typography-paragraph-font-weight-regular);
+  font-size: var(--typography-paragraph-font-size);
+  line-height: var(--typography-paragraph-line-height);
+  letter-spacing: var(--typography-paragraph-letter-spacing);
+}
+
+.rost-select__chevron {
+  position: absolute;
+  top: var(--spacing-gap-medium-large);
+  right: var(--spacing-gap-small-medium);
+  width: var(--spacing-size-xsmall);
+  height: var(--spacing-size-xsmall);
+  mask: url(./icon-chevron.svg) center / contain no-repeat;
+  pointer-events: none;
+}
+
+.rost-select__focus-ring {
+  display: none;
+  position: absolute;
+  inset: calc(-1 * var(--spacing-gap-2xsmall));
+  border-style: solid;
+  border-width: var(--spacing-outline-medium);
+  border-radius: var(--spacing-radius-large);
+  pointer-events: none;
+}
+
+.rost-select .rost-select__outline {
+  background: var(--select-default-background);
+  border-color: var(--select-default-outline);
+}
+
+.rost-select .rost-select__label {
+  color: var(--select-default-label);
+}
+
+.rost-select .rost-select__field {
+  color: var(--select-default-value);
+}
+
+.rost-select .rost-select__chevron {
+  background: var(--select-default-chevron);
+}
+
+.rost-select:hover:where(:not(:has(> .rost-select__field:disabled))) .rost-select__outline {
+  background: var(--select-hover-background);
+  border-color: var(--select-hover-outline);
+}
+
+.rost-select:hover:where(:not(:has(> .rost-select__field:disabled))) .rost-select__label {
+  color: var(--select-hover-label);
+}
+
+.rost-select:hover:where(:not(:has(> .rost-select__field:disabled))) .rost-select__field {
+  color: var(--select-hover-value);
+}
+
+.rost-select:hover:where(:not(:has(> .rost-select__field:disabled))) .rost-select__chevron {
+  background: var(--select-hover-chevron);
+}
+
+.rost-select:has(> .rost-select__field:focus-visible) .rost-select__outline {
+  background: var(--select-focus-background);
+  border-color: var(--select-focus-outline);
+}
+
+.rost-select:has(> .rost-select__field:focus-visible) .rost-select__label {
+  color: var(--select-focus-label);
+}
+
+.rost-select:has(> .rost-select__field:focus-visible) .rost-select__field {
+  color: var(--select-focus-value);
+}
+
+.rost-select:has(> .rost-select__field:focus-visible) .rost-select__chevron {
+  background: var(--select-focus-chevron);
+}
+
+.rost-select:has(> .rost-select__field:focus-visible) .rost-select__focus-ring {
+  display: block;
+  border-color: var(--select-focus-focus-ring);
+}
+
+.rost-select:has(> .rost-select__field:disabled) .rost-select__outline {
+  background: var(--select-disabled-background);
+  border-color: var(--select-disabled-outline);
+}
+
+.rost-select:has(> .rost-select__field:disabled) .rost-select__label {
+  color: var(--select-disabled-label);
+}
+
+.rost-select:has(> .rost-select__field:disabled) .rost-select__field {
+  color: var(--select-disabled-value);
+}
+
+.rost-select:has(> .rost-select__field:disabled) .rost-select__chevron {
+  background: var(--select-disabled-chevron);
+  opacity: var(--opacity-soft);
+}

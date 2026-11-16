@@ -1118,6 +1118,44 @@
   --progress-fill-warning: #fda50d;
   --progress-track: #3a3a3a;
 
+  /* ── Component: select ───────────────────────────────────────────────────── */
+  --select-default-background: #060805;
+  --select-default-chevron: #00d669;
+  --select-default-label: #999999;
+  --select-default-outline: #747573;
+  --select-default-value: #c2c7c3;
+  --select-disabled-background: #171717;
+  --select-disabled-chevron: #b6ffda;
+  --select-disabled-label: #555555;
+  --select-disabled-outline: #3a3a3a;
+  --select-disabled-value: #555555;
+  --select-focus-background: #060805;
+  --select-focus-chevron: #00d669;
+  --select-focus-focus-ring: #00d669;
+  --select-focus-label: #999999;
+  --select-focus-outline: #747573;
+  --select-focus-value: #c2c7c3;
+  --select-hover-background: #171717;
+  --select-hover-chevron: #00b450;
+  --select-hover-label: #d3d9d5;
+  --select-hover-outline: #999999;
+  --select-hover-value: #d3d9d5;
+
+  /* ── Component: dialog ───────────────────────────────────────────────────── */
+  --dialog-background: #171717;
+  --dialog-body: #d3d9d5;
+  --dialog-edge: #3a3a3a;
+  --dialog-title: #ededed;
+
+  /* ── Component: popover ──────────────────────────────────────────────────── */
+  --popover-background: #171717;
+  --popover-edge: #3a3a3a;
+
+  /* ── Component: toast ────────────────────────────────────────────────────── */
+  --toast-background: #171717;
+  --toast-edge: #3a3a3a;
+  --toast-message: #ededed;
+
   /* ── Generic colours (no family in Figma) ────────────────────────────────── */
   --background: #3a3a3a;
   --focus-ring: #999999;
@@ -1274,7 +1312,7 @@
 }
 
 /* ── Light ──────────────────────────────────────────────────────────────────
- * Only the colours change, 727 of them. Figma's light mode, with Rost's own
+ * Only the colours change, 754 of them. Figma's light mode, with Rost's own
  * corrections from registry/light.json where Figma's value fails contrast.
  * Set data-theme="light" on <html> (or any element). Without it you get dark,
  * whatever the system says. data-theme="dark" brings dark back inside a light page.
@@ -1530,6 +1568,10 @@
   --chip-unselected-hover-outline: #fcfcfc;
   --chip-unselected-pressed-label: #171717;
   --chip-unselected-pressed-outline: #fcfcfc;
+  --dialog-background: #ededed;
+  --dialog-body: #171717;
+  --dialog-edge: #d3d9d5;
+  --dialog-title: #060805;
   --focus-ring: #747573;
   --icon: #006f27;
   --icon-button-primary-default-icon: #171717;
@@ -1736,6 +1778,8 @@
   --non-interactive-foreground-warning-dark: #492604;
   --non-interactive-foreground-warning-light: #fef8e1;
   --outline: #fcfcfc;
+  --popover-background: #ededed;
+  --popover-edge: #d3d9d5;
   --progress-fill-negative: #ae1b13;
   --progress-fill-positive: #0e7118;
   --progress-fill-warning: #7a4805;
@@ -1817,6 +1861,24 @@
   --radio-off-pressed-edge: #747573;
   --radio-on-edge: #0e7118;
   --radio-on-focus-focus-ring: #006f27;
+  --select-default-background: #fcfcfc;
+  --select-default-chevron: #006f27;
+  --select-default-label: #747573;
+  --select-default-value: #454545;
+  --select-disabled-background: #ededed;
+  --select-disabled-label: #c2c7c3;
+  --select-disabled-outline: #d3d9d5;
+  --select-disabled-value: #c2c7c3;
+  --select-focus-background: #fcfcfc;
+  --select-focus-chevron: #006f27;
+  --select-focus-focus-ring: #006f27;
+  --select-focus-label: #747573;
+  --select-focus-value: #454545;
+  --select-hover-background: #ededed;
+  --select-hover-chevron: #004c19;
+  --select-hover-label: #171717;
+  --select-hover-outline: #747573;
+  --select-hover-value: #171717;
   --skeleton-background: #d3d9d5;
   --sub-label: #747573;
   --switch-field-label: #171717;
@@ -1972,6 +2034,9 @@
   --thumbs-pressed-sub-label: #454545;
   --thumbs-shade: #fcfcfc;
   --thumbs-slot: #ededed;
+  --toast-background: #ededed;
+  --toast-edge: #d3d9d5;
+  --toast-message: #060805;
   --toggle-off-default-background: #c2c7c3;
   --toggle-off-default-icon: #006f27;
   --toggle-off-default-label: #171717;
@@ -2261,6 +2326,10 @@
   --chip-unselected-hover-outline: #ededed;
   --chip-unselected-pressed-label: #d3d9d5;
   --chip-unselected-pressed-outline: #ededed;
+  --dialog-background: #171717;
+  --dialog-body: #d3d9d5;
+  --dialog-edge: #3a3a3a;
+  --dialog-title: #ededed;
   --focus-ring: #999999;
   --icon: #00d669;
   --icon-button-primary-default-icon: #3a3a3a;
@@ -2467,6 +2536,8 @@
   --non-interactive-foreground-warning-dark: #fef8e1;
   --non-interactive-foreground-warning-light: #492604;
   --outline: #ededed;
+  --popover-background: #171717;
+  --popover-edge: #3a3a3a;
   --progress-fill-negative: #f2705f;
   --progress-fill-positive: #00d669;
   --progress-fill-warning: #fda50d;
@@ -2548,6 +2619,24 @@
   --radio-off-pressed-edge: #999999;
   --radio-on-edge: #00d669;
   --radio-on-focus-focus-ring: #b6ffda;
+  --select-default-background: #060805;
+  --select-default-chevron: #00d669;
+  --select-default-label: #999999;
+  --select-default-value: #c2c7c3;
+  --select-disabled-background: #171717;
+  --select-disabled-label: #555555;
+  --select-disabled-outline: #3a3a3a;
+  --select-disabled-value: #555555;
+  --select-focus-background: #060805;
+  --select-focus-chevron: #00d669;
+  --select-focus-focus-ring: #00d669;
+  --select-focus-label: #999999;
+  --select-focus-value: #c2c7c3;
+  --select-hover-background: #171717;
+  --select-hover-chevron: #00b450;
+  --select-hover-label: #d3d9d5;
+  --select-hover-outline: #999999;
+  --select-hover-value: #d3d9d5;
   --skeleton-background: #3a3a3a;
   --sub-label: #999999;
   --switch-field-label: #d3d9d5;
@@ -2703,6 +2792,9 @@
   --thumbs-pressed-sub-label: #c2c7c3;
   --thumbs-shade: #060805;
   --thumbs-slot: #171717;
+  --toast-background: #171717;
+  --toast-edge: #3a3a3a;
+  --toast-message: #ededed;
   --toggle-off-default-background: #3a3a3a;
   --toggle-off-default-icon: #00d669;
   --toggle-off-default-label: #d3d9d5;

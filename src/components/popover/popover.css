@@ -1,0 +1,26 @@
+/* Generated from contracts/popover.contract.yaml by bin/build-css.mjs. Don't edit: change the contract and rebuild. */
+
+.rost-popover, .rost-popover * { box-sizing: border-box; margin: 0; }
+.rost-popover > img, .rost-popover [class*="__icons-"] > img { display: block; position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; }
+.rost-popover ::placeholder { color: inherit; opacity: 1; }
+
+.rost-popover {
+  padding: var(--spacing-gap-none);
+  border: none;
+  background: transparent;
+  overflow: visible;
+  color: inherit;
+}
+
+.rost-popover__panel {
+  display: block;
+  max-width: 280px;
+  padding: var(--spacing-gap-medium);
+  border-radius: var(--spacing-radius-large);
+  background: var(--popover-background);
+  outline-style: solid;
+  outline-width: var(--spacing-outline-small);
+  outline-offset: calc(-1 * var(--spacing-outline-small));
+  outline-color: var(--popover-edge);
+  box-shadow: var(--shadow-floating);
+}

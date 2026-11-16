@@ -14,7 +14,7 @@ Rost started as a design system for my own needs and grew into a product of its 
 | [Roadmap](ROADMAP.md) | What I'm doing next |
 | [Release notes](CHANGELOG.md) | What changed in each release |
 
-**45** contracts, **5** stable. **45** have guidance, and I've signed off **32** of those.
+**49** contracts, **5** stable. **49** have guidance, and I've signed off **32** of those.
 
 ## Catalogue
 
@@ -30,6 +30,7 @@ Rost started as a design system for my own needs and grew into a product of its 
 | [Checkbox](components/checkbox.md) | A choice that's on or off and waits for the form. A 20px box that fills green with a tick, and the words beside it. | `review` | `proposed` | · |
 | [Chip](components/chips.md) | A small outlined label you can click, for filters and quick choices. | `review` | `agreed` | Portfolio site |
 | [Code](components/code.md) | Code in a sentence, or a block of it on its own plate. | `review` | `proposed` | · |
+| [Dialog](components/dialog.md) | A question or a short task that stops everything else until it's answered. A grey plate over the page with a title, a few words and its buttons. | `review` | `proposed` | · |
 | [Disclosure](components/disclosure.md) | A line that opens to show more, for things most people won't need. | `review` | `proposed` | · |
 | [Divider](components/divider.md) | A thin line between things. | `stable` | `agreed` | Portfolio site, Accounting app |
 | [Icon](components/icon.md) | One of Rost's 18 glyphs, 24px, in the colour of the text around it. | `review` | `proposed` | · |
@@ -41,9 +42,11 @@ Rost started as a design system for my own needs and grew into a product of its 
 | [ListItem](components/list-item.md) | One row you can pick in a list or a nav. A label, an optional line under it, and optional icons and a status dot. | `review` | `agreed` | · |
 | [Menu](components/menu.md) | A navigation item: a label with a line underneath, used in the main nav. | `review` | `agreed` | · |
 | [Navigation](components/navigation.md) | A side navigation on frosted glass. The logo at the top, the main items below it, one action at the bottom. Collapsed to icons, or open with labels. | `review` | `agreed` | · |
+| [Popover](components/popover.md) | A small plate that opens over the page with more about something, and closes when you click away. Card's grey, with an edge and the floating shadow. | `review` | `proposed` | · |
 | [Progress](components/progress.md) | How far along something is, as a thin bar that fills. Green as it goes, amber or red when it needs a look. | `review` | `proposed` | · |
 | [Projects](components/projects.md) | One row in the project list: number, name, and industry, type and period on the right. | `review` | `agreed` | Portfolio site |
 | [Radio](components/radio.md) | One choice out of a few, all on show. A 20px circle with a dot in the picked one, and the words beside it. | `review` | `proposed` | · |
+| [Select](components/select.md) | One choice from a list that's too long to show. Input's filled field, with a chevron, and the browser's own list when it opens. | `review` | `proposed` | · |
 | [Skeleton](components/skeleton.md) | Grey shapes where content is about to be, so the page doesn't jump when it arrives. A line of text, a circle or a block. | `review` | `proposed` | · |
 | [Switch](components/switch.md) | A setting that's on or off and takes effect straight away. A pill track with a thumb that moves across. The label is SwitchField's. | `review` | `agreed` | · |
 | [TabItem](components/tab-item.md) | One tab in a row of tabs. A label, optional icons before and after it, and a green underline when it's the one selected. | `review` | `agreed` | · |
@@ -57,6 +60,7 @@ Rost started as a design system for my own needs and grew into a product of its 
 | [Text](components/text.md) | Rost's type ramp as one component, from the 64px page title down to the 12px label. | `review` | `proposed` | · |
 | [Textarea](components/textarea.md) | A text field for several lines, with Input's label, help line, error and focus ring. | `review` | `agreed` | · |
 | [Thumbs](components/thumbs.md) | A project thumbnail card, with the project name and details on a frosted panel at the bottom. | `review` | `agreed` | Portfolio site |
+| [Toast](components/toast.md) | A short message that something happened, with one thing you can do about it. Badge's dot, the words and a Borderless Button, on a floating plate. | `review` | `proposed` | · |
 | [Toggle](components/toggle.md) | A 40×40 icon button that stays on or off, alone or as one choice in a group. | `stable` | `agreed` | Accounting app |
 | [ToggleGroup](components/toggle-group.md) | A row of Toggles where one is chosen, like a year switcher. Arrow keys move the choice, and the row is one stop for Tab. | `review` | `agreed` | Accounting app |
 | [Tooltip](components/tooltip.md) | A small label that explains something when you point at it or focus it. | `review` | `agreed` | Portfolio site |

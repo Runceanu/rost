@@ -1,0 +1,165 @@
+# yaml-language-server: $schema=../schema/component-contract.schema.json
+schemaVersion: 2
+id: select
+name: Select
+kind: component
+status: review
+summary: One choice from a list that's too long to show. Input's filled field, with a chevron, and the browser's own list when it opens.
+category: inputs
+related: [ input, radio, menu ]
+source:
+  tool: figma
+  fileKey: 1Zy0wiWKXQAvsfDBX3KR0d
+  nodeId: "738:29"
+  url: https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=738-29
+  extractedAt: "2026-11-16"
+  extractedBy: hand
+  frozenAt: "2026-11-16"
+props:
+  label: { type: slot, required: true, notes: "The field's name. It sits small at the top, the way Input's label does once it has a value: a select always has one." }
+  children: { type: slot, notes: "The `<option>`s, as in any `<select>`." }
+states: [ Default, Hover, Focus, Disabled ]
+stateSelectors:
+  Focus: ":has(> .rost-select__field:focus-visible)"
+  Disabled: ":has(> .rost-select__field:disabled)"
+elements:
+  root:
+    notes: "A box the size of Input, holding the parts. The `<select>` covers all of it, so a press anywhere opens the list."
+    styles:
+      display: { value: block, assert: false }
+      position: { value: relative, assert: false }
+      height: { token: spacing/size/large, value: 56px }
+      width: { value: 208px, notes: "Just the size of the Figma frame, as Input's is. A field is as wide as its form." }
+  outline:
+    notes: "The field's fill and its 1px edge, on their own layer, as Input has them."
+    styles:
+      position: { value: absolute }
+      inset: { value: "0" }
+      border-style: { value: solid }
+      border-width: { token: spacing/outline/small, value: 1px }
+      border-radius: { token: spacing/radius/medium, value: 12px }
+      pointer-events: { value: none, assert: false }
+  label:
+    notes: "Input's label once it's filled: placeholder type, 12px in from the edges. A `<label>` for the select."
+    styles:
+      position: { value: absolute }
+      top: { token: spacing/gap/small-medium, value: 12px }
+      left: { token: spacing/gap/small-medium, value: 12px }
+      font-family: { token: font-family/base, value: "'General Sans Variable'" }
+      font-weight: { token: typography/label/font-weight/regular, value: "400" }
+      font-size: { token: typography/placeholder/font-size, value: 10px }
+      line-height: { token: typography/placeholder/line-height, value: 12px }
+      letter-spacing: { token: typography/placeholder/letter-spacing, value: 0px }
+      pointer-events: { value: none, assert: false }
+  field:
+    notes: "The real `<select>`, over the whole box. Its own look goes; its value sits where Input's does, under the label."
+    styles:
+      position: { value: absolute }
+      inset: { value: "0" }
+      appearance: { value: none, assert: false }
+      background: { value: transparent, assert: false }
+      border: { value: none, assert: false }
+      outline: { value: none, assert: false }
+      cursor: { value: pointer, assert: false }
+      padding-top: { token: spacing/gap/large, value: 24px, notes: "The label's 12px and its 12px line above the value." }
+      padding-bottom: { token: spacing/gap/small-medium, value: 12px }
+      padding-left: { token: spacing/gap/small-medium, value: 12px }
+      padding-right: { token: spacing/size/medium, value: 40px, notes: "Room for the chevron and the 12px after it." }
+      font-family: { token: font-family/base, value: "'General Sans Variable'" }
+      font-weight: { token: typography/paragraph/font-weight/regular, value: "400" }
+      font-size: { token: typography/paragraph/font-size, value: 14px }
+      line-height: { token: typography/paragraph/line-height, value: 20px }
+      letter-spacing: { token: typography/paragraph/letter-spacing, value: 0px }
+  chevron:
+    notes: "Rost's chevron-down, 20px, drawn as a mask in Input's icon colour, 12px from the right edge."
+    styles:
+      position: { value: absolute }
+      top: { token: spacing/gap/medium-large, value: 20px, notes: "Centres the 20px chevron on the value line." }
+      right: { token: spacing/gap/small-medium, value: 12px }
+      width: { token: spacing/size/xsmall, value: 20px }
+      height: { token: spacing/size/xsmall, value: 20px }
+      mask: { value: url(./icon-chevron.svg) center / contain no-repeat, untokenised: The icon file itself. }
+      pointer-events: { value: none, assert: false }
+  focus-ring:
+    notes: Input's ring, 4px outside the field.
+    styles:
+      display: { value: none, assert: false }
+      position: { value: absolute }
+      inset: { value: "calc(-1 * var(--spacing-gap-2xsmall))", untokenised: "Composed from a token: the ring sits spacing/gap/2xsmall outside the field." }
+      border-style: { value: solid }
+      border-width: { token: spacing/outline/medium, value: 2px }
+      border-radius: { token: spacing/radius/large, value: 16px }
+      pointer-events: { value: none, assert: false }
+variants:
+  - when: { state: Default }
+    figmaNode: "738:3"
+    elements:
+      outline:
+        background: { token: select/default/background, value: "#060805" }
+        border-color: { token: select/default/outline, value: "#747573" }
+      label:
+        color: { token: select/default/label, value: "#999999" }
+      field:
+        color: { token: select/default/value, value: "#c2c7c3" }
+      chevron:
+        background: { token: select/default/chevron, value: "#00d669" }
+  - when: { state: Hover }
+    figmaNode: "738:9"
+    elements:
+      outline:
+        background: { token: select/hover/background, value: "#171717" }
+        border-color: { token: select/hover/outline, value: "#999999" }
+      label:
+        color: { token: select/hover/label, value: "#d3d9d5" }
+      field:
+        color: { token: select/hover/value, value: "#d3d9d5" }
+      chevron:
+        background: { token: select/hover/chevron, value: "#00b450" }
+  - when: { state: Focus }
+    figmaNode: "738:15"
+    elements:
+      outline:
+        background: { token: select/focus/background, value: "#060805" }
+        border-color: { token: select/focus/outline, value: "#747573" }
+      label:
+        color: { token: select/focus/label, value: "#999999" }
+      field:
+        color: { token: select/focus/value, value: "#c2c7c3" }
+      chevron:
+        background: { token: select/focus/chevron, value: "#00d669" }
+      focus-ring:
+        display: { value: block, assert: false }
+        border-color: { token: select/focus/focus-ring, value: "#00d669" }
+  - when: { state: Disabled }
+    figmaNode: "738:22"
+    elements:
+      outline:
+        background: { token: select/disabled/background, value: "#171717" }
+        border-color: { token: select/disabled/outline, value: "#3a3a3a" }
+      label:
+        color: { token: select/disabled/label, value: "#555555" }
+      field:
+        color: { token: select/disabled/value, value: "#555555" }
+      chevron:
+        background: { token: select/disabled/chevron, value: "#b6ffda" }
+        opacity: { token: opacity/soft, value: "0.16", notes: "As Input's icon does when it's disabled." }
+guidance:
+  status: proposed
+  use:
+    - title: One out of many
+      text: "A choice from a list of six or more, or a list that changes: a country, a client, a currency."
+      show: state=Default
+  avoid:
+    - title: A few choices
+      text: "Five or fewer, where seeing them all helps. That's **Radio**."
+    - title: Actions
+      text: "A list of things to do, not a value to pick. That's **Menu**."
+  behaviour: |-
+    It looks like Input once Input has a value: the label small at the top, the value under it, and a chevron on the right. The list that opens is the browser's own, so it works with the keyboard, on a phone and with a screen reader without any work of mine, but I can't style it. I don't have an error state for it yet; Input's red would carry over when a form needs it.
+  accessibility:
+    element: "A real `<select>`, named by its `<label>`."
+    name: "`label`. Keep it short: it's the question the value answers."
+    keyboard: "Tab reaches it. Space, Enter or the arrow keys open it and move through it, the browser's way."
+    focus: "`focus-ring` around the field, on `:focus-visible`."
+    colour: "The field's edge is 4.3:1 on the dark page, the same as Input's."
+  content: "Options in sentence case, in an order that makes sense: alphabetical, or the most likely first."
