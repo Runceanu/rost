@@ -33,9 +33,9 @@ Still open from Figma:
 
 On 2026-10-20 rost.build became a proper site, the way shadcn's is: a homepage, a page per component, tokens, icons, and these docs. It's built with Astro from `web/`, straight from the contracts, so it can't drift from them. Every component card on it is a Thumbs, with a glimpse of the component inside. Components that are in code show up live on their cards and pages, with a Code tab. The rest say "Not in code yet" on their card, and their pages show Figma's own renders until they're built. Button has none to show (its renders came back empty), and TestimonialPicture's stay private.
 
-## Now: Rost in code
+## Done: the first components in code
 
-Twenty-one components so far, all built from their contracts and checked against Figma in the visual test:
+How the first twenty-one got built, all from their contracts and checked against Figma in the visual test. Everything since is in [Next: grow the kit](#next-grow-the-kit) and the [release notes](CHANGELOG.md).
 
 - **InlineBanner**, all 8 variants, with Figma's own icons.
 - **Badge**, all 8 variants. Figma gave it a small size since August: just the coloured dot. The dot in front of the label on the medium size is optional now.
@@ -80,15 +80,22 @@ Next:
 
 ## Next: grow the kit
 
-In order of how much copied code each one removes.
+Where it stands on 2026-11-17: 77 contracts, and every one of them is built. 72 are components in code, matching Figma variant for variant, in the registry and in the pen.dev library. The other 5 are effects, which are tokens. Each batch since 2026-11-16 is in the [release notes](CHANGELOG.md).
 
-| Component | Why now | Where it stands |
+What's still missing, next to a full kit like shadcn/ui, roughly in the order the apps will want it:
+
+| Component | Why | What it needs first |
 |---|---|---|
-| **Icons** as a component | The 17 SVGs are exported (`assets/icons/`), but there's no `Icon` component yet, and the apps draw their own | SVGs exported, component next |
-| **~~ListRow~~ Table** | The accounting app builds it outside the kit | ListRow became Table on 2026-10-30. ListItem didn't cover it: a row there leads with a Badge, ends with an amount and can carry a second Badge. Those rows are a table, so Rost has Table, TableRow and TableItem as drafts, with `leading` and `trailing` slots. Next: move the accounting app's payment schedule onto them |
-| **Switch, Textarea, a selected Chip, Menu's current page** | The guidance said they were missing | Drafted in code on 2026-10-30 from the tokens Rost already has, then drawn in Figma (with ToggleGroup) and matching it. Guidance is proposed: next, I read them and sign them off |
+| **DropdownMenu** | A button that opens a Menu of actions, like Edit or Delete on a row | Nothing: Popover and Menu are there |
+| **Combobox** | A Select you can type into, for a long list of clients | The most work here: the list, the filtering and the keyboard are all mine, since the browser's own select can't do it |
+| **Date ranges** | From and to, for a report | A range mode in Calendar |
+| **NumberField** | Amounts with steps | A plus and a minus icon |
+| **SearchField** | Search above a list | A magnifier icon |
+| **Command** | A palette to jump anywhere with the keyboard | Combobox's list |
+| **Sorting and selecting in Table** | The accounting app's lists | Table's header cells as buttons, and Checkbox in a row |
+| **ContextMenu, Rating, a page-top Banner** | Smaller gaps | Rating needs a star icon |
 
-~~Move the portfolio site onto the kit's token names.~~ Done on 2026-10-26: its raw hex count is 0, like the accounting app's.
+~~The portfolio site and the accounting app on the kit's token names.~~ Done on 2026-10-26. ~~Icons as a component, Table, Switch, Textarea, Menu's current page.~~ All done, and in the apps.
 
 ## Later
 
@@ -98,10 +105,10 @@ Ideas from a workshop board I sat in on, shrunk down to a personal kit with two 
 |---|---|
 | Spec templates for every kind of issue | The template contract and `npm run validate` are there. Add GitHub issue templates for *new component*, *deviation* and *token change* |
 | One place for docs, docs in markdown, a docs skill | Partly done: `docs/components/*.md` is markdown an agent can read. Next, a Claude skill that loads the right page before building a component in either app |
-| Motion in the contract | Half done on 2026-10-30: there are motion tokens now, four durations and six easings, taken from what the portfolio site and rost.build already used ([Motion](TOKENS.md#motion)). rost.build uses them. Next, the contract schema needs a place for a transition, so Projects' and Testimonials' 16px slide (`motion/duration/base`, `motion/easing/out`) can move out of the portfolio site's deviations and into the components |
+| Motion in the contract | Done on 2026-11-16: a contract can hold `keyframes`, transitions and what changes for someone who asks for less motion (`reducedMotion`). Skeleton, Spinner, Progress and ProgressRing use it. Still to do: move Projects' and Testimonials' 16px slide out of the portfolio site's deviations and into their contracts |
 | A better changelog | Started on 2026-10-27: [release notes](CHANGELOG.md), written by hand at every merge and deploy. Next, build the contract part of it from what changed in the contracts ("Badge: outline token went from X to Y"), not from commit messages |
 | Spec-driven work, PR checks | Both apps run the strict audit in CI. Since 2026-10-26 Rost has its own (`.github/workflows/check.yml`): the contracts validate, the docs and the generated CSS match them, the site builds. The visual test isn't in it yet, because Linux draws text differently from the Mac the baselines were made on |
 | Designers working in code | The "Adding a component" steps in [CONTRACT.md](CONTRACT.md), down to one command each |
-| Charts | The accounting app will need them. Tokens for data-viz colours and a Chart contract come before any chart |
+| Charts | Started on 2026-11-17: BarChart, Sparkline, ProgressRing and Legend, for the accounting app's dashboard, in the kit's grey and green. Still to do: data-viz colours for a chart with more than two series |
 | Device-specific work | Breakpoint and density tokens. There are none yet |
 | Measuring it | Track the audit table at the top over time, so adoption is a number and not a feeling |
