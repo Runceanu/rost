@@ -86,15 +86,14 @@ What's still missing, next to a full kit like shadcn/ui, roughly in the order th
 
 | Component | Why | What it needs first |
 |---|---|---|
-| **Combobox** | A Select you can type into, for a long list of clients | The most work here: the list, the filtering and the keyboard are all mine, since the browser's own select can't do it |
 | **Date ranges** | From and to, for a report | A range mode in Calendar |
 | **NumberField** | Amounts with steps | A plus and a minus icon |
 | **SearchField** | Search above a list | A magnifier icon |
-| **Command** | A palette to jump anywhere with the keyboard | Combobox's list |
+| **Command** | A palette to jump anywhere with the keyboard | Nothing now: Combobox's list and options are there |
 | **Sorting and selecting in Table** | The accounting app's lists | Table's header cells as buttons, and Checkbox in a row |
 | **ContextMenu, Rating, a page-top Banner** | Smaller gaps | Rating needs a star icon |
 
-~~DropdownMenu~~, with MenuItem: done on 2026-11-17. ~~The portfolio site and the accounting app on the kit's token names.~~ Done on 2026-10-26. ~~Icons as a component, Table, Switch, Textarea, Menu's current page.~~ All done, and in the apps.
+~~DropdownMenu~~, with MenuItem, and ~~Combobox~~, with ComboboxOption: done on 2026-11-17. ~~The portfolio site and the accounting app on the kit's token names.~~ Done on 2026-10-26. ~~Icons as a component, Table, Switch, Textarea, Menu's current page.~~ All done, and in the apps.
 
 ## Later
 

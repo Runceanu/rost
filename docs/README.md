@@ -14,7 +14,7 @@ Rost started as a design system for my own needs and grew into a product of its 
 | [Roadmap](ROADMAP.md) | What I'm doing next |
 | [Release notes](CHANGELOG.md) | What changed in each release |
 
-**79** contracts, **5** stable. **79** have guidance, and I've signed off **32** of those.
+**81** contracts, **5** stable. **81** have guidance, and I've signed off **32** of those.
 
 ## Catalogue
 
@@ -36,6 +36,8 @@ Rost started as a design system for my own needs and grew into a product of its 
 | [Checkbox](components/checkbox.md) | A choice that's on or off and waits for the form. A 20px box that fills green with a tick, and the words beside it. | `review` | `proposed` | · |
 | [Chip](components/chips.md) | A small outlined label you can click, for filters and quick choices. | `review` | `agreed` | Portfolio site |
 | [Code](components/code.md) | Code in a sentence, or a block of it on its own plate. | `review` | `proposed` | · |
+| [Combobox](components/combobox.md) | One choice from a long list, found by typing. Select's field you can type in, and the matching options in a list under it. | `review` | `proposed` | · |
+| [ComboboxOption](components/combobox-option.md) | One option in a Combobox's list: a 40px row with its name. Green when it's highlighted, a green tick when it's the one picked. | `review` | `proposed` | · |
 | [DateField](components/date-field.md) | A date, picked from a Calendar. Select's field, showing the date, and a Calendar in a Popover under it when it's pressed. | `review` | `proposed` | · |
 | [DescriptionList](components/description-list.md) | Facts about one thing, as pairs: a term and its value, a row each, with a line between. For an invoice's details or a client's. | `review` | `proposed` | · |
 | [Dialog](components/dialog.md) | A question or a short task that stops everything else until it's answered. A grey plate over the page with a title, a few words and its buttons. | `review` | `proposed` | · |

@@ -6,12 +6,12 @@ Every value in every contract, sorted by why it has a token or doesn't. A value 
 
 | | Values | Share | Meaning |
 |---|---|---|---|
-| Has a token | 2071 | 60% | Uses a token, and the check tests it. |
+| Has a token | 2185 | 61% | Uses a token, and the check tests it. |
 | Token suggested | 0 | 0% | A token I want that doesn't exist yet. The freeze turned every other suggestion into a token. |
-| How Figma builds it | 826 | 24% | How Figma builds the layer (position, inset, which sides get a stroke). Nothing to tokenise. |
-| Figma frame size | 344 | 10% | A root size that is just the Figma frame. Written down, not checked. |
-| No token, on purpose | 133 | 4% | Plain on purpose, and the contract says why. |
-| Open gap | 60 | 2% | No token and no reason. Each one needs a decision from me. |
+| How Figma builds it | 851 | 24% | How Figma builds the layer (position, inset, which sides get a stroke). Nothing to tokenise. |
+| Figma frame size | 363 | 10% | A root size that is just the Figma frame. Written down, not checked. |
+| No token, on purpose | 137 | 4% | Plain on purpose, and the contract says why. |
+| Open gap | 64 | 2% | No token and no reason. Each one needs a decision from me. |
 
 ## By contract
 
@@ -31,6 +31,8 @@ Every value in every contract, sorted by why it has a token or doesn't. A value 
 | [Checkbox](components/checkbox.md) | 38 | · | 14 | 12 | 1 | 1 |
 | [Chip](components/chips.md) | 45 | · | 18 | 10 | 10 | 1 |
 | [Code](components/code.md) | 9 | · | 2 | 5 | 2 | · |
+| [Combobox](components/combobox.md) | 92 | · | 19 | 17 | 3 | 4 |
+| [ComboboxOption](components/combobox-option.md) | 22 | · | 6 | 2 | 1 | · |
 | [DateField](components/date-field.md) | 76 | · | 19 | 9 | 2 | 3 |
 | [DescriptionList](components/description-list.md) | 12 | · | 2 | 1 | · | 1 |
 | [Dialog](components/dialog.md) | 23 | · | 5 | 6 | 1 | 1 |
@@ -122,7 +124,7 @@ The ring sits `spacing/gap/2xsmall` outside the element, so its inset is that to
 
 | Where | Part | Value |
 |---|---|---|
-| [Button](components/button.md), [Carousel](components/carousel.md), [Checkbox](components/checkbox.md), [Chip](components/chips.md), [DateField](components/date-field.md), [IconButton](components/icon-button.md), [Input](components/input.md), [Projects](components/projects.md), [Radio](components/radio.md), [Select](components/select.md), [Slider](components/slider.md), [Switch](components/switch.md), [Tag](components/tags.md), [Testimonials](components/testimonials.md), [Textarea](components/textarea.md), [Thumbs](components/thumbs.md), [Toggle](components/toggle.md) | `focus-ring.inset` | `calc(-1 * var(--spacing-gap-2xsmall))` |
+| [Button](components/button.md), [Carousel](components/carousel.md), [Checkbox](components/checkbox.md), [Chip](components/chips.md), [Combobox](components/combobox.md), [DateField](components/date-field.md), [IconButton](components/icon-button.md), [Input](components/input.md), [Projects](components/projects.md), [Radio](components/radio.md), [Select](components/select.md), [Slider](components/slider.md), [Switch](components/switch.md), [Tag](components/tags.md), [Testimonials](components/testimonials.md), [Textarea](components/textarea.md), [Thumbs](components/thumbs.md), [Toggle](components/toggle.md) | `focus-ring.inset` | `calc(-1 * var(--spacing-gap-2xsmall))` |
 | [Carousel](components/carousel.md), [Thumbs](components/thumbs.md) | `focus-ring.border-radius` | `calc(var(--spacing-radius-xlarge) + var(--spacing-gap-2xsmall))` |
 | [Menu](components/menu.md) | `focus-ring.inset` | `var(--spacing-gap-medium-large) calc(-1 * var(--spacing-gap-2xsmall))` |
 
@@ -146,7 +148,8 @@ An icon is its SVG file, drawn as a mask so it takes the text colour. The file i
 | [Badge](components/badge.md) | `dot.mask` | `url(./dot.svg) center / contain no-repeat` |
 | [Badge](components/badge.md) | `icons-dot.mask` | `url(./icon-dot.svg) center / contain no-repeat` |
 | [Breadcrumb](components/breadcrumb.md) | `separator.mask` | `url(./icon-chevron-right.svg) center / contain no-repeat` |
-| [DateField](components/date-field.md), [Select](components/select.md) | `chevron.mask` | `url(./icon-chevron.svg) center / contain no-repeat` |
+| [Combobox](components/combobox.md), [DateField](components/date-field.md), [Select](components/select.md) | `chevron.mask` | `url(./icon-chevron.svg) center / contain no-repeat` |
+| [ComboboxOption](components/combobox-option.md), [Step](components/step.md) | `check.mask` | `url(./icon-check.svg) center / contain no-repeat` |
 | [IconButton](components/icon-button.md), [Toggle](components/toggle.md) | `glyph.mask` | `url(./icon-arrow-left.svg) center / contain no-repeat` |
 | [InlineBanner](components/inline-banner.md) | `icons-plus.mask` | `url(./icons/plus-small.svg) center / contain no-repeat` and 1 more, one per state |
 | [InlineBanner](components/inline-banner.md) | `icons-alarm.mask` | `url(./icons/alarm-small.svg) center / contain no-repeat` and 1 more, one per state |
@@ -156,7 +159,6 @@ An icon is its SVG file, drawn as a mask so it takes the text colour. The file i
 | [Input](components/input.md) | `clear-glyph.mask` | `url(./icon-clear.svg) center / contain no-repeat` |
 | [Input](components/input.md), [Textarea](components/textarea.md) | `icons-alarm.mask` | `url(./icon-alarm.svg) center / contain no-repeat` |
 | [Projects](components/projects.md) | `icons-arrow.mask` | `url(./icon-up-right.svg) center / contain no-repeat` |
-| [Step](components/step.md) | `check.mask` | `url(./icon-check.svg) center / contain no-repeat` |
 | [Testimonials](components/testimonials.md) | `icons-chevron.mask` | `url(./icon-chevron-down.svg) center / contain no-repeat` and 1 more, one per state |
 | [Toast](components/toast.md) | `close-glyph.mask` | `url(./icon-clear.svg) center / contain no-repeat` |
 
@@ -177,7 +179,8 @@ Sizes and offsets that belong to one component, at a number no size token has.
 | [Checkbox](components/checkbox.md), [Radio](components/radio.md) | `box.outline-offset` | `calc(-1 * var(--spacing-outline-small))` | Composed from a token: the edge sits inside the box. |
 | [Code](components/code.md) | `root.font-family` | `'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace` | Rost has no mono family token yet. Where JetBrains Mono isn't loaded, the system mono stands in. |
 | [Code](components/code.md) | `root.font-size` | `0.88em` | In a sentence it follows the text around it. Mono looks bigger than General Sans at the same size, so a little smaller. |
-| [DateField](components/date-field.md), [Input](components/input.md), [Select](components/select.md) | `supportive.top` | `calc(var(--spacing-size-large) + var(--spacing-gap-2xsmall))` | Composed from tokens: the field's height plus spacing/gap/2xsmall. |
+| [Combobox](components/combobox.md), [DateField](components/date-field.md), [Input](components/input.md), [Select](components/select.md) | `supportive.top` | `calc(var(--spacing-size-large) + var(--spacing-gap-2xsmall))` | Composed from tokens: the field's height plus spacing/gap/2xsmall. |
+| [Combobox](components/combobox.md) | `listbox.outline-offset` | `calc(-1 * var(--spacing-outline-small))` | Composed from a token: the edge sits inside the plate. |
 | [Dialog](components/dialog.md), [Popover](components/popover.md) | `panel.outline-offset` | `calc(-1 * var(--spacing-outline-small))` | Composed from a token: the edge sits inside the plate. |
 | [DropdownMenu](components/dropdown-menu.md), [Toast](components/toast.md) | `root.outline-offset` | `calc(-1 * var(--spacing-outline-small))` | Composed from a token: the edge sits inside the plate. |
 | [Dropzone](components/dropzone.md) | `root.outline-offset` | `calc(-1 * var(--spacing-outline-small))` and 1 more, one per state | Composed from a token: the edge sits inside. |
@@ -229,6 +232,10 @@ The paper effect's numbers, tuned for how the dots move. Only the paper uses the
 - [Carousel](components/carousel.md) `focus-ring.border-style` = `solid`
 - [Checkbox](components/checkbox.md) `focus-ring.border-style` = `solid`
 - [Chip](components/chips.md) `focus-ring.border-style` = `solid`
+- [Combobox](components/combobox.md) `root.width` = `208px`
+- [Combobox](components/combobox.md) `outline.border-style` = `solid`
+- [Combobox](components/combobox.md) `focus-ring.border-style` = `solid`
+- [Combobox](components/combobox.md) `listbox.max-height` = `240px`
 - [DateField](components/date-field.md) `root.width` = `208px`
 - [DateField](components/date-field.md) `outline.border-style` = `solid`
 - [DateField](components/date-field.md) `focus-ring.border-style` = `solid`
@@ -300,7 +307,7 @@ When a component needs a colour no other has, change its own token to point some
 
 ## Two themes
 
-Dark is the default. It's what Figma draws first and what both apps use. Light is new (2026-10-30). Only colours change: 863 theme colours have a light value of their own. Every other token, and every component, is the same in both.
+Dark is the default. It's what Figma draws first and what both apps use. Light is new (2026-10-30). Only colours change: 871 theme colours have a light value of their own. Every other token, and every component, is the same in both.
 
 `tokens/tokens.css` puts dark on `:root`. Light applies under `[data-theme="light"]` and nowhere else. A system set to light doesn't change it: with no `data-theme` you get dark. `[data-theme="dark"]` brings dark back inside a light page, so a dark panel can sit in a light one. Set it on `<html>` for the whole page:
 
@@ -373,4 +380,4 @@ rost.build's own transitions use the tokens now. No component in Rost animates y
 
 ## Figma variables
 
-The Figma file has **1318** variables (`registry/figma-variables.json`, read on 2026-11-04) and `tokens/tokens.css` has **1318** of them. `npm run tokens` builds it from that read, so they can't come apart.
+The Figma file has **1326** variables (`registry/figma-variables.json`, read on 2026-11-04) and `tokens/tokens.css` has **1326** of them. `npm run tokens` builds it from that read, so they can't come apart.

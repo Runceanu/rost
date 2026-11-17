@@ -2694,5 +2694,86 @@
       "width": 180,
       "height": 177
     }
+  ],
+  "combobox": [
+    {
+      "nodeId": "756:11",
+      "name": "state=Default, error=False",
+      "file": "756-11.png",
+      "width": 208,
+      "height": 56
+    },
+    {
+      "nodeId": "756:17",
+      "name": "state=Hover, error=False",
+      "file": "756-17.png",
+      "width": 208,
+      "height": 56
+    },
+    {
+      "nodeId": "756:23",
+      "name": "state=Focus, error=False",
+      "file": "756-23.png",
+      "width": 216,
+      "height": 64
+    },
+    {
+      "nodeId": "756:30",
+      "name": "state=Disabled, error=False",
+      "file": "756-30.png",
+      "width": 208,
+      "height": 56
+    },
+    {
+      "nodeId": "756:36",
+      "name": "state=Default, error=True",
+      "file": "756-36.png",
+      "width": 208,
+      "height": 56
+    },
+    {
+      "nodeId": "756:43",
+      "name": "state=Hover, error=True",
+      "file": "756-43.png",
+      "width": 208,
+      "height": 56
+    },
+    {
+      "nodeId": "756:50",
+      "name": "state=Focus, error=True",
+      "file": "756-50.png",
+      "width": 216,
+      "height": 64
+    }
+  ],
+  "combobox-option": [
+    {
+      "nodeId": "756:60",
+      "name": "selected=False, active=False",
+      "file": "756-60.png",
+      "width": 200,
+      "height": 40
+    },
+    {
+      "nodeId": "756:62",
+      "name": "selected=False, active=True",
+      "file": "756-62.png",
+      "width": 200,
+      "height": 40
+    },
+    {
+      "nodeId": "756:64",
+      "name": "selected=True, active=False",
+      "file": "756-64.png",
+      "width": 200,
+      "height": 40
+    },
+    {
+      "nodeId": "756:68",
+      "name": "selected=True, active=True",
+      "file": "756-68.png",
+      "width": 200,
+      "height": 40
+    }
   ]
 }

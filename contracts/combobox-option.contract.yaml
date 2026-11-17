@@ -1,0 +1,93 @@
+# yaml-language-server: $schema=../schema/component-contract.schema.json
+schemaVersion: 2
+id: combobox-option
+name: ComboboxOption
+kind: component
+status: review
+partOf: combobox
+summary: "One option in a Combobox's list: a 40px row with its name. Green when it's highlighted, a green tick when it's the one picked."
+category: inputs
+related: [ combobox, menu-item ]
+source:
+  tool: figma
+  fileKey: 1Zy0wiWKXQAvsfDBX3KR0d
+  nodeId: "756:72"
+  url: https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=756-72
+  extractedAt: "2026-11-17"
+  extractedBy: hand
+  frozenAt: "2026-11-17"
+props:
+  selected: { type: boolean, default: false, notes: "The picked one. Its name is medium weight and a tick sits at the end." }
+  active: { type: boolean, default: false, notes: "Highlighted, by the arrow keys or the pointer. Combobox sets it." }
+  children: { type: slot, required: true, notes: "The option's name." }
+elements:
+  root:
+    notes: "A `role=\"option\"`, as wide as the list, 40px tall, 12px in at the sides, with 8px corners. MenuItem's row."
+    styles:
+      display: { value: flex, assert: false }
+      align-items: { value: center }
+      justify-content: { value: space-between }
+      gap: { token: spacing/gap/small, value: 8px }
+      inline-size: { value: 100%, assert: false, notes: "As wide as the list." }
+      height: { token: spacing/size/medium, value: 40px }
+      padding-left: { token: spacing/gap/small-medium, value: 12px }
+      padding-right: { token: spacing/gap/small-medium, value: 12px }
+      border-radius: { token: spacing/radius/small, value: 8px }
+      cursor: { value: pointer, assert: false }
+      white-space: { value: nowrap, assert: false }
+      font-family: { token: font-family/base, value: "'General Sans Variable'" }
+      font-weight: { token: typography/paragraph/font-weight/regular, value: "400" }
+      font-size: { token: typography/paragraph/font-size, value: 14px }
+      line-height: { token: typography/paragraph/line-height, value: 20px }
+      letter-spacing: { token: typography/paragraph/letter-spacing, value: 0px }
+  check:
+    optional: true
+    notes: "Checkbox's tick, 16px, as a mask, on the picked option."
+    styles:
+      display: { value: block, assert: false }
+      flex-shrink: { value: "0", assert: false }
+      width: { token: spacing/size/2xsmall, value: 16px }
+      height: { token: spacing/size/2xsmall, value: 16px }
+      mask: { value: url(./icon-check.svg) center / contain no-repeat, untokenised: The icon file itself. }
+variants:
+  - when: { selected: false, active: false }
+    figmaNode: "756:60"
+    elements:
+      root:
+        color: { token: combobox-option/default/label, value: "#ededed" }
+  - when: { selected: false, active: true }
+    figmaNode: "756:62"
+    elements:
+      root:
+        background: { token: combobox-option/active/background, value: "#006f27" }
+        color: { token: combobox-option/active/label, value: "#ededed" }
+  - when: { selected: true, active: false }
+    figmaNode: "756:64"
+    elements:
+      root:
+        font-weight: { token: typography/paragraph/font-weight/medium, value: "500" }
+        color: { token: combobox-option/default/label, value: "#ededed" }
+      check:
+        background: { token: combobox-option/check, value: "#00d669" }
+  - when: { selected: true, active: true }
+    figmaNode: "756:68"
+    elements:
+      root:
+        font-weight: { token: typography/paragraph/font-weight/medium, value: "500" }
+        background: { token: combobox-option/active/background, value: "#006f27" }
+        color: { token: combobox-option/active/label, value: "#ededed" }
+      check:
+        background: { token: combobox-option/active/check, value: "#ededed", notes: "Green on green would vanish; on the highlight the tick takes the words' colour." }
+guidance:
+  status: proposed
+  use:
+    - title: The picked one, and the one you're on
+      text: "Medium weight and a tick for the picked option; the green row for the one the arrow keys are on. They can be the same row."
+      show: "selected=True, active=False"
+  avoid:
+    - title: On its own
+      text: "An option only makes sense in a Combobox's list, which sets `active` and `selected`."
+  behaviour: "Pressing it picks it and closes the list. Pointing at it highlights it, as the arrow keys do."
+  accessibility:
+    element: "`role=\"option\"` with an id, so the input can point at it with `aria-activedescendant`. The picked one has `aria-selected=\"true\"`. The tick is drawing."
+    colour: "The names are 17:1 on the list's grey, 7:1 on the green. The tick is 10:1."
