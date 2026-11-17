@@ -1,0 +1,61 @@
+# yaml-language-server: $schema=../schema/component-contract.schema.json
+schemaVersion: 2
+id: figure
+name: Figure
+kind: component
+status: review
+summary: "A picture, a chart or a drawing with a line about it underneath: the media on a grey plate with 12px corners, the caption in label type."
+category: display
+related: [ card, illustration, hero-media ]
+source:
+  tool: figma
+  fileKey: 1Zy0wiWKXQAvsfDBX3KR0d
+  nodeId: "748:28"
+  url: https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=748-28
+  extractedAt: "2026-11-17"
+  extractedBy: hand
+  frozenAt: "2026-11-17"
+props:
+  children: { type: slot, required: true, notes: "The picture, chart or drawing. An `<img>` fills the plate's width." }
+  caption: { type: slot, notes: "One or two lines on what it shows." }
+elements:
+  root:
+    notes: "A `<figure>`: the plate, then the caption, 8px apart."
+    styles:
+      display: { value: flex, assert: false }
+      flex-direction: { value: column, assert: false }
+      gap: { token: spacing/gap/small, value: 8px }
+      margin: { token: spacing/gap/none, value: 0px }
+  media:
+    notes: "The plate, in Card's grey, with 12px corners that clip what's in it. Whatever's smaller than it sits in the middle."
+    styles:
+      display: { value: flex, assert: false }
+      align-items: { value: center }
+      justify-content: { value: center }
+      overflow: { value: hidden, assert: false }
+      border-radius: { token: spacing/radius/medium, value: 12px }
+      background: { token: figure/media, value: "#171717" }
+  caption:
+    optional: true
+    notes: "The `<figcaption>`, in label type and the tertiary grey."
+    styles:
+      font-family: { token: font-family/base, value: "'General Sans Variable'" }
+      font-weight: { token: typography/label/font-weight/regular, value: "400" }
+      font-size: { token: typography/label/font-size, value: 12px }
+      line-height: { token: typography/label/line-height, value: 14px }
+      letter-spacing: { token: typography/label/letter-spacing, value: 0px }
+      color: { token: figure/caption, value: "#999999" }
+guidance:
+  status: proposed
+  use:
+    - title: Something to look at, with a word on it
+      text: "A screenshot in a case study, a chart in a report, a diagram in the docs. The caption says what to notice."
+  avoid:
+    - title: Decoration
+      text: "A picture that's only there for mood needs no caption and no plate. That's **HeroMedia** or the image on its own."
+  behaviour: "It lays the media on its plate and the caption under it. It doesn't size the picture: an `<img>` gets the plate's width, anything else keeps its own size and sits in the middle."
+  accessibility:
+    element: "`<figure>` with a `<figcaption>`, so the caption is read as the figure's description."
+    name: "The image still needs its own `alt`. The caption adds to it, it doesn't replace it."
+    colour: "The caption is 7:1 on the dark page."
+  content: "Say what to see, not what it is: Payments come in faster after the reminder, rather than Chart of payments."

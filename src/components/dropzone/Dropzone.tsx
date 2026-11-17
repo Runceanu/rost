@@ -34,7 +34,7 @@ export function Dropzone({ title, help, action = 'Choose a file', accept, multip
   const drag = (on: boolean) => (e: DragEvent) => {
     if (disabled) return
     e.preventDefault()
-    if (on !== dragging) setDragging(on)
+    setDragging(on)
   }
   return (
     <div

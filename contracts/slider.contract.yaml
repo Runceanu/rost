@@ -1,0 +1,109 @@
+# yaml-language-server: $schema=../schema/component-contract.schema.json
+schemaVersion: 2
+id: slider
+name: Slider
+kind: component
+status: review
+summary: "A number picked by dragging, when about right is right: a 4px track, a green fill and a 20px thumb. The arrow keys move it a step at a time."
+category: inputs
+related: [ progress, input, select ]
+source:
+  tool: figma
+  fileKey: 1Zy0wiWKXQAvsfDBX3KR0d
+  nodeId: "748:25"
+  url: https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=748-25
+  extractedAt: "2026-11-17"
+  extractedBy: hand
+  frozenAt: "2026-11-17"
+props:
+  value: { type: number, required: true, notes: "Between `min` and `max`. Controlled: pair it with `onValueChange`." }
+  min: { type: number, default: 0 }
+  max: { type: number, default: 100 }
+  step: { type: number, default: 1, notes: "What one arrow press moves it by. Page Up and Page Down move ten steps." }
+  label: { type: string, required: true, notes: "What it sets. The thumb's accessible name." }
+  valueText: { type: string, notes: "The value in words, when the number alone doesn't say it: 30%, 3 months." }
+  disabled: { type: boolean, default: false }
+states: [ Default, Focus, Disabled ]
+stateSelectors:
+  Focus: ":has(.rost-slider__thumb:focus-visible)"
+  Disabled: ":has(.rost-slider__thumb[aria-disabled=\"true\"])"
+elements:
+  root:
+    notes: "The area you press and drag in: as wide as its parent, 24px tall, so the thumb has room and a press near the track still counts."
+    styles:
+      display: { value: block, assert: false }
+      position: { value: relative, assert: false }
+      height: { token: spacing/size/small, value: 24px }
+      touch-action: { value: none, assert: false }
+      cursor: { value: pointer, assert: false }
+  track:
+    notes: "Progress's 4px grey track, centred in the 24px."
+    styles:
+      position: { value: absolute, assert: false }
+      top: { value: "calc(50% - var(--spacing-gap-2xsmall) / 2)", untokenised: "Composed from a token: the middle of the root, less half the track." }
+      left: { value: "0", assert: false }
+      right: { value: "0", assert: false }
+      height: { token: spacing/gap/2xsmall, value: 4px }
+      border-radius: { token: spacing/radius/full, value: 10000px }
+      background: { token: slider/track, value: "#3a3a3a" }
+  fill:
+    notes: "From the start to the middle of the thumb, in the primary green. Its width is set from `value`."
+    styles:
+      position: { value: absolute, assert: false }
+      top: { value: "calc(50% - var(--spacing-gap-2xsmall) / 2)", untokenised: "Composed from a token: on the track." }
+      left: { value: "0", assert: false }
+      height: { token: spacing/gap/2xsmall, value: 4px }
+      border-radius: { token: spacing/radius/full, value: 10000px }
+      background: { token: slider/fill, value: "#00d669" }
+  thumb:
+    notes: "A 20px dot in the main text colour, centred on the track. It's the part that has the focus and the `role=\"slider\"`."
+    styles:
+      position: { value: absolute, assert: false }
+      top: { token: spacing/gap/3xsmall, value: 2px }
+      width: { token: spacing/size/xsmall, value: 20px }
+      height: { token: spacing/size/xsmall, value: 20px }
+      border-radius: { token: spacing/radius/full, value: 10000px }
+      background: { token: slider/thumb, value: "#ededed" }
+      outline: { value: none, assert: false }
+  focus-ring:
+    notes: "Checkbox's ring, 4px out from the thumb, round like it."
+    styles:
+      display: { value: none, assert: false }
+      position: { value: absolute, assert: false }
+      inset: { value: "calc(-1 * var(--spacing-gap-2xsmall))", untokenised: "Composed from a token: the ring sits spacing/gap/2xsmall outside the thumb." }
+      border-style: { value: solid, assert: false }
+      border-width: { token: spacing/outline/medium, value: 2px }
+      border-radius: { token: spacing/radius/full, value: 10000px }
+      pointer-events: { value: none, assert: false }
+variants:
+  - when: { state: Default }
+    figmaNode: "748:12"
+  - when: { state: Focus }
+    figmaNode: "748:16"
+    elements:
+      focus-ring:
+        display: { value: block, assert: false }
+        border-color: { token: slider/focus-ring, value: "#999999" }
+  - when: { state: Disabled }
+    figmaNode: "748:21"
+    elements:
+      root:
+        opacity: { token: opacity/gentle, value: "0.24" }
+        cursor: { value: default, assert: false }
+guidance:
+  status: proposed
+  use:
+    - title: Roughly how much
+      text: "A share to set aside, a zoom level, how many months to show: where nudging until it looks right beats typing."
+      show: state=Default
+  avoid:
+    - title: An exact amount
+      text: "A figure someone already knows, like an invoice total. That's an **Input**."
+    - title: A handful of options
+      text: "Three or four named choices aren't a range. That's a **ToggleGroup** or **Radios**."
+  behaviour: "Press anywhere along it and the thumb jumps there; drag to move it. The arrow keys move one step, Page Up and Page Down ten, Home and End to the ends. It calls `onValueChange` with the new number; show that number next to it."
+  accessibility:
+    element: "The thumb is `role=\"slider\"` with `aria-valuenow`, `aria-valuemin`, `aria-valuemax` and `aria-valuetext` when it's given. The track and fill are drawing."
+    name: "`label`, as `aria-label` on the thumb, or point `aria-labelledby` at a visible label."
+    colour: "The thumb is 17:1 on the dark page and the fill 10:1. The track is 1.8:1, a quiet edge: the fill and thumb carry the value, not the track."
+  content: "Write the value beside it, in its units. The label says what it sets: Share set aside for tax."

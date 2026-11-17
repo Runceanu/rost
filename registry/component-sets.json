@@ -699,5 +699,28 @@
     "variants": [
       { "nodeId": "746:135", "name": "toolbar", "width": 217, "height": 56 }
     ]
+  },
+  "slider": {
+    "name": "Slider",
+    "setNodeId": "748:25",
+    "variants": [
+      { "nodeId": "748:12", "name": "state=Default", "width": 240, "height": 24 },
+      { "nodeId": "748:16", "name": "state=Focus", "width": 240, "height": 24 },
+      { "nodeId": "748:21", "name": "state=Disabled", "width": 240, "height": 24 }
+    ]
+  },
+  "figure": {
+    "name": "Figure",
+    "setNodeId": "748:28",
+    "variants": [
+      { "nodeId": "748:28", "name": "figure", "width": 320, "height": 216 }
+    ]
+  },
+  "quote": {
+    "name": "Quote",
+    "setNodeId": "748:37",
+    "variants": [
+      { "nodeId": "748:37", "name": "quote", "width": 400, "height": 88 }
+    ]
   }
 }

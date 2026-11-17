@@ -14,7 +14,7 @@ Rost started as a design system for my own needs and grew into a product of its 
 | [Roadmap](ROADMAP.md) | What I'm doing next |
 | [Release notes](CHANGELOG.md) | What changed in each release |
 
-**67** contracts, **5** stable. **67** have guidance, and I've signed off **32** of those.
+**70** contracts, **5** stable. **70** have guidance, and I've signed off **32** of those.
 
 ## Catalogue
 
@@ -40,6 +40,7 @@ Rost started as a design system for my own needs and grew into a product of its 
 | [Dropzone](components/dropzone.md) | A place to drop a file, with a button for when dragging isn't handy: an arrow, what to drop, what's allowed, and Choose a file. | `review` | `proposed` | · |
 | [EmptyState](components/empty-state.md) | What a screen says when there's nothing on it yet. One of Rost's drawings, a line saying why, a sentence on what to do, and the button that does it. | `review` | `proposed` | · |
 | [Fieldset](components/fieldset.md) | A question with its choices: the question in medium paragraph type, the Radios or Checkboxes under it, and a line of help. | `review` | `proposed` | · |
+| [Figure](components/figure.md) | A picture, a chart or a drawing with a line about it underneath: the media on a grey plate with 12px corners, the caption in label type. | `review` | `proposed` | · |
 | [Icon](components/icon.md) | One of Rost's 18 glyphs, 24px, in the colour of the text around it. | `review` | `proposed` | · |
 | [IconButton](components/icon-button.md) | A round button with only an icon, including a Project type for sitting on top of images. | `review` | `agreed` | Portfolio site |
 | [Illustration](components/illustration.md) | One of Rost's 24 small drawings, 72px, in two greys and a green that follow the theme. | `review` | `proposed` | · |
@@ -54,10 +55,12 @@ Rost started as a design system for my own needs and grew into a product of its 
 | [Popover](components/popover.md) | A small plate that opens over the page with more about something, and closes when you click away. Card's grey, with an edge and the floating shadow. | `review` | `proposed` | · |
 | [Progress](components/progress.md) | How far along something is, as a thin bar that fills. Green as it goes, amber or red when it needs a look. | `review` | `proposed` | · |
 | [Projects](components/projects.md) | One row in the project list: number, name, and industry, type and period on the right. | `review` | `agreed` | Portfolio site |
+| [Quote](components/quote.md) | Someone's words, pulled out of the text: a green rule on the left, the words in sub-title type, and who said them under it. | `review` | `proposed` | · |
 | [Radio](components/radio.md) | One choice out of a few, all on show. A 20px circle with a dot in the picked one, and the words beside it. | `review` | `proposed` | · |
 | [Select](components/select.md) | One choice from a list that's too long to show. Input's filled field, with a chevron, and the browser's own list when it opens. | `review` | `proposed` | · |
 | [Sheet](components/sheet.md) | A panel that slides over the page from the right, for a task with more to it than a dialog: editing a client, an invoice's details. | `review` | `proposed` | · |
 | [Skeleton](components/skeleton.md) | Grey shapes where content is about to be, so the page doesn't jump when it arrives. A line of text, a circle or a block. | `review` | `proposed` | · |
+| [Slider](components/slider.md) | A number picked by dragging, when about right is right: a 4px track, a green fill and a 20px thumb. The arrow keys move it a step at a time. | `review` | `proposed` | · |
 | [Spinner](components/spinner.md) | Something is working and you can't tell how long it'll take. A grey ring with a green quarter that turns. | `review` | `proposed` | · |
 | [Stat](components/stat.md) | One figure that matters, with what it is and how it moved. A label, the number in title type, and a line in green or red. | `review` | `proposed` | · |
 | [Step](components/step.md) | One step of a Stepper: a 24px marker and its name. A green tick when done, a green ring when current, grey when it is still to come. | `review` | `proposed` | · |

@@ -1,0 +1,78 @@
+# yaml-language-server: $schema=../schema/component-contract.schema.json
+schemaVersion: 2
+id: quote
+name: Quote
+kind: component
+status: review
+summary: "Someone's words, pulled out of the text: a green rule on the left, the words in sub-title type, and who said them under it."
+category: display
+related: [ testimonials, text, figure ]
+source:
+  tool: figma
+  fileKey: 1Zy0wiWKXQAvsfDBX3KR0d
+  nodeId: "748:37"
+  url: https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=748-37
+  extractedAt: "2026-11-17"
+  extractedBy: hand
+  frozenAt: "2026-11-17"
+props:
+  children: { type: slot, required: true, notes: "The words, without quote marks: the rule says it's a quote." }
+  cite: { type: slot, notes: "Who said it, and where they're from." }
+elements:
+  root:
+    notes: "A `<figure>`: the rule, then the words and who said them, 16px apart."
+    styles:
+      display: { value: flex, assert: false }
+      gap: { token: spacing/gap/medium, value: 16px }
+      margin: { token: spacing/gap/none, value: 0px }
+  rule:
+    notes: "A 2px green line, as tall as the words. Drawing, hidden from screen readers."
+    styles:
+      display: { value: block, assert: false }
+      flex-shrink: { value: "0", assert: false }
+      width: { token: spacing/outline/medium, value: 2px }
+      border-radius: { token: spacing/radius/full, value: 10000px }
+      background: { token: quote/rule, value: "#00d669" }
+  content:
+    notes: "The words and the name, 12px apart."
+    styles:
+      display: { value: flex, assert: false }
+      flex-direction: { value: column, assert: false }
+      gap: { token: spacing/gap/small-medium, value: 12px }
+      min-width: { value: "0", assert: false }
+  text:
+    notes: "The `<blockquote>`, in sub-title type and the main text colour."
+    styles:
+      margin: { token: spacing/gap/none, value: 0px }
+      font-family: { token: font-family/base, value: "'General Sans Variable'" }
+      font-weight: { token: typography/sub-title/font-weight/medium, value: "500" }
+      font-size: { token: typography/sub-title/font-size, value: 20px }
+      line-height: { token: typography/sub-title/line-height, value: 28px }
+      letter-spacing: { token: typography/sub-title/letter-spacing, value: 0px }
+      color: { token: quote/text, value: "#ededed" }
+  cite:
+    optional: true
+    notes: "The `<figcaption>`, in paragraph type and the tertiary grey. Not italic."
+    styles:
+      font-family: { token: font-family/base, value: "'General Sans Variable'" }
+      font-weight: { token: typography/paragraph/font-weight/regular, value: "400" }
+      font-size: { token: typography/paragraph/font-size, value: 14px }
+      line-height: { token: typography/paragraph/line-height, value: 20px }
+      letter-spacing: { token: typography/paragraph/letter-spacing, value: 0px }
+      font-style: { value: normal, assert: false }
+      color: { token: quote/cite, value: "#999999" }
+guidance:
+  status: proposed
+  use:
+    - title: One line worth stopping for
+      text: "In a case study or a long page, the sentence from a client or a user that says the point."
+  avoid:
+    - title: Several voices
+      text: "A row of people and what they said, with their faces. That's **Testimonials**."
+    - title: Emphasis
+      text: "Your own words, made bigger to stand out. Write them as a heading."
+  behaviour: "It sets the words large next to a green rule and the name under them. It adds no quote marks."
+  accessibility:
+    element: "`<figure>` with a `<blockquote>` and a `<figcaption>`, the way HTML pairs a quote with who said it."
+    colour: "The words are 17:1 on the dark page, the name 7:1."
+  content: "Quote exactly, and cut rather than paraphrase. The cite is a name and a role: Client 2, finance lead."

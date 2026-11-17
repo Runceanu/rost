@@ -1267,6 +1267,21 @@
   --toolbar-edge: #3a3a3a;
   --toolbar-separator: #3a3a3a;
 
+  /* ── Component: slider ───────────────────────────────────────────────────── */
+  --slider-fill: #00d669;
+  --slider-focus-ring: #999999;
+  --slider-thumb: #ededed;
+  --slider-track: #3a3a3a;
+
+  /* ── Component: figure ───────────────────────────────────────────────────── */
+  --figure-caption: #999999;
+  --figure-media: #171717;
+
+  /* ── Component: quote ────────────────────────────────────────────────────── */
+  --quote-cite: #999999;
+  --quote-rule: #00d669;
+  --quote-text: #ededed;
+
   /* ── Generic colours (no family in Figma) ────────────────────────────────── */
   --background: #3a3a3a;
   --focus-ring: #999999;
@@ -1423,7 +1438,7 @@
 }
 
 /* ── Light ──────────────────────────────────────────────────────────────────
- * Only the colours change, 825 of them. Figma's light mode, with Rost's own
+ * Only the colours change, 833 of them. Figma's light mode, with Rost's own
  * corrections from registry/light.json where Figma's value fails contrast.
  * Set data-theme="light" on <html> (or any element). Without it you get dark,
  * whatever the system says. data-theme="dark" brings dark back inside a light page.
@@ -1703,6 +1718,8 @@
   --empty-state-title: #060805;
   --fieldset-help: #6a6b69;
   --fieldset-legend: #060805;
+  --figure-caption: #6a6b69;
+  --figure-media: #ededed;
   --focus-ring: #747573;
   --icon: #006f27;
   --icon-button-primary-default-icon: #171717;
@@ -1985,6 +2002,9 @@
   --projects-pressed-number: #006f27;
   --projects-pressed-outline: #00913a;
   --projects-pressed-sub-label: #454545;
+  --quote-cite: #6a6b69;
+  --quote-rule: #0e7118;
+  --quote-text: #060805;
   --radio-label: #171717;
   --radio-off-default-box: #fcfcfc;
   --radio-off-disabled-box: #fcfcfc;
@@ -2040,6 +2060,9 @@
   --sheet-edge: #d3d9d5;
   --sheet-title: #060805;
   --skeleton-background: #d3d9d5;
+  --slider-focus-ring: #747573;
+  --slider-thumb: #060805;
+  --slider-track: #d3d9d5;
   --spinner-arc: #0e7118;
   --spinner-track: #d3d9d5;
   --stat-delta-negative: #ae1b13;
@@ -2532,6 +2555,8 @@
   --empty-state-title: #ededed;
   --fieldset-help: #999999;
   --fieldset-legend: #ededed;
+  --figure-caption: #999999;
+  --figure-media: #171717;
   --focus-ring: #999999;
   --icon: #00d669;
   --icon-button-primary-default-icon: #3a3a3a;
@@ -2814,6 +2839,9 @@
   --projects-pressed-number: #00d669;
   --projects-pressed-outline: #10ffa4;
   --projects-pressed-sub-label: #c2c7c3;
+  --quote-cite: #999999;
+  --quote-rule: #00d669;
+  --quote-text: #ededed;
   --radio-label: #d3d9d5;
   --radio-off-default-box: #060805;
   --radio-off-disabled-box: #060805;
@@ -2869,6 +2897,9 @@
   --sheet-edge: #3a3a3a;
   --sheet-title: #ededed;
   --skeleton-background: #3a3a3a;
+  --slider-focus-ring: #999999;
+  --slider-thumb: #ededed;
+  --slider-track: #3a3a3a;
   --spinner-arc: #00d669;
   --spinner-track: #3a3a3a;
   --stat-delta-negative: #f2705f;

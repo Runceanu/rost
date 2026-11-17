@@ -2418,5 +2418,46 @@
       "width": 217,
       "height": 56
     }
+  ],
+  "slider": [
+    {
+      "nodeId": "748:12",
+      "name": "state=Default",
+      "file": "748-12.png",
+      "width": 240,
+      "height": 24
+    },
+    {
+      "nodeId": "748:16",
+      "name": "state=Focus",
+      "file": "748-16.png",
+      "width": 240,
+      "height": 24
+    },
+    {
+      "nodeId": "748:21",
+      "name": "state=Disabled",
+      "file": "748-21.png",
+      "width": 240,
+      "height": 24
+    }
+  ],
+  "figure": [
+    {
+      "nodeId": "748:28",
+      "name": "figure",
+      "file": "748-28.png",
+      "width": 320,
+      "height": 216
+    }
+  ],
+  "quote": [
+    {
+      "nodeId": "748:37",
+      "name": "quote",
+      "file": "748-37.png",
+      "width": 400,
+      "height": 88
+    }
   ]
 }

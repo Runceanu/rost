@@ -1,0 +1,46 @@
+/* Generated from contracts/quote.contract.yaml by bin/build-css.mjs. Don't edit: change the contract and rebuild. */
+
+.rost-quote, .rost-quote * { box-sizing: border-box; margin: 0; }
+.rost-quote > img, .rost-quote [class*="__icons-"] > img { display: block; position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; }
+.rost-quote ::placeholder { color: inherit; opacity: 1; }
+
+.rost-quote {
+  display: flex;
+  gap: var(--spacing-gap-medium);
+  margin: var(--spacing-gap-none);
+}
+
+.rost-quote__rule {
+  display: block;
+  flex-shrink: 0;
+  width: var(--spacing-outline-medium);
+  border-radius: var(--spacing-radius-full);
+  background: var(--quote-rule);
+}
+
+.rost-quote__content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-gap-small-medium);
+  min-width: 0;
+}
+
+.rost-quote__text {
+  margin: var(--spacing-gap-none);
+  font-family: var(--font-family-base);
+  font-weight: var(--typography-sub-title-font-weight-medium);
+  font-size: var(--typography-sub-title-font-size);
+  line-height: var(--typography-sub-title-line-height);
+  letter-spacing: var(--typography-sub-title-letter-spacing);
+  color: var(--quote-text);
+}
+
+.rost-quote__cite {
+  font-family: var(--font-family-base);
+  font-weight: var(--typography-paragraph-font-weight-regular);
+  font-size: var(--typography-paragraph-font-size);
+  line-height: var(--typography-paragraph-line-height);
+  letter-spacing: var(--typography-paragraph-letter-spacing);
+  font-style: normal;
+  color: var(--quote-cite);
+}

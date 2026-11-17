@@ -1,0 +1,62 @@
+/* Generated from contracts/slider.contract.yaml by bin/build-css.mjs. Don't edit: change the contract and rebuild. */
+
+.rost-slider, .rost-slider * { box-sizing: border-box; margin: 0; }
+.rost-slider > img, .rost-slider [class*="__icons-"] > img { display: block; position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; }
+.rost-slider ::placeholder { color: inherit; opacity: 1; }
+
+.rost-slider {
+  display: block;
+  position: relative;
+  height: var(--spacing-size-small);
+  touch-action: none;
+  cursor: pointer;
+}
+
+.rost-slider__track {
+  position: absolute;
+  top: calc(50% - var(--spacing-gap-2xsmall) / 2);
+  left: 0;
+  right: 0;
+  height: var(--spacing-gap-2xsmall);
+  border-radius: var(--spacing-radius-full);
+  background: var(--slider-track);
+}
+
+.rost-slider__fill {
+  position: absolute;
+  top: calc(50% - var(--spacing-gap-2xsmall) / 2);
+  left: 0;
+  height: var(--spacing-gap-2xsmall);
+  border-radius: var(--spacing-radius-full);
+  background: var(--slider-fill);
+}
+
+.rost-slider__thumb {
+  position: absolute;
+  top: var(--spacing-gap-3xsmall);
+  width: var(--spacing-size-xsmall);
+  height: var(--spacing-size-xsmall);
+  border-radius: var(--spacing-radius-full);
+  background: var(--slider-thumb);
+  outline: none;
+}
+
+.rost-slider__focus-ring {
+  display: none;
+  position: absolute;
+  inset: calc(-1 * var(--spacing-gap-2xsmall));
+  border-style: solid;
+  border-width: var(--spacing-outline-medium);
+  border-radius: var(--spacing-radius-full);
+  pointer-events: none;
+}
+
+.rost-slider:has(.rost-slider__thumb:focus-visible) .rost-slider__focus-ring {
+  display: block;
+  border-color: var(--slider-focus-ring);
+}
+
+.rost-slider:has(.rost-slider__thumb[aria-disabled="true"]) {
+  opacity: var(--opacity-gentle);
+  cursor: default;
+}
