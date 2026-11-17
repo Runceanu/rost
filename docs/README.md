@@ -14,7 +14,7 @@ Rost started as a design system for my own needs and grew into a product of its 
 | [Roadmap](ROADMAP.md) | What I'm doing next |
 | [Release notes](CHANGELOG.md) | What changed in each release |
 
-**63** contracts, **5** stable. **63** have guidance, and I've signed off **32** of those.
+**67** contracts, **5** stable. **67** have guidance, and I've signed off **32** of those.
 
 ## Catalogue
 
@@ -37,6 +37,7 @@ Rost started as a design system for my own needs and grew into a product of its 
 | [Dialog](components/dialog.md) | A question or a short task that stops everything else until it's answered. A grey plate over the page with a title, a few words and its buttons. | `review` | `proposed` | · |
 | [Disclosure](components/disclosure.md) | A line that opens to show more, for things most people won't need. | `review` | `proposed` | · |
 | [Divider](components/divider.md) | A thin line between things. | `stable` | `agreed` | Portfolio site, Accounting app |
+| [Dropzone](components/dropzone.md) | A place to drop a file, with a button for when dragging isn't handy: an arrow, what to drop, what's allowed, and Choose a file. | `review` | `proposed` | · |
 | [EmptyState](components/empty-state.md) | What a screen says when there's nothing on it yet. One of Rost's drawings, a line saying why, a sentence on what to do, and the button that does it. | `review` | `proposed` | · |
 | [Fieldset](components/fieldset.md) | A question with its choices: the question in medium paragraph type, the Radios or Checkboxes under it, and a line of help. | `review` | `proposed` | · |
 | [Icon](components/icon.md) | One of Rost's 18 glyphs, 24px, in the colour of the text around it. | `review` | `proposed` | · |
@@ -73,10 +74,13 @@ Rost started as a design system for my own needs and grew into a product of its 
 | [Text](components/text.md) | Rost's type ramp as one component, from the 64px page title down to the 12px label. | `review` | `proposed` | · |
 | [Textarea](components/textarea.md) | A text field for several lines, with Input's label, help line, error and focus ring. | `review` | `agreed` | · |
 | [Thumbs](components/thumbs.md) | A project thumbnail card, with the project name and details on a frosted panel at the bottom. | `review` | `agreed` | Portfolio site |
+| [Timeline](components/timeline.md) | What happened to something, in order: a column of TimelineItems, each a dot on a line with what happened and when. | `review` | `proposed` | · |
+| [TimelineItem](components/timeline-item.md) | One event in a Timeline: a 12px dot, a line down to the next event, what happened, when, and a sentence if it needs one. | `review` | `proposed` | · |
 | [Toast](components/toast.md) | A short message that something happened, with one thing you can do about it. Badge's dot, the words and a Borderless Button, on a floating plate. | `review` | `proposed` | · |
 | [ToastStack](components/toast-stack.md) | Where toasts go when there's more than one. A column, newest at the bottom, fixed to the bottom of the window or in place. | `review` | `proposed` | · |
 | [Toggle](components/toggle.md) | A 40×40 icon button that stays on or off, alone or as one choice in a group. | `stable` | `agreed` | Accounting app |
 | [ToggleGroup](components/toggle-group.md) | A row of Toggles where one is chosen, like a year switcher. Arrow keys move the choice, and the row is one stop for Tab. | `review` | `agreed` | Accounting app |
+| [Toolbar](components/toolbar.md) | A row of IconButtons that act on one thing, on a raised strip, with thin lines between the groups. The arrow keys move between them. | `review` | `proposed` | · |
 | [Tooltip](components/tooltip.md) | A small label that explains something when you point at it or focus it. | `review` | `agreed` | Portfolio site |
 
 ### Patterns

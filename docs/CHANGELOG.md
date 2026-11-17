@@ -2,6 +2,10 @@
 
 What changed each time I merged into `master` and put rost.build live. Newest first. The commits have the details; this is what it means for a component or an app.
 
+## 2026-11-17
+
+- **Three more: Timeline (with TimelineItem), Dropzone and Toolbar.** Timeline is what happened to something, in order: an `<ol>` of TimelineItems, each a 12px dot on a thin line with what happened, when (in a `<time>`), and a sentence if it needs one. The latest one is green. Timeline tells the last item it's last, so its line stops there. Dropzone is a place to drop a file, with Choose a file as a real button next to it, because not everyone can drag. Its edge turns green while a file is over it and red with `error`, and the help says what to fix. Toolbar is tertiary IconButtons on a raised strip, with thin lines between groups: Tab lands on one button and the arrow keys move between them. All drawn in Figma with the kit's own Button, IconButtons and arrow icon as instances, on 17 new variables. All nine variants match. Dropzone's edge is solid, not dashed: a dashed edge draws differently in the browser and in Figma, and I'd rather it matched.
+
 ## 2026-11-16
 
 - **Fieldset and Accordion.** Fieldset is a question with its choices: the `<legend>` in medium paragraph type, the Radios or Checkboxes under it, and a line of help, drawn in Figma with the kit's own Radios. Accordion is Disclosures in a column with a line under each, drawn with the kit's own Disclosures. Both match Figma. The accessibility check learned how radio groups work along the way: a radio that isn't picked, in a group where one is, is reached with the arrow keys, so it no longer counts as missing from Tab.

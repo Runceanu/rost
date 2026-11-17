@@ -1,0 +1,135 @@
+# yaml-language-server: $schema=../schema/component-contract.schema.json
+schemaVersion: 2
+id: timeline-item
+name: TimelineItem
+kind: component
+status: review
+partOf: timeline
+summary: "One event in a Timeline: a 12px dot, a line down to the next event, what happened, when, and a sentence if it needs one."
+category: display
+related: [ timeline, step ]
+source:
+  tool: figma
+  fileKey: 1Zy0wiWKXQAvsfDBX3KR0d
+  nodeId: "746:62"
+  url: https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=746-62
+  extractedAt: "2026-11-17"
+  extractedBy: hand
+  frozenAt: "2026-11-17"
+props:
+  current: { type: boolean, default: false, notes: "The latest event, the state the thing is in now. Its dot is green." }
+  last: { type: boolean, default: false, notes: "The bottom one. Timeline sets it, so you don't have to." }
+  title: { type: slot, required: true, notes: "What happened, in a few words." }
+  time: { type: slot, required: true, notes: "When. A `<time>` with a `dateTime`, so it's machine-readable too." }
+  children: { type: slot, notes: "A sentence more, when the title isn't enough." }
+elements:
+  root:
+    notes: "An `<li>`: the rail on the left, the words on the right, 12px apart."
+    styles:
+      display: { value: flex, assert: false }
+      gap: { token: spacing/gap/small-medium, value: 12px }
+  rail:
+    notes: "A 12px column for the dot and the line. 4px above the dot puts it in the middle of the title's line."
+    styles:
+      display: { value: flex, assert: false }
+      flex-direction: { value: column, assert: false }
+      align-items: { value: center }
+      flex-shrink: { value: "0", assert: false }
+      width: { token: spacing/size/3xsmall, value: 12px }
+      padding-top: { token: spacing/gap/2xsmall, value: 4px }
+  dot:
+    notes: "A 12px circle. Grey for what's past, green for where things are now."
+    styles:
+      display: { value: block, assert: false }
+      flex-shrink: { value: "0", assert: false }
+      width: { token: spacing/size/3xsmall, value: 12px }
+      height: { token: spacing/size/3xsmall, value: 12px }
+      border-radius: { token: spacing/radius/full, value: 10000px }
+  line:
+    notes: "A 1px line from 4px under the dot to the bottom of the item, where the next dot starts 4px further down."
+    styles:
+      display: { value: block, assert: false }
+      flex-grow: { value: "1", assert: false }
+      width: { token: spacing/outline/small, value: 1px }
+      margin-top: { token: spacing/gap/2xsmall, value: 4px }
+      background: { token: timeline-item/line, value: "#3a3a3a" }
+  content:
+    notes: "The title, the time and the sentence in a column, 2px apart, with 24px under them before the next event."
+    styles:
+      display: { value: flex, assert: false }
+      flex-direction: { value: column, assert: false }
+      gap: { token: spacing/gap/3xsmall, value: 2px }
+      min-width: { value: "0", assert: false }
+      padding-bottom: { token: spacing/gap/large, value: 24px }
+  title:
+    notes: "Paragraph type, medium weight, the main text colour."
+    styles:
+      margin: { token: spacing/gap/none, value: 0px }
+      font-family: { token: font-family/base, value: "'General Sans Variable'" }
+      font-weight: { token: typography/paragraph/font-weight/medium, value: "500" }
+      font-size: { token: typography/paragraph/font-size, value: 14px }
+      line-height: { token: typography/paragraph/line-height, value: 20px }
+      letter-spacing: { token: typography/paragraph/letter-spacing, value: 0px }
+      color: { token: timeline-item/title, value: "#ededed" }
+  time:
+    notes: "Label type in the tertiary grey."
+    styles:
+      font-family: { token: font-family/base, value: "'General Sans Variable'" }
+      font-weight: { token: typography/label/font-weight/regular, value: "400" }
+      font-size: { token: typography/label/font-size, value: 12px }
+      line-height: { token: typography/label/line-height, value: 14px }
+      letter-spacing: { token: typography/label/letter-spacing, value: 0px }
+      color: { token: timeline-item/time, value: "#999999" }
+  body:
+    optional: true
+    notes: "Paragraph type, a step quieter than the title."
+    styles:
+      margin: { token: spacing/gap/none, value: 0px }
+      font-family: { token: font-family/base, value: "'General Sans Variable'" }
+      font-weight: { token: typography/paragraph/font-weight/regular, value: "400" }
+      font-size: { token: typography/paragraph/font-size, value: 14px }
+      line-height: { token: typography/paragraph/line-height, value: 20px }
+      letter-spacing: { token: typography/paragraph/letter-spacing, value: 0px }
+      color: { token: timeline-item/body, value: "#d3d9d5" }
+variants:
+  - when: { current: false, last: false }
+    figmaNode: "746:30"
+    elements:
+      dot:
+        background: { token: timeline-item/past/dot, value: "#747573" }
+  - when: { current: true, last: false }
+    figmaNode: "746:38"
+    elements:
+      dot:
+        background: { token: timeline-item/current/dot, value: "#00d669" }
+  - when: { current: false, last: true }
+    figmaNode: "746:46"
+    elements:
+      dot:
+        background: { token: timeline-item/past/dot, value: "#747573" }
+      line:
+        display: { value: none, assert: false, notes: "Nothing comes after the last one." }
+      content:
+        padding-bottom: { token: spacing/gap/none, value: 0px }
+  - when: { current: true, last: true }
+    figmaNode: "746:54"
+    elements:
+      dot:
+        background: { token: timeline-item/current/dot, value: "#00d669" }
+      line:
+        display: { value: none, assert: false, notes: "Nothing comes after the last one." }
+      content:
+        padding-bottom: { token: spacing/gap/none, value: 0px }
+guidance:
+  status: proposed
+  use:
+    - title: Now in green
+      text: "Mark the event that says where things stand now as current. Only one, and usually the newest."
+      show: "current=True, last=False"
+  avoid:
+    - title: Colour as the only signal
+      text: "The green dot means now, but the title has to say what happened. Nobody should need the colour to read it."
+  behaviour: "The dot and line are drawing. The title, the time and the sentence are the content."
+  accessibility:
+    element: "`<li>`, with the time in a `<time>` element. The current one has `aria-current=\"step\"`. The dot and line are hidden from screen readers."
+    colour: "The past dot is 4.3:1 on the dark page, the current one 10:1. The title is 17:1, the time 7:1."

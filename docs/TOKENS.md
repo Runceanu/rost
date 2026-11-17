@@ -6,11 +6,11 @@ Every value in every contract, sorted by why it has a token or doesn't. A value 
 
 | | Values | Share | Meaning |
 |---|---|---|---|
-| Has a token | 1730 | 60% | Uses a token, and the check tests it. |
+| Has a token | 1804 | 60% | Uses a token, and the check tests it. |
 | Token suggested | 0 | 0% | A token I want that doesn't exist yet. The freeze turned every other suggestion into a token. |
-| How Figma builds it | 713 | 25% | How Figma builds the layer (position, inset, which sides get a stroke). Nothing to tokenise. |
-| Figma frame size | 282 | 10% | A root size that is just the Figma frame. Written down, not checked. |
-| No token, on purpose | 113 | 4% | Plain on purpose, and the contract says why. |
+| How Figma builds it | 740 | 25% | How Figma builds the layer (position, inset, which sides get a stroke). Nothing to tokenise. |
+| Figma frame size | 291 | 10% | A root size that is just the Figma frame. Written down, not checked. |
+| No token, on purpose | 117 | 4% | Plain on purpose, and the contract says why. |
 | Open gap | 56 | 2% | No token and no reason. Each one needs a decision from me. |
 
 ## By contract
@@ -32,6 +32,7 @@ Every value in every contract, sorted by why it has a token or doesn't. A value 
 | [Dialog](components/dialog.md) | 23 | · | 5 | 6 | 1 | 1 |
 | [Disclosure](components/disclosure.md) | 16 | · | 4 | 5 | · | 3 |
 | [Divider](components/divider.md) | 2 | · | 2 | 2 | · | · |
+| [Dropzone](components/dropzone.md) | 26 | · | 9 | 5 | 3 | · |
 | [EmptyState](components/empty-state.md) | 14 | · | 6 | · | · | 1 |
 | [Fieldset](components/fieldset.md) | 18 | · | 5 | 2 | · | · |
 | [Floating effect](components/effect-floating.md) | 1 | · | · | · | · | · |
@@ -75,10 +76,13 @@ Every value in every contract, sorted by why it has a token or doesn't. A value 
 | [Textarea](components/textarea.md) | 72 | · | 21 | 9 | 2 | 2 |
 | [Thumb effect](components/effect-thumb.md) | 1 | · | · | · | · | · |
 | [Thumbs](components/thumbs.md) | 77 | · | 51 | 9 | 6 | 5 |
+| [Timeline](components/timeline.md) | 2 | · | 2 | 1 | · | · |
+| [TimelineItem](components/timeline-item.md) | 37 | · | 12 | 2 | · | · |
 | [Toast](components/toast.md) | 18 | · | 7 | 1 | 2 | 1 |
 | [ToastStack](components/toast-stack.md) | 2 | · | 5 | 3 | · | · |
 | [Toggle](components/toggle.md) | 64 | · | 20 | 8 | 6 | 3 |
 | [ToggleGroup](components/toggle-group.md) | 1 | · | 2 | · | · | · |
+| [Toolbar](components/toolbar.md) | 9 | · | 4 | 1 | 1 | · |
 | [Tooltip](components/tooltip.md) | 13 | · | 4 | · | · | · |
 
 ## Tokens that should be there
@@ -159,11 +163,12 @@ Sizes and offsets that belong to one component, at a number no size token has.
 | [Code](components/code.md) | `root.font-family` | `'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace` | Rost has no mono family token yet. Where JetBrains Mono isn't loaded, the system mono stands in. |
 | [Code](components/code.md) | `root.font-size` | `0.88em` | In a sentence it follows the text around it. Mono looks bigger than General Sans at the same size, so a little smaller. |
 | [Dialog](components/dialog.md), [Popover](components/popover.md) | `panel.outline-offset` | `calc(-1 * var(--spacing-outline-small))` | Composed from a token: the edge sits inside the plate. |
+| [Dropzone](components/dropzone.md) | `root.outline-offset` | `calc(-1 * var(--spacing-outline-small))` and 1 more, one per state | Composed from a token: the edge sits inside. |
 | [Icon](components/icon.md) | `root.mask-image` | `url(./svg/arrow-down.svg)` and 17 more, one per state | The icon file, `assets/icons/arrow-down.svg`. |
 | [Illustration](components/illustration.md) | `drawing.width` | `100%` | The drawing fills the 72px box. |
 | [Illustration](components/illustration.md) | `drawing.height` | `100%` | The drawing fills the 72px box. |
 | [Input](components/input.md), [Select](components/select.md) | `supportive.top` | `calc(var(--spacing-size-large) + var(--spacing-gap-2xsmall))` | Composed from tokens: the field's height plus spacing/gap/2xsmall. |
-| [Kbd](components/kbd.md) | `root.outline-offset` | `calc(-1 * var(--spacing-outline-small))` | Composed from a token: the edge sits inside. |
+| [Kbd](components/kbd.md), [Toolbar](components/toolbar.md) | `root.outline-offset` | `calc(-1 * var(--spacing-outline-small))` | Composed from a token: the edge sits inside. |
 | [Link](components/link.md) | `root.text-underline-offset` | `0.2em` | Follows the text's size, so it's in em, not a space token. |
 | [ListItem](components/list-item.md) | `root.width` | `100%` | As wide as its list. Figma's sample is 208px. |
 | [ListItem](components/list-item.md) | `background.inset` | `4px` | Figma's own 4px inset of the plate. |
@@ -274,7 +279,7 @@ When a component needs a colour no other has, change its own token to point some
 
 ## Two themes
 
-Dark is the default. It's what Figma draws first and what both apps use. Light is new (2026-10-30). Only colours change: 810 theme colours have a light value of their own. Every other token, and every component, is the same in both.
+Dark is the default. It's what Figma draws first and what both apps use. Light is new (2026-10-30). Only colours change: 825 theme colours have a light value of their own. Every other token, and every component, is the same in both.
 
 `tokens/tokens.css` puts dark on `:root`. Light applies under `[data-theme="light"]` and nowhere else. A system set to light doesn't change it: with no `data-theme` you get dark. `[data-theme="dark"]` brings dark back inside a light page, so a dark panel can sit in a light one. Set it on `<html>` for the whole page:
 
@@ -347,4 +352,4 @@ rost.build's own transitions use the tokens now. No component in Rost animates y
 
 ## Figma variables
 
-The Figma file has **1255** variables (`registry/figma-variables.json`, read on 2026-11-04) and `tokens/tokens.css` has **1255** of them. `npm run tokens` builds it from that read, so they can't come apart.
+The Figma file has **1272** variables (`registry/figma-variables.json`, read on 2026-11-04) and `tokens/tokens.css` has **1272** of them. `npm run tokens` builds it from that read, so they can't come apart.

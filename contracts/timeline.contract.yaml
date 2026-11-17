@@ -1,0 +1,43 @@
+# yaml-language-server: $schema=../schema/component-contract.schema.json
+schemaVersion: 2
+id: timeline
+name: Timeline
+kind: component
+status: review
+summary: "What happened to something, in order: a column of TimelineItems, each a dot on a line with what happened and when."
+category: display
+related: [ timeline-item, stepper, list-item ]
+source:
+  tool: figma
+  fileKey: 1Zy0wiWKXQAvsfDBX3KR0d
+  nodeId: "746:64"
+  url: https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=746-64
+  extractedAt: "2026-11-17"
+  extractedBy: hand
+  frozenAt: "2026-11-17"
+props:
+  children: { type: slot, required: true, notes: "The TimelineItems, newest first or oldest first, but the same way every time." }
+elements:
+  root:
+    notes: "An `<ol>`, so the events are counted. The items sit straight on top of each other: each one's line runs down to the next one's dot."
+    styles:
+      display: { value: flex, assert: false }
+      flex-direction: { value: column, assert: false }
+      margin: { token: spacing/gap/none, value: 0px }
+      padding: { token: spacing/gap/none, value: 0px }
+      list-style: { value: none, assert: false }
+guidance:
+  status: proposed
+  use:
+    - title: The history of one thing
+      text: "An invoice that was drafted, sent, opened and paid. A vault that was set up and then shared."
+  avoid:
+    - title: Steps still to do
+      text: "A Timeline is what already happened. Steps someone has to go through are a **Stepper**."
+    - title: A feed
+      text: "Many unrelated things from many places. That's a list of **ListItems**."
+  behaviour: "It lays the items in a column and tells the last one it's last, so its line stops at its dot."
+  accessibility:
+    element: "`<ol>`, so a screen reader says how many events there are."
+    name: "Give it an `aria-label` when the heading above it doesn't say what it's the history of."
+  content: "Each item says what happened in a few words, past tense: Sent to Client 1, Paid."

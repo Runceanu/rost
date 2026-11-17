@@ -1,0 +1,26 @@
+/* Generated from contracts/toolbar.contract.yaml by bin/build-css.mjs. Don't edit: change the contract and rebuild. */
+
+.rost-toolbar, .rost-toolbar * { box-sizing: border-box; margin: 0; }
+.rost-toolbar > img, .rost-toolbar [class*="__icons-"] > img { display: block; position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; }
+.rost-toolbar ::placeholder { color: inherit; opacity: 1; }
+
+.rost-toolbar {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-gap-2xsmall);
+  padding: var(--spacing-gap-2xsmall);
+  border-radius: var(--spacing-radius-medium);
+  background: var(--toolbar-background);
+  outline-style: solid;
+  outline-width: var(--spacing-outline-small);
+  outline-offset: calc(-1 * var(--spacing-outline-small));
+  outline-color: var(--toolbar-edge);
+}
+
+.rost-toolbar__separator {
+  display: block;
+  flex-shrink: 0;
+  width: var(--spacing-outline-small);
+  height: var(--spacing-size-small);
+  background: var(--toolbar-separator);
+}

@@ -666,5 +666,38 @@
     "variants": [
       { "nodeId": "745:29", "name": "accordion", "width": 400, "height": 135 }
     ]
+  },
+  "timeline-item": {
+    "name": "TimelineItem",
+    "setNodeId": "746:62",
+    "variants": [
+      { "nodeId": "746:30", "name": "current=False, last=False", "width": 240, "height": 60 },
+      { "nodeId": "746:38", "name": "current=True, last=False", "width": 240, "height": 60 },
+      { "nodeId": "746:46", "name": "current=False, last=True", "width": 240, "height": 36 },
+      { "nodeId": "746:54", "name": "current=True, last=True", "width": 240, "height": 36 }
+    ]
+  },
+  "timeline": {
+    "name": "Timeline",
+    "setNodeId": "746:64",
+    "variants": [
+      { "nodeId": "746:64", "name": "timeline", "width": 320, "height": 178 }
+    ]
+  },
+  "dropzone": {
+    "name": "Dropzone",
+    "setNodeId": "746:132",
+    "variants": [
+      { "nodeId": "746:91", "name": "over=False, error=False", "width": 360, "height": 180 },
+      { "nodeId": "746:106", "name": "over=True, error=False", "width": 360, "height": 180 },
+      { "nodeId": "746:119", "name": "over=False, error=True", "width": 360, "height": 180 }
+    ]
+  },
+  "toolbar": {
+    "name": "Toolbar",
+    "setNodeId": "746:135",
+    "variants": [
+      { "nodeId": "746:135", "name": "toolbar", "width": 217, "height": 56 }
+    ]
   }
 }

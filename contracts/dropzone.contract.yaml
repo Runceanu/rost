@@ -1,0 +1,120 @@
+# yaml-language-server: $schema=../schema/component-contract.schema.json
+schemaVersion: 2
+id: dropzone
+name: Dropzone
+kind: component
+status: review
+summary: "A place to drop a file, with a button for when dragging isn't handy: an arrow, what to drop, what's allowed, and Choose a file."
+category: inputs
+related: [ button, input, inline-banner ]
+source:
+  tool: figma
+  fileKey: 1Zy0wiWKXQAvsfDBX3KR0d
+  nodeId: "746:132"
+  url: https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=746-132
+  extractedAt: "2026-11-17"
+  extractedBy: hand
+  frozenAt: "2026-11-17"
+props:
+  title: { type: slot, required: true, notes: "What to drop, like Drop a bank statement here." }
+  help: { type: slot, notes: "What's allowed, or what went wrong when there's an error." }
+  action: { type: string, default: "Choose a file", notes: "The button's words." }
+  accept: { type: string, notes: "Passed to the file input, like `.pdf,.csv`." }
+  multiple: { type: boolean, default: false }
+  error: { type: boolean, default: false, notes: "The last file wasn't right. Say why in `help`." }
+  over: { type: boolean, default: false, notes: "A file is being dragged over it. The Dropzone sets this itself; the prop is for showing the look." }
+elements:
+  root:
+    notes: "A column, centred, 12px between its parts and 24px around them, with 12px corners and an edge drawn inside."
+    styles:
+      display: { value: flex, assert: false }
+      flex-direction: { value: column, assert: false }
+      align-items: { value: center }
+      text-align: { value: center, assert: false }
+      gap: { token: spacing/gap/small-medium, value: 12px }
+      padding: { token: spacing/gap/large, value: 24px }
+      position: { value: relative, assert: false }
+      border-radius: { token: spacing/radius/medium, value: 12px }
+      outline-style: { value: solid, assert: false }
+  icon:
+    notes: "Icon's arrow-up, 24px, in the secondary text colour."
+    styles:
+      display: { value: flex, assert: false }
+      color: { token: dropzone/icon, value: "#d3d9d5" }
+  words:
+    notes: "The title and the help, 2px apart."
+    styles:
+      display: { value: flex, assert: false }
+      flex-direction: { value: column, assert: false }
+      gap: { token: spacing/gap/3xsmall, value: 2px }
+  title:
+    notes: "Paragraph type, medium weight, the main text colour."
+    styles:
+      font-family: { token: font-family/base, value: "'General Sans Variable'" }
+      font-weight: { token: typography/paragraph/font-weight/medium, value: "500" }
+      font-size: { token: typography/paragraph/font-size, value: 14px }
+      line-height: { token: typography/paragraph/line-height, value: 20px }
+      letter-spacing: { token: typography/paragraph/letter-spacing, value: 0px }
+      color: { token: dropzone/title, value: "#ededed" }
+  help:
+    optional: true
+    notes: "Label type."
+    styles:
+      font-family: { token: font-family/base, value: "'General Sans Variable'" }
+      font-weight: { token: typography/label/font-weight/regular, value: "400" }
+      font-size: { token: typography/label/font-size, value: 12px }
+      line-height: { token: typography/label/line-height, value: 14px }
+      letter-spacing: { token: typography/label/letter-spacing, value: 0px }
+  input:
+    notes: "The real `<input type=\"file\">`, hidden from sight and from screen readers. The button opens it, so the button is the one control there is."
+    styles:
+      position: { value: absolute, assert: false }
+      width: { value: 1px, assert: false }
+      height: { value: 1px, assert: false }
+      opacity: { value: "0", assert: false }
+      pointer-events: { value: none, assert: false }
+variants:
+  - when: { over: false, error: false }
+    figmaNode: "746:91"
+    elements:
+      root:
+        outline-width: { token: spacing/outline/small, value: 1px }
+        outline-offset: { value: "calc(-1 * var(--spacing-outline-small))", untokenised: "Composed from a token: the edge sits inside." }
+        outline-color: { token: dropzone/idle/edge, value: "#747573" }
+      help:
+        color: { token: dropzone/help, value: "#999999" }
+  - when: { over: true, error: false }
+    figmaNode: "746:106"
+    elements:
+      root:
+        outline-width: { token: spacing/outline/medium, value: 2px }
+        outline-offset: { value: "calc(-1 * var(--spacing-outline-medium))", untokenised: "Composed from a token: the edge sits inside." }
+        outline-color: { token: dropzone/over/edge, value: "#00d669" }
+        background: { token: dropzone/over/background, value: "#171717" }
+      help:
+        color: { token: dropzone/help, value: "#999999" }
+  - when: { over: false, error: true }
+    figmaNode: "746:119"
+    elements:
+      root:
+        outline-width: { token: spacing/outline/small, value: 1px }
+        outline-offset: { value: "calc(-1 * var(--spacing-outline-small))", untokenised: "Composed from a token: the edge sits inside." }
+        outline-color: { token: dropzone/error/edge, value: "#f2705f" }
+      help:
+        color: { token: dropzone/error/help, value: "#f2705f" }
+guidance:
+  status: proposed
+  use:
+    - title: Bringing in a document
+      text: "A bank statement to import, a receipt to attach. Say in the help which kinds of file work and how big."
+  avoid:
+    - title: Dragging as the only way
+      text: "Not everyone can drag. The button stays, always."
+    - title: Showing the upload
+      text: "What happens after the drop, the progress and the file's name, belongs under it, in a **Progress** or a **ListItem**."
+  behaviour: "Dragging a file over it turns its edge green. Dropping or choosing hands the files to `onFiles`. With `error` the edge and the help turn red, and the help says what to fix."
+  accessibility:
+    element: "A `<div>` with a real file input and a real button inside. The drop is a shortcut for the button, never the only way."
+    name: "The button's words. The help is tied to the button with `aria-describedby`, so it's read with them."
+    colour: "The idle edge is 4.3:1 on the dark page, the error help 6.9:1."
+  content: "The title says what to drop, the help what's allowed: PDF or CSV, up to 10 MB."

@@ -1244,6 +1244,29 @@
   /* ── Component: accordion ────────────────────────────────────────────────── */
   --accordion-divider: #3a3a3a;
 
+  /* ── Component: timeline-item ────────────────────────────────────────────── */
+  --timeline-item-body: #d3d9d5;
+  --timeline-item-current-dot: #00d669;
+  --timeline-item-line: #3a3a3a;
+  --timeline-item-past-dot: #747573;
+  --timeline-item-time: #999999;
+  --timeline-item-title: #ededed;
+
+  /* ── Component: dropzone ─────────────────────────────────────────────────── */
+  --dropzone-error-edge: #f2705f;
+  --dropzone-error-help: #f2705f;
+  --dropzone-help: #999999;
+  --dropzone-icon: #d3d9d5;
+  --dropzone-idle-edge: #747573;
+  --dropzone-over-background: #171717;
+  --dropzone-over-edge: #00d669;
+  --dropzone-title: #ededed;
+
+  /* ── Component: toolbar ──────────────────────────────────────────────────── */
+  --toolbar-background: #171717;
+  --toolbar-edge: #3a3a3a;
+  --toolbar-separator: #3a3a3a;
+
   /* ── Generic colours (no family in Figma) ────────────────────────────────── */
   --background: #3a3a3a;
   --focus-ring: #999999;
@@ -1400,7 +1423,7 @@
 }
 
 /* ── Light ──────────────────────────────────────────────────────────────────
- * Only the colours change, 810 of them. Figma's light mode, with Rost's own
+ * Only the colours change, 825 of them. Figma's light mode, with Rost's own
  * corrections from registry/light.json where Figma's value fails contrast.
  * Set data-theme="light" on <html> (or any element). Without it you get dark,
  * whatever the system says. data-theme="dark" brings dark back inside a light page.
@@ -1669,6 +1692,13 @@
   --dialog-body: #171717;
   --dialog-edge: #d3d9d5;
   --dialog-title: #060805;
+  --dropzone-error-edge: #ae1b13;
+  --dropzone-error-help: #ae1b13;
+  --dropzone-help: #6a6b69;
+  --dropzone-icon: #171717;
+  --dropzone-over-background: #ededed;
+  --dropzone-over-edge: #0e7118;
+  --dropzone-title: #060805;
   --empty-state-body: #171717;
   --empty-state-title: #060805;
   --fieldset-help: #6a6b69;
@@ -2178,6 +2208,11 @@
   --thumbs-pressed-sub-label: #454545;
   --thumbs-shade: #fcfcfc;
   --thumbs-slot: #ededed;
+  --timeline-item-body: #171717;
+  --timeline-item-current-dot: #0e7118;
+  --timeline-item-line: #d3d9d5;
+  --timeline-item-time: #6a6b69;
+  --timeline-item-title: #060805;
   --toast-background: #ededed;
   --toast-edge: #d3d9d5;
   --toast-message: #060805;
@@ -2217,6 +2252,9 @@
   --toggle-on-hover-outline: #fcfcfc8f;
   --toggle-on-pressed-edge: #0e7118;
   --toggle-on-pressed-outline: #fcfcfc8f;
+  --toolbar-background: #ededed;
+  --toolbar-edge: #d3d9d5;
+  --toolbar-separator: #d3d9d5;
 }
 
 [data-theme="dark"] {
@@ -2483,6 +2521,13 @@
   --dialog-body: #d3d9d5;
   --dialog-edge: #3a3a3a;
   --dialog-title: #ededed;
+  --dropzone-error-edge: #f2705f;
+  --dropzone-error-help: #f2705f;
+  --dropzone-help: #999999;
+  --dropzone-icon: #d3d9d5;
+  --dropzone-over-background: #171717;
+  --dropzone-over-edge: #00d669;
+  --dropzone-title: #ededed;
   --empty-state-body: #d3d9d5;
   --empty-state-title: #ededed;
   --fieldset-help: #999999;
@@ -2992,6 +3037,11 @@
   --thumbs-pressed-sub-label: #c2c7c3;
   --thumbs-shade: #060805;
   --thumbs-slot: #171717;
+  --timeline-item-body: #d3d9d5;
+  --timeline-item-current-dot: #00d669;
+  --timeline-item-line: #3a3a3a;
+  --timeline-item-time: #999999;
+  --timeline-item-title: #ededed;
   --toast-background: #171717;
   --toast-edge: #3a3a3a;
   --toast-message: #ededed;
@@ -3031,4 +3081,7 @@
   --toggle-on-hover-outline: #edededa3;
   --toggle-on-pressed-edge: #00d669;
   --toggle-on-pressed-outline: #edededa3;
+  --toolbar-background: #171717;
+  --toolbar-edge: #3a3a3a;
+  --toolbar-separator: #3a3a3a;
 }

@@ -1,0 +1,57 @@
+# yaml-language-server: $schema=../schema/component-contract.schema.json
+schemaVersion: 2
+id: toolbar
+name: Toolbar
+kind: component
+status: review
+summary: "A row of IconButtons that act on one thing, on a raised strip, with thin lines between the groups. The arrow keys move between them."
+category: actions
+related: [ icon-button, toggle-group, menu ]
+source:
+  tool: figma
+  fileKey: 1Zy0wiWKXQAvsfDBX3KR0d
+  nodeId: "746:135"
+  url: https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=746-135
+  extractedAt: "2026-11-17"
+  extractedBy: hand
+  frozenAt: "2026-11-17"
+props:
+  children: { type: slot, required: true, notes: "Tertiary IconButtons, with a `ToolbarSeparator` between groups." }
+  label: { type: string, required: true, notes: "What the tools act on, for screen readers: Preview, Invoice." }
+elements:
+  root:
+    notes: "A row, 4px between the buttons and 4px around them, on the secondary surface with an edge and 12px corners."
+    styles:
+      display: { value: inline-flex, assert: false }
+      align-items: { value: center }
+      gap: { token: spacing/gap/2xsmall, value: 4px }
+      padding: { token: spacing/gap/2xsmall, value: 4px }
+      border-radius: { token: spacing/radius/medium, value: 12px }
+      background: { token: toolbar/background, value: "#171717" }
+      outline-style: { value: solid, assert: false }
+      outline-width: { token: spacing/outline/small, value: 1px }
+      outline-offset: { value: "calc(-1 * var(--spacing-outline-small))", untokenised: "Composed from a token: the edge sits inside." }
+      outline-color: { token: toolbar/edge, value: "#3a3a3a" }
+  separator:
+    notes: "A 1px line, 24px tall, between two groups of buttons."
+    styles:
+      display: { value: block, assert: false }
+      flex-shrink: { value: "0", assert: false }
+      width: { token: spacing/outline/small, value: 1px }
+      height: { token: spacing/size/small, value: 24px }
+      background: { token: toolbar/separator, value: "#3a3a3a" }
+guidance:
+  status: proposed
+  use:
+    - title: Tools for one thing
+      text: "Over a preview, an editor or a document: back and forward, desktop or phone, zoom."
+  avoid:
+    - title: The page's main action
+      text: "Save or Send is a **Button** with words, not an icon in a strip."
+    - title: Picking one of a few views
+      text: "When exactly one is on, that's a **ToggleGroup**."
+  behaviour: "Tab lands on one button and leaves the Toolbar on the next press. Left and right move between the buttons, Home and End jump to the ends. Each button does its own thing."
+  accessibility:
+    element: "`role=\"toolbar\"` with an `aria-label`. Only one button is in the tab order at a time. The separators are `role=\"separator\"`, upright."
+    name: "The `label` prop. Each IconButton has its own."
+    colour: "The edge is drawing, not information. The icons are the IconButtons' own."

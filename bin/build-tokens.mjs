@@ -169,7 +169,7 @@ for (const [name, value, note] of ROST) {
 // ── Writing ────────────────────────────────────────────────────────────────
 
 // The interactive components with a token family of their own (Input's is `input/`, above).
-const COMPONENT_FAMILIES = ['button', 'icon-button', 'toggle', 'chip', 'tag', 'switch', 'switch-field', 'textarea', 'list-item', 'menu', 'tab-item', 'table-row', 'table-item', 'carousel', 'projects', 'thumbs', 'testimonials', 'checkbox', 'radio', 'avatar', 'card', 'skeleton', 'progress', 'select', 'dialog', 'popover', 'toast', 'spinner', 'kbd', 'breadcrumb', 'pagination', 'empty-state', 'stat', 'description-list', 'sheet', 'step', 'stepper', 'avatar-group', 'fieldset', 'accordion']
+const COMPONENT_FAMILIES = ['button', 'icon-button', 'toggle', 'chip', 'tag', 'switch', 'switch-field', 'textarea', 'list-item', 'menu', 'tab-item', 'table-row', 'table-item', 'carousel', 'projects', 'thumbs', 'testimonials', 'checkbox', 'radio', 'avatar', 'card', 'skeleton', 'progress', 'select', 'dialog', 'popover', 'toast', 'spinner', 'kbd', 'breadcrumb', 'pagination', 'empty-state', 'stat', 'description-list', 'sheet', 'step', 'stepper', 'avatar-group', 'fieldset', 'accordion', 'timeline-item', 'dropzone', 'toolbar']
 const SECTIONS = [
   ['Typography', (n) => n.startsWith('font-family/') || n.startsWith('typography/')],
   ['Colour primitives (base)', (n) => n.startsWith('color/') || tokens[n].collection === 'library'],
