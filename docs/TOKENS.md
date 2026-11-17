@@ -6,12 +6,12 @@ Every value in every contract, sorted by why it has a token or doesn't. A value 
 
 | | Values | Share | Meaning |
 |---|---|---|---|
-| Has a token | 2185 | 61% | Uses a token, and the check tests it. |
+| Has a token | 2226 | 61% | Uses a token, and the check tests it. |
 | Token suggested | 0 | 0% | A token I want that doesn't exist yet. The freeze turned every other suggestion into a token. |
-| How Figma builds it | 851 | 24% | How Figma builds the layer (position, inset, which sides get a stroke). Nothing to tokenise. |
-| Figma frame size | 363 | 10% | A root size that is just the Figma frame. Written down, not checked. |
-| No token, on purpose | 137 | 4% | Plain on purpose, and the contract says why. |
-| Open gap | 64 | 2% | No token and no reason. Each one needs a decision from me. |
+| How Figma builds it | 861 | 23% | How Figma builds the layer (position, inset, which sides get a stroke). Nothing to tokenise. |
+| Figma frame size | 376 | 10% | A root size that is just the Figma frame. Written down, not checked. |
+| No token, on purpose | 138 | 4% | Plain on purpose, and the contract says why. |
+| Open gap | 66 | 2% | No token and no reason. Each one needs a decision from me. |
 
 ## By contract
 
@@ -33,9 +33,10 @@ Every value in every contract, sorted by why it has a token or doesn't. A value 
 | [Code](components/code.md) | 9 | · | 2 | 5 | 2 | · |
 | [Combobox](components/combobox.md) | 92 | · | 19 | 17 | 3 | 4 |
 | [ComboboxOption](components/combobox-option.md) | 22 | · | 6 | 2 | 1 | · |
+| [Command](components/command.md) | 41 | · | 10 | 12 | 1 | 2 |
 | [DateField](components/date-field.md) | 76 | · | 19 | 9 | 2 | 3 |
 | [DescriptionList](components/description-list.md) | 12 | · | 2 | 1 | · | 1 |
-| [Dialog](components/dialog.md) | 23 | · | 5 | 6 | 1 | 1 |
+| [Dialog](components/dialog.md) | 23 | · | 5 | 7 | 1 | 1 |
 | [Disclosure](components/disclosure.md) | 16 | · | 4 | 5 | · | 3 |
 | [Divider](components/divider.md) | 2 | · | 2 | 2 | · | · |
 | [DropdownMenu](components/dropdown-menu.md) | 12 | · | 3 | 5 | 1 | 1 |
@@ -181,7 +182,7 @@ Sizes and offsets that belong to one component, at a number no size token has.
 | [Code](components/code.md) | `root.font-size` | `0.88em` | In a sentence it follows the text around it. Mono looks bigger than General Sans at the same size, so a little smaller. |
 | [Combobox](components/combobox.md), [DateField](components/date-field.md), [Input](components/input.md), [Select](components/select.md) | `supportive.top` | `calc(var(--spacing-size-large) + var(--spacing-gap-2xsmall))` | Composed from tokens: the field's height plus spacing/gap/2xsmall. |
 | [Combobox](components/combobox.md) | `listbox.outline-offset` | `calc(-1 * var(--spacing-outline-small))` | Composed from a token: the edge sits inside the plate. |
-| [Dialog](components/dialog.md), [Popover](components/popover.md) | `panel.outline-offset` | `calc(-1 * var(--spacing-outline-small))` | Composed from a token: the edge sits inside the plate. |
+| [Command](components/command.md), [Dialog](components/dialog.md), [Popover](components/popover.md) | `panel.outline-offset` | `calc(-1 * var(--spacing-outline-small))` | Composed from a token: the edge sits inside the plate. |
 | [DropdownMenu](components/dropdown-menu.md), [Toast](components/toast.md) | `root.outline-offset` | `calc(-1 * var(--spacing-outline-small))` | Composed from a token: the edge sits inside the plate. |
 | [Dropzone](components/dropzone.md) | `root.outline-offset` | `calc(-1 * var(--spacing-outline-small))` and 1 more, one per state | Composed from a token: the edge sits inside. |
 | [Icon](components/icon.md) | `root.mask-image` | `url(./svg/arrow-down.svg)` and 17 more, one per state | The icon file, `assets/icons/arrow-down.svg`. |
@@ -236,6 +237,8 @@ The paper effect's numbers, tuned for how the dots move. Only the paper uses the
 - [Combobox](components/combobox.md) `outline.border-style` = `solid`
 - [Combobox](components/combobox.md) `focus-ring.border-style` = `solid`
 - [Combobox](components/combobox.md) `listbox.max-height` = `240px`
+- [Command](components/command.md) `panel.width` = `480px`
+- [Command](components/command.md) `list.max-height` = `320px`
 - [DateField](components/date-field.md) `root.width` = `208px`
 - [DateField](components/date-field.md) `outline.border-style` = `solid`
 - [DateField](components/date-field.md) `focus-ring.border-style` = `solid`
@@ -307,7 +310,7 @@ When a component needs a colour no other has, change its own token to point some
 
 ## Two themes
 
-Dark is the default. It's what Figma draws first and what both apps use. Light is new (2026-10-30). Only colours change: 871 theme colours have a light value of their own. Every other token, and every component, is the same in both.
+Dark is the default. It's what Figma draws first and what both apps use. Light is new (2026-10-30). Only colours change: 879 theme colours have a light value of their own. Every other token, and every component, is the same in both.
 
 `tokens/tokens.css` puts dark on `:root`. Light applies under `[data-theme="light"]` and nowhere else. A system set to light doesn't change it: with no `data-theme` you get dark. `[data-theme="dark"]` brings dark back inside a light page, so a dark panel can sit in a light one. Set it on `<html>` for the whole page:
 
@@ -380,4 +383,4 @@ rost.build's own transitions use the tokens now. No component in Rost animates y
 
 ## Figma variables
 
-The Figma file has **1326** variables (`registry/figma-variables.json`, read on 2026-11-04) and `tokens/tokens.css` has **1326** of them. `npm run tokens` builds it from that read, so they can't come apart.
+The Figma file has **1335** variables (`registry/figma-variables.json`, read on 2026-11-04) and `tokens/tokens.css` has **1335** of them. `npm run tokens` builds it from that read, so they can't come apart.

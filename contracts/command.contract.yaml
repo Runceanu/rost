@@ -1,0 +1,143 @@
+# yaml-language-server: $schema=../schema/component-contract.schema.json
+schemaVersion: 2
+id: command
+name: Command
+kind: component
+status: review
+summary: "A palette for doing anything from the keyboard: a search field over the page, and the commands under it in groups, narrowing as you type."
+category: navigation
+related: [ combobox, combobox-option, dialog, kbd ]
+source:
+  tool: figma
+  fileKey: 1Zy0wiWKXQAvsfDBX3KR0d
+  nodeId: "758:10"
+  url: https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=758-10
+  extractedAt: "2026-11-17"
+  extractedBy: hand
+  frozenAt: "2026-11-17"
+props:
+  open: { type: boolean, default: false, notes: "Shows it as a modal. The app decides what opens it; ⌘K is the usual key." }
+  groups: { type: node, required: true, notes: "`{ label, items: { value, label, onSelect }[] }[]`, in the order to show them." }
+  placeholder: { type: string, default: "Type a command or search", notes: "What the empty field says." }
+  empty: { type: string, default: No match, notes: "What the list says when nothing matches." }
+  label: { type: string, default: Command, notes: "The palette's name for screen readers." }
+stateSelectors:
+  Focus: ":has(.rost-command__search:focus-visible)"
+states: [ Default, Focus ]
+elements:
+  root:
+    notes: "The browser's `<dialog>` with its own look taken away, near the top of the window rather than in its middle, so the list can grow down."
+    styles:
+      padding: { token: spacing/gap/none, value: 0px }
+      border: { value: none, assert: false }
+      background: { value: transparent, assert: false }
+      overflow: { value: visible, assert: false }
+      max-width: { value: none, assert: false }
+      margin: { value: 0 auto auto, assert: false, notes: "Centred across, as a dialog is, and held at the top. Rost's reset would take the browser's centring away." }
+      inset-block-start: { token: spacing/gap/7xlarge, value: 96px, notes: "96px from the top of the window. Only a shown dialog is positioned, so a preview isn't moved." }
+      color: { value: inherit, assert: false }
+  backdrop:
+    pseudo: "::backdrop"
+    notes: "Dialog's: the page's own colour at 72%."
+    styles:
+      background: { token: command/backdrop, value: "#060805" }
+      opacity: { token: opacity/hard, value: "0.72" }
+  panel:
+    notes: "The plate, 480px wide: Dialog's fill, edge and shadow, with 16px corners."
+    styles:
+      display: { value: flex, assert: false }
+      flex-direction: { value: column, assert: false }
+      width: { value: 480px, notes: "Room for a long command name and the group's other options without wrapping." }
+      max-width: { value: calc(100vw - 32px), assert: false }
+      overflow: { value: hidden, assert: false }
+      border-radius: { token: spacing/radius/large, value: 16px }
+      background: { token: command/background, value: "#171717" }
+      outline-style: { value: solid, assert: false }
+      outline-width: { token: spacing/outline/small, value: 1px }
+      outline-offset: { value: "calc(-1 * var(--spacing-outline-small))", untokenised: "Composed from a token: the edge sits inside the plate." }
+      outline-color: { token: command/edge, value: "#3a3a3a" }
+      box-shadow: { token: shadow/floating, value: "0px 16px 24px 0px rgba(0, 0, 0, 0.16)" }
+  search:
+    notes: "An `<input role=\"combobox\">`, 56px tall, 16px in at the sides, with a 1px line under it. Paragraph type."
+    styles:
+      display: { value: block, assert: false }
+      width: { value: 100%, assert: false }
+      height: { token: spacing/size/large, value: 56px }
+      padding-left: { token: spacing/gap/medium, value: 16px }
+      padding-right: { token: spacing/gap/medium, value: 16px }
+      border: { value: none, assert: false }
+      border-bottom-style: { value: solid, assert: false }
+      border-bottom-width: { token: spacing/outline/small, value: 1px }
+      border-bottom-color: { token: command/search-line, value: "#747573", notes: "Input's edge grey, so the field has a visible edge of its own: the plate's is faint in light." }
+      background: { value: transparent, assert: false }
+      outline: { value: none, assert: false }
+      font-family: { token: font-family/base, value: "'General Sans Variable'" }
+      font-weight: { token: typography/paragraph/font-weight/regular, value: "400" }
+      font-size: { token: typography/paragraph/font-size, value: 14px }
+      line-height: { token: typography/paragraph/line-height, value: 20px }
+      letter-spacing: { token: typography/paragraph/letter-spacing, value: 0px }
+      color: { token: command/search, value: "#ededed" }
+  search-placeholder:
+    pseudo: "::placeholder"
+    of: search
+    notes: "What the empty field says, in the tertiary grey."
+    styles:
+      color: { token: command/placeholder, value: "#999999" }
+  list:
+    notes: "`role=\"listbox\"`: the groups, 4px inside, up to 320px tall before it scrolls."
+    styles:
+      display: { value: flex, assert: false }
+      flex-direction: { value: column, assert: false }
+      max-height: { value: 320px, notes: "About seven rows and their group names." }
+      overflow-y: { value: auto, assert: false }
+      padding: { token: spacing/gap/2xsmall, value: 4px }
+  group-label:
+    notes: "A group's name, in label type and the tertiary grey, 12px in, 8px above and 4px below."
+    styles:
+      padding-top: { token: spacing/gap/small, value: 8px }
+      padding-bottom: { token: spacing/gap/2xsmall, value: 4px }
+      padding-left: { token: spacing/gap/small-medium, value: 12px }
+      font-family: { token: font-family/base, value: "'General Sans Variable'" }
+      font-weight: { token: typography/label/font-weight/regular, value: "400" }
+      font-size: { token: typography/label/font-size, value: 12px }
+      line-height: { token: typography/label/line-height, value: 14px }
+      letter-spacing: { token: typography/label/letter-spacing, value: 0px }
+      color: { token: command/group-label, value: "#999999" }
+  empty:
+    optional: true
+    notes: "When nothing matches: one 40px row in the tertiary grey."
+    styles:
+      display: { value: flex, assert: false }
+      align-items: { value: center }
+      height: { token: spacing/size/medium, value: 40px }
+      padding-left: { token: spacing/gap/small-medium, value: 12px }
+      font-family: { token: font-family/base, value: "'General Sans Variable'" }
+      font-weight: { token: typography/paragraph/font-weight/regular, value: "400" }
+      font-size: { token: typography/paragraph/font-size, value: 14px }
+      line-height: { token: typography/paragraph/line-height, value: 20px }
+      letter-spacing: { token: typography/paragraph/letter-spacing, value: 0px }
+      color: { token: command/empty, value: "#999999" }
+variants:
+  - when: { state: Default }
+    figmaNode: "758:10"
+  - when: { state: Focus }
+    elements:
+      search:
+        border-bottom-color: { token: command/search-line-focus, value: "#ededed", notes: "The line turns to the main text colour while the field has the focus, which is whenever the palette is open. Green over the grey would be 2.4:1, too faint a change." }
+        border-bottom-width: { token: spacing/outline/medium, value: 2px, notes: "2px while focused, so the change is easy to see. The field keeps its 56px." }
+guidance:
+  status: proposed
+  use:
+    - title: Everywhere from one key
+      text: "Jumping to any page or starting any task without the mouse: Go to Invoices, New client. Open it with ⌘K and say so somewhere with a **Kbd**."
+  avoid:
+    - title: The only way
+      text: "Everything in it has to be reachable another way too. It's a shortcut, not the menu."
+    - title: Picking a value in a form
+      text: "That's a **Combobox**."
+  behaviour: "It opens over the page with the focus in the search field. Typing keeps the commands whose name contains what was typed, and hides a group with nothing left. Up and Down move the green highlight across the groups, Enter runs the command and closes it, Esc closes it without running anything."
+  accessibility:
+    element: "A modal `<dialog>` named by `label`. The search is `role=\"combobox\"` pointing at the list with `aria-activedescendant`; each group is `role=\"group\"` named by its label, each command a ComboboxOption."
+    keyboard: "The focus stays in the search field; the highlight moves in the list."
+    colour: "The search text is 17:1 on the plate, the group names and the empty-list words 7:1."
+  content: "Commands start with a verb or say where they go: New invoice, Go to Clients."

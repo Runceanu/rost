@@ -14,7 +14,7 @@ Rost started as a design system for my own needs and grew into a product of its 
 | [Roadmap](ROADMAP.md) | What I'm doing next |
 | [Release notes](CHANGELOG.md) | What changed in each release |
 
-**81** contracts, **5** stable. **81** have guidance, and I've signed off **32** of those.
+**82** contracts, **5** stable. **82** have guidance, and I've signed off **32** of those.
 
 ## Catalogue
 
@@ -38,6 +38,7 @@ Rost started as a design system for my own needs and grew into a product of its 
 | [Code](components/code.md) | Code in a sentence, or a block of it on its own plate. | `review` | `proposed` | · |
 | [Combobox](components/combobox.md) | One choice from a long list, found by typing. Select's field you can type in, and the matching options in a list under it. | `review` | `proposed` | · |
 | [ComboboxOption](components/combobox-option.md) | One option in a Combobox's list: a 40px row with its name. Green when it's highlighted, a green tick when it's the one picked. | `review` | `proposed` | · |
+| [Command](components/command.md) | A palette for doing anything from the keyboard: a search field over the page, and the commands under it in groups, narrowing as you type. | `review` | `proposed` | · |
 | [DateField](components/date-field.md) | A date, picked from a Calendar. Select's field, showing the date, and a Calendar in a Popover under it when it's pressed. | `review` | `proposed` | · |
 | [DescriptionList](components/description-list.md) | Facts about one thing, as pairs: a term and its value, a row each, with a line between. For an invoice's details or a client's. | `review` | `proposed` | · |
 | [Dialog](components/dialog.md) | A question or a short task that stops everything else until it's answered. A grey plate over the page with a title, a few words and its buttons. | `review` | `proposed` | · |

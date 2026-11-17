@@ -830,5 +830,12 @@
       { "nodeId": "756:64", "name": "selected=True, active=False", "width": 200, "height": 40 },
       { "nodeId": "756:68", "name": "selected=True, active=True", "width": 200, "height": 40 }
     ]
+  },
+  "command": {
+    "name": "Command",
+    "setNodeId": "758:10",
+    "variants": [
+      { "nodeId": "758:10", "name": "command", "width": 480, "height": 316 }
+    ]
   }
 }

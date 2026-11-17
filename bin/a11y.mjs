@@ -73,6 +73,8 @@ function focusChange(before, after, ring) {
   }
   if (!changed) return { changed: 0 }
   if (strong >= ring) return { changed, ok: true }
+  // Everything that changed is strong enough, there just isn't enough of it.
+  if (!pairs.size) return { changed, ok: false, strong, ring, short: true }
   const [k] = [...pairs].sort((p, q) => q[1] - p[1])[0]
   const [to, from] = k.split('|').map((h) => h.slice(1).match(/../g).map((x) => parseInt(x, 16) + 4))
   return { changed, ok: false, ratio: ratio(to, from), to: hex(to), from: hex(from), strong, ring }
@@ -196,6 +198,7 @@ for (const id of components) {
           else ch = { ...ch, ratio: ratio(seen, bg), to: hex(seen), from: hex(bg) }
         }
         if (!ch.changed) add({ id, theme, check: 'focus', fixture: meta.name, what: `${name}: nothing changes on focus`, sc: '2.4.7' })
+        else if (!ch.ok && ch.short) add({ id, theme, check: 'focus', fixture: meta.name, what: `${name}: the change reaches 3:1, but only ${ch.strong}px of it, under half a ${ch.ring * 2}px ring`, sc: '1.4.11' })
         else if (!ch.ok) add({ id, theme, check: 'focus', fixture: meta.name, what: `${name}: ${ch.strong} of a ${ch.ring}px ring reach 3:1; most of the change is ${ch.to} over ${ch.from}`, sc: '1.4.11', ratio: ch.ratio })
 
         // Edges: fields, switches and toggles, against the page. The box that
@@ -211,12 +214,14 @@ for (const id of components) {
             const all = [top, ...top.querySelectorAll('*')].filter((p) => {
               const cs = getComputedStyle(p)
               if (cs.visibility === 'hidden' || cs.display === 'none' || cs.position === 'absolute' && /focus/.test(p.className)) return false
-              return (parseFloat(cs.borderTopWidth) && cs.borderTopStyle !== 'none') || cs.backgroundColor !== 'rgba(0, 0, 0, 0)' || (cs.outlineStyle !== 'none' && parseFloat(cs.outlineWidth)) || cs.boxShadow !== 'none'
+              return ['Top', 'Right', 'Bottom', 'Left'].some((s) => parseFloat(cs[`border${s}Width`]) && cs[`border${s}Style`] !== 'none') || cs.backgroundColor !== 'rgba(0, 0, 0, 0)' || (cs.outlineStyle !== 'none' && parseFloat(cs.outlineWidth)) || cs.boxShadow !== 'none'
             })
             const rect = (p) => { const r = p.getBoundingClientRect(); return { x: r.x + scrollX, y: r.y + scrollY, width: r.width, height: r.height, radius: parseFloat(getComputedStyle(p).borderTopLeftRadius) || 0, cls: [...p.classList].find((k) => k.includes('__')) ?? p.className } }
             const sorted = all.map(rect).sort((a, b) => b.width * b.height - a.width * a.height)
             // The boxes that make up the control, not the small things in it, like a switch's thumb.
             const big = sorted.filter((r) => r.width * r.height >= 0.6 * sorted[0].width * sorted[0].height)
+            // And the field itself when it draws its own edge, like a search field inside a bigger plate.
+            if (all.includes(el) && !big.some((r) => r.cls === rect(el).cls)) big.push(rect(el))
             const thumb = top.querySelector('[class*="__thumb"]'), track = top.querySelector('[class*="__background"]')
             return { boxes: big, thumb: thumb && rect(thumb), track: track && rect(track) }
           })

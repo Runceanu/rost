@@ -38,7 +38,7 @@ export interface Contract {
   /** How Rost's own CSS reaches a state (see the schema): only used when checking Rost's CSS. */
   readonly statesOn?: string
   readonly stateSelectors?: Readonly<Record<string, string>>
-  /** Parts that are pseudo-elements of the root, like a dialog's `::backdrop`. */
+  /** Parts that are pseudo-elements of the root, like a dialog's `::backdrop`, or of another part (`__search::placeholder`). */
   readonly pseudos?: Readonly<Record<string, string>>
 }
 
@@ -47,7 +47,7 @@ export interface YamlContract {
   readonly id: string
   readonly name: string
   readonly props?: Readonly<Record<string, { readonly type: string }>>
-  readonly elements: Readonly<Record<string, { readonly pseudo?: string; readonly styles?: Readonly<Record<string, ContractValue>> }>>
+  readonly elements: Readonly<Record<string, { readonly pseudo?: string; readonly of?: string; readonly styles?: Readonly<Record<string, ContractValue>> }>>
   readonly variants?: readonly {
     readonly when: Readonly<Record<string, string | boolean>>
     readonly elements?: PartValues
@@ -120,7 +120,7 @@ export function forApp(c: YamlContract, app: string): Contract {
     deviations: [...(c.deviations ?? []), ...(impl?.deviations ?? [])],
     ...(c.statesOn ? { statesOn: c.statesOn } : {}),
     ...(c.stateSelectors ? { stateSelectors: c.stateSelectors } : {}),
-    ...(Object.values(c.elements).some((e) => e.pseudo) ? { pseudos: Object.fromEntries(Object.entries(c.elements).filter(([, e]) => e.pseudo).map(([p, e]) => [p, e.pseudo!])) } : {}),
+    ...(Object.values(c.elements).some((e) => e.pseudo) ? { pseudos: Object.fromEntries(Object.entries(c.elements).filter(([, e]) => e.pseudo).map(([p, e]) => [p, `${e.of ? `__${e.of}` : ''}${e.pseudo!}`])) } : {}),
   }
 }
 
@@ -323,7 +323,7 @@ export function conform(contract: Contract, css: string, tokensCss: string, vari
     const merged = new Map<string, string>()
     const base = part === 'root' ? root : partSelector(part)
     const variantRules = variant
-      ? variantSelectors().map((v) => (part === 'root' ? v : pseudoOf(part) ? `${v}${pseudoOf(part)}` : `${v} ${partSelector(part)}`))
+      ? variantSelectors().map((v) => (part === 'root' ? v : pseudoOf(part) && !pseudoOf(part)!.startsWith('__') ? `${v}${pseudoOf(part)}` : `${v} ${partSelector(part)}`))
       : []
     for (const sel of [base, ...variantRules]) for (const [k, v] of rules.get(normSelector(sel)) ?? []) merged.set(k, v)
     return merged

@@ -1347,6 +1347,17 @@
   --combobox-option-check: #00d669;
   --combobox-option-default-label: #ededed;
 
+  /* ── Component: command ──────────────────────────────────────────────────── */
+  --command-backdrop: #060805;
+  --command-background: #171717;
+  --command-edge: #3a3a3a;
+  --command-empty: #999999;
+  --command-group-label: #999999;
+  --command-placeholder: #999999;
+  --command-search: #ededed;
+  --command-search-line: #747573;
+  --command-search-line-focus: #ededed;
+
   /* ── Generic colours (no family in Figma) ────────────────────────────────── */
   --background: #3a3a3a;
   --focus-ring: #999999;
@@ -1503,7 +1514,7 @@
 }
 
 /* ── Light ──────────────────────────────────────────────────────────────────
- * Only the colours change, 871 of them. Figma's light mode, with Rost's own
+ * Only the colours change, 879 of them. Figma's light mode, with Rost's own
  * corrections from registry/light.json where Figma's value fails contrast.
  * Set data-theme="light" on <html> (or any element). Without it you get dark,
  * whatever the system says. data-theme="dark" brings dark back inside a light page.
@@ -1783,6 +1794,14 @@
   --combobox-empty: #6a6b69;
   --combobox-listbox-background: #ededed;
   --combobox-listbox-edge: #d3d9d5;
+  --command-backdrop: #fcfcfc;
+  --command-background: #ededed;
+  --command-edge: #d3d9d5;
+  --command-empty: #6a6b69;
+  --command-group-label: #6a6b69;
+  --command-placeholder: #6a6b69;
+  --command-search: #060805;
+  --command-search-line-focus: #060805;
   --description-list-detail: #060805;
   --description-list-divider: #d3d9d5;
   --description-list-term: #171717;
@@ -2658,6 +2677,14 @@
   --combobox-empty: #999999;
   --combobox-listbox-background: #171717;
   --combobox-listbox-edge: #3a3a3a;
+  --command-backdrop: #060805;
+  --command-background: #171717;
+  --command-edge: #3a3a3a;
+  --command-empty: #999999;
+  --command-group-label: #999999;
+  --command-placeholder: #999999;
+  --command-search: #ededed;
+  --command-search-line-focus: #ededed;
   --description-list-detail: #ededed;
   --description-list-divider: #3a3a3a;
   --description-list-term: #d3d9d5;

@@ -44,8 +44,10 @@ function declarations(styles, { root }) {
 function build(id) {
   const c = read(id)
   const base = `rost-${id}`
-  // A part can be a pseudo-element of the root (`pseudo: ::backdrop`) instead of an element of its own.
-  const pseudo = (p) => c.elements?.[p]?.pseudo
+  // A part can be a pseudo-element of the root (`pseudo: ::backdrop`) instead of an element of its own,
+  // or of another part (`pseudo: ::placeholder`, `of: search` is `.rost-x__search::placeholder`).
+  const pseudo = (p) => { const e = c.elements?.[p]; return e?.pseudo && `${e.of ? `__${kebab(e.of)}` : ""}${e.pseudo}` }
+  const owned = (p) => Boolean(c.elements?.[p]?.of)
   const part = (p) => (p === 'root' ? `.${base}` : pseudo(p) ? `.${base}${pseudo(p)}` : `.${base}__${kebab(p)}`)
   const rules = [
     `/* Generated from contracts/${id}.contract.yaml by bin/build-css.mjs. Don't edit: change the contract and rebuild. */`,
@@ -87,7 +89,7 @@ function build(id) {
       if (prop === 'state' && (val === 'Hover' || val === 'Pressed') && c.states?.includes('Disabled')) root += `:where(:not(${disabledOf(c)}))`
     }
     for (const [p, styles] of Object.entries(v.elements ?? {}))
-      rule(p === 'root' ? root : pseudo(p) ? `${root}${pseudo(p)}` : `${root} ${part(p)}`, declarations(styles, { root: p === 'root' }))
+      rule(p === 'root' ? root : pseudo(p) && !owned(p) ? `${root}${pseudo(p)}` : `${root} ${part(p)}`, declarations(styles, { root: p === 'root' }))
   }
 
   // Named animations, and what they become for someone who asks for less motion.

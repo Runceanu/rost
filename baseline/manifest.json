@@ -2775,5 +2775,14 @@
       "width": 200,
       "height": 40
     }
+  ],
+  "command": [
+    {
+      "nodeId": "758:10",
+      "name": "command",
+      "file": "758-10.png",
+      "width": 480,
+      "height": 316
+    }
   ]
 }

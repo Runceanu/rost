@@ -1,0 +1,98 @@
+/* Generated from contracts/command.contract.yaml by bin/build-css.mjs. Don't edit: change the contract and rebuild. */
+
+.rost-command, .rost-command :where(:not([class*="rost-"]), [class*="rost-command__"]) { box-sizing: border-box; margin: 0; }
+.rost-command > img, .rost-command [class*="__icons-"] > img { display: block; position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; }
+.rost-command ::placeholder { color: inherit; opacity: 1; }
+
+.rost-command {
+  padding: var(--spacing-gap-none);
+  border: none;
+  background: transparent;
+  overflow: visible;
+  max-width: none;
+  margin: 0 auto auto;
+  inset-block-start: var(--spacing-gap-7xlarge);
+  color: inherit;
+}
+
+.rost-command::backdrop {
+  background: var(--command-backdrop);
+  opacity: var(--opacity-hard);
+}
+
+.rost-command__panel {
+  display: flex;
+  flex-direction: column;
+  width: 480px;
+  max-width: calc(100vw - 32px);
+  overflow: hidden;
+  border-radius: var(--spacing-radius-large);
+  background: var(--command-background);
+  outline-style: solid;
+  outline-width: var(--spacing-outline-small);
+  outline-offset: calc(-1 * var(--spacing-outline-small));
+  outline-color: var(--command-edge);
+  box-shadow: var(--shadow-floating);
+}
+
+.rost-command__search {
+  display: block;
+  width: 100%;
+  height: var(--spacing-size-large);
+  padding-left: var(--spacing-gap-medium);
+  padding-right: var(--spacing-gap-medium);
+  border: none;
+  border-bottom-style: solid;
+  border-bottom-width: var(--spacing-outline-small);
+  border-bottom-color: var(--command-search-line);
+  background: transparent;
+  outline: none;
+  font-family: var(--font-family-base);
+  font-weight: var(--typography-paragraph-font-weight-regular);
+  font-size: var(--typography-paragraph-font-size);
+  line-height: var(--typography-paragraph-line-height);
+  letter-spacing: var(--typography-paragraph-letter-spacing);
+  color: var(--command-search);
+}
+
+.rost-command__search::placeholder {
+  color: var(--command-placeholder);
+}
+
+.rost-command__list {
+  display: flex;
+  flex-direction: column;
+  max-height: 320px;
+  overflow-y: auto;
+  padding: var(--spacing-gap-2xsmall);
+}
+
+.rost-command__group-label {
+  padding-top: var(--spacing-gap-small);
+  padding-bottom: var(--spacing-gap-2xsmall);
+  padding-left: var(--spacing-gap-small-medium);
+  font-family: var(--font-family-base);
+  font-weight: var(--typography-label-font-weight-regular);
+  font-size: var(--typography-label-font-size);
+  line-height: var(--typography-label-line-height);
+  letter-spacing: var(--typography-label-letter-spacing);
+  color: var(--command-group-label);
+}
+
+.rost-command__empty {
+  display: flex;
+  align-items: center;
+  height: var(--spacing-size-medium);
+  padding-left: var(--spacing-gap-small-medium);
+  font-family: var(--font-family-base);
+  font-weight: var(--typography-paragraph-font-weight-regular);
+  font-size: var(--typography-paragraph-font-size);
+  line-height: var(--typography-paragraph-line-height);
+  letter-spacing: var(--typography-paragraph-letter-spacing);
+  color: var(--command-empty);
+}
+
+.rost-command:has(.rost-command__search:focus-visible) .rost-command__search {
+  border-bottom-color: var(--command-search-line-focus);
+  border-bottom-width: var(--spacing-outline-medium);
+}

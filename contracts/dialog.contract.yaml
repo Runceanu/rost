@@ -29,6 +29,7 @@ elements:
       background: { value: transparent, assert: false }
       overflow: { value: visible, assert: false }
       max-width: { value: none, assert: false }
+      margin: { value: auto, assert: false, notes: "The browser centres a modal dialog with its margins; Rost's reset would take them away." }
       color: { value: inherit, assert: false }
   backdrop:
     pseudo: "::backdrop"

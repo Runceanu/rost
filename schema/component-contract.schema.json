@@ -235,12 +235,17 @@
             "type": "boolean"
           },
           "pseudo": {
-            "description": "The part is a pseudo-element of the root, not an element of its own: `.rost-<id>::backdrop`, not `.rost-<id>__<part>`. For what the browser draws itself, like a dialog's backdrop.",
+            "description": "The part is a pseudo-element of the root, not an element of its own: `.rost-<id>::backdrop`, not `.rost-<id>__<part>`. For what the browser draws itself, like a dialog's backdrop. With `of`, it belongs to that part instead.",
             "enum": [
               "::backdrop",
               "::before",
-              "::after"
+              "::after",
+              "::placeholder"
             ]
+          },
+          "of": {
+            "description": "With `pseudo`: the part whose pseudo-element this is, when it isn't the root. `pseudo: ::placeholder`, `of: search` is `.rost-<id>__search::placeholder`.",
+            "type": "string"
           },
           "notes": {
             "type": "string"

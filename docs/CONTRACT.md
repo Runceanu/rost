@@ -70,6 +70,9 @@ elements:                   # every part, in DOM order, and what never changes
   focus-ring: {}
   backdrop:                 # a part the browser draws itself: .rost-<id>::backdrop, not .rost-<id>__backdrop
     pseudo: "::backdrop"    # Dialog's dim layer. ::before and ::after work the same way
+  search-placeholder:       # a pseudo-element of another part: .rost-<id>__search::placeholder
+    pseudo: "::placeholder"
+    of: search
 
 keyframes:                  # named animations: @keyframes rost-<id>-<name>, used with animation-name
   turn: { from: { transform: "rotate(0deg)" }, to: { transform: "rotate(360deg)" } }
