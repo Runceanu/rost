@@ -1,0 +1,98 @@
+# yaml-language-server: $schema=../schema/component-contract.schema.json
+schemaVersion: 2
+id: bar-chart
+name: BarChart
+kind: component
+status: review
+summary: "A handful of figures side by side as bars, with a label under each: grey, and green for the one that matters now. For months, not for analysis."
+category: display
+related: [ stat, progress, table ]
+source:
+  tool: figma
+  fileKey: 1Zy0wiWKXQAvsfDBX3KR0d
+  nodeId: "749:23"
+  url: https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=749-23
+  extractedAt: "2026-11-17"
+  extractedBy: hand
+  frozenAt: "2026-11-17"
+props:
+  data: { type: node, required: true, notes: "The bars, in order: `{ label, value, valueText? }`. `valueText` is what a screen reader says, like €1,200." }
+  current: { type: number, notes: "Which bar is now, by its place from 0. It's green." }
+  max: { type: number, notes: "The value of a full-height bar. The largest value by default." }
+  height: { type: number, default: 160, notes: "The whole chart's height in px, labels included." }
+  label: { type: string, required: true, notes: "What the chart shows. Its accessible name." }
+elements:
+  root:
+    notes: "An `<ol>`, one item per bar, side by side and sharing the width, 8px apart. Its height comes from the `height` prop."
+    styles:
+      display: { value: flex, assert: false }
+      gap: { token: spacing/gap/small, value: 8px }
+      margin: { token: spacing/gap/none, value: 0px }
+      padding: { token: spacing/gap/none, value: 0px }
+      list-style: { value: none, assert: false }
+  item:
+    notes: "An `<li>`: the bar's room, then its label, 8px apart."
+    styles:
+      display: { value: flex, assert: false }
+      flex-direction: { value: column, assert: false }
+      flex: { value: 1 1 0, assert: false }
+      gap: { token: spacing/gap/small, value: 8px }
+      min-width: { value: "0", assert: false }
+  plot:
+    notes: "The room a full bar would take. The bar stands at its bottom."
+    styles:
+      display: { value: flex, assert: false }
+      align-items: { value: flex-end }
+      flex-grow: { value: "1", assert: false }
+  bar:
+    notes: "A bar, as tall as its value out of `max`, in a field's edge grey, with 4px corners on top."
+    styles:
+      width: { value: 100%, assert: false }
+      border-top-left-radius: { token: spacing/radius/xsmall, value: 4px }
+      border-top-right-radius: { token: spacing/radius/xsmall, value: 4px }
+      background: { token: bar-chart/bar, value: "#747573" }
+  current-bar:
+    notes: "The bar for now: the same shape, in the primary green."
+    styles:
+      width: { value: 100%, assert: false }
+      border-top-left-radius: { token: spacing/radius/xsmall, value: 4px }
+      border-top-right-radius: { token: spacing/radius/xsmall, value: 4px }
+      background: { token: bar-chart/current, value: "#00d669" }
+  label:
+    notes: "Under each bar, centred, in label type and the tertiary grey."
+    styles:
+      text-align: { value: center, assert: false }
+      white-space: { value: nowrap, assert: false }
+      font-family: { token: font-family/base, value: "'General Sans Variable'" }
+      font-weight: { token: typography/label/font-weight/regular, value: "400" }
+      font-size: { token: typography/label/font-size, value: 12px }
+      line-height: { token: typography/label/line-height, value: 14px }
+      letter-spacing: { token: typography/label/letter-spacing, value: 0px }
+      color: { token: bar-chart/label, value: "#999999" }
+  current-label:
+    notes: "The label for now, medium weight in the main text colour."
+    styles:
+      text-align: { value: center, assert: false }
+      white-space: { value: nowrap, assert: false }
+      font-family: { token: font-family/base, value: "'General Sans Variable'" }
+      font-weight: { token: typography/label/font-weight/medium, value: "500" }
+      font-size: { token: typography/label/font-size, value: 12px }
+      line-height: { token: typography/label/line-height, value: 14px }
+      letter-spacing: { token: typography/label/letter-spacing, value: 0px }
+      color: { token: bar-chart/current-label, value: "#ededed" }
+guidance:
+  status: proposed
+  use:
+    - title: How this month compares
+      text: "Income for the last six months, with this one in green. The Stat above it says the number; the bars say whether it's up."
+  avoid:
+    - title: Many bars
+      text: "Past about twelve the labels don't fit and the bars blur. Use a **Table**."
+    - title: Exact comparisons
+      text: "Bars without an axis show shape, not amounts. When the amounts matter, write them."
+  behaviour: "Each bar's height is its value out of `max`, which is the largest value unless you set it. It has no axis, gridlines or tooltips, on purpose."
+  accessibility:
+    element: "`<ol>` with an `aria-label`, so it's read as a list of so many items. Each `<li>` says its label and value in words."
+    name: "`label`: what the chart shows, like Income by month."
+    colour: "The grey bars are 4.3:1 on the dark page and the green one 10:1. The current label is also heavier, so the colour isn't the only sign."
+  content: "Short labels, like Jun or Q3. Give `valueText` in the units people read, like €1,200."

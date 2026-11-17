@@ -1,0 +1,94 @@
+# yaml-language-server: $schema=../schema/component-contract.schema.json
+schemaVersion: 2
+id: progress-ring
+name: ProgressRing
+kind: component
+status: review
+summary: "Progress as a 40px ring, for where a bar won't fit: next to a Stat, in a card's corner. Green as it goes, amber or red when it needs a look."
+category: feedback
+related: [ progress, stat, spinner ]
+source:
+  tool: figma
+  fileKey: 1Zy0wiWKXQAvsfDBX3KR0d
+  nodeId: "749:20"
+  url: https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=749-20
+  extractedAt: "2026-11-17"
+  extractedBy: hand
+  frozenAt: "2026-11-17"
+props:
+  value: { type: number, required: true, notes: "From 0 to `max`." }
+  max: { type: number, default: 100 }
+  tone:
+    type: enum
+    values: [ positive, warning, negative ]
+    default: positive
+    notes: "The same as Progress's: `warning` near a limit, `negative` over it. Say why in words too."
+  label: { type: string, required: true, notes: "What it measures. The ring's accessible name." }
+elements:
+  root:
+    notes: "A `<span role=\"progressbar\">` with its values, 40px square, holding the SVG."
+    styles:
+      display: { value: inline-block, assert: false }
+      flex-shrink: { value: "0", assert: false }
+      width: { token: spacing/size/medium, value: 40px }
+      height: { token: spacing/size/medium, value: 40px }
+  svg:
+    notes: "The drawing, a 40 by 40 viewBox, turned so the ring starts at the top."
+    styles:
+      display: { value: block, assert: false }
+      width: { value: 100%, assert: false }
+      height: { value: 100%, assert: false }
+      transform: { value: rotate(-90deg), assert: false }
+  track:
+    notes: "The whole ring: a circle of radius 18 with a 4px stroke, in Progress's track grey."
+    styles:
+      fill: { value: none, assert: false }
+      stroke: { token: progress-ring/track, value: "#3a3a3a" }
+      stroke-width: { token: spacing/outline/large, value: 4px }
+  arc:
+    notes: "The same circle, drawn as far round as `value` out of `max`, with square ends. It eases to a new value."
+    styles:
+      fill: { value: none, assert: false }
+      stroke-width: { token: spacing/outline/large, value: 4px }
+      stroke-linecap: { value: butt, assert: false }
+      transition-property: { value: stroke-dasharray, assert: false }
+      transition-duration: { token: motion/duration/slow, value: 450ms }
+      transition-timing-function: { token: motion/easing/move, value: "cubic-bezier(0.4, 0, 0.2, 1)" }
+reducedMotion:
+  notes: "It jumps to the new value for someone who asks for less motion."
+  elements:
+    arc:
+      transition-duration: { value: 0s, assert: false }
+variants:
+  - when: { tone: positive }
+    figmaNode: "749:11"
+    elements:
+      arc:
+        stroke: { token: progress-ring/positive, value: "#00d669" }
+  - when: { tone: warning }
+    figmaNode: "749:14"
+    elements:
+      arc:
+        stroke: { token: progress-ring/warning, value: "#fda50d" }
+  - when: { tone: negative }
+    figmaNode: "749:17"
+    elements:
+      arc:
+        stroke: { token: progress-ring/negative, value: "#f2705f" }
+guidance:
+  status: proposed
+  use:
+    - title: A share, next to its number
+      text: "How much of the year's tax is set aside, beside the figure itself. The ring is the glance, the number is the fact."
+      show: tone=positive
+  avoid:
+    - title: On its own
+      text: "A ring can't be read to the percent. Write the number next to it."
+    - title: Waiting
+      text: "Something loading with no known end is a **Spinner**."
+  behaviour: "It draws `value` out of `max` clockwise from the top, and eases to a new value over 450ms, or jumps there for someone who asks for less motion."
+  accessibility:
+    element: "`<span role=\"progressbar\">` with `aria-valuenow`, `aria-valuemin=\"0\"` and `aria-valuemax`. The SVG is hidden from screen readers."
+    name: "`label`, as `aria-label`."
+    colour: "The arc is a graphic that carries meaning: each tone is 3:1 or more against the track. The tone is never the only signal."
+  content: "The label says what it measures: Tax set aside for 2026."

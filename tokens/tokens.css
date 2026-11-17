@@ -1282,6 +1282,18 @@
   --quote-rule: #00d669;
   --quote-text: #ededed;
 
+  /* ── Component: progress-ring ────────────────────────────────────────────── */
+  --progress-ring-negative: #f2705f;
+  --progress-ring-positive: #00d669;
+  --progress-ring-track: #3a3a3a;
+  --progress-ring-warning: #fda50d;
+
+  /* ── Component: bar-chart ────────────────────────────────────────────────── */
+  --bar-chart-bar: #747573;
+  --bar-chart-current: #00d669;
+  --bar-chart-current-label: #ededed;
+  --bar-chart-label: #999999;
+
   /* ── Generic colours (no family in Figma) ────────────────────────────────── */
   --background: #3a3a3a;
   --focus-ring: #999999;
@@ -1438,7 +1450,7 @@
 }
 
 /* ── Light ──────────────────────────────────────────────────────────────────
- * Only the colours change, 833 of them. Figma's light mode, with Rost's own
+ * Only the colours change, 839 of them. Figma's light mode, with Rost's own
  * corrections from registry/light.json where Figma's value fails contrast.
  * Set data-theme="light" on <html> (or any element). Without it you get dark,
  * whatever the system says. data-theme="dark" brings dark back inside a light page.
@@ -1611,6 +1623,8 @@
   --avatar-background: #d3d9d5;
   --avatar-initials: #060805;
   --background: #c2c7c3;
+  --bar-chart-current-label: #060805;
+  --bar-chart-label: #6a6b69;
   --breadcrumb-current: #060805;
   --breadcrumb-link: #171717;
   --breadcrumb-separator: #6a6b69;
@@ -1932,6 +1946,10 @@
   --pagination-label: #171717;
   --popover-background: #ededed;
   --popover-edge: #d3d9d5;
+  --progress-ring-negative: #ae1b13;
+  --progress-ring-positive: #0e7118;
+  --progress-ring-track: #d3d9d5;
+  --progress-ring-warning: #7a4805;
   --progress-fill-negative: #ae1b13;
   --progress-fill-positive: #0e7118;
   --progress-fill-warning: #7a4805;
@@ -2448,6 +2466,8 @@
   --avatar-background: #3a3a3a;
   --avatar-initials: #ededed;
   --background: #3a3a3a;
+  --bar-chart-current-label: #ededed;
+  --bar-chart-label: #999999;
   --breadcrumb-current: #ededed;
   --breadcrumb-link: #d3d9d5;
   --breadcrumb-separator: #999999;
@@ -2769,6 +2789,10 @@
   --pagination-label: #d3d9d5;
   --popover-background: #171717;
   --popover-edge: #3a3a3a;
+  --progress-ring-negative: #f2705f;
+  --progress-ring-positive: #00d669;
+  --progress-ring-track: #3a3a3a;
+  --progress-ring-warning: #fda50d;
   --progress-fill-negative: #f2705f;
   --progress-fill-positive: #00d669;
   --progress-fill-warning: #fda50d;

@@ -2459,5 +2459,37 @@
       "width": 400,
       "height": 88
     }
+  ],
+  "progress-ring": [
+    {
+      "nodeId": "749:11",
+      "name": "tone=positive",
+      "file": "749-11.png",
+      "width": 40,
+      "height": 40
+    },
+    {
+      "nodeId": "749:14",
+      "name": "tone=warning",
+      "file": "749-14.png",
+      "width": 40,
+      "height": 40
+    },
+    {
+      "nodeId": "749:17",
+      "name": "tone=negative",
+      "file": "749-17.png",
+      "width": 40,
+      "height": 40
+    }
+  ],
+  "bar-chart": [
+    {
+      "nodeId": "749:23",
+      "name": "bar-chart",
+      "file": "749-23.png",
+      "width": 316,
+      "height": 160
+    }
   ]
 }

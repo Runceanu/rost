@@ -1,0 +1,63 @@
+/* Generated from contracts/bar-chart.contract.yaml by bin/build-css.mjs. Don't edit: change the contract and rebuild. */
+
+.rost-bar-chart, .rost-bar-chart * { box-sizing: border-box; margin: 0; }
+.rost-bar-chart > img, .rost-bar-chart [class*="__icons-"] > img { display: block; position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; }
+.rost-bar-chart ::placeholder { color: inherit; opacity: 1; }
+
+.rost-bar-chart {
+  display: flex;
+  gap: var(--spacing-gap-small);
+  margin: var(--spacing-gap-none);
+  padding: var(--spacing-gap-none);
+  list-style: none;
+}
+
+.rost-bar-chart__item {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 0;
+  gap: var(--spacing-gap-small);
+  min-width: 0;
+}
+
+.rost-bar-chart__plot {
+  display: flex;
+  align-items: flex-end;
+  flex-grow: 1;
+}
+
+.rost-bar-chart__bar {
+  width: 100%;
+  border-top-left-radius: var(--spacing-radius-xsmall);
+  border-top-right-radius: var(--spacing-radius-xsmall);
+  background: var(--bar-chart-bar);
+}
+
+.rost-bar-chart__current-bar {
+  width: 100%;
+  border-top-left-radius: var(--spacing-radius-xsmall);
+  border-top-right-radius: var(--spacing-radius-xsmall);
+  background: var(--bar-chart-current);
+}
+
+.rost-bar-chart__label {
+  text-align: center;
+  white-space: nowrap;
+  font-family: var(--font-family-base);
+  font-weight: var(--typography-label-font-weight-regular);
+  font-size: var(--typography-label-font-size);
+  line-height: var(--typography-label-line-height);
+  letter-spacing: var(--typography-label-letter-spacing);
+  color: var(--bar-chart-label);
+}
+
+.rost-bar-chart__current-label {
+  text-align: center;
+  white-space: nowrap;
+  font-family: var(--font-family-base);
+  font-weight: var(--typography-label-font-weight-medium);
+  font-size: var(--typography-label-font-size);
+  line-height: var(--typography-label-line-height);
+  letter-spacing: var(--typography-label-letter-spacing);
+  color: var(--bar-chart-current-label);
+}

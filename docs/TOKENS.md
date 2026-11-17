@@ -6,10 +6,10 @@ Every value in every contract, sorted by why it has a token or doesn't. A value 
 
 | | Values | Share | Meaning |
 |---|---|---|---|
-| Has a token | 1849 | 60% | Uses a token, and the check tests it. |
+| Has a token | 1881 | 60% | Uses a token, and the check tests it. |
 | Token suggested | 0 | 0% | A token I want that doesn't exist yet. The freeze turned every other suggestion into a token. |
-| How Figma builds it | 760 | 25% | How Figma builds the layer (position, inset, which sides get a stroke). Nothing to tokenise. |
-| Figma frame size | 302 | 10% | A root size that is just the Figma frame. Written down, not checked. |
+| How Figma builds it | 777 | 25% | How Figma builds the layer (position, inset, which sides get a stroke). Nothing to tokenise. |
+| Figma frame size | 310 | 10% | A root size that is just the Figma frame. Written down, not checked. |
 | No token, on purpose | 119 | 4% | Plain on purpose, and the contract says why. |
 | Open gap | 56 | 2% | No token and no reason. Each one needs a decision from me. |
 
@@ -21,6 +21,7 @@ Every value in every contract, sorted by why it has a token or doesn't. A value 
 | [Avatar](components/avatar.md) | 22 | · | 11 | 3 | · | · |
 | [AvatarGroup](components/avatar-group.md) | 11 | · | 6 | · | 4 | · |
 | [Badge](components/badge.md) | 32 | · | 23 | · | 2 | · |
+| [BarChart](components/bar-chart.md) | 22 | · | 12 | 3 | · | · |
 | [Breadcrumb](components/breadcrumb.md) | 13 | · | 6 | 2 | 1 | · |
 | [Button](components/button.md) | 83 | · | 38 | 9 | 5 | 1 |
 | [Card](components/card.md) | 6 | · | 2 | 2 | 1 | · |
@@ -54,6 +55,7 @@ Every value in every contract, sorted by why it has a token or doesn't. A value 
 | [Paper effect](components/effect-paper.md) | 6 | · | · | · | 7 | · |
 | [Popover](components/popover.md) | 9 | · | 3 | 6 | 1 | 1 |
 | [Progress](components/progress.md) | 9 | · | 6 | 1 | · | · |
+| [ProgressRing](components/progress-ring.md) | 10 | · | 5 | 5 | · | · |
 | [Projects](components/projects.md) | 77 | · | 33 | 8 | 5 | 4 |
 | [Quote](components/quote.md) | 19 | · | 5 | 2 | · | · |
 | [Radio](components/radio.md) | 39 | · | 14 | 9 | 1 | 1 |
@@ -284,7 +286,7 @@ When a component needs a colour no other has, change its own token to point some
 
 ## Two themes
 
-Dark is the default. It's what Figma draws first and what both apps use. Light is new (2026-10-30). Only colours change: 833 theme colours have a light value of their own. Every other token, and every component, is the same in both.
+Dark is the default. It's what Figma draws first and what both apps use. Light is new (2026-10-30). Only colours change: 839 theme colours have a light value of their own. Every other token, and every component, is the same in both.
 
 `tokens/tokens.css` puts dark on `:root`. Light applies under `[data-theme="light"]` and nowhere else. A system set to light doesn't change it: with no `data-theme` you get dark. `[data-theme="dark"]` brings dark back inside a light page, so a dark panel can sit in a light one. Set it on `<html>` for the whole page:
 
@@ -357,4 +359,4 @@ rost.build's own transitions use the tokens now. No component in Rost animates y
 
 ## Figma variables
 
-The Figma file has **1281** variables (`registry/figma-variables.json`, read on 2026-11-04) and `tokens/tokens.css` has **1281** of them. `npm run tokens` builds it from that read, so they can't come apart.
+The Figma file has **1289** variables (`registry/figma-variables.json`, read on 2026-11-04) and `tokens/tokens.css` has **1289** of them. `npm run tokens` builds it from that read, so they can't come apart.

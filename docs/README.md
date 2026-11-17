@@ -14,7 +14,7 @@ Rost started as a design system for my own needs and grew into a product of its 
 | [Roadmap](ROADMAP.md) | What I'm doing next |
 | [Release notes](CHANGELOG.md) | What changed in each release |
 
-**70** contracts, **5** stable. **70** have guidance, and I've signed off **32** of those.
+**72** contracts, **5** stable. **72** have guidance, and I've signed off **32** of those.
 
 ## Catalogue
 
@@ -26,6 +26,7 @@ Rost started as a design system for my own needs and grew into a product of its 
 | [Avatar](components/avatar.md) | A person or a client as a small circle. Their photo, or their initials on grey when there's no photo. | `review` | `proposed` | · |
 | [AvatarGroup](components/avatar-group.md) | Who is involved, without a list. Medium Avatars overlapping by 8px, each ringed in the page colour, and how many more. | `review` | `proposed` | · |
 | [Badge](components/badge.md) | A small status marker: a coloured dot on its own, or an outlined label. The colour sits in the dot and the outline, never in the text. | `stable` | `agreed` | Portfolio site, Accounting app |
+| [BarChart](components/bar-chart.md) | A handful of figures side by side as bars, with a label under each: grey, and green for the one that matters now. For months, not for analysis. | `review` | `proposed` | · |
 | [Breadcrumb](components/breadcrumb.md) | Where this page sits, from the top down. Links to the pages above it, a small chevron between, and this page's name last. | `review` | `proposed` | · |
 | [Button](components/button.md) | A 48px button with a label and, if it helps, an icon in front. In four levels of emphasis. | `stable` | `agreed` | Portfolio site, Accounting app |
 | [Card](components/card.md) | A plate that holds one thing together, like a summary, a setting or a figure. Filled grey, or just an edge. | `review` | `proposed` | · |
@@ -54,6 +55,7 @@ Rost started as a design system for my own needs and grew into a product of its 
 | [Pagination](components/pagination.md) | Moving through a long list a page at a time. Back and forward buttons with where you are between them. | `review` | `proposed` | · |
 | [Popover](components/popover.md) | A small plate that opens over the page with more about something, and closes when you click away. Card's grey, with an edge and the floating shadow. | `review` | `proposed` | · |
 | [Progress](components/progress.md) | How far along something is, as a thin bar that fills. Green as it goes, amber or red when it needs a look. | `review` | `proposed` | · |
+| [ProgressRing](components/progress-ring.md) | Progress as a 40px ring, for where a bar won't fit: next to a Stat, in a card's corner. Green as it goes, amber or red when it needs a look. | `review` | `proposed` | · |
 | [Projects](components/projects.md) | One row in the project list: number, name, and industry, type and period on the right. | `review` | `agreed` | Portfolio site |
 | [Quote](components/quote.md) | Someone's words, pulled out of the text: a green rule on the left, the words in sub-title type, and who said them under it. | `review` | `proposed` | · |
 | [Radio](components/radio.md) | One choice out of a few, all on show. A 20px circle with a dot in the picked one, and the words beside it. | `review` | `proposed` | · |

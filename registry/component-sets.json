@@ -722,5 +722,21 @@
     "variants": [
       { "nodeId": "748:37", "name": "quote", "width": 400, "height": 88 }
     ]
+  },
+  "progress-ring": {
+    "name": "ProgressRing",
+    "setNodeId": "749:20",
+    "variants": [
+      { "nodeId": "749:11", "name": "tone=positive", "width": 40, "height": 40 },
+      { "nodeId": "749:14", "name": "tone=warning", "width": 40, "height": 40 },
+      { "nodeId": "749:17", "name": "tone=negative", "width": 40, "height": 40 }
+    ]
+  },
+  "bar-chart": {
+    "name": "BarChart",
+    "setNodeId": "749:23",
+    "variants": [
+      { "nodeId": "749:23", "name": "bar-chart", "width": 316, "height": 160 }
+    ]
   }
 }
