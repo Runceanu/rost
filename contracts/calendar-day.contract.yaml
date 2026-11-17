@@ -1,0 +1,143 @@
+# yaml-language-server: $schema=../schema/component-contract.schema.json
+schemaVersion: 2
+id: calendar-day
+name: CalendarDay
+kind: component
+status: review
+partOf: calendar
+summary: "One day in a Calendar: a 40px square with its number. Green when picked, green text for today, grey for the months either side, faint when it can't be picked."
+category: inputs
+related: [ calendar ]
+source:
+  tool: figma
+  fileKey: 1Zy0wiWKXQAvsfDBX3KR0d
+  nodeId: "750:32"
+  url: https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=750-32
+  extractedAt: "2026-11-17"
+  extractedBy: hand
+  frozenAt: "2026-11-17"
+props:
+  status:
+    type: enum
+    values: [ default, outside, today, selected, disabled ]
+    default: default
+    notes: "`outside` is a day from the month before or after, `disabled` one outside `min` and `max`. Calendar sets it."
+  children: { type: slot, required: true, notes: "The day's number." }
+states: [ Default, Hover, Focus ]
+elements:
+  root:
+    notes: "A `<button>`, 40px square with 8px corners, the number in the middle in paragraph type."
+    styles:
+      display: { value: inline-flex, assert: false }
+      align-items: { value: center }
+      justify-content: { value: center }
+      width: { token: spacing/size/medium, value: 40px }
+      height: { token: spacing/size/medium, value: 40px }
+      padding: { token: spacing/gap/none, value: 0px }
+      border: { value: none, assert: false }
+      border-radius: { token: spacing/radius/small, value: 8px }
+      background: { value: transparent, assert: false }
+      outline: { value: none, assert: false }
+      cursor: { value: pointer, assert: false }
+      font-family: { token: font-family/base, value: "'General Sans Variable'" }
+      font-weight: { token: typography/paragraph/font-weight/regular, value: "400" }
+      font-size: { token: typography/paragraph/font-size, value: 14px }
+      line-height: { token: typography/paragraph/line-height, value: 20px }
+      letter-spacing: { token: typography/paragraph/letter-spacing, value: 0px }
+variants:
+  - when: { status: default, state: Default }
+    figmaNode: "750:14"
+    elements:
+      root:
+        color: { token: calendar-day/default/label, value: "#ededed" }
+  - when: { status: default, state: Hover }
+    figmaNode: "750:16"
+    elements:
+      root:
+        background: { token: calendar-day/hover/background, value: "#006f27" }
+        color: { token: calendar-day/hover/label, value: "#ededed" }
+  - when: { status: default, state: Focus }
+    figmaNode: "750:18"
+    elements:
+      root:
+        color: { token: calendar-day/default/label, value: "#ededed" }
+        outline: { value: "var(--spacing-outline-medium) solid var(--calendar-day-focus-ring)", untokenised: "Composed from tokens: a 2px ring in calendar-day/focus-ring." }
+        outline-offset: { value: "calc(-1 * var(--spacing-outline-medium))", untokenised: "Composed from a token: the ring sits inside the square." }
+  - when: { status: outside, state: Default }
+    figmaNode: "750:20"
+    elements:
+      root:
+        color: { token: calendar-day/outside/label, value: "#999999" }
+  - when: { status: outside, state: Hover }
+    figmaNode: "750:22"
+    elements:
+      root:
+        background: { token: calendar-day/hover/background, value: "#006f27" }
+        color: { token: calendar-day/hover/label, value: "#ededed" }
+  - when: { status: today, state: Default }
+    figmaNode: "750:24"
+    elements:
+      root:
+        font-weight: { token: typography/paragraph/font-weight/medium, value: "500" }
+        color: { token: calendar-day/today/label, value: "#00d669" }
+  - when: { status: today, state: Hover }
+    figmaNode: "750:26"
+    elements:
+      root:
+        font-weight: { token: typography/paragraph/font-weight/medium, value: "500" }
+        background: { token: calendar-day/hover/background, value: "#006f27" }
+        color: { token: calendar-day/hover/label, value: "#ededed" }
+  - when: { status: selected, state: Default }
+    figmaNode: "750:28"
+    elements:
+      root:
+        font-weight: { token: typography/paragraph/font-weight/medium, value: "500" }
+        background: { token: calendar-day/selected/background, value: "#00d669" }
+        color: { token: calendar-day/selected/label, value: "#060805" }
+  - when: { status: disabled, state: Default }
+    figmaNode: "750:30"
+    elements:
+      root:
+        color: { token: calendar-day/disabled/label, value: "#3a3a3a" }
+        cursor: { value: default, assert: false }
+  - when: { status: outside, state: Focus }
+    elements:
+      root:
+        color: { token: calendar-day/outside/label, value: "#999999" }
+        outline: { value: "var(--spacing-outline-medium) solid var(--calendar-day-focus-ring)", untokenised: "Composed from tokens: a 2px ring in calendar-day/focus-ring." }
+        outline-offset: { value: "calc(-1 * var(--spacing-outline-medium))", untokenised: "Composed from a token: the ring sits inside the square." }
+  - when: { status: today, state: Focus }
+    elements:
+      root:
+        font-weight: { token: typography/paragraph/font-weight/medium, value: "500" }
+        color: { token: calendar-day/today/label, value: "#00d669" }
+        outline: { value: "var(--spacing-outline-medium) solid var(--calendar-day-focus-ring)", untokenised: "Composed from tokens: a 2px ring in calendar-day/focus-ring." }
+        outline-offset: { value: "calc(-1 * var(--spacing-outline-medium))", untokenised: "Composed from a token: the ring sits inside the square." }
+  - when: { status: selected, state: Focus }
+    elements:
+      root:
+        font-weight: { token: typography/paragraph/font-weight/medium, value: "500" }
+        background: { token: calendar-day/selected/background, value: "#00d669" }
+        color: { token: calendar-day/selected/label, value: "#060805" }
+        outline: { value: "var(--spacing-outline-medium) solid var(--calendar-day-selected-focus-ring)", untokenised: "Composed from tokens: a 2px ring in calendar-day/selected/focus-ring, the picked day's own label colour, since the grey ring is 1.4:1 on the green." }
+        outline-offset: { value: "calc(-1 * var(--spacing-outline-large))", untokenised: "Composed from a token: on the green, the ring sits 2px further in, so the green shows round it." }
+  - when: { status: disabled, state: Focus }
+    elements:
+      root:
+        color: { token: calendar-day/disabled/label, value: "#3a3a3a" }
+        cursor: { value: default, assert: false }
+        outline: { value: "var(--spacing-outline-medium) solid var(--calendar-day-focus-ring)", untokenised: "Composed from tokens: a 2px ring in calendar-day/focus-ring." }
+        outline-offset: { value: "calc(-1 * var(--spacing-outline-medium))", untokenised: "Composed from a token: the ring sits inside the square." }
+guidance:
+  status: proposed
+  use:
+    - title: Picked and today
+      text: "The picked day is filled green. Today is green text in medium weight, so it's found without being mistaken for the pick."
+      show: "status=today, state=Default"
+  avoid:
+    - title: On its own
+      text: "A CalendarDay only makes sense in a Calendar, which sets its status and moves the focus between days."
+  behaviour: "A day from either side of the month is grey and can still be picked; it moves the Calendar to that month. A disabled day can be reached with the keyboard, so the grid has no holes, but pressing it does nothing."
+  accessibility:
+    element: "`<button>` inside a `gridcell`. Its name is the whole date in the locale's words, like November 17, 2026. The picked one has `aria-selected`, today `aria-current=\"date\"`, a disabled one `aria-disabled`."
+    colour: "The numbers are 17:1, the grey ones 7:1 and today's green 10:1 on the dark page. Disabled days are faint on purpose, 1.8:1, and not counted."

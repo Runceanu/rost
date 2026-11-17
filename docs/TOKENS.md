@@ -6,11 +6,11 @@ Every value in every contract, sorted by why it has a token or doesn't. A value 
 
 | | Values | Share | Meaning |
 |---|---|---|---|
-| Has a token | 1881 | 60% | Uses a token, and the check tests it. |
+| Has a token | 1928 | 60% | Uses a token, and the check tests it. |
 | Token suggested | 0 | 0% | A token I want that doesn't exist yet. The freeze turned every other suggestion into a token. |
-| How Figma builds it | 777 | 25% | How Figma builds the layer (position, inset, which sides get a stroke). Nothing to tokenise. |
-| Figma frame size | 310 | 10% | A root size that is just the Figma frame. Written down, not checked. |
-| No token, on purpose | 119 | 4% | Plain on purpose, and the contract says why. |
+| How Figma builds it | 789 | 25% | How Figma builds the layer (position, inset, which sides get a stroke). Nothing to tokenise. |
+| Figma frame size | 316 | 10% | A root size that is just the Figma frame. Written down, not checked. |
+| No token, on purpose | 130 | 4% | Plain on purpose, and the contract says why. |
 | Open gap | 56 | 2% | No token and no reason. Each one needs a decision from me. |
 
 ## By contract
@@ -24,6 +24,8 @@ Every value in every contract, sorted by why it has a token or doesn't. A value 
 | [BarChart](components/bar-chart.md) | 22 | · | 12 | 3 | · | · |
 | [Breadcrumb](components/breadcrumb.md) | 13 | · | 6 | 2 | 1 | · |
 | [Button](components/button.md) | 83 | · | 38 | 9 | 5 | 1 |
+| [Calendar](components/calendar.md) | 15 | · | 9 | · | 1 | · |
+| [CalendarDay](components/calendar-day.md) | 32 | · | 3 | 6 | 10 | · |
 | [Card](components/card.md) | 6 | · | 2 | 2 | 1 | · |
 | [Carousel](components/carousel.md) | 43 | · | 28 | 13 | 2 | 1 |
 | [Checkbox](components/checkbox.md) | 38 | · | 14 | 12 | 1 | 1 |
@@ -163,6 +165,9 @@ Sizes and offsets that belong to one component, at a number no size token has.
 | [AvatarGroup](components/avatar-group.md) | `avatar.box-shadow` | `0 0 0 var(--spacing-outline-medium) var(--avatar-group-ring)` | Composed from tokens: a 2px ring in avatar-group/ring. |
 | [AvatarGroup](components/avatar-group.md) | `more.margin-left` | `calc(-1 * var(--spacing-gap-small))` | Composed from a token: the overlap. |
 | [AvatarGroup](components/avatar-group.md) | `more.box-shadow` | `0 0 0 var(--spacing-outline-medium) var(--avatar-group-ring)` | Composed from tokens: a 2px ring in avatar-group/ring. |
+| [Calendar](components/calendar.md) | `grid.grid-template-columns` | `repeat(7, var(--spacing-size-medium))` | Composed from a token: seven columns, each a day wide. |
+| [CalendarDay](components/calendar-day.md) | `root.outline` | `var(--spacing-outline-medium) solid var(--calendar-day-focus-ring)` and 1 more, one per state | Composed from tokens: a 2px ring in calendar-day/focus-ring. |
+| [CalendarDay](components/calendar-day.md) | `root.outline-offset` | `calc(-1 * var(--spacing-outline-medium))` and 1 more, one per state | Composed from a token: the ring sits inside the square. |
 | [Card](components/card.md) | `root.outline-offset` | `calc(-1 * var(--spacing-outline-small))` | Composed from a token: the edge sits inside the card. |
 | [Checkbox](components/checkbox.md), [Radio](components/radio.md) | `box.outline-offset` | `calc(-1 * var(--spacing-outline-small))` | Composed from a token: the edge sits inside the box. |
 | [Code](components/code.md) | `root.font-family` | `'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace` | Rost has no mono family token yet. Where JetBrains Mono isn't loaded, the system mono stands in. |
@@ -286,7 +291,7 @@ When a component needs a colour no other has, change its own token to point some
 
 ## Two themes
 
-Dark is the default. It's what Figma draws first and what both apps use. Light is new (2026-10-30). Only colours change: 839 theme colours have a light value of their own. Every other token, and every component, is the same in both.
+Dark is the default. It's what Figma draws first and what both apps use. Light is new (2026-10-30). Only colours change: 848 theme colours have a light value of their own. Every other token, and every component, is the same in both.
 
 `tokens/tokens.css` puts dark on `:root`. Light applies under `[data-theme="light"]` and nowhere else. A system set to light doesn't change it: with no `data-theme` you get dark. `[data-theme="dark"]` brings dark back inside a light page, so a dark panel can sit in a light one. Set it on `<html>` for the whole page:
 
@@ -359,4 +364,4 @@ rost.build's own transitions use the tokens now. No component in Rost animates y
 
 ## Figma variables
 
-The Figma file has **1289** variables (`registry/figma-variables.json`, read on 2026-11-04) and `tokens/tokens.css` has **1289** of them. `npm run tokens` builds it from that read, so they can't come apart.
+The Figma file has **1301** variables (`registry/figma-variables.json`, read on 2026-11-04) and `tokens/tokens.css` has **1301** of them. `npm run tokens` builds it from that read, so they can't come apart.

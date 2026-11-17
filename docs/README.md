@@ -14,7 +14,7 @@ Rost started as a design system for my own needs and grew into a product of its 
 | [Roadmap](ROADMAP.md) | What I'm doing next |
 | [Release notes](CHANGELOG.md) | What changed in each release |
 
-**72** contracts, **5** stable. **72** have guidance, and I've signed off **32** of those.
+**74** contracts, **5** stable. **74** have guidance, and I've signed off **32** of those.
 
 ## Catalogue
 
@@ -29,6 +29,8 @@ Rost started as a design system for my own needs and grew into a product of its 
 | [BarChart](components/bar-chart.md) | A handful of figures side by side as bars, with a label under each: grey, and green for the one that matters now. For months, not for analysis. | `review` | `proposed` | · |
 | [Breadcrumb](components/breadcrumb.md) | Where this page sits, from the top down. Links to the pages above it, a small chevron between, and this page's name last. | `review` | `proposed` | · |
 | [Button](components/button.md) | A 48px button with a label and, if it helps, an icon in front. In four levels of emphasis. | `stable` | `agreed` | Portfolio site, Accounting app |
+| [Calendar](components/calendar.md) | A month to pick a date from: its name between two arrows, the days of the week, and six weeks of CalendarDays. The arrow keys move a day or a week. | `review` | `proposed` | · |
+| [CalendarDay](components/calendar-day.md) | One day in a Calendar: a 40px square with its number. Green when picked, green text for today, grey for the months either side, faint when it can't be picked. | `review` | `proposed` | · |
 | [Card](components/card.md) | A plate that holds one thing together, like a summary, a setting or a figure. Filled grey, or just an edge. | `review` | `proposed` | · |
 | [Carousel](components/carousel.md) | A card for a carousel: a number, a title and a short description. | `review` | `agreed` | Portfolio site |
 | [Checkbox](components/checkbox.md) | A choice that's on or off and waits for the form. A 20px box that fills green with a tick, and the words beside it. | `review` | `proposed` | · |

@@ -1294,6 +1294,22 @@
   --bar-chart-current-label: #ededed;
   --bar-chart-label: #999999;
 
+  /* ── Component: calendar ─────────────────────────────────────────────────── */
+  --calendar-title: #ededed;
+  --calendar-weekday: #999999;
+
+  /* ── Component: calendar-day ─────────────────────────────────────────────── */
+  --calendar-day-default-label: #ededed;
+  --calendar-day-disabled-label: #3a3a3a;
+  --calendar-day-focus-ring: #999999;
+  --calendar-day-hover-background: #006f27;
+  --calendar-day-hover-label: #ededed;
+  --calendar-day-outside-label: #999999;
+  --calendar-day-selected-background: #00d669;
+  --calendar-day-selected-focus-ring: #060805;
+  --calendar-day-selected-label: #060805;
+  --calendar-day-today-label: #00d669;
+
   /* ── Generic colours (no family in Figma) ────────────────────────────────── */
   --background: #3a3a3a;
   --focus-ring: #999999;
@@ -1450,7 +1466,7 @@
 }
 
 /* ── Light ──────────────────────────────────────────────────────────────────
- * Only the colours change, 839 of them. Figma's light mode, with Rost's own
+ * Only the colours change, 848 of them. Figma's light mode, with Rost's own
  * corrections from registry/light.json where Figma's value fails contrast.
  * Set data-theme="light" on <html> (or any element). Without it you get dark,
  * whatever the system says. data-theme="dark" brings dark back inside a light page.
@@ -1666,6 +1682,15 @@
   --button-tertiary-hover-label: #060805;
   --button-tertiary-pressed-background: #999999;
   --button-tertiary-pressed-label: #171717;
+  --calendar-day-default-label: #060805;
+  --calendar-day-disabled-label: #d3d9d5;
+  --calendar-day-focus-ring: #747573;
+  --calendar-day-hover-background: #7bffc0;
+  --calendar-day-hover-label: #060805;
+  --calendar-day-outside-label: #6a6b69;
+  --calendar-day-today-label: #0e7118;
+  --calendar-title: #060805;
+  --calendar-weekday: #6a6b69;
   --card-filled-background: #ededed;
   --card-outlined-edge: #d3d9d5;
   --carousel-background: #d3d9d5;
@@ -2509,6 +2534,15 @@
   --button-tertiary-hover-label: #ededed;
   --button-tertiary-pressed-background: #454545;
   --button-tertiary-pressed-label: #d3d9d5;
+  --calendar-day-default-label: #ededed;
+  --calendar-day-disabled-label: #3a3a3a;
+  --calendar-day-focus-ring: #999999;
+  --calendar-day-hover-background: #006f27;
+  --calendar-day-hover-label: #ededed;
+  --calendar-day-outside-label: #999999;
+  --calendar-day-today-label: #00d669;
+  --calendar-title: #ededed;
+  --calendar-weekday: #999999;
   --card-filled-background: #171717;
   --card-outlined-edge: #3a3a3a;
   --carousel-background: #3a3a3a;

@@ -738,5 +738,27 @@
     "variants": [
       { "nodeId": "749:23", "name": "bar-chart", "width": 316, "height": 160 }
     ]
+  },
+  "calendar-day": {
+    "name": "CalendarDay",
+    "setNodeId": "750:32",
+    "variants": [
+      { "nodeId": "750:14", "name": "status=default, state=Default", "width": 40, "height": 40 },
+      { "nodeId": "750:16", "name": "status=default, state=Hover", "width": 40, "height": 40 },
+      { "nodeId": "750:18", "name": "status=default, state=Focus", "width": 40, "height": 40 },
+      { "nodeId": "750:20", "name": "status=outside, state=Default", "width": 40, "height": 40 },
+      { "nodeId": "750:22", "name": "status=outside, state=Hover", "width": 40, "height": 40 },
+      { "nodeId": "750:24", "name": "status=today, state=Default", "width": 40, "height": 40 },
+      { "nodeId": "750:26", "name": "status=today, state=Hover", "width": 40, "height": 40 },
+      { "nodeId": "750:28", "name": "status=selected, state=Default", "width": 40, "height": 40 },
+      { "nodeId": "750:30", "name": "status=disabled, state=Default", "width": 40, "height": 40 }
+    ]
+  },
+  "calendar": {
+    "name": "Calendar",
+    "setNodeId": "750:34",
+    "variants": [
+      { "nodeId": "750:34", "name": "calendar", "width": 280, "height": 318 }
+    ]
   }
 }

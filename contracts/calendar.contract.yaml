@@ -1,0 +1,88 @@
+# yaml-language-server: $schema=../schema/component-contract.schema.json
+schemaVersion: 2
+id: calendar
+name: Calendar
+kind: component
+status: review
+summary: "A month to pick a date from: its name between two arrows, the days of the week, and six weeks of CalendarDays. The arrow keys move a day or a week."
+category: inputs
+related: [ calendar-day, input, popover ]
+source:
+  tool: figma
+  fileKey: 1Zy0wiWKXQAvsfDBX3KR0d
+  nodeId: "750:34"
+  url: https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=750-34
+  extractedAt: "2026-11-17"
+  extractedBy: hand
+  frozenAt: "2026-11-17"
+props:
+  value: { type: node, notes: "The picked date, a `Date`, or nothing." }
+  month: { type: node, notes: "The month shown, a `Date` in it. Leave it out and the Calendar keeps its own, starting at `value` or today." }
+  today: { type: node, notes: "Today, a `Date`. The real today unless you set it." }
+  min: { type: node, notes: "The first date that can be picked." }
+  max: { type: node, notes: "The last date that can be picked." }
+  weekStartsOn: { type: number, default: 1, notes: "0 for Sunday, 1 for Monday." }
+  locale: { type: string, default: en, notes: "For the month's name, the days of the week and each day's spoken date." }
+elements:
+  root:
+    notes: "The header, then the grid, 8px apart. As wide as seven days."
+    styles:
+      display: { value: inline-flex, assert: false }
+      flex-direction: { value: column, assert: false }
+      gap: { token: spacing/gap/small, value: 8px }
+  header:
+    notes: "The month's name between two tertiary IconButtons: chevron-left and chevron-right."
+    styles:
+      display: { value: flex, assert: false }
+      align-items: { value: center }
+      justify-content: { value: space-between }
+  title:
+    notes: "The month and year, in paragraph type, medium weight, the main text colour. It names the grid."
+    styles:
+      margin: { token: spacing/gap/none, value: 0px }
+      font-family: { token: font-family/base, value: "'General Sans Variable'" }
+      font-weight: { token: typography/paragraph/font-weight/medium, value: "500" }
+      font-size: { token: typography/paragraph/font-size, value: 14px }
+      line-height: { token: typography/paragraph/line-height, value: 20px }
+      letter-spacing: { token: typography/paragraph/letter-spacing, value: 0px }
+      color: { token: calendar/title, value: "#ededed" }
+  grid:
+    notes: "`role=\"grid\"`: seven 40px columns. Its rows are `display: contents`, so the days line up in one grid."
+    styles:
+      display: { value: grid, assert: false }
+      grid-template-columns: { value: "repeat(7, var(--spacing-size-medium))", untokenised: "Composed from a token: seven columns, each a day wide." }
+  row:
+    notes: "A week, or the days of the week: `role=\"row\"`, laid out by the grid."
+    styles:
+      display: { value: contents, assert: false }
+  weekday:
+    notes: "A day of the week, two letters, in label type and the tertiary grey, centred, with 8px under."
+    styles:
+      padding-bottom: { token: spacing/gap/small, value: 8px }
+      text-align: { value: center, assert: false }
+      font-family: { token: font-family/base, value: "'General Sans Variable'" }
+      font-weight: { token: typography/label/font-weight/regular, value: "400" }
+      font-size: { token: typography/label/font-size, value: 12px }
+      line-height: { token: typography/label/line-height, value: 14px }
+      letter-spacing: { token: typography/label/letter-spacing, value: 0px }
+      color: { token: calendar/weekday, value: "#999999" }
+  cell:
+    notes: "`role=\"gridcell\"` around each CalendarDay, laid out by the grid."
+    styles:
+      display: { value: contents, assert: false }
+guidance:
+  status: proposed
+  use:
+    - title: Picking a day
+      text: "An invoice's date, the day a payment came in. Put it in a **Popover** under a date field, or on the page when choosing the date is the task."
+  avoid:
+    - title: A date someone knows by heart
+      text: "A birthday or a year far away is quicker to type. That's an **Input**."
+    - title: A range
+      text: "From and to isn't done yet. Two Calendars, one for each end, for now."
+  behaviour: "It shows six weeks, always, so it doesn't change height between months. The arrows change the month. In the grid, the arrow keys move a day or a week, Home and End to the week's ends, Page Up and Page Down a month, and Enter or Space picks. Moving past the month's edge turns the page. It calls `onValueChange` with the picked date and `onMonthChange` when the month changes."
+  accessibility:
+    element: "A grid (`role=\"grid\"`) named by the month's title, with a header row of `columnheader`s whose names are the days in full. Only one day is in the tab order: the picked one, or today, or the first."
+    name: "The month and year. Each day's button says its whole date."
+    colour: "The title is 17:1 and the days of the week 7:1 on the dark page."
+  content: "Let the locale name the month and the days. Monday first unless the people using it count from Sunday."

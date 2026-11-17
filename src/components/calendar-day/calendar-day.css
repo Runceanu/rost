@@ -1,0 +1,98 @@
+/* Generated from contracts/calendar-day.contract.yaml by bin/build-css.mjs. Don't edit: change the contract and rebuild. */
+
+.rost-calendar-day, .rost-calendar-day * { box-sizing: border-box; margin: 0; }
+.rost-calendar-day > img, .rost-calendar-day [class*="__icons-"] > img { display: block; position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; }
+.rost-calendar-day ::placeholder { color: inherit; opacity: 1; }
+
+.rost-calendar-day {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--spacing-size-medium);
+  height: var(--spacing-size-medium);
+  padding: var(--spacing-gap-none);
+  border: none;
+  border-radius: var(--spacing-radius-small);
+  background: transparent;
+  outline: none;
+  cursor: pointer;
+  font-family: var(--font-family-base);
+  font-weight: var(--typography-paragraph-font-weight-regular);
+  font-size: var(--typography-paragraph-font-size);
+  line-height: var(--typography-paragraph-line-height);
+  letter-spacing: var(--typography-paragraph-letter-spacing);
+}
+
+.rost-calendar-day.rost-calendar-day--status-default {
+  color: var(--calendar-day-default-label);
+}
+
+.rost-calendar-day.rost-calendar-day--status-default:hover {
+  background: var(--calendar-day-hover-background);
+  color: var(--calendar-day-hover-label);
+}
+
+.rost-calendar-day.rost-calendar-day--status-default:focus-visible {
+  color: var(--calendar-day-default-label);
+  outline: var(--spacing-outline-medium) solid var(--calendar-day-focus-ring);
+  outline-offset: calc(-1 * var(--spacing-outline-medium));
+}
+
+.rost-calendar-day.rost-calendar-day--status-outside {
+  color: var(--calendar-day-outside-label);
+}
+
+.rost-calendar-day.rost-calendar-day--status-outside:hover {
+  background: var(--calendar-day-hover-background);
+  color: var(--calendar-day-hover-label);
+}
+
+.rost-calendar-day.rost-calendar-day--status-today {
+  font-weight: var(--typography-paragraph-font-weight-medium);
+  color: var(--calendar-day-today-label);
+}
+
+.rost-calendar-day.rost-calendar-day--status-today:hover {
+  font-weight: var(--typography-paragraph-font-weight-medium);
+  background: var(--calendar-day-hover-background);
+  color: var(--calendar-day-hover-label);
+}
+
+.rost-calendar-day.rost-calendar-day--status-selected {
+  font-weight: var(--typography-paragraph-font-weight-medium);
+  background: var(--calendar-day-selected-background);
+  color: var(--calendar-day-selected-label);
+}
+
+.rost-calendar-day.rost-calendar-day--status-disabled {
+  color: var(--calendar-day-disabled-label);
+  cursor: default;
+}
+
+.rost-calendar-day.rost-calendar-day--status-outside:focus-visible {
+  color: var(--calendar-day-outside-label);
+  outline: var(--spacing-outline-medium) solid var(--calendar-day-focus-ring);
+  outline-offset: calc(-1 * var(--spacing-outline-medium));
+}
+
+.rost-calendar-day.rost-calendar-day--status-today:focus-visible {
+  font-weight: var(--typography-paragraph-font-weight-medium);
+  color: var(--calendar-day-today-label);
+  outline: var(--spacing-outline-medium) solid var(--calendar-day-focus-ring);
+  outline-offset: calc(-1 * var(--spacing-outline-medium));
+}
+
+.rost-calendar-day.rost-calendar-day--status-selected:focus-visible {
+  font-weight: var(--typography-paragraph-font-weight-medium);
+  background: var(--calendar-day-selected-background);
+  color: var(--calendar-day-selected-label);
+  outline: var(--spacing-outline-medium) solid var(--calendar-day-selected-focus-ring);
+  outline-offset: calc(-1 * var(--spacing-outline-large));
+}
+
+.rost-calendar-day.rost-calendar-day--status-disabled:focus-visible {
+  color: var(--calendar-day-disabled-label);
+  cursor: default;
+  outline: var(--spacing-outline-medium) solid var(--calendar-day-focus-ring);
+  outline-offset: calc(-1 * var(--spacing-outline-medium));
+}

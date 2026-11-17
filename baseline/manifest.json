@@ -2491,5 +2491,79 @@
       "width": 316,
       "height": 160
     }
+  ],
+  "calendar-day": [
+    {
+      "nodeId": "750:14",
+      "name": "status=default, state=Default",
+      "file": "750-14.png",
+      "width": 40,
+      "height": 40
+    },
+    {
+      "nodeId": "750:16",
+      "name": "status=default, state=Hover",
+      "file": "750-16.png",
+      "width": 40,
+      "height": 40
+    },
+    {
+      "nodeId": "750:18",
+      "name": "status=default, state=Focus",
+      "file": "750-18.png",
+      "width": 40,
+      "height": 40
+    },
+    {
+      "nodeId": "750:20",
+      "name": "status=outside, state=Default",
+      "file": "750-20.png",
+      "width": 40,
+      "height": 40
+    },
+    {
+      "nodeId": "750:22",
+      "name": "status=outside, state=Hover",
+      "file": "750-22.png",
+      "width": 40,
+      "height": 40
+    },
+    {
+      "nodeId": "750:24",
+      "name": "status=today, state=Default",
+      "file": "750-24.png",
+      "width": 40,
+      "height": 40
+    },
+    {
+      "nodeId": "750:26",
+      "name": "status=today, state=Hover",
+      "file": "750-26.png",
+      "width": 40,
+      "height": 40
+    },
+    {
+      "nodeId": "750:28",
+      "name": "status=selected, state=Default",
+      "file": "750-28.png",
+      "width": 40,
+      "height": 40
+    },
+    {
+      "nodeId": "750:30",
+      "name": "status=disabled, state=Default",
+      "file": "750-30.png",
+      "width": 40,
+      "height": 40
+    }
+  ],
+  "calendar": [
+    {
+      "nodeId": "750:34",
+      "name": "calendar",
+      "file": "750-34.png",
+      "width": 280,
+      "height": 318
+    }
   ]
 }
