@@ -2,7 +2,7 @@ import { Text, type TextVariant } from './Text'
 
 // Figma's text set (705:29): one variant per step of the ramp. Each is drawn
 // at the width of its words, so the test shows it inline-block.
-const sample: [TextVariant, string, string, string][] = [
+const sample: [TextVariant, 'h1' | 'h2' | 'p' | 'span', string, string][] = [
   ['display', 'h1', 'Rost', '705:13'],
   ['headline', 'h2', 'Components', '705:15'],
   ['sub-headline', 'h2', 'Values', '705:17'],

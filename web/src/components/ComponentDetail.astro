@@ -336,6 +336,9 @@ const specLabel = (gr: any, t: any) => [title(e), gr.axes.join(' and '), t.headi
   :global(.fixtures) { display: flex; flex-wrap: wrap; gap: var(--spacing-gap-large) var(--spacing-gap-2xlarge); align-items: flex-end; }
   :global(.fixture) { margin: 0; display: flex; flex-direction: column; gap: var(--spacing-gap-small); align-items: flex-start; max-width: 100%; min-width: 0; }
   :global(.fixture-stage) { min-height: var(--spacing-size-small); max-width: 100%; }
+  /* A field's help line sits under its box, outside it (Input, Select, DateField,
+     Combobox), so the stage keeps room for it and the caption stays clear. */
+  :global(.fixture-stage:has([class*="__supportive"])) { padding-bottom: var(--spacing-gap-medium); }
   /* A fixture is drawn at its Figma frame's width (Projects is 976px), which
      the visual test needs. Here it gives way to the panel instead of running
      past it, but never below its own content: on a phone a row can't fit,

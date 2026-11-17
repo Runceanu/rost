@@ -50,10 +50,10 @@ a { color: inherit; }
 .top-nav .here:hover .rost-tooltip { opacity: 1; translate: -50% 0; }
 
 /* Layouts */
-.page { width: 100%; max-width: 1120px; margin: 0 auto; padding: var(--spacing-gap-4xlarge) var(--spacing-gap-large) 96px; flex: 1; }
+.page { width: 100%; max-width: 1120px; margin: 0 auto; padding: var(--spacing-gap-2xlarge) var(--spacing-gap-large) var(--spacing-gap-5xlarge); flex: 1; }
 .shell { display: grid; grid-template-columns: minmax(0, 1fr); flex: 1; width: 100%; }
 /* The same content area as the homepage's `.page`, centred in what the sidebar leaves. */
-.main { padding: var(--spacing-gap-4xlarge) var(--spacing-gap-large) 96px; min-width: 0; width: 100%; max-width: 1120px; justify-self: center; }
+.main { padding: var(--spacing-gap-2xlarge) var(--spacing-gap-large) var(--spacing-gap-5xlarge); min-width: 0; width: 100%; max-width: 1120px; justify-self: center; }
 /* The component list is a whole screen long on a phone, so there it gives way
    to the page and a link back to the list. */
 .side { display: none; }
@@ -87,7 +87,7 @@ a { color: inherit; }
    What's left here is the space between them, and the step down on a phone,
    which the ramp doesn't have yet. Those steps use the size tokens. */
 .page h1, .main h1 { margin: 0 0 var(--spacing-gap-medium); }
-.page h2, .main h2 { margin: var(--spacing-gap-4xlarge) 0 var(--spacing-gap-small-medium); }
+.page h2, .main h2 { margin: var(--spacing-gap-2xlarge) 0 var(--spacing-gap-small-medium); }
 .page h3, .main h3 { margin: var(--spacing-gap-xlarge) 0 var(--spacing-gap-small-medium); }
 .page h4, .main h4 { margin: var(--spacing-gap-medium) 0 var(--spacing-gap-xsmall); }
 @media (max-width: 768px) {

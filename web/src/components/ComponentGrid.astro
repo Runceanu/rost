@@ -59,7 +59,7 @@ const has = new Set(sections.map((s) => s.label))
 <style>
   .cards { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--spacing-gap-medium); grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); }
   .cards :global(.card-thumb) { width: 100%; aspect-ratio: 384 / 334; }
-  :global(.page .group-title), :global(.main .group-title) { margin: var(--spacing-gap-xlarge) 0 var(--spacing-gap-small-medium); scroll-margin-top: calc(var(--letters, 56px) + var(--spacing-gap-medium)); }
+  :global(.page .group-title), :global(.main .group-title) { margin: var(--spacing-gap-large) 0 var(--spacing-gap-small-medium); scroll-margin-top: calc(var(--letters, 56px) + var(--spacing-gap-medium)); }
 
   /* The letters stay in reach under the header while the cards scroll. */
   .letters { position: sticky; top: var(--header); z-index: 2; margin: var(--spacing-gap-medium) 0 0; padding: var(--spacing-gap-small) 0; background: var(--non-interactive-background-primary); }
