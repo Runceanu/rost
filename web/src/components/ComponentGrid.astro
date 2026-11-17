@@ -1,25 +1,49 @@
 ---
-// The cards for every component, grouped by kind. Each card is Rost's own
-// Thumbs, with a glimpse of the component in it. The home page and the
-// components index show the same list, so it's written once.
+// The cards for every component. Each card is Rost's own Thumbs, with a
+// glimpse of the component in it. The components index groups them by kind;
+// the home page lists them A to Z under their letters, with a bar of letters
+// to jump between (`alphabetical`).
 import { Thumbs } from '../../../src/components/thumbs/Thumbs'
 import Glimpse from './Glimpse.astro'
 import { Text } from '../../../src/components/text/Text'
 import { groups, title, inCode } from '../lib/kit'
-interface Props { level?: 2 | 3 }
-const { level = 3 } = Astro.props
+interface Props { level?: 2 | 3; alphabetical?: boolean }
+const { level = 3, alphabetical = false } = Astro.props
 const two = (n: number) => String(n).padStart(2, '0')
+
+const card = (e: any, n: number) => ({ e, n })
+const sections: { id?: string; label: string; cards: { e: any; n: number }[] }[] = []
+const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('')
+if (alphabetical) {
+  const all = groups.flatMap(([, , list]) => list).sort((a, b) => title(a).localeCompare(title(b), 'en'))
+  for (const l of letters) {
+    const list = all.filter((e) => title(e).toUpperCase().startsWith(l))
+    if (list.length) sections.push({ id: `letter-${l.toLowerCase()}`, label: l, cards: list.map((e) => card(e, all.indexOf(e) + 1)) })
+  }
+} else {
+  for (const [, label, list] of groups) sections.push({ label, cards: list.map((e, i) => card(e, i + 1)) })
+}
+const has = new Set(sections.map((s) => s.label))
 ---
-{groups.map(([, label, list]) => (
+{alphabetical && (
+  <nav class="letters" aria-label="Components A to Z">
+    <ol role="list">
+      {letters.map((l) => (
+        <li>{has.has(l) ? <a href={`#letter-${l.toLowerCase()}`}>{l}</a> : <span aria-hidden="true">{l}</span>}</li>
+      ))}
+    </ol>
+  </nav>
+)}
+{sections.map(({ id, label, cards }) => (
   <>
-    <Text variant="eyebrow" as={`h${level}`} className="group-title">{label}</Text>
+    <Text variant="eyebrow" as={`h${level}`} className="group-title" id={id}>{label}</Text>
     <ul class="cards" role="list">
-      {list.map((e, i) => (
+      {cards.map(({ e, n }) => (
         <li>
           <Thumbs
             className="card-thumb"
             href={`/components/${e.id}/`}
-            number={two(i + 1)}
+            number={two(n)}
             name={title(e)}
             industry={e.c.category ?? e.kind}
             kind={inCode(e.id) ? 'In code' : 'Contract'}
@@ -35,5 +59,42 @@ const two = (n: number) => String(n).padStart(2, '0')
 <style>
   .cards { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--spacing-gap-medium); grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); }
   .cards :global(.card-thumb) { width: 100%; aspect-ratio: 384 / 334; }
-  :global(.page .group-title), :global(.main .group-title) { margin: var(--spacing-gap-xlarge) 0 var(--spacing-gap-small-medium); }
+  :global(.page .group-title), :global(.main .group-title) { margin: var(--spacing-gap-xlarge) 0 var(--spacing-gap-small-medium); scroll-margin-top: calc(var(--letters, 56px) + var(--spacing-gap-medium)); }
+
+  /* The letters stay in reach under the header while the cards scroll. */
+  .letters { position: sticky; top: var(--header); z-index: 2; margin: var(--spacing-gap-medium) 0 0; padding: var(--spacing-gap-small) 0; background: var(--non-interactive-background-primary); }
+  .letters ol { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: var(--spacing-gap-3xsmall); }
+  .letters a, .letters span {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: var(--spacing-size-small-medium); height: var(--spacing-size-small-medium);
+    border-radius: var(--spacing-radius-small);
+    font-family: var(--font-family-base); font-weight: var(--typography-paragraph-font-weight-medium);
+    font-size: var(--typography-paragraph-font-size); line-height: var(--typography-paragraph-line-height);
+    text-decoration: none;
+  }
+  .letters a { color: var(--non-interactive-foreground-primary); }
+  .letters a:hover { background: var(--interactive-inactive-hover-background); color: var(--interactive-inactive-hover-label); }
+  .letters a:focus-visible { outline: var(--spacing-outline-medium) solid var(--actions-borderless-focus-focus-ring); outline-offset: calc(-1 * var(--spacing-outline-medium)); }
+  .letters a.on { background: var(--actions-primary-default-background); color: var(--actions-primary-default-label); }
+  .letters span { color: var(--non-interactive-foreground-quadruple); }
 </style>
+{alphabetical && (
+  <script>
+    // A letter's heading lands just under the bar, however many rows it wraps to.
+    const bar = document.querySelector('.letters') as HTMLElement
+    const fit = () => document.documentElement.style.setProperty('--letters', `${bar.offsetHeight}px`)
+    new ResizeObserver(fit).observe(bar)
+    fit()
+    // The letter whose cards are at the top of the window is green.
+    const links = [...document.querySelectorAll<HTMLAnchorElement>('.letters a')]
+    const heads = links.map((a) => document.getElementById(a.hash.slice(1))).filter(Boolean) as HTMLElement[]
+    const mark = () => {
+      const top = (document.querySelector('.letters') as HTMLElement).getBoundingClientRect().bottom + 24
+      let at = -1
+      heads.forEach((h, i) => { if (h.getBoundingClientRect().top <= top) at = i })
+      links.forEach((a, i) => { a.classList.toggle('on', i === at); if (i === at) a.setAttribute('aria-current', 'location'); else a.removeAttribute('aria-current') })
+    }
+    addEventListener('scroll', mark, { passive: true })
+    mark()
+  </script>
+)}

@@ -85,8 +85,8 @@ const nextItems = [
   </ol>
 
   <Text variant="sub-headline" as="h2" tone="primary">Components</Text>
-  <Text tone="secondary" className="muted">{built.length} of them are in code so far, and their cards show the real thing. The rest are contracts, and they come next, one at a time.</Text>
-  <ComponentGrid />
+  <Text tone="secondary" className="muted">{built.length === kit.length ? `All ${built.length} are in code, and every card shows the real thing.` : `${built.length} of them are in code so far, and their cards show the real thing. The rest are contracts, and they come next, one at a time.`} A to Z: pick a letter to jump to it.</Text>
+  <ComponentGrid alphabetical />
 
   <Text variant="sub-headline" as="h2" tone="primary">Foundations</Text>
   <ul class="cards" role="list">
