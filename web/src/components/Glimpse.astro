@@ -1,15 +1,16 @@
 ---
 // What a component card shows above its name: the component itself, from the
 // `preview` in its fixtures file. A component that isn't in code yet says so.
-// No screenshots here: a card shows Rost, or nothing.
-import { Preview, fixturesFor } from './Fixtures'
+// No screenshots here: a card shows Rost, or nothing. The card is a link, so
+// the preview comes without links of its own (`cardPreview`).
+import { cardPreview } from './Fixtures'
 
 interface Props { id: string }
 const { id } = Astro.props
-const built = Boolean(fixturesFor(id)?.preview)
+const html = cardPreview(id)
 ---
 <span class="glimpse" aria-hidden="true" inert>
-  {built ? <Preview id={id} /> : <span class="later">Not in code yet</span>}
+  {html != null ? <Fragment set:html={html} /> : <span class="later">Not in code yet</span>}
 </span>
 <style>
   .glimpse { position: absolute; inset: 0 0 112px; display: flex; align-items: center; justify-content: center; padding: var(--spacing-gap-medium); overflow: hidden; }

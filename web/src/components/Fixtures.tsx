@@ -1,5 +1,6 @@
 import { Text } from '../../../src/components/text/Text'
 import { Code } from '../../../src/components/code/Code'
+import { renderToStaticMarkup } from 'react-dom/server'
 // Every variant of a built component, rendered from the same fixtures the
 // visual test uses. What you see on the site is what gets compared with Figma.
 // `display` is what the page shows when the tested element is an empty Figma frame.
@@ -50,6 +51,17 @@ export function Fixtures({ id }: { id: string }) {
 /** A built component's card preview, or nothing. */
 export function Preview({ id }: { id: string }) {
   return <>{fixturesFor(id)?.preview ?? null}</>
+}
+
+/**
+ * A preview for inside a card, which is a link. A link inside a link isn't
+ * HTML: the browser splits the card apart (Breadcrumb's did, on the home
+ * page). So its links become spans with the same classes: they look the same
+ * and can't be pressed, which is right in a glimpse.
+ */
+export const cardPreview = (id: string) => {
+  const p = fixturesFor(id)?.preview
+  return p == null ? null : renderToStaticMarkup(<>{p}</>).replace(/<a\b/g, '<span').replace(/<\/a>/g, '</span>')
 }
 
 /** One fixture by name, drawn on its own: what a guidance card shows. */
