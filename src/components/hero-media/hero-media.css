@@ -1,6 +1,6 @@
 /* Generated from contracts/hero-media.contract.yaml by bin/build-css.mjs. Don't edit: change the contract and rebuild. */
 
-.rost-hero-media, .rost-hero-media * { box-sizing: border-box; margin: 0; }
+.rost-hero-media, .rost-hero-media :where(:not([class*="rost-"]), [class*="rost-hero-media__"]) { box-sizing: border-box; margin: 0; }
 .rost-hero-media > img, .rost-hero-media [class*="__icons-"] > img { display: block; position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; }
 .rost-hero-media ::placeholder { color: inherit; opacity: 1; }
 

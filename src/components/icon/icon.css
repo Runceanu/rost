@@ -1,6 +1,6 @@
 /* Generated from contracts/icon.contract.yaml by bin/build-css.mjs. Don't edit: change the contract and rebuild. */
 
-.rost-icon, .rost-icon * { box-sizing: border-box; margin: 0; }
+.rost-icon, .rost-icon :where(:not([class*="rost-"]), [class*="rost-icon__"]) { box-sizing: border-box; margin: 0; }
 .rost-icon > img, .rost-icon [class*="__icons-"] > img { display: block; position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; }
 .rost-icon ::placeholder { color: inherit; opacity: 1; }
 

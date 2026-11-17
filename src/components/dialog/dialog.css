@@ -1,6 +1,6 @@
 /* Generated from contracts/dialog.contract.yaml by bin/build-css.mjs. Don't edit: change the contract and rebuild. */
 
-.rost-dialog, .rost-dialog * { box-sizing: border-box; margin: 0; }
+.rost-dialog, .rost-dialog :where(:not([class*="rost-"]), [class*="rost-dialog__"]) { box-sizing: border-box; margin: 0; }
 .rost-dialog > img, .rost-dialog [class*="__icons-"] > img { display: block; position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; }
 .rost-dialog ::placeholder { color: inherit; opacity: 1; }
 

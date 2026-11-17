@@ -1,6 +1,6 @@
 /* Generated from contracts/radio.contract.yaml by bin/build-css.mjs. Don't edit: change the contract and rebuild. */
 
-.rost-radio, .rost-radio * { box-sizing: border-box; margin: 0; }
+.rost-radio, .rost-radio :where(:not([class*="rost-"]), [class*="rost-radio__"]) { box-sizing: border-box; margin: 0; }
 .rost-radio > img, .rost-radio [class*="__icons-"] > img { display: block; position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; }
 .rost-radio ::placeholder { color: inherit; opacity: 1; }
 

@@ -1,6 +1,6 @@
 /* Generated from contracts/progress.contract.yaml by bin/build-css.mjs. Don't edit: change the contract and rebuild. */
 
-.rost-progress, .rost-progress * { box-sizing: border-box; margin: 0; }
+.rost-progress, .rost-progress :where(:not([class*="rost-"]), [class*="rost-progress__"]) { box-sizing: border-box; margin: 0; }
 .rost-progress > img, .rost-progress [class*="__icons-"] > img { display: block; position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; }
 .rost-progress ::placeholder { color: inherit; opacity: 1; }
 

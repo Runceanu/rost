@@ -50,7 +50,9 @@ function build(id) {
   const rules = [
     `/* Generated from contracts/${id}.contract.yaml by bin/build-css.mjs. Don't edit: change the contract and rebuild. */`,
     '',
-    `.${base}, .${base} * { box-sizing: border-box; margin: 0; }`,
+    // Its own parts and plain elements, not another Rost component inside it:
+    // that one has its own reset, and its own margins (a Popover's 8px) must stand.
+    `.${base}, .${base} :where(:not([class*="rost-"]), [class*="${base}__"]) { box-sizing: border-box; margin: 0; }`,
     // Figma exports every icon and image as one picture filling its frame. Only
     // the component's own pictures: an image a caller passes in stays as it is.
     `.${base} > img, .${base} [class*="__icons-"] > img { display: block; position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; }`,

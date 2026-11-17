@@ -20,6 +20,8 @@ export interface CalendarProps extends Omit<HTMLAttributes<HTMLDivElement>, 'def
   /** 0 for Sunday, 1 for Monday. */
   readonly weekStartsOn?: number
   readonly locale?: string
+  /** Put the focus on the picked day, or today, when it appears. For a Calendar in a Popover. */
+  readonly autoFocus?: boolean
 }
 
 const b = 'rost-calendar'
@@ -37,7 +39,7 @@ const key = (d: Date) => `${d.getFullYear()}-${d.getMonth() + 1}-${d.getDate()}`
  * the tab order; the arrow keys move between them. Built from
  * contracts/calendar.contract.yaml.
  */
-export function Calendar({ value = null, onValueChange, month, onMonthChange, today: todayProp, min, max, weekStartsOn = 1, locale = 'en', className, ...rest }: CalendarProps) {
+export function Calendar({ value = null, onValueChange, month, onMonthChange, today: todayProp, min, max, weekStartsOn = 1, locale = 'en', autoFocus = false, className, ...rest }: CalendarProps) {
   const today = day(todayProp ?? new Date())
   const [ownMonth, setOwnMonth] = useState(() => day(month ?? value ?? today))
   const shown = month ?? ownMonth
@@ -53,6 +55,9 @@ export function Calendar({ value = null, onValueChange, month, onMonthChange, to
   const focusDay = focus.getMonth() === shown.getMonth() && focus.getFullYear() === shown.getFullYear()
     ? focus
     : value && value.getMonth() === shown.getMonth() && value.getFullYear() === shown.getFullYear() ? day(value) : first
+
+  // Opened in a Popover: start on the picked day, or today, or the first.
+  useEffect(() => { if (autoFocus) grid.current?.querySelector<HTMLButtonElement>('[tabindex="0"]')?.focus() }, [])
 
   useEffect(() => {
     if (!moved.current) return

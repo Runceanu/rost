@@ -1,6 +1,6 @@
 /* Generated from contracts/description-list.contract.yaml by bin/build-css.mjs. Don't edit: change the contract and rebuild. */
 
-.rost-description-list, .rost-description-list * { box-sizing: border-box; margin: 0; }
+.rost-description-list, .rost-description-list :where(:not([class*="rost-"]), [class*="rost-description-list__"]) { box-sizing: border-box; margin: 0; }
 .rost-description-list > img, .rost-description-list [class*="__icons-"] > img { display: block; position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; }
 .rost-description-list ::placeholder { color: inherit; opacity: 1; }
 

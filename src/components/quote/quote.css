@@ -1,6 +1,6 @@
 /* Generated from contracts/quote.contract.yaml by bin/build-css.mjs. Don't edit: change the contract and rebuild. */
 
-.rost-quote, .rost-quote * { box-sizing: border-box; margin: 0; }
+.rost-quote, .rost-quote :where(:not([class*="rost-"]), [class*="rost-quote__"]) { box-sizing: border-box; margin: 0; }
 .rost-quote > img, .rost-quote [class*="__icons-"] > img { display: block; position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; }
 .rost-quote ::placeholder { color: inherit; opacity: 1; }
 

@@ -23,6 +23,7 @@ props:
   max: { type: node, notes: "The last date that can be picked." }
   weekStartsOn: { type: number, default: 1, notes: "0 for Sunday, 1 for Monday." }
   locale: { type: string, default: en, notes: "For the month's name, the days of the week and each day's spoken date." }
+  autoFocus: { type: boolean, default: false, notes: "Puts the focus on the picked day, or today, when it appears. For a Calendar in a Popover, like DateField's." }
 elements:
   root:
     notes: "The header, then the grid, 8px apart. As wide as seven days."

@@ -1,6 +1,6 @@
 /* Generated from contracts/breadcrumb.contract.yaml by bin/build-css.mjs. Don't edit: change the contract and rebuild. */
 
-.rost-breadcrumb, .rost-breadcrumb * { box-sizing: border-box; margin: 0; }
+.rost-breadcrumb, .rost-breadcrumb :where(:not([class*="rost-"]), [class*="rost-breadcrumb__"]) { box-sizing: border-box; margin: 0; }
 .rost-breadcrumb > img, .rost-breadcrumb [class*="__icons-"] > img { display: block; position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; }
 .rost-breadcrumb ::placeholder { color: inherit; opacity: 1; }
 

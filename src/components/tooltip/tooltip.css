@@ -1,6 +1,6 @@
 /* Generated from contracts/tooltip.contract.yaml by bin/build-css.mjs. Don't edit: change the contract and rebuild. */
 
-.rost-tooltip, .rost-tooltip * { box-sizing: border-box; margin: 0; }
+.rost-tooltip, .rost-tooltip :where(:not([class*="rost-"]), [class*="rost-tooltip__"]) { box-sizing: border-box; margin: 0; }
 .rost-tooltip > img, .rost-tooltip [class*="__icons-"] > img { display: block; position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; }
 .rost-tooltip ::placeholder { color: inherit; opacity: 1; }
 

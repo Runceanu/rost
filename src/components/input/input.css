@@ -1,6 +1,6 @@
 /* Generated from contracts/input.contract.yaml by bin/build-css.mjs. Don't edit: change the contract and rebuild. */
 
-.rost-input, .rost-input * { box-sizing: border-box; margin: 0; }
+.rost-input, .rost-input :where(:not([class*="rost-"]), [class*="rost-input__"]) { box-sizing: border-box; margin: 0; }
 .rost-input > img, .rost-input [class*="__icons-"] > img { display: block; position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; }
 .rost-input ::placeholder { color: inherit; opacity: 1; }
 

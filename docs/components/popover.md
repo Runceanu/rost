@@ -28,6 +28,7 @@ Then import `src/rost/fonts.css` and `src/rost/tokens.css` once, at the root of 
 |---|---|---|---|
 | `id` | string |  |  |
 | `children` | slot |  |  |
+| `fit` | boolean |  | `false` |
 
 ## Anatomy
 

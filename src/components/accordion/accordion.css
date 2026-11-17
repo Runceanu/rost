@@ -1,6 +1,6 @@
 /* Generated from contracts/accordion.contract.yaml by bin/build-css.mjs. Don't edit: change the contract and rebuild. */
 
-.rost-accordion, .rost-accordion * { box-sizing: border-box; margin: 0; }
+.rost-accordion, .rost-accordion :where(:not([class*="rost-"]), [class*="rost-accordion__"]) { box-sizing: border-box; margin: 0; }
 .rost-accordion > img, .rost-accordion [class*="__icons-"] > img { display: block; position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; }
 .rost-accordion ::placeholder { color: inherit; opacity: 1; }
 

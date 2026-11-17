@@ -1,6 +1,6 @@
 /* Generated from contracts/table-row.contract.yaml by bin/build-css.mjs. Don't edit: change the contract and rebuild. */
 
-.rost-table-row, .rost-table-row * { box-sizing: border-box; margin: 0; }
+.rost-table-row, .rost-table-row :where(:not([class*="rost-"]), [class*="rost-table-row__"]) { box-sizing: border-box; margin: 0; }
 .rost-table-row > img, .rost-table-row [class*="__icons-"] > img { display: block; position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; }
 .rost-table-row ::placeholder { color: inherit; opacity: 1; }
 

@@ -1,6 +1,6 @@
 /* Generated from contracts/navigation.contract.yaml by bin/build-css.mjs. Don't edit: change the contract and rebuild. */
 
-.rost-navigation, .rost-navigation * { box-sizing: border-box; margin: 0; }
+.rost-navigation, .rost-navigation :where(:not([class*="rost-"]), [class*="rost-navigation__"]) { box-sizing: border-box; margin: 0; }
 .rost-navigation > img, .rost-navigation [class*="__icons-"] > img { display: block; position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; }
 .rost-navigation ::placeholder { color: inherit; opacity: 1; }
 

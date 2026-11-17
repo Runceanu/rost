@@ -33,6 +33,7 @@ Then import `src/rost/fonts.css` and `src/rost/tokens.css` once, at the root of 
 | `max` | node |  |  |
 | `weekStartsOn` | number |  | `1` |
 | `locale` | string |  | `en` |
+| `autoFocus` | boolean |  | `false` |
 
 ## Anatomy
 

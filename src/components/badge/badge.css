@@ -1,6 +1,6 @@
 /* Generated from contracts/badge.contract.yaml by bin/build-css.mjs. Don't edit: change the contract and rebuild. */
 
-.rost-badge, .rost-badge * { box-sizing: border-box; margin: 0; }
+.rost-badge, .rost-badge :where(:not([class*="rost-"]), [class*="rost-badge__"]) { box-sizing: border-box; margin: 0; }
 .rost-badge > img, .rost-badge [class*="__icons-"] > img { display: block; position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; }
 .rost-badge ::placeholder { color: inherit; opacity: 1; }
 

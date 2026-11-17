@@ -1,6 +1,6 @@
 /* Generated from contracts/chips.contract.yaml by bin/build-css.mjs. Don't edit: change the contract and rebuild. */
 
-.rost-chips, .rost-chips * { box-sizing: border-box; margin: 0; }
+.rost-chips, .rost-chips :where(:not([class*="rost-"]), [class*="rost-chips__"]) { box-sizing: border-box; margin: 0; }
 .rost-chips > img, .rost-chips [class*="__icons-"] > img { display: block; position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; }
 .rost-chips ::placeholder { color: inherit; opacity: 1; }
 

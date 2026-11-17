@@ -1,6 +1,6 @@
 /* Generated from contracts/empty-state.contract.yaml by bin/build-css.mjs. Don't edit: change the contract and rebuild. */
 
-.rost-empty-state, .rost-empty-state * { box-sizing: border-box; margin: 0; }
+.rost-empty-state, .rost-empty-state :where(:not([class*="rost-"]), [class*="rost-empty-state__"]) { box-sizing: border-box; margin: 0; }
 .rost-empty-state > img, .rost-empty-state [class*="__icons-"] > img { display: block; position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; }
 .rost-empty-state ::placeholder { color: inherit; opacity: 1; }
 

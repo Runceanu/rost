@@ -1,6 +1,6 @@
 /* Generated from contracts/tab-item.contract.yaml by bin/build-css.mjs. Don't edit: change the contract and rebuild. */
 
-.rost-tab-item, .rost-tab-item * { box-sizing: border-box; margin: 0; }
+.rost-tab-item, .rost-tab-item :where(:not([class*="rost-"]), [class*="rost-tab-item__"]) { box-sizing: border-box; margin: 0; }
 .rost-tab-item > img, .rost-tab-item [class*="__icons-"] > img { display: block; position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; }
 .rost-tab-item ::placeholder { color: inherit; opacity: 1; }
 

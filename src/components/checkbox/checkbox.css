@@ -1,6 +1,6 @@
 /* Generated from contracts/checkbox.contract.yaml by bin/build-css.mjs. Don't edit: change the contract and rebuild. */
 
-.rost-checkbox, .rost-checkbox * { box-sizing: border-box; margin: 0; }
+.rost-checkbox, .rost-checkbox :where(:not([class*="rost-"]), [class*="rost-checkbox__"]) { box-sizing: border-box; margin: 0; }
 .rost-checkbox > img, .rost-checkbox [class*="__icons-"] > img { display: block; position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; }
 .rost-checkbox ::placeholder { color: inherit; opacity: 1; }
 

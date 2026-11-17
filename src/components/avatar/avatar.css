@@ -1,6 +1,6 @@
 /* Generated from contracts/avatar.contract.yaml by bin/build-css.mjs. Don't edit: change the contract and rebuild. */
 
-.rost-avatar, .rost-avatar * { box-sizing: border-box; margin: 0; }
+.rost-avatar, .rost-avatar :where(:not([class*="rost-"]), [class*="rost-avatar__"]) { box-sizing: border-box; margin: 0; }
 .rost-avatar > img, .rost-avatar [class*="__icons-"] > img { display: block; position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; }
 .rost-avatar ::placeholder { color: inherit; opacity: 1; }
 

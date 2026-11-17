@@ -1,6 +1,6 @@
 /* Generated from contracts/projects.contract.yaml by bin/build-css.mjs. Don't edit: change the contract and rebuild. */
 
-.rost-projects, .rost-projects * { box-sizing: border-box; margin: 0; }
+.rost-projects, .rost-projects :where(:not([class*="rost-"]), [class*="rost-projects__"]) { box-sizing: border-box; margin: 0; }
 .rost-projects > img, .rost-projects [class*="__icons-"] > img { display: block; position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; }
 .rost-projects ::placeholder { color: inherit; opacity: 1; }
 

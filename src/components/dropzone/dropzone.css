@@ -1,6 +1,6 @@
 /* Generated from contracts/dropzone.contract.yaml by bin/build-css.mjs. Don't edit: change the contract and rebuild. */
 
-.rost-dropzone, .rost-dropzone * { box-sizing: border-box; margin: 0; }
+.rost-dropzone, .rost-dropzone :where(:not([class*="rost-"]), [class*="rost-dropzone__"]) { box-sizing: border-box; margin: 0; }
 .rost-dropzone > img, .rost-dropzone [class*="__icons-"] > img { display: block; position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; }
 .rost-dropzone ::placeholder { color: inherit; opacity: 1; }
 

@@ -6,12 +6,12 @@ Every value in every contract, sorted by why it has a token or doesn't. A value 
 
 | | Values | Share | Meaning |
 |---|---|---|---|
-| Has a token | 1928 | 60% | Uses a token, and the check tests it. |
+| Has a token | 2004 | 60% | Uses a token, and the check tests it. |
 | Token suggested | 0 | 0% | A token I want that doesn't exist yet. The freeze turned every other suggestion into a token. |
-| How Figma builds it | 789 | 25% | How Figma builds the layer (position, inset, which sides get a stroke). Nothing to tokenise. |
-| Figma frame size | 316 | 10% | A root size that is just the Figma frame. Written down, not checked. |
-| No token, on purpose | 130 | 4% | Plain on purpose, and the contract says why. |
-| Open gap | 56 | 2% | No token and no reason. Each one needs a decision from me. |
+| How Figma builds it | 808 | 24% | How Figma builds the layer (position, inset, which sides get a stroke). Nothing to tokenise. |
+| Figma frame size | 326 | 10% | A root size that is just the Figma frame. Written down, not checked. |
+| No token, on purpose | 132 | 4% | Plain on purpose, and the contract says why. |
+| Open gap | 59 | 2% | No token and no reason. Each one needs a decision from me. |
 
 ## By contract
 
@@ -31,6 +31,7 @@ Every value in every contract, sorted by why it has a token or doesn't. A value 
 | [Checkbox](components/checkbox.md) | 38 | · | 14 | 12 | 1 | 1 |
 | [Chip](components/chips.md) | 45 | · | 18 | 10 | 10 | 1 |
 | [Code](components/code.md) | 9 | · | 2 | 5 | 2 | · |
+| [DateField](components/date-field.md) | 76 | · | 19 | 9 | 2 | 3 |
 | [DescriptionList](components/description-list.md) | 12 | · | 2 | 1 | · | 1 |
 | [Dialog](components/dialog.md) | 23 | · | 5 | 6 | 1 | 1 |
 | [Disclosure](components/disclosure.md) | 16 | · | 4 | 5 | · | 3 |
@@ -55,7 +56,7 @@ Every value in every contract, sorted by why it has a token or doesn't. A value 
 | [Navigation](components/navigation.md) | 13 | · | 21 | 1 | 2 | · |
 | [Pagination](components/pagination.md) | 9 | · | 5 | · | · | · |
 | [Paper effect](components/effect-paper.md) | 6 | · | · | · | 7 | · |
-| [Popover](components/popover.md) | 9 | · | 3 | 6 | 1 | 1 |
+| [Popover](components/popover.md) | 9 | · | 3 | 7 | 1 | 1 |
 | [Progress](components/progress.md) | 9 | · | 6 | 1 | · | · |
 | [ProgressRing](components/progress-ring.md) | 10 | · | 5 | 5 | · | · |
 | [Projects](components/projects.md) | 77 | · | 33 | 8 | 5 | 4 |
@@ -117,7 +118,7 @@ The ring sits `spacing/gap/2xsmall` outside the element, so its inset is that to
 
 | Where | Part | Value |
 |---|---|---|
-| [Button](components/button.md), [Carousel](components/carousel.md), [Checkbox](components/checkbox.md), [Chip](components/chips.md), [IconButton](components/icon-button.md), [Input](components/input.md), [Projects](components/projects.md), [Radio](components/radio.md), [Select](components/select.md), [Slider](components/slider.md), [Switch](components/switch.md), [Tag](components/tags.md), [Testimonials](components/testimonials.md), [Textarea](components/textarea.md), [Thumbs](components/thumbs.md), [Toggle](components/toggle.md) | `focus-ring.inset` | `calc(-1 * var(--spacing-gap-2xsmall))` |
+| [Button](components/button.md), [Carousel](components/carousel.md), [Checkbox](components/checkbox.md), [Chip](components/chips.md), [DateField](components/date-field.md), [IconButton](components/icon-button.md), [Input](components/input.md), [Projects](components/projects.md), [Radio](components/radio.md), [Select](components/select.md), [Slider](components/slider.md), [Switch](components/switch.md), [Tag](components/tags.md), [Testimonials](components/testimonials.md), [Textarea](components/textarea.md), [Thumbs](components/thumbs.md), [Toggle](components/toggle.md) | `focus-ring.inset` | `calc(-1 * var(--spacing-gap-2xsmall))` |
 | [Carousel](components/carousel.md), [Thumbs](components/thumbs.md) | `focus-ring.border-radius` | `calc(var(--spacing-radius-xlarge) + var(--spacing-gap-2xsmall))` |
 | [Menu](components/menu.md) | `focus-ring.inset` | `var(--spacing-gap-medium-large) calc(-1 * var(--spacing-gap-2xsmall))` |
 
@@ -141,6 +142,7 @@ An icon is its SVG file, drawn as a mask so it takes the text colour. The file i
 | [Badge](components/badge.md) | `dot.mask` | `url(./dot.svg) center / contain no-repeat` |
 | [Badge](components/badge.md) | `icons-dot.mask` | `url(./icon-dot.svg) center / contain no-repeat` |
 | [Breadcrumb](components/breadcrumb.md) | `separator.mask` | `url(./icon-chevron-right.svg) center / contain no-repeat` |
+| [DateField](components/date-field.md), [Select](components/select.md) | `chevron.mask` | `url(./icon-chevron.svg) center / contain no-repeat` |
 | [IconButton](components/icon-button.md), [Toggle](components/toggle.md) | `glyph.mask` | `url(./icon-arrow-left.svg) center / contain no-repeat` |
 | [InlineBanner](components/inline-banner.md) | `icons-plus.mask` | `url(./icons/plus-small.svg) center / contain no-repeat` and 1 more, one per state |
 | [InlineBanner](components/inline-banner.md) | `icons-alarm.mask` | `url(./icons/alarm-small.svg) center / contain no-repeat` and 1 more, one per state |
@@ -150,7 +152,6 @@ An icon is its SVG file, drawn as a mask so it takes the text colour. The file i
 | [Input](components/input.md) | `clear-glyph.mask` | `url(./icon-clear.svg) center / contain no-repeat` |
 | [Input](components/input.md), [Textarea](components/textarea.md) | `icons-alarm.mask` | `url(./icon-alarm.svg) center / contain no-repeat` |
 | [Projects](components/projects.md) | `icons-arrow.mask` | `url(./icon-up-right.svg) center / contain no-repeat` |
-| [Select](components/select.md) | `chevron.mask` | `url(./icon-chevron.svg) center / contain no-repeat` |
 | [Step](components/step.md) | `check.mask` | `url(./icon-check.svg) center / contain no-repeat` |
 | [Testimonials](components/testimonials.md) | `icons-chevron.mask` | `url(./icon-chevron-down.svg) center / contain no-repeat` and 1 more, one per state |
 | [Toast](components/toast.md) | `close-glyph.mask` | `url(./icon-clear.svg) center / contain no-repeat` |
@@ -172,12 +173,12 @@ Sizes and offsets that belong to one component, at a number no size token has.
 | [Checkbox](components/checkbox.md), [Radio](components/radio.md) | `box.outline-offset` | `calc(-1 * var(--spacing-outline-small))` | Composed from a token: the edge sits inside the box. |
 | [Code](components/code.md) | `root.font-family` | `'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace` | Rost has no mono family token yet. Where JetBrains Mono isn't loaded, the system mono stands in. |
 | [Code](components/code.md) | `root.font-size` | `0.88em` | In a sentence it follows the text around it. Mono looks bigger than General Sans at the same size, so a little smaller. |
+| [DateField](components/date-field.md), [Input](components/input.md), [Select](components/select.md) | `supportive.top` | `calc(var(--spacing-size-large) + var(--spacing-gap-2xsmall))` | Composed from tokens: the field's height plus spacing/gap/2xsmall. |
 | [Dialog](components/dialog.md), [Popover](components/popover.md) | `panel.outline-offset` | `calc(-1 * var(--spacing-outline-small))` | Composed from a token: the edge sits inside the plate. |
 | [Dropzone](components/dropzone.md) | `root.outline-offset` | `calc(-1 * var(--spacing-outline-small))` and 1 more, one per state | Composed from a token: the edge sits inside. |
 | [Icon](components/icon.md) | `root.mask-image` | `url(./svg/arrow-down.svg)` and 17 more, one per state | The icon file, `assets/icons/arrow-down.svg`. |
 | [Illustration](components/illustration.md) | `drawing.width` | `100%` | The drawing fills the 72px box. |
 | [Illustration](components/illustration.md) | `drawing.height` | `100%` | The drawing fills the 72px box. |
-| [Input](components/input.md), [Select](components/select.md) | `supportive.top` | `calc(var(--spacing-size-large) + var(--spacing-gap-2xsmall))` | Composed from tokens: the field's height plus spacing/gap/2xsmall. |
 | [Kbd](components/kbd.md), [Toolbar](components/toolbar.md) | `root.outline-offset` | `calc(-1 * var(--spacing-outline-small))` | Composed from a token: the edge sits inside. |
 | [Link](components/link.md) | `root.text-underline-offset` | `0.2em` | Follows the text's size, so it's in em, not a space token. |
 | [ListItem](components/list-item.md) | `root.width` | `100%` | As wide as its list. Figma's sample is 208px. |
@@ -224,6 +225,9 @@ The paper effect's numbers, tuned for how the dots move. Only the paper uses the
 - [Carousel](components/carousel.md) `focus-ring.border-style` = `solid`
 - [Checkbox](components/checkbox.md) `focus-ring.border-style` = `solid`
 - [Chip](components/chips.md) `focus-ring.border-style` = `solid`
+- [DateField](components/date-field.md) `root.width` = `208px`
+- [DateField](components/date-field.md) `outline.border-style` = `solid`
+- [DateField](components/date-field.md) `focus-ring.border-style` = `solid`
 - [DescriptionList](components/description-list.md) `row.grid-template-columns` = `160px minmax(0, 1fr)`
 - [Dialog](components/dialog.md) `panel.width` = `400px`
 - [Disclosure](components/disclosure.md) `summary.outline-style` = `solid`

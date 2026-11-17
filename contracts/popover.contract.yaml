@@ -18,6 +18,7 @@ source:
 props:
   id: { type: string, required: true, notes: "What the button that opens it points at, with `popovertarget`." }
   children: { type: slot, notes: "A few lines, a small form, a list of links." }
+  fit: { type: boolean, default: false, notes: "As wide as what it holds, with no 280px limit. For a Calendar or a small table, not for words." }
 elements:
   root:
     notes: "The browser's popover (`popover=\"auto\"`), with its own look taken away. The browser shows it, hides it and closes it on Esc or a click outside. Where it sits is the page's job."
@@ -45,6 +46,11 @@ elements:
       outline-offset: { value: "calc(-1 * var(--spacing-outline-small))", untokenised: "Composed from a token: the edge sits inside the plate." }
       outline-color: { token: popover/edge, value: "#3a3a3a" }
       box-shadow: { token: shadow/floating, value: "0px 16px 24px 0px rgba(0, 0, 0, 0.16)", notes: "The kit's only drop shadow, for things that float above the page." }
+variants:
+  - when: { fit: true }
+    elements:
+      panel:
+        max-width: { value: none, assert: false, notes: "A Calendar is 280px before the 16px each side. Words still wrap at 280px without `fit`." }
 guidance:
   status: proposed
   use:

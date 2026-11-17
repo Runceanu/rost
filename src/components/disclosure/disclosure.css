@@ -1,6 +1,6 @@
 /* Generated from contracts/disclosure.contract.yaml by bin/build-css.mjs. Don't edit: change the contract and rebuild. */
 
-.rost-disclosure, .rost-disclosure * { box-sizing: border-box; margin: 0; }
+.rost-disclosure, .rost-disclosure :where(:not([class*="rost-"]), [class*="rost-disclosure__"]) { box-sizing: border-box; margin: 0; }
 .rost-disclosure > img, .rost-disclosure [class*="__icons-"] > img { display: block; position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; }
 .rost-disclosure ::placeholder { color: inherit; opacity: 1; }
 

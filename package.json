@@ -50,7 +50,7 @@
     "validate": "node bin/validate.mjs && node bin/build-tokens.mjs --check",
     "tokens": "node bin/build-tokens.mjs",
     "illustrations": "node bin/build-illustrations.mjs",
-    "site": "npm run docs && astro build --root web",
+    "site": "npm run docs && astro build --root web && node bin/check-site.mjs",
     "deploy": "npm run site && wrangler deploy",
     "preview": "wrangler dev",
     "css": "node bin/build-css.mjs",

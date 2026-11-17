@@ -1,6 +1,6 @@
 /* Generated from contracts/figure.contract.yaml by bin/build-css.mjs. Don't edit: change the contract and rebuild. */
 
-.rost-figure, .rost-figure * { box-sizing: border-box; margin: 0; }
+.rost-figure, .rost-figure :where(:not([class*="rost-"]), [class*="rost-figure__"]) { box-sizing: border-box; margin: 0; }
 .rost-figure > img, .rost-figure [class*="__icons-"] > img { display: block; position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; }
 .rost-figure ::placeholder { color: inherit; opacity: 1; }
 

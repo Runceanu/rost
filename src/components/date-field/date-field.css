@@ -1,0 +1,246 @@
+/* Generated from contracts/date-field.contract.yaml by bin/build-css.mjs. Don't edit: change the contract and rebuild. */
+
+.rost-date-field, .rost-date-field :where(:not([class*="rost-"]), [class*="rost-date-field__"]) { box-sizing: border-box; margin: 0; }
+.rost-date-field > img, .rost-date-field [class*="__icons-"] > img { display: block; position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; }
+.rost-date-field ::placeholder { color: inherit; opacity: 1; }
+
+.rost-date-field {
+  display: block;
+  position: relative;
+  height: var(--spacing-size-large);
+  width: 208px;
+}
+
+.rost-date-field__outline {
+  position: absolute;
+  inset: 0;
+  border-style: solid;
+  border-width: var(--spacing-outline-small);
+  border-radius: var(--spacing-radius-medium);
+  pointer-events: none;
+}
+
+.rost-date-field__label {
+  position: absolute;
+  top: var(--spacing-gap-small-medium);
+  left: var(--spacing-gap-small-medium);
+  font-family: var(--font-family-base);
+  font-weight: var(--typography-label-font-weight-regular);
+  font-size: var(--typography-placeholder-font-size);
+  line-height: var(--typography-placeholder-line-height);
+  letter-spacing: var(--typography-placeholder-letter-spacing);
+  pointer-events: none;
+}
+
+.rost-date-field__field {
+  display: block;
+  width: 100%;
+  text-align: left;
+  white-space: nowrap;
+  position: absolute;
+  inset: 0;
+  appearance: none;
+  background: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding-top: var(--spacing-gap-large);
+  padding-bottom: var(--spacing-gap-small-medium);
+  padding-left: var(--spacing-gap-small-medium);
+  padding-right: var(--spacing-size-medium);
+  font-family: var(--font-family-base);
+  font-weight: var(--typography-paragraph-font-weight-regular);
+  font-size: var(--typography-paragraph-font-size);
+  line-height: var(--typography-paragraph-line-height);
+  letter-spacing: var(--typography-paragraph-letter-spacing);
+}
+
+.rost-date-field__chevron {
+  position: absolute;
+  top: var(--spacing-gap-medium-large);
+  right: var(--spacing-gap-small-medium);
+  width: var(--spacing-size-xsmall);
+  height: var(--spacing-size-xsmall);
+  mask: url(./icon-chevron.svg) center / contain no-repeat;
+  pointer-events: none;
+}
+
+.rost-date-field__supportive {
+  position: absolute;
+  left: var(--spacing-gap-small-medium);
+  top: calc(var(--spacing-size-large) + var(--spacing-gap-2xsmall));
+  font-family: var(--font-family-base);
+  font-weight: var(--typography-label-font-weight-medium);
+  font-size: var(--typography-placeholder-font-size);
+  line-height: var(--typography-placeholder-line-height);
+  letter-spacing: var(--typography-placeholder-letter-spacing);
+  white-space: nowrap;
+}
+
+.rost-date-field__focus-ring {
+  display: none;
+  position: absolute;
+  inset: calc(-1 * var(--spacing-gap-2xsmall));
+  border-style: solid;
+  border-width: var(--spacing-outline-medium);
+  border-radius: var(--spacing-radius-large);
+  pointer-events: none;
+}
+
+.rost-date-field:not(.rost-date-field--error) .rost-date-field__outline {
+  background: var(--select-default-background);
+  border-color: var(--select-default-outline);
+}
+
+.rost-date-field:not(.rost-date-field--error) .rost-date-field__label {
+  color: var(--select-default-label);
+}
+
+.rost-date-field:not(.rost-date-field--error) .rost-date-field__field {
+  color: var(--select-default-value);
+}
+
+.rost-date-field:not(.rost-date-field--error) .rost-date-field__chevron {
+  background: var(--select-default-chevron);
+}
+
+.rost-date-field:not(.rost-date-field--error) .rost-date-field__supportive {
+  color: var(--select-default-supportive);
+}
+
+.rost-date-field:hover:where(:not(:has(> .rost-date-field__field:disabled))):not(.rost-date-field--error) .rost-date-field__outline {
+  background: var(--select-hover-background);
+  border-color: var(--select-hover-outline);
+}
+
+.rost-date-field:hover:where(:not(:has(> .rost-date-field__field:disabled))):not(.rost-date-field--error) .rost-date-field__label {
+  color: var(--select-hover-label);
+}
+
+.rost-date-field:hover:where(:not(:has(> .rost-date-field__field:disabled))):not(.rost-date-field--error) .rost-date-field__field {
+  color: var(--select-hover-value);
+}
+
+.rost-date-field:hover:where(:not(:has(> .rost-date-field__field:disabled))):not(.rost-date-field--error) .rost-date-field__chevron {
+  background: var(--select-hover-chevron);
+}
+
+.rost-date-field:hover:where(:not(:has(> .rost-date-field__field:disabled))):not(.rost-date-field--error) .rost-date-field__supportive {
+  color: var(--select-hover-supportive);
+}
+
+.rost-date-field:has(> .rost-date-field__field:focus-visible):not(.rost-date-field--error) .rost-date-field__outline {
+  background: var(--select-focus-background);
+  border-color: var(--select-focus-outline);
+}
+
+.rost-date-field:has(> .rost-date-field__field:focus-visible):not(.rost-date-field--error) .rost-date-field__label {
+  color: var(--select-focus-label);
+}
+
+.rost-date-field:has(> .rost-date-field__field:focus-visible):not(.rost-date-field--error) .rost-date-field__field {
+  color: var(--select-focus-value);
+}
+
+.rost-date-field:has(> .rost-date-field__field:focus-visible):not(.rost-date-field--error) .rost-date-field__chevron {
+  background: var(--select-focus-chevron);
+}
+
+.rost-date-field:has(> .rost-date-field__field:focus-visible):not(.rost-date-field--error) .rost-date-field__supportive {
+  color: var(--select-focus-supportive);
+}
+
+.rost-date-field:has(> .rost-date-field__field:focus-visible):not(.rost-date-field--error) .rost-date-field__focus-ring {
+  display: block;
+  border-color: var(--select-focus-focus-ring);
+}
+
+.rost-date-field:has(> .rost-date-field__field:disabled):not(.rost-date-field--error) .rost-date-field__outline {
+  background: var(--select-disabled-background);
+  border-color: var(--select-disabled-outline);
+}
+
+.rost-date-field:has(> .rost-date-field__field:disabled):not(.rost-date-field--error) .rost-date-field__label {
+  color: var(--select-disabled-label);
+}
+
+.rost-date-field:has(> .rost-date-field__field:disabled):not(.rost-date-field--error) .rost-date-field__field {
+  color: var(--select-disabled-value);
+}
+
+.rost-date-field:has(> .rost-date-field__field:disabled):not(.rost-date-field--error) .rost-date-field__chevron {
+  background: var(--select-disabled-chevron);
+  opacity: var(--opacity-soft);
+}
+
+.rost-date-field:has(> .rost-date-field__field:disabled):not(.rost-date-field--error) .rost-date-field__supportive {
+  color: var(--select-disabled-supportive);
+}
+
+.rost-date-field.rost-date-field--error .rost-date-field__outline {
+  background: var(--select-negative-default-background);
+  border-color: var(--select-negative-default-outline);
+}
+
+.rost-date-field.rost-date-field--error .rost-date-field__label {
+  color: var(--select-negative-default-label);
+}
+
+.rost-date-field.rost-date-field--error .rost-date-field__field {
+  color: var(--select-negative-default-value);
+}
+
+.rost-date-field.rost-date-field--error .rost-date-field__chevron {
+  background: var(--select-negative-default-chevron);
+}
+
+.rost-date-field.rost-date-field--error .rost-date-field__supportive {
+  color: var(--select-negative-default-supportive);
+}
+
+.rost-date-field:hover:where(:not(:has(> .rost-date-field__field:disabled))).rost-date-field--error .rost-date-field__outline {
+  background: var(--select-negative-hover-background);
+  border-color: var(--select-negative-hover-outline);
+}
+
+.rost-date-field:hover:where(:not(:has(> .rost-date-field__field:disabled))).rost-date-field--error .rost-date-field__label {
+  color: var(--select-negative-hover-label);
+}
+
+.rost-date-field:hover:where(:not(:has(> .rost-date-field__field:disabled))).rost-date-field--error .rost-date-field__field {
+  color: var(--select-negative-hover-value);
+}
+
+.rost-date-field:hover:where(:not(:has(> .rost-date-field__field:disabled))).rost-date-field--error .rost-date-field__chevron {
+  background: var(--select-negative-hover-chevron);
+}
+
+.rost-date-field:hover:where(:not(:has(> .rost-date-field__field:disabled))).rost-date-field--error .rost-date-field__supportive {
+  color: var(--select-negative-hover-supportive);
+}
+
+.rost-date-field:has(> .rost-date-field__field:focus-visible).rost-date-field--error .rost-date-field__outline {
+  background: var(--select-negative-focus-background);
+  border-color: var(--select-negative-focus-outline);
+}
+
+.rost-date-field:has(> .rost-date-field__field:focus-visible).rost-date-field--error .rost-date-field__label {
+  color: var(--select-negative-focus-label);
+}
+
+.rost-date-field:has(> .rost-date-field__field:focus-visible).rost-date-field--error .rost-date-field__field {
+  color: var(--select-negative-focus-value);
+}
+
+.rost-date-field:has(> .rost-date-field__field:focus-visible).rost-date-field--error .rost-date-field__chevron {
+  background: var(--select-negative-focus-chevron);
+}
+
+.rost-date-field:has(> .rost-date-field__field:focus-visible).rost-date-field--error .rost-date-field__supportive {
+  color: var(--select-negative-focus-supportive);
+}
+
+.rost-date-field:has(> .rost-date-field__field:focus-visible).rost-date-field--error .rost-date-field__focus-ring {
+  display: block;
+  border-color: var(--select-negative-focus-focus-ring);
+}

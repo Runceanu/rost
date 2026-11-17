@@ -1,6 +1,6 @@
 /* Generated from contracts/bar-chart.contract.yaml by bin/build-css.mjs. Don't edit: change the contract and rebuild. */
 
-.rost-bar-chart, .rost-bar-chart * { box-sizing: border-box; margin: 0; }
+.rost-bar-chart, .rost-bar-chart :where(:not([class*="rost-"]), [class*="rost-bar-chart__"]) { box-sizing: border-box; margin: 0; }
 .rost-bar-chart > img, .rost-bar-chart [class*="__icons-"] > img { display: block; position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; }
 .rost-bar-chart ::placeholder { color: inherit; opacity: 1; }
 

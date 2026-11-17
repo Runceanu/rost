@@ -1,6 +1,6 @@
 /* Generated from contracts/calendar.contract.yaml by bin/build-css.mjs. Don't edit: change the contract and rebuild. */
 
-.rost-calendar, .rost-calendar * { box-sizing: border-box; margin: 0; }
+.rost-calendar, .rost-calendar :where(:not([class*="rost-"]), [class*="rost-calendar__"]) { box-sizing: border-box; margin: 0; }
 .rost-calendar > img, .rost-calendar [class*="__icons-"] > img { display: block; position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; }
 .rost-calendar ::placeholder { color: inherit; opacity: 1; }
 

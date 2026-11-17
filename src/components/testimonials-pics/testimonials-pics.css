@@ -1,6 +1,6 @@
 /* Generated from contracts/testimonials-pics.contract.yaml by bin/build-css.mjs. Don't edit: change the contract and rebuild. */
 
-.rost-testimonials-pics, .rost-testimonials-pics * { box-sizing: border-box; margin: 0; }
+.rost-testimonials-pics, .rost-testimonials-pics :where(:not([class*="rost-"]), [class*="rost-testimonials-pics__"]) { box-sizing: border-box; margin: 0; }
 .rost-testimonials-pics > img, .rost-testimonials-pics [class*="__icons-"] > img { display: block; position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; }
 .rost-testimonials-pics ::placeholder { color: inherit; opacity: 1; }
 

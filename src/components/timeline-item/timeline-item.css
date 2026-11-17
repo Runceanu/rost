@@ -1,6 +1,6 @@
 /* Generated from contracts/timeline-item.contract.yaml by bin/build-css.mjs. Don't edit: change the contract and rebuild. */
 
-.rost-timeline-item, .rost-timeline-item * { box-sizing: border-box; margin: 0; }
+.rost-timeline-item, .rost-timeline-item :where(:not([class*="rost-"]), [class*="rost-timeline-item__"]) { box-sizing: border-box; margin: 0; }
 .rost-timeline-item > img, .rost-timeline-item [class*="__icons-"] > img { display: block; position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; }
 .rost-timeline-item ::placeholder { color: inherit; opacity: 1; }
 

@@ -1,6 +1,6 @@
 /* Generated from contracts/fieldset.contract.yaml by bin/build-css.mjs. Don't edit: change the contract and rebuild. */
 
-.rost-fieldset, .rost-fieldset * { box-sizing: border-box; margin: 0; }
+.rost-fieldset, .rost-fieldset :where(:not([class*="rost-"]), [class*="rost-fieldset__"]) { box-sizing: border-box; margin: 0; }
 .rost-fieldset > img, .rost-fieldset [class*="__icons-"] > img { display: block; position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; }
 .rost-fieldset ::placeholder { color: inherit; opacity: 1; }
 

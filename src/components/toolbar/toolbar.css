@@ -1,6 +1,6 @@
 /* Generated from contracts/toolbar.contract.yaml by bin/build-css.mjs. Don't edit: change the contract and rebuild. */
 
-.rost-toolbar, .rost-toolbar * { box-sizing: border-box; margin: 0; }
+.rost-toolbar, .rost-toolbar :where(:not([class*="rost-"]), [class*="rost-toolbar__"]) { box-sizing: border-box; margin: 0; }
 .rost-toolbar > img, .rost-toolbar [class*="__icons-"] > img { display: block; position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; }
 .rost-toolbar ::placeholder { color: inherit; opacity: 1; }
 

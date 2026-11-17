@@ -760,5 +760,18 @@
     "variants": [
       { "nodeId": "750:34", "name": "calendar", "width": 280, "height": 318 }
     ]
+  },
+  "date-field": {
+    "name": "DateField",
+    "setNodeId": "752:50",
+    "variants": [
+      { "nodeId": "752:3", "name": "state=Default, error=False", "width": 208, "height": 56 },
+      { "nodeId": "752:9", "name": "state=Hover, error=False", "width": 208, "height": 56 },
+      { "nodeId": "752:15", "name": "state=Focus, error=False", "width": 216, "height": 64 },
+      { "nodeId": "752:22", "name": "state=Disabled, error=False", "width": 208, "height": 56 },
+      { "nodeId": "752:28", "name": "state=Default, error=True", "width": 208, "height": 56 },
+      { "nodeId": "752:35", "name": "state=Hover, error=True", "width": 208, "height": 56 },
+      { "nodeId": "752:42", "name": "state=Focus, error=True", "width": 216, "height": 64 }
+    ]
   }
 }

@@ -1,6 +1,6 @@
 /* Generated from contracts/calendar-day.contract.yaml by bin/build-css.mjs. Don't edit: change the contract and rebuild. */
 
-.rost-calendar-day, .rost-calendar-day * { box-sizing: border-box; margin: 0; }
+.rost-calendar-day, .rost-calendar-day :where(:not([class*="rost-"]), [class*="rost-calendar-day__"]) { box-sizing: border-box; margin: 0; }
 .rost-calendar-day > img, .rost-calendar-day [class*="__icons-"] > img { display: block; position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; }
 .rost-calendar-day ::placeholder { color: inherit; opacity: 1; }
 

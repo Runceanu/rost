@@ -1,6 +1,6 @@
 /* Generated from contracts/skeleton.contract.yaml by bin/build-css.mjs. Don't edit: change the contract and rebuild. */
 
-.rost-skeleton, .rost-skeleton * { box-sizing: border-box; margin: 0; }
+.rost-skeleton, .rost-skeleton :where(:not([class*="rost-"]), [class*="rost-skeleton__"]) { box-sizing: border-box; margin: 0; }
 .rost-skeleton > img, .rost-skeleton [class*="__icons-"] > img { display: block; position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; }
 .rost-skeleton ::placeholder { color: inherit; opacity: 1; }
 
