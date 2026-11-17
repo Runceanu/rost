@@ -14,7 +14,7 @@ Rost started as a design system for my own needs and grew into a product of its 
 | [Roadmap](ROADMAP.md) | What I'm doing next |
 | [Release notes](CHANGELOG.md) | What changed in each release |
 
-**77** contracts, **5** stable. **77** have guidance, and I've signed off **32** of those.
+**79** contracts, **5** stable. **79** have guidance, and I've signed off **32** of those.
 
 ## Catalogue
 
@@ -41,6 +41,7 @@ Rost started as a design system for my own needs and grew into a product of its 
 | [Dialog](components/dialog.md) | A question or a short task that stops everything else until it's answered. A grey plate over the page with a title, a few words and its buttons. | `review` | `proposed` | · |
 | [Disclosure](components/disclosure.md) | A line that opens to show more, for things most people won't need. | `review` | `proposed` | · |
 | [Divider](components/divider.md) | A thin line between things. | `stable` | `agreed` | Portfolio site, Accounting app |
+| [DropdownMenu](components/dropdown-menu.md) | A button that opens a short list of actions: MenuItems on Popover's grey plate, with a thin line between groups. The arrow keys move through them, Esc closes it. | `review` | `proposed` | · |
 | [Dropzone](components/dropzone.md) | A place to drop a file, with a button for when dragging isn't handy: an arrow, what to drop, what's allowed, and Choose a file. | `review` | `proposed` | · |
 | [EmptyState](components/empty-state.md) | What a screen says when there's nothing on it yet. One of Rost's drawings, a line saying why, a sentence on what to do, and the button that does it. | `review` | `proposed` | · |
 | [Fieldset](components/fieldset.md) | A question with its choices: the question in medium paragraph type, the Radios or Checkboxes under it, and a line of help. | `review` | `proposed` | · |
@@ -55,6 +56,7 @@ Rost started as a design system for my own needs and grew into a product of its 
 | [Link](components/link.md) | A link inside text. Green and underlined, or quiet in the text's own colour. | `review` | `proposed` | · |
 | [ListItem](components/list-item.md) | One row you can pick in a list or a nav. A label, an optional line under it, and optional icons and a status dot. | `review` | `agreed` | · |
 | [Menu](components/menu.md) | A navigation item: a label with a line underneath, used in the main nav. | `review` | `agreed` | · |
+| [MenuItem](components/menu-item.md) | One action in a DropdownMenu: a 40px row with its words. Green when it's pointed at or has the focus, red for one that can't be undone. | `review` | `proposed` | · |
 | [Navigation](components/navigation.md) | A side navigation on frosted glass. The logo at the top, the main items below it, one action at the bottom. Collapsed to icons, or open with labels. | `review` | `agreed` | · |
 | [Pagination](components/pagination.md) | Moving through a long list a page at a time. Back and forward buttons with where you are between them. | `review` | `proposed` | · |
 | [Popover](components/popover.md) | A small plate that opens over the page with more about something, and closes when you click away. Card's grey, with an edge and the floating shadow. | `review` | `proposed` | · |

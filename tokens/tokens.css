@@ -1321,6 +1321,20 @@
   --legend-swatch: #747573;
   --legend-value: #ededed;
 
+  /* ── Component: dropdown-menu ────────────────────────────────────────────── */
+  --dropdown-menu-background: #171717;
+  --dropdown-menu-edge: #3a3a3a;
+  --dropdown-menu-separator: #3a3a3a;
+
+  /* ── Component: menu-item ────────────────────────────────────────────────── */
+  --menu-item-default-label: #ededed;
+  --menu-item-disabled-label: #555555;
+  --menu-item-hover-background: #006f27;
+  --menu-item-hover-label: #ededed;
+  --menu-item-negative-hover-background: #48050c;
+  --menu-item-negative-hover-label: #fee6e1;
+  --menu-item-negative-label: #f2705f;
+
   /* ── Generic colours (no family in Figma) ────────────────────────────────── */
   --background: #3a3a3a;
   --focus-ring: #999999;
@@ -1477,7 +1491,7 @@
 }
 
 /* ── Light ──────────────────────────────────────────────────────────────────
- * Only the colours change, 853 of them. Figma's light mode, with Rost's own
+ * Only the colours change, 863 of them. Figma's light mode, with Rost's own
  * corrections from registry/light.json where Figma's value fails contrast.
  * Set data-theme="light" on <html> (or any element). Without it you get dark,
  * whatever the system says. data-theme="dark" brings dark back inside a light page.
@@ -1757,6 +1771,9 @@
   --dialog-body: #171717;
   --dialog-edge: #d3d9d5;
   --dialog-title: #060805;
+  --dropdown-menu-background: #ededed;
+  --dropdown-menu-edge: #d3d9d5;
+  --dropdown-menu-separator: #d3d9d5;
   --dropzone-error-edge: #ae1b13;
   --dropzone-error-help: #ae1b13;
   --dropzone-help: #6a6b69;
@@ -1940,6 +1957,13 @@
   --list-item-unselected-pressed-icon: #006f27;
   --list-item-unselected-pressed-label: #171717;
   --list-item-unselected-pressed-sub-label: #454545;
+  --menu-item-default-label: #060805;
+  --menu-item-disabled-label: #c2c7c3;
+  --menu-item-hover-background: #7bffc0;
+  --menu-item-hover-label: #060805;
+  --menu-item-negative-hover-background: #fdcdc4;
+  --menu-item-negative-hover-label: #48050c;
+  --menu-item-negative-label: #ae1b13;
   --menu-current-divider: #060805;
   --menu-current-label: #060805;
   --menu-current-sub-label: #060805;
@@ -2614,6 +2638,9 @@
   --dialog-body: #d3d9d5;
   --dialog-edge: #3a3a3a;
   --dialog-title: #ededed;
+  --dropdown-menu-background: #171717;
+  --dropdown-menu-edge: #3a3a3a;
+  --dropdown-menu-separator: #3a3a3a;
   --dropzone-error-edge: #f2705f;
   --dropzone-error-help: #f2705f;
   --dropzone-help: #999999;
@@ -2797,6 +2824,13 @@
   --list-item-unselected-pressed-icon: #00d669;
   --list-item-unselected-pressed-label: #d3d9d5;
   --list-item-unselected-pressed-sub-label: #c2c7c3;
+  --menu-item-default-label: #ededed;
+  --menu-item-disabled-label: #555555;
+  --menu-item-hover-background: #006f27;
+  --menu-item-hover-label: #ededed;
+  --menu-item-negative-hover-background: #48050c;
+  --menu-item-negative-hover-label: #fee6e1;
+  --menu-item-negative-label: #f2705f;
   --menu-current-divider: #ededed;
   --menu-current-label: #ededed;
   --menu-current-sub-label: #ededed;

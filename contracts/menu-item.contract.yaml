@@ -1,0 +1,111 @@
+# yaml-language-server: $schema=../schema/component-contract.schema.json
+schemaVersion: 2
+id: menu-item
+name: MenuItem
+kind: component
+status: review
+partOf: dropdown-menu
+summary: "One action in a DropdownMenu: a 40px row with its words. Green when it's pointed at or has the focus, red for one that can't be undone."
+category: actions
+related: [ dropdown-menu, list-item, button ]
+source:
+  tool: figma
+  fileKey: 1Zy0wiWKXQAvsfDBX3KR0d
+  nodeId: "755:23"
+  url: https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=755-23
+  extractedAt: "2026-11-17"
+  extractedBy: hand
+  frozenAt: "2026-11-17"
+props:
+  tone:
+    type: enum
+    values: [ default, negative ]
+    default: default
+    notes: "`negative` for an action that loses something, like Delete. Put it last, after a separator."
+  disabled: { type: boolean, default: false, notes: "It stays in the list, so people see it exists, but can't be chosen." }
+  icon: { type: slot, notes: "An Icon before the words, small. Either every item has one or none do." }
+  children: { type: slot, required: true, notes: "The action, a verb: Edit, Duplicate, Delete." }
+states: [ Default, Hover, Focus, Disabled ]
+stateSelectors:
+  Disabled: '[aria-disabled="true"]'
+elements:
+  root:
+    notes: "A `<button role=\"menuitem\">`, as wide as the menu, 40px tall, 12px in at the sides, with 8px corners. The words in paragraph type."
+    styles:
+      display: { value: flex, assert: false }
+      align-items: { value: center }
+      gap: { token: spacing/gap/small, value: 8px }
+      inline-size: { value: 100%, assert: false, notes: "As wide as the menu. `inline-size`, since a root width with no token isn't written out." }
+      height: { token: spacing/size/medium, value: 40px }
+      padding-left: { token: spacing/gap/small-medium, value: 12px }
+      padding-right: { token: spacing/gap/small-medium, value: 12px }
+      border: { value: none, assert: false }
+      border-radius: { token: spacing/radius/small, value: 8px }
+      background: { value: transparent, assert: false }
+      outline: { value: none, assert: false }
+      cursor: { value: pointer, assert: false }
+      text-align: { value: left, assert: false }
+      white-space: { value: nowrap, assert: false }
+      font-family: { token: font-family/base, value: "'General Sans Variable'" }
+      font-weight: { token: typography/paragraph/font-weight/regular, value: "400" }
+      font-size: { token: typography/paragraph/font-size, value: 14px }
+      line-height: { token: typography/paragraph/line-height, value: 20px }
+      letter-spacing: { token: typography/paragraph/letter-spacing, value: 0px }
+variants:
+  - when: { tone: default, state: Default }
+    figmaNode: "755:13"
+    elements:
+      root:
+        color: { token: menu-item/default/label, value: "#ededed" }
+  - when: { tone: default, state: Hover }
+    figmaNode: "755:15"
+    elements:
+      root:
+        background: { token: menu-item/hover/background, value: "#006f27" }
+        color: { token: menu-item/hover/label, value: "#ededed" }
+  - when: { tone: default, state: Focus }
+    elements:
+      root:
+        background: { token: menu-item/hover/background, value: "#006f27", notes: "The arrow keys move the focus, so the focused item looks pointed at." }
+        color: { token: menu-item/hover/label, value: "#ededed" }
+  - when: { tone: default, state: Disabled }
+    figmaNode: "755:17"
+    elements:
+      root:
+        color: { token: menu-item/disabled/label, value: "#555555" }
+        cursor: { value: default, assert: false }
+  - when: { tone: negative, state: Default }
+    figmaNode: "755:19"
+    elements:
+      root:
+        color: { token: menu-item/negative/label, value: "#f2705f" }
+  - when: { tone: negative, state: Hover }
+    figmaNode: "755:21"
+    elements:
+      root:
+        background: { token: menu-item/negative/hover/background, value: "#48050c" }
+        color: { token: menu-item/negative/hover/label, value: "#fee6e1" }
+  - when: { tone: negative, state: Focus }
+    elements:
+      root:
+        background: { token: menu-item/negative/hover/background, value: "#48050c" }
+        color: { token: menu-item/negative/hover/label, value: "#fee6e1" }
+  - when: { tone: negative, state: Disabled }
+    elements:
+      root:
+        color: { token: menu-item/disabled/label, value: "#555555" }
+        cursor: { value: default, assert: false }
+guidance:
+  status: proposed
+  use:
+    - title: Things to do to one thing
+      text: "Edit, Duplicate, Download, Delete: the actions for a row or a card, out of the way until someone wants them."
+      show: "tone=default, state=Hover"
+  avoid:
+    - title: Going somewhere
+      text: "A list of pages is navigation. That's **Menu** or **Navigation**."
+  behaviour: "Pressing it does the action and closes the DropdownMenu. Pointed at or focused, it turns green, or dark red when it's negative. A disabled one is skipped by the arrow keys' action but can still be reached, so its name is read."
+  accessibility:
+    element: "`<button role=\"menuitem\">`. A disabled one has `aria-disabled`, not `disabled`, so it stays in the menu's order."
+    colour: "The words are 17:1 on the menu's grey, the red ones 6:1, and green on hover 7:1. Disabled words are faint on purpose and not counted."
+  content: "A verb, and the object when it isn't clear: Delete invoice. No ellipsis unless it opens something that asks more."

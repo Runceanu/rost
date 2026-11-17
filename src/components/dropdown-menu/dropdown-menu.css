@@ -1,0 +1,33 @@
+/* Generated from contracts/dropdown-menu.contract.yaml by bin/build-css.mjs. Don't edit: change the contract and rebuild. */
+
+.rost-dropdown-menu, .rost-dropdown-menu :where(:not([class*="rost-"]), [class*="rost-dropdown-menu__"]) { box-sizing: border-box; margin: 0; }
+.rost-dropdown-menu > img, .rost-dropdown-menu [class*="__icons-"] > img { display: block; position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; }
+.rost-dropdown-menu ::placeholder { color: inherit; opacity: 1; }
+
+.rost-dropdown-menu {
+  inset: auto;
+  margin: var(--spacing-gap-none);
+  margin-block-start: var(--spacing-gap-small);
+  position-area: block-end span-inline-end;
+  position-try-fallbacks: flip-block, flip-inline;
+  flex-direction: column;
+  min-width: 180px;
+  padding: var(--spacing-gap-2xsmall);
+  border: none;
+  border-radius: var(--spacing-radius-medium);
+  background: var(--dropdown-menu-background);
+  outline-style: solid;
+  outline-width: var(--spacing-outline-small);
+  outline-offset: calc(-1 * var(--spacing-outline-small));
+  outline-color: var(--dropdown-menu-edge);
+  box-shadow: var(--shadow-floating);
+  color: inherit;
+}
+
+.rost-dropdown-menu__separator {
+  display: block;
+  height: var(--spacing-outline-small);
+  margin-top: var(--spacing-gap-2xsmall);
+  margin-bottom: var(--spacing-gap-2xsmall);
+  background: var(--dropdown-menu-separator);
+}

@@ -1,0 +1,66 @@
+# yaml-language-server: $schema=../schema/component-contract.schema.json
+schemaVersion: 2
+id: dropdown-menu
+name: DropdownMenu
+kind: component
+status: review
+summary: "A button that opens a short list of actions: MenuItems on Popover's grey plate, with a thin line between groups. The arrow keys move through them, Esc closes it."
+category: actions
+related: [ menu-item, popover, toolbar, button ]
+source:
+  tool: figma
+  fileKey: 1Zy0wiWKXQAvsfDBX3KR0d
+  nodeId: "755:25"
+  url: https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=755-25
+  extractedAt: "2026-11-17"
+  extractedBy: hand
+  frozenAt: "2026-11-17"
+props:
+  trigger: { type: slot, required: true, notes: "The Button or IconButton that opens it. DropdownMenu wires it up: `popovertarget`, `aria-haspopup` and `aria-expanded`." }
+  label: { type: string, notes: "The menu's name for screen readers, when the trigger's words don't say it." }
+  children: { type: slot, required: true, notes: "MenuItems, with a `MenuSeparator` between groups." }
+elements:
+  root:
+    notes: "The browser's popover (`popover=\"auto\"`) with `role=\"menu\"`: under its button, 8px away, as Popover is, and moved when there's no room. It's its own plate, tighter than Popover's: 4px inside, at least 180px wide."
+    styles:
+      inset: { value: auto, assert: false }
+      margin: { token: spacing/gap/none, value: 0px }
+      margin-block-start: { token: spacing/gap/small, value: 8px }
+      position-area: { value: block-end span-inline-end, assert: false }
+      position-try-fallbacks: { value: "flip-block, flip-inline", assert: false }
+      flex-direction: { value: column, assert: false }
+      min-width: { value: 180px, notes: "Room for a two-word action without the menu looking cramped." }
+      padding: { token: spacing/gap/2xsmall, value: 4px }
+      border: { value: none, assert: false }
+      border-radius: { token: spacing/radius/medium, value: 12px }
+      background: { token: dropdown-menu/background, value: "#171717" }
+      outline-style: { value: solid, assert: false }
+      outline-width: { token: spacing/outline/small, value: 1px }
+      outline-offset: { value: "calc(-1 * var(--spacing-outline-small))", untokenised: "Composed from a token: the edge sits inside the plate." }
+      outline-color: { token: dropdown-menu/edge, value: "#3a3a3a" }
+      box-shadow: { token: shadow/floating, value: "0px 16px 24px 0px rgba(0, 0, 0, 0.16)" }
+      color: { value: inherit, assert: false }
+  separator:
+    notes: "A 1px line between groups, 4px clear above and below, in the edge's grey."
+    styles:
+      display: { value: block, assert: false }
+      height: { token: spacing/outline/small, value: 1px }
+      margin-top: { token: spacing/gap/2xsmall, value: 4px }
+      margin-bottom: { token: spacing/gap/2xsmall, value: 4px }
+      background: { token: dropdown-menu/separator, value: "#3a3a3a" }
+guidance:
+  status: proposed
+  use:
+    - title: A row's actions
+      text: "A kebab IconButton at the end of a table row, or a More button on a card, with three to seven actions behind it."
+  avoid:
+    - title: One or two actions
+      text: "Show them as Buttons. A menu hides them for no gain."
+    - title: Picking a value
+      text: "That's a **Select**."
+  behaviour: "Pressing the trigger opens it under the trigger with the focus on the first item. Up and Down move through the items, Home and End to the ends, Enter or Space does the action and closes it. Esc, Tab or a click outside closes it, and the focus goes back to the trigger. It doesn't wrap: Down on the last item stays there."
+  accessibility:
+    element: "`role=\"menu\"` on the plate, `role=\"menuitem\"` on each item, `role=\"separator\"` between groups. The trigger has `aria-haspopup=\"menu\"` and `aria-expanded`."
+    name: "The trigger's words, or `label`."
+    keyboard: "The arrow keys inside, one Tab stop: the menu isn't in the page's tab order."
+    colour: "The edge is drawing; the items carry their own contrast."

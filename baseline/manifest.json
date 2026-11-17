@@ -2648,5 +2648,51 @@
       "width": 222,
       "height": 14
     }
+  ],
+  "menu-item": [
+    {
+      "nodeId": "755:13",
+      "name": "tone=default, state=Default",
+      "file": "755-13.png",
+      "width": 172,
+      "height": 40
+    },
+    {
+      "nodeId": "755:15",
+      "name": "tone=default, state=Hover",
+      "file": "755-15.png",
+      "width": 172,
+      "height": 40
+    },
+    {
+      "nodeId": "755:17",
+      "name": "tone=default, state=Disabled",
+      "file": "755-17.png",
+      "width": 172,
+      "height": 40
+    },
+    {
+      "nodeId": "755:19",
+      "name": "tone=negative, state=Default",
+      "file": "755-19.png",
+      "width": 172,
+      "height": 40
+    },
+    {
+      "nodeId": "755:21",
+      "name": "tone=negative, state=Hover",
+      "file": "755-21.png",
+      "width": 172,
+      "height": 40
+    }
+  ],
+  "dropdown-menu": [
+    {
+      "nodeId": "755:25",
+      "name": "dropdown-menu",
+      "file": "755-25.png",
+      "width": 180,
+      "height": 177
+    }
   ]
 }

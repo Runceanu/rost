@@ -6,12 +6,12 @@ Every value in every contract, sorted by why it has a token or doesn't. A value 
 
 | | Values | Share | Meaning |
 |---|---|---|---|
-| Has a token | 2037 | 60% | Uses a token, and the check tests it. |
+| Has a token | 2071 | 60% | Uses a token, and the check tests it. |
 | Token suggested | 0 | 0% | A token I want that doesn't exist yet. The freeze turned every other suggestion into a token. |
-| How Figma builds it | 819 | 24% | How Figma builds the layer (position, inset, which sides get a stroke). Nothing to tokenise. |
-| Figma frame size | 332 | 10% | A root size that is just the Figma frame. Written down, not checked. |
-| No token, on purpose | 132 | 4% | Plain on purpose, and the contract says why. |
-| Open gap | 59 | 2% | No token and no reason. Each one needs a decision from me. |
+| How Figma builds it | 826 | 24% | How Figma builds the layer (position, inset, which sides get a stroke). Nothing to tokenise. |
+| Figma frame size | 344 | 10% | A root size that is just the Figma frame. Written down, not checked. |
+| No token, on purpose | 133 | 4% | Plain on purpose, and the contract says why. |
+| Open gap | 60 | 2% | No token and no reason. Each one needs a decision from me. |
 
 ## By contract
 
@@ -36,6 +36,7 @@ Every value in every contract, sorted by why it has a token or doesn't. A value 
 | [Dialog](components/dialog.md) | 23 | · | 5 | 6 | 1 | 1 |
 | [Disclosure](components/disclosure.md) | 16 | · | 4 | 5 | · | 3 |
 | [Divider](components/divider.md) | 2 | · | 2 | 2 | · | · |
+| [DropdownMenu](components/dropdown-menu.md) | 12 | · | 3 | 5 | 1 | 1 |
 | [Dropzone](components/dropzone.md) | 26 | · | 9 | 5 | 3 | · |
 | [EmptyState](components/empty-state.md) | 14 | · | 6 | · | · | 1 |
 | [Fieldset](components/fieldset.md) | 18 | · | 5 | 2 | · | · |
@@ -54,6 +55,7 @@ Every value in every contract, sorted by why it has a token or doesn't. A value 
 | [Lock frame effect](components/effect-lock-frame.md) | 1 | · | · | · | · | · |
 | [Menu effect](components/effect-menu.md) | 1 | · | · | · | · | · |
 | [Menu](components/menu.md) | 38 | · | 16 | 6 | · | 1 |
+| [MenuItem](components/menu-item.md) | 22 | · | 4 | 7 | · | · |
 | [Navigation](components/navigation.md) | 13 | · | 21 | 1 | 2 | · |
 | [Pagination](components/pagination.md) | 9 | · | 5 | · | · | · |
 | [Paper effect](components/effect-paper.md) | 6 | · | · | · | 7 | · |
@@ -177,6 +179,7 @@ Sizes and offsets that belong to one component, at a number no size token has.
 | [Code](components/code.md) | `root.font-size` | `0.88em` | In a sentence it follows the text around it. Mono looks bigger than General Sans at the same size, so a little smaller. |
 | [DateField](components/date-field.md), [Input](components/input.md), [Select](components/select.md) | `supportive.top` | `calc(var(--spacing-size-large) + var(--spacing-gap-2xsmall))` | Composed from tokens: the field's height plus spacing/gap/2xsmall. |
 | [Dialog](components/dialog.md), [Popover](components/popover.md) | `panel.outline-offset` | `calc(-1 * var(--spacing-outline-small))` | Composed from a token: the edge sits inside the plate. |
+| [DropdownMenu](components/dropdown-menu.md), [Toast](components/toast.md) | `root.outline-offset` | `calc(-1 * var(--spacing-outline-small))` | Composed from a token: the edge sits inside the plate. |
 | [Dropzone](components/dropzone.md) | `root.outline-offset` | `calc(-1 * var(--spacing-outline-small))` and 1 more, one per state | Composed from a token: the edge sits inside. |
 | [Icon](components/icon.md) | `root.mask-image` | `url(./svg/arrow-down.svg)` and 17 more, one per state | The icon file, `assets/icons/arrow-down.svg`. |
 | [Illustration](components/illustration.md) | `drawing.width` | `100%` | The drawing fills the 72px box. |
@@ -204,7 +207,6 @@ Sizes and offsets that belong to one component, at a number no size token has.
 | [TableItem](components/table-item.md) | `action.width` | `100%` | As wide as its cell. |
 | [TableRow](components/table-row.md) | `root.outline-offset` | `-2px` | Inside the row, the ring's own width, so it isn't cut by the rows around it. |
 | [Textarea](components/textarea.md) | `supportive.top` | `calc(100% + var(--spacing-gap-2xsmall))` | Composed from a token: the field's own height, whatever it is, plus spacing/gap/2xsmall. |
-| [Toast](components/toast.md) | `root.outline-offset` | `calc(-1 * var(--spacing-outline-small))` | Composed from a token: the edge sits inside the plate. |
 
 ### Tuned by eye
 
@@ -235,6 +237,7 @@ The paper effect's numbers, tuned for how the dots move. Only the paper uses the
 - [Disclosure](components/disclosure.md) `summary.outline-style` = `solid`
 - [Disclosure](components/disclosure.md) `summary.outline-offset` = `2px`
 - [Disclosure](components/disclosure.md) `icon.transform` = `rotate(90deg)`
+- [DropdownMenu](components/dropdown-menu.md) `root.min-width` = `180px`
 - [EmptyState](components/empty-state.md) `body.max-width` = `320px`
 - [Icon](components/icon.md) `root.background` = `currentColor`
 - [IconButton](components/icon-button.md) `glyph.background` = `currentColor`
@@ -297,7 +300,7 @@ When a component needs a colour no other has, change its own token to point some
 
 ## Two themes
 
-Dark is the default. It's what Figma draws first and what both apps use. Light is new (2026-10-30). Only colours change: 853 theme colours have a light value of their own. Every other token, and every component, is the same in both.
+Dark is the default. It's what Figma draws first and what both apps use. Light is new (2026-10-30). Only colours change: 863 theme colours have a light value of their own. Every other token, and every component, is the same in both.
 
 `tokens/tokens.css` puts dark on `:root`. Light applies under `[data-theme="light"]` and nowhere else. A system set to light doesn't change it: with no `data-theme` you get dark. `[data-theme="dark"]` brings dark back inside a light page, so a dark panel can sit in a light one. Set it on `<html>` for the whole page:
 
@@ -370,4 +373,4 @@ rost.build's own transitions use the tokens now. No component in Rost animates y
 
 ## Figma variables
 
-The Figma file has **1308** variables (`registry/figma-variables.json`, read on 2026-11-04) and `tokens/tokens.css` has **1308** of them. `npm run tokens` builds it from that read, so they can't come apart.
+The Figma file has **1318** variables (`registry/figma-variables.json`, read on 2026-11-04) and `tokens/tokens.css` has **1318** of them. `npm run tokens` builds it from that read, so they can't come apart.
