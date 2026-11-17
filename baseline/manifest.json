@@ -2616,5 +2616,37 @@
       "width": 216,
       "height": 64
     }
+  ],
+  "sparkline": [
+    {
+      "nodeId": "753:13",
+      "name": "tone=neutral",
+      "file": "753-13.png",
+      "width": 120,
+      "height": 32
+    },
+    {
+      "nodeId": "753:17",
+      "name": "tone=positive",
+      "file": "753-17.png",
+      "width": 120,
+      "height": 32
+    },
+    {
+      "nodeId": "753:21",
+      "name": "tone=negative",
+      "file": "753-21.png",
+      "width": 120,
+      "height": 32
+    }
+  ],
+  "legend": [
+    {
+      "nodeId": "753:25",
+      "name": "legend",
+      "file": "753-25.png",
+      "width": 222,
+      "height": 14
+    }
   ]
 }

@@ -14,7 +14,7 @@ Rost started as a design system for my own needs and grew into a product of its 
 | [Roadmap](ROADMAP.md) | What I'm doing next |
 | [Release notes](CHANGELOG.md) | What changed in each release |
 
-**75** contracts, **5** stable. **75** have guidance, and I've signed off **32** of those.
+**77** contracts, **5** stable. **77** have guidance, and I've signed off **32** of those.
 
 ## Catalogue
 
@@ -51,6 +51,7 @@ Rost started as a design system for my own needs and grew into a product of its 
 | [InlineBanner](components/inline-banner.md) | A filled status pill with an icon and a label, in four statuses and two sizes. | `stable` | `agreed` | Portfolio site, Accounting app |
 | [Input](components/input.md) | A 56px text field with a floating label, an optional lock icon, a line of help text and an error state. | `review` | `agreed` | Portfolio site, Accounting app |
 | [Kbd](components/kbd.md) | A key on the keyboard, written in the text. A small grey cap with the key's name in mono. | `review` | `proposed` | · |
+| [Legend](components/legend.md) | What a chart's colours mean: a small square of each, its name and, if it helps, its value, in a row that wraps. | `review` | `proposed` | · |
 | [Link](components/link.md) | A link inside text. Green and underlined, or quiet in the text's own colour. | `review` | `proposed` | · |
 | [ListItem](components/list-item.md) | One row you can pick in a list or a nav. A label, an optional line under it, and optional icons and a status dot. | `review` | `agreed` | · |
 | [Menu](components/menu.md) | A navigation item: a label with a line underneath, used in the main nav. | `review` | `agreed` | · |
@@ -66,6 +67,7 @@ Rost started as a design system for my own needs and grew into a product of its 
 | [Sheet](components/sheet.md) | A panel that slides over the page from the right, for a task with more to it than a dialog: editing a client, an invoice's details. | `review` | `proposed` | · |
 | [Skeleton](components/skeleton.md) | Grey shapes where content is about to be, so the page doesn't jump when it arrives. A line of text, a circle or a block. | `review` | `proposed` | · |
 | [Slider](components/slider.md) | A number picked by dragging, when about right is right: a 4px track, a green fill and a 20px thumb. The arrow keys move it a step at a time. | `review` | `proposed` | · |
+| [Sparkline](components/sparkline.md) | Which way something has been going, as a small line with a dot at now. Green when that's good, red when it isn't, grey when it's neither. | `review` | `proposed` | · |
 | [Spinner](components/spinner.md) | Something is working and you can't tell how long it'll take. A grey ring with a green quarter that turns. | `review` | `proposed` | · |
 | [Stat](components/stat.md) | One figure that matters, with what it is and how it moved. A label, the number in title type, and a line in green or red. | `review` | `proposed` | · |
 | [Step](components/step.md) | One step of a Stepper: a 24px marker and its name. A green tick when done, a green ring when current, grey when it is still to come. | `review` | `proposed` | · |

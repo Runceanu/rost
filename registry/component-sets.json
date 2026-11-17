@@ -773,5 +773,21 @@
       { "nodeId": "752:35", "name": "state=Hover, error=True", "width": 208, "height": 56 },
       { "nodeId": "752:42", "name": "state=Focus, error=True", "width": 216, "height": 64 }
     ]
+  },
+  "sparkline": {
+    "name": "Sparkline",
+    "setNodeId": "753:22",
+    "variants": [
+      { "nodeId": "753:13", "name": "tone=neutral", "width": 120, "height": 32 },
+      { "nodeId": "753:17", "name": "tone=positive", "width": 120, "height": 32 },
+      { "nodeId": "753:21", "name": "tone=negative", "width": 120, "height": 32 }
+    ]
+  },
+  "legend": {
+    "name": "Legend",
+    "setNodeId": "753:25",
+    "variants": [
+      { "nodeId": "753:25", "name": "legend", "width": 222, "height": 14 }
+    ]
   }
 }

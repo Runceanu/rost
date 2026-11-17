@@ -1,0 +1,86 @@
+# yaml-language-server: $schema=../schema/component-contract.schema.json
+schemaVersion: 2
+id: legend
+name: Legend
+kind: component
+status: review
+summary: "What a chart's colours mean: a small square of each, its name and, if it helps, its value, in a row that wraps."
+category: display
+related: [ bar-chart, sparkline, stat ]
+source:
+  tool: figma
+  fileKey: 1Zy0wiWKXQAvsfDBX3KR0d
+  nodeId: "753:25"
+  url: https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=753-25
+  extractedAt: "2026-11-17"
+  extractedBy: hand
+  frozenAt: "2026-11-17"
+props:
+  items: { type: node, required: true, notes: "`{ label, value?, current? }`, one per colour. `current` is the green one, as in BarChart." }
+elements:
+  root:
+    notes: "A `<ul>`: the items in a row, 16px apart, wrapping when there's no room."
+    styles:
+      display: { value: flex, assert: false }
+      flex-wrap: { value: wrap, assert: false }
+      column-gap: { token: spacing/gap/medium, value: 16px }
+      row-gap: { token: spacing/gap/small, value: 8px }
+      margin: { token: spacing/gap/none, value: 0px }
+      padding: { token: spacing/gap/none, value: 0px }
+      list-style: { value: none, assert: false }
+  item:
+    notes: "An `<li>`: the square, the name and the value, 6px apart."
+    styles:
+      display: { value: inline-flex, assert: false }
+      align-items: { value: center }
+      gap: { token: spacing/gap/xsmall, value: 6px }
+  swatch:
+    notes: "An 8px square with 2px corners, in BarChart's grey."
+    styles:
+      display: { value: block, assert: false }
+      flex-shrink: { value: "0", assert: false }
+      width: { token: spacing/gap/small, value: 8px }
+      height: { token: spacing/gap/small, value: 8px }
+      border-radius: { token: spacing/radius/2xsmall, value: 2px }
+      background: { token: legend/swatch, value: "#747573" }
+  current-swatch:
+    notes: "The same square in BarChart's green."
+    styles:
+      display: { value: block, assert: false }
+      flex-shrink: { value: "0", assert: false }
+      width: { token: spacing/gap/small, value: 8px }
+      height: { token: spacing/gap/small, value: 8px }
+      border-radius: { token: spacing/radius/2xsmall, value: 2px }
+      background: { token: legend/current-swatch, value: "#00d669" }
+  label:
+    notes: "Label type, in the secondary text colour."
+    styles:
+      font-family: { token: font-family/base, value: "'General Sans Variable'" }
+      font-weight: { token: typography/label/font-weight/regular, value: "400" }
+      font-size: { token: typography/label/font-size, value: 12px }
+      line-height: { token: typography/label/line-height, value: 14px }
+      letter-spacing: { token: typography/label/letter-spacing, value: 0px }
+      color: { token: legend/label, value: "#d3d9d5" }
+  value:
+    optional: true
+    notes: "Label type, medium weight, the main text colour."
+    styles:
+      font-family: { token: font-family/base, value: "'General Sans Variable'" }
+      font-weight: { token: typography/label/font-weight/medium, value: "500" }
+      font-size: { token: typography/label/font-size, value: 12px }
+      line-height: { token: typography/label/line-height, value: 14px }
+      letter-spacing: { token: typography/label/letter-spacing, value: 0px }
+      color: { token: legend/value, value: "#ededed" }
+guidance:
+  status: proposed
+  use:
+    - title: Under a chart
+      text: "Under a BarChart, saying that green is this month and grey the ones before, with this month's total."
+  avoid:
+    - title: One colour
+      text: "A chart with one colour needs a title, not a legend."
+  behaviour: "It lists what each colour means, in the order the chart uses them. It doesn't draw the chart or know about it."
+  accessibility:
+    element: "`<ul>`; the squares are drawing, hidden from screen readers, so each item reads as its name and value."
+    colour: "The names are 11:1 and the values 17:1 on the dark page. The squares are 4.3:1 and 10:1."
+  content: "Name what the colour stands for (This month, Earlier), not the colour."

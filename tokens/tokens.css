@@ -1310,6 +1310,17 @@
   --calendar-day-selected-label: #060805;
   --calendar-day-today-label: #00d669;
 
+  /* ── Component: sparkline ────────────────────────────────────────────────── */
+  --sparkline-negative: #f2705f;
+  --sparkline-neutral: #999999;
+  --sparkline-positive: #00d669;
+
+  /* ── Component: legend ───────────────────────────────────────────────────── */
+  --legend-current-swatch: #00d669;
+  --legend-label: #d3d9d5;
+  --legend-swatch: #747573;
+  --legend-value: #ededed;
+
   /* ── Generic colours (no family in Figma) ────────────────────────────────── */
   --background: #3a3a3a;
   --focus-ring: #999999;
@@ -1466,7 +1477,7 @@
 }
 
 /* ── Light ──────────────────────────────────────────────────────────────────
- * Only the colours change, 848 of them. Figma's light mode, with Rost's own
+ * Only the colours change, 853 of them. Figma's light mode, with Rost's own
  * corrections from registry/light.json where Figma's value fails contrast.
  * Set data-theme="light" on <html> (or any element). Without it you get dark,
  * whatever the system says. data-theme="dark" brings dark back inside a light page.
@@ -1894,6 +1905,8 @@
   --kbd-edge: #d3d9d5;
   --kbd-label: #171717;
   --label: #171717;
+  --legend-label: #171717;
+  --legend-value: #060805;
   --list-item-dot: #060805;
   --list-item-selected-default-dot: #fcfcfc;
   --list-item-selected-default-icon: #171717;
@@ -2106,6 +2119,9 @@
   --slider-focus-ring: #747573;
   --slider-thumb: #060805;
   --slider-track: #d3d9d5;
+  --sparkline-negative: #ae1b13;
+  --sparkline-neutral: #6a6b69;
+  --sparkline-positive: #0e7118;
   --spinner-arc: #0e7118;
   --spinner-track: #d3d9d5;
   --stat-delta-negative: #ae1b13;
@@ -2746,6 +2762,8 @@
   --kbd-edge: #3a3a3a;
   --kbd-label: #d3d9d5;
   --label: #d3d9d5;
+  --legend-label: #d3d9d5;
+  --legend-value: #ededed;
   --list-item-dot: #ededed;
   --list-item-selected-default-dot: #060805;
   --list-item-selected-default-icon: #060805;
@@ -2958,6 +2976,9 @@
   --slider-focus-ring: #999999;
   --slider-thumb: #ededed;
   --slider-track: #3a3a3a;
+  --sparkline-negative: #f2705f;
+  --sparkline-neutral: #999999;
+  --sparkline-positive: #00d669;
   --spinner-arc: #00d669;
   --spinner-track: #3a3a3a;
   --stat-delta-negative: #f2705f;

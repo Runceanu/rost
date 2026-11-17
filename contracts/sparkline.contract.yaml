@@ -1,0 +1,88 @@
+# yaml-language-server: $schema=../schema/component-contract.schema.json
+schemaVersion: 2
+id: sparkline
+name: Sparkline
+kind: component
+status: review
+summary: "Which way something has been going, as a small line with a dot at now. Green when that's good, red when it isn't, grey when it's neither."
+category: display
+related: [ stat, bar-chart, progress-ring ]
+source:
+  tool: figma
+  fileKey: 1Zy0wiWKXQAvsfDBX3KR0d
+  nodeId: "753:22"
+  url: https://www.figma.com/design/1Zy0wiWKXQAvsfDBX3KR0d/UI-Kit-v01?node-id=753-22
+  extractedAt: "2026-11-17"
+  extractedBy: hand
+  frozenAt: "2026-11-17"
+props:
+  data: { type: node, required: true, notes: "The values, oldest first, as numbers. Two or more." }
+  tone:
+    type: enum
+    values: [ neutral, positive, negative ]
+    default: neutral
+    notes: "Whether the way it's going is good. Up isn't always good: rising costs are `negative`."
+  label: { type: string, required: true, notes: "What it shows and where it ended, in words: Income, last seven months, up to €12,000." }
+  width: { type: number, default: 120, notes: "In px. The height is 32." }
+elements:
+  root:
+    notes: "A `<span role=\"img\">` named by `label`, holding the SVG."
+    styles:
+      display: { value: inline-block, assert: false }
+      flex-shrink: { value: "0", assert: false }
+      height: { token: spacing/size/small-medium, value: 32px }
+  svg:
+    notes: "The drawing: as wide as `width`, 32px tall, with 3px kept clear on every side so the dot isn't cut."
+    styles:
+      display: { value: block, assert: false }
+      overflow: { value: visible, assert: false }
+  line:
+    notes: "The values joined, lowest at the bottom and highest at the top, a 2px line with round ends and joins."
+    styles:
+      fill: { value: none, assert: false }
+      stroke-width: { token: spacing/outline/medium, value: 2px }
+      stroke-linecap: { value: round, assert: false }
+      stroke-linejoin: { value: round, assert: false }
+  dot:
+    notes: "The last value, a 6px dot in the line's colour: now."
+    styles:
+      stroke: { value: none, assert: false }
+variants:
+  - when: { tone: neutral }
+    figmaNode: "753:13"
+    elements:
+      line:
+        stroke: { token: sparkline/neutral, value: "#999999" }
+      dot:
+        fill: { token: sparkline/neutral, value: "#999999" }
+  - when: { tone: positive }
+    figmaNode: "753:17"
+    elements:
+      line:
+        stroke: { token: sparkline/positive, value: "#00d669" }
+      dot:
+        fill: { token: sparkline/positive, value: "#00d669" }
+  - when: { tone: negative }
+    figmaNode: "753:21"
+    elements:
+      line:
+        stroke: { token: sparkline/negative, value: "#f2705f" }
+      dot:
+        fill: { token: sparkline/negative, value: "#f2705f" }
+guidance:
+  status: proposed
+  use:
+    - title: Next to a figure
+      text: "Beside a Stat, to say whether this month's number is part of a rise or a dip."
+      show: tone=positive
+  avoid:
+    - title: Reading values off it
+      text: "It has no axis on purpose. When the amounts matter, that's a **BarChart** or a **Table**."
+    - title: Tone as the only signal
+      text: "The Stat next to it says up or down in words. Red alone doesn't."
+  behaviour: "It scales the values to fit: the lowest touches the bottom, the highest the top, so it shows shape, not size. A flat series sits in the middle."
+  accessibility:
+    element: "`<span role=\"img\">`; the SVG inside is hidden from screen readers."
+    name: "`label`, which has to say what the line shows, since nobody can hear its shape."
+    colour: "A graphic that carries meaning: the grey is 7:1, the green 10:1, the red 7:1 on the dark page."
+  content: "The label ends with where it ended up: up to €12,000, not just Income."
